@@ -127,6 +127,44 @@ impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Pair<T0, T1> {
     }
 }
 
+#[derive(Clone, Debug)]
+pub struct Set<T0> {
+    pub value: std::vec::Vec<T0>,
+}
+
+impl<T0: ls::IntoValue> ls::IntoValue for Set<T0> {
+    fn into_value(self) -> ls::Value {
+        let Self { value } = self;
+        let fields = vec![ls::IntoValue::into_value(value)];
+        ls::Value::Data(
+            "lawspec.collections::type::EqSet::EqSetItems".into(),
+            fields,
+        )
+    }
+}
+
+impl<T0: ls::FromValue> ls::FromValue for Set<T0> {
+    fn from_value(value: ls::Value) -> ls::Result<Self> {
+        let ls::Value::Data(tag, fields) = value else {
+            return Err("expected lawspec.collections::type::EqSet".into());
+        };
+        match tag.as_str() {
+            "lawspec.collections::type::EqSet::EqSetItems" if fields.len() == 1 => {
+                let mut _lawspec_fields = fields.into_iter();
+                let _lawspec_field0: std::vec::Vec<T0> =
+                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
+                Ok(Self {
+                    value: _lawspec_field0,
+                })
+            }
+            _ => {
+                let message = "invalid constructor or fields for lawspec.collections::type::EqSet";
+                Err(message.into())
+            }
+        }
+    }
+}
+
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Regex {
     pub pattern: std::string::String,
@@ -164,15 +202,15 @@ impl ls::FromValue for Regex {
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub enum PartitionChoice {
-    ToPartition { chosen: i32 },
+    ToPartition { value: i32 },
     ByKey,
 }
 
 impl ls::IntoValue for PartitionChoice {
     fn into_value(self) -> ls::Value {
         match self {
-            Self::ToPartition { chosen } => {
-                let fields = vec![ls::IntoValue::into_value(chosen)];
+            Self::ToPartition { value } => {
+                let fields = vec![ls::IntoValue::into_value(value)];
                 ls::Value::Data(
                     "lawtwin.kafka::type::PartitionChoice::ToPartition".into(),
                     fields,
@@ -197,7 +235,7 @@ impl ls::FromValue for PartitionChoice {
                 let _lawspec_field0: i32 =
                     ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
                 Ok(Self::ToPartition {
-                    chosen: _lawspec_field0,
+                    value: _lawspec_field0,
                 })
             }
             "lawtwin.kafka::type::PartitionChoice::ByKey" if fields.len() == 0 => Ok(Self::ByKey),
@@ -1376,48 +1414,25 @@ impl ls::FromValue for GroupView {
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub enum LogEntry {
     DataEntry {
-        entryOffset: i64,
-        entryRecord: Record,
-        writer: i64,
-        transactional: bool,
+        value: Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be,
     },
     ControlEntry {
-        markerOffset: i64,
-        markerWriter: i64,
-        commits: bool,
+        value: Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3,
     },
 }
 
 impl ls::IntoValue for LogEntry {
     fn into_value(self) -> ls::Value {
         match self {
-            Self::DataEntry {
-                entryOffset,
-                entryRecord,
-                writer,
-                transactional,
-            } => {
-                let fields = vec![
-                    ls::IntoValue::into_value(entryOffset),
-                    ls::IntoValue::into_value(entryRecord),
-                    ls::IntoValue::into_value(writer),
-                    ls::IntoValue::into_value(transactional),
-                ];
+            Self::DataEntry { value } => {
+                let fields = vec![ls::IntoValue::into_value(value)];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::LogEntry::DataEntry".into(),
                     fields,
                 )
             }
-            Self::ControlEntry {
-                markerOffset,
-                markerWriter,
-                commits,
-            } => {
-                let fields = vec![
-                    ls::IntoValue::into_value(markerOffset),
-                    ls::IntoValue::into_value(markerWriter),
-                    ls::IntoValue::into_value(commits),
-                ];
+            Self::ControlEntry { value } => {
+                let fields = vec![ls::IntoValue::into_value(value)];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::LogEntry::ControlEntry".into(),
                     fields,
@@ -1433,35 +1448,20 @@ impl ls::FromValue for LogEntry {
             return Err("expected lawtwin.kafka.model::type::LogEntry".into());
         };
         match tag.as_str() {
-            "lawtwin.kafka.model::type::LogEntry::DataEntry" if fields.len() == 4 => {
+            "lawtwin.kafka.model::type::LogEntry::DataEntry" if fields.len() == 1 => {
                 let mut _lawspec_fields = fields.into_iter();
-                let _lawspec_field0: i64 =
-                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
-                let _lawspec_field1: Record =
-                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
-                let _lawspec_field2: i64 =
-                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
-                let _lawspec_field3: bool =
+                let _lawspec_field0: Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be =
                     ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
                 Ok(Self::DataEntry {
-                    entryOffset: _lawspec_field0,
-                    entryRecord: _lawspec_field1,
-                    writer: _lawspec_field2,
-                    transactional: _lawspec_field3,
+                    value: _lawspec_field0,
                 })
             }
-            "lawtwin.kafka.model::type::LogEntry::ControlEntry" if fields.len() == 3 => {
+            "lawtwin.kafka.model::type::LogEntry::ControlEntry" if fields.len() == 1 => {
                 let mut _lawspec_fields = fields.into_iter();
-                let _lawspec_field0: i64 =
-                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
-                let _lawspec_field1: i64 =
-                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
-                let _lawspec_field2: bool =
+                let _lawspec_field0: Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 =
                     ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
                 Ok(Self::ControlEntry {
-                    markerOffset: _lawspec_field0,
-                    markerWriter: _lawspec_field1,
-                    commits: _lawspec_field2,
+                    value: _lawspec_field0,
                 })
             }
             _ => {
@@ -1709,8 +1709,7 @@ impl ls::FromValue for PendingOffset {
 pub enum TxnState {
     NoTxn,
     Ongoing {
-        txnPartitions: std::vec::Vec<TopicPartition>,
-        txnOffsets: std::vec::Vec<PendingOffset>,
+        value: Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee,
     },
 }
 
@@ -1721,14 +1720,8 @@ impl ls::IntoValue for TxnState {
                 let fields = vec![];
                 ls::Value::Data("lawtwin.kafka.model::type::TxnState::NoTxn".into(), fields)
             }
-            Self::Ongoing {
-                txnPartitions,
-                txnOffsets,
-            } => {
-                let fields = vec![
-                    ls::IntoValue::into_value(txnPartitions),
-                    ls::IntoValue::into_value(txnOffsets),
-                ];
+            Self::Ongoing { value } => {
+                let fields = vec![ls::IntoValue::into_value(value)];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::TxnState::Ongoing".into(),
                     fields,
@@ -1745,15 +1738,12 @@ impl ls::FromValue for TxnState {
         };
         match tag.as_str() {
             "lawtwin.kafka.model::type::TxnState::NoTxn" if fields.len() == 0 => Ok(Self::NoTxn),
-            "lawtwin.kafka.model::type::TxnState::Ongoing" if fields.len() == 2 => {
+            "lawtwin.kafka.model::type::TxnState::Ongoing" if fields.len() == 1 => {
                 let mut _lawspec_fields = fields.into_iter();
-                let _lawspec_field0: std::vec::Vec<TopicPartition> =
-                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
-                let _lawspec_field1: std::vec::Vec<PendingOffset> =
+                let _lawspec_field0: Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee =
                     ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
                 Ok(Self::Ongoing {
-                    txnPartitions: _lawspec_field0,
-                    txnOffsets: _lawspec_field1,
+                    value: _lawspec_field0,
                 })
             }
             _ => {
@@ -1993,6 +1983,171 @@ impl ls::FromValue for BrokerState {
             _ => {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::BrokerState";
+                Err(message.into())
+            }
+        }
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
+pub struct Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be {
+    pub entryOffset: i64,
+    pub entryRecord: Record,
+    pub transactional: bool,
+    pub writer: i64,
+}
+
+impl ls::IntoValue for Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be {
+    fn into_value(self) -> ls::Value {
+        let Self {
+            entryOffset,
+            entryRecord,
+            transactional,
+            writer,
+        } = self;
+        let fields = vec![
+            ls::IntoValue::into_value(entryOffset),
+            ls::IntoValue::into_value(entryRecord),
+            ls::IntoValue::into_value(transactional),
+            ls::IntoValue::into_value(writer),
+        ];
+        ls::Value::Data(
+            "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record".into(),
+            fields,
+        )
+    }
+}
+
+impl ls::FromValue for Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be {
+    fn from_value(value: ls::Value) -> ls::Result<Self> {
+        let ls::Value::Data(tag, fields) = value else {
+            return Err("expected lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be".into());
+        };
+        match tag.as_str() {
+            "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record" if fields.len() == 4 => {
+                let mut _lawspec_fields = fields.into_iter();
+                let _lawspec_field0: i64 =
+                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
+                let _lawspec_field1: Record =
+                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
+                let _lawspec_field2: bool =
+                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
+                let _lawspec_field3: i64 =
+                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
+                Ok(Self {
+                    entryOffset: _lawspec_field0,
+                    entryRecord: _lawspec_field1,
+                    transactional: _lawspec_field2,
+                    writer: _lawspec_field3,
+                })
+            }
+            _ => {
+                let message =
+                    "invalid constructor or fields for lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be";
+                Err(message.into())
+            }
+        }
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
+pub struct Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 {
+    pub commits: bool,
+    pub markerOffset: i64,
+    pub markerWriter: i64,
+}
+
+impl ls::IntoValue for Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 {
+    fn into_value(self) -> ls::Value {
+        let Self {
+            commits,
+            markerOffset,
+            markerWriter,
+        } = self;
+        let fields = vec![
+            ls::IntoValue::into_value(commits),
+            ls::IntoValue::into_value(markerOffset),
+            ls::IntoValue::into_value(markerWriter),
+        ];
+        ls::Value::Data(
+            "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record".into(),
+            fields,
+        )
+    }
+}
+
+impl ls::FromValue for Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 {
+    fn from_value(value: ls::Value) -> ls::Result<Self> {
+        let ls::Value::Data(tag, fields) = value else {
+            return Err("expected lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3".into());
+        };
+        match tag.as_str() {
+            "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record" if fields.len() == 3 => {
+                let mut _lawspec_fields = fields.into_iter();
+                let _lawspec_field0: bool =
+                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
+                let _lawspec_field1: i64 =
+                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
+                let _lawspec_field2: i64 =
+                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
+                Ok(Self {
+                    commits: _lawspec_field0,
+                    markerOffset: _lawspec_field1,
+                    markerWriter: _lawspec_field2,
+                })
+            }
+            _ => {
+                let message =
+                    "invalid constructor or fields for lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3";
+                Err(message.into())
+            }
+        }
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
+pub struct Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee {
+    pub txnOffsets: std::vec::Vec<PendingOffset>,
+    pub txnPartitions: std::vec::Vec<TopicPartition>,
+}
+
+impl ls::IntoValue for Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee {
+    fn into_value(self) -> ls::Value {
+        let Self {
+            txnOffsets,
+            txnPartitions,
+        } = self;
+        let fields = vec![
+            ls::IntoValue::into_value(txnOffsets),
+            ls::IntoValue::into_value(txnPartitions),
+        ];
+        ls::Value::Data(
+            "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record".into(),
+            fields,
+        )
+    }
+}
+
+impl ls::FromValue for Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee {
+    fn from_value(value: ls::Value) -> ls::Result<Self> {
+        let ls::Value::Data(tag, fields) = value else {
+            return Err("expected lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee".into());
+        };
+        match tag.as_str() {
+            "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record" if fields.len() == 2 => {
+                let mut _lawspec_fields = fields.into_iter();
+                let _lawspec_field0: std::vec::Vec<PendingOffset> =
+                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
+                let _lawspec_field1: std::vec::Vec<TopicPartition> =
+                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
+                Ok(Self {
+                    txnOffsets: _lawspec_field0,
+                    txnPartitions: _lawspec_field1,
+                })
+            }
+            _ => {
+                let message =
+                    "invalid constructor or fields for lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee";
                 Err(message.into())
             }
         }

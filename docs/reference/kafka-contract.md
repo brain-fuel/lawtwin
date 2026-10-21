@@ -14,7 +14,7 @@ title: The Kafka contract
 | `lawtwin.kafka.model` | the data of a cluster, and one checked definition for each request it answers |
 | `lawtwin.kafka` | the `Cluster` resource, the abilities, their laws, the reference handlers, and the client handlers |
 
-The package is written for LawSpec 0.23.0, which has the `lawspec-gaps` fixes and typed native code (ref:lawspec): it
+The package is written for LawSpec 0.26.0, with named block endings, checked definitions and public embedding interfaces (ref:lawspec): it
 uses handlers of several abilities, handler sets, `fails
 with` on operations, field access and record update, `Bytes` and `Text`
 operations, and wrapping and saturating arithmetic.
@@ -231,7 +231,7 @@ holds the reference model, so each case gets a fresh cluster
 from their refinements, which LawSpec now generates from rather than
 filters, so the project binds no generators.
 
-With LawSpec 0.23.0, all 79 runs pass on Rust, Python, Go, Java,
+The historical 0.23 acceptance recorded all 79 runs passing on Rust, Python, Go, Java,
 Kotlin, F# and C#. Before it, at commit f37e577, F# and C# passed 71 and
 stopped 8 because no input satisfied their domain ([gap
 33](../explanation/lawspec-gaps.md#33-on-f-and-c-a-law-with-several-non-empty-texts-draws-no-input)),

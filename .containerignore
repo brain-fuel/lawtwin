@@ -8,6 +8,7 @@ target/
 .canon
 .canon-cache/
 .lawspec-cli/
+.artifacts/
 contracts/*/test/.lawspec/cache/
 contracts/*/test/.lawspec/results/
 .git/

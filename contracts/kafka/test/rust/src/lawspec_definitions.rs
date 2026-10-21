@@ -5429,13 +5429,6 @@ pub mod contracttest_kafka {
 
     pub use super::lawtwin_kafka::kafkaTransactionsStart as kafkaTransactionsStart;
 
-    pub fn keepBoundedArithmetic(ctx: &mut ls::Context, value0: i64) -> ls::Result<i64> {
-        ls::fast::direct1(
-            value0,
-            crate::lawspec_definitions::typed::keepBoundedArithmetic_3e45e1f6,
-        )
-    }
-
     pub use super::lawspec_collections::boundedInt16 as lawspecCollectionsBoundedInt16;
 
     pub use super::lawspec_collections::boundedInt32 as lawspecCollectionsBoundedInt32;
@@ -5975,6 +5968,13 @@ pub mod contracttest_kafka {
     pub use super::lawtwin_kafka::xorBits as lawtwinKafkaXorBits;
 
     pub use super::lawtwin_kafka::murmurPartitionerChoosePartition as murmurPartitionerChoosePartition;
+
+    pub fn suiteNamesThePackage(ctx: &mut ls::Context, value0: ()) -> ls::Result<()> {
+        ls::fast::direct1(
+            value0,
+            crate::lawspec_definitions::typed::suiteNamesThePackage_55f330a5,
+        )
+    }
 }
 
 pub(crate) fn evaluate_0(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
@@ -8413,549 +8413,549 @@ pub(crate) use self::evaluate_112 as evaluate_593;
 
 pub(crate) use self::evaluate_113 as evaluate_594;
 
-pub(crate) fn evaluate_595(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
-    ls::fast::call1(arguments, crate::lawspec_definitions::typed::keepBoundedArithmetic_3e45e1f6)
+pub(crate) use self::evaluate_0 as evaluate_595;
+
+pub(crate) use self::evaluate_1 as evaluate_596;
+
+pub(crate) use self::evaluate_2 as evaluate_597;
+
+pub(crate) use self::evaluate_3 as evaluate_598;
+
+pub(crate) use self::evaluate_4 as evaluate_599;
+
+pub(crate) use self::evaluate_5 as evaluate_600;
+
+pub(crate) use self::evaluate_6 as evaluate_601;
+
+pub(crate) use self::evaluate_7 as evaluate_602;
+
+pub(crate) use self::evaluate_8 as evaluate_603;
+
+pub(crate) use self::evaluate_9 as evaluate_604;
+
+pub(crate) use self::evaluate_10 as evaluate_605;
+
+pub(crate) use self::evaluate_11 as evaluate_606;
+
+pub(crate) use self::evaluate_12 as evaluate_607;
+
+pub(crate) use self::evaluate_13 as evaluate_608;
+
+pub(crate) use self::evaluate_14 as evaluate_609;
+
+pub(crate) use self::evaluate_15 as evaluate_610;
+
+pub(crate) use self::evaluate_16 as evaluate_611;
+
+pub(crate) use self::evaluate_17 as evaluate_612;
+
+pub(crate) use self::evaluate_18 as evaluate_613;
+
+pub(crate) use self::evaluate_19 as evaluate_614;
+
+pub(crate) use self::evaluate_20 as evaluate_615;
+
+pub(crate) use self::evaluate_21 as evaluate_616;
+
+pub(crate) use self::evaluate_22 as evaluate_617;
+
+pub(crate) use self::evaluate_23 as evaluate_618;
+
+pub(crate) use self::evaluate_24 as evaluate_619;
+
+pub(crate) use self::evaluate_25 as evaluate_620;
+
+pub(crate) use self::evaluate_26 as evaluate_621;
+
+pub(crate) use self::evaluate_27 as evaluate_622;
+
+pub(crate) use self::evaluate_28 as evaluate_623;
+
+pub(crate) use self::evaluate_29 as evaluate_624;
+
+pub(crate) use self::evaluate_30 as evaluate_625;
+
+pub(crate) use self::evaluate_31 as evaluate_626;
+
+pub(crate) use self::evaluate_32 as evaluate_627;
+
+pub(crate) use self::evaluate_148 as evaluate_628;
+
+pub(crate) use self::evaluate_149 as evaluate_629;
+
+pub(crate) use self::evaluate_150 as evaluate_630;
+
+pub(crate) use self::evaluate_151 as evaluate_631;
+
+pub(crate) use self::evaluate_152 as evaluate_632;
+
+pub(crate) use self::evaluate_153 as evaluate_633;
+
+pub(crate) use self::evaluate_154 as evaluate_634;
+
+pub(crate) use self::evaluate_155 as evaluate_635;
+
+pub(crate) use self::evaluate_156 as evaluate_636;
+
+pub(crate) use self::evaluate_157 as evaluate_637;
+
+pub(crate) use self::evaluate_158 as evaluate_638;
+
+pub(crate) use self::evaluate_159 as evaluate_639;
+
+pub(crate) use self::evaluate_160 as evaluate_640;
+
+pub(crate) use self::evaluate_161 as evaluate_641;
+
+pub(crate) use self::evaluate_162 as evaluate_642;
+
+pub(crate) use self::evaluate_163 as evaluate_643;
+
+pub(crate) use self::evaluate_164 as evaluate_644;
+
+pub(crate) use self::evaluate_165 as evaluate_645;
+
+pub(crate) use self::evaluate_166 as evaluate_646;
+
+pub(crate) use self::evaluate_167 as evaluate_647;
+
+pub(crate) use self::evaluate_168 as evaluate_648;
+
+pub(crate) use self::evaluate_169 as evaluate_649;
+
+pub(crate) use self::evaluate_170 as evaluate_650;
+
+pub(crate) use self::evaluate_171 as evaluate_651;
+
+pub(crate) use self::evaluate_172 as evaluate_652;
+
+pub(crate) use self::evaluate_173 as evaluate_653;
+
+pub(crate) use self::evaluate_174 as evaluate_654;
+
+pub(crate) use self::evaluate_175 as evaluate_655;
+
+pub(crate) use self::evaluate_176 as evaluate_656;
+
+pub(crate) use self::evaluate_177 as evaluate_657;
+
+pub(crate) use self::evaluate_178 as evaluate_658;
+
+pub(crate) use self::evaluate_179 as evaluate_659;
+
+pub(crate) use self::evaluate_180 as evaluate_660;
+
+pub(crate) use self::evaluate_181 as evaluate_661;
+
+pub(crate) use self::evaluate_182 as evaluate_662;
+
+pub(crate) use self::evaluate_183 as evaluate_663;
+
+pub(crate) use self::evaluate_184 as evaluate_664;
+
+pub(crate) use self::evaluate_185 as evaluate_665;
+
+pub(crate) use self::evaluate_186 as evaluate_666;
+
+pub(crate) use self::evaluate_187 as evaluate_667;
+
+pub(crate) use self::evaluate_188 as evaluate_668;
+
+pub(crate) use self::evaluate_189 as evaluate_669;
+
+pub(crate) use self::evaluate_190 as evaluate_670;
+
+pub(crate) use self::evaluate_191 as evaluate_671;
+
+pub(crate) use self::evaluate_192 as evaluate_672;
+
+pub(crate) use self::evaluate_193 as evaluate_673;
+
+pub(crate) use self::evaluate_194 as evaluate_674;
+
+pub(crate) use self::evaluate_195 as evaluate_675;
+
+pub(crate) use self::evaluate_196 as evaluate_676;
+
+pub(crate) use self::evaluate_197 as evaluate_677;
+
+pub(crate) use self::evaluate_198 as evaluate_678;
+
+pub(crate) use self::evaluate_199 as evaluate_679;
+
+pub(crate) use self::evaluate_200 as evaluate_680;
+
+pub(crate) use self::evaluate_201 as evaluate_681;
+
+pub(crate) use self::evaluate_202 as evaluate_682;
+
+pub(crate) use self::evaluate_203 as evaluate_683;
+
+pub(crate) use self::evaluate_204 as evaluate_684;
+
+pub(crate) use self::evaluate_205 as evaluate_685;
+
+pub(crate) use self::evaluate_206 as evaluate_686;
+
+pub(crate) use self::evaluate_207 as evaluate_687;
+
+pub(crate) use self::evaluate_208 as evaluate_688;
+
+pub(crate) use self::evaluate_209 as evaluate_689;
+
+pub(crate) use self::evaluate_210 as evaluate_690;
+
+pub(crate) use self::evaluate_211 as evaluate_691;
+
+pub(crate) use self::evaluate_212 as evaluate_692;
+
+pub(crate) use self::evaluate_213 as evaluate_693;
+
+pub(crate) use self::evaluate_214 as evaluate_694;
+
+pub(crate) use self::evaluate_215 as evaluate_695;
+
+pub(crate) use self::evaluate_216 as evaluate_696;
+
+pub(crate) use self::evaluate_217 as evaluate_697;
+
+pub(crate) use self::evaluate_218 as evaluate_698;
+
+pub(crate) use self::evaluate_219 as evaluate_699;
+
+pub(crate) use self::evaluate_220 as evaluate_700;
+
+pub(crate) use self::evaluate_221 as evaluate_701;
+
+pub(crate) use self::evaluate_222 as evaluate_702;
+
+pub(crate) use self::evaluate_223 as evaluate_703;
+
+pub(crate) use self::evaluate_224 as evaluate_704;
+
+pub(crate) use self::evaluate_225 as evaluate_705;
+
+pub(crate) use self::evaluate_226 as evaluate_706;
+
+pub(crate) use self::evaluate_227 as evaluate_707;
+
+pub(crate) use self::evaluate_228 as evaluate_708;
+
+pub(crate) use self::evaluate_229 as evaluate_709;
+
+pub(crate) use self::evaluate_230 as evaluate_710;
+
+pub(crate) use self::evaluate_232 as evaluate_711;
+
+pub(crate) use self::evaluate_233 as evaluate_712;
+
+pub(crate) use self::evaluate_234 as evaluate_713;
+
+pub(crate) use self::evaluate_236 as evaluate_714;
+
+pub(crate) use self::evaluate_239 as evaluate_715;
+
+pub(crate) use self::evaluate_240 as evaluate_716;
+
+pub(crate) use self::evaluate_242 as evaluate_717;
+
+pub(crate) use self::evaluate_243 as evaluate_718;
+
+pub(crate) use self::evaluate_244 as evaluate_719;
+
+pub(crate) use self::evaluate_34 as evaluate_720;
+
+pub(crate) use self::evaluate_35 as evaluate_721;
+
+pub(crate) use self::evaluate_65 as evaluate_722;
+
+pub(crate) use self::evaluate_66 as evaluate_723;
+
+pub(crate) use self::evaluate_67 as evaluate_724;
+
+pub(crate) use self::evaluate_68 as evaluate_725;
+
+pub(crate) use self::evaluate_69 as evaluate_726;
+
+pub(crate) use self::evaluate_70 as evaluate_727;
+
+pub(crate) use self::evaluate_71 as evaluate_728;
+
+pub(crate) use self::evaluate_72 as evaluate_729;
+
+pub(crate) use self::evaluate_73 as evaluate_730;
+
+pub(crate) use self::evaluate_74 as evaluate_731;
+
+pub(crate) use self::evaluate_75 as evaluate_732;
+
+pub(crate) use self::evaluate_76 as evaluate_733;
+
+pub(crate) use self::evaluate_77 as evaluate_734;
+
+pub(crate) use self::evaluate_78 as evaluate_735;
+
+pub(crate) use self::evaluate_79 as evaluate_736;
+
+pub(crate) use self::evaluate_80 as evaluate_737;
+
+pub(crate) use self::evaluate_81 as evaluate_738;
+
+pub(crate) use self::evaluate_82 as evaluate_739;
+
+pub(crate) use self::evaluate_83 as evaluate_740;
+
+pub(crate) use self::evaluate_84 as evaluate_741;
+
+pub(crate) use self::evaluate_85 as evaluate_742;
+
+pub(crate) use self::evaluate_86 as evaluate_743;
+
+pub(crate) use self::evaluate_87 as evaluate_744;
+
+pub(crate) use self::evaluate_88 as evaluate_745;
+
+pub(crate) use self::evaluate_89 as evaluate_746;
+
+pub(crate) use self::evaluate_114 as evaluate_747;
+
+pub(crate) use self::evaluate_316 as evaluate_748;
+
+pub(crate) use self::evaluate_317 as evaluate_749;
+
+pub(crate) use self::evaluate_362 as evaluate_750;
+
+pub(crate) use self::evaluate_363 as evaluate_751;
+
+pub(crate) use self::evaluate_364 as evaluate_752;
+
+pub(crate) use self::evaluate_365 as evaluate_753;
+
+pub(crate) use self::evaluate_366 as evaluate_754;
+
+pub(crate) use self::evaluate_367 as evaluate_755;
+
+pub(crate) use self::evaluate_368 as evaluate_756;
+
+pub(crate) use self::evaluate_369 as evaluate_757;
+
+pub(crate) use self::evaluate_370 as evaluate_758;
+
+pub(crate) use self::evaluate_371 as evaluate_759;
+
+pub(crate) use self::evaluate_372 as evaluate_760;
+
+pub(crate) use self::evaluate_373 as evaluate_761;
+
+pub(crate) use self::evaluate_374 as evaluate_762;
+
+pub(crate) use self::evaluate_375 as evaluate_763;
+
+pub(crate) use self::evaluate_376 as evaluate_764;
+
+pub(crate) use self::evaluate_377 as evaluate_765;
+
+pub(crate) use self::evaluate_378 as evaluate_766;
+
+pub(crate) use self::evaluate_379 as evaluate_767;
+
+pub(crate) use self::evaluate_380 as evaluate_768;
+
+pub(crate) use self::evaluate_381 as evaluate_769;
+
+pub(crate) use self::evaluate_382 as evaluate_770;
+
+pub(crate) use self::evaluate_383 as evaluate_771;
+
+pub(crate) use self::evaluate_384 as evaluate_772;
+
+pub(crate) use self::evaluate_385 as evaluate_773;
+
+pub(crate) use self::evaluate_386 as evaluate_774;
+
+pub(crate) use self::evaluate_387 as evaluate_775;
+
+pub(crate) use self::evaluate_388 as evaluate_776;
+
+pub(crate) use self::evaluate_389 as evaluate_777;
+
+pub(crate) use self::evaluate_390 as evaluate_778;
+
+pub(crate) use self::evaluate_391 as evaluate_779;
+
+pub(crate) use self::evaluate_392 as evaluate_780;
+
+pub(crate) use self::evaluate_393 as evaluate_781;
+
+pub(crate) use self::evaluate_394 as evaluate_782;
+
+pub(crate) use self::evaluate_503 as evaluate_783;
+
+pub(crate) use self::evaluate_504 as evaluate_784;
+
+pub(crate) use self::evaluate_505 as evaluate_785;
+
+pub(crate) use self::evaluate_506 as evaluate_786;
+
+pub(crate) use self::evaluate_507 as evaluate_787;
+
+pub(crate) use self::evaluate_508 as evaluate_788;
+
+pub(crate) use self::evaluate_509 as evaluate_789;
+
+pub(crate) use self::evaluate_510 as evaluate_790;
+
+pub(crate) use self::evaluate_511 as evaluate_791;
+
+pub(crate) use self::evaluate_512 as evaluate_792;
+
+pub(crate) use self::evaluate_513 as evaluate_793;
+
+pub(crate) use self::evaluate_514 as evaluate_794;
+
+pub(crate) use self::evaluate_515 as evaluate_795;
+
+pub(crate) use self::evaluate_516 as evaluate_796;
+
+pub(crate) use self::evaluate_517 as evaluate_797;
+
+pub(crate) use self::evaluate_518 as evaluate_798;
+
+pub(crate) use self::evaluate_519 as evaluate_799;
+
+pub(crate) use self::evaluate_520 as evaluate_800;
+
+pub(crate) use self::evaluate_521 as evaluate_801;
+
+pub(crate) use self::evaluate_522 as evaluate_802;
+
+pub(crate) use self::evaluate_523 as evaluate_803;
+
+pub(crate) use self::evaluate_524 as evaluate_804;
+
+pub(crate) use self::evaluate_525 as evaluate_805;
+
+pub(crate) use self::evaluate_526 as evaluate_806;
+
+pub(crate) use self::evaluate_527 as evaluate_807;
+
+pub(crate) use self::evaluate_528 as evaluate_808;
+
+pub(crate) use self::evaluate_529 as evaluate_809;
+
+pub(crate) use self::evaluate_530 as evaluate_810;
+
+pub(crate) use self::evaluate_531 as evaluate_811;
+
+pub(crate) use self::evaluate_532 as evaluate_812;
+
+pub(crate) use self::evaluate_533 as evaluate_813;
+
+pub(crate) use self::evaluate_534 as evaluate_814;
+
+pub(crate) use self::evaluate_536 as evaluate_815;
+
+pub(crate) use self::evaluate_537 as evaluate_816;
+
+pub(crate) use self::evaluate_538 as evaluate_817;
+
+pub(crate) use self::evaluate_539 as evaluate_818;
+
+pub(crate) use self::evaluate_540 as evaluate_819;
+
+pub(crate) use self::evaluate_541 as evaluate_820;
+
+pub(crate) use self::evaluate_318 as evaluate_821;
+
+pub(crate) use self::evaluate_319 as evaluate_822;
+
+pub(crate) use self::evaluate_320 as evaluate_823;
+
+pub(crate) use self::evaluate_321 as evaluate_824;
+
+pub(crate) use self::evaluate_323 as evaluate_825;
+
+pub(crate) use self::evaluate_324 as evaluate_826;
+
+pub(crate) use self::evaluate_325 as evaluate_827;
+
+pub(crate) use self::evaluate_326 as evaluate_828;
+
+pub(crate) use self::evaluate_327 as evaluate_829;
+
+pub(crate) use self::evaluate_328 as evaluate_830;
+
+pub(crate) use self::evaluate_329 as evaluate_831;
+
+pub(crate) use self::evaluate_330 as evaluate_832;
+
+pub(crate) use self::evaluate_331 as evaluate_833;
+
+pub(crate) use self::evaluate_332 as evaluate_834;
+
+pub(crate) use self::evaluate_333 as evaluate_835;
+
+pub(crate) use self::evaluate_334 as evaluate_836;
+
+pub(crate) use self::evaluate_335 as evaluate_837;
+
+pub(crate) use self::evaluate_336 as evaluate_838;
+
+pub(crate) use self::evaluate_337 as evaluate_839;
+
+pub(crate) use self::evaluate_338 as evaluate_840;
+
+pub(crate) use self::evaluate_339 as evaluate_841;
+
+pub(crate) use self::evaluate_340 as evaluate_842;
+
+pub(crate) use self::evaluate_341 as evaluate_843;
+
+pub(crate) use self::evaluate_342 as evaluate_844;
+
+pub(crate) use self::evaluate_343 as evaluate_845;
+
+pub(crate) use self::evaluate_344 as evaluate_846;
+
+pub(crate) use self::evaluate_345 as evaluate_847;
+
+pub(crate) use self::evaluate_346 as evaluate_848;
+
+pub(crate) use self::evaluate_347 as evaluate_849;
+
+pub(crate) use self::evaluate_348 as evaluate_850;
+
+pub(crate) use self::evaluate_349 as evaluate_851;
+
+pub(crate) use self::evaluate_350 as evaluate_852;
+
+pub(crate) use self::evaluate_351 as evaluate_853;
+
+pub(crate) use self::evaluate_352 as evaluate_854;
+
+pub(crate) use self::evaluate_353 as evaluate_855;
+
+pub(crate) use self::evaluate_354 as evaluate_856;
+
+pub(crate) use self::evaluate_355 as evaluate_857;
+
+pub(crate) use self::evaluate_356 as evaluate_858;
+
+pub(crate) use self::evaluate_357 as evaluate_859;
+
+pub(crate) use self::evaluate_358 as evaluate_860;
+
+pub(crate) use self::evaluate_359 as evaluate_861;
+
+pub(crate) use self::evaluate_360 as evaluate_862;
+
+pub(crate) use self::evaluate_361 as evaluate_863;
+
+pub(crate) use self::evaluate_322 as evaluate_864;
+
+pub(crate) fn evaluate_865(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    ls::fast::call1(arguments, crate::lawspec_definitions::typed::suiteNamesThePackage_55f330a5)
 }
-
-pub(crate) use self::evaluate_0 as evaluate_596;
-
-pub(crate) use self::evaluate_1 as evaluate_597;
-
-pub(crate) use self::evaluate_2 as evaluate_598;
-
-pub(crate) use self::evaluate_3 as evaluate_599;
-
-pub(crate) use self::evaluate_4 as evaluate_600;
-
-pub(crate) use self::evaluate_5 as evaluate_601;
-
-pub(crate) use self::evaluate_6 as evaluate_602;
-
-pub(crate) use self::evaluate_7 as evaluate_603;
-
-pub(crate) use self::evaluate_8 as evaluate_604;
-
-pub(crate) use self::evaluate_9 as evaluate_605;
-
-pub(crate) use self::evaluate_10 as evaluate_606;
-
-pub(crate) use self::evaluate_11 as evaluate_607;
-
-pub(crate) use self::evaluate_12 as evaluate_608;
-
-pub(crate) use self::evaluate_13 as evaluate_609;
-
-pub(crate) use self::evaluate_14 as evaluate_610;
-
-pub(crate) use self::evaluate_15 as evaluate_611;
-
-pub(crate) use self::evaluate_16 as evaluate_612;
-
-pub(crate) use self::evaluate_17 as evaluate_613;
-
-pub(crate) use self::evaluate_18 as evaluate_614;
-
-pub(crate) use self::evaluate_19 as evaluate_615;
-
-pub(crate) use self::evaluate_20 as evaluate_616;
-
-pub(crate) use self::evaluate_21 as evaluate_617;
-
-pub(crate) use self::evaluate_22 as evaluate_618;
-
-pub(crate) use self::evaluate_23 as evaluate_619;
-
-pub(crate) use self::evaluate_24 as evaluate_620;
-
-pub(crate) use self::evaluate_25 as evaluate_621;
-
-pub(crate) use self::evaluate_26 as evaluate_622;
-
-pub(crate) use self::evaluate_27 as evaluate_623;
-
-pub(crate) use self::evaluate_28 as evaluate_624;
-
-pub(crate) use self::evaluate_29 as evaluate_625;
-
-pub(crate) use self::evaluate_30 as evaluate_626;
-
-pub(crate) use self::evaluate_31 as evaluate_627;
-
-pub(crate) use self::evaluate_32 as evaluate_628;
-
-pub(crate) use self::evaluate_148 as evaluate_629;
-
-pub(crate) use self::evaluate_149 as evaluate_630;
-
-pub(crate) use self::evaluate_150 as evaluate_631;
-
-pub(crate) use self::evaluate_151 as evaluate_632;
-
-pub(crate) use self::evaluate_152 as evaluate_633;
-
-pub(crate) use self::evaluate_153 as evaluate_634;
-
-pub(crate) use self::evaluate_154 as evaluate_635;
-
-pub(crate) use self::evaluate_155 as evaluate_636;
-
-pub(crate) use self::evaluate_156 as evaluate_637;
-
-pub(crate) use self::evaluate_157 as evaluate_638;
-
-pub(crate) use self::evaluate_158 as evaluate_639;
-
-pub(crate) use self::evaluate_159 as evaluate_640;
-
-pub(crate) use self::evaluate_160 as evaluate_641;
-
-pub(crate) use self::evaluate_161 as evaluate_642;
-
-pub(crate) use self::evaluate_162 as evaluate_643;
-
-pub(crate) use self::evaluate_163 as evaluate_644;
-
-pub(crate) use self::evaluate_164 as evaluate_645;
-
-pub(crate) use self::evaluate_165 as evaluate_646;
-
-pub(crate) use self::evaluate_166 as evaluate_647;
-
-pub(crate) use self::evaluate_167 as evaluate_648;
-
-pub(crate) use self::evaluate_168 as evaluate_649;
-
-pub(crate) use self::evaluate_169 as evaluate_650;
-
-pub(crate) use self::evaluate_170 as evaluate_651;
-
-pub(crate) use self::evaluate_171 as evaluate_652;
-
-pub(crate) use self::evaluate_172 as evaluate_653;
-
-pub(crate) use self::evaluate_173 as evaluate_654;
-
-pub(crate) use self::evaluate_174 as evaluate_655;
-
-pub(crate) use self::evaluate_175 as evaluate_656;
-
-pub(crate) use self::evaluate_176 as evaluate_657;
-
-pub(crate) use self::evaluate_177 as evaluate_658;
-
-pub(crate) use self::evaluate_178 as evaluate_659;
-
-pub(crate) use self::evaluate_179 as evaluate_660;
-
-pub(crate) use self::evaluate_180 as evaluate_661;
-
-pub(crate) use self::evaluate_181 as evaluate_662;
-
-pub(crate) use self::evaluate_182 as evaluate_663;
-
-pub(crate) use self::evaluate_183 as evaluate_664;
-
-pub(crate) use self::evaluate_184 as evaluate_665;
-
-pub(crate) use self::evaluate_185 as evaluate_666;
-
-pub(crate) use self::evaluate_186 as evaluate_667;
-
-pub(crate) use self::evaluate_187 as evaluate_668;
-
-pub(crate) use self::evaluate_188 as evaluate_669;
-
-pub(crate) use self::evaluate_189 as evaluate_670;
-
-pub(crate) use self::evaluate_190 as evaluate_671;
-
-pub(crate) use self::evaluate_191 as evaluate_672;
-
-pub(crate) use self::evaluate_192 as evaluate_673;
-
-pub(crate) use self::evaluate_193 as evaluate_674;
-
-pub(crate) use self::evaluate_194 as evaluate_675;
-
-pub(crate) use self::evaluate_195 as evaluate_676;
-
-pub(crate) use self::evaluate_196 as evaluate_677;
-
-pub(crate) use self::evaluate_197 as evaluate_678;
-
-pub(crate) use self::evaluate_198 as evaluate_679;
-
-pub(crate) use self::evaluate_199 as evaluate_680;
-
-pub(crate) use self::evaluate_200 as evaluate_681;
-
-pub(crate) use self::evaluate_201 as evaluate_682;
-
-pub(crate) use self::evaluate_202 as evaluate_683;
-
-pub(crate) use self::evaluate_203 as evaluate_684;
-
-pub(crate) use self::evaluate_204 as evaluate_685;
-
-pub(crate) use self::evaluate_205 as evaluate_686;
-
-pub(crate) use self::evaluate_206 as evaluate_687;
-
-pub(crate) use self::evaluate_207 as evaluate_688;
-
-pub(crate) use self::evaluate_208 as evaluate_689;
-
-pub(crate) use self::evaluate_209 as evaluate_690;
-
-pub(crate) use self::evaluate_210 as evaluate_691;
-
-pub(crate) use self::evaluate_211 as evaluate_692;
-
-pub(crate) use self::evaluate_212 as evaluate_693;
-
-pub(crate) use self::evaluate_213 as evaluate_694;
-
-pub(crate) use self::evaluate_214 as evaluate_695;
-
-pub(crate) use self::evaluate_215 as evaluate_696;
-
-pub(crate) use self::evaluate_216 as evaluate_697;
-
-pub(crate) use self::evaluate_217 as evaluate_698;
-
-pub(crate) use self::evaluate_218 as evaluate_699;
-
-pub(crate) use self::evaluate_219 as evaluate_700;
-
-pub(crate) use self::evaluate_220 as evaluate_701;
-
-pub(crate) use self::evaluate_221 as evaluate_702;
-
-pub(crate) use self::evaluate_222 as evaluate_703;
-
-pub(crate) use self::evaluate_223 as evaluate_704;
-
-pub(crate) use self::evaluate_224 as evaluate_705;
-
-pub(crate) use self::evaluate_225 as evaluate_706;
-
-pub(crate) use self::evaluate_226 as evaluate_707;
-
-pub(crate) use self::evaluate_227 as evaluate_708;
-
-pub(crate) use self::evaluate_228 as evaluate_709;
-
-pub(crate) use self::evaluate_229 as evaluate_710;
-
-pub(crate) use self::evaluate_230 as evaluate_711;
-
-pub(crate) use self::evaluate_232 as evaluate_712;
-
-pub(crate) use self::evaluate_233 as evaluate_713;
-
-pub(crate) use self::evaluate_234 as evaluate_714;
-
-pub(crate) use self::evaluate_236 as evaluate_715;
-
-pub(crate) use self::evaluate_239 as evaluate_716;
-
-pub(crate) use self::evaluate_240 as evaluate_717;
-
-pub(crate) use self::evaluate_242 as evaluate_718;
-
-pub(crate) use self::evaluate_243 as evaluate_719;
-
-pub(crate) use self::evaluate_244 as evaluate_720;
-
-pub(crate) use self::evaluate_34 as evaluate_721;
-
-pub(crate) use self::evaluate_35 as evaluate_722;
-
-pub(crate) use self::evaluate_65 as evaluate_723;
-
-pub(crate) use self::evaluate_66 as evaluate_724;
-
-pub(crate) use self::evaluate_67 as evaluate_725;
-
-pub(crate) use self::evaluate_68 as evaluate_726;
-
-pub(crate) use self::evaluate_69 as evaluate_727;
-
-pub(crate) use self::evaluate_70 as evaluate_728;
-
-pub(crate) use self::evaluate_71 as evaluate_729;
-
-pub(crate) use self::evaluate_72 as evaluate_730;
-
-pub(crate) use self::evaluate_73 as evaluate_731;
-
-pub(crate) use self::evaluate_74 as evaluate_732;
-
-pub(crate) use self::evaluate_75 as evaluate_733;
-
-pub(crate) use self::evaluate_76 as evaluate_734;
-
-pub(crate) use self::evaluate_77 as evaluate_735;
-
-pub(crate) use self::evaluate_78 as evaluate_736;
-
-pub(crate) use self::evaluate_79 as evaluate_737;
-
-pub(crate) use self::evaluate_80 as evaluate_738;
-
-pub(crate) use self::evaluate_81 as evaluate_739;
-
-pub(crate) use self::evaluate_82 as evaluate_740;
-
-pub(crate) use self::evaluate_83 as evaluate_741;
-
-pub(crate) use self::evaluate_84 as evaluate_742;
-
-pub(crate) use self::evaluate_85 as evaluate_743;
-
-pub(crate) use self::evaluate_86 as evaluate_744;
-
-pub(crate) use self::evaluate_87 as evaluate_745;
-
-pub(crate) use self::evaluate_88 as evaluate_746;
-
-pub(crate) use self::evaluate_89 as evaluate_747;
-
-pub(crate) use self::evaluate_114 as evaluate_748;
-
-pub(crate) use self::evaluate_316 as evaluate_749;
-
-pub(crate) use self::evaluate_317 as evaluate_750;
-
-pub(crate) use self::evaluate_362 as evaluate_751;
-
-pub(crate) use self::evaluate_363 as evaluate_752;
-
-pub(crate) use self::evaluate_364 as evaluate_753;
-
-pub(crate) use self::evaluate_365 as evaluate_754;
-
-pub(crate) use self::evaluate_366 as evaluate_755;
-
-pub(crate) use self::evaluate_367 as evaluate_756;
-
-pub(crate) use self::evaluate_368 as evaluate_757;
-
-pub(crate) use self::evaluate_369 as evaluate_758;
-
-pub(crate) use self::evaluate_370 as evaluate_759;
-
-pub(crate) use self::evaluate_371 as evaluate_760;
-
-pub(crate) use self::evaluate_372 as evaluate_761;
-
-pub(crate) use self::evaluate_373 as evaluate_762;
-
-pub(crate) use self::evaluate_374 as evaluate_763;
-
-pub(crate) use self::evaluate_375 as evaluate_764;
-
-pub(crate) use self::evaluate_376 as evaluate_765;
-
-pub(crate) use self::evaluate_377 as evaluate_766;
-
-pub(crate) use self::evaluate_378 as evaluate_767;
-
-pub(crate) use self::evaluate_379 as evaluate_768;
-
-pub(crate) use self::evaluate_380 as evaluate_769;
-
-pub(crate) use self::evaluate_381 as evaluate_770;
-
-pub(crate) use self::evaluate_382 as evaluate_771;
-
-pub(crate) use self::evaluate_383 as evaluate_772;
-
-pub(crate) use self::evaluate_384 as evaluate_773;
-
-pub(crate) use self::evaluate_385 as evaluate_774;
-
-pub(crate) use self::evaluate_386 as evaluate_775;
-
-pub(crate) use self::evaluate_387 as evaluate_776;
-
-pub(crate) use self::evaluate_388 as evaluate_777;
-
-pub(crate) use self::evaluate_389 as evaluate_778;
-
-pub(crate) use self::evaluate_390 as evaluate_779;
-
-pub(crate) use self::evaluate_391 as evaluate_780;
-
-pub(crate) use self::evaluate_392 as evaluate_781;
-
-pub(crate) use self::evaluate_393 as evaluate_782;
-
-pub(crate) use self::evaluate_394 as evaluate_783;
-
-pub(crate) use self::evaluate_503 as evaluate_784;
-
-pub(crate) use self::evaluate_504 as evaluate_785;
-
-pub(crate) use self::evaluate_505 as evaluate_786;
-
-pub(crate) use self::evaluate_506 as evaluate_787;
-
-pub(crate) use self::evaluate_507 as evaluate_788;
-
-pub(crate) use self::evaluate_508 as evaluate_789;
-
-pub(crate) use self::evaluate_509 as evaluate_790;
-
-pub(crate) use self::evaluate_510 as evaluate_791;
-
-pub(crate) use self::evaluate_511 as evaluate_792;
-
-pub(crate) use self::evaluate_512 as evaluate_793;
-
-pub(crate) use self::evaluate_513 as evaluate_794;
-
-pub(crate) use self::evaluate_514 as evaluate_795;
-
-pub(crate) use self::evaluate_515 as evaluate_796;
-
-pub(crate) use self::evaluate_516 as evaluate_797;
-
-pub(crate) use self::evaluate_517 as evaluate_798;
-
-pub(crate) use self::evaluate_518 as evaluate_799;
-
-pub(crate) use self::evaluate_519 as evaluate_800;
-
-pub(crate) use self::evaluate_520 as evaluate_801;
-
-pub(crate) use self::evaluate_521 as evaluate_802;
-
-pub(crate) use self::evaluate_522 as evaluate_803;
-
-pub(crate) use self::evaluate_523 as evaluate_804;
-
-pub(crate) use self::evaluate_524 as evaluate_805;
-
-pub(crate) use self::evaluate_525 as evaluate_806;
-
-pub(crate) use self::evaluate_526 as evaluate_807;
-
-pub(crate) use self::evaluate_527 as evaluate_808;
-
-pub(crate) use self::evaluate_528 as evaluate_809;
-
-pub(crate) use self::evaluate_529 as evaluate_810;
-
-pub(crate) use self::evaluate_530 as evaluate_811;
-
-pub(crate) use self::evaluate_531 as evaluate_812;
-
-pub(crate) use self::evaluate_532 as evaluate_813;
-
-pub(crate) use self::evaluate_533 as evaluate_814;
-
-pub(crate) use self::evaluate_534 as evaluate_815;
-
-pub(crate) use self::evaluate_536 as evaluate_816;
-
-pub(crate) use self::evaluate_537 as evaluate_817;
-
-pub(crate) use self::evaluate_538 as evaluate_818;
-
-pub(crate) use self::evaluate_539 as evaluate_819;
-
-pub(crate) use self::evaluate_540 as evaluate_820;
-
-pub(crate) use self::evaluate_541 as evaluate_821;
-
-pub(crate) use self::evaluate_318 as evaluate_822;
-
-pub(crate) use self::evaluate_319 as evaluate_823;
-
-pub(crate) use self::evaluate_320 as evaluate_824;
-
-pub(crate) use self::evaluate_321 as evaluate_825;
-
-pub(crate) use self::evaluate_323 as evaluate_826;
-
-pub(crate) use self::evaluate_324 as evaluate_827;
-
-pub(crate) use self::evaluate_325 as evaluate_828;
-
-pub(crate) use self::evaluate_326 as evaluate_829;
-
-pub(crate) use self::evaluate_327 as evaluate_830;
-
-pub(crate) use self::evaluate_328 as evaluate_831;
-
-pub(crate) use self::evaluate_329 as evaluate_832;
-
-pub(crate) use self::evaluate_330 as evaluate_833;
-
-pub(crate) use self::evaluate_331 as evaluate_834;
-
-pub(crate) use self::evaluate_332 as evaluate_835;
-
-pub(crate) use self::evaluate_333 as evaluate_836;
-
-pub(crate) use self::evaluate_334 as evaluate_837;
-
-pub(crate) use self::evaluate_335 as evaluate_838;
-
-pub(crate) use self::evaluate_336 as evaluate_839;
-
-pub(crate) use self::evaluate_337 as evaluate_840;
-
-pub(crate) use self::evaluate_338 as evaluate_841;
-
-pub(crate) use self::evaluate_339 as evaluate_842;
-
-pub(crate) use self::evaluate_340 as evaluate_843;
-
-pub(crate) use self::evaluate_341 as evaluate_844;
-
-pub(crate) use self::evaluate_342 as evaluate_845;
-
-pub(crate) use self::evaluate_343 as evaluate_846;
-
-pub(crate) use self::evaluate_344 as evaluate_847;
-
-pub(crate) use self::evaluate_345 as evaluate_848;
-
-pub(crate) use self::evaluate_346 as evaluate_849;
-
-pub(crate) use self::evaluate_347 as evaluate_850;
-
-pub(crate) use self::evaluate_348 as evaluate_851;
-
-pub(crate) use self::evaluate_349 as evaluate_852;
-
-pub(crate) use self::evaluate_350 as evaluate_853;
-
-pub(crate) use self::evaluate_351 as evaluate_854;
-
-pub(crate) use self::evaluate_352 as evaluate_855;
-
-pub(crate) use self::evaluate_353 as evaluate_856;
-
-pub(crate) use self::evaluate_354 as evaluate_857;
-
-pub(crate) use self::evaluate_355 as evaluate_858;
-
-pub(crate) use self::evaluate_356 as evaluate_859;
-
-pub(crate) use self::evaluate_357 as evaluate_860;
-
-pub(crate) use self::evaluate_358 as evaluate_861;
-
-pub(crate) use self::evaluate_359 as evaluate_862;
-
-pub(crate) use self::evaluate_360 as evaluate_863;
-
-pub(crate) use self::evaluate_361 as evaluate_864;
-
-pub(crate) use self::evaluate_322 as evaluate_865;
 
 /// Typed checked definitions: see the runtime's fast module.
 pub mod typed {
@@ -10015,14 +10015,14 @@ pub mod typed {
     pub struct LogEntry(pub std::sync::Arc<LogEntryNode>);
     #[derive(PartialEq, Eq, Debug)]
     pub enum LogEntryNode {
-        DataEntry(i64, Record, i64, bool),
-        ControlEntry(i64, i64, bool),
+        DataEntry(Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be),
+        ControlEntry(Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3),
     }
     impl LogEntry {
         fn rank(&self) -> u32 {
             match &*self.0 {
-                LogEntryNode::DataEntry(_, _, _, _) => 1,
-                LogEntryNode::ControlEntry(_, _, _) => 0,
+                LogEntryNode::DataEntry(_) => 1,
+                LogEntryNode::ControlEntry(_) => 0,
             }
         }
     }
@@ -10030,8 +10030,8 @@ pub mod typed {
         fn pcmp(&self, other: &Self) -> std::cmp::Ordering {
             if std::sync::Arc::ptr_eq(&self.0, &other.0) { return std::cmp::Ordering::Equal; }
             match (&*self.0, &*other.0) {
-                (LogEntryNode::DataEntry(a0, a1, a2, a3), LogEntryNode::DataEntry(b0, b1, b2, b3)) => a0.pcmp(b0).then_with(|| a1.pcmp(b1)).then_with(|| a2.pcmp(b2)).then_with(|| a3.pcmp(b3)),
-                (LogEntryNode::ControlEntry(a0, a1, a2), LogEntryNode::ControlEntry(b0, b1, b2)) => a0.pcmp(b0).then_with(|| a1.pcmp(b1)).then_with(|| a2.pcmp(b2)),
+                (LogEntryNode::DataEntry(a0), LogEntryNode::DataEntry(b0)) => a0.pcmp(b0),
+                (LogEntryNode::ControlEntry(a0), LogEntryNode::ControlEntry(b0)) => a0.pcmp(b0),
                 _ => self.rank().cmp(&other.rank()),
             }
         }
@@ -10039,19 +10039,19 @@ pub mod typed {
     impl Dyn for LogEntry {
         fn to_dyn(&self) -> ls::Value {
             match &*self.0 {
-                LogEntryNode::DataEntry(f0, f1, f2, f3) => ls::Value::Data("lawtwin.kafka.model::type::LogEntry::DataEntry".into(), vec![f0.to_dyn(), f1.to_dyn(), f2.to_dyn(), f3.to_dyn()]),
-                LogEntryNode::ControlEntry(f0, f1, f2) => ls::Value::Data("lawtwin.kafka.model::type::LogEntry::ControlEntry".into(), vec![f0.to_dyn(), f1.to_dyn(), f2.to_dyn()]),
+                LogEntryNode::DataEntry(f0) => ls::Value::Data("lawtwin.kafka.model::type::LogEntry::DataEntry".into(), vec![f0.to_dyn()]),
+                LogEntryNode::ControlEntry(f0) => ls::Value::Data("lawtwin.kafka.model::type::LogEntry::ControlEntry".into(), vec![f0.to_dyn()]),
             }
         }
         fn from_dyn(value: ls::Value) -> ls::Result<Self> {
             match ls::fast::tag(&value)? {
                 "lawtwin.kafka.model::type::LogEntry::DataEntry" => {
-                    let mut fields = ls::fast::fields(value, "lawtwin.kafka.model::type::LogEntry::DataEntry", 4)?;
-                    Ok(LogEntry(std::sync::Arc::new(LogEntryNode::DataEntry(<i64 as Dyn>::from_dyn(fields.next().unwrap())?, <Record as Dyn>::from_dyn(fields.next().unwrap())?, <i64 as Dyn>::from_dyn(fields.next().unwrap())?, <bool as Dyn>::from_dyn(fields.next().unwrap())?))))
+                    let mut fields = ls::fast::fields(value, "lawtwin.kafka.model::type::LogEntry::DataEntry", 1)?;
+                    Ok(LogEntry(std::sync::Arc::new(LogEntryNode::DataEntry(<Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be as Dyn>::from_dyn(fields.next().unwrap())?))))
                 }
                 "lawtwin.kafka.model::type::LogEntry::ControlEntry" => {
-                    let mut fields = ls::fast::fields(value, "lawtwin.kafka.model::type::LogEntry::ControlEntry", 3)?;
-                    Ok(LogEntry(std::sync::Arc::new(LogEntryNode::ControlEntry(<i64 as Dyn>::from_dyn(fields.next().unwrap())?, <i64 as Dyn>::from_dyn(fields.next().unwrap())?, <bool as Dyn>::from_dyn(fields.next().unwrap())?))))
+                    let mut fields = ls::fast::fields(value, "lawtwin.kafka.model::type::LogEntry::ControlEntry", 1)?;
+                    Ok(LogEntry(std::sync::Arc::new(LogEntryNode::ControlEntry(<Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 as Dyn>::from_dyn(fields.next().unwrap())?))))
                 }
                 other => Err(format!("expected LogEntry, found {other}")),
             }
@@ -10224,13 +10224,13 @@ pub mod typed {
     #[derive(PartialEq, Eq, Debug)]
     pub enum TxnStateNode {
         NoTxn,
-        Ongoing(ls::fast::List<TopicPartition>, ls::fast::List<PendingOffset>),
+        Ongoing(Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee),
     }
     impl TxnState {
         fn rank(&self) -> u32 {
             match &*self.0 {
                 TxnStateNode::NoTxn => 0,
-                TxnStateNode::Ongoing(_, _) => 1,
+                TxnStateNode::Ongoing(_) => 1,
             }
         }
     }
@@ -10239,7 +10239,7 @@ pub mod typed {
             if std::sync::Arc::ptr_eq(&self.0, &other.0) { return std::cmp::Ordering::Equal; }
             match (&*self.0, &*other.0) {
                 (TxnStateNode::NoTxn, TxnStateNode::NoTxn) => std::cmp::Ordering::Equal,
-                (TxnStateNode::Ongoing(a0, a1), TxnStateNode::Ongoing(b0, b1)) => a0.pcmp(b0).then_with(|| a1.pcmp(b1)),
+                (TxnStateNode::Ongoing(a0), TxnStateNode::Ongoing(b0)) => a0.pcmp(b0),
                 _ => self.rank().cmp(&other.rank()),
             }
         }
@@ -10248,7 +10248,7 @@ pub mod typed {
         fn to_dyn(&self) -> ls::Value {
             match &*self.0 {
                 TxnStateNode::NoTxn => ls::Value::Data("lawtwin.kafka.model::type::TxnState::NoTxn".into(), vec![]),
-                TxnStateNode::Ongoing(f0, f1) => ls::Value::Data("lawtwin.kafka.model::type::TxnState::Ongoing".into(), vec![f0.to_dyn(), f1.to_dyn()]),
+                TxnStateNode::Ongoing(f0) => ls::Value::Data("lawtwin.kafka.model::type::TxnState::Ongoing".into(), vec![f0.to_dyn()]),
             }
         }
         fn from_dyn(value: ls::Value) -> ls::Result<Self> {
@@ -10257,8 +10257,8 @@ pub mod typed {
                     Ok(TxnState(std::sync::Arc::new(TxnStateNode::NoTxn)))
                 }
                 "lawtwin.kafka.model::type::TxnState::Ongoing" => {
-                    let mut fields = ls::fast::fields(value, "lawtwin.kafka.model::type::TxnState::Ongoing", 2)?;
-                    Ok(TxnState(std::sync::Arc::new(TxnStateNode::Ongoing(<ls::fast::List<TopicPartition> as Dyn>::from_dyn(fields.next().unwrap())?, <ls::fast::List<PendingOffset> as Dyn>::from_dyn(fields.next().unwrap())?))))
+                    let mut fields = ls::fast::fields(value, "lawtwin.kafka.model::type::TxnState::Ongoing", 1)?;
+                    Ok(TxnState(std::sync::Arc::new(TxnStateNode::Ongoing(<Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee as Dyn>::from_dyn(fields.next().unwrap())?))))
                 }
                 other => Err(format!("expected TxnState, found {other}")),
             }
@@ -10425,6 +10425,126 @@ pub mod typed {
         }
     }
 
+    /// Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be (lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be).
+    #[derive(Clone, PartialEq, Eq, Debug)]
+    pub struct Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be(pub std::sync::Arc<Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode>);
+    #[derive(PartialEq, Eq, Debug)]
+    pub enum Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode {
+        Record(i64, Record, bool, i64),
+    }
+    impl Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be {
+        fn rank(&self) -> u32 {
+            match &*self.0 {
+                Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode::Record(_, _, _, _) => 0,
+            }
+        }
+    }
+    impl POrd for Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be {
+        fn pcmp(&self, other: &Self) -> std::cmp::Ordering {
+            if std::sync::Arc::ptr_eq(&self.0, &other.0) { return std::cmp::Ordering::Equal; }
+            match (&*self.0, &*other.0) {
+                (Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode::Record(a0, a1, a2, a3), Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode::Record(b0, b1, b2, b3)) => a0.pcmp(b0).then_with(|| a1.pcmp(b1)).then_with(|| a2.pcmp(b2)).then_with(|| a3.pcmp(b3)),
+                _ => self.rank().cmp(&other.rank()),
+            }
+        }
+    }
+    impl Dyn for Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be {
+        fn to_dyn(&self) -> ls::Value {
+            match &*self.0 {
+                Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode::Record(f0, f1, f2, f3) => ls::Value::Data("lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record".into(), vec![f0.to_dyn(), f1.to_dyn(), f2.to_dyn(), f3.to_dyn()]),
+            }
+        }
+        fn from_dyn(value: ls::Value) -> ls::Result<Self> {
+            match ls::fast::tag(&value)? {
+                "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record" => {
+                    let mut fields = ls::fast::fields(value, "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record", 4)?;
+                    Ok(Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be(std::sync::Arc::new(Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode::Record(<i64 as Dyn>::from_dyn(fields.next().unwrap())?, <Record as Dyn>::from_dyn(fields.next().unwrap())?, <bool as Dyn>::from_dyn(fields.next().unwrap())?, <i64 as Dyn>::from_dyn(fields.next().unwrap())?))))
+                }
+                other => Err(format!("expected Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be, found {other}")),
+            }
+        }
+    }
+
+    /// Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 (lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3).
+    #[derive(Clone, PartialEq, Eq, Debug)]
+    pub struct Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3(pub std::sync::Arc<Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Node>);
+    #[derive(PartialEq, Eq, Debug)]
+    pub enum Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Node {
+        Record(bool, i64, i64),
+    }
+    impl Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 {
+        fn rank(&self) -> u32 {
+            match &*self.0 {
+                Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Node::Record(_, _, _) => 0,
+            }
+        }
+    }
+    impl POrd for Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 {
+        fn pcmp(&self, other: &Self) -> std::cmp::Ordering {
+            if std::sync::Arc::ptr_eq(&self.0, &other.0) { return std::cmp::Ordering::Equal; }
+            match (&*self.0, &*other.0) {
+                (Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Node::Record(a0, a1, a2), Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Node::Record(b0, b1, b2)) => a0.pcmp(b0).then_with(|| a1.pcmp(b1)).then_with(|| a2.pcmp(b2)),
+                _ => self.rank().cmp(&other.rank()),
+            }
+        }
+    }
+    impl Dyn for Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 {
+        fn to_dyn(&self) -> ls::Value {
+            match &*self.0 {
+                Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Node::Record(f0, f1, f2) => ls::Value::Data("lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record".into(), vec![f0.to_dyn(), f1.to_dyn(), f2.to_dyn()]),
+            }
+        }
+        fn from_dyn(value: ls::Value) -> ls::Result<Self> {
+            match ls::fast::tag(&value)? {
+                "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record" => {
+                    let mut fields = ls::fast::fields(value, "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record", 3)?;
+                    Ok(Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3(std::sync::Arc::new(Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Node::Record(<bool as Dyn>::from_dyn(fields.next().unwrap())?, <i64 as Dyn>::from_dyn(fields.next().unwrap())?, <i64 as Dyn>::from_dyn(fields.next().unwrap())?))))
+                }
+                other => Err(format!("expected Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3, found {other}")),
+            }
+        }
+    }
+
+    /// Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee (lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee).
+    #[derive(Clone, PartialEq, Eq, Debug)]
+    pub struct Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(pub std::sync::Arc<Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode>);
+    #[derive(PartialEq, Eq, Debug)]
+    pub enum Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode {
+        Record(ls::fast::List<PendingOffset>, ls::fast::List<TopicPartition>),
+    }
+    impl Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee {
+        fn rank(&self) -> u32 {
+            match &*self.0 {
+                Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(_, _) => 0,
+            }
+        }
+    }
+    impl POrd for Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee {
+        fn pcmp(&self, other: &Self) -> std::cmp::Ordering {
+            if std::sync::Arc::ptr_eq(&self.0, &other.0) { return std::cmp::Ordering::Equal; }
+            match (&*self.0, &*other.0) {
+                (Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(a0, a1), Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(b0, b1)) => a0.pcmp(b0).then_with(|| a1.pcmp(b1)),
+                _ => self.rank().cmp(&other.rank()),
+            }
+        }
+    }
+    impl Dyn for Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee {
+        fn to_dyn(&self) -> ls::Value {
+            match &*self.0 {
+                Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(f0, f1) => ls::Value::Data("lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record".into(), vec![f0.to_dyn(), f1.to_dyn()]),
+            }
+        }
+        fn from_dyn(value: ls::Value) -> ls::Result<Self> {
+            match ls::fast::tag(&value)? {
+                "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record" => {
+                    let mut fields = ls::fast::fields(value, "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record", 2)?;
+                    Ok(Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(std::sync::Arc::new(Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(<ls::fast::List<PendingOffset> as Dyn>::from_dyn(fields.next().unwrap())?, <ls::fast::List<TopicPartition> as Dyn>::from_dyn(fields.next().unwrap())?))))
+                }
+                other => Err(format!("expected Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee, found {other}")),
+            }
+        }
+    }
+
     impl ls::fast::Public for Ordering_2 {
         type Native = crate::lawspec_data::Ordering;
         fn to_native(&self) -> Self::Native {
@@ -10489,13 +10609,13 @@ pub mod typed {
         type Native = crate::lawspec_data::PartitionChoice;
         fn to_native(&self) -> Self::Native {
             match &*self.0 {
-                PartitionChoiceNode::ToPartition(f0) => crate::lawspec_data::PartitionChoice::ToPartition { chosen: f0.to_native() },
+                PartitionChoiceNode::ToPartition(f0) => crate::lawspec_data::PartitionChoice::ToPartition { value: f0.to_native() },
                 PartitionChoiceNode::ByKey => crate::lawspec_data::PartitionChoice::ByKey,
             }
         }
         fn from_native(native: Self::Native) -> Self {
             match native {
-                crate::lawspec_data::PartitionChoice::ToPartition { chosen: f0 } => PartitionChoice(std::sync::Arc::new(PartitionChoiceNode::ToPartition(ls::fast::Public::from_native(f0)))),
+                crate::lawspec_data::PartitionChoice::ToPartition { value: f0 } => PartitionChoice(std::sync::Arc::new(PartitionChoiceNode::ToPartition(ls::fast::Public::from_native(f0)))),
                 crate::lawspec_data::PartitionChoice::ByKey => PartitionChoice(std::sync::Arc::new(PartitionChoiceNode::ByKey)),
             }
         }
@@ -10821,14 +10941,14 @@ pub mod typed {
         type Native = crate::lawspec_data::LogEntry;
         fn to_native(&self) -> Self::Native {
             match &*self.0 {
-                LogEntryNode::DataEntry(f0, f1, f2, f3) => crate::lawspec_data::LogEntry::DataEntry { entryOffset: f0.to_native(), entryRecord: f1.to_native(), writer: f2.to_native(), transactional: f3.to_native() },
-                LogEntryNode::ControlEntry(f0, f1, f2) => crate::lawspec_data::LogEntry::ControlEntry { markerOffset: f0.to_native(), markerWriter: f1.to_native(), commits: f2.to_native() },
+                LogEntryNode::DataEntry(f0) => crate::lawspec_data::LogEntry::DataEntry { value: f0.to_native() },
+                LogEntryNode::ControlEntry(f0) => crate::lawspec_data::LogEntry::ControlEntry { value: f0.to_native() },
             }
         }
         fn from_native(native: Self::Native) -> Self {
             match native {
-                crate::lawspec_data::LogEntry::DataEntry { entryOffset: f0, entryRecord: f1, writer: f2, transactional: f3 } => LogEntry(std::sync::Arc::new(LogEntryNode::DataEntry(ls::fast::Public::from_native(f0), ls::fast::Public::from_native(f1), ls::fast::Public::from_native(f2), ls::fast::Public::from_native(f3)))),
-                crate::lawspec_data::LogEntry::ControlEntry { markerOffset: f0, markerWriter: f1, commits: f2 } => LogEntry(std::sync::Arc::new(LogEntryNode::ControlEntry(ls::fast::Public::from_native(f0), ls::fast::Public::from_native(f1), ls::fast::Public::from_native(f2)))),
+                crate::lawspec_data::LogEntry::DataEntry { value: f0 } => LogEntry(std::sync::Arc::new(LogEntryNode::DataEntry(ls::fast::Public::from_native(f0)))),
+                crate::lawspec_data::LogEntry::ControlEntry { value: f0 } => LogEntry(std::sync::Arc::new(LogEntryNode::ControlEntry(ls::fast::Public::from_native(f0)))),
             }
         }
     }
@@ -10894,13 +11014,13 @@ pub mod typed {
         fn to_native(&self) -> Self::Native {
             match &*self.0 {
                 TxnStateNode::NoTxn => crate::lawspec_data::TxnState::NoTxn,
-                TxnStateNode::Ongoing(f0, f1) => crate::lawspec_data::TxnState::Ongoing { txnPartitions: f0.to_native(), txnOffsets: f1.to_native() },
+                TxnStateNode::Ongoing(f0) => crate::lawspec_data::TxnState::Ongoing { value: f0.to_native() },
             }
         }
         fn from_native(native: Self::Native) -> Self {
             match native {
                 crate::lawspec_data::TxnState::NoTxn => TxnState(std::sync::Arc::new(TxnStateNode::NoTxn)),
-                crate::lawspec_data::TxnState::Ongoing { txnPartitions: f0, txnOffsets: f1 } => TxnState(std::sync::Arc::new(TxnStateNode::Ongoing(ls::fast::Public::from_native(f0), ls::fast::Public::from_native(f1)))),
+                crate::lawspec_data::TxnState::Ongoing { value: f0 } => TxnState(std::sync::Arc::new(TxnStateNode::Ongoing(ls::fast::Public::from_native(f0)))),
             }
         }
     }
@@ -10957,6 +11077,48 @@ pub mod typed {
         fn from_native(native: Self::Native) -> Self {
             match native {
                 crate::lawspec_data::BrokerState { topics: f0, logs: f1, producers: f2, transactionalIds: f3, nextProducerId: f4, groups: f5, committed: f6 } => BrokerState(std::sync::Arc::new(BrokerStateNode::BrokerState(ls::fast::Public::from_native(f0), ls::fast::Public::from_native(f1), ls::fast::Public::from_native(f2), ls::fast::Public::from_native(f3), ls::fast::Public::from_native(f4), ls::fast::Public::from_native(f5), ls::fast::Public::from_native(f6)))),
+            }
+        }
+    }
+
+    impl ls::fast::Public for Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be {
+        type Native = crate::lawspec_data::Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be;
+        fn to_native(&self) -> Self::Native {
+            match &*self.0 {
+                Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode::Record(f0, f1, f2, f3) => crate::lawspec_data::Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be { entryOffset: f0.to_native(), entryRecord: f1.to_native(), transactional: f2.to_native(), writer: f3.to_native() },
+            }
+        }
+        fn from_native(native: Self::Native) -> Self {
+            match native {
+                crate::lawspec_data::Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be { entryOffset: f0, entryRecord: f1, transactional: f2, writer: f3 } => Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be(std::sync::Arc::new(Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode::Record(ls::fast::Public::from_native(f0), ls::fast::Public::from_native(f1), ls::fast::Public::from_native(f2), ls::fast::Public::from_native(f3)))),
+            }
+        }
+    }
+
+    impl ls::fast::Public for Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 {
+        type Native = crate::lawspec_data::Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3;
+        fn to_native(&self) -> Self::Native {
+            match &*self.0 {
+                Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Node::Record(f0, f1, f2) => crate::lawspec_data::Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 { commits: f0.to_native(), markerOffset: f1.to_native(), markerWriter: f2.to_native() },
+            }
+        }
+        fn from_native(native: Self::Native) -> Self {
+            match native {
+                crate::lawspec_data::Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 { commits: f0, markerOffset: f1, markerWriter: f2 } => Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3(std::sync::Arc::new(Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Node::Record(ls::fast::Public::from_native(f0), ls::fast::Public::from_native(f1), ls::fast::Public::from_native(f2)))),
+            }
+        }
+    }
+
+    impl ls::fast::Public for Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee {
+        type Native = crate::lawspec_data::Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee;
+        fn to_native(&self) -> Self::Native {
+            match &*self.0 {
+                Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(f0, f1) => crate::lawspec_data::Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee { txnOffsets: f0.to_native(), txnPartitions: f1.to_native() },
+            }
+        }
+        fn from_native(native: Self::Native) -> Self {
+            match native {
+                crate::lawspec_data::Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee { txnOffsets: f0, txnPartitions: f1 } => Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(std::sync::Arc::new(Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(ls::fast::Public::from_native(f0), ls::fast::Public::from_native(f1)))),
             }
         }
     }
@@ -11248,24 +11410,33 @@ pub mod typed {
 
     /// lawspec.matchers::matchersMatchesRegex
     pub fn matchersMatchesRegex_52d1c22e(t_0: ls::fast::Text, r_1: Regex) -> ls::Result<bool> {
-        Ok(match &*r_1.0 {
-            RegexNode::Regex(field_3) => {
-                let p_2 = field_3.clone();
-                ls::regex_matches(&p_2.clone(), &t_0.clone())?
+        Ok({
+            let it_2 = r_1.clone();
+            match &*it_2.0 {
+                RegexNode::Regex(field_4) => {
+                    let v_lawspecselection0x0_3 = field_4.clone();
+                    ls::regex_matches(&v_lawspecselection0x0_3.clone(), &t_0.clone())?
+                }
             }
         })
     }
 
     /// lawtwin.kafka::allAtLeast
     pub fn allAtLeast_3df55027(floor_0: i64, xs_1: ls::fast::List<i64>) -> ls::Result<bool> {
-        Ok(match xs_1.uncons() {
-            None => {
-                true
-            }
-            Some((field_4, field_5)) => {
-                let h_2 = field_4.clone();
-                let t_3 = field_5.clone();
-                ((h_2 >= floor_0) && allAtLeast_3df55027(floor_0, t_3.clone())?)
+        Ok({
+            let it_2 = xs_1.clone();
+            match it_2.uncons() {
+                None => {
+                    true
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    ((v_lawspecselection0x0_3 >= floor_0) && allAtLeast_3df55027(
+                        floor_0,
+                        v_lawspecselection0x1_4.clone(),
+                    )?)
+                }
             }
         })
     }
@@ -11276,30 +11447,33 @@ pub mod typed {
         mut ms_1: ls::fast::List<MemberAssignment>,
     ) -> ls::Result<ls::fast::List<TopicPartition>> {
         loop {
-            return Ok(match ms_1.uncons() {
-                None => {
-                    ls::fast::List::nil()
-                }
-                Some((field_4, field_5)) => {
-                    let a_2 = field_4.clone();
-                    let rest_3 = field_5.clone();
-                    if (match &*a_2.0 {
-                        MemberAssignmentNode::MemberAssignment(field_7, _) => {
-                            let lawspecfieldmemberid_6 = field_7.clone();
-                            lawspecfieldmemberid_6.clone()
-                        }
-                    } == m_0.clone()) {
-                        match &*a_2.0 {
-                            MemberAssignmentNode::MemberAssignment(_, field_9) => {
-                                let lawspecfieldassigned_8 = field_9.clone();
-                                lawspecfieldassigned_8.clone()
+            return Ok({
+                let it_2 = ms_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        ls::fast::List::nil()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        if (match &*v_lawspecselection0x0_3.0 {
+                            MemberAssignmentNode::MemberAssignment(field_8, _) => {
+                                let lawspecfieldmemberid_7 = field_8.clone();
+                                lawspecfieldmemberid_7.clone()
                             }
-                        }
-                    } else {
-                        {
-                            let next_10 = rest_3.clone();
-                            ms_1 = next_10;
-                            continue
+                        } == m_0.clone()) {
+                            match &*v_lawspecselection0x0_3.0 {
+                                MemberAssignmentNode::MemberAssignment(_, field_10) => {
+                                    let lawspecfieldassigned_9 = field_10.clone();
+                                    lawspecfieldassigned_9.clone()
+                                }
+                            }
+                        } else {
+                            {
+                                let next_11 = v_lawspecselection0x1_4.clone();
+                                ms_1 = next_11;
+                                continue
+                            }
                         }
                     }
                 }
@@ -11580,23 +11754,23 @@ pub mod typed {
         c_0: ConsumerState,
     ) -> ls::Result<Pair<(), ConsumerState>> {
         Ok({
-            let matched_3 = match &*c_0.0 {
+            let it_3 = match &*c_0.0 {
                 ConsumerStateNode::ConsumerState(field_2, _, _, _, _, _, _) => {
                     let lawspecfieldgroup_1 = field_2.clone();
                     lawspecfieldgroup_1.clone()
                 }
             };
-            match &matched_3 {
+            match &it_3 {
                 None => {
                     Pair(std::sync::Arc::new(PairNode::Pair((), freshConsumer_c2da4184(())?)))
                 }
                 Some(field_5) => {
-                    let group_4 = field_5.clone();
+                    let v_lawspecselection0x0_4 = field_5.clone();
                     {
                         let left_15 = {
                             let matched_10 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                 Ok({
-                                    let argument_8: ls::fast::Text = group_4.clone();
+                                    let argument_8: ls::fast::Text = v_lawspecselection0x0_4.clone();
                                     let argument_9: ls::fast::Text = match &*c_0.0 {
                                         ConsumerStateNode::ConsumerState(_, field_7, _, _, _, _, _) => {
                                             let lawspecfieldmember_6 = field_7.clone();
@@ -11634,13 +11808,13 @@ pub mod typed {
         c_0: ConsumerState,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ()>, ConsumerState>> {
         Ok({
-            let matched_3 = match &*c_0.0 {
+            let it_3 = match &*c_0.0 {
                 ConsumerStateNode::ConsumerState(field_2, _, _, _, _, _, _) => {
                     let lawspecfieldgroup_1 = field_2.clone();
                     lawspecfieldgroup_1.clone()
                 }
             };
-            match &matched_3 {
+            match &it_3 {
                 None => {
                     Pair(std::sync::Arc::new(PairNode::Pair(
                         ls::Either::Left(KafkaError::InvalidGroupId),
@@ -11648,11 +11822,11 @@ pub mod typed {
                     )))
                 }
                 Some(field_5) => {
-                    let group_4 = field_5.clone();
+                    let v_lawspecselection0x0_4 = field_5.clone();
                     Pair(std::sync::Arc::new(PairNode::Pair({
                             let matched_18 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                 Ok({
-                                    let argument_14: ls::fast::Text = group_4.clone();
+                                    let argument_14: ls::fast::Text = v_lawspecselection0x0_4.clone();
                                     let argument_15: ls::fast::Text = match &*c_0.0 {
                                         ConsumerStateNode::ConsumerState(_, field_7, _, _, _, _, _) => {
                                             let lawspecfieldmember_6 = field_7.clone();
@@ -11706,20 +11880,20 @@ pub mod typed {
         c_1: ConsumerState,
     ) -> ls::Result<Pair<Option<i64>, ConsumerState>> {
         Ok({
-            let matched_4 = match &*c_1.0 {
+            let it_4 = match &*c_1.0 {
                 ConsumerStateNode::ConsumerState(field_3, _, _, _, _, _, _) => {
                     let lawspecfieldgroup_2 = field_3.clone();
                     lawspecfieldgroup_2.clone()
                 }
             };
-            match &matched_4 {
+            match &it_4 {
                 None => {
                     Pair(std::sync::Arc::new(PairNode::Pair(None, c_1.clone())))
                 }
                 Some(field_6) => {
-                    let group_5 = field_6.clone();
+                    let v_lawspecselection0x0_5 = field_6.clone();
                     Pair(std::sync::Arc::new(PairNode::Pair({
-                            let argument_7: ls::fast::Text = group_5.clone();
+                            let argument_7: ls::fast::Text = v_lawspecselection0x0_5.clone();
                             let argument_8: TopicPartition = tp_0.clone();
                             let performed = crate::lawspec_abilities::lawtwin_kafka::perform_offsetFetchRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_7), ls::fast::Dyn::to_dyn(&argument_8)]).map_err(|error| format!("{}: {error}", "offsetFetchRequest"))?;
                             <Option<i64> as ls::fast::Dyn>::from_dyn(performed)?
@@ -11759,7 +11933,7 @@ pub mod typed {
         c_3: ConsumerState,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ls::fast::List<TopicPartition>>, ConsumerState>> {
         Ok({
-            let matched_12 = {
+            let it_12 = {
                 let matched_7 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<i32> {
                     Ok({
                         let argument_4: ls::fast::Text = g_0.clone();
@@ -11783,20 +11957,23 @@ pub mod typed {
                     }
                 }
             };
-            match &matched_12 {
+            match &it_12 {
                 ls::Either::Left(field_14) => {
-                    let e_13 = field_14.clone();
-                    Pair(std::sync::Arc::new(PairNode::Pair(ls::Either::Left(e_13), c_3.clone())))
+                    let v_lawspecselection0x0_13 = field_14.clone();
+                    Pair(std::sync::Arc::new(PairNode::Pair(
+                        ls::Either::Left(v_lawspecselection0x0_13),
+                        c_3.clone(),
+                    )))
                 }
                 ls::Either::Right(field_16) => {
-                    let gen_15 = field_16.clone();
+                    let v_lawspecselection0x0_15 = field_16.clone();
                     {
-                        let matched_25 = {
+                        let it_25 = {
                             let matched_20 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<ls::fast::List<TopicPartition>> {
                                 Ok({
                                     let argument_17: ls::fast::Text = g_0.clone();
                                     let argument_18: ls::fast::Text = m_1.clone();
-                                    let argument_19: i32 = gen_15;
+                                    let argument_19: i32 = v_lawspecselection0x0_15;
                                     let performed = crate::lawspec_abilities::lawtwin_kafka::perform_syncGroupRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_17), ls::fast::Dyn::to_dyn(&argument_18), ls::fast::Dyn::to_dyn(&argument_19)]).map_err(|error| format!("{}: {error}", "syncGroupRequest"))?;
                                     <ls::fast::List<TopicPartition> as ls::fast::Dyn>::from_dyn(performed)?
                                 })
@@ -11815,24 +11992,24 @@ pub mod typed {
                                 }
                             }
                         };
-                        match &matched_25 {
+                        match &it_25 {
                             ls::Either::Left(field_27) => {
-                                let e_26 = field_27.clone();
+                                let v_match__lawspecselection0x0_0_26 = field_27.clone();
                                 Pair(std::sync::Arc::new(PairNode::Pair(
-                                    ls::Either::Left(e_26),
+                                    ls::Either::Left(v_match__lawspecselection0x0_0_26),
                                     c_3.clone(),
                                 )))
                             }
                             ls::Either::Right(field_29) => {
-                                let tps_28 = field_29.clone();
+                                let v_match__lawspecselection0x0_0_28 = field_29.clone();
                                 Pair(std::sync::Arc::new(PairNode::Pair(
-                                    ls::Either::Right(tps_28.clone()),
+                                    ls::Either::Right(v_match__lawspecselection0x0_0_28.clone()),
                                     withAssignment_7d6291b1(
                                         Some(g_0.clone()),
                                         m_1.clone(),
-                                        gen_15,
+                                        v_lawspecselection0x0_15,
                                         topics_2.clone(),
-                                        tps_28.clone(),
+                                        v_match__lawspecselection0x0_0_28.clone(),
                                         c_3.clone(),
                                     )?,
                                 )))
@@ -11856,17 +12033,17 @@ pub mod typed {
                 consumerRefresh_99e956fa(&mut *ctx, argument_2)?
             };
             {
-                let matched_6 = match &*refreshed_3.0 {
+                let it_6 = match &*refreshed_3.0 {
                     PairNode::Pair(field_5, _) => {
                         let lawspecfieldfirst_4 = field_5.clone();
                         lawspecfieldfirst_4.clone()
                     }
                 };
-                match &matched_6 {
+                match &it_6 {
                     ls::Either::Left(field_8) => {
-                        let e_7 = field_8.clone();
+                        let v_lawspecselection0x0_7 = field_8.clone();
                         Pair(std::sync::Arc::new(PairNode::Pair(
-                            ls::Either::Left(e_7),
+                            ls::Either::Left(v_lawspecselection0x0_7),
                             match &*refreshed_3.0 {
                                 PairNode::Pair(_, field_10) => {
                                     let lawspecfieldsecond_9 = field_10.clone();
@@ -11920,46 +12097,46 @@ pub mod typed {
         c_1: ConsumerState,
     ) -> ls::Result<Pair<i64, ConsumerState>> {
         Ok({
-            let matched_4 = match &*c_1.0 {
+            let it_4 = match &*c_1.0 {
                 ConsumerStateNode::ConsumerState(_, _, _, _, _, field_3, _) => {
                     let lawspecfieldpositions_2 = field_3.clone();
                     lawspecfieldpositions_2.clone()
                 }
             }.get(&tp_0.clone()).cloned();
-            match &matched_4 {
+            match &it_4 {
                 Some(field_6) => {
-                    let o_5 = field_6.clone();
-                    Pair(std::sync::Arc::new(PairNode::Pair(o_5, c_1.clone())))
+                    let v_lawspecselection0x0_5 = field_6.clone();
+                    Pair(std::sync::Arc::new(PairNode::Pair(v_lawspecselection0x0_5, c_1.clone())))
                 }
                 None => {
                     {
                         let from_17 = {
-                            let matched_9 = match &*c_1.0 {
+                            let it_9 = match &*c_1.0 {
                                 ConsumerStateNode::ConsumerState(field_8, _, _, _, _, _, _) => {
                                     let lawspecfieldgroup_7 = field_8.clone();
                                     lawspecfieldgroup_7.clone()
                                 }
                             };
-                            match &matched_9 {
+                            match &it_9 {
                                 None => {
                                     0i64
                                 }
                                 Some(field_11) => {
-                                    let group_10 = field_11.clone();
+                                    let v_lawspecselection0x0_10 = field_11.clone();
                                     {
-                                        let matched_14 = {
-                                            let argument_12: ls::fast::Text = group_10.clone();
+                                        let it_14 = {
+                                            let argument_12: ls::fast::Text = v_lawspecselection0x0_10.clone();
                                             let argument_13: TopicPartition = tp_0.clone();
                                             let performed = crate::lawspec_abilities::lawtwin_kafka::perform_offsetFetchRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_12), ls::fast::Dyn::to_dyn(&argument_13)]).map_err(|error| format!("{}: {error}", "offsetFetchRequest"))?;
                                             <Option<i64> as ls::fast::Dyn>::from_dyn(performed)?
                                         };
-                                        match &matched_14 {
+                                        match &it_14 {
                                             None => {
                                                 0i64
                                             }
                                             Some(field_16) => {
-                                                let o_15 = field_16.clone();
-                                                o_15
+                                                let v_match__lawspecselection0x0_0_15 = field_16.clone();
+                                                v_match__lawspecselection0x0_0_15
                                             }
                                         }
                                     }
@@ -12026,31 +12203,36 @@ pub mod typed {
         tp_0: TopicPartition,
         rs_1: ls::fast::List<FetchedRecord>,
     ) -> ls::Result<ls::fast::List<ConsumerRecord>> {
-        Ok(match rs_1.uncons() {
-            None => {
-                ls::fast::List::nil()
-            }
-            Some((field_4, field_5)) => {
-                let r_2 = field_4.clone();
-                let rest_3 = field_5.clone();
-                ls::fast::List::cons(
-                    ConsumerRecord(std::sync::Arc::new(ConsumerRecordNode::ConsumerRecord(
-                        tp_0.clone(),
-                        match &*r_2.0 {
-                            FetchedRecordNode::FetchedRecord(field_7, _) => {
-                                let lawspecfieldoffset_6 = field_7.clone();
-                                lawspecfieldoffset_6
+        Ok({
+            let it_2 = rs_1.clone();
+            match it_2.uncons() {
+                None => {
+                    ls::fast::List::nil()
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_7 = tp_0.clone();
+                            {
+                                let v_lawspecrecordfield1_10 = match &*v_lawspecselection0x0_3.0 {
+                                    FetchedRecordNode::FetchedRecord(field_9, _) => {
+                                        let lawspecfieldoffset_8 = field_9.clone();
+                                        lawspecfieldoffset_8
+                                    }
+                                };
+                                {
+                                    let v_lawspecrecordfield2_13 = match &*v_lawspecselection0x0_3.0 {
+                                        FetchedRecordNode::FetchedRecord(_, field_12) => {
+                                            let lawspecfieldentry_11 = field_12.clone();
+                                            lawspecfieldentry_11.clone()
+                                        }
+                                    };
+                                    ConsumerRecord(std::sync::Arc::new(ConsumerRecordNode::ConsumerRecord(v_lawspecrecordfield0_7.clone(), v_lawspecrecordfield1_10, v_lawspecrecordfield2_13.clone())))
+                                }
                             }
-                        },
-                        match &*r_2.0 {
-                            FetchedRecordNode::FetchedRecord(_, field_9) => {
-                                let lawspecfieldentry_8 = field_9.clone();
-                                lawspecfieldentry_8.clone()
-                            }
-                        },
-                    ))),
-                    consumerRecords_9d810f29(tp_0.clone(), rest_3.clone())?,
-                )
+                        }, consumerRecords_9d810f29(tp_0.clone(), v_lawspecselection0x1_4.clone())?)
+                }
             }
         })
     }
@@ -12061,23 +12243,23 @@ pub mod typed {
         c_0: ConsumerState,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ()>, ConsumerState>> {
         Ok({
-            let matched_3 = match &*c_0.0 {
+            let it_3 = match &*c_0.0 {
                 ConsumerStateNode::ConsumerState(field_2, _, _, _, _, _, _) => {
                     let lawspecfieldgroup_1 = field_2.clone();
                     lawspecfieldgroup_1.clone()
                 }
             };
-            match &matched_3 {
+            match &it_3 {
                 None => {
                     Pair(std::sync::Arc::new(PairNode::Pair(ls::Either::Right(()), c_0.clone())))
                 }
                 Some(field_5) => {
-                    let group_4 = field_5.clone();
+                    let v_lawspecselection0x0_4 = field_5.clone();
                     {
-                        let matched_18 = {
+                        let it_18 = {
                             let matched_13 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                 Ok({
-                                    let argument_10: ls::fast::Text = group_4.clone();
+                                    let argument_10: ls::fast::Text = v_lawspecselection0x0_4.clone();
                                     let argument_11: ls::fast::Text = match &*c_0.0 {
                                         ConsumerStateNode::ConsumerState(_, field_7, _, _, _, _, _) => {
                                             let lawspecfieldmember_6 = field_7.clone();
@@ -12108,7 +12290,7 @@ pub mod typed {
                                 }
                             }
                         };
-                        match &matched_18 {
+                        match &it_18 {
                             ls::Either::Right(_) => {
                                 Pair(std::sync::Arc::new(PairNode::Pair(
                                     ls::Either::Right(()),
@@ -12116,11 +12298,11 @@ pub mod typed {
                                 )))
                             }
                             ls::Either::Left(field_20) => {
-                                let e_19 = field_20.clone();
-                                if ((e_19 == KafkaError::IllegalGeneration) || (e_19 == KafkaError::UnknownMemberId)) {
+                                let v_match__lawspecselection0x0_0_19 = field_20.clone();
+                                if ((v_match__lawspecselection0x0_0_19 == KafkaError::IllegalGeneration) || (v_match__lawspecselection0x0_0_19 == KafkaError::UnknownMemberId)) {
                                     {
                                         let s_29 = {
-                                            let argument_25: ls::fast::Text = group_4.clone();
+                                            let argument_25: ls::fast::Text = v_lawspecselection0x0_4.clone();
                                             let argument_26: ls::fast::Text = match &*c_0.0 {
                                                 ConsumerStateNode::ConsumerState(_, field_22, _, _, _, _, _) => {
                                                     let lawspecfieldmember_21 = field_22.clone();
@@ -12143,17 +12325,17 @@ pub mod typed {
                                             )?
                                         };
                                         {
-                                            let matched_32 = match &*s_29.0 {
+                                            let it_32 = match &*s_29.0 {
                                                 PairNode::Pair(field_31, _) => {
                                                     let lawspecfieldfirst_30 = field_31.clone();
                                                     lawspecfieldfirst_30.clone()
                                                 }
                                             };
-                                            match &matched_32 {
+                                            match &it_32 {
                                                 ls::Either::Left(field_34) => {
-                                                    let e2_33 = field_34.clone();
+                                                    let v_match__match__lawspecselection0x0_0_0_33 = field_34.clone();
                                                     Pair(std::sync::Arc::new(PairNode::Pair(
-                                                        ls::Either::Left(e2_33),
+                                                        ls::Either::Left(v_match__match__lawspecselection0x0_0_0_33),
                                                         match &*s_29.0 {
                                                             PairNode::Pair(_, field_36) => {
                                                                 let lawspecfieldsecond_35 = field_36.clone();
@@ -12178,7 +12360,7 @@ pub mod typed {
                                     }
                                 } else {
                                     Pair(std::sync::Arc::new(PairNode::Pair(
-                                        ls::Either::Left(e_19),
+                                        ls::Either::Left(v_match__lawspecselection0x0_0_19),
                                         c_0.clone(),
                                     )))
                                 }
@@ -12323,19 +12505,25 @@ pub mod typed {
         batch_1: ls::fast::List<Record>,
         b_2: ls::Either<KafkaError, i64>,
     ) -> ls::Result<bool> {
-        Ok(match &a_0 {
-            ls::Either::Left(_) => {
-                false
-            }
-            ls::Either::Right(field_4) => {
-                let x_3 = field_4.clone();
-                match &b_2 {
-                    ls::Either::Left(_) => {
-                        false
-                    }
-                    ls::Either::Right(field_6) => {
-                        let y_5 = field_6.clone();
-                        ((y_5 as i128) == ((x_3 as i128) + (batch_1.clone().len() as i128)))
+        Ok({
+            let it_3 = a_0.clone();
+            match &it_3 {
+                ls::Either::Left(_) => {
+                    false
+                }
+                ls::Either::Right(field_5) => {
+                    let v_lawspecselection0x0_4 = field_5.clone();
+                    {
+                        let it_6 = b_2.clone();
+                        match &it_6 {
+                            ls::Either::Left(_) => {
+                                false
+                            }
+                            ls::Either::Right(field_8) => {
+                                let v_match__lawspecselection0x0_0_7 = field_8.clone();
+                                ((v_match__lawspecselection0x0_0_7 as i128) == ((v_lawspecselection0x0_4 as i128) + (batch_1.clone().len() as i128)))
+                            }
+                        }
                     }
                 }
             }
@@ -12347,24 +12535,30 @@ pub mod typed {
         a_0: ls::Either<KafkaError, RecordMetadata>,
         latest_1: ls::Either<KafkaError, i64>,
     ) -> ls::Result<bool> {
-        Ok(match &a_0 {
-            ls::Either::Left(_) => {
-                false
-            }
-            ls::Either::Right(field_3) => {
-                let md_2 = field_3.clone();
-                match &latest_1 {
-                    ls::Either::Left(_) => {
-                        false
-                    }
-                    ls::Either::Right(field_5) => {
-                        let l_4 = field_5.clone();
-                        ((l_4 as i128) == ((match &*md_2.0 {
-                            RecordMetadataNode::RecordMetadata(_, field_7) => {
-                                let lawspecfieldsentat_6 = field_7.clone();
-                                lawspecfieldsentat_6
+        Ok({
+            let it_2 = a_0.clone();
+            match &it_2 {
+                ls::Either::Left(_) => {
+                    false
+                }
+                ls::Either::Right(field_4) => {
+                    let v_lawspecselection0x0_3 = field_4.clone();
+                    {
+                        let it_5 = latest_1.clone();
+                        match &it_5 {
+                            ls::Either::Left(_) => {
+                                false
                             }
-                        } as i128) + 1i128))
+                            ls::Either::Right(field_7) => {
+                                let v_match__lawspecselection0x0_0_6 = field_7.clone();
+                                ((v_match__lawspecselection0x0_0_6 as i128) == ((match &*v_lawspecselection0x0_3.0 {
+                                    RecordMetadataNode::RecordMetadata(_, field_9) => {
+                                        let lawspecfieldsentat_8 = field_9.clone();
+                                        lawspecfieldsentat_8
+                                    }
+                                } as i128) + 1i128))
+                            }
+                        }
                     }
                 }
             }
@@ -12373,36 +12567,84 @@ pub mod typed {
 
     /// lawtwin.kafka::freshConsumer
     pub fn freshConsumer_c2da4184(u_0: ()) -> ls::Result<ConsumerState> {
-        Ok(ConsumerState(std::sync::Arc::new(ConsumerStateNode::ConsumerState(
-            None,
-            ls::fast::text(""),
-            (-1i32),
-            ls::fast::List::nil(),
-            ls::fast::List::nil(),
-            ls::fast::Map::new(),
-            IsolationLevel::ReadUncommitted,
-        ))))
+        Ok({
+            let v_lawspecrecordfield0_1 = None;
+            {
+                let v_lawspecrecordfield1_2 = ls::fast::text("");
+                {
+                    let v_lawspecrecordfield2_3 = (-1i32);
+                    {
+                        let v_lawspecrecordfield3_4 = ls::fast::List::nil();
+                        {
+                            let v_lawspecrecordfield4_5 = ls::fast::List::nil();
+                            {
+                                let v_lawspecrecordfield5_6 = ls::fast::Map::new();
+                                {
+                                    let v_lawspecrecordfield6_7 = IsolationLevel::ReadUncommitted;
+                                    ConsumerState(std::sync::Arc::new(ConsumerStateNode::ConsumerState(
+                                        v_lawspecrecordfield0_1.clone(),
+                                        v_lawspecrecordfield1_2.clone(),
+                                        v_lawspecrecordfield2_3,
+                                        v_lawspecrecordfield3_4.clone(),
+                                        v_lawspecrecordfield4_5.clone(),
+                                        v_lawspecrecordfield5_6.clone(),
+                                        v_lawspecrecordfield6_7,
+                                    )))
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        })
     }
 
     /// lawtwin.kafka::freshProducer
     pub fn freshProducer_deea7b00(u_0: ()) -> ls::Result<ProducerState> {
-        Ok(ProducerState(std::sync::Arc::new(ProducerStateNode::ProducerState(
-            None,
-            ls::fast::Map::new(),
-            None,
-        ))))
+        Ok({
+            let v_lawspecrecordfield0_1 = None;
+            {
+                let v_lawspecrecordfield1_2 = ls::fast::Map::new();
+                {
+                    let v_lawspecrecordfield2_3 = None;
+                    ProducerState(std::sync::Arc::new(ProducerStateNode::ProducerState(
+                        v_lawspecrecordfield0_1.clone(),
+                        v_lawspecrecordfield1_2.clone(),
+                        v_lawspecrecordfield2_3.clone(),
+                    )))
+                }
+            }
+        })
     }
 
     /// lawtwin.kafka::freshTransactions
     pub fn freshTransactions_533fb432(u_0: ()) -> ls::Result<TransactionState> {
-        Ok(TransactionState(std::sync::Arc::new(TransactionStateNode::TransactionState(
-            ls::fast::text(""),
-            None,
-            ls::fast::Map::new(),
-            false,
-            ls::fast::List::nil(),
-            false,
-        ))))
+        Ok({
+            let v_lawspecrecordfield0_1 = ls::fast::text("");
+            {
+                let v_lawspecrecordfield1_2 = None;
+                {
+                    let v_lawspecrecordfield2_3 = ls::fast::Map::new();
+                    {
+                        let v_lawspecrecordfield3_4 = false;
+                        {
+                            let v_lawspecrecordfield4_5 = ls::fast::List::nil();
+                            {
+                                let v_lawspecrecordfield5_6 = false;
+                                TransactionState(std::sync::Arc::new(TransactionStateNode::TransactionState(
+                                    v_lawspecrecordfield0_1.clone(),
+                                    v_lawspecrecordfield1_2.clone(),
+                                    v_lawspecrecordfield2_3.clone(),
+                                    v_lawspecrecordfield3_4,
+                                    v_lawspecrecordfield4_5.clone(),
+                                    v_lawspecrecordfield5_6,
+                                )))
+                            }
+                        }
+                    }
+                }
+            }
+        })
     }
 
     /// lawtwin.kafka::identityOf
@@ -12419,20 +12661,28 @@ pub mod typed {
 
     /// lawtwin.kafka::increasing
     pub fn increasing_d02ccce0(xs_0: ls::fast::List<i64>) -> ls::Result<bool> {
-        Ok(match xs_0.uncons() {
-            None => {
-                true
-            }
-            Some((field_3, field_4)) => {
-                let h_1 = field_3.clone();
-                let t_2 = field_4.clone();
-                match t_2.uncons() {
-                    None => {
-                        true
-                    }
-                    Some((field_6, _)) => {
-                        let h2_5 = field_6.clone();
-                        ((h_1 < h2_5) && increasing_d02ccce0(t_2.clone())?)
+        Ok({
+            let it_1 = xs_0.clone();
+            match it_1.uncons() {
+                None => {
+                    true
+                }
+                Some((field_4, field_5)) => {
+                    let v_lawspecselection0x0_2 = field_4.clone();
+                    let v_lawspecselection0x1_3 = field_5.clone();
+                    {
+                        let it_6 = v_lawspecselection0x1_3.clone();
+                        match it_6.uncons() {
+                            None => {
+                                true
+                            }
+                            Some((field_8, _)) => {
+                                let v_match__lawspecselection0x0_0_7 = field_8.clone();
+                                ((v_lawspecselection0x0_2 < v_match__lawspecselection0x0_0_7) && increasing_d02ccce0(
+                                    v_lawspecselection0x1_3.clone(),
+                                )?)
+                            }
+                        }
                     }
                 }
             }
@@ -12446,52 +12696,55 @@ pub mod typed {
         ms_1: ls::fast::List<ls::fast::Text>,
         topics_2: ls::fast::List<ls::fast::Text>,
     ) -> ls::Result<bool> {
-        Ok(match ms_1.uncons() {
-            None => {
-                true
-            }
-            Some((field_5, field_6)) => {
-                let m_3 = field_5.clone();
-                let rest_4 = field_6.clone();
-                ({
-                    let matched_15 = {
-                        let matched_10 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<i32> {
-                            Ok({
-                                let argument_7: ls::fast::Text = g_0.clone();
-                                let argument_8: ls::fast::Text = m_3.clone();
-                                let argument_9: ls::fast::List<ls::fast::Text> = topics_2.clone();
-                                let performed = crate::lawspec_abilities::lawtwin_kafka::perform_joinGroupRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_7), ls::fast::Dyn::to_dyn(&argument_8), ls::fast::Dyn::to_dyn(&argument_9)]).map_err(|error| format!("{}: {error}", "joinGroupRequest"))?;
-                                <i32 as ls::fast::Dyn>::from_dyn(performed)?
-                            })
-                        })? {
-                            Ok(value) => ls::Either::Right(value),
-                            Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
+        Ok({
+            let it_3 = ms_1.clone();
+            match it_3.uncons() {
+                None => {
+                    true
+                }
+                Some((field_6, field_7)) => {
+                    let v_lawspecselection0x0_4 = field_6.clone();
+                    let v_lawspecselection0x1_5 = field_7.clone();
+                    ({
+                        let matched_16 = {
+                            let matched_11 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<i32> {
+                                Ok({
+                                    let argument_8: ls::fast::Text = g_0.clone();
+                                    let argument_9: ls::fast::Text = v_lawspecselection0x0_4.clone();
+                                    let argument_10: ls::fast::List<ls::fast::Text> = topics_2.clone();
+                                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_joinGroupRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_8), ls::fast::Dyn::to_dyn(&argument_9), ls::fast::Dyn::to_dyn(&argument_10)]).map_err(|error| format!("{}: {error}", "joinGroupRequest"))?;
+                                    <i32 as ls::fast::Dyn>::from_dyn(performed)?
+                                })
+                            })? {
+                                Ok(value) => ls::Either::Right(value),
+                                Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
+                            };
+                            match &matched_11 {
+                                ls::Either::Left(field_13) => {
+                                    let lawspecfailure_12 = field_13.clone();
+                                    ls::Either::Left(lawspecfailure_12)
+                                }
+                                ls::Either::Right(field_15) => {
+                                    let lawspecvalue_14 = field_15.clone();
+                                    ls::Either::Right(lawspecvalue_14)
+                                }
+                            }
                         };
-                        match &matched_10 {
-                            ls::Either::Left(field_12) => {
-                                let lawspecfailure_11 = field_12.clone();
-                                ls::Either::Left(lawspecfailure_11)
+                        match &matched_16 {
+                            ls::Either::Left(_) => {
+                                false
                             }
-                            ls::Either::Right(field_14) => {
-                                let lawspecvalue_13 = field_14.clone();
-                                ls::Either::Right(lawspecvalue_13)
+                            ls::Either::Right(_) => {
+                                true
                             }
                         }
-                    };
-                    match &matched_15 {
-                        ls::Either::Left(_) => {
-                            false
-                        }
-                        ls::Either::Right(_) => {
-                            true
-                        }
-                    }
-                } && {
-                    let argument_16: ls::fast::Text = g_0.clone();
-                    let argument_17: ls::fast::List<ls::fast::Text> = rest_4.clone();
-                    let argument_18: ls::fast::List<ls::fast::Text> = topics_2.clone();
-                    joinAll_67d573a5(&mut *ctx, argument_16, argument_17, argument_18)?
-                })
+                    } && {
+                        let argument_17: ls::fast::Text = g_0.clone();
+                        let argument_18: ls::fast::List<ls::fast::Text> = v_lawspecselection0x1_5.clone();
+                        let argument_19: ls::fast::List<ls::fast::Text> = topics_2.clone();
+                        joinAll_67d573a5(&mut *ctx, argument_17, argument_18, argument_19)?
+                    })
+                }
             }
         })
     }
@@ -12503,52 +12756,55 @@ pub mod typed {
         ms_1: ls::fast::List<ls::fast::Text>,
         topics_2: ls::fast::List<ls::fast::Text>,
     ) -> ls::Result<bool> {
-        Ok(match ms_1.uncons() {
-            None => {
-                true
-            }
-            Some((field_5, field_6)) => {
-                let m_3 = field_5.clone();
-                let rest_4 = field_6.clone();
-                ({
-                    let matched_15 = {
-                        let matched_10 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<i32> {
-                            Ok({
-                                let argument_7: ls::fast::Text = g_0.clone();
-                                let argument_8: ls::fast::Text = m_3.clone();
-                                let argument_9: ls::fast::List<ls::fast::Text> = topics_2.clone();
-                                let performed = crate::lawspec_abilities::lawtwin_kafka::perform_joinGroup(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_7), ls::fast::Dyn::to_dyn(&argument_8), ls::fast::Dyn::to_dyn(&argument_9)]).map_err(|error| format!("{}: {error}", "joinGroup"))?;
-                                <i32 as ls::fast::Dyn>::from_dyn(performed)?
-                            })
-                        })? {
-                            Ok(value) => ls::Either::Right(value),
-                            Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
+        Ok({
+            let it_3 = ms_1.clone();
+            match it_3.uncons() {
+                None => {
+                    true
+                }
+                Some((field_6, field_7)) => {
+                    let v_lawspecselection0x0_4 = field_6.clone();
+                    let v_lawspecselection0x1_5 = field_7.clone();
+                    ({
+                        let matched_16 = {
+                            let matched_11 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<i32> {
+                                Ok({
+                                    let argument_8: ls::fast::Text = g_0.clone();
+                                    let argument_9: ls::fast::Text = v_lawspecselection0x0_4.clone();
+                                    let argument_10: ls::fast::List<ls::fast::Text> = topics_2.clone();
+                                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_joinGroup(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_8), ls::fast::Dyn::to_dyn(&argument_9), ls::fast::Dyn::to_dyn(&argument_10)]).map_err(|error| format!("{}: {error}", "joinGroup"))?;
+                                    <i32 as ls::fast::Dyn>::from_dyn(performed)?
+                                })
+                            })? {
+                                Ok(value) => ls::Either::Right(value),
+                                Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
+                            };
+                            match &matched_11 {
+                                ls::Either::Left(field_13) => {
+                                    let lawspecfailure_12 = field_13.clone();
+                                    ls::Either::Left(lawspecfailure_12)
+                                }
+                                ls::Either::Right(field_15) => {
+                                    let lawspecvalue_14 = field_15.clone();
+                                    ls::Either::Right(lawspecvalue_14)
+                                }
+                            }
                         };
-                        match &matched_10 {
-                            ls::Either::Left(field_12) => {
-                                let lawspecfailure_11 = field_12.clone();
-                                ls::Either::Left(lawspecfailure_11)
+                        match &matched_16 {
+                            ls::Either::Left(_) => {
+                                false
                             }
-                            ls::Either::Right(field_14) => {
-                                let lawspecvalue_13 = field_14.clone();
-                                ls::Either::Right(lawspecvalue_13)
+                            ls::Either::Right(_) => {
+                                true
                             }
                         }
-                    };
-                    match &matched_15 {
-                        ls::Either::Left(_) => {
-                            false
-                        }
-                        ls::Either::Right(_) => {
-                            true
-                        }
-                    }
-                } && {
-                    let argument_16: ls::fast::Text = g_0.clone();
-                    let argument_17: ls::fast::List<ls::fast::Text> = rest_4.clone();
-                    let argument_18: ls::fast::List<ls::fast::Text> = topics_2.clone();
-                    joinEach_78c50afb(&mut *ctx, argument_16, argument_17, argument_18)?
-                })
+                    } && {
+                        let argument_17: ls::fast::Text = g_0.clone();
+                        let argument_18: ls::fast::List<ls::fast::Text> = v_lawspecselection0x1_5.clone();
+                        let argument_19: ls::fast::List<ls::fast::Text> = topics_2.clone();
+                        joinEach_78c50afb(&mut *ctx, argument_17, argument_18, argument_19)?
+                    })
+                }
             }
         })
     }
@@ -12810,31 +13066,37 @@ pub mod typed {
         mut acc_2: ls::fast::Map<TopicPartition, i64>,
     ) -> ls::Result<ls::fast::Map<TopicPartition, i64>> {
         loop {
-            return Ok(match tps_0.uncons() {
-                None => {
-                    acc_2.clone()
-                }
-                Some((field_5, field_6)) => {
-                    let tp_3 = field_5.clone();
-                    let rest_4 = field_6.clone();
-                    {
-                        let matched_7 = positions_1.clone().get(&tp_3.clone()).cloned();
-                        match &matched_7 {
-                            None => {
-                                {
-                                    let next_8 = rest_4.clone();
-                                    tps_0 = next_8;
-                                    continue
+            return Ok({
+                let it_3 = tps_0.clone();
+                match it_3.uncons() {
+                    None => {
+                        acc_2.clone()
+                    }
+                    Some((field_6, field_7)) => {
+                        let v_lawspecselection0x0_4 = field_6.clone();
+                        let v_lawspecselection0x1_5 = field_7.clone();
+                        {
+                            let it_8 = positions_1.clone().get(&v_lawspecselection0x0_4.clone()).cloned();
+                            match &it_8 {
+                                None => {
+                                    {
+                                        let next_9 = v_lawspecselection0x1_5.clone();
+                                        tps_0 = next_9;
+                                        continue
+                                    }
                                 }
-                            }
-                            Some(field_10) => {
-                                let o_9 = field_10.clone();
-                                {
-                                    let next_11 = rest_4.clone();
-                                    let next_12 = acc_2.clone().insert(tp_3.clone(), o_9);
-                                    tps_0 = next_11;
-                                    acc_2 = next_12;
-                                    continue
+                                Some(field_11) => {
+                                    let v_match__lawspecselection0x0_0_10 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_5.clone();
+                                        let next_13 = acc_2.clone().insert(
+                                            v_lawspecselection0x0_4.clone(),
+                                            v_match__lawspecselection0x0_0_10,
+                                        );
+                                        tps_0 = next_12;
+                                        acc_2 = next_13;
+                                        continue
+                                    }
                                 }
                             }
                         }
@@ -12849,37 +13111,43 @@ pub mod typed {
         k_0: ls::fast::Text,
         es_1: ls::fast::List<Entry<ls::fast::Text, ls::fast::List<ls::fast::Text>>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, ls::fast::List<ls::fast::Text>>>> {
-        Ok(match es_1.uncons() {
-            None => {
-                es_1.clone()
-            }
-            Some((field_4, field_5)) => {
-                let e_2 = field_4.clone();
-                let t_3 = field_5.clone();
-                match &*e_2.0 {
-                    EntryNode::Entry(field_7, _) => {
-                        let key_6 = field_7.clone();
-                        {
-                            let matched_8 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_6.clone()) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_8 {
-                                Ordering_2::Less => {
-                                    es_1.clone()
-                                }
-                                Ordering_2::Equal => {
-                                    t_3.clone()
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_2.clone(),
-                                        lawspecCollectionsKeyValDeleteItems_5df79bd1(
-                                            k_0.clone(),
-                                            t_3.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_2 = es_1.clone();
+            match it_2.uncons() {
+                None => {
+                    es_1.clone()
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    {
+                        let it_7 = v_lawspecselection0x0_3.clone();
+                        match &*it_7.0 {
+                            EntryNode::Entry(field_9, _) => {
+                                let v_match__lawspecselection0x0_0_8 = field_9.clone();
+                                {
+                                    let it_10 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_8.clone()) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_10 {
+                                        Ordering_2::Less => {
+                                            es_1.clone()
+                                        }
+                                        Ordering_2::Equal => {
+                                            v_lawspecselection0x1_4.clone()
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_3.clone(),
+                                                lawspecCollectionsKeyValDeleteItems_5df79bd1(
+                                                    k_0.clone(),
+                                                    v_lawspecselection0x1_4.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -12894,37 +13162,43 @@ pub mod typed {
         k_0: i64,
         es_1: ls::fast::List<Entry<i64, i64>>,
     ) -> ls::Result<ls::fast::List<Entry<i64, i64>>> {
-        Ok(match es_1.uncons() {
-            None => {
-                es_1.clone()
-            }
-            Some((field_4, field_5)) => {
-                let e_2 = field_4.clone();
-                let t_3 = field_5.clone();
-                match &*e_2.0 {
-                    EntryNode::Entry(field_7, _) => {
-                        let key_6 = field_7.clone();
-                        {
-                            let matched_8 = match ls::fast::POrd::pcmp(&k_0, &key_6) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_8 {
-                                Ordering_2::Less => {
-                                    es_1.clone()
-                                }
-                                Ordering_2::Equal => {
-                                    t_3.clone()
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_2.clone(),
-                                        lawspecCollectionsKeyValDeleteItems_6394b670(
-                                            k_0,
-                                            t_3.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_2 = es_1.clone();
+            match it_2.uncons() {
+                None => {
+                    es_1.clone()
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    {
+                        let it_7 = v_lawspecselection0x0_3.clone();
+                        match &*it_7.0 {
+                            EntryNode::Entry(field_9, _) => {
+                                let v_match__lawspecselection0x0_0_8 = field_9.clone();
+                                {
+                                    let it_10 = match ls::fast::POrd::pcmp(&k_0, &v_match__lawspecselection0x0_0_8) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_10 {
+                                        Ordering_2::Less => {
+                                            es_1.clone()
+                                        }
+                                        Ordering_2::Equal => {
+                                            v_lawspecselection0x1_4.clone()
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_3.clone(),
+                                                lawspecCollectionsKeyValDeleteItems_6394b670(
+                                                    k_0,
+                                                    v_lawspecselection0x1_4.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -12977,27 +13251,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<i64, i64>>,
     ) -> ls::Result<ls::fast::List<Entry<i64, i64>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_fb1bb5ca(
-                                    key_6,
-                                    value_7,
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_fb1bb5ca(
+                                            v_match__lawspecselection0x0_0_8,
+                                            v_match__lawspecselection0x1_0_9,
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -13012,27 +13292,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<ls::fast::Text, i64>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, i64>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_5d998955(
-                                    key_6.clone(),
-                                    value_7,
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_5d998955(
+                                            v_match__lawspecselection0x0_0_8.clone(),
+                                            v_match__lawspecselection0x1_0_9,
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -13047,27 +13333,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<ls::fast::Text, i32>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, i32>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_8d4f5385(
-                                    key_6.clone(),
-                                    value_7,
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_8d4f5385(
+                                            v_match__lawspecselection0x0_0_8.clone(),
+                                            v_match__lawspecselection0x1_0_9,
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -13082,27 +13374,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<i64, ProducerEntry>>,
     ) -> ls::Result<ls::fast::List<Entry<i64, ProducerEntry>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_97a64264(
-                                    key_6,
-                                    value_7.clone(),
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_97a64264(
+                                            v_match__lawspecselection0x0_0_8,
+                                            v_match__lawspecselection0x1_0_9.clone(),
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -13117,27 +13415,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<ls::fast::Text, Group>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, Group>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_883fe52d(
-                                    key_6.clone(),
-                                    value_7.clone(),
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_883fe52d(
+                                            v_match__lawspecselection0x0_0_8.clone(),
+                                            v_match__lawspecselection0x1_0_9.clone(),
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -13152,27 +13456,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<GroupPartition, i64>>,
     ) -> ls::Result<ls::fast::List<Entry<GroupPartition, i64>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_28cf0caf(
-                                    key_6.clone(),
-                                    value_7,
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_28cf0caf(
+                                            v_match__lawspecselection0x0_0_8.clone(),
+                                            v_match__lawspecselection0x1_0_9,
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -13187,27 +13497,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<TopicPartition, i64>>,
     ) -> ls::Result<ls::fast::List<Entry<TopicPartition, i64>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_4266176b(
-                                    key_6.clone(),
-                                    value_7,
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_4266176b(
+                                            v_match__lawspecselection0x0_0_8.clone(),
+                                            v_match__lawspecselection0x1_0_9,
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -13222,27 +13538,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<ls::fast::Text, ls::fast::List<ls::fast::Text>>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, ls::fast::List<ls::fast::Text>>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_c4168a80(
-                                    key_6.clone(),
-                                    value_7.clone(),
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_c4168a80(
+                                            v_match__lawspecselection0x0_0_8.clone(),
+                                            v_match__lawspecselection0x1_0_9.clone(),
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -13257,27 +13579,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<TopicPartition, PartitionLog>>,
     ) -> ls::Result<ls::fast::List<Entry<TopicPartition, PartitionLog>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_523d104d(
-                                    key_6.clone(),
-                                    value_7.clone(),
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_523d104d(
+                                            v_match__lawspecselection0x0_0_8.clone(),
+                                            v_match__lawspecselection0x1_0_9.clone(),
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -13292,27 +13620,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<i64, ls::fast::List<BatchMeta>>>,
     ) -> ls::Result<ls::fast::List<Entry<i64, ls::fast::List<BatchMeta>>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_054f1ef1(
-                                    key_6,
-                                    value_7.clone(),
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_054f1ef1(
+                                            v_match__lawspecselection0x0_0_8,
+                                            v_match__lawspecselection0x1_0_9.clone(),
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -13327,27 +13661,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<ls::fast::Text, ls::fast::List<TopicPartition>>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, ls::fast::List<TopicPartition>>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_80dc1939(
-                                    key_6.clone(),
-                                    value_7.clone(),
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_80dc1939(
+                                            v_match__lawspecselection0x0_0_8.clone(),
+                                            v_match__lawspecselection0x1_0_9.clone(),
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -13362,27 +13702,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<TopicPartition, i32>>,
     ) -> ls::Result<ls::fast::List<Entry<TopicPartition, i32>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_3f0139cf(
-                                    key_6.clone(),
-                                    value_7,
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_3f0139cf(
+                                            v_match__lawspecselection0x0_0_8.clone(),
+                                            v_match__lawspecselection0x1_0_9,
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -13395,20 +13741,28 @@ pub mod typed {
     pub fn lawspecCollectionsKeyValKeysItems_e033276a(
         es_0: ls::fast::List<Entry<ls::fast::Text, ls::fast::List<ls::fast::Text>>>,
     ) -> ls::Result<ls::fast::List<ls::fast::Text>> {
-        Ok(match es_0.uncons() {
-            None => {
-                ls::fast::List::nil()
-            }
-            Some((field_3, field_4)) => {
-                let e_1 = field_3.clone();
-                let t_2 = field_4.clone();
-                match &*e_1.0 {
-                    EntryNode::Entry(field_6, _) => {
-                        let key_5 = field_6.clone();
-                        ls::fast::List::cons(
-                            key_5.clone(),
-                            lawspecCollectionsKeyValKeysItems_e033276a(t_2.clone())?,
-                        )
+        Ok({
+            let it_1 = es_0.clone();
+            match it_1.uncons() {
+                None => {
+                    ls::fast::List::nil()
+                }
+                Some((field_4, field_5)) => {
+                    let v_lawspecselection0x0_2 = field_4.clone();
+                    let v_lawspecselection0x1_3 = field_5.clone();
+                    {
+                        let it_6 = v_lawspecselection0x0_2.clone();
+                        match &*it_6.0 {
+                            EntryNode::Entry(field_8, _) => {
+                                let v_match__lawspecselection0x0_0_7 = field_8.clone();
+                                ls::fast::List::cons(
+                                    v_match__lawspecselection0x0_0_7.clone(),
+                                    lawspecCollectionsKeyValKeysItems_e033276a(
+                                        v_lawspecselection0x1_3.clone(),
+                                    )?,
+                                )
+                            }
+                        }
                     }
                 }
             }
@@ -13428,35 +13782,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<i64, ls::fast::List<BatchMeta>>>,
     ) -> ls::Result<Option<ls::fast::List<BatchMeta>>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0, &key_6) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7.clone())
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0, &v_match__lawspecselection0x0_0_8) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9.clone())
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -13474,35 +13834,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<TopicPartition, i64>>,
     ) -> ls::Result<Option<i64>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_6.clone()) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7)
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_8.clone()) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9)
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -13520,35 +13886,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<ls::fast::Text, i64>>,
     ) -> ls::Result<Option<i64>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_6.clone()) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7)
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_8.clone()) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9)
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -13566,35 +13938,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<ls::fast::Text, ls::fast::List<ls::fast::Text>>>,
     ) -> ls::Result<Option<ls::fast::List<ls::fast::Text>>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_6.clone()) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7.clone())
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_8.clone()) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9.clone())
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -13612,35 +13990,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<ls::fast::Text, ls::fast::List<TopicPartition>>>,
     ) -> ls::Result<Option<ls::fast::List<TopicPartition>>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_6.clone()) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7.clone())
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_8.clone()) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9.clone())
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -13658,35 +14042,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<i64, ProducerEntry>>,
     ) -> ls::Result<Option<ProducerEntry>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0, &key_6) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7.clone())
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0, &v_match__lawspecselection0x0_0_8) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9.clone())
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -13704,35 +14094,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<ls::fast::Text, i32>>,
     ) -> ls::Result<Option<i32>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_6.clone()) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7)
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_8.clone()) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9)
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -13750,35 +14146,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<GroupPartition, i64>>,
     ) -> ls::Result<Option<i64>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_6.clone()) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7)
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_8.clone()) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9)
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -13796,35 +14198,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<TopicPartition, i32>>,
     ) -> ls::Result<Option<i32>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_6.clone()) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7)
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_8.clone()) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9)
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -13842,35 +14250,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<i64, i64>>,
     ) -> ls::Result<Option<i64>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0, &key_6) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7)
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0, &v_match__lawspecselection0x0_0_8) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9)
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -13888,35 +14302,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<ls::fast::Text, Group>>,
     ) -> ls::Result<Option<Group>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_6.clone()) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7.clone())
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_8.clone()) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9.clone())
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -13934,35 +14354,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<TopicPartition, PartitionLog>>,
     ) -> ls::Result<Option<PartitionLog>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_6.clone()) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7.clone())
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_8.clone()) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9.clone())
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -14160,47 +14586,62 @@ pub mod typed {
         v_1: i64,
         es_2: ls::fast::List<Entry<i64, i64>>,
     ) -> ls::Result<ls::fast::List<Entry<i64, i64>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0, v_1))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0, &key_7) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(k_0, v_1))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(k_0, v_1))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_fb1bb5ca(
-                                            k_0,
-                                            v_1,
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0;
+                            {
+                                let v_lawspecrecordfield1_5 = v_1;
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4, v_lawspecrecordfield1_5)))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0, &v_match__lawspecselection0x0_0_11) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0;
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1;
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14, v_lawspecrecordfield1_15)))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0;
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1;
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16, v_lawspecrecordfield1_17)))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_fb1bb5ca(
+                                                    k_0,
+                                                    v_1,
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -14216,53 +14657,62 @@ pub mod typed {
         v_1: ProducerEntry,
         es_2: ls::fast::List<Entry<i64, ProducerEntry>>,
     ) -> ls::Result<ls::fast::List<Entry<i64, ProducerEntry>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0, v_1.clone()))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0, &key_7) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0,
-                                            v_1.clone(),
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0,
-                                            v_1.clone(),
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_97a64264(
-                                            k_0,
-                                            v_1.clone(),
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0;
+                            {
+                                let v_lawspecrecordfield1_5 = v_1.clone();
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4, v_lawspecrecordfield1_5.clone())))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0, &v_match__lawspecselection0x0_0_11) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0;
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14, v_lawspecrecordfield1_15.clone())))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0;
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16, v_lawspecrecordfield1_17.clone())))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_97a64264(
+                                                    k_0,
+                                                    v_1.clone(),
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -14278,53 +14728,62 @@ pub mod typed {
         v_1: ls::fast::List<BatchMeta>,
         es_2: ls::fast::List<Entry<i64, ls::fast::List<BatchMeta>>>,
     ) -> ls::Result<ls::fast::List<Entry<i64, ls::fast::List<BatchMeta>>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0, v_1.clone()))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0, &key_7) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0,
-                                            v_1.clone(),
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0,
-                                            v_1.clone(),
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_054f1ef1(
-                                            k_0,
-                                            v_1.clone(),
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0;
+                            {
+                                let v_lawspecrecordfield1_5 = v_1.clone();
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4, v_lawspecrecordfield1_5.clone())))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0, &v_match__lawspecselection0x0_0_11) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0;
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14, v_lawspecrecordfield1_15.clone())))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0;
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16, v_lawspecrecordfield1_17.clone())))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_054f1ef1(
+                                                    k_0,
+                                                    v_1.clone(),
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -14340,53 +14799,62 @@ pub mod typed {
         v_1: i32,
         es_2: ls::fast::List<Entry<ls::fast::Text, i32>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, i32>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0.clone(), v_1))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_7.clone()) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1,
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1,
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_8d4f5385(
-                                            k_0.clone(),
-                                            v_1,
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0.clone();
+                            {
+                                let v_lawspecrecordfield1_5 = v_1;
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4.clone(), v_lawspecrecordfield1_5)))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_11.clone()) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1;
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14.clone(), v_lawspecrecordfield1_15)))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1;
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16.clone(), v_lawspecrecordfield1_17)))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_8d4f5385(
+                                                    k_0.clone(),
+                                                    v_1,
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -14402,53 +14870,62 @@ pub mod typed {
         v_1: i64,
         es_2: ls::fast::List<Entry<ls::fast::Text, i64>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, i64>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0.clone(), v_1))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_7.clone()) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1,
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1,
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_5d998955(
-                                            k_0.clone(),
-                                            v_1,
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0.clone();
+                            {
+                                let v_lawspecrecordfield1_5 = v_1;
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4.clone(), v_lawspecrecordfield1_5)))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_11.clone()) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1;
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14.clone(), v_lawspecrecordfield1_15)))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1;
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16.clone(), v_lawspecrecordfield1_17)))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_5d998955(
+                                                    k_0.clone(),
+                                                    v_1,
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -14464,53 +14941,62 @@ pub mod typed {
         v_1: ls::fast::List<TopicPartition>,
         es_2: ls::fast::List<Entry<ls::fast::Text, ls::fast::List<TopicPartition>>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, ls::fast::List<TopicPartition>>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0.clone(), v_1.clone()))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_7.clone()) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_80dc1939(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0.clone();
+                            {
+                                let v_lawspecrecordfield1_5 = v_1.clone();
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4.clone(), v_lawspecrecordfield1_5.clone())))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_11.clone()) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14.clone(), v_lawspecrecordfield1_15.clone())))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16.clone(), v_lawspecrecordfield1_17.clone())))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_80dc1939(
+                                                    k_0.clone(),
+                                                    v_1.clone(),
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -14526,53 +15012,62 @@ pub mod typed {
         v_1: i64,
         es_2: ls::fast::List<Entry<GroupPartition, i64>>,
     ) -> ls::Result<ls::fast::List<Entry<GroupPartition, i64>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0.clone(), v_1))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_7.clone()) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1,
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1,
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_28cf0caf(
-                                            k_0.clone(),
-                                            v_1,
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0.clone();
+                            {
+                                let v_lawspecrecordfield1_5 = v_1;
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4.clone(), v_lawspecrecordfield1_5)))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_11.clone()) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1;
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14.clone(), v_lawspecrecordfield1_15)))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1;
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16.clone(), v_lawspecrecordfield1_17)))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_28cf0caf(
+                                                    k_0.clone(),
+                                                    v_1,
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -14588,53 +15083,62 @@ pub mod typed {
         v_1: Group,
         es_2: ls::fast::List<Entry<ls::fast::Text, Group>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, Group>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0.clone(), v_1.clone()))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_7.clone()) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_883fe52d(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0.clone();
+                            {
+                                let v_lawspecrecordfield1_5 = v_1.clone();
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4.clone(), v_lawspecrecordfield1_5.clone())))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_11.clone()) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14.clone(), v_lawspecrecordfield1_15.clone())))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16.clone(), v_lawspecrecordfield1_17.clone())))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_883fe52d(
+                                                    k_0.clone(),
+                                                    v_1.clone(),
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -14650,53 +15154,62 @@ pub mod typed {
         v_1: i32,
         es_2: ls::fast::List<Entry<TopicPartition, i32>>,
     ) -> ls::Result<ls::fast::List<Entry<TopicPartition, i32>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0.clone(), v_1))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_7.clone()) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1,
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1,
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_3f0139cf(
-                                            k_0.clone(),
-                                            v_1,
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0.clone();
+                            {
+                                let v_lawspecrecordfield1_5 = v_1;
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4.clone(), v_lawspecrecordfield1_5)))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_11.clone()) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1;
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14.clone(), v_lawspecrecordfield1_15)))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1;
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16.clone(), v_lawspecrecordfield1_17)))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_3f0139cf(
+                                                    k_0.clone(),
+                                                    v_1,
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -14712,53 +15225,62 @@ pub mod typed {
         v_1: ls::fast::List<ls::fast::Text>,
         es_2: ls::fast::List<Entry<ls::fast::Text, ls::fast::List<ls::fast::Text>>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, ls::fast::List<ls::fast::Text>>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0.clone(), v_1.clone()))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_7.clone()) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_c4168a80(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0.clone();
+                            {
+                                let v_lawspecrecordfield1_5 = v_1.clone();
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4.clone(), v_lawspecrecordfield1_5.clone())))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_11.clone()) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14.clone(), v_lawspecrecordfield1_15.clone())))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16.clone(), v_lawspecrecordfield1_17.clone())))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_c4168a80(
+                                                    k_0.clone(),
+                                                    v_1.clone(),
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -14774,53 +15296,62 @@ pub mod typed {
         v_1: i64,
         es_2: ls::fast::List<Entry<TopicPartition, i64>>,
     ) -> ls::Result<ls::fast::List<Entry<TopicPartition, i64>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0.clone(), v_1))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_7.clone()) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1,
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1,
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_4266176b(
-                                            k_0.clone(),
-                                            v_1,
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0.clone();
+                            {
+                                let v_lawspecrecordfield1_5 = v_1;
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4.clone(), v_lawspecrecordfield1_5)))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_11.clone()) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1;
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14.clone(), v_lawspecrecordfield1_15)))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1;
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16.clone(), v_lawspecrecordfield1_17)))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_4266176b(
+                                                    k_0.clone(),
+                                                    v_1,
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -14836,53 +15367,62 @@ pub mod typed {
         v_1: PartitionLog,
         es_2: ls::fast::List<Entry<TopicPartition, PartitionLog>>,
     ) -> ls::Result<ls::fast::List<Entry<TopicPartition, PartitionLog>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0.clone(), v_1.clone()))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_7.clone()) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_523d104d(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0.clone();
+                            {
+                                let v_lawspecrecordfield1_5 = v_1.clone();
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4.clone(), v_lawspecrecordfield1_5.clone())))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_11.clone()) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14.clone(), v_lawspecrecordfield1_15.clone())))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16.clone(), v_lawspecrecordfield1_17.clone())))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_523d104d(
+                                                    k_0.clone(),
+                                                    v_1.clone(),
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -15004,20 +15544,28 @@ pub mod typed {
     pub fn lawspecCollectionsKeyValValuesItems_40ef8eee(
         es_0: ls::fast::List<Entry<i64, i64>>,
     ) -> ls::Result<ls::fast::List<i64>> {
-        Ok(match es_0.uncons() {
-            None => {
-                ls::fast::List::nil()
-            }
-            Some((field_3, field_4)) => {
-                let e_1 = field_3.clone();
-                let t_2 = field_4.clone();
-                match &*e_1.0 {
-                    EntryNode::Entry(_, field_6) => {
-                        let value_5 = field_6.clone();
-                        ls::fast::List::cons(
-                            value_5,
-                            lawspecCollectionsKeyValValuesItems_40ef8eee(t_2.clone())?,
-                        )
+        Ok({
+            let it_1 = es_0.clone();
+            match it_1.uncons() {
+                None => {
+                    ls::fast::List::nil()
+                }
+                Some((field_4, field_5)) => {
+                    let v_lawspecselection0x0_2 = field_4.clone();
+                    let v_lawspecselection0x1_3 = field_5.clone();
+                    {
+                        let it_6 = v_lawspecselection0x0_2.clone();
+                        match &*it_6.0 {
+                            EntryNode::Entry(_, field_8) => {
+                                let v_match__lawspecselection0x1_0_7 = field_8.clone();
+                                ls::fast::List::cons(
+                                    v_match__lawspecselection0x1_0_7,
+                                    lawspecCollectionsKeyValValuesItems_40ef8eee(
+                                        v_lawspecselection0x1_3.clone(),
+                                    )?,
+                                )
+                            }
+                        }
                     }
                 }
             }
@@ -15037,19 +15585,25 @@ pub mod typed {
         mut acc_1: ls::fast::List<i64>,
     ) -> ls::Result<ls::fast::List<i64>> {
         loop {
-            return Ok(match xs_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let h_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    {
-                        let next_6 = t_3.clone();
-                        let next_7 = lawspecCollectionsSetInsertItems_fbbb1c47(h_2, acc_1.clone())?;
-                        xs_0 = next_6;
-                        acc_1 = next_7;
-                        continue
+            return Ok({
+                let it_2 = xs_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let next_7 = v_lawspecselection0x1_4.clone();
+                            let next_8 = lawspecCollectionsSetInsertItems_fbbb1c47(
+                                v_lawspecselection0x0_3,
+                                acc_1.clone(),
+                            )?;
+                            xs_0 = next_7;
+                            acc_1 = next_8;
+                            continue
+                        }
                     }
                 }
             });
@@ -15062,22 +15616,25 @@ pub mod typed {
         mut acc_1: ls::fast::List<ls::fast::Text>,
     ) -> ls::Result<ls::fast::List<ls::fast::Text>> {
         loop {
-            return Ok(match xs_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let h_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    {
-                        let next_6 = t_3.clone();
-                        let next_7 = lawspecCollectionsSetInsertItems_fd8b28ec(
-                            h_2.clone(),
-                            acc_1.clone(),
-                        )?;
-                        xs_0 = next_6;
-                        acc_1 = next_7;
-                        continue
+            return Ok({
+                let it_2 = xs_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let next_7 = v_lawspecselection0x1_4.clone();
+                            let next_8 = lawspecCollectionsSetInsertItems_fd8b28ec(
+                                v_lawspecselection0x0_3.clone(),
+                                acc_1.clone(),
+                            )?;
+                            xs_0 = next_7;
+                            acc_1 = next_8;
+                            continue
+                        }
                     }
                 }
             });
@@ -15090,19 +15647,25 @@ pub mod typed {
         mut acc_1: ls::fast::List<i32>,
     ) -> ls::Result<ls::fast::List<i32>> {
         loop {
-            return Ok(match xs_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let h_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    {
-                        let next_6 = t_3.clone();
-                        let next_7 = lawspecCollectionsSetInsertItems_708d991b(h_2, acc_1.clone())?;
-                        xs_0 = next_6;
-                        acc_1 = next_7;
-                        continue
+            return Ok({
+                let it_2 = xs_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let next_7 = v_lawspecselection0x1_4.clone();
+                            let next_8 = lawspecCollectionsSetInsertItems_708d991b(
+                                v_lawspecselection0x0_3,
+                                acc_1.clone(),
+                            )?;
+                            xs_0 = next_7;
+                            acc_1 = next_8;
+                            continue
+                        }
                     }
                 }
             });
@@ -15114,34 +15677,37 @@ pub mod typed {
         x_0: ls::fast::Text,
         xs_1: ls::fast::List<ls::fast::Text>,
     ) -> ls::Result<ls::fast::List<ls::fast::Text>> {
-        Ok(match xs_1.uncons() {
-            None => {
-                ls::fast::List::cons(x_0.clone(), ls::fast::List::nil())
-            }
-            Some((field_4, field_5)) => {
-                let h_2 = field_4.clone();
-                let t_3 = field_5.clone();
-                {
-                    let matched_6 = match ls::fast::POrd::pcmp(&x_0.clone(), &h_2.clone()) {
-                        std::cmp::Ordering::Less => Ordering_2::Less,
-                        std::cmp::Ordering::Equal => Ordering_2::Equal,
-                        std::cmp::Ordering::Greater => Ordering_2::Greater,
-                    };
-                    match matched_6 {
-                        Ordering_2::Less => {
-                            ls::fast::List::cons(x_0.clone(), xs_1.clone())
-                        }
-                        Ordering_2::Equal => {
-                            xs_1.clone()
-                        }
-                        Ordering_2::Greater => {
-                            ls::fast::List::cons(
-                                h_2.clone(),
-                                lawspecCollectionsSetInsertItems_fd8b28ec(
-                                    x_0.clone(),
-                                    t_3.clone(),
-                                )?,
-                            )
+        Ok({
+            let it_2 = xs_1.clone();
+            match it_2.uncons() {
+                None => {
+                    ls::fast::List::cons(x_0.clone(), ls::fast::List::nil())
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    {
+                        let it_7 = match ls::fast::POrd::pcmp(&x_0.clone(), &v_lawspecselection0x0_3.clone()) {
+                            std::cmp::Ordering::Less => Ordering_2::Less,
+                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                        };
+                        match it_7 {
+                            Ordering_2::Less => {
+                                ls::fast::List::cons(x_0.clone(), xs_1.clone())
+                            }
+                            Ordering_2::Equal => {
+                                xs_1.clone()
+                            }
+                            Ordering_2::Greater => {
+                                ls::fast::List::cons(
+                                    v_lawspecselection0x0_3.clone(),
+                                    lawspecCollectionsSetInsertItems_fd8b28ec(
+                                        x_0.clone(),
+                                        v_lawspecselection0x1_4.clone(),
+                                    )?,
+                                )
+                            }
                         }
                     }
                 }
@@ -15154,31 +15720,37 @@ pub mod typed {
         x_0: i64,
         xs_1: ls::fast::List<i64>,
     ) -> ls::Result<ls::fast::List<i64>> {
-        Ok(match xs_1.uncons() {
-            None => {
-                ls::fast::List::cons(x_0, ls::fast::List::nil())
-            }
-            Some((field_4, field_5)) => {
-                let h_2 = field_4.clone();
-                let t_3 = field_5.clone();
-                {
-                    let matched_6 = match ls::fast::POrd::pcmp(&x_0, &h_2) {
-                        std::cmp::Ordering::Less => Ordering_2::Less,
-                        std::cmp::Ordering::Equal => Ordering_2::Equal,
-                        std::cmp::Ordering::Greater => Ordering_2::Greater,
-                    };
-                    match matched_6 {
-                        Ordering_2::Less => {
-                            ls::fast::List::cons(x_0, xs_1.clone())
-                        }
-                        Ordering_2::Equal => {
-                            xs_1.clone()
-                        }
-                        Ordering_2::Greater => {
-                            ls::fast::List::cons(
-                                h_2,
-                                lawspecCollectionsSetInsertItems_fbbb1c47(x_0, t_3.clone())?,
-                            )
+        Ok({
+            let it_2 = xs_1.clone();
+            match it_2.uncons() {
+                None => {
+                    ls::fast::List::cons(x_0, ls::fast::List::nil())
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    {
+                        let it_7 = match ls::fast::POrd::pcmp(&x_0, &v_lawspecselection0x0_3) {
+                            std::cmp::Ordering::Less => Ordering_2::Less,
+                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                        };
+                        match it_7 {
+                            Ordering_2::Less => {
+                                ls::fast::List::cons(x_0, xs_1.clone())
+                            }
+                            Ordering_2::Equal => {
+                                xs_1.clone()
+                            }
+                            Ordering_2::Greater => {
+                                ls::fast::List::cons(
+                                    v_lawspecselection0x0_3,
+                                    lawspecCollectionsSetInsertItems_fbbb1c47(
+                                        x_0,
+                                        v_lawspecselection0x1_4.clone(),
+                                    )?,
+                                )
+                            }
                         }
                     }
                 }
@@ -15191,31 +15763,37 @@ pub mod typed {
         x_0: i32,
         xs_1: ls::fast::List<i32>,
     ) -> ls::Result<ls::fast::List<i32>> {
-        Ok(match xs_1.uncons() {
-            None => {
-                ls::fast::List::cons(x_0, ls::fast::List::nil())
-            }
-            Some((field_4, field_5)) => {
-                let h_2 = field_4.clone();
-                let t_3 = field_5.clone();
-                {
-                    let matched_6 = match ls::fast::POrd::pcmp(&x_0, &h_2) {
-                        std::cmp::Ordering::Less => Ordering_2::Less,
-                        std::cmp::Ordering::Equal => Ordering_2::Equal,
-                        std::cmp::Ordering::Greater => Ordering_2::Greater,
-                    };
-                    match matched_6 {
-                        Ordering_2::Less => {
-                            ls::fast::List::cons(x_0, xs_1.clone())
-                        }
-                        Ordering_2::Equal => {
-                            xs_1.clone()
-                        }
-                        Ordering_2::Greater => {
-                            ls::fast::List::cons(
-                                h_2,
-                                lawspecCollectionsSetInsertItems_708d991b(x_0, t_3.clone())?,
-                            )
+        Ok({
+            let it_2 = xs_1.clone();
+            match it_2.uncons() {
+                None => {
+                    ls::fast::List::cons(x_0, ls::fast::List::nil())
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    {
+                        let it_7 = match ls::fast::POrd::pcmp(&x_0, &v_lawspecselection0x0_3) {
+                            std::cmp::Ordering::Less => Ordering_2::Less,
+                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                        };
+                        match it_7 {
+                            Ordering_2::Less => {
+                                ls::fast::List::cons(x_0, xs_1.clone())
+                            }
+                            Ordering_2::Equal => {
+                                xs_1.clone()
+                            }
+                            Ordering_2::Greater => {
+                                ls::fast::List::cons(
+                                    v_lawspecselection0x0_3,
+                                    lawspecCollectionsSetInsertItems_708d991b(
+                                        x_0,
+                                        v_lawspecselection0x1_4.clone(),
+                                    )?,
+                                )
+                            }
                         }
                     }
                 }
@@ -15229,31 +15807,34 @@ pub mod typed {
         mut xs_1: ls::fast::List<i64>,
     ) -> ls::Result<bool> {
         loop {
-            return Ok(match xs_1.uncons() {
-                None => {
-                    false
-                }
-                Some((field_4, field_5)) => {
-                    let h_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    {
-                        let matched_6 = match ls::fast::POrd::pcmp(&x_0, &h_2) {
-                            std::cmp::Ordering::Less => Ordering_2::Less,
-                            std::cmp::Ordering::Equal => Ordering_2::Equal,
-                            std::cmp::Ordering::Greater => Ordering_2::Greater,
-                        };
-                        match matched_6 {
-                            Ordering_2::Less => {
-                                false
-                            }
-                            Ordering_2::Equal => {
-                                true
-                            }
-                            Ordering_2::Greater => {
-                                {
-                                    let next_7 = t_3.clone();
-                                    xs_1 = next_7;
-                                    continue
+            return Ok({
+                let it_2 = xs_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        false
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = match ls::fast::POrd::pcmp(&x_0, &v_lawspecselection0x0_3) {
+                                std::cmp::Ordering::Less => Ordering_2::Less,
+                                std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                std::cmp::Ordering::Greater => Ordering_2::Greater,
+                            };
+                            match it_7 {
+                                Ordering_2::Less => {
+                                    false
+                                }
+                                Ordering_2::Equal => {
+                                    true
+                                }
+                                Ordering_2::Greater => {
+                                    {
+                                        let next_8 = v_lawspecselection0x1_4.clone();
+                                        xs_1 = next_8;
+                                        continue
+                                    }
                                 }
                             }
                         }
@@ -15297,34 +15878,37 @@ pub mod typed {
         x_0: ls::fast::Text,
         xs_1: ls::fast::List<ls::fast::Text>,
     ) -> ls::Result<ls::fast::List<ls::fast::Text>> {
-        Ok(match xs_1.uncons() {
-            None => {
-                xs_1.clone()
-            }
-            Some((field_4, field_5)) => {
-                let h_2 = field_4.clone();
-                let t_3 = field_5.clone();
-                {
-                    let matched_6 = match ls::fast::POrd::pcmp(&x_0.clone(), &h_2.clone()) {
-                        std::cmp::Ordering::Less => Ordering_2::Less,
-                        std::cmp::Ordering::Equal => Ordering_2::Equal,
-                        std::cmp::Ordering::Greater => Ordering_2::Greater,
-                    };
-                    match matched_6 {
-                        Ordering_2::Less => {
-                            xs_1.clone()
-                        }
-                        Ordering_2::Equal => {
-                            t_3.clone()
-                        }
-                        Ordering_2::Greater => {
-                            ls::fast::List::cons(
-                                h_2.clone(),
-                                lawspecCollectionsSetRemoveItems_64279e04(
-                                    x_0.clone(),
-                                    t_3.clone(),
-                                )?,
-                            )
+        Ok({
+            let it_2 = xs_1.clone();
+            match it_2.uncons() {
+                None => {
+                    xs_1.clone()
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    {
+                        let it_7 = match ls::fast::POrd::pcmp(&x_0.clone(), &v_lawspecselection0x0_3.clone()) {
+                            std::cmp::Ordering::Less => Ordering_2::Less,
+                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                        };
+                        match it_7 {
+                            Ordering_2::Less => {
+                                xs_1.clone()
+                            }
+                            Ordering_2::Equal => {
+                                v_lawspecselection0x1_4.clone()
+                            }
+                            Ordering_2::Greater => {
+                                ls::fast::List::cons(
+                                    v_lawspecselection0x0_3.clone(),
+                                    lawspecCollectionsSetRemoveItems_64279e04(
+                                        x_0.clone(),
+                                        v_lawspecselection0x1_4.clone(),
+                                    )?,
+                                )
+                            }
                         }
                     }
                 }
@@ -15370,45 +15954,60 @@ pub mod typed {
                 }
             } else {
                 {
-                    let next_13 = {
-                        let matched_8 = match &*entry_5.0 {
+                    let next_21 = {
+                        let it_8 = match &*entry_5.0 {
                             ProducerEntryNode::ProducerEntry(_, _, field_7) => {
                                 let lawspecfieldtxn_6 = field_7.clone();
                                 lawspecfieldtxn_6.clone()
                             }
                         };
-                        match &*matched_8.0 {
+                        match &*it_8.0 {
                             TxnStateNode::NoTxn => {
-                                TxnState(std::sync::Arc::new(TxnStateNode::Ongoing(
-                                    lawtwinKafkaModelUnionPartitions_c791d224(
-                                        tps_3.clone(),
-                                        ls::fast::List::nil(),
-                                    )?,
-                                    ls::fast::List::nil(),
-                                )))
+                                TxnState(std::sync::Arc::new(TxnStateNode::Ongoing({
+                                        let txnpartitions_9 = lawtwinKafkaModelUnionPartitions_c791d224(tps_3.clone(), ls::fast::List::nil())?;
+                                        {
+                                            let txnoffsets_10 = ls::fast::List::nil();
+                                            Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(std::sync::Arc::new(Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(txnoffsets_10.clone(), txnpartitions_9.clone())))
+                                        }
+                                    })))
                             }
-                            TxnStateNode::Ongoing(field_11, field_12) => {
-                                let ps_9 = field_11.clone();
-                                let os_10 = field_12.clone();
-                                TxnState(std::sync::Arc::new(TxnStateNode::Ongoing(
-                                    lawtwinKafkaModelUnionPartitions_c791d224(
-                                        tps_3.clone(),
-                                        ps_9.clone(),
-                                    )?,
-                                    os_10.clone(),
-                                )))
+                            TxnStateNode::Ongoing(field_12) => {
+                                let v_lawspecselection0x0_11 = field_12.clone();
+                                {
+                                    let v_lawspecselection1x0_15 = match &*v_lawspecselection0x0_11.0 {
+                                        Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(_, field_14) => {
+                                            let lawspecfieldtxnpartitions_13 = field_14.clone();
+                                            lawspecfieldtxnpartitions_13.clone()
+                                        }
+                                    };
+                                    {
+                                        let v_lawspecselection1x1_18 = match &*v_lawspecselection0x0_11.0 {
+                                            Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(field_17, _) => {
+                                                let lawspecfieldtxnoffsets_16 = field_17.clone();
+                                                lawspecfieldtxnoffsets_16.clone()
+                                            }
+                                        };
+                                        TxnState(std::sync::Arc::new(TxnStateNode::Ongoing({
+                                                let txnpartitions_19 = lawtwinKafkaModelUnionPartitions_c791d224(tps_3.clone(), v_lawspecselection1x0_15.clone())?;
+                                                {
+                                                    let txnoffsets_20 = v_lawspecselection1x1_18.clone();
+                                                    Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(std::sync::Arc::new(Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(txnoffsets_20.clone(), txnpartitions_19.clone())))
+                                                }
+                                            })))
+                                    }
+                                }
                             }
                         }
                     };
                     Pair(std::sync::Arc::new(PairNode::Pair(
                         (),
                         lawtwinKafkaModelPutProducer_4ef907a5(pid_1, {
-                                let replacement_14 = next_13.clone();
+                                let replacement_22 = next_21.clone();
                                 match &*entry_5.0 {
-                                    ProducerEntryNode::ProducerEntry(field_17, field_18, _) => {
-                                        let lawspecfieldepoch_15 = field_17.clone();
-                                        let lawspecfieldtransactionalid_16 = field_18.clone();
-                                        ProducerEntry(std::sync::Arc::new(ProducerEntryNode::ProducerEntry(lawspecfieldepoch_15, lawspecfieldtransactionalid_16.clone(), replacement_14.clone())))
+                                    ProducerEntryNode::ProducerEntry(field_25, field_26, _) => {
+                                        let lawspecfieldepoch_23 = field_25.clone();
+                                        let lawspecfieldtransactionalid_24 = field_26.clone();
+                                        ProducerEntry(std::sync::Arc::new(ProducerEntryNode::ProducerEntry(lawspecfieldepoch_23, lawspecfieldtransactionalid_24.clone(), replacement_22.clone())))
                                     }
                                 }
                             }, b_4.clone())?,
@@ -15423,17 +16022,23 @@ pub mod typed {
         tps_0: ls::fast::List<TopicPartition>,
         b_1: BrokerState,
     ) -> ls::Result<bool> {
-        Ok(match tps_0.uncons() {
-            None => {
-                true
-            }
-            Some((field_4, field_5)) => {
-                let h_2 = field_4.clone();
-                let t_3 = field_5.clone();
-                (lawtwinKafkaModelKnownPartition_71d3099f(
-                    h_2.clone(),
-                    b_1.clone(),
-                )? && lawtwinKafkaModelAllKnown_12a378f8(t_3.clone(), b_1.clone())?)
+        Ok({
+            let it_2 = tps_0.clone();
+            match it_2.uncons() {
+                None => {
+                    true
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    (lawtwinKafkaModelKnownPartition_71d3099f(
+                        v_lawspecselection0x0_3.clone(),
+                        b_1.clone(),
+                    )? && lawtwinKafkaModelAllKnown_12a378f8(
+                        v_lawspecselection0x1_4.clone(),
+                        b_1.clone(),
+                    )?)
+                }
             }
         })
     }
@@ -15460,13 +16065,13 @@ pub mod typed {
             {
                 let open_20 = if transactional_2 {
                     {
-                        let matched_11 = match &*l_3.0 {
+                        let it_11 = match &*l_3.0 {
                             PartitionLogNode::PartitionLog(_, _, field_10, _, _) => {
                                 let lawspecfieldopentxns_9 = field_10.clone();
                                 lawspecfieldopentxns_9.clone()
                             }
                         }.get(&writer_1).cloned();
-                        match &matched_11 {
+                        match &it_11 {
                             None => {
                                 match &*l_3.0 {
                                     PartitionLogNode::PartitionLog(_, _, field_15, _, _) => {
@@ -15579,31 +16184,41 @@ pub mod typed {
         mut es_4: ls::fast::List<LogEntry>,
     ) -> ls::Result<Pair<i64, ls::fast::List<LogEntry>>> {
         loop {
-            return Ok(match rs_0.uncons() {
-                None => {
-                    Pair(std::sync::Arc::new(PairNode::Pair(offset_1, es_4.clone())))
-                }
-                Some((field_7, field_8)) => {
-                    let r_5 = field_7.clone();
-                    let rest_6 = field_8.clone();
-                    {
-                        let next_9 = rest_6.clone();
-                        let next_10 = saturatingInt64_5bce4ed8(
-                            ls::fast::Int::from_i128(((offset_1 as i128) + 1i128)),
-                        )?;
-                        let next_11 = ls::fast::List::cons(
-                            LogEntry(std::sync::Arc::new(LogEntryNode::DataEntry(
-                                offset_1,
-                                r_5.clone(),
-                                writer_2,
-                                transactional_3,
-                            ))),
-                            es_4.clone(),
-                        );
-                        rs_0 = next_9;
-                        offset_1 = next_10;
-                        es_4 = next_11;
-                        continue
+            return Ok({
+                let it_5 = rs_0.clone();
+                match it_5.uncons() {
+                    None => {
+                        Pair(std::sync::Arc::new(PairNode::Pair(offset_1, es_4.clone())))
+                    }
+                    Some((field_8, field_9)) => {
+                        let v_lawspecselection0x0_6 = field_8.clone();
+                        let v_lawspecselection0x1_7 = field_9.clone();
+                        {
+                            let next_14 = v_lawspecselection0x1_7.clone();
+                            let next_15 = saturatingInt64_5bce4ed8(
+                                ls::fast::Int::from_i128(((offset_1 as i128) + 1i128)),
+                            )?;
+                            let next_16 = ls::fast::List::cons(
+                                LogEntry(std::sync::Arc::new(LogEntryNode::DataEntry({
+                                        let entryoffset_10 = offset_1;
+                                        {
+                                            let entryrecord_11 = v_lawspecselection0x0_6.clone();
+                                            {
+                                                let writer_12 = writer_2;
+                                                {
+                                                    let transactional_13 = transactional_3;
+                                                    Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be(std::sync::Arc::new(Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode::Record(entryoffset_10, entryrecord_11.clone(), transactional_13, writer_12)))
+                                                }
+                                            }
+                                        }
+                                    }))),
+                                es_4.clone(),
+                            );
+                            rs_0 = next_14;
+                            offset_1 = next_15;
+                            es_4 = next_16;
+                            continue
+                        }
                     }
                 }
             });
@@ -15616,82 +16231,85 @@ pub mod typed {
         mut b_1: BrokerState,
     ) -> ls::Result<BrokerState> {
         loop {
-            return Ok(match os_0.uncons() {
-                None => {
-                    b_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let o_2 = field_4.clone();
-                    let rest_3 = field_5.clone();
-                    {
-                        let next_33 = rest_3.clone();
-                        let next_34 = {
-                            let replacement_20 = match &*b_1.0 {
-                                BrokerStateNode::BrokerState(_, _, _, _, _, _, field_19) => {
-                                    let lawspecfieldcommitted_18 = field_19.clone();
-                                    lawspecfieldcommitted_18.clone()
-                                }
-                            }.insert(
-                                GroupPartition(std::sync::Arc::new(GroupPartitionNode::GroupPartition(
-                                    match &*o_2.0 {
-                                        PendingOffsetNode::PendingOffset(field_7, _) => {
-                                            let lawspecfieldpendinggroup_6 = field_7.clone();
-                                            lawspecfieldpendinggroup_6.clone()
-                                        }
-                                    },
-                                    {
-                                        let matched_10 = match &*o_2.0 {
-                                            PendingOffsetNode::PendingOffset(_, field_9) => {
-                                                let lawspecfieldpendingentry_8 = field_9.clone();
-                                                lawspecfieldpendingentry_8.clone()
+            return Ok({
+                let it_2 = os_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        b_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let next_36 = v_lawspecselection0x1_4.clone();
+                            let next_37 = {
+                                let replacement_23 = match &*b_1.0 {
+                                    BrokerStateNode::BrokerState(_, _, _, _, _, _, field_22) => {
+                                        let lawspecfieldcommitted_21 = field_22.clone();
+                                        lawspecfieldcommitted_21.clone()
+                                    }
+                                }.insert({
+                                        let v_lawspecrecordfield0_9 = match &*v_lawspecselection0x0_3.0 {
+                                            PendingOffsetNode::PendingOffset(field_8, _) => {
+                                                let lawspecfieldpendinggroup_7 = field_8.clone();
+                                                lawspecfieldpendinggroup_7.clone()
                                             }
                                         };
-                                        match &*matched_10.0 {
-                                            OffsetEntryNode::OffsetEntry(field_12, _) => {
-                                                let lawspecfieldtopicpartition_11 = field_12.clone();
-                                                lawspecfieldtopicpartition_11.clone()
+                                        {
+                                            let v_lawspecrecordfield1_15 = {
+                                                let matched_12 = match &*v_lawspecselection0x0_3.0 {
+                                                    PendingOffsetNode::PendingOffset(_, field_11) => {
+                                                        let lawspecfieldpendingentry_10 = field_11.clone();
+                                                        lawspecfieldpendingentry_10.clone()
+                                                    }
+                                                };
+                                                match &*matched_12.0 {
+                                                    OffsetEntryNode::OffsetEntry(field_14, _) => {
+                                                        let lawspecfieldtopicpartition_13 = field_14.clone();
+                                                        lawspecfieldtopicpartition_13.clone()
+                                                    }
+                                                }
+                                            };
+                                            GroupPartition(std::sync::Arc::new(GroupPartitionNode::GroupPartition(v_lawspecrecordfield0_9.clone(), v_lawspecrecordfield1_15.clone())))
+                                        }
+                                    }, {
+                                        let matched_18 = match &*v_lawspecselection0x0_3.0 {
+                                            PendingOffsetNode::PendingOffset(_, field_17) => {
+                                                let lawspecfieldpendingentry_16 = field_17.clone();
+                                                lawspecfieldpendingentry_16.clone()
+                                            }
+                                        };
+                                        match &*matched_18.0 {
+                                            OffsetEntryNode::OffsetEntry(_, field_20) => {
+                                                let lawspecfieldoffset_19 = field_20.clone();
+                                                lawspecfieldoffset_19
                                             }
                                         }
-                                    },
-                                ))),
-                                {
-                                    let matched_15 = match &*o_2.0 {
-                                        PendingOffsetNode::PendingOffset(_, field_14) => {
-                                            let lawspecfieldpendingentry_13 = field_14.clone();
-                                            lawspecfieldpendingentry_13.clone()
-                                        }
-                                    };
-                                    match &*matched_15.0 {
-                                        OffsetEntryNode::OffsetEntry(_, field_17) => {
-                                            let lawspecfieldoffset_16 = field_17.clone();
-                                            lawspecfieldoffset_16
-                                        }
+                                    });
+                                match &*b_1.0 {
+                                    BrokerStateNode::BrokerState(field_30, field_31, field_32, field_33, field_34, field_35, _) => {
+                                        let lawspecfieldtopics_24 = field_30.clone();
+                                        let lawspecfieldlogs_25 = field_31.clone();
+                                        let lawspecfieldproducers_26 = field_32.clone();
+                                        let lawspecfieldtransactionalids_27 = field_33.clone();
+                                        let lawspecfieldnextproducerid_28 = field_34.clone();
+                                        let lawspecfieldgroups_29 = field_35.clone();
+                                        BrokerState(std::sync::Arc::new(BrokerStateNode::BrokerState(
+                                            lawspecfieldtopics_24.clone(),
+                                            lawspecfieldlogs_25.clone(),
+                                            lawspecfieldproducers_26.clone(),
+                                            lawspecfieldtransactionalids_27.clone(),
+                                            lawspecfieldnextproducerid_28,
+                                            lawspecfieldgroups_29.clone(),
+                                            replacement_23.clone(),
+                                        )))
                                     }
-                                },
-                            );
-                            match &*b_1.0 {
-                                BrokerStateNode::BrokerState(field_27, field_28, field_29, field_30, field_31, field_32, _) => {
-                                    let lawspecfieldtopics_21 = field_27.clone();
-                                    let lawspecfieldlogs_22 = field_28.clone();
-                                    let lawspecfieldproducers_23 = field_29.clone();
-                                    let lawspecfieldtransactionalids_24 = field_30.clone();
-                                    let lawspecfieldnextproducerid_25 = field_31.clone();
-                                    let lawspecfieldgroups_26 = field_32.clone();
-                                    BrokerState(std::sync::Arc::new(BrokerStateNode::BrokerState(
-                                        lawspecfieldtopics_21.clone(),
-                                        lawspecfieldlogs_22.clone(),
-                                        lawspecfieldproducers_23.clone(),
-                                        lawspecfieldtransactionalids_24.clone(),
-                                        lawspecfieldnextproducerid_25,
-                                        lawspecfieldgroups_26.clone(),
-                                        replacement_20.clone(),
-                                    )))
                                 }
-                            }
-                        };
-                        os_0 = next_33;
-                        b_1 = next_34;
-                        continue
+                            };
+                            os_0 = next_36;
+                            b_1 = next_37;
+                            continue
+                        }
                     }
                 }
             });
@@ -15707,57 +16325,78 @@ pub mod typed {
         mut a_4: ls::fast::Map<ls::fast::Text, ls::fast::List<TopicPartition>>,
     ) -> ls::Result<ls::fast::Map<ls::fast::Text, ls::fast::List<TopicPartition>>> {
         loop {
-            return Ok(match ps_1.uncons() {
-                None => {
-                    a_4.clone()
-                }
-                Some((field_7, field_8)) => {
-                    let p_5 = field_7.clone();
-                    let rest_6 = field_8.clone();
-                    match waiting_3.uncons() {
-                        Some((field_11, field_12)) => {
-                            let owner_9 = field_11.clone();
-                            let later_10 = field_12.clone();
-                            {
-                                let next_13 = rest_6.clone();
-                                let next_14 = later_10.clone();
-                                let next_15 = lawtwinKafkaModelAssignTo_98dab4ee(
-                                    owner_9.clone(),
-                                    TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
-                                        topic_0.clone(),
-                                        p_5,
-                                    ))),
-                                    a_4.clone(),
-                                )?;
-                                ps_1 = next_13;
-                                waiting_3 = next_14;
-                                a_4 = next_15;
-                                continue
-                            }
-                        }
-                        None => {
-                            match owners_2.uncons() {
-                                None => {
-                                    a_4.clone()
-                                }
-                                Some((field_18, field_19)) => {
-                                    let owner_16 = field_18.clone();
-                                    let later_17 = field_19.clone();
+            return Ok({
+                let it_5 = ps_1.clone();
+                match it_5.uncons() {
+                    None => {
+                        a_4.clone()
+                    }
+                    Some((field_8, field_9)) => {
+                        let v_lawspecselection0x0_6 = field_8.clone();
+                        let v_lawspecselection0x1_7 = field_9.clone();
+                        {
+                            let it_10 = waiting_3.clone();
+                            match it_10.uncons() {
+                                Some((field_13, field_14)) => {
+                                    let v_match__lawspecselection0x0_0_11 = field_13.clone();
+                                    let v_match__lawspecselection0x1_0_12 = field_14.clone();
                                     {
-                                        let next_20 = rest_6.clone();
-                                        let next_21 = later_17.clone();
-                                        let next_22 = lawtwinKafkaModelAssignTo_98dab4ee(
-                                            owner_16.clone(),
-                                            TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
-                                                topic_0.clone(),
-                                                p_5,
-                                            ))),
+                                        let next_17 = v_lawspecselection0x1_7.clone();
+                                        let next_18 = v_match__lawspecselection0x1_0_12.clone();
+                                        let next_19 = lawtwinKafkaModelAssignTo_98dab4ee(
+                                            v_match__lawspecselection0x0_0_11.clone(),
+                                            {
+                                                let v_lawspecrecordfield0_15 = topic_0.clone();
+                                                {
+                                                    let v_lawspecrecordfield1_16 = v_lawspecselection0x0_6;
+                                                    TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
+                                                        v_lawspecrecordfield0_15.clone(),
+                                                        v_lawspecrecordfield1_16,
+                                                    )))
+                                                }
+                                            },
                                             a_4.clone(),
                                         )?;
-                                        ps_1 = next_20;
-                                        waiting_3 = next_21;
-                                        a_4 = next_22;
+                                        ps_1 = next_17;
+                                        waiting_3 = next_18;
+                                        a_4 = next_19;
                                         continue
+                                    }
+                                }
+                                None => {
+                                    {
+                                        let it_20 = owners_2.clone();
+                                        match it_20.uncons() {
+                                            None => {
+                                                a_4.clone()
+                                            }
+                                            Some((field_23, field_24)) => {
+                                                let v_match__lawspecselection0x0_0_21 = field_23.clone();
+                                                let v_match__lawspecselection0x1_0_22 = field_24.clone();
+                                                {
+                                                    let next_27 = v_lawspecselection0x1_7.clone();
+                                                    let next_28 = v_match__lawspecselection0x1_0_22.clone();
+                                                    let next_29 = lawtwinKafkaModelAssignTo_98dab4ee(
+                                                        v_match__lawspecselection0x0_0_21.clone(),
+                                                        {
+                                                            let v_lawspecrecordfield0_25 = topic_0.clone();
+                                                            {
+                                                                let v_lawspecrecordfield1_26 = v_lawspecselection0x0_6;
+                                                                TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
+                                                                    v_lawspecrecordfield0_25.clone(),
+                                                                    v_lawspecrecordfield1_26,
+                                                                )))
+                                                            }
+                                                        },
+                                                        a_4.clone(),
+                                                    )?;
+                                                    ps_1 = next_27;
+                                                    waiting_3 = next_28;
+                                                    a_4 = next_29;
+                                                    continue
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -15775,8 +16414,8 @@ pub mod typed {
         a_2: ls::fast::Map<ls::fast::Text, ls::fast::List<TopicPartition>>,
     ) -> ls::Result<ls::fast::Map<ls::fast::Text, ls::fast::List<TopicPartition>>> {
         Ok({
-            let matched_3 = a_2.clone().get(&member_0.clone()).cloned();
-            match &matched_3 {
+            let it_3 = a_2.clone().get(&member_0.clone()).cloned();
+            match &it_3 {
                 None => {
                     a_2.clone().insert(
                         member_0.clone(),
@@ -15784,10 +16423,10 @@ pub mod typed {
                     )
                 }
                 Some(field_5) => {
-                    let tps_4 = field_5.clone();
+                    let v_lawspecselection0x0_4 = field_5.clone();
                     a_2.clone().insert(
                         member_0.clone(),
-                        ls::fast::append_list(&tps_4.clone(), &ls::fast::List::cons(
+                        ls::fast::append_list(&v_lawspecselection0x0_4.clone(), &ls::fast::List::cons(
                             tp_1.clone(),
                             ls::fast::List::nil(),
                         )),
@@ -15805,46 +16444,51 @@ pub mod typed {
         mut a_3: ls::fast::Map<ls::fast::Text, ls::fast::List<TopicPartition>>,
     ) -> ls::Result<ls::fast::Map<ls::fast::Text, ls::fast::List<TopicPartition>>> {
         loop {
-            return Ok(match topics_0.uncons() {
-                None => {
-                    a_3.clone()
-                }
-                Some((field_6, field_7)) => {
-                    let topic_4 = field_6.clone();
-                    let rest_5 = field_7.clone();
-                    {
-                        let matched_8 = lawtwinKafkaModelPartitionCountOf_ff180c35(
-                            topic_4.clone(),
-                            b_2.clone(),
-                        )?;
-                        match &matched_8 {
-                            None => {
-                                {
-                                    let next_9 = rest_5.clone();
-                                    topics_0 = next_9;
-                                    continue
+            return Ok({
+                let it_4 = topics_0.clone();
+                match it_4.uncons() {
+                    None => {
+                        a_3.clone()
+                    }
+                    Some((field_7, field_8)) => {
+                        let v_lawspecselection0x0_5 = field_7.clone();
+                        let v_lawspecselection0x1_6 = field_8.clone();
+                        {
+                            let it_9 = lawtwinKafkaModelPartitionCountOf_ff180c35(
+                                v_lawspecselection0x0_5.clone(),
+                                b_2.clone(),
+                            )?;
+                            match &it_9 {
+                                None => {
+                                    {
+                                        let next_10 = v_lawspecselection0x1_6.clone();
+                                        topics_0 = next_10;
+                                        continue
+                                    }
                                 }
-                            }
-                            Some(field_11) => {
-                                let n_10 = field_11.clone();
-                                {
-                                    let next_13 = rest_5.clone();
-                                    let next_14 = {
-                                        let owners_12 = lawtwinKafkaModelSubscribersOf_e9347318(
-                                            topic_4.clone(),
-                                            subs_1.clone(),
-                                        )?;
-                                        lawtwinKafkaModelAssignPartitions_598afda2(
-                                            topic_4.clone(),
-                                            lawtwinKafkaModelPartitionsBelow_19525eca(n_10)?,
-                                            owners_12.clone(),
-                                            owners_12.clone(),
-                                            a_3.clone(),
-                                        )?
-                                    };
-                                    topics_0 = next_13;
-                                    a_3 = next_14;
-                                    continue
+                                Some(field_12) => {
+                                    let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                    {
+                                        let next_14 = v_lawspecselection0x1_6.clone();
+                                        let next_15 = {
+                                            let owners_13 = lawtwinKafkaModelSubscribersOf_e9347318(
+                                                v_lawspecselection0x0_5.clone(),
+                                                subs_1.clone(),
+                                            )?;
+                                            lawtwinKafkaModelAssignPartitions_598afda2(
+                                                v_lawspecselection0x0_5.clone(),
+                                                lawtwinKafkaModelPartitionsBelow_19525eca(
+                                                    v_match__lawspecselection0x0_0_11,
+                                                )?,
+                                                owners_13.clone(),
+                                                owners_13.clone(),
+                                                a_3.clone(),
+                                            )?
+                                        };
+                                        topics_0 = next_14;
+                                        a_3 = next_15;
+                                        continue
+                                    }
                                 }
                             }
                         }
@@ -15870,13 +16514,13 @@ pub mod typed {
             {
                 let group_4 = lawtwinKafkaModelGroupOf_abe7cb22(g_0.clone(), b_3.clone())?;
                 {
-                    let matched_7 = match &*group_4.0 {
+                    let it_7 = match &*group_4.0 {
                         GroupNode::Group(_, field_6, _) => {
                             let lawspecfieldsubscriptions_5 = field_6.clone();
                             lawspecfieldsubscriptions_5.clone()
                         }
                     }.get(&member_1.clone()).cloned();
-                    match &matched_7 {
+                    match &it_7 {
                         None => {
                             {
                                 ls::raise_failure("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls::fast::Dyn::to_dyn(&KafkaError::UnknownMemberId));
@@ -15912,13 +16556,13 @@ pub mod typed {
         b_3: BrokerState,
     ) -> ls::Result<ProducerEntry> {
         Ok({
-            let matched_6 = match &*b_3.0 {
+            let it_6 = match &*b_3.0 {
                 BrokerStateNode::BrokerState(_, _, _, field_5, _, _, _) => {
                     let lawspecfieldtransactionalids_4 = field_5.clone();
                     lawspecfieldtransactionalids_4.clone()
                 }
             }.get(&txid_0.clone()).cloned();
-            match &matched_6 {
+            match &it_6 {
                 None => {
                     {
                         ls::raise_failure("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls::fast::Dyn::to_dyn(&KafkaError::InvalidProducerIdMapping));
@@ -15926,21 +16570,21 @@ pub mod typed {
                     }
                 }
                 Some(field_8) => {
-                    let mapped_7 = field_8.clone();
-                    if (mapped_7 != pid_1) {
+                    let v_lawspecselection0x0_7 = field_8.clone();
+                    if (v_lawspecselection0x0_7 != pid_1) {
                         {
                             ls::raise_failure("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls::fast::Dyn::to_dyn(&KafkaError::InvalidProducerIdMapping));
                             unreachable!()
                         }
                     } else {
                         {
-                            let matched_11 = match &*b_3.0 {
+                            let it_11 = match &*b_3.0 {
                                 BrokerStateNode::BrokerState(_, _, field_10, _, _, _, _) => {
                                     let lawspecfieldproducers_9 = field_10.clone();
                                     lawspecfieldproducers_9.clone()
                                 }
                             }.get(&pid_1).cloned();
-                            match &matched_11 {
+                            match &it_11 {
                                 None => {
                                     {
                                         ls::raise_failure("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls::fast::Dyn::to_dyn(&KafkaError::InvalidProducerIdMapping));
@@ -15948,8 +16592,8 @@ pub mod typed {
                                     }
                                 }
                                 Some(field_13) => {
-                                    let entry_12 = field_13.clone();
-                                    if (epoch_2 < match &*entry_12.0 {
+                                    let v_match__lawspecselection0x0_0_12 = field_13.clone();
+                                    if (epoch_2 < match &*v_match__lawspecselection0x0_0_12.0 {
                                         ProducerEntryNode::ProducerEntry(field_15, _, _) => {
                                             let lawspecfieldepoch_14 = field_15.clone();
                                             lawspecfieldepoch_14
@@ -15960,7 +16604,7 @@ pub mod typed {
                                             unreachable!()
                                         }
                                     } else {
-                                        if (epoch_2 > match &*entry_12.0 {
+                                        if (epoch_2 > match &*v_match__lawspecselection0x0_0_12.0 {
                                             ProducerEntryNode::ProducerEntry(field_17, _, _) => {
                                                 let lawspecfieldepoch_16 = field_17.clone();
                                                 lawspecfieldepoch_16
@@ -15971,7 +16615,7 @@ pub mod typed {
                                                 unreachable!()
                                             }
                                         } else {
-                                            entry_12.clone()
+                                            v_match__lawspecselection0x0_0_12.clone()
                                         }
                                     }
                                 }
@@ -15990,61 +16634,64 @@ pub mod typed {
         mut b_2: BrokerState,
     ) -> ls::Result<BrokerState> {
         loop {
-            return Ok(match offsets_1.uncons() {
-                None => {
-                    b_2.clone()
-                }
-                Some((field_5, field_6)) => {
-                    let o_3 = field_5.clone();
-                    let rest_4 = field_6.clone();
-                    {
-                        let next_26 = rest_4.clone();
-                        let next_27 = {
-                            let replacement_13 = match &*b_2.0 {
-                                BrokerStateNode::BrokerState(_, _, _, _, _, _, field_12) => {
-                                    let lawspecfieldcommitted_11 = field_12.clone();
-                                    lawspecfieldcommitted_11.clone()
-                                }
-                            }.insert(
-                                GroupPartition(std::sync::Arc::new(GroupPartitionNode::GroupPartition(
-                                    g_0.clone(),
-                                    match &*o_3.0 {
-                                        OffsetEntryNode::OffsetEntry(field_8, _) => {
-                                            let lawspecfieldtopicpartition_7 = field_8.clone();
-                                            lawspecfieldtopicpartition_7.clone()
-                                        }
-                                    },
-                                ))),
-                                match &*o_3.0 {
-                                    OffsetEntryNode::OffsetEntry(_, field_10) => {
-                                        let lawspecfieldoffset_9 = field_10.clone();
-                                        lawspecfieldoffset_9
+            return Ok({
+                let it_3 = offsets_1.clone();
+                match it_3.uncons() {
+                    None => {
+                        b_2.clone()
+                    }
+                    Some((field_6, field_7)) => {
+                        let v_lawspecselection0x0_4 = field_6.clone();
+                        let v_lawspecselection0x1_5 = field_7.clone();
+                        {
+                            let next_29 = v_lawspecselection0x1_5.clone();
+                            let next_30 = {
+                                let replacement_16 = match &*b_2.0 {
+                                    BrokerStateNode::BrokerState(_, _, _, _, _, _, field_15) => {
+                                        let lawspecfieldcommitted_14 = field_15.clone();
+                                        lawspecfieldcommitted_14.clone()
                                     }
-                                },
-                            );
-                            match &*b_2.0 {
-                                BrokerStateNode::BrokerState(field_20, field_21, field_22, field_23, field_24, field_25, _) => {
-                                    let lawspecfieldtopics_14 = field_20.clone();
-                                    let lawspecfieldlogs_15 = field_21.clone();
-                                    let lawspecfieldproducers_16 = field_22.clone();
-                                    let lawspecfieldtransactionalids_17 = field_23.clone();
-                                    let lawspecfieldnextproducerid_18 = field_24.clone();
-                                    let lawspecfieldgroups_19 = field_25.clone();
-                                    BrokerState(std::sync::Arc::new(BrokerStateNode::BrokerState(
-                                        lawspecfieldtopics_14.clone(),
-                                        lawspecfieldlogs_15.clone(),
-                                        lawspecfieldproducers_16.clone(),
-                                        lawspecfieldtransactionalids_17.clone(),
-                                        lawspecfieldnextproducerid_18,
-                                        lawspecfieldgroups_19.clone(),
-                                        replacement_13.clone(),
-                                    )))
+                                }.insert({
+                                        let v_lawspecrecordfield0_8 = g_0.clone();
+                                        {
+                                            let v_lawspecrecordfield1_11 = match &*v_lawspecselection0x0_4.0 {
+                                                OffsetEntryNode::OffsetEntry(field_10, _) => {
+                                                    let lawspecfieldtopicpartition_9 = field_10.clone();
+                                                    lawspecfieldtopicpartition_9.clone()
+                                                }
+                                            };
+                                            GroupPartition(std::sync::Arc::new(GroupPartitionNode::GroupPartition(v_lawspecrecordfield0_8.clone(), v_lawspecrecordfield1_11.clone())))
+                                        }
+                                    }, match &*v_lawspecselection0x0_4.0 {
+                                        OffsetEntryNode::OffsetEntry(_, field_13) => {
+                                            let lawspecfieldoffset_12 = field_13.clone();
+                                            lawspecfieldoffset_12
+                                        }
+                                    });
+                                match &*b_2.0 {
+                                    BrokerStateNode::BrokerState(field_23, field_24, field_25, field_26, field_27, field_28, _) => {
+                                        let lawspecfieldtopics_17 = field_23.clone();
+                                        let lawspecfieldlogs_18 = field_24.clone();
+                                        let lawspecfieldproducers_19 = field_25.clone();
+                                        let lawspecfieldtransactionalids_20 = field_26.clone();
+                                        let lawspecfieldnextproducerid_21 = field_27.clone();
+                                        let lawspecfieldgroups_22 = field_28.clone();
+                                        BrokerState(std::sync::Arc::new(BrokerStateNode::BrokerState(
+                                            lawspecfieldtopics_17.clone(),
+                                            lawspecfieldlogs_18.clone(),
+                                            lawspecfieldproducers_19.clone(),
+                                            lawspecfieldtransactionalids_20.clone(),
+                                            lawspecfieldnextproducerid_21,
+                                            lawspecfieldgroups_22.clone(),
+                                            replacement_16.clone(),
+                                        )))
+                                    }
                                 }
-                            }
-                        };
-                        offsets_1 = next_26;
-                        b_2 = next_27;
-                        continue
+                            };
+                            offsets_1 = next_29;
+                            b_2 = next_30;
+                            continue
+                        }
                     }
                 }
             });
@@ -16075,11 +16722,8 @@ pub mod typed {
         b_2: BrokerState,
     ) -> ls::Result<Pair<(), BrokerState>> {
         Ok({
-            let matched_3 = lawtwinKafkaModelPartitionCountOf_ff180c35(
-                name_0.clone(),
-                b_2.clone(),
-            )?;
-            match &matched_3 {
+            let it_3 = lawtwinKafkaModelPartitionCountOf_ff180c35(name_0.clone(), b_2.clone())?;
+            match &it_3 {
                 None => {
                     {
                         ls::raise_failure("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls::fast::Dyn::to_dyn(&KafkaError::UnknownTopicOrPartition));
@@ -16087,8 +16731,8 @@ pub mod typed {
                     }
                 }
                 Some(field_5) => {
-                    let n_4 = field_5.clone();
-                    if ((total_1 <= n_4) || (total_1 > lawtwinKafkaModelMaxPartitions_6be37992(
+                    let v_lawspecselection0x0_4 = field_5.clone();
+                    if ((total_1 <= v_lawspecselection0x0_4) || (total_1 > lawtwinKafkaModelMaxPartitions_6be37992(
                         (),
                     )?)) {
                         {
@@ -16143,11 +16787,11 @@ pub mod typed {
                 }
             } else {
                 {
-                    let matched_3 = lawtwinKafkaModelPartitionCountOf_ff180c35(
+                    let it_3 = lawtwinKafkaModelPartitionCountOf_ff180c35(
                         name_0.clone(),
                         b_2.clone(),
                     )?;
-                    match &matched_3 {
+                    match &it_3 {
                         Some(_) => {
                             {
                                 ls::raise_failure("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls::fast::Dyn::to_dyn(&KafkaError::TopicAlreadyExists));
@@ -16191,20 +16835,23 @@ pub mod typed {
     ) -> ls::Result<Pair<GroupView, BrokerState>> {
         Ok({
             let group_2 = lawtwinKafkaModelGroupOf_abe7cb22(g_0.clone(), b_1.clone())?;
-            Pair(std::sync::Arc::new(PairNode::Pair(
-                GroupView(std::sync::Arc::new(GroupViewNode::GroupView(match &*group_2.0 {
+            Pair(std::sync::Arc::new(PairNode::Pair({
+                    let v_lawspecrecordfield0_5 = match &*group_2.0 {
                         GroupNode::Group(field_4, _, _) => {
                             let lawspecfieldgroupgeneration_3 = field_4.clone();
                             lawspecfieldgroupgeneration_3
                         }
-                    }, lawtwinKafkaModelMemberViews_a87b1b1a(match &*group_2.0 {
-                            GroupNode::Group(_, _, field_6) => {
-                                let lawspecfieldassignment_5 = field_6.clone();
-                                lawspecfieldassignment_5.clone()
-                            }
-                        }.to_list(make_entry))?))),
-                b_1.clone(),
-            )))
+                    };
+                    {
+                        let v_lawspecrecordfield1_8 = lawtwinKafkaModelMemberViews_a87b1b1a(match &*group_2.0 {
+                                GroupNode::Group(_, _, field_7) => {
+                                    let lawspecfieldassignment_6 = field_7.clone();
+                                    lawspecfieldassignment_6.clone()
+                                }
+                            }.to_list(make_entry))?;
+                        GroupView(std::sync::Arc::new(GroupViewNode::GroupView(v_lawspecrecordfield0_5, v_lawspecrecordfield1_8.clone())))
+                    }
+                }, b_1.clone())))
         })
     }
 
@@ -16214,19 +16861,25 @@ pub mod typed {
         mut a_1: ls::fast::Map<ls::fast::Text, ls::fast::List<TopicPartition>>,
     ) -> ls::Result<ls::fast::Map<ls::fast::Text, ls::fast::List<TopicPartition>>> {
         loop {
-            return Ok(match members_0.uncons() {
-                None => {
-                    a_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let m_2 = field_4.clone();
-                    let rest_3 = field_5.clone();
-                    {
-                        let next_6 = rest_3.clone();
-                        let next_7 = a_1.clone().insert(m_2.clone(), ls::fast::List::nil());
-                        members_0 = next_6;
-                        a_1 = next_7;
-                        continue
+            return Ok({
+                let it_2 = members_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        a_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let next_7 = v_lawspecselection0x1_4.clone();
+                            let next_8 = a_1.clone().insert(
+                                v_lawspecselection0x0_3.clone(),
+                                ls::fast::List::nil(),
+                            );
+                            members_0 = next_7;
+                            a_1 = next_8;
+                            continue
+                        }
                     }
                 }
             });
@@ -16235,35 +16888,80 @@ pub mod typed {
 
     /// lawtwin.kafka::lawtwinKafkaModelEmptyBroker
     pub fn lawtwinKafkaModelEmptyBroker_d5fd8237(u_0: ()) -> ls::Result<BrokerState> {
-        Ok(BrokerState(std::sync::Arc::new(BrokerStateNode::BrokerState(
-            ls::fast::Map::new(),
-            ls::fast::Map::new(),
-            ls::fast::Map::new(),
-            ls::fast::Map::new(),
-            0i64,
-            ls::fast::Map::new(),
-            ls::fast::Map::new(),
-        ))))
+        Ok({
+            let v_lawspecrecordfield0_1 = ls::fast::Map::new();
+            {
+                let v_lawspecrecordfield1_2 = ls::fast::Map::new();
+                {
+                    let v_lawspecrecordfield2_3 = ls::fast::Map::new();
+                    {
+                        let v_lawspecrecordfield3_4 = ls::fast::Map::new();
+                        {
+                            let v_lawspecrecordfield4_5 = 0i64;
+                            {
+                                let v_lawspecrecordfield5_6 = ls::fast::Map::new();
+                                {
+                                    let v_lawspecrecordfield6_7 = ls::fast::Map::new();
+                                    BrokerState(std::sync::Arc::new(BrokerStateNode::BrokerState(
+                                        v_lawspecrecordfield0_1.clone(),
+                                        v_lawspecrecordfield1_2.clone(),
+                                        v_lawspecrecordfield2_3.clone(),
+                                        v_lawspecrecordfield3_4.clone(),
+                                        v_lawspecrecordfield4_5,
+                                        v_lawspecrecordfield5_6.clone(),
+                                        v_lawspecrecordfield6_7.clone(),
+                                    )))
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        })
     }
 
     /// lawtwin.kafka::lawtwinKafkaModelEmptyGroup
     pub fn lawtwinKafkaModelEmptyGroup_2fc4809b(u_0: ()) -> ls::Result<Group> {
-        Ok(Group(std::sync::Arc::new(GroupNode::Group(
-            0i32,
-            ls::fast::Map::new(),
-            ls::fast::Map::new(),
-        ))))
+        Ok({
+            let v_lawspecrecordfield0_1 = 0i32;
+            {
+                let v_lawspecrecordfield1_2 = ls::fast::Map::new();
+                {
+                    let v_lawspecrecordfield2_3 = ls::fast::Map::new();
+                    Group(std::sync::Arc::new(GroupNode::Group(
+                        v_lawspecrecordfield0_1,
+                        v_lawspecrecordfield1_2.clone(),
+                        v_lawspecrecordfield2_3.clone(),
+                    )))
+                }
+            }
+        })
     }
 
     /// lawtwin.kafka::lawtwinKafkaModelEmptyLog
     pub fn lawtwinKafkaModelEmptyLog_a7825ed0(u_0: ()) -> ls::Result<PartitionLog> {
-        Ok(PartitionLog(std::sync::Arc::new(PartitionLogNode::PartitionLog(
-            ls::fast::List::nil(),
-            0i64,
-            ls::fast::Map::new(),
-            ls::fast::List::nil(),
-            ls::fast::Map::new(),
-        ))))
+        Ok({
+            let v_lawspecrecordfield0_1 = ls::fast::List::nil();
+            {
+                let v_lawspecrecordfield1_2 = 0i64;
+                {
+                    let v_lawspecrecordfield2_3 = ls::fast::Map::new();
+                    {
+                        let v_lawspecrecordfield3_4 = ls::fast::List::nil();
+                        {
+                            let v_lawspecrecordfield4_5 = ls::fast::Map::new();
+                            PartitionLog(std::sync::Arc::new(PartitionLogNode::PartitionLog(
+                                v_lawspecrecordfield0_1.clone(),
+                                v_lawspecrecordfield1_2,
+                                v_lawspecrecordfield2_3.clone(),
+                                v_lawspecrecordfield3_4.clone(),
+                                v_lawspecrecordfield4_5.clone(),
+                            )))
+                        }
+                    }
+                }
+            }
+        })
     }
 
     /// lawtwin.kafka::lawtwinKafkaModelEndTxn
@@ -16282,38 +16980,55 @@ pub mod typed {
                 b_4.clone(),
             )?;
             {
-                let matched_8 = match &*entry_5.0 {
+                let it_8 = match &*entry_5.0 {
                     ProducerEntryNode::ProducerEntry(_, _, field_7) => {
                         let lawspecfieldtxn_6 = field_7.clone();
                         lawspecfieldtxn_6.clone()
                     }
                 };
-                match &*matched_8.0 {
+                match &*it_8.0 {
                     TxnStateNode::NoTxn => {
                         {
                             ls::raise_failure("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls::fast::Dyn::to_dyn(&KafkaError::InvalidTxnState));
                             unreachable!()
                         }
                     }
-                    TxnStateNode::Ongoing(_, _) => {
-                        Pair(std::sync::Arc::new(PairNode::Pair(
-                            (),
-                            lawtwinKafkaModelPutProducer_4ef907a5(pid_1, {
-                                    let replacement_9 = TxnState(std::sync::Arc::new(TxnStateNode::NoTxn));
-                                    match &*entry_5.0 {
-                                        ProducerEntryNode::ProducerEntry(field_12, field_13, _) => {
-                                            let lawspecfieldepoch_10 = field_12.clone();
-                                            let lawspecfieldtransactionalid_11 = field_13.clone();
-                                            ProducerEntry(std::sync::Arc::new(ProducerEntryNode::ProducerEntry(lawspecfieldepoch_10, lawspecfieldtransactionalid_11.clone(), replacement_9.clone())))
-                                        }
+                    TxnStateNode::Ongoing(field_10) => {
+                        let v_lawspecselection0x0_9 = field_10.clone();
+                        {
+                            let v_lawspecselection1x0_13 = match &*v_lawspecselection0x0_9.0 {
+                                Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(_, field_12) => {
+                                    let lawspecfieldtxnpartitions_11 = field_12.clone();
+                                    lawspecfieldtxnpartitions_11.clone()
+                                }
+                            };
+                            {
+                                let v_lawspecselection1x1_16 = match &*v_lawspecselection0x0_9.0 {
+                                    Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(field_15, _) => {
+                                        let lawspecfieldtxnoffsets_14 = field_15.clone();
+                                        lawspecfieldtxnoffsets_14.clone()
                                     }
-                                }, lawtwinKafkaModelFinishTxn_7545803e(pid_1, commit_3, match &*entry_5.0 {
-                                        ProducerEntryNode::ProducerEntry(_, _, field_15) => {
-                                            let lawspecfieldtxn_14 = field_15.clone();
-                                            lawspecfieldtxn_14.clone()
-                                        }
-                                    }, b_4.clone())?)?,
-                        )))
+                                };
+                                Pair(std::sync::Arc::new(PairNode::Pair(
+                                    (),
+                                    lawtwinKafkaModelPutProducer_4ef907a5(pid_1, {
+                                            let replacement_17 = TxnState(std::sync::Arc::new(TxnStateNode::NoTxn));
+                                            match &*entry_5.0 {
+                                                ProducerEntryNode::ProducerEntry(field_20, field_21, _) => {
+                                                    let lawspecfieldepoch_18 = field_20.clone();
+                                                    let lawspecfieldtransactionalid_19 = field_21.clone();
+                                                    ProducerEntry(std::sync::Arc::new(ProducerEntryNode::ProducerEntry(lawspecfieldepoch_18, lawspecfieldtransactionalid_19.clone(), replacement_17.clone())))
+                                                }
+                                            }
+                                        }, lawtwinKafkaModelFinishTxn_7545803e(pid_1, commit_3, match &*entry_5.0 {
+                                                ProducerEntryNode::ProducerEntry(_, _, field_23) => {
+                                                    let lawspecfieldtxn_22 = field_23.clone();
+                                                    lawspecfieldtxn_22.clone()
+                                                }
+                                            }, b_4.clone())?)?,
+                                )))
+                            }
+                        }
                     }
                 }
             }
@@ -16325,26 +17040,31 @@ pub mod typed {
         epoch_0: i16,
         ms_1: ls::fast::List<BatchMeta>,
     ) -> ls::Result<i32> {
-        Ok(match ms_1.uncons() {
-            None => {
-                0i32
-            }
-            Some((field_3, _)) => {
-                let m_2 = field_3.clone();
-                if (match &*m_2.0 {
-                    BatchMetaNode::BatchMeta(field_5, _, _, _) => {
-                        let lawspecfieldbatchepoch_4 = field_5.clone();
-                        lawspecfieldbatchepoch_4
-                    }
-                } == epoch_0) {
-                    saturatingInt32_9e8d3b43(ls::fast::Int::from_i128(((match &*m_2.0 {
-                            BatchMetaNode::BatchMeta(_, _, field_7, _) => {
-                                let lawspecfieldlastsequence_6 = field_7.clone();
-                                lawspecfieldlastsequence_6
-                            }
-                        } as i128) + 1i128)))?
-                } else {
+        Ok({
+            let it_2 = ms_1.clone();
+            match it_2.uncons() {
+                None => {
                     0i32
+                }
+                Some((field_4, _)) => {
+                    let v_lawspecselection0x0_3 = field_4.clone();
+                    if (match &*v_lawspecselection0x0_3.0 {
+                        BatchMetaNode::BatchMeta(field_6, _, _, _) => {
+                            let lawspecfieldbatchepoch_5 = field_6.clone();
+                            lawspecfieldbatchepoch_5
+                        }
+                    } == epoch_0) {
+                        saturatingInt32_9e8d3b43(
+                            ls::fast::Int::from_i128(((match &*v_lawspecselection0x0_3.0 {
+                                BatchMetaNode::BatchMeta(_, _, field_8, _) => {
+                                    let lawspecfieldlastsequence_7 = field_8.clone();
+                                    lawspecfieldlastsequence_7
+                                }
+                            } as i128) + 1i128)),
+                        )?
+                    } else {
+                        0i32
+                    }
                 }
             }
         })
@@ -16377,55 +17097,57 @@ pub mod typed {
                             }
                         } else {
                             {
-                                let committedonly_8 = match isolation_3 {
-                                    IsolationLevel::ReadUncommitted => {
-                                        false
-                                    }
-                                    IsolationLevel::ReadCommitted => {
-                                        true
+                                let committedonly_9 = {
+                                    let it_8 = isolation_3;
+                                    match it_8 {
+                                        IsolationLevel::ReadUncommitted => {
+                                            false
+                                        }
+                                        IsolationLevel::ReadCommitted => {
+                                            true
+                                        }
                                     }
                                 };
                                 {
-                                    let limit_9 = if committedonly_8 {
+                                    let limit_10 = if committedonly_9 {
                                         lso_7
                                     } else {
                                         hw_6
                                     };
                                     {
-                                        let all_14 = lawtwinKafkaModelReadable_adec3284(
+                                        let all_15 = lawtwinKafkaModelReadable_adec3284(
                                             match &*l_5.0 {
-                                                PartitionLogNode::PartitionLog(field_11, _, _, _, _) => {
-                                                    let lawspecfieldentries_10 = field_11.clone();
-                                                    lawspecfieldentries_10.clone()
+                                                PartitionLogNode::PartitionLog(field_12, _, _, _, _) => {
+                                                    let lawspecfieldentries_11 = field_12.clone();
+                                                    lawspecfieldentries_11.clone()
                                                 }
                                             },
                                             from_1,
-                                            limit_9,
-                                            committedonly_8,
+                                            limit_10,
+                                            committedonly_9,
                                             match &*l_5.0 {
-                                                PartitionLogNode::PartitionLog(_, _, _, field_13, _) => {
-                                                    let lawspecfieldabortedtxns_12 = field_13.clone();
-                                                    lawspecfieldabortedtxns_12.clone()
+                                                PartitionLogNode::PartitionLog(_, _, _, field_14, _) => {
+                                                    let lawspecfieldabortedtxns_13 = field_14.clone();
+                                                    lawspecfieldabortedtxns_13.clone()
                                                 }
                                             },
                                             ls::fast::List::nil(),
                                         )?;
                                         {
-                                            let taken_15 = ls::fast::slice_list(&all_14.clone(), &ls::fast::Int::from_i128(0i128), &ls::fast::Int::from_i128((maxrecords_2 as i128)));
-                                            Pair(std::sync::Arc::new(PairNode::Pair(
-                                                FetchResult(std::sync::Arc::new(FetchResultNode::FetchResult(
-                                                    taken_15.clone(),
-                                                    lawtwinKafkaModelNextFetchOffset_28fd5a97(
-                                                        from_1,
-                                                        limit_9,
-                                                        taken_15.clone(),
-                                                        all_14.clone(),
-                                                    )?,
-                                                    hw_6,
-                                                    lso_7,
-                                                ))),
-                                                b_4.clone(),
-                                            )))
+                                            let taken_16 = ls::fast::slice_list(&all_15.clone(), &ls::fast::Int::from_i128(0i128), &ls::fast::Int::from_i128((maxrecords_2 as i128)));
+                                            Pair(std::sync::Arc::new(PairNode::Pair({
+                                                    let v_lawspecrecordfield0_17 = taken_16.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_18 = lawtwinKafkaModelNextFetchOffset_28fd5a97(from_1, limit_10, taken_16.clone(), all_15.clone())?;
+                                                        {
+                                                            let v_lawspecrecordfield2_19 = hw_6;
+                                                            {
+                                                                let v_lawspecrecordfield3_20 = lso_7;
+                                                                FetchResult(std::sync::Arc::new(FetchResultNode::FetchResult(v_lawspecrecordfield0_17.clone(), v_lawspecrecordfield1_18, v_lawspecrecordfield2_19, v_lawspecrecordfield3_20)))
+                                                            }
+                                                        }
+                                                    }
+                                                }, b_4.clone())))
                                         }
                                     }
                                 }
@@ -16445,40 +17167,43 @@ pub mod typed {
         mut ms_3: ls::fast::List<BatchMeta>,
     ) -> ls::Result<Option<i64>> {
         loop {
-            return Ok(match ms_3.uncons() {
-                None => {
-                    None
-                }
-                Some((field_6, field_7)) => {
-                    let m_4 = field_6.clone();
-                    let rest_5 = field_7.clone();
-                    if (((match &*m_4.0 {
-                        BatchMetaNode::BatchMeta(field_9, _, _, _) => {
-                            let lawspecfieldbatchepoch_8 = field_9.clone();
-                            lawspecfieldbatchepoch_8
-                        }
-                    } == epoch_0) && (match &*m_4.0 {
-                        BatchMetaNode::BatchMeta(_, field_11, _, _) => {
-                            let lawspecfieldfirstsequence_10 = field_11.clone();
-                            lawspecfieldfirstsequence_10
-                        }
-                    } == first_1)) && (match &*m_4.0 {
-                        BatchMetaNode::BatchMeta(_, _, field_13, _) => {
-                            let lawspecfieldlastsequence_12 = field_13.clone();
-                            lawspecfieldlastsequence_12
-                        }
-                    } == last_2)) {
-                        Some(match &*m_4.0 {
-                            BatchMetaNode::BatchMeta(_, _, _, field_15) => {
-                                let lawspecfieldbatchoffset_14 = field_15.clone();
-                                lawspecfieldbatchoffset_14
+            return Ok({
+                let it_4 = ms_3.clone();
+                match it_4.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_7, field_8)) => {
+                        let v_lawspecselection0x0_5 = field_7.clone();
+                        let v_lawspecselection0x1_6 = field_8.clone();
+                        if (((match &*v_lawspecselection0x0_5.0 {
+                            BatchMetaNode::BatchMeta(field_10, _, _, _) => {
+                                let lawspecfieldbatchepoch_9 = field_10.clone();
+                                lawspecfieldbatchepoch_9
                             }
-                        })
-                    } else {
-                        {
-                            let next_16 = rest_5.clone();
-                            ms_3 = next_16;
-                            continue
+                        } == epoch_0) && (match &*v_lawspecselection0x0_5.0 {
+                            BatchMetaNode::BatchMeta(_, field_12, _, _) => {
+                                let lawspecfieldfirstsequence_11 = field_12.clone();
+                                lawspecfieldfirstsequence_11
+                            }
+                        } == first_1)) && (match &*v_lawspecselection0x0_5.0 {
+                            BatchMetaNode::BatchMeta(_, _, field_14, _) => {
+                                let lawspecfieldlastsequence_13 = field_14.clone();
+                                lawspecfieldlastsequence_13
+                            }
+                        } == last_2)) {
+                            Some(match &*v_lawspecselection0x0_5.0 {
+                                BatchMetaNode::BatchMeta(_, _, _, field_16) => {
+                                    let lawspecfieldbatchoffset_15 = field_16.clone();
+                                    lawspecfieldbatchoffset_15
+                                }
+                            })
+                        } else {
+                            {
+                                let next_17 = v_lawspecselection0x1_6.clone();
+                                ms_3 = next_17;
+                                continue
+                            }
                         }
                     }
                 }
@@ -16493,30 +17218,48 @@ pub mod typed {
         txn_2: TxnState,
         b_3: BrokerState,
     ) -> ls::Result<BrokerState> {
-        Ok(match &*txn_2.0 {
-            TxnStateNode::NoTxn => {
-                b_3.clone()
-            }
-            TxnStateNode::Ongoing(field_6, field_7) => {
-                let ps_4 = field_6.clone();
-                let os_5 = field_7.clone();
-                {
-                    let marked_8 = lawtwinKafkaModelWriteMarkers_c507f08e(
-                        pid_0,
-                        commit_1,
-                        ps_4.clone(),
-                        b_3.clone(),
-                    )?;
-                    if commit_1 {
-                        lawtwinKafkaModelApplyOffsets_c0f73b56(
-                            lawtwinKafkaModelReversePending_51ca5898(
-                                os_5.clone(),
-                                ls::fast::List::nil(),
-                            )?,
-                            marked_8.clone(),
-                        )?
-                    } else {
-                        marked_8.clone()
+        Ok({
+            let it_4 = txn_2.clone();
+            match &*it_4.0 {
+                TxnStateNode::NoTxn => {
+                    b_3.clone()
+                }
+                TxnStateNode::Ongoing(field_6) => {
+                    let v_lawspecselection0x0_5 = field_6.clone();
+                    {
+                        let v_lawspecselection1x0_9 = match &*v_lawspecselection0x0_5.0 {
+                            Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(_, field_8) => {
+                                let lawspecfieldtxnpartitions_7 = field_8.clone();
+                                lawspecfieldtxnpartitions_7.clone()
+                            }
+                        };
+                        {
+                            let v_lawspecselection1x1_12 = match &*v_lawspecselection0x0_5.0 {
+                                Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(field_11, _) => {
+                                    let lawspecfieldtxnoffsets_10 = field_11.clone();
+                                    lawspecfieldtxnoffsets_10.clone()
+                                }
+                            };
+                            {
+                                let marked_13 = lawtwinKafkaModelWriteMarkers_c507f08e(
+                                    pid_0,
+                                    commit_1,
+                                    v_lawspecselection1x0_9.clone(),
+                                    b_3.clone(),
+                                )?;
+                                if commit_1 {
+                                    lawtwinKafkaModelApplyOffsets_c0f73b56(
+                                        lawtwinKafkaModelReversePending_51ca5898(
+                                            v_lawspecselection1x1_12.clone(),
+                                            ls::fast::List::nil(),
+                                        )?,
+                                        marked_13.clone(),
+                                    )?
+                                } else {
+                                    marked_13.clone()
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -16529,19 +17272,19 @@ pub mod typed {
         b_1: BrokerState,
     ) -> ls::Result<Group> {
         Ok({
-            let matched_4 = match &*b_1.0 {
+            let it_4 = match &*b_1.0 {
                 BrokerStateNode::BrokerState(_, _, _, _, _, field_3, _) => {
                     let lawspecfieldgroups_2 = field_3.clone();
                     lawspecfieldgroups_2.clone()
                 }
             }.get(&g_0.clone()).cloned();
-            match &matched_4 {
+            match &it_4 {
                 None => {
                     lawtwinKafkaModelEmptyGroup_2fc4809b(())?
                 }
                 Some(field_6) => {
-                    let group_5 = field_6.clone();
-                    group_5.clone()
+                    let v_lawspecselection0x0_5 = field_6.clone();
+                    v_lawspecselection0x0_5.clone()
                 }
             }
         })
@@ -16580,120 +17323,132 @@ pub mod typed {
         txid_0: Option<ls::fast::Text>,
         b_1: BrokerState,
     ) -> ls::Result<Pair<ProducerIdAndEpoch, BrokerState>> {
-        Ok(match &txid_0 {
-            None => {
-                lawtwinKafkaModelNewProducer_89b0852d(None, b_1.clone())?
-            }
-            Some(field_3) => {
-                let id_2 = field_3.clone();
-                if (id_2.clone() == ls::fast::text("")) {
-                    {
-                        ls::raise_failure("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls::fast::Dyn::to_dyn(&KafkaError::InvalidRequest));
-                        unreachable!()
-                    }
-                } else {
-                    {
-                        let matched_6 = match &*b_1.0 {
-                            BrokerStateNode::BrokerState(_, _, _, field_5, _, _, _) => {
-                                let lawspecfieldtransactionalids_4 = field_5.clone();
-                                lawspecfieldtransactionalids_4.clone()
-                            }
-                        }.get(&id_2.clone()).cloned();
-                        match &matched_6 {
-                            None => {
-                                lawtwinKafkaModelNewProducer_89b0852d(txid_0.clone(), b_1.clone())?
-                            }
-                            Some(field_8) => {
-                                let pid_7 = field_8.clone();
-                                {
-                                    let matched_11 = match &*b_1.0 {
-                                        BrokerStateNode::BrokerState(_, _, field_10, _, _, _, _) => {
-                                            let lawspecfieldproducers_9 = field_10.clone();
-                                            lawspecfieldproducers_9.clone()
-                                        }
-                                    }.get(&pid_7).cloned();
-                                    match &matched_11 {
-                                        None => {
-                                            lawtwinKafkaModelNewProducer_89b0852d(
-                                                txid_0.clone(),
-                                                b_1.clone(),
-                                            )?
-                                        }
-                                        Some(field_13) => {
-                                            let entry_12 = field_13.clone();
-                                            {
-                                                let cleared_16 = lawtwinKafkaModelFinishTxn_7545803e(
-                                                    pid_7,
-                                                    false,
-                                                    match &*entry_12.0 {
-                                                        ProducerEntryNode::ProducerEntry(_, _, field_15) => {
-                                                            let lawspecfieldtxn_14 = field_15.clone();
-                                                            lawspecfieldtxn_14.clone()
-                                                        }
-                                                    },
+        Ok({
+            let it_2 = txid_0.clone();
+            match &it_2 {
+                None => {
+                    lawtwinKafkaModelNewProducer_89b0852d(None, b_1.clone())?
+                }
+                Some(field_4) => {
+                    let v_lawspecselection0x0_3 = field_4.clone();
+                    if (v_lawspecselection0x0_3.clone() == ls::fast::text("")) {
+                        {
+                            ls::raise_failure("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls::fast::Dyn::to_dyn(&KafkaError::InvalidRequest));
+                            unreachable!()
+                        }
+                    } else {
+                        {
+                            let it_7 = match &*b_1.0 {
+                                BrokerStateNode::BrokerState(_, _, _, field_6, _, _, _) => {
+                                    let lawspecfieldtransactionalids_5 = field_6.clone();
+                                    lawspecfieldtransactionalids_5.clone()
+                                }
+                            }.get(&v_lawspecselection0x0_3.clone()).cloned();
+                            match &it_7 {
+                                None => {
+                                    lawtwinKafkaModelNewProducer_89b0852d(
+                                        txid_0.clone(),
+                                        b_1.clone(),
+                                    )?
+                                }
+                                Some(field_9) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_9.clone();
+                                    {
+                                        let it_12 = match &*b_1.0 {
+                                            BrokerStateNode::BrokerState(_, _, field_11, _, _, _, _) => {
+                                                let lawspecfieldproducers_10 = field_11.clone();
+                                                lawspecfieldproducers_10.clone()
+                                            }
+                                        }.get(&v_match__lawspecselection0x0_0_8).cloned();
+                                        match &it_12 {
+                                            None => {
+                                                lawtwinKafkaModelNewProducer_89b0852d(
+                                                    txid_0.clone(),
                                                     b_1.clone(),
-                                                )?;
-                                                if ((match &*entry_12.0 {
-                                                    ProducerEntryNode::ProducerEntry(field_18, _, _) => {
-                                                        let lawspecfieldepoch_17 = field_18.clone();
-                                                        lawspecfieldepoch_17
-                                                    }
-                                                } as i128) < 32767i128) {
-                                                    {
-                                                        let bumped_21 = saturatingInt16_770015a8(
-                                                            ls::fast::Int::from_i128(((match &*entry_12.0 {
-                                                                ProducerEntryNode::ProducerEntry(field_20, _, _) => {
-                                                                    let lawspecfieldepoch_19 = field_20.clone();
-                                                                    lawspecfieldepoch_19
-                                                                }
-                                                            } as i128) + 1i128)),
-                                                        )?;
-                                                        Pair(std::sync::Arc::new(PairNode::Pair(
-                                                            ProducerIdAndEpoch(std::sync::Arc::new(ProducerIdAndEpochNode::ProducerIdAndEpoch(
-                                                                pid_7,
-                                                                bumped_21,
-                                                            ))),
-                                                            lawtwinKafkaModelPutProducer_4ef907a5(
-                                                                pid_7,
+                                                )?
+                                            }
+                                            Some(field_14) => {
+                                                let v_match__match__lawspecselection0x0_0_0_13 = field_14.clone();
+                                                {
+                                                    let cleared_17 = lawtwinKafkaModelFinishTxn_7545803e(
+                                                        v_match__lawspecselection0x0_0_8,
+                                                        false,
+                                                        match &*v_match__match__lawspecselection0x0_0_0_13.0 {
+                                                            ProducerEntryNode::ProducerEntry(_, _, field_16) => {
+                                                                let lawspecfieldtxn_15 = field_16.clone();
+                                                                lawspecfieldtxn_15.clone()
+                                                            }
+                                                        },
+                                                        b_1.clone(),
+                                                    )?;
+                                                    if ((match &*v_match__match__lawspecselection0x0_0_0_13.0 {
+                                                        ProducerEntryNode::ProducerEntry(field_19, _, _) => {
+                                                            let lawspecfieldepoch_18 = field_19.clone();
+                                                            lawspecfieldepoch_18
+                                                        }
+                                                    } as i128) < 32767i128) {
+                                                        {
+                                                            let bumped_22 = saturatingInt16_770015a8(
+                                                                ls::fast::Int::from_i128(((match &*v_match__match__lawspecselection0x0_0_0_13.0 {
+                                                                    ProducerEntryNode::ProducerEntry(field_21, _, _) => {
+                                                                        let lawspecfieldepoch_20 = field_21.clone();
+                                                                        lawspecfieldepoch_20
+                                                                    }
+                                                                } as i128) + 1i128)),
+                                                            )?;
+                                                            Pair(std::sync::Arc::new(PairNode::Pair(
                                                                 {
-                                                                    let replacement_22 = TxnState(std::sync::Arc::new(TxnStateNode::NoTxn));
+                                                                    let v_lawspecrecordfield0_23 = v_match__lawspecselection0x0_0_8;
                                                                     {
-                                                                        let matched_28 = {
-                                                                            let replacement_23 = bumped_21;
-                                                                            match &*entry_12.0 {
-                                                                                ProducerEntryNode::ProducerEntry(_, field_26, field_27) => {
-                                                                                    let lawspecfieldtransactionalid_24 = field_26.clone();
-                                                                                    let lawspecfieldtxn_25 = field_27.clone();
+                                                                        let v_lawspecrecordfield1_24 = bumped_22;
+                                                                        ProducerIdAndEpoch(std::sync::Arc::new(ProducerIdAndEpochNode::ProducerIdAndEpoch(
+                                                                            v_lawspecrecordfield0_23,
+                                                                            v_lawspecrecordfield1_24,
+                                                                        )))
+                                                                    }
+                                                                },
+                                                                lawtwinKafkaModelPutProducer_4ef907a5(
+                                                                    v_match__lawspecselection0x0_0_8,
+                                                                    {
+                                                                        let replacement_25 = TxnState(std::sync::Arc::new(TxnStateNode::NoTxn));
+                                                                        {
+                                                                            let matched_31 = {
+                                                                                let replacement_26 = bumped_22;
+                                                                                match &*v_match__match__lawspecselection0x0_0_0_13.0 {
+                                                                                    ProducerEntryNode::ProducerEntry(_, field_29, field_30) => {
+                                                                                        let lawspecfieldtransactionalid_27 = field_29.clone();
+                                                                                        let lawspecfieldtxn_28 = field_30.clone();
+                                                                                        ProducerEntry(std::sync::Arc::new(ProducerEntryNode::ProducerEntry(
+                                                                                            replacement_26,
+                                                                                            lawspecfieldtransactionalid_27.clone(),
+                                                                                            lawspecfieldtxn_28.clone(),
+                                                                                        )))
+                                                                                    }
+                                                                                }
+                                                                            };
+                                                                            match &*matched_31.0 {
+                                                                                ProducerEntryNode::ProducerEntry(field_34, field_35, _) => {
+                                                                                    let lawspecfieldepoch_32 = field_34.clone();
+                                                                                    let lawspecfieldtransactionalid_33 = field_35.clone();
                                                                                     ProducerEntry(std::sync::Arc::new(ProducerEntryNode::ProducerEntry(
-                                                                                        replacement_23,
-                                                                                        lawspecfieldtransactionalid_24.clone(),
-                                                                                        lawspecfieldtxn_25.clone(),
+                                                                                        lawspecfieldepoch_32,
+                                                                                        lawspecfieldtransactionalid_33.clone(),
+                                                                                        replacement_25.clone(),
                                                                                     )))
                                                                                 }
                                                                             }
-                                                                        };
-                                                                        match &*matched_28.0 {
-                                                                            ProducerEntryNode::ProducerEntry(field_31, field_32, _) => {
-                                                                                let lawspecfieldepoch_29 = field_31.clone();
-                                                                                let lawspecfieldtransactionalid_30 = field_32.clone();
-                                                                                ProducerEntry(std::sync::Arc::new(ProducerEntryNode::ProducerEntry(
-                                                                                    lawspecfieldepoch_29,
-                                                                                    lawspecfieldtransactionalid_30.clone(),
-                                                                                    replacement_22.clone(),
-                                                                                )))
-                                                                            }
                                                                         }
-                                                                    }
-                                                                },
-                                                                cleared_16.clone(),
-                                                            )?,
-                                                        )))
+                                                                    },
+                                                                    cleared_17.clone(),
+                                                                )?,
+                                                            )))
+                                                        }
+                                                    } else {
+                                                        lawtwinKafkaModelNewProducer_89b0852d(
+                                                            txid_0.clone(),
+                                                            cleared_17.clone(),
+                                                        )?
                                                     }
-                                                } else {
-                                                    lawtwinKafkaModelNewProducer_89b0852d(
-                                                        txid_0.clone(),
-                                                        cleared_16.clone(),
-                                                    )?
                                                 }
                                             }
                                         }
@@ -16713,29 +17468,36 @@ pub mod typed {
         offset_1: i64,
         aborted_2: ls::fast::List<AbortedTxn>,
     ) -> ls::Result<bool> {
-        Ok(match aborted_2.uncons() {
-            None => {
-                false
-            }
-            Some((field_5, field_6)) => {
-                let a_3 = field_5.clone();
-                let rest_4 = field_6.clone();
-                ((((match &*a_3.0 {
-                    AbortedTxnNode::AbortedTxn(field_8, _, _) => {
-                        let lawspecfieldabortedwriter_7 = field_8.clone();
-                        lawspecfieldabortedwriter_7
-                    }
-                } == writer_0) && (offset_1 >= match &*a_3.0 {
-                    AbortedTxnNode::AbortedTxn(_, field_10, _) => {
-                        let lawspecfieldfirstoffset_9 = field_10.clone();
-                        lawspecfieldfirstoffset_9
-                    }
-                })) && (offset_1 <= match &*a_3.0 {
-                    AbortedTxnNode::AbortedTxn(_, _, field_12) => {
-                        let lawspecfieldlastoffset_11 = field_12.clone();
-                        lawspecfieldlastoffset_11
-                    }
-                })) || lawtwinKafkaModelIsAborted_b12645e5(writer_0, offset_1, rest_4.clone())?)
+        Ok({
+            let it_3 = aborted_2.clone();
+            match it_3.uncons() {
+                None => {
+                    false
+                }
+                Some((field_6, field_7)) => {
+                    let v_lawspecselection0x0_4 = field_6.clone();
+                    let v_lawspecselection0x1_5 = field_7.clone();
+                    ((((match &*v_lawspecselection0x0_4.0 {
+                        AbortedTxnNode::AbortedTxn(field_9, _, _) => {
+                            let lawspecfieldabortedwriter_8 = field_9.clone();
+                            lawspecfieldabortedwriter_8
+                        }
+                    } == writer_0) && (offset_1 >= match &*v_lawspecselection0x0_4.0 {
+                        AbortedTxnNode::AbortedTxn(_, field_11, _) => {
+                            let lawspecfieldfirstoffset_10 = field_11.clone();
+                            lawspecfieldfirstoffset_10
+                        }
+                    })) && (offset_1 <= match &*v_lawspecselection0x0_4.0 {
+                        AbortedTxnNode::AbortedTxn(_, _, field_13) => {
+                            let lawspecfieldlastoffset_12 = field_13.clone();
+                            lawspecfieldlastoffset_12
+                        }
+                    })) || lawtwinKafkaModelIsAborted_b12645e5(
+                        writer_0,
+                        offset_1,
+                        v_lawspecselection0x1_5.clone(),
+                    )?)
+                }
             }
         })
     }
@@ -16770,16 +17532,16 @@ pub mod typed {
                             }
                         };
                         {
-                            let matched_10 = match &*group_4.0 {
+                            let it_10 = match &*group_4.0 {
                                 GroupNode::Group(_, field_9, _) => {
                                     let lawspecfieldsubscriptions_8 = field_9.clone();
                                     lawspecfieldsubscriptions_8.clone()
                                 }
                             }.get(&member_1.clone()).cloned();
-                            match &matched_10 {
+                            match &it_10 {
                                 Some(field_12) => {
-                                    let existing_11 = field_12.clone();
-                                    if (existing_11.clone() == wanted_7.clone()) {
+                                    let v_lawspecselection0x0_11 = field_12.clone();
+                                    if (v_lawspecselection0x0_11.clone() == wanted_7.clone()) {
                                         Pair(std::sync::Arc::new(PairNode::Pair(match &*group_4.0 {
                                                 GroupNode::Group(field_14, _, _) => {
                                                     let lawspecfieldgroupgeneration_13 = field_14.clone();
@@ -16858,18 +17620,18 @@ pub mod typed {
         b_1: BrokerState,
     ) -> ls::Result<bool> {
         Ok({
-            let matched_4 = lawtwinKafkaModelPartitionCountOf_ff180c35(match &*tp_0.0 {
+            let it_4 = lawtwinKafkaModelPartitionCountOf_ff180c35(match &*tp_0.0 {
                     TopicPartitionNode::TopicPartition(field_3, _) => {
                         let lawspecfieldtopic_2 = field_3.clone();
                         lawspecfieldtopic_2.clone()
                     }
                 }, b_1.clone())?;
-            match &matched_4 {
+            match &it_4 {
                 None => {
                     false
                 }
                 Some(field_6) => {
-                    let n_5 = field_6.clone();
+                    let v_lawspecselection0x0_5 = field_6.clone();
                     (((match &*tp_0.0 {
                         TopicPartitionNode::TopicPartition(_, field_8) => {
                             let lawspecfieldpartition_7 = field_8.clone();
@@ -16880,7 +17642,7 @@ pub mod typed {
                             let lawspecfieldpartition_9 = field_10.clone();
                             lawspecfieldpartition_9
                         }
-                    } < n_5))
+                    } < v_lawspecselection0x0_5))
                 }
             }
         })
@@ -16889,27 +17651,30 @@ pub mod typed {
     /// lawtwin.kafka::lawtwinKafkaModelLastOffsetOf
     pub fn lawtwinKafkaModelLastOffsetOf_544a605b(
         mut rs_0: ls::fast::List<FetchedRecord>,
-        mut otherwise_1: i64,
+        mut fallbackoffset_1: i64,
     ) -> ls::Result<i64> {
         loop {
-            return Ok(match rs_0.uncons() {
-                None => {
-                    otherwise_1
-                }
-                Some((field_4, field_5)) => {
-                    let h_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    {
-                        let next_8 = t_3.clone();
-                        let next_9 = match &*h_2.0 {
-                            FetchedRecordNode::FetchedRecord(field_7, _) => {
-                                let lawspecfieldoffset_6 = field_7.clone();
-                                lawspecfieldoffset_6
-                            }
-                        };
-                        rs_0 = next_8;
-                        otherwise_1 = next_9;
-                        continue
+            return Ok({
+                let it_2 = rs_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        fallbackoffset_1
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let next_9 = v_lawspecselection0x1_4.clone();
+                            let next_10 = match &*v_lawspecselection0x0_3.0 {
+                                FetchedRecordNode::FetchedRecord(field_8, _) => {
+                                    let lawspecfieldoffset_7 = field_8.clone();
+                                    lawspecfieldoffset_7
+                                }
+                            };
+                            rs_0 = next_9;
+                            fallbackoffset_1 = next_10;
+                            continue
+                        }
                     }
                 }
             });
@@ -16940,13 +17705,13 @@ pub mod typed {
         Ok({
             let group_3 = lawtwinKafkaModelGroupOf_abe7cb22(g_0.clone(), b_2.clone())?;
             {
-                let matched_6 = match &*group_3.0 {
+                let it_6 = match &*group_3.0 {
                     GroupNode::Group(_, field_5, _) => {
                         let lawspecfieldsubscriptions_4 = field_5.clone();
                         lawspecfieldsubscriptions_4.clone()
                     }
                 }.get(&member_1.clone()).cloned();
-                match &matched_6 {
+                match &it_6 {
                     None => {
                         {
                             ls::raise_failure("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls::fast::Dyn::to_dyn(&KafkaError::UnknownMemberId));
@@ -16997,23 +17762,31 @@ pub mod typed {
         } else {
             {
                 let l_4 = lawtwinKafkaModelLogOf_b86b131a(tp_0.clone(), b_3.clone())?;
-                match spec_1 {
-                    OffsetSpec::Earliest => {
-                        Pair(std::sync::Arc::new(PairNode::Pair(0i64, b_3.clone())))
-                    }
-                    OffsetSpec::Latest => {
-                        match isolation_2 {
-                            IsolationLevel::ReadUncommitted => {
-                                Pair(std::sync::Arc::new(PairNode::Pair(
-                                    lawtwinKafkaModelHighWatermark_da6ed677(l_4.clone())?,
-                                    b_3.clone(),
-                                )))
-                            }
-                            IsolationLevel::ReadCommitted => {
-                                Pair(std::sync::Arc::new(PairNode::Pair(
-                                    lawtwinKafkaModelLastStableOffset_e8497029(l_4.clone())?,
-                                    b_3.clone(),
-                                )))
+                {
+                    let it_5 = spec_1;
+                    match it_5 {
+                        OffsetSpec::Earliest => {
+                            Pair(std::sync::Arc::new(PairNode::Pair(0i64, b_3.clone())))
+                        }
+                        OffsetSpec::Latest => {
+                            {
+                                let it_6 = isolation_2;
+                                match it_6 {
+                                    IsolationLevel::ReadUncommitted => {
+                                        Pair(std::sync::Arc::new(PairNode::Pair(
+                                            lawtwinKafkaModelHighWatermark_da6ed677(l_4.clone())?,
+                                            b_3.clone(),
+                                        )))
+                                    }
+                                    IsolationLevel::ReadCommitted => {
+                                        Pair(std::sync::Arc::new(PairNode::Pair(
+                                            lawtwinKafkaModelLastStableOffset_e8497029(
+                                                l_4.clone(),
+                                            )?,
+                                            b_3.clone(),
+                                        )))
+                                    }
+                                }
                             }
                         }
                     }
@@ -17028,19 +17801,19 @@ pub mod typed {
         b_1: BrokerState,
     ) -> ls::Result<PartitionLog> {
         Ok({
-            let matched_4 = match &*b_1.0 {
+            let it_4 = match &*b_1.0 {
                 BrokerStateNode::BrokerState(_, field_3, _, _, _, _, _) => {
                     let lawspecfieldlogs_2 = field_3.clone();
                     lawspecfieldlogs_2.clone()
                 }
             }.get(&tp_0.clone()).cloned();
-            match &matched_4 {
+            match &it_4 {
                 None => {
                     lawtwinKafkaModelEmptyLog_a7825ed0(())?
                 }
                 Some(field_6) => {
-                    let l_5 = field_6.clone();
-                    l_5.clone()
+                    let v_lawspecselection0x0_5 = field_6.clone();
+                    v_lawspecselection0x0_5.clone()
                 }
             }
         })
@@ -17064,30 +17837,33 @@ pub mod typed {
     pub fn lawtwinKafkaModelMemberViews_a87b1b1a(
         a_0: ls::fast::List<Entry<ls::fast::Text, ls::fast::List<TopicPartition>>>,
     ) -> ls::Result<ls::fast::List<MemberAssignment>> {
-        Ok(match a_0.uncons() {
-            None => {
-                ls::fast::List::nil()
-            }
-            Some((field_3, field_4)) => {
-                let e_1 = field_3.clone();
-                let rest_2 = field_4.clone();
-                ls::fast::List::cons(
-                    MemberAssignment(std::sync::Arc::new(MemberAssignmentNode::MemberAssignment(
-                        match &*e_1.0 {
-                            EntryNode::Entry(field_6, _) => {
-                                let lawspecfieldkey_5 = field_6.clone();
-                                lawspecfieldkey_5.clone()
+        Ok({
+            let it_1 = a_0.clone();
+            match it_1.uncons() {
+                None => {
+                    ls::fast::List::nil()
+                }
+                Some((field_4, field_5)) => {
+                    let v_lawspecselection0x0_2 = field_4.clone();
+                    let v_lawspecselection0x1_3 = field_5.clone();
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_8 = match &*v_lawspecselection0x0_2.0 {
+                                EntryNode::Entry(field_7, _) => {
+                                    let lawspecfieldkey_6 = field_7.clone();
+                                    lawspecfieldkey_6.clone()
+                                }
+                            };
+                            {
+                                let v_lawspecrecordfield1_11 = match &*v_lawspecselection0x0_2.0 {
+                                    EntryNode::Entry(_, field_10) => {
+                                        let lawspecfieldvalue_9 = field_10.clone();
+                                        lawspecfieldvalue_9.clone()
+                                    }
+                                };
+                                MemberAssignment(std::sync::Arc::new(MemberAssignmentNode::MemberAssignment(v_lawspecrecordfield0_8.clone(), v_lawspecrecordfield1_11.clone())))
                             }
-                        },
-                        match &*e_1.0 {
-                            EntryNode::Entry(_, field_8) => {
-                                let lawspecfieldvalue_7 = field_8.clone();
-                                lawspecfieldvalue_7.clone()
-                            }
-                        },
-                    ))),
-                    lawtwinKafkaModelMemberViews_a87b1b1a(rest_2.clone())?,
-                )
+                        }, lawtwinKafkaModelMemberViews_a87b1b1a(v_lawspecselection0x1_3.clone())?)
+                }
             }
         })
     }
@@ -17118,19 +17894,25 @@ pub mod typed {
         mut m_1: i64,
     ) -> ls::Result<i64> {
         loop {
-            return Ok(match xs_0.uncons() {
-                None => {
-                    m_1
-                }
-                Some((field_4, field_5)) => {
-                    let h_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    {
-                        let next_6 = t_3.clone();
-                        let next_7 = lawtwinKafkaModelMin64_b47ce987(h_2, m_1)?;
-                        xs_0 = next_6;
-                        m_1 = next_7;
-                        continue
+            return Ok({
+                let it_2 = xs_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        m_1
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let next_7 = v_lawspecselection0x1_4.clone();
+                            let next_8 = lawtwinKafkaModelMin64_b47ce987(
+                                v_lawspecselection0x0_3,
+                                m_1,
+                            )?;
+                            xs_0 = next_7;
+                            m_1 = next_8;
+                            continue
+                        }
                     }
                 }
             });
@@ -17150,109 +17932,114 @@ pub mod typed {
                 }
             };
             {
-                let withentry_34 = {
+                let withentry_37 = {
                     let replacement_5 = saturatingInt64_5bce4ed8(
                         ls::fast::Int::from_i128(((pid_4 as i128) + 1i128)),
                     )?;
                     {
-                        let matched_21 = {
-                            let replacement_8 = match &*b_1.0 {
-                                BrokerStateNode::BrokerState(_, _, field_7, _, _, _, _) => {
-                                    let lawspecfieldproducers_6 = field_7.clone();
-                                    lawspecfieldproducers_6.clone()
+                        let matched_24 = {
+                            let replacement_11 = match &*b_1.0 {
+                                BrokerStateNode::BrokerState(_, _, field_10, _, _, _, _) => {
+                                    let lawspecfieldproducers_9 = field_10.clone();
+                                    lawspecfieldproducers_9.clone()
                                 }
-                            }.insert(
-                                pid_4,
-                                ProducerEntry(std::sync::Arc::new(ProducerEntryNode::ProducerEntry(
-                                    0i16,
-                                    txid_0.clone(),
-                                    TxnState(std::sync::Arc::new(TxnStateNode::NoTxn)),
-                                ))),
-                            );
+                            }.insert(pid_4, {
+                                    let v_lawspecrecordfield0_6 = 0i16;
+                                    {
+                                        let v_lawspecrecordfield1_7 = txid_0.clone();
+                                        {
+                                            let v_lawspecrecordfield2_8 = TxnState(std::sync::Arc::new(TxnStateNode::NoTxn));
+                                            ProducerEntry(std::sync::Arc::new(ProducerEntryNode::ProducerEntry(v_lawspecrecordfield0_6, v_lawspecrecordfield1_7.clone(), v_lawspecrecordfield2_8.clone())))
+                                        }
+                                    }
+                                });
                             match &*b_1.0 {
-                                BrokerStateNode::BrokerState(field_15, field_16, _, field_17, field_18, field_19, field_20) => {
-                                    let lawspecfieldtopics_9 = field_15.clone();
-                                    let lawspecfieldlogs_10 = field_16.clone();
-                                    let lawspecfieldtransactionalids_11 = field_17.clone();
-                                    let lawspecfieldnextproducerid_12 = field_18.clone();
-                                    let lawspecfieldgroups_13 = field_19.clone();
-                                    let lawspecfieldcommitted_14 = field_20.clone();
+                                BrokerStateNode::BrokerState(field_18, field_19, _, field_20, field_21, field_22, field_23) => {
+                                    let lawspecfieldtopics_12 = field_18.clone();
+                                    let lawspecfieldlogs_13 = field_19.clone();
+                                    let lawspecfieldtransactionalids_14 = field_20.clone();
+                                    let lawspecfieldnextproducerid_15 = field_21.clone();
+                                    let lawspecfieldgroups_16 = field_22.clone();
+                                    let lawspecfieldcommitted_17 = field_23.clone();
                                     BrokerState(std::sync::Arc::new(BrokerStateNode::BrokerState(
-                                        lawspecfieldtopics_9.clone(),
-                                        lawspecfieldlogs_10.clone(),
-                                        replacement_8.clone(),
-                                        lawspecfieldtransactionalids_11.clone(),
-                                        lawspecfieldnextproducerid_12,
-                                        lawspecfieldgroups_13.clone(),
-                                        lawspecfieldcommitted_14.clone(),
+                                        lawspecfieldtopics_12.clone(),
+                                        lawspecfieldlogs_13.clone(),
+                                        replacement_11.clone(),
+                                        lawspecfieldtransactionalids_14.clone(),
+                                        lawspecfieldnextproducerid_15,
+                                        lawspecfieldgroups_16.clone(),
+                                        lawspecfieldcommitted_17.clone(),
                                     )))
                                 }
                             }
                         };
-                        match &*matched_21.0 {
-                            BrokerStateNode::BrokerState(field_28, field_29, field_30, field_31, _, field_32, field_33) => {
-                                let lawspecfieldtopics_22 = field_28.clone();
-                                let lawspecfieldlogs_23 = field_29.clone();
-                                let lawspecfieldproducers_24 = field_30.clone();
-                                let lawspecfieldtransactionalids_25 = field_31.clone();
-                                let lawspecfieldgroups_26 = field_32.clone();
-                                let lawspecfieldcommitted_27 = field_33.clone();
+                        match &*matched_24.0 {
+                            BrokerStateNode::BrokerState(field_31, field_32, field_33, field_34, _, field_35, field_36) => {
+                                let lawspecfieldtopics_25 = field_31.clone();
+                                let lawspecfieldlogs_26 = field_32.clone();
+                                let lawspecfieldproducers_27 = field_33.clone();
+                                let lawspecfieldtransactionalids_28 = field_34.clone();
+                                let lawspecfieldgroups_29 = field_35.clone();
+                                let lawspecfieldcommitted_30 = field_36.clone();
                                 BrokerState(std::sync::Arc::new(BrokerStateNode::BrokerState(
-                                    lawspecfieldtopics_22.clone(),
-                                    lawspecfieldlogs_23.clone(),
-                                    lawspecfieldproducers_24.clone(),
-                                    lawspecfieldtransactionalids_25.clone(),
+                                    lawspecfieldtopics_25.clone(),
+                                    lawspecfieldlogs_26.clone(),
+                                    lawspecfieldproducers_27.clone(),
+                                    lawspecfieldtransactionalids_28.clone(),
                                     replacement_5,
-                                    lawspecfieldgroups_26.clone(),
-                                    lawspecfieldcommitted_27.clone(),
+                                    lawspecfieldgroups_29.clone(),
+                                    lawspecfieldcommitted_30.clone(),
                                 )))
                             }
                         }
                     }
                 };
                 {
-                    let mapped_52 = match &txid_0 {
-                        None => {
-                            withentry_34.clone()
-                        }
-                        Some(field_36) => {
-                            let id_35 = field_36.clone();
-                            {
-                                let replacement_39 = match &*withentry_34.0 {
-                                    BrokerStateNode::BrokerState(_, _, _, field_38, _, _, _) => {
-                                        let lawspecfieldtransactionalids_37 = field_38.clone();
-                                        lawspecfieldtransactionalids_37.clone()
-                                    }
-                                }.insert(id_35.clone(), pid_4);
-                                match &*withentry_34.0 {
-                                    BrokerStateNode::BrokerState(field_46, field_47, field_48, _, field_49, field_50, field_51) => {
-                                        let lawspecfieldtopics_40 = field_46.clone();
-                                        let lawspecfieldlogs_41 = field_47.clone();
-                                        let lawspecfieldproducers_42 = field_48.clone();
-                                        let lawspecfieldnextproducerid_43 = field_49.clone();
-                                        let lawspecfieldgroups_44 = field_50.clone();
-                                        let lawspecfieldcommitted_45 = field_51.clone();
-                                        BrokerState(std::sync::Arc::new(BrokerStateNode::BrokerState(
-                                            lawspecfieldtopics_40.clone(),
-                                            lawspecfieldlogs_41.clone(),
-                                            lawspecfieldproducers_42.clone(),
-                                            replacement_39.clone(),
-                                            lawspecfieldnextproducerid_43,
-                                            lawspecfieldgroups_44.clone(),
-                                            lawspecfieldcommitted_45.clone(),
-                                        )))
+                    let mapped_56 = {
+                        let it_38 = txid_0.clone();
+                        match &it_38 {
+                            None => {
+                                withentry_37.clone()
+                            }
+                            Some(field_40) => {
+                                let v_lawspecselection0x0_39 = field_40.clone();
+                                {
+                                    let replacement_43 = match &*withentry_37.0 {
+                                        BrokerStateNode::BrokerState(_, _, _, field_42, _, _, _) => {
+                                            let lawspecfieldtransactionalids_41 = field_42.clone();
+                                            lawspecfieldtransactionalids_41.clone()
+                                        }
+                                    }.insert(v_lawspecselection0x0_39.clone(), pid_4);
+                                    match &*withentry_37.0 {
+                                        BrokerStateNode::BrokerState(field_50, field_51, field_52, _, field_53, field_54, field_55) => {
+                                            let lawspecfieldtopics_44 = field_50.clone();
+                                            let lawspecfieldlogs_45 = field_51.clone();
+                                            let lawspecfieldproducers_46 = field_52.clone();
+                                            let lawspecfieldnextproducerid_47 = field_53.clone();
+                                            let lawspecfieldgroups_48 = field_54.clone();
+                                            let lawspecfieldcommitted_49 = field_55.clone();
+                                            BrokerState(std::sync::Arc::new(BrokerStateNode::BrokerState(
+                                                lawspecfieldtopics_44.clone(),
+                                                lawspecfieldlogs_45.clone(),
+                                                lawspecfieldproducers_46.clone(),
+                                                replacement_43.clone(),
+                                                lawspecfieldnextproducerid_47,
+                                                lawspecfieldgroups_48.clone(),
+                                                lawspecfieldcommitted_49.clone(),
+                                            )))
+                                        }
                                     }
                                 }
                             }
                         }
                     };
-                    Pair(std::sync::Arc::new(PairNode::Pair(
-                        ProducerIdAndEpoch(std::sync::Arc::new(ProducerIdAndEpochNode::ProducerIdAndEpoch(
-                            pid_4,
-                            0i16,
-                        ))),
-                        mapped_52.clone(),
-                    )))
+                    Pair(std::sync::Arc::new(PairNode::Pair({
+                            let v_lawspecrecordfield0_57 = pid_4;
+                            {
+                                let v_lawspecrecordfield1_58 = 0i16;
+                                ProducerIdAndEpoch(std::sync::Arc::new(ProducerIdAndEpochNode::ProducerIdAndEpoch(v_lawspecrecordfield0_57, v_lawspecrecordfield1_58)))
+                            }
+                        }, mapped_56.clone())))
                 }
             }
         })
@@ -17266,17 +18053,20 @@ pub mod typed {
         all_3: ls::fast::List<FetchedRecord>,
     ) -> ls::Result<i64> {
         Ok(if ((taken_2.clone().len() as i128) < (all_3.clone().len() as i128)) {
-            match taken_2.uncons() {
-                None => {
-                    from_0
-                }
-                Some((_, _)) => {
-                    saturatingInt64_5bce4ed8(
-                        ls::fast::Int::from_i128(((lawtwinKafkaModelLastOffsetOf_544a605b(
-                            taken_2.clone(),
-                            from_0,
-                        )? as i128) + 1i128)),
-                    )?
+            {
+                let it_4 = taken_2.clone();
+                match it_4.uncons() {
+                    None => {
+                        from_0
+                    }
+                    Some((_, _)) => {
+                        saturatingInt64_5bce4ed8(
+                            ls::fast::Int::from_i128(((lawtwinKafkaModelLastOffsetOf_544a605b(
+                                taken_2.clone(),
+                                from_0,
+                            )? as i128) + 1i128)),
+                        )?
+                    }
                 }
             }
         } else {
@@ -17376,30 +18166,39 @@ pub mod typed {
         b_2: BrokerState,
     ) -> ls::Result<Pair<Option<i64>, BrokerState>> {
         Ok(Pair(std::sync::Arc::new(PairNode::Pair(match &*b_2.0 {
-                BrokerStateNode::BrokerState(_, _, _, _, _, _, field_4) => {
-                    let lawspecfieldcommitted_3 = field_4.clone();
-                    lawspecfieldcommitted_3.clone()
+                BrokerStateNode::BrokerState(_, _, _, _, _, _, field_6) => {
+                    let lawspecfieldcommitted_5 = field_6.clone();
+                    lawspecfieldcommitted_5.clone()
                 }
-            }.get(&GroupPartition(std::sync::Arc::new(GroupPartitionNode::GroupPartition(g_0.clone(), tp_1.clone())))).cloned(), b_2.clone()))))
+            }.get(&{
+                let v_lawspecrecordfield0_3 = g_0.clone();
+                {
+                    let v_lawspecrecordfield1_4 = tp_1.clone();
+                    GroupPartition(std::sync::Arc::new(GroupPartitionNode::GroupPartition(v_lawspecrecordfield0_3.clone(), v_lawspecrecordfield1_4.clone())))
+                }
+            }).cloned(), b_2.clone()))))
     }
 
     /// lawtwin.kafka::lawtwinKafkaModelOffsetPartitions
     pub fn lawtwinKafkaModelOffsetPartitions_ffb8aecd(
         offsets_0: ls::fast::List<OffsetEntry>,
     ) -> ls::Result<ls::fast::List<TopicPartition>> {
-        Ok(match offsets_0.uncons() {
-            None => {
-                ls::fast::List::nil()
-            }
-            Some((field_3, field_4)) => {
-                let o_1 = field_3.clone();
-                let rest_2 = field_4.clone();
-                ls::fast::List::cons(match &*o_1.0 {
-                        OffsetEntryNode::OffsetEntry(field_6, _) => {
-                            let lawspecfieldtopicpartition_5 = field_6.clone();
-                            lawspecfieldtopicpartition_5.clone()
-                        }
-                    }, lawtwinKafkaModelOffsetPartitions_ffb8aecd(rest_2.clone())?)
+        Ok({
+            let it_1 = offsets_0.clone();
+            match it_1.uncons() {
+                None => {
+                    ls::fast::List::nil()
+                }
+                Some((field_4, field_5)) => {
+                    let v_lawspecselection0x0_2 = field_4.clone();
+                    let v_lawspecselection0x1_3 = field_5.clone();
+                    ls::fast::List::cons(match &*v_lawspecselection0x0_2.0 {
+                            OffsetEntryNode::OffsetEntry(field_7, _) => {
+                                let lawspecfieldtopicpartition_6 = field_7.clone();
+                                lawspecfieldtopicpartition_6.clone()
+                            }
+                        }, lawtwinKafkaModelOffsetPartitions_ffb8aecd(v_lawspecselection0x1_3.clone())?)
+                }
             }
         })
     }
@@ -17429,25 +18228,28 @@ pub mod typed {
         mut acc_2: ls::fast::List<PendingOffset>,
     ) -> ls::Result<ls::fast::List<PendingOffset>> {
         loop {
-            return Ok(match offsets_1.uncons() {
-                None => {
-                    acc_2.clone()
-                }
-                Some((field_5, field_6)) => {
-                    let o_3 = field_5.clone();
-                    let rest_4 = field_6.clone();
-                    {
-                        let next_7 = rest_4.clone();
-                        let next_8 = ls::fast::List::cons(
-                            PendingOffset(std::sync::Arc::new(PendingOffsetNode::PendingOffset(
-                                group_0.clone(),
-                                o_3.clone(),
-                            ))),
-                            acc_2.clone(),
-                        );
-                        offsets_1 = next_7;
-                        acc_2 = next_8;
-                        continue
+            return Ok({
+                let it_3 = offsets_1.clone();
+                match it_3.uncons() {
+                    None => {
+                        acc_2.clone()
+                    }
+                    Some((field_6, field_7)) => {
+                        let v_lawspecselection0x0_4 = field_6.clone();
+                        let v_lawspecselection0x1_5 = field_7.clone();
+                        {
+                            let next_10 = v_lawspecselection0x1_5.clone();
+                            let next_11 = ls::fast::List::cons({
+                                    let v_lawspecrecordfield0_8 = group_0.clone();
+                                    {
+                                        let v_lawspecrecordfield1_9 = v_lawspecselection0x0_4.clone();
+                                        PendingOffset(std::sync::Arc::new(PendingOffsetNode::PendingOffset(v_lawspecrecordfield0_8.clone(), v_lawspecrecordfield1_9.clone())))
+                                    }
+                                }, acc_2.clone());
+                            offsets_1 = next_10;
+                            acc_2 = next_11;
+                            continue
+                        }
                     }
                 }
             });
@@ -17482,31 +18284,34 @@ pub mod typed {
             } else {
                 {
                     let l_4 = lawtwinKafkaModelLogOf_b86b131a(tp_0.clone(), b_3.clone())?;
-                    match &tag_1 {
-                        None => {
-                            Pair(std::sync::Arc::new(PairNode::Pair(
-                                lawtwinKafkaModelHighWatermark_da6ed677(l_4.clone())?,
-                                lawtwinKafkaModelPutLog_cb3cbf5e(
-                                    tp_0.clone(),
-                                    lawtwinKafkaModelAppendBatch_8797ae9f(
-                                        rs_2.clone(),
-                                        (-1i64),
-                                        false,
-                                        l_4.clone(),
+                    {
+                        let it_5 = tag_1.clone();
+                        match &it_5 {
+                            None => {
+                                Pair(std::sync::Arc::new(PairNode::Pair(
+                                    lawtwinKafkaModelHighWatermark_da6ed677(l_4.clone())?,
+                                    lawtwinKafkaModelPutLog_cb3cbf5e(
+                                        tp_0.clone(),
+                                        lawtwinKafkaModelAppendBatch_8797ae9f(
+                                            rs_2.clone(),
+                                            (-1i64),
+                                            false,
+                                            l_4.clone(),
+                                        )?,
+                                        b_3.clone(),
                                     )?,
+                                )))
+                            }
+                            Some(field_7) => {
+                                let v_lawspecselection0x0_6 = field_7.clone();
+                                lawtwinKafkaModelProduceTagged_86f854e7(
+                                    tp_0.clone(),
+                                    v_lawspecselection0x0_6.clone(),
+                                    rs_2.clone(),
+                                    l_4.clone(),
                                     b_3.clone(),
-                                )?,
-                            )))
-                        }
-                        Some(field_6) => {
-                            let t_5 = field_6.clone();
-                            lawtwinKafkaModelProduceTagged_86f854e7(
-                                tp_0.clone(),
-                                t_5.clone(),
-                                rs_2.clone(),
-                                l_4.clone(),
-                                b_3.clone(),
-                            )?
+                                )?
+                            }
                         }
                     }
                 }
@@ -17523,7 +18328,7 @@ pub mod typed {
         b_4: BrokerState,
     ) -> ls::Result<Pair<i64, BrokerState>> {
         Ok({
-            let matched_9 = match &*b_4.0 {
+            let it_9 = match &*b_4.0 {
                 BrokerStateNode::BrokerState(_, _, field_8, _, _, _, _) => {
                     let lawspecfieldproducers_7 = field_8.clone();
                     lawspecfieldproducers_7.clone()
@@ -17534,7 +18339,7 @@ pub mod typed {
                     lawspecfieldproducerid_5
                 }
             }).cloned();
-            match &matched_9 {
+            match &it_9 {
                 None => {
                     {
                         ls::raise_failure("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls::fast::Dyn::to_dyn(&KafkaError::UnknownProducerId));
@@ -17542,13 +18347,13 @@ pub mod typed {
                     }
                 }
                 Some(field_11) => {
-                    let entry_10 = field_11.clone();
+                    let v_lawspecselection0x0_10 = field_11.clone();
                     if (match &*t_1.0 {
                         ProducerTagNode::ProducerTag(_, field_13, _) => {
                             let lawspecfieldproducerepoch_12 = field_13.clone();
                             lawspecfieldproducerepoch_12
                         }
-                    } != match &*entry_10.0 {
+                    } != match &*v_lawspecselection0x0_10.0 {
                         ProducerEntryNode::ProducerEntry(field_15, _, _) => {
                             let lawspecfieldepoch_14 = field_15.clone();
                             lawspecfieldepoch_14
@@ -17561,13 +18366,13 @@ pub mod typed {
                     } else {
                         {
                             let transactional_19 = {
-                                let matched_18 = match &*entry_10.0 {
+                                let it_18 = match &*v_lawspecselection0x0_10.0 {
                                     ProducerEntryNode::ProducerEntry(_, field_17, _) => {
                                         let lawspecfieldtransactionalid_16 = field_17.clone();
                                         lawspecfieldtransactionalid_16.clone()
                                     }
                                 };
-                                match &matched_18 {
+                                match &it_18 {
                                     None => {
                                         false
                                     }
@@ -17578,7 +18383,7 @@ pub mod typed {
                             };
                             if (transactional_19 && !(lawtwinKafkaModelTxnHasPartition_8fa1cfc0(
                                 tp_0.clone(),
-                                match &*entry_10.0 {
+                                match &*v_lawspecselection0x0_10.0 {
                                     ProducerEntryNode::ProducerEntry(_, _, field_21) => {
                                         let lawspecfieldtxn_20 = field_21.clone();
                                         lawspecfieldtxn_20.clone()
@@ -17601,7 +18406,7 @@ pub mod typed {
                                     )?;
                                     {
                                         let recent_32 = {
-                                            let matched_29 = match &*l_3.0 {
+                                            let it_29 = match &*l_3.0 {
                                                 PartitionLogNode::PartitionLog(_, _, _, _, field_28) => {
                                                     let lawspecfieldbatches_27 = field_28.clone();
                                                     lawspecfieldbatches_27.clone()
@@ -17612,18 +18417,18 @@ pub mod typed {
                                                     lawspecfieldproducerid_25
                                                 }
                                             }).cloned();
-                                            match &matched_29 {
+                                            match &it_29 {
                                                 None => {
                                                     ls::fast::List::nil()
                                                 }
                                                 Some(field_31) => {
-                                                    let ms_30 = field_31.clone();
-                                                    ms_30.clone()
+                                                    let v_match__lawspecselection0x0_0_30 = field_31.clone();
+                                                    v_match__lawspecselection0x0_0_30.clone()
                                                 }
                                             }
                                         };
                                         {
-                                            let matched_37 = lawtwinKafkaModelFindDuplicate_3335aea4(
+                                            let it_37 = lawtwinKafkaModelFindDuplicate_3335aea4(
                                                 match &*t_1.0 {
                                                     ProducerTagNode::ProducerTag(_, field_34, _) => {
                                                         let lawspecfieldproducerepoch_33 = field_34.clone();
@@ -17639,11 +18444,11 @@ pub mod typed {
                                                 last_24,
                                                 recent_32.clone(),
                                             )?;
-                                            match &matched_37 {
+                                            match &it_37 {
                                                 Some(field_39) => {
-                                                    let offset_38 = field_39.clone();
+                                                    let v_match__lawspecselection0x0_0_38 = field_39.clone();
                                                     Pair(std::sync::Arc::new(PairNode::Pair(
-                                                        offset_38,
+                                                        v_match__lawspecselection0x0_0_38,
                                                         b_4.clone(),
                                                     )))
                                                 }
@@ -17672,35 +18477,47 @@ pub mod typed {
                                                                 l_3.clone(),
                                                             )?;
                                                             {
-                                                                let l2_53 = lawtwinKafkaModelRememberBatch_33fa600f(
+                                                                let l2_57 = lawtwinKafkaModelRememberBatch_33fa600f(
                                                                     match &*t_1.0 {
                                                                         ProducerTagNode::ProducerTag(field_46, _, _) => {
                                                                             let lawspecfieldproducerid_45 = field_46.clone();
                                                                             lawspecfieldproducerid_45
                                                                         }
                                                                     },
-                                                                    BatchMeta(std::sync::Arc::new(BatchMetaNode::BatchMeta(
-                                                                        match &*t_1.0 {
+                                                                    {
+                                                                        let v_lawspecrecordfield0_49 = match &*t_1.0 {
                                                                             ProducerTagNode::ProducerTag(_, field_48, _) => {
                                                                                 let lawspecfieldproducerepoch_47 = field_48.clone();
                                                                                 lawspecfieldproducerepoch_47
                                                                             }
-                                                                        },
-                                                                        match &*t_1.0 {
-                                                                            ProducerTagNode::ProducerTag(_, _, field_50) => {
-                                                                                let lawspecfieldbasesequence_49 = field_50.clone();
-                                                                                lawspecfieldbasesequence_49
+                                                                        };
+                                                                        {
+                                                                            let v_lawspecrecordfield1_52 = match &*t_1.0 {
+                                                                                ProducerTagNode::ProducerTag(_, _, field_51) => {
+                                                                                    let lawspecfieldbasesequence_50 = field_51.clone();
+                                                                                    lawspecfieldbasesequence_50
+                                                                                }
+                                                                            };
+                                                                            {
+                                                                                let v_lawspecrecordfield2_53 = last_24;
+                                                                                {
+                                                                                    let v_lawspecrecordfield3_54 = base_44;
+                                                                                    BatchMeta(std::sync::Arc::new(BatchMetaNode::BatchMeta(
+                                                                                        v_lawspecrecordfield0_49,
+                                                                                        v_lawspecrecordfield1_52,
+                                                                                        v_lawspecrecordfield2_53,
+                                                                                        v_lawspecrecordfield3_54,
+                                                                                    )))
+                                                                                }
                                                                             }
-                                                                        },
-                                                                        last_24,
-                                                                        base_44,
-                                                                    ))),
+                                                                        }
+                                                                    },
                                                                     lawtwinKafkaModelAppendBatch_8797ae9f(
                                                                         rs_2.clone(),
                                                                         match &*t_1.0 {
-                                                                            ProducerTagNode::ProducerTag(field_52, _, _) => {
-                                                                                let lawspecfieldproducerid_51 = field_52.clone();
-                                                                                lawspecfieldproducerid_51
+                                                                            ProducerTagNode::ProducerTag(field_56, _, _) => {
+                                                                                let lawspecfieldproducerid_55 = field_56.clone();
+                                                                                lawspecfieldproducerid_55
                                                                             }
                                                                         },
                                                                         transactional_19,
@@ -17711,7 +18528,7 @@ pub mod typed {
                                                                     base_44,
                                                                     lawtwinKafkaModelPutLog_cb3cbf5e(
                                                                         tp_0.clone(),
-                                                                        l2_53.clone(),
+                                                                        l2_57.clone(),
                                                                         b_4.clone(),
                                                                     )?,
                                                                 )))
@@ -17846,66 +18663,131 @@ pub mod typed {
         mut acc_5: ls::fast::List<FetchedRecord>,
     ) -> ls::Result<ls::fast::List<FetchedRecord>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_5.clone()
-                }
-                Some((field_8, field_9)) => {
-                    let e_6 = field_8.clone();
-                    let rest_7 = field_9.clone();
-                    match &*e_6.0 {
-                        LogEntryNode::DataEntry(field_14, field_15, field_16, field_17) => {
-                            let o_10 = field_14.clone();
-                            let r_11 = field_15.clone();
-                            let w_12 = field_16.clone();
-                            let tx_13 = field_17.clone();
-                            if (o_10 < from_1) {
-                                acc_5.clone()
-                            } else {
-                                if (o_10 >= limit_2) {
+            return Ok({
+                let it_6 = es_0.clone();
+                match it_6.uncons() {
+                    None => {
+                        acc_5.clone()
+                    }
+                    Some((field_9, field_10)) => {
+                        let v_lawspecselection0x0_7 = field_9.clone();
+                        let v_lawspecselection0x1_8 = field_10.clone();
+                        {
+                            let it_11 = v_lawspecselection0x0_7.clone();
+                            match &*it_11.0 {
+                                LogEntryNode::DataEntry(field_13) => {
+                                    let v_match__lawspecselection0x0_0_12 = field_13.clone();
                                     {
-                                        let next_18 = rest_7.clone();
-                                        es_0 = next_18;
-                                        continue
-                                    }
-                                } else {
-                                    if ((committedonly_3 && tx_13) && lawtwinKafkaModelIsAborted_b12645e5(
-                                        w_12,
-                                        o_10,
-                                        aborted_4.clone(),
-                                    )?) {
+                                        let v_lawspecselection1x0_16 = match &*v_match__lawspecselection0x0_0_12.0 {
+                                            Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode::Record(field_15, _, _, _) => {
+                                                let lawspecfieldentryoffset_14 = field_15.clone();
+                                                lawspecfieldentryoffset_14
+                                            }
+                                        };
                                         {
-                                            let next_19 = rest_7.clone();
-                                            es_0 = next_19;
-                                            continue
-                                        }
-                                    } else {
-                                        {
-                                            let next_20 = rest_7.clone();
-                                            let next_21 = ls::fast::List::cons(
-                                                FetchedRecord(std::sync::Arc::new(FetchedRecordNode::FetchedRecord(
-                                                    o_10,
-                                                    r_11.clone(),
-                                                ))),
-                                                acc_5.clone(),
-                                            );
-                                            es_0 = next_20;
-                                            acc_5 = next_21;
-                                            continue
+                                            let v_lawspecselection1x1_19 = match &*v_match__lawspecselection0x0_0_12.0 {
+                                                Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode::Record(_, field_18, _, _) => {
+                                                    let lawspecfieldentryrecord_17 = field_18.clone();
+                                                    lawspecfieldentryrecord_17.clone()
+                                                }
+                                            };
+                                            {
+                                                let v_lawspecselection1x2_22 = match &*v_match__lawspecselection0x0_0_12.0 {
+                                                    Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode::Record(_, _, _, field_21) => {
+                                                        let lawspecfieldwriter_20 = field_21.clone();
+                                                        lawspecfieldwriter_20
+                                                    }
+                                                };
+                                                {
+                                                    let v_lawspecselection1x3_25 = match &*v_match__lawspecselection0x0_0_12.0 {
+                                                        Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beNode::Record(_, _, field_24, _) => {
+                                                            let lawspecfieldtransactional_23 = field_24.clone();
+                                                            lawspecfieldtransactional_23
+                                                        }
+                                                    };
+                                                    if (v_lawspecselection1x0_16 < from_1) {
+                                                        acc_5.clone()
+                                                    } else {
+                                                        if (v_lawspecselection1x0_16 >= limit_2) {
+                                                            {
+                                                                let next_26 = v_lawspecselection0x1_8.clone();
+                                                                es_0 = next_26;
+                                                                continue
+                                                            }
+                                                        } else {
+                                                            if ((committedonly_3 && v_lawspecselection1x3_25) && lawtwinKafkaModelIsAborted_b12645e5(
+                                                                v_lawspecselection1x2_22,
+                                                                v_lawspecselection1x0_16,
+                                                                aborted_4.clone(),
+                                                            )?) {
+                                                                {
+                                                                    let next_27 = v_lawspecselection0x1_8.clone();
+                                                                    es_0 = next_27;
+                                                                    continue
+                                                                }
+                                                            } else {
+                                                                {
+                                                                    let next_30 = v_lawspecselection0x1_8.clone();
+                                                                    let next_31 = ls::fast::List::cons(
+                                                                        {
+                                                                            let v_lawspecrecordfield0_28 = v_lawspecselection1x0_16;
+                                                                            {
+                                                                                let v_lawspecrecordfield1_29 = v_lawspecselection1x1_19.clone();
+                                                                                FetchedRecord(std::sync::Arc::new(FetchedRecordNode::FetchedRecord(
+                                                                                    v_lawspecrecordfield0_28,
+                                                                                    v_lawspecrecordfield1_29.clone(),
+                                                                                )))
+                                                                            }
+                                                                        },
+                                                                        acc_5.clone(),
+                                                                    );
+                                                                    es_0 = next_30;
+                                                                    acc_5 = next_31;
+                                                                    continue
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        }
-                        LogEntryNode::ControlEntry(field_23, _, _) => {
-                            let o_22 = field_23.clone();
-                            if (o_22 < from_1) {
-                                acc_5.clone()
-                            } else {
-                                {
-                                    let next_24 = rest_7.clone();
-                                    es_0 = next_24;
-                                    continue
+                                LogEntryNode::ControlEntry(field_33) => {
+                                    let v_match__lawspecselection0x0_0_32 = field_33.clone();
+                                    {
+                                        let v_lawspecselection1x0_36 = match &*v_match__lawspecselection0x0_0_32.0 {
+                                            Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Node::Record(_, field_35, _) => {
+                                                let lawspecfieldmarkeroffset_34 = field_35.clone();
+                                                lawspecfieldmarkeroffset_34
+                                            }
+                                        };
+                                        {
+                                            let v_lawspecselection1x1_39 = match &*v_match__lawspecselection0x0_0_32.0 {
+                                                Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Node::Record(_, _, field_38) => {
+                                                    let lawspecfieldmarkerwriter_37 = field_38.clone();
+                                                    lawspecfieldmarkerwriter_37
+                                                }
+                                            };
+                                            {
+                                                let v_lawspecselection1x2_42 = match &*v_match__lawspecselection0x0_0_32.0 {
+                                                    Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Node::Record(field_41, _, _) => {
+                                                        let lawspecfieldcommits_40 = field_41.clone();
+                                                        lawspecfieldcommits_40
+                                                    }
+                                                };
+                                                if (v_lawspecselection1x0_36 < from_1) {
+                                                    acc_5.clone()
+                                                } else {
+                                                    {
+                                                        let next_43 = v_lawspecselection0x1_8.clone();
+                                                        es_0 = next_43;
+                                                        continue
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -17972,43 +18854,46 @@ pub mod typed {
         mut acc_3: ls::fast::Map<ls::fast::Text, Group>,
     ) -> ls::Result<ls::fast::Map<ls::fast::Text, Group>> {
         loop {
-            return Ok(match gs_1.uncons() {
-                None => {
-                    acc_3.clone()
-                }
-                Some((field_6, field_7)) => {
-                    let e_4 = field_6.clone();
-                    let rest_5 = field_7.clone();
-                    {
-                        let next_16 = rest_5.clone();
-                        let next_17 = acc_3.clone().insert(match &*e_4.0 {
-                                EntryNode::Entry(field_9, _) => {
-                                    let lawspecfieldkey_8 = field_9.clone();
-                                    lawspecfieldkey_8.clone()
-                                }
-                            }, if lawtwinKafkaModelSubscribesTo_c3c674c3(topic_0.clone(), match &*e_4.0 {
-                                    EntryNode::Entry(_, field_11) => {
-                                        let lawspecfieldvalue_10 = field_11.clone();
-                                        lawspecfieldvalue_10.clone()
+            return Ok({
+                let it_4 = gs_1.clone();
+                match it_4.uncons() {
+                    None => {
+                        acc_3.clone()
+                    }
+                    Some((field_7, field_8)) => {
+                        let v_lawspecselection0x0_5 = field_7.clone();
+                        let v_lawspecselection0x1_6 = field_8.clone();
+                        {
+                            let next_17 = v_lawspecselection0x1_6.clone();
+                            let next_18 = acc_3.clone().insert(match &*v_lawspecselection0x0_5.0 {
+                                    EntryNode::Entry(field_10, _) => {
+                                        let lawspecfieldkey_9 = field_10.clone();
+                                        lawspecfieldkey_9.clone()
                                     }
-                                })? {
-                                lawtwinKafkaModelRebalance_c9984d55(match &*e_4.0 {
-                                        EntryNode::Entry(_, field_13) => {
-                                            let lawspecfieldvalue_12 = field_13.clone();
-                                            lawspecfieldvalue_12.clone()
+                                }, if lawtwinKafkaModelSubscribesTo_c3c674c3(topic_0.clone(), match &*v_lawspecselection0x0_5.0 {
+                                        EntryNode::Entry(_, field_12) => {
+                                            let lawspecfieldvalue_11 = field_12.clone();
+                                            lawspecfieldvalue_11.clone()
                                         }
-                                    }, b_2.clone())?
-                            } else {
-                                match &*e_4.0 {
-                                    EntryNode::Entry(_, field_15) => {
-                                        let lawspecfieldvalue_14 = field_15.clone();
-                                        lawspecfieldvalue_14.clone()
+                                    })? {
+                                    lawtwinKafkaModelRebalance_c9984d55(match &*v_lawspecselection0x0_5.0 {
+                                            EntryNode::Entry(_, field_14) => {
+                                                let lawspecfieldvalue_13 = field_14.clone();
+                                                lawspecfieldvalue_13.clone()
+                                            }
+                                        }, b_2.clone())?
+                                } else {
+                                    match &*v_lawspecselection0x0_5.0 {
+                                        EntryNode::Entry(_, field_16) => {
+                                            let lawspecfieldvalue_15 = field_16.clone();
+                                            lawspecfieldvalue_15.clone()
+                                        }
                                     }
-                                }
-                            });
-                        gs_1 = next_16;
-                        acc_3 = next_17;
-                        continue
+                                });
+                            gs_1 = next_17;
+                            acc_3 = next_18;
+                            continue
+                        }
                     }
                 }
             });
@@ -18067,19 +18952,19 @@ pub mod typed {
     ) -> ls::Result<PartitionLog> {
         Ok({
             let previous_8 = {
-                let matched_5 = match &*l_2.0 {
+                let it_5 = match &*l_2.0 {
                     PartitionLogNode::PartitionLog(_, _, _, _, field_4) => {
                         let lawspecfieldbatches_3 = field_4.clone();
                         lawspecfieldbatches_3.clone()
                     }
                 }.get(&writer_0).cloned();
-                match &matched_5 {
+                match &it_5 {
                     None => {
                         ls::fast::List::nil()
                     }
                     Some(field_7) => {
-                        let ms_6 = field_7.clone();
-                        ms_6.clone()
+                        let v_lawspecselection0x0_6 = field_7.clone();
+                        v_lawspecselection0x0_6.clone()
                     }
                 }
             };
@@ -18121,19 +19006,25 @@ pub mod typed {
         mut acc_1: ls::fast::List<PendingOffset>,
     ) -> ls::Result<ls::fast::List<PendingOffset>> {
         loop {
-            return Ok(match os_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let h_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    {
-                        let next_6 = t_3.clone();
-                        let next_7 = ls::fast::List::cons(h_2.clone(), acc_1.clone());
-                        os_0 = next_6;
-                        acc_1 = next_7;
-                        continue
+            return Ok({
+                let it_2 = os_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let next_7 = v_lawspecselection0x1_4.clone();
+                            let next_8 = ls::fast::List::cons(
+                                v_lawspecselection0x0_3.clone(),
+                                acc_1.clone(),
+                            );
+                            os_0 = next_7;
+                            acc_1 = next_8;
+                            continue
+                        }
                     }
                 }
             });
@@ -18146,24 +19037,27 @@ pub mod typed {
         mut acc_1: ls::fast::Set<ls::fast::Text>,
     ) -> ls::Result<ls::fast::Set<ls::fast::Text>> {
         loop {
-            return Ok(match subs_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let rest_3 = field_5.clone();
-                    {
-                        let next_8 = rest_3.clone();
-                        let next_9 = acc_1.clone().union(&ls::fast::Set::from_iter(match &*e_2.0 {
-                            EntryNode::Entry(_, field_7) => {
-                                let lawspecfieldvalue_6 = field_7.clone();
-                                lawspecfieldvalue_6.clone()
-                            }
-                        }.iter().cloned()));
-                        subs_0 = next_8;
-                        acc_1 = next_9;
-                        continue
+            return Ok({
+                let it_2 = subs_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let next_9 = v_lawspecselection0x1_4.clone();
+                            let next_10 = acc_1.clone().union(&ls::fast::Set::from_iter(match &*v_lawspecselection0x0_3.0 {
+                                EntryNode::Entry(_, field_8) => {
+                                    let lawspecfieldvalue_7 = field_8.clone();
+                                    lawspecfieldvalue_7.clone()
+                                }
+                            }.iter().cloned()));
+                            subs_0 = next_9;
+                            acc_1 = next_10;
+                            continue
+                        }
                     }
                 }
             });
@@ -18176,37 +19070,40 @@ pub mod typed {
         mut subs_1: ls::fast::List<Entry<ls::fast::Text, ls::fast::List<ls::fast::Text>>>,
     ) -> ls::Result<ls::fast::List<ls::fast::Text>> {
         loop {
-            return Ok(match subs_1.uncons() {
-                None => {
-                    ls::fast::List::nil()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let rest_3 = field_5.clone();
-                    if !({
-                        let mut all_9 = true;
-                        for item_8 in match &*e_2.0 {
-                            EntryNode::Entry(_, field_7) => {
-                                let lawspecfieldvalue_6 = field_7.clone();
-                                lawspecfieldvalue_6.clone()
-                            }
-                        }.iter() {
-                            let item_8 = item_8.clone();
-                            if !((item_8.clone() != topic_0.clone())) { all_9 = false; break; }
-                        }
-                        all_9
-                    }) {
-                        ls::fast::List::cons(match &*e_2.0 {
-                                EntryNode::Entry(field_11, _) => {
-                                    let lawspecfieldkey_10 = field_11.clone();
-                                    lawspecfieldkey_10.clone()
+            return Ok({
+                let it_2 = subs_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        ls::fast::List::nil()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        if !({
+                            let mut all_10 = true;
+                            for item_9 in match &*v_lawspecselection0x0_3.0 {
+                                EntryNode::Entry(_, field_8) => {
+                                    let lawspecfieldvalue_7 = field_8.clone();
+                                    lawspecfieldvalue_7.clone()
                                 }
-                            }, lawtwinKafkaModelSubscribersOf_e9347318(topic_0.clone(), rest_3.clone())?)
-                    } else {
-                        {
-                            let next_12 = rest_3.clone();
-                            subs_1 = next_12;
-                            continue
+                            }.iter() {
+                                let item_9 = item_9.clone();
+                                if !((item_9.clone() != topic_0.clone())) { all_10 = false; break; }
+                            }
+                            all_10
+                        }) {
+                            ls::fast::List::cons(match &*v_lawspecselection0x0_3.0 {
+                                    EntryNode::Entry(field_12, _) => {
+                                        let lawspecfieldkey_11 = field_12.clone();
+                                        lawspecfieldkey_11.clone()
+                                    }
+                                }, lawtwinKafkaModelSubscribersOf_e9347318(topic_0.clone(), v_lawspecselection0x1_4.clone())?)
+                        } else {
+                            {
+                                let next_13 = v_lawspecselection0x1_4.clone();
+                                subs_1 = next_13;
+                                continue
+                            }
                         }
                     }
                 }
@@ -18255,13 +19152,13 @@ pub mod typed {
                 b_3.clone(),
             )?;
             {
-                let matched_7 = match &*group_4.0 {
+                let it_7 = match &*group_4.0 {
                     GroupNode::Group(_, _, field_6) => {
                         let lawspecfieldassignment_5 = field_6.clone();
                         lawspecfieldassignment_5.clone()
                     }
                 }.get(&member_1.clone()).cloned();
-                match &matched_7 {
+                match &it_7 {
                     None => {
                         Pair(std::sync::Arc::new(PairNode::Pair(
                             ls::fast::List::nil(),
@@ -18269,8 +19166,11 @@ pub mod typed {
                         )))
                     }
                     Some(field_9) => {
-                        let tps_8 = field_9.clone();
-                        Pair(std::sync::Arc::new(PairNode::Pair(tps_8.clone(), b_3.clone())))
+                        let v_lawspecselection0x0_8 = field_9.clone();
+                        Pair(std::sync::Arc::new(PairNode::Pair(
+                            v_lawspecselection0x0_8.clone(),
+                            b_3.clone(),
+                        )))
                     }
                 }
             }
@@ -18282,20 +19182,39 @@ pub mod typed {
         tp_0: TopicPartition,
         txn_1: TxnState,
     ) -> ls::Result<bool> {
-        Ok(match &*txn_1.0 {
-            TxnStateNode::NoTxn => {
-                false
-            }
-            TxnStateNode::Ongoing(field_3, _) => {
-                let ps_2 = field_3.clone();
-                !({
-                    let mut all_5 = true;
-                    for item_4 in ps_2.clone().iter() {
-                        let item_4 = item_4.clone();
-                        if !((item_4.clone() != tp_0.clone())) { all_5 = false; break; }
+        Ok({
+            let it_2 = txn_1.clone();
+            match &*it_2.0 {
+                TxnStateNode::NoTxn => {
+                    false
+                }
+                TxnStateNode::Ongoing(field_4) => {
+                    let v_lawspecselection0x0_3 = field_4.clone();
+                    {
+                        let v_lawspecselection1x0_7 = match &*v_lawspecselection0x0_3.0 {
+                            Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(_, field_6) => {
+                                let lawspecfieldtxnpartitions_5 = field_6.clone();
+                                lawspecfieldtxnpartitions_5.clone()
+                            }
+                        };
+                        {
+                            let v_lawspecselection1x1_10 = match &*v_lawspecselection0x0_3.0 {
+                                Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(field_9, _) => {
+                                    let lawspecfieldtxnoffsets_8 = field_9.clone();
+                                    lawspecfieldtxnoffsets_8.clone()
+                                }
+                            };
+                            !({
+                                let mut all_12 = true;
+                                for item_11 in v_lawspecselection1x0_7.clone().iter() {
+                                    let item_11 = item_11.clone();
+                                    if !((item_11.clone() != tp_0.clone())) { all_12 = false; break; }
+                                }
+                                all_12
+                            })
+                        }
                     }
-                    all_5
-                })
+                }
             }
         })
     }
@@ -18323,47 +19242,60 @@ pub mod typed {
                     b_5.clone(),
                 )?;
                 {
-                    let next_14 = {
-                        let matched_9 = match &*entry_6.0 {
+                    let next_22 = {
+                        let it_9 = match &*entry_6.0 {
                             ProducerEntryNode::ProducerEntry(_, _, field_8) => {
                                 let lawspecfieldtxn_7 = field_8.clone();
                                 lawspecfieldtxn_7.clone()
                             }
                         };
-                        match &*matched_9.0 {
+                        match &*it_9.0 {
                             TxnStateNode::NoTxn => {
-                                TxnState(std::sync::Arc::new(TxnStateNode::Ongoing(
-                                    ls::fast::List::nil(),
-                                    lawtwinKafkaModelPendingFor_50512591(
-                                        group_3.clone(),
-                                        offsets_4.clone(),
-                                        ls::fast::List::nil(),
-                                    )?,
-                                )))
+                                TxnState(std::sync::Arc::new(TxnStateNode::Ongoing({
+                                        let txnpartitions_10 = ls::fast::List::nil();
+                                        {
+                                            let txnoffsets_11 = lawtwinKafkaModelPendingFor_50512591(group_3.clone(), offsets_4.clone(), ls::fast::List::nil())?;
+                                            Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(std::sync::Arc::new(Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(txnoffsets_11.clone(), txnpartitions_10.clone())))
+                                        }
+                                    })))
                             }
-                            TxnStateNode::Ongoing(field_12, field_13) => {
-                                let ps_10 = field_12.clone();
-                                let os_11 = field_13.clone();
-                                TxnState(std::sync::Arc::new(TxnStateNode::Ongoing(
-                                    ps_10.clone(),
-                                    lawtwinKafkaModelPendingFor_50512591(
-                                        group_3.clone(),
-                                        offsets_4.clone(),
-                                        os_11.clone(),
-                                    )?,
-                                )))
+                            TxnStateNode::Ongoing(field_13) => {
+                                let v_lawspecselection0x0_12 = field_13.clone();
+                                {
+                                    let v_lawspecselection1x0_16 = match &*v_lawspecselection0x0_12.0 {
+                                        Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(_, field_15) => {
+                                            let lawspecfieldtxnpartitions_14 = field_15.clone();
+                                            lawspecfieldtxnpartitions_14.clone()
+                                        }
+                                    };
+                                    {
+                                        let v_lawspecselection1x1_19 = match &*v_lawspecselection0x0_12.0 {
+                                            Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(field_18, _) => {
+                                                let lawspecfieldtxnoffsets_17 = field_18.clone();
+                                                lawspecfieldtxnoffsets_17.clone()
+                                            }
+                                        };
+                                        TxnState(std::sync::Arc::new(TxnStateNode::Ongoing({
+                                                let txnpartitions_20 = v_lawspecselection1x0_16.clone();
+                                                {
+                                                    let txnoffsets_21 = lawtwinKafkaModelPendingFor_50512591(group_3.clone(), offsets_4.clone(), v_lawspecselection1x1_19.clone())?;
+                                                    Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(std::sync::Arc::new(Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeNode::Record(txnoffsets_21.clone(), txnpartitions_20.clone())))
+                                                }
+                                            })))
+                                    }
+                                }
                             }
                         }
                     };
                     Pair(std::sync::Arc::new(PairNode::Pair(
                         (),
                         lawtwinKafkaModelPutProducer_4ef907a5(pid_1, {
-                                let replacement_15 = next_14.clone();
+                                let replacement_23 = next_22.clone();
                                 match &*entry_6.0 {
-                                    ProducerEntryNode::ProducerEntry(field_18, field_19, _) => {
-                                        let lawspecfieldepoch_16 = field_18.clone();
-                                        let lawspecfieldtransactionalid_17 = field_19.clone();
-                                        ProducerEntry(std::sync::Arc::new(ProducerEntryNode::ProducerEntry(lawspecfieldepoch_16, lawspecfieldtransactionalid_17.clone(), replacement_15.clone())))
+                                    ProducerEntryNode::ProducerEntry(field_26, field_27, _) => {
+                                        let lawspecfieldepoch_24 = field_26.clone();
+                                        let lawspecfieldtransactionalid_25 = field_27.clone();
+                                        ProducerEntry(std::sync::Arc::new(ProducerEntryNode::ProducerEntry(lawspecfieldepoch_24, lawspecfieldtransactionalid_25.clone(), replacement_23.clone())))
                                     }
                                 }
                             }, b_5.clone())?,
@@ -18379,33 +19311,39 @@ pub mod typed {
         mut ys_1: ls::fast::List<TopicPartition>,
     ) -> ls::Result<ls::fast::List<TopicPartition>> {
         loop {
-            return Ok(match xs_0.uncons() {
-                None => {
-                    ys_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let h_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    if !({
-                        let mut all_7 = true;
-                        for item_6 in ys_1.clone().iter() {
-                            let item_6 = item_6.clone();
-                            if !((item_6.clone() != h_2.clone())) { all_7 = false; break; }
-                        }
-                        all_7
-                    }) {
-                        {
-                            let next_8 = t_3.clone();
-                            xs_0 = next_8;
-                            continue
-                        }
-                    } else {
-                        {
-                            let next_9 = t_3.clone();
-                            let next_10 = ls::fast::List::cons(h_2.clone(), ys_1.clone());
-                            xs_0 = next_9;
-                            ys_1 = next_10;
-                            continue
+            return Ok({
+                let it_2 = xs_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        ys_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        if !({
+                            let mut all_8 = true;
+                            for item_7 in ys_1.clone().iter() {
+                                let item_7 = item_7.clone();
+                                if !((item_7.clone() != v_lawspecselection0x0_3.clone())) { all_8 = false; break; }
+                            }
+                            all_8
+                        }) {
+                            {
+                                let next_9 = v_lawspecselection0x1_4.clone();
+                                xs_0 = next_9;
+                                continue
+                            }
+                        } else {
+                            {
+                                let next_10 = v_lawspecselection0x1_4.clone();
+                                let next_11 = ls::fast::List::cons(
+                                    v_lawspecselection0x0_3.clone(),
+                                    ys_1.clone(),
+                                );
+                                xs_0 = next_10;
+                                ys_1 = next_11;
+                                continue
+                            }
                         }
                     }
                 }
@@ -18428,7 +19366,7 @@ pub mod typed {
         l_2: PartitionLog,
     ) -> ls::Result<PartitionLog> {
         Ok({
-            let aborted_16 = if commit_1 {
+            let aborted_19 = if commit_1 {
                 match &*l_2.0 {
                     PartitionLogNode::PartitionLog(_, _, _, field_4, _) => {
                         let lawspecfieldabortedtxns_3 = field_4.clone();
@@ -18437,13 +19375,13 @@ pub mod typed {
                 }
             } else {
                 {
-                    let matched_7 = match &*l_2.0 {
+                    let it_7 = match &*l_2.0 {
                         PartitionLogNode::PartitionLog(_, _, field_6, _, _) => {
                             let lawspecfieldopentxns_5 = field_6.clone();
                             lawspecfieldopentxns_5.clone()
                         }
                     }.get(&pid_0).cloned();
-                    match &matched_7 {
+                    match &it_7 {
                         None => {
                             match &*l_2.0 {
                                 PartitionLogNode::PartitionLog(_, _, _, field_9, _) => {
@@ -18453,131 +19391,144 @@ pub mod typed {
                             }
                         }
                         Some(field_11) => {
-                            let first_10 = field_11.clone();
-                            ls::fast::List::cons(
-                                AbortedTxn(std::sync::Arc::new(AbortedTxnNode::AbortedTxn(
-                                    pid_0,
-                                    first_10,
-                                    match &*l_2.0 {
-                                        PartitionLogNode::PartitionLog(_, field_13, _, _, _) => {
-                                            let lawspecfieldlogendoffset_12 = field_13.clone();
-                                            lawspecfieldlogendoffset_12
+                            let v_lawspecselection0x0_10 = field_11.clone();
+                            ls::fast::List::cons({
+                                    let v_lawspecrecordfield0_12 = pid_0;
+                                    {
+                                        let v_lawspecrecordfield1_13 = v_lawspecselection0x0_10;
+                                        {
+                                            let v_lawspecrecordfield2_16 = match &*l_2.0 {
+                                                PartitionLogNode::PartitionLog(_, field_15, _, _, _) => {
+                                                    let lawspecfieldlogendoffset_14 = field_15.clone();
+                                                    lawspecfieldlogendoffset_14
+                                                }
+                                            };
+                                            AbortedTxn(std::sync::Arc::new(AbortedTxnNode::AbortedTxn(v_lawspecrecordfield0_12, v_lawspecrecordfield1_13, v_lawspecrecordfield2_16)))
                                         }
-                                    },
-                                ))),
-                                match &*l_2.0 {
-                                    PartitionLogNode::PartitionLog(_, _, _, field_15, _) => {
-                                        let lawspecfieldabortedtxns_14 = field_15.clone();
-                                        lawspecfieldabortedtxns_14.clone()
                                     }
-                                },
-                            )
+                                }, match &*l_2.0 {
+                                    PartitionLogNode::PartitionLog(_, _, _, field_18, _) => {
+                                        let lawspecfieldabortedtxns_17 = field_18.clone();
+                                        lawspecfieldabortedtxns_17.clone()
+                                    }
+                                })
                         }
                     }
                 }
             };
             {
-                let replacement_17 = aborted_16.clone();
+                let replacement_20 = aborted_19.clone();
                 {
-                    let matched_55 = {
-                        let replacement_20 = match &*l_2.0 {
-                            PartitionLogNode::PartitionLog(_, _, field_19, _, _) => {
-                                let lawspecfieldopentxns_18 = field_19.clone();
-                                lawspecfieldopentxns_18.clone()
+                    let matched_61 = {
+                        let replacement_23 = match &*l_2.0 {
+                            PartitionLogNode::PartitionLog(_, _, field_22, _, _) => {
+                                let lawspecfieldopentxns_21 = field_22.clone();
+                                lawspecfieldopentxns_21.clone()
                             }
                         }.remove(&pid_0);
                         {
-                            let matched_46 = {
-                                let replacement_23 = saturatingInt64_5bce4ed8(
+                            let matched_52 = {
+                                let replacement_26 = saturatingInt64_5bce4ed8(
                                     ls::fast::Int::from_i128(((match &*l_2.0 {
-                                        PartitionLogNode::PartitionLog(_, field_22, _, _, _) => {
-                                            let lawspecfieldlogendoffset_21 = field_22.clone();
-                                            lawspecfieldlogendoffset_21
+                                        PartitionLogNode::PartitionLog(_, field_25, _, _, _) => {
+                                            let lawspecfieldlogendoffset_24 = field_25.clone();
+                                            lawspecfieldlogendoffset_24
                                         }
                                     } as i128) + 1i128)),
                                 )?;
                                 {
-                                    let matched_37 = {
-                                        let replacement_28 = ls::fast::List::cons(
+                                    let matched_43 = {
+                                        let replacement_34 = ls::fast::List::cons(
                                             LogEntry(std::sync::Arc::new(LogEntryNode::ControlEntry(
-                                                match &*l_2.0 {
-                                                    PartitionLogNode::PartitionLog(_, field_25, _, _, _) => {
-                                                        let lawspecfieldlogendoffset_24 = field_25.clone();
-                                                        lawspecfieldlogendoffset_24
+                                                {
+                                                    let markeroffset_29 = match &*l_2.0 {
+                                                        PartitionLogNode::PartitionLog(_, field_28, _, _, _) => {
+                                                            let lawspecfieldlogendoffset_27 = field_28.clone();
+                                                            lawspecfieldlogendoffset_27
+                                                        }
+                                                    };
+                                                    {
+                                                        let markerwriter_30 = pid_0;
+                                                        {
+                                                            let commits_31 = commit_1;
+                                                            Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3(std::sync::Arc::new(Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Node::Record(
+                                                                commits_31,
+                                                                markeroffset_29,
+                                                                markerwriter_30,
+                                                            )))
+                                                        }
                                                     }
                                                 },
-                                                pid_0,
-                                                commit_1,
                                             ))),
                                             match &*l_2.0 {
-                                                PartitionLogNode::PartitionLog(field_27, _, _, _, _) => {
-                                                    let lawspecfieldentries_26 = field_27.clone();
-                                                    lawspecfieldentries_26.clone()
+                                                PartitionLogNode::PartitionLog(field_33, _, _, _, _) => {
+                                                    let lawspecfieldentries_32 = field_33.clone();
+                                                    lawspecfieldentries_32.clone()
                                                 }
                                             },
                                         );
                                         match &*l_2.0 {
-                                            PartitionLogNode::PartitionLog(_, field_33, field_34, field_35, field_36) => {
-                                                let lawspecfieldlogendoffset_29 = field_33.clone();
-                                                let lawspecfieldopentxns_30 = field_34.clone();
-                                                let lawspecfieldabortedtxns_31 = field_35.clone();
-                                                let lawspecfieldbatches_32 = field_36.clone();
+                                            PartitionLogNode::PartitionLog(_, field_39, field_40, field_41, field_42) => {
+                                                let lawspecfieldlogendoffset_35 = field_39.clone();
+                                                let lawspecfieldopentxns_36 = field_40.clone();
+                                                let lawspecfieldabortedtxns_37 = field_41.clone();
+                                                let lawspecfieldbatches_38 = field_42.clone();
                                                 PartitionLog(std::sync::Arc::new(PartitionLogNode::PartitionLog(
-                                                    replacement_28.clone(),
-                                                    lawspecfieldlogendoffset_29,
-                                                    lawspecfieldopentxns_30.clone(),
-                                                    lawspecfieldabortedtxns_31.clone(),
-                                                    lawspecfieldbatches_32.clone(),
+                                                    replacement_34.clone(),
+                                                    lawspecfieldlogendoffset_35,
+                                                    lawspecfieldopentxns_36.clone(),
+                                                    lawspecfieldabortedtxns_37.clone(),
+                                                    lawspecfieldbatches_38.clone(),
                                                 )))
                                             }
                                         }
                                     };
-                                    match &*matched_37.0 {
-                                        PartitionLogNode::PartitionLog(field_42, _, field_43, field_44, field_45) => {
-                                            let lawspecfieldentries_38 = field_42.clone();
-                                            let lawspecfieldopentxns_39 = field_43.clone();
-                                            let lawspecfieldabortedtxns_40 = field_44.clone();
-                                            let lawspecfieldbatches_41 = field_45.clone();
+                                    match &*matched_43.0 {
+                                        PartitionLogNode::PartitionLog(field_48, _, field_49, field_50, field_51) => {
+                                            let lawspecfieldentries_44 = field_48.clone();
+                                            let lawspecfieldopentxns_45 = field_49.clone();
+                                            let lawspecfieldabortedtxns_46 = field_50.clone();
+                                            let lawspecfieldbatches_47 = field_51.clone();
                                             PartitionLog(std::sync::Arc::new(PartitionLogNode::PartitionLog(
-                                                lawspecfieldentries_38.clone(),
-                                                replacement_23,
-                                                lawspecfieldopentxns_39.clone(),
-                                                lawspecfieldabortedtxns_40.clone(),
-                                                lawspecfieldbatches_41.clone(),
+                                                lawspecfieldentries_44.clone(),
+                                                replacement_26,
+                                                lawspecfieldopentxns_45.clone(),
+                                                lawspecfieldabortedtxns_46.clone(),
+                                                lawspecfieldbatches_47.clone(),
                                             )))
                                         }
                                     }
                                 }
                             };
-                            match &*matched_46.0 {
-                                PartitionLogNode::PartitionLog(field_51, field_52, _, field_53, field_54) => {
-                                    let lawspecfieldentries_47 = field_51.clone();
-                                    let lawspecfieldlogendoffset_48 = field_52.clone();
-                                    let lawspecfieldabortedtxns_49 = field_53.clone();
-                                    let lawspecfieldbatches_50 = field_54.clone();
+                            match &*matched_52.0 {
+                                PartitionLogNode::PartitionLog(field_57, field_58, _, field_59, field_60) => {
+                                    let lawspecfieldentries_53 = field_57.clone();
+                                    let lawspecfieldlogendoffset_54 = field_58.clone();
+                                    let lawspecfieldabortedtxns_55 = field_59.clone();
+                                    let lawspecfieldbatches_56 = field_60.clone();
                                     PartitionLog(std::sync::Arc::new(PartitionLogNode::PartitionLog(
-                                        lawspecfieldentries_47.clone(),
-                                        lawspecfieldlogendoffset_48,
-                                        replacement_20.clone(),
-                                        lawspecfieldabortedtxns_49.clone(),
-                                        lawspecfieldbatches_50.clone(),
+                                        lawspecfieldentries_53.clone(),
+                                        lawspecfieldlogendoffset_54,
+                                        replacement_23.clone(),
+                                        lawspecfieldabortedtxns_55.clone(),
+                                        lawspecfieldbatches_56.clone(),
                                     )))
                                 }
                             }
                         }
                     };
-                    match &*matched_55.0 {
-                        PartitionLogNode::PartitionLog(field_60, field_61, field_62, _, field_63) => {
-                            let lawspecfieldentries_56 = field_60.clone();
-                            let lawspecfieldlogendoffset_57 = field_61.clone();
-                            let lawspecfieldopentxns_58 = field_62.clone();
-                            let lawspecfieldbatches_59 = field_63.clone();
+                    match &*matched_61.0 {
+                        PartitionLogNode::PartitionLog(field_66, field_67, field_68, _, field_69) => {
+                            let lawspecfieldentries_62 = field_66.clone();
+                            let lawspecfieldlogendoffset_63 = field_67.clone();
+                            let lawspecfieldopentxns_64 = field_68.clone();
+                            let lawspecfieldbatches_65 = field_69.clone();
                             PartitionLog(std::sync::Arc::new(PartitionLogNode::PartitionLog(
-                                lawspecfieldentries_56.clone(),
-                                lawspecfieldlogendoffset_57,
-                                lawspecfieldopentxns_58.clone(),
-                                replacement_17.clone(),
-                                lawspecfieldbatches_59.clone(),
+                                lawspecfieldentries_62.clone(),
+                                lawspecfieldlogendoffset_63,
+                                lawspecfieldopentxns_64.clone(),
+                                replacement_20.clone(),
+                                lawspecfieldbatches_65.clone(),
                             )))
                         }
                     }
@@ -18594,27 +19545,33 @@ pub mod typed {
         mut b_3: BrokerState,
     ) -> ls::Result<BrokerState> {
         loop {
-            return Ok(match tps_2.uncons() {
-                None => {
-                    b_3.clone()
-                }
-                Some((field_6, field_7)) => {
-                    let tp_4 = field_6.clone();
-                    let rest_5 = field_7.clone();
-                    {
-                        let next_8 = rest_5.clone();
-                        let next_9 = lawtwinKafkaModelPutLog_cb3cbf5e(
-                            tp_4.clone(),
-                            lawtwinKafkaModelWriteMarker_8dc995f8(
-                                pid_0,
-                                commit_1,
-                                lawtwinKafkaModelLogOf_b86b131a(tp_4.clone(), b_3.clone())?,
-                            )?,
-                            b_3.clone(),
-                        )?;
-                        tps_2 = next_8;
-                        b_3 = next_9;
-                        continue
+            return Ok({
+                let it_4 = tps_2.clone();
+                match it_4.uncons() {
+                    None => {
+                        b_3.clone()
+                    }
+                    Some((field_7, field_8)) => {
+                        let v_lawspecselection0x0_5 = field_7.clone();
+                        let v_lawspecselection0x1_6 = field_8.clone();
+                        {
+                            let next_9 = v_lawspecselection0x1_6.clone();
+                            let next_10 = lawtwinKafkaModelPutLog_cb3cbf5e(
+                                v_lawspecselection0x0_5.clone(),
+                                lawtwinKafkaModelWriteMarker_8dc995f8(
+                                    pid_0,
+                                    commit_1,
+                                    lawtwinKafkaModelLogOf_b86b131a(
+                                        v_lawspecselection0x0_5.clone(),
+                                        b_3.clone(),
+                                    )?,
+                                )?,
+                                b_3.clone(),
+                            )?;
+                            tps_2 = next_9;
+                            b_3 = next_10;
+                            continue
+                        }
                     }
                 }
             });
@@ -18640,31 +19597,37 @@ pub mod typed {
         mut have_1: ls::fast::List<TopicPartition>,
     ) -> ls::Result<ls::fast::List<TopicPartition>> {
         loop {
-            return Ok(match tps_0.uncons() {
-                None => {
-                    ls::fast::List::nil()
-                }
-                Some((field_4, field_5)) => {
-                    let tp_2 = field_4.clone();
-                    let rest_3 = field_5.clone();
-                    if !({
-                        let mut all_7 = true;
-                        for item_6 in have_1.clone().iter() {
-                            let item_6 = item_6.clone();
-                            if !((item_6.clone() != tp_2.clone())) { all_7 = false; break; }
+            return Ok({
+                let it_2 = tps_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        ls::fast::List::nil()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        if !({
+                            let mut all_8 = true;
+                            for item_7 in have_1.clone().iter() {
+                                let item_7 = item_7.clone();
+                                if !((item_7.clone() != v_lawspecselection0x0_3.clone())) { all_8 = false; break; }
+                            }
+                            all_8
+                        }) {
+                            {
+                                let next_9 = v_lawspecselection0x1_4.clone();
+                                tps_0 = next_9;
+                                continue
+                            }
+                        } else {
+                            ls::fast::List::cons(
+                                v_lawspecselection0x0_3.clone(),
+                                missingFrom_37856ee4(
+                                    v_lawspecselection0x1_4.clone(),
+                                    have_1.clone(),
+                                )?,
+                            )
                         }
-                        all_7
-                    }) {
-                        {
-                            let next_8 = rest_3.clone();
-                            tps_0 = next_8;
-                            continue
-                        }
-                    } else {
-                        ls::fast::List::cons(
-                            tp_2.clone(),
-                            missingFrom_37856ee4(rest_3.clone(), have_1.clone())?,
-                        )
                     }
                 }
             });
@@ -18714,93 +19677,107 @@ pub mod typed {
         mut h_1: u32,
     ) -> ls::Result<u32> {
         loop {
-            return Ok(match octets_0.uncons() {
-                None => {
-                    h_1
-                }
-                Some((field_4, field_5)) => {
-                    let b0_2 = field_4.clone();
-                    let rest1_3 = field_5.clone();
-                    match rest1_3.uncons() {
-                        None => {
-                            mul32_b8774c72(
-                                xor32_0ea970f5(h_1, (b0_2 as u32))?,
-                                murmurM_48968914(())?,
-                            )?
-                        }
-                        Some((field_8, field_9)) => {
-                            let b1_6 = field_8.clone();
-                            let rest2_7 = field_9.clone();
-                            match rest2_7.uncons() {
+            return Ok({
+                let it_2 = octets_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        h_1
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x1_4.clone();
+                            match it_7.uncons() {
                                 None => {
                                     mul32_b8774c72(
-                                        xor32_0ea970f5(
-                                            xor32_0ea970f5(
-                                                h_1,
-                                                wrappingUInt32_1ef3ce20(
-                                                    ls::fast::Int::from_i128(((b1_6 as i128) * 256i128)),
-                                                )?,
-                                            )?,
-                                            (b0_2 as u32),
-                                        )?,
+                                        xor32_0ea970f5(h_1, (v_lawspecselection0x0_3 as u32))?,
                                         murmurM_48968914(())?,
                                     )?
                                 }
-                                Some((field_12, field_13)) => {
-                                    let b2_10 = field_12.clone();
-                                    let rest3_11 = field_13.clone();
-                                    match rest3_11.uncons() {
-                                        None => {
-                                            mul32_b8774c72(
-                                                xor32_0ea970f5(
+                                Some((field_10, field_11)) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = v_match__lawspecselection0x1_0_9.clone();
+                                        match it_12.uncons() {
+                                            None => {
+                                                mul32_b8774c72(
                                                     xor32_0ea970f5(
                                                         xor32_0ea970f5(
                                                             h_1,
                                                             wrappingUInt32_1ef3ce20(
-                                                                ls::fast::Int::from_i128(((b2_10 as i128) * 65536i128)),
+                                                                ls::fast::Int::from_i128(((v_match__lawspecselection0x0_0_8 as i128) * 256i128)),
                                                             )?,
                                                         )?,
-                                                        wrappingUInt32_1ef3ce20(
-                                                            ls::fast::Int::from_i128(((b1_6 as i128) * 256i128)),
-                                                        )?,
-                                                    )?,
-                                                    (b0_2 as u32),
-                                                )?,
-                                                murmurM_48968914(())?,
-                                            )?
-                                        }
-                                        Some((field_16, field_17)) => {
-                                            let b3_14 = field_16.clone();
-                                            let rest4_15 = field_17.clone();
-                                            {
-                                                let k0_18 = mul32_b8774c72(
-                                                    wrappingUInt32_1ef3ce20(
-                                                        ls::fast::Int::from_i128(((((b0_2 as i128) + ((b1_6 as i128) * 256i128)) + ((b2_10 as i128) * 65536i128)) + ((b3_14 as i128) * 16777216i128))),
+                                                        (v_lawspecselection0x0_3 as u32),
                                                     )?,
                                                     murmurM_48968914(())?,
-                                                )?;
+                                                )?
+                                            }
+                                            Some((field_15, field_16)) => {
+                                                let v_match__match__lawspecselection0x0_0_0_13 = field_15.clone();
+                                                let v_match__match__lawspecselection0x1_0_0_14 = field_16.clone();
                                                 {
-                                                    let k1_19 = mul32_b8774c72(
-                                                        xor32_0ea970f5(
-                                                            k0_18,
-                                                            wrappingUInt32_1ef3ce20(
-                                                                ls::fast::Int::from(k0_18).quot(&ls::fast::Int::from_i128(16777216i128))?,
-                                                            )?,
-                                                        )?,
-                                                        murmurM_48968914(())?,
-                                                    )?;
-                                                    {
-                                                        let next_20 = rest4_15.clone();
-                                                        let next_21 = xor32_0ea970f5(
+                                                    let it_17 = v_match__match__lawspecselection0x1_0_0_14.clone();
+                                                    match it_17.uncons() {
+                                                        None => {
                                                             mul32_b8774c72(
-                                                                h_1,
+                                                                xor32_0ea970f5(
+                                                                    xor32_0ea970f5(
+                                                                        xor32_0ea970f5(
+                                                                            h_1,
+                                                                            wrappingUInt32_1ef3ce20(
+                                                                                ls::fast::Int::from_i128(((v_match__match__lawspecselection0x0_0_0_13 as i128) * 65536i128)),
+                                                                            )?,
+                                                                        )?,
+                                                                        wrappingUInt32_1ef3ce20(
+                                                                            ls::fast::Int::from_i128(((v_match__lawspecselection0x0_0_8 as i128) * 256i128)),
+                                                                        )?,
+                                                                    )?,
+                                                                    (v_lawspecselection0x0_3 as u32),
+                                                                )?,
                                                                 murmurM_48968914(())?,
-                                                            )?,
-                                                            k1_19,
-                                                        )?;
-                                                        octets_0 = next_20;
-                                                        h_1 = next_21;
-                                                        continue
+                                                            )?
+                                                        }
+                                                        Some((field_20, field_21)) => {
+                                                            let v_match__match__match__lawspecselection0x0_0_0_0_18 = field_20.clone();
+                                                            let v_match__match__match__lawspecselection0x1_0_0_0_19 = field_21.clone();
+                                                            {
+                                                                let k0_22 = mul32_b8774c72(
+                                                                    wrappingUInt32_1ef3ce20(
+                                                                        ls::fast::Int::from_i128(((((v_lawspecselection0x0_3 as i128) + ((v_match__lawspecselection0x0_0_8 as i128) * 256i128)) + ((v_match__match__lawspecselection0x0_0_0_13 as i128) * 65536i128)) + ((v_match__match__match__lawspecselection0x0_0_0_0_18 as i128) * 16777216i128))),
+                                                                    )?,
+                                                                    murmurM_48968914(())?,
+                                                                )?;
+                                                                {
+                                                                    let k1_23 = mul32_b8774c72(
+                                                                        xor32_0ea970f5(
+                                                                            k0_22,
+                                                                            wrappingUInt32_1ef3ce20(
+                                                                                ls::fast::Int::from(k0_22).quot(&ls::fast::Int::from_i128(16777216i128))?,
+                                                                            )?,
+                                                                        )?,
+                                                                        murmurM_48968914(())?,
+                                                                    )?;
+                                                                    {
+                                                                        let next_24 = v_match__match__match__lawspecselection0x1_0_0_0_19.clone();
+                                                                        let next_25 = xor32_0ea970f5(
+                                                                            mul32_b8774c72(
+                                                                                h_1,
+                                                                                murmurM_48968914(
+                                                                                    (),
+                                                                                )?,
+                                                                            )?,
+                                                                            k1_23,
+                                                                        )?;
+                                                                        octets_0 = next_24;
+                                                                        h_1 = next_25;
+                                                                        continue
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
@@ -18825,18 +19802,21 @@ pub mod typed {
         key_0: Option<ls::fast::Bytes>,
         n_1: i32,
     ) -> ls::Result<i32> {
-        Ok(match &key_0 {
-            None => {
-                0i32
-            }
-            Some(field_3) => {
-                let k_2 = field_3.clone();
-                if ((n_1 as i128) >= 1i128) {
-                    ls::fast::Int::from(toPositive_fc7029c7(
-                        murmur2_d0ccf769(k_2.clone())?,
-                    )?).rem(&ls::fast::Int::from(n_1))?.narrow::<i32>("Int32")?
-                } else {
+        Ok({
+            let it_2 = key_0.clone();
+            match &it_2 {
+                None => {
                     0i32
+                }
+                Some(field_4) => {
+                    let v_lawspecselection0x0_3 = field_4.clone();
+                    if ((n_1 as i128) >= 1i128) {
+                        ls::fast::Int::from(toPositive_fc7029c7(
+                            murmur2_d0ccf769(v_lawspecselection0x0_3.clone())?,
+                        )?).rem(&ls::fast::Int::from(n_1))?.narrow::<i32>("Int32")?
+                    } else {
+                        0i32
+                    }
                 }
             }
         })
@@ -18847,19 +19827,25 @@ pub mod typed {
         t_0: ls::fast::Text,
         ms_1: ls::fast::List<MemberAssignment>,
     ) -> ls::Result<ls::fast::List<i32>> {
-        Ok(match ms_1.uncons() {
-            None => {
-                ls::fast::List::nil()
-            }
-            Some((field_4, field_5)) => {
-                let m_2 = field_4.clone();
-                let rest_3 = field_5.clone();
-                ls::fast::append_list(&partitionsOfTopic_194a4a6c(t_0.clone(), match &*m_2.0 {
-                        MemberAssignmentNode::MemberAssignment(_, field_7) => {
-                            let lawspecfieldassigned_6 = field_7.clone();
-                            lawspecfieldassigned_6.clone()
-                        }
-                    })?, &ownedOf_0d7fb3ae(t_0.clone(), rest_3.clone())?)
+        Ok({
+            let it_2 = ms_1.clone();
+            match it_2.uncons() {
+                None => {
+                    ls::fast::List::nil()
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    ls::fast::append_list(&partitionsOfTopic_194a4a6c(
+                        t_0.clone(),
+                        match &*v_lawspecselection0x0_3.0 {
+                            MemberAssignmentNode::MemberAssignment(_, field_8) => {
+                                let lawspecfieldassigned_7 = field_8.clone();
+                                lawspecfieldassigned_7.clone()
+                            }
+                        },
+                    )?, &ownedOf_0d7fb3ae(t_0.clone(), v_lawspecselection0x1_4.clone())?)
+                }
             }
         })
     }
@@ -18872,44 +19858,59 @@ pub mod typed {
         r_2: Record,
     ) -> ls::Result<ls::Either<KafkaError, TopicPartition>> {
         Ok({
-            let matched_4 = {
+            let it_4 = {
                 let argument_3: ls::fast::Text = topic_0.clone();
                 let performed = crate::lawspec_abilities::lawtwin_kafka::perform_metadataRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_3)]).map_err(|error| format!("{}: {error}", "metadataRequest"))?;
                 <Option<i32> as ls::fast::Dyn>::from_dyn(performed)?
             };
-            match &matched_4 {
+            match &it_4 {
                 None => {
                     ls::Either::Left(KafkaError::UnknownTopicOrPartition)
                 }
                 Some(field_6) => {
-                    let n_5 = field_6.clone();
-                    match &*choice_1.0 {
-                        PartitionChoiceNode::ToPartition(field_8) => {
-                            let p_7 = field_8.clone();
-                            if (((p_7 as i128) >= 0i128) && (p_7 < n_5)) {
-                                ls::Either::Right(TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
-                                    topic_0.clone(),
-                                    p_7,
-                                ))))
-                            } else {
-                                ls::Either::Left(KafkaError::UnknownTopicOrPartition)
-                            }
-                        }
-                        PartitionChoiceNode::ByKey => {
-                            ls::Either::Right(TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
-                                topic_0.clone(),
-                                {
-                                    let argument_11: Option<ls::fast::Bytes> = match &*r_2.0 {
-                                        RecordNode::Record(field_10, _, _) => {
-                                            let lawspecfieldkey_9 = field_10.clone();
-                                            lawspecfieldkey_9.clone()
+                    let v_lawspecselection0x0_5 = field_6.clone();
+                    {
+                        let it_7 = choice_1.clone();
+                        match &*it_7.0 {
+                            PartitionChoiceNode::ToPartition(field_9) => {
+                                let v_match__lawspecselection0x0_0_8 = field_9.clone();
+                                if (((v_match__lawspecselection0x0_0_8 as i128) >= 0i128) && (v_match__lawspecselection0x0_0_8 < v_lawspecselection0x0_5)) {
+                                    ls::Either::Right({
+                                        let v_lawspecrecordfield0_10 = topic_0.clone();
+                                        {
+                                            let v_lawspecrecordfield1_11 = v_match__lawspecselection0x0_0_8;
+                                            TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
+                                                v_lawspecrecordfield0_10.clone(),
+                                                v_lawspecrecordfield1_11,
+                                            )))
                                         }
-                                    };
-                                    let argument_12: i32 = n_5;
-                                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_choosePartition(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_11), ls::fast::Dyn::to_dyn(&argument_12)]).map_err(|error| format!("{}: {error}", "choosePartition"))?;
-                                    <i32 as ls::fast::Dyn>::from_dyn(performed)?
-                                },
-                            ))))
+                                    })
+                                } else {
+                                    ls::Either::Left(KafkaError::UnknownTopicOrPartition)
+                                }
+                            }
+                            PartitionChoiceNode::ByKey => {
+                                ls::Either::Right({
+                                    let v_lawspecrecordfield0_12 = topic_0.clone();
+                                    {
+                                        let v_lawspecrecordfield1_17 = {
+                                            let argument_15: Option<ls::fast::Bytes> = match &*r_2.0 {
+                                                RecordNode::Record(field_14, _, _) => {
+                                                    let lawspecfieldkey_13 = field_14.clone();
+                                                    lawspecfieldkey_13.clone()
+                                                }
+                                            };
+                                            let argument_16: i32 = v_lawspecselection0x0_5;
+                                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_choosePartition(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_15), ls::fast::Dyn::to_dyn(&argument_16)]).map_err(|error| format!("{}: {error}", "choosePartition"))?;
+                                            <i32 as ls::fast::Dyn>::from_dyn(performed)?
+                                        };
+                                        TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
+                                            v_lawspecrecordfield0_12.clone(),
+                                            v_lawspecrecordfield1_17,
+                                        )))
+                                    }
+                                })
+                            }
                         }
                     }
                 }
@@ -18923,30 +19924,33 @@ pub mod typed {
         mut tps_1: ls::fast::List<TopicPartition>,
     ) -> ls::Result<ls::fast::List<i32>> {
         loop {
-            return Ok(match tps_1.uncons() {
-                None => {
-                    ls::fast::List::nil()
-                }
-                Some((field_4, field_5)) => {
-                    let tp_2 = field_4.clone();
-                    let rest_3 = field_5.clone();
-                    if (match &*tp_2.0 {
-                        TopicPartitionNode::TopicPartition(field_7, _) => {
-                            let lawspecfieldtopic_6 = field_7.clone();
-                            lawspecfieldtopic_6.clone()
-                        }
-                    } == t_0.clone()) {
-                        ls::fast::List::cons(match &*tp_2.0 {
-                                TopicPartitionNode::TopicPartition(_, field_9) => {
-                                    let lawspecfieldpartition_8 = field_9.clone();
-                                    lawspecfieldpartition_8
-                                }
-                            }, partitionsOfTopic_194a4a6c(t_0.clone(), rest_3.clone())?)
-                    } else {
-                        {
-                            let next_10 = rest_3.clone();
-                            tps_1 = next_10;
-                            continue
+            return Ok({
+                let it_2 = tps_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        ls::fast::List::nil()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        if (match &*v_lawspecselection0x0_3.0 {
+                            TopicPartitionNode::TopicPartition(field_8, _) => {
+                                let lawspecfieldtopic_7 = field_8.clone();
+                                lawspecfieldtopic_7.clone()
+                            }
+                        } == t_0.clone()) {
+                            ls::fast::List::cons(match &*v_lawspecselection0x0_3.0 {
+                                    TopicPartitionNode::TopicPartition(_, field_10) => {
+                                        let lawspecfieldpartition_9 = field_10.clone();
+                                        lawspecfieldpartition_9
+                                    }
+                                }, partitionsOfTopic_194a4a6c(t_0.clone(), v_lawspecselection0x1_4.clone())?)
+                        } else {
+                            {
+                                let next_11 = v_lawspecselection0x1_4.clone();
+                                tps_1 = next_11;
+                                continue
+                            }
                         }
                     }
                 }
@@ -18963,103 +19967,106 @@ pub mod typed {
         mut acc_3: ls::fast::List<ConsumerRecord>,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ls::fast::List<ConsumerRecord>>, ConsumerState>> {
         loop {
-            return Ok(match tps_0.uncons() {
-                None => {
-                    Pair(std::sync::Arc::new(PairNode::Pair(
-                        ls::Either::Right(acc_3.clone()),
-                        c_2.clone(),
-                    )))
-                }
-                Some((field_6, field_7)) => {
-                    let tp_4 = field_6.clone();
-                    let rest_5 = field_7.clone();
-                    {
-                        let p_10 = {
-                            let argument_8: TopicPartition = tp_4.clone();
-                            let argument_9: ConsumerState = c_2.clone();
-                            consumerPosition_4da411a3(&mut *ctx, argument_8, argument_9)?
-                        };
+            return Ok({
+                let it_4 = tps_0.clone();
+                match it_4.uncons() {
+                    None => {
+                        Pair(std::sync::Arc::new(PairNode::Pair(
+                            ls::Either::Right(acc_3.clone()),
+                            c_2.clone(),
+                        )))
+                    }
+                    Some((field_7, field_8)) => {
+                        let v_lawspecselection0x0_5 = field_7.clone();
+                        let v_lawspecselection0x1_6 = field_8.clone();
                         {
-                            let matched_24 = {
-                                let matched_19 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<FetchResult> {
-                                    Ok({
-                                        let argument_15: TopicPartition = tp_4.clone();
-                                        let argument_16: i64 = match &*p_10.0 {
-                                            PairNode::Pair(field_12, _) => {
-                                                let lawspecfieldfirst_11 = field_12.clone();
-                                                lawspecfieldfirst_11
-                                            }
-                                        };
-                                        let argument_17: i32 = n_1;
-                                        let argument_18: IsolationLevel = match &*c_2.0 {
-                                            ConsumerStateNode::ConsumerState(_, _, _, _, _, _, field_14) => {
-                                                let lawspecfieldisolation_13 = field_14.clone();
-                                                lawspecfieldisolation_13
-                                            }
-                                        };
-                                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_fetchRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_15), ls::fast::Dyn::to_dyn(&argument_16), ls::fast::Dyn::to_dyn(&argument_17), ls::fast::Dyn::to_dyn(&argument_18)]).map_err(|error| format!("{}: {error}", "fetchRequest"))?;
-                                        <FetchResult as ls::fast::Dyn>::from_dyn(performed)?
-                                    })
-                                })? {
-                                    Ok(value) => ls::Either::Right(value),
-                                    Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
-                                };
-                                match &matched_19 {
-                                    ls::Either::Left(field_21) => {
-                                        let lawspecfailure_20 = field_21.clone();
-                                        ls::Either::Left(lawspecfailure_20)
-                                    }
-                                    ls::Either::Right(field_23) => {
-                                        let lawspecvalue_22 = field_23.clone();
-                                        ls::Either::Right(lawspecvalue_22.clone())
-                                    }
-                                }
+                            let p_11 = {
+                                let argument_9: TopicPartition = v_lawspecselection0x0_5.clone();
+                                let argument_10: ConsumerState = c_2.clone();
+                                consumerPosition_4da411a3(&mut *ctx, argument_9, argument_10)?
                             };
-                            match &matched_24 {
-                                ls::Either::Left(field_26) => {
-                                    let e_25 = field_26.clone();
-                                    Pair(std::sync::Arc::new(PairNode::Pair(
-                                        ls::Either::Left(e_25),
-                                        match &*p_10.0 {
-                                            PairNode::Pair(_, field_28) => {
-                                                let lawspecfieldsecond_27 = field_28.clone();
-                                                lawspecfieldsecond_27.clone()
-                                            }
-                                        },
-                                    )))
-                                }
-                                ls::Either::Right(field_30) => {
-                                    let fr_29 = field_30.clone();
-                                    {
-                                        let next_37 = rest_5.clone();
-                                        let next_38 = withPosition_867e6b19(
-                                            tp_4.clone(),
-                                            match &*fr_29.0 {
-                                                FetchResultNode::FetchResult(_, field_32, _, _) => {
-                                                    let lawspecfieldnextoffset_31 = field_32.clone();
-                                                    lawspecfieldnextoffset_31
+                            {
+                                let it_25 = {
+                                    let matched_20 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<FetchResult> {
+                                        Ok({
+                                            let argument_16: TopicPartition = v_lawspecselection0x0_5.clone();
+                                            let argument_17: i64 = match &*p_11.0 {
+                                                PairNode::Pair(field_13, _) => {
+                                                    let lawspecfieldfirst_12 = field_13.clone();
+                                                    lawspecfieldfirst_12
+                                                }
+                                            };
+                                            let argument_18: i32 = n_1;
+                                            let argument_19: IsolationLevel = match &*c_2.0 {
+                                                ConsumerStateNode::ConsumerState(_, _, _, _, _, _, field_15) => {
+                                                    let lawspecfieldisolation_14 = field_15.clone();
+                                                    lawspecfieldisolation_14
+                                                }
+                                            };
+                                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_fetchRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_16), ls::fast::Dyn::to_dyn(&argument_17), ls::fast::Dyn::to_dyn(&argument_18), ls::fast::Dyn::to_dyn(&argument_19)]).map_err(|error| format!("{}: {error}", "fetchRequest"))?;
+                                            <FetchResult as ls::fast::Dyn>::from_dyn(performed)?
+                                        })
+                                    })? {
+                                        Ok(value) => ls::Either::Right(value),
+                                        Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
+                                    };
+                                    match &matched_20 {
+                                        ls::Either::Left(field_22) => {
+                                            let lawspecfailure_21 = field_22.clone();
+                                            ls::Either::Left(lawspecfailure_21)
+                                        }
+                                        ls::Either::Right(field_24) => {
+                                            let lawspecvalue_23 = field_24.clone();
+                                            ls::Either::Right(lawspecvalue_23.clone())
+                                        }
+                                    }
+                                };
+                                match &it_25 {
+                                    ls::Either::Left(field_27) => {
+                                        let v_match__lawspecselection0x0_0_26 = field_27.clone();
+                                        Pair(std::sync::Arc::new(PairNode::Pair(
+                                            ls::Either::Left(v_match__lawspecselection0x0_0_26),
+                                            match &*p_11.0 {
+                                                PairNode::Pair(_, field_29) => {
+                                                    let lawspecfieldsecond_28 = field_29.clone();
+                                                    lawspecfieldsecond_28.clone()
                                                 }
                                             },
-                                            match &*p_10.0 {
-                                                PairNode::Pair(_, field_34) => {
-                                                    let lawspecfieldsecond_33 = field_34.clone();
-                                                    lawspecfieldsecond_33.clone()
-                                                }
-                                            },
-                                        )?;
-                                        let next_39 = ls::fast::append_list(&acc_3.clone(), &consumerRecords_9d810f29(
-                                            tp_4.clone(),
-                                            match &*fr_29.0 {
-                                                FetchResultNode::FetchResult(field_36, _, _, _) => {
-                                                    let lawspecfieldrecords_35 = field_36.clone();
-                                                    lawspecfieldrecords_35.clone()
-                                                }
-                                            },
-                                        )?);
-                                        tps_0 = next_37;
-                                        c_2 = next_38;
-                                        acc_3 = next_39;
-                                        continue
+                                        )))
+                                    }
+                                    ls::Either::Right(field_31) => {
+                                        let v_match__lawspecselection0x0_0_30 = field_31.clone();
+                                        {
+                                            let next_38 = v_lawspecselection0x1_6.clone();
+                                            let next_39 = withPosition_867e6b19(
+                                                v_lawspecselection0x0_5.clone(),
+                                                match &*v_match__lawspecselection0x0_0_30.0 {
+                                                    FetchResultNode::FetchResult(_, field_33, _, _) => {
+                                                        let lawspecfieldnextoffset_32 = field_33.clone();
+                                                        lawspecfieldnextoffset_32
+                                                    }
+                                                },
+                                                match &*p_11.0 {
+                                                    PairNode::Pair(_, field_35) => {
+                                                        let lawspecfieldsecond_34 = field_35.clone();
+                                                        lawspecfieldsecond_34.clone()
+                                                    }
+                                                },
+                                            )?;
+                                            let next_40 = ls::fast::append_list(&acc_3.clone(), &consumerRecords_9d810f29(
+                                                v_lawspecselection0x0_5.clone(),
+                                                match &*v_match__lawspecselection0x0_0_30.0 {
+                                                    FetchResultNode::FetchResult(field_37, _, _, _) => {
+                                                        let lawspecfieldrecords_36 = field_37.clone();
+                                                        lawspecfieldrecords_36.clone()
+                                                    }
+                                                },
+                                            )?);
+                                            tps_0 = next_38;
+                                            c_2 = next_39;
+                                            acc_3 = next_40;
+                                            continue
+                                        }
                                     }
                                 }
                             }
@@ -19076,35 +20083,35 @@ pub mod typed {
         mut positions_1: ls::fast::Map<TopicPartition, i64>,
     ) -> ls::Result<ls::fast::List<OffsetEntry>> {
         loop {
-            return Ok(match tps_0.uncons() {
-                None => {
-                    ls::fast::List::nil()
-                }
-                Some((field_4, field_5)) => {
-                    let tp_2 = field_4.clone();
-                    let rest_3 = field_5.clone();
-                    {
-                        let matched_6 = positions_1.clone().get(&tp_2.clone()).cloned();
-                        match &matched_6 {
-                            None => {
-                                {
-                                    let next_7 = rest_3.clone();
-                                    tps_0 = next_7;
-                                    continue
+            return Ok({
+                let it_2 = tps_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        ls::fast::List::nil()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = positions_1.clone().get(&v_lawspecselection0x0_3.clone()).cloned();
+                            match &it_7 {
+                                None => {
+                                    {
+                                        let next_8 = v_lawspecselection0x1_4.clone();
+                                        tps_0 = next_8;
+                                        continue
+                                    }
                                 }
-                            }
-                            Some(field_9) => {
-                                let o_8 = field_9.clone();
-                                ls::fast::List::cons(
-                                    OffsetEntry(std::sync::Arc::new(OffsetEntryNode::OffsetEntry(
-                                        tp_2.clone(),
-                                        o_8,
-                                    ))),
-                                    positionsToCommit_67969440(
-                                        rest_3.clone(),
-                                        positions_1.clone(),
-                                    )?,
-                                )
+                                Some(field_10) => {
+                                    let v_match__lawspecselection0x0_0_9 = field_10.clone();
+                                    ls::fast::List::cons({
+                                            let v_lawspecrecordfield0_11 = v_lawspecselection0x0_3.clone();
+                                            {
+                                                let v_lawspecrecordfield1_12 = v_match__lawspecselection0x0_0_9;
+                                                OffsetEntry(std::sync::Arc::new(OffsetEntryNode::OffsetEntry(v_lawspecrecordfield0_11.clone(), v_lawspecrecordfield1_12)))
+                                            }
+                                        }, positionsToCommit_67969440(v_lawspecselection0x1_4.clone(), positions_1.clone())?)
+                                }
                             }
                         }
                     }
@@ -19124,7 +20131,7 @@ pub mod typed {
         st_0: ProducerState,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ProducerIdAndEpoch>, ProducerState>> {
         Ok({
-            let matched_7 = {
+            let it_7 = {
                 let matched_2 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<ProducerIdAndEpoch> {
                     Ok({
                         let argument_1: Option<ls::fast::Text> = None;
@@ -19146,20 +20153,32 @@ pub mod typed {
                     }
                 }
             };
-            match &matched_7 {
+            match &it_7 {
                 ls::Either::Left(field_9) => {
-                    let e_8 = field_9.clone();
-                    Pair(std::sync::Arc::new(PairNode::Pair(ls::Either::Left(e_8), st_0.clone())))
+                    let v_lawspecselection0x0_8 = field_9.clone();
+                    Pair(std::sync::Arc::new(PairNode::Pair(
+                        ls::Either::Left(v_lawspecselection0x0_8),
+                        st_0.clone(),
+                    )))
                 }
                 ls::Either::Right(field_11) => {
-                    let pe_10 = field_11.clone();
+                    let v_lawspecselection0x0_10 = field_11.clone();
                     Pair(std::sync::Arc::new(PairNode::Pair(
-                        ls::Either::Right(pe_10.clone()),
-                        ProducerState(std::sync::Arc::new(ProducerStateNode::ProducerState(
-                            Some(pe_10.clone()),
-                            ls::fast::Map::new(),
-                            None,
-                        ))),
+                        ls::Either::Right(v_lawspecselection0x0_10.clone()),
+                        {
+                            let v_lawspecrecordfield0_12 = Some(v_lawspecselection0x0_10.clone());
+                            {
+                                let v_lawspecrecordfield1_13 = ls::fast::Map::new();
+                                {
+                                    let v_lawspecrecordfield2_14 = None;
+                                    ProducerState(std::sync::Arc::new(ProducerStateNode::ProducerState(
+                                        v_lawspecrecordfield0_12.clone(),
+                                        v_lawspecrecordfield1_13.clone(),
+                                        v_lawspecrecordfield2_14.clone(),
+                                    )))
+                                }
+                            }
+                        },
                     )))
                 }
             }
@@ -19172,13 +20191,13 @@ pub mod typed {
         st_0: ProducerState,
     ) -> ls::Result<Pair<ls::Either<KafkaError, RecordMetadata>, ProducerState>> {
         Ok({
-            let matched_3 = match &*st_0.0 {
+            let it_3 = match &*st_0.0 {
                 ProducerStateNode::ProducerState(_, _, field_2) => {
                     let lawspecfieldlastsend_1 = field_2.clone();
                     lawspecfieldlastsend_1.clone()
                 }
             };
-            match &matched_3 {
+            match &it_3 {
                 None => {
                     Pair(std::sync::Arc::new(PairNode::Pair(
                         ls::Either::Left(KafkaError::IllegalState),
@@ -19186,24 +20205,24 @@ pub mod typed {
                     )))
                 }
                 Some(field_5) => {
-                    let l_4 = field_5.clone();
+                    let v_lawspecselection0x0_4 = field_5.clone();
                     {
-                        let matched_20 = {
+                        let it_20 = {
                             let matched_15 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<i64> {
                                 Ok({
-                                    let argument_12: TopicPartition = match &*l_4.0 {
+                                    let argument_12: TopicPartition = match &*v_lawspecselection0x0_4.0 {
                                         LastSendNode::LastSend(field_7, _, _) => {
                                             let lawspecfieldlastpartition_6 = field_7.clone();
                                             lawspecfieldlastpartition_6.clone()
                                         }
                                     };
-                                    let argument_13: Option<ProducerTag> = match &*l_4.0 {
+                                    let argument_13: Option<ProducerTag> = match &*v_lawspecselection0x0_4.0 {
                                         LastSendNode::LastSend(_, field_9, _) => {
                                             let lawspecfieldlasttag_8 = field_9.clone();
                                             lawspecfieldlasttag_8.clone()
                                         }
                                     };
-                                    let argument_14: ls::fast::List<Record> = match &*l_4.0 {
+                                    let argument_14: ls::fast::List<Record> = match &*v_lawspecselection0x0_4.0 {
                                         LastSendNode::LastSend(_, _, field_11) => {
                                             let lawspecfieldlastrecords_10 = field_11.clone();
                                             lawspecfieldlastrecords_10.clone()
@@ -19227,28 +20246,28 @@ pub mod typed {
                                 }
                             }
                         };
-                        match &matched_20 {
+                        match &it_20 {
                             ls::Either::Left(field_22) => {
-                                let e_21 = field_22.clone();
+                                let v_match__lawspecselection0x0_0_21 = field_22.clone();
                                 Pair(std::sync::Arc::new(PairNode::Pair(
-                                    ls::Either::Left(e_21),
+                                    ls::Either::Left(v_match__lawspecselection0x0_0_21),
                                     st_0.clone(),
                                 )))
                             }
                             ls::Either::Right(field_24) => {
-                                let offset_23 = field_24.clone();
-                                Pair(std::sync::Arc::new(PairNode::Pair(
-                                    ls::Either::Right(RecordMetadata(std::sync::Arc::new(RecordMetadataNode::RecordMetadata(
-                                        match &*l_4.0 {
+                                let v_match__lawspecselection0x0_0_23 = field_24.clone();
+                                Pair(std::sync::Arc::new(PairNode::Pair(ls::Either::Right({
+                                        let v_lawspecrecordfield0_27 = match &*v_lawspecselection0x0_4.0 {
                                             LastSendNode::LastSend(field_26, _, _) => {
                                                 let lawspecfieldlastpartition_25 = field_26.clone();
                                                 lawspecfieldlastpartition_25.clone()
                                             }
-                                        },
-                                        offset_23,
-                                    )))),
-                                    st_0.clone(),
-                                )))
+                                        };
+                                        {
+                                            let v_lawspecrecordfield1_28 = v_match__lawspecselection0x0_0_23;
+                                            RecordMetadata(std::sync::Arc::new(RecordMetadataNode::RecordMetadata(v_lawspecrecordfield0_27.clone(), v_lawspecrecordfield1_28)))
+                                        }
+                                    }), st_0.clone())))
                             }
                         }
                     }
@@ -19264,7 +20283,7 @@ pub mod typed {
         st_1: ProducerState,
     ) -> ls::Result<Pair<ls::Either<KafkaError, RecordMetadata>, ProducerState>> {
         Ok({
-            let matched_11 = {
+            let it_11 = {
                 let argument_8: ls::fast::Text = match &*pr_0.0 {
                     ProducerRecordNode::ProducerRecord(field_3, _, _) => {
                         let lawspecfielddestination_2 = field_3.clone();
@@ -19285,20 +20304,26 @@ pub mod typed {
                 };
                 partitionOf_343af5ef(&mut *ctx, argument_8, argument_9, argument_10)?
             };
-            match &matched_11 {
+            match &it_11 {
                 ls::Either::Left(field_13) => {
-                    let e_12 = field_13.clone();
-                    Pair(std::sync::Arc::new(PairNode::Pair(ls::Either::Left(e_12), st_1.clone())))
+                    let v_lawspecselection0x0_12 = field_13.clone();
+                    Pair(std::sync::Arc::new(PairNode::Pair(
+                        ls::Either::Left(v_lawspecselection0x0_12),
+                        st_1.clone(),
+                    )))
                 }
                 ls::Either::Right(field_15) => {
-                    let tp_14 = field_15.clone();
+                    let v_lawspecselection0x0_14 = field_15.clone();
                     {
-                        let sequence_18 = sequenceFor_9d79724c(tp_14.clone(), match &*st_1.0 {
+                        let sequence_18 = sequenceFor_9d79724c(
+                            v_lawspecselection0x0_14.clone(),
+                            match &*st_1.0 {
                                 ProducerStateNode::ProducerState(_, field_17, _) => {
                                     let lawspecfieldsequences_16 = field_17.clone();
                                     lawspecfieldsequences_16.clone()
                                 }
-                            })?;
+                            },
+                        )?;
                         {
                             let tag_21 = tagFor_a88d3846(match &*st_1.0 {
                                     ProducerStateNode::ProducerState(field_20, _, _) => {
@@ -19307,10 +20332,10 @@ pub mod typed {
                                     }
                                 }, sequence_18)?;
                             {
-                                let matched_32 = {
+                                let it_32 = {
                                     let matched_27 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<i64> {
                                         Ok({
-                                            let argument_24: TopicPartition = tp_14.clone();
+                                            let argument_24: TopicPartition = v_lawspecselection0x0_14.clone();
                                             let argument_25: Option<ProducerTag> = tag_21.clone();
                                             let argument_26: ls::fast::List<Record> = ls::fast::List::cons(
                                                 match &*pr_0.0 {
@@ -19339,71 +20364,63 @@ pub mod typed {
                                         }
                                     }
                                 };
-                                match &matched_32 {
+                                match &it_32 {
                                     ls::Either::Left(field_34) => {
-                                        let e_33 = field_34.clone();
+                                        let v_match__lawspecselection0x0_0_33 = field_34.clone();
                                         Pair(std::sync::Arc::new(PairNode::Pair(
-                                            ls::Either::Left(e_33),
+                                            ls::Either::Left(v_match__lawspecselection0x0_0_33),
                                             st_1.clone(),
                                         )))
                                     }
                                     ls::Either::Right(field_36) => {
-                                        let offset_35 = field_36.clone();
-                                        Pair(std::sync::Arc::new(PairNode::Pair(
-                                            ls::Either::Right(RecordMetadata(std::sync::Arc::new(RecordMetadataNode::RecordMetadata(
-                                                tp_14.clone(),
-                                                offset_35,
-                                            )))),
-                                            {
-                                                let replacement_39 = Some(LastSend(std::sync::Arc::new(LastSendNode::LastSend(
-                                                    tp_14.clone(),
-                                                    tag_21.clone(),
-                                                    ls::fast::List::cons(match &*pr_0.0 {
-                                                            ProducerRecordNode::ProducerRecord(_, _, field_38) => {
-                                                                let lawspecfieldpayload_37 = field_38.clone();
-                                                                lawspecfieldpayload_37.clone()
-                                                            }
-                                                        }, ls::fast::List::nil()),
-                                                ))));
+                                        let v_match__lawspecselection0x0_0_35 = field_36.clone();
+                                        Pair(std::sync::Arc::new(PairNode::Pair(ls::Either::Right({
+                                                let v_lawspecrecordfield0_37 = v_lawspecselection0x0_14.clone();
                                                 {
-                                                    let matched_47 = {
-                                                        let replacement_42 = match &*st_1.0 {
-                                                            ProducerStateNode::ProducerState(_, field_41, _) => {
-                                                                let lawspecfieldsequences_40 = field_41.clone();
-                                                                lawspecfieldsequences_40.clone()
+                                                    let v_lawspecrecordfield1_38 = v_match__lawspecselection0x0_0_35;
+                                                    RecordMetadata(std::sync::Arc::new(RecordMetadataNode::RecordMetadata(v_lawspecrecordfield0_37.clone(), v_lawspecrecordfield1_38)))
+                                                }
+                                            }), {
+                                                let replacement_44 = Some({
+                                                    let v_lawspecrecordfield0_39 = v_lawspecselection0x0_14.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_40 = tag_21.clone();
+                                                        {
+                                                            let v_lawspecrecordfield2_43 = ls::fast::List::cons(match &*pr_0.0 {
+                                                                    ProducerRecordNode::ProducerRecord(_, _, field_42) => {
+                                                                        let lawspecfieldpayload_41 = field_42.clone();
+                                                                        lawspecfieldpayload_41.clone()
+                                                                    }
+                                                                }, ls::fast::List::nil());
+                                                            LastSend(std::sync::Arc::new(LastSendNode::LastSend(v_lawspecrecordfield0_39.clone(), v_lawspecrecordfield1_40.clone(), v_lawspecrecordfield2_43.clone())))
+                                                        }
+                                                    }
+                                                });
+                                                {
+                                                    let matched_52 = {
+                                                        let replacement_47 = match &*st_1.0 {
+                                                            ProducerStateNode::ProducerState(_, field_46, _) => {
+                                                                let lawspecfieldsequences_45 = field_46.clone();
+                                                                lawspecfieldsequences_45.clone()
                                                             }
-                                                        }.insert(
-                                                            tp_14.clone(),
-                                                            saturatingInt32_9e8d3b43(
-                                                                ls::fast::Int::from_i128(((sequence_18 as i128) + 1i128)),
-                                                            )?,
-                                                        );
+                                                        }.insert(v_lawspecselection0x0_14.clone(), saturatingInt32_9e8d3b43(ls::fast::Int::from_i128(((sequence_18 as i128) + 1i128)))?);
                                                         match &*st_1.0 {
-                                                            ProducerStateNode::ProducerState(field_45, _, field_46) => {
-                                                                let lawspecfieldidentity_43 = field_45.clone();
-                                                                let lawspecfieldlastsend_44 = field_46.clone();
-                                                                ProducerState(std::sync::Arc::new(ProducerStateNode::ProducerState(
-                                                                    lawspecfieldidentity_43.clone(),
-                                                                    replacement_42.clone(),
-                                                                    lawspecfieldlastsend_44.clone(),
-                                                                )))
+                                                            ProducerStateNode::ProducerState(field_50, _, field_51) => {
+                                                                let lawspecfieldidentity_48 = field_50.clone();
+                                                                let lawspecfieldlastsend_49 = field_51.clone();
+                                                                ProducerState(std::sync::Arc::new(ProducerStateNode::ProducerState(lawspecfieldidentity_48.clone(), replacement_47.clone(), lawspecfieldlastsend_49.clone())))
                                                             }
                                                         }
                                                     };
-                                                    match &*matched_47.0 {
-                                                        ProducerStateNode::ProducerState(field_50, field_51, _) => {
-                                                            let lawspecfieldidentity_48 = field_50.clone();
-                                                            let lawspecfieldsequences_49 = field_51.clone();
-                                                            ProducerState(std::sync::Arc::new(ProducerStateNode::ProducerState(
-                                                                lawspecfieldidentity_48.clone(),
-                                                                lawspecfieldsequences_49.clone(),
-                                                                replacement_39.clone(),
-                                                            )))
+                                                    match &*matched_52.0 {
+                                                        ProducerStateNode::ProducerState(field_55, field_56, _) => {
+                                                            let lawspecfieldidentity_53 = field_55.clone();
+                                                            let lawspecfieldsequences_54 = field_56.clone();
+                                                            ProducerState(std::sync::Arc::new(ProducerStateNode::ProducerState(lawspecfieldidentity_53.clone(), lawspecfieldsequences_54.clone(), replacement_44.clone())))
                                                         }
                                                     }
                                                 }
-                                            },
-                                        )))
+                                            })))
                                     }
                                 }
                             }
@@ -19422,7 +20439,7 @@ pub mod typed {
         isolation_2: IsolationLevel,
     ) -> ls::Result<ls::fast::List<Record>> {
         Ok({
-            let matched_12 = {
+            let it_12 = {
                 let matched_7 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<FetchResult> {
                     Ok({
                         let argument_3: TopicPartition = tp_0.clone();
@@ -19447,13 +20464,13 @@ pub mod typed {
                     }
                 }
             };
-            match &matched_12 {
+            match &it_12 {
                 ls::Either::Left(_) => {
                     ls::fast::List::nil()
                 }
                 ls::Either::Right(field_14) => {
-                    let fr_13 = field_14.clone();
-                    recordsOf_a7b339ef(match &*fr_13.0 {
+                    let v_lawspecselection0x0_13 = field_14.clone();
+                    recordsOf_a7b339ef(match &*v_lawspecselection0x0_13.0 {
                             FetchResultNode::FetchResult(field_16, _, _, _) => {
                                 let lawspecfieldrecords_15 = field_16.clone();
                                 lawspecfieldrecords_15.clone()
@@ -19472,106 +20489,118 @@ pub mod typed {
         first_2: Record,
         second_3: Record,
     ) -> ls::Result<bool> {
-        Ok(match &a_0 {
-            ls::Either::Left(_) => {
-                false
-            }
-            ls::Either::Right(field_5) => {
-                let x_4 = field_5.clone();
-                match &b_1 {
-                    ls::Either::Left(_) => {
-                        false
-                    }
-                    ls::Either::Right(field_7) => {
-                        let y_6 = field_7.clone();
-                        {
-                            let tp_10 = match &*x_4.0 {
-                                RecordMetadataNode::RecordMetadata(field_9, _) => {
-                                    let lawspecfieldsentto_8 = field_9.clone();
-                                    lawspecfieldsentto_8.clone()
-                                }
-                            };
-                            (((match &*y_6.0 {
-                                RecordMetadataNode::RecordMetadata(field_12, _) => {
-                                    let lawspecfieldsentto_11 = field_12.clone();
-                                    lawspecfieldsentto_11.clone()
-                                }
-                            } == tp_10.clone()) && ((match &*y_6.0 {
-                                RecordMetadataNode::RecordMetadata(_, field_14) => {
-                                    let lawspecfieldsentat_13 = field_14.clone();
-                                    lawspecfieldsentat_13
-                                }
-                            } as i128) == ((match &*x_4.0 {
-                                RecordMetadataNode::RecordMetadata(_, field_16) => {
-                                    let lawspecfieldsentat_15 = field_16.clone();
-                                    lawspecfieldsentat_15
-                                }
-                            } as i128) + 1i128))) && {
-                                let lawspecignored_18 = {
-                                    let argument_17: ls::fast::List<TopicPartition> = ls::fast::List::cons(
-                                        tp_10.clone(),
-                                        ls::fast::List::nil(),
-                                    );
-                                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_assign(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_17)]).map_err(|error| format!("{}: {error}", "assign"))?;
-                                    <() as ls::fast::Dyn>::from_dyn(performed)?
-                                };
-                                ({
-                                    let matched_23 = {
-                                        let argument_21: TopicPartition = tp_10.clone();
-                                        let argument_22: i64 = match &*x_4.0 {
-                                            RecordMetadataNode::RecordMetadata(_, field_20) => {
-                                                let lawspecfieldsentat_19 = field_20.clone();
-                                                lawspecfieldsentat_19
-                                            }
+        Ok({
+            let it_4 = a_0.clone();
+            match &it_4 {
+                ls::Either::Left(_) => {
+                    false
+                }
+                ls::Either::Right(field_6) => {
+                    let v_lawspecselection0x0_5 = field_6.clone();
+                    {
+                        let it_7 = b_1.clone();
+                        match &it_7 {
+                            ls::Either::Left(_) => {
+                                false
+                            }
+                            ls::Either::Right(field_9) => {
+                                let v_match__lawspecselection0x0_0_8 = field_9.clone();
+                                {
+                                    let tp_12 = match &*v_lawspecselection0x0_5.0 {
+                                        RecordMetadataNode::RecordMetadata(field_11, _) => {
+                                            let lawspecfieldsentto_10 = field_11.clone();
+                                            lawspecfieldsentto_10.clone()
+                                        }
+                                    };
+                                    (((match &*v_match__lawspecselection0x0_0_8.0 {
+                                        RecordMetadataNode::RecordMetadata(field_14, _) => {
+                                            let lawspecfieldsentto_13 = field_14.clone();
+                                            lawspecfieldsentto_13.clone()
+                                        }
+                                    } == tp_12.clone()) && ((match &*v_match__lawspecselection0x0_0_8.0 {
+                                        RecordMetadataNode::RecordMetadata(_, field_16) => {
+                                            let lawspecfieldsentat_15 = field_16.clone();
+                                            lawspecfieldsentat_15
+                                        }
+                                    } as i128) == ((match &*v_lawspecselection0x0_5.0 {
+                                        RecordMetadataNode::RecordMetadata(_, field_18) => {
+                                            let lawspecfieldsentat_17 = field_18.clone();
+                                            lawspecfieldsentat_17
+                                        }
+                                    } as i128) + 1i128))) && {
+                                        let lawspecignored_20 = {
+                                            let argument_19: ls::fast::List<TopicPartition> = ls::fast::List::cons(
+                                                tp_12.clone(),
+                                                ls::fast::List::nil(),
+                                            );
+                                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_assign(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_19)]).map_err(|error| format!("{}: {error}", "assign"))?;
+                                            <() as ls::fast::Dyn>::from_dyn(performed)?
                                         };
-                                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_seek(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_21), ls::fast::Dyn::to_dyn(&argument_22)]).map_err(|error| format!("{}: {error}", "seek"))?;
-                                        <ls::Either<KafkaError, ()> as ls::fast::Dyn>::from_dyn(performed)?
-                                    };
-                                    match &matched_23 {
-                                        ls::Either::Left(_) => {
-                                            false
-                                        }
-                                        ls::Either::Right(_) => {
-                                            true
-                                        }
-                                    }
-                                } && {
-                                    let matched_25 = {
-                                        let argument_24: i32 = 2i32;
-                                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_poll(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_24)]).map_err(|error| format!("{}: {error}", "poll"))?;
-                                        <ls::Either<KafkaError, ls::fast::List<ConsumerRecord>> as ls::fast::Dyn>::from_dyn(performed)?
-                                    };
-                                    match &matched_25 {
-                                        ls::Either::Left(_) => {
-                                            false
-                                        }
-                                        ls::Either::Right(field_27) => {
-                                            let rs_26 = field_27.clone();
-                                            ((receivedRecords_c3c84323(
-                                                rs_26.clone(),
-                                            )? == ls::fast::List::cons(
-                                                first_2.clone(),
-                                                ls::fast::List::cons(
-                                                    second_3.clone(),
-                                                    ls::fast::List::nil(),
-                                                ),
-                                            )) && (receivedOffsets_6c3a7a20(
-                                                rs_26.clone(),
-                                            )? == ls::fast::List::cons(match &*x_4.0 {
-                                                    RecordMetadataNode::RecordMetadata(_, field_29) => {
-                                                        let lawspecfieldsentat_28 = field_29.clone();
-                                                        lawspecfieldsentat_28
+                                        ({
+                                            let matched_25 = {
+                                                let argument_23: TopicPartition = tp_12.clone();
+                                                let argument_24: i64 = match &*v_lawspecselection0x0_5.0 {
+                                                    RecordMetadataNode::RecordMetadata(_, field_22) => {
+                                                        let lawspecfieldsentat_21 = field_22.clone();
+                                                        lawspecfieldsentat_21
                                                     }
-                                                }, ls::fast::List::cons(match &*y_6.0 {
-                                                        RecordMetadataNode::RecordMetadata(_, field_31) => {
-                                                            let lawspecfieldsentat_30 = field_31.clone();
-                                                            lawspecfieldsentat_30
-                                                        }
-                                                    }, ls::fast::List::nil()))))
-                                        }
-                                    }
-                                })
-                            })
+                                                };
+                                                let performed = crate::lawspec_abilities::lawtwin_kafka::perform_seek(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_23), ls::fast::Dyn::to_dyn(&argument_24)]).map_err(|error| format!("{}: {error}", "seek"))?;
+                                                <ls::Either<KafkaError, ()> as ls::fast::Dyn>::from_dyn(performed)?
+                                            };
+                                            match &matched_25 {
+                                                ls::Either::Left(_) => {
+                                                    false
+                                                }
+                                                ls::Either::Right(_) => {
+                                                    true
+                                                }
+                                            }
+                                        } && {
+                                            let it_27 = {
+                                                let argument_26: i32 = 2i32;
+                                                let performed = crate::lawspec_abilities::lawtwin_kafka::perform_poll(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_26)]).map_err(|error| format!("{}: {error}", "poll"))?;
+                                                <ls::Either<KafkaError, ls::fast::List<ConsumerRecord>> as ls::fast::Dyn>::from_dyn(performed)?
+                                            };
+                                            match &it_27 {
+                                                ls::Either::Left(_) => {
+                                                    false
+                                                }
+                                                ls::Either::Right(field_29) => {
+                                                    let v_match__match__lawspecselection0x0_0_0_28 = field_29.clone();
+                                                    ((receivedRecords_c3c84323(
+                                                        v_match__match__lawspecselection0x0_0_0_28.clone(),
+                                                    )? == ls::fast::List::cons(
+                                                        first_2.clone(),
+                                                        ls::fast::List::cons(
+                                                            second_3.clone(),
+                                                            ls::fast::List::nil(),
+                                                        ),
+                                                    )) && (receivedOffsets_6c3a7a20(
+                                                        v_match__match__lawspecselection0x0_0_0_28.clone(),
+                                                    )? == ls::fast::List::cons(
+                                                        match &*v_lawspecselection0x0_5.0 {
+                                                            RecordMetadataNode::RecordMetadata(_, field_31) => {
+                                                                let lawspecfieldsentat_30 = field_31.clone();
+                                                                lawspecfieldsentat_30
+                                                            }
+                                                        },
+                                                        ls::fast::List::cons(
+                                                            match &*v_match__lawspecselection0x0_0_8.0 {
+                                                                RecordMetadataNode::RecordMetadata(_, field_33) => {
+                                                                    let lawspecfieldsentat_32 = field_33.clone();
+                                                                    lawspecfieldsentat_32
+                                                                }
+                                                            },
+                                                            ls::fast::List::nil(),
+                                                        ),
+                                                    )))
+                                                }
+                                            }
+                                        })
+                                    })
+                                }
+                            }
                         }
                     }
                 }
@@ -19583,19 +20612,22 @@ pub mod typed {
     pub fn receivedOffsets_6c3a7a20(
         rs_0: ls::fast::List<ConsumerRecord>,
     ) -> ls::Result<ls::fast::List<i64>> {
-        Ok(match rs_0.uncons() {
-            None => {
-                ls::fast::List::nil()
-            }
-            Some((field_3, field_4)) => {
-                let r_1 = field_3.clone();
-                let rest_2 = field_4.clone();
-                ls::fast::List::cons(match &*r_1.0 {
-                        ConsumerRecordNode::ConsumerRecord(_, field_6, _) => {
-                            let lawspecfieldreceivedat_5 = field_6.clone();
-                            lawspecfieldreceivedat_5
-                        }
-                    }, receivedOffsets_6c3a7a20(rest_2.clone())?)
+        Ok({
+            let it_1 = rs_0.clone();
+            match it_1.uncons() {
+                None => {
+                    ls::fast::List::nil()
+                }
+                Some((field_4, field_5)) => {
+                    let v_lawspecselection0x0_2 = field_4.clone();
+                    let v_lawspecselection0x1_3 = field_5.clone();
+                    ls::fast::List::cons(match &*v_lawspecselection0x0_2.0 {
+                            ConsumerRecordNode::ConsumerRecord(_, field_7, _) => {
+                                let lawspecfieldreceivedat_6 = field_7.clone();
+                                lawspecfieldreceivedat_6
+                            }
+                        }, receivedOffsets_6c3a7a20(v_lawspecselection0x1_3.clone())?)
+                }
             }
         })
     }
@@ -19604,19 +20636,22 @@ pub mod typed {
     pub fn receivedRecords_c3c84323(
         rs_0: ls::fast::List<ConsumerRecord>,
     ) -> ls::Result<ls::fast::List<Record>> {
-        Ok(match rs_0.uncons() {
-            None => {
-                ls::fast::List::nil()
-            }
-            Some((field_3, field_4)) => {
-                let r_1 = field_3.clone();
-                let rest_2 = field_4.clone();
-                ls::fast::List::cons(match &*r_1.0 {
-                        ConsumerRecordNode::ConsumerRecord(_, _, field_6) => {
-                            let lawspecfieldreceived_5 = field_6.clone();
-                            lawspecfieldreceived_5.clone()
-                        }
-                    }, receivedRecords_c3c84323(rest_2.clone())?)
+        Ok({
+            let it_1 = rs_0.clone();
+            match it_1.uncons() {
+                None => {
+                    ls::fast::List::nil()
+                }
+                Some((field_4, field_5)) => {
+                    let v_lawspecselection0x0_2 = field_4.clone();
+                    let v_lawspecselection0x1_3 = field_5.clone();
+                    ls::fast::List::cons(match &*v_lawspecselection0x0_2.0 {
+                            ConsumerRecordNode::ConsumerRecord(_, _, field_7) => {
+                                let lawspecfieldreceived_6 = field_7.clone();
+                                lawspecfieldreceived_6.clone()
+                            }
+                        }, receivedRecords_c3c84323(v_lawspecselection0x1_3.clone())?)
+                }
             }
         })
     }
@@ -19625,19 +20660,22 @@ pub mod typed {
     pub fn recordsOf_a7b339ef(
         rs_0: ls::fast::List<FetchedRecord>,
     ) -> ls::Result<ls::fast::List<Record>> {
-        Ok(match rs_0.uncons() {
-            None => {
-                ls::fast::List::nil()
-            }
-            Some((field_3, field_4)) => {
-                let r_1 = field_3.clone();
-                let rest_2 = field_4.clone();
-                ls::fast::List::cons(match &*r_1.0 {
-                        FetchedRecordNode::FetchedRecord(_, field_6) => {
-                            let lawspecfieldentry_5 = field_6.clone();
-                            lawspecfieldentry_5.clone()
-                        }
-                    }, recordsOf_a7b339ef(rest_2.clone())?)
+        Ok({
+            let it_1 = rs_0.clone();
+            match it_1.uncons() {
+                None => {
+                    ls::fast::List::nil()
+                }
+                Some((field_4, field_5)) => {
+                    let v_lawspecselection0x0_2 = field_4.clone();
+                    let v_lawspecselection0x1_3 = field_5.clone();
+                    ls::fast::List::cons(match &*v_lawspecselection0x0_2.0 {
+                            FetchedRecordNode::FetchedRecord(_, field_7) => {
+                                let lawspecfieldentry_6 = field_7.clone();
+                                lawspecfieldentry_6.clone()
+                            }
+                        }, recordsOf_a7b339ef(v_lawspecselection0x1_3.clone())?)
+                }
             }
         })
     }
@@ -19651,114 +20689,126 @@ pub mod typed {
         n_3: i32,
     ) -> ls::Result<bool> {
         Ok({
-            let tp_4 = TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
-                t_0.clone(),
-                0i32,
-            )));
+            let tp_6 = {
+                let v_lawspecrecordfield0_4 = t_0.clone();
+                {
+                    let v_lawspecrecordfield1_5 = 0i32;
+                    TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
+                        v_lawspecrecordfield0_4.clone(),
+                        v_lawspecrecordfield1_5,
+                    )))
+                }
+            };
             {
-                let joined_8 = {
-                    let argument_5: ls::fast::Text = g_1.clone();
-                    let argument_6: ls::fast::Text = m_2.clone();
-                    let argument_7: ls::fast::List<ls::fast::Text> = ls::fast::List::cons(
+                let joined_10 = {
+                    let argument_7: ls::fast::Text = g_1.clone();
+                    let argument_8: ls::fast::Text = m_2.clone();
+                    let argument_9: ls::fast::List<ls::fast::Text> = ls::fast::List::cons(
                         t_0.clone(),
                         ls::fast::List::nil(),
                     );
-                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_subscribe(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_5), ls::fast::Dyn::to_dyn(&argument_6), ls::fast::Dyn::to_dyn(&argument_7)]).map_err(|error| format!("{}: {error}", "subscribe"))?;
+                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_subscribe(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_7), ls::fast::Dyn::to_dyn(&argument_8), ls::fast::Dyn::to_dyn(&argument_9)]).map_err(|error| format!("{}: {error}", "subscribe"))?;
                     <ls::Either<KafkaError, ls::fast::List<TopicPartition>> as ls::fast::Dyn>::from_dyn(performed)?
                 };
                 {
-                    let polled_10 = {
-                        let argument_9: i32 = n_3;
-                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_poll(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_9)]).map_err(|error| format!("{}: {error}", "poll"))?;
+                    let polled_12 = {
+                        let argument_11: i32 = n_3;
+                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_poll(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_11)]).map_err(|error| format!("{}: {error}", "poll"))?;
                         <ls::Either<KafkaError, ls::fast::List<ConsumerRecord>> as ls::fast::Dyn>::from_dyn(performed)?
                     };
                     {
-                        let committed_11 = {
+                        let committed_13 = {
                             let performed = crate::lawspec_abilities::lawtwin_kafka::perform_commitSync(&mut *ctx, vec![]).map_err(|error| format!("{}: {error}", "commitSync"))?;
                             <ls::Either<KafkaError, ()> as ls::fast::Dyn>::from_dyn(performed)?
                         };
                         {
-                            let lawspecignored_12 = {
+                            let lawspecignored_14 = {
                                 let performed = crate::lawspec_abilities::lawtwin_kafka::perform_close(&mut *ctx, vec![]).map_err(|error| format!("{}: {error}", "close"))?;
                                 <() as ls::fast::Dyn>::from_dyn(performed)?
                             };
                             {
-                                let rejoined_16 = {
-                                    let argument_13: ls::fast::Text = g_1.clone();
-                                    let argument_14: ls::fast::Text = m_2.clone();
-                                    let argument_15: ls::fast::List<ls::fast::Text> = ls::fast::List::cons(
+                                let rejoined_18 = {
+                                    let argument_15: ls::fast::Text = g_1.clone();
+                                    let argument_16: ls::fast::Text = m_2.clone();
+                                    let argument_17: ls::fast::List<ls::fast::Text> = ls::fast::List::cons(
                                         t_0.clone(),
                                         ls::fast::List::nil(),
                                     );
-                                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_subscribe(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_13), ls::fast::Dyn::to_dyn(&argument_14), ls::fast::Dyn::to_dyn(&argument_15)]).map_err(|error| format!("{}: {error}", "subscribe"))?;
+                                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_subscribe(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_15), ls::fast::Dyn::to_dyn(&argument_16), ls::fast::Dyn::to_dyn(&argument_17)]).map_err(|error| format!("{}: {error}", "subscribe"))?;
                                     <ls::Either<KafkaError, ls::fast::List<TopicPartition>> as ls::fast::Dyn>::from_dyn(performed)?
                                 };
                                 {
-                                    let resumed_18 = {
-                                        let argument_17: TopicPartition = tp_4.clone();
-                                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_position(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_17)]).map_err(|error| format!("{}: {error}", "position"))?;
+                                    let resumed_20 = {
+                                        let argument_19: TopicPartition = tp_6.clone();
+                                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_position(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_19)]).map_err(|error| format!("{}: {error}", "position"))?;
                                         <ls::Either<KafkaError, i64> as ls::fast::Dyn>::from_dyn(performed)?
                                     };
                                     {
-                                        let after_20 = {
-                                            let argument_19: TopicPartition = tp_4.clone();
-                                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_committedOffset(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_19)]).map_err(|error| format!("{}: {error}", "committedOffset"))?;
+                                        let after_22 = {
+                                            let argument_21: TopicPartition = tp_6.clone();
+                                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_committedOffset(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_21)]).map_err(|error| format!("{}: {error}", "committedOffset"))?;
                                             <Option<i64> as ls::fast::Dyn>::from_dyn(performed)?
                                         };
                                         {
-                                            let again_22 = {
-                                                let argument_21: i32 = 100i32;
-                                                let performed = crate::lawspec_abilities::lawtwin_kafka::perform_poll(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_21)]).map_err(|error| format!("{}: {error}", "poll"))?;
+                                            let again_24 = {
+                                                let argument_23: i32 = 100i32;
+                                                let performed = crate::lawspec_abilities::lawtwin_kafka::perform_poll(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_23)]).map_err(|error| format!("{}: {error}", "poll"))?;
                                                 <ls::Either<KafkaError, ls::fast::List<ConsumerRecord>> as ls::fast::Dyn>::from_dyn(performed)?
                                             };
-                                            ((((match &joined_8 {
+                                            ((((match &joined_10 {
                                                 ls::Either::Left(_) => {
                                                     false
                                                 }
                                                 ls::Either::Right(_) => {
                                                     true
                                                 }
-                                            } && match &polled_10 {
+                                            } && match &polled_12 {
                                                 ls::Either::Left(_) => {
                                                     false
                                                 }
                                                 ls::Either::Right(_) => {
                                                     true
                                                 }
-                                            }) && match &committed_11 {
+                                            }) && match &committed_13 {
                                                 ls::Either::Left(_) => {
                                                     false
                                                 }
                                                 ls::Either::Right(_) => {
                                                     true
                                                 }
-                                            }) && match &rejoined_16 {
+                                            }) && match &rejoined_18 {
                                                 ls::Either::Left(_) => {
                                                     false
                                                 }
                                                 ls::Either::Right(_) => {
                                                     true
                                                 }
-                                            }) && match &after_20 {
-                                                None => {
-                                                    false
-                                                }
-                                                Some(field_24) => {
-                                                    let c_23 = field_24.clone();
-                                                    ((resumed_18.clone() == ls::Either::Right(c_23)) && match &again_22 {
-                                                        ls::Either::Left(_) => {
-                                                            false
-                                                        }
-                                                        ls::Either::Right(field_26) => {
-                                                            let rs_25 = field_26.clone();
-                                                            allAtLeast_3df55027(
-                                                                c_23,
-                                                                receivedOffsets_6c3a7a20(
-                                                                    rs_25.clone(),
-                                                                )?,
-                                                            )?
-                                                        }
-                                                    })
+                                            }) && {
+                                                let it_25 = after_22.clone();
+                                                match &it_25 {
+                                                    None => {
+                                                        false
+                                                    }
+                                                    Some(field_27) => {
+                                                        let v_lawspecselection0x0_26 = field_27.clone();
+                                                        ((resumed_20.clone() == ls::Either::Right(v_lawspecselection0x0_26)) && {
+                                                            let it_28 = again_24.clone();
+                                                            match &it_28 {
+                                                                ls::Either::Left(_) => {
+                                                                    false
+                                                                }
+                                                                ls::Either::Right(field_30) => {
+                                                                    let v_match__lawspecselection0x0_0_29 = field_30.clone();
+                                                                    allAtLeast_3df55027(
+                                                                        v_lawspecselection0x0_26,
+                                                                        receivedOffsets_6c3a7a20(
+                                                                            v_match__lawspecselection0x0_0_29.clone(),
+                                                                        )?,
+                                                                    )?
+                                                                }
+                                                            }
+                                                        })
+                                                    }
                                                 }
                                             })
                                         }
@@ -19777,29 +20827,35 @@ pub mod typed {
         a_0: ls::Either<KafkaError, RecordMetadata>,
         b_1: ls::Either<KafkaError, RecordMetadata>,
     ) -> ls::Result<bool> {
-        Ok(match &a_0 {
-            ls::Either::Left(_) => {
-                false
-            }
-            ls::Either::Right(field_3) => {
-                let x_2 = field_3.clone();
-                match &b_1 {
-                    ls::Either::Left(_) => {
-                        false
-                    }
-                    ls::Either::Right(field_5) => {
-                        let y_4 = field_5.clone();
-                        (match &*x_2.0 {
-                            RecordMetadataNode::RecordMetadata(field_7, _) => {
-                                let lawspecfieldsentto_6 = field_7.clone();
-                                lawspecfieldsentto_6.clone()
+        Ok({
+            let it_2 = a_0.clone();
+            match &it_2 {
+                ls::Either::Left(_) => {
+                    false
+                }
+                ls::Either::Right(field_4) => {
+                    let v_lawspecselection0x0_3 = field_4.clone();
+                    {
+                        let it_5 = b_1.clone();
+                        match &it_5 {
+                            ls::Either::Left(_) => {
+                                false
                             }
-                        } == match &*y_4.0 {
-                            RecordMetadataNode::RecordMetadata(field_9, _) => {
-                                let lawspecfieldsentto_8 = field_9.clone();
-                                lawspecfieldsentto_8.clone()
+                            ls::Either::Right(field_7) => {
+                                let v_match__lawspecselection0x0_0_6 = field_7.clone();
+                                (match &*v_lawspecselection0x0_3.0 {
+                                    RecordMetadataNode::RecordMetadata(field_9, _) => {
+                                        let lawspecfieldsentto_8 = field_9.clone();
+                                        lawspecfieldsentto_8.clone()
+                                    }
+                                } == match &*v_match__lawspecselection0x0_0_6.0 {
+                                    RecordMetadataNode::RecordMetadata(field_11, _) => {
+                                        let lawspecfieldsentto_10 = field_11.clone();
+                                        lawspecfieldsentto_10.clone()
+                                    }
+                                })
                             }
-                        })
+                        }
                     }
                 }
             }
@@ -19812,14 +20868,14 @@ pub mod typed {
         sequences_1: ls::fast::Map<TopicPartition, i32>,
     ) -> ls::Result<i32> {
         Ok({
-            let matched_2 = sequences_1.clone().get(&tp_0.clone()).cloned();
-            match &matched_2 {
+            let it_2 = sequences_1.clone().get(&tp_0.clone()).cloned();
+            match &it_2 {
                 None => {
                     0i32
                 }
                 Some(field_4) => {
-                    let n_3 = field_4.clone();
-                    n_3
+                    let v_lawspecselection0x0_3 = field_4.clone();
+                    v_lawspecselection0x0_3
                 }
             }
         })
@@ -19838,174 +20894,183 @@ pub mod typed {
         batch_2: ls::fast::List<Record>,
     ) -> ls::Result<bool> {
         Ok({
-            let tp_3 = TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
-                t_0.clone(),
-                0i32,
-            )));
+            let tp_5 = {
+                let v_lawspecrecordfield0_3 = t_0.clone();
+                {
+                    let v_lawspecrecordfield1_4 = 0i32;
+                    TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
+                        v_lawspecrecordfield0_3.clone(),
+                        v_lawspecrecordfield1_4,
+                    )))
+                }
+            };
             {
-                let matched_10 = {
-                    let matched_5 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<ProducerIdAndEpoch> {
+                let it_12 = {
+                    let matched_7 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<ProducerIdAndEpoch> {
                         Ok({
-                            let argument_4: Option<ls::fast::Text> = Some(txid_1.clone());
-                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_initProducerIdRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_4)]).map_err(|error| format!("{}: {error}", "initProducerIdRequest"))?;
+                            let argument_6: Option<ls::fast::Text> = Some(txid_1.clone());
+                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_initProducerIdRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_6)]).map_err(|error| format!("{}: {error}", "initProducerIdRequest"))?;
                             <ProducerIdAndEpoch as ls::fast::Dyn>::from_dyn(performed)?
                         })
                     })? {
                         Ok(value) => ls::Either::Right(value),
                         Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
                     };
-                    match &matched_5 {
-                        ls::Either::Left(field_7) => {
-                            let lawspecfailure_6 = field_7.clone();
-                            ls::Either::Left(lawspecfailure_6)
+                    match &matched_7 {
+                        ls::Either::Left(field_9) => {
+                            let lawspecfailure_8 = field_9.clone();
+                            ls::Either::Left(lawspecfailure_8)
                         }
-                        ls::Either::Right(field_9) => {
-                            let lawspecvalue_8 = field_9.clone();
-                            ls::Either::Right(lawspecvalue_8.clone())
+                        ls::Either::Right(field_11) => {
+                            let lawspecvalue_10 = field_11.clone();
+                            ls::Either::Right(lawspecvalue_10.clone())
                         }
                     }
                 };
-                match &matched_10 {
+                match &it_12 {
                     ls::Either::Left(_) => {
                         false
                     }
-                    ls::Either::Right(field_12) => {
-                        let pe_11 = field_12.clone();
+                    ls::Either::Right(field_14) => {
+                        let v_lawspecselection0x0_13 = field_14.clone();
                         {
-                            let added_26 = {
-                                let matched_21 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
+                            let added_28 = {
+                                let matched_23 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                     Ok({
-                                        let argument_17: ls::fast::Text = txid_1.clone();
-                                        let argument_18: i64 = match &*pe_11.0 {
-                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(field_14, _) => {
-                                                let lawspecfieldproducerid_13 = field_14.clone();
-                                                lawspecfieldproducerid_13
+                                        let argument_19: ls::fast::Text = txid_1.clone();
+                                        let argument_20: i64 = match &*v_lawspecselection0x0_13.0 {
+                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(field_16, _) => {
+                                                let lawspecfieldproducerid_15 = field_16.clone();
+                                                lawspecfieldproducerid_15
                                             }
                                         };
-                                        let argument_19: i16 = match &*pe_11.0 {
-                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_16) => {
-                                                let lawspecfieldproducerepoch_15 = field_16.clone();
-                                                lawspecfieldproducerepoch_15
+                                        let argument_21: i16 = match &*v_lawspecselection0x0_13.0 {
+                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_18) => {
+                                                let lawspecfieldproducerepoch_17 = field_18.clone();
+                                                lawspecfieldproducerepoch_17
                                             }
                                         };
-                                        let argument_20: ls::fast::List<TopicPartition> = ls::fast::List::cons(
-                                            tp_3.clone(),
+                                        let argument_22: ls::fast::List<TopicPartition> = ls::fast::List::cons(
+                                            tp_5.clone(),
                                             ls::fast::List::nil(),
                                         );
-                                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_addPartitionsToTxnRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_17), ls::fast::Dyn::to_dyn(&argument_18), ls::fast::Dyn::to_dyn(&argument_19), ls::fast::Dyn::to_dyn(&argument_20)]).map_err(|error| format!("{}: {error}", "addPartitionsToTxnRequest"))?;
+                                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_addPartitionsToTxnRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_19), ls::fast::Dyn::to_dyn(&argument_20), ls::fast::Dyn::to_dyn(&argument_21), ls::fast::Dyn::to_dyn(&argument_22)]).map_err(|error| format!("{}: {error}", "addPartitionsToTxnRequest"))?;
                                         <() as ls::fast::Dyn>::from_dyn(performed)?
                                     })
                                 })? {
                                     Ok(value) => ls::Either::Right(value),
                                     Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
                                 };
-                                match &matched_21 {
-                                    ls::Either::Left(field_23) => {
-                                        let lawspecfailure_22 = field_23.clone();
-                                        ls::Either::Left(lawspecfailure_22)
+                                match &matched_23 {
+                                    ls::Either::Left(field_25) => {
+                                        let lawspecfailure_24 = field_25.clone();
+                                        ls::Either::Left(lawspecfailure_24)
                                     }
-                                    ls::Either::Right(field_25) => {
-                                        let lawspecvalue_24 = field_25.clone();
-                                        ls::Either::Right(lawspecvalue_24)
+                                    ls::Either::Right(field_27) => {
+                                        let lawspecvalue_26 = field_27.clone();
+                                        ls::Either::Right(lawspecvalue_26)
                                     }
                                 }
                             };
                             {
-                                let written_35 = {
-                                    let matched_30 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<i64> {
+                                let written_37 = {
+                                    let matched_32 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<i64> {
                                         Ok({
-                                            let argument_27: TopicPartition = tp_3.clone();
-                                            let argument_28: Option<ProducerTag> = Some(tagOf_39235de7(
-                                                pe_11.clone(),
+                                            let argument_29: TopicPartition = tp_5.clone();
+                                            let argument_30: Option<ProducerTag> = Some(tagOf_39235de7(
+                                                v_lawspecselection0x0_13.clone(),
                                                 0i32,
                                             )?);
-                                            let argument_29: ls::fast::List<Record> = batch_2.clone();
-                                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_produceRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_27), ls::fast::Dyn::to_dyn(&argument_28), ls::fast::Dyn::to_dyn(&argument_29)]).map_err(|error| format!("{}: {error}", "produceRequest"))?;
+                                            let argument_31: ls::fast::List<Record> = batch_2.clone();
+                                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_produceRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_29), ls::fast::Dyn::to_dyn(&argument_30), ls::fast::Dyn::to_dyn(&argument_31)]).map_err(|error| format!("{}: {error}", "produceRequest"))?;
                                             <i64 as ls::fast::Dyn>::from_dyn(performed)?
                                         })
                                     })? {
                                         Ok(value) => ls::Either::Right(value),
                                         Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
                                     };
-                                    match &matched_30 {
-                                        ls::Either::Left(field_32) => {
-                                            let lawspecfailure_31 = field_32.clone();
-                                            ls::Either::Left(lawspecfailure_31)
+                                    match &matched_32 {
+                                        ls::Either::Left(field_34) => {
+                                            let lawspecfailure_33 = field_34.clone();
+                                            ls::Either::Left(lawspecfailure_33)
                                         }
-                                        ls::Either::Right(field_34) => {
-                                            let lawspecvalue_33 = field_34.clone();
-                                            ls::Either::Right(lawspecvalue_33)
+                                        ls::Either::Right(field_36) => {
+                                            let lawspecvalue_35 = field_36.clone();
+                                            ls::Either::Right(lawspecvalue_35)
                                         }
                                     }
                                 };
                                 {
-                                    let matched_45 = {
-                                        let matched_40 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<FetchResult> {
+                                    let it_47 = {
+                                        let matched_42 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<FetchResult> {
                                             Ok({
-                                                let argument_36: TopicPartition = tp_3.clone();
-                                                let argument_37: i64 = 0i64;
-                                                let argument_38: i32 = 1000i32;
-                                                let argument_39: IsolationLevel = IsolationLevel::ReadUncommitted;
-                                                let performed = crate::lawspec_abilities::lawtwin_kafka::perform_fetchRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_36), ls::fast::Dyn::to_dyn(&argument_37), ls::fast::Dyn::to_dyn(&argument_38), ls::fast::Dyn::to_dyn(&argument_39)]).map_err(|error| format!("{}: {error}", "fetchRequest"))?;
+                                                let argument_38: TopicPartition = tp_5.clone();
+                                                let argument_39: i64 = 0i64;
+                                                let argument_40: i32 = 1000i32;
+                                                let argument_41: IsolationLevel = IsolationLevel::ReadUncommitted;
+                                                let performed = crate::lawspec_abilities::lawtwin_kafka::perform_fetchRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_38), ls::fast::Dyn::to_dyn(&argument_39), ls::fast::Dyn::to_dyn(&argument_40), ls::fast::Dyn::to_dyn(&argument_41)]).map_err(|error| format!("{}: {error}", "fetchRequest"))?;
                                                 <FetchResult as ls::fast::Dyn>::from_dyn(performed)?
                                             })
                                         })? {
                                             Ok(value) => ls::Either::Right(value),
                                             Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
                                         };
-                                        match &matched_40 {
-                                            ls::Either::Left(field_42) => {
-                                                let lawspecfailure_41 = field_42.clone();
-                                                ls::Either::Left(lawspecfailure_41)
+                                        match &matched_42 {
+                                            ls::Either::Left(field_44) => {
+                                                let lawspecfailure_43 = field_44.clone();
+                                                ls::Either::Left(lawspecfailure_43)
                                             }
-                                            ls::Either::Right(field_44) => {
-                                                let lawspecvalue_43 = field_44.clone();
-                                                ls::Either::Right(lawspecvalue_43.clone())
+                                            ls::Either::Right(field_46) => {
+                                                let lawspecvalue_45 = field_46.clone();
+                                                ls::Either::Right(lawspecvalue_45.clone())
                                             }
                                         }
                                     };
-                                    match &matched_45 {
+                                    match &it_47 {
                                         ls::Either::Left(_) => {
                                             false
                                         }
-                                        ls::Either::Right(field_47) => {
-                                            let fr_46 = field_47.clone();
-                                            (((match &added_26 {
+                                        ls::Either::Right(field_49) => {
+                                            let v_match__lawspecselection0x0_0_48 = field_49.clone();
+                                            (((match &added_28 {
                                                 ls::Either::Left(_) => {
                                                     false
                                                 }
                                                 ls::Either::Right(_) => {
                                                     true
                                                 }
-                                            } && match &written_35 {
+                                            } && match &written_37 {
                                                 ls::Either::Left(_) => {
                                                     false
                                                 }
                                                 ls::Either::Right(_) => {
                                                     true
                                                 }
-                                            }) && (match &*fr_46.0 {
-                                                FetchResultNode::FetchResult(_, _, _, field_49) => {
-                                                    let lawspecfieldlaststableoffset_48 = field_49.clone();
-                                                    lawspecfieldlaststableoffset_48
+                                            }) && (match &*v_match__lawspecselection0x0_0_48.0 {
+                                                FetchResultNode::FetchResult(_, _, _, field_51) => {
+                                                    let lawspecfieldlaststableoffset_50 = field_51.clone();
+                                                    lawspecfieldlaststableoffset_50
                                                 }
-                                            } <= match &*fr_46.0 {
-                                                FetchResultNode::FetchResult(_, _, field_51, _) => {
-                                                    let lawspecfieldhighwatermark_50 = field_51.clone();
-                                                    lawspecfieldhighwatermark_50
+                                            } <= match &*v_match__lawspecselection0x0_0_48.0 {
+                                                FetchResultNode::FetchResult(_, _, field_53, _) => {
+                                                    let lawspecfieldhighwatermark_52 = field_53.clone();
+                                                    lawspecfieldhighwatermark_52
                                                 }
-                                            })) && match &written_35 {
-                                                ls::Either::Right(field_53) => {
-                                                    let base_52 = field_53.clone();
-                                                    (match &*fr_46.0 {
-                                                        FetchResultNode::FetchResult(_, _, _, field_55) => {
-                                                            let lawspecfieldlaststableoffset_54 = field_55.clone();
-                                                            lawspecfieldlaststableoffset_54
-                                                        }
-                                                    } <= base_52)
-                                                }
-                                                ls::Either::Left(_) => {
-                                                    false
+                                            })) && {
+                                                let it_54 = written_37.clone();
+                                                match &it_54 {
+                                                    ls::Either::Right(field_56) => {
+                                                        let v_match__match__lawspecselection0x0_0_0_55 = field_56.clone();
+                                                        (match &*v_match__lawspecselection0x0_0_48.0 {
+                                                            FetchResultNode::FetchResult(_, _, _, field_58) => {
+                                                                let lawspecfieldlaststableoffset_57 = field_58.clone();
+                                                                lawspecfieldlaststableoffset_57
+                                                            }
+                                                        } <= v_match__match__lawspecselection0x0_0_0_55)
+                                                    }
+                                                    ls::Either::Left(_) => {
+                                                        false
+                                                    }
                                                 }
                                             })
                                         }
@@ -20024,30 +21089,46 @@ pub mod typed {
         identity_0: Option<ProducerIdAndEpoch>,
         sequence_1: i32,
     ) -> ls::Result<Option<ProducerTag>> {
-        Ok(match &identity_0 {
-            None => {
-                None
-            }
-            Some(field_3) => {
-                let pe_2 = field_3.clone();
-                Some(tagOf_39235de7(pe_2.clone(), sequence_1)?)
+        Ok({
+            let it_2 = identity_0.clone();
+            match &it_2 {
+                None => {
+                    None
+                }
+                Some(field_4) => {
+                    let v_lawspecselection0x0_3 = field_4.clone();
+                    Some(tagOf_39235de7(v_lawspecselection0x0_3.clone(), sequence_1)?)
+                }
             }
         })
     }
 
     /// lawtwin.kafka::tagOf
     pub fn tagOf_39235de7(pe_0: ProducerIdAndEpoch, sequence_1: i32) -> ls::Result<ProducerTag> {
-        Ok(ProducerTag(std::sync::Arc::new(ProducerTagNode::ProducerTag(match &*pe_0.0 {
+        Ok({
+            let v_lawspecrecordfield0_4 = match &*pe_0.0 {
                 ProducerIdAndEpochNode::ProducerIdAndEpoch(field_3, _) => {
                     let lawspecfieldproducerid_2 = field_3.clone();
                     lawspecfieldproducerid_2
                 }
-            }, match &*pe_0.0 {
-                ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_5) => {
-                    let lawspecfieldproducerepoch_4 = field_5.clone();
-                    lawspecfieldproducerepoch_4
+            };
+            {
+                let v_lawspecrecordfield1_7 = match &*pe_0.0 {
+                    ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_6) => {
+                        let lawspecfieldproducerepoch_5 = field_6.clone();
+                        lawspecfieldproducerepoch_5
+                    }
+                };
+                {
+                    let v_lawspecrecordfield2_8 = sequence_1;
+                    ProducerTag(std::sync::Arc::new(ProducerTagNode::ProducerTag(
+                        v_lawspecrecordfield0_4,
+                        v_lawspecrecordfield1_7,
+                        v_lawspecrecordfield2_8,
+                    )))
                 }
-            }, sequence_1))))
+            }
+        })
     }
 
     /// lawtwin.kafka::toPositive
@@ -20066,204 +21147,210 @@ pub mod typed {
         commit_3: bool,
     ) -> ls::Result<bool> {
         Ok({
-            let tp_4 = TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
-                t_0.clone(),
-                0i32,
-            )));
+            let tp_6 = {
+                let v_lawspecrecordfield0_4 = t_0.clone();
+                {
+                    let v_lawspecrecordfield1_5 = 0i32;
+                    TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
+                        v_lawspecrecordfield0_4.clone(),
+                        v_lawspecrecordfield1_5,
+                    )))
+                }
+            };
             {
-                let matched_11 = {
-                    let matched_6 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<ProducerIdAndEpoch> {
+                let it_13 = {
+                    let matched_8 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<ProducerIdAndEpoch> {
                         Ok({
-                            let argument_5: Option<ls::fast::Text> = Some(txid_1.clone());
-                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_initProducerIdRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_5)]).map_err(|error| format!("{}: {error}", "initProducerIdRequest"))?;
+                            let argument_7: Option<ls::fast::Text> = Some(txid_1.clone());
+                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_initProducerIdRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_7)]).map_err(|error| format!("{}: {error}", "initProducerIdRequest"))?;
                             <ProducerIdAndEpoch as ls::fast::Dyn>::from_dyn(performed)?
                         })
                     })? {
                         Ok(value) => ls::Either::Right(value),
                         Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
                     };
-                    match &matched_6 {
-                        ls::Either::Left(field_8) => {
-                            let lawspecfailure_7 = field_8.clone();
-                            ls::Either::Left(lawspecfailure_7)
+                    match &matched_8 {
+                        ls::Either::Left(field_10) => {
+                            let lawspecfailure_9 = field_10.clone();
+                            ls::Either::Left(lawspecfailure_9)
                         }
-                        ls::Either::Right(field_10) => {
-                            let lawspecvalue_9 = field_10.clone();
-                            ls::Either::Right(lawspecvalue_9.clone())
+                        ls::Either::Right(field_12) => {
+                            let lawspecvalue_11 = field_12.clone();
+                            ls::Either::Right(lawspecvalue_11.clone())
                         }
                     }
                 };
-                match &matched_11 {
+                match &it_13 {
                     ls::Either::Left(_) => {
                         false
                     }
-                    ls::Either::Right(field_13) => {
-                        let pe_12 = field_13.clone();
+                    ls::Either::Right(field_15) => {
+                        let v_lawspecselection0x0_14 = field_15.clone();
                         {
-                            let matched_27 = {
-                                let matched_22 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
+                            let it_29 = {
+                                let matched_24 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                     Ok({
-                                        let argument_18: ls::fast::Text = txid_1.clone();
-                                        let argument_19: i64 = match &*pe_12.0 {
-                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(field_15, _) => {
-                                                let lawspecfieldproducerid_14 = field_15.clone();
-                                                lawspecfieldproducerid_14
+                                        let argument_20: ls::fast::Text = txid_1.clone();
+                                        let argument_21: i64 = match &*v_lawspecselection0x0_14.0 {
+                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(field_17, _) => {
+                                                let lawspecfieldproducerid_16 = field_17.clone();
+                                                lawspecfieldproducerid_16
                                             }
                                         };
-                                        let argument_20: i16 = match &*pe_12.0 {
-                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_17) => {
-                                                let lawspecfieldproducerepoch_16 = field_17.clone();
-                                                lawspecfieldproducerepoch_16
+                                        let argument_22: i16 = match &*v_lawspecselection0x0_14.0 {
+                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_19) => {
+                                                let lawspecfieldproducerepoch_18 = field_19.clone();
+                                                lawspecfieldproducerepoch_18
                                             }
                                         };
-                                        let argument_21: ls::fast::List<TopicPartition> = ls::fast::List::cons(
-                                            tp_4.clone(),
+                                        let argument_23: ls::fast::List<TopicPartition> = ls::fast::List::cons(
+                                            tp_6.clone(),
                                             ls::fast::List::nil(),
                                         );
-                                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_addPartitionsToTxnRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_18), ls::fast::Dyn::to_dyn(&argument_19), ls::fast::Dyn::to_dyn(&argument_20), ls::fast::Dyn::to_dyn(&argument_21)]).map_err(|error| format!("{}: {error}", "addPartitionsToTxnRequest"))?;
+                                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_addPartitionsToTxnRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_20), ls::fast::Dyn::to_dyn(&argument_21), ls::fast::Dyn::to_dyn(&argument_22), ls::fast::Dyn::to_dyn(&argument_23)]).map_err(|error| format!("{}: {error}", "addPartitionsToTxnRequest"))?;
                                         <() as ls::fast::Dyn>::from_dyn(performed)?
                                     })
                                 })? {
                                     Ok(value) => ls::Either::Right(value),
                                     Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
                                 };
-                                match &matched_22 {
-                                    ls::Either::Left(field_24) => {
-                                        let lawspecfailure_23 = field_24.clone();
-                                        ls::Either::Left(lawspecfailure_23)
+                                match &matched_24 {
+                                    ls::Either::Left(field_26) => {
+                                        let lawspecfailure_25 = field_26.clone();
+                                        ls::Either::Left(lawspecfailure_25)
                                     }
-                                    ls::Either::Right(field_26) => {
-                                        let lawspecvalue_25 = field_26.clone();
-                                        ls::Either::Right(lawspecvalue_25)
+                                    ls::Either::Right(field_28) => {
+                                        let lawspecvalue_27 = field_28.clone();
+                                        ls::Either::Right(lawspecvalue_27)
                                     }
                                 }
                             };
-                            match &matched_27 {
+                            match &it_29 {
                                 ls::Either::Left(_) => {
                                     false
                                 }
                                 ls::Either::Right(_) => {
                                     {
-                                        let matched_36 = {
-                                            let matched_31 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<i64> {
+                                        let it_38 = {
+                                            let matched_33 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<i64> {
                                                 Ok({
-                                                    let argument_28: TopicPartition = tp_4.clone();
-                                                    let argument_29: Option<ProducerTag> = Some(tagOf_39235de7(
-                                                        pe_12.clone(),
+                                                    let argument_30: TopicPartition = tp_6.clone();
+                                                    let argument_31: Option<ProducerTag> = Some(tagOf_39235de7(
+                                                        v_lawspecselection0x0_14.clone(),
                                                         0i32,
                                                     )?);
-                                                    let argument_30: ls::fast::List<Record> = batch_2.clone();
-                                                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_produceRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_28), ls::fast::Dyn::to_dyn(&argument_29), ls::fast::Dyn::to_dyn(&argument_30)]).map_err(|error| format!("{}: {error}", "produceRequest"))?;
+                                                    let argument_32: ls::fast::List<Record> = batch_2.clone();
+                                                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_produceRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_30), ls::fast::Dyn::to_dyn(&argument_31), ls::fast::Dyn::to_dyn(&argument_32)]).map_err(|error| format!("{}: {error}", "produceRequest"))?;
                                                     <i64 as ls::fast::Dyn>::from_dyn(performed)?
                                                 })
                                             })? {
                                                 Ok(value) => ls::Either::Right(value),
                                                 Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
                                             };
-                                            match &matched_31 {
-                                                ls::Either::Left(field_33) => {
-                                                    let lawspecfailure_32 = field_33.clone();
-                                                    ls::Either::Left(lawspecfailure_32)
+                                            match &matched_33 {
+                                                ls::Either::Left(field_35) => {
+                                                    let lawspecfailure_34 = field_35.clone();
+                                                    ls::Either::Left(lawspecfailure_34)
                                                 }
-                                                ls::Either::Right(field_35) => {
-                                                    let lawspecvalue_34 = field_35.clone();
-                                                    ls::Either::Right(lawspecvalue_34)
+                                                ls::Either::Right(field_37) => {
+                                                    let lawspecvalue_36 = field_37.clone();
+                                                    ls::Either::Right(lawspecvalue_36)
                                                 }
                                             }
                                         };
-                                        match &matched_36 {
+                                        match &it_38 {
                                             ls::Either::Left(_) => {
                                                 false
                                             }
-                                            ls::Either::Right(field_38) => {
-                                                let base_37 = field_38.clone();
+                                            ls::Either::Right(field_40) => {
+                                                let v_match__match__lawspecselection0x0_0_0_39 = field_40.clone();
                                                 {
-                                                    let hiddenwhileopen_41 = ({
-                                                        let argument_39: TopicPartition = tp_4.clone();
-                                                        let argument_40: i64 = base_37;
+                                                    let hiddenwhileopen_43 = ({
+                                                        let argument_41: TopicPartition = tp_6.clone();
+                                                        let argument_42: i64 = v_match__match__lawspecselection0x0_0_0_39;
                                                         committedFrom_a524f37d(
                                                             &mut *ctx,
-                                                            argument_39,
-                                                            argument_40,
+                                                            argument_41,
+                                                            argument_42,
                                                         )?
                                                     } == ls::fast::List::nil());
                                                     {
-                                                        let seenuncommitted_44 = ({
-                                                            let argument_42: TopicPartition = tp_4.clone();
-                                                            let argument_43: i64 = base_37;
+                                                        let seenuncommitted_46 = ({
+                                                            let argument_44: TopicPartition = tp_6.clone();
+                                                            let argument_45: i64 = v_match__match__lawspecselection0x0_0_0_39;
                                                             uncommittedFrom_8a57847d(
                                                                 &mut *ctx,
-                                                                argument_42,
-                                                                argument_43,
+                                                                argument_44,
+                                                                argument_45,
                                                             )?
                                                         } == batch_2.clone());
                                                         {
-                                                            let matched_58 = {
-                                                                let matched_53 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
+                                                            let it_60 = {
+                                                                let matched_55 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                                                     Ok({
-                                                                        let argument_49: ls::fast::Text = txid_1.clone();
-                                                                        let argument_50: i64 = match &*pe_12.0 {
-                                                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(field_46, _) => {
-                                                                                let lawspecfieldproducerid_45 = field_46.clone();
-                                                                                lawspecfieldproducerid_45
+                                                                        let argument_51: ls::fast::Text = txid_1.clone();
+                                                                        let argument_52: i64 = match &*v_lawspecselection0x0_14.0 {
+                                                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(field_48, _) => {
+                                                                                let lawspecfieldproducerid_47 = field_48.clone();
+                                                                                lawspecfieldproducerid_47
                                                                             }
                                                                         };
-                                                                        let argument_51: i16 = match &*pe_12.0 {
-                                                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_48) => {
-                                                                                let lawspecfieldproducerepoch_47 = field_48.clone();
-                                                                                lawspecfieldproducerepoch_47
+                                                                        let argument_53: i16 = match &*v_lawspecselection0x0_14.0 {
+                                                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_50) => {
+                                                                                let lawspecfieldproducerepoch_49 = field_50.clone();
+                                                                                lawspecfieldproducerepoch_49
                                                                             }
                                                                         };
-                                                                        let argument_52: bool = commit_3;
-                                                                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_endTxnRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_49), ls::fast::Dyn::to_dyn(&argument_50), ls::fast::Dyn::to_dyn(&argument_51), ls::fast::Dyn::to_dyn(&argument_52)]).map_err(|error| format!("{}: {error}", "endTxnRequest"))?;
+                                                                        let argument_54: bool = commit_3;
+                                                                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_endTxnRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_51), ls::fast::Dyn::to_dyn(&argument_52), ls::fast::Dyn::to_dyn(&argument_53), ls::fast::Dyn::to_dyn(&argument_54)]).map_err(|error| format!("{}: {error}", "endTxnRequest"))?;
                                                                         <() as ls::fast::Dyn>::from_dyn(performed)?
                                                                     })
                                                                 })? {
                                                                     Ok(value) => ls::Either::Right(value),
                                                                     Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
                                                                 };
-                                                                match &matched_53 {
-                                                                    ls::Either::Left(field_55) => {
-                                                                        let lawspecfailure_54 = field_55.clone();
-                                                                        ls::Either::Left(lawspecfailure_54)
+                                                                match &matched_55 {
+                                                                    ls::Either::Left(field_57) => {
+                                                                        let lawspecfailure_56 = field_57.clone();
+                                                                        ls::Either::Left(lawspecfailure_56)
                                                                     }
-                                                                    ls::Either::Right(field_57) => {
-                                                                        let lawspecvalue_56 = field_57.clone();
-                                                                        ls::Either::Right(lawspecvalue_56)
+                                                                    ls::Either::Right(field_59) => {
+                                                                        let lawspecvalue_58 = field_59.clone();
+                                                                        ls::Either::Right(lawspecvalue_58)
                                                                     }
                                                                 }
                                                             };
-                                                            match &matched_58 {
+                                                            match &it_60 {
                                                                 ls::Either::Left(_) => {
                                                                     false
                                                                 }
                                                                 ls::Either::Right(_) => {
-                                                                    (((hiddenwhileopen_41 && seenuncommitted_44) && ({
-                                                                        let argument_59: TopicPartition = tp_4.clone();
-                                                                        let argument_60: i64 = base_37;
+                                                                    (((hiddenwhileopen_43 && seenuncommitted_46) && ({
+                                                                        let argument_61: TopicPartition = tp_6.clone();
+                                                                        let argument_62: i64 = v_match__match__lawspecselection0x0_0_0_39;
                                                                         uncommittedFrom_8a57847d(
                                                                             &mut *ctx,
-                                                                            argument_59,
-                                                                            argument_60,
+                                                                            argument_61,
+                                                                            argument_62,
                                                                         )?
                                                                     } == batch_2.clone())) && if commit_3 {
                                                                         ({
-                                                                            let argument_61: TopicPartition = tp_4.clone();
-                                                                            let argument_62: i64 = base_37;
-                                                                            committedFrom_a524f37d(
-                                                                                &mut *ctx,
-                                                                                argument_61,
-                                                                                argument_62,
-                                                                            )?
-                                                                        } == batch_2.clone())
-                                                                    } else {
-                                                                        ({
-                                                                            let argument_63: TopicPartition = tp_4.clone();
-                                                                            let argument_64: i64 = base_37;
+                                                                            let argument_63: TopicPartition = tp_6.clone();
+                                                                            let argument_64: i64 = v_match__match__lawspecselection0x0_0_0_39;
                                                                             committedFrom_a524f37d(
                                                                                 &mut *ctx,
                                                                                 argument_63,
                                                                                 argument_64,
+                                                                            )?
+                                                                        } == batch_2.clone())
+                                                                    } else {
+                                                                        ({
+                                                                            let argument_65: TopicPartition = tp_6.clone();
+                                                                            let argument_66: i64 = v_match__match__lawspecselection0x0_0_0_39;
+                                                                            committedFrom_a524f37d(
+                                                                                &mut *ctx,
+                                                                                argument_65,
+                                                                                argument_66,
                                                                             )?
                                                                         } == ls::fast::List::nil())
                                                                     })
@@ -20293,233 +21380,251 @@ pub mod typed {
         offset_3: i64,
     ) -> ls::Result<bool> {
         Ok({
-            let tp_4 = TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
-                t_0.clone(),
-                0i32,
-            )));
+            let tp_6 = {
+                let v_lawspecrecordfield0_4 = t_0.clone();
+                {
+                    let v_lawspecrecordfield1_5 = 0i32;
+                    TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
+                        v_lawspecrecordfield0_4.clone(),
+                        v_lawspecrecordfield1_5,
+                    )))
+                }
+            };
             {
-                let before_7 = {
-                    let argument_5: ls::fast::Text = g_2.clone();
-                    let argument_6: TopicPartition = tp_4.clone();
-                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_offsetFetchRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_5), ls::fast::Dyn::to_dyn(&argument_6)]).map_err(|error| format!("{}: {error}", "offsetFetchRequest"))?;
+                let before_9 = {
+                    let argument_7: ls::fast::Text = g_2.clone();
+                    let argument_8: TopicPartition = tp_6.clone();
+                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_offsetFetchRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_7), ls::fast::Dyn::to_dyn(&argument_8)]).map_err(|error| format!("{}: {error}", "offsetFetchRequest"))?;
                     <Option<i64> as ls::fast::Dyn>::from_dyn(performed)?
                 };
                 {
-                    let matched_14 = {
-                        let matched_9 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<ProducerIdAndEpoch> {
+                    let it_16 = {
+                        let matched_11 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<ProducerIdAndEpoch> {
                             Ok({
-                                let argument_8: Option<ls::fast::Text> = Some(txid_1.clone());
-                                let performed = crate::lawspec_abilities::lawtwin_kafka::perform_initProducerIdRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_8)]).map_err(|error| format!("{}: {error}", "initProducerIdRequest"))?;
+                                let argument_10: Option<ls::fast::Text> = Some(txid_1.clone());
+                                let performed = crate::lawspec_abilities::lawtwin_kafka::perform_initProducerIdRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_10)]).map_err(|error| format!("{}: {error}", "initProducerIdRequest"))?;
                                 <ProducerIdAndEpoch as ls::fast::Dyn>::from_dyn(performed)?
                             })
                         })? {
                             Ok(value) => ls::Either::Right(value),
                             Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
                         };
-                        match &matched_9 {
-                            ls::Either::Left(field_11) => {
-                                let lawspecfailure_10 = field_11.clone();
-                                ls::Either::Left(lawspecfailure_10)
+                        match &matched_11 {
+                            ls::Either::Left(field_13) => {
+                                let lawspecfailure_12 = field_13.clone();
+                                ls::Either::Left(lawspecfailure_12)
                             }
-                            ls::Either::Right(field_13) => {
-                                let lawspecvalue_12 = field_13.clone();
-                                ls::Either::Right(lawspecvalue_12.clone())
+                            ls::Either::Right(field_15) => {
+                                let lawspecvalue_14 = field_15.clone();
+                                ls::Either::Right(lawspecvalue_14.clone())
                             }
                         }
                     };
-                    match &matched_14 {
+                    match &it_16 {
                         ls::Either::Left(_) => {
                             false
                         }
-                        ls::Either::Right(field_16) => {
-                            let pe_15 = field_16.clone();
+                        ls::Either::Right(field_18) => {
+                            let v_lawspecselection0x0_17 = field_18.clone();
                             {
-                                let sent_31 = {
-                                    let matched_26 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
+                                let sent_35 = {
+                                    let matched_30 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                         Ok({
-                                            let argument_21: ls::fast::Text = txid_1.clone();
-                                            let argument_22: i64 = match &*pe_15.0 {
-                                                ProducerIdAndEpochNode::ProducerIdAndEpoch(field_18, _) => {
-                                                    let lawspecfieldproducerid_17 = field_18.clone();
-                                                    lawspecfieldproducerid_17
+                                            let argument_25: ls::fast::Text = txid_1.clone();
+                                            let argument_26: i64 = match &*v_lawspecselection0x0_17.0 {
+                                                ProducerIdAndEpochNode::ProducerIdAndEpoch(field_20, _) => {
+                                                    let lawspecfieldproducerid_19 = field_20.clone();
+                                                    lawspecfieldproducerid_19
                                                 }
                                             };
-                                            let argument_23: i16 = match &*pe_15.0 {
-                                                ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_20) => {
-                                                    let lawspecfieldproducerepoch_19 = field_20.clone();
-                                                    lawspecfieldproducerepoch_19
+                                            let argument_27: i16 = match &*v_lawspecselection0x0_17.0 {
+                                                ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_22) => {
+                                                    let lawspecfieldproducerepoch_21 = field_22.clone();
+                                                    lawspecfieldproducerepoch_21
                                                 }
                                             };
-                                            let argument_24: ls::fast::Text = g_2.clone();
-                                            let argument_25: ls::fast::List<OffsetEntry> = ls::fast::List::cons(
-                                                OffsetEntry(std::sync::Arc::new(OffsetEntryNode::OffsetEntry(
-                                                    tp_4.clone(),
-                                                    offset_3,
-                                                ))),
+                                            let argument_28: ls::fast::Text = g_2.clone();
+                                            let argument_29: ls::fast::List<OffsetEntry> = ls::fast::List::cons(
+                                                {
+                                                    let v_lawspecrecordfield0_23 = tp_6.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_24 = offset_3;
+                                                        OffsetEntry(std::sync::Arc::new(OffsetEntryNode::OffsetEntry(
+                                                            v_lawspecrecordfield0_23.clone(),
+                                                            v_lawspecrecordfield1_24,
+                                                        )))
+                                                    }
+                                                },
                                                 ls::fast::List::nil(),
                                             );
-                                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_txnOffsetCommitRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_21), ls::fast::Dyn::to_dyn(&argument_22), ls::fast::Dyn::to_dyn(&argument_23), ls::fast::Dyn::to_dyn(&argument_24), ls::fast::Dyn::to_dyn(&argument_25)]).map_err(|error| format!("{}: {error}", "txnOffsetCommitRequest"))?;
+                                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_txnOffsetCommitRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_25), ls::fast::Dyn::to_dyn(&argument_26), ls::fast::Dyn::to_dyn(&argument_27), ls::fast::Dyn::to_dyn(&argument_28), ls::fast::Dyn::to_dyn(&argument_29)]).map_err(|error| format!("{}: {error}", "txnOffsetCommitRequest"))?;
                                             <() as ls::fast::Dyn>::from_dyn(performed)?
                                         })
                                     })? {
                                         Ok(value) => ls::Either::Right(value),
                                         Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
                                     };
-                                    match &matched_26 {
-                                        ls::Either::Left(field_28) => {
-                                            let lawspecfailure_27 = field_28.clone();
-                                            ls::Either::Left(lawspecfailure_27)
+                                    match &matched_30 {
+                                        ls::Either::Left(field_32) => {
+                                            let lawspecfailure_31 = field_32.clone();
+                                            ls::Either::Left(lawspecfailure_31)
                                         }
-                                        ls::Either::Right(field_30) => {
-                                            let lawspecvalue_29 = field_30.clone();
-                                            ls::Either::Right(lawspecvalue_29)
+                                        ls::Either::Right(field_34) => {
+                                            let lawspecvalue_33 = field_34.clone();
+                                            ls::Either::Right(lawspecvalue_33)
                                         }
                                     }
                                 };
                                 {
-                                    let aborted_45 = {
-                                        let matched_40 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
+                                    let aborted_49 = {
+                                        let matched_44 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                             Ok({
-                                                let argument_36: ls::fast::Text = txid_1.clone();
-                                                let argument_37: i64 = match &*pe_15.0 {
-                                                    ProducerIdAndEpochNode::ProducerIdAndEpoch(field_33, _) => {
-                                                        let lawspecfieldproducerid_32 = field_33.clone();
-                                                        lawspecfieldproducerid_32
+                                                let argument_40: ls::fast::Text = txid_1.clone();
+                                                let argument_41: i64 = match &*v_lawspecselection0x0_17.0 {
+                                                    ProducerIdAndEpochNode::ProducerIdAndEpoch(field_37, _) => {
+                                                        let lawspecfieldproducerid_36 = field_37.clone();
+                                                        lawspecfieldproducerid_36
                                                     }
                                                 };
-                                                let argument_38: i16 = match &*pe_15.0 {
-                                                    ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_35) => {
-                                                        let lawspecfieldproducerepoch_34 = field_35.clone();
-                                                        lawspecfieldproducerepoch_34
+                                                let argument_42: i16 = match &*v_lawspecselection0x0_17.0 {
+                                                    ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_39) => {
+                                                        let lawspecfieldproducerepoch_38 = field_39.clone();
+                                                        lawspecfieldproducerepoch_38
                                                     }
                                                 };
-                                                let argument_39: bool = false;
-                                                let performed = crate::lawspec_abilities::lawtwin_kafka::perform_endTxnRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_36), ls::fast::Dyn::to_dyn(&argument_37), ls::fast::Dyn::to_dyn(&argument_38), ls::fast::Dyn::to_dyn(&argument_39)]).map_err(|error| format!("{}: {error}", "endTxnRequest"))?;
+                                                let argument_43: bool = false;
+                                                let performed = crate::lawspec_abilities::lawtwin_kafka::perform_endTxnRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_40), ls::fast::Dyn::to_dyn(&argument_41), ls::fast::Dyn::to_dyn(&argument_42), ls::fast::Dyn::to_dyn(&argument_43)]).map_err(|error| format!("{}: {error}", "endTxnRequest"))?;
                                                 <() as ls::fast::Dyn>::from_dyn(performed)?
                                             })
                                         })? {
                                             Ok(value) => ls::Either::Right(value),
                                             Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
                                         };
-                                        match &matched_40 {
-                                            ls::Either::Left(field_42) => {
-                                                let lawspecfailure_41 = field_42.clone();
-                                                ls::Either::Left(lawspecfailure_41)
+                                        match &matched_44 {
+                                            ls::Either::Left(field_46) => {
+                                                let lawspecfailure_45 = field_46.clone();
+                                                ls::Either::Left(lawspecfailure_45)
                                             }
-                                            ls::Either::Right(field_44) => {
-                                                let lawspecvalue_43 = field_44.clone();
-                                                ls::Either::Right(lawspecvalue_43)
+                                            ls::Either::Right(field_48) => {
+                                                let lawspecvalue_47 = field_48.clone();
+                                                ls::Either::Right(lawspecvalue_47)
                                             }
                                         }
                                     };
                                     {
-                                        let afterabort_48 = {
-                                            let argument_46: ls::fast::Text = g_2.clone();
-                                            let argument_47: TopicPartition = tp_4.clone();
-                                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_offsetFetchRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_46), ls::fast::Dyn::to_dyn(&argument_47)]).map_err(|error| format!("{}: {error}", "offsetFetchRequest"))?;
+                                        let afterabort_52 = {
+                                            let argument_50: ls::fast::Text = g_2.clone();
+                                            let argument_51: TopicPartition = tp_6.clone();
+                                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_offsetFetchRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_50), ls::fast::Dyn::to_dyn(&argument_51)]).map_err(|error| format!("{}: {error}", "offsetFetchRequest"))?;
                                             <Option<i64> as ls::fast::Dyn>::from_dyn(performed)?
                                         };
                                         {
-                                            let resent_63 = {
-                                                let matched_58 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
+                                            let resent_69 = {
+                                                let matched_64 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                                     Ok({
-                                                        let argument_53: ls::fast::Text = txid_1.clone();
-                                                        let argument_54: i64 = match &*pe_15.0 {
-                                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(field_50, _) => {
-                                                                let lawspecfieldproducerid_49 = field_50.clone();
-                                                                lawspecfieldproducerid_49
+                                                        let argument_59: ls::fast::Text = txid_1.clone();
+                                                        let argument_60: i64 = match &*v_lawspecselection0x0_17.0 {
+                                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(field_54, _) => {
+                                                                let lawspecfieldproducerid_53 = field_54.clone();
+                                                                lawspecfieldproducerid_53
                                                             }
                                                         };
-                                                        let argument_55: i16 = match &*pe_15.0 {
-                                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_52) => {
-                                                                let lawspecfieldproducerepoch_51 = field_52.clone();
-                                                                lawspecfieldproducerepoch_51
+                                                        let argument_61: i16 = match &*v_lawspecselection0x0_17.0 {
+                                                            ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_56) => {
+                                                                let lawspecfieldproducerepoch_55 = field_56.clone();
+                                                                lawspecfieldproducerepoch_55
                                                             }
                                                         };
-                                                        let argument_56: ls::fast::Text = g_2.clone();
-                                                        let argument_57: ls::fast::List<OffsetEntry> = ls::fast::List::cons(
-                                                            OffsetEntry(std::sync::Arc::new(OffsetEntryNode::OffsetEntry(
-                                                                tp_4.clone(),
-                                                                offset_3,
-                                                            ))),
+                                                        let argument_62: ls::fast::Text = g_2.clone();
+                                                        let argument_63: ls::fast::List<OffsetEntry> = ls::fast::List::cons(
+                                                            {
+                                                                let v_lawspecrecordfield0_57 = tp_6.clone();
+                                                                {
+                                                                    let v_lawspecrecordfield1_58 = offset_3;
+                                                                    OffsetEntry(std::sync::Arc::new(OffsetEntryNode::OffsetEntry(
+                                                                        v_lawspecrecordfield0_57.clone(),
+                                                                        v_lawspecrecordfield1_58,
+                                                                    )))
+                                                                }
+                                                            },
                                                             ls::fast::List::nil(),
                                                         );
-                                                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_txnOffsetCommitRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_53), ls::fast::Dyn::to_dyn(&argument_54), ls::fast::Dyn::to_dyn(&argument_55), ls::fast::Dyn::to_dyn(&argument_56), ls::fast::Dyn::to_dyn(&argument_57)]).map_err(|error| format!("{}: {error}", "txnOffsetCommitRequest"))?;
+                                                        let performed = crate::lawspec_abilities::lawtwin_kafka::perform_txnOffsetCommitRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_59), ls::fast::Dyn::to_dyn(&argument_60), ls::fast::Dyn::to_dyn(&argument_61), ls::fast::Dyn::to_dyn(&argument_62), ls::fast::Dyn::to_dyn(&argument_63)]).map_err(|error| format!("{}: {error}", "txnOffsetCommitRequest"))?;
                                                         <() as ls::fast::Dyn>::from_dyn(performed)?
                                                     })
                                                 })? {
                                                     Ok(value) => ls::Either::Right(value),
                                                     Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
                                                 };
-                                                match &matched_58 {
-                                                    ls::Either::Left(field_60) => {
-                                                        let lawspecfailure_59 = field_60.clone();
-                                                        ls::Either::Left(lawspecfailure_59)
+                                                match &matched_64 {
+                                                    ls::Either::Left(field_66) => {
+                                                        let lawspecfailure_65 = field_66.clone();
+                                                        ls::Either::Left(lawspecfailure_65)
                                                     }
-                                                    ls::Either::Right(field_62) => {
-                                                        let lawspecvalue_61 = field_62.clone();
-                                                        ls::Either::Right(lawspecvalue_61)
+                                                    ls::Either::Right(field_68) => {
+                                                        let lawspecvalue_67 = field_68.clone();
+                                                        ls::Either::Right(lawspecvalue_67)
                                                     }
                                                 }
                                             };
                                             {
-                                                let committed_77 = {
-                                                    let matched_72 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
+                                                let committed_83 = {
+                                                    let matched_78 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                                         Ok({
-                                                            let argument_68: ls::fast::Text = txid_1.clone();
-                                                            let argument_69: i64 = match &*pe_15.0 {
-                                                                ProducerIdAndEpochNode::ProducerIdAndEpoch(field_65, _) => {
-                                                                    let lawspecfieldproducerid_64 = field_65.clone();
-                                                                    lawspecfieldproducerid_64
+                                                            let argument_74: ls::fast::Text = txid_1.clone();
+                                                            let argument_75: i64 = match &*v_lawspecselection0x0_17.0 {
+                                                                ProducerIdAndEpochNode::ProducerIdAndEpoch(field_71, _) => {
+                                                                    let lawspecfieldproducerid_70 = field_71.clone();
+                                                                    lawspecfieldproducerid_70
                                                                 }
                                                             };
-                                                            let argument_70: i16 = match &*pe_15.0 {
-                                                                ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_67) => {
-                                                                    let lawspecfieldproducerepoch_66 = field_67.clone();
-                                                                    lawspecfieldproducerepoch_66
+                                                            let argument_76: i16 = match &*v_lawspecselection0x0_17.0 {
+                                                                ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_73) => {
+                                                                    let lawspecfieldproducerepoch_72 = field_73.clone();
+                                                                    lawspecfieldproducerepoch_72
                                                                 }
                                                             };
-                                                            let argument_71: bool = true;
-                                                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_endTxnRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_68), ls::fast::Dyn::to_dyn(&argument_69), ls::fast::Dyn::to_dyn(&argument_70), ls::fast::Dyn::to_dyn(&argument_71)]).map_err(|error| format!("{}: {error}", "endTxnRequest"))?;
+                                                            let argument_77: bool = true;
+                                                            let performed = crate::lawspec_abilities::lawtwin_kafka::perform_endTxnRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_74), ls::fast::Dyn::to_dyn(&argument_75), ls::fast::Dyn::to_dyn(&argument_76), ls::fast::Dyn::to_dyn(&argument_77)]).map_err(|error| format!("{}: {error}", "endTxnRequest"))?;
                                                             <() as ls::fast::Dyn>::from_dyn(performed)?
                                                         })
                                                     })? {
                                                         Ok(value) => ls::Either::Right(value),
                                                         Err(failure) => ls::Either::Left(<KafkaError as ls::fast::Dyn>::from_dyn(failure)?),
                                                     };
-                                                    match &matched_72 {
-                                                        ls::Either::Left(field_74) => {
-                                                            let lawspecfailure_73 = field_74.clone();
-                                                            ls::Either::Left(lawspecfailure_73)
+                                                    match &matched_78 {
+                                                        ls::Either::Left(field_80) => {
+                                                            let lawspecfailure_79 = field_80.clone();
+                                                            ls::Either::Left(lawspecfailure_79)
                                                         }
-                                                        ls::Either::Right(field_76) => {
-                                                            let lawspecvalue_75 = field_76.clone();
-                                                            ls::Either::Right(lawspecvalue_75)
+                                                        ls::Either::Right(field_82) => {
+                                                            let lawspecvalue_81 = field_82.clone();
+                                                            ls::Either::Right(lawspecvalue_81)
                                                         }
                                                     }
                                                 };
-                                                (((((match &sent_31 {
+                                                (((((match &sent_35 {
                                                     ls::Either::Left(_) => {
                                                         false
                                                     }
                                                     ls::Either::Right(_) => {
                                                         true
                                                     }
-                                                } && match &aborted_45 {
+                                                } && match &aborted_49 {
                                                     ls::Either::Left(_) => {
                                                         false
                                                     }
                                                     ls::Either::Right(_) => {
                                                         true
                                                     }
-                                                }) && (afterabort_48.clone() == before_7.clone())) && match &resent_63 {
+                                                }) && (afterabort_52.clone() == before_9.clone())) && match &resent_69 {
                                                     ls::Either::Left(_) => {
                                                         false
                                                     }
                                                     ls::Either::Right(_) => {
                                                         true
                                                     }
-                                                }) && match &committed_77 {
+                                                }) && match &committed_83 {
                                                     ls::Either::Left(_) => {
                                                         false
                                                     }
@@ -20527,9 +21632,9 @@ pub mod typed {
                                                         true
                                                     }
                                                 }) && ({
-                                                    let argument_78: ls::fast::Text = g_2.clone();
-                                                    let argument_79: TopicPartition = tp_4.clone();
-                                                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_offsetFetchRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_78), ls::fast::Dyn::to_dyn(&argument_79)]).map_err(|error| format!("{}: {error}", "offsetFetchRequest"))?;
+                                                    let argument_84: ls::fast::Text = g_2.clone();
+                                                    let argument_85: TopicPartition = tp_6.clone();
+                                                    let performed = crate::lawspec_abilities::lawtwin_kafka::perform_offsetFetchRequest(&mut *ctx, vec![ls::fast::Dyn::to_dyn(&argument_84), ls::fast::Dyn::to_dyn(&argument_85)]).map_err(|error| format!("{}: {error}", "offsetFetchRequest"))?;
                                                     <Option<i64> as ls::fast::Dyn>::from_dyn(performed)?
                                                 } == Some(offset_3)))
                                             }
@@ -20563,13 +21668,13 @@ pub mod typed {
         st_1: TransactionState,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ()>, TransactionState>> {
         Ok({
-            let matched_4 = match &*st_1.0 {
+            let it_4 = match &*st_1.0 {
                 TransactionStateNode::TransactionState(_, field_3, _, _, _, _) => {
                     let lawspecfieldproducer_2 = field_3.clone();
                     lawspecfieldproducer_2.clone()
                 }
             };
-            match &matched_4 {
+            match &it_4 {
                 None => {
                     Pair(std::sync::Arc::new(PairNode::Pair(
                         ls::Either::Left(KafkaError::IllegalState),
@@ -20577,7 +21682,7 @@ pub mod typed {
                     )))
                 }
                 Some(field_6) => {
-                    let id_5 = field_6.clone();
+                    let v_lawspecselection0x0_5 = field_6.clone();
                     if !(match &*st_1.0 {
                         TransactionStateNode::TransactionState(_, _, _, field_8, _, _) => {
                             let lawspecfieldintransaction_7 = field_8.clone();
@@ -20610,7 +21715,7 @@ pub mod typed {
                                 )))
                             } else {
                                 {
-                                    let matched_27 = {
+                                    let it_27 = {
                                         let matched_22 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                             Ok({
                                                 let argument_18: ls::fast::Text = match &*st_1.0 {
@@ -20619,13 +21724,13 @@ pub mod typed {
                                                         lawspecfieldtransactionalid_12.clone()
                                                     }
                                                 };
-                                                let argument_19: i64 = match &*id_5.0 {
+                                                let argument_19: i64 = match &*v_lawspecselection0x0_5.0 {
                                                     ProducerIdAndEpochNode::ProducerIdAndEpoch(field_15, _) => {
                                                         let lawspecfieldproducerid_14 = field_15.clone();
                                                         lawspecfieldproducerid_14
                                                     }
                                                 };
-                                                let argument_20: i16 = match &*id_5.0 {
+                                                let argument_20: i16 = match &*v_lawspecselection0x0_5.0 {
                                                     ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_17) => {
                                                         let lawspecfieldproducerepoch_16 = field_17.clone();
                                                         lawspecfieldproducerepoch_16
@@ -20650,11 +21755,11 @@ pub mod typed {
                                             }
                                         }
                                     };
-                                    match &matched_27 {
+                                    match &it_27 {
                                         ls::Either::Left(field_29) => {
-                                            let e_28 = field_29.clone();
+                                            let v_match__lawspecselection0x0_0_28 = field_29.clone();
                                             Pair(std::sync::Arc::new(PairNode::Pair(
-                                                ls::Either::Left(e_28),
+                                                ls::Either::Left(v_match__lawspecselection0x0_0_28),
                                                 st_1.clone(),
                                             )))
                                         }
@@ -20703,13 +21808,13 @@ pub mod typed {
         st_0: TransactionState,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ()>, TransactionState>> {
         Ok({
-            let matched_3 = match &*st_0.0 {
+            let it_3 = match &*st_0.0 {
                 TransactionStateNode::TransactionState(_, field_2, _, _, _, _) => {
                     let lawspecfieldproducer_1 = field_2.clone();
                     lawspecfieldproducer_1.clone()
                 }
             };
-            match &matched_3 {
+            match &it_3 {
                 None => {
                     Pair(std::sync::Arc::new(PairNode::Pair(
                         ls::Either::Left(KafkaError::IllegalState),
@@ -20796,13 +21901,13 @@ pub mod typed {
         st_1: TransactionState,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ()>, TransactionState>> {
         Ok({
-            let matched_4 = match &*st_1.0 {
+            let it_4 = match &*st_1.0 {
                 TransactionStateNode::TransactionState(_, field_3, _, _, _, _) => {
                     let lawspecfieldproducer_2 = field_3.clone();
                     lawspecfieldproducer_2.clone()
                 }
             };
-            match &matched_4 {
+            match &it_4 {
                 None => {
                     Pair(std::sync::Arc::new(PairNode::Pair(
                         ls::Either::Left(KafkaError::IllegalState),
@@ -20810,7 +21915,7 @@ pub mod typed {
                     )))
                 }
                 Some(field_6) => {
-                    let id_5 = field_6.clone();
+                    let v_lawspecselection0x0_5 = field_6.clone();
                     if !(match &*st_1.0 {
                         TransactionStateNode::TransactionState(_, _, _, field_8, _, _) => {
                             let lawspecfieldintransaction_7 = field_8.clone();
@@ -20888,7 +21993,7 @@ pub mod typed {
                                 })))
                         } else {
                             {
-                                let matched_64 = {
+                                let it_64 = {
                                     let matched_59 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                         Ok({
                                             let argument_55: ls::fast::Text = match &*st_1.0 {
@@ -20897,13 +22002,13 @@ pub mod typed {
                                                     lawspecfieldtransactionalid_49.clone()
                                                 }
                                             };
-                                            let argument_56: i64 = match &*id_5.0 {
+                                            let argument_56: i64 = match &*v_lawspecselection0x0_5.0 {
                                                 ProducerIdAndEpochNode::ProducerIdAndEpoch(field_52, _) => {
                                                     let lawspecfieldproducerid_51 = field_52.clone();
                                                     lawspecfieldproducerid_51
                                                 }
                                             };
-                                            let argument_57: i16 = match &*id_5.0 {
+                                            let argument_57: i16 = match &*v_lawspecselection0x0_5.0 {
                                                 ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_54) => {
                                                     let lawspecfieldproducerepoch_53 = field_54.clone();
                                                     lawspecfieldproducerepoch_53
@@ -20928,11 +22033,11 @@ pub mod typed {
                                         }
                                     }
                                 };
-                                match &matched_64 {
+                                match &it_64 {
                                     ls::Either::Left(field_66) => {
-                                        let e_65 = field_66.clone();
+                                        let v_match__lawspecselection0x0_0_65 = field_66.clone();
                                         Pair(std::sync::Arc::new(PairNode::Pair(
-                                            ls::Either::Left(e_65),
+                                            ls::Either::Left(v_match__lawspecselection0x0_0_65),
                                             st_1.clone(),
                                         )))
                                     }
@@ -21021,7 +22126,7 @@ pub mod typed {
         st_1: TransactionState,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ProducerIdAndEpoch>, TransactionState>> {
         Ok({
-            let matched_8 = {
+            let it_8 = {
                 let matched_3 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<ProducerIdAndEpoch> {
                     Ok({
                         let argument_2: Option<ls::fast::Text> = Some(txid_0.clone());
@@ -21043,23 +22148,44 @@ pub mod typed {
                     }
                 }
             };
-            match &matched_8 {
+            match &it_8 {
                 ls::Either::Left(field_10) => {
-                    let e_9 = field_10.clone();
-                    Pair(std::sync::Arc::new(PairNode::Pair(ls::Either::Left(e_9), st_1.clone())))
+                    let v_lawspecselection0x0_9 = field_10.clone();
+                    Pair(std::sync::Arc::new(PairNode::Pair(
+                        ls::Either::Left(v_lawspecselection0x0_9),
+                        st_1.clone(),
+                    )))
                 }
                 ls::Either::Right(field_12) => {
-                    let pe_11 = field_12.clone();
+                    let v_lawspecselection0x0_11 = field_12.clone();
                     Pair(std::sync::Arc::new(PairNode::Pair(
-                        ls::Either::Right(pe_11.clone()),
-                        TransactionState(std::sync::Arc::new(TransactionStateNode::TransactionState(
-                            txid_0.clone(),
-                            Some(pe_11.clone()),
-                            ls::fast::Map::new(),
-                            false,
-                            ls::fast::List::nil(),
-                            false,
-                        ))),
+                        ls::Either::Right(v_lawspecselection0x0_11.clone()),
+                        {
+                            let v_lawspecrecordfield0_13 = txid_0.clone();
+                            {
+                                let v_lawspecrecordfield1_14 = Some(v_lawspecselection0x0_11.clone());
+                                {
+                                    let v_lawspecrecordfield2_15 = ls::fast::Map::new();
+                                    {
+                                        let v_lawspecrecordfield3_16 = false;
+                                        {
+                                            let v_lawspecrecordfield4_17 = ls::fast::List::nil();
+                                            {
+                                                let v_lawspecrecordfield5_18 = false;
+                                                TransactionState(std::sync::Arc::new(TransactionStateNode::TransactionState(
+                                                    v_lawspecrecordfield0_13.clone(),
+                                                    v_lawspecrecordfield1_14.clone(),
+                                                    v_lawspecrecordfield2_15.clone(),
+                                                    v_lawspecrecordfield3_16,
+                                                    v_lawspecrecordfield4_17.clone(),
+                                                    v_lawspecrecordfield5_18,
+                                                )))
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
                     )))
                 }
             }
@@ -21074,13 +22200,13 @@ pub mod typed {
         st_2: TransactionState,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ()>, TransactionState>> {
         Ok({
-            let matched_5 = match &*st_2.0 {
+            let it_5 = match &*st_2.0 {
                 TransactionStateNode::TransactionState(_, field_4, _, _, _, _) => {
                     let lawspecfieldproducer_3 = field_4.clone();
                     lawspecfieldproducer_3.clone()
                 }
             };
-            match &matched_5 {
+            match &it_5 {
                 None => {
                     Pair(std::sync::Arc::new(PairNode::Pair(
                         ls::Either::Left(KafkaError::IllegalState),
@@ -21088,7 +22214,7 @@ pub mod typed {
                     )))
                 }
                 Some(field_7) => {
-                    let id_6 = field_7.clone();
+                    let v_lawspecselection0x0_6 = field_7.clone();
                     if !(match &*st_2.0 {
                         TransactionStateNode::TransactionState(_, _, _, field_9, _, _) => {
                             let lawspecfieldintransaction_8 = field_9.clone();
@@ -21101,7 +22227,7 @@ pub mod typed {
                         )))
                     } else {
                         {
-                            let matched_26 = {
+                            let it_26 = {
                                 let matched_21 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                     Ok({
                                         let argument_16: ls::fast::Text = match &*st_2.0 {
@@ -21110,13 +22236,13 @@ pub mod typed {
                                                 lawspecfieldtransactionalid_10.clone()
                                             }
                                         };
-                                        let argument_17: i64 = match &*id_6.0 {
+                                        let argument_17: i64 = match &*v_lawspecselection0x0_6.0 {
                                             ProducerIdAndEpochNode::ProducerIdAndEpoch(field_13, _) => {
                                                 let lawspecfieldproducerid_12 = field_13.clone();
                                                 lawspecfieldproducerid_12
                                             }
                                         };
-                                        let argument_18: i16 = match &*id_6.0 {
+                                        let argument_18: i16 = match &*v_lawspecselection0x0_6.0 {
                                             ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_15) => {
                                                 let lawspecfieldproducerepoch_14 = field_15.clone();
                                                 lawspecfieldproducerepoch_14
@@ -21142,11 +22268,11 @@ pub mod typed {
                                     }
                                 }
                             };
-                            match &matched_26 {
+                            match &it_26 {
                                 ls::Either::Left(field_28) => {
-                                    let e_27 = field_28.clone();
+                                    let v_match__lawspecselection0x0_0_27 = field_28.clone();
                                     Pair(std::sync::Arc::new(PairNode::Pair(
-                                        ls::Either::Left(e_27),
+                                        ls::Either::Left(v_match__lawspecselection0x0_0_27),
                                         st_2.clone(),
                                     )))
                                 }
@@ -21180,7 +22306,7 @@ pub mod typed {
         st_1: TransactionState,
     ) -> ls::Result<Pair<ls::Either<KafkaError, RecordMetadata>, TransactionState>> {
         Ok({
-            let matched_11 = {
+            let it_11 = {
                 let argument_8: ls::fast::Text = match &*pr_0.0 {
                     ProducerRecordNode::ProducerRecord(field_3, _, _) => {
                         let lawspecfielddestination_2 = field_3.clone();
@@ -21201,34 +22327,37 @@ pub mod typed {
                 };
                 partitionOf_343af5ef(&mut *ctx, argument_8, argument_9, argument_10)?
             };
-            match &matched_11 {
+            match &it_11 {
                 ls::Either::Left(field_13) => {
-                    let e_12 = field_13.clone();
-                    Pair(std::sync::Arc::new(PairNode::Pair(ls::Either::Left(e_12), st_1.clone())))
+                    let v_lawspecselection0x0_12 = field_13.clone();
+                    Pair(std::sync::Arc::new(PairNode::Pair(
+                        ls::Either::Left(v_lawspecselection0x0_12),
+                        st_1.clone(),
+                    )))
                 }
                 ls::Either::Right(field_15) => {
-                    let tp_14 = field_15.clone();
+                    let v_lawspecselection0x0_14 = field_15.clone();
                     {
                         let a_18 = {
                             let argument_16: ls::fast::List<TopicPartition> = ls::fast::List::cons(
-                                tp_14.clone(),
+                                v_lawspecselection0x0_14.clone(),
                                 ls::fast::List::nil(),
                             );
                             let argument_17: TransactionState = st_1.clone();
                             transactionsAdd_1f41c92e(&mut *ctx, argument_16, argument_17)?
                         };
                         {
-                            let matched_21 = match &*a_18.0 {
+                            let it_21 = match &*a_18.0 {
                                 PairNode::Pair(field_20, _) => {
                                     let lawspecfieldfirst_19 = field_20.clone();
                                     lawspecfieldfirst_19.clone()
                                 }
                             };
-                            match &matched_21 {
+                            match &it_21 {
                                 ls::Either::Left(field_23) => {
-                                    let e_22 = field_23.clone();
+                                    let v_match__lawspecselection0x0_0_22 = field_23.clone();
                                     Pair(std::sync::Arc::new(PairNode::Pair(
-                                        ls::Either::Left(e_22),
+                                        ls::Either::Left(v_match__lawspecselection0x0_0_22),
                                         match &*a_18.0 {
                                             PairNode::Pair(_, field_25) => {
                                                 let lawspecfieldsecond_24 = field_25.clone();
@@ -21239,7 +22368,9 @@ pub mod typed {
                                 }
                                 ls::Either::Right(_) => {
                                     {
-                                        let sequence_31 = sequenceFor_9d79724c(tp_14.clone(), {
+                                        let sequence_31 = sequenceFor_9d79724c(
+                                            v_lawspecselection0x0_14.clone(),
+                                            {
                                                 let matched_28 = match &*a_18.0 {
                                                     PairNode::Pair(_, field_27) => {
                                                         let lawspecfieldsecond_26 = field_27.clone();
@@ -21252,12 +22383,13 @@ pub mod typed {
                                                         lawspecfieldtxnsequences_29.clone()
                                                     }
                                                 }
-                                            })?;
+                                            },
+                                        )?;
                                         {
-                                            let matched_47 = {
+                                            let it_47 = {
                                                 let matched_42 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<i64> {
                                                     Ok({
-                                                        let argument_39: TopicPartition = tp_14.clone();
+                                                        let argument_39: TopicPartition = v_lawspecselection0x0_14.clone();
                                                         let argument_40: Option<ProducerTag> = tagFor_a88d3846(
                                                             {
                                                                 let matched_34 = match &*a_18.0 {
@@ -21302,11 +22434,11 @@ pub mod typed {
                                                     }
                                                 }
                                             };
-                                            match &matched_47 {
+                                            match &it_47 {
                                                 ls::Either::Left(field_49) => {
-                                                    let e_48 = field_49.clone();
+                                                    let v_match__match__lawspecselection0x0_0_0_48 = field_49.clone();
                                                     Pair(std::sync::Arc::new(PairNode::Pair(
-                                                        ls::Either::Left(e_48),
+                                                        ls::Either::Left(v_match__match__lawspecselection0x0_0_0_48),
                                                         match &*a_18.0 {
                                                             PairNode::Pair(_, field_51) => {
                                                                 let lawspecfieldsecond_50 = field_51.clone();
@@ -21316,53 +22448,59 @@ pub mod typed {
                                                     )))
                                                 }
                                                 ls::Either::Right(field_53) => {
-                                                    let offset_52 = field_53.clone();
+                                                    let v_match__match__lawspecselection0x0_0_0_52 = field_53.clone();
                                                     Pair(std::sync::Arc::new(PairNode::Pair(
-                                                        ls::Either::Right(RecordMetadata(std::sync::Arc::new(RecordMetadataNode::RecordMetadata(
-                                                            tp_14.clone(),
-                                                            offset_52,
-                                                        )))),
+                                                        ls::Either::Right({
+                                                            let v_lawspecrecordfield0_54 = v_lawspecselection0x0_14.clone();
+                                                            {
+                                                                let v_lawspecrecordfield1_55 = v_match__match__lawspecselection0x0_0_0_52;
+                                                                RecordMetadata(std::sync::Arc::new(RecordMetadataNode::RecordMetadata(
+                                                                    v_lawspecrecordfield0_54.clone(),
+                                                                    v_lawspecrecordfield1_55,
+                                                                )))
+                                                            }
+                                                        }),
                                                         {
-                                                            let replacement_59 = {
-                                                                let matched_56 = match &*a_18.0 {
-                                                                    PairNode::Pair(_, field_55) => {
-                                                                        let lawspecfieldsecond_54 = field_55.clone();
-                                                                        lawspecfieldsecond_54.clone()
+                                                            let replacement_61 = {
+                                                                let matched_58 = match &*a_18.0 {
+                                                                    PairNode::Pair(_, field_57) => {
+                                                                        let lawspecfieldsecond_56 = field_57.clone();
+                                                                        lawspecfieldsecond_56.clone()
                                                                     }
                                                                 };
-                                                                match &*matched_56.0 {
-                                                                    TransactionStateNode::TransactionState(_, _, field_58, _, _, _) => {
-                                                                        let lawspecfieldtxnsequences_57 = field_58.clone();
-                                                                        lawspecfieldtxnsequences_57.clone()
+                                                                match &*matched_58.0 {
+                                                                    TransactionStateNode::TransactionState(_, _, field_60, _, _, _) => {
+                                                                        let lawspecfieldtxnsequences_59 = field_60.clone();
+                                                                        lawspecfieldtxnsequences_59.clone()
                                                                     }
                                                                 }
                                                             }.insert(
-                                                                tp_14.clone(),
+                                                                v_lawspecselection0x0_14.clone(),
                                                                 saturatingInt32_9e8d3b43(
                                                                     ls::fast::Int::from_i128(((sequence_31 as i128) + 1i128)),
                                                                 )?,
                                                             );
                                                             {
-                                                                let matched_62 = match &*a_18.0 {
-                                                                    PairNode::Pair(_, field_61) => {
-                                                                        let lawspecfieldsecond_60 = field_61.clone();
-                                                                        lawspecfieldsecond_60.clone()
+                                                                let matched_64 = match &*a_18.0 {
+                                                                    PairNode::Pair(_, field_63) => {
+                                                                        let lawspecfieldsecond_62 = field_63.clone();
+                                                                        lawspecfieldsecond_62.clone()
                                                                     }
                                                                 };
-                                                                match &*matched_62.0 {
-                                                                    TransactionStateNode::TransactionState(field_68, field_69, _, field_70, field_71, field_72) => {
-                                                                        let lawspecfieldtransactionalid_63 = field_68.clone();
-                                                                        let lawspecfieldproducer_64 = field_69.clone();
-                                                                        let lawspecfieldintransaction_65 = field_70.clone();
-                                                                        let lawspecfieldadded_66 = field_71.clone();
-                                                                        let lawspecfieldoffsetssent_67 = field_72.clone();
+                                                                match &*matched_64.0 {
+                                                                    TransactionStateNode::TransactionState(field_70, field_71, _, field_72, field_73, field_74) => {
+                                                                        let lawspecfieldtransactionalid_65 = field_70.clone();
+                                                                        let lawspecfieldproducer_66 = field_71.clone();
+                                                                        let lawspecfieldintransaction_67 = field_72.clone();
+                                                                        let lawspecfieldadded_68 = field_73.clone();
+                                                                        let lawspecfieldoffsetssent_69 = field_74.clone();
                                                                         TransactionState(std::sync::Arc::new(TransactionStateNode::TransactionState(
-                                                                            lawspecfieldtransactionalid_63.clone(),
-                                                                            lawspecfieldproducer_64.clone(),
-                                                                            replacement_59.clone(),
-                                                                            lawspecfieldintransaction_65,
-                                                                            lawspecfieldadded_66.clone(),
-                                                                            lawspecfieldoffsetssent_67,
+                                                                            lawspecfieldtransactionalid_65.clone(),
+                                                                            lawspecfieldproducer_66.clone(),
+                                                                            replacement_61.clone(),
+                                                                            lawspecfieldintransaction_67,
+                                                                            lawspecfieldadded_68.clone(),
+                                                                            lawspecfieldoffsetssent_69,
                                                                         )))
                                                                     }
                                                                 }
@@ -21610,7 +22748,7 @@ pub mod typed {
         r_2: Record,
     ) -> ls::Result<Option<i64>> {
         Ok({
-            let matched_9 = {
+            let it_9 = {
                 let matched_4 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<ProducerIdAndEpoch> {
                     Ok({
                         let argument_3: Option<ls::fast::Text> = Some(txid_1.clone());
@@ -21632,24 +22770,24 @@ pub mod typed {
                     }
                 }
             };
-            match &matched_9 {
+            match &it_9 {
                 ls::Either::Left(_) => {
                     None
                 }
                 ls::Either::Right(field_11) => {
-                    let pe_10 = field_11.clone();
+                    let v_lawspecselection0x0_10 = field_11.clone();
                     {
                         let added_25 = {
                             let matched_20 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                 Ok({
                                     let argument_16: ls::fast::Text = txid_1.clone();
-                                    let argument_17: i64 = match &*pe_10.0 {
+                                    let argument_17: i64 = match &*v_lawspecselection0x0_10.0 {
                                         ProducerIdAndEpochNode::ProducerIdAndEpoch(field_13, _) => {
                                             let lawspecfieldproducerid_12 = field_13.clone();
                                             lawspecfieldproducerid_12
                                         }
                                     };
-                                    let argument_18: i16 = match &*pe_10.0 {
+                                    let argument_18: i16 = match &*v_lawspecselection0x0_10.0 {
                                         ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_15) => {
                                             let lawspecfieldproducerepoch_14 = field_15.clone();
                                             lawspecfieldproducerepoch_14
@@ -21678,12 +22816,12 @@ pub mod typed {
                             }
                         };
                         {
-                            let matched_34 = {
+                            let it_34 = {
                                 let matched_29 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<i64> {
                                     Ok({
                                         let argument_26: TopicPartition = tp_0.clone();
                                         let argument_27: Option<ProducerTag> = Some(tagOf_39235de7(
-                                            pe_10.clone(),
+                                            v_lawspecselection0x0_10.clone(),
                                             0i32,
                                         )?);
                                         let argument_28: ls::fast::List<Record> = ls::fast::List::cons(
@@ -21708,24 +22846,24 @@ pub mod typed {
                                     }
                                 }
                             };
-                            match &matched_34 {
+                            match &it_34 {
                                 ls::Either::Left(_) => {
                                     None
                                 }
                                 ls::Either::Right(field_36) => {
-                                    let o_35 = field_36.clone();
+                                    let v_match__lawspecselection0x0_0_35 = field_36.clone();
                                     {
-                                        let matched_50 = {
+                                        let it_50 = {
                                             let matched_45 = match ls::fast::attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", || -> ls::Result<()> {
                                                 Ok({
                                                     let argument_41: ls::fast::Text = txid_1.clone();
-                                                    let argument_42: i64 = match &*pe_10.0 {
+                                                    let argument_42: i64 = match &*v_lawspecselection0x0_10.0 {
                                                         ProducerIdAndEpochNode::ProducerIdAndEpoch(field_38, _) => {
                                                             let lawspecfieldproducerid_37 = field_38.clone();
                                                             lawspecfieldproducerid_37
                                                         }
                                                     };
-                                                    let argument_43: i16 = match &*pe_10.0 {
+                                                    let argument_43: i16 = match &*v_lawspecselection0x0_10.0 {
                                                         ProducerIdAndEpochNode::ProducerIdAndEpoch(_, field_40) => {
                                                             let lawspecfieldproducerepoch_39 = field_40.clone();
                                                             lawspecfieldproducerepoch_39
@@ -21750,12 +22888,12 @@ pub mod typed {
                                                 }
                                             }
                                         };
-                                        match &matched_50 {
+                                        match &it_50 {
                                             ls::Either::Left(_) => {
                                                 None
                                             }
                                             ls::Either::Right(_) => {
-                                                Some(o_35)
+                                                Some(v_match__lawspecselection0x0_0_35)
                                             }
                                         }
                                     }
@@ -21805,26 +22943,29 @@ pub mod typed {
         topic_0: ls::fast::Text,
         ps_1: ls::fast::List<i32>,
     ) -> ls::Result<ls::fast::List<TopicPartition>> {
-        Ok(match ps_1.uncons() {
-            None => {
-                ls::fast::List::nil()
-            }
-            Some((field_4, field_5)) => {
-                let p_2 = field_4.clone();
-                let rest_3 = field_5.clone();
-                ls::fast::List::cons(
-                    TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(
-                        topic_0.clone(),
-                        p_2,
-                    ))),
-                    topicPartitions_a717cef5(topic_0.clone(), rest_3.clone())?,
-                )
+        Ok({
+            let it_2 = ps_1.clone();
+            match it_2.uncons() {
+                None => {
+                    ls::fast::List::nil()
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_7 = topic_0.clone();
+                            {
+                                let v_lawspecrecordfield1_8 = v_lawspecselection0x0_3;
+                                TopicPartition(std::sync::Arc::new(TopicPartitionNode::TopicPartition(v_lawspecrecordfield0_7.clone(), v_lawspecrecordfield1_8)))
+                            }
+                        }, topicPartitions_a717cef5(topic_0.clone(), v_lawspecselection0x1_4.clone())?)
+                }
             }
         })
     }
 
-    /// contracttest.kafka::keepBoundedArithmetic
-    pub fn keepBoundedArithmetic_3e45e1f6(n_0: i64) -> ls::Result<i64> {
-        Ok(saturatingInt64_5bce4ed8(ls::fast::Int::from_i128(((n_0 as i128) + 1i128)))?)
+    /// contracttest.kafka::suiteNamesThePackage
+    pub fn suiteNamesThePackage_55f330a5(u_0: ()) -> ls::Result<()> {
+        Ok(())
     }
 }

@@ -37,3 +37,6 @@ node_modules/
 
 # A LawSpec CLI staged from a source checkout by tools/stage-lawspec.sh
 /.lawspec-cli/
+
+# Local upgrade, benchmark and acceptance receipts.
+.artifacts/

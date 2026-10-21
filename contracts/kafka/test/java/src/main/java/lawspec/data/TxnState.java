@@ -4,7 +4,6 @@ package lawspec.data;
 public sealed interface TxnState permits TxnState.NoTxn, TxnState.Ongoing {
   record NoTxn() implements TxnState {}
   record Ongoing(
-      java.util.List<lawspec.data.TopicPartition> txnPartitions,
-      java.util.List<lawspec.data.PendingOffset> txnOffsets)
+      lawspec.data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee value)
       implements TxnState {}
 }

@@ -1,8 +1,10 @@
 unit lawtwin.kafka
 
-import lawtwin.kafka.model as model (TopicPartition, IsolationLevel, OffsetSpec, KafkaError, Header,
-  Record, ProducerTag, ProducerIdAndEpoch, FetchedRecord, FetchResult, OffsetEntry, MemberAssignment,
-  GroupView, BrokerState)
+import lawtwin.kafka.model as model (TopicPartition, IsolationLevel, OffsetSpec,
+KafkaError, Header,
+Record, ProducerTag, ProducerIdAndEpoch, FetchedRecord, FetchResult,
+OffsetEntry, MemberAssignment,
+GroupView, BrokerState)
 
 -- The Kafka contract. Broker is the cluster as the wire protocol sees it:
 -- one operation for each request a client sends. Admin and
@@ -29,9 +31,9 @@ connectCluster :: Unit -> Cluster
 disconnectCluster :: Cluster -> Unit
 
 resource Cluster is
-  acquire is connectCluster unitValue end
-  release cluster is disconnectCluster cluster end
-end
+  acquire is connectCluster unitValue end acquire
+  release cluster is disconnectCluster cluster end release
+end resource
 
 -- ---------------------------------------------------------------------------
 -- The cluster
@@ -41,751 +43,916 @@ ability Broker with Cluster is
   createTopicsRequest :: Text -> Int32 -> Unit fails with KafkaError
   createPartitionsRequest :: Text -> Int32 -> Unit fails with KafkaError
   metadataRequest :: Text -> Maybe Int32
-  produceRequest :: TopicPartition -> Maybe ProducerTag -> List Record -> Int64 fails with KafkaError
-  fetchRequest :: TopicPartition -> Int64 -> Int32 -> IsolationLevel -> FetchResult fails with KafkaError
-  listOffsetsRequest :: TopicPartition -> OffsetSpec -> IsolationLevel -> Int64 fails with KafkaError
-  initProducerIdRequest :: Maybe Text -> ProducerIdAndEpoch fails with KafkaError
-  addPartitionsToTxnRequest :: Text -> Int64 -> Int16 -> List TopicPartition -> Unit fails with KafkaError
-  txnOffsetCommitRequest :: Text -> Int64 -> Int16 -> Text -> List OffsetEntry -> Unit fails with KafkaError
+  produceRequest :: TopicPartition -> Maybe ProducerTag -> List Record -> Int64
+  fails with KafkaError
+  fetchRequest :: TopicPartition -> Int64 -> Int32 -> IsolationLevel ->
+  FetchResult fails with KafkaError
+  listOffsetsRequest :: TopicPartition -> OffsetSpec -> IsolationLevel -> Int64
+  fails with KafkaError
+  initProducerIdRequest :: Maybe Text -> ProducerIdAndEpoch fails with
+  KafkaError
+  addPartitionsToTxnRequest :: Text -> Int64 -> Int16 -> List TopicPartition ->
+  Unit fails with KafkaError
+  txnOffsetCommitRequest :: Text -> Int64 -> Int16 -> Text -> List OffsetEntry
+  -> Unit fails with KafkaError
   endTxnRequest :: Text -> Int64 -> Int16 -> Bool -> Unit fails with KafkaError
   joinGroupRequest :: Text -> Text -> List Text -> Int32 fails with KafkaError
-  syncGroupRequest :: Text -> Text -> Int32 -> List TopicPartition fails with KafkaError
+  syncGroupRequest :: Text -> Text -> Int32 -> List TopicPartition fails with
+  KafkaError
   heartbeatRequest :: Text -> Text -> Int32 -> Unit fails with KafkaError
   leaveGroupRequest :: Text -> Text -> Unit fails with KafkaError
   describeGroupRequest :: Text -> GroupView
-  offsetCommitRequest :: Text -> Text -> Int32 -> List OffsetEntry -> Unit fails with KafkaError
+  offsetCommitRequest :: Text -> Text -> Int32 -> List OffsetEntry -> Unit fails
+  with KafkaError
   offsetFetchRequest :: Text -> TopicPartition -> Maybe Int64
-laws
-  law `offsets in a partition are dense and increasing` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t)
-        (first :: List Record where smallBatch first) (second :: List Record where smallBatch second) .
-        created t 1 implies
-          (let tp = TopicPartition t 0 in
-           let a = prelude.attempt (produceRequest tp Nothing first) in
-           let b = prelude.attempt (produceRequest tp Nothing second) in
-           followsBatch a first b) = true
-    end
-    description is
-      "Two batches produced one after the other to one partition get offsets
+  laws
+    law "|offsets in a partition are dense and increasing| is
+      definition :
+        for all (t :: Text where model.validTopicName t)
+          (first :: List Record where smallBatch first) (second :: List Record
+          where smallBatch second) =>
+          created t 1 implies
+          (let tp = TopicPartition record{ topic = t , partition = 0} in
+            let a = prelude.attempt (produceRequest tp Nothing first) in
+              let b = prelude.attempt (produceRequest tp Nothing second) in
+                followsBatch a first b end let end let end let) = true
+        end for all
+      end definition
+      description :
+        "Two batches produced one after the other to one partition get offsets
       that follow on: the second starts where the first ends."
-    end
-  end
+      end description
+    end law
 
-  law `a batch reads back whole and in order` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (batch :: List Record where smallBatch batch) .
-        created t 1 implies
-          (let tp = TopicPartition t 0 in
-           match prelude.attempt (produceRequest tp Nothing batch) with
-           | Left e -> false
-           | Right base -> uncommittedFrom tp base == batch
-           end) = true
-    end
-  end
+    law "|a batch reads back whole and in order| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (batch :: List Record
+          where smallBatch batch) =>
+          created t 1 implies
+          (let tp = TopicPartition record{ topic = t , partition = 0} in
+            first matching case of prelude.attempt (produceRequest tp Nothing
+              batch) :
+              when Left e then false
+              when Right base then uncommittedFrom tp base = batch
+            end case end let) = true end for all
+      end definition
+    end law
 
-  law `an idempotent retry is written once` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (batch :: List Record where smallBatch batch) .
-        created t 1 implies
-          (let tp = TopicPartition t 0 in
-           match prelude.attempt (initProducerIdRequest Nothing) with
-           | Left e -> false
-           | Right pe ->
-               let tag = Just (tagOf pe 0) in
-               let first = prelude.attempt (produceRequest tp tag batch) in
-               let retry = prelude.attempt (produceRequest tp tag batch) in
-               first == retry && followsBatch first batch (prelude.attempt (listOffsetsRequest tp Latest ReadUncommitted))
-           end) = true
-    end
-    description is
-      "A producer with an id stamps each batch with its epoch and sequence. A
+    law "|an idempotent retry is written once| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (batch :: List Record
+          where smallBatch batch) =>
+          created t 1 implies
+          (let tp = TopicPartition record{ topic = t , partition = 0} in
+            first matching case of prelude.attempt (initProducerIdRequest
+              Nothing) :
+              when Left e then false
+              when Right pe then
+                let tag = Just (tagOf pe 0) in
+                  let first = prelude.attempt (produceRequest tp tag batch) in
+                    let retry = prelude.attempt (produceRequest tp tag batch) in
+                      first = retry && followsBatch first batch (prelude.attempt
+                        (listOffsetsRequest tp Latest ReadUncommitted)) end let
+                  end let end let
+            end case end let) = true end for all
+      end definition
+      description :
+        "A producer with an id stamps each batch with its epoch and sequence. A
       retry of a batch the partition already has gives the first write's
       offset and writes nothing."
-    end
-    references are "KIP-98" end
-  end
+      end description
+      references : "KIP-98" end references
+    end law
 
-  law `a gap in sequence numbers is refused` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (batch :: List Record where smallBatch batch) .
-        created t 1 implies
-          (match prelude.attempt (initProducerIdRequest Nothing) with
-           | Left e -> false
-           | Right pe -> produceRequest (TopicPartition t 0) (Just (tagOf pe 1)) batch fails with OutOfOrderSequenceNumber
-           end) = true
-    end
-  end
+    law "|a gap in sequence numbers is refused| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (batch :: List Record
+          where smallBatch batch) =>
+          created t 1 implies
+          (first matching case of prelude.attempt (initProducerIdRequest
+            Nothing) :
+            when Left e then false
+            when Right pe then produceRequest (TopicPartition record{ topic = t
+                , partition = 0}) (Just (tagOf pe 1)) batch fails with
+                OutOfOrderSequenceNumber
+          end case) = true end for all
+      end definition
+    end law
 
-  law `a new epoch fences the older producer` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (txid :: Text where txid != "")
-        (batch :: List Record where smallBatch batch) .
-        created t 1 implies
-          (let tp = TopicPartition t 0 in
-           match prelude.attempt (initProducerIdRequest (Just txid)) with
-           | Left e -> false
-           | Right old ->
-               match prelude.attempt (initProducerIdRequest (Just txid)) with
-               | Left e -> false
-               | Right new ->
-                   fencedBy old new
-                     && (addPartitionsToTxnRequest txid old.producerId old.producerEpoch [tp] fails with ProducerFenced)
-                     && (produceRequest tp (Just (tagOf old 0)) batch fails with InvalidProducerEpoch)
-               end
-           end) = true
-    end
-    description is
-      "Initialising a transactional id again bumps its epoch. Every request
+    law "|a new epoch fences the older producer| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (txid :: Text where
+          txid != "")
+          (batch :: List Record where smallBatch batch) =>
+          created t 1 implies
+          (let tp = TopicPartition record{ topic = t , partition = 0} in
+            first matching case of prelude.attempt (initProducerIdRequest (Just
+              txid)) :
+              when Left e then false
+              when Right old then
+                first matching case of prelude.attempt (initProducerIdRequest
+                  (Just txid)) :
+                  when Left e then false
+                  when Right new then
+                    fencedBy old new
+                      && (addPartitionsToTxnRequest txid old.producerId
+                        old.producerEpoch [tp] fails with ProducerFenced)
+                      && (produceRequest tp (Just (tagOf old 0)) batch fails
+                    with InvalidProducerEpoch)
+                end case
+            end case end let) = true end for all
+      end definition
+      description :
+        "Initialising a transactional id again bumps its epoch. Every request
       stamped with the older epoch is refused from then on, so a zombie
       instance can no longer write."
-    end
-    references are "KIP-98" end
-  end
+      end description
+      references : "KIP-98" end references
+    end law
 
-  law `read-committed fetches never see open or aborted transactions` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (txid :: Text where txid != "")
-        (batch :: List Record where smallBatch batch) .
-        created t 1 implies transactionThenRead t txid batch false = true
-    end
-    description is
-      "While a transaction is open its records are past the last stable
+    law "|read-committed fetches never see open or aborted transactions| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (txid :: Text where
+          txid != "")
+          (batch :: List Record where smallBatch batch) =>
+          created t 1 implies transactionThenRead t txid batch false = true
+        end for all
+      end definition
+      description :
+        "While a transaction is open its records are past the last stable
       offset, which read-committed consumers do not pass. Once it aborts its
       records are skipped for ever. Read-uncommitted consumers see them both
       times."
-    end
-    references are "KIP-98" end
-  end
+      end description
+      references : "KIP-98" end references
+    end law
 
-  law `a committed transaction is read whole and in order` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (txid :: Text where txid != "")
-        (batch :: List Record where smallBatch batch) .
-        created t 1 implies transactionThenRead t txid batch true = true
-    end
-    references are "KIP-98" end
-  end
+    law "|a committed transaction is read whole and in order| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (txid :: Text where
+          txid != "")
+          (batch :: List Record where smallBatch batch) =>
+          created t 1 implies transactionThenRead t txid batch true = true
+        end for all
+      end definition
+      references : "KIP-98" end references
+    end law
 
-  law `offsets sent in a transaction are committed only with it` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (txid :: Text where txid != "")
-        (g :: Text where g != "") (offset :: Int64 where offset >= 0) .
-        created t 1 implies transactionalOffsets t txid g offset = true
-    end
-    references are "KIP-98" end
-  end
+    law "|offsets sent in a transaction are committed only with it| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (txid :: Text where
+          txid != "")
+          (g :: Text where g != "") (offset :: Int64 where offset >= 0) =>
+          created t 1 implies transactionalOffsets t txid g offset = true
+        end for all
+      end definition
+      references : "KIP-98" end references
+    end law
 
-  law `the coordinator assigns every partition exactly once` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (n :: Int32 where n >= 1 && n <= 16)
-        (g :: Text where g != "") (ids :: List Text where !(prelude.isEmpty (memberIds ids))) .
-        created t n implies
-          (joinAll g (memberIds ids) [t] && coversOnce t n (describeGroupRequest g)) = true
-    end
-    description is
-      "After members join, the partitions of the topic they subscribe to are
+    law "|the coordinator assigns every partition exactly once| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (n :: Int32 where n >=
+            1 && n <= 16)
+          (g :: Text where g != "") (ids :: List Text where !(prelude.isEmpty
+            (memberIds ids))) =>
+          created t n implies
+          (joinAll g (memberIds ids) [t] && coversOnce t n (describeGroupRequest
+            g)) = true end for all
+      end definition
+      description :
+        "After members join, the partitions of the topic they subscribe to are
       shared out so that each partition has exactly one owner in the
       generation."
-    end
-    references are "KIP-848" end
-  end
+      end description
+      references : "KIP-848" end references
+    end law
 
-  law `a member of an older generation cannot commit` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (g :: Text where g != "")
-        (one :: Text where one != "") (other :: Text where other != "" && other != one) .
-        created t 1 implies
-          (match prelude.attempt (joinGroupRequest g one [t]) with
-           | Left e -> false
-           | Right old ->
-               match prelude.attempt (joinGroupRequest g other [t]) with
-               | Left e -> false
-               | Right new ->
-                   old < new
-                     && (offsetCommitRequest g one old [OffsetEntry (TopicPartition t 0) 0] fails with IllegalGeneration)
-                     && (heartbeatRequest g one old fails with IllegalGeneration)
-               end
-           end) = true
-    end
-    description is
-      "A new member starts a new generation. A member still at the old one is
+    law "|a member of an older generation cannot commit| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (g :: Text where g !=
+            "")
+          (one :: Text where one != "") (other :: Text where other != "" &&
+            other != one) =>
+          created t 1 implies
+          (first matching case of prelude.attempt (joinGroupRequest g one [t]) :
+            when Left e then false
+            when Right old then
+              first matching case of prelude.attempt (joinGroupRequest g other
+                [t]) :
+                when Left e then false
+                when Right new then
+                  old < new
+                    && (offsetCommitRequest g one old [OffsetEntry record{
+                      topicPartition = (TopicPartition record{ topic = t ,
+                        partition = 0}) , offset = 0}] fails with
+                      IllegalGeneration)
+                    && (heartbeatRequest g one old fails with IllegalGeneration)
+              end case
+          end case) = true end for all
+      end definition
+      description :
+        "A new member starts a new generation. A member still at the old one is
       told to rejoin, and its commits are refused, so it cannot overwrite the
       offsets of the partitions it may have lost."
-    end
-  end
+      end description
+    end law
 
-  law `the stable offset never passes the high watermark` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (txid :: Text where txid != "")
-        (batch :: List Record where smallBatch batch) .
-        created t 1 implies stableBelowHigh t txid batch = true
-    end
-  end
-end
+    law "|the stable offset never passes the high watermark| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (txid :: Text where
+          txid != "")
+          (batch :: List Record where smallBatch batch) =>
+          created t 1 implies stableBelowHigh t txid batch = true end for all
+      end definition
+    end law
+  end laws
+end ability
 
 -- The reference model: each request is the model's checked definition of
 -- it, over the cluster's state. Admin and GroupCoordinator are answered from
 -- the same state, so what an admin creates a broker request sees.
-handler cluster for Broker, Admin, GroupCoordinator with state state :: BrokerState start model.emptyBroker unitValue is
-  createTopicsRequest by model.createTopic
-  createPartitionsRequest by model.createPartitions
-  metadataRequest by model.metadata
-  produceRequest by model.produce
-  fetchRequest by model.fetch
-  listOffsetsRequest by model.listOffsets
-  initProducerIdRequest by model.initProducerId
-  addPartitionsToTxnRequest by model.addPartitionsToTxn
-  txnOffsetCommitRequest by model.txnOffsetCommit
-  endTxnRequest by model.endTxn
-  joinGroupRequest by model.joinGroup
-  syncGroupRequest by model.syncGroup
-  heartbeatRequest by model.heartbeat
-  leaveGroupRequest by model.leaveGroup
-  describeGroupRequest by model.describeGroup
-  offsetCommitRequest by model.offsetCommit
-  offsetFetchRequest by model.offsetFetch
-  createTopic by model.createTopic
-  createPartitions by model.createPartitions
-  partitionsFor by model.metadata
-  listOffsets by model.listOffsets
-  joinGroup by model.joinGroup
-  syncGroup by model.syncGroup
-  heartbeat by model.heartbeat
-  leaveGroup by model.leaveGroup
-  describeGroup by model.describeGroup
-  commitOffsets by model.offsetCommit
-  fetchOffset by model.offsetFetch
-end
+handler cluster for Broker, Admin, GroupCoordinator with state state ::
+  BrokerState start model.emptyBroker unitValue is
+  operation createTopicsRequest by model.createTopic end operation
+  operation createPartitionsRequest by model.createPartitions end operation
+  operation metadataRequest by model.metadata end operation
+  operation produceRequest by model.produce end operation
+  operation fetchRequest by model.fetch end operation
+  operation listOffsetsRequest by model.listOffsets end operation
+  operation initProducerIdRequest by model.initProducerId end operation
+  operation addPartitionsToTxnRequest by model.addPartitionsToTxn end operation
+  operation txnOffsetCommitRequest by model.txnOffsetCommit end operation
+  operation endTxnRequest by model.endTxn end operation
+  operation joinGroupRequest by model.joinGroup end operation
+  operation syncGroupRequest by model.syncGroup end operation
+  operation heartbeatRequest by model.heartbeat end operation
+  operation leaveGroupRequest by model.leaveGroup end operation
+  operation describeGroupRequest by model.describeGroup end operation
+  operation offsetCommitRequest by model.offsetCommit end operation
+  operation offsetFetchRequest by model.offsetFetch end operation
+  operation createTopic by model.createTopic end operation
+  operation createPartitions by model.createPartitions end operation
+  operation partitionsFor by model.metadata end operation
+  operation listOffsets by model.listOffsets end operation
+  operation joinGroup by model.joinGroup end operation
+  operation syncGroup by model.syncGroup end operation
+  operation heartbeat by model.heartbeat end operation
+  operation leaveGroup by model.leaveGroup end operation
+  operation describeGroup by model.describeGroup end operation
+  operation commitOffsets by model.offsetCommit end operation
+  operation fetchOffset by model.offsetFetch end operation
+end handler
 
 -- Every ability answered by spec handlers: the cluster, and clients over it.
-handlers reference is cluster, kafkaProducer, kafkaConsumer, kafkaTransactions, murmurPartitioner end
+handlers reference is cluster, kafkaProducer, kafkaConsumer, kafkaTransactions,
+  murmurPartitioner end handlers
 
 -- ---------------------------------------------------------------------------
 -- Helpers for the laws
 -- ---------------------------------------------------------------------------
 
 -- A topic made with n partitions, now.
-definition created (t :: Text) (n :: Int32) :: Bool uses Broker is
+procedure created (t :: Text) (n :: Int32) -> Bool uses Broker is
   prelude.isRight (prelude.attempt (createTopicsRequest t n))
-end
+end procedure
 
 -- A batch of one to a hundred records: one fetch reads it whole.
-definition smallBatch (batch :: List Record) :: Bool is
+function smallBatch (batch :: List Record) -> Bool is
   prelude.length batch >= 1 && prelude.length batch <= 100
-end
+end function
 
 -- Distinct, non-empty member ids, from any list of texts.
-definition memberIds (ms :: List Text) :: List Text is
-  prelude.toList (prelude.remove "" (prelude.setOf ms))
-end
+function memberIds (ms :: List Text) -> List Text is
+  prelude.toList (prelude.sortedSetRemove "" (prelude.sortedSetOf ms))
+end function
 
-definition followsBatch (a :: Either KafkaError Int64) (batch :: List Record) (b :: Either KafkaError Int64) :: Bool is
-  match a with
-  | Left e -> false
-  | Right x ->
-      match b with
-      | Left e -> false
-      | Right y -> y == x + prelude.length batch
-      end
-  end
-end
+function followsBatch (a :: Either KafkaError Int64) (batch :: List Record) (b
+  :: Either KafkaError Int64) -> Bool is
+  first matching case of a :
+    when Left e then false
+    when Right x then
+      first matching case of b :
+        when Left e then false
+        when Right y then y = x + prelude.length batch
+      end case
+  end case
+end function
 
-definition tagOf (pe :: ProducerIdAndEpoch) (sequence :: Int32) :: ProducerTag is
-  ProducerTag pe.producerId pe.producerEpoch sequence
-end
+function tagOf (pe :: ProducerIdAndEpoch) (sequence :: Int32) -> ProducerTag is
+  ProducerTag record{ producerId = pe.producerId , producerEpoch =
+      pe.producerEpoch , baseSequence = sequence}
+end function
 
 -- The newer instance keeps the producer id with a later epoch, or, once
 -- the epoch is exhausted, gets a new producer id.
-definition fencedBy (old :: ProducerIdAndEpoch) (new :: ProducerIdAndEpoch) :: Bool is
-  (new.producerId == old.producerId && new.producerEpoch > old.producerEpoch) || new.producerId != old.producerId
-end
+function fencedBy (old :: ProducerIdAndEpoch) (new :: ProducerIdAndEpoch) ->
+  Bool is
+  (new.producerId = old.producerId && new.producerEpoch > old.producerEpoch) ||
+    new.producerId != old.producerId
+end function
 
-definition recordsOf (rs :: List FetchedRecord) :: List Record is
-  match rs with
-  | Nil -> []
-  | Cons r rest -> Cons r.entry (recordsOf rest)
-  end
-end
+function recordsOf (rs :: List FetchedRecord) -> List Record is
+  first matching case of rs :
+    when Nil then []
+    when Cons r rest then Cons r.entry (recordsOf rest)
+  end case
+end function
 
 -- The records from an offset on, as a consumer at an isolation level reads
 -- them in one fetch.
-definition readFrom (tp :: TopicPartition) (offset :: Int64) (isolation :: IsolationLevel) :: List Record uses Broker is
-  match prelude.attempt (fetchRequest tp offset 1000 isolation) with
-  | Left e -> []
-  | Right fr -> recordsOf fr.records
-  end
-end
+procedure readFrom (tp :: TopicPartition) (offset :: Int64) (isolation ::
+  IsolationLevel) -> List Record uses Broker is
+  first matching case of prelude.attempt (fetchRequest tp offset 1000 isolation)
+    :
+    when Left e then []
+    when Right fr then recordsOf fr.records
+  end case
+end procedure
 
-definition uncommittedFrom (tp :: TopicPartition) (offset :: Int64) :: List Record uses Broker is
+procedure uncommittedFrom (tp :: TopicPartition) (offset :: Int64) -> List
+  Record uses Broker is
   readFrom tp offset ReadUncommitted
-end
+end procedure
 
-definition committedFrom (tp :: TopicPartition) (offset :: Int64) :: List Record uses Broker is
+procedure committedFrom (tp :: TopicPartition) (offset :: Int64) -> List Record
+  uses Broker is
   readFrom tp offset ReadCommitted
-end
+end procedure
 
 -- Writes a batch in a transaction, checks what each isolation level sees
 -- while it is open, then commits or aborts it and checks again.
-definition transactionThenRead (t :: Text) (txid :: Text) (batch :: List Record) (commit :: Bool) :: Bool uses Broker is
-  let tp = TopicPartition t 0 in
-  match prelude.attempt (initProducerIdRequest (Just txid)) with
-  | Left e -> false
-  | Right pe ->
-      match prelude.attempt (addPartitionsToTxnRequest txid pe.producerId pe.producerEpoch [tp]) with
-      | Left e -> false
-      | Right u ->
-          match prelude.attempt (produceRequest tp (Just (tagOf pe 0)) batch) with
-          | Left e -> false
-          | Right base ->
-              let hiddenWhileOpen = committedFrom tp base == [] in
-              let seenUncommitted = uncommittedFrom tp base == batch in
-              match prelude.attempt (endTxnRequest txid pe.producerId pe.producerEpoch commit) with
-              | Left e -> false
-              | Right done ->
-                  hiddenWhileOpen && seenUncommitted && uncommittedFrom tp base == batch
-                    && (if commit then committedFrom tp base == batch else committedFrom tp base == [])
-              end
-          end
-      end
-  end
-end
+procedure transactionThenRead (t :: Text) (txid :: Text) (batch :: List Record)
+  (commit :: Bool) -> Bool uses Broker is
+  let tp = TopicPartition record{ topic = t , partition = 0} in
+    first matching case of prelude.attempt (initProducerIdRequest (Just txid)) :
+      when Left e then false
+      when Right pe then
+        first matching case of prelude.attempt (addPartitionsToTxnRequest txid
+          pe.producerId pe.producerEpoch [tp]) :
+          when Left e then false
+          when Right u then
+            first matching case of prelude.attempt (produceRequest tp (Just
+              (tagOf pe 0)) batch) :
+              when Left e then false
+              when Right base then
+                let hiddenWhileOpen = committedFrom tp base = [] in
+                  let seenUncommitted = uncommittedFrom tp base = batch in
+                    first matching case of prelude.attempt (endTxnRequest txid
+                      pe.producerId pe.producerEpoch commit) :
+                      when Left e then false
+                      when Right done then
+                        hiddenWhileOpen && seenUncommitted && uncommittedFrom tp
+                          base = batch
+                        && (if commit then committedFrom tp base = batch else
+                          committedFrom tp base = [] end if)
+                    end case end let end let
+            end case
+        end case
+    end case end let
+end procedure
 
-definition transactionalOffsets (t :: Text) (txid :: Text) (g :: Text) (offset :: Int64) :: Bool uses Broker is
-  let tp = TopicPartition t 0 in
-  let before = offsetFetchRequest g tp in
-  match prelude.attempt (initProducerIdRequest (Just txid)) with
-  | Left e -> false
-  | Right pe ->
-      let sent = prelude.attempt (txnOffsetCommitRequest txid pe.producerId pe.producerEpoch g [OffsetEntry tp offset]) in
-      let aborted = prelude.attempt (endTxnRequest txid pe.producerId pe.producerEpoch false) in
-      let afterAbort = offsetFetchRequest g tp in
-      let resent = prelude.attempt (txnOffsetCommitRequest txid pe.producerId pe.producerEpoch g [OffsetEntry tp offset]) in
-      let committed = prelude.attempt (endTxnRequest txid pe.producerId pe.producerEpoch true) in
-      prelude.isRight sent && prelude.isRight aborted && afterAbort == before
-        && prelude.isRight resent && prelude.isRight committed && offsetFetchRequest g tp == Just offset
-  end
-end
+procedure transactionalOffsets (t :: Text) (txid :: Text) (g :: Text) (offset ::
+  Int64) -> Bool uses Broker is
+  let tp = TopicPartition record{ topic = t , partition = 0} in
+    let before = offsetFetchRequest g tp in
+      first matching case of prelude.attempt (initProducerIdRequest (Just txid))
+        :
+        when Left e then false
+        when Right pe then
+          let sent = prelude.attempt (txnOffsetCommitRequest txid pe.producerId
+              pe.producerEpoch g [OffsetEntry record{ topicPartition = tp ,
+                offset
+                = offset}]) in
+            let aborted = prelude.attempt (endTxnRequest txid pe.producerId
+                pe.producerEpoch false) in
+              let afterAbort = offsetFetchRequest g tp in
+                let resent = prelude.attempt (txnOffsetCommitRequest txid
+                    pe.producerId pe.producerEpoch g [OffsetEntry record{
+                      topicPartition = tp , offset = offset}]) in
+                  let committed = prelude.attempt (endTxnRequest txid
+                      pe.producerId pe.producerEpoch true) in
+                    prelude.isRight sent && prelude.isRight aborted &&
+                      afterAbort = before
+                      && prelude.isRight resent && prelude.isRight committed &&
+                      offsetFetchRequest g tp = Just offset end let end let
+              end let end let end let
+      end case end let end let
+end procedure
 
-definition joinAll (g :: Text) (ms :: List Text) (topics :: List Text) :: Bool uses Broker is
-  match ms with
-  | Nil -> true
-  | Cons m rest -> prelude.isRight (prelude.attempt (joinGroupRequest g m topics)) && joinAll g rest topics
-  end
-end
+procedure joinAll (g :: Text) (ms :: List Text) (topics :: List Text) -> Bool
+  uses Broker is
+  first matching case of ms :
+    when Nil then true
+    when Cons m rest then prelude.isRight (prelude.attempt (joinGroupRequest g m
+        topics)) && joinAll g rest topics
+  end case
+end procedure
 
-definition ownedOf (t :: Text) (ms :: List MemberAssignment) :: List Int32 is
-  match ms with
-  | Nil -> []
-  | Cons m rest -> partitionsOfTopic t m.assigned ++ ownedOf t rest
-  end
-end
+function ownedOf (t :: Text) (ms :: List MemberAssignment) -> List Int32 is
+  first matching case of ms :
+    when Nil then []
+    when Cons m rest then partitionsOfTopic t m.assigned ++ ownedOf t rest
+  end case
+end function
 
-definition partitionsOfTopic (t :: Text) (tps :: List TopicPartition) :: List Int32 is
-  match tps with
-  | Nil -> []
-  | Cons tp rest -> if tp.topic == t then Cons tp.partition (partitionsOfTopic t rest) else partitionsOfTopic t rest
-  end
-end
+function partitionsOfTopic (t :: Text) (tps :: List TopicPartition) -> List
+  Int32 is
+  first matching case of tps :
+    when Nil then []
+    when Cons tp rest then if tp.topic = t then Cons tp.partition
+        (partitionsOfTopic t rest) else partitionsOfTopic t rest end if
+  end case
+end function
 
 -- Each partition of the topic is owned by exactly one member: the owned
 -- partitions are all of them, none twice.
-definition coversOnce (t :: Text) (n :: Int32) (view :: GroupView) :: Bool is
+function coversOnce (t :: Text) (n :: Int32) (view :: GroupView) -> Bool is
   let owned = ownedOf t view.members in
-  prelude.length owned == n && prelude.setOf owned == prelude.setOf (prelude.range 0 n)
-end
+    prelude.length owned = n && prelude.sortedSetOf owned = prelude.sortedSetOf
+      (prelude.range 0 n) end let
+end function
 
-definition stableBelowHigh (t :: Text) (txid :: Text) (batch :: List Record) :: Bool uses Broker is
-  let tp = TopicPartition t 0 in
-  match prelude.attempt (initProducerIdRequest (Just txid)) with
-  | Left e -> false
-  | Right pe ->
-      let added = prelude.attempt (addPartitionsToTxnRequest txid pe.producerId pe.producerEpoch [tp]) in
-      let written = prelude.attempt (produceRequest tp (Just (tagOf pe 0)) batch) in
-      match prelude.attempt (fetchRequest tp 0 1000 ReadUncommitted) with
-      | Left e -> false
-      | Right fr ->
-          prelude.isRight added && prelude.isRight written && fr.lastStableOffset <= fr.highWatermark
-            && (match written with | Right base -> fr.lastStableOffset <= base | Left e -> false end)
-      end
-  end
-end
+procedure stableBelowHigh (t :: Text) (txid :: Text) (batch :: List Record) ->
+  Bool uses Broker is
+  let tp = TopicPartition record{ topic = t , partition = 0} in
+    first matching case of prelude.attempt (initProducerIdRequest (Just txid)) :
+      when Left e then false
+      when Right pe then
+        let added = prelude.attempt (addPartitionsToTxnRequest txid
+            pe.producerId pe.producerEpoch [tp]) in
+          let written = prelude.attempt (produceRequest tp (Just (tagOf pe 0))
+              batch) in
+            first matching case of prelude.attempt (fetchRequest tp 0 1000
+              ReadUncommitted) :
+              when Left e then false
+              when Right fr then
+                prelude.isRight added && prelude.isRight written &&
+                  fr.lastStableOffset <= fr.highWatermark
+                && (first matching case of written : when Right base then
+                  fr.lastStableOffset <= base when Left e then false end case)
+            end case end let end let
+    end case end let
+end procedure
 
 -- ---------------------------------------------------------------------------
 -- Clients: what a client library keeps between calls
 -- ---------------------------------------------------------------------------
 
 -- How a producer picks the partition of a record.
-type PartitionChoice is
-  | ToPartition chosen :: Int32
+type PartitionChoice is one of
+  | ToPartition of type Int32
   | ByKey
-end
+end type
 
-type ProducerRecord is
-  ProducerRecord
-    destination :: Text
-    choice :: PartitionChoice
-    payload :: Record
-end
+type ProducerRecord is a record{
 
-type RecordMetadata is
-  RecordMetadata
-    sentTo :: TopicPartition
-    sentAt :: Int64
-end
+  destination :: Text
+  choice :: PartitionChoice
+  payload :: Record}
+end type
 
-type ConsumerRecord is
-  ConsumerRecord
-    receivedFrom :: TopicPartition
-    receivedAt :: Int64
-    received :: Record
-end
+type RecordMetadata is a record{
+
+  sentTo :: TopicPartition
+  sentAt :: Int64}
+end type
+
+type ConsumerRecord is a record{
+
+  receivedFrom :: TopicPartition
+  receivedAt :: Int64
+  received :: Record}
+end type
 
 -- A send the producer may retry: where it went, and the stamp it carried.
-type LastSend is
-  LastSend
-    lastPartition :: TopicPartition
-    lastTag :: Maybe ProducerTag
-    lastRecords :: List Record
-end
+type LastSend is a record{
 
-type ProducerState is
-  ProducerState
-    identity :: Maybe ProducerIdAndEpoch
-    sequences :: KeyVal TopicPartition Int32
-    lastSend :: Maybe LastSend
-end
+  lastPartition :: TopicPartition
+  lastTag :: Maybe ProducerTag
+  lastRecords :: List Record}
+end type
 
-definition freshProducer (u :: Unit) :: ProducerState is ProducerState Nothing (prelude.keyValOf []) Nothing end
+type ProducerState is a record{
 
-type ConsumerState is
-  ConsumerState
-    group :: Maybe Text
-    member :: Text
-    generation :: Int32
-    subscription :: List Text
-    assigned :: List TopicPartition
-    positions :: KeyVal TopicPartition Int64
-    isolation :: IsolationLevel
-end
+  identity :: Maybe ProducerIdAndEpoch
+  sequences :: KeyVal TopicPartition Int32
+  lastSend :: Maybe LastSend}
+end type
 
-definition freshConsumer (u :: Unit) :: ConsumerState is
-  ConsumerState Nothing "" -1 [] [] (prelude.keyValOf []) ReadUncommitted
-end
+function freshProducer (u :: Unit) -> ProducerState is ProducerState record{
+    identity = Nothing , sequences = (prelude.keyValOf []) , lastSend = Nothing}
+end function
 
-type TransactionState is
-  TransactionState
-    transactionalId :: Text
-    producer :: Maybe ProducerIdAndEpoch
-    txnSequences :: KeyVal TopicPartition Int32
-    inTransaction :: Bool
-    added :: List TopicPartition
-    offsetsSent :: Bool
-end
+type ConsumerState is a record{
 
-definition freshTransactions (u :: Unit) :: TransactionState is
-  TransactionState "" Nothing (prelude.keyValOf []) false [] false
-end
+  group :: Maybe Text
+  member :: Text
+  generation :: Int32
+  subscription :: List Text
+  assigned :: List TopicPartition
+  positions :: KeyVal TopicPartition Int64
+  isolation :: IsolationLevel}
+end type
 
-definition sequenceFor (tp :: TopicPartition) (sequences :: KeyVal TopicPartition Int32) :: Int32 is
-  match prelude.lookup tp sequences with
-  | Nothing -> 0
-  | Just n -> n
-  end
-end
+function freshConsumer (u :: Unit) -> ConsumerState is
+  ConsumerState record{ group = Nothing , member = "" , generation = -1 ,
+    subscription = [] , assigned = [] , positions = (prelude.keyValOf []) ,
+    isolation = ReadUncommitted}
+end function
 
-definition tagFor (identity :: Maybe ProducerIdAndEpoch) (sequence :: Int32) :: Maybe ProducerTag is
-  match identity with
-  | Nothing -> Nothing
-  | Just pe -> Just (tagOf pe sequence)
-  end
-end
+type TransactionState is a record{
+
+  transactionalId :: Text
+  producer :: Maybe ProducerIdAndEpoch
+  txnSequences :: KeyVal TopicPartition Int32
+  inTransaction :: Bool
+  added :: List TopicPartition
+  offsetsSent :: Bool}
+end type
+
+function freshTransactions (u :: Unit) -> TransactionState is
+  TransactionState record{ transactionalId = "" , producer = Nothing ,
+    txnSequences = (prelude.keyValOf []) , inTransaction = false , added = [] ,
+    offsetsSent = false}
+end function
+
+function sequenceFor (tp :: TopicPartition) (sequences :: KeyVal TopicPartition
+  Int32) -> Int32 is
+  first matching case of prelude.lookup tp sequences :
+    when Nothing then 0
+    when Just n then n
+  end case
+end function
+
+function tagFor (identity :: Maybe ProducerIdAndEpoch) (sequence :: Int32) ->
+  Maybe ProducerTag is
+  first matching case of identity :
+    when Nothing then Nothing
+    when Just pe then Just (tagOf pe sequence)
+  end case
+end function
 
 -- The partition a record goes to: the one asked for, if the topic has it,
 -- or the partitioner's choice for its key.
-definition partitionOf (topic :: Text) (choice :: PartitionChoice) (r :: Record) :: Either KafkaError TopicPartition uses Broker, Partitioner is
-  match metadataRequest topic with
-  | Nothing -> Left UnknownTopicOrPartition
-  | Just n ->
-      match choice with
-      | ToPartition p -> if p >= 0 && p < n then Right (TopicPartition topic p) else Left UnknownTopicOrPartition
-      | ByKey -> Right (TopicPartition topic (choosePartition r.key n))
-      end
-  end
-end
+procedure partitionOf (topic :: Text) (choice :: PartitionChoice) (r :: Record)
+  -> Either KafkaError TopicPartition uses Broker, Partitioner is
+  first matching case of metadataRequest topic :
+    when Nothing then Left UnknownTopicOrPartition
+    when Just n then
+      first matching case of choice :
+        when ToPartition p then if p >= 0 && p < n then Right (TopicPartition
+            record{ topic = topic , partition = p}) else Left
+              UnknownTopicOrPartition end if
+        when ByKey then Right (TopicPartition record{ topic = topic , partition
+            = (choosePartition r.key n)})
+      end case
+  end case
+end procedure
 
-definition producerSend (pr :: ProducerRecord) (st :: ProducerState) :: Pair (Either KafkaError RecordMetadata) ProducerState uses Broker, Partitioner is
-  match partitionOf pr.destination pr.choice pr.payload with
-  | Left e -> Pair (Left e) st
-  | Right tp ->
+procedure producerSend (pr :: ProducerRecord) (st :: ProducerState) -> Pair
+  (Either KafkaError RecordMetadata) ProducerState uses Broker, Partitioner is
+  first matching case of partitionOf pr.destination pr.choice pr.payload :
+    when Left e then Pair (Left e) st
+    when Right tp then
       let sequence = sequenceFor tp st.sequences in
-      let tag = tagFor st.identity sequence in
-      match prelude.attempt (produceRequest tp tag [pr.payload]) with
-      | Left e -> Pair (Left e) st
-      | Right offset ->
-          Pair (Right (RecordMetadata tp offset))
-            (st with sequences = prelude.put tp (prelude.saturating (sequence + 1)) st.sequences, lastSend = Just (LastSend tp tag [pr.payload]))
-      end
-  end
-end
+        let tag = tagFor st.identity sequence in
+          first matching case of prelude.attempt (produceRequest tp tag
+            [pr.payload]) :
+            when Left e then Pair (Left e) st
+            when Right offset then
+              Pair (Right (RecordMetadata record{ sentTo = tp , sentAt =
+                  offset}))
+                (st with sequences = prelude.put tp (prelude.saturating
+                  (sequence + 1)) st.sequences, lastSend = Just (LastSend
+                    record{ lastPartition = tp , lastTag = tag , lastRecords =
+                        [pr.payload]}))
+          end case end let end let
+  end case
+end procedure
 
-definition producerRetry (st :: ProducerState) :: Pair (Either KafkaError RecordMetadata) ProducerState uses Broker is
-  match st.lastSend with
-  | Nothing -> Pair (Left IllegalState) st
-  | Just l ->
-      match prelude.attempt (produceRequest l.lastPartition l.lastTag l.lastRecords) with
-      | Left e -> Pair (Left e) st
-      | Right offset -> Pair (Right (RecordMetadata l.lastPartition offset)) st
-      end
-  end
-end
+procedure producerRetry (st :: ProducerState) -> Pair (Either KafkaError
+  RecordMetadata) ProducerState uses Broker is
+  first matching case of st.lastSend :
+    when Nothing then Pair (Left IllegalState) st
+    when Just l then
+      first matching case of prelude.attempt (produceRequest l.lastPartition
+        l.lastTag l.lastRecords) :
+        when Left e then Pair (Left e) st
+        when Right offset then Pair (Right (RecordMetadata record{ sentTo =
+            l.lastPartition , sentAt = offset})) st
+      end case
+  end case
+end procedure
 
-definition producerIdempotent (st :: ProducerState) :: Pair (Either KafkaError ProducerIdAndEpoch) ProducerState uses Broker is
-  match prelude.attempt (initProducerIdRequest Nothing) with
-  | Left e -> Pair (Left e) st
-  | Right pe -> Pair (Right pe) (ProducerState (Just pe) (prelude.keyValOf []) Nothing)
-  end
-end
+procedure producerIdempotent (st :: ProducerState) -> Pair (Either KafkaError
+  ProducerIdAndEpoch) ProducerState uses Broker is
+  first matching case of prelude.attempt (initProducerIdRequest Nothing) :
+    when Left e then Pair (Left e) st
+    when Right pe then Pair (Right pe) (ProducerState record{ identity = (Just
+        pe) , sequences = (prelude.keyValOf []) , lastSend = Nothing})
+  end case
+end procedure
 
-definition producerFlush (st :: ProducerState) :: Pair Unit ProducerState is Pair unitValue st end
-definition identityOf (st :: ProducerState) :: Pair (Maybe ProducerIdAndEpoch) ProducerState is Pair st.identity st end
+function producerFlush (st :: ProducerState) -> Pair Unit ProducerState is Pair
+    unitValue st end function
+function identityOf (st :: ProducerState) -> Pair (Maybe ProducerIdAndEpoch)
+  ProducerState is Pair st.identity st end function
 
 -- Consumers.
 
-definition consumerRecords (tp :: TopicPartition) (rs :: List FetchedRecord) :: List ConsumerRecord is
-  match rs with
-  | Nil -> []
-  | Cons r rest -> Cons (ConsumerRecord tp r.offset r.entry) (consumerRecords tp rest)
-  end
-end
+function consumerRecords (tp :: TopicPartition) (rs :: List FetchedRecord) ->
+  List ConsumerRecord is
+  first matching case of rs :
+    when Nil then []
+    when Cons r rest then Cons (ConsumerRecord record{ receivedFrom = tp ,
+        receivedAt = r.offset , received = r.entry}) (consumerRecords tp rest)
+  end case
+end function
 
 -- The offsets a consumer commits: its position in each assigned partition
 -- that has one.
-definition positionsToCommit (tps :: List TopicPartition) (positions :: KeyVal TopicPartition Int64) :: List OffsetEntry is
-  match tps with
-  | Nil -> []
-  | Cons tp rest ->
-      match prelude.lookup tp positions with
-      | Nothing -> positionsToCommit rest positions
-      | Just o -> Cons (OffsetEntry tp o) (positionsToCommit rest positions)
-      end
-  end
-end
+function positionsToCommit (tps :: List TopicPartition) (positions :: KeyVal
+  TopicPartition Int64) -> List OffsetEntry is
+  first matching case of tps :
+    when Nil then []
+    when Cons tp rest then
+      first matching case of prelude.lookup tp positions :
+        when Nothing then positionsToCommit rest positions
+        when Just o then Cons (OffsetEntry record{ topicPartition = tp , offset
+            = o}) (positionsToCommit rest positions)
+      end case
+  end case
+end function
 
 -- Positions kept only for the partitions still assigned.
-definition keepPositions (tps :: List TopicPartition) (positions :: KeyVal TopicPartition Int64) (acc :: KeyVal TopicPartition Int64) :: KeyVal TopicPartition Int64 is
-  match tps with
-  | Nil -> acc
-  | Cons tp rest ->
-      match prelude.lookup tp positions with
-      | Nothing -> keepPositions rest positions acc
-      | Just o -> keepPositions rest positions (prelude.put tp o acc)
-      end
-  end
-end
+function keepPositions (tps :: List TopicPartition) (positions :: KeyVal
+  TopicPartition Int64) (acc :: KeyVal TopicPartition Int64) -> KeyVal
+  TopicPartition Int64 is
+  first matching case of tps :
+    when Nil then acc
+    when Cons tp rest then
+      first matching case of prelude.lookup tp positions :
+        when Nothing then keepPositions rest positions acc
+        when Just o then keepPositions rest positions (prelude.put tp o acc)
+      end case
+  end case
+end function
 
-definition withAssignment (g :: Maybe Text) (m :: Text) (gen :: Int32) (topics :: List Text) (tps :: List TopicPartition) (c :: ConsumerState) :: ConsumerState is
-  c with group = g, member = m, generation = gen, subscription = topics, assigned = tps,
-         positions = keepPositions tps c.positions (prelude.keyValOf [])
-end
+function withAssignment (g :: Maybe Text) (m :: Text) (gen :: Int32) (topics ::
+  List Text) (tps :: List TopicPartition) (c :: ConsumerState) -> ConsumerState
+  is
+  c with group = g, member = m, generation = gen, subscription = topics,
+    assigned = tps,
+    positions = keepPositions tps c.positions (prelude.keyValOf [])
+end function
 
-definition withPosition (tp :: TopicPartition) (offset :: Int64) (c :: ConsumerState) :: ConsumerState is
+function withPosition (tp :: TopicPartition) (offset :: Int64) (c ::
+  ConsumerState) -> ConsumerState is
   c with positions = prelude.put tp offset c.positions
-end
+end function
 
 -- Joins the group and learns this member's partitions.
-definition consumerJoin (g :: Text) (m :: Text) (topics :: List Text) (c :: ConsumerState) :: Pair (Either KafkaError (List TopicPartition)) ConsumerState uses Broker is
-  match prelude.attempt (joinGroupRequest g m topics) with
-  | Left e -> Pair (Left e) c
-  | Right gen ->
-      match prelude.attempt (syncGroupRequest g m gen) with
-      | Left e -> Pair (Left e) c
-      | Right tps -> Pair (Right tps) (withAssignment (Just g) m gen topics tps c)
-      end
-  end
-end
+procedure consumerJoin (g :: Text) (m :: Text) (topics :: List Text) (c ::
+  ConsumerState) -> Pair (Either KafkaError (List TopicPartition)) ConsumerState
+  uses Broker is
+  first matching case of prelude.attempt (joinGroupRequest g m topics) :
+    when Left e then Pair (Left e) c
+    when Right gen then
+      first matching case of prelude.attempt (syncGroupRequest g m gen) :
+        when Left e then Pair (Left e) c
+        when Right tps then Pair (Right tps) (withAssignment (Just g) m gen
+            topics tps c)
+      end case
+  end case
+end procedure
 
 -- Before it fetches, a member of a group checks it is still current, and
 -- rejoins when a rebalance has moved the group on.
-definition consumerRefresh (c :: ConsumerState) :: Pair (Either KafkaError Unit) ConsumerState uses Broker is
-  match c.group with
-  | Nothing -> Pair (Right unitValue) c
-  | Just group ->
-      match prelude.attempt (heartbeatRequest group c.member c.generation) with
-      | Right u -> Pair (Right unitValue) c
-      | Left e ->
-          if e == IllegalGeneration || e == UnknownMemberId then
+procedure consumerRefresh (c :: ConsumerState) -> Pair (Either KafkaError Unit)
+  ConsumerState uses Broker is
+  first matching case of c.group :
+    when Nothing then Pair (Right unitValue) c
+    when Just group then
+      first matching case of prelude.attempt (heartbeatRequest group c.member
+        c.generation) :
+        when Right u then Pair (Right unitValue) c
+        when Left e then
+          if e = IllegalGeneration || e = UnknownMemberId then
             (let s = consumerJoin group c.member c.subscription c in
-             match s.first with
-             | Left e2 -> Pair (Left e2) s.second
-             | Right tps -> Pair (Right unitValue) s.second
-             end)
-          else Pair (Left e) c
-      end
-  end
-end
+              first matching case of s.first :
+                when Left e2 then Pair (Left e2) s.second
+                when Right tps then Pair (Right unitValue) s.second
+              end case end let)
+          else Pair (Left e) c end if
+      end case
+  end case
+end procedure
 
 -- Where a consumer reads a partition from: its position; else the group's
 -- committed offset; else the earliest offset.
-definition consumerPosition (tp :: TopicPartition) (c :: ConsumerState) :: Pair Int64 ConsumerState uses Broker is
-  match prelude.lookup tp c.positions with
-  | Just o -> Pair o c
-  | Nothing ->
-      let from = (match c.group with
-                  | Nothing -> 0
-                  | Just group -> (match offsetFetchRequest group tp with | Nothing -> 0 | Just o -> o end)
-                  end) in
-      Pair from (withPosition tp from c)
-  end
-end
+procedure consumerPosition (tp :: TopicPartition) (c :: ConsumerState) -> Pair
+  Int64 ConsumerState uses Broker is
+  first matching case of prelude.lookup tp c.positions :
+    when Just o then Pair o c
+    when Nothing then
+      let from = (first matching case of c.group :
+          when Nothing then 0
+          when Just group then (first matching case of offsetFetchRequest group
+              tp : when Nothing then 0 when Just o then o end case)
+        end case) in
+        Pair from (withPosition tp from c) end let
+  end case
+end procedure
 
-definition pollPartitions (tps :: List TopicPartition) (n :: Int32) (c :: ConsumerState) (acc :: List ConsumerRecord) :: Pair (Either KafkaError (List ConsumerRecord)) ConsumerState uses Broker is
-  match tps with
-  | Nil -> Pair (Right acc) c
-  | Cons tp rest ->
+procedure pollPartitions (tps :: List TopicPartition) (n :: Int32) (c ::
+  ConsumerState) (acc :: List ConsumerRecord) -> Pair (Either KafkaError (List
+  ConsumerRecord)) ConsumerState uses Broker is
+  first matching case of tps :
+    when Nil then Pair (Right acc) c
+    when Cons tp rest then
       let p = consumerPosition tp c in
-      match prelude.attempt (fetchRequest tp p.first n c.isolation) with
-      | Left e -> Pair (Left e) p.second
-      | Right fr -> pollPartitions rest n (withPosition tp fr.nextOffset p.second) (acc ++ consumerRecords tp fr.records)
-      end
-  end
-end
+        first matching case of prelude.attempt (fetchRequest tp p.first n
+          c.isolation) :
+          when Left e then Pair (Left e) p.second
+          when Right fr then pollPartitions rest n (withPosition tp
+              fr.nextOffset p.second) (acc ++ consumerRecords tp fr.records)
+        end case end let
+  end case
+end procedure
 
-definition consumerPoll (n :: Int32) (c :: ConsumerState) :: Pair (Either KafkaError (List ConsumerRecord)) ConsumerState uses Broker is
+procedure consumerPoll (n :: Int32) (c :: ConsumerState) -> Pair (Either
+  KafkaError (List ConsumerRecord)) ConsumerState uses Broker is
   let refreshed = consumerRefresh c in
-  match refreshed.first with
-  | Left e -> Pair (Left e) refreshed.second
-  | Right u -> pollPartitions refreshed.second.assigned n refreshed.second []
-  end
-end
+    first matching case of refreshed.first :
+      when Left e then Pair (Left e) refreshed.second
+      when Right u then pollPartitions refreshed.second.assigned n
+          refreshed.second []
+    end case end let
+end procedure
 
-definition consumerCommit (c :: ConsumerState) :: Pair (Either KafkaError Unit) ConsumerState uses Broker is
-  match c.group with
-  | Nothing -> Pair (Left InvalidGroupId) c
-  | Just group -> Pair (prelude.attempt (offsetCommitRequest group c.member c.generation (positionsToCommit c.assigned c.positions))) c
-  end
-end
+procedure consumerCommit (c :: ConsumerState) -> Pair (Either KafkaError Unit)
+  ConsumerState uses Broker is
+  first matching case of c.group :
+    when Nothing then Pair (Left InvalidGroupId) c
+    when Just group then Pair (prelude.attempt (offsetCommitRequest group
+        c.member c.generation (positionsToCommit c.assigned c.positions))) c
+  end case
+end procedure
 
-definition consumerClose (c :: ConsumerState) :: Pair Unit ConsumerState uses Broker is
-  match c.group with
-  | Nothing -> Pair unitValue (freshConsumer unitValue)
-  | Just group -> let left = prelude.attempt (leaveGroupRequest group c.member) in Pair unitValue (freshConsumer unitValue)
-  end
-end
+procedure consumerClose (c :: ConsumerState) -> Pair Unit ConsumerState uses
+  Broker is
+  first matching case of c.group :
+    when Nothing then Pair unitValue (freshConsumer unitValue)
+    when Just group then let left = prelude.attempt (leaveGroupRequest group
+        c.member) in Pair unitValue (freshConsumer unitValue) end let
+  end case
+end procedure
 
-definition consumerCommitted (tp :: TopicPartition) (c :: ConsumerState) :: Pair (Maybe Int64) ConsumerState uses Broker is
-  match c.group with
-  | Nothing -> Pair Nothing c
-  | Just group -> Pair (offsetFetchRequest group tp) c
-  end
-end
+procedure consumerCommitted (tp :: TopicPartition) (c :: ConsumerState) -> Pair
+  (Maybe Int64) ConsumerState uses Broker is
+  first matching case of c.group :
+    when Nothing then Pair Nothing c
+    when Just group then Pair (offsetFetchRequest group tp) c
+  end case
+end procedure
 
-definition consumerAssign (tps :: List TopicPartition) (c :: ConsumerState) :: Pair Unit ConsumerState is
+function consumerAssign (tps :: List TopicPartition) (c :: ConsumerState) ->
+  Pair Unit ConsumerState is
   Pair unitValue (withAssignment Nothing "" -1 [] tps c)
-end
+end function
 
-definition consumerSeek (tp :: TopicPartition) (offset :: Int64) (c :: ConsumerState) :: Pair (Either KafkaError Unit) ConsumerState is
-  if c.assigned contains tp && offset >= 0 then Pair (Right unitValue) (withPosition tp offset c)
-  else Pair (Left IllegalState) c
-end
+function consumerSeek (tp :: TopicPartition) (offset :: Int64) (c ::
+  ConsumerState) -> Pair (Either KafkaError Unit) ConsumerState is
+  if c.assigned contains tp && offset >= 0 then Pair (Right unitValue)
+    (withPosition tp offset c)
+  else Pair (Left IllegalState) c end if
+end function
 
-definition consumerPositionOf (tp :: TopicPartition) (c :: ConsumerState) :: Pair (Either KafkaError Int64) ConsumerState uses Broker is
-  if c.assigned contains tp then (let p = consumerPosition tp c in Pair (Right p.first) p.second)
-  else Pair (Left IllegalState) c
-end
+procedure consumerPositionOf (tp :: TopicPartition) (c :: ConsumerState) -> Pair
+  (Either KafkaError Int64) ConsumerState uses Broker is
+  if c.assigned contains tp then (let p = consumerPosition tp c in Pair (Right
+      p.first) p.second end let)
+  else Pair (Left IllegalState) c end if
+end procedure
 
-definition consumerIsolation (level :: IsolationLevel) (c :: ConsumerState) :: Pair Unit ConsumerState is
+function consumerIsolation (level :: IsolationLevel) (c :: ConsumerState) ->
+  Pair Unit ConsumerState is
   Pair unitValue (c with isolation = level)
-end
+end function
 
 -- Transactional producers.
 
-definition transactionsInit (txid :: Text) (st :: TransactionState) :: Pair (Either KafkaError ProducerIdAndEpoch) TransactionState uses Broker is
-  match prelude.attempt (initProducerIdRequest (Just txid)) with
-  | Left e -> Pair (Left e) st
-  | Right pe -> Pair (Right pe) (TransactionState txid (Just pe) (prelude.keyValOf []) false [] false)
-  end
-end
+procedure transactionsInit (txid :: Text) (st :: TransactionState) -> Pair
+  (Either KafkaError ProducerIdAndEpoch) TransactionState uses Broker is
+  first matching case of prelude.attempt (initProducerIdRequest (Just txid)) :
+    when Left e then Pair (Left e) st
+    when Right pe then Pair (Right pe) (TransactionState record{ transactionalId
+        = txid , producer = (Just pe) , txnSequences = (prelude.keyValOf []) ,
+        inTransaction = false , added = [] , offsetsSent = false})
+  end case
+end procedure
 
-definition transactionsBegin (st :: TransactionState) :: Pair (Either KafkaError Unit) TransactionState is
-  match st.producer with
-  | Nothing -> Pair (Left IllegalState) st
-  | Just id ->
+function transactionsBegin (st :: TransactionState) -> Pair (Either KafkaError
+  Unit) TransactionState is
+  first matching case of st.producer :
+    when Nothing then Pair (Left IllegalState) st
+    when Just id then
       if st.inTransaction then Pair (Left IllegalState) st else
-        Pair (Right unitValue) (st with inTransaction = true, added = [], offsetsSent = false)
-  end
-end
+        Pair (Right unitValue) (st with inTransaction = true, added = [],
+          offsetsSent = false) end if
+  end case
+end function
 
 -- Adds partitions the transaction does not have yet.
-definition transactionsAdd (tps :: List TopicPartition) (st :: TransactionState) :: Pair (Either KafkaError Unit) TransactionState uses Broker is
-  match st.producer with
-  | Nothing -> Pair (Left IllegalState) st
-  | Just id ->
+procedure transactionsAdd (tps :: List TopicPartition) (st :: TransactionState)
+  -> Pair (Either KafkaError Unit) TransactionState uses Broker is
+  first matching case of st.producer :
+    when Nothing then Pair (Left IllegalState) st
+    when Just id then
       if !st.inTransaction then Pair (Left IllegalState) st else
-      let missing = missingFrom tps st.added in
-      if prelude.isEmpty missing then Pair (Right unitValue) st else
-        match prelude.attempt (addPartitionsToTxnRequest st.transactionalId id.producerId id.producerEpoch missing) with
-        | Left e -> Pair (Left e) st
-        | Right u -> Pair (Right unitValue) (st with added = missing ++ st.added)
-        end
-  end
-end
+        let missing = missingFrom tps st.added in
+          if prelude.isEmpty missing then Pair (Right unitValue) st else
+            first matching case of prelude.attempt (addPartitionsToTxnRequest
+              st.transactionalId id.producerId id.producerEpoch missing) :
+              when Left e then Pair (Left e) st
+              when Right u then Pair (Right unitValue) (st with added = missing
+                  ++ st.added)
+            end case end if end let end if
+  end case
+end procedure
 
-definition missingFrom (tps :: List TopicPartition) (have :: List TopicPartition) :: List TopicPartition is
-  match tps with
-  | Nil -> []
-  | Cons tp rest -> if have contains tp then missingFrom rest have else Cons tp (missingFrom rest have)
-  end
-end
+function missingFrom (tps :: List TopicPartition) (have :: List TopicPartition)
+  -> List TopicPartition is
+  first matching case of tps :
+    when Nil then []
+    when Cons tp rest then if have contains tp then missingFrom rest have else
+        Cons tp (missingFrom rest have) end if
+  end case
+end function
 
-definition transactionsSend (pr :: ProducerRecord) (st :: TransactionState) :: Pair (Either KafkaError RecordMetadata) TransactionState uses Broker, Partitioner is
-  match partitionOf pr.destination pr.choice pr.payload with
-  | Left e -> Pair (Left e) st
-  | Right tp ->
+procedure transactionsSend (pr :: ProducerRecord) (st :: TransactionState) ->
+  Pair (Either KafkaError RecordMetadata) TransactionState uses Broker,
+  Partitioner is
+  first matching case of partitionOf pr.destination pr.choice pr.payload :
+    when Left e then Pair (Left e) st
+    when Right tp then
       let a = transactionsAdd [tp] st in
-      match a.first with
-      | Left e -> Pair (Left e) a.second
-      | Right u ->
-          let sequence = sequenceFor tp a.second.txnSequences in
-          match prelude.attempt (produceRequest tp (tagFor a.second.producer sequence) [pr.payload]) with
-          | Left e -> Pair (Left e) a.second
-          | Right offset ->
-              Pair (Right (RecordMetadata tp offset))
-                (a.second with txnSequences = prelude.put tp (prelude.saturating (sequence + 1)) a.second.txnSequences)
-          end
-      end
-  end
-end
+        first matching case of a.first :
+          when Left e then Pair (Left e) a.second
+          when Right u then
+            let sequence = sequenceFor tp a.second.txnSequences in
+              first matching case of prelude.attempt (produceRequest tp (tagFor
+                a.second.producer sequence) [pr.payload]) :
+                when Left e then Pair (Left e) a.second
+                when Right offset then
+                  Pair (Right (RecordMetadata record{ sentTo = tp , sentAt =
+                      offset}))
+                    (a.second with txnSequences = prelude.put tp
+                      (prelude.saturating (sequence + 1)) a.second.txnSequences)
+              end case end let
+        end case end let
+  end case
+end procedure
 
-definition transactionsOffsets (g :: Text) (offsets :: List OffsetEntry) (st :: TransactionState) :: Pair (Either KafkaError Unit) TransactionState uses Broker is
-  match st.producer with
-  | Nothing -> Pair (Left IllegalState) st
-  | Just id ->
+procedure transactionsOffsets (g :: Text) (offsets :: List OffsetEntry) (st ::
+  TransactionState) -> Pair (Either KafkaError Unit) TransactionState uses
+  Broker is
+  first matching case of st.producer :
+    when Nothing then Pair (Left IllegalState) st
+    when Just id then
       if !st.inTransaction then Pair (Left IllegalState) st else
-        match prelude.attempt (txnOffsetCommitRequest st.transactionalId id.producerId id.producerEpoch g offsets) with
-        | Left e -> Pair (Left e) st
-        | Right u -> Pair (Right unitValue) (st with offsetsSent = true)
-        end
-  end
-end
+        first matching case of prelude.attempt (txnOffsetCommitRequest
+          st.transactionalId id.producerId id.producerEpoch g offsets) :
+          when Left e then Pair (Left e) st
+          when Right u then Pair (Right unitValue) (st with offsetsSent = true)
+        end case end if
+  end case
+end procedure
 
 -- Ends the transaction. One that wrote nothing and sent no offsets ends in
 -- the client alone, as Kafka's clients do.
-definition transactionsEnd (commit :: Bool) (st :: TransactionState) :: Pair (Either KafkaError Unit) TransactionState uses Broker is
-  match st.producer with
-  | Nothing -> Pair (Left IllegalState) st
-  | Just id ->
+procedure transactionsEnd (commit :: Bool) (st :: TransactionState) -> Pair
+  (Either KafkaError Unit) TransactionState uses Broker is
+  first matching case of st.producer :
+    when Nothing then Pair (Left IllegalState) st
+    when Just id then
       if !st.inTransaction then Pair (Left IllegalState) st else
-      if prelude.isEmpty st.added && !st.offsetsSent then Pair (Right unitValue) (st with inTransaction = false, added = [], offsetsSent = false) else
-        match prelude.attempt (endTxnRequest st.transactionalId id.producerId id.producerEpoch commit) with
-        | Left e -> Pair (Left e) st
-        | Right u -> Pair (Right unitValue) (st with inTransaction = false, added = [], offsetsSent = false)
-        end
-  end
-end
+        if prelude.isEmpty st.added && !st.offsetsSent then Pair (Right
+          unitValue) (st with inTransaction = false, added = [], offsetsSent =
+            false) else
+          first matching case of prelude.attempt (endTxnRequest
+            st.transactionalId id.producerId id.producerEpoch commit) :
+            when Left e then Pair (Left e) st
+            when Right u then Pair (Right unitValue) (st with inTransaction =
+                false, added = [], offsetsSent = false)
+          end case end if end if
+  end case
+end procedure
 
-definition transactionsCommit (st :: TransactionState) :: Pair (Either KafkaError Unit) TransactionState uses Broker is transactionsEnd true st end
-definition transactionsAbort (st :: TransactionState) :: Pair (Either KafkaError Unit) TransactionState uses Broker is transactionsEnd false st end
+procedure transactionsCommit (st :: TransactionState) -> Pair (Either KafkaError
+  Unit) TransactionState uses Broker is transactionsEnd true st end procedure
+procedure transactionsAbort (st :: TransactionState) -> Pair (Either KafkaError
+  Unit) TransactionState uses Broker is transactionsEnd false st end procedure
 
 -- ---------------------------------------------------------------------------
 -- Admin
@@ -795,48 +962,62 @@ ability Admin with Cluster is
   createTopic :: Text -> Int32 -> Unit fails with KafkaError
   createPartitions :: Text -> Int32 -> Unit fails with KafkaError
   partitionsFor :: Text -> Maybe Int32
-  listOffsets :: TopicPartition -> OffsetSpec -> IsolationLevel -> Int64 fails with KafkaError
-laws
-  law `a new topic has the partitions asked for` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (n :: Int32 where n >= 1 && n <= 64) .
-        prelude.isRight (prelude.attempt (createTopic t n)) implies partitionsFor t = Just n
-    end
-  end
+  listOffsets :: TopicPartition -> OffsetSpec -> IsolationLevel -> Int64 fails
+  with KafkaError
+  laws
+    law "|a new topic has the partitions asked for| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (n :: Int32 where n >=
+            1 && n <= 64) =>
+          prelude.isRight (prelude.attempt (createTopic t n)) implies
+          partitionsFor t = Just n end for all
+      end definition
+    end law
 
-  law `a topic is created once` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (n :: Int32 where n >= 1 && n <= 64) .
-        (let first = prelude.attempt (createTopic t n) in createTopic t n) fails with TopicAlreadyExists
-    end
-  end
+    law "|a topic is created once| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (n :: Int32 where n >=
+            1 && n <= 64) =>
+          (let first = prelude.attempt (createTopic t n) in createTopic t n
+          end let) fails with TopicAlreadyExists end for all
+      end definition
+    end law
 
-  law `a topic's partitions only grow` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (n :: Int32 where n >= 1 && n <= 64) .
-        prelude.isRight (prelude.attempt (createTopic t n)) implies
+    law "|a topic's partitions only grow| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (n :: Int32 where n >=
+            1 && n <= 64) =>
+          prelude.isRight (prelude.attempt (createTopic t n)) implies
           ((createPartitions t n fails with InvalidPartitions)
-            && prelude.isRight (prelude.attempt (createPartitions t (prelude.saturating (n + 1))))
-            && partitionsFor t == Just (prelude.saturating (n + 1))) = true
-    end
-  end
+            && prelude.isRight (prelude.attempt (createPartitions t
+              (prelude.saturating (n + 1))))
+            && partitionsFor t = Just (prelude.saturating (n + 1))) = true
+        end for all
+      end definition
+    end law
 
-  law `a new topic starts at offset zero` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (n :: Int32 where n >= 1 && n <= 64) .
-        prelude.isRight (prelude.attempt (createTopic t n)) implies
-          (prelude.attempt (listOffsets (TopicPartition t 0) Earliest ReadUncommitted) == Right 0
-            && prelude.attempt (listOffsets (TopicPartition t 0) Latest ReadCommitted) == Right 0) = true
-    end
-  end
+    law "|a new topic starts at offset zero| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (n :: Int32 where n >=
+            1 && n <= 64) =>
+          prelude.isRight (prelude.attempt (createTopic t n)) implies
+          (prelude.attempt (listOffsets (TopicPartition record{ topic = t ,
+            partition = 0}) Earliest ReadUncommitted) = Right 0
+            && prelude.attempt (listOffsets (TopicPartition record{ topic = t ,
+              partition = 0}) Latest ReadCommitted) = Right 0) = true
+        end for all
+      end definition
+    end law
 
-  law `an invalid topic name is refused` is
-    definition is
-      `for all` (n :: Int32 where n >= 1 && n <= 64) .
-        (createTopic "" n fails with InvalidTopic) = true and (createTopic ".." n fails with InvalidTopic) = true
-    end
-  end
-end
+    law "|an invalid topic name is refused| is
+      definition :
+        for all (n :: Int32 where n >= 1 && n <= 64) =>
+          (createTopic "" n fails with InvalidTopic) = true and (createTopic
+            ".." n fails with InvalidTopic) = true end for all
+      end definition
+    end law
+  end laws
+end ability
 
 -- ---------------------------------------------------------------------------
 -- Partitioner
@@ -846,88 +1027,106 @@ end
 -- octets, made positive, modulo the partitions.
 ability Partitioner with Cluster is
   choosePartition :: Maybe Bytes -> Int32 -> Int32
-laws
-  law `a chosen partition exists` is
-    definition is
-      `for all` (key :: Maybe Bytes) (n :: Int32 where n >= 1 && n <= 1024) .
-        (let p = choosePartition key n in p >= 0 && p < n) = true
-    end
-  end
+  laws
+    law "|a chosen partition exists| is
+      definition :
+        for all (key :: Maybe Bytes) (n :: Int32 where n >= 1 && n <= 1024) =>
+          (let p = choosePartition key n in p >= 0 && p < n end let) = true
+        end for all
+      end definition
+    end law
 
-  law `a key always goes to the same partition` is
-    definition is
-      `for all` (key :: Bytes) (n :: Int32 where n >= 1 && n <= 1024) .
-        choosePartition (Just key) n = choosePartition (Just key) n
-    end
-  end
-end
+    law "|a key always goes to the same partition| is
+      definition :
+        for all (key :: Bytes) (n :: Int32 where n >= 1 && n <= 1024) =>
+          choosePartition (Just key) n = choosePartition (Just key) n
+        end for all
+      end definition
+    end law
+  end laws
+end ability
 
 handler murmurPartitioner for Partitioner is
-  choosePartition key n is
-    match key with
-    | Nothing -> 0
-    | Just k -> if n >= 1 then prelude.Int32 (prelude.rem (toPositive (murmur2 k)) n) else 0
-    end
-  end
-end
+  operation choosePartition key n is
+    first matching case of key :
+      when Nothing then 0
+      when Just k then if n >= 1 then prelude.Int32 (prelude.rem (toPositive
+          (murmur2 k)) n) else 0 end if
+    end case
+  end operation
+end handler
 
 -- Kafka's murmur2 (org.apache.kafka.common.utils.Utils.murmur2) over a
 -- key's octets, in 32 bits.
-definition murmur2 (key :: Bytes) :: UInt32 is
-  let h = murmurChunks (prelude.octets key) (xor32 2538058380 (prelude.wrapping (prelude.length key))) in
-  let h1 = mul32 (xor32 h (prelude.wrapping (prelude.quot h 8192))) (murmurM unitValue) in
-  xor32 h1 (prelude.wrapping (prelude.quot h1 32768))
-end
+function murmur2 (key :: Bytes) -> UInt32 is
+  let h = murmurChunks (prelude.octets key) (xor32 2538058380 (prelude.wrapping
+      (prelude.length key))) in
+    let h1 = mul32 (xor32 h (prelude.wrapping (prelude.quot h 8192))) (murmurM
+        unitValue) in
+      xor32 h1 (prelude.wrapping (prelude.quot h1 32768)) end let end let
+end function
 
-definition murmurM (u :: Unit) :: UInt32 is 1540483477 end
+function murmurM (u :: Unit) -> UInt32 is 1540483477 end function
 
-definition murmurChunks (octets :: List UInt8) (h :: UInt32) :: UInt32 is
-  match octets with
-  | Nil -> h
-  | Cons b0 rest1 ->
-      match rest1 with
-      | Nil -> mul32 (xor32 h (prelude.UInt32 b0)) (murmurM unitValue)
-      | Cons b1 rest2 ->
-          match rest2 with
-          | Nil -> mul32 (xor32 (xor32 h (prelude.wrapping (b1 * 256))) (prelude.UInt32 b0)) (murmurM unitValue)
-          | Cons b2 rest3 ->
-              match rest3 with
-              | Nil -> mul32 (xor32 (xor32 (xor32 h (prelude.wrapping (b2 * 65536))) (prelude.wrapping (b1 * 256))) (prelude.UInt32 b0)) (murmurM unitValue)
-              | Cons b3 rest4 ->
-                  let k0 = mul32 (prelude.wrapping (b0 + b1 * 256 + b2 * 65536 + b3 * 16777216)) (murmurM unitValue) in
-                  let k1 = mul32 (xor32 k0 (prelude.wrapping (prelude.quot k0 16777216))) (murmurM unitValue) in
-                  murmurChunks rest4 (xor32 (mul32 h (murmurM unitValue)) k1)
-              end
-          end
-      end
-  end
-end
+function murmurChunks (octets :: List UInt8) (h :: UInt32) -> UInt32 is
+  first matching case of octets :
+    when Nil then h
+    when Cons b0 rest1 then
+      first matching case of rest1 :
+        when Nil then mul32 (xor32 h (prelude.UInt32 b0)) (murmurM unitValue)
+        when Cons b1 rest2 then
+          first matching case of rest2 :
+            when Nil then mul32 (xor32 (xor32 h (prelude.wrapping (b1 * 256)))
+                (prelude.UInt32 b0)) (murmurM unitValue)
+            when Cons b2 rest3 then
+              first matching case of rest3 :
+                when Nil then mul32 (xor32 (xor32 (xor32 h (prelude.wrapping (b2
+                    * 65536))) (prelude.wrapping (b1 * 256))) (prelude.UInt32
+                      b0))
+                    (murmurM unitValue)
+                when Cons b3 rest4 then
+                  let k0 = mul32 (prelude.wrapping (b0 + b1 * 256 + b2 * 65536 +
+                      b3 * 16777216)) (murmurM unitValue) in
+                    let k1 = mul32 (xor32 k0 (prelude.wrapping (prelude.quot k0
+                        16777216))) (murmurM unitValue) in
+                      murmurChunks rest4 (xor32 (mul32 h (murmurM unitValue))
+                        k1) end let end let
+              end case
+          end case
+      end case
+  end case
+end function
 
-definition toPositive (h :: UInt32) :: UInt32 is prelude.wrapping (prelude.rem h 2147483648) end
+function toPositive (h :: UInt32) -> UInt32 is prelude.wrapping (prelude.rem h
+    2147483648) end function
 
-definition mul32 (a :: UInt32) (b :: UInt32) :: UInt32 is prelude.wrapping (a * b) end
+function mul32 (a :: UInt32) (b :: UInt32) -> UInt32 is prelude.wrapping (a * b)
+end function
 
-definition xor32 (a :: UInt32) (b :: UInt32) :: UInt32 is prelude.wrapping (xorBits a b 2147483648) end
+function xor32 (a :: UInt32) (b :: UInt32) -> UInt32 is prelude.wrapping
+    (xorBits a b 2147483648) end function
 
 -- a xor b, from bit down to the lowest, for a and b below twice bit.
-definition xorBits (a :: Integer) (b :: Integer) (bit :: Integer) :: Integer is
+function xorBits (a :: Integer) (b :: Integer) (bit :: Integer) -> Integer is
   if bit <= 0 || a < 0 || b < 0 then 0 else
-    (if prelude.quot a bit != prelude.quot b bit then bit else 0)
+    (if prelude.quot a bit != prelude.quot b bit then bit else 0 end if)
       + xorBits (prelude.rem a bit) (prelude.rem b bit) (prelude.quot bit 2)
-end
+  end if
+end function
 
 -- Kafka's own vectors for murmur2 (UtilsTest), as unsigned 32-bit values.
-law `murmur2 agrees with Kafka` is
-  definition is
+law "|murmur2 agrees with Kafka| is
+  definition :
     murmur2 (prelude.utf8 "21") = 3321034988
-      and murmur2 (prelude.utf8 "foobar") = 3504634814
-      and murmur2 (prelude.utf8 "a-little-bit-long-string") = 3308985760
-      and murmur2 (prelude.utf8 "a-little-bit-longer-string") = 2808662467
-      and murmur2 (prelude.utf8 "lkjh234lh9fiuh90y23oiuhsafujhadof229phr9h19h89h8") = 4236069325
-      and murmur2 (prelude.utf8 "abc") = 479470107
-  end
-  references are "KAFKA-murmur2" end
-end
+    and murmur2 (prelude.utf8 "foobar") = 3504634814
+    and murmur2 (prelude.utf8 "a-little-bit-long-string") = 3308985760
+    and murmur2 (prelude.utf8 "a-little-bit-longer-string") = 2808662467
+    and murmur2 (prelude.utf8
+      "lkjh234lh9fiuh90y23oiuhsafujhadof229phr9h19h89h8") = 4236069325
+    and murmur2 (prelude.utf8 "abc") = 479470107
+  end definition
+  references : "KAFKA-murmur2" end references
+end law
 
 -- ---------------------------------------------------------------------------
 -- Producer
@@ -939,122 +1138,147 @@ ability Producer with Cluster is
   enableIdempotence :: Either KafkaError ProducerIdAndEpoch
   retryLastSend :: Either KafkaError RecordMetadata
   producerIdentity :: Maybe ProducerIdAndEpoch
-laws
-  law `records sent to one partition are read in the order sent` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (first :: Record) (second :: Record) .
-        created t 1 implies
-          (let a = send (ProducerRecord t (ToPartition 0) first) in
-           let b = send (ProducerRecord t (ToPartition 0) second) in
-           readInOrder a b first second) = true
-    end
-    description is
-      "Within one partition, records are stored and read in the order they
+  laws
+    law "|records sent to one partition are read in the order sent| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (first :: Record)
+          (second :: Record) =>
+          created t 1 implies
+          (let a = send (ProducerRecord record{ destination = t , choice =
+              (ToPartition 0) , payload = first}) in
+            let b = send (ProducerRecord record{ destination = t , choice =
+                (ToPartition 0) , payload = second}) in
+              readInOrder a b first second end let end let) = true end for all
+      end definition
+      description :
+        "Within one partition, records are stored and read in the order they
       were sent: the later send gets the next offset, and a consumer reading
       from the first gets both, first to last."
-    end
-  end
+      end description
+    end law
 
-  law `a flushed record is in the log` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (r :: Record) .
-        created t 1 implies
-          (match send (ProducerRecord t (ToPartition 0) r) with
-           | Left e -> false
-           | Right md ->
-               flush;
-               (match prelude.attempt (listOffsetsRequest (TopicPartition t 0) Latest ReadUncommitted) with
-                | Left e -> false
-                | Right latest -> latest > md.sentAt
-                end)
-           end) = true
-    end
-  end
+    law "|a flushed record is in the log| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (r :: Record) =>
+          created t 1 implies
+          (first matching case of send (ProducerRecord record{ destination = t ,
+            choice = (ToPartition 0) , payload = r}) :
+            when Left e then false
+            when Right md then
+              flush;
+              (first matching case of prelude.attempt (listOffsetsRequest
+                (TopicPartition record{ topic = t , partition = 0}) Latest
+                ReadUncommitted) :
+                when Left e then false
+                when Right latest then latest > md.sentAt
+              end case)
+          end case) = true end for all
+      end definition
+    end law
 
-  law `an idempotent producer's retried send is written once` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (r :: Record) .
-        created t 1 implies
+    law "|an idempotent producer's retried send is written once| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (r :: Record) =>
+          created t 1 implies
           (let id = enableIdempotence in
-           let sent = send (ProducerRecord t (ToPartition 0) r) in
-           let retried = retryLastSend in
-           prelude.isRight id && sent == retried
-             && followsOne sent (prelude.attempt (listOffsetsRequest (TopicPartition t 0) Latest ReadUncommitted))
-             && producerIdentity == (match id with | Right pe -> Just pe | Left e -> Nothing end)) = true
-    end
-    references are "KIP-98" end
-  end
+            let sent = send (ProducerRecord record{ destination = t , choice =
+                (ToPartition 0) , payload = r}) in
+              let retried = retryLastSend in
+                prelude.isRight id && sent = retried
+                  && followsOne sent (prelude.attempt (listOffsetsRequest
+                    (TopicPartition record{ topic = t , partition = 0}) Latest
+                    ReadUncommitted))
+                && producerIdentity = (first matching case of id : when Right pe
+                  then Just pe when Left e then Nothing end case) end let
+            end let end let) = true end for all
+      end definition
+      references : "KIP-98" end references
+    end law
 
-  law `records with one key go to one partition` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (n :: Int32 where n >= 1 && n <= 16)
-        (key :: Bytes) (first :: Maybe Bytes) (second :: Maybe Bytes) .
-        created t n implies
-          (let a = send (ProducerRecord t ByKey (Record (Just key) first [])) in
-           let b = send (ProducerRecord t ByKey (Record (Just key) second [])) in
-           samePartition a b) = true
-    end
-  end
+    law "|records with one key go to one partition| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (n :: Int32 where n >=
+            1 && n <= 16)
+          (key :: Bytes) (first :: Maybe Bytes) (second :: Maybe Bytes) =>
+          created t n implies
+          (let a = send (ProducerRecord record{ destination = t , choice = ByKey
+            , payload = (Record record{ key = (Just key) , value = first ,
+              headers = []})}) in
+            let b = send (ProducerRecord record{ destination = t , choice =
+                ByKey , payload = (Record record{ key = (Just key) , value =
+                    second , headers = []})}) in
+              samePartition a b end let end let) = true end for all
+      end definition
+    end law
 
-  law `a send to a partition the topic lacks is refused` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (n :: Int32 where n >= 1 && n <= 16) (r :: Record) .
-        created t n implies
-          send (ProducerRecord t (ToPartition n) r) = Left UnknownTopicOrPartition
-    end
-  end
-end
+    law "|a send to a partition the topic lacks is refused| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (n :: Int32 where n >=
+            1 && n <= 16) (r :: Record) =>
+          created t n implies
+          send (ProducerRecord record{ destination = t , choice = (ToPartition
+            n) , payload = r}) = Left UnknownTopicOrPartition end for all
+      end definition
+    end law
+  end laws
+end ability
 
-handler kafkaProducer for Producer with state producerState :: ProducerState start freshProducer unitValue is
-  send by producerSend
-  flush by producerFlush
-  enableIdempotence by producerIdempotent
-  retryLastSend by producerRetry
-  producerIdentity by identityOf
-end
+handler kafkaProducer for Producer with state producerState :: ProducerState
+  start freshProducer unitValue is
+  operation send by producerSend end operation
+  operation flush by producerFlush end operation
+  operation enableIdempotence by producerIdempotent end operation
+  operation retryLastSend by producerRetry end operation
+  operation producerIdentity by identityOf end operation
+end handler
 
-definition samePartition (a :: Either KafkaError RecordMetadata) (b :: Either KafkaError RecordMetadata) :: Bool is
-  match a with
-  | Left e -> false
-  | Right x ->
-      match b with
-      | Left e -> false
-      | Right y -> x.sentTo == y.sentTo
-      end
-  end
-end
+function samePartition (a :: Either KafkaError RecordMetadata) (b :: Either
+  KafkaError RecordMetadata) -> Bool is
+  first matching case of a :
+    when Left e then false
+    when Right x then
+      first matching case of b :
+        when Left e then false
+        when Right y then x.sentTo = y.sentTo
+      end case
+  end case
+end function
 
-definition followsOne (a :: Either KafkaError RecordMetadata) (latest :: Either KafkaError Int64) :: Bool is
-  match a with
-  | Left e -> false
-  | Right md ->
-      match latest with
-      | Left e -> false
-      | Right l -> l == md.sentAt + 1
-      end
-  end
-end
+function followsOne (a :: Either KafkaError RecordMetadata) (latest :: Either
+  KafkaError Int64) -> Bool is
+  first matching case of a :
+    when Left e then false
+    when Right md then
+      first matching case of latest :
+        when Left e then false
+        when Right l then l = md.sentAt + 1
+      end case
+  end case
+end function
 
 -- A consumer assigned the partition, from the first record's offset, reads
 -- the two records next to each other, in the order they were sent.
-definition readInOrder (a :: Either KafkaError RecordMetadata) (b :: Either KafkaError RecordMetadata) (first :: Record) (second :: Record) :: Bool uses Consumer is
-  match a with
-  | Left e -> false
-  | Right x ->
-      match b with
-      | Left e -> false
-      | Right y ->
+procedure readInOrder (a :: Either KafkaError RecordMetadata) (b :: Either
+  KafkaError RecordMetadata) (first :: Record) (second :: Record) -> Bool uses
+  Consumer is
+  first matching case of a :
+    when Left e then false
+    when Right x then
+      first matching case of b :
+        when Left e then false
+        when Right y then
           let tp = x.sentTo in
-          y.sentTo == tp && y.sentAt == x.sentAt + 1
-            && (assign [tp];
+            y.sentTo = tp && y.sentAt = x.sentAt + 1
+              && (assign [tp];
                 prelude.isRight (seek tp x.sentAt)
-                  && (match poll 2 with
-                      | Left e -> false
-                      | Right rs -> receivedRecords rs == [first, second] && receivedOffsets rs == [x.sentAt, y.sentAt]
-                      end))
-      end
-  end
-end
+            && (first matching case of poll 2 :
+              when Left e then false
+              when Right rs then receivedRecords rs = [first, second] &&
+                  receivedOffsets rs = [x.sentAt, y.sentAt]
+            end case)) end let
+      end case
+  end case
+end procedure
 
 -- ---------------------------------------------------------------------------
 -- Consumer
@@ -1062,7 +1286,8 @@ end
 
 ability Consumer with Cluster is
   assign :: List TopicPartition -> Unit
-  subscribe :: Text -> Text -> List Text -> Either KafkaError (List TopicPartition)
+  subscribe :: Text -> Text -> List Text -> Either KafkaError (List
+  TopicPartition)
   poll :: Int32 -> Either KafkaError (List ConsumerRecord)
   commitSync :: Either KafkaError Unit
   seek :: TopicPartition -> Int64 -> Either KafkaError Unit
@@ -1070,153 +1295,179 @@ ability Consumer with Cluster is
   committedOffset :: TopicPartition -> Maybe Int64
   setIsolationLevel :: IsolationLevel -> Unit
   close :: Unit
-laws
-  law `a restarted consumer resumes at its committed offset` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (g :: Text where g != "") (m :: Text where m != "")
-        (batch :: List Record where smallBatch batch) (n :: Int32 where n >= 1 && n <= 16) .
-        created t 1 implies
-          (prelude.isRight (prelude.attempt (produceRequest (TopicPartition t 0) Nothing batch))
-            && resumesAtCommitted t g m n) = true
-    end
-    description is
-      "A consumer polls, commits and closes. When it subscribes again, it
+  laws
+    law "|a restarted consumer resumes at its committed offset| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (g :: Text where g !=
+            "") (m :: Text where m != "")
+          (batch :: List Record where smallBatch batch) (n :: Int32 where n >= 1
+            && n <= 16) =>
+          created t 1 implies
+          (prelude.isRight (prelude.attempt (produceRequest (TopicPartition
+            record{ topic = t , partition = 0}) Nothing batch))
+            && resumesAtCommitted t g m n) = true end for all
+      end definition
+      description :
+        "A consumer polls, commits and closes. When it subscribes again, it
       starts from the committed offset: a record is delivered again only at
       or after it, never before, so none is lost."
-    end
-  end
+      end description
+    end law
 
-  law `a poll reads each partition in offset order` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (batch :: List Record where smallBatch batch) .
-        created t 1 implies
-          (let tp = TopicPartition t 0 in
-           prelude.isRight (prelude.attempt (produceRequest tp Nothing batch))
-             && (assign [tp];
-                 match poll 10 with
-                 | Left e -> false
-                 | Right rs -> increasing (receivedOffsets rs)
-                 end)) = true
-    end
-  end
+    law "|a poll reads each partition in offset order| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (batch :: List Record
+          where smallBatch batch) =>
+          created t 1 implies
+          (let tp = TopicPartition record{ topic = t , partition = 0} in
+            prelude.isRight (prelude.attempt (produceRequest tp Nothing batch))
+              && (assign [tp];
+            first matching case of poll 10 :
+              when Left e then false
+              when Right rs then increasing (receivedOffsets rs)
+            end case) end let) = true end for all
+      end definition
+    end law
 
-  law `seek sets the position` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (offset :: Int64 where offset >= 0) .
-        created t 1 implies
-          (let tp = TopicPartition t 0 in assign [tp]; seek tp offset; position tp) = Right offset
-    end
-  end
+    law "|seek sets the position| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (offset :: Int64 where
+          offset >= 0) =>
+          created t 1 implies
+          (let tp = TopicPartition record{ topic = t , partition = 0} in assign
+            [tp]; seek tp offset; position tp end let) = Right offset
+        end for all
+      end definition
+    end law
 
-  law `only an assigned partition has a position` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (other :: Text where other != t) .
-        (assign [TopicPartition t 0]; position (TopicPartition other 0)) = Left IllegalState
-    end
-  end
+    law "|only an assigned partition has a position| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (other :: Text where
+          other != t) =>
+          (assign [TopicPartition record{ topic = t , partition = 0}]; position
+            (TopicPartition record{ topic = other , partition = 0})) = Left
+              IllegalState end for all
+      end definition
+    end law
 
-  law `a read-committed consumer never sees aborted records` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (txid :: Text where txid != "")
-        (aborted :: Record) (plain :: Record) .
-        created t 1 implies
-          (let tp = TopicPartition t 0 in
-           let a = writeAborted tp txid aborted in
-           let p = prelude.attempt (produceRequest tp Nothing [plain]) in
-           setIsolationLevel ReadCommitted;
-           assign [tp];
-           match poll 100 with
-           | Left e -> false
-           | Right rs ->
-               (match a with | Just o -> !(prelude.member o (prelude.setOf (receivedOffsets rs))) | Nothing -> false end)
-                 && (match p with | Right o -> prelude.member o (prelude.setOf (receivedOffsets rs)) | Left e -> false end)
-           end) = true
-    end
-    references are "KIP-98" end
-  end
-end
+    law "|a read-committed consumer never sees aborted records| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (txid :: Text where
+          txid != "")
+          (aborted :: Record) (plain :: Record) =>
+          created t 1 implies
+          (let tp = TopicPartition record{ topic = t , partition = 0} in
+            let a = writeAborted tp txid aborted in
+              let p = prelude.attempt (produceRequest tp Nothing [plain]) in
+                setIsolationLevel ReadCommitted;
+                  assign [tp];
+                first matching case of poll 100 :
+                  when Left e then false
+                  when Right rs then
+                    (first matching case of a : when Just o then
+                      !(prelude.sortedSetMember o (prelude.sortedSetOf
+                        (receivedOffsets rs))) when Nothing then false end case)
+                    && (first matching case of p : when Right o then
+                      prelude.sortedSetMember o (prelude.sortedSetOf
+                        (receivedOffsets rs)) when Left e then false end case)
+                end case end let end let end let) = true end for all
+      end definition
+      references : "KIP-98" end references
+    end law
+  end laws
+end ability
 
-handler kafkaConsumer for Consumer with state consumerState :: ConsumerState start freshConsumer unitValue is
-  assign by consumerAssign
-  subscribe by consumerJoin
-  poll by consumerPoll
-  commitSync by consumerCommit
-  seek by consumerSeek
-  position by consumerPositionOf
-  committedOffset by consumerCommitted
-  setIsolationLevel by consumerIsolation
-  close by consumerClose
-end
+handler kafkaConsumer for Consumer with state consumerState :: ConsumerState
+  start freshConsumer unitValue is
+  operation assign by consumerAssign end operation
+  operation subscribe by consumerJoin end operation
+  operation poll by consumerPoll end operation
+  operation commitSync by consumerCommit end operation
+  operation seek by consumerSeek end operation
+  operation position by consumerPositionOf end operation
+  operation committedOffset by consumerCommitted end operation
+  operation setIsolationLevel by consumerIsolation end operation
+  operation close by consumerClose end operation
+end handler
 
-definition receivedOffsets (rs :: List ConsumerRecord) :: List Int64 is
-  match rs with
-  | Nil -> []
-  | Cons r rest -> Cons r.receivedAt (receivedOffsets rest)
-  end
-end
+function receivedOffsets (rs :: List ConsumerRecord) -> List Int64 is
+  first matching case of rs :
+    when Nil then []
+    when Cons r rest then Cons r.receivedAt (receivedOffsets rest)
+  end case
+end function
 
-definition receivedRecords (rs :: List ConsumerRecord) :: List Record is
-  match rs with
-  | Nil -> []
-  | Cons r rest -> Cons r.received (receivedRecords rest)
-  end
-end
+function receivedRecords (rs :: List ConsumerRecord) -> List Record is
+  first matching case of rs :
+    when Nil then []
+    when Cons r rest then Cons r.received (receivedRecords rest)
+  end case
+end function
 
-definition increasing (xs :: List Int64) :: Bool is
-  match xs with
-  | Nil -> true
-  | Cons h t ->
-      match t with
-      | Nil -> true
-      | Cons h2 t2 -> h < h2 && increasing t
-      end
-  end
-end
+function increasing (xs :: List Int64) -> Bool is
+  first matching case of xs :
+    when Nil then true
+    when Cons h t then
+      first matching case of t :
+        when Nil then true
+        when Cons h2 t2 then h < h2 && increasing t
+      end case
+  end case
+end function
 
-definition allAtLeast (floor :: Int64) (xs :: List Int64) :: Bool is
-  match xs with
-  | Nil -> true
-  | Cons h t -> h >= floor && allAtLeast floor t
-  end
-end
+function allAtLeast (floor :: Int64) (xs :: List Int64) -> Bool is
+  first matching case of xs :
+    when Nil then true
+    when Cons h t then h >= floor && allAtLeast floor t
+  end case
+end function
 
 -- Subscribes, polls n records, commits and closes; then subscribes again
 -- and checks where it starts.
-definition resumesAtCommitted (t :: Text) (g :: Text) (m :: Text) (n :: Int32) :: Bool uses Consumer is
-  let tp = TopicPartition t 0 in
-  let joined = subscribe g m [t] in
-  let polled = poll n in
-  let committed = commitSync in
-  close;
-  let rejoined = subscribe g m [t] in
-  let resumed = position tp in
-  let after = committedOffset tp in
-  let again = poll 100 in
-  prelude.isRight joined && prelude.isRight polled && prelude.isRight committed && prelude.isRight rejoined
-    && (match after with
-        | Nothing -> false
-        | Just c ->
-            resumed == Right c
-              && (match again with | Left e -> false | Right rs -> allAtLeast c (receivedOffsets rs) end)
-        end)
-end
+procedure resumesAtCommitted (t :: Text) (g :: Text) (m :: Text) (n :: Int32) ->
+  Bool uses Consumer is
+  let tp = TopicPartition record{ topic = t , partition = 0} in
+    let joined = subscribe g m [t] in
+      let polled = poll n in
+        let committed = commitSync in
+          close;
+          let rejoined = subscribe g m [t] in
+            let resumed = position tp in
+              let after = committedOffset tp in
+                let again = poll 100 in
+                  prelude.isRight joined && prelude.isRight polled &&
+                    prelude.isRight committed && prelude.isRight rejoined
+                  && (first matching case of after :
+                    when Nothing then false
+                    when Just c then
+                      resumed = Right c
+                      && (first matching case of again : when Left e then false
+                        when Right rs then allAtLeast c (receivedOffsets rs)
+                      end case)
+                  end case) end let end let end let end let end let end let
+    end let end let
+end procedure
 
 -- Writes one record in a transaction that aborts, and gives its offset.
-definition writeAborted (tp :: TopicPartition) (txid :: Text) (r :: Record) :: Maybe Int64 uses Broker is
-  match prelude.attempt (initProducerIdRequest (Just txid)) with
-  | Left e -> Nothing
-  | Right pe ->
-      let added = prelude.attempt (addPartitionsToTxnRequest txid pe.producerId pe.producerEpoch [tp]) in
-      match prelude.attempt (produceRequest tp (Just (tagOf pe 0)) [r]) with
-      | Left e -> Nothing
-      | Right o ->
-          match prelude.attempt (endTxnRequest txid pe.producerId pe.producerEpoch false) with
-          | Left e -> Nothing
-          | Right u -> Just o
-          end
-      end
-  end
-end
+procedure writeAborted (tp :: TopicPartition) (txid :: Text) (r :: Record) ->
+  Maybe Int64 uses Broker is
+  first matching case of prelude.attempt (initProducerIdRequest (Just txid)) :
+    when Left e then Nothing
+    when Right pe then
+      let added = prelude.attempt (addPartitionsToTxnRequest txid pe.producerId
+          pe.producerEpoch [tp]) in
+        first matching case of prelude.attempt (produceRequest tp (Just (tagOf
+          pe 0)) [r]) :
+          when Left e then Nothing
+          when Right o then
+            first matching case of prelude.attempt (endTxnRequest txid
+              pe.producerId pe.producerEpoch false) :
+              when Left e then Nothing
+              when Right u then Just o
+            end case
+        end case end let
+  end case
+end procedure
 
 -- ---------------------------------------------------------------------------
 -- Group coordinator
@@ -1224,122 +1475,154 @@ end
 
 ability GroupCoordinator with Cluster is
   joinGroup :: Text -> Text -> List Text -> Int32 fails with KafkaError
-  syncGroup :: Text -> Text -> Int32 -> List TopicPartition fails with KafkaError
+  syncGroup :: Text -> Text -> Int32 -> List TopicPartition fails with
+  KafkaError
   heartbeat :: Text -> Text -> Int32 -> Unit fails with KafkaError
   leaveGroup :: Text -> Text -> Unit fails with KafkaError
   describeGroup :: Text -> GroupView
-  commitOffsets :: Text -> Text -> Int32 -> List OffsetEntry -> Unit fails with KafkaError
+  commitOffsets :: Text -> Text -> Int32 -> List OffsetEntry -> Unit fails with
+  KafkaError
   fetchOffset :: Text -> TopicPartition -> Maybe Int64
-laws
-  law `every partition has exactly one owner in a generation` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (n :: Int32 where n >= 1 && n <= 16)
-        (g :: Text where g != "") (ids :: List Text where !(prelude.isEmpty (memberIds ids))) .
-        created t n implies
-          (joinEach g (memberIds ids) [t] && coversOnce t n (describeGroup g)) = true
-    end
-    references are "KIP-848" end
-  end
+  laws
+    law "|every partition has exactly one owner in a generation| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (n :: Int32 where n >=
+            1 && n <= 16)
+          (g :: Text where g != "") (ids :: List Text where !(prelude.isEmpty
+            (memberIds ids))) =>
+          created t n implies
+          (joinEach g (memberIds ids) [t] && coversOnce t n (describeGroup g)) =
+            true end for all
+      end definition
+      references : "KIP-848" end references
+    end law
 
-  law `a sync gives a member the partitions the group view shows` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (n :: Int32 where n >= 1 && n <= 16)
-        (g :: Text where g != "") (m :: Text where m != "") .
-        created t n implies
-          (match prelude.attempt (joinGroup g m [t]) with
-           | Left e -> false
-           | Right gen ->
-               match prelude.attempt (syncGroup g m gen) with
-               | Left e -> false
-               | Right tps -> viewOf m (describeGroup g) == tps && (describeGroup g).generation == gen
-               end
-           end) = true
-    end
-  end
+    law "|a sync gives a member the partitions the group view shows| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (n :: Int32 where n >=
+            1 && n <= 16)
+          (g :: Text where g != "") (m :: Text where m != "") =>
+          created t n implies
+          (first matching case of prelude.attempt (joinGroup g m [t]) :
+            when Left e then false
+            when Right gen then
+              first matching case of prelude.attempt (syncGroup g m gen) :
+                when Left e then false
+                when Right tps then viewOf m (describeGroup g) = tps &&
+                    (describeGroup g).generation = gen
+              end case
+          end case) = true end for all
+      end definition
+    end law
 
-  law `a commit from an older generation is refused` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (g :: Text where g != "")
-        (one :: Text where one != "") (other :: Text where other != "" && other != one) .
-        created t 1 implies
-          (match prelude.attempt (joinGroup g one [t]) with
-           | Left e -> false
-           | Right old ->
-               let new = prelude.attempt (joinGroup g other [t]) in
-               (commitOffsets g one old [OffsetEntry (TopicPartition t 0) 0] fails with IllegalGeneration)
-                 && (match new with
-                     | Left e -> false
-                     | Right gen -> prelude.isRight (prelude.attempt (commitOffsets g other gen [OffsetEntry (TopicPartition t 0) 0]))
-                     end)
-           end) = true
-    end
-  end
+    law "|a commit from an older generation is refused| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (g :: Text where g !=
+            "")
+          (one :: Text where one != "") (other :: Text where other != "" &&
+            other != one) =>
+          created t 1 implies
+          (first matching case of prelude.attempt (joinGroup g one [t]) :
+            when Left e then false
+            when Right old then
+              let new = prelude.attempt (joinGroup g other [t]) in
+                (commitOffsets g one old [OffsetEntry record{ topicPartition =
+                    (TopicPartition record{ topic = t , partition = 0}) , offset
+                  =
+                    0}] fails with IllegalGeneration)
+                && (first matching case of new :
+                  when Left e then false
+                  when Right gen then prelude.isRight (prelude.attempt
+                      (commitOffsets g other gen [OffsetEntry record{
+                        topicPartition = (TopicPartition record{ topic = t ,
+                          partition = 0}) , offset = 0}]))
+                end case) end let
+          end case) = true end for all
+      end definition
+    end law
 
-  law `a heartbeat from an older generation asks the member to rejoin` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (g :: Text where g != "")
-        (one :: Text where one != "") (other :: Text where other != "" && other != one) .
-        created t 1 implies
-          (match prelude.attempt (joinGroup g one [t]) with
-           | Left e -> false
-           | Right old ->
-               let new = prelude.attempt (joinGroup g other [t]) in
-               (heartbeat g one old fails with IllegalGeneration)
-                 && (match prelude.attempt (joinGroup g one [t]) with
-                     | Left e -> false
-                     | Right rejoined -> new == Right rejoined && prelude.isRight (prelude.attempt (heartbeat g one rejoined))
-                     end)
-           end) = true
-    end
-    description is
-      "A rebalance moves the group to a new generation. A member at the old
+    law "|a heartbeat from an older generation asks the member to rejoin| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (g :: Text where g !=
+            "")
+          (one :: Text where one != "") (other :: Text where other != "" &&
+            other != one) =>
+          created t 1 implies
+          (first matching case of prelude.attempt (joinGroup g one [t]) :
+            when Left e then false
+            when Right old then
+              let new = prelude.attempt (joinGroup g other [t]) in
+                (heartbeat g one old fails with IllegalGeneration)
+                && (first matching case of prelude.attempt (joinGroup g one [t])
+                  :
+                  when Left e then false
+                  when Right rejoined then new = Right rejoined &&
+                      prelude.isRight (prelude.attempt (heartbeat g one
+                        rejoined))
+                end case) end let
+          end case) = true end for all
+      end definition
+      description :
+        "A rebalance moves the group to a new generation. A member at the old
       one is told so on its next heartbeat; when it rejoins with the same
       subscription it learns the new generation without starting another."
-    end
-  end
+      end description
+    end law
 
-  law `leaving starts a new generation` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (g :: Text where g != "") (m :: Text where m != "") .
-        created t 1 implies
-          (match prelude.attempt (joinGroup g m [t]) with
-           | Left e -> false
-           | Right gen -> prelude.isRight (prelude.attempt (leaveGroup g m)) && (describeGroup g).generation > gen
-                            && (heartbeat g m gen fails with UnknownMemberId)
-           end) = true
-    end
-  end
+    law "|leaving starts a new generation| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (g :: Text where g !=
+            "") (m :: Text where m != "") =>
+          created t 1 implies
+          (first matching case of prelude.attempt (joinGroup g m [t]) :
+            when Left e then false
+            when Right gen then prelude.isRight (prelude.attempt (leaveGroup g
+                m)) && (describeGroup g).generation > gen
+                && (heartbeat g m gen fails with UnknownMemberId)
+          end case) = true end for all
+      end definition
+    end law
 
-  law `a committed offset can be fetched` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (g :: Text where g != "") (m :: Text where m != "")
-        (offset :: Int64 where offset >= 0) .
-        created t 1 implies
-          (match prelude.attempt (joinGroup g m [t]) with
-           | Left e -> false
-           | Right gen ->
-               prelude.isRight (prelude.attempt (commitOffsets g m gen [OffsetEntry (TopicPartition t 0) offset]))
-                 && fetchOffset g (TopicPartition t 0) == Just offset
-           end) = true
-    end
-  end
-end
+    law "|a committed offset can be fetched| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (g :: Text where g !=
+            "") (m :: Text where m != "")
+          (offset :: Int64 where offset >= 0) =>
+          created t 1 implies
+          (first matching case of prelude.attempt (joinGroup g m [t]) :
+            when Left e then false
+            when Right gen then
+              prelude.isRight (prelude.attempt (commitOffsets g m gen
+                [OffsetEntry record{ topicPartition = (TopicPartition record{
+                    topic = t , partition = 0}) , offset = offset}]))
+                && fetchOffset g (TopicPartition record{ topic = t , partition =
+                    0}) = Just offset
+          end case) = true end for all
+      end definition
+    end law
+  end laws
+end ability
 
-definition joinEach (g :: Text) (ms :: List Text) (topics :: List Text) :: Bool uses GroupCoordinator is
-  match ms with
-  | Nil -> true
-  | Cons m rest -> prelude.isRight (prelude.attempt (joinGroup g m topics)) && joinEach g rest topics
-  end
-end
+procedure joinEach (g :: Text) (ms :: List Text) (topics :: List Text) -> Bool
+  uses GroupCoordinator is
+  first matching case of ms :
+    when Nil then true
+    when Cons m rest then prelude.isRight (prelude.attempt (joinGroup g m
+        topics)) && joinEach g rest topics
+  end case
+end procedure
 
-definition viewOf (m :: Text) (view :: GroupView) :: List TopicPartition is assignmentIn m view.members end
+function viewOf (m :: Text) (view :: GroupView) -> List TopicPartition is
+  assignmentIn m view.members end function
 
-definition assignmentIn (m :: Text) (ms :: List MemberAssignment) :: List TopicPartition is
-  match ms with
-  | Nil -> []
-  | Cons a rest -> if a.memberId == m then a.assigned else assignmentIn m rest
-  end
-end
+function assignmentIn (m :: Text) (ms :: List MemberAssignment) -> List
+  TopicPartition is
+  first matching case of ms :
+    when Nil then []
+    when Cons a rest then if a.memberId = m then a.assigned else assignmentIn m
+        rest end if
+  end case
+end function
 
 -- ---------------------------------------------------------------------------
 -- Transactions
@@ -1353,87 +1636,106 @@ ability Transactions with Cluster is
   sendOffsetsToTransaction :: Text -> List OffsetEntry -> Either KafkaError Unit
   commitTransaction :: Either KafkaError Unit
   abortTransaction :: Either KafkaError Unit
-laws
-  law `a newer instance fences a zombie` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (txid :: Text where txid != "") (r :: Record) .
-        created t 1 implies
+  laws
+    law "|a newer instance fences a zombie| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (txid :: Text where
+          txid != "") (r :: Record) =>
+          created t 1 implies
           (prelude.isRight (initTransactions txid)
-            && beginTransaction == Right unitValue
-            && prelude.isRight (prelude.attempt (initProducerIdRequest (Just txid)))
-            && sendInTransaction (ProducerRecord t (ToPartition 0) r) == Left ProducerFenced) = true
-    end
-    description is
-      "Another instance initialises the same transactional id. The first
+            && beginTransaction = Right unitValue
+            && prelude.isRight (prelude.attempt (initProducerIdRequest (Just
+              txid)))
+            && sendInTransaction (ProducerRecord record{ destination = t ,
+              choice = (ToPartition 0) , payload = r}) = Left ProducerFenced) =
+            true end for all
+      end definition
+      description :
+        "Another instance initialises the same transactional id. The first
       instance is now a zombie: its next transactional request is fenced."
-    end
-    references are "KIP-98" end
-  end
+      end description
+      references : "KIP-98" end references
+    end law
 
-  law `aborted records are never read committed` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (txid :: Text where txid != "") (r :: Record) .
-        created t 1 implies
-          (let tp = TopicPartition t 0 in
-           prelude.isRight (initTransactions txid)
-             && beginTransaction == Right unitValue
-             && (match sendInTransaction (ProducerRecord t (ToPartition 0) r) with
-                 | Left e -> false
-                 | Right md -> abortTransaction == Right unitValue && committedFrom tp md.sentAt == []
-                 end)) = true
-    end
-    references are "KIP-98" end
-  end
+    law "|aborted records are never read committed| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (txid :: Text where
+          txid != "") (r :: Record) =>
+          created t 1 implies
+          (let tp = TopicPartition record{ topic = t , partition = 0} in
+            prelude.isRight (initTransactions txid)
+              && beginTransaction = Right unitValue
+            && (first matching case of sendInTransaction (ProducerRecord record{
+              destination = t , choice = (ToPartition 0) , payload = r}) :
+              when Left e then false
+              when Right md then abortTransaction = Right unitValue &&
+                  committedFrom tp md.sentAt = []
+            end case) end let) = true end for all
+      end definition
+      references : "KIP-98" end references
+    end law
 
-  law `committed records are read committed together and in order` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (txid :: Text where txid != "") (first :: Record) (second :: Record) .
-        created t 1 implies
-          (let tp = TopicPartition t 0 in
-           prelude.isRight (initTransactions txid)
-             && beginTransaction == Right unitValue
-             && (match sendInTransaction (ProducerRecord t (ToPartition 0) first) with
-                 | Left e -> false
-                 | Right md ->
-                     prelude.isRight (sendInTransaction (ProducerRecord t (ToPartition 0) second))
-                       && committedFrom tp md.sentAt == []
-                       && commitTransaction == Right unitValue
-                       && committedFrom tp md.sentAt == [first, second]
-                 end)) = true
-    end
-    references are "KIP-98" end
-  end
+    law "|committed records are read committed together and in order| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (txid :: Text where
+          txid != "") (first :: Record) (second :: Record) =>
+          created t 1 implies
+          (let tp = TopicPartition record{ topic = t , partition = 0} in
+            prelude.isRight (initTransactions txid)
+              && beginTransaction = Right unitValue
+            && (first matching case of sendInTransaction (ProducerRecord record{
+              destination = t , choice = (ToPartition 0) , payload = first}) :
+              when Left e then false
+              when Right md then
+                prelude.isRight (sendInTransaction (ProducerRecord record{
+                  destination = t , choice = (ToPartition 0) , payload =
+                    second}))
+                  && committedFrom tp md.sentAt = []
+                  && commitTransaction = Right unitValue
+                  && committedFrom tp md.sentAt = [first, second]
+            end case) end let) = true end for all
+      end definition
+      references : "KIP-98" end references
+    end law
 
-  law `offsets sent in an aborted transaction are not committed` is
-    definition is
-      `for all` (t :: Text where model.validTopicName t) (txid :: Text where txid != "") (g :: Text where g != "")
-        (offset :: Int64 where offset >= 0) .
-        created t 1 implies
-          (let tp = TopicPartition t 0 in
-           let before = offsetFetchRequest g tp in
-           prelude.isRight (initTransactions txid)
-             && beginTransaction == Right unitValue
-             && sendOffsetsToTransaction g [OffsetEntry tp offset] == Right unitValue
-             && abortTransaction == Right unitValue
-             && offsetFetchRequest g tp == before) = true
-    end
-    references are "KIP-98" end
-  end
+    law "|offsets sent in an aborted transaction are not committed| is
+      definition :
+        for all (t :: Text where model.validTopicName t) (txid :: Text where
+          txid != "") (g :: Text where g != "")
+          (offset :: Int64 where offset >= 0) =>
+          created t 1 implies
+          (let tp = TopicPartition record{ topic = t , partition = 0} in
+            let before = offsetFetchRequest g tp in
+              prelude.isRight (initTransactions txid)
+                && beginTransaction = Right unitValue
+                && sendOffsetsToTransaction g [OffsetEntry record{
+                  topicPartition = tp , offset = offset}] = Right unitValue
+                && abortTransaction = Right unitValue
+                && offsetFetchRequest g tp = before end let end let) = true
+        end for all
+      end definition
+      references : "KIP-98" end references
+    end law
 
-  law `a transaction must begin before it ends` is
-    definition is
-      `for all` (txid :: Text where txid != "") .
-        (let id = initTransactions txid in commitTransaction) = Left IllegalState
-    end
-  end
-end
+    law "|a transaction must begin before it ends| is
+      definition :
+        for all (txid :: Text where txid != "") =>
+          (let id = initTransactions txid in commitTransaction end let) = Left
+            IllegalState end for all
+      end definition
+    end law
+  end laws
+end ability
 
-handler kafkaTransactions for Transactions with state txnState :: TransactionState start freshTransactions unitValue is
-  initTransactions by transactionsInit
-  beginTransaction by transactionsBegin
-  addPartitionsToTransaction by transactionsAdd
-  sendInTransaction by transactionsSend
-  sendOffsetsToTransaction by transactionsOffsets
-  commitTransaction by transactionsCommit
-  abortTransaction by transactionsAbort
-end
+handler kafkaTransactions for Transactions with state txnState ::
+  TransactionState start freshTransactions unitValue is
+  operation initTransactions by transactionsInit end operation
+  operation beginTransaction by transactionsBegin end operation
+  operation addPartitionsToTransaction by transactionsAdd end operation
+  operation sendInTransaction by transactionsSend end operation
+  operation sendOffsetsToTransaction by transactionsOffsets end operation
+  operation commitTransaction by transactionsCommit end operation
+  operation abortTransaction by transactionsAbort end operation
+end handler
+
+end unit

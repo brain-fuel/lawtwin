@@ -53,6 +53,14 @@ fn build() -> ls::Result<ls::Schema> {
             }],
         },
         ls::DataSchema {
+            name: "lawspec.collections::type::EqSet",
+            parameters: 1,
+            constructors: vec![ls::ConstructorSchema {
+                tag: "lawspec.collections::type::EqSet::EqSetItems",
+                fields: vec![ls::TypeRef::named("List", vec![ls::TypeRef::Parameter(0)])],
+            }],
+        },
+        ls::DataSchema {
             name: "lawspec.collections::type::KeyVal",
             parameters: 2,
             constructors: vec![ls::ConstructorSchema {
@@ -486,20 +494,17 @@ fn build() -> ls::Result<ls::Schema> {
             constructors: vec![
                 ls::ConstructorSchema {
                     tag: "lawtwin.kafka.model::type::LogEntry::DataEntry",
-                    fields: vec![
-                        ls::TypeRef::named("Int64", vec![]),
-                        ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
-                        ls::TypeRef::named("Int64", vec![]),
-                        ls::TypeRef::named("Bool", vec![]),
-                    ],
+                    fields: vec![ls::TypeRef::named(
+                        "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be",
+                        vec![],
+                    )],
                 },
                 ls::ConstructorSchema {
                     tag: "lawtwin.kafka.model::type::LogEntry::ControlEntry",
-                    fields: vec![
-                        ls::TypeRef::named("Int64", vec![]),
-                        ls::TypeRef::named("Int64", vec![]),
-                        ls::TypeRef::named("Bool", vec![]),
-                    ],
+                    fields: vec![ls::TypeRef::named(
+                        "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3",
+                        vec![],
+                    )],
                 },
             ],
         },
@@ -593,22 +598,10 @@ fn build() -> ls::Result<ls::Schema> {
                 },
                 ls::ConstructorSchema {
                     tag: "lawtwin.kafka.model::type::TxnState::Ongoing",
-                    fields: vec![
-                        ls::TypeRef::named(
-                            "List",
-                            vec![ls::TypeRef::named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                                vec![],
-                            )],
-                        ),
-                        ls::TypeRef::named(
-                            "List",
-                            vec![ls::TypeRef::named(
-                                "lawtwin.kafka.model::type::PendingOffset",
-                                vec![],
-                            )],
-                        ),
-                    ],
+                    fields: vec![ls::TypeRef::named(
+                        "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee",
+                        vec![],
+                    )],
                 },
             ],
         },
@@ -713,6 +706,54 @@ fn build() -> ls::Result<ls::Schema> {
                             ls::TypeRef::named("lawtwin.kafka.model::type::GroupPartition", vec![]),
                             ls::TypeRef::named("Int64", vec![]),
                         ],
+                    ),
+                ],
+            }],
+        },
+        ls::DataSchema {
+            name: "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be",
+            parameters: 0,
+            constructors: vec![ls::ConstructorSchema {
+                tag: "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record",
+                fields: vec![
+                    ls::TypeRef::named("Int64", vec![]),
+                    ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
+                    ls::TypeRef::named("Bool", vec![]),
+                    ls::TypeRef::named("Int64", vec![]),
+                ],
+            }],
+        },
+        ls::DataSchema {
+            name: "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3",
+            parameters: 0,
+            constructors: vec![ls::ConstructorSchema {
+                tag: "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record",
+                fields: vec![
+                    ls::TypeRef::named("Bool", vec![]),
+                    ls::TypeRef::named("Int64", vec![]),
+                    ls::TypeRef::named("Int64", vec![]),
+                ],
+            }],
+        },
+        ls::DataSchema {
+            name: "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee",
+            parameters: 0,
+            constructors: vec![ls::ConstructorSchema {
+                tag: "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record",
+                fields: vec![
+                    ls::TypeRef::named(
+                        "List",
+                        vec![ls::TypeRef::named(
+                            "lawtwin.kafka.model::type::PendingOffset",
+                            vec![],
+                        )],
+                    ),
+                    ls::TypeRef::named(
+                        "List",
+                        vec![ls::TypeRef::named(
+                            "lawtwin.kafka.model::type::TopicPartition",
+                            vec![],
+                        )],
                     ),
                 ],
             }],

@@ -17,4 +17,6 @@ import lawtwin.github as api
 import lawtwin.github.model as model (ApiError, State)
 
 -- A placeholder, so the unit is not empty; delete it once a law is here.
-definition noHandWrittenLawsYet (u :: Unit) :: Unit is unitValue end
+function noHandWrittenLawsYet (u :: Unit) -> Unit is unitValue end function
+
+end unit

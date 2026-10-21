@@ -161,12 +161,29 @@ def strategy(schema, reference, bits, budget, scalar, symbols=None,
                         continue
                     children = [build(field.type, cost)
                                 for field, cost in zip(fields, costs)]
+                    # A field a regex refines also draws the regex's
+                    # samples, so the refinement below rarely rejects.
+                    for index, texts in constructor.hints:
+                        if index < len(children) and texts:
+                            children[index] = st.one_of(
+                                children[index], st.sampled_from(texts))
                     values = st.tuples(*children).map(
                         lambda values, tag=constructor.tag, keys=keys:
                         ls.DataValue(tag, tuple(values) + keys))
-                    if constructor.predicates:
-                        values = values.filter(lambda value: valid(ty, value))
                     alternatives.append(values)
+            if ty.name == "lawspec.collections::type::EqSet":
+                def distinct(value):
+                    items = []
+                    try:
+                        for item in value.fields[0]:
+                            if not any(schema.equal(ty.arguments[0], item, prior,
+                                                    bits, symbols) for prior in items):
+                                items.append(item)
+                    except RefinementViolation:
+                        return value
+                    return ls.DataValue(value.tag, (items,))
+                return st.one_of(*alternatives).map(distinct).filter(
+                    lambda value: valid(ty, value))
             if ty.name in CANONICAL:
                 return st.one_of(*alternatives).map(CANONICAL[ty.name])
             return st.one_of(*alternatives)
@@ -206,9 +223,13 @@ def strategy(schema, reference, bits, budget, scalar, symbols=None,
 
     if index is not None:
         target, equations = index
-        return indexed_strategy(schema, reference, int(target), equations,
-                                budget, build, inhabited, valid)
-    return build(reference, budget)
+        generated = indexed_strategy(schema, reference, int(target), equations,
+                                     budget, build, inhabited, valid)
+    else:
+        generated = build(reference, budget)
+    # Validate complete candidates and shrink results, including nested index
+    # guards. Invalid native factory samples still fail in their checked map.
+    return generated.filter(lambda value: valid(reference, value))
 
 
 def _canonical(key):

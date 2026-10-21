@@ -146,6 +146,10 @@ let private canonical (t: TypeRef) (value: Value) =
             | _ -> item :: acc) []
         |> List.rev
     match t, value with
+    | Named("lawspec.collections::type::EqSet", _), Data(tag, [ List items ]) ->
+        let distinct = items |> List.fold (fun previous item ->
+            if List.exists (Scalar.equal item) previous then previous else item :: previous) [] |> List.rev
+        Data(tag, [ List distinct ])
     | Named("lawspec.collections::type::Set", _), Data(tag, [ List items ]) -> Data(tag, [ List(distinctSorted id items) ])
     | Named("lawspec.collections::type::KeyVal", _), Data(tag, [ List entries ]) ->
         Data(tag, [ List(distinctSorted (function Data(_, [ k; _ ]) -> k | v -> v) entries) ])

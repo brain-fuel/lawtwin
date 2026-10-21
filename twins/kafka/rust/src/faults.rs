@@ -60,15 +60,37 @@ pub fn declared() -> TwinFile {
 
 /// The Kafka request types a fault may name.
 pub const APIS: &[&str] = &[
-    "Produce", "Fetch", "ListOffsets", "Metadata", "OffsetCommit", "OffsetFetch", "FindCoordinator", "JoinGroup",
-    "Heartbeat", "LeaveGroup", "SyncGroup", "DescribeGroups", "ListGroups", "ApiVersions", "CreateTopics",
-    "InitProducerId", "AddPartitionsToTxn", "AddOffsetsToTxn", "EndTxn", "TxnOffsetCommit", "DescribeConfigs",
+    "Produce",
+    "Fetch",
+    "ListOffsets",
+    "Metadata",
+    "OffsetCommit",
+    "OffsetFetch",
+    "FindCoordinator",
+    "JoinGroup",
+    "Heartbeat",
+    "LeaveGroup",
+    "SyncGroup",
+    "DescribeGroups",
+    "ListGroups",
+    "ApiVersions",
+    "CreateTopics",
+    "InitProducerId",
+    "AddPartitionsToTxn",
+    "AddOffsetsToTxn",
+    "EndTxn",
+    "TxnOffsetCommit",
+    "DescribeConfigs",
     "CreatePartitions",
 ];
 
 /// A fault, as active in the twin.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-#[serde(tag = "name", rename_all = "kebab-case", rename_all_fields = "camelCase")]
+#[serde(
+    tag = "name",
+    rename_all = "kebab-case",
+    rename_all_fields = "camelCase"
+)]
 pub enum Fault {
     /// The broker cannot be reached.
     BrokerUnavailable,
@@ -131,8 +153,12 @@ fn get<'a>(params: &'a Map<String, Value>, name: &str) -> Option<&'a Value> {
 fn int(params: &Map<String, Value>, name: &str, default: i64) -> Result<i64, String> {
     match get(params, name) {
         None => Ok(default),
-        Some(Value::Number(n)) => n.as_i64().ok_or_else(|| format!("{name} must be a whole number")),
-        Some(Value::String(s)) => s.parse().map_err(|_| format!("{name} must be a whole number, not {s}")),
+        Some(Value::Number(n)) => n
+            .as_i64()
+            .ok_or_else(|| format!("{name} must be a whole number")),
+        Some(Value::String(s)) => s
+            .parse()
+            .map_err(|_| format!("{name} must be a whole number, not {s}")),
         Some(v) => Err(format!("{name} must be a whole number, not {v}")),
     }
 }
@@ -150,8 +176,13 @@ fn duration(params: &Map<String, Value>, name: &str) -> Result<Option<i64>, Stri
     match get(params, name) {
         None => Ok(None),
         Some(Value::String(s)) => parse_duration(s).map(Some),
-        Some(Value::Number(n)) => n.as_i64().map(Some).ok_or_else(|| format!("{name} must be a duration")),
-        Some(v) => Err(format!("{name} must be a duration such as 500ms or 5s, not {v}")),
+        Some(Value::Number(n)) => n
+            .as_i64()
+            .map(Some)
+            .ok_or_else(|| format!("{name} must be a duration")),
+        Some(v) => Err(format!(
+            "{name} must be a duration such as 500ms or 5s, not {v}"
+        )),
     }
 }
 
@@ -162,14 +193,22 @@ pub fn parse(name: &str, params: &Map<String, Value>) -> Result<(Fault, Option<i
     let decl = file.faults.iter().find(|f| f.name == name).ok_or_else(|| {
         format!(
             "{name} is not a declared fault; the twin file declares {}",
-            file.faults.iter().map(|f| f.name.as_str()).collect::<Vec<_>>().join(", ")
+            file.faults
+                .iter()
+                .map(|f| f.name.as_str())
+                .collect::<Vec<_>>()
+                .join(", ")
         )
     })?;
     for key in params.keys() {
         if !decl.params.iter().any(|p| &p.name == key) {
             return Err(format!(
                 "{name} has no parameter {key}; it takes {}",
-                decl.params.iter().map(|p| p.name.as_str()).collect::<Vec<_>>().join(", ")
+                decl.params
+                    .iter()
+                    .map(|p| p.name.as_str())
+                    .collect::<Vec<_>>()
+                    .join(", ")
             ));
         }
     }
@@ -183,7 +222,9 @@ pub fn parse(name: &str, params: &Map<String, Value>) -> Result<(Fault, Option<i
         "broker-unavailable" => Fault::BrokerUnavailable,
         "leader-change" => Fault::LeaderChange {
             topic: text(params, "topic")?,
-            partition: get(params, "partition").map(|_| int(params, "partition", 0).map(|p| p as i32)).transpose()?,
+            partition: get(params, "partition")
+                .map(|_| int(params, "partition", 0).map(|p| p as i32))
+                .transpose()?,
         },
         "consumer-lag" => {
             let records = int(params, "records", 1)?;
@@ -201,14 +242,20 @@ pub fn parse(name: &str, params: &Map<String, Value>) -> Result<(Fault, Option<i
             if count < 1 {
                 return Err("count must be 1 or more".into());
             }
-            Fault::DuplicateDelivery { count: count.min(i32::MAX as i64) as i32, topic: text(params, "topic")? }
+            Fault::DuplicateDelivery {
+                count: count.min(i32::MAX as i64) as i32,
+                topic: text(params, "topic")?,
+            }
         }
         "rebalance-storm" => {
             let rounds = int(params, "rounds", 3)?;
             if rounds < 1 {
                 return Err("rounds must be 1 or more".into());
             }
-            Fault::RebalanceStorm { rounds: rounds.min(1000) as i32, group: text(params, "group")? }
+            Fault::RebalanceStorm {
+                rounds: rounds.min(1000) as i32,
+                group: text(params, "group")?,
+            }
         }
         "request-latency" => {
             let api = text(params, "api")?;
@@ -217,9 +264,16 @@ pub fn parse(name: &str, params: &Map<String, Value>) -> Result<(Fault, Option<i
                     return Err(format!("{a} is not a request type the twin answers"));
                 }
             }
-            Fault::RequestLatency { delay_ms: duration(params, "delay")?.unwrap_or(0), api }
+            Fault::RequestLatency {
+                delay_ms: duration(params, "delay")?.unwrap_or(0),
+                api,
+            }
         }
-        _ => return Err(format!("{name} is declared but this twin does not implement it")),
+        _ => {
+            return Err(format!(
+                "{name} is declared but this twin does not implement it"
+            ));
+        }
     };
     Ok((fault, lasting))
 }
@@ -250,10 +304,17 @@ mod tests {
     fn every_law_the_twin_file_names_is_a_law_of_the_contract() {
         let contract = include_str!("../../../../contracts/kafka/src/contract.lawspec");
         let file = declared();
-        let mut names: Vec<String> = file.faults.iter().flat_map(|f| f.laws.keys().cloned()).collect();
+        let mut names: Vec<String> = file
+            .faults
+            .iter()
+            .flat_map(|f| f.laws.keys().cloned())
+            .collect();
         names.extend(file.force["refusals"].as_object().unwrap().keys().cloned());
         for law in names {
-            assert!(contract.contains(&format!("law `{law}`")), "{law} is not a law of the contract");
+            assert!(
+                contract.contains(&format!("law \"|{law}|")),
+                "{law} is not a law of the contract"
+            );
         }
     }
 
@@ -262,9 +323,23 @@ mod tests {
         assert!(parse("disk-full", &Map::new()).is_err());
         assert!(parse("consumer-lag", &params(json!({"speed": 3}))).is_err());
         assert!(parse("request-latency", &Map::new()).is_err());
-        assert!(parse("request-latency", &params(json!({"delay": "1s", "api": "Gossip"}))).is_err());
-        let (f, until) = parse("consumer-lag", &params(json!({"records": 2, "for": "5s"}))).unwrap();
-        assert_eq!(f, Fault::ConsumerLag { records: 2, delay_ms: 0, topic: None });
+        assert!(
+            parse(
+                "request-latency",
+                &params(json!({"delay": "1s", "api": "Gossip"}))
+            )
+            .is_err()
+        );
+        let (f, until) =
+            parse("consumer-lag", &params(json!({"records": 2, "for": "5s"}))).unwrap();
+        assert_eq!(
+            f,
+            Fault::ConsumerLag {
+                records: 2,
+                delay_ms: 0,
+                topic: None
+            }
+        );
         assert_eq!(until, Some(5000));
     }
 }

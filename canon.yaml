@@ -7,6 +7,7 @@ vetting: canonical_vetting
 ignore:
   - .canon/
   - .canon-cache/
+  - .artifacts/
   - "*.md"
   - "!docs/**/*.md"
   - contracts/*/test/.lawspec/

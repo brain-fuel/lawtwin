@@ -3,17 +3,17 @@
   "files": {
     "tests/lawspec_collections_lawspec.rs": "b17c94c33fafdf00864e7c4707edb53672f3cfdb375299a90a55a317e31a6071",
     "tests/lawspec_matchers_lawspec.rs": "d16a7f7441253f1ee59b39e002812e460862c97b509c84a0b2c26e28e3f1fd21",
-    "tests/lawtwin_kafka_lawspec.rs": "e878ac346444485f678e65575a51c7c64a171081f09b033c7f7eadcaab5eb077",
+    "tests/lawtwin_kafka_lawspec.rs": "d153e202a869916a33771991891b882cdba07b58ff6290217b39de30b0ad886f",
     "tests/lawtwin_kafka_model_lawspec.rs": "b51959eb238a1b076def67110487e68c2eee58ecc097669f39975a121eceafb7",
     "tests/contracttest_kafka_lawspec.rs": "1e55f81c48d46008247618db71d737230b57ff54f367319114aa1db532d6c466",
-    "src/lawspec_data.rs": "9a746198091b269586ebcbb510196a000afd424b8d3763cd051d4b9b924df4df",
-    "src/lawspec_schema.rs": "782dc8e54cc89899989c6217ae17c10de3020ed943f640c0cee5c779c2c719cc",
-    "src/lawspec_definitions.rs": "f4ac86720e4d792e5b1a96c185545f551980f1e174e6156e618de55792b2e3ff",
+    "src/lawspec_data.rs": "0e985cab8c56b222090a6631ab9cc7fc7b1a34c5770659f3d1568f89b1527439",
+    "src/lawspec_schema.rs": "6f0547689fcd48007a3ce0b3aa219716c0ca34505477c4c10e6b8f796bf7074a",
+    "src/lawspec_definitions.rs": "3214976bfcade59a0ff43ae1febcfac72fc25107022b77954e64a85de593a6ba",
     "src/lawspec_abilities.rs": "7977fd60c1ef0a82b4e13661d8382ec23327f9114e3513dd2855100b2565b63a",
-    "src/lawspec_runtime.rs": "350b8dcc7caff96779ea747b5f1ecaff5be448ddb1497a644d4a8e591f147152",
+    "src/lawspec_runtime.rs": "688ba4ba40eda80207abc489b18461cdfbe0585a73befa284e4e45892b497e7d",
     "src/lawspec_modules.rs": "91dfe5cfa584cdf77778f3be99836567aaa8335de84ea69fd3b12310f8fb7eb5",
-    "tests/support/lawspec_strategies.rs": "49c80d974b695987c43b5905ad1cb3655878a79af4635cc3b24df742733b1fac",
-    "src/lawspec_remote.rs": "8ab30ef6a80714b87327ec85f4988ccd3549a611fe3fa7eb8006143efb81d9f1"
+    "tests/support/lawspec_strategies.rs": "b801c9ddc702588b6b30e6a14c1e7b200ae2e0229f4f3ca8f6fb5510e8238df6",
+    "src/lawspec_remote.rs": "4f2caf1340b8f06e1be17d3a5fd1e0dac30dcbf7c8fdf8168db542f017084cd4"
   },
   "adapters": {
     "src/lawspec/collections.rs": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032",

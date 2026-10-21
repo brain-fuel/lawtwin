@@ -53,8 +53,8 @@ fn petstore_3_0_json() {
     let model = read(out.join("src/model.lawspec"));
     let api = read(out.join("src/api.lawspec"));
     // Objects are records, enums sums, optional fields Maybe.
-    assert!(model.contains("type Pet is\n  Pet\n    id :: Maybe Int64\n    name :: Text\n"));
-    assert!(model.contains("type PetStatus is\n  | Available -- \"available\""));
+    assert!(model.contains("type Pet is a record{\n    id :: Maybe Int64\n    name :: Text\n"));
+    assert!(model.contains("type PetStatus is one of\n  | Available -- \"available\""));
     // An inline enum with the values of a named one is that one.
     assert!(api.contains("findPetsByStatus :: PetStatus -> List Pet fails with ApiError"));
     // One ability per tag, with typed failures.
@@ -62,18 +62,19 @@ fn petstore_3_0_json() {
     assert!(api.contains("ability StoreApi with Service is"));
     assert!(model.contains("  | UnprocessableEntity -- HTTP 422"));
     // A pet's key comes from the body, or the service assigns it.
-    assert!(model.contains("let key = (match body.id with | Just given -> given | Nothing -> current_.nextPetKey end) in"));
-    assert!(api.contains("law `a created pet reads back` is"));
-    assert!(api.contains("law `a deleted pet is not found` is"));
-    assert!(api.contains("law `a replaced pet reads back as replaced` is"));
+    assert!(model.contains("let key = (first matching case of body.id : when Just given then given when Nothing then current_.nextPetKey end case) in"));
+    assert!(api.contains("law \"|a created pet reads back| is"));
+    assert!(api.contains("law \"|a deleted pet is not found| is"));
+    assert!(api.contains("law \"|a replaced pet reads back as replaced| is"));
     // A user's key must be given.
     assert!(api.contains("(body with username = Just keyGiven)"));
     // What the importer cannot model is left to the author.
-    assert!(api.contains("findPetsByStatus by handwritten.findPetsByStatus"));
     assert!(
-        read(out.join("src/handwritten.lawspec")).contains(
-            "definition findPetsByStatus (status :: model.PetStatus) (current_ :: State)"
-        )
+        api.contains("operation findPetsByStatus by handwritten.findPetsByStatus end operation")
+    );
+    assert!(
+        read(out.join("src/handwritten.lawspec"))
+            .contains("procedure findPetsByStatus (status :: model.PetStatus) (current_ :: State)")
     );
     // Native handlers for the test project on Rust and Python.
     assert!(
@@ -84,6 +85,20 @@ fn petstore_3_0_json() {
         read(out.join("test/python/src/lawtwin/petstore/__init__.py"))
             .contains("class PetApiHandler(_Reference)")
     );
+    let configuration: serde_json::Value =
+        serde_json::from_str(&read(out.join("test/lawspec.json"))).unwrap();
+    assert_eq!(configuration["version"], 2);
+    assert_eq!(configuration["languageProfile"], "1.0-rc.2");
+    assert!(
+        configuration["verification"]["layers"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .any(|layer| layer == "property")
+    );
+    let adapter = read(out.join("lawtwin-embed.rs"));
+    assert!(adapter.contains("self.handler.try_addPet("));
+    assert!(!adapter.contains("lawspec_definitions"));
     let map: serde_json::Value =
         serde_json::from_str(&read(out.join("lawtwin-openapi.json"))).unwrap();
     assert_eq!(map["resources"].as_array().unwrap().len(), 3);
@@ -108,7 +123,7 @@ fn petstore_3_0_yaml() {
     // The `Pets` schema is an array, so it is no type of its own.
     assert!(api.contains("listPets :: Maybe Int32 -> List Pet fails with ApiError"));
     assert!(model.contains(
-        "definition modelShowPetById (petId :: Text) (current_ :: State) :: Pair Pet State"
+        "procedure modelShowPetById (petId :: Text) (current_ :: State) -> Pair Pet State"
     ));
     // The path names a pet by text, but a pet's id is an integer: the
     // importer does not guess how they meet, and leaves the create alone.
@@ -130,24 +145,24 @@ fn features_of_3_1() {
     // `type: [string, "null"]` is Maybe; maps are KeyVal Text; allOf merges.
     assert!(model.contains("    body :: Maybe Text\n"));
     assert!(model.contains("    meta :: Maybe (KeyVal Text Text)\n"));
-    assert!(model.contains("type Note is\n  Note\n    title :: Text\n"));
+    assert!(model.contains("type Note is a record{\n    title :: Text\n"));
     assert!(model.contains("    created :: Text\n"));
     // oneOf is a sum with a constructor per alternative; a null one is Maybe.
-    assert!(model.contains("  | HitNote payload :: Note"));
+    assert!(model.contains("  | HitNote of type Note"));
     assert!(api.contains("search :: Text -> Maybe Hit fails with ApiError"));
     // Bounds, lengths, patterns and formats are refinements and validation.
-    assert!(model.contains("refinement NewNoteTitle is (v :: Text where prelude.length v >= 1 && prelude.length v <= 80) end"));
-    assert!(model.contains("refinement NewNotePriority is (v :: Float64 where prelude.isFinite v && v > 0.0 && v <= 10.0) end"));
+    assert!(model.contains("refinement NewNoteTitle is (v :: Text where prelude.length v >= 1 && prelude.length v <= 80) end refinement"));
+    assert!(model.contains("refinement NewNotePriority is (v :: Float64 where prelude.isFinite v && v > 0.0 && v <= 10.0) end refinement"));
     assert!(model.contains("item matches regex \"[a-z0-9-]+\""));
     assert!(model.contains("if !(validNewNote body) then raise UnprocessableEntity else"));
     // Status ranges are failures too.
     assert!(model.contains("  | ClientError -- HTTP 4XX"));
     // A patch changes only the fields it gives.
-    assert!(api.contains("law `an update changes only the fields it gives to a note` is"));
+    assert!(api.contains("law \"|an update changes only the fields it gives to a note| is"));
     assert!(model.contains(
-        "title = (match change.title with | Nothing -> old.title | Just given -> given end)"
+        "title = (first matching case of change.title : when Nothing then old.title when Just given then given end case)"
     ));
-    assert!(api.contains("law `the list holds a created note` is"));
+    assert!(api.contains("law \"|the list holds a created note| is"));
 }
 
 /// A second import keeps the hand-written unit and names what it lacks.
@@ -157,9 +172,16 @@ fn hand_written_units_are_kept() {
     let doc = repo().join("openapi/petstore3.json");
     import(&doc, "lawtwin.petstore", &out, &["--tag", "pet"]);
     let hand = out.join("src/handwritten.lawspec");
-    std::fs::write(&hand, "unit lawtwin.petstore.handwritten\n-- mine\n").unwrap();
+    std::fs::write(
+        &hand,
+        "unit lawtwin.petstore.handwritten\n-- mine\nend unit\n",
+    )
+    .unwrap();
     let said = import(&doc, "lawtwin.petstore", &out, &["--tag", "pet"]);
-    assert_eq!(read(hand), "unit lawtwin.petstore.handwritten\n-- mine\n");
+    assert_eq!(
+        read(hand),
+        "unit lawtwin.petstore.handwritten\n-- mine\nend unit\n"
+    );
     assert!(
         said.contains("add a definition for each of: findPetsByStatus"),
         "{said}"
@@ -183,8 +205,30 @@ fn paths_select_operations() {
     let model = read(out.join("src/model.lawspec"));
     // A resource under parents is kept by a key record of the path's names.
     assert!(model.contains(
-        "type LabelKey is\n  LabelKey\n    owner :: Text\n    repo :: Text\n    name :: Text\nend"
+        "type LabelKey is a record{\n    owner :: Text\n    repo :: Text\n    name :: Text\n}\nend type"
     ));
     assert!(model.contains("    nodeId :: Text -- `node_id`"));
     assert!(model.contains("    default_ :: Bool -- `default`"));
+}
+
+/// The version-2 default selects no law checks. Our conformance projects must
+/// explicitly select property execution so an upgrade cannot silently turn the
+/// native acceptance command into an intrinsic-validation-only success.
+#[test]
+fn maintained_contract_projects_select_law_execution() {
+    for contract in ["kafka", "petstore", "github"] {
+        let config: serde_json::Value = serde_json::from_str(&read(
+            repo().join(format!("contracts/{contract}/test/lawspec.json")),
+        ))
+        .unwrap();
+        assert_eq!(config["version"], 2, "{contract}");
+        assert_eq!(config["languageProfile"], "1.0-rc.2", "{contract}");
+        let layers = config["verification"]["layers"]
+            .as_array()
+            .expect("explicit verification layers");
+        assert!(
+            layers.iter().any(|value| value == "property"),
+            "{contract}: unbounded laws need native observations"
+        );
+    }
 }

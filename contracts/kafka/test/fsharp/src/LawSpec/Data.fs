@@ -77,6 +77,26 @@ and [<CustomEquality; CustomComparison>] Pair<'T0, 'T1> =
             | :? Pair<'T0, 'T1> as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a Pair compares with a Pair"
 
+/// lawspec.collections::type::EqSet
+and [<CustomEquality; CustomComparison>] LawspecCollectionsSet<'T0> =
+    { Value: 'T0 list }
+
+    member private this.LawSpecRank: int =
+        0
+    member private this.LawSpecFields: obj list =
+        [ box this.Value ]
+    override this.Equals(other: obj) =
+        match other with
+        | :? LawspecCollectionsSet<'T0> as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+        | _ -> false
+    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+    interface Portable.IPortable
+    interface System.IComparable with
+        member this.CompareTo(other: obj) =
+            match other with
+            | :? LawspecCollectionsSet<'T0> as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | _ -> invalidArg "other" "a LawspecCollectionsSet compares with a LawspecCollectionsSet"
+
 /// lawspec.matchers::type::Regex
 and [<CustomEquality; CustomComparison>] Regex =
     { Pattern: string }
@@ -99,7 +119,7 @@ and [<CustomEquality; CustomComparison>] Regex =
 
 /// lawtwin.kafka::type::PartitionChoice
 and [<CustomEquality; CustomComparison>] PartitionChoice =
-    | ToPartition of chosen: int
+    | ToPartition of value: int
     | ByKey
 
     member private this.LawSpecRank: int =
@@ -618,8 +638,8 @@ and [<CustomEquality; CustomComparison>] GroupView =
 
 /// lawtwin.kafka.model::type::LogEntry
 and [<CustomEquality; CustomComparison>] LogEntry =
-    | DataEntry of entryOffset: int64 * entryRecord: Record * writer: int64 * transactional: bool
-    | ControlEntry of markerOffset: int64 * markerWriter: int64 * commits: bool
+    | DataEntry of value: Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be
+    | ControlEntry of value: Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3
 
     member private this.LawSpecRank: int =
         match this with
@@ -627,8 +647,8 @@ and [<CustomEquality; CustomComparison>] LogEntry =
         | ControlEntry _ -> 0
     member private this.LawSpecFields: obj list =
         match this with
-        | DataEntry(f0, f1, f2, f3) -> [ box f0; box f1; box f2; box f3 ]
-        | ControlEntry(f0, f1, f2) -> [ box f0; box f1; box f2 ]
+        | DataEntry(f0) -> [ box f0 ]
+        | ControlEntry(f0) -> [ box f0 ]
     override this.Equals(other: obj) =
         match other with
         | :? LogEntry as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
@@ -734,7 +754,7 @@ and [<CustomEquality; CustomComparison>] PendingOffset =
 /// lawtwin.kafka.model::type::TxnState
 and [<CustomEquality; CustomComparison>] TxnState =
     | NoTxn
-    | Ongoing of txnPartitions: TopicPartition list * txnOffsets: PendingOffset list
+    | Ongoing of value: Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee
 
     member private this.LawSpecRank: int =
         match this with
@@ -743,7 +763,7 @@ and [<CustomEquality; CustomComparison>] TxnState =
     member private this.LawSpecFields: obj list =
         match this with
         | NoTxn -> []
-        | Ongoing(f0, f1) -> [ box f0; box f1 ]
+        | Ongoing(f0) -> [ box f0 ]
     override this.Equals(other: obj) =
         match other with
         | :? TxnState as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
@@ -846,3 +866,69 @@ and [<CustomEquality; CustomComparison>] BrokerState =
             match other with
             | :? BrokerState as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a BrokerState compares with a BrokerState"
+
+/// lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be
+and [<CustomEquality; CustomComparison>] Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be =
+    { EntryOffset: int64
+      EntryRecord: Record
+      Transactional: bool
+      Writer: int64 }
+
+    member private this.LawSpecRank: int =
+        0
+    member private this.LawSpecFields: obj list =
+        [ box this.EntryOffset; box this.EntryRecord; box this.Transactional; box this.Writer ]
+    override this.Equals(other: obj) =
+        match other with
+        | :? Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+        | _ -> false
+    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+    interface Portable.IPortable
+    interface System.IComparable with
+        member this.CompareTo(other: obj) =
+            match other with
+            | :? Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | _ -> invalidArg "other" "a Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be compares with a Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be"
+
+/// lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3
+and [<CustomEquality; CustomComparison>] Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 =
+    { Commits: bool
+      MarkerOffset: int64
+      MarkerWriter: int64 }
+
+    member private this.LawSpecRank: int =
+        0
+    member private this.LawSpecFields: obj list =
+        [ box this.Commits; box this.MarkerOffset; box this.MarkerWriter ]
+    override this.Equals(other: obj) =
+        match other with
+        | :? Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+        | _ -> false
+    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+    interface Portable.IPortable
+    interface System.IComparable with
+        member this.CompareTo(other: obj) =
+            match other with
+            | :? Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | _ -> invalidArg "other" "a Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 compares with a Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3"
+
+/// lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee
+and [<CustomEquality; CustomComparison>] Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee =
+    { TxnOffsets: PendingOffset list
+      TxnPartitions: TopicPartition list }
+
+    member private this.LawSpecRank: int =
+        0
+    member private this.LawSpecFields: obj list =
+        [ box this.TxnOffsets; box this.TxnPartitions ]
+    override this.Equals(other: obj) =
+        match other with
+        | :? Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+        | _ -> false
+    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+    interface Portable.IPortable
+    interface System.IComparable with
+        member this.CompareTo(other: obj) =
+            match other with
+            | :? Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | _ -> invalidArg "other" "a Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee compares with a Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee"

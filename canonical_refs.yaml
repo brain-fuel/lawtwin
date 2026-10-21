@@ -20,7 +20,7 @@ canon:
   locator: https://github.com/brain-fuel/canon/tree/26de9f5
 lawspec:
   kind: package
-  title: LawSpec, the executable specification language; the contracts and the Kafka twin need 0.23.0, on npm
+  title: LawSpec, the executable specification language; the 0.26 upgrade requires the public embedding APIs merged in 24e8706c
   locator: https://github.com/brain-fuel/lawspec
 lawspec-roadmap:
   kind: discussion
@@ -150,3 +150,11 @@ kip-227:
   kind: article
   title: KIP-227, Introduce Incremental FetchRequests to Increase Partition Scalability, the fetch sessions
   locator: https://cwiki.apache.org/confluence/display/KAFKA/KIP-227%3A+Introduce+Incremental+FetchRequests+to+Increase+Partition+Scalability
+kafka-produce-leader-endpoints:
+  kind: specification
+  title: Apache Kafka ProduceResponse schema, KIP-951 CurrentLeader and NodeEndpoints in version 10 and later
+  locator: https://github.com/apache/kafka/blob/trunk/clients/src/main/resources/common/message/ProduceResponse.json
+kafka-fetch-leader-endpoints:
+  kind: specification
+  title: Apache Kafka FetchResponse schema, KIP-951 NodeEndpoints in version 16 and later
+  locator: https://github.com/apache/kafka/blob/trunk/clients/src/main/resources/common/message/FetchResponse.json

@@ -27,6 +27,10 @@ type Pair[T0 any, T1 any] struct {
 	Second T1
 }
 
+type Set[T0 any] struct {
+	Value []T0
+}
+
 type Regex struct {
 	Pattern string
 }
@@ -36,7 +40,7 @@ type PartitionChoice interface {
 }
 
 type PartitionChoiceToPartition struct {
-	Chosen int32
+	Value int32
 }
 
 func (PartitionChoiceToPartition) lawSpecPartitionChoice() {}
@@ -248,18 +252,13 @@ type LogEntry interface {
 }
 
 type LogEntryDataEntry struct {
-	EntryOffset   int64
-	EntryRecord   Record
-	Writer        int64
-	Transactional bool
+	Value Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be
 }
 
 func (LogEntryDataEntry) lawSpecLogEntry() {}
 
 type LogEntryControlEntry struct {
-	MarkerOffset int64
-	MarkerWriter int64
-	Commits      bool
+	Value Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3
 }
 
 func (LogEntryControlEntry) lawSpecLogEntry() {}
@@ -299,8 +298,7 @@ type TxnStateNoTxn struct{}
 func (TxnStateNoTxn) lawSpecTxnState() {}
 
 type TxnStateOngoing struct {
-	TxnPartitions []TopicPartition
-	TxnOffsets    []PendingOffset
+	Value Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee
 }
 
 func (TxnStateOngoing) lawSpecTxnState() {}
@@ -330,4 +328,22 @@ type BrokerState struct {
 	NextProducerId   int64
 	Groups           []Entry[string, Group]
 	Committed        []Entry[GroupPartition, int64]
+}
+
+type Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be struct {
+	EntryOffset   int64
+	EntryRecord   Record
+	Transactional bool
+	Writer        int64
+}
+
+type Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 struct {
+	Commits      bool
+	MarkerOffset int64
+	MarkerWriter int64
+}
+
+type Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee struct {
+	TxnOffsets    []PendingOffset
+	TxnPartitions []TopicPartition
 }

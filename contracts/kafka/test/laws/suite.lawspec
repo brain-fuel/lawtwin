@@ -5,7 +5,6 @@ import lawtwin.kafka as kafka
 -- The project that runs the lawtwin.kafka contract's laws. Its native
 -- handlers serve every ability from one shared reference cluster.
 
--- LawSpec builds one collections unit for a program from the sources it is
--- given, not from the packages they import, so the bounded arithmetic the
--- model uses is declared only when a source here names it.
-definition keepBoundedArithmetic (n :: Int64) :: Int64 is prelude.saturating (n + 1) end
+-- Collections helpers are resolved from the imported package by LawSpec.
+function suiteNamesThePackage (u :: Unit) -> Unit is unitValue end function
+end unit

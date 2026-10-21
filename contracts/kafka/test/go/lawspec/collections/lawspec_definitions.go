@@ -328,7 +328,7 @@ func lawSpecEvaluate3(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) La
 
 func lawSpecEvaluate4(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawspec.collections::boundedIntSize", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Just", []LawSpecValue{lsHelper("IntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Just", []LawSpecValue{lsHelper("IntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) })
 		return result
 	})
 }
@@ -351,14 +351,14 @@ func lawSpecEvaluate8(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) La
 
 func lawSpecEvaluate9(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawspec.collections::boundedUIntPtr", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Just", []LawSpecValue{lsHelper("UIntPtr", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Just", []LawSpecValue{lsHelper("UIntPtr", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) })
 		return result
 	})
 }
 
 func lawSpecEvaluate10(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawspec.collections::boundedUIntSize", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Just", []LawSpecValue{lsHelper("UIntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Just", []LawSpecValue{lsHelper("UIntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) })
 		return result
 	})
 }
@@ -381,7 +381,7 @@ func lawSpecEvaluate14(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) L
 
 func lawSpecEvaluate15(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawspec.collections::saturatingIntSize", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))) { return lsConvert("IntSize", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), 64) }; return func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) { return lsConvert("IntSize", lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64), 64) }; return lsHelper("IntSize", []LawSpecValue{value0}, 64) }() }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))) { return lsConvert("IntSize", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), 64) }; return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) { return lsConvert("IntSize", lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64), 64) }; return lsHelper("IntSize", []LawSpecValue{value0}, 64) }) })
 		return result
 	})
 }
@@ -404,14 +404,14 @@ func lawSpecEvaluate19(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) L
 
 func lawSpecEvaluate20(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawspec.collections::saturatingUIntPtr", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))) { return lsConvert("UIntPtr", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), 64) }; return func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsConvert("UIntPtr", lsConvert("Integer", lsInteger("Integer", "0"), 64), 64) }; return lsHelper("UIntPtr", []LawSpecValue{value0}, 64) }() }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))) { return lsConvert("UIntPtr", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), 64) }; return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsConvert("UIntPtr", lsConvert("Integer", lsInteger("Integer", "0"), 64), 64) }; return lsHelper("UIntPtr", []LawSpecValue{value0}, 64) }) })
 		return result
 	})
 }
 
 func lawSpecEvaluate21(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawspec.collections::saturatingUIntSize", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))) { return lsConvert("UIntSize", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), 64) }; return func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsConvert("UIntSize", lsConvert("Integer", lsInteger("Integer", "0"), 64), 64) }; return lsHelper("UIntSize", []LawSpecValue{value0}, 64) }() }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))) { return lsConvert("UIntSize", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), 64) }; return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsConvert("UIntSize", lsConvert("Integer", lsInteger("Integer", "0"), 64), 64) }; return lsHelper("UIntSize", []LawSpecValue{value0}, 64) }) })
 		return result
 	})
 }
@@ -434,11 +434,11 @@ func lawSpecEvaluate25(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) L
 
 func lawSpecEvaluate26(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawspec.collections::wrappingIntSize", func() LawSpecValue {
-		result := func() LawSpecValue {
+		result := lsEvaluate(func() LawSpecValue {
 			value1 := lsBinary("rem", lsBinary("-", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64)), lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64)))
 			_ = value1
-			return func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("IntSize", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))}, 64) }; return lsHelper("IntSize", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))}, 64) }()
-		}()
+			return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("IntSize", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))}, 64) }; return lsHelper("IntSize", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))}, 64) })
+		})
 		return result
 	})
 }
@@ -461,22 +461,22 @@ func lawSpecEvaluate30(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) L
 
 func lawSpecEvaluate31(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawspec.collections::wrappingUIntPtr", func() LawSpecValue {
-		result := func() LawSpecValue {
+		result := lsEvaluate(func() LawSpecValue {
 			value1 := lsBinary("rem", lsBinary("-", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64)))
 			_ = value1
-			return func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("UIntPtr", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }; return lsHelper("UIntPtr", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }()
-		}()
+			return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("UIntPtr", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }; return lsHelper("UIntPtr", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) })
+		})
 		return result
 	})
 }
 
 func lawSpecEvaluate32(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawspec.collections::wrappingUIntSize", func() LawSpecValue {
-		result := func() LawSpecValue {
+		result := lsEvaluate(func() LawSpecValue {
 			value1 := lsBinary("rem", lsBinary("-", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64)))
 			_ = value1
-			return func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("UIntSize", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }; return lsHelper("UIntSize", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }()
-		}()
+			return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("UIntSize", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }; return lsHelper("UIntSize", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) })
+		})
 		return result
 	})
 }

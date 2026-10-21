@@ -821,11 +821,11 @@ let lawspecCollectionsSaturatingIntSize (schema: Schema.Schema) (symbols: Scalar
         fun () ->
             let result =
                 if Runtime.truth (Scalar.binary ">" argument0 (Schema.validate (Value.Int(9223372036854775807I)) (Scalar.typeOf "Integer") schema) "Integer" "Integer") then
-                    Schema.validate (Schema.validate (Value.Int(9223372036854775807I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "IntSize") schema
+                    Schema.validate (Scalar.convert (Schema.validate (Value.Int(9223372036854775807I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "IntSize") 64) (Scalar.typeOf "IntSize") schema
                 else
                     let ls1 =
                         if Runtime.truth (Scalar.binary "<" argument0 (Schema.validate (Value.Int(-9223372036854775808I)) (Scalar.typeOf "Integer") schema) "Integer" "Integer") then
-                            Schema.validate (Schema.validate (Value.Int(-9223372036854775808I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "IntSize") schema
+                            Schema.validate (Scalar.convert (Schema.validate (Value.Int(-9223372036854775808I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "IntSize") 64) (Scalar.typeOf "IntSize") schema
                         else
                             Scalar.convert argument0 (Scalar.typeOf "IntSize") 64
                     ls1
@@ -870,11 +870,11 @@ let lawspecCollectionsSaturatingUIntPtr (schema: Schema.Schema) (symbols: Scalar
         fun () ->
             let result =
                 if Runtime.truth (Scalar.binary ">" argument0 (Schema.validate (Value.Int(18446744073709551615I)) (Scalar.typeOf "Integer") schema) "Integer" "Integer") then
-                    Schema.validate (Schema.validate (Value.Int(18446744073709551615I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntPtr") schema
+                    Schema.validate (Scalar.convert (Schema.validate (Value.Int(18446744073709551615I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntPtr") 64) (Scalar.typeOf "UIntPtr") schema
                 else
                     let ls1 =
                         if Runtime.truth (Scalar.binary "<" argument0 (Schema.validate (Value.Int(0I)) (Scalar.typeOf "Integer") schema) "Integer" "Integer") then
-                            Schema.validate (Schema.validate (Value.Int(0I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntPtr") schema
+                            Schema.validate (Scalar.convert (Schema.validate (Value.Int(0I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntPtr") 64) (Scalar.typeOf "UIntPtr") schema
                         else
                             Scalar.convert argument0 (Scalar.typeOf "UIntPtr") 64
                     ls1
@@ -887,11 +887,11 @@ let lawspecCollectionsSaturatingUIntSize (schema: Schema.Schema) (symbols: Scala
         fun () ->
             let result =
                 if Runtime.truth (Scalar.binary ">" argument0 (Schema.validate (Value.Int(18446744073709551615I)) (Scalar.typeOf "Integer") schema) "Integer" "Integer") then
-                    Schema.validate (Schema.validate (Value.Int(18446744073709551615I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntSize") schema
+                    Schema.validate (Scalar.convert (Schema.validate (Value.Int(18446744073709551615I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntSize") 64) (Scalar.typeOf "UIntSize") schema
                 else
                     let ls1 =
                         if Runtime.truth (Scalar.binary "<" argument0 (Schema.validate (Value.Int(0I)) (Scalar.typeOf "Integer") schema) "Integer" "Integer") then
-                            Schema.validate (Schema.validate (Value.Int(0I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntSize") schema
+                            Schema.validate (Scalar.convert (Schema.validate (Value.Int(0I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntSize") 64) (Scalar.typeOf "UIntSize") schema
                         else
                             Scalar.convert argument0 (Scalar.typeOf "UIntSize") 64
                     ls1
@@ -2751,86 +2751,86 @@ let clusterHandler (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : Eff
         fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
             LawSpec.Generated.LawtwinKafka.clusterCreateTopicsRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments)
     let ls2 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterCreatePartitionsRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments)
+        fun (current_1: Schema.Schema) (arguments_1: Value list) (state_1: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterCreatePartitionsRequest current_1 symbols state_1 (Runtime.item 0 arguments_1) (Runtime.item 1 arguments_1)
     let ls3 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterMetadataRequest current symbols state (Runtime.item 0 arguments)
+        fun (current_2: Schema.Schema) (arguments_2: Value list) (state_2: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterMetadataRequest current_2 symbols state_2 (Runtime.item 0 arguments_2)
     let ls4 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterProduceRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments)
+        fun (current_3: Schema.Schema) (arguments_3: Value list) (state_3: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterProduceRequest current_3 symbols state_3 (Runtime.item 0 arguments_3) (Runtime.item 1 arguments_3) (Runtime.item 2 arguments_3)
     let ls5 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterFetchRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments) (Runtime.item 3 arguments)
+        fun (current_4: Schema.Schema) (arguments_4: Value list) (state_4: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterFetchRequest current_4 symbols state_4 (Runtime.item 0 arguments_4) (Runtime.item 1 arguments_4) (Runtime.item 2 arguments_4) (Runtime.item 3 arguments_4)
     let ls6 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterListOffsetsRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments)
+        fun (current_5: Schema.Schema) (arguments_5: Value list) (state_5: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterListOffsetsRequest current_5 symbols state_5 (Runtime.item 0 arguments_5) (Runtime.item 1 arguments_5) (Runtime.item 2 arguments_5)
     let ls7 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterInitProducerIdRequest current symbols state (Runtime.item 0 arguments)
+        fun (current_6: Schema.Schema) (arguments_6: Value list) (state_6: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterInitProducerIdRequest current_6 symbols state_6 (Runtime.item 0 arguments_6)
     let ls8 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterAddPartitionsToTxnRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments) (Runtime.item 3 arguments)
+        fun (current_7: Schema.Schema) (arguments_7: Value list) (state_7: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterAddPartitionsToTxnRequest current_7 symbols state_7 (Runtime.item 0 arguments_7) (Runtime.item 1 arguments_7) (Runtime.item 2 arguments_7) (Runtime.item 3 arguments_7)
     let ls9 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterTxnOffsetCommitRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments) (Runtime.item 3 arguments) (Runtime.item 4 arguments)
+        fun (current_8: Schema.Schema) (arguments_8: Value list) (state_8: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterTxnOffsetCommitRequest current_8 symbols state_8 (Runtime.item 0 arguments_8) (Runtime.item 1 arguments_8) (Runtime.item 2 arguments_8) (Runtime.item 3 arguments_8) (Runtime.item 4 arguments_8)
     let ls10 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterEndTxnRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments) (Runtime.item 3 arguments)
+        fun (current_9: Schema.Schema) (arguments_9: Value list) (state_9: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterEndTxnRequest current_9 symbols state_9 (Runtime.item 0 arguments_9) (Runtime.item 1 arguments_9) (Runtime.item 2 arguments_9) (Runtime.item 3 arguments_9)
     let ls11 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterJoinGroupRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments)
+        fun (current_10: Schema.Schema) (arguments_10: Value list) (state_10: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterJoinGroupRequest current_10 symbols state_10 (Runtime.item 0 arguments_10) (Runtime.item 1 arguments_10) (Runtime.item 2 arguments_10)
     let ls12 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterSyncGroupRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments)
+        fun (current_11: Schema.Schema) (arguments_11: Value list) (state_11: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterSyncGroupRequest current_11 symbols state_11 (Runtime.item 0 arguments_11) (Runtime.item 1 arguments_11) (Runtime.item 2 arguments_11)
     let ls13 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterHeartbeatRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments)
+        fun (current_12: Schema.Schema) (arguments_12: Value list) (state_12: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterHeartbeatRequest current_12 symbols state_12 (Runtime.item 0 arguments_12) (Runtime.item 1 arguments_12) (Runtime.item 2 arguments_12)
     let ls14 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterLeaveGroupRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments)
+        fun (current_13: Schema.Schema) (arguments_13: Value list) (state_13: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterLeaveGroupRequest current_13 symbols state_13 (Runtime.item 0 arguments_13) (Runtime.item 1 arguments_13)
     let ls15 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterDescribeGroupRequest current symbols state (Runtime.item 0 arguments)
+        fun (current_14: Schema.Schema) (arguments_14: Value list) (state_14: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterDescribeGroupRequest current_14 symbols state_14 (Runtime.item 0 arguments_14)
     let ls16 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterOffsetCommitRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments) (Runtime.item 3 arguments)
+        fun (current_15: Schema.Schema) (arguments_15: Value list) (state_15: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterOffsetCommitRequest current_15 symbols state_15 (Runtime.item 0 arguments_15) (Runtime.item 1 arguments_15) (Runtime.item 2 arguments_15) (Runtime.item 3 arguments_15)
     let ls17 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterOffsetFetchRequest current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments)
+        fun (current_16: Schema.Schema) (arguments_16: Value list) (state_16: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterOffsetFetchRequest current_16 symbols state_16 (Runtime.item 0 arguments_16) (Runtime.item 1 arguments_16)
     let ls18 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterCreateTopic current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments)
+        fun (current_17: Schema.Schema) (arguments_17: Value list) (state_17: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterCreateTopic current_17 symbols state_17 (Runtime.item 0 arguments_17) (Runtime.item 1 arguments_17)
     let ls19 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterCreatePartitions current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments)
+        fun (current_18: Schema.Schema) (arguments_18: Value list) (state_18: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterCreatePartitions current_18 symbols state_18 (Runtime.item 0 arguments_18) (Runtime.item 1 arguments_18)
     let ls20 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterPartitionsFor current symbols state (Runtime.item 0 arguments)
+        fun (current_19: Schema.Schema) (arguments_19: Value list) (state_19: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterPartitionsFor current_19 symbols state_19 (Runtime.item 0 arguments_19)
     let ls21 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterListOffsets current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments)
+        fun (current_20: Schema.Schema) (arguments_20: Value list) (state_20: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterListOffsets current_20 symbols state_20 (Runtime.item 0 arguments_20) (Runtime.item 1 arguments_20) (Runtime.item 2 arguments_20)
     let ls22 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterJoinGroup current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments)
+        fun (current_21: Schema.Schema) (arguments_21: Value list) (state_21: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterJoinGroup current_21 symbols state_21 (Runtime.item 0 arguments_21) (Runtime.item 1 arguments_21) (Runtime.item 2 arguments_21)
     let ls23 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterSyncGroup current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments)
+        fun (current_22: Schema.Schema) (arguments_22: Value list) (state_22: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterSyncGroup current_22 symbols state_22 (Runtime.item 0 arguments_22) (Runtime.item 1 arguments_22) (Runtime.item 2 arguments_22)
     let ls24 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterHeartbeat current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments)
+        fun (current_23: Schema.Schema) (arguments_23: Value list) (state_23: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterHeartbeat current_23 symbols state_23 (Runtime.item 0 arguments_23) (Runtime.item 1 arguments_23) (Runtime.item 2 arguments_23)
     let ls25 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterLeaveGroup current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments)
+        fun (current_24: Schema.Schema) (arguments_24: Value list) (state_24: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterLeaveGroup current_24 symbols state_24 (Runtime.item 0 arguments_24) (Runtime.item 1 arguments_24)
     let ls26 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterDescribeGroup current symbols state (Runtime.item 0 arguments)
+        fun (current_25: Schema.Schema) (arguments_25: Value list) (state_25: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterDescribeGroup current_25 symbols state_25 (Runtime.item 0 arguments_25)
     let ls27 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterCommitOffsets current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments) (Runtime.item 3 arguments)
+        fun (current_26: Schema.Schema) (arguments_26: Value list) (state_26: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterCommitOffsets current_26 symbols state_26 (Runtime.item 0 arguments_26) (Runtime.item 1 arguments_26) (Runtime.item 2 arguments_26) (Runtime.item 3 arguments_26)
     let ls28 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.clusterFetchOffset current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments)
+        fun (current_27: Schema.Schema) (arguments_27: Value list) (state_27: Value) ->
+            LawSpec.Generated.LawtwinKafka.clusterFetchOffset current_27 symbols state_27 (Runtime.item 0 arguments_27) (Runtime.item 1 arguments_27)
     Effects.stateful ls0 [ ("createTopicsRequest", ls1); ("createPartitionsRequest", ls2); ("metadataRequest", ls3); ("produceRequest", ls4); ("fetchRequest", ls5); ("listOffsetsRequest", ls6); ("initProducerIdRequest", ls7); ("addPartitionsToTxnRequest", ls8); ("txnOffsetCommitRequest", ls9); ("endTxnRequest", ls10); ("joinGroupRequest", ls11); ("syncGroupRequest", ls12); ("heartbeatRequest", ls13); ("leaveGroupRequest", ls14); ("describeGroupRequest", ls15); ("offsetCommitRequest", ls16); ("offsetFetchRequest", ls17); ("createTopic", ls18); ("createPartitions", ls19); ("partitionsFor", ls20); ("listOffsets", ls21); ("joinGroup", ls22); ("syncGroup", ls23); ("heartbeat", ls24); ("leaveGroup", ls25); ("describeGroup", ls26); ("commitOffsets", ls27); ("fetchOffset", ls28) ]
 
 /// The spec handler murmurPartitioner.
@@ -2847,17 +2847,17 @@ let kafkaProducerHandler (schema: Schema.Schema) (symbols: Scalar.SymbolContext)
         fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
             LawSpec.Generated.LawtwinKafka.kafkaProducerSend current symbols state (Runtime.item 0 arguments)
     let ls2 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaProducerFlush current symbols state
+        fun (current_1: Schema.Schema) (arguments_1: Value list) (state_1: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaProducerFlush current_1 symbols state_1
     let ls3 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaProducerEnableIdempotence current symbols state
+        fun (current_2: Schema.Schema) (arguments_2: Value list) (state_2: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaProducerEnableIdempotence current_2 symbols state_2
     let ls4 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaProducerRetryLastSend current symbols state
+        fun (current_3: Schema.Schema) (arguments_3: Value list) (state_3: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaProducerRetryLastSend current_3 symbols state_3
     let ls5 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaProducerProducerIdentity current symbols state
+        fun (current_4: Schema.Schema) (arguments_4: Value list) (state_4: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaProducerProducerIdentity current_4 symbols state_4
     Effects.stateful ls0 [ ("send", ls1); ("flush", ls2); ("enableIdempotence", ls3); ("retryLastSend", ls4); ("producerIdentity", ls5) ]
 
 /// The spec handler kafkaConsumer.
@@ -2867,29 +2867,29 @@ let kafkaConsumerHandler (schema: Schema.Schema) (symbols: Scalar.SymbolContext)
         fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
             LawSpec.Generated.LawtwinKafka.kafkaConsumerAssign current symbols state (Runtime.item 0 arguments)
     let ls2 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaConsumerSubscribe current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments) (Runtime.item 2 arguments)
+        fun (current_1: Schema.Schema) (arguments_1: Value list) (state_1: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaConsumerSubscribe current_1 symbols state_1 (Runtime.item 0 arguments_1) (Runtime.item 1 arguments_1) (Runtime.item 2 arguments_1)
     let ls3 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaConsumerPoll current symbols state (Runtime.item 0 arguments)
+        fun (current_2: Schema.Schema) (arguments_2: Value list) (state_2: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaConsumerPoll current_2 symbols state_2 (Runtime.item 0 arguments_2)
     let ls4 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaConsumerCommitSync current symbols state
+        fun (current_3: Schema.Schema) (arguments_3: Value list) (state_3: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaConsumerCommitSync current_3 symbols state_3
     let ls5 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaConsumerSeek current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments)
+        fun (current_4: Schema.Schema) (arguments_4: Value list) (state_4: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaConsumerSeek current_4 symbols state_4 (Runtime.item 0 arguments_4) (Runtime.item 1 arguments_4)
     let ls6 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaConsumerPosition current symbols state (Runtime.item 0 arguments)
+        fun (current_5: Schema.Schema) (arguments_5: Value list) (state_5: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaConsumerPosition current_5 symbols state_5 (Runtime.item 0 arguments_5)
     let ls7 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaConsumerCommittedOffset current symbols state (Runtime.item 0 arguments)
+        fun (current_6: Schema.Schema) (arguments_6: Value list) (state_6: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaConsumerCommittedOffset current_6 symbols state_6 (Runtime.item 0 arguments_6)
     let ls8 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaConsumerSetIsolationLevel current symbols state (Runtime.item 0 arguments)
+        fun (current_7: Schema.Schema) (arguments_7: Value list) (state_7: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaConsumerSetIsolationLevel current_7 symbols state_7 (Runtime.item 0 arguments_7)
     let ls9 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaConsumerClose current symbols state
+        fun (current_8: Schema.Schema) (arguments_8: Value list) (state_8: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaConsumerClose current_8 symbols state_8
     Effects.stateful ls0 [ ("assign", ls1); ("subscribe", ls2); ("poll", ls3); ("commitSync", ls4); ("seek", ls5); ("position", ls6); ("committedOffset", ls7); ("setIsolationLevel", ls8); ("close", ls9) ]
 
 /// The spec handler kafkaTransactions.
@@ -2899,21 +2899,21 @@ let kafkaTransactionsHandler (schema: Schema.Schema) (symbols: Scalar.SymbolCont
         fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
             LawSpec.Generated.LawtwinKafka.kafkaTransactionsInitTransactions current symbols state (Runtime.item 0 arguments)
     let ls2 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaTransactionsBeginTransaction current symbols state
+        fun (current_1: Schema.Schema) (arguments_1: Value list) (state_1: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaTransactionsBeginTransaction current_1 symbols state_1
     let ls3 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaTransactionsAddPartitionsToTransaction current symbols state (Runtime.item 0 arguments)
+        fun (current_2: Schema.Schema) (arguments_2: Value list) (state_2: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaTransactionsAddPartitionsToTransaction current_2 symbols state_2 (Runtime.item 0 arguments_2)
     let ls4 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaTransactionsSendInTransaction current symbols state (Runtime.item 0 arguments)
+        fun (current_3: Schema.Schema) (arguments_3: Value list) (state_3: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaTransactionsSendInTransaction current_3 symbols state_3 (Runtime.item 0 arguments_3)
     let ls5 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaTransactionsSendOffsetsToTransaction current symbols state (Runtime.item 0 arguments) (Runtime.item 1 arguments)
+        fun (current_4: Schema.Schema) (arguments_4: Value list) (state_4: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaTransactionsSendOffsetsToTransaction current_4 symbols state_4 (Runtime.item 0 arguments_4) (Runtime.item 1 arguments_4)
     let ls6 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaTransactionsCommitTransaction current symbols state
+        fun (current_5: Schema.Schema) (arguments_5: Value list) (state_5: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaTransactionsCommitTransaction current_5 symbols state_5
     let ls7 =
-        fun (current: Schema.Schema) (arguments: Value list) (state: Value) ->
-            LawSpec.Generated.LawtwinKafka.kafkaTransactionsAbortTransaction current symbols state
+        fun (current_6: Schema.Schema) (arguments_6: Value list) (state_6: Value) ->
+            LawSpec.Generated.LawtwinKafka.kafkaTransactionsAbortTransaction current_6 symbols state_6
     Effects.stateful ls0 [ ("initTransactions", ls1); ("beginTransaction", ls2); ("addPartitionsToTransaction", ls3); ("sendInTransaction", ls4); ("sendOffsetsToTransaction", ls5); ("commitTransaction", ls6); ("abortTransaction", ls7) ]

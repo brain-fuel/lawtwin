@@ -354,12 +354,6 @@ let kafkaTransactionsStart (value0: unit) : LawSpec.Data.TransactionState =
     let symbols = Scalar.SymbolContext()
     (LawSpec.Data.Codecs.transactionState ()).ToNative (LawSpec.Generated.ContracttestKafka.kafkaTransactionsStart schema symbols ((Codec.unit).FromNative value0))
 
-/// contracttest.kafka::keepBoundedArithmetic
-let keepBoundedArithmetic (value0: int64) : int64 =
-    let schema = LawSpec.Generated.Program.schema
-    let symbols = Scalar.SymbolContext()
-    Codec.int64.ToNative (LawSpec.Generated.ContracttestKafka.keepBoundedArithmetic schema symbols ((Codec.int64).FromNative value0))
-
 /// contracttest.kafka::lawspecCollectionsBoundedInt16
 let lawspecCollectionsBoundedInt16 (value0: bigint) : int16 option =
     let schema = LawSpec.Generated.Program.schema
@@ -2046,3 +2040,9 @@ let murmurPartitionerChoosePartition (value0: byte[] option) (value1: int) : int
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
     Codec.int32.ToNative (LawSpec.Generated.ContracttestKafka.murmurPartitionerChoosePartition schema symbols (((Codec.option Codec.bytes)).FromNative value0) ((Codec.int32).FromNative value1))
+
+/// contracttest.kafka::suiteNamesThePackage
+let suiteNamesThePackage (value0: unit) : unit =
+    let schema = LawSpec.Generated.Program.schema
+    let symbols = Scalar.SymbolContext()
+    Codec.unit.ToNative (LawSpec.Generated.ContracttestKafka.suiteNamesThePackage schema symbols ((Codec.unit).FromNative value0))

@@ -91,6 +91,31 @@ func lawSpecPairCodec[T0 any, T1 any](schema *lawSpecSchema, bits int, element0 
 		}, symbols)
 }
 
+func lawSpecSetCodec[T0 any](schema *lawSpecSchema, bits int, element0 lawSpecCodec[T0], contexts ...map[string]*lawSpecSymbol) lawSpecCodec[Set[T0]] {
+	symbols := lsSchemaSymbols(contexts)
+	typeRef := lsNamed("lawspec.collections::type::EqSet", element0.typeRef)
+	return lsCodec(schema, bits, typeRef,
+		func(value LawSpecValue) Set[T0] {
+			data := value.Data.(lawSpecData)
+			switch data.tag {
+			case "lawspec.collections::type::EqSet::EqSetItems":
+				return Set[T0]{
+					Value: lsListCodec(schema, bits, element0, symbols).toNative(data.fields[0]),
+				}
+			default:
+				panic("unknown checked constructor")
+			}
+		},
+		func(value Set[T0], path lawSpecPath) LawSpecValue {
+			native := value
+			return schema.construct(typeRef, "lawspec.collections::type::EqSet::EqSetItems", []LawSpecValue{
+				lsSchemaContext("lawspec.collections::type::EqSet::EqSetItems.value", func() LawSpecValue {
+					return lsListCodec(schema, bits, element0, symbols).encode(native.Value, path)
+				}),
+			}, bits, symbols)
+		}, symbols)
+}
+
 func lawSpecRegexCodec(schema *lawSpecSchema, bits int, contexts ...map[string]*lawSpecSymbol) lawSpecCodec[Regex] {
 	symbols := lsSchemaSymbols(contexts)
 	typeRef := lsNamed("lawspec.matchers::type::Regex")
@@ -125,7 +150,7 @@ func lawSpecPartitionChoiceCodec(schema *lawSpecSchema, bits int, contexts ...ma
 			switch data.tag {
 			case "lawtwin.kafka::type::PartitionChoice::ToPartition":
 				return PartitionChoiceToPartition{
-					Chosen: lsScalarCodec[int32](schema, bits, "Int32").toNative(data.fields[0]),
+					Value: lsScalarCodec[int32](schema, bits, "Int32").toNative(data.fields[0]),
 				}
 			case "lawtwin.kafka::type::PartitionChoice::ByKey":
 				return PartitionChoiceByKey{}
@@ -137,8 +162,8 @@ func lawSpecPartitionChoiceCodec(schema *lawSpecSchema, bits int, contexts ...ma
 			switch native := value.(type) {
 			case PartitionChoiceToPartition:
 				return schema.construct(typeRef, "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{
-					lsSchemaContext("lawtwin.kafka::type::PartitionChoice::ToPartition.chosen", func() LawSpecValue {
-						return lsScalarCodec[int32](schema, bits, "Int32").encode(native.Chosen, path)
+					lsSchemaContext("lawtwin.kafka::type::PartitionChoice::ToPartition.value", func() LawSpecValue {
+						return lsScalarCodec[int32](schema, bits, "Int32").encode(native.Value, path)
 					}),
 				}, bits, symbols)
 			case PartitionChoiceByKey:
@@ -864,16 +889,11 @@ func lawSpecLogEntryCodec(schema *lawSpecSchema, bits int, contexts ...map[strin
 			switch data.tag {
 			case "lawtwin.kafka.model::type::LogEntry::DataEntry":
 				return LogEntryDataEntry{
-					EntryOffset:   lsScalarCodec[int64](schema, bits, "Int64").toNative(data.fields[0]),
-					EntryRecord:   lawSpecRecordCodec(schema, bits, symbols).toNative(data.fields[1]),
-					Writer:        lsScalarCodec[int64](schema, bits, "Int64").toNative(data.fields[2]),
-					Transactional: lsScalarCodec[bool](schema, bits, "Bool").toNative(data.fields[3]),
+					Value: lawSpecRecord71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beCodec(schema, bits, symbols).toNative(data.fields[0]),
 				}
 			case "lawtwin.kafka.model::type::LogEntry::ControlEntry":
 				return LogEntryControlEntry{
-					MarkerOffset: lsScalarCodec[int64](schema, bits, "Int64").toNative(data.fields[0]),
-					MarkerWriter: lsScalarCodec[int64](schema, bits, "Int64").toNative(data.fields[1]),
-					Commits:      lsScalarCodec[bool](schema, bits, "Bool").toNative(data.fields[2]),
+					Value: lawSpecRecord25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Codec(schema, bits, symbols).toNative(data.fields[0]),
 				}
 			default:
 				panic("unknown checked constructor")
@@ -883,29 +903,14 @@ func lawSpecLogEntryCodec(schema *lawSpecSchema, bits int, contexts ...map[strin
 			switch native := value.(type) {
 			case LogEntryDataEntry:
 				return schema.construct(typeRef, "lawtwin.kafka.model::type::LogEntry::DataEntry", []LawSpecValue{
-					lsSchemaContext("lawtwin.kafka.model::type::LogEntry::DataEntry.entryOffset", func() LawSpecValue {
-						return lsScalarCodec[int64](schema, bits, "Int64").encode(native.EntryOffset, path)
-					}),
-					lsSchemaContext("lawtwin.kafka.model::type::LogEntry::DataEntry.entryRecord", func() LawSpecValue {
-						return lawSpecRecordCodec(schema, bits, symbols).encode(native.EntryRecord, path)
-					}),
-					lsSchemaContext("lawtwin.kafka.model::type::LogEntry::DataEntry.writer", func() LawSpecValue {
-						return lsScalarCodec[int64](schema, bits, "Int64").encode(native.Writer, path)
-					}),
-					lsSchemaContext("lawtwin.kafka.model::type::LogEntry::DataEntry.transactional", func() LawSpecValue {
-						return lsScalarCodec[bool](schema, bits, "Bool").encode(native.Transactional, path)
+					lsSchemaContext("lawtwin.kafka.model::type::LogEntry::DataEntry.value", func() LawSpecValue {
+						return lawSpecRecord71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beCodec(schema, bits, symbols).encode(native.Value, path)
 					}),
 				}, bits, symbols)
 			case LogEntryControlEntry:
 				return schema.construct(typeRef, "lawtwin.kafka.model::type::LogEntry::ControlEntry", []LawSpecValue{
-					lsSchemaContext("lawtwin.kafka.model::type::LogEntry::ControlEntry.markerOffset", func() LawSpecValue {
-						return lsScalarCodec[int64](schema, bits, "Int64").encode(native.MarkerOffset, path)
-					}),
-					lsSchemaContext("lawtwin.kafka.model::type::LogEntry::ControlEntry.markerWriter", func() LawSpecValue {
-						return lsScalarCodec[int64](schema, bits, "Int64").encode(native.MarkerWriter, path)
-					}),
-					lsSchemaContext("lawtwin.kafka.model::type::LogEntry::ControlEntry.commits", func() LawSpecValue {
-						return lsScalarCodec[bool](schema, bits, "Bool").encode(native.Commits, path)
+					lsSchemaContext("lawtwin.kafka.model::type::LogEntry::ControlEntry.value", func() LawSpecValue {
+						return lawSpecRecord25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Codec(schema, bits, symbols).encode(native.Value, path)
 					}),
 				}, bits, symbols)
 			default:
@@ -1066,8 +1071,7 @@ func lawSpecTxnStateCodec(schema *lawSpecSchema, bits int, contexts ...map[strin
 				return TxnStateNoTxn{}
 			case "lawtwin.kafka.model::type::TxnState::Ongoing":
 				return TxnStateOngoing{
-					TxnPartitions: lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols).toNative(data.fields[0]),
-					TxnOffsets:    lsListCodec(schema, bits, lawSpecPendingOffsetCodec(schema, bits, symbols), symbols).toNative(data.fields[1]),
+					Value: lawSpecRecordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeCodec(schema, bits, symbols).toNative(data.fields[0]),
 				}
 			default:
 				panic("unknown checked constructor")
@@ -1079,11 +1083,8 @@ func lawSpecTxnStateCodec(schema *lawSpecSchema, bits int, contexts ...map[strin
 				return schema.construct(typeRef, "lawtwin.kafka.model::type::TxnState::NoTxn", nil, bits, symbols)
 			case TxnStateOngoing:
 				return schema.construct(typeRef, "lawtwin.kafka.model::type::TxnState::Ongoing", []LawSpecValue{
-					lsSchemaContext("lawtwin.kafka.model::type::TxnState::Ongoing.txnPartitions", func() LawSpecValue {
-						return lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols).encode(native.TxnPartitions, path)
-					}),
-					lsSchemaContext("lawtwin.kafka.model::type::TxnState::Ongoing.txnOffsets", func() LawSpecValue {
-						return lsListCodec(schema, bits, lawSpecPendingOffsetCodec(schema, bits, symbols), symbols).encode(native.TxnOffsets, path)
+					lsSchemaContext("lawtwin.kafka.model::type::TxnState::Ongoing.value", func() LawSpecValue {
+						return lawSpecRecordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeCodec(schema, bits, symbols).encode(native.Value, path)
 					}),
 				}, bits, symbols)
 			default:
@@ -1232,6 +1233,105 @@ func lawSpecBrokerStateCodec(schema *lawSpecSchema, bits int, contexts ...map[st
 				}),
 				lsSchemaContext("lawtwin.kafka.model::type::BrokerState::BrokerState.committed", func() LawSpecValue {
 					return lsCollectionCodec(schema, bits, "KeyVal", []lawSpecTypeRef{lawSpecGroupPartitionCodec(schema, bits, symbols).typeRef, lsScalarCodec[int64](schema, bits, "Int64").typeRef}, lawSpecEntryCodec(schema, bits, lawSpecGroupPartitionCodec(schema, bits, symbols), lsScalarCodec[int64](schema, bits, "Int64"), symbols), symbols).encode(native.Committed, path)
+				}),
+			}, bits, symbols)
+		}, symbols)
+}
+
+func lawSpecRecord71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beCodec(schema *lawSpecSchema, bits int, contexts ...map[string]*lawSpecSymbol) lawSpecCodec[Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be] {
+	symbols := lsSchemaSymbols(contexts)
+	typeRef := lsNamed("lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be")
+	return lsCodec(schema, bits, typeRef,
+		func(value LawSpecValue) Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be {
+			data := value.Data.(lawSpecData)
+			switch data.tag {
+			case "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record":
+				return Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be{
+					EntryOffset:   lsScalarCodec[int64](schema, bits, "Int64").toNative(data.fields[0]),
+					EntryRecord:   lawSpecRecordCodec(schema, bits, symbols).toNative(data.fields[1]),
+					Transactional: lsScalarCodec[bool](schema, bits, "Bool").toNative(data.fields[2]),
+					Writer:        lsScalarCodec[int64](schema, bits, "Int64").toNative(data.fields[3]),
+				}
+			default:
+				panic("unknown checked constructor")
+			}
+		},
+		func(value Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be, path lawSpecPath) LawSpecValue {
+			native := value
+			return schema.construct(typeRef, "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record", []LawSpecValue{
+				lsSchemaContext("lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record.entryOffset", func() LawSpecValue {
+					return lsScalarCodec[int64](schema, bits, "Int64").encode(native.EntryOffset, path)
+				}),
+				lsSchemaContext("lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record.entryRecord", func() LawSpecValue {
+					return lawSpecRecordCodec(schema, bits, symbols).encode(native.EntryRecord, path)
+				}),
+				lsSchemaContext("lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record.transactional", func() LawSpecValue {
+					return lsScalarCodec[bool](schema, bits, "Bool").encode(native.Transactional, path)
+				}),
+				lsSchemaContext("lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record.writer", func() LawSpecValue {
+					return lsScalarCodec[int64](schema, bits, "Int64").encode(native.Writer, path)
+				}),
+			}, bits, symbols)
+		}, symbols)
+}
+
+func lawSpecRecord25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Codec(schema *lawSpecSchema, bits int, contexts ...map[string]*lawSpecSymbol) lawSpecCodec[Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3] {
+	symbols := lsSchemaSymbols(contexts)
+	typeRef := lsNamed("lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3")
+	return lsCodec(schema, bits, typeRef,
+		func(value LawSpecValue) Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 {
+			data := value.Data.(lawSpecData)
+			switch data.tag {
+			case "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record":
+				return Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3{
+					Commits:      lsScalarCodec[bool](schema, bits, "Bool").toNative(data.fields[0]),
+					MarkerOffset: lsScalarCodec[int64](schema, bits, "Int64").toNative(data.fields[1]),
+					MarkerWriter: lsScalarCodec[int64](schema, bits, "Int64").toNative(data.fields[2]),
+				}
+			default:
+				panic("unknown checked constructor")
+			}
+		},
+		func(value Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3, path lawSpecPath) LawSpecValue {
+			native := value
+			return schema.construct(typeRef, "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record", []LawSpecValue{
+				lsSchemaContext("lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record.commits", func() LawSpecValue {
+					return lsScalarCodec[bool](schema, bits, "Bool").encode(native.Commits, path)
+				}),
+				lsSchemaContext("lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record.markerOffset", func() LawSpecValue {
+					return lsScalarCodec[int64](schema, bits, "Int64").encode(native.MarkerOffset, path)
+				}),
+				lsSchemaContext("lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record.markerWriter", func() LawSpecValue {
+					return lsScalarCodec[int64](schema, bits, "Int64").encode(native.MarkerWriter, path)
+				}),
+			}, bits, symbols)
+		}, symbols)
+}
+
+func lawSpecRecordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeCodec(schema *lawSpecSchema, bits int, contexts ...map[string]*lawSpecSymbol) lawSpecCodec[Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee] {
+	symbols := lsSchemaSymbols(contexts)
+	typeRef := lsNamed("lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee")
+	return lsCodec(schema, bits, typeRef,
+		func(value LawSpecValue) Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee {
+			data := value.Data.(lawSpecData)
+			switch data.tag {
+			case "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record":
+				return Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee{
+					TxnOffsets:    lsListCodec(schema, bits, lawSpecPendingOffsetCodec(schema, bits, symbols), symbols).toNative(data.fields[0]),
+					TxnPartitions: lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols).toNative(data.fields[1]),
+				}
+			default:
+				panic("unknown checked constructor")
+			}
+		},
+		func(value Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee, path lawSpecPath) LawSpecValue {
+			native := value
+			return schema.construct(typeRef, "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record", []LawSpecValue{
+				lsSchemaContext("lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record.txnOffsets", func() LawSpecValue {
+					return lsListCodec(schema, bits, lawSpecPendingOffsetCodec(schema, bits, symbols), symbols).encode(native.TxnOffsets, path)
+				}),
+				lsSchemaContext("lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record.txnPartitions", func() LawSpecValue {
+					return lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols).encode(native.TxnPartitions, path)
 				}),
 			}, bits, symbols)
 		}, symbols)

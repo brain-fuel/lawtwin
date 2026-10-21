@@ -17,18 +17,18 @@ unit lawtwin.kafka.model
 -- Names and requests
 -- ---------------------------------------------------------------------------
 
-type TopicPartition is
-  TopicPartition
-    topic :: Text
-    partition :: Int32
-end
+type TopicPartition is a record{
 
-type IsolationLevel is | ReadUncommitted | ReadCommitted end
+  topic :: Text
+  partition :: Int32}
+end type
 
-type OffsetSpec is | Earliest | Latest end
+type IsolationLevel is one of | ReadUncommitted | ReadCommitted end type
+
+type OffsetSpec is one of | Earliest | Latest end type
 
 -- The error codes of the Kafka protocol that the model returns.
-type KafkaError is
+type KafkaError is one of
   | UnknownTopicOrPartition
   | TopicAlreadyExists
   | InvalidTopic
@@ -46,70 +46,70 @@ type KafkaError is
   | UnknownMemberId
   | IllegalGeneration
   | IllegalState
-end
+end type
 
-type Header is
-  Header
-    name :: Text
-    content :: Maybe Bytes
-end
+type Header is a record{
 
-type Record is
-  Record
-    key :: Maybe Bytes
-    value :: Maybe Bytes
-    headers :: List Header
-end
+  name :: Text
+  content :: Maybe Bytes}
+end type
+
+type Record is a record{
+
+  key :: Maybe Bytes
+  value :: Maybe Bytes
+  headers :: List Header}
+end type
 
 -- What an idempotent or transactional producer stamps on a batch.
-type ProducerTag is
-  ProducerTag
-    producerId :: Int64
-    producerEpoch :: Int16
-    baseSequence :: Int32
-end
+type ProducerTag is a record{
 
-type ProducerIdAndEpoch is
-  ProducerIdAndEpoch
-    producerId :: Int64
-    producerEpoch :: Int16
-end
+  producerId :: Int64
+  producerEpoch :: Int16
+  baseSequence :: Int32}
+end type
+
+type ProducerIdAndEpoch is a record{
+
+  producerId :: Int64
+  producerEpoch :: Int16}
+end type
 
 -- A record as a fetch returns it, with its offset. The field is `entry`
 -- because LawSpec's Java target refuses a field named `record`.
-type FetchedRecord is
-  FetchedRecord
-    offset :: Int64
-    entry :: Record
-end
+type FetchedRecord is a record{
+
+  offset :: Int64
+  entry :: Record}
+end type
 
 -- A fetch's response. nextOffset is where the next fetch starts: past the
 -- last record returned, and past any control or aborted entries skipped.
-type FetchResult is
-  FetchResult
-    records :: List FetchedRecord
-    nextOffset :: Int64
-    highWatermark :: Int64
-    lastStableOffset :: Int64
-end
+type FetchResult is a record{
 
-type OffsetEntry is
-  OffsetEntry
-    topicPartition :: TopicPartition
-    offset :: Int64
-end
+  records :: List FetchedRecord
+  nextOffset :: Int64
+  highWatermark :: Int64
+  lastStableOffset :: Int64}
+end type
 
-type MemberAssignment is
-  MemberAssignment
-    memberId :: Text
-    assigned :: List TopicPartition
-end
+type OffsetEntry is a record{
 
-type GroupView is
-  GroupView
-    generation :: Int32
-    members :: List MemberAssignment
-end
+  topicPartition :: TopicPartition
+  offset :: Int64}
+end type
+
+type MemberAssignment is a record{
+
+  memberId :: Text
+  assigned :: List TopicPartition}
+end type
+
+type GroupView is a record{
+
+  generation :: Int32
+  members :: List MemberAssignment}
+end type
 
 -- ---------------------------------------------------------------------------
 -- The cluster's state
@@ -117,120 +117,130 @@ end
 
 -- An entry of a partition's log. A control entry is a transaction marker:
 -- it takes an offset, as in Kafka, but no consumer ever receives it.
-type LogEntry is
-  | DataEntry
-      entryOffset :: Int64
-      entryRecord :: Record
-      writer :: Int64
-      transactional :: Bool
-  | ControlEntry
-      markerOffset :: Int64
-      markerWriter :: Int64
-      commits :: Bool
-end
+type LogEntry is one of
+  | DataEntry of type record{
+    entryOffset :: Int64
+    entryRecord :: Record
+    writer :: Int64
+    transactional :: Bool}
+  | ControlEntry of type record{
+    markerOffset :: Int64
+    markerWriter :: Int64
+    commits :: Bool}
+end type
 
 -- The aborted-transaction index: the range of one aborted transaction's
 -- entries in a partition.
-type AbortedTxn is
-  AbortedTxn
-    abortedWriter :: Int64
-    firstOffset :: Int64
-    lastOffset :: Int64
-end
+type AbortedTxn is a record{
+
+  abortedWriter :: Int64
+  firstOffset :: Int64
+  lastOffset :: Int64}
+end type
 
 -- What the broker remembers of a recent batch, to recognise a retry.
-type BatchMeta is
-  BatchMeta
-    batchEpoch :: Int16
-    firstSequence :: Int32
-    lastSequence :: Int32
-    batchOffset :: Int64
-end
+type BatchMeta is a record{
 
-type PartitionLog is
-  PartitionLog
-    entries :: List LogEntry
-    logEndOffset :: Int64
-    openTxns :: KeyVal Int64 Int64
-    abortedTxns :: List AbortedTxn
-    batches :: KeyVal Int64 (List BatchMeta)
-end
+  batchEpoch :: Int16
+  firstSequence :: Int32
+  lastSequence :: Int32
+  batchOffset :: Int64}
+end type
 
-type PendingOffset is
-  PendingOffset
-    pendingGroup :: Text
-    pendingEntry :: OffsetEntry
-end
+type PartitionLog is a record{
 
-type TxnState is
+  entries :: List LogEntry
+  logEndOffset :: Int64
+  openTxns :: KeyVal Int64 Int64
+  abortedTxns :: List AbortedTxn
+  batches :: KeyVal Int64 (List BatchMeta)}
+end type
+
+type PendingOffset is a record{
+
+  pendingGroup :: Text
+  pendingEntry :: OffsetEntry}
+end type
+
+type TxnState is one of
   | NoTxn
-  | Ongoing
-      txnPartitions :: List TopicPartition
-      txnOffsets :: List PendingOffset
-end
+  | Ongoing of type record{
+    txnPartitions :: List TopicPartition
+    txnOffsets :: List PendingOffset}
+end type
 
-type ProducerEntry is
-  ProducerEntry
-    epoch :: Int16
-    transactionalId :: Maybe Text
-    txn :: TxnState
-end
+type ProducerEntry is a record{
 
-type Group is
-  Group
-    groupGeneration :: Int32
-    subscriptions :: KeyVal Text (List Text)
-    assignment :: KeyVal Text (List TopicPartition)
-end
+  epoch :: Int16
+  transactionalId :: Maybe Text
+  txn :: TxnState}
+end type
 
-type GroupPartition is
-  GroupPartition
-    groupId :: Text
-    groupPartition :: TopicPartition
-end
+type Group is a record{
 
-type BrokerState is
-  BrokerState
-    topics :: KeyVal Text Int32
-    logs :: KeyVal TopicPartition PartitionLog
-    producers :: KeyVal Int64 ProducerEntry
-    transactionalIds :: KeyVal Text Int64
-    nextProducerId :: Int64
-    groups :: KeyVal Text Group
-    committed :: KeyVal GroupPartition Int64
-end
+  groupGeneration :: Int32
+  subscriptions :: KeyVal Text (List Text)
+  assignment :: KeyVal Text (List TopicPartition)}
+end type
 
-definition emptyBroker (u :: Unit) :: BrokerState is
-  BrokerState (prelude.keyValOf []) (prelude.keyValOf []) (prelude.keyValOf [])
-    (prelude.keyValOf []) 0 (prelude.keyValOf []) (prelude.keyValOf [])
-end
+type GroupPartition is a record{
 
-definition emptyLog (u :: Unit) :: PartitionLog is
-  PartitionLog [] 0 (prelude.keyValOf []) [] (prelude.keyValOf [])
-end
+  groupId :: Text
+  groupPartition :: TopicPartition}
+end type
 
-definition emptyGroup (u :: Unit) :: Group is
-  Group 0 (prelude.keyValOf []) (prelude.keyValOf [])
-end
+type BrokerState is a record{
+
+  topics :: KeyVal Text Int32
+  logs :: KeyVal TopicPartition PartitionLog
+  producers :: KeyVal Int64 ProducerEntry
+  transactionalIds :: KeyVal Text Int64
+  nextProducerId :: Int64
+  groups :: KeyVal Text Group
+  committed :: KeyVal GroupPartition Int64}
+end type
+
+function emptyBroker (u :: Unit) -> BrokerState is
+  BrokerState record{ topics = (prelude.keyValOf []) , logs = (prelude.keyValOf
+    []) , producers = (prelude.keyValOf [])
+    , transactionalIds = (prelude.keyValOf []) , nextProducerId = 0 , groups =
+      (prelude.keyValOf []) , committed = (prelude.keyValOf [])}
+end function
+
+function emptyLog (u :: Unit) -> PartitionLog is
+  PartitionLog record{ entries = [] , logEndOffset = 0 , openTxns =
+      (prelude.keyValOf []) , abortedTxns = [] , batches = (prelude.keyValOf
+        [])}
+end function
+
+function emptyGroup (u :: Unit) -> Group is
+  Group record{ groupGeneration = 0 , subscriptions = (prelude.keyValOf []) ,
+    assignment = (prelude.keyValOf [])}
+end function
 
 -- ---------------------------------------------------------------------------
 -- Lists
 -- ---------------------------------------------------------------------------
 
-definition min64 (a :: Int64) (b :: Int64) :: Int64 is if a <= b then a else b end
-definition max64 (a :: Int64) (b :: Int64) :: Int64 is if a >= b then a else b end
+function min64 (a :: Int64) (b :: Int64) -> Int64 is if a <= b then a else b
+  end if end function
+function max64 (a :: Int64) (b :: Int64) -> Int64 is if a >= b then a else b
+  end if end function
 
 -- The partitions of a topic with n of them, for n at most maxPartitions.
-definition maxPartitions (u :: Unit) :: Int32 is 1024 end
+function maxPartitions (u :: Unit) -> Int32 is 1024 end function
 
-definition partitionsBelow (n :: Int32) :: List Int32 is prelude.range 0 n end
+function partitionsBelow (n :: Int32) -> List Int32 is prelude.range 0 n
+end function
 
-definition topicPartitions (topic :: Text) (ps :: List Int32) :: List TopicPartition is
-  match ps with
-  | Nil -> []
-  | Cons p rest -> Cons (TopicPartition topic p) (topicPartitions topic rest)
-  end
-end
+function topicPartitions (topic :: Text) (ps :: List Int32) -> List
+  TopicPartition is
+  first matching case of ps :
+    when Nil then []
+    when Cons p rest then Cons (TopicPartition record{ topic = topic , partition
+        = p}) (topicPartitions topic rest)
+  end case
+end function
 
 -- ---------------------------------------------------------------------------
 -- Topics
@@ -238,572 +248,731 @@ end
 
 -- Kafka's rule for topic names: one to 249 ASCII letters, digits, dots,
 -- underscores and dashes, and not "." or "..".
-definition validTopicName (name :: Text) :: Bool is
+function validTopicName (name :: Text) -> Bool is
   let n = prelude.length name in
-  n >= 1 && n <= 249 && name != "." && name != ".." && name matches regex "[a-zA-Z0-9._-]+"
-end
+    n >= 1 && n <= 249 && name != "." && name != ".." && name matches regex
+      "[a-zA-Z0-9._-]+" end let
+end function
 
-definition partitionCountOf (topic :: Text) (b :: BrokerState) :: Maybe Int32 is
+function partitionCountOf (topic :: Text) (b :: BrokerState) -> Maybe Int32 is
   prelude.lookup topic b.topics
-end
+end function
 
-definition knownPartition (tp :: TopicPartition) (b :: BrokerState) :: Bool is
-  match partitionCountOf tp.topic b with
-  | Nothing -> false
-  | Just n -> tp.partition >= 0 && tp.partition < n
-  end
-end
+function knownPartition (tp :: TopicPartition) (b :: BrokerState) -> Bool is
+  first matching case of partitionCountOf tp.topic b :
+    when Nothing then false
+    when Just n then tp.partition >= 0 && tp.partition < n
+  end case
+end function
 
-definition logOf (tp :: TopicPartition) (b :: BrokerState) :: PartitionLog is
-  match prelude.lookup tp b.logs with
-  | Nothing -> emptyLog unitValue
-  | Just l -> l
-  end
-end
+function logOf (tp :: TopicPartition) (b :: BrokerState) -> PartitionLog is
+  first matching case of prelude.lookup tp b.logs :
+    when Nothing then emptyLog unitValue
+    when Just l then l
+  end case
+end function
 
-definition putLog (tp :: TopicPartition) (l :: PartitionLog) (b :: BrokerState) :: BrokerState is
+function putLog (tp :: TopicPartition) (l :: PartitionLog) (b :: BrokerState) ->
+  BrokerState is
   b with logs = prelude.put tp l b.logs
-end
+end function
 
-definition createTopic (name :: Text) (n :: Int32) (b :: BrokerState) :: Pair Unit BrokerState fails with KafkaError is
+procedure createTopic (name :: Text) (n :: Int32) (b :: BrokerState) -> Pair
+  Unit BrokerState fails with KafkaError is
   if !(validTopicName name) then raise InvalidTopic else
-  if n < 1 || n > maxPartitions unitValue then raise InvalidPartitions else
-  match partitionCountOf name b with
-  | Just existing -> raise TopicAlreadyExists
-  | Nothing -> Pair unitValue (rebalanceTopic name (b with topics = prelude.put name n b.topics))
-  end
-end
+    if n < 1 || n > maxPartitions unitValue then raise InvalidPartitions else
+      first matching case of partitionCountOf name b :
+        when Just existing then raise TopicAlreadyExists
+        when Nothing then Pair unitValue (rebalanceTopic name (b with topics =
+            prelude.put name n b.topics))
+      end case end if end if
+end procedure
 
-definition createPartitions (name :: Text) (total :: Int32) (b :: BrokerState) :: Pair Unit BrokerState fails with KafkaError is
-  match partitionCountOf name b with
-  | Nothing -> raise UnknownTopicOrPartition
-  | Just n ->
-      if total <= n || total > maxPartitions unitValue then raise InvalidPartitions else
-        Pair unitValue (rebalanceTopic name (b with topics = prelude.put name total b.topics))
-  end
-end
+procedure createPartitions (name :: Text) (total :: Int32) (b :: BrokerState) ->
+  Pair Unit BrokerState fails with KafkaError is
+  first matching case of partitionCountOf name b :
+    when Nothing then raise UnknownTopicOrPartition
+    when Just n then
+      if total <= n || total > maxPartitions unitValue then raise
+        InvalidPartitions else
+        Pair unitValue (rebalanceTopic name (b with topics = prelude.put name
+          total b.topics)) end if
+  end case
+end procedure
 
-definition metadata (name :: Text) (b :: BrokerState) :: Pair (Maybe Int32) BrokerState is
+function metadata (name :: Text) (b :: BrokerState) -> Pair (Maybe Int32)
+  BrokerState is
   Pair (partitionCountOf name b) b
-end
+end function
 
 -- ---------------------------------------------------------------------------
 -- Logs
 -- ---------------------------------------------------------------------------
 
-definition lastStableOffset (l :: PartitionLog) :: Int64 is minOf (prelude.values l.openTxns) l.logEndOffset end
+function lastStableOffset (l :: PartitionLog) -> Int64 is minOf (prelude.values
+    l.openTxns) l.logEndOffset end function
 
-definition minOf (xs :: List Int64) (m :: Int64) :: Int64 is
-  match xs with
-  | Nil -> m
-  | Cons h t -> minOf t (min64 h m)
-  end
-end
+function minOf (xs :: List Int64) (m :: Int64) -> Int64 is
+  first matching case of xs :
+    when Nil then m
+    when Cons h t then minOf t (min64 h m)
+  end case
+end function
 
-definition highWatermark (l :: PartitionLog) :: Int64 is l.logEndOffset end
+function highWatermark (l :: PartitionLog) -> Int64 is l.logEndOffset
+end function
 
 -- Appends records at the log end, newest first, and gives the offset after.
-definition appendRecords (rs :: List Record) (offset :: Int64) (writer :: Int64) (transactional :: Bool) (es :: List LogEntry) :: Pair Int64 (List LogEntry) is
-  match rs with
-  | Nil -> Pair offset es
-  | Cons r rest -> appendRecords rest (prelude.saturating (offset + 1)) writer transactional (Cons (DataEntry offset r writer transactional) es)
-  end
-end
+function appendRecords (rs :: List Record) (offset :: Int64) (writer :: Int64)
+  (transactional :: Bool) (es :: List LogEntry) -> Pair Int64 (List LogEntry) is
+  first matching case of rs :
+    when Nil then Pair offset es
+    when Cons r rest then appendRecords rest (prelude.saturating (offset + 1))
+        writer transactional (Cons (DataEntry record{ entryOffset = offset ,
+          entryRecord = r , writer = writer , transactional = transactional})
+          es)
+  end case
+end function
 
-definition appendBatch (rs :: List Record) (writer :: Int64) (transactional :: Bool) (l :: PartitionLog) :: PartitionLog is
-  let appended = appendRecords rs l.logEndOffset writer transactional l.entries in
-  let open = (if transactional then
-                (match prelude.lookup writer l.openTxns with
-                 | Nothing -> prelude.put writer l.logEndOffset l.openTxns
-                 | Just first -> l.openTxns
-                 end)
-              else l.openTxns) in
-  l with entries = appended.second, logEndOffset = appended.first, openTxns = open
-end
+function appendBatch (rs :: List Record) (writer :: Int64) (transactional ::
+  Bool) (l :: PartitionLog) -> PartitionLog is
+  let appended = appendRecords rs l.logEndOffset writer transactional l.entries
+    in
+    let open = (if transactional then
+        (first matching case of prelude.lookup writer l.openTxns :
+          when Nothing then prelude.put writer l.logEndOffset l.openTxns
+          when Just first then l.openTxns
+        end case)
+      else l.openTxns end if) in
+      l with entries = appended.second, logEndOffset = appended.first, openTxns
+        = open end let end let
+end function
 
-definition rememberBatch (writer :: Int64) (meta :: BatchMeta) (l :: PartitionLog) :: PartitionLog is
-  let previous = (match prelude.lookup writer l.batches with | Nothing -> [] | Just ms -> ms end) in
-  l with batches = prelude.put writer (prelude.take 5 (Cons meta previous)) l.batches
-end
+function rememberBatch (writer :: Int64) (meta :: BatchMeta) (l :: PartitionLog)
+  -> PartitionLog is
+  let previous = (first matching case of prelude.lookup writer l.batches : when
+      Nothing then [] when Just ms then ms end case) in
+    l with batches = prelude.put writer (prelude.take 5 (Cons meta previous))
+      l.batches end let
+end function
 
 -- A retry of a batch the broker already has: the same epoch and sequences.
-definition findDuplicate (epoch :: Int16) (first :: Int32) (last :: Int32) (ms :: List BatchMeta) :: Maybe Int64 is
-  match ms with
-  | Nil -> Nothing
-  | Cons m rest ->
-      if m.batchEpoch == epoch && m.firstSequence == first && m.lastSequence == last then Just m.batchOffset
-      else findDuplicate epoch first last rest
-  end
-end
+function findDuplicate (epoch :: Int16) (first :: Int32) (last :: Int32) (ms ::
+  List BatchMeta) -> Maybe Int64 is
+  first matching case of ms :
+    when Nil then Nothing
+    when Cons m rest then
+      if m.batchEpoch = epoch && m.firstSequence = first && m.lastSequence =
+          last then Just m.batchOffset
+      else findDuplicate epoch first last rest end if
+  end case
+end function
 
 -- The sequence the next batch of this producer must start with.
-definition expectedSequence (epoch :: Int16) (ms :: List BatchMeta) :: Int32 is
-  match ms with
-  | Nil -> 0
-  | Cons m rest -> if m.batchEpoch == epoch then prelude.saturating (m.lastSequence + 1) else 0
-  end
-end
+function expectedSequence (epoch :: Int16) (ms :: List BatchMeta) -> Int32 is
+  first matching case of ms :
+    when Nil then 0
+    when Cons m rest then if m.batchEpoch = epoch then prelude.saturating
+        (m.lastSequence + 1) else 0 end if
+  end case
+end function
 
 -- Produce: append a batch to one partition and give its base offset.
-definition produce (tp :: TopicPartition) (tag :: Maybe ProducerTag) (rs :: List Record) (b :: BrokerState) :: Pair Int64 BrokerState fails with KafkaError is
+procedure produce (tp :: TopicPartition) (tag :: Maybe ProducerTag) (rs :: List
+  Record) (b :: BrokerState) -> Pair Int64 BrokerState fails with KafkaError is
   if !(knownPartition tp b) then raise UnknownTopicOrPartition else
-  if prelude.isEmpty rs || prelude.length rs > 100000 then raise InvalidRecord else
-  let l = logOf tp b in
-  match tag with
-  | Nothing -> Pair (highWatermark l) (putLog tp (appendBatch rs -1 false l) b)
-  | Just t -> produceTagged tp t rs l b
-  end
-end
+    if prelude.isEmpty rs || prelude.length rs > 100000 then raise InvalidRecord
+    else
+      let l = logOf tp b in
+        first matching case of tag :
+          when Nothing then Pair (highWatermark l) (putLog tp (appendBatch rs -1
+              false l) b)
+          when Just t then produceTagged tp t rs l b
+        end case end let end if end if
+end procedure
 
-definition produceTagged (tp :: TopicPartition) (t :: ProducerTag) (rs :: List Record) (l :: PartitionLog) (b :: BrokerState) :: Pair Int64 BrokerState fails with KafkaError is
-  match prelude.lookup t.producerId b.producers with
-  | Nothing -> raise UnknownProducerId
-  | Just entry ->
+procedure produceTagged (tp :: TopicPartition) (t :: ProducerTag) (rs :: List
+  Record) (l :: PartitionLog) (b :: BrokerState) -> Pair Int64 BrokerState fails
+  with KafkaError is
+  first matching case of prelude.lookup t.producerId b.producers :
+    when Nothing then raise UnknownProducerId
+    when Just entry then
       if t.producerEpoch != entry.epoch then raise InvalidProducerEpoch else
-      let transactional = (match entry.transactionalId with | Nothing -> false | Just id -> true end) in
-      if transactional && !(txnHasPartition tp entry.txn) then raise InvalidTxnState else
-      let last = prelude.saturating (t.baseSequence + prelude.length rs - 1) in
-      let recent = (match prelude.lookup t.producerId l.batches with | Nothing -> [] | Just ms -> ms end) in
-      match findDuplicate t.producerEpoch t.baseSequence last recent with
-      | Just offset -> Pair offset b
-      | Nothing ->
-          if t.baseSequence != expectedSequence t.producerEpoch recent then raise OutOfOrderSequenceNumber else
-            let base = highWatermark l in
-            let l2 = rememberBatch t.producerId (BatchMeta t.producerEpoch t.baseSequence last base) (appendBatch rs t.producerId transactional l) in
-            Pair base (putLog tp l2 b)
-      end
-  end
-end
+        let transactional = (first matching case of entry.transactionalId : when
+            Nothing then false when Just id then true end case) in
+          if transactional && !(txnHasPartition tp entry.txn) then raise
+            InvalidTxnState else
+            let last = prelude.saturating (t.baseSequence + prelude.length rs -
+                1) in
+              let recent = (first matching case of prelude.lookup t.producerId
+                  l.batches : when Nothing then [] when Just ms then ms
+                end case)
+                in
+                first matching case of findDuplicate t.producerEpoch
+                  t.baseSequence last recent :
+                  when Just offset then Pair offset b
+                  when Nothing then
+                    if t.baseSequence != expectedSequence t.producerEpoch recent
+                      then raise OutOfOrderSequenceNumber else
+                      let base = highWatermark l in
+                        let l2 = rememberBatch t.producerId (BatchMeta record{
+                            batchEpoch = t.producerEpoch , firstSequence =
+                            t.baseSequence , lastSequence = last , batchOffset =
+                            base}) (appendBatch rs t.producerId transactional
+                              l) in
+                          Pair base (putLog tp l2 b) end let end let end if
+                end case end let end let end if end let end if
+  end case
+end procedure
 
-definition txnHasPartition (tp :: TopicPartition) (txn :: TxnState) :: Bool is
-  match txn with
-  | NoTxn -> false
-  | Ongoing ps os -> ps contains tp
-  end
-end
+function txnHasPartition (tp :: TopicPartition) (txn :: TxnState) -> Bool is
+  first matching case of txn :
+    when NoTxn then false
+    when Ongoing record{ txnPartitions = ps , txnOffsets = os} then ps contains
+        tp
+  end case
+end function
 
 -- Whether an aborted transaction of this writer covers this offset.
-definition isAborted (writer :: Int64) (offset :: Int64) (aborted :: List AbortedTxn) :: Bool is
-  match aborted with
-  | Nil -> false
-  | Cons a rest -> (a.abortedWriter == writer && offset >= a.firstOffset && offset <= a.lastOffset) || isAborted writer offset rest
-  end
-end
+function isAborted (writer :: Int64) (offset :: Int64) (aborted :: List
+  AbortedTxn) -> Bool is
+  first matching case of aborted :
+    when Nil then false
+    when Cons a rest then (a.abortedWriter = writer && offset >= a.firstOffset
+        && offset <= a.lastOffset) || isAborted writer offset rest
+  end case
+end function
 
 -- The entries a consumer may read from a log, in offset order: data entries
 -- from the fetch offset up to the limit, without the aborted ones when it
 -- reads committed. The log is newest first, so walking it and consing gives
 -- offset order, and the walk stops below the fetch offset.
-definition readable (es :: List LogEntry) (from :: Int64) (limit :: Int64) (committedOnly :: Bool) (aborted :: List AbortedTxn) (acc :: List FetchedRecord) :: List FetchedRecord is
-  match es with
-  | Nil -> acc
-  | Cons e rest ->
-      match e with
-      | DataEntry o r w tx ->
+function readable (es :: List LogEntry) (from :: Int64) (limit :: Int64)
+  (committedOnly :: Bool) (aborted :: List AbortedTxn) (acc :: List
+  FetchedRecord) -> List FetchedRecord is
+  first matching case of es :
+    when Nil then acc
+    when Cons e rest then
+      first matching case of e :
+        when DataEntry record{ entryOffset = o , entryRecord = r , writer = w ,
+          transactional = tx} then
           if o < from then acc else
-          if o >= limit then readable rest from limit committedOnly aborted acc else
-          if committedOnly && tx && isAborted w o aborted then readable rest from limit committedOnly aborted acc else
-            readable rest from limit committedOnly aborted (Cons (FetchedRecord o r) acc)
-      | ControlEntry o w c ->
-          if o < from then acc else readable rest from limit committedOnly aborted acc
-      end
-  end
-end
+            if o >= limit then readable rest from limit committedOnly aborted
+              acc else
+              if committedOnly && tx && isAborted w o aborted then readable rest
+                from limit committedOnly aborted acc else
+                readable rest from limit committedOnly aborted (Cons
+                  (FetchedRecord record{ offset = o , entry = r}) acc) end if
+            end if end if
+        when ControlEntry record{ markerOffset = o , markerWriter = w , commits
+          = c} then
+          if o < from then acc else readable rest from limit committedOnly
+            aborted acc end if
+      end case
+  end case
+end function
 
-definition lastOffsetOf (rs :: List FetchedRecord) (otherwise :: Int64) :: Int64 is
-  match rs with
-  | Nil -> otherwise
-  | Cons h t -> lastOffsetOf t h.offset
-  end
-end
+function lastOffsetOf (rs :: List FetchedRecord) (fallbackOffset :: Int64) ->
+  Int64 is
+  first matching case of rs :
+    when Nil then fallbackOffset
+    when Cons h t then lastOffsetOf t h.offset
+  end case
+end function
 
 -- Where the next fetch starts: past the last record taken, when the fetch
--- stopped at maxRecords; otherwise at the limit, past every entry skipped.
-definition nextFetchOffset (from :: Int64) (limit :: Int64) (taken :: List FetchedRecord) (all :: List FetchedRecord) :: Int64 is
+-- stopped at maxRecords; fallbackOffset at the limit, past every entry skipped.
+function nextFetchOffset (from :: Int64) (limit :: Int64) (taken :: List
+  FetchedRecord) (all :: List FetchedRecord) -> Int64 is
   if prelude.length taken < prelude.length all then
-    (match taken with
-     | Nil -> from
-     | Cons h t -> prelude.saturating (lastOffsetOf taken from + 1)
-     end)
-  else max64 from limit
-end
+    (first matching case of taken :
+      when Nil then from
+      when Cons h t then prelude.saturating (lastOffsetOf taken from + 1)
+    end case)
+  else max64 from limit end if
+end function
 
-definition fetch (tp :: TopicPartition) (from :: Int64) (maxRecords :: Int32) (isolation :: IsolationLevel) (b :: BrokerState) :: Pair FetchResult BrokerState fails with KafkaError is
+procedure fetch (tp :: TopicPartition) (from :: Int64) (maxRecords :: Int32)
+  (isolation :: IsolationLevel) (b :: BrokerState) -> Pair FetchResult
+  BrokerState fails with KafkaError is
   if !(knownPartition tp b) then raise UnknownTopicOrPartition else
-  let l = logOf tp b in
-  let hw = highWatermark l in
-  let lso = lastStableOffset l in
-  if from < 0 || from > hw then raise OffsetOutOfRange else
-  let committedOnly = (match isolation with | ReadUncommitted -> false | ReadCommitted -> true end) in
-  let limit = (if committedOnly then lso else hw) in
-  let all = readable l.entries from limit committedOnly l.abortedTxns [] in
-  let taken = prelude.take maxRecords all in
-  Pair (FetchResult taken (nextFetchOffset from limit taken all) hw lso) b
-end
+    let l = logOf tp b in
+      let hw = highWatermark l in
+        let lso = lastStableOffset l in
+          if from < 0 || from > hw then raise OffsetOutOfRange else
+            let committedOnly = (first matching case of isolation : when
+                ReadUncommitted then false when ReadCommitted then true
+              end case)
+              in
+              let limit = (if committedOnly then lso else hw end if) in
+                let all = readable l.entries from limit committedOnly
+                    l.abortedTxns [] in
+                  let taken = prelude.take maxRecords all in
+                    Pair (FetchResult record{ records = taken , nextOffset =
+                        (nextFetchOffset from limit taken all) , highWatermark =
+                        hw , lastStableOffset = lso}) b end let end let end let
+            end let end if end let end let end let end if
+end procedure
 
-definition listOffsets (tp :: TopicPartition) (spec :: OffsetSpec) (isolation :: IsolationLevel) (b :: BrokerState) :: Pair Int64 BrokerState fails with KafkaError is
+procedure listOffsets (tp :: TopicPartition) (spec :: OffsetSpec) (isolation ::
+  IsolationLevel) (b :: BrokerState) -> Pair Int64 BrokerState fails with
+  KafkaError is
   if !(knownPartition tp b) then raise UnknownTopicOrPartition else
-  let l = logOf tp b in
-  match spec with
-  | Earliest -> Pair 0 b
-  | Latest ->
-      match isolation with
-      | ReadUncommitted -> Pair (highWatermark l) b
-      | ReadCommitted -> Pair (lastStableOffset l) b
-      end
-  end
-end
+    let l = logOf tp b in
+      first matching case of spec :
+        when Earliest then Pair 0 b
+        when Latest then
+          first matching case of isolation :
+            when ReadUncommitted then Pair (highWatermark l) b
+            when ReadCommitted then Pair (lastStableOffset l) b
+          end case
+      end case end let end if
+end procedure
 
 -- ---------------------------------------------------------------------------
 -- Producer ids and transactions
 -- ---------------------------------------------------------------------------
 
-definition newProducer (txid :: Maybe Text) (b :: BrokerState) :: Pair ProducerIdAndEpoch BrokerState is
+function newProducer (txid :: Maybe Text) (b :: BrokerState) -> Pair
+  ProducerIdAndEpoch BrokerState is
   let pid = b.nextProducerId in
-  let withEntry = b with producers = prelude.put pid (ProducerEntry 0 txid NoTxn) b.producers, nextProducerId = prelude.saturating (pid + 1) in
-  let mapped = (match txid with
-                | Nothing -> withEntry
-                | Just id -> withEntry with transactionalIds = prelude.put id pid withEntry.transactionalIds
-                end) in
-  Pair (ProducerIdAndEpoch pid 0) mapped
-end
+    let withEntry = b with producers = prelude.put pid (ProducerEntry record{
+        epoch = 0 , transactionalId = txid , txn = NoTxn}) b.producers,
+        nextProducerId = prelude.saturating (pid + 1) in
+      let mapped = (first matching case of txid :
+          when Nothing then withEntry
+          when Just id then withEntry with transactionalIds = prelude.put id pid
+              withEntry.transactionalIds
+        end case) in
+        Pair (ProducerIdAndEpoch record{ producerId = pid , producerEpoch = 0})
+          mapped end let end let end let
+end function
 
 -- InitProducerId. A transactional id that is already known keeps its
 -- producer id and gets the next epoch, which fences every older instance;
 -- its open transaction is aborted.
-definition initProducerId (txid :: Maybe Text) (b :: BrokerState) :: Pair ProducerIdAndEpoch BrokerState fails with KafkaError is
-  match txid with
-  | Nothing -> newProducer Nothing b
-  | Just id ->
-      if id == "" then raise InvalidRequest else
-      match prelude.lookup id b.transactionalIds with
-      | Nothing -> newProducer txid b
-      | Just pid ->
-          match prelude.lookup pid b.producers with
-          | Nothing -> newProducer txid b
-          | Just entry ->
-              let cleared = finishTxn pid false entry.txn b in
-              if entry.epoch < Int16.max then
-                let bumped = prelude.saturating (entry.epoch + 1) in
-                Pair (ProducerIdAndEpoch pid bumped) (putProducer pid (entry with epoch = bumped, txn = NoTxn) cleared)
-              else newProducer txid cleared
-          end
-      end
-  end
-end
+procedure initProducerId (txid :: Maybe Text) (b :: BrokerState) -> Pair
+  ProducerIdAndEpoch BrokerState fails with KafkaError is
+  first matching case of txid :
+    when Nothing then newProducer Nothing b
+    when Just id then
+      if id = "" then raise InvalidRequest else
+        first matching case of prelude.lookup id b.transactionalIds :
+          when Nothing then newProducer txid b
+          when Just pid then
+            first matching case of prelude.lookup pid b.producers :
+              when Nothing then newProducer txid b
+              when Just entry then
+                let cleared = finishTxn pid false entry.txn b in
+                  if entry.epoch < Int16.max then
+                    let bumped = prelude.saturating (entry.epoch + 1) in
+                      Pair (ProducerIdAndEpoch record{ producerId = pid ,
+                        producerEpoch = bumped}) (putProducer pid (entry with
+                          epoch = bumped, txn = NoTxn) cleared) end let
+                  else newProducer txid cleared end if end let
+            end case
+        end case end if
+  end case
+end procedure
 
 -- The checks every transactional request makes: the transactional id maps
 -- to this producer id, and the epoch is current. An older epoch is a fenced
 -- zombie.
-definition checkTxnProducer (txid :: Text) (pid :: Int64) (epoch :: Int16) (b :: BrokerState) :: ProducerEntry fails with KafkaError is
-  match prelude.lookup txid b.transactionalIds with
-  | Nothing -> raise InvalidProducerIdMapping
-  | Just mapped ->
+procedure checkTxnProducer (txid :: Text) (pid :: Int64) (epoch :: Int16) (b ::
+  BrokerState) -> ProducerEntry fails with KafkaError is
+  first matching case of prelude.lookup txid b.transactionalIds :
+    when Nothing then raise InvalidProducerIdMapping
+    when Just mapped then
       if mapped != pid then raise InvalidProducerIdMapping else
-      match prelude.lookup pid b.producers with
-      | Nothing -> raise InvalidProducerIdMapping
-      | Just entry ->
-          if epoch < entry.epoch then raise ProducerFenced else
-          if epoch > entry.epoch then raise InvalidProducerEpoch else entry
-      end
-  end
-end
+        first matching case of prelude.lookup pid b.producers :
+          when Nothing then raise InvalidProducerIdMapping
+          when Just entry then
+            if epoch < entry.epoch then raise ProducerFenced else
+              if epoch > entry.epoch then raise InvalidProducerEpoch else entry
+              end if end if
+        end case end if
+  end case
+end procedure
 
-definition allKnown (tps :: List TopicPartition) (b :: BrokerState) :: Bool is
-  match tps with
-  | Nil -> true
-  | Cons h t -> knownPartition h b && allKnown t b
-  end
-end
+function allKnown (tps :: List TopicPartition) (b :: BrokerState) -> Bool is
+  first matching case of tps :
+    when Nil then true
+    when Cons h t then knownPartition h b && allKnown t b
+  end case
+end function
 
-definition unionPartitions (xs :: List TopicPartition) (ys :: List TopicPartition) :: List TopicPartition is
-  match xs with
-  | Nil -> ys
-  | Cons h t -> if ys contains h then unionPartitions t ys else unionPartitions t (Cons h ys)
-  end
-end
+function unionPartitions (xs :: List TopicPartition) (ys :: List TopicPartition)
+  -> List TopicPartition is
+  first matching case of xs :
+    when Nil then ys
+    when Cons h t then if ys contains h then unionPartitions t ys else
+        unionPartitions t (Cons h ys) end if
+  end case
+end function
 
-definition putProducer (pid :: Int64) (entry :: ProducerEntry) (b :: BrokerState) :: BrokerState is
+function putProducer (pid :: Int64) (entry :: ProducerEntry) (b :: BrokerState)
+  -> BrokerState is
   b with producers = prelude.put pid entry b.producers
-end
+end function
 
-definition addPartitionsToTxn (txid :: Text) (pid :: Int64) (epoch :: Int16) (tps :: List TopicPartition) (b :: BrokerState) :: Pair Unit BrokerState fails with KafkaError is
+procedure addPartitionsToTxn (txid :: Text) (pid :: Int64) (epoch :: Int16) (tps
+  :: List TopicPartition) (b :: BrokerState) -> Pair Unit BrokerState fails with
+  KafkaError is
   let entry = checkTxnProducer txid pid epoch b in
-  if !(allKnown tps b) then raise UnknownTopicOrPartition else
-  let next = (match entry.txn with
-              | NoTxn -> Ongoing (unionPartitions tps []) []
-              | Ongoing ps os -> Ongoing (unionPartitions tps ps) os
-              end) in
-  Pair unitValue (putProducer pid (entry with txn = next) b)
-end
+    if !(allKnown tps b) then raise UnknownTopicOrPartition else
+      let next = (first matching case of entry.txn :
+          when NoTxn then Ongoing record{ txnPartitions = (unionPartitions tps
+              []) , txnOffsets = []}
+          when Ongoing record{ txnPartitions = ps , txnOffsets = os} then
+            Ongoing record{ txnPartitions = (unionPartitions tps ps) ,
+              txnOffsets = os}
+        end case) in
+        Pair unitValue (putProducer pid (entry with txn = next) b) end let
+    end if end let
+end procedure
 
-definition pendingFor (group :: Text) (offsets :: List OffsetEntry) (acc :: List PendingOffset) :: List PendingOffset is
-  match offsets with
-  | Nil -> acc
-  | Cons o rest -> pendingFor group rest (Cons (PendingOffset group o) acc)
-  end
-end
+function pendingFor (group :: Text) (offsets :: List OffsetEntry) (acc :: List
+  PendingOffset) -> List PendingOffset is
+  first matching case of offsets :
+    when Nil then acc
+    when Cons o rest then pendingFor group rest (Cons (PendingOffset record{
+        pendingGroup = group , pendingEntry = o}) acc)
+  end case
+end function
 
 -- AddOffsetsToTxn and TxnOffsetCommit in one: the offsets are committed only
 -- if the transaction commits.
-definition txnOffsetCommit (txid :: Text) (pid :: Int64) (epoch :: Int16) (group :: Text) (offsets :: List OffsetEntry) (b :: BrokerState) :: Pair Unit BrokerState fails with KafkaError is
-  if group == "" then raise InvalidGroupId else
-  let entry = checkTxnProducer txid pid epoch b in
-  let next = (match entry.txn with
-              | NoTxn -> Ongoing [] (pendingFor group offsets [])
-              | Ongoing ps os -> Ongoing ps (pendingFor group offsets os)
-              end) in
-  Pair unitValue (putProducer pid (entry with txn = next) b)
-end
+procedure txnOffsetCommit (txid :: Text) (pid :: Int64) (epoch :: Int16) (group
+  :: Text) (offsets :: List OffsetEntry) (b :: BrokerState) -> Pair Unit
+  BrokerState fails with KafkaError is
+  if group = "" then raise InvalidGroupId else
+    let entry = checkTxnProducer txid pid epoch b in
+      let next = (first matching case of entry.txn :
+          when NoTxn then Ongoing record{ txnPartitions = [] , txnOffsets =
+              (pendingFor group offsets [])}
+          when Ongoing record{ txnPartitions = ps , txnOffsets = os} then
+            Ongoing record{ txnPartitions = ps , txnOffsets = (pendingFor group
+              offsets os)}
+        end case) in
+        Pair unitValue (putProducer pid (entry with txn = next) b) end let
+    end let end if
+end procedure
 
 -- Writes a commit or abort marker to one partition of a transaction.
-definition writeMarker (pid :: Int64) (commit :: Bool) (l :: PartitionLog) :: PartitionLog is
+function writeMarker (pid :: Int64) (commit :: Bool) (l :: PartitionLog) ->
+  PartitionLog is
   let aborted = (if commit then l.abortedTxns else
-                   (match prelude.lookup pid l.openTxns with
-                    | Nothing -> l.abortedTxns
-                    | Just first -> Cons (AbortedTxn pid first l.logEndOffset) l.abortedTxns
-                    end)) in
-  l with entries = Cons (ControlEntry l.logEndOffset pid commit) l.entries,
-         logEndOffset = prelude.saturating (l.logEndOffset + 1),
-         openTxns = prelude.delete pid l.openTxns,
-         abortedTxns = aborted
-end
+      (first matching case of prelude.lookup pid l.openTxns :
+        when Nothing then l.abortedTxns
+        when Just first then Cons (AbortedTxn record{ abortedWriter = pid ,
+            firstOffset = first , lastOffset = l.logEndOffset}) l.abortedTxns
+      end case) end if) in
+    l with entries = Cons (ControlEntry record{ markerOffset = l.logEndOffset ,
+      markerWriter = pid , commits = commit}) l.entries,
+      logEndOffset = prelude.saturating (l.logEndOffset + 1),
+      openTxns = prelude.delete pid l.openTxns,
+      abortedTxns = aborted end let
+end function
 
-definition writeMarkers (pid :: Int64) (commit :: Bool) (tps :: List TopicPartition) (b :: BrokerState) :: BrokerState is
-  match tps with
-  | Nil -> b
-  | Cons tp rest -> writeMarkers pid commit rest (putLog tp (writeMarker pid commit (logOf tp b)) b)
-  end
-end
+function writeMarkers (pid :: Int64) (commit :: Bool) (tps :: List
+  TopicPartition) (b :: BrokerState) -> BrokerState is
+  first matching case of tps :
+    when Nil then b
+    when Cons tp rest then writeMarkers pid commit rest (putLog tp (writeMarker
+        pid commit (logOf tp b)) b)
+  end case
+end function
 
-definition applyOffsets (os :: List PendingOffset) (b :: BrokerState) :: BrokerState is
-  match os with
-  | Nil -> b
-  | Cons o rest ->
-      applyOffsets rest (b with committed = prelude.put (GroupPartition o.pendingGroup o.pendingEntry.topicPartition) o.pendingEntry.offset b.committed)
-  end
-end
+function applyOffsets (os :: List PendingOffset) (b :: BrokerState) ->
+  BrokerState is
+  first matching case of os :
+    when Nil then b
+    when Cons o rest then
+      applyOffsets rest (b with committed = prelude.put (GroupPartition record{
+        groupId = o.pendingGroup , groupPartition =
+          o.pendingEntry.topicPartition}) o.pendingEntry.offset b.committed)
+  end case
+end function
 
 -- Ends a transaction: markers in every partition it touched and, on
 -- commit, its offsets. The producer's own entry is left to the caller.
-definition finishTxn (pid :: Int64) (commit :: Bool) (txn :: TxnState) (b :: BrokerState) :: BrokerState is
-  match txn with
-  | NoTxn -> b
-  | Ongoing ps os ->
+function finishTxn (pid :: Int64) (commit :: Bool) (txn :: TxnState) (b ::
+  BrokerState) -> BrokerState is
+  first matching case of txn :
+    when NoTxn then b
+    when Ongoing record{ txnPartitions = ps , txnOffsets = os} then
       let marked = writeMarkers pid commit ps b in
-      if commit then applyOffsets (reversePending os []) marked else marked
-  end
-end
+        if commit then applyOffsets (reversePending os []) marked else marked
+        end if end let
+  end case
+end function
 
-definition reversePending (os :: List PendingOffset) (acc :: List PendingOffset) :: List PendingOffset is
-  match os with
-  | Nil -> acc
-  | Cons h t -> reversePending t (Cons h acc)
-  end
-end
+function reversePending (os :: List PendingOffset) (acc :: List PendingOffset)
+  -> List PendingOffset is
+  first matching case of os :
+    when Nil then acc
+    when Cons h t then reversePending t (Cons h acc)
+  end case
+end function
 
-definition endTxn (txid :: Text) (pid :: Int64) (epoch :: Int16) (commit :: Bool) (b :: BrokerState) :: Pair Unit BrokerState fails with KafkaError is
+procedure endTxn (txid :: Text) (pid :: Int64) (epoch :: Int16) (commit :: Bool)
+  (b :: BrokerState) -> Pair Unit BrokerState fails with KafkaError is
   let entry = checkTxnProducer txid pid epoch b in
-  match entry.txn with
-  | NoTxn -> raise InvalidTxnState
-  | Ongoing ps os ->
-      Pair unitValue (putProducer pid (entry with txn = NoTxn) (finishTxn pid commit entry.txn b))
-  end
-end
+    first matching case of entry.txn :
+      when NoTxn then raise InvalidTxnState
+      when Ongoing record{ txnPartitions = ps , txnOffsets = os} then
+        Pair unitValue (putProducer pid (entry with txn = NoTxn) (finishTxn pid
+          commit entry.txn b))
+    end case end let
+end procedure
 
 -- ---------------------------------------------------------------------------
 -- Groups
 -- ---------------------------------------------------------------------------
 
-definition groupOf (g :: Text) (b :: BrokerState) :: Group is
-  match prelude.lookup g b.groups with
-  | Nothing -> emptyGroup unitValue
-  | Just group -> group
-  end
-end
+function groupOf (g :: Text) (b :: BrokerState) -> Group is
+  first matching case of prelude.lookup g b.groups :
+    when Nothing then emptyGroup unitValue
+    when Just group then group
+  end case
+end function
 
-definition putGroup (g :: Text) (group :: Group) (b :: BrokerState) :: BrokerState is
+function putGroup (g :: Text) (group :: Group) (b :: BrokerState) -> BrokerState
+  is
   b with groups = prelude.put g group b.groups
-end
+end function
 
 -- The members, in member id order, that subscribe to a topic.
-definition subscribersOf (topic :: Text) (subs :: List (Entry Text (List Text))) :: List Text is
-  match subs with
-  | Nil -> []
-  | Cons e rest ->
-      if e.value contains topic then Cons e.key (subscribersOf topic rest) else subscribersOf topic rest
-  end
-end
+function subscribersOf (topic :: Text) (subs :: List (Entry Text (List Text)))
+  -> List Text is
+  first matching case of subs :
+    when Nil then []
+    when Cons e rest then
+      if e.value contains topic then Cons e.key (subscribersOf topic rest) else
+        subscribersOf topic rest end if
+  end case
+end function
 
-definition assignTo (member :: Text) (tp :: TopicPartition) (a :: KeyVal Text (List TopicPartition)) :: KeyVal Text (List TopicPartition) is
-  match prelude.lookup member a with
-  | Nothing -> prelude.put member [tp] a
-  | Just tps -> prelude.put member (tps ++ [tp]) a
-  end
-end
+function assignTo (member :: Text) (tp :: TopicPartition) (a :: KeyVal Text
+  (List TopicPartition)) -> KeyVal Text (List TopicPartition) is
+  first matching case of prelude.lookup member a :
+    when Nothing then prelude.put member [tp] a
+    when Just tps then prelude.put member (tps ++ [tp]) a
+  end case
+end function
 
 -- The partitions of a topic go to its subscribers in turn, in member id
 -- order, starting again from the first when every subscriber has one:
 -- every partition has exactly one owner. `waiting` is the subscribers still
 -- to get one in this round.
-definition assignPartitions (topic :: Text) (ps :: List Int32) (owners :: List Text) (waiting :: List Text) (a :: KeyVal Text (List TopicPartition)) :: KeyVal Text (List TopicPartition) is
-  match ps with
-  | Nil -> a
-  | Cons p rest ->
-      match waiting with
-      | Cons owner later -> assignPartitions topic rest owners later (assignTo owner (TopicPartition topic p) a)
-      | Nil ->
-          match owners with
-          | Nil -> a
-          | Cons owner later -> assignPartitions topic rest owners later (assignTo owner (TopicPartition topic p) a)
-          end
-      end
-  end
-end
+function assignPartitions (topic :: Text) (ps :: List Int32) (owners :: List
+  Text) (waiting :: List Text) (a :: KeyVal Text (List TopicPartition)) ->
+  KeyVal Text (List TopicPartition) is
+  first matching case of ps :
+    when Nil then a
+    when Cons p rest then
+      first matching case of waiting :
+        when Cons owner later then assignPartitions topic rest owners later
+            (assignTo owner (TopicPartition record{ topic = topic , partition =
+                p}) a)
+        when Nil then
+          first matching case of owners :
+            when Nil then a
+            when Cons owner later then assignPartitions topic rest owners later
+                (assignTo owner (TopicPartition record{ topic = topic ,
+                  partition
+                  = p}) a)
+          end case
+      end case
+  end case
+end function
 
-definition subscribedTopics (subs :: List (Entry Text (List Text))) (acc :: Set Text) :: Set Text is
-  match subs with
-  | Nil -> acc
-  | Cons e rest -> subscribedTopics rest (prelude.union acc (prelude.setOf e.value))
-  end
-end
+function subscribedTopics (subs :: List (Entry Text (List Text))) (acc ::
+  SortedSet Text) -> SortedSet Text is
+  first matching case of subs :
+    when Nil then acc
+    when Cons e rest then subscribedTopics rest (prelude.sortedSetUnion acc
+        (prelude.sortedSetOf e.value))
+  end case
+end function
 
-definition assignTopics (topics :: List Text) (subs :: List (Entry Text (List Text))) (b :: BrokerState) (a :: KeyVal Text (List TopicPartition)) :: KeyVal Text (List TopicPartition) is
-  match topics with
-  | Nil -> a
-  | Cons topic rest ->
-      match partitionCountOf topic b with
-      | Nothing -> assignTopics rest subs b a
-      | Just n -> assignTopics rest subs b (let owners = subscribersOf topic subs in assignPartitions topic (partitionsBelow n) owners owners a)
-      end
-  end
-end
+function assignTopics (topics :: List Text) (subs :: List (Entry Text (List
+  Text))) (b :: BrokerState) (a :: KeyVal Text (List TopicPartition)) -> KeyVal
+  Text (List TopicPartition) is
+  first matching case of topics :
+    when Nil then a
+    when Cons topic rest then
+      first matching case of partitionCountOf topic b :
+        when Nothing then assignTopics rest subs b a
+        when Just n then assignTopics rest subs b (let owners = subscribersOf
+            topic subs in assignPartitions topic (partitionsBelow n) owners
+              owners
+              a end let)
+      end case
+  end case
+end function
 
-definition emptyAssignments (members :: List Text) (a :: KeyVal Text (List TopicPartition)) :: KeyVal Text (List TopicPartition) is
-  match members with
-  | Nil -> a
-  | Cons m rest -> emptyAssignments rest (prelude.put m [] a)
-  end
-end
+function emptyAssignments (members :: List Text) (a :: KeyVal Text (List
+  TopicPartition)) -> KeyVal Text (List TopicPartition) is
+  first matching case of members :
+    when Nil then a
+    when Cons m rest then emptyAssignments rest (prelude.put m [] a)
+  end case
+end function
 
 -- The coordinator's assignment for the group's members and subscriptions.
-definition computeAssignment (subscriptions :: KeyVal Text (List Text)) (b :: BrokerState) :: KeyVal Text (List TopicPartition) is
+function computeAssignment (subscriptions :: KeyVal Text (List Text)) (b ::
+  BrokerState) -> KeyVal Text (List TopicPartition) is
   let subs = prelude.entries subscriptions in
-  assignTopics (prelude.toList (subscribedTopics subs (prelude.setOf []))) subs b
-    (emptyAssignments (prelude.keys subscriptions) (prelude.keyValOf []))
-end
+    assignTopics (prelude.toList (subscribedTopics subs (prelude.sortedSetOf
+      []))) subs b
+      (emptyAssignments (prelude.keys subscriptions) (prelude.keyValOf []))
+  end let
+end function
 
 -- A new generation of the group, with a fresh assignment.
-definition rebalance (group :: Group) (b :: BrokerState) :: Group is
-  group with groupGeneration = prelude.saturating (group.groupGeneration + 1), assignment = computeAssignment group.subscriptions b
-end
+function rebalance (group :: Group) (b :: BrokerState) -> Group is
+  group with groupGeneration = prelude.saturating (group.groupGeneration + 1),
+    assignment = computeAssignment group.subscriptions b
+end function
 
-definition subscribesTo (topic :: Text) (group :: Group) :: Bool is
+function subscribesTo (topic :: Text) (group :: Group) -> Bool is
   !(prelude.isEmpty (subscribersOf topic (prelude.entries group.subscriptions)))
-end
+end function
 
-definition rebalanceGroups (topic :: Text) (gs :: List (Entry Text Group)) (b :: BrokerState) (acc :: KeyVal Text Group) :: KeyVal Text Group is
-  match gs with
-  | Nil -> acc
-  | Cons e rest ->
-      rebalanceGroups topic rest b (prelude.put e.key (if subscribesTo topic e.value then rebalance e.value b else e.value) acc)
-  end
-end
+function rebalanceGroups (topic :: Text) (gs :: List (Entry Text Group)) (b ::
+  BrokerState) (acc :: KeyVal Text Group) -> KeyVal Text Group is
+  first matching case of gs :
+    when Nil then acc
+    when Cons e rest then
+      rebalanceGroups topic rest b (prelude.put e.key (if subscribesTo topic
+        e.value then rebalance e.value b else e.value end if) acc)
+  end case
+end function
 
 -- A topic's partitions changed: every group that subscribes to it
 -- rebalances.
-definition rebalanceTopic (topic :: Text) (b :: BrokerState) :: BrokerState is
+function rebalanceTopic (topic :: Text) (b :: BrokerState) -> BrokerState is
   b with groups = rebalanceGroups topic (prelude.entries b.groups) b b.groups
-end
+end function
 
 -- JoinGroup. A new member, or a member whose subscription changed, starts a
 -- new generation; a member that rejoins unchanged learns the current one.
-definition joinGroup (g :: Text) (member :: Text) (topics :: List Text) (b :: BrokerState) :: Pair Int32 BrokerState fails with KafkaError is
-  if g == "" then raise InvalidGroupId else
-  if member == "" then raise UnknownMemberId else
-  let group = groupOf g b in
-  let wanted = prelude.toList (prelude.setOf topics) in
-  match prelude.lookup member group.subscriptions with
-  | Just existing ->
-      if existing == wanted then Pair group.groupGeneration b else
-        let next = rebalance (group with subscriptions = prelude.put member wanted group.subscriptions) b in
-        Pair next.groupGeneration (putGroup g next b)
-  | Nothing ->
-      let next = rebalance (group with subscriptions = prelude.put member wanted group.subscriptions) b in
-      Pair next.groupGeneration (putGroup g next b)
-  end
-end
+procedure joinGroup (g :: Text) (member :: Text) (topics :: List Text) (b ::
+  BrokerState) -> Pair Int32 BrokerState fails with KafkaError is
+  if g = "" then raise InvalidGroupId else
+    if member = "" then raise UnknownMemberId else
+      let group = groupOf g b in
+        let wanted = prelude.toList (prelude.sortedSetOf topics) in
+          first matching case of prelude.lookup member group.subscriptions :
+            when Just existing then
+              if existing = wanted then Pair group.groupGeneration b else
+                let next = rebalance (group with subscriptions = prelude.put
+                    member wanted group.subscriptions) b in
+                  Pair next.groupGeneration (putGroup g next b) end let end if
+            when Nothing then
+              let next = rebalance (group with subscriptions = prelude.put
+                  member wanted group.subscriptions) b in
+                Pair next.groupGeneration (putGroup g next b) end let
+          end case end let end let end if end if
+end procedure
 
 -- The checks of SyncGroup, Heartbeat and OffsetCommit: the member belongs to
 -- the group, at its current generation.
-definition checkMember (g :: Text) (member :: Text) (generation :: Int32) (b :: BrokerState) :: Group fails with KafkaError is
-  if g == "" then raise InvalidGroupId else
-  let group = groupOf g b in
-  match prelude.lookup member group.subscriptions with
-  | Nothing -> raise UnknownMemberId
-  | Just topics -> if generation != group.groupGeneration then raise IllegalGeneration else group
-  end
-end
+procedure checkMember (g :: Text) (member :: Text) (generation :: Int32) (b ::
+  BrokerState) -> Group fails with KafkaError is
+  if g = "" then raise InvalidGroupId else
+    let group = groupOf g b in
+      first matching case of prelude.lookup member group.subscriptions :
+        when Nothing then raise UnknownMemberId
+        when Just topics then if generation != group.groupGeneration then raise
+            IllegalGeneration else group end if
+      end case end let end if
+end procedure
 
-definition syncGroup (g :: Text) (member :: Text) (generation :: Int32) (b :: BrokerState) :: Pair (List TopicPartition) BrokerState fails with KafkaError is
+procedure syncGroup (g :: Text) (member :: Text) (generation :: Int32) (b ::
+  BrokerState) -> Pair (List TopicPartition) BrokerState fails with KafkaError
+  is
   let group = checkMember g member generation b in
-  match prelude.lookup member group.assignment with
-  | Nothing -> Pair [] b
-  | Just tps -> Pair tps b
-  end
-end
+    first matching case of prelude.lookup member group.assignment :
+      when Nothing then Pair [] b
+      when Just tps then Pair tps b
+    end case end let
+end procedure
 
-definition heartbeat (g :: Text) (member :: Text) (generation :: Int32) (b :: BrokerState) :: Pair Unit BrokerState fails with KafkaError is
-  let group = checkMember g member generation b in Pair unitValue b
-end
+procedure heartbeat (g :: Text) (member :: Text) (generation :: Int32) (b ::
+  BrokerState) -> Pair Unit BrokerState fails with KafkaError is
+  let group = checkMember g member generation b in Pair unitValue b end let
+end procedure
 
-definition leaveGroup (g :: Text) (member :: Text) (b :: BrokerState) :: Pair Unit BrokerState fails with KafkaError is
+procedure leaveGroup (g :: Text) (member :: Text) (b :: BrokerState) -> Pair
+  Unit BrokerState fails with KafkaError is
   let group = groupOf g b in
-  match prelude.lookup member group.subscriptions with
-  | Nothing -> raise UnknownMemberId
-  | Just topics ->
-      Pair unitValue (putGroup g (rebalance (group with subscriptions = prelude.delete member group.subscriptions) b) b)
-  end
-end
+    first matching case of prelude.lookup member group.subscriptions :
+      when Nothing then raise UnknownMemberId
+      when Just topics then
+        Pair unitValue (putGroup g (rebalance (group with subscriptions =
+          prelude.delete member group.subscriptions) b) b)
+    end case end let
+end procedure
 
-definition memberViews (a :: List (Entry Text (List TopicPartition))) :: List MemberAssignment is
-  match a with
-  | Nil -> []
-  | Cons e rest -> Cons (MemberAssignment e.key e.value) (memberViews rest)
-  end
-end
+function memberViews (a :: List (Entry Text (List TopicPartition))) -> List
+  MemberAssignment is
+  first matching case of a :
+    when Nil then []
+    when Cons e rest then Cons (MemberAssignment record{ memberId = e.key ,
+        assigned = e.value}) (memberViews rest)
+  end case
+end function
 
-definition describeGroup (g :: Text) (b :: BrokerState) :: Pair GroupView BrokerState is
-  let group = groupOf g b in Pair (GroupView group.groupGeneration (memberViews (prelude.entries group.assignment))) b
-end
+function describeGroup (g :: Text) (b :: BrokerState) -> Pair GroupView
+  BrokerState is
+  let group = groupOf g b in Pair (GroupView record{ generation =
+      group.groupGeneration , members = (memberViews (prelude.entries
+        group.assignment))}) b end let
+end function
 
-definition commitAll (g :: Text) (offsets :: List OffsetEntry) (b :: BrokerState) :: BrokerState is
-  match offsets with
-  | Nil -> b
-  | Cons o rest -> commitAll g rest (b with committed = prelude.put (GroupPartition g o.topicPartition) o.offset b.committed)
-  end
-end
+function commitAll (g :: Text) (offsets :: List OffsetEntry) (b :: BrokerState)
+  -> BrokerState is
+  first matching case of offsets :
+    when Nil then b
+    when Cons o rest then commitAll g rest (b with committed = prelude.put
+        (GroupPartition record{ groupId = g , groupPartition =
+            o.topicPartition})
+        o.offset b.committed)
+  end case
+end function
 
-definition offsetPartitions (offsets :: List OffsetEntry) :: List TopicPartition is
-  match offsets with
-  | Nil -> []
-  | Cons o rest -> Cons o.topicPartition (offsetPartitions rest)
-  end
-end
+function offsetPartitions (offsets :: List OffsetEntry) -> List TopicPartition
+  is
+  first matching case of offsets :
+    when Nil then []
+    when Cons o rest then Cons o.topicPartition (offsetPartitions rest)
+  end case
+end function
 
 -- OffsetCommit. A member commits at its current generation. A consumer
 -- outside any group commits with member "" and generation -1, which only an
 -- empty group accepts.
-definition offsetCommit (g :: Text) (member :: Text) (generation :: Int32) (offsets :: List OffsetEntry) (b :: BrokerState) :: Pair Unit BrokerState fails with KafkaError is
-  if g == "" then raise InvalidGroupId else
-  if !(allKnown (offsetPartitions offsets) b) then raise UnknownTopicOrPartition else
-  let group = groupOf g b in
-  if member == "" && generation == -1 then
-    (if prelude.isEmpty group.subscriptions then Pair unitValue (commitAll g offsets b) else raise IllegalGeneration)
-  else
-    let checked = checkMember g member generation b in Pair unitValue (commitAll g offsets b)
-end
+procedure offsetCommit (g :: Text) (member :: Text) (generation :: Int32)
+  (offsets :: List OffsetEntry) (b :: BrokerState) -> Pair Unit BrokerState
+  fails with KafkaError is
+  if g = "" then raise InvalidGroupId else
+    if !(allKnown (offsetPartitions offsets) b) then raise
+      UnknownTopicOrPartition else
+      let group = groupOf g b in
+        if member = "" && generation = -1 then
+          (if prelude.isEmpty group.subscriptions then Pair unitValue (commitAll
+            g offsets b) else raise IllegalGeneration end if)
+        else
+          let checked = checkMember g member generation b in Pair unitValue
+              (commitAll g offsets b) end let end if end let end if end if
+end procedure
 
-definition offsetFetch (g :: Text) (tp :: TopicPartition) (b :: BrokerState) :: Pair (Maybe Int64) BrokerState is
-  Pair (prelude.lookup (GroupPartition g tp) b.committed) b
-end
+function offsetFetch (g :: Text) (tp :: TopicPartition) (b :: BrokerState) ->
+  Pair (Maybe Int64) BrokerState is
+  Pair (prelude.lookup (GroupPartition record{ groupId = g , groupPartition =
+      tp}) b.committed) b
+end function
+
+end unit

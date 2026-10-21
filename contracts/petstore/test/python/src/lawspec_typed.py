@@ -15,422 +15,480 @@ def Ordering_of(c):
 
 # lawspec.matchers::matchersMatchesRegex
 def Def_matchersMatchesRegex_52d1c22e(t_0, r_1):
-    p_2 = r_1[0]
-    return lsf_regex_matches(p_2, t_0)
+    it_2 = r_1
+    v_lawspecselection0x0_3 = it_2[0]
+    return lsf_regex_matches(v_lawspecselection0x0_3, t_0)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValDeleteItems_2498b2ce1c0ae42d
-def Def_lawspecCollectionsKeyValDeleteItems_8ede0895(k_3, es_4):
-    if es_4 is None:
-        return es_4
+def Def_lawspecCollectionsKeyValDeleteItems_8ede0895(k_4, es_5):
+    it_6 = es_5
+    if it_6 is None:
+        return es_5
     else:
-        e_5 = es_4[0]
-        t_6 = es_4[1]
-        key_7 = e_5[0]
-        matched_8 = Ordering_of(lsf_cmp_plain(k_3, key_7))
-        if matched_8 == 0:
-            return t_6
-        elif matched_8 == 1:
-            return lsf_cons(e_5, Def_lawspecCollectionsKeyValDeleteItems_8ede0895(k_3, t_6))
+        v_lawspecselection0x0_7 = it_6[0]
+        v_lawspecselection0x1_8 = it_6[1]
+        it_9 = v_lawspecselection0x0_7
+        v_match__lawspecselection0x0_0_10 = it_9[0]
+        it_11 = Ordering_of(lsf_cmp_plain(k_4, v_match__lawspecselection0x0_0_10))
+        if it_11 == 0:
+            return v_lawspecselection0x1_8
+        elif it_11 == 1:
+            return lsf_cons(v_lawspecselection0x0_7, Def_lawspecCollectionsKeyValDeleteItems_8ede0895(k_4, v_lawspecselection0x1_8))
         else:
-            return es_4
+            return es_5
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValDeleteItems_617d84abadc0cf3
-def Def_lawspecCollectionsKeyValDeleteItems_306e4a61(k_9, es_10):
-    if es_10 is None:
-        return es_10
+def Def_lawspecCollectionsKeyValDeleteItems_306e4a61(k_12, es_13):
+    it_14 = es_13
+    if it_14 is None:
+        return es_13
     else:
-        e_11 = es_10[0]
-        t_12 = es_10[1]
-        key_13 = e_11[0]
-        matched_14 = Ordering_of(lsf_cmp_plain(k_9, key_13))
-        if matched_14 == 0:
-            return t_12
-        elif matched_14 == 1:
-            return lsf_cons(e_11, Def_lawspecCollectionsKeyValDeleteItems_306e4a61(k_9, t_12))
+        v_lawspecselection0x0_15 = it_14[0]
+        v_lawspecselection0x1_16 = it_14[1]
+        it_17 = v_lawspecselection0x0_15
+        v_match__lawspecselection0x0_0_18 = it_17[0]
+        it_19 = Ordering_of(lsf_cmp_plain(k_12, v_match__lawspecselection0x0_0_18))
+        if it_19 == 0:
+            return v_lawspecselection0x1_16
+        elif it_19 == 1:
+            return lsf_cons(v_lawspecselection0x0_15, Def_lawspecCollectionsKeyValDeleteItems_306e4a61(k_12, v_lawspecselection0x1_16))
         else:
-            return es_10
+            return es_13
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValDeleteItems_d853b820169aacb5
-def Def_lawspecCollectionsKeyValDeleteItems_f46df0ad(k_15, es_16):
-    if es_16 is None:
-        return es_16
+def Def_lawspecCollectionsKeyValDeleteItems_f46df0ad(k_20, es_21):
+    it_22 = es_21
+    if it_22 is None:
+        return es_21
     else:
-        e_17 = es_16[0]
-        t_18 = es_16[1]
-        key_19 = e_17[0]
-        matched_20 = Ordering_of(lsf_cmp_plain(k_15, key_19))
-        if matched_20 == 0:
-            return t_18
-        elif matched_20 == 1:
-            return lsf_cons(e_17, Def_lawspecCollectionsKeyValDeleteItems_f46df0ad(k_15, t_18))
+        v_lawspecselection0x0_23 = it_22[0]
+        v_lawspecselection0x1_24 = it_22[1]
+        it_25 = v_lawspecselection0x0_23
+        v_match__lawspecselection0x0_0_26 = it_25[0]
+        it_27 = Ordering_of(lsf_cmp_plain(k_20, v_match__lawspecselection0x0_0_26))
+        if it_27 == 0:
+            return v_lawspecselection0x1_24
+        elif it_27 == 1:
+            return lsf_cons(v_lawspecselection0x0_23, Def_lawspecCollectionsKeyValDeleteItems_f46df0ad(k_20, v_lawspecselection0x1_24))
         else:
-            return es_16
+            return es_21
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValDelete_13870e9dc25991b3
-def Def_lawspecCollectionsKeyValDelete_c3e7d7f6(k_21, m_22):
-    return lsf_delete(m_22, k_21)
+def Def_lawspecCollectionsKeyValDelete_c3e7d7f6(k_28, m_29):
+    return lsf_delete(m_29, k_28)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValDelete_3221376c81b1179d
-def Def_lawspecCollectionsKeyValDelete_e4177076(k_23, m_24):
-    return lsf_delete(m_24, k_23)
+def Def_lawspecCollectionsKeyValDelete_e4177076(k_30, m_31):
+    return lsf_delete(m_31, k_30)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValDelete_bcee84ca81b37cf5
-def Def_lawspecCollectionsKeyValDelete_5428b507(k_25, m_26):
-    return lsf_delete(m_26, k_25)
+def Def_lawspecCollectionsKeyValDelete_5428b507(k_32, m_33):
+    return lsf_delete(m_33, k_32)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValFromItems_134c69b262f914fb
-def Def_lawspecCollectionsKeyValFromItems_d7fe858d(es_27, acc_28):
+def Def_lawspecCollectionsKeyValFromItems_d7fe858d(es_34, acc_35):
     while True:
-        if es_27 is None:
-            return acc_28
+        it_36 = es_34
+        if it_36 is None:
+            return acc_35
         else:
-            e_29 = es_27[0]
-            t_30 = es_27[1]
-            key_31 = e_29[0]
-            value_32 = e_29[1]
-            next_33 = t_30
-            next_34 = Def_lawspecCollectionsKeyValPutItems_102b61ab(key_31, value_32, acc_28)
-            es_27 = next_33
-            acc_28 = next_34
+            v_lawspecselection0x0_37 = it_36[0]
+            v_lawspecselection0x1_38 = it_36[1]
+            it_39 = v_lawspecselection0x0_37
+            v_match__lawspecselection0x0_0_40 = it_39[0]
+            v_match__lawspecselection0x1_0_41 = it_39[1]
+            next_42 = v_lawspecselection0x1_38
+            next_43 = Def_lawspecCollectionsKeyValPutItems_102b61ab(v_match__lawspecselection0x0_0_40, v_match__lawspecselection0x1_0_41, acc_35)
+            es_34 = next_42
+            acc_35 = next_43
             continue
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValFromItems_3c98264cc23dcd72
-def Def_lawspecCollectionsKeyValFromItems_29c5e24f(es_35, acc_36):
+def Def_lawspecCollectionsKeyValFromItems_29c5e24f(es_44, acc_45):
     while True:
-        if es_35 is None:
-            return acc_36
+        it_46 = es_44
+        if it_46 is None:
+            return acc_45
         else:
-            e_37 = es_35[0]
-            t_38 = es_35[1]
-            key_39 = e_37[0]
-            value_40 = e_37[1]
-            next_41 = t_38
-            next_42 = Def_lawspecCollectionsKeyValPutItems_19d16932(key_39, value_40, acc_36)
-            es_35 = next_41
-            acc_36 = next_42
+            v_lawspecselection0x0_47 = it_46[0]
+            v_lawspecselection0x1_48 = it_46[1]
+            it_49 = v_lawspecselection0x0_47
+            v_match__lawspecselection0x0_0_50 = it_49[0]
+            v_match__lawspecselection0x1_0_51 = it_49[1]
+            next_52 = v_lawspecselection0x1_48
+            next_53 = Def_lawspecCollectionsKeyValPutItems_19d16932(v_match__lawspecselection0x0_0_50, v_match__lawspecselection0x1_0_51, acc_45)
+            es_44 = next_52
+            acc_45 = next_53
             continue
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValFromItems_fb920b50b03dabf2
-def Def_lawspecCollectionsKeyValFromItems_709d7e45(es_43, acc_44):
+def Def_lawspecCollectionsKeyValFromItems_709d7e45(es_54, acc_55):
     while True:
-        if es_43 is None:
-            return acc_44
+        it_56 = es_54
+        if it_56 is None:
+            return acc_55
         else:
-            e_45 = es_43[0]
-            t_46 = es_43[1]
-            key_47 = e_45[0]
-            value_48 = e_45[1]
-            next_49 = t_46
-            next_50 = Def_lawspecCollectionsKeyValPutItems_b231a093(key_47, value_48, acc_44)
-            es_43 = next_49
-            acc_44 = next_50
+            v_lawspecselection0x0_57 = it_56[0]
+            v_lawspecselection0x1_58 = it_56[1]
+            it_59 = v_lawspecselection0x0_57
+            v_match__lawspecselection0x0_0_60 = it_59[0]
+            v_match__lawspecselection0x1_0_61 = it_59[1]
+            next_62 = v_lawspecselection0x1_58
+            next_63 = Def_lawspecCollectionsKeyValPutItems_b231a093(v_match__lawspecselection0x0_0_60, v_match__lawspecselection0x1_0_61, acc_55)
+            es_54 = next_62
+            acc_55 = next_63
             continue
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValLookupItems_300a8c8122e436f9
-def Def_lawspecCollectionsKeyValLookupItems_86a23cdf(k_51, es_52):
+def Def_lawspecCollectionsKeyValLookupItems_86a23cdf(k_64, es_65):
     while True:
-        if es_52 is None:
+        it_66 = es_65
+        if it_66 is None:
             return ()
         else:
-            e_53 = es_52[0]
-            t_54 = es_52[1]
-            key_55 = e_53[0]
-            value_56 = e_53[1]
-            matched_57 = Ordering_of(lsf_cmp_plain(k_51, key_55))
-            if matched_57 == 0:
-                return (value_56,)
-            elif matched_57 == 1:
-                next_58 = t_54
-                es_52 = next_58
+            v_lawspecselection0x0_67 = it_66[0]
+            v_lawspecselection0x1_68 = it_66[1]
+            it_69 = v_lawspecselection0x0_67
+            v_match__lawspecselection0x0_0_70 = it_69[0]
+            v_match__lawspecselection0x1_0_71 = it_69[1]
+            it_72 = Ordering_of(lsf_cmp_plain(k_64, v_match__lawspecselection0x0_0_70))
+            if it_72 == 0:
+                return (v_match__lawspecselection0x1_0_71,)
+            elif it_72 == 1:
+                next_73 = v_lawspecselection0x1_68
+                es_65 = next_73
                 continue
             else:
                 return ()
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValLookupItems_3cded3b88470c13d
-def Def_lawspecCollectionsKeyValLookupItems_86fdea7f(k_59, es_60):
+def Def_lawspecCollectionsKeyValLookupItems_86fdea7f(k_74, es_75):
     while True:
-        if es_60 is None:
+        it_76 = es_75
+        if it_76 is None:
             return ()
         else:
-            e_61 = es_60[0]
-            t_62 = es_60[1]
-            key_63 = e_61[0]
-            value_64 = e_61[1]
-            matched_65 = Ordering_of(lsf_cmp_plain(k_59, key_63))
-            if matched_65 == 0:
-                return (value_64,)
-            elif matched_65 == 1:
-                next_66 = t_62
-                es_60 = next_66
+            v_lawspecselection0x0_77 = it_76[0]
+            v_lawspecselection0x1_78 = it_76[1]
+            it_79 = v_lawspecselection0x0_77
+            v_match__lawspecselection0x0_0_80 = it_79[0]
+            v_match__lawspecselection0x1_0_81 = it_79[1]
+            it_82 = Ordering_of(lsf_cmp_plain(k_74, v_match__lawspecselection0x0_0_80))
+            if it_82 == 0:
+                return (v_match__lawspecselection0x1_0_81,)
+            elif it_82 == 1:
+                next_83 = v_lawspecselection0x1_78
+                es_75 = next_83
                 continue
             else:
                 return ()
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValLookupItems_acb0ebccff390fa3
-def Def_lawspecCollectionsKeyValLookupItems_6f0d755e(k_67, es_68):
+def Def_lawspecCollectionsKeyValLookupItems_6f0d755e(k_84, es_85):
     while True:
-        if es_68 is None:
+        it_86 = es_85
+        if it_86 is None:
             return ()
         else:
-            e_69 = es_68[0]
-            t_70 = es_68[1]
-            key_71 = e_69[0]
-            value_72 = e_69[1]
-            matched_73 = Ordering_of(lsf_cmp_plain(k_67, key_71))
-            if matched_73 == 0:
-                return (value_72,)
-            elif matched_73 == 1:
-                next_74 = t_70
-                es_68 = next_74
+            v_lawspecselection0x0_87 = it_86[0]
+            v_lawspecselection0x1_88 = it_86[1]
+            it_89 = v_lawspecselection0x0_87
+            v_match__lawspecselection0x0_0_90 = it_89[0]
+            v_match__lawspecselection0x1_0_91 = it_89[1]
+            it_92 = Ordering_of(lsf_cmp_plain(k_84, v_match__lawspecselection0x0_0_90))
+            if it_92 == 0:
+                return (v_match__lawspecselection0x1_0_91,)
+            elif it_92 == 1:
+                next_93 = v_lawspecselection0x1_88
+                es_85 = next_93
                 continue
             else:
                 return ()
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValLookup_5907e6be52c2c211
-def Def_lawspecCollectionsKeyValLookup_a0748ff1(k_75, m_76):
-    return lsf_lookup(m_76, k_75)
+def Def_lawspecCollectionsKeyValLookup_a0748ff1(k_94, m_95):
+    return lsf_lookup(m_95, k_94)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValLookup_7d14018c80349f0b
-def Def_lawspecCollectionsKeyValLookup_5beba6da(k_77, m_78):
-    return lsf_lookup(m_78, k_77)
+def Def_lawspecCollectionsKeyValLookup_5beba6da(k_96, m_97):
+    return lsf_lookup(m_97, k_96)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValLookup_bca377711101565d
-def Def_lawspecCollectionsKeyValLookup_ef93254e(k_79, m_80):
-    return lsf_lookup(m_80, k_79)
+def Def_lawspecCollectionsKeyValLookup_ef93254e(k_98, m_99):
+    return lsf_lookup(m_99, k_98)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValOf_64f624eed514eaa2
-def Def_lawspecCollectionsKeyValOf_0ba011fe(es_81):
-    return lsf_key_val_of(es_81)
+def Def_lawspecCollectionsKeyValOf_0ba011fe(es_100):
+    return lsf_key_val_of(es_100)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValOf_a3a7f2c1aea9ea80
-def Def_lawspecCollectionsKeyValOf_ba53d5a9(es_82):
-    return lsf_key_val_of(es_82)
+def Def_lawspecCollectionsKeyValOf_ba53d5a9(es_101):
+    return lsf_key_val_of(es_101)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValOf_aab5cf89aeee3da0
-def Def_lawspecCollectionsKeyValOf_8dcea77c(es_83):
-    return lsf_key_val_of(es_83)
+def Def_lawspecCollectionsKeyValOf_8dcea77c(es_102):
+    return lsf_key_val_of(es_102)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValPutItems_218f813dc536325b
-def Def_lawspecCollectionsKeyValPutItems_19d16932(k_84, v_85, es_86):
-    if es_86 is None:
-        return lsf_cons((k_84, v_85), None)
+def Def_lawspecCollectionsKeyValPutItems_19d16932(k_103, v_104, es_105):
+    it_106 = es_105
+    if it_106 is None:
+        v_lawspecrecordfield0_108 = k_103
+        v_lawspecrecordfield1_109 = v_104
+        value_107 = (v_lawspecrecordfield0_108, v_lawspecrecordfield1_109)
+        return lsf_cons(value_107, None)
     else:
-        e_87 = es_86[0]
-        t_88 = es_86[1]
-        key_89 = e_87[0]
-        matched_90 = Ordering_of(lsf_cmp_plain(k_84, key_89))
-        if matched_90 == 0:
-            return lsf_cons((k_84, v_85), t_88)
-        elif matched_90 == 1:
-            return lsf_cons(e_87, Def_lawspecCollectionsKeyValPutItems_19d16932(k_84, v_85, t_88))
+        v_lawspecselection0x0_110 = it_106[0]
+        v_lawspecselection0x1_111 = it_106[1]
+        it_112 = v_lawspecselection0x0_110
+        v_match__lawspecselection0x0_0_113 = it_112[0]
+        it_114 = Ordering_of(lsf_cmp_plain(k_103, v_match__lawspecselection0x0_0_113))
+        if it_114 == 0:
+            v_lawspecrecordfield0_116 = k_103
+            v_lawspecrecordfield1_117 = v_104
+            value_115 = (v_lawspecrecordfield0_116, v_lawspecrecordfield1_117)
+            return lsf_cons(value_115, v_lawspecselection0x1_111)
+        elif it_114 == 1:
+            return lsf_cons(v_lawspecselection0x0_110, Def_lawspecCollectionsKeyValPutItems_19d16932(k_103, v_104, v_lawspecselection0x1_111))
         else:
-            return lsf_cons((k_84, v_85), es_86)
+            v_lawspecrecordfield0_119 = k_103
+            v_lawspecrecordfield1_120 = v_104
+            value_118 = (v_lawspecrecordfield0_119, v_lawspecrecordfield1_120)
+            return lsf_cons(value_118, es_105)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValPutItems_57d0f19a11f0c9f0
-def Def_lawspecCollectionsKeyValPutItems_102b61ab(k_91, v_92, es_93):
-    if es_93 is None:
-        return lsf_cons((k_91, v_92), None)
+def Def_lawspecCollectionsKeyValPutItems_102b61ab(k_121, v_122, es_123):
+    it_124 = es_123
+    if it_124 is None:
+        v_lawspecrecordfield0_126 = k_121
+        v_lawspecrecordfield1_127 = v_122
+        value_125 = (v_lawspecrecordfield0_126, v_lawspecrecordfield1_127)
+        return lsf_cons(value_125, None)
     else:
-        e_94 = es_93[0]
-        t_95 = es_93[1]
-        key_96 = e_94[0]
-        matched_97 = Ordering_of(lsf_cmp_plain(k_91, key_96))
-        if matched_97 == 0:
-            return lsf_cons((k_91, v_92), t_95)
-        elif matched_97 == 1:
-            return lsf_cons(e_94, Def_lawspecCollectionsKeyValPutItems_102b61ab(k_91, v_92, t_95))
+        v_lawspecselection0x0_128 = it_124[0]
+        v_lawspecselection0x1_129 = it_124[1]
+        it_130 = v_lawspecselection0x0_128
+        v_match__lawspecselection0x0_0_131 = it_130[0]
+        it_132 = Ordering_of(lsf_cmp_plain(k_121, v_match__lawspecselection0x0_0_131))
+        if it_132 == 0:
+            v_lawspecrecordfield0_134 = k_121
+            v_lawspecrecordfield1_135 = v_122
+            value_133 = (v_lawspecrecordfield0_134, v_lawspecrecordfield1_135)
+            return lsf_cons(value_133, v_lawspecselection0x1_129)
+        elif it_132 == 1:
+            return lsf_cons(v_lawspecselection0x0_128, Def_lawspecCollectionsKeyValPutItems_102b61ab(k_121, v_122, v_lawspecselection0x1_129))
         else:
-            return lsf_cons((k_91, v_92), es_93)
+            v_lawspecrecordfield0_137 = k_121
+            v_lawspecrecordfield1_138 = v_122
+            value_136 = (v_lawspecrecordfield0_137, v_lawspecrecordfield1_138)
+            return lsf_cons(value_136, es_123)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValPutItems_7ac75f307de7042f
-def Def_lawspecCollectionsKeyValPutItems_b231a093(k_98, v_99, es_100):
-    if es_100 is None:
-        return lsf_cons((k_98, v_99), None)
+def Def_lawspecCollectionsKeyValPutItems_b231a093(k_139, v_140, es_141):
+    it_142 = es_141
+    if it_142 is None:
+        v_lawspecrecordfield0_144 = k_139
+        v_lawspecrecordfield1_145 = v_140
+        value_143 = (v_lawspecrecordfield0_144, v_lawspecrecordfield1_145)
+        return lsf_cons(value_143, None)
     else:
-        e_101 = es_100[0]
-        t_102 = es_100[1]
-        key_103 = e_101[0]
-        matched_104 = Ordering_of(lsf_cmp_plain(k_98, key_103))
-        if matched_104 == 0:
-            return lsf_cons((k_98, v_99), t_102)
-        elif matched_104 == 1:
-            return lsf_cons(e_101, Def_lawspecCollectionsKeyValPutItems_b231a093(k_98, v_99, t_102))
+        v_lawspecselection0x0_146 = it_142[0]
+        v_lawspecselection0x1_147 = it_142[1]
+        it_148 = v_lawspecselection0x0_146
+        v_match__lawspecselection0x0_0_149 = it_148[0]
+        it_150 = Ordering_of(lsf_cmp_plain(k_139, v_match__lawspecselection0x0_0_149))
+        if it_150 == 0:
+            v_lawspecrecordfield0_152 = k_139
+            v_lawspecrecordfield1_153 = v_140
+            value_151 = (v_lawspecrecordfield0_152, v_lawspecrecordfield1_153)
+            return lsf_cons(value_151, v_lawspecselection0x1_147)
+        elif it_150 == 1:
+            return lsf_cons(v_lawspecselection0x0_146, Def_lawspecCollectionsKeyValPutItems_b231a093(k_139, v_140, v_lawspecselection0x1_147))
         else:
-            return lsf_cons((k_98, v_99), es_100)
+            v_lawspecrecordfield0_155 = k_139
+            v_lawspecrecordfield1_156 = v_140
+            value_154 = (v_lawspecrecordfield0_155, v_lawspecrecordfield1_156)
+            return lsf_cons(value_154, es_141)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValPut_1f633f25cc61f72b
-def Def_lawspecCollectionsKeyValPut_87b84c20(k_105, v_106, m_107):
-    return lsf_put(m_107, k_105, v_106)
+def Def_lawspecCollectionsKeyValPut_87b84c20(k_157, v_158, m_159):
+    return lsf_put(m_159, k_157, v_158)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValPut_4969b4d201ed0c70
-def Def_lawspecCollectionsKeyValPut_15141812(k_108, v_109, m_110):
-    return lsf_put(m_110, k_108, v_109)
+def Def_lawspecCollectionsKeyValPut_15141812(k_160, v_161, m_162):
+    return lsf_put(m_162, k_160, v_161)
 
 
 # lawtwin.petstore::lawspec_lawspecCollectionsKeyValPut_53079f70ee92bc07
-def Def_lawspecCollectionsKeyValPut_73b7121f(k_111, v_112, m_113):
-    return lsf_put(m_113, k_111, v_112)
+def Def_lawspecCollectionsKeyValPut_73b7121f(k_163, v_164, m_165):
+    return lsf_put(m_165, k_163, v_164)
 
 
 # lawtwin.petstore::lawtwinPetstoreHandwrittenCreateUsersWithListInput
-def Def_lawtwinPetstoreHandwrittenCreateUsersWithListInput_f7c111ea(body_114, current__115):
+def Def_lawtwinPetstoreHandwrittenCreateUsersWithListInput_f7c111ea(body_166, current__167):
     raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(2))
 
 
 # lawtwin.petstore::lawtwinPetstoreHandwrittenFindPetsByStatus
-def Def_lawtwinPetstoreHandwrittenFindPetsByStatus_e92ff3cf(status_116, current__117):
+def Def_lawtwinPetstoreHandwrittenFindPetsByStatus_e92ff3cf(status_168, current__169):
     raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(2))
 
 
 # lawtwin.petstore::lawtwinPetstoreHandwrittenFindPetsByTags
-def Def_lawtwinPetstoreHandwrittenFindPetsByTags_afed99b2(tags_118, current__119):
+def Def_lawtwinPetstoreHandwrittenFindPetsByTags_afed99b2(tags_170, current__171):
     raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(2))
 
 
 # lawtwin.petstore::lawtwinPetstoreHandwrittenGetInventory
-def Def_lawtwinPetstoreHandwrittenGetInventory_1dac8932(current__120):
+def Def_lawtwinPetstoreHandwrittenGetInventory_1dac8932(current__172):
     raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(2))
 
 
 # lawtwin.petstore::lawtwinPetstoreHandwrittenLoginUser
-def Def_lawtwinPetstoreHandwrittenLoginUser_b8d6606c(username_121, password_122, current__123):
+def Def_lawtwinPetstoreHandwrittenLoginUser_b8d6606c(username_173, password_174, current__175):
     raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(2))
 
 
 # lawtwin.petstore::lawtwinPetstoreHandwrittenLogoutUser
-def Def_lawtwinPetstoreHandwrittenLogoutUser_38a24725(current__124):
+def Def_lawtwinPetstoreHandwrittenLogoutUser_38a24725(current__176):
     raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(2))
 
 
 # lawtwin.petstore::lawtwinPetstoreHandwrittenUpdatePetWithForm
-def Def_lawtwinPetstoreHandwrittenUpdatePetWithForm_9c6a9682(petid_125, name_126, status_127, current__128):
+def Def_lawtwinPetstoreHandwrittenUpdatePetWithForm_9c6a9682(petid_177, name_178, status_179, current__180):
     raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(2))
 
 
 # lawtwin.petstore::lawtwinPetstoreHandwrittenUploadFile
-def Def_lawtwinPetstoreHandwrittenUploadFile_db78234a(petid_129, additionalmetadata_130, body_131, current__132):
+def Def_lawtwinPetstoreHandwrittenUploadFile_db78234a(petid_181, additionalmetadata_182, body_183, current__184):
     raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(2))
 
 
 # lawtwin.petstore::lawtwinPetstoreModelAfter64
-def Def_lawtwinPetstoreModelAfter64_d44b61a4(k_133):
-    if (k_133 < 9223372036854775807):
-        narrowed_134 = (k_133 + 1)
-        if narrowed_134 < (-9223372036854775808) or narrowed_134 > 9223372036854775807:
+def Def_lawtwinPetstoreModelAfter64_d44b61a4(k_185):
+    if (k_185 < 9223372036854775807):
+        narrowed_186 = (k_185 + 1)
+        if narrowed_186 < (-9223372036854775808) or narrowed_186 > 9223372036854775807:
             lsf_outside('Int64')
-        return narrowed_134
+        return narrowed_186
     else:
-        return k_133
+        return k_185
 
 
 # lawtwin.petstore::lawtwinPetstoreModelEmptyState
-def Def_lawtwinPetstoreModelEmptyState_9f93bc81(u_135):
-    return (lsf_key_val_of(None), 1, lsf_key_val_of(None), 1, lsf_key_val_of(None))
+def Def_lawtwinPetstoreModelEmptyState_9f93bc81(u_187):
+    v_lawspecrecordfield0_188 = lsf_key_val_of(None)
+    v_lawspecrecordfield1_189 = 1
+    v_lawspecrecordfield2_190 = lsf_key_val_of(None)
+    v_lawspecrecordfield3_191 = 1
+    v_lawspecrecordfield4_192 = lsf_key_val_of(None)
+    return (v_lawspecrecordfield0_188, v_lawspecrecordfield1_189, v_lawspecrecordfield2_190, v_lawspecrecordfield3_191, v_lawspecrecordfield4_192)
 
 
 # lawtwin.petstore::lawtwinPetstoreModelModelAddPet
-def Def_lawtwinPetstoreModelModelAddPet_443bf61d(body_136, current__137):
-    lawspecfieldid_140 = body_136[0]
-    value_139 = lawspecfieldid_140
-    matched_141 = value_139
-    if matched_141:
-        given_142 = matched_141[0]
-        value_138 = given_142
+def Def_lawtwinPetstoreModelModelAddPet_443bf61d(body_193, current__194):
+    lawspecfieldid_197 = body_193[0]
+    value_196 = lawspecfieldid_197
+    it_198 = value_196
+    if it_198:
+        v_lawspecselection0x0_199 = it_198[0]
+        value_195 = v_lawspecselection0x0_199
     else:
-        lawspecfieldnextpetkey_143 = current__137[1]
-        value_138 = lawspecfieldnextpetkey_143
-    key_144 = value_138
-    replacement_146 = (key_144,)
-    lawspecfieldname_147 = body_136[1]
-    lawspecfieldcategory_148 = body_136[2]
-    lawspecfieldphotourls_149 = body_136[3]
-    lawspecfieldtags_150 = body_136[4]
-    lawspecfieldstatus_151 = body_136[5]
-    value_145 = (replacement_146, lawspecfieldname_147, lawspecfieldcategory_148, lawspecfieldphotourls_149, lawspecfieldtags_150, lawspecfieldstatus_151)
-    stored_152 = value_145
-    lawspecfieldpets_154 = current__137[0]
-    value_153 = lawspecfieldpets_154
-    matched_155 = lsf_lookup(value_153, key_144)
-    if matched_155:
+        lawspecfieldnextpetkey_200 = current__194[1]
+        value_195 = lawspecfieldnextpetkey_200
+    key_201 = value_195
+    replacement_203 = (key_201,)
+    lawspecfieldname_204 = body_193[1]
+    lawspecfieldcategory_205 = body_193[2]
+    lawspecfieldphotourls_206 = body_193[3]
+    lawspecfieldtags_207 = body_193[4]
+    lawspecfieldstatus_208 = body_193[5]
+    value_202 = (replacement_203, lawspecfieldname_204, lawspecfieldcategory_205, lawspecfieldphotourls_206, lawspecfieldtags_207, lawspecfieldstatus_208)
+    stored_209 = value_202
+    lawspecfieldpets_211 = current__194[0]
+    value_210 = lawspecfieldpets_211
+    it_212 = lsf_lookup(value_210, key_201)
+    if it_212:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(3))
     else:
-        lawspecfieldnextpetkey_159 = current__137[1]
-        value_158 = lawspecfieldnextpetkey_159
-        if (key_144 >= value_158):
-            value_157 = Def_lawtwinPetstoreModelAfter64_d44b61a4(key_144)
+        lawspecfieldnextpetkey_216 = current__194[1]
+        value_215 = lawspecfieldnextpetkey_216
+        if (key_201 >= value_215):
+            value_214 = Def_lawtwinPetstoreModelAfter64_d44b61a4(key_201)
         else:
-            lawspecfieldnextpetkey_160 = current__137[1]
-            value_157 = lawspecfieldnextpetkey_160
-        replacement_161 = value_157
-        lawspecfieldpets_164 = current__137[0]
-        value_163 = lawspecfieldpets_164
-        replacement_165 = lsf_put(value_163, key_144, stored_152)
-        lawspecfieldnextpetkey_166 = current__137[1]
-        lawspecfieldorders_167 = current__137[2]
-        lawspecfieldnextorderkey_168 = current__137[3]
-        lawspecfieldusers_169 = current__137[4]
-        value_162 = (replacement_165, lawspecfieldnextpetkey_166, lawspecfieldorders_167, lawspecfieldnextorderkey_168, lawspecfieldusers_169)
-        matched_170 = value_162
-        lawspecfieldpets_171 = matched_170[0]
-        lawspecfieldorders_172 = matched_170[2]
-        lawspecfieldnextorderkey_173 = matched_170[3]
-        lawspecfieldusers_174 = matched_170[4]
-        value_156 = (lawspecfieldpets_171, replacement_161, lawspecfieldorders_172, lawspecfieldnextorderkey_173, lawspecfieldusers_174)
-        return (stored_152, value_156)
+            lawspecfieldnextpetkey_217 = current__194[1]
+            value_214 = lawspecfieldnextpetkey_217
+        replacement_218 = value_214
+        lawspecfieldpets_221 = current__194[0]
+        value_220 = lawspecfieldpets_221
+        replacement_222 = lsf_put(value_220, key_201, stored_209)
+        lawspecfieldnextpetkey_223 = current__194[1]
+        lawspecfieldorders_224 = current__194[2]
+        lawspecfieldnextorderkey_225 = current__194[3]
+        lawspecfieldusers_226 = current__194[4]
+        value_219 = (replacement_222, lawspecfieldnextpetkey_223, lawspecfieldorders_224, lawspecfieldnextorderkey_225, lawspecfieldusers_226)
+        matched_227 = value_219
+        lawspecfieldpets_228 = matched_227[0]
+        lawspecfieldorders_229 = matched_227[2]
+        lawspecfieldnextorderkey_230 = matched_227[3]
+        lawspecfieldusers_231 = matched_227[4]
+        value_213 = (lawspecfieldpets_228, replacement_218, lawspecfieldorders_229, lawspecfieldnextorderkey_230, lawspecfieldusers_231)
+        return (stored_209, value_213)
 
 
 # lawtwin.petstore::lawtwinPetstoreModelModelCreateUser
-def Def_lawtwinPetstoreModelModelCreateUser_90ee772d(body_175, current__176):
-    if body_175:
-        sent_177 = body_175[0]
-        lawspecfieldusername_179 = sent_177[1]
-        value_178 = lawspecfieldusername_179
-        matched_180 = value_178
-        if matched_180:
-            given_181 = matched_180[0]
-            key_182 = given_181
-            replacement_184 = (key_182,)
-            lawspecfieldid_185 = sent_177[0]
-            lawspecfieldfirstname_186 = sent_177[2]
-            lawspecfieldlastname_187 = sent_177[3]
-            lawspecfieldemail_188 = sent_177[4]
-            lawspecfieldpassword_189 = sent_177[5]
-            lawspecfieldphone_190 = sent_177[6]
-            lawspecfielduserstatus_191 = sent_177[7]
-            value_183 = (lawspecfieldid_185, replacement_184, lawspecfieldfirstname_186, lawspecfieldlastname_187, lawspecfieldemail_188, lawspecfieldpassword_189, lawspecfieldphone_190, lawspecfielduserstatus_191)
-            stored_192 = value_183
-            lawspecfieldusers_195 = current__176[4]
-            value_194 = lawspecfieldusers_195
-            replacement_196 = lsf_put(value_194, key_182, stored_192)
-            lawspecfieldpets_197 = current__176[0]
-            lawspecfieldnextpetkey_198 = current__176[1]
-            lawspecfieldorders_199 = current__176[2]
-            lawspecfieldnextorderkey_200 = current__176[3]
-            value_193 = (lawspecfieldpets_197, lawspecfieldnextpetkey_198, lawspecfieldorders_199, lawspecfieldnextorderkey_200, replacement_196)
-            return (stored_192, value_193)
+def Def_lawtwinPetstoreModelModelCreateUser_90ee772d(body_232, current__233):
+    it_234 = body_232
+    if it_234:
+        v_lawspecselection0x0_235 = it_234[0]
+        lawspecfieldusername_237 = v_lawspecselection0x0_235[1]
+        value_236 = lawspecfieldusername_237
+        it_238 = value_236
+        if it_238:
+            v_match__lawspecselection0x0_0_239 = it_238[0]
+            key_240 = v_match__lawspecselection0x0_0_239
+            replacement_242 = (key_240,)
+            lawspecfieldid_243 = v_lawspecselection0x0_235[0]
+            lawspecfieldfirstname_244 = v_lawspecselection0x0_235[2]
+            lawspecfieldlastname_245 = v_lawspecselection0x0_235[3]
+            lawspecfieldemail_246 = v_lawspecselection0x0_235[4]
+            lawspecfieldpassword_247 = v_lawspecselection0x0_235[5]
+            lawspecfieldphone_248 = v_lawspecselection0x0_235[6]
+            lawspecfielduserstatus_249 = v_lawspecselection0x0_235[7]
+            value_241 = (lawspecfieldid_243, replacement_242, lawspecfieldfirstname_244, lawspecfieldlastname_245, lawspecfieldemail_246, lawspecfieldpassword_247, lawspecfieldphone_248, lawspecfielduserstatus_249)
+            stored_250 = value_241
+            lawspecfieldusers_253 = current__233[4]
+            value_252 = lawspecfieldusers_253
+            replacement_254 = lsf_put(value_252, key_240, stored_250)
+            lawspecfieldpets_255 = current__233[0]
+            lawspecfieldnextpetkey_256 = current__233[1]
+            lawspecfieldorders_257 = current__233[2]
+            lawspecfieldnextorderkey_258 = current__233[3]
+            value_251 = (lawspecfieldpets_255, lawspecfieldnextpetkey_256, lawspecfieldorders_257, lawspecfieldnextorderkey_258, replacement_254)
+            return (stored_250, value_251)
         else:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(0))
     else:
@@ -438,189 +496,191 @@ def Def_lawtwinPetstoreModelModelCreateUser_90ee772d(body_175, current__176):
 
 
 # lawtwin.petstore::lawtwinPetstoreModelModelDeleteOrder
-def Def_lawtwinPetstoreModelModelDeleteOrder_ca32659b(orderid_201, current__202):
-    lawspecfieldorders_204 = current__202[2]
-    value_203 = lawspecfieldorders_204
-    matched_205 = lsf_lookup(value_203, orderid_201)
-    if matched_205:
-        lawspecfieldorders_208 = current__202[2]
-        value_207 = lawspecfieldorders_208
-        replacement_209 = lsf_delete(value_207, orderid_201)
-        lawspecfieldpets_210 = current__202[0]
-        lawspecfieldnextpetkey_211 = current__202[1]
-        lawspecfieldnextorderkey_212 = current__202[3]
-        lawspecfieldusers_213 = current__202[4]
-        value_206 = (lawspecfieldpets_210, lawspecfieldnextpetkey_211, replacement_209, lawspecfieldnextorderkey_212, lawspecfieldusers_213)
-        return (None, value_206)
+def Def_lawtwinPetstoreModelModelDeleteOrder_ca32659b(orderid_259, current__260):
+    lawspecfieldorders_262 = current__260[2]
+    value_261 = lawspecfieldorders_262
+    it_263 = lsf_lookup(value_261, orderid_259)
+    if it_263:
+        lawspecfieldorders_266 = current__260[2]
+        value_265 = lawspecfieldorders_266
+        replacement_267 = lsf_delete(value_265, orderid_259)
+        lawspecfieldpets_268 = current__260[0]
+        lawspecfieldnextpetkey_269 = current__260[1]
+        lawspecfieldnextorderkey_270 = current__260[3]
+        lawspecfieldusers_271 = current__260[4]
+        value_264 = (lawspecfieldpets_268, lawspecfieldnextpetkey_269, replacement_267, lawspecfieldnextorderkey_270, lawspecfieldusers_271)
+        return (None, value_264)
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(1))
 
 
 # lawtwin.petstore::lawtwinPetstoreModelModelDeletePet
-def Def_lawtwinPetstoreModelModelDeletePet_f79b8631(petid_214, apikey_215, current__216):
-    lawspecfieldpets_218 = current__216[0]
-    value_217 = lawspecfieldpets_218
-    matched_219 = lsf_lookup(value_217, petid_214)
-    if matched_219:
-        lawspecfieldpets_222 = current__216[0]
-        value_221 = lawspecfieldpets_222
-        replacement_223 = lsf_delete(value_221, petid_214)
-        lawspecfieldnextpetkey_224 = current__216[1]
-        lawspecfieldorders_225 = current__216[2]
-        lawspecfieldnextorderkey_226 = current__216[3]
-        lawspecfieldusers_227 = current__216[4]
-        value_220 = (replacement_223, lawspecfieldnextpetkey_224, lawspecfieldorders_225, lawspecfieldnextorderkey_226, lawspecfieldusers_227)
-        return (None, value_220)
+def Def_lawtwinPetstoreModelModelDeletePet_f79b8631(petid_272, apikey_273, current__274):
+    lawspecfieldpets_276 = current__274[0]
+    value_275 = lawspecfieldpets_276
+    it_277 = lsf_lookup(value_275, petid_272)
+    if it_277:
+        lawspecfieldpets_280 = current__274[0]
+        value_279 = lawspecfieldpets_280
+        replacement_281 = lsf_delete(value_279, petid_272)
+        lawspecfieldnextpetkey_282 = current__274[1]
+        lawspecfieldorders_283 = current__274[2]
+        lawspecfieldnextorderkey_284 = current__274[3]
+        lawspecfieldusers_285 = current__274[4]
+        value_278 = (replacement_281, lawspecfieldnextpetkey_282, lawspecfieldorders_283, lawspecfieldnextorderkey_284, lawspecfieldusers_285)
+        return (None, value_278)
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(1))
 
 
 # lawtwin.petstore::lawtwinPetstoreModelModelDeleteUser
-def Def_lawtwinPetstoreModelModelDeleteUser_292d6814(username_228, current__229):
-    lawspecfieldusers_231 = current__229[4]
-    value_230 = lawspecfieldusers_231
-    matched_232 = lsf_lookup(value_230, username_228)
-    if matched_232:
-        lawspecfieldusers_235 = current__229[4]
-        value_234 = lawspecfieldusers_235
-        replacement_236 = lsf_delete(value_234, username_228)
-        lawspecfieldpets_237 = current__229[0]
-        lawspecfieldnextpetkey_238 = current__229[1]
-        lawspecfieldorders_239 = current__229[2]
-        lawspecfieldnextorderkey_240 = current__229[3]
-        value_233 = (lawspecfieldpets_237, lawspecfieldnextpetkey_238, lawspecfieldorders_239, lawspecfieldnextorderkey_240, replacement_236)
-        return (None, value_233)
+def Def_lawtwinPetstoreModelModelDeleteUser_292d6814(username_286, current__287):
+    lawspecfieldusers_289 = current__287[4]
+    value_288 = lawspecfieldusers_289
+    it_290 = lsf_lookup(value_288, username_286)
+    if it_290:
+        lawspecfieldusers_293 = current__287[4]
+        value_292 = lawspecfieldusers_293
+        replacement_294 = lsf_delete(value_292, username_286)
+        lawspecfieldpets_295 = current__287[0]
+        lawspecfieldnextpetkey_296 = current__287[1]
+        lawspecfieldorders_297 = current__287[2]
+        lawspecfieldnextorderkey_298 = current__287[3]
+        value_291 = (lawspecfieldpets_295, lawspecfieldnextpetkey_296, lawspecfieldorders_297, lawspecfieldnextorderkey_298, replacement_294)
+        return (None, value_291)
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(1))
 
 
 # lawtwin.petstore::lawtwinPetstoreModelModelGetOrderById
-def Def_lawtwinPetstoreModelModelGetOrderById_573aa869(orderid_241, current__242):
-    lawspecfieldorders_244 = current__242[2]
-    value_243 = lawspecfieldorders_244
-    matched_245 = lsf_lookup(value_243, orderid_241)
-    if matched_245:
-        found_246 = matched_245[0]
-        return (found_246, current__242)
+def Def_lawtwinPetstoreModelModelGetOrderById_573aa869(orderid_299, current__300):
+    lawspecfieldorders_302 = current__300[2]
+    value_301 = lawspecfieldorders_302
+    it_303 = lsf_lookup(value_301, orderid_299)
+    if it_303:
+        v_lawspecselection0x0_304 = it_303[0]
+        return (v_lawspecselection0x0_304, current__300)
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(1))
 
 
 # lawtwin.petstore::lawtwinPetstoreModelModelGetPetById
-def Def_lawtwinPetstoreModelModelGetPetById_ed826277(petid_247, current__248):
-    lawspecfieldpets_250 = current__248[0]
-    value_249 = lawspecfieldpets_250
-    matched_251 = lsf_lookup(value_249, petid_247)
-    if matched_251:
-        found_252 = matched_251[0]
-        return (found_252, current__248)
+def Def_lawtwinPetstoreModelModelGetPetById_ed826277(petid_305, current__306):
+    lawspecfieldpets_308 = current__306[0]
+    value_307 = lawspecfieldpets_308
+    it_309 = lsf_lookup(value_307, petid_305)
+    if it_309:
+        v_lawspecselection0x0_310 = it_309[0]
+        return (v_lawspecselection0x0_310, current__306)
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(1))
 
 
 # lawtwin.petstore::lawtwinPetstoreModelModelGetUserByName
-def Def_lawtwinPetstoreModelModelGetUserByName_d31e87ba(username_253, current__254):
-    lawspecfieldusers_256 = current__254[4]
-    value_255 = lawspecfieldusers_256
-    matched_257 = lsf_lookup(value_255, username_253)
-    if matched_257:
-        found_258 = matched_257[0]
-        return (found_258, current__254)
+def Def_lawtwinPetstoreModelModelGetUserByName_d31e87ba(username_311, current__312):
+    lawspecfieldusers_314 = current__312[4]
+    value_313 = lawspecfieldusers_314
+    it_315 = lsf_lookup(value_313, username_311)
+    if it_315:
+        v_lawspecselection0x0_316 = it_315[0]
+        return (v_lawspecselection0x0_316, current__312)
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(1))
 
 
 # lawtwin.petstore::lawtwinPetstoreModelModelPlaceOrder
-def Def_lawtwinPetstoreModelModelPlaceOrder_d7fd75c4(body_259, current__260):
-    if body_259:
-        present0_262 = body_259[0]
-        value_261 = Def_lawtwinPetstoreModelValidOrder_62eb4720(present0_262)
+def Def_lawtwinPetstoreModelModelPlaceOrder_d7fd75c4(body_317, current__318):
+    it_320 = body_317
+    if it_320:
+        v_lawspecselection0x0_321 = it_320[0]
+        value_319 = Def_lawtwinPetstoreModelValidOrder_62eb4720(v_lawspecselection0x0_321)
     else:
-        value_261 = True
-    if (not value_261):
+        value_319 = True
+    if (not value_319):
         raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(3))
     else:
-        if body_259:
-            sent_263 = body_259[0]
-            lawspecfieldid_266 = sent_263[0]
-            value_265 = lawspecfieldid_266
-            matched_267 = value_265
-            if matched_267:
-                given_268 = matched_267[0]
-                value_264 = given_268
+        it_322 = body_317
+        if it_322:
+            v_lawspecselection0x0_323 = it_322[0]
+            lawspecfieldid_326 = v_lawspecselection0x0_323[0]
+            value_325 = lawspecfieldid_326
+            it_327 = value_325
+            if it_327:
+                v_match__lawspecselection0x0_0_328 = it_327[0]
+                value_324 = v_match__lawspecselection0x0_0_328
             else:
-                lawspecfieldnextorderkey_269 = current__260[3]
-                value_264 = lawspecfieldnextorderkey_269
-            key_270 = value_264
-            replacement_272 = (key_270,)
-            lawspecfieldpetid_273 = sent_263[1]
-            lawspecfieldquantity_274 = sent_263[2]
-            lawspecfieldshipdate_275 = sent_263[3]
-            lawspecfieldstatus_276 = sent_263[4]
-            lawspecfieldcomplete_277 = sent_263[5]
-            value_271 = (replacement_272, lawspecfieldpetid_273, lawspecfieldquantity_274, lawspecfieldshipdate_275, lawspecfieldstatus_276, lawspecfieldcomplete_277)
-            stored_278 = value_271
-            lawspecfieldorders_280 = current__260[2]
-            value_279 = lawspecfieldorders_280
-            matched_281 = lsf_lookup(value_279, key_270)
-            if matched_281:
+                lawspecfieldnextorderkey_329 = current__318[3]
+                value_324 = lawspecfieldnextorderkey_329
+            key_330 = value_324
+            replacement_332 = (key_330,)
+            lawspecfieldpetid_333 = v_lawspecselection0x0_323[1]
+            lawspecfieldquantity_334 = v_lawspecselection0x0_323[2]
+            lawspecfieldshipdate_335 = v_lawspecselection0x0_323[3]
+            lawspecfieldstatus_336 = v_lawspecselection0x0_323[4]
+            lawspecfieldcomplete_337 = v_lawspecselection0x0_323[5]
+            value_331 = (replacement_332, lawspecfieldpetid_333, lawspecfieldquantity_334, lawspecfieldshipdate_335, lawspecfieldstatus_336, lawspecfieldcomplete_337)
+            stored_338 = value_331
+            lawspecfieldorders_340 = current__318[2]
+            value_339 = lawspecfieldorders_340
+            it_341 = lsf_lookup(value_339, key_330)
+            if it_341:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(3))
             else:
-                lawspecfieldnextorderkey_285 = current__260[3]
-                value_284 = lawspecfieldnextorderkey_285
-                if (key_270 >= value_284):
-                    value_283 = Def_lawtwinPetstoreModelAfter64_d44b61a4(key_270)
+                lawspecfieldnextorderkey_345 = current__318[3]
+                value_344 = lawspecfieldnextorderkey_345
+                if (key_330 >= value_344):
+                    value_343 = Def_lawtwinPetstoreModelAfter64_d44b61a4(key_330)
                 else:
-                    lawspecfieldnextorderkey_286 = current__260[3]
-                    value_283 = lawspecfieldnextorderkey_286
-                replacement_287 = value_283
-                lawspecfieldorders_290 = current__260[2]
-                value_289 = lawspecfieldorders_290
-                replacement_291 = lsf_put(value_289, key_270, stored_278)
-                lawspecfieldpets_292 = current__260[0]
-                lawspecfieldnextpetkey_293 = current__260[1]
-                lawspecfieldnextorderkey_294 = current__260[3]
-                lawspecfieldusers_295 = current__260[4]
-                value_288 = (lawspecfieldpets_292, lawspecfieldnextpetkey_293, replacement_291, lawspecfieldnextorderkey_294, lawspecfieldusers_295)
-                matched_296 = value_288
-                lawspecfieldpets_297 = matched_296[0]
-                lawspecfieldnextpetkey_298 = matched_296[1]
-                lawspecfieldorders_299 = matched_296[2]
-                lawspecfieldusers_300 = matched_296[4]
-                value_282 = (lawspecfieldpets_297, lawspecfieldnextpetkey_298, lawspecfieldorders_299, replacement_287, lawspecfieldusers_300)
-                return (stored_278, value_282)
+                    lawspecfieldnextorderkey_346 = current__318[3]
+                    value_343 = lawspecfieldnextorderkey_346
+                replacement_347 = value_343
+                lawspecfieldorders_350 = current__318[2]
+                value_349 = lawspecfieldorders_350
+                replacement_351 = lsf_put(value_349, key_330, stored_338)
+                lawspecfieldpets_352 = current__318[0]
+                lawspecfieldnextpetkey_353 = current__318[1]
+                lawspecfieldnextorderkey_354 = current__318[3]
+                lawspecfieldusers_355 = current__318[4]
+                value_348 = (lawspecfieldpets_352, lawspecfieldnextpetkey_353, replacement_351, lawspecfieldnextorderkey_354, lawspecfieldusers_355)
+                matched_356 = value_348
+                lawspecfieldpets_357 = matched_356[0]
+                lawspecfieldnextpetkey_358 = matched_356[1]
+                lawspecfieldorders_359 = matched_356[2]
+                lawspecfieldusers_360 = matched_356[4]
+                value_342 = (lawspecfieldpets_357, lawspecfieldnextpetkey_358, lawspecfieldorders_359, replacement_347, lawspecfieldusers_360)
+                return (stored_338, value_342)
         else:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(3))
 
 
 # lawtwin.petstore::lawtwinPetstoreModelModelUpdatePet
-def Def_lawtwinPetstoreModelModelUpdatePet_6803effb(body_301, current__302):
-    lawspecfieldid_304 = body_301[0]
-    value_303 = lawspecfieldid_304
-    matched_305 = value_303
-    if matched_305:
-        key_306 = matched_305[0]
-        lawspecfieldpets_308 = current__302[0]
-        value_307 = lawspecfieldpets_308
-        matched_309 = lsf_lookup(value_307, key_306)
-        if matched_309:
-            replacement_311 = (key_306,)
-            lawspecfieldname_312 = body_301[1]
-            lawspecfieldcategory_313 = body_301[2]
-            lawspecfieldphotourls_314 = body_301[3]
-            lawspecfieldtags_315 = body_301[4]
-            lawspecfieldstatus_316 = body_301[5]
-            value_310 = (replacement_311, lawspecfieldname_312, lawspecfieldcategory_313, lawspecfieldphotourls_314, lawspecfieldtags_315, lawspecfieldstatus_316)
-            stored_317 = value_310
-            lawspecfieldpets_320 = current__302[0]
-            value_319 = lawspecfieldpets_320
-            replacement_321 = lsf_put(value_319, key_306, stored_317)
-            lawspecfieldnextpetkey_322 = current__302[1]
-            lawspecfieldorders_323 = current__302[2]
-            lawspecfieldnextorderkey_324 = current__302[3]
-            lawspecfieldusers_325 = current__302[4]
-            value_318 = (replacement_321, lawspecfieldnextpetkey_322, lawspecfieldorders_323, lawspecfieldnextorderkey_324, lawspecfieldusers_325)
-            return (stored_317, value_318)
+def Def_lawtwinPetstoreModelModelUpdatePet_6803effb(body_361, current__362):
+    lawspecfieldid_364 = body_361[0]
+    value_363 = lawspecfieldid_364
+    it_365 = value_363
+    if it_365:
+        v_lawspecselection0x0_366 = it_365[0]
+        lawspecfieldpets_368 = current__362[0]
+        value_367 = lawspecfieldpets_368
+        it_369 = lsf_lookup(value_367, v_lawspecselection0x0_366)
+        if it_369:
+            replacement_371 = (v_lawspecselection0x0_366,)
+            lawspecfieldname_372 = body_361[1]
+            lawspecfieldcategory_373 = body_361[2]
+            lawspecfieldphotourls_374 = body_361[3]
+            lawspecfieldtags_375 = body_361[4]
+            lawspecfieldstatus_376 = body_361[5]
+            value_370 = (replacement_371, lawspecfieldname_372, lawspecfieldcategory_373, lawspecfieldphotourls_374, lawspecfieldtags_375, lawspecfieldstatus_376)
+            stored_377 = value_370
+            lawspecfieldpets_380 = current__362[0]
+            value_379 = lawspecfieldpets_380
+            replacement_381 = lsf_put(value_379, v_lawspecselection0x0_366, stored_377)
+            lawspecfieldnextpetkey_382 = current__362[1]
+            lawspecfieldorders_383 = current__362[2]
+            lawspecfieldnextorderkey_384 = current__362[3]
+            lawspecfieldusers_385 = current__362[4]
+            value_378 = (replacement_381, lawspecfieldnextpetkey_382, lawspecfieldorders_383, lawspecfieldnextorderkey_384, lawspecfieldusers_385)
+            return (stored_377, value_378)
         else:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(1))
     else:
@@ -628,33 +688,34 @@ def Def_lawtwinPetstoreModelModelUpdatePet_6803effb(body_301, current__302):
 
 
 # lawtwin.petstore::lawtwinPetstoreModelModelUpdateUser
-def Def_lawtwinPetstoreModelModelUpdateUser_6c0b8b8d(username_326, body_327, current__328):
-    if body_327:
-        sent_329 = body_327[0]
-        key_330 = username_326
-        lawspecfieldusers_332 = current__328[4]
-        value_331 = lawspecfieldusers_332
-        matched_333 = lsf_lookup(value_331, key_330)
-        if matched_333:
-            replacement_335 = (key_330,)
-            lawspecfieldid_336 = sent_329[0]
-            lawspecfieldfirstname_337 = sent_329[2]
-            lawspecfieldlastname_338 = sent_329[3]
-            lawspecfieldemail_339 = sent_329[4]
-            lawspecfieldpassword_340 = sent_329[5]
-            lawspecfieldphone_341 = sent_329[6]
-            lawspecfielduserstatus_342 = sent_329[7]
-            value_334 = (lawspecfieldid_336, replacement_335, lawspecfieldfirstname_337, lawspecfieldlastname_338, lawspecfieldemail_339, lawspecfieldpassword_340, lawspecfieldphone_341, lawspecfielduserstatus_342)
-            stored_343 = value_334
-            lawspecfieldusers_346 = current__328[4]
-            value_345 = lawspecfieldusers_346
-            replacement_347 = lsf_put(value_345, key_330, stored_343)
-            lawspecfieldpets_348 = current__328[0]
-            lawspecfieldnextpetkey_349 = current__328[1]
-            lawspecfieldorders_350 = current__328[2]
-            lawspecfieldnextorderkey_351 = current__328[3]
-            value_344 = (lawspecfieldpets_348, lawspecfieldnextpetkey_349, lawspecfieldorders_350, lawspecfieldnextorderkey_351, replacement_347)
-            return (None, value_344)
+def Def_lawtwinPetstoreModelModelUpdateUser_6c0b8b8d(username_386, body_387, current__388):
+    it_389 = body_387
+    if it_389:
+        v_lawspecselection0x0_390 = it_389[0]
+        key_391 = username_386
+        lawspecfieldusers_393 = current__388[4]
+        value_392 = lawspecfieldusers_393
+        it_394 = lsf_lookup(value_392, key_391)
+        if it_394:
+            replacement_396 = (key_391,)
+            lawspecfieldid_397 = v_lawspecselection0x0_390[0]
+            lawspecfieldfirstname_398 = v_lawspecselection0x0_390[2]
+            lawspecfieldlastname_399 = v_lawspecselection0x0_390[3]
+            lawspecfieldemail_400 = v_lawspecselection0x0_390[4]
+            lawspecfieldpassword_401 = v_lawspecselection0x0_390[5]
+            lawspecfieldphone_402 = v_lawspecselection0x0_390[6]
+            lawspecfielduserstatus_403 = v_lawspecselection0x0_390[7]
+            value_395 = (lawspecfieldid_397, replacement_396, lawspecfieldfirstname_398, lawspecfieldlastname_399, lawspecfieldemail_400, lawspecfieldpassword_401, lawspecfieldphone_402, lawspecfielduserstatus_403)
+            stored_404 = value_395
+            lawspecfieldusers_407 = current__388[4]
+            value_406 = lawspecfieldusers_407
+            replacement_408 = lsf_put(value_406, key_391, stored_404)
+            lawspecfieldpets_409 = current__388[0]
+            lawspecfieldnextpetkey_410 = current__388[1]
+            lawspecfieldorders_411 = current__388[2]
+            lawspecfieldnextorderkey_412 = current__388[3]
+            value_405 = (lawspecfieldpets_409, lawspecfieldnextpetkey_410, lawspecfieldorders_411, lawspecfieldnextorderkey_412, replacement_408)
+            return (None, value_405)
         else:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)', to_39627122c212(1))
     else:
@@ -662,119 +723,119 @@ def Def_lawtwinPetstoreModelModelUpdateUser_6c0b8b8d(username_326, body_327, cur
 
 
 # lawtwin.petstore::lawtwinPetstoreModelValidOrder
-def Def_lawtwinPetstoreModelValidOrder_62eb4720(value_352):
-    lawspecfieldshipdate_354 = value_352[3]
-    value_353 = lawspecfieldshipdate_354
-    matched_355 = value_353
-    if matched_355:
-        present0_356 = matched_355[0]
-        return lsf_regex_matches('\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})', present0_356)
+def Def_lawtwinPetstoreModelValidOrder_62eb4720(value_413):
+    lawspecfieldshipdate_415 = value_413[3]
+    value_414 = lawspecfieldshipdate_415
+    it_416 = value_414
+    if it_416:
+        v_lawspecselection0x0_417 = it_416[0]
+        return lsf_regex_matches('\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})', v_lawspecselection0x0_417)
     else:
         return True
 
 
 # lawtwin.petstore::referenceAddPet
-def Def_referenceAddPet_ae0ddf28(state_357, value0_358):
-    return Def_lawtwinPetstoreModelModelAddPet_443bf61d(value0_358, state_357)
+def Def_referenceAddPet_ae0ddf28(state_418, value0_419):
+    return Def_lawtwinPetstoreModelModelAddPet_443bf61d(value0_419, state_418)
 
 
 # lawtwin.petstore::referenceCreateUser
-def Def_referenceCreateUser_8fb4b3e6(state_359, value0_360):
-    return Def_lawtwinPetstoreModelModelCreateUser_90ee772d(value0_360, state_359)
+def Def_referenceCreateUser_8fb4b3e6(state_420, value0_421):
+    return Def_lawtwinPetstoreModelModelCreateUser_90ee772d(value0_421, state_420)
 
 
 # lawtwin.petstore::referenceCreateUsersWithListInput
-def Def_referenceCreateUsersWithListInput_15c6a40c(state_361, value0_362):
-    return Def_lawtwinPetstoreHandwrittenCreateUsersWithListInput_f7c111ea(value0_362, state_361)
+def Def_referenceCreateUsersWithListInput_15c6a40c(state_422, value0_423):
+    return Def_lawtwinPetstoreHandwrittenCreateUsersWithListInput_f7c111ea(value0_423, state_422)
 
 
 # lawtwin.petstore::referenceDeleteOrder
-def Def_referenceDeleteOrder_bf4c8c24(state_363, value0_364):
-    return Def_lawtwinPetstoreModelModelDeleteOrder_ca32659b(value0_364, state_363)
+def Def_referenceDeleteOrder_bf4c8c24(state_424, value0_425):
+    return Def_lawtwinPetstoreModelModelDeleteOrder_ca32659b(value0_425, state_424)
 
 
 # lawtwin.petstore::referenceDeletePet
-def Def_referenceDeletePet_4705c2b2(state_365, value0_366, value1_367):
-    return Def_lawtwinPetstoreModelModelDeletePet_f79b8631(value0_366, value1_367, state_365)
+def Def_referenceDeletePet_4705c2b2(state_426, value0_427, value1_428):
+    return Def_lawtwinPetstoreModelModelDeletePet_f79b8631(value0_427, value1_428, state_426)
 
 
 # lawtwin.petstore::referenceDeleteUser
-def Def_referenceDeleteUser_e8d80a94(state_368, value0_369):
-    return Def_lawtwinPetstoreModelModelDeleteUser_292d6814(value0_369, state_368)
+def Def_referenceDeleteUser_e8d80a94(state_429, value0_430):
+    return Def_lawtwinPetstoreModelModelDeleteUser_292d6814(value0_430, state_429)
 
 
 # lawtwin.petstore::referenceFindPetsByStatus
-def Def_referenceFindPetsByStatus_c60cd17e(state_370, value0_371):
-    return Def_lawtwinPetstoreHandwrittenFindPetsByStatus_e92ff3cf(value0_371, state_370)
+def Def_referenceFindPetsByStatus_c60cd17e(state_431, value0_432):
+    return Def_lawtwinPetstoreHandwrittenFindPetsByStatus_e92ff3cf(value0_432, state_431)
 
 
 # lawtwin.petstore::referenceFindPetsByTags
-def Def_referenceFindPetsByTags_cf5c32e9(state_372, value0_373):
-    return Def_lawtwinPetstoreHandwrittenFindPetsByTags_afed99b2(value0_373, state_372)
+def Def_referenceFindPetsByTags_cf5c32e9(state_433, value0_434):
+    return Def_lawtwinPetstoreHandwrittenFindPetsByTags_afed99b2(value0_434, state_433)
 
 
 # lawtwin.petstore::referenceGetInventory
-def Def_referenceGetInventory_0fb69a3d(state_374):
-    return Def_lawtwinPetstoreHandwrittenGetInventory_1dac8932(state_374)
+def Def_referenceGetInventory_0fb69a3d(state_435):
+    return Def_lawtwinPetstoreHandwrittenGetInventory_1dac8932(state_435)
 
 
 # lawtwin.petstore::referenceGetOrderById
-def Def_referenceGetOrderById_3c80a922(state_375, value0_376):
-    return Def_lawtwinPetstoreModelModelGetOrderById_573aa869(value0_376, state_375)
+def Def_referenceGetOrderById_3c80a922(state_436, value0_437):
+    return Def_lawtwinPetstoreModelModelGetOrderById_573aa869(value0_437, state_436)
 
 
 # lawtwin.petstore::referenceGetPetById
-def Def_referenceGetPetById_cd663b92(state_377, value0_378):
-    return Def_lawtwinPetstoreModelModelGetPetById_ed826277(value0_378, state_377)
+def Def_referenceGetPetById_cd663b92(state_438, value0_439):
+    return Def_lawtwinPetstoreModelModelGetPetById_ed826277(value0_439, state_438)
 
 
 # lawtwin.petstore::referenceGetUserByName
-def Def_referenceGetUserByName_027f640c(state_379, value0_380):
-    return Def_lawtwinPetstoreModelModelGetUserByName_d31e87ba(value0_380, state_379)
+def Def_referenceGetUserByName_027f640c(state_440, value0_441):
+    return Def_lawtwinPetstoreModelModelGetUserByName_d31e87ba(value0_441, state_440)
 
 
 # lawtwin.petstore::referenceLoginUser
-def Def_referenceLoginUser_20c0b3f3(state_381, value0_382, value1_383):
-    return Def_lawtwinPetstoreHandwrittenLoginUser_b8d6606c(value0_382, value1_383, state_381)
+def Def_referenceLoginUser_20c0b3f3(state_442, value0_443, value1_444):
+    return Def_lawtwinPetstoreHandwrittenLoginUser_b8d6606c(value0_443, value1_444, state_442)
 
 
 # lawtwin.petstore::referenceLogoutUser
-def Def_referenceLogoutUser_56bbbb56(state_384):
-    return Def_lawtwinPetstoreHandwrittenLogoutUser_38a24725(state_384)
+def Def_referenceLogoutUser_56bbbb56(state_445):
+    return Def_lawtwinPetstoreHandwrittenLogoutUser_38a24725(state_445)
 
 
 # lawtwin.petstore::referencePlaceOrder
-def Def_referencePlaceOrder_29feae4c(state_385, value0_386):
-    return Def_lawtwinPetstoreModelModelPlaceOrder_d7fd75c4(value0_386, state_385)
+def Def_referencePlaceOrder_29feae4c(state_446, value0_447):
+    return Def_lawtwinPetstoreModelModelPlaceOrder_d7fd75c4(value0_447, state_446)
 
 
 # lawtwin.petstore::referenceStart
-def Def_referenceStart_1a3a0c80(lawspecunit_387):
+def Def_referenceStart_1a3a0c80(lawspecunit_448):
     return Def_lawtwinPetstoreModelEmptyState_9f93bc81(None)
 
 
 # lawtwin.petstore::referenceUpdatePet
-def Def_referenceUpdatePet_3e347085(state_388, value0_389):
-    return Def_lawtwinPetstoreModelModelUpdatePet_6803effb(value0_389, state_388)
+def Def_referenceUpdatePet_3e347085(state_449, value0_450):
+    return Def_lawtwinPetstoreModelModelUpdatePet_6803effb(value0_450, state_449)
 
 
 # lawtwin.petstore::referenceUpdatePetWithForm
-def Def_referenceUpdatePetWithForm_dbd33536(state_390, value0_391, value1_392, value2_393):
-    return Def_lawtwinPetstoreHandwrittenUpdatePetWithForm_9c6a9682(value0_391, value1_392, value2_393, state_390)
+def Def_referenceUpdatePetWithForm_dbd33536(state_451, value0_452, value1_453, value2_454):
+    return Def_lawtwinPetstoreHandwrittenUpdatePetWithForm_9c6a9682(value0_452, value1_453, value2_454, state_451)
 
 
 # lawtwin.petstore::referenceUpdateUser
-def Def_referenceUpdateUser_e08f158a(state_394, value0_395, value1_396):
-    return Def_lawtwinPetstoreModelModelUpdateUser_6c0b8b8d(value0_395, value1_396, state_394)
+def Def_referenceUpdateUser_e08f158a(state_455, value0_456, value1_457):
+    return Def_lawtwinPetstoreModelModelUpdateUser_6c0b8b8d(value0_456, value1_457, state_455)
 
 
 # lawtwin.petstore::referenceUploadFile
-def Def_referenceUploadFile_5fb62a62(state_397, value0_398, value1_399, value2_400):
-    return Def_lawtwinPetstoreHandwrittenUploadFile_db78234a(value0_398, value1_399, value2_400, state_397)
+def Def_referenceUploadFile_5fb62a62(state_458, value0_459, value1_460, value2_461):
+    return Def_lawtwinPetstoreHandwrittenUploadFile_db78234a(value0_459, value1_460, value2_461, state_458)
 
 
 # lawtwin.petstore.laws::noHandWrittenLawsYet
-def Def_noHandWrittenLawsYet_f9ba4d84(u_401):
+def Def_noHandWrittenLawsYet_f9ba4d84(u_462):
     return None
 
 

@@ -301,7 +301,7 @@ public final class Kafka {
       java.lang.Long value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
@@ -335,7 +335,7 @@ public final class Kafka {
           lawspec.data.ConsumerState value0) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate67(symbols, argument0);
@@ -365,7 +365,7 @@ public final class Kafka {
           lawspec.data.ConsumerState value0) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate68(symbols, argument0);
@@ -398,7 +398,7 @@ public final class Kafka {
           lawspec.data.ConsumerState value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(_schema, 64, symbols);
@@ -442,7 +442,7 @@ public final class Kafka {
           lawspec.data.ConsumerState value3) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
@@ -488,7 +488,7 @@ public final class Kafka {
           lawspec.data.ConsumerState value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = _schema.scalar("Int32", 64, java.lang.Integer.class);
       var argument0 = codec0.encode(value0);
       var codec1 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(_schema, 64, symbols);
@@ -525,7 +525,7 @@ public final class Kafka {
       lawspec.data.ConsumerState value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(_schema, 64, symbols);
@@ -558,7 +558,7 @@ public final class Kafka {
           lawspec.data.ConsumerState value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(_schema, 64, symbols);
@@ -602,7 +602,7 @@ public final class Kafka {
           lawspec.data.ConsumerState value0) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate76(symbols, argument0);
@@ -652,7 +652,7 @@ public final class Kafka {
       java.lang.Integer value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Int32", 64, java.lang.Integer.class);
@@ -727,7 +727,7 @@ public final class Kafka {
       java.util.List<java.lang.String> value2) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
@@ -755,7 +755,9 @@ public final class Kafka {
       java.util.List<java.lang.String> value2) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::GroupCoordinator", groupCoordinator));
+          symbols,
+          java.util.Map.<String, Object>of(
+              "lawtwin.kafka::ability::GroupCoordinator", groupCoordinator));
       var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
@@ -790,7 +792,7 @@ public final class Kafka {
           lawspec.data.ConsumerState value0) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate91(symbols, argument0);
@@ -820,7 +822,7 @@ public final class Kafka {
           lawspec.data.ConsumerState value0) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate92(symbols, argument0);
@@ -853,7 +855,7 @@ public final class Kafka {
           lawspec.data.TopicPartition value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
@@ -887,7 +889,7 @@ public final class Kafka {
           java.lang.Integer value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Int32", 64, java.lang.Integer.class);
@@ -927,7 +929,7 @@ public final class Kafka {
           lawspec.data.TopicPartition value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
@@ -992,7 +994,7 @@ public final class Kafka {
           java.util.List<java.lang.String> value3) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
@@ -1037,7 +1039,7 @@ public final class Kafka {
           lawspec.data.ProducerState value0) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.producerStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate100(symbols, argument0);
@@ -1084,7 +1086,7 @@ public final class Kafka {
           lawspec.data.ProducerState value0) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.producerStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate103(symbols, argument0);
@@ -1121,7 +1123,7 @@ public final class Kafka {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols,
-          java.util.Map.of(
+          java.util.Map.<String, Object>of(
               "lawtwin.kafka::ability::Broker",
               broker,
               "lawtwin.kafka::ability::Partitioner",
@@ -1167,7 +1169,7 @@ public final class Kafka {
           lawspec.data.TransactionState value0) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate106(symbols, argument0);
@@ -1202,7 +1204,7 @@ public final class Kafka {
           java.util.List<lawspec.data.TopicPartition> value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 =
@@ -1251,7 +1253,7 @@ public final class Kafka {
           lawspec.data.TransactionState value0) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate109(symbols, argument0);
@@ -1286,7 +1288,7 @@ public final class Kafka {
           java.lang.String value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
@@ -1326,7 +1328,7 @@ public final class Kafka {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols,
-          java.util.Map.of(
+          java.util.Map.<String, Object>of(
               "lawtwin.kafka::ability::Broker",
               broker,
               "lawtwin.kafka::ability::Partitioner",
@@ -1369,7 +1371,7 @@ public final class Kafka {
           java.util.List<lawspec.data.OffsetEntry> value2) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
@@ -3252,7 +3254,7 @@ public final class Kafka {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols,
-          java.util.Map.of(
+          java.util.Map.<String, Object>of(
               "lawtwin.kafka::ability::Broker",
               broker,
               "lawtwin.kafka::ability::Partitioner",
@@ -3301,7 +3303,7 @@ public final class Kafka {
           java.util.List<lawspec.data.ConsumerRecord> value3) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 =
           _schema.list(
               lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
@@ -3367,7 +3369,7 @@ public final class Kafka {
           lawspec.data.ProducerState value0) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.producerStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate329(symbols, argument0);
@@ -3401,7 +3403,7 @@ public final class Kafka {
           lawspec.data.ProducerState value0) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.producerStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate330(symbols, argument0);
@@ -3438,7 +3440,7 @@ public final class Kafka {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols,
-          java.util.Map.of(
+          java.util.Map.<String, Object>of(
               "lawtwin.kafka::ability::Broker",
               broker,
               "lawtwin.kafka::ability::Partitioner",
@@ -3477,7 +3479,7 @@ public final class Kafka {
       lawspec.data.IsolationLevel value2) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
@@ -3510,7 +3512,7 @@ public final class Kafka {
       lawspec.data.Record value3) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Consumer", consumer));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Consumer", consumer));
       var codec0 =
           _schema.either(
               lawspec.runtime.LawSpecDataCodecs.kafkaErrorCodec(_schema, 64, symbols),
@@ -3566,7 +3568,7 @@ public final class Kafka {
       java.lang.Integer value3) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Consumer", consumer));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Consumer", consumer));
       var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
@@ -3617,7 +3619,7 @@ public final class Kafka {
       java.util.List<lawspec.data.Record> value2) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
@@ -3666,7 +3668,7 @@ public final class Kafka {
       java.lang.Boolean value3) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
@@ -3699,7 +3701,7 @@ public final class Kafka {
       java.lang.Long value3) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
@@ -3731,7 +3733,7 @@ public final class Kafka {
           lawspec.data.TransactionState value0) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate347(symbols, argument0);
@@ -3766,7 +3768,7 @@ public final class Kafka {
           lawspec.data.TransactionState value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 =
           _schema.list(
               lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
@@ -3815,7 +3817,7 @@ public final class Kafka {
           lawspec.data.TransactionState value0) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate350(symbols, argument0);
@@ -3850,7 +3852,7 @@ public final class Kafka {
           lawspec.data.TransactionState value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = _schema.scalar("Bool", 64, java.lang.Boolean.class);
       var argument0 = codec0.encode(value0);
       var codec1 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(_schema, 64, symbols);
@@ -3888,7 +3890,7 @@ public final class Kafka {
           lawspec.data.TransactionState value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
       var argument0 = codec0.encode(value0);
       var codec1 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(_schema, 64, symbols);
@@ -3927,7 +3929,7 @@ public final class Kafka {
           lawspec.data.TransactionState value2) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
       var argument0 = codec0.encode(value0);
       var codec1 =
@@ -3974,7 +3976,7 @@ public final class Kafka {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols,
-          java.util.Map.of(
+          java.util.Map.<String, Object>of(
               "lawtwin.kafka::ability::Broker",
               broker,
               "lawtwin.kafka::ability::Partitioner",
@@ -4012,7 +4014,7 @@ public final class Kafka {
       java.lang.Long value1) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
@@ -4063,7 +4065,7 @@ public final class Kafka {
       lawspec.data.Record value2) {
     try {
       lawspec.runtime.LawSpecRuntime.installHandlers(
-          symbols, java.util.Map.of("lawtwin.kafka::ability::Broker", broker));
+          symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
       var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
       var argument0 = codec0.encode(value0);
       var codec1 = _schema.scalar("Text", 64, java.lang.String.class);

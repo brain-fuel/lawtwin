@@ -140,6 +140,41 @@ public final class LawSpecDataCodecs {
         });
   }
 
+  public static <T0> Codec<lawspec.data.Set<T0>> setCodec(
+      LawSpecSchema schema, int bits, Codec<T0> type0) {
+    return setCodec(schema, bits, new java.util.HashMap<>(), type0);
+  }
+
+  public static <T0> Codec<lawspec.data.Set<T0>> setCodec(
+      LawSpecSchema schema, int bits, java.util.Map<String, Object> symbols, Codec<T0> type0) {
+    var type = new Named("lawspec.collections::type::EqSet", type0.type());
+    return schema.codec(
+        type,
+        bits,
+        symbols,
+        item -> {
+          var field0 = schema.list(type0, bits, symbols);
+          return schema.construct(
+              type,
+              "lawspec.collections::type::EqSet::EqSetItems",
+              List.of(
+                  LawSpecSchema.encodeField(
+                      field0, item.value(), "lawspec.collections::type::EqSet::EqSetItems.value")),
+              bits,
+              symbols);
+        },
+        value -> {
+          var data = (Data) value.data();
+          return switch (data.tag()) {
+            case "lawspec.collections::type::EqSet::EqSetItems" -> {
+              var field0 = schema.list(type0, bits, symbols);
+              yield new lawspec.data.Set<>(field0.decode(data.fields().get(0)));
+            }
+            default -> throw new IllegalArgumentException("uninhabited or invalid native data");
+          };
+        });
+  }
+
   public static Codec<lawspec.data.Regex> regexCodec(LawSpecSchema schema, int bits) {
     return regexCodec(schema, bits, new java.util.HashMap<>());
   }
@@ -196,8 +231,8 @@ public final class LawSpecDataCodecs {
                     List.of(
                         LawSpecSchema.encodeField(
                             field0,
-                            item.chosen(),
-                            "lawtwin.kafka::type::PartitionChoice::ToPartition.chosen")),
+                            item.value(),
+                            "lawtwin.kafka::type::PartitionChoice::ToPartition.value")),
                     bits,
                     symbols);
               }
@@ -1442,53 +1477,32 @@ public final class LawSpecDataCodecs {
         value ->
             switch (value) {
               case lawspec.data.LogEntry.DataEntry item -> {
-                var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-                var field1 = recordCodec(schema, bits, symbols);
-                var field2 = schema.scalar("Int64", bits, java.lang.Long.class);
-                var field3 = schema.scalar("Bool", bits, java.lang.Boolean.class);
+                var field0 =
+                    record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beCodec(
+                        schema, bits, symbols);
                 yield schema.construct(
                     type,
                     "lawtwin.kafka.model::type::LogEntry::DataEntry",
                     List.of(
                         LawSpecSchema.encodeField(
                             field0,
-                            item.entryOffset(),
-                            "lawtwin.kafka.model::type::LogEntry::DataEntry.entryOffset"),
-                        LawSpecSchema.encodeField(
-                            field1,
-                            item.entryRecord(),
-                            "lawtwin.kafka.model::type::LogEntry::DataEntry.entryRecord"),
-                        LawSpecSchema.encodeField(
-                            field2,
-                            item.writer(),
-                            "lawtwin.kafka.model::type::LogEntry::DataEntry.writer"),
-                        LawSpecSchema.encodeField(
-                            field3,
-                            item.transactional(),
-                            "lawtwin.kafka.model::type::LogEntry::DataEntry.transactional")),
+                            item.value(),
+                            "lawtwin.kafka.model::type::LogEntry::DataEntry.value")),
                     bits,
                     symbols);
               }
               case lawspec.data.LogEntry.ControlEntry item -> {
-                var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-                var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
-                var field2 = schema.scalar("Bool", bits, java.lang.Boolean.class);
+                var field0 =
+                    record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Codec(
+                        schema, bits, symbols);
                 yield schema.construct(
                     type,
                     "lawtwin.kafka.model::type::LogEntry::ControlEntry",
                     List.of(
                         LawSpecSchema.encodeField(
                             field0,
-                            item.markerOffset(),
-                            "lawtwin.kafka.model::type::LogEntry::ControlEntry.markerOffset"),
-                        LawSpecSchema.encodeField(
-                            field1,
-                            item.markerWriter(),
-                            "lawtwin.kafka.model::type::LogEntry::ControlEntry.markerWriter"),
-                        LawSpecSchema.encodeField(
-                            field2,
-                            item.commits(),
-                            "lawtwin.kafka.model::type::LogEntry::ControlEntry.commits")),
+                            item.value(),
+                            "lawtwin.kafka.model::type::LogEntry::ControlEntry.value")),
                     bits,
                     symbols);
               }
@@ -1497,24 +1511,16 @@ public final class LawSpecDataCodecs {
           var data = (Data) value.data();
           return switch (data.tag()) {
             case "lawtwin.kafka.model::type::LogEntry::DataEntry" -> {
-              var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field1 = recordCodec(schema, bits, symbols);
-              var field2 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field3 = schema.scalar("Bool", bits, java.lang.Boolean.class);
-              yield new lawspec.data.LogEntry.DataEntry(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)),
-                  field3.decode(data.fields().get(3)));
+              var field0 =
+                  record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beCodec(
+                      schema, bits, symbols);
+              yield new lawspec.data.LogEntry.DataEntry(field0.decode(data.fields().get(0)));
             }
             case "lawtwin.kafka.model::type::LogEntry::ControlEntry" -> {
-              var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field2 = schema.scalar("Bool", bits, java.lang.Boolean.class);
-              yield new lawspec.data.LogEntry.ControlEntry(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)));
+              var field0 =
+                  record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Codec(
+                      schema, bits, symbols);
+              yield new lawspec.data.LogEntry.ControlEntry(field0.decode(data.fields().get(0)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1777,20 +1783,17 @@ public final class LawSpecDataCodecs {
                     type, "lawtwin.kafka.model::type::TxnState::NoTxn", List.of(), bits, symbols);
               }
               case lawspec.data.TxnState.Ongoing item -> {
-                var field0 = schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
-                var field1 = schema.list(pendingOffsetCodec(schema, bits, symbols), bits, symbols);
+                var field0 =
+                    recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeCodec(
+                        schema, bits, symbols);
                 yield schema.construct(
                     type,
                     "lawtwin.kafka.model::type::TxnState::Ongoing",
                     List.of(
                         LawSpecSchema.encodeField(
                             field0,
-                            item.txnPartitions(),
-                            "lawtwin.kafka.model::type::TxnState::Ongoing.txnPartitions"),
-                        LawSpecSchema.encodeField(
-                            field1,
-                            item.txnOffsets(),
-                            "lawtwin.kafka.model::type::TxnState::Ongoing.txnOffsets")),
+                            item.value(),
+                            "lawtwin.kafka.model::type::TxnState::Ongoing.value")),
                     bits,
                     symbols);
               }
@@ -1802,10 +1805,10 @@ public final class LawSpecDataCodecs {
               yield new lawspec.data.TxnState.NoTxn();
             }
             case "lawtwin.kafka.model::type::TxnState::Ongoing" -> {
-              var field0 = schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
-              var field1 = schema.list(pendingOffsetCodec(schema, bits, symbols), bits, symbols);
-              yield new lawspec.data.TxnState.Ongoing(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+              var field0 =
+                  recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeCodec(
+                      schema, bits, symbols);
+              yield new lawspec.data.TxnState.Ongoing(field0.decode(data.fields().get(0)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -2115,6 +2118,167 @@ public final class LawSpecDataCodecs {
                   field4.decode(data.fields().get(4)),
                   field5.decode(data.fields().get(5)),
                   field6.decode(data.fields().get(6)));
+            }
+            default -> throw new IllegalArgumentException("uninhabited or invalid native data");
+          };
+        });
+  }
+
+  public static Codec<lawspec.data.Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be> record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beCodec(
+      LawSpecSchema schema, int bits) {
+    return record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beCodec(
+        schema, bits, new java.util.HashMap<>());
+  }
+
+  public static Codec<lawspec.data.Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be> record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beCodec(
+      LawSpecSchema schema, int bits, java.util.Map<String, Object> symbols) {
+    var type = new Named(
+        "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be");
+    return schema.codec(
+        type,
+        bits,
+        symbols,
+        item -> {
+          var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
+          var field1 = recordCodec(schema, bits, symbols);
+          var field2 = schema.scalar("Bool", bits, java.lang.Boolean.class);
+          var field3 = schema.scalar("Int64", bits, java.lang.Long.class);
+          return schema.construct(
+              type,
+              "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record",
+              List.of(
+                  LawSpecSchema.encodeField(
+                      field0,
+                      item.entryOffset(),
+                      "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record.entryOffset"),
+                  LawSpecSchema.encodeField(
+                      field1,
+                      item.entryRecord(),
+                      "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record.entryRecord"),
+                  LawSpecSchema.encodeField(
+                      field2,
+                      item.transactional(),
+                      "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record.transactional"),
+                  LawSpecSchema.encodeField(
+                      field3,
+                      item.writer(),
+                      "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record.writer")),
+              bits,
+              symbols);
+        },
+        value -> {
+          var data = (Data) value.data();
+          return switch (data.tag()) {
+            case "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record" -> {
+              var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
+              var field1 = recordCodec(schema, bits, symbols);
+              var field2 = schema.scalar("Bool", bits, java.lang.Boolean.class);
+              var field3 = schema.scalar("Int64", bits, java.lang.Long.class);
+              yield new lawspec.data.Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be(
+                  field0.decode(data.fields().get(0)),
+                  field1.decode(data.fields().get(1)),
+                  field2.decode(data.fields().get(2)),
+                  field3.decode(data.fields().get(3)));
+            }
+            default -> throw new IllegalArgumentException("uninhabited or invalid native data");
+          };
+        });
+  }
+
+  public static Codec<lawspec.data.Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3> record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Codec(
+      LawSpecSchema schema, int bits) {
+    return record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Codec(
+        schema, bits, new java.util.HashMap<>());
+  }
+
+  public static Codec<lawspec.data.Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3> record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Codec(
+      LawSpecSchema schema, int bits, java.util.Map<String, Object> symbols) {
+    var type = new Named(
+        "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3");
+    return schema.codec(
+        type,
+        bits,
+        symbols,
+        item -> {
+          var field0 = schema.scalar("Bool", bits, java.lang.Boolean.class);
+          var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
+          var field2 = schema.scalar("Int64", bits, java.lang.Long.class);
+          return schema.construct(
+              type,
+              "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record",
+              List.of(
+                  LawSpecSchema.encodeField(
+                      field0,
+                      item.commits(),
+                      "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record.commits"),
+                  LawSpecSchema.encodeField(
+                      field1,
+                      item.markerOffset(),
+                      "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record.markerOffset"),
+                  LawSpecSchema.encodeField(
+                      field2,
+                      item.markerWriter(),
+                      "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record.markerWriter")),
+              bits,
+              symbols);
+        },
+        value -> {
+          var data = (Data) value.data();
+          return switch (data.tag()) {
+            case "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record" -> {
+              var field0 = schema.scalar("Bool", bits, java.lang.Boolean.class);
+              var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
+              var field2 = schema.scalar("Int64", bits, java.lang.Long.class);
+              yield new lawspec.data.Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3(
+                  field0.decode(data.fields().get(0)),
+                  field1.decode(data.fields().get(1)),
+                  field2.decode(data.fields().get(2)));
+            }
+            default -> throw new IllegalArgumentException("uninhabited or invalid native data");
+          };
+        });
+  }
+
+  public static Codec<lawspec.data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee> recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeCodec(
+      LawSpecSchema schema, int bits) {
+    return recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeCodec(
+        schema, bits, new java.util.HashMap<>());
+  }
+
+  public static Codec<lawspec.data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee> recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeCodec(
+      LawSpecSchema schema, int bits, java.util.Map<String, Object> symbols) {
+    var type = new Named(
+        "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee");
+    return schema.codec(
+        type,
+        bits,
+        symbols,
+        item -> {
+          var field0 = schema.list(pendingOffsetCodec(schema, bits, symbols), bits, symbols);
+          var field1 = schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
+          return schema.construct(
+              type,
+              "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record",
+              List.of(
+                  LawSpecSchema.encodeField(
+                      field0,
+                      item.txnOffsets(),
+                      "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record.txnOffsets"),
+                  LawSpecSchema.encodeField(
+                      field1,
+                      item.txnPartitions(),
+                      "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record.txnPartitions")),
+              bits,
+              symbols);
+        },
+        value -> {
+          var data = (Data) value.data();
+          return switch (data.tag()) {
+            case "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record" -> {
+              var field0 = schema.list(pendingOffsetCodec(schema, bits, symbols), bits, symbols);
+              var field1 = schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
+              yield new lawspec.data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(
+                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };

@@ -50,6 +50,10 @@ use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::{TcpListener, TcpStream};
 use tokio::sync::mpsc;
 
+#[cfg(test)]
+#[path = "record_leader_tests.rs"]
+mod leader_tests;
+
 /// How a recorder is started.
 #[derive(Clone, Debug)]
 pub struct RecorderConfig {
@@ -357,8 +361,12 @@ fn encode_request<R: Encodable>(header: &RequestHeader, key: ApiKey, version: i1
 }
 
 fn encode_response<R: Encodable>(correlation: i32, key: ApiKey, version: i16, resp: &R) -> Result<Vec<u8>> {
+    encode_response_with_header(&ResponseHeader::default().with_correlation_id(correlation), key, version, resp)
+}
+
+fn encode_response_with_header<R: Encodable>(header: &ResponseHeader, key: ApiKey, version: i16, resp: &R) -> Result<Vec<u8>> {
     let mut buf = BytesMut::new();
-    ResponseHeader::default().with_correlation_id(correlation).encode(&mut buf, key.response_header_version(version))?;
+    header.encode(&mut buf, key.response_header_version(version))?;
     resp.encode(&mut buf, version)?;
     Ok(buf.to_vec())
 }
@@ -538,12 +546,47 @@ impl Recorder {
             ApiKey::Heartbeat => self.rebalance_storm(corr, version, body, &frame.request),
             _ => None,
         };
-        match faulted {
-            Some(r) => {
-                frame.delivered = Some(r.clone());
-                (r, delay + extra)
+        let applied_fault = faulted.is_some();
+        let mut delivered = faulted.unwrap_or(raw);
+        if matches!(key, ApiKey::Produce) && version >= 10 || matches!(key, ApiKey::Fetch) && version >= 16 {
+            if let Ok((_, body)) = crate::decode::split_response(&delivered, key, version) {
+                if let Some(rewritten) = self.leader_endpoints(key, version, &header, body) {
+                    delivered = rewritten;
+                }
             }
-            None => (raw, delay + extra),
+        }
+        if applied_fault {
+            frame.delivered = Some(delivered.clone());
+        }
+        (delivered, delay + extra)
+    }
+
+    /// KIP-951 leader hints are connection addresses just as Metadata is.
+    /// Rewrite them after applying faults, keeping the broker's captured
+    /// response and every other response field, including tagged extensions.
+    /// ref:kafka-produce-leader-endpoints ref:kafka-fetch-leader-endpoints
+    fn leader_endpoints(&self, key: ApiKey, version: i16, header: &ResponseHeader, mut body: Bytes) -> Option<Vec<u8>> {
+        let (host, port) = self.advertised();
+        match key {
+            ApiKey::Produce if version >= 10 => {
+                let mut response = ProduceResponse::decode(&mut body, version).ok()?;
+                if response.node_endpoints.is_empty() { return None; }
+                for endpoint in &mut response.node_endpoints {
+                    endpoint.host = StrBytes::from_string(host.clone());
+                    endpoint.port = port;
+                }
+                encode_response_with_header(header, key, version, &response).ok()
+            }
+            ApiKey::Fetch if version >= 16 => {
+                let mut response = FetchResponse::decode(&mut body, version).ok()?;
+                if response.node_endpoints.is_empty() { return None; }
+                for endpoint in &mut response.node_endpoints {
+                    endpoint.host = StrBytes::from_string(host.clone());
+                    endpoint.port = port;
+                }
+                encode_response_with_header(header, key, version, &response).ok()
+            }
+            _ => None,
         }
     }
 

@@ -246,7 +246,7 @@ def make_schema():
                         "lawspec.collections::type::KeyVal::KeyValEntries",
                         [
                             _schema.Field(
-                                "entries",
+                                "value",
                                 _schema.Named(
                                     "List",
                                     [

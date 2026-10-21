@@ -17,9 +17,9 @@ connectService :: Unit -> Service
 disconnectService :: Service -> Unit
 
 resource Service is
-  acquire is connectService unitValue end
-  release service is disconnectService service end
-end
+  acquire is connectService unitValue end acquire
+  release service is disconnectService service end release
+end resource
 
 -- ---------------------------------------------------------------------------
 -- PetApi
@@ -43,43 +43,47 @@ ability PetApi with Service is
   -- POST /pet/{petId}/uploadImage: Uploads an image.
   uploadFile :: Int64 -> Maybe Text -> Maybe Bytes -> ApiResponse fails with ApiError
 laws
-  law `a created pet reads back` is
-    definition is
-      `for all` (body :: Pet) .
+  law "|a created pet reads back| is
+    definition :
+      for all (body :: Pet) =>
         (let sent = body in
-         match prelude.attempt (addPet sent) with
-         | Left failure -> true
-         | Right created ->
-             match created.id with | Nothing -> false | Just key -> prelude.attempt (getPetById key) == Right created end
-         end) = true
-    end
-  end
-  law `a deleted pet is not found` is
-    definition is
-      `for all` (body :: Pet) .
+         first matching case of prelude.attempt (addPet sent) :
+         when Left failure then true
+         when Right created then
+             first matching case of created.id : when Nothing then false when Just key then prelude.attempt (getPetById key) = Right created end case
+         end case
+         end let) = true end for all
+    end definition
+  end law
+  law "|a deleted pet is not found| is
+    definition :
+      for all (body :: Pet) =>
         (let sent = body in
-         match prelude.attempt (addPet sent) with
-         | Left failure -> true
-         | Right created ->
-             match created.id with | Nothing -> false | Just key -> (let gone = prelude.attempt (deletePet key Nothing) in prelude.attempt (getPetById key) == Left NotFound) end
-         end) = true
-    end
-  end
-  law `a replaced pet reads back as replaced` is
-    definition is
-      `for all` (body :: Pet) (replacement :: Pet) .
+         first matching case of prelude.attempt (addPet sent) :
+         when Left failure then true
+         when Right created then
+             first matching case of created.id : when Nothing then false when Just key then (let gone = prelude.attempt (deletePet key Nothing) in prelude.attempt (getPetById key) = Left NotFound end let) end case
+         end case
+         end let) = true end for all
+    end definition
+  end law
+  law "|a replaced pet reads back as replaced| is
+    definition :
+      for all (body :: Pet) (replacement :: Pet) =>
         (let sent = body in
-         match prelude.attempt (addPet sent) with
-         | Left failure -> true
-         | Right created ->
-             match created.id with | Nothing -> false | Just key -> match prelude.attempt (updatePet (replacement with id = Just key)) with
-             | Left failure -> true
-             | Right replaced -> prelude.attempt (getPetById key) == Right replaced
-             end end
-         end) = true
-    end
-  end
-end
+         first matching case of prelude.attempt (addPet sent) :
+         when Left failure then true
+         when Right created then
+             first matching case of created.id : when Nothing then false when Just key then first matching case of prelude.attempt (updatePet (replacement with id = Just key)) :
+             when Left failure then true
+             when Right replaced then prelude.attempt (getPetById key) = Right replaced
+             end case end case
+         end case
+         end let) = true end for all
+    end definition
+  end law
+end laws
+end ability
 
 -- ---------------------------------------------------------------------------
 -- StoreApi
@@ -95,29 +99,32 @@ ability StoreApi with Service is
   -- DELETE /store/order/{orderId}: Delete purchase order by identifier.
   deleteOrder :: Int64 -> Unit fails with ApiError
 laws
-  law `a created order reads back` is
-    definition is
-      `for all` (body :: Order) (shipDateValue :: OrderShipDate) .
+  law "|a created order reads back| is
+    definition :
+      for all (body :: Order) (shipDateValue :: OrderShipDate) =>
         (let sent = (body with shipDate = Just shipDateValue) in
-         match prelude.attempt (placeOrder (Just sent)) with
-         | Left failure -> true
-         | Right created ->
-             match created.id with | Nothing -> false | Just key -> prelude.attempt (getOrderById key) == Right created end
-         end) = true
-    end
-  end
-  law `a deleted order is not found` is
-    definition is
-      `for all` (body :: Order) (shipDateValue :: OrderShipDate) .
+         first matching case of prelude.attempt (placeOrder (Just sent)) :
+         when Left failure then true
+         when Right created then
+             first matching case of created.id : when Nothing then false when Just key then prelude.attempt (getOrderById key) = Right created end case
+         end case
+         end let) = true end for all
+    end definition
+  end law
+  law "|a deleted order is not found| is
+    definition :
+      for all (body :: Order) (shipDateValue :: OrderShipDate) =>
         (let sent = (body with shipDate = Just shipDateValue) in
-         match prelude.attempt (placeOrder (Just sent)) with
-         | Left failure -> true
-         | Right created ->
-             match created.id with | Nothing -> false | Just key -> (let gone = prelude.attempt (deleteOrder key) in prelude.attempt (getOrderById key) == Left NotFound) end
-         end) = true
-    end
-  end
-end
+         first matching case of prelude.attempt (placeOrder (Just sent)) :
+         when Left failure then true
+         when Right created then
+             first matching case of created.id : when Nothing then false when Just key then (let gone = prelude.attempt (deleteOrder key) in prelude.attempt (getOrderById key) = Left NotFound end let) end case
+         end case
+         end let) = true end for all
+    end definition
+  end law
+end laws
+end ability
 
 -- ---------------------------------------------------------------------------
 -- UserApi
@@ -139,29 +146,32 @@ ability UserApi with Service is
   -- DELETE /user/{username}: Delete user resource.
   deleteUser :: Text -> Unit fails with ApiError
 laws
-  law `a created user reads back` is
-    definition is
-      `for all` (body :: User) (keyGiven :: Text) .
+  law "|a created user reads back| is
+    definition :
+      for all (body :: User) (keyGiven :: Text) =>
         (let sent = (body with username = Just keyGiven) in
-         match prelude.attempt (createUser (Just sent)) with
-         | Left failure -> true
-         | Right created ->
-             match sent.username with | Nothing -> false | Just key -> prelude.attempt (getUserByName key) == Right created end
-         end) = true
-    end
-  end
-  law `a deleted user is not found` is
-    definition is
-      `for all` (body :: User) (keyGiven :: Text) .
+         first matching case of prelude.attempt (createUser (Just sent)) :
+         when Left failure then true
+         when Right created then
+             first matching case of sent.username : when Nothing then false when Just key then prelude.attempt (getUserByName key) = Right created end case
+         end case
+         end let) = true end for all
+    end definition
+  end law
+  law "|a deleted user is not found| is
+    definition :
+      for all (body :: User) (keyGiven :: Text) =>
         (let sent = (body with username = Just keyGiven) in
-         match prelude.attempt (createUser (Just sent)) with
-         | Left failure -> true
-         | Right created ->
-             match sent.username with | Nothing -> false | Just key -> (let gone = prelude.attempt (deleteUser key) in prelude.attempt (getUserByName key) == Left NotFound) end
-         end) = true
-    end
-  end
-end
+         first matching case of prelude.attempt (createUser (Just sent)) :
+         when Left failure then true
+         when Right created then
+             first matching case of sent.username : when Nothing then false when Just key then (let gone = prelude.attempt (deleteUser key) in prelude.attempt (getUserByName key) = Left NotFound end let) end case
+         end case
+         end let) = true end for all
+    end definition
+  end law
+end laws
+end ability
 
 -- ---------------------------------------------------------------------------
 -- The reference model
@@ -171,23 +181,24 @@ end
 -- it when the importer recognised what it does, otherwise by the
 -- hand-written unit.
 handler reference for PetApi, StoreApi, UserApi with state state :: State start model.emptyState unitValue is
-  updatePet by model.modelUpdatePet
-  addPet by model.modelAddPet
-  findPetsByStatus by handwritten.findPetsByStatus
-  findPetsByTags by handwritten.findPetsByTags
-  getPetById by model.modelGetPetById
-  updatePetWithForm by handwritten.updatePetWithForm
-  deletePet by model.modelDeletePet
-  uploadFile by handwritten.uploadFile
-  getInventory by handwritten.getInventory
-  placeOrder by model.modelPlaceOrder
-  getOrderById by model.modelGetOrderById
-  deleteOrder by model.modelDeleteOrder
-  createUser by model.modelCreateUser
-  createUsersWithListInput by handwritten.createUsersWithListInput
-  loginUser by handwritten.loginUser
-  logoutUser by handwritten.logoutUser
-  getUserByName by model.modelGetUserByName
-  updateUser by model.modelUpdateUser
-  deleteUser by model.modelDeleteUser
-end
+  operation updatePet by model.modelUpdatePet end operation
+  operation addPet by model.modelAddPet end operation
+  operation findPetsByStatus by handwritten.findPetsByStatus end operation
+  operation findPetsByTags by handwritten.findPetsByTags end operation
+  operation getPetById by model.modelGetPetById end operation
+  operation updatePetWithForm by handwritten.updatePetWithForm end operation
+  operation deletePet by model.modelDeletePet end operation
+  operation uploadFile by handwritten.uploadFile end operation
+  operation getInventory by handwritten.getInventory end operation
+  operation placeOrder by model.modelPlaceOrder end operation
+  operation getOrderById by model.modelGetOrderById end operation
+  operation deleteOrder by model.modelDeleteOrder end operation
+  operation createUser by model.modelCreateUser end operation
+  operation createUsersWithListInput by handwritten.createUsersWithListInput end operation
+  operation loginUser by handwritten.loginUser end operation
+  operation logoutUser by handwritten.logoutUser end operation
+  operation getUserByName by model.modelGetUserByName end operation
+  operation updateUser by model.modelUpdateUser end operation
+  operation deleteUser by model.modelDeleteUser end operation
+end handler
+end unit

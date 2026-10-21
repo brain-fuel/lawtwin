@@ -11,42 +11,44 @@ unit lawtwin.petstore.handwritten
 import lawtwin.petstore.model as model (ApiError, State)
 
 -- HAND-WRITTEN: GET /pet/findByStatus: Finds Pets by status.
-definition findPetsByStatus (status :: model.PetStatus) (current_ :: State) :: Pair (List model.Pet) State fails with ApiError is
+procedure findPetsByStatus (status :: model.PetStatus) (current_ :: State) -> Pair (List model.Pet) State fails with ApiError is
   raise Unmodelled
-end
+end procedure
 
 -- HAND-WRITTEN: GET /pet/findByTags: Finds Pets by tags.
-definition findPetsByTags (tags :: List Text) (current_ :: State) :: Pair (List model.Pet) State fails with ApiError is
+procedure findPetsByTags (tags :: List Text) (current_ :: State) -> Pair (List model.Pet) State fails with ApiError is
   raise Unmodelled
-end
+end procedure
 
 -- HAND-WRITTEN: POST /pet/{petId}: Updates a pet in the store with form data.
-definition updatePetWithForm (petId :: Int64) (name :: Maybe Text) (status :: Maybe Text) (current_ :: State) :: Pair model.Pet State fails with ApiError is
+procedure updatePetWithForm (petId :: Int64) (name :: Maybe Text) (status :: Maybe Text) (current_ :: State) -> Pair model.Pet State fails with ApiError is
   raise Unmodelled
-end
+end procedure
 
 -- HAND-WRITTEN: POST /pet/{petId}/uploadImage: Uploads an image.
-definition uploadFile (petId :: Int64) (additionalMetadata :: Maybe Text) (body :: Maybe Bytes) (current_ :: State) :: Pair model.ApiResponse State fails with ApiError is
+procedure uploadFile (petId :: Int64) (additionalMetadata :: Maybe Text) (body :: Maybe Bytes) (current_ :: State) -> Pair model.ApiResponse State fails with ApiError is
   raise Unmodelled
-end
+end procedure
 
 -- HAND-WRITTEN: GET /store/inventory: Returns pet inventories by status.
-definition getInventory (current_ :: State) :: Pair (KeyVal Text Int32) State fails with ApiError is
+procedure getInventory (current_ :: State) -> Pair (KeyVal Text Int32) State fails with ApiError is
   raise Unmodelled
-end
+end procedure
 
 -- HAND-WRITTEN: POST /user/createWithList: Creates list of users with given input array.
-definition createUsersWithListInput (body :: Maybe (List model.User)) (current_ :: State) :: Pair model.User State fails with ApiError is
+procedure createUsersWithListInput (body :: Maybe (List model.User)) (current_ :: State) -> Pair model.User State fails with ApiError is
   raise Unmodelled
-end
+end procedure
 
 -- HAND-WRITTEN: GET /user/login: Logs user into the system.
-definition loginUser (username :: Maybe Text) (password :: Maybe Text) (current_ :: State) :: Pair Text State fails with ApiError is
+procedure loginUser (username :: Maybe Text) (password :: Maybe Text) (current_ :: State) -> Pair Text State fails with ApiError is
   raise Unmodelled
-end
+end procedure
 
 -- HAND-WRITTEN: GET /user/logout: Logs out current logged in user session.
-definition logoutUser (current_ :: State) :: Pair Unit State fails with ApiError is
+procedure logoutUser (current_ :: State) -> Pair Unit State fails with ApiError is
   raise Unmodelled
-end
+end procedure
 
+
+end unit

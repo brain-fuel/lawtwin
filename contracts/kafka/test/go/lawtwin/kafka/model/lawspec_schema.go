@@ -200,6 +200,15 @@ func lsNewSchemaWithContracts(definitions []lawSpecDataSchema, primitives []stri
 }
 
 func (s *lawSpecSchema) hasContracts() bool {
+	for _, definition := range s.definitions {
+		for _, constructor := range definition.constructors {
+			for _, text := range constructor.indices {
+				if strings.HasPrefix(text, "== ") || strings.HasPrefix(text, ">= ") {
+					return true
+				}
+			}
+		}
+	}
 	for _, predicates := range s.contracts {
 		if len(predicates) != 0 {
 			return true
@@ -276,6 +285,12 @@ func lsSubstitute(t lawSpecTypeRef, arguments []lawSpecTypeRef) lawSpecTypeRef {
 
 func (s *lawSpecSchema) constructors(t lawSpecTypeRef) ([]lawSpecConstructorSchema, bool) {
 	s.check(t, 0)
+	return s.instantiateConstructors(t)
+}
+
+// Internal field traversal can retain constructor-local witness parameters.
+// Public value operations still require a closed type through constructors.
+func (s *lawSpecSchema) instantiateConstructors(t lawSpecTypeRef) ([]lawSpecConstructorSchema, bool) {
 	definition, exists := s.definitions[t.name]
 	if !exists {
 		return nil, false
@@ -736,6 +751,9 @@ func (s *lawSpecSchema) validateValue(t lawSpecTypeRef, value LawSpecValue, bits
 			})
 		}
 		s.checkIndices(constructor, fields)
+		if t.name == "lawspec.collections::type::EqSet" && !lsDistinctMembers(lsEqSetItems(lawSpecData{data.tag, fields}), lsSchemaEqual) {
+			panic(lawSpecRefinementViolation{"Eq-only set: duplicate equal elements"})
+		}
 		return LawSpecValue{t.key(), lawSpecData{data.tag, fields}}
 	}
 	panic("unknown constructor " + data.tag + " for " + t.key())
@@ -750,8 +768,8 @@ func (s *lawSpecSchema) checkIndices(constructor lawSpecConstructorSchema, field
 		}
 		left, next := lsParseSchemaIndex(tokens, 1)
 		right, _ := lsParseSchemaIndex(tokens, next)
-		field := func(position, index int) *big.Int {
-			return s.indexOf(constructor.fields[position].typeRef, fields[position], index)
+		field := func(path []int, index int) *big.Int {
+			return s.indexAtPath(constructor.fields, fields, path, index)
 		}
 		x, y := lsEvalSchemaIndex(left, field), lsEvalSchemaIndex(right, field)
 		if x == nil || y == nil || (tokens[0] == "==" && x.Cmp(y) != 0) || (tokens[0] == ">=" && x.Cmp(y) < 0) {
@@ -777,20 +795,41 @@ func (s *lawSpecSchema) indexOf(t lawSpecTypeRef, value LawSpecValue, index int)
 			panic("no index for " + t.key())
 		}
 		term, _ := lsParseSchemaIndex(strings.Fields(terms[index]), 0)
-		return lsEvalSchemaIndex(term, func(position, child int) *big.Int {
-			return s.indexOf(constructor.fields[position].typeRef, data.fields[position], child)
+		return lsEvalSchemaIndex(term, func(path []int, child int) *big.Int {
+			return s.indexAtPath(constructor.fields, data.fields, path, child)
 		})
 	}
 	panic("unknown constructor " + data.tag)
 }
 
+func (s *lawSpecSchema) indexAtPath(types []lawSpecFieldSchema, values []LawSpecValue, path []int, index int) *big.Int {
+	if len(path) == 0 || path[0] < 0 || path[0] >= len(types) || path[0] >= len(values) {
+		panic("invalid index field path")
+	}
+	position := path[0]
+	t, value := types[position].typeRef, values[position]
+	if len(path) == 1 {
+		return s.indexOf(t, value, index)
+	}
+	if !strings.HasPrefix(t.name, "lawspec::structural::record::") {
+		panic("index field path must traverse a structural record")
+	}
+	constructors, _ := s.constructors(t)
+	data := value.Data.(lawSpecData)
+	if len(constructors) != 1 || constructors[0].tag != data.tag {
+		panic("invalid structural record in index field path")
+	}
+	return s.indexAtPath(constructors[0].fields, data.fields, path[1:], index)
+}
+
 // lawSpecSchemaIndex is a prefix index term: c<n>, f<field>[.<index>] or an
 // operator applied to two terms.
 type lawSpecSchemaIndex struct {
-	op              string
-	value           *big.Int
-	position, index int
-	left, right     *lawSpecSchemaIndex
+	op          string
+	value       *big.Int
+	path        []int
+	index       int
+	left, right *lawSpecSchemaIndex
 }
 
 func lsParseSchemaIndex(tokens []string, at int) (*lawSpecSchemaIndex, int) {
@@ -805,17 +844,28 @@ func lsParseSchemaIndex(tokens []string, at int) (*lawSpecSchemaIndex, int) {
 			panic("malformed index term")
 		}
 		return &lawSpecSchemaIndex{op: "c", value: value}, at + 1
-	case token[0] == 'f':
+	case token[0] == 'f' || token[0] == 'p':
 		parts := strings.SplitN(token[1:], ".", 2)
-		position, err := strconv.Atoi(parts[0])
+		path := []int{}
+		for _, part := range strings.Split(parts[0], "/") {
+			position, err := strconv.Atoi(part)
+			if err != nil || position < 0 {
+				panic("malformed index field path")
+			}
+			path = append(path, position)
+		}
 		index := 0
-		if err == nil && len(parts) == 2 {
+		if len(parts) == 2 {
+			var err error
 			index, err = strconv.Atoi(parts[1])
+			if err != nil || index < 0 {
+				panic("malformed index term")
+			}
 		}
-		if err != nil {
-			panic("malformed index term")
+		if token[0] == 'f' && len(path) != 1 {
+			panic("malformed index field path")
 		}
-		return &lawSpecSchemaIndex{op: "f", position: position, index: index}, at + 1
+		return &lawSpecSchemaIndex{op: "f", path: path, index: index}, at + 1
 	}
 	left, next := lsParseSchemaIndex(tokens, at+1)
 	right, end := lsParseSchemaIndex(tokens, next)
@@ -824,12 +874,12 @@ func lsParseSchemaIndex(tokens []string, at int) (*lawSpecSchemaIndex, int) {
 
 // lsEvalSchemaIndex is natural index arithmetic; nil when an operation has no
 // natural value.
-func lsEvalSchemaIndex(term *lawSpecSchemaIndex, field func(int, int) *big.Int) *big.Int {
+func lsEvalSchemaIndex(term *lawSpecSchemaIndex, field func([]int, int) *big.Int) *big.Int {
 	switch term.op {
 	case "c":
 		return term.value
 	case "f":
-		return field(term.position, term.index)
+		return field(term.path, term.index)
 	}
 	x, y := lsEvalSchemaIndex(term.left, field), lsEvalSchemaIndex(term.right, field)
 	if x == nil || y == nil {
@@ -929,6 +979,9 @@ func lsSchemaEqual(a, b LawSpecValue) bool {
 		if !ok || x.tag != y.tag || len(x.fields) != len(y.fields) {
 			return false
 		}
+		if x.tag == lsEqSetTag {
+			return lsSameMembers(lsEqSetItems(x), lsEqSetItems(y), lsSchemaEqual)
+		}
 		for index, field := range x.fields {
 			if !lsSchemaEqual(field, y.fields[index]) {
 				return false
@@ -960,6 +1013,7 @@ func lsSchemaEqual(a, b LawSpecValue) bool {
 
 // Check the complete native binding, including fields in unselected variants.
 func (s *lawSpecSchema) checkNativeProfile(t lawSpecTypeRef, bits int) {
+	s.check(t, 0)
 	visited := map[string]bool{}
 	var check func(lawSpecTypeRef)
 	check = func(current lawSpecTypeRef) {
@@ -976,7 +1030,9 @@ func (s *lawSpecSchema) checkNativeProfile(t lawSpecTypeRef, bits int) {
 			return
 		}
 		visited[current.name] = true
-		constructors, _ := s.constructors(current)
+		// A record containing a witnessed existential is open until a value
+		// supplies that witness. Its known fields still need profile checks.
+		constructors, _ := s.instantiateConstructors(current)
 		for _, constructor := range constructors {
 			for _, field := range constructor.fields {
 				check(field.typeRef)

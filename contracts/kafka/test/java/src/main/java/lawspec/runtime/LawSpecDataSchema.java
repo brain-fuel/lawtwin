@@ -45,7 +45,14 @@ public final class LawSpecDataSchema {
                 List.of(
                     new Constructor(
                         "lawspec.collections::type::Set::SetItems",
-                        List.of(new Field("items", new Named("List", new Parameter(0))))))),
+                        List.of(new Field("value", new Named("List", new Parameter(0))))))),
+            new Definition(
+                "lawspec.collections::type::EqSet",
+                1,
+                List.of(
+                    new Constructor(
+                        "lawspec.collections::type::EqSet::EqSetItems",
+                        List.of(new Field("value", new Named("List", new Parameter(0))))))),
             new Definition(
                 "lawspec.collections::type::KeyVal",
                 2,
@@ -54,7 +61,7 @@ public final class LawSpecDataSchema {
                         "lawspec.collections::type::KeyVal::KeyValEntries",
                         List.of(
                             new Field(
-                                "entries",
+                                "value",
                                 new Named(
                                     "List",
                                     new Named(
@@ -74,7 +81,7 @@ public final class LawSpecDataSchema {
                 List.of(
                     new Constructor(
                         "lawtwin.kafka::type::PartitionChoice::ToPartition",
-                        List.of(new Field("chosen", new Named("Int32")))),
+                        List.of(new Field("value", new Named("Int32")))),
                     new Constructor("lawtwin.kafka::type::PartitionChoice::ByKey", List.of()))),
             new Definition(
                 "lawtwin.kafka::type::ProducerRecord",
@@ -373,17 +380,17 @@ public final class LawSpecDataSchema {
                     new Constructor(
                         "lawtwin.kafka.model::type::LogEntry::DataEntry",
                         List.of(
-                            new Field("entryOffset", new Named("Int64")),
                             new Field(
-                                "entryRecord", new Named("lawtwin.kafka.model::type::Record")),
-                            new Field("writer", new Named("Int64")),
-                            new Field("transactional", new Named("Bool")))),
+                                "value",
+                                new Named(
+                                    "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be")))),
                     new Constructor(
                         "lawtwin.kafka.model::type::LogEntry::ControlEntry",
                         List.of(
-                            new Field("markerOffset", new Named("Int64")),
-                            new Field("markerWriter", new Named("Int64")),
-                            new Field("commits", new Named("Bool")))))),
+                            new Field(
+                                "value",
+                                new Named(
+                                    "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3")))))),
             new Definition(
                 "lawtwin.kafka.model::type::AbortedTxn",
                 0,
@@ -455,15 +462,9 @@ public final class LawSpecDataSchema {
                         "lawtwin.kafka.model::type::TxnState::Ongoing",
                         List.of(
                             new Field(
-                                "txnPartitions",
+                                "value",
                                 new Named(
-                                    "List",
-                                    new Named("lawtwin.kafka.model::type::TopicPartition"))),
-                            new Field(
-                                "txnOffsets",
-                                new Named(
-                                    "List",
-                                    new Named("lawtwin.kafka.model::type::PendingOffset"))))))),
+                                    "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee")))))),
             new Definition(
                 "lawtwin.kafka.model::type::ProducerEntry",
                 0,
@@ -551,6 +552,44 @@ public final class LawSpecDataSchema {
                                 new Named(
                                     "lawspec.collections::type::KeyVal",
                                     new Named("lawtwin.kafka.model::type::GroupPartition"),
-                                    new Named("Int64")))))))));
+                                    new Named("Int64"))))))),
+            new Definition(
+                "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be",
+                0,
+                List.of(
+                    new Constructor(
+                        "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record",
+                        List.of(
+                            new Field("entryOffset", new Named("Int64")),
+                            new Field(
+                                "entryRecord", new Named("lawtwin.kafka.model::type::Record")),
+                            new Field("transactional", new Named("Bool")),
+                            new Field("writer", new Named("Int64")))))),
+            new Definition(
+                "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3",
+                0,
+                List.of(
+                    new Constructor(
+                        "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record",
+                        List.of(
+                            new Field("commits", new Named("Bool")),
+                            new Field("markerOffset", new Named("Int64")),
+                            new Field("markerWriter", new Named("Int64")))))),
+            new Definition(
+                "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee",
+                0,
+                List.of(
+                    new Constructor(
+                        "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record",
+                        List.of(
+                            new Field(
+                                "txnOffsets",
+                                new Named(
+                                    "List", new Named("lawtwin.kafka.model::type::PendingOffset"))),
+                            new Field(
+                                "txnPartitions",
+                                new Named(
+                                    "List",
+                                    new Named("lawtwin.kafka.model::type::TopicPartition")))))))));
   }
 }

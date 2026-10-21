@@ -3305,661 +3305,657 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate595(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.keepBoundedArithmetic_3e45e1f6(lawspec.runtime.LawSpecTyped.C3.decode(input0)));
-  }
-
-  public static Value evaluate596(Map<String, Object> symbols, Value input0) {
     return evaluate0(symbols, input0);
   }
 
-  public static Value evaluate597(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate596(Map<String, Object> symbols, Value input0) {
     return evaluate1(symbols, input0);
   }
 
-  public static Value evaluate598(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate597(Map<String, Object> symbols, Value input0) {
     return evaluate2(symbols, input0);
   }
 
-  public static Value evaluate599(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate598(Map<String, Object> symbols, Value input0) {
     return evaluate3(symbols, input0);
   }
 
-  public static Value evaluate600(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate599(Map<String, Object> symbols, Value input0) {
     return evaluate4(symbols, input0);
   }
 
-  public static Value evaluate601(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate600(Map<String, Object> symbols, Value input0) {
     return evaluate5(symbols, input0);
   }
 
-  public static Value evaluate602(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate601(Map<String, Object> symbols, Value input0) {
     return evaluate6(symbols, input0);
   }
 
-  public static Value evaluate603(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate602(Map<String, Object> symbols, Value input0) {
     return evaluate7(symbols, input0);
   }
 
-  public static Value evaluate604(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate603(Map<String, Object> symbols, Value input0) {
     return evaluate8(symbols, input0);
   }
 
-  public static Value evaluate605(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate604(Map<String, Object> symbols, Value input0) {
     return evaluate9(symbols, input0);
   }
 
-  public static Value evaluate606(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate605(Map<String, Object> symbols, Value input0) {
     return evaluate10(symbols, input0);
   }
 
-  public static Value evaluate607(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate606(Map<String, Object> symbols, Value input0) {
     return evaluate11(symbols, input0);
   }
 
-  public static Value evaluate608(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate607(Map<String, Object> symbols, Value input0) {
     return evaluate12(symbols, input0);
   }
 
-  public static Value evaluate609(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate608(Map<String, Object> symbols, Value input0) {
     return evaluate13(symbols, input0);
   }
 
-  public static Value evaluate610(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate609(Map<String, Object> symbols, Value input0) {
     return evaluate14(symbols, input0);
   }
 
-  public static Value evaluate611(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate610(Map<String, Object> symbols, Value input0) {
     return evaluate15(symbols, input0);
   }
 
-  public static Value evaluate612(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate611(Map<String, Object> symbols, Value input0) {
     return evaluate16(symbols, input0);
   }
 
-  public static Value evaluate613(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate612(Map<String, Object> symbols, Value input0) {
     return evaluate17(symbols, input0);
   }
 
-  public static Value evaluate614(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate613(Map<String, Object> symbols, Value input0) {
     return evaluate18(symbols, input0);
   }
 
-  public static Value evaluate615(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate614(Map<String, Object> symbols, Value input0) {
     return evaluate19(symbols, input0);
   }
 
-  public static Value evaluate616(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate615(Map<String, Object> symbols, Value input0) {
     return evaluate20(symbols, input0);
   }
 
-  public static Value evaluate617(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate616(Map<String, Object> symbols, Value input0) {
     return evaluate21(symbols, input0);
   }
 
-  public static Value evaluate618(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate617(Map<String, Object> symbols, Value input0) {
     return evaluate22(symbols, input0);
   }
 
-  public static Value evaluate619(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate618(Map<String, Object> symbols, Value input0) {
     return evaluate23(symbols, input0);
   }
 
-  public static Value evaluate620(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate619(Map<String, Object> symbols, Value input0) {
     return evaluate24(symbols, input0);
   }
 
-  public static Value evaluate621(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate620(Map<String, Object> symbols, Value input0) {
     return evaluate25(symbols, input0);
   }
 
-  public static Value evaluate622(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate621(Map<String, Object> symbols, Value input0) {
     return evaluate26(symbols, input0);
   }
 
-  public static Value evaluate623(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate622(Map<String, Object> symbols, Value input0) {
     return evaluate27(symbols, input0);
   }
 
-  public static Value evaluate624(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate623(Map<String, Object> symbols, Value input0) {
     return evaluate28(symbols, input0);
   }
 
-  public static Value evaluate625(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate624(Map<String, Object> symbols, Value input0) {
     return evaluate29(symbols, input0);
   }
 
-  public static Value evaluate626(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate625(Map<String, Object> symbols, Value input0) {
     return evaluate30(symbols, input0);
   }
 
-  public static Value evaluate627(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate626(Map<String, Object> symbols, Value input0) {
     return evaluate31(symbols, input0);
   }
 
-  public static Value evaluate628(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate627(Map<String, Object> symbols, Value input0) {
     return evaluate32(symbols, input0);
   }
 
-  public static Value evaluate629(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate628(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate148(symbols, input0, input1);
   }
 
-  public static Value evaluate630(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate629(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate149(symbols, input0, input1);
   }
 
-  public static Value evaluate631(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate630(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate150(symbols, input0, input1);
   }
 
-  public static Value evaluate632(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate631(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate151(symbols, input0, input1);
   }
 
-  public static Value evaluate633(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate632(Map<String, Object> symbols, Value input0) {
     return evaluate152(symbols, input0);
   }
 
-  public static Value evaluate634(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate633(Map<String, Object> symbols, Value input0) {
     return evaluate153(symbols, input0);
   }
 
-  public static Value evaluate635(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate634(Map<String, Object> symbols, Value input0) {
     return evaluate154(symbols, input0);
   }
 
-  public static Value evaluate636(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate635(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate155(symbols, input0, input1);
   }
 
-  public static Value evaluate637(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate636(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate156(symbols, input0, input1);
   }
 
-  public static Value evaluate638(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate637(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate157(symbols, input0, input1);
   }
 
-  public static Value evaluate639(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate638(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate158(symbols, input0, input1);
   }
 
-  public static Value evaluate640(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate639(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate159(symbols, input0, input1);
   }
 
-  public static Value evaluate641(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate640(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate160(symbols, input0, input1);
   }
 
-  public static Value evaluate642(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate641(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate161(symbols, input0, input1);
   }
 
-  public static Value evaluate643(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate642(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate162(symbols, input0, input1);
   }
 
-  public static Value evaluate644(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate643(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate163(symbols, input0, input1);
   }
 
-  public static Value evaluate645(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate644(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate164(symbols, input0, input1);
   }
 
-  public static Value evaluate646(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate645(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate165(symbols, input0, input1);
   }
 
-  public static Value evaluate647(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate646(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate166(symbols, input0, input1);
   }
 
-  public static Value evaluate648(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate647(Map<String, Object> symbols, Value input0) {
     return evaluate167(symbols, input0);
   }
 
-  public static Value evaluate649(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate648(Map<String, Object> symbols, Value input0) {
     return evaluate168(symbols, input0);
   }
 
-  public static Value evaluate650(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate649(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate169(symbols, input0, input1);
   }
 
-  public static Value evaluate651(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate650(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate170(symbols, input0, input1);
   }
 
-  public static Value evaluate652(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate651(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate171(symbols, input0, input1);
   }
 
-  public static Value evaluate653(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate652(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate172(symbols, input0, input1);
   }
 
-  public static Value evaluate654(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate653(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate173(symbols, input0, input1);
   }
 
-  public static Value evaluate655(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate654(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate174(symbols, input0, input1);
   }
 
-  public static Value evaluate656(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate655(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate175(symbols, input0, input1);
   }
 
-  public static Value evaluate657(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate656(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate176(symbols, input0, input1);
   }
 
-  public static Value evaluate658(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate657(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate177(symbols, input0, input1);
   }
 
-  public static Value evaluate659(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate658(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate178(symbols, input0, input1);
   }
 
-  public static Value evaluate660(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate659(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate179(symbols, input0, input1);
   }
 
-  public static Value evaluate661(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate660(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate180(symbols, input0, input1);
   }
 
-  public static Value evaluate662(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate661(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate181(symbols, input0, input1);
   }
 
-  public static Value evaluate663(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate662(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate182(symbols, input0, input1);
   }
 
-  public static Value evaluate664(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate663(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate183(symbols, input0, input1);
   }
 
-  public static Value evaluate665(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate664(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate184(symbols, input0, input1);
   }
 
-  public static Value evaluate666(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate665(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate185(symbols, input0, input1);
   }
 
-  public static Value evaluate667(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate666(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate186(symbols, input0, input1);
   }
 
-  public static Value evaluate668(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate667(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate187(symbols, input0, input1);
   }
 
-  public static Value evaluate669(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate668(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate188(symbols, input0, input1);
   }
 
-  public static Value evaluate670(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate669(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate189(symbols, input0, input1);
   }
 
-  public static Value evaluate671(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate670(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate190(symbols, input0, input1);
   }
 
-  public static Value evaluate672(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate671(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate191(symbols, input0, input1);
   }
 
-  public static Value evaluate673(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate672(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate192(symbols, input0, input1);
   }
 
-  public static Value evaluate674(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate673(Map<String, Object> symbols, Value input0) {
     return evaluate193(symbols, input0);
   }
 
-  public static Value evaluate675(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate674(Map<String, Object> symbols, Value input0) {
     return evaluate194(symbols, input0);
   }
 
-  public static Value evaluate676(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate675(Map<String, Object> symbols, Value input0) {
     return evaluate195(symbols, input0);
   }
 
-  public static Value evaluate677(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate676(Map<String, Object> symbols, Value input0) {
     return evaluate196(symbols, input0);
   }
 
-  public static Value evaluate678(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate677(Map<String, Object> symbols, Value input0) {
     return evaluate197(symbols, input0);
   }
 
-  public static Value evaluate679(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate678(Map<String, Object> symbols, Value input0) {
     return evaluate198(symbols, input0);
   }
 
-  public static Value evaluate680(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate679(Map<String, Object> symbols, Value input0) {
     return evaluate199(symbols, input0);
   }
 
-  public static Value evaluate681(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate680(Map<String, Object> symbols, Value input0) {
     return evaluate200(symbols, input0);
   }
 
-  public static Value evaluate682(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate681(Map<String, Object> symbols, Value input0) {
     return evaluate201(symbols, input0);
   }
 
-  public static Value evaluate683(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate682(Map<String, Object> symbols, Value input0) {
     return evaluate202(symbols, input0);
   }
 
-  public static Value evaluate684(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate683(Map<String, Object> symbols, Value input0) {
     return evaluate203(symbols, input0);
   }
 
-  public static Value evaluate685(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate684(Map<String, Object> symbols, Value input0) {
     return evaluate204(symbols, input0);
   }
 
-  public static Value evaluate686(
+  public static Value evaluate685(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate205(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate687(
+  public static Value evaluate686(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate206(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate688(
+  public static Value evaluate687(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate207(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate689(
+  public static Value evaluate688(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate208(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate690(
+  public static Value evaluate689(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate209(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate691(
+  public static Value evaluate690(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate210(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate692(
+  public static Value evaluate691(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate211(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate693(
+  public static Value evaluate692(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate212(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate694(
+  public static Value evaluate693(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate213(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate695(
+  public static Value evaluate694(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate214(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate696(
+  public static Value evaluate695(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate215(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate697(
+  public static Value evaluate696(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate216(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate698(
+  public static Value evaluate697(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate217(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate699(
+  public static Value evaluate698(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate218(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate700(
+  public static Value evaluate699(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate219(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate701(
+  public static Value evaluate700(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate220(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate702(
+  public static Value evaluate701(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate221(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate703(
+  public static Value evaluate702(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate222(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate704(
+  public static Value evaluate703(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate223(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate705(
+  public static Value evaluate704(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate224(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate706(
+  public static Value evaluate705(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate225(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate707(
+  public static Value evaluate706(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate226(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate708(
+  public static Value evaluate707(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate227(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate709(
+  public static Value evaluate708(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate228(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate710(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate709(Map<String, Object> symbols, Value input0) {
     return evaluate229(symbols, input0);
   }
 
-  public static Value evaluate711(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate710(Map<String, Object> symbols, Value input0) {
     return evaluate230(symbols, input0);
   }
 
-  public static Value evaluate712(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate711(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate232(symbols, input0, input1);
   }
 
-  public static Value evaluate713(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate712(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate233(symbols, input0, input1);
   }
 
-  public static Value evaluate714(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate713(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate234(symbols, input0, input1);
   }
 
-  public static Value evaluate715(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate714(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate236(symbols, input0, input1);
   }
 
-  public static Value evaluate716(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate715(Map<String, Object> symbols, Value input0) {
     return evaluate239(symbols, input0);
   }
 
-  public static Value evaluate717(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate716(Map<String, Object> symbols, Value input0) {
     return evaluate240(symbols, input0);
   }
 
-  public static Value evaluate718(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate717(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate242(symbols, input0, input1);
   }
 
-  public static Value evaluate719(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate718(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate243(symbols, input0, input1);
   }
 
-  public static Value evaluate720(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate719(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate244(symbols, input0, input1);
   }
 
-  public static Value evaluate721(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate720(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate34(symbols, input0, input1);
   }
 
-  public static Value evaluate722(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate721(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate35(symbols, input0, input1);
   }
 
-  public static Value evaluate723(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate722(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate65(symbols, input0, input1);
   }
 
-  public static Value evaluate724(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate723(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate66(symbols, input0, input1);
   }
 
-  public static Value evaluate725(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate724(Map<String, Object> symbols, Value input0) {
     return evaluate67(symbols, input0);
   }
 
-  public static Value evaluate726(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate725(Map<String, Object> symbols, Value input0) {
     return evaluate68(symbols, input0);
   }
 
-  public static Value evaluate727(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate726(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate69(symbols, input0, input1);
   }
 
-  public static Value evaluate728(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate727(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate70(symbols, input0, input1);
   }
 
-  public static Value evaluate729(
+  public static Value evaluate728(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate71(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate730(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate729(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate72(symbols, input0, input1);
   }
 
-  public static Value evaluate731(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate730(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate73(symbols, input0, input1);
   }
 
-  public static Value evaluate732(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate731(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate74(symbols, input0, input1);
   }
 
-  public static Value evaluate733(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate732(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate75(symbols, input0, input1);
   }
 
-  public static Value evaluate734(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate733(Map<String, Object> symbols, Value input0) {
     return evaluate76(symbols, input0);
   }
 
-  public static Value evaluate735(
+  public static Value evaluate734(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate77(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate736(
+  public static Value evaluate735(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate78(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate737(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate736(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate79(symbols, input0, input1);
   }
 
-  public static Value evaluate738(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate737(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate80(symbols, input0, input1);
   }
 
-  public static Value evaluate739(
+  public static Value evaluate738(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate81(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate740(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate739(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate82(symbols, input0, input1);
   }
 
-  public static Value evaluate741(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate740(Map<String, Object> symbols, Value input0) {
     return evaluate83(symbols, input0);
   }
 
-  public static Value evaluate742(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate741(Map<String, Object> symbols, Value input0) {
     return evaluate84(symbols, input0);
   }
 
-  public static Value evaluate743(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate742(Map<String, Object> symbols, Value input0) {
     return evaluate85(symbols, input0);
   }
 
-  public static Value evaluate744(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate743(Map<String, Object> symbols, Value input0) {
     return evaluate86(symbols, input0);
   }
 
-  public static Value evaluate745(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate744(Map<String, Object> symbols, Value input0) {
     return evaluate87(symbols, input0);
   }
 
-  public static Value evaluate746(
+  public static Value evaluate745(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate88(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate747(
+  public static Value evaluate746(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate89(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate748(
+  public static Value evaluate747(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate114(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate749(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate748(Map<String, Object> symbols, Value input0) {
     return evaluate316(symbols, input0);
   }
 
-  public static Value evaluate750(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate749(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate317(symbols, input0, input1);
   }
 
-  public static Value evaluate751(
+  public static Value evaluate750(
       Map<String, Object> symbols,
       Value input0,
       Value input1,
@@ -3969,16 +3965,16 @@ public final class LawSpecDefinitionBodies {
     return evaluate362(symbols, input0, input1, input2, input3, input4);
   }
 
-  public static Value evaluate752(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate751(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate363(symbols, input0, input1);
   }
 
-  public static Value evaluate753(
+  public static Value evaluate752(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate364(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate754(
+  public static Value evaluate753(
       Map<String, Object> symbols,
       Value input0,
       Value input1,
@@ -3988,11 +3984,11 @@ public final class LawSpecDefinitionBodies {
     return evaluate365(symbols, input0, input1, input2, input3, input4);
   }
 
-  public static Value evaluate755(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate754(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate366(symbols, input0, input1);
   }
 
-  public static Value evaluate756(
+  public static Value evaluate755(
       Map<String, Object> symbols,
       Value input0,
       Value input1,
@@ -4002,66 +3998,66 @@ public final class LawSpecDefinitionBodies {
     return evaluate367(symbols, input0, input1, input2, input3, input4);
   }
 
-  public static Value evaluate757(
+  public static Value evaluate756(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate368(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate758(
+  public static Value evaluate757(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate369(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate759(
+  public static Value evaluate758(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate370(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate760(
+  public static Value evaluate759(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate371(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate761(
+  public static Value evaluate760(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate372(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate762(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate761(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate373(symbols, input0, input1);
   }
 
-  public static Value evaluate763(
+  public static Value evaluate762(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate374(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate764(
+  public static Value evaluate763(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate375(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate765(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate764(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate376(symbols, input0, input1);
   }
 
-  public static Value evaluate766(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate765(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate377(symbols, input0, input1);
   }
 
-  public static Value evaluate767(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate766(Map<String, Object> symbols, Value input0) {
     return evaluate378(symbols, input0);
   }
 
-  public static Value evaluate768(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate767(Map<String, Object> symbols, Value input0) {
     return evaluate379(symbols, input0);
   }
 
-  public static Value evaluate769(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate768(Map<String, Object> symbols, Value input0) {
     return evaluate380(symbols, input0);
   }
 
-  public static Value evaluate770(
+  public static Value evaluate769(
       Map<String, Object> symbols,
       Value input0,
       Value input1,
@@ -4071,11 +4067,11 @@ public final class LawSpecDefinitionBodies {
     return evaluate381(symbols, input0, input1, input2, input3, input4);
   }
 
-  public static Value evaluate771(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate770(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate382(symbols, input0, input1);
   }
 
-  public static Value evaluate772(
+  public static Value evaluate771(
       Map<String, Object> symbols,
       Value input0,
       Value input1,
@@ -4085,103 +4081,103 @@ public final class LawSpecDefinitionBodies {
     return evaluate383(symbols, input0, input1, input2, input3, input4);
   }
 
-  public static Value evaluate773(
+  public static Value evaluate772(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate384(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate774(
+  public static Value evaluate773(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate385(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate775(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate774(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate386(symbols, input0, input1);
   }
 
-  public static Value evaluate776(
+  public static Value evaluate775(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate387(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate777(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate776(Map<String, Object> symbols, Value input0) {
     return evaluate388(symbols, input0);
   }
 
-  public static Value evaluate778(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate777(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate389(symbols, input0, input1);
   }
 
-  public static Value evaluate779(
+  public static Value evaluate778(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate390(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate780(
+  public static Value evaluate779(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate391(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate781(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate780(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate392(symbols, input0, input1);
   }
 
-  public static Value evaluate782(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate781(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate393(symbols, input0, input1);
   }
 
-  public static Value evaluate783(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate782(Map<String, Object> symbols, Value input0) {
     return evaluate394(symbols, input0);
   }
 
-  public static Value evaluate784(
+  public static Value evaluate783(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate503(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate785(
+  public static Value evaluate784(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate504(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate786(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate785(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate505(symbols, input0, input1);
   }
 
-  public static Value evaluate787(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate786(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate506(symbols, input0, input1);
   }
 
-  public static Value evaluate788(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate787(Map<String, Object> symbols, Value input0) {
     return evaluate507(symbols, input0);
   }
 
-  public static Value evaluate789(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate788(Map<String, Object> symbols, Value input0) {
     return evaluate508(symbols, input0);
   }
 
-  public static Value evaluate790(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate789(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate509(symbols, input0, input1);
   }
 
-  public static Value evaluate791(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate790(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate510(symbols, input0, input1);
   }
 
-  public static Value evaluate792(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate791(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate511(symbols, input0, input1);
   }
 
-  public static Value evaluate793(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate792(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate512(symbols, input0, input1);
   }
 
-  public static Value evaluate794(
+  public static Value evaluate793(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate513(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate795(
+  public static Value evaluate794(
       Map<String, Object> symbols,
       Value input0,
       Value input1,
@@ -4191,34 +4187,34 @@ public final class LawSpecDefinitionBodies {
     return evaluate514(symbols, input0, input1, input2, input3, input4);
   }
 
-  public static Value evaluate796(
+  public static Value evaluate795(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate515(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate797(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate796(Map<String, Object> symbols, Value input0) {
     return evaluate516(symbols, input0);
   }
 
-  public static Value evaluate798(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate797(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate517(symbols, input0, input1);
   }
 
-  public static Value evaluate799(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate798(Map<String, Object> symbols, Value input0) {
     return evaluate518(symbols, input0);
   }
 
-  public static Value evaluate800(
+  public static Value evaluate799(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate519(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate801(
+  public static Value evaluate800(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate520(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate802(
+  public static Value evaluate801(
       Map<String, Object> symbols,
       Value input0,
       Value input1,
@@ -4228,22 +4224,22 @@ public final class LawSpecDefinitionBodies {
     return evaluate521(symbols, input0, input1, input2, input3, input4);
   }
 
-  public static Value evaluate803(
+  public static Value evaluate802(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate522(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate804(
+  public static Value evaluate803(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate523(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate805(
+  public static Value evaluate804(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate524(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate806(
+  public static Value evaluate805(
       Map<String, Object> symbols,
       Value input0,
       Value input1,
@@ -4254,50 +4250,50 @@ public final class LawSpecDefinitionBodies {
     return evaluate525(symbols, input0, input1, input2, input3, input4, input5);
   }
 
-  public static Value evaluate807(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate806(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate526(symbols, input0, input1);
   }
 
-  public static Value evaluate808(
+  public static Value evaluate807(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate527(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate809(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate808(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate528(symbols, input0, input1);
   }
 
-  public static Value evaluate810(
+  public static Value evaluate809(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate529(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate811(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate810(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate530(symbols, input0, input1);
   }
 
-  public static Value evaluate812(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate811(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate531(symbols, input0, input1);
   }
 
-  public static Value evaluate813(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate812(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate532(symbols, input0, input1);
   }
 
-  public static Value evaluate814(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate813(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate533(symbols, input0, input1);
   }
 
-  public static Value evaluate815(
+  public static Value evaluate814(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate534(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate816(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate815(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate536(symbols, input0, input1);
   }
 
-  public static Value evaluate817(
+  public static Value evaluate816(
       Map<String, Object> symbols,
       Value input0,
       Value input1,
@@ -4308,186 +4304,186 @@ public final class LawSpecDefinitionBodies {
     return evaluate537(symbols, input0, input1, input2, input3, input4, input5);
   }
 
-  public static Value evaluate818(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate817(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate538(symbols, input0, input1);
   }
 
-  public static Value evaluate819(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate818(Map<String, Object> symbols, Value input0) {
     return evaluate539(symbols, input0);
   }
 
-  public static Value evaluate820(
+  public static Value evaluate819(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate540(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate821(
+  public static Value evaluate820(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate541(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate822(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate821(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate318(symbols, input0, input1);
   }
 
-  public static Value evaluate823(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate822(Map<String, Object> symbols, Value input0) {
     return evaluate319(symbols, input0);
   }
 
-  public static Value evaluate824(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate823(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate320(symbols, input0, input1);
   }
 
-  public static Value evaluate825(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate824(Map<String, Object> symbols, Value input0) {
     return evaluate321(symbols, input0);
   }
 
-  public static Value evaluate826(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate825(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate323(symbols, input0, input1);
   }
 
-  public static Value evaluate827(
+  public static Value evaluate826(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate324(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate828(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate827(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate325(symbols, input0, input1);
   }
 
-  public static Value evaluate829(
+  public static Value evaluate828(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate326(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate830(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate829(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate327(symbols, input0, input1);
   }
 
-  public static Value evaluate831(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate830(Map<String, Object> symbols, Value input0) {
     return evaluate328(symbols, input0);
   }
 
-  public static Value evaluate832(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate831(Map<String, Object> symbols, Value input0) {
     return evaluate329(symbols, input0);
   }
 
-  public static Value evaluate833(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate832(Map<String, Object> symbols, Value input0) {
     return evaluate330(symbols, input0);
   }
 
-  public static Value evaluate834(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate833(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate331(symbols, input0, input1);
   }
 
-  public static Value evaluate835(
+  public static Value evaluate834(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate332(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate836(
+  public static Value evaluate835(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate333(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate837(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate836(Map<String, Object> symbols, Value input0) {
     return evaluate334(symbols, input0);
   }
 
-  public static Value evaluate838(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate837(Map<String, Object> symbols, Value input0) {
     return evaluate335(symbols, input0);
   }
 
-  public static Value evaluate839(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate838(Map<String, Object> symbols, Value input0) {
     return evaluate336(symbols, input0);
   }
 
-  public static Value evaluate840(
+  public static Value evaluate839(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate337(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate841(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate840(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate338(symbols, input0, input1);
   }
 
-  public static Value evaluate842(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate841(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate339(symbols, input0, input1);
   }
 
-  public static Value evaluate843(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate842(Map<String, Object> symbols, Value input0) {
     return evaluate340(symbols, input0);
   }
 
-  public static Value evaluate844(
+  public static Value evaluate843(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate341(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate845(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate844(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate342(symbols, input0, input1);
   }
 
-  public static Value evaluate846(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate845(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate343(symbols, input0, input1);
   }
 
-  public static Value evaluate847(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate846(Map<String, Object> symbols, Value input0) {
     return evaluate344(symbols, input0);
   }
 
-  public static Value evaluate848(
+  public static Value evaluate847(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate345(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate849(
+  public static Value evaluate848(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
     return evaluate346(symbols, input0, input1, input2, input3);
   }
 
-  public static Value evaluate850(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate849(Map<String, Object> symbols, Value input0) {
     return evaluate347(symbols, input0);
   }
 
-  public static Value evaluate851(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate850(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate348(symbols, input0, input1);
   }
 
-  public static Value evaluate852(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate851(Map<String, Object> symbols, Value input0) {
     return evaluate349(symbols, input0);
   }
 
-  public static Value evaluate853(Map<String, Object> symbols, Value input0) {
+  public static Value evaluate852(Map<String, Object> symbols, Value input0) {
     return evaluate350(symbols, input0);
   }
 
-  public static Value evaluate854(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate853(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate351(symbols, input0, input1);
   }
 
-  public static Value evaluate855(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate854(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate352(symbols, input0, input1);
   }
 
-  public static Value evaluate856(
+  public static Value evaluate855(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate353(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate857(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate856(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate354(symbols, input0, input1);
   }
 
-  public static Value evaluate858(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate857(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate355(symbols, input0, input1);
   }
 
-  public static Value evaluate859(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate858(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate356(symbols, input0, input1);
   }
 
-  public static Value evaluate860(
+  public static Value evaluate859(
       Map<String, Object> symbols,
       Value input0,
       Value input1,
@@ -4498,27 +4494,31 @@ public final class LawSpecDefinitionBodies {
     return evaluate357(symbols, input0, input1, input2, input3, input4, input5);
   }
 
-  public static Value evaluate861(
+  public static Value evaluate860(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate358(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate862(
+  public static Value evaluate861(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate359(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate863(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate862(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate360(symbols, input0, input1);
   }
 
-  public static Value evaluate864(
+  public static Value evaluate863(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
     return evaluate361(symbols, input0, input1, input2);
   }
 
-  public static Value evaluate865(Map<String, Object> symbols, Value input0, Value input1) {
+  public static Value evaluate864(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate322(symbols, input0, input1);
+  }
+
+  public static Value evaluate865(Map<String, Object> symbols, Value input0) {
+    return lawspec.runtime.LawSpecTyped.C23.encode(lawspec.runtime.LawSpecTyped.suiteNamesThePackage_55f330a5(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
   }
 
   public static Value typedPerform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(

@@ -240,14 +240,14 @@ public static class LawspecCollections
             Value result;
             if (Runtime.Truth(Scalar.Binary(">", argument0, Schema.Validate(V.Int(BigInteger.Parse("9223372036854775807")), Scalar.TypeOf("Integer"), schema), "Integer", "Integer")))
             {
-                result = Schema.Validate(Schema.Validate(V.Int(BigInteger.Parse("9223372036854775807")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("IntSize"), schema);
+                result = Schema.Validate(Scalar.Convert(Schema.Validate(V.Int(BigInteger.Parse("9223372036854775807")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("IntSize"), 64), Scalar.TypeOf("IntSize"), schema);
             }
             else
             {
                 Value ls1;
                 if (Runtime.Truth(Scalar.Binary("<", argument0, Schema.Validate(V.Int(BigInteger.Parse("-9223372036854775808")), Scalar.TypeOf("Integer"), schema), "Integer", "Integer")))
                 {
-                    ls1 = Schema.Validate(Schema.Validate(V.Int(BigInteger.Parse("-9223372036854775808")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("IntSize"), schema);
+                    ls1 = Schema.Validate(Scalar.Convert(Schema.Validate(V.Int(BigInteger.Parse("-9223372036854775808")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("IntSize"), 64), Scalar.TypeOf("IntSize"), schema);
                 }
                 else
                 {
@@ -312,14 +312,14 @@ public static class LawspecCollections
             Value result;
             if (Runtime.Truth(Scalar.Binary(">", argument0, Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema), "Integer", "Integer")))
             {
-                result = Schema.Validate(Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntPtr"), schema);
+                result = Schema.Validate(Scalar.Convert(Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntPtr"), 64), Scalar.TypeOf("UIntPtr"), schema);
             }
             else
             {
                 Value ls1;
                 if (Runtime.Truth(Scalar.Binary("<", argument0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema), "Integer", "Integer")))
                 {
-                    ls1 = Schema.Validate(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntPtr"), schema);
+                    ls1 = Schema.Validate(Scalar.Convert(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntPtr"), 64), Scalar.TypeOf("UIntPtr"), schema);
                 }
                 else
                 {
@@ -340,14 +340,14 @@ public static class LawspecCollections
             Value result;
             if (Runtime.Truth(Scalar.Binary(">", argument0, Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema), "Integer", "Integer")))
             {
-                result = Schema.Validate(Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntSize"), schema);
+                result = Schema.Validate(Scalar.Convert(Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntSize"), 64), Scalar.TypeOf("UIntSize"), schema);
             }
             else
             {
                 Value ls1;
                 if (Runtime.Truth(Scalar.Binary("<", argument0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema), "Integer", "Integer")))
                 {
-                    ls1 = Schema.Validate(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntSize"), schema);
+                    ls1 = Schema.Validate(Scalar.Convert(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntSize"), 64), Scalar.TypeOf("UIntSize"), schema);
                 }
                 else
                 {

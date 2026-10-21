@@ -5,6 +5,5 @@ sealed interface TxnState {
     data object NoTxn : lawspec.data.TxnState
 
     data class Ongoing(
-        val txnPartitions: kotlin.collections.List<lawspec.data.TopicPartition>,
-        val txnOffsets: kotlin.collections.List<lawspec.data.PendingOffset>) : lawspec.data.TxnState
+        val value: lawspec.data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee) : lawspec.data.TxnState
 }

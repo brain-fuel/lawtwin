@@ -421,11 +421,11 @@ let lawspecCollectionsSaturatingIntSize (schema: Schema.Schema) (symbols: Scalar
         fun () ->
             let result =
                 if Runtime.truth (Scalar.binary ">" argument0 (Schema.validate (Value.Int(9223372036854775807I)) (Scalar.typeOf "Integer") schema) "Integer" "Integer") then
-                    Schema.validate (Schema.validate (Value.Int(9223372036854775807I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "IntSize") schema
+                    Schema.validate (Scalar.convert (Schema.validate (Value.Int(9223372036854775807I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "IntSize") 64) (Scalar.typeOf "IntSize") schema
                 else
                     let ls1 =
                         if Runtime.truth (Scalar.binary "<" argument0 (Schema.validate (Value.Int(-9223372036854775808I)) (Scalar.typeOf "Integer") schema) "Integer" "Integer") then
-                            Schema.validate (Schema.validate (Value.Int(-9223372036854775808I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "IntSize") schema
+                            Schema.validate (Scalar.convert (Schema.validate (Value.Int(-9223372036854775808I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "IntSize") 64) (Scalar.typeOf "IntSize") schema
                         else
                             Scalar.convert argument0 (Scalar.typeOf "IntSize") 64
                     ls1
@@ -470,11 +470,11 @@ let lawspecCollectionsSaturatingUIntPtr (schema: Schema.Schema) (symbols: Scalar
         fun () ->
             let result =
                 if Runtime.truth (Scalar.binary ">" argument0 (Schema.validate (Value.Int(18446744073709551615I)) (Scalar.typeOf "Integer") schema) "Integer" "Integer") then
-                    Schema.validate (Schema.validate (Value.Int(18446744073709551615I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntPtr") schema
+                    Schema.validate (Scalar.convert (Schema.validate (Value.Int(18446744073709551615I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntPtr") 64) (Scalar.typeOf "UIntPtr") schema
                 else
                     let ls1 =
                         if Runtime.truth (Scalar.binary "<" argument0 (Schema.validate (Value.Int(0I)) (Scalar.typeOf "Integer") schema) "Integer" "Integer") then
-                            Schema.validate (Schema.validate (Value.Int(0I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntPtr") schema
+                            Schema.validate (Scalar.convert (Schema.validate (Value.Int(0I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntPtr") 64) (Scalar.typeOf "UIntPtr") schema
                         else
                             Scalar.convert argument0 (Scalar.typeOf "UIntPtr") 64
                     ls1
@@ -487,11 +487,11 @@ let lawspecCollectionsSaturatingUIntSize (schema: Schema.Schema) (symbols: Scala
         fun () ->
             let result =
                 if Runtime.truth (Scalar.binary ">" argument0 (Schema.validate (Value.Int(18446744073709551615I)) (Scalar.typeOf "Integer") schema) "Integer" "Integer") then
-                    Schema.validate (Schema.validate (Value.Int(18446744073709551615I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntSize") schema
+                    Schema.validate (Scalar.convert (Schema.validate (Value.Int(18446744073709551615I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntSize") 64) (Scalar.typeOf "UIntSize") schema
                 else
                     let ls1 =
                         if Runtime.truth (Scalar.binary "<" argument0 (Schema.validate (Value.Int(0I)) (Scalar.typeOf "Integer") schema) "Integer" "Integer") then
-                            Schema.validate (Schema.validate (Value.Int(0I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntSize") schema
+                            Schema.validate (Scalar.convert (Schema.validate (Value.Int(0I)) (Scalar.typeOf "Integer") schema) (Scalar.typeOf "UIntSize") 64) (Scalar.typeOf "UIntSize") schema
                         else
                             Scalar.convert argument0 (Scalar.typeOf "UIntSize") 64
                     ls1

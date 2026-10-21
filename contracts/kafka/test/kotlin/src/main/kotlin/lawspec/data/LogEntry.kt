@@ -3,13 +3,8 @@ package lawspec.data
 
 sealed interface LogEntry {
     data class DataEntry(
-        val entryOffset: kotlin.Long,
-        val entryRecord: lawspec.data.Record,
-        val writer: kotlin.Long,
-        val transactional: kotlin.Boolean) : lawspec.data.LogEntry
+        val value: lawspec.data.Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be) : lawspec.data.LogEntry
 
     data class ControlEntry(
-        val markerOffset: kotlin.Long,
-        val markerWriter: kotlin.Long,
-        val commits: kotlin.Boolean) : lawspec.data.LogEntry
+        val value: lawspec.data.Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3) : lawspec.data.LogEntry
 }

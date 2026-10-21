@@ -23,12 +23,17 @@ func lawSpecDataSchemaRegistry() *lawSpecSchema {
 			}},
 			{"lawspec.collections::type::Set", 1, []lawSpecConstructorSchema{
 				{"lawspec.collections::type::Set::SetItems", []lawSpecFieldSchema{
-					{"items", lsNamed("List", lsParameter(0))},
+					{"value", lsNamed("List", lsParameter(0))},
+				}, nil, nil, 0, nil},
+			}},
+			{"lawspec.collections::type::EqSet", 1, []lawSpecConstructorSchema{
+				{"lawspec.collections::type::EqSet::EqSetItems", []lawSpecFieldSchema{
+					{"value", lsNamed("List", lsParameter(0))},
 				}, nil, nil, 0, nil},
 			}},
 			{"lawspec.collections::type::KeyVal", 2, []lawSpecConstructorSchema{
 				{"lawspec.collections::type::KeyVal::KeyValEntries", []lawSpecFieldSchema{
-					{"entries", lsNamed("List", lsNamed("lawspec.collections::type::Entry", lsParameter(0), lsParameter(1)))},
+					{"value", lsNamed("List", lsNamed("lawspec.collections::type::Entry", lsParameter(0), lsParameter(1)))},
 				}, nil, nil, 0, nil},
 			}},
 			{"lawspec.matchers::type::Regex", 0, []lawSpecConstructorSchema{
@@ -38,7 +43,7 @@ func lawSpecDataSchemaRegistry() *lawSpecSchema {
 			}},
 			{"lawtwin.kafka::type::PartitionChoice", 0, []lawSpecConstructorSchema{
 				{"lawtwin.kafka::type::PartitionChoice::ToPartition", []lawSpecFieldSchema{
-					{"chosen", lsNamed("Int32")},
+					{"value", lsNamed("Int32")},
 				}, nil, nil, 0, nil},
 				{"lawtwin.kafka::type::PartitionChoice::ByKey", []lawSpecFieldSchema{}, nil, nil, 0, nil},
 			}},
@@ -191,15 +196,10 @@ func lawSpecDataSchemaRegistry() *lawSpecSchema {
 			}},
 			{"lawtwin.kafka.model::type::LogEntry", 0, []lawSpecConstructorSchema{
 				{"lawtwin.kafka.model::type::LogEntry::DataEntry", []lawSpecFieldSchema{
-					{"entryOffset", lsNamed("Int64")},
-					{"entryRecord", lsNamed("lawtwin.kafka.model::type::Record")},
-					{"writer", lsNamed("Int64")},
-					{"transactional", lsNamed("Bool")},
+					{"value", lsNamed("lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be")},
 				}, nil, nil, 0, nil},
 				{"lawtwin.kafka.model::type::LogEntry::ControlEntry", []lawSpecFieldSchema{
-					{"markerOffset", lsNamed("Int64")},
-					{"markerWriter", lsNamed("Int64")},
-					{"commits", lsNamed("Bool")},
+					{"value", lsNamed("lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3")},
 				}, nil, nil, 0, nil},
 			}},
 			{"lawtwin.kafka.model::type::AbortedTxn", 0, []lawSpecConstructorSchema{
@@ -235,8 +235,7 @@ func lawSpecDataSchemaRegistry() *lawSpecSchema {
 			{"lawtwin.kafka.model::type::TxnState", 0, []lawSpecConstructorSchema{
 				{"lawtwin.kafka.model::type::TxnState::NoTxn", []lawSpecFieldSchema{}, nil, nil, 0, nil},
 				{"lawtwin.kafka.model::type::TxnState::Ongoing", []lawSpecFieldSchema{
-					{"txnPartitions", lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition"))},
-					{"txnOffsets", lsNamed("List", lsNamed("lawtwin.kafka.model::type::PendingOffset"))},
+					{"value", lsNamed("lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee")},
 				}, nil, nil, 0, nil},
 			}},
 			{"lawtwin.kafka.model::type::ProducerEntry", 0, []lawSpecConstructorSchema{
@@ -268,6 +267,27 @@ func lawSpecDataSchemaRegistry() *lawSpecSchema {
 					{"nextProducerId", lsNamed("Int64")},
 					{"groups", lsNamed("lawspec.collections::type::KeyVal", lsNamed("Text"), lsNamed("lawtwin.kafka.model::type::Group"))},
 					{"committed", lsNamed("lawspec.collections::type::KeyVal", lsNamed("lawtwin.kafka.model::type::GroupPartition"), lsNamed("Int64"))},
+				}, nil, nil, 0, nil},
+			}},
+			{"lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be", 0, []lawSpecConstructorSchema{
+				{"lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record", []lawSpecFieldSchema{
+					{"entryOffset", lsNamed("Int64")},
+					{"entryRecord", lsNamed("lawtwin.kafka.model::type::Record")},
+					{"transactional", lsNamed("Bool")},
+					{"writer", lsNamed("Int64")},
+				}, nil, nil, 0, nil},
+			}},
+			{"lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3", 0, []lawSpecConstructorSchema{
+				{"lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record", []lawSpecFieldSchema{
+					{"commits", lsNamed("Bool")},
+					{"markerOffset", lsNamed("Int64")},
+					{"markerWriter", lsNamed("Int64")},
+				}, nil, nil, 0, nil},
+			}},
+			{"lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee", 0, []lawSpecConstructorSchema{
+				{"lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record", []lawSpecFieldSchema{
+					{"txnOffsets", lsNamed("List", lsNamed("lawtwin.kafka.model::type::PendingOffset"))},
+					{"txnPartitions", lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition"))},
 				}, nil, nil, 0, nil},
 			}},
 		},

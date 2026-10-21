@@ -499,6 +499,7 @@ let rec equal (a: Value) (b: Value) : bool =
     | Symbol(x, _), Symbol(y, _) -> Object.ReferenceEquals(x, y) || x.Equals y
     | Presence(k1, Some x), Presence(k2, Some y) -> k1 = k2 && equal x y
     | Presence(k1, None), Presence(k2, None) -> k1 = k2
+    | Data("lawspec.collections::type::EqSet::EqSetItems", [ List x ]), Data("lawspec.collections::type::EqSet::EqSetItems", [ List y ]) -> sameMembers x y
     | Data(t1, f1), Data(t2, f2) -> t1 = t2 && equalLists f1 f2
     | List x, List y -> equalLists x y
     | _ when isExact a && isExact b -> compareRatios (exact a) (exact b) = 0
@@ -507,11 +508,23 @@ let rec equal (a: Value) (b: Value) : bool =
     | Handle(n1, i1), Handle(n2, i2) -> n1 = n2 && (Object.ReferenceEquals(i1, i2) || i1.Equals i2)
     | _ -> a = b
 
+and private sameMembers xs ys =
+    (xs |> List.forall (fun value -> ys |> List.exists (equal value))) &&
+    (ys |> List.forall (fun value -> xs |> List.exists (equal value)))
+
 and private equalLists xs ys =
     match xs, ys with
     | [], [] -> true
     | x :: xs, y :: ys -> equal x y && equalLists xs ys
     | _ -> false
+
+[<CompiledName("DistinctMembers")>]
+let distinctMembers (items: Value list) =
+    let rec loop previous values =
+        match values with
+        | [] -> true
+        | value :: rest -> not (previous |> List.exists (equal value)) && loop (value :: previous) rest
+    loop [] items
 
 /// LawSpec's portable total order of keys. Floats, symbols and distinct
 /// handles have no portable order.

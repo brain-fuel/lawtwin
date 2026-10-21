@@ -1023,11 +1023,6 @@ object Kafka {
         value0: kotlin.Unit,
     ): lawspec.data.TransactionState = lawspec.runtime.LawSpecTyped.toNative52(lawspec.runtime.LawSpecTyped.kafkaTransactionsStart_68a77cf3(lawspec.runtime.LawSpecTyped.fromNative0(value0)))
 
-    fun keepBoundedArithmetic(
-        symbols: MutableMap<String, Any>,
-        value0: kotlin.Long,
-    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.keepBoundedArithmetic_3e45e1f6(lawspec.runtime.LawSpecTyped.fromNative4(value0)))
-
     fun lawspecCollectionsBoundedInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
@@ -1059,7 +1054,7 @@ object Kafka {
         try {
             val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate600(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate599(symbols, argument0)
             val resultCodec =
                 schema.maybe(
                     schema.scalar("IntSize", bits, java.math.BigInteger::class.javaObjectType),
@@ -1097,7 +1092,7 @@ object Kafka {
         try {
             val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate603(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate602(symbols, argument0)
             val resultCodec =
                 schema.maybe(
                     schema.scalar("UInt64", bits, java.math.BigInteger::class.javaObjectType),
@@ -1128,7 +1123,7 @@ object Kafka {
         try {
             val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate605(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate604(symbols, argument0)
             val resultCodec =
                 schema.maybe(
                     schema.scalar("UIntPtr", bits, java.math.BigInteger::class.javaObjectType),
@@ -1154,7 +1149,7 @@ object Kafka {
         try {
             val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate606(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate605(symbols, argument0)
             val resultCodec =
                 schema.maybe(
                     schema.scalar("UIntSize", bits, java.math.BigInteger::class.javaObjectType),
@@ -1200,7 +1195,7 @@ object Kafka {
         try {
             val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate611(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate610(symbols, argument0)
             val resultCodec =
                 schema.scalar("IntSize", bits, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
@@ -1232,7 +1227,7 @@ object Kafka {
         try {
             val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate614(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate613(symbols, argument0)
             val resultCodec =
                 schema.scalar("UInt64", bits, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
@@ -1259,7 +1254,7 @@ object Kafka {
         try {
             val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate616(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate615(symbols, argument0)
             val resultCodec =
                 schema.scalar("UIntPtr", bits, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
@@ -1281,7 +1276,7 @@ object Kafka {
         try {
             val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate617(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate616(symbols, argument0)
             val resultCodec =
                 schema.scalar("UIntSize", bits, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
@@ -1323,7 +1318,7 @@ object Kafka {
         try {
             val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate622(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate621(symbols, argument0)
             val resultCodec =
                 schema.scalar("IntSize", bits, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
@@ -1355,7 +1350,7 @@ object Kafka {
         try {
             val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate625(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate624(symbols, argument0)
             val resultCodec =
                 schema.scalar("UInt64", bits, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
@@ -1382,7 +1377,7 @@ object Kafka {
         try {
             val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate627(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate626(symbols, argument0)
             val resultCodec =
                 schema.scalar("UIntPtr", bits, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
@@ -1404,7 +1399,7 @@ object Kafka {
         try {
             val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate628(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate627(symbols, argument0)
             val resultCodec =
                 schema.scalar("UIntSize", bits, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
@@ -2263,7 +2258,7 @@ object Kafka {
             val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
             val argument1 = codec1.encode(value1)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate723(symbols, argument0, argument1)
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate722(symbols, argument0, argument1)
             val resultCodec =
                 schema.list(LawSpecDataCodecs.recordCodec(schema, bits, symbols), bits, symbols)
             return resultCodec.decode(result)
@@ -2297,7 +2292,7 @@ object Kafka {
             )
             val codec0 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate725(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate724(symbols, argument0)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -2331,7 +2326,7 @@ object Kafka {
             )
             val codec0 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate726(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate725(symbols, argument0)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -2374,7 +2369,7 @@ object Kafka {
             val codec1 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
             val argument1 = codec1.encode(value1)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate727(symbols, argument0, argument1)
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate726(symbols, argument0, argument1)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -2437,7 +2432,7 @@ object Kafka {
             val codec3 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
             val argument3 = codec3.encode(value3)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate729(
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate728(
                     symbols,
                     argument0,
                     argument1,
@@ -2492,7 +2487,7 @@ object Kafka {
             val codec1 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
             val argument1 = codec1.encode(value1)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate730(symbols, argument0, argument1)
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate729(symbols, argument0, argument1)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -2537,7 +2532,7 @@ object Kafka {
             val codec1 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
             val argument1 = codec1.encode(value1)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate731(symbols, argument0, argument1)
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate730(symbols, argument0, argument1)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -2575,7 +2570,7 @@ object Kafka {
             val codec1 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
             val argument1 = codec1.encode(value1)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate732(symbols, argument0, argument1)
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate731(symbols, argument0, argument1)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -2621,7 +2616,7 @@ object Kafka {
             )
             val codec0 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate734(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate733(symbols, argument0)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -2678,7 +2673,7 @@ object Kafka {
             val codec1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
             val argument1 = codec1.encode(value1)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate737(symbols, argument0, argument1)
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate736(symbols, argument0, argument1)
             val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
             return resultCodec.decode(result)
         } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
@@ -2768,7 +2763,7 @@ object Kafka {
                 )
             val argument2 = codec2.encode(value2)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate746(
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate745(
                     symbols,
                     argument0,
                     argument1,
@@ -2815,7 +2810,7 @@ object Kafka {
                 )
             val argument2 = codec2.encode(value2)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate747(
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate746(
                     symbols,
                     argument0,
                     argument1,
@@ -3476,7 +3471,7 @@ object Kafka {
             val codec2 = LawSpecDataCodecs.recordCodec(schema, bits, symbols)
             val argument2 = codec2.encode(value2)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate827(
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate826(
                     symbols,
                     argument0,
                     argument1,
@@ -3543,7 +3538,7 @@ object Kafka {
                 )
             val argument3 = codec3.encode(value3)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate829(
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate828(
                     symbols,
                     argument0,
                     argument1,
@@ -3608,7 +3603,7 @@ object Kafka {
             )
             val codec0 = LawSpecDataCodecs.producerStateCodec(schema, bits, symbols)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate832(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate831(symbols, argument0)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -3647,7 +3642,7 @@ object Kafka {
             )
             val codec0 = LawSpecDataCodecs.producerStateCodec(schema, bits, symbols)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate833(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate832(symbols, argument0)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -3694,7 +3689,7 @@ object Kafka {
             val codec1 = LawSpecDataCodecs.producerStateCodec(schema, bits, symbols)
             val argument1 = codec1.encode(value1)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate834(symbols, argument0, argument1)
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate833(symbols, argument0, argument1)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -3738,7 +3733,7 @@ object Kafka {
             val codec2 = LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols)
             val argument2 = codec2.encode(value2)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate835(
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate834(
                     symbols,
                     argument0,
                     argument1,
@@ -3795,7 +3790,7 @@ object Kafka {
             val codec3 = LawSpecDataCodecs.recordCodec(schema, bits, symbols)
             val argument3 = codec3.encode(value3)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate836(
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate835(
                     symbols,
                     argument0,
                     argument1,
@@ -3854,7 +3849,7 @@ object Kafka {
             val codec3 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
             val argument3 = codec3.encode(value3)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate840(
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate839(
                     symbols,
                     argument0,
                     argument1,
@@ -3914,7 +3909,7 @@ object Kafka {
                 schema.list(LawSpecDataCodecs.recordCodec(schema, bits, symbols), bits, symbols)
             val argument2 = codec2.encode(value2)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate844(
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate843(
                     symbols,
                     argument0,
                     argument1,
@@ -3973,7 +3968,7 @@ object Kafka {
             val codec3 = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
             val argument3 = codec3.encode(value3)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate848(
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate847(
                     symbols,
                     argument0,
                     argument1,
@@ -4014,7 +4009,7 @@ object Kafka {
             val codec3 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
             val argument3 = codec3.encode(value3)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate849(
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate848(
                     symbols,
                     argument0,
                     argument1,
@@ -4048,7 +4043,7 @@ object Kafka {
             )
             val codec0 = LawSpecDataCodecs.transactionStateCodec(schema, bits, symbols)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate850(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate849(symbols, argument0)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -4096,7 +4091,7 @@ object Kafka {
             val codec1 = LawSpecDataCodecs.transactionStateCodec(schema, bits, symbols)
             val argument1 = codec1.encode(value1)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate851(symbols, argument0, argument1)
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate850(symbols, argument0, argument1)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -4142,7 +4137,7 @@ object Kafka {
             )
             val codec0 = LawSpecDataCodecs.transactionStateCodec(schema, bits, symbols)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate853(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate852(symbols, argument0)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -4185,7 +4180,7 @@ object Kafka {
             val codec1 = LawSpecDataCodecs.transactionStateCodec(schema, bits, symbols)
             val argument1 = codec1.encode(value1)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate854(symbols, argument0, argument1)
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate853(symbols, argument0, argument1)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -4230,7 +4225,7 @@ object Kafka {
             val codec1 = LawSpecDataCodecs.transactionStateCodec(schema, bits, symbols)
             val argument1 = codec1.encode(value1)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate855(symbols, argument0, argument1)
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate854(symbols, argument0, argument1)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -4281,7 +4276,7 @@ object Kafka {
             val codec2 = LawSpecDataCodecs.transactionStateCodec(schema, bits, symbols)
             val argument2 = codec2.encode(value2)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate856(
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate855(
                     symbols,
                     argument0,
                     argument1,
@@ -4333,7 +4328,7 @@ object Kafka {
             val codec1 = LawSpecDataCodecs.transactionStateCodec(schema, bits, symbols)
             val argument1 = codec1.encode(value1)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate857(symbols, argument0, argument1)
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate856(symbols, argument0, argument1)
             val resultCodec =
                 LawSpecDataCodecs.pairCodec(
                     schema,
@@ -4374,7 +4369,7 @@ object Kafka {
             val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
             val argument1 = codec1.encode(value1)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate858(symbols, argument0, argument1)
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate857(symbols, argument0, argument1)
             val resultCodec =
                 schema.list(LawSpecDataCodecs.recordCodec(schema, bits, symbols), bits, symbols)
             return resultCodec.decode(result)
@@ -4431,7 +4426,7 @@ object Kafka {
             val codec2 = LawSpecDataCodecs.recordCodec(schema, bits, symbols)
             val argument2 = codec2.encode(value2)
             val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate862(
+                lawspec.runtime.LawSpecDefinitionBodies.evaluate861(
                     symbols,
                     argument0,
                     argument1,
@@ -4472,4 +4467,21 @@ object Kafka {
         value0: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.ByteArray>,
         value1: kotlin.Int,
     ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.murmurPartitionerChoosePartition_5048c35d(lawspec.runtime.LawSpecTyped.fromNative20(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1)))
+
+    fun suiteNamesThePackage(symbols: MutableMap<String, Any>, value0: kotlin.Unit): kotlin.Unit {
+        try {
+            val codec0 = LawSpecKotlinCodecs.unit(schema, bits)
+            val argument0 = codec0.encode(value0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate865(symbols, argument0)
+            val resultCodec = LawSpecKotlinCodecs.unit(schema, bits)
+            return resultCodec.decode(result)
+        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
+            throw failure
+        } catch (error: RuntimeException) {
+            throw IllegalArgumentException(
+                ("contracttest.kafka::suit" + "eNamesThePackage: ") + error.message,
+                error,
+            )
+        }
+    }
 }

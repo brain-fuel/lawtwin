@@ -540,14 +540,20 @@ object LawSpecKotlinStrategies {
                         val witnessValues = instance.keys().map { LawSpecSchema.witnessText(it) }
                         val costs = allocation(fields, available - 1) ?: return@mapNotNull null
                         val children = fields.mapIndexed { index, field ->
-                            requireNotNull(build(field.type() as Named, costs[index]))
+                            val fieldType = field.type() as Named
+                            val cost = costs[index]
+                            val child = requireNotNull(build(fieldType, cost))
+                            // Retain small sets as growing raw lists saturate finite domains.
+                            if (type.name() == "lawspec.collections::type::EqSet" && cost > 3) {
+                                requireNotNull(choice(listOf(requireNotNull(build(fieldType, 3)), child)))
+                            } else child
                         }
                         val product =
                             children.fold(Arb.constant(emptyList<Value>())) { prior, child ->
                                 Arb.bind(prior, child) { values, value -> values + value }
                             }
                         product.map { it + witnessValues }.map {
-                            val value = if (symbols == null) {
+                            val value = if (symbols == null && type.name() != "lawspec.collections::type::EqSet") {
                                 schema.construct(type, tag, it, bits)
                             } else {
                                 Value(LawSpecSchema.key(type), Data(tag, it))

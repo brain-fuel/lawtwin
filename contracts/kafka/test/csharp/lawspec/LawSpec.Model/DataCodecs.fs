@@ -50,6 +50,18 @@ and [<CompiledName("Pair")>] pair<'T0, 'T1> (t0: Codec<'T0>) (t1: Codec<'T1>) : 
             match native with
             | r -> Value.Data("lawspec.collections::type::Pair::Pair", [ t0.FromNative r.First; t1.FromNative r.Second ]) }
 
+and [<CompiledName("LawspecCollectionsSet")>] lawspecCollectionsSet<'T0> (t0: Codec<'T0>) : Codec<LawspecCollectionsSet<'T0>> =
+    { ToNative =
+        fun value ->
+            match value with
+            | Value.Data("lawspec.collections::type::EqSet::EqSetItems", [ f0 ]) ->
+                { Value = (Codec.list t0).ToNative f0 }
+            | _ -> Fail.raiseWith "InvalidNativeValue" "LawspecCollectionsSet"
+      FromNative =
+        fun native ->
+            match native with
+            | r -> Value.Data("lawspec.collections::type::EqSet::EqSetItems", [ (Codec.list t0).FromNative r.Value ]) }
+
 and [<CompiledName("Regex")>] regex () : Codec<Regex> =
     { ToNative =
         fun value ->
@@ -375,16 +387,16 @@ and [<CompiledName("LogEntry")>] logEntry () : Codec<LogEntry> =
     { ToNative =
         fun value ->
             match value with
-            | Value.Data("lawtwin.kafka.model::type::LogEntry::DataEntry", [ f0; f1; f2; f3 ]) ->
-                LogEntry.DataEntry(Codec.int64.ToNative f0, (record ()).ToNative f1, Codec.int64.ToNative f2, Codec.bool.ToNative f3)
-            | Value.Data("lawtwin.kafka.model::type::LogEntry::ControlEntry", [ f0; f1; f2 ]) ->
-                LogEntry.ControlEntry(Codec.int64.ToNative f0, Codec.int64.ToNative f1, Codec.bool.ToNative f2)
+            | Value.Data("lawtwin.kafka.model::type::LogEntry::DataEntry", [ f0 ]) ->
+                LogEntry.DataEntry((record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be ()).ToNative f0)
+            | Value.Data("lawtwin.kafka.model::type::LogEntry::ControlEntry", [ f0 ]) ->
+                LogEntry.ControlEntry((record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 ()).ToNative f0)
             | _ -> Fail.raiseWith "InvalidNativeValue" "LogEntry"
       FromNative =
         fun native ->
             match native with
-            | LogEntry.DataEntry(f0, f1, f2, f3) -> Value.Data("lawtwin.kafka.model::type::LogEntry::DataEntry", [ Codec.int64.FromNative f0; (record ()).FromNative f1; Codec.int64.FromNative f2; Codec.bool.FromNative f3 ])
-            | LogEntry.ControlEntry(f0, f1, f2) -> Value.Data("lawtwin.kafka.model::type::LogEntry::ControlEntry", [ Codec.int64.FromNative f0; Codec.int64.FromNative f1; Codec.bool.FromNative f2 ]) }
+            | LogEntry.DataEntry(f0) -> Value.Data("lawtwin.kafka.model::type::LogEntry::DataEntry", [ (record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be ()).FromNative f0 ])
+            | LogEntry.ControlEntry(f0) -> Value.Data("lawtwin.kafka.model::type::LogEntry::ControlEntry", [ (record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 ()).FromNative f0 ]) }
 
 and [<CompiledName("AbortedTxn")>] abortedTxn () : Codec<AbortedTxn> =
     { ToNative =
@@ -440,14 +452,14 @@ and [<CompiledName("TxnState")>] txnState () : Codec<TxnState> =
             match value with
             | Value.Data("lawtwin.kafka.model::type::TxnState::NoTxn", []) ->
                 TxnState.NoTxn
-            | Value.Data("lawtwin.kafka.model::type::TxnState::Ongoing", [ f0; f1 ]) ->
-                TxnState.Ongoing((Codec.list (topicPartition ())).ToNative f0, (Codec.list (pendingOffset ())).ToNative f1)
+            | Value.Data("lawtwin.kafka.model::type::TxnState::Ongoing", [ f0 ]) ->
+                TxnState.Ongoing((recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee ()).ToNative f0)
             | _ -> Fail.raiseWith "InvalidNativeValue" "TxnState"
       FromNative =
         fun native ->
             match native with
             | TxnState.NoTxn -> Value.Data("lawtwin.kafka.model::type::TxnState::NoTxn", [])
-            | TxnState.Ongoing(f0, f1) -> Value.Data("lawtwin.kafka.model::type::TxnState::Ongoing", [ (Codec.list (topicPartition ())).FromNative f0; (Codec.list (pendingOffset ())).FromNative f1 ]) }
+            | TxnState.Ongoing(f0) -> Value.Data("lawtwin.kafka.model::type::TxnState::Ongoing", [ (recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee ()).FromNative f0 ]) }
 
 and [<CompiledName("ProducerEntry")>] producerEntry () : Codec<ProducerEntry> =
     { ToNative =
@@ -496,3 +508,39 @@ and [<CompiledName("BrokerState")>] brokerState () : Codec<BrokerState> =
         fun native ->
             match native with
             | r -> Value.Data("lawtwin.kafka.model::type::BrokerState::BrokerState", [ (Codec.map Codec.text Codec.int32).FromNative r.Topics; (Codec.map (topicPartition ()) (partitionLog ())).FromNative r.Logs; (Codec.map Codec.int64 (producerEntry ())).FromNative r.Producers; (Codec.map Codec.text Codec.int64).FromNative r.TransactionalIds; Codec.int64.FromNative r.NextProducerId; (Codec.map Codec.text (group ())).FromNative r.Groups; (Codec.map (groupPartition ()) Codec.int64).FromNative r.Committed ]) }
+
+and [<CompiledName("Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be")>] record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be () : Codec<Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be> =
+    { ToNative =
+        fun value ->
+            match value with
+            | Value.Data("lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record", [ f0; f1; f2; f3 ]) ->
+                { EntryOffset = Codec.int64.ToNative f0; EntryRecord = (record ()).ToNative f1; Transactional = Codec.bool.ToNative f2; Writer = Codec.int64.ToNative f3 }
+            | _ -> Fail.raiseWith "InvalidNativeValue" "Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be"
+      FromNative =
+        fun native ->
+            match native with
+            | r -> Value.Data("lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record", [ Codec.int64.FromNative r.EntryOffset; (record ()).FromNative r.EntryRecord; Codec.bool.FromNative r.Transactional; Codec.int64.FromNative r.Writer ]) }
+
+and [<CompiledName("Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3")>] record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 () : Codec<Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3> =
+    { ToNative =
+        fun value ->
+            match value with
+            | Value.Data("lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record", [ f0; f1; f2 ]) ->
+                { Commits = Codec.bool.ToNative f0; MarkerOffset = Codec.int64.ToNative f1; MarkerWriter = Codec.int64.ToNative f2 }
+            | _ -> Fail.raiseWith "InvalidNativeValue" "Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3"
+      FromNative =
+        fun native ->
+            match native with
+            | r -> Value.Data("lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record", [ Codec.bool.FromNative r.Commits; Codec.int64.FromNative r.MarkerOffset; Codec.int64.FromNative r.MarkerWriter ]) }
+
+and [<CompiledName("Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee")>] recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee () : Codec<Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee> =
+    { ToNative =
+        fun value ->
+            match value with
+            | Value.Data("lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record", [ f0; f1 ]) ->
+                { TxnOffsets = (Codec.list (pendingOffset ())).ToNative f0; TxnPartitions = (Codec.list (topicPartition ())).ToNative f1 }
+            | _ -> Fail.raiseWith "InvalidNativeValue" "Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee"
+      FromNative =
+        fun native ->
+            match native with
+            | r -> Value.Data("lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record", [ (Codec.list (pendingOffset ())).FromNative r.TxnOffsets; (Codec.list (topicPartition ())).FromNative r.TxnPartitions ]) }

@@ -10,80 +10,79 @@ unit lawtwin.petstore.model
 -- document names, and BadRequest, NotFound and Unmodelled, which the
 -- model needs. Unmodelled is an operation's answer until its behaviour is
 -- written in handwritten.lawspec.
-type ApiError is
+type ApiError is one of
   | BadRequest -- HTTP 400
   | NotFound -- HTTP 404
   | UnprocessableEntity -- HTTP 422
   | Unmodelled -- the model does not answer this operation yet
-end
+end type
 
 -- ---------------------------------------------------------------------------
 -- Schemas
 -- ---------------------------------------------------------------------------
 
 -- Schema `Pet`.
-type Pet is
-  Pet
+type Pet is a record{
     id :: Maybe Int64
     name :: Text
     category :: Maybe Category
     photoUrls :: List Text
     tags :: Maybe (List Tag)
     status :: Maybe PetStatus -- pet status in the store
-end
+}
+end type
 
 -- Schema `Category`.
-type Category is
-  Category
+type Category is a record{
     id :: Maybe Int64
     name :: Maybe Text
-end
+}
+end type
 
 -- Schema `Tag`.
-type Tag is
-  Tag
+type Tag is a record{
     id :: Maybe Int64
     name :: Maybe Text
-end
+}
+end type
 
 -- pet status in the store
 -- Schema `PetStatus`.
-type PetStatus is
+type PetStatus is one of
   | Available -- "available"
   | Pending -- "pending"
   | Sold -- "sold"
-end
+end type
 
 -- Schema `ApiResponse`.
-type ApiResponse is
-  ApiResponse
+type ApiResponse is a record{
     code :: Maybe Int32
     type_ :: Maybe Text -- `type`
     message :: Maybe Text
-end
+}
+end type
 
 -- Schema `Order`.
-type Order is
-  Order
+type Order is a record{
     id :: Maybe Int64
     petId :: Maybe Int64
     quantity :: Maybe Int32
     shipDate :: Maybe Text
     status :: Maybe OrderStatus -- Order Status
     complete :: Maybe Bool
-end
+}
+end type
 
 -- Order Status
 -- Schema `OrderStatus`.
-type OrderStatus is
+type OrderStatus is one of
   | Placed -- "placed"
   | Approved -- "approved"
   | Delivered -- "delivered"
-end
+end type
 
 -- Schema `User`.
-type User is
-  User
+type User is a record{
     id :: Maybe Int64
     username :: Maybe Text
     firstName :: Maybe Text
@@ -92,7 +91,8 @@ type User is
     password :: Maybe Text
     phone :: Maybe Text
     userStatus :: Maybe Int32 -- User Status
-end
+}
+end type
 
 -- ---------------------------------------------------------------------------
 -- The service's state
@@ -100,151 +100,163 @@ end
 
 -- What the service holds: each resource the importer recognised, by key,
 -- and the next key for those whose keys the service assigns.
-type State is
-  State
+type State is a record{
     pets :: KeyVal Int64 Pet -- /pet/{petId}
     nextPetKey :: Int64
     orders :: KeyVal Int64 Order -- /store/order/{orderId}
     nextOrderKey :: Int64
     users :: KeyVal Text User -- /user/{username}
-end
+}
+end type
 
 -- The state of a new service: nothing held.
-definition emptyState (u :: Unit) :: State is State (prelude.keyValOf []) 1 (prelude.keyValOf []) 1 (prelude.keyValOf []) end
+function emptyState (u :: Unit) -> State is State record{pets = (prelude.keyValOf []), nextPetKey = 1, orders = (prelude.keyValOf []), nextOrderKey = 1, users = (prelude.keyValOf [])} end function
 
 -- ---------------------------------------------------------------------------
 -- Constraints
 -- ---------------------------------------------------------------------------
 
 -- Named refinements of constrained values, for laws to draw valid inputs.
-refinement OrderShipDate is (v :: Text where v matches regex "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})") end
+refinement OrderShipDate is (v :: Text where v matches regex "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})") end refinement
 
 -- The key after k, or k at the end of its type.
-definition after64 (k :: Int64) :: Int64 is if k < 9223372036854775807 then k + 1 else k end
+function after64 (k :: Int64) -> Int64 is if k < 9223372036854775807 then k + 1 else k end if
+end function
 
 -- Whether a Order keeps its schema's constraints.
-definition validOrder (value :: Order) :: Bool is
-  (match value.shipDate with | Nothing -> true | Just present0 -> present0 matches regex "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})" end)
-end
+function validOrder (value :: Order) -> Bool is
+  (first matching case of value.shipDate : when Nothing then true when Just present0 then present0 matches regex "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})" end case)
+end function
 
 -- ---------------------------------------------------------------------------
 -- What each recognised operation does
 -- ---------------------------------------------------------------------------
 
 -- PUT /pet: replace
-definition modelUpdatePet (body :: Pet) (current_ :: State) :: Pair Pet State fails with ApiError is
-  match body.id with
-  | Nothing -> raise UnprocessableEntity
-  | Just key ->
-  match prelude.lookup key current_.pets with
-  | Nothing -> raise NotFound
-  | Just old ->
+procedure modelUpdatePet (body :: Pet) (current_ :: State) -> Pair Pet State fails with ApiError is
+  first matching case of body.id :
+  when Nothing then raise UnprocessableEntity
+  when Just key then
+  first matching case of prelude.lookup key current_.pets :
+  when Nothing then raise NotFound
+  when Just old then
       let stored = (body with id = Just key) in
       Pair stored (current_ with pets = prelude.put key stored current_.pets)
-  end
-  end
-end
+      end let
+  end case
+  end case
+end procedure
 
 -- POST /pet: create
-definition modelAddPet (body :: Pet) (current_ :: State) :: Pair Pet State fails with ApiError is
-  let key = (match body.id with | Just given -> given | Nothing -> current_.nextPetKey end) in
+procedure modelAddPet (body :: Pet) (current_ :: State) -> Pair Pet State fails with ApiError is
+  let key = (first matching case of body.id : when Just given then given when Nothing then current_.nextPetKey end case) in
   let stored = (body with id = Just key) in
-  match prelude.lookup key current_.pets with
-  | Just existing -> raise UnprocessableEntity
-  | Nothing -> Pair stored (current_ with pets = prelude.put key stored current_.pets, nextPetKey = (if key >= current_.nextPetKey then after64 key else current_.nextPetKey))
-  end
-end
+  first matching case of prelude.lookup key current_.pets :
+  when Just existing then raise UnprocessableEntity
+  when Nothing then Pair stored (current_ with pets = prelude.put key stored current_.pets, nextPetKey = (if key >= current_.nextPetKey then after64 key else current_.nextPetKey end if))
+  end case
+  end let
+  end let
+end procedure
 
 -- GET /pet/{petId}: read
-definition modelGetPetById (petId :: Int64) (current_ :: State) :: Pair Pet State fails with ApiError is
-  match prelude.lookup petId current_.pets with
-  | Nothing -> raise NotFound
-  | Just found -> Pair found current_
-  end
-end
+procedure modelGetPetById (petId :: Int64) (current_ :: State) -> Pair Pet State fails with ApiError is
+  first matching case of prelude.lookup petId current_.pets :
+  when Nothing then raise NotFound
+  when Just found then Pair found current_
+  end case
+end procedure
 
 -- DELETE /pet/{petId}: delete
-definition modelDeletePet (petId :: Int64) (apiKey :: Maybe Text) (current_ :: State) :: Pair Unit State fails with ApiError is
-  match prelude.lookup petId current_.pets with
-  | Nothing -> raise NotFound
-  | Just found -> Pair unitValue (current_ with pets = prelude.delete petId current_.pets)
-  end
-end
+procedure modelDeletePet (petId :: Int64) (apiKey :: Maybe Text) (current_ :: State) -> Pair Unit State fails with ApiError is
+  first matching case of prelude.lookup petId current_.pets :
+  when Nothing then raise NotFound
+  when Just found then Pair unitValue (current_ with pets = prelude.delete petId current_.pets)
+  end case
+end procedure
 
 -- POST /store/order: create
-definition modelPlaceOrder (body :: Maybe Order) (current_ :: State) :: Pair Order State fails with ApiError is
-  if !((match body with | Nothing -> true | Just present0 -> validOrder present0 end)) then raise UnprocessableEntity else
-  match body with
-  | Nothing -> raise UnprocessableEntity
-  | Just sent ->
-  let key = (match sent.id with | Just given -> given | Nothing -> current_.nextOrderKey end) in
+procedure modelPlaceOrder (body :: Maybe Order) (current_ :: State) -> Pair Order State fails with ApiError is
+  if !((first matching case of body : when Nothing then true when Just present0 then validOrder present0 end case)) then raise UnprocessableEntity else
+  first matching case of body :
+  when Nothing then raise UnprocessableEntity
+  when Just sent then
+  let key = (first matching case of sent.id : when Just given then given when Nothing then current_.nextOrderKey end case) in
   let stored = (sent with id = Just key) in
-  match prelude.lookup key current_.orders with
-  | Just existing -> raise UnprocessableEntity
-  | Nothing -> Pair stored (current_ with orders = prelude.put key stored current_.orders, nextOrderKey = (if key >= current_.nextOrderKey then after64 key else current_.nextOrderKey))
-  end
-  end
-end
+  first matching case of prelude.lookup key current_.orders :
+  when Just existing then raise UnprocessableEntity
+  when Nothing then Pair stored (current_ with orders = prelude.put key stored current_.orders, nextOrderKey = (if key >= current_.nextOrderKey then after64 key else current_.nextOrderKey end if))
+  end case
+  end let
+  end let
+  end case
+end if
+end procedure
 
 -- GET /store/order/{orderId}: read
-definition modelGetOrderById (orderId :: Int64) (current_ :: State) :: Pair Order State fails with ApiError is
-  match prelude.lookup orderId current_.orders with
-  | Nothing -> raise NotFound
-  | Just found -> Pair found current_
-  end
-end
+procedure modelGetOrderById (orderId :: Int64) (current_ :: State) -> Pair Order State fails with ApiError is
+  first matching case of prelude.lookup orderId current_.orders :
+  when Nothing then raise NotFound
+  when Just found then Pair found current_
+  end case
+end procedure
 
 -- DELETE /store/order/{orderId}: delete
-definition modelDeleteOrder (orderId :: Int64) (current_ :: State) :: Pair Unit State fails with ApiError is
-  match prelude.lookup orderId current_.orders with
-  | Nothing -> raise NotFound
-  | Just found -> Pair unitValue (current_ with orders = prelude.delete orderId current_.orders)
-  end
-end
+procedure modelDeleteOrder (orderId :: Int64) (current_ :: State) -> Pair Unit State fails with ApiError is
+  first matching case of prelude.lookup orderId current_.orders :
+  when Nothing then raise NotFound
+  when Just found then Pair unitValue (current_ with orders = prelude.delete orderId current_.orders)
+  end case
+end procedure
 
 -- POST /user: create
-definition modelCreateUser (body :: Maybe User) (current_ :: State) :: Pair User State fails with ApiError is
-  match body with
-  | Nothing -> raise BadRequest
-  | Just sent ->
-  match sent.username with
-  | Nothing -> raise BadRequest
-  | Just given ->
+procedure modelCreateUser (body :: Maybe User) (current_ :: State) -> Pair User State fails with ApiError is
+  first matching case of body :
+  when Nothing then raise BadRequest
+  when Just sent then
+  first matching case of sent.username :
+  when Nothing then raise BadRequest
+  when Just given then
   let key = given in
   let stored = (sent with username = Just key) in
   Pair stored (current_ with users = prelude.put key stored current_.users)
-  end
-  end
-end
+  end let
+  end let
+  end case
+  end case
+end procedure
 
 -- GET /user/{username}: read
-definition modelGetUserByName (username :: Text) (current_ :: State) :: Pair User State fails with ApiError is
-  match prelude.lookup username current_.users with
-  | Nothing -> raise NotFound
-  | Just found -> Pair found current_
-  end
-end
+procedure modelGetUserByName (username :: Text) (current_ :: State) -> Pair User State fails with ApiError is
+  first matching case of prelude.lookup username current_.users :
+  when Nothing then raise NotFound
+  when Just found then Pair found current_
+  end case
+end procedure
 
 -- PUT /user/{username}: replace
-definition modelUpdateUser (username :: Text) (body :: Maybe User) (current_ :: State) :: Pair Unit State fails with ApiError is
-  match body with
-  | Nothing -> raise BadRequest
-  | Just sent ->
+procedure modelUpdateUser (username :: Text) (body :: Maybe User) (current_ :: State) -> Pair Unit State fails with ApiError is
+  first matching case of body :
+  when Nothing then raise BadRequest
+  when Just sent then
   let key = username in
-  match prelude.lookup key current_.users with
-  | Nothing -> raise NotFound
-  | Just old ->
+  first matching case of prelude.lookup key current_.users :
+  when Nothing then raise NotFound
+  when Just old then
       let stored = (sent with username = Just key) in
       Pair unitValue (current_ with users = prelude.put key stored current_.users)
-  end
-  end
-end
+      end let
+  end case
+end let
+  end case
+end procedure
 
 -- DELETE /user/{username}: delete
-definition modelDeleteUser (username :: Text) (current_ :: State) :: Pair Unit State fails with ApiError is
-  match prelude.lookup username current_.users with
-  | Nothing -> raise NotFound
-  | Just found -> Pair unitValue (current_ with users = prelude.delete username current_.users)
-  end
-end
+procedure modelDeleteUser (username :: Text) (current_ :: State) -> Pair Unit State fails with ApiError is
+  first matching case of prelude.lookup username current_.users :
+  when Nothing then raise NotFound
+  when Just found then Pair unitValue (current_ with users = prelude.delete username current_.users)
+  end case
+end procedure
 
+end unit

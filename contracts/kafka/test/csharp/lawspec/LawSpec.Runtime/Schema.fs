@@ -207,19 +207,32 @@ let private indexBinary op (a: BigInteger option) (b: BigInteger option) =
 let rec private evalIndex terms (c: Constructor) (values: Value list) schema =
     match terms with
     | (term: string) :: rest when term.StartsWith "c" -> Some(BigInteger.Parse(term.Substring 1)), rest
-    | term :: rest when term.StartsWith "f" ->
-        let position, inner =
+    | term :: rest when term.StartsWith "f" || term.StartsWith "p" ->
+        let positions, inner =
             match term.Substring(1).Split('.') with
-            | [| p |] -> int p, 0
-            | [| p; i |] -> int p, int i
+            | [| p |] -> p, 0
+            | [| p; i |] -> p, int i
             | _ -> fail "InvalidIndexTerm" term
-        let _, t = List.item position c.Fields
-        Some(index (List.item position values) t inner schema), rest
+        let path = positions.Split('/') |> Array.map int |> Array.toList
+        if inner < 0 || List.exists ((>) 0) path || (term.StartsWith "f" && List.length path <> 1) then fail "InvalidIndexTerm" term
+        Some(indexAtPath c.Fields values path inner schema), rest
     | op :: rest ->
         let a, next = evalIndex rest c values schema
         let b, after = evalIndex next c values schema
         indexBinary op a b, after
     | [] -> fail "InvalidIndexTerm" ""
+
+and private indexAtPath (types: (string * TypeRef) list) (values: Value list) path inner schema =
+    match path with
+    | position :: rest when position >= 0 && position < List.length types && position < List.length values ->
+        let _, t = List.item position types
+        let value = List.item position values
+        if List.isEmpty rest then index value t inner schema else
+        match t, value, constructors t schema with
+        | Named(name, _), Data(tag, fields), Some [c] when name.StartsWith "lawspec::structural::record::" && c.Tag = tag ->
+            indexAtPath c.Fields fields rest inner schema
+        | _ -> fail "InvalidIndexPath" "index field path must traverse a structural record"
+    | _ -> fail "InvalidIndexPath" ""
 
 /// The index at a position of an indexed family's value.
 and [<CompiledName("Index")>] index (value: Value) (t: TypeRef) (position: int) (schema: Schema) : BigInteger =
@@ -257,6 +270,8 @@ let rec private strictOrder values =
 
 let private checkCollection (name: string) (fields: Value list) =
     match name, fields with
+    | "lawspec.collections::type::EqSet", [ List items ] ->
+        if not (Scalar.distinctMembers items) then fail "RefinementViolation" "Eq-only set: duplicate equal elements"
     | "lawspec.collections::type::Set", [ List items ] ->
         if not (strictOrder items) then fail "RefinementViolation" name
     | "lawspec.collections::type::KeyVal", [ List entries ] ->

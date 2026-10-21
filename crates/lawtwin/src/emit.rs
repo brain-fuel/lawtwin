@@ -68,7 +68,7 @@ fn check_expr(check: &Check, v: &str) -> String {
                     "({})",
                     values
                         .iter()
-                        .map(|n| format!("{v} == {n}"))
+                        .map(|n| format!("{v} = {n}"))
                         .collect::<Vec<_>>()
                         .join(" || ")
                 )
@@ -161,7 +161,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 let v = format!("present{depth}");
                 let inner = self.validator(t, &v, depth + 1)?;
                 Some(format!(
-                    "(match {expr} with | Nothing -> true | Just {v} -> {inner} end)"
+                    "(first matching case of {expr} : when Nothing then true when Just {v} then {inner} end case)"
                 ))
             }
             Ty::List(t, checks) => {
@@ -204,7 +204,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 .unwrap_or_else(|| "true".into());
             let _ = write!(
                 self.helpers,
-                "definition {name} (items :: List {}) :: Bool is\n  match items with\n  | Nil -> true\n  | Cons item rest -> {body} && {name} rest\n  end\nend\n\n",
+                "function {name} (items :: List {}) -> Bool is\n  first matching case of items :\n  when Nil then true\n  when Cons item rest then {body} && {name} rest\n  end case\nend function\n\n",
                 item.atom()
             );
         }
@@ -233,13 +233,13 @@ impl<'a, 'd> Emitter<'a, 'd> {
                             .unwrap_or_else(|| "true".into());
                         let _ = write!(arms, " | {ctor} payload -> {v}");
                     }
-                    format!("match value with{arms} end")
+                    format!("first matching case of value :{arms} end case")
                 }
                 _ => "true".into(),
             };
             let _ = write!(
                 self.helpers,
-                "-- Whether a {n} keeps its schema's constraints.\ndefinition {name} (value :: {n}) :: Bool is\n  {body}\nend\n\n"
+                "-- Whether a {n} keeps its schema's constraints.\nfunction {name} (value :: {n}) -> Bool is\n  {body}\nend function\n\n"
             );
         }
         name
@@ -315,9 +315,13 @@ impl<'a, 'd> Emitter<'a, 'd> {
                             self.emitted.insert(name.clone());
                             let _ = write!(
                                 self.helpers,
-                                "-- A {n} with every field empty, for what a request does not say.\ndefinition {name} (u :: Unit) :: {n} is {n}{}{} end\n\n",
-                                if args.is_empty() { "" } else { " " },
-                                args.join(" ")
+                                "-- A {n} with every field empty, for what a request does not say.\nfunction {name} (u :: Unit) -> {n} is {n} record{{{}}} end function\n\n",
+                                fields
+                                    .iter()
+                                    .zip(args.iter())
+                                    .map(|(f, v)| format!("{} = {v}", f.name))
+                                    .collect::<Vec<_>>()
+                                    .join(", ")
                             );
                         }
                         format!("({name} unitValue)")
@@ -376,7 +380,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 {
                     let d = self.default_of(&f.ty, &mut vec![])?;
                     format!(
-                        "(match {body}.{} with | Nothing -> {d} | Just given -> given end)",
+                        "(first matching case of {body}.{} : when Nothing then {d} when Just given then given end case)",
                         b.name
                     )
                 }
@@ -394,7 +398,15 @@ impl<'a, 'd> Emitter<'a, 'd> {
         Some(if args.is_empty() {
             record.to_string()
         } else {
-            format!("({record} {})", args.join(" "))
+            format!(
+                "({record} record{{{}}})",
+                fields
+                    .iter()
+                    .zip(args)
+                    .map(|(f, v)| format!("{} = {v}", f.name))
+                    .collect::<Vec<_>>()
+                    .join(", ")
+            )
         })
     }
 
@@ -404,7 +416,16 @@ impl<'a, 'd> Emitter<'a, 'd> {
 
     fn key_expr(&self, r: &Resource, parents: &[String], key: &str) -> String {
         match &r.key_record {
-            Some(kr) => format!("({kr} {} {key})", parents.join(" ")),
+            Some(kr) => format!(
+                "({kr} record{{{}, {} = {key}}})",
+                r.parents
+                    .iter()
+                    .zip(parents)
+                    .map(|((n, _), v)| format!("{n} = {v}"))
+                    .collect::<Vec<_>>()
+                    .join(", "),
+                r.key_param
+            ),
             None => key.to_string(),
         }
     }
@@ -417,7 +438,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
         if self.after.insert(name) {
             let _ = write!(
                 self.helpers,
-                "-- The key after k, or k at the end of its type.\ndefinition {name} (k :: {t}) :: {t} is if k < {max} then k + 1 else k end\n\n"
+                "-- The key after k, or k at the end of its type.\nfunction {name} (k :: {t}) -> {t} is if k < {max} then k + 1 else k end if\nend function\n\n"
             );
         }
         name
@@ -461,7 +482,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
         let guard = self.guard(&op);
         let invalid = op.invalid_error();
         let guarded = |body: String| match &guard {
-            Some(g) => format!("if !({g}) then raise {invalid} else\n  {body}"),
+            Some(g) => format!("if !({g}) then raise {invalid} else\n  {body}\nend if"),
             None => body,
         };
         let key_param = op
@@ -473,14 +494,14 @@ impl<'a, 'd> Emitter<'a, 'd> {
             Role::Read => {
                 let k = self.key_expr(&r, &parents, key_param.as_deref()?);
                 format!(
-                    "match prelude.lookup {k} {map} with\n  | Nothing -> raise NotFound\n  | Just found -> Pair {} {STATE}\n  end",
+                    "first matching case of prelude.lookup {k} {map} :\n  when Nothing then raise NotFound\n  when Just found then Pair {} {STATE}\n  end case",
                     respond("found")?
                 )
             }
             Role::Delete => {
                 let k = self.key_expr(&r, &parents, key_param.as_deref()?);
                 format!(
-                    "match prelude.lookup {k} {map} with\n  | Nothing -> raise NotFound\n  | Just found -> Pair {} ({STATE} with {} = prelude.delete {k} {map})\n  end",
+                    "first matching case of prelude.lookup {k} {map} :\n  when Nothing then raise NotFound\n  when Just found then Pair {} ({STATE} with {} = prelude.delete {k} {map})\n  end case",
                     respond("found")?,
                     r.map_field
                 )
@@ -519,7 +540,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                     KeySource::Body { field } => format!("{sent}.{field}"),
                     KeySource::BodyOrAssigned { field } => {
                         format!(
-                            "(match {sent}.{field} with | Just given -> given | Nothing -> {STATE}.{} end)",
+                            "(first matching case of {sent}.{field} : when Just given then given when Nothing then {STATE}.{} end case)",
                             counter.clone()?
                         )
                     }
@@ -542,7 +563,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                     let after = self.after_helper(&r.key_ty);
                     let _ = write!(
                         next,
-                        ", {c} = (if key >= {STATE}.{c} then {after} key else {STATE}.{c})"
+                        ", {c} = (if key >= {STATE}.{c} then {after} key else {STATE}.{c} end if)"
                     );
                 }
                 let answer = format!("Pair {} ({next})", respond("stored")?);
@@ -551,19 +572,20 @@ impl<'a, 'd> Emitter<'a, 'd> {
                     Some(err) => {
                         let _ = write!(
                             inner,
-                            "match prelude.lookup {k} {map} with\n  | Just existing -> raise {err}\n  | Nothing -> {answer}\n  end"
+                            "first matching case of prelude.lookup {k} {map} :\n  when Just existing then raise {err}\n  when Nothing then {answer}\n  end case"
                         );
                     }
                     None => inner.push_str(&answer),
                 }
+                inner.push_str("\n  end let\n  end let");
                 if let KeySource::BodyIfGiven { field } = &key {
                     inner = format!(
-                        "match {sent}.{field} with\n  | Nothing -> raise {invalid}\n  | Just given ->\n  {inner}\n  end"
+                        "first matching case of {sent}.{field} :\n  when Nothing then raise {invalid}\n  when Just given then\n  {inner}\n  end case"
                     );
                 }
                 match unwrap {
                     Some((_, name)) => format!(
-                        "match {name} with\n  | Nothing -> raise {invalid}\n  | Just sent ->\n  {inner}\n  end"
+                        "first matching case of {name} :\n  when Nothing then raise {invalid}\n  when Just sent then\n  {inner}\n  end case"
                     ),
                     None => inner,
                 }
@@ -583,7 +605,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 )?;
                 let k = self.key_expr(&r, &parents, "key");
                 let update = format!(
-                    "match prelude.lookup {k} {map} with\n  | Nothing -> raise NotFound\n  | Just old ->\n      let stored = {stored} in\n      Pair {} ({STATE} with {} = prelude.put {k} stored {map})\n  end",
+                    "first matching case of prelude.lookup {k} {map} :\n  when Nothing then raise NotFound\n  when Just old then\n      let stored = {stored} in\n      Pair {} ({STATE} with {} = prelude.put {k} stored {map})\n      end let\n  end case",
                     respond("stored")?,
                     r.map_field
                 );
@@ -591,17 +613,17 @@ impl<'a, 'd> Emitter<'a, 'd> {
                     let (kf, maybe) = key_field?;
                     if maybe {
                         format!(
-                            "match {sent}.{kf} with\n  | Nothing -> raise {invalid}\n  | Just key ->\n  {update}\n  end"
+                            "first matching case of {sent}.{kf} :\n  when Nothing then raise {invalid}\n  when Just key then\n  {update}\n  end case"
                         )
                     } else {
-                        format!("let key = {sent}.{kf} in\n  {update}")
+                        format!("let key = {sent}.{kf} in\n  {update}\nend let")
                     }
                 } else {
-                    format!("let key = {} in\n  {update}", key_param?)
+                    format!("let key = {} in\n  {update}\nend let", key_param?)
                 };
                 if wrap {
                     format!(
-                        "match {} with\n  | Nothing -> raise {invalid}\n  | Just sent ->\n  {keyed}\n  end",
+                        "first matching case of {} :\n  when Nothing then raise {invalid}\n  when Just sent then\n  {keyed}\n  end case",
                         body_param.name
                     )
                 } else {
@@ -623,14 +645,14 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 };
                 let patched = if maybe_body {
                     format!(
-                        "(match {} with | Nothing -> old | Just change -> {patched} end)",
+                        "(first matching case of {} : when Nothing then old when Just change then {patched} end case)",
                         body_param.name
                     )
                 } else {
-                    format!("(let change = {} in {patched})", body_param.name)
+                    format!("(let change = {} in {patched} end let)", body_param.name)
                 };
                 format!(
-                    "match prelude.lookup {k} {map} with\n  | Nothing -> raise NotFound\n  | Just old ->\n      let stored = {patched} in\n      Pair {} ({STATE} with {} = prelude.put {k} stored {map})\n  end",
+                    "first matching case of prelude.lookup {k} {map} :\n  when Nothing then raise NotFound\n  when Just old then\n      let stored = {patched} in\n      Pair {} ({STATE} with {} = prelude.put {k} stored {map})\n      end let\n  end case",
                     respond("stored")?,
                     r.map_field
                 )
@@ -662,14 +684,14 @@ impl<'a, 'd> Emitter<'a, 'd> {
             let value = if p.ty.same_shape(&f.ty) && matches!(p.ty, Ty::Maybe(_)) {
                 // An absent field and a null one read the same: both leave it.
                 format!(
-                    "(match {change}.{} with | Nothing -> {old}.{} | Just given -> Just given end)",
+                    "(first matching case of {change}.{} : when Nothing then {old}.{} when Just given then Just given end case)",
                     p.name, f.name
                 )
             } else if p.ty.same_shape(&f.ty) {
                 format!("{change}.{}", p.name)
             } else if p.ty.same_shape(&f.ty.clone().maybe()) && !matches!(f.ty, Ty::Maybe(_)) {
                 format!(
-                    "(match {change}.{} with | Nothing -> {old}.{} | Just given -> given end)",
+                    "(first matching case of {change}.{} : when Nothing then {old}.{} when Just given then given end case)",
                     p.name, f.name
                 )
             } else if f.ty.same_shape(&p.ty.clone().maybe()) {
@@ -697,12 +719,12 @@ impl<'a, 'd> Emitter<'a, 'd> {
         let test = r
             .parents
             .iter()
-            .map(|(n, _)| format!("entry.key.{n} == {n}"))
+            .map(|(n, _)| format!("entry.key.{n} = {n}"))
             .collect::<Vec<_>>()
             .join(" && ");
         let _ = write!(
             self.helpers,
-            "-- The {}s under one parent, in key order.\ndefinition {name} {params}(entries :: List (Entry {kr} {})) :: List {} is\n  match entries with\n  | Nil -> []\n  | Cons entry rest -> if {test} then Cons entry.value ({name} {args}rest) else {name} {args}rest\n  end\nend\n\n",
+            "-- The {}s under one parent, in key order.\nfunction {name} {params}(entries :: List (Entry {kr} {})) -> List {} is\n  first matching case of entries :\n  when Nil then []\n  when Cons entry rest then if {test} then Cons entry.value ({name} {args}rest) else {name} {args}rest end if\n  end case\nend function\n\n",
             r.record, r.record, r.record
         );
     }
@@ -712,7 +734,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
         if self.emitted.insert(name.clone()) {
             let _ = write!(
                 self.helpers,
-                "-- Whether a list holds a {record}.\ndefinition {name} (wanted :: {record}) (items :: List {record}) :: Bool is\n  match items with\n  | Nil -> false\n  | Cons item rest -> item == wanted || {name} wanted rest\n  end\nend\n\n"
+                "-- Whether a list holds a {record}.\nfunction {name} (wanted :: {record}) (items :: List {record}) -> Bool is\n  first matching case of items :\n  when Nil then false\n  when Cons item rest then item = wanted || {name} wanted rest\n  end case\nend function\n\n"
             );
         }
         name
@@ -732,7 +754,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
         );
         let _ = writeln!(model, "unit {unit}.model\n\n{header}");
         // Failures.
-        model.push_str("-- What a request fails with: one constructor for each failing status the\n-- document names, and BadRequest, NotFound and Unmodelled, which the\n-- model needs. Unmodelled is an operation's answer until its behaviour is\n-- written in handwritten.lawspec.\ntype ApiError is\n");
+        model.push_str("-- What a request fails with: one constructor for each failing status the\n-- document names, and BadRequest, NotFound and Unmodelled, which the\n-- model needs. Unmodelled is an operation's answer until its behaviour is\n-- written in handwritten.lawspec.\ntype ApiError is one of\n");
         for (status, ctor) in &self.api.errors {
             let note = if ctor == "Unmodelled" {
                 "the model does not answer this operation yet".to_string()
@@ -741,7 +763,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
             };
             let _ = writeln!(model, "  | {ctor} -- {note}");
         }
-        model.push_str("end\n\n");
+        model.push_str("end type\n\n");
         // Types.
         model.push_str("-- ---------------------------------------------------------------------------\n-- Schemas\n-- ---------------------------------------------------------------------------\n\n");
         for d in &self.types.defs {
@@ -755,7 +777,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                     if !doc.is_empty() {
                         let _ = writeln!(model, "-- {doc}");
                     }
-                    let _ = writeln!(model, "-- Schema `{wire}`.\ntype {name} is\n  {name}");
+                    let _ = writeln!(model, "-- Schema `{wire}`.\ntype {name} is a record{{");
                     for f in fields {
                         let mut notes = vec![];
                         if f.wire != f.name {
@@ -771,7 +793,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                         };
                         let _ = writeln!(model, "    {} :: {}{note}", f.name, f.ty.lawspec());
                     }
-                    model.push_str("end\n\n");
+                    model.push_str("}\nend type\n\n");
                 }
                 Def::Enum {
                     name,
@@ -782,11 +804,11 @@ impl<'a, 'd> Emitter<'a, 'd> {
                     if !doc.is_empty() {
                         let _ = writeln!(model, "-- {doc}");
                     }
-                    let _ = writeln!(model, "-- Schema `{wire}`.\ntype {name} is");
+                    let _ = writeln!(model, "-- Schema `{wire}`.\ntype {name} is one of");
                     for (c, w) in ctors {
                         let _ = writeln!(model, "  | {c} -- {}", text_literal(w));
                     }
-                    model.push_str("end\n\n");
+                    model.push_str("end type\n\n");
                 }
                 Def::Union {
                     name,
@@ -799,12 +821,12 @@ impl<'a, 'd> Emitter<'a, 'd> {
                     }
                     let _ = writeln!(
                         model,
-                        "-- Schema `{wire}`: one of its alternatives.\ntype {name} is"
+                        "-- Schema `{wire}`: one of its alternatives.\ntype {name} is one of"
                     );
                     for (c, t) in alts {
-                        let _ = writeln!(model, "  | {c} payload :: {}", t.lawspec());
+                        let _ = writeln!(model, "  | {c} of type {}", t.lawspec());
                     }
-                    model.push_str("end\n\n");
+                    model.push_str("end type\n\n");
                 }
             }
         }
@@ -813,7 +835,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
             if let Some(kr) = &r.key_record {
                 let _ = writeln!(
                     model,
-                    "-- Where a {} is kept: {}.\ntype {kr} is\n  {kr}",
+                    "-- Where a {} is kept: {}.\ntype {kr} is a record{{",
                     r.record, r.item_path
                 );
                 for (n, t) in &r.parents {
@@ -821,7 +843,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 }
                 let _ = writeln!(
                     model,
-                    "    {} :: {}\nend\n",
+                    "    {} :: {}\n}}\nend type\n",
                     r.key_param,
                     r.key_ty.lawspec()
                 );
@@ -829,7 +851,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
         }
         // State.
         model.push_str("-- ---------------------------------------------------------------------------\n-- The service's state\n-- ---------------------------------------------------------------------------\n\n");
-        model.push_str("-- What the service holds: each resource the importer recognised, by key,\n-- and the next key for those whose keys the service assigns.\ntype State is\n  State\n");
+        model.push_str("-- What the service holds: each resource the importer recognised, by key,\n-- and the next key for those whose keys the service assigns.\ntype State is a record{\n");
         let mut starts = vec![];
         for r in &self.api.resources {
             let k = r.key_record.clone().unwrap_or_else(|| r.key_ty.lawspec());
@@ -844,12 +866,20 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 starts.push("1".into());
             }
         }
-        model.push_str("end\n\n");
+        model.push_str("}\nend type\n\n");
         let _ = write!(
             model,
-            "-- The state of a new service: nothing held.\ndefinition emptyState (u :: Unit) :: State is State{}{} end\n\n",
-            if starts.is_empty() { "" } else { " " },
-            starts.join(" ")
+            "-- The state of a new service: nothing held.\nfunction emptyState (u :: Unit) -> State is State record{{{}}} end function\n\n",
+            self.api
+                .resources
+                .iter()
+                .flat_map(
+                    |r| std::iter::once(r.map_field.as_str()).chain(r.counter_field.as_deref())
+                )
+                .zip(starts)
+                .map(|(f, v)| format!("{f} = {v}"))
+                .collect::<Vec<_>>()
+                .join(", ")
         );
         // Model definitions.
         let mut defs = String::new();
@@ -861,14 +891,14 @@ impl<'a, 'd> Emitter<'a, 'd> {
             let op = self.api.ops[oi].clone();
             if let Some(body) = self.model_body(oi, ri, role) {
                 let def_name = format!("model{}", names::upper_camel(&op.name));
-                let fails = if body.contains("raise ") {
-                    " fails with ApiError"
+                let (kind, fails) = if body.contains("raise ") {
+                    ("procedure", " fails with ApiError")
                 } else {
-                    ""
+                    ("function", "")
                 };
                 let _ = write!(
                     defs,
-                    "-- {} {}: {}\ndefinition {def_name} {}({STATE} :: State) :: Pair {} State{fails} is\n  {body}\nend\n\n",
+                    "-- {} {}: {}\n{kind} {def_name} {}({STATE} :: State) -> Pair {} State{fails} is\n  {body}\nend {kind}\n\n",
                     op.method.to_uppercase(),
                     op.path,
                     format!("{role:?}").to_lowercase(),
@@ -893,7 +923,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 let (scalar, pred) = key.split_once('|').unwrap();
                 let _ = writeln!(
                     model,
-                    "refinement {name} is (v :: {scalar} where {pred}) end"
+                    "refinement {name} is (v :: {scalar} where {pred}) end refinement"
                 );
             }
             model.push('\n');
@@ -944,7 +974,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
         );
         let _ = writeln!(
             facade,
-            "-- A connection to the service. Every native handler of a case is made with\n-- the case's one Service, so what one operation changes the next one sees.\nhandle Service\n\nconnectService :: Unit -> Service\ndisconnectService :: Service -> Unit\n\nresource Service is\n  acquire is connectService unitValue end\n  release service is disconnectService service end\nend\n"
+            "-- A connection to the service. Every native handler of a case is made with\n-- the case's one Service, so what one operation changes the next one sees.\nhandle Service\n\nconnectService :: Unit -> Service\ndisconnectService :: Service -> Unit\n\nresource Service is\n  acquire is connectService unitValue end acquire\n  release service is disconnectService service end release\nend resource\n"
         );
         for ability in &self.api.abilities {
             let _ = writeln!(
@@ -974,8 +1004,9 @@ impl<'a, 'd> Emitter<'a, 'd> {
             if let Some(laws) = laws_by_ability.get(ability) {
                 facade.push_str("laws\n");
                 facade.push_str(laws);
+                facade.push_str("end laws\n");
             }
-            facade.push_str("end\n\n");
+            facade.push_str("end ability\n\n");
         }
         facade.push_str(&top_laws);
         let _ = writeln!(
@@ -987,15 +1018,19 @@ impl<'a, 'd> Emitter<'a, 'd> {
         for op in &self.api.ops {
             match modelled.get(&op.name) {
                 Some(d) => {
-                    let _ = writeln!(facade, "  {} by model.{d}", op.name);
+                    let _ = writeln!(facade, "  operation {} by model.{d} end operation", op.name);
                 }
                 None => {
-                    let _ = writeln!(facade, "  {} by handwritten.{}", op.name, op.name);
+                    let _ = writeln!(
+                        facade,
+                        "  operation {} by handwritten.{} end operation",
+                        op.name, op.name
+                    );
                     unmodelled.push(op.name.clone());
                 }
             }
         }
-        facade.push_str("end\n");
+        facade.push_str("end handler\nend unit\n");
         // The hand-written unit.
         let mut hand = String::new();
         let _ = writeln!(
@@ -1006,7 +1041,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
             let op = self.api.ops.iter().find(|o| &o.name == name).unwrap();
             let _ = write!(
                 hand,
-                "-- HAND-WRITTEN: {} {}{}\ndefinition {} {}({STATE} :: State) :: Pair {} State fails with ApiError is\n  raise Unmodelled\nend\n\n",
+                "-- HAND-WRITTEN: {} {}{}\nprocedure {} {}({STATE} :: State) -> Pair {} State fails with ApiError is\n  raise Unmodelled\nend procedure\n\n",
                 op.method.to_uppercase(),
                 op.path,
                 if op.summary.is_empty() {
@@ -1023,11 +1058,13 @@ impl<'a, 'd> Emitter<'a, 'd> {
             );
         }
         if unmodelled.is_empty() {
-            hand.push_str("-- Every operation is modelled; this unit has nothing to answer yet.\ndefinition nothingHandWritten (u :: Unit) :: Unit is unitValue end\n");
+            hand.push_str("-- Every operation is modelled; this unit has nothing to answer yet.\nfunction nothingHandWritten (u :: Unit) -> Unit is unitValue end function\n");
         }
         let laws = format!(
-            "unit {unit}.laws\n\n-- HAND-WRITTEN LAWS. Written once by `lawtwin import openapi`, and yours\n-- from then on: the importer never writes this file again. State here what\n-- the document cannot say: how filters, pagination or state changes behave.\n-- The generated laws are in the abilities of {unit}.\n--\n-- For example:\n--\n--   law `a found pet has the status asked for` is\n--     definition is\n--       `for all` (status :: model.PetStatus) . ...\n--     end\n--   end\n\nimport {unit} as api\nimport {unit}.model as model (ApiError, State)\n\n-- A placeholder, so the unit is not empty; delete it once a law is here.\ndefinition noHandWrittenLawsYet (u :: Unit) :: Unit is unitValue end\n"
+            "unit {unit}.laws\n\n-- HAND-WRITTEN LAWS. Written once by `lawtwin import openapi`, and yours\n-- from then on: the importer never writes this file again. State here what\n-- the document cannot say: how filters, pagination or state changes behave.\n-- The generated laws are in the abilities of {unit}.\n--\n-- For example:\n--\n--   law \"|a found pet has the status asked for| is\n--     definition :\n--       for all (status :: model.PetStatus) => ... end for all\n--     end definition\n--   end law\n\nimport {unit} as api\nimport {unit}.model as model (ApiError, State)\n\n-- A placeholder, so the unit is not empty; delete it once a law is here.\nfunction noHandWrittenLawsYet (u :: Unit) -> Unit is unitValue end function\nend unit\n"
         );
+        model.push_str("end unit\n");
+        hand.push_str("end unit\n");
         Package {
             model,
             facade,
@@ -1200,19 +1237,25 @@ impl<'a, 'd> Emitter<'a, 'd> {
             );
             let call = this.call(&create_op, &g, inputs, scope);
             format!(
-                "let {sent} = {sent_expr} in\n       match prelude.attempt ({call}) with\n       | Left failure -> true\n       | Right created ->\n"
+                "let {sent} = {sent_expr} in\n       first matching case of prelude.attempt ({call}) :\n       when Left failure then true\n       when Right created then\n"
             )
         };
         let with_key = |inner: &str| -> String {
             match (&create.key, &r.key_field) {
-                (KeySource::Body { field }, _) => format!("let key = sent.{field} in {inner}"),
+                (KeySource::Body { field }, _) => {
+                    format!("let key = sent.{field} in {inner} end let")
+                }
                 (KeySource::BodyIfGiven { field }, _) => {
-                    format!("match sent.{field} with | Nothing -> false | Just key -> {inner} end")
+                    format!(
+                        "first matching case of sent.{field} : when Nothing then false when Just key then {inner} end case"
+                    )
                 }
                 (_, Some((kf, true))) => {
-                    format!("match created.{kf} with | Nothing -> false | Just key -> {inner} end")
+                    format!(
+                        "first matching case of created.{kf} : when Nothing then false when Just key then {inner} end case"
+                    )
                 }
-                (_, Some((kf, false))) => format!("let key = created.{kf} in {inner}"),
+                (_, Some((kf, false))) => format!("let key = created.{kf} in {inner} end let"),
                 _ => "false".into(),
             }
         };
@@ -1222,7 +1265,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 .map(|(v, t)| format!("({v} :: {t}) "))
                 .collect();
             format!(
-                "law `@TITLE@` is\n  definition is\n    `for all` {quantified}.\n      ({body}) = true\n  end\nend\n"
+                "law \"|@TITLE@| is\n  definition :\n    for all {quantified}=>\n      ({body}) = true end for all\n  end definition\nend law\n"
             )
         };
         let read_call = |this: &Self,
@@ -1253,8 +1296,8 @@ impl<'a, 'd> Emitter<'a, 'd> {
             let open = opening(self, &mut scope, &mut inputs, &mut given);
             let read = read_call(self, &given, &mut scope, &mut inputs);
             let body = format!(
-                "{open}           {}\n       end",
-                with_key(&format!("prelude.attempt ({read}) == Right created"))
+                "{open}           {}\n       end case\n       end let",
+                with_key(&format!("prelude.attempt ({read}) = Right created"))
             );
             out.push((
                 format!("a created {noun} reads back"),
@@ -1274,9 +1317,12 @@ impl<'a, 'd> Emitter<'a, 'd> {
             let delete = self.call(&delete_op, &g, &mut inputs, &mut scope);
             let read = read_call(self, &given, &mut scope, &mut inputs);
             let inner = format!(
-                "(let gone = prelude.attempt ({delete}) in prelude.attempt ({read}) == Left NotFound)"
+                "(let gone = prelude.attempt ({delete}) in prelude.attempt ({read}) = Left NotFound end let)"
             );
-            let body = format!("{open}           {}\n       end", with_key(&inner));
+            let body = format!(
+                "{open}           {}\n       end case\n       end let",
+                with_key(&inner)
+            );
             out.push((
                 format!("a deleted {noun} is not found"),
                 vec![create.op, di, r.read],
@@ -1293,7 +1339,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
             let open = opening(self, &mut scope, &mut inputs, &mut given);
             let list = self.call(&list_op, &given, &mut inputs, &mut scope);
             let body = format!(
-                "{open}           match prelude.attempt ({list}) with\n           | Left failure -> false\n           | Right listed -> model.{contains} created listed\n           end\n       end"
+                "{open}           first matching case of prelude.attempt ({list}) :\n           when Left failure then false\n           when Right listed then model.{contains} created listed\n           end case\n       end case\n       end let"
             );
             out.push((
                 format!("the list holds a created {noun}"),
@@ -1328,7 +1374,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                     .get(&f.name)
                     .cloned()
                     .unwrap_or_else(|| format!("before.{}", f.name));
-                checks.push(format!("after.{} == {expected}", f.name));
+                checks.push(format!("after.{} = {expected}", f.name));
             }
             if !checks.is_empty() {
                 let mut scope = fresh_scope();
@@ -1353,9 +1399,12 @@ impl<'a, 'd> Emitter<'a, 'd> {
                     .join("\n                   && ")
                     .replace("change.", &format!("{change}."));
                 let inner = format!(
-                    "match prelude.attempt ({read}) with\n           | Left failure -> false\n           | Right before ->\n               match prelude.attempt ({patch}) with\n               | Left failure -> true\n               | Right changed ->\n                   match prelude.attempt ({read}) with\n                   | Left failure -> false\n                   | Right after -> {checks}\n                   end\n               end\n           end"
+                    "first matching case of prelude.attempt ({read}) :\n           when Left failure then false\n           when Right before then\n               first matching case of prelude.attempt ({patch}) :\n               when Left failure then true\n               when Right changed then\n                   first matching case of prelude.attempt ({read}) :\n                   when Left failure then false\n                   when Right after then {checks}\n                   end case\n               end case\n           end case"
                 );
-                let body = format!("{open}           {}\n       end", with_key(&inner));
+                let body = format!(
+                    "{open}           {}\n       end case\n       end let",
+                    with_key(&inner)
+                );
                 out.push((
                     format!("an update changes only the fields it gives to a {noun}"),
                     vec![create.op, pi, r.read],
@@ -1400,9 +1449,12 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 let replace = self.call(&replace_op, &g, &mut inputs, &mut scope);
                 let read = read_call(self, &given, &mut scope, &mut inputs);
                 let inner = format!(
-                    "match prelude.attempt ({replace}) with\n           | Left failure -> true\n           | Right replaced -> prelude.attempt ({read}) == Right replaced\n           end"
+                    "first matching case of prelude.attempt ({replace}) :\n           when Left failure then true\n           when Right replaced then prelude.attempt ({read}) = Right replaced\n           end case"
                 );
-                let body = format!("{open}           {}\n       end", with_key(&inner));
+                let body = format!(
+                    "{open}           {}\n       end case\n       end let",
+                    with_key(&inner)
+                );
                 out.push((
                     format!("a replaced {noun} reads back as replaced"),
                     vec![create.op, pi, r.read],

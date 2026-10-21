@@ -19,103 +19,103 @@ using Xunit;
 [Xunit.Collection("LawSpec")]
 public sealed class LawtwinKafka
 {
-    // Law: lawtwin.kafka::murmur2 agrees with Kafka
+    // Law: lawtwin.kafka::"|murmur2 agrees with Kafka|
     // Description:
     // Rationale:
     // References: KAFKA-murmur2
     // Expansion:
-    // murmur2 agrees with Kafka
-    // for all . murmur2 (Utf8("21")) = 3321034988 and murmur2 (Utf8("foobar")) = 3504634814 and murmur2
+    // "|murmur2 agrees with Kafka|
+    // murmur2 (Utf8("21")) = 3321034988 and murmur2 (Utf8("foobar")) = 3504634814 and murmur2
     // (Utf8("a-little-bit-long-string")) = 3308985760 and murmur2 (Utf8("a-little-bit-longer-string"))
     // = 2808662467 and murmur2 (Utf8("lkjh234lh9fiuh90y23oiuhsafujhadof229phr9h19h89h8")) = 4236069325
     // and murmur2 (Utf8("abc")) = 479470107
     private static Value LawMurmur2AgreesWithKafkaBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         Value ls0;
-        if (Runtime.Truth(Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Runtime.Helper("utf8", Fn.List<Value>(Schema.Validate(Scalar.TextUnits(Fn.List<int>(50, 49)), Scalar.TypeOf("Text"), schema)), Fn.List<string>("Text"), 64)), Schema.Validate(V.Int(new BigInteger(3321034988L)), Scalar.TypeOf("Integer"), schema), "lawtwin.kafka::murmur2 agrees with Kafka")))
+        Value ls1;
+        Value ls2;
+        Value ls3;
+        Value ls4;
+        if (Runtime.Truth(Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Runtime.Helper("utf8", Fn.List<Value>(Schema.Validate(Scalar.TextUnits(Fn.List<int>(50, 49)), Scalar.TypeOf("Text"), schema)), Fn.List<string>("Text"), 64)), Schema.Validate(V.Int(new BigInteger(3321034988L)), Scalar.TypeOf("Integer"), schema), "lawtwin.kafka::\"|murmur2 agrees with Kafka|")))
         {
-            Value ls1;
-            Value ls2;
-            if (Runtime.Truth(Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Runtime.Helper("utf8", Fn.List<Value>(Schema.Validate(Scalar.TextUnits(Fn.List<int>(102, 111, 111, 98, 97, 114)), Scalar.TypeOf("Text"), schema)), Fn.List<string>("Text"), 64)), Schema.Validate(V.Int(new BigInteger(3504634814L)), Scalar.TypeOf("Integer"), schema), "lawtwin.kafka::murmur2 agrees with Kafka")))
+            Value ls5;
+            if (Runtime.Truth(Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Runtime.Helper("utf8", Fn.List<Value>(Schema.Validate(Scalar.TextUnits(Fn.List<int>(102, 111, 111, 98, 97, 114)), Scalar.TypeOf("Text"), schema)), Fn.List<string>("Text"), 64)), Schema.Validate(V.Int(new BigInteger(3504634814L)), Scalar.TypeOf("Integer"), schema), "lawtwin.kafka::\"|murmur2 agrees with Kafka|")))
             {
-                Value ls3;
-                Value ls4;
-                if (Runtime.Truth(Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Runtime.Helper("utf8", Fn.List<Value>(Schema.Validate(Scalar.TextUnits(Fn.List<int>(97, 45, 108, 105, 116, 116, 108, 101, 45, 98, 105, 116, 45, 108, 111, 110, 103, 45, 115, 116, 114, 105, 110, 103)), Scalar.TypeOf("Text"), schema)), Fn.List<string>("Text"), 64)), Schema.Validate(V.Int(new BigInteger(3308985760L)), Scalar.TypeOf("Integer"), schema), "lawtwin.kafka::murmur2 agrees with Kafka")))
-                {
-                    Value ls5;
-                    Value ls6;
-                    if (Runtime.Truth(Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Runtime.Helper("utf8", Fn.List<Value>(Schema.Validate(Scalar.TextUnits(Fn.List<int>(97, 45, 108, 105, 116, 116, 108, 101, 45, 98, 105, 116, 45, 108, 111, 110, 103, 101, 114, 45, 115, 116, 114, 105, 110, 103)), Scalar.TypeOf("Text"), schema)), Fn.List<string>("Text"), 64)), Schema.Validate(V.Int(new BigInteger(2808662467L)), Scalar.TypeOf("Integer"), schema), "lawtwin.kafka::murmur2 agrees with Kafka")))
-                    {
-                        Value ls7;
-                        Value ls8;
-                        if (Runtime.Truth(Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Runtime.Helper("utf8", Fn.List<Value>(Schema.Validate(Scalar.TextUnits(Fn.List<int>(108, 107, 106, 104, 50, 51, 52, 108, 104, 57, 102, 105, 117, 104, 57, 48, 121, 50, 51, 111, 105, 117, 104, 115, 97, 102, 117, 106, 104, 97, 100, 111, 102, 50, 50, 57, 112, 104, 114, 57, 104, 49, 57, 104, 56, 57, 104, 56)), Scalar.TypeOf("Text"), schema)), Fn.List<string>("Text"), 64)), Schema.Validate(V.Int(new BigInteger(4236069325L)), Scalar.TypeOf("Integer"), schema), "lawtwin.kafka::murmur2 agrees with Kafka")))
-                        {
-                            Value ls9;
-                            if (Runtime.Truth(Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Runtime.Helper("utf8", Fn.List<Value>(Schema.Validate(Scalar.TextUnits(Fn.List<int>(97, 98, 99)), Scalar.TypeOf("Text"), schema)), Fn.List<string>("Text"), 64)), Schema.Validate(V.Int(new BigInteger(479470107L)), Scalar.TypeOf("Integer"), schema), "lawtwin.kafka::murmur2 agrees with Kafka")))
-                            {
-                                ls9 = V.Bool(true);
-                            }
-                            else
-                            {
-                                ls9 = V.Bool(false);
-                            }
-                            ls8 = ls9;
-                        }
-                        else
-                        {
-                            ls8 = V.Bool(false);
-                        }
-                        if (Runtime.Truth(ls8))
-                        {
-                            ls7 = V.Bool(true);
-                        }
-                        else
-                        {
-                            ls7 = V.Bool(false);
-                        }
-                        ls6 = ls7;
-                    }
-                    else
-                    {
-                        ls6 = V.Bool(false);
-                    }
-                    if (Runtime.Truth(ls6))
-                    {
-                        ls5 = V.Bool(true);
-                    }
-                    else
-                    {
-                        ls5 = V.Bool(false);
-                    }
-                    ls4 = ls5;
-                }
-                else
-                {
-                    ls4 = V.Bool(false);
-                }
-                if (Runtime.Truth(ls4))
-                {
-                    ls3 = V.Bool(true);
-                }
-                else
-                {
-                    ls3 = V.Bool(false);
-                }
-                ls2 = ls3;
+                ls5 = V.Bool(true);
             }
             else
             {
-                ls2 = V.Bool(false);
+                ls5 = V.Bool(false);
             }
-            if (Runtime.Truth(ls2))
+            ls4 = ls5;
+        }
+        else
+        {
+            ls4 = V.Bool(false);
+        }
+        if (Runtime.Truth(ls4))
+        {
+            Value ls6;
+            if (Runtime.Truth(Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Runtime.Helper("utf8", Fn.List<Value>(Schema.Validate(Scalar.TextUnits(Fn.List<int>(97, 45, 108, 105, 116, 116, 108, 101, 45, 98, 105, 116, 45, 108, 111, 110, 103, 45, 115, 116, 114, 105, 110, 103)), Scalar.TypeOf("Text"), schema)), Fn.List<string>("Text"), 64)), Schema.Validate(V.Int(new BigInteger(3308985760L)), Scalar.TypeOf("Integer"), schema), "lawtwin.kafka::\"|murmur2 agrees with Kafka|")))
             {
-                ls1 = V.Bool(true);
+                ls6 = V.Bool(true);
             }
             else
             {
-                ls1 = V.Bool(false);
+                ls6 = V.Bool(false);
             }
-            ls0 = ls1;
+            ls3 = ls6;
+        }
+        else
+        {
+            ls3 = V.Bool(false);
+        }
+        if (Runtime.Truth(ls3))
+        {
+            Value ls7;
+            if (Runtime.Truth(Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Runtime.Helper("utf8", Fn.List<Value>(Schema.Validate(Scalar.TextUnits(Fn.List<int>(97, 45, 108, 105, 116, 116, 108, 101, 45, 98, 105, 116, 45, 108, 111, 110, 103, 101, 114, 45, 115, 116, 114, 105, 110, 103)), Scalar.TypeOf("Text"), schema)), Fn.List<string>("Text"), 64)), Schema.Validate(V.Int(new BigInteger(2808662467L)), Scalar.TypeOf("Integer"), schema), "lawtwin.kafka::\"|murmur2 agrees with Kafka|")))
+            {
+                ls7 = V.Bool(true);
+            }
+            else
+            {
+                ls7 = V.Bool(false);
+            }
+            ls2 = ls7;
+        }
+        else
+        {
+            ls2 = V.Bool(false);
+        }
+        if (Runtime.Truth(ls2))
+        {
+            Value ls8;
+            if (Runtime.Truth(Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Runtime.Helper("utf8", Fn.List<Value>(Schema.Validate(Scalar.TextUnits(Fn.List<int>(108, 107, 106, 104, 50, 51, 52, 108, 104, 57, 102, 105, 117, 104, 57, 48, 121, 50, 51, 111, 105, 117, 104, 115, 97, 102, 117, 106, 104, 97, 100, 111, 102, 50, 50, 57, 112, 104, 114, 57, 104, 49, 57, 104, 56, 57, 104, 56)), Scalar.TypeOf("Text"), schema)), Fn.List<string>("Text"), 64)), Schema.Validate(V.Int(new BigInteger(4236069325L)), Scalar.TypeOf("Integer"), schema), "lawtwin.kafka::\"|murmur2 agrees with Kafka|")))
+            {
+                ls8 = V.Bool(true);
+            }
+            else
+            {
+                ls8 = V.Bool(false);
+            }
+            ls1 = ls8;
+        }
+        else
+        {
+            ls1 = V.Bool(false);
+        }
+        if (Runtime.Truth(ls1))
+        {
+            Value ls9;
+            if (Runtime.Truth(Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Runtime.Helper("utf8", Fn.List<Value>(Schema.Validate(Scalar.TextUnits(Fn.List<int>(97, 98, 99)), Scalar.TypeOf("Text"), schema)), Fn.List<string>("Text"), 64)), Schema.Validate(V.Int(new BigInteger(479470107L)), Scalar.TypeOf("Integer"), schema), "lawtwin.kafka::\"|murmur2 agrees with Kafka|")))
+            {
+                ls9 = V.Bool(true);
+            }
+            else
+            {
+                ls9 = V.Bool(false);
+            }
+            ls0 = ls9;
         }
         else
         {
@@ -129,7 +129,7 @@ public sealed class LawtwinKafka
         return LawMurmur2AgreesWithKafkaBody(schema, symbols, inputs);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::murmur2 agrees with Kafka boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::\"|murmur2 agrees with Kafka| boundary")]
     public void LawMurmur2AgreesWithKafka_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -139,22 +139,23 @@ public sealed class LawtwinKafka
         {
             return LawMurmur2AgreesWithKafkaCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::murmur2 agrees with Kafka", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::\"|murmur2 agrees with Kafka|", ls0, ls1);
     }
 
-    // Law: lawtwin.kafka::Broker: offsets in a partition are dense and increasing [native]
+    // Law: lawtwin.kafka::Broker: "|offsets in a partition are dense and increasing| [native]
     // Description: Two batches produced one after the other to one partition get offsets
     // that follow on: the second starts where the first ends.
     // Rationale:
     // References:
     // Expansion:
-    // Broker: offsets in a partition are dense and increasing [native]
+    // Broker: "|offsets in a partition are dense and increasing| [native]
     // for all (t :: Text) (first :: List (lawtwin.kafka.model::type::Record)) (second :: List
-    // (lawtwin.kafka.model::type::Record)) . created (_input0) (1) implies let _let0__tp =
-    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in let _let1__a = attempt
-    // (produceRequest (_let0__tp) (Maybe::Nothing()) (_input1)) in let _let2__b = attempt
-    // (produceRequest (_let0__tp) (Maybe::Nothing()) (_input2)) in followsBatch (_let1__a) (_input1)
-    // (_let2__b) = true
+    // (lawtwin.kafka.model::type::Record)) => created (_input0) (1) implies let _let0__tp = let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__a = attempt (produceRequest (_let0__tp)
+    // (Maybe::Nothing()) (_input1)) in let _let2__b = attempt (produceRequest (_let0__tp)
+    // (Maybe::Nothing()) (_input2)) in followsBatch (_let1__a) (_input1) (_let2__b) = true end for all
     private static Value LawBrokerOffsetsInAPartitionAreDenseAndBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -164,7 +165,9 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             var ls1 = Fn.F0(() =>
             {
                 return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input1)), Scalar.TypeOf("Int64"), schema);
@@ -177,7 +180,7 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
             });
-            var bound1 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
             var ls4 = Fn.F0(() =>
             {
                 return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input2)), Scalar.TypeOf("Int64"), schema);
@@ -190,9 +193,9 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
             });
-            var bound2 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls4, ls5, ls6);
+            var bound4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls4, ls5, ls6);
             var ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.FollowsBatch(schema, symbols, bound1, input1, bound2), ls7, "lawtwin.kafka::Broker: offsets in a partition are dense and increasing [native]");
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.FollowsBatch(schema, symbols, bound3, input1, bound4), ls7, "lawtwin.kafka::Broker: \"|offsets in a partition are dense and increasing| [native]");
         }
         else
         {
@@ -219,7 +222,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: offsets in a partition are dense and increasing [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|offsets in a partition are dense and increasing| [native] boundary")]
     public void LawBrokerOffsetsInAPartitionAreDenseAnd_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -229,10 +232,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerOffsetsInAPartitionAreDenseAndCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: offsets in a partition are dense and increasing [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|offsets in a partition are dense and increasing| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: offsets in a partition are dense and increasing [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|offsets in a partition are dense and increasing| [native] property")]
     public void LawBrokerOffsetsInAPartitionAreDenseAnd_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -298,22 +301,23 @@ public sealed class LawtwinKafka
         {
             return LawBrokerOffsetsInAPartitionAreDenseAndCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: offsets in a partition are dense and increasing [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|offsets in a partition are dense and increasing| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: offsets in a partition are dense and increasing [cluster]
+    // Law: lawtwin.kafka::Broker: "|offsets in a partition are dense and increasing| [cluster]
     // Description: Two batches produced one after the other to one partition get offsets
     // that follow on: the second starts where the first ends.
     // Rationale:
     // References:
     // Expansion:
-    // Broker: offsets in a partition are dense and increasing [cluster]
+    // Broker: "|offsets in a partition are dense and increasing| [cluster]
     // for all (t :: Text) (first :: List (lawtwin.kafka.model::type::Record)) (second :: List
-    // (lawtwin.kafka.model::type::Record)) . created (_input0) (1) implies let _let0__tp =
-    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in let _let1__a = attempt
-    // (produceRequest (_let0__tp) (Maybe::Nothing()) (_input1)) in let _let2__b = attempt
-    // (produceRequest (_let0__tp) (Maybe::Nothing()) (_input2)) in followsBatch (_let1__a) (_input1)
-    // (_let2__b) = true
+    // (lawtwin.kafka.model::type::Record)) => created (_input0) (1) implies let _let0__tp = let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__a = attempt (produceRequest (_let0__tp)
+    // (Maybe::Nothing()) (_input1)) in let _let2__b = attempt (produceRequest (_let0__tp)
+    // (Maybe::Nothing()) (_input2)) in followsBatch (_let1__a) (_input1) (_let2__b) = true end for all
     private static Value LawBrokerOffsetsInAPartitionAreDenseAnd2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -322,7 +326,9 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             var ls1 = Fn.F0(() =>
             {
                 return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input1)), Scalar.TypeOf("Int64"), schema);
@@ -335,7 +341,7 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
             });
-            var bound1 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
             var ls4 = Fn.F0(() =>
             {
                 return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input2)), Scalar.TypeOf("Int64"), schema);
@@ -348,9 +354,9 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
             });
-            var bound2 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls4, ls5, ls6);
+            var bound4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls4, ls5, ls6);
             var ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.FollowsBatch(schema, symbols, bound1, input1, bound2), ls7, "lawtwin.kafka::Broker: offsets in a partition are dense and increasing [cluster]");
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.FollowsBatch(schema, symbols, bound3, input1, bound4), ls7, "lawtwin.kafka::Broker: \"|offsets in a partition are dense and increasing| [cluster]");
         }
         else
         {
@@ -376,7 +382,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Broker", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: offsets in a partition are dense and increasing [cluster] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|offsets in a partition are dense and increasing| [cluster] boundary")]
     public void LawBrokerOffsetsInAPartitionAreDenseAnd2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -386,10 +392,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerOffsetsInAPartitionAreDenseAnd2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: offsets in a partition are dense and increasing [cluster]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|offsets in a partition are dense and increasing| [cluster]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: offsets in a partition are dense and increasing [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|offsets in a partition are dense and increasing| [cluster] property")]
     public void LawBrokerOffsetsInAPartitionAreDenseAnd2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -455,20 +461,23 @@ public sealed class LawtwinKafka
         {
             return LawBrokerOffsetsInAPartitionAreDenseAnd2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: offsets in a partition are dense and increasing [cluster]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|offsets in a partition are dense and increasing| [cluster]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: a batch reads back whole and in order [native]
+    // Law: lawtwin.kafka::Broker: "|a batch reads back whole and in order| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Broker: a batch reads back whole and in order [native]
-    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created (_input0) (1)
-    // implies let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in
-    // match (attempt (produceRequest (_let0__tp) (Maybe::Nothing()) (_input1))) { Either::Left
-    // _match1__0__e -> false; Either::Right _match1__1__base -> (uncommittedFrom (_let0__tp)
-    // (_match1__1__base) == _input1) } = true
+    // Broker: "|a batch reads back whole and in order| [native]
+    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created (_input0) (1)
+    // implies let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__it = attempt (produceRequest (_let0__tp)
+    // (Maybe::Nothing()) (_input1)) in match (_let1__it) { Either::Left
+    // _match2__0___lawspecSelection0x0 -> false; Either::Right _match2__1___lawspecSelection0x0 ->
+    // (uncommittedFrom (_let0__tp) (_match2__1___lawspecSelection0x0) == _input1) } = true end for all
     private static Value LawBrokerABatchReadsBackWholeAndInOrderBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -477,7 +486,9 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             var ls1 = Fn.F0(() =>
             {
                 return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input1)), Scalar.TypeOf("Int64"), schema);
@@ -490,11 +501,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound3;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound1 = Runtime.Field(matched0, 0);
+                var bound4 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -502,8 +514,8 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound2 = Runtime.Field(matched0, 0);
-                    ls6 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.UncommittedFrom(schema, symbols, bound0, bound2), input1, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
+                    var bound5 = Runtime.Field(matched0, 0);
+                    ls6 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.UncommittedFrom(schema, symbols, bound0, bound5), input1, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
                 }
                 else
                 {
@@ -512,7 +524,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: a batch reads back whole and in order [native]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: \"|a batch reads back whole and in order| [native]");
         }
         else
         {
@@ -539,7 +551,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a batch reads back whole and in order [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a batch reads back whole and in order| [native] boundary")]
     public void LawBrokerABatchReadsBackWholeAndInOrder_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -549,10 +561,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerABatchReadsBackWholeAndInOrderCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: a batch reads back whole and in order [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|a batch reads back whole and in order| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a batch reads back whole and in order [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a batch reads back whole and in order| [native] property")]
     public void LawBrokerABatchReadsBackWholeAndInOrder_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -600,20 +612,23 @@ public sealed class LawtwinKafka
         {
             return LawBrokerABatchReadsBackWholeAndInOrderCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: a batch reads back whole and in order [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|a batch reads back whole and in order| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: a batch reads back whole and in order [cluster]
+    // Law: lawtwin.kafka::Broker: "|a batch reads back whole and in order| [cluster]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Broker: a batch reads back whole and in order [cluster]
-    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created (_input0) (1)
-    // implies let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in
-    // match (attempt (produceRequest (_let0__tp) (Maybe::Nothing()) (_input1))) { Either::Left
-    // _match1__0__e -> false; Either::Right _match1__1__base -> (uncommittedFrom (_let0__tp)
-    // (_match1__1__base) == _input1) } = true
+    // Broker: "|a batch reads back whole and in order| [cluster]
+    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created (_input0) (1)
+    // implies let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__it = attempt (produceRequest (_let0__tp)
+    // (Maybe::Nothing()) (_input1)) in match (_let1__it) { Either::Left
+    // _match2__0___lawspecSelection0x0 -> false; Either::Right _match2__1___lawspecSelection0x0 ->
+    // (uncommittedFrom (_let0__tp) (_match2__1___lawspecSelection0x0) == _input1) } = true end for all
     private static Value LawBrokerABatchReadsBackWholeAndInOrder2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -621,7 +636,9 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             var ls1 = Fn.F0(() =>
             {
                 return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input1)), Scalar.TypeOf("Int64"), schema);
@@ -634,11 +651,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound3;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound1 = Runtime.Field(matched0, 0);
+                var bound4 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -646,8 +664,8 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound2 = Runtime.Field(matched0, 0);
-                    ls6 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.UncommittedFrom(schema, symbols, bound0, bound2), input1, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
+                    var bound5 = Runtime.Field(matched0, 0);
+                    ls6 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.UncommittedFrom(schema, symbols, bound0, bound5), input1, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
                 }
                 else
                 {
@@ -656,7 +674,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: a batch reads back whole and in order [cluster]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: \"|a batch reads back whole and in order| [cluster]");
         }
         else
         {
@@ -682,7 +700,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Broker", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a batch reads back whole and in order [cluster] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a batch reads back whole and in order| [cluster] boundary")]
     public void LawBrokerABatchReadsBackWholeAndInOrder2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -692,10 +710,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerABatchReadsBackWholeAndInOrder2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: a batch reads back whole and in order [cluster]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|a batch reads back whole and in order| [cluster]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a batch reads back whole and in order [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a batch reads back whole and in order| [cluster] property")]
     public void LawBrokerABatchReadsBackWholeAndInOrder2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -743,26 +761,29 @@ public sealed class LawtwinKafka
         {
             return LawBrokerABatchReadsBackWholeAndInOrder2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: a batch reads back whole and in order [cluster]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|a batch reads back whole and in order| [cluster]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: an idempotent retry is written once [native]
+    // Law: lawtwin.kafka::Broker: "|an idempotent retry is written once| [native]
     // Description: A producer with an id stamps each batch with its epoch and sequence. A
     // retry of a batch the partition already has gives the first write's
     // offset and writes nothing.
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Broker: an idempotent retry is written once [native]
-    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created (_input0) (1)
-    // implies let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in
-    // match (attempt (initProducerIdRequest (Maybe::Nothing()))) { Either::Left _match1__0__e -> false;
-    // Either::Right _match1__1__pe -> let _let2__tag = Maybe::Just(tagOf (_match1__1__pe) (0)) in let
-    // _let3__first = attempt (produceRequest (_let0__tp) (_let2__tag) (_input1)) in let _let4__retry =
-    // attempt (produceRequest (_let0__tp) (_let2__tag) (_input1)) in ((_let3__first == _let4__retry)
-    // And followsBatch (_let3__first) (_input1) (attempt (listOffsetsRequest (_let0__tp)
-    // (lawtwin.kafka.model::type::OffsetSpec::Latest())
-    // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) } = true
+    // Broker: "|an idempotent retry is written once| [native]
+    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created (_input0) (1)
+    // implies let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__it = attempt (initProducerIdRequest
+    // (Maybe::Nothing())) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
+    // false; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__tag = Maybe::Just(tagOf
+    // (_match2__1___lawspecSelection0x0) (0)) in let _let4__first = attempt (produceRequest (_let0__tp)
+    // (_let3__tag) (_input1)) in let _let5__retry = attempt (produceRequest (_let0__tp) (_let3__tag)
+    // (_input1)) in ((_let4__first == _let5__retry) And followsBatch (_let4__first) (_input1) (attempt
+    // (listOffsetsRequest (_let0__tp) (lawtwin.kafka.model::type::OffsetSpec::Latest())
+    // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) } = true end for all
     private static Value LawBrokerAnIdempotentRetryIsWrittenOnceBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -771,7 +792,9 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             var ls1 = Fn.F0(() =>
             {
                 return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "initProducerIdRequest", Fn.List<Value>(Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (Text)"), schema))), Scalar.TypeOf("lawtwin.kafka.model::type::ProducerIdAndEpoch"), schema);
@@ -784,11 +807,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound3;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound1 = Runtime.Field(matched0, 0);
+                var bound4 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -796,11 +820,11 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound2 = Runtime.Field(matched0, 0);
-                    var bound3 = Schema.Construct("Maybe::Just", Fn.List<Value>(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, bound2, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema);
+                    var bound5 = Runtime.Field(matched0, 0);
+                    var bound6 = Schema.Construct("Maybe::Just", Fn.List<Value>(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, bound5, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema);
                     var ls7 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, bound3, input1)), Scalar.TypeOf("Int64"), schema);
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, bound6, input1)), Scalar.TypeOf("Int64"), schema);
                     });
                     var ls8 = Fn.F1((Value failureValue_2) =>
                     {
@@ -810,10 +834,10 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                     });
-                    var bound4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var bound7 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
                     var ls10 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, bound3, input1)), Scalar.TypeOf("Int64"), schema);
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, bound6, input1)), Scalar.TypeOf("Int64"), schema);
                     });
                     var ls11 = Fn.F1((Value failureValue_4) =>
                     {
@@ -823,9 +847,9 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_5), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                     });
-                    var bound5 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls10, ls11, ls12);
+                    var bound8 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls10, ls11, ls12);
                     Value ls13;
-                    if (Runtime.Truth(Scalar.Binary("==", bound4, bound5, "Either (lawtwin.kafka.model::type::KafkaError) (Int64)", "Either (lawtwin.kafka.model::type::KafkaError) (Int64)")))
+                    if (Runtime.Truth(Scalar.Binary("==", bound7, bound8, "Either (lawtwin.kafka.model::type::KafkaError) (Int64)", "Either (lawtwin.kafka.model::type::KafkaError) (Int64)")))
                     {
                         var ls14 = Fn.F0(() =>
                         {
@@ -839,7 +863,7 @@ public sealed class LawtwinKafka
                         {
                             return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_7), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                         });
-                        ls13 = LawSpec.Generated.LawtwinKafka.FollowsBatch(schema, symbols, bound4, input1, Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls14, ls15, ls16));
+                        ls13 = LawSpec.Generated.LawtwinKafka.FollowsBatch(schema, symbols, bound7, input1, Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls14, ls15, ls16));
                     }
                     else
                     {
@@ -854,7 +878,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: an idempotent retry is written once [native]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: \"|an idempotent retry is written once| [native]");
         }
         else
         {
@@ -881,7 +905,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: an idempotent retry is written once [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|an idempotent retry is written once| [native] boundary")]
     public void LawBrokerAnIdempotentRetryIsWrittenOnce_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -891,10 +915,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerAnIdempotentRetryIsWrittenOnceCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: an idempotent retry is written once [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|an idempotent retry is written once| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: an idempotent retry is written once [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|an idempotent retry is written once| [native] property")]
     public void LawBrokerAnIdempotentRetryIsWrittenOnce_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -942,26 +966,29 @@ public sealed class LawtwinKafka
         {
             return LawBrokerAnIdempotentRetryIsWrittenOnceCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: an idempotent retry is written once [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|an idempotent retry is written once| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: an idempotent retry is written once [cluster]
+    // Law: lawtwin.kafka::Broker: "|an idempotent retry is written once| [cluster]
     // Description: A producer with an id stamps each batch with its epoch and sequence. A
     // retry of a batch the partition already has gives the first write's
     // offset and writes nothing.
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Broker: an idempotent retry is written once [cluster]
-    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created (_input0) (1)
-    // implies let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in
-    // match (attempt (initProducerIdRequest (Maybe::Nothing()))) { Either::Left _match1__0__e -> false;
-    // Either::Right _match1__1__pe -> let _let2__tag = Maybe::Just(tagOf (_match1__1__pe) (0)) in let
-    // _let3__first = attempt (produceRequest (_let0__tp) (_let2__tag) (_input1)) in let _let4__retry =
-    // attempt (produceRequest (_let0__tp) (_let2__tag) (_input1)) in ((_let3__first == _let4__retry)
-    // And followsBatch (_let3__first) (_input1) (attempt (listOffsetsRequest (_let0__tp)
-    // (lawtwin.kafka.model::type::OffsetSpec::Latest())
-    // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) } = true
+    // Broker: "|an idempotent retry is written once| [cluster]
+    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created (_input0) (1)
+    // implies let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__it = attempt (initProducerIdRequest
+    // (Maybe::Nothing())) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
+    // false; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__tag = Maybe::Just(tagOf
+    // (_match2__1___lawspecSelection0x0) (0)) in let _let4__first = attempt (produceRequest (_let0__tp)
+    // (_let3__tag) (_input1)) in let _let5__retry = attempt (produceRequest (_let0__tp) (_let3__tag)
+    // (_input1)) in ((_let4__first == _let5__retry) And followsBatch (_let4__first) (_input1) (attempt
+    // (listOffsetsRequest (_let0__tp) (lawtwin.kafka.model::type::OffsetSpec::Latest())
+    // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) } = true end for all
     private static Value LawBrokerAnIdempotentRetryIsWrittenOnce2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -969,7 +996,9 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             var ls1 = Fn.F0(() =>
             {
                 return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "initProducerIdRequest", Fn.List<Value>(Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (Text)"), schema))), Scalar.TypeOf("lawtwin.kafka.model::type::ProducerIdAndEpoch"), schema);
@@ -982,11 +1011,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound3;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound1 = Runtime.Field(matched0, 0);
+                var bound4 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -994,11 +1024,11 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound2 = Runtime.Field(matched0, 0);
-                    var bound3 = Schema.Construct("Maybe::Just", Fn.List<Value>(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, bound2, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema);
+                    var bound5 = Runtime.Field(matched0, 0);
+                    var bound6 = Schema.Construct("Maybe::Just", Fn.List<Value>(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, bound5, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema);
                     var ls7 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, bound3, input1)), Scalar.TypeOf("Int64"), schema);
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, bound6, input1)), Scalar.TypeOf("Int64"), schema);
                     });
                     var ls8 = Fn.F1((Value failureValue_2) =>
                     {
@@ -1008,10 +1038,10 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                     });
-                    var bound4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var bound7 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
                     var ls10 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, bound3, input1)), Scalar.TypeOf("Int64"), schema);
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, bound6, input1)), Scalar.TypeOf("Int64"), schema);
                     });
                     var ls11 = Fn.F1((Value failureValue_4) =>
                     {
@@ -1021,9 +1051,9 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_5), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                     });
-                    var bound5 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls10, ls11, ls12);
+                    var bound8 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls10, ls11, ls12);
                     Value ls13;
-                    if (Runtime.Truth(Scalar.Binary("==", bound4, bound5, "Either (lawtwin.kafka.model::type::KafkaError) (Int64)", "Either (lawtwin.kafka.model::type::KafkaError) (Int64)")))
+                    if (Runtime.Truth(Scalar.Binary("==", bound7, bound8, "Either (lawtwin.kafka.model::type::KafkaError) (Int64)", "Either (lawtwin.kafka.model::type::KafkaError) (Int64)")))
                     {
                         var ls14 = Fn.F0(() =>
                         {
@@ -1037,7 +1067,7 @@ public sealed class LawtwinKafka
                         {
                             return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_7), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                         });
-                        ls13 = LawSpec.Generated.LawtwinKafka.FollowsBatch(schema, symbols, bound4, input1, Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls14, ls15, ls16));
+                        ls13 = LawSpec.Generated.LawtwinKafka.FollowsBatch(schema, symbols, bound7, input1, Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls14, ls15, ls16));
                     }
                     else
                     {
@@ -1052,7 +1082,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: an idempotent retry is written once [cluster]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: \"|an idempotent retry is written once| [cluster]");
         }
         else
         {
@@ -1078,7 +1108,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Broker", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: an idempotent retry is written once [cluster] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|an idempotent retry is written once| [cluster] boundary")]
     public void LawBrokerAnIdempotentRetryIsWrittenOnce2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -1088,10 +1118,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerAnIdempotentRetryIsWrittenOnce2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: an idempotent retry is written once [cluster]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|an idempotent retry is written once| [cluster]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: an idempotent retry is written once [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|an idempotent retry is written once| [cluster] property")]
     public void LawBrokerAnIdempotentRetryIsWrittenOnce2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -1139,22 +1169,26 @@ public sealed class LawtwinKafka
         {
             return LawBrokerAnIdempotentRetryIsWrittenOnce2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: an idempotent retry is written once [cluster]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|an idempotent retry is written once| [cluster]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: a gap in sequence numbers is refused [native]
+    // Law: lawtwin.kafka::Broker: "|a gap in sequence numbers is refused| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Broker: a gap in sequence numbers is refused [native]
-    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created (_input0) (1)
-    // implies match (attempt (initProducerIdRequest (Maybe::Nothing()))) { Either::Left _match0__0__e
-    // -> false; Either::Right _match0__1__pe -> match (attempt (produceRequest
-    // (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (Maybe::Just(tagOf
-    // (_match0__1__pe) (1))) (_input1))) { Either::Left _match1__0__lawspecFailure -> match
-    // (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber ->
-    // true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
+    // Broker: "|a gap in sequence numbers is refused| [native]
+    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created (_input0) (1)
+    // implies let _let0__it = attempt (initProducerIdRequest (Maybe::Nothing())) in match (_let0__it) {
+    // Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> match (attempt (produceRequest (let
+    // _let2___lawspecRecordField0 = _input0 in let _let3___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___lawspecRecordField0,
+    // _let3___lawspecRecordField1)) (Maybe::Just(tagOf (_match1__1___lawspecSelection0x0) (1)))
+    // (_input1))) { Either::Left _match2__0__lawspecFailure -> let _let3__it =
+    // _match2__0__lawspecFailure in match (_let3__it) {
+    // lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber -> true;
+    // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidPartitions -> false;
@@ -1170,7 +1204,7 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match1__1__lawspecResult -> false } } = true
+    // _match2__1__lawspecResult -> false } } = true end for all
     private static Value LawBrokerAGapInSequenceNumbersIsRefusedBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -1191,11 +1225,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -1203,10 +1238,14 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     var ls7 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("Maybe::Just", Fn.List<Value>(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, bound1, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input1)), Scalar.TypeOf("Int64"), schema);
+                        var bound5 = input0;
+                        var bound6 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                        var ls11 = Schema.Construct("Maybe::Just", Fn.List<Value>(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, bound2, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema);
+                        var ls12 = Scalar.TypeOf("Int64");
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound5, bound6), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls11, input1)), ls12, schema);
                     });
                     var ls8 = Fn.F1((Value failureValue_2) =>
                     {
@@ -1220,176 +1259,177 @@ public sealed class LawtwinKafka
                     Value ls10;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound2 = Runtime.Field(matched1, 0);
-                        var matched2 = bound2;
-                        Value ls11;
+                        var bound3 = Runtime.Field(matched1, 0);
+                        var bound7 = bound3;
+                        var matched2 = bound7;
+                        Value ls13;
                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber", matched2))
                         {
-                            ls11 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                            ls13 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            Value ls12;
+                            Value ls14;
                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", matched2))
                             {
-                                ls12 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                ls14 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                             }
                             else
                             {
-                                Value ls13;
+                                Value ls15;
                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists", matched2))
                                 {
-                                    ls13 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                    ls15 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                 }
                                 else
                                 {
-                                    Value ls14;
+                                    Value ls16;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTopic", matched2))
                                     {
-                                        ls14 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                        ls16 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        Value ls15;
+                                        Value ls17;
                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidPartitions", matched2))
                                         {
-                                            ls15 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                            ls17 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                         }
                                         else
                                         {
-                                            Value ls16;
+                                            Value ls18;
                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRecord", matched2))
                                             {
-                                                ls16 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                ls18 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                             }
                                             else
                                             {
-                                                Value ls17;
+                                                Value ls19;
                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRequest", matched2))
                                                 {
-                                                    ls17 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                    ls19 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                 }
                                                 else
                                                 {
-                                                    Value ls18;
+                                                    Value ls20;
                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange", matched2))
                                                     {
-                                                        ls18 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                        ls20 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                     }
                                                     else
                                                     {
-                                                        Value ls19;
+                                                        Value ls21;
                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch", matched2))
                                                         {
-                                                            ls19 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                            ls21 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                         }
                                                         else
                                                         {
-                                                            Value ls20;
+                                                            Value ls22;
                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::ProducerFenced", matched2))
                                                             {
-                                                                ls20 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                ls22 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                             }
                                                             else
                                                             {
-                                                                Value ls21;
+                                                                Value ls23;
                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownProducerId", matched2))
                                                                 {
-                                                                    ls21 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                    ls23 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                 }
                                                                 else
                                                                 {
-                                                                    Value ls22;
+                                                                    Value ls24;
                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping", matched2))
                                                                     {
-                                                                        ls22 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                        ls24 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                     }
                                                                     else
                                                                     {
-                                                                        Value ls23;
+                                                                        Value ls25;
                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTxnState", matched2))
                                                                         {
-                                                                            ls23 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                            ls25 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                         }
                                                                         else
                                                                         {
-                                                                            Value ls24;
+                                                                            Value ls26;
                                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidGroupId", matched2))
                                                                             {
-                                                                                ls24 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                ls26 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                             }
                                                                             else
                                                                             {
-                                                                                Value ls25;
+                                                                                Value ls27;
                                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownMemberId", matched2))
                                                                                 {
-                                                                                    ls25 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                    ls27 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    Value ls26;
+                                                                                    Value ls28;
                                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalGeneration", matched2))
                                                                                     {
-                                                                                        ls26 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                        ls28 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        Value ls27;
+                                                                                        Value ls29;
                                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalState", matched2))
                                                                                         {
-                                                                                            ls27 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                            ls29 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                         }
                                                                                         else
                                                                                         {
-                                                                                            ls27 = Runtime.NoMatch(matched2);
+                                                                                            ls29 = Runtime.NoMatch(matched2);
                                                                                         }
-                                                                                        ls26 = ls27;
+                                                                                        ls28 = ls29;
                                                                                     }
-                                                                                    ls25 = ls26;
+                                                                                    ls27 = ls28;
                                                                                 }
-                                                                                ls24 = ls25;
+                                                                                ls26 = ls27;
                                                                             }
-                                                                            ls23 = ls24;
+                                                                            ls25 = ls26;
                                                                         }
-                                                                        ls22 = ls23;
+                                                                        ls24 = ls25;
                                                                     }
-                                                                    ls21 = ls22;
+                                                                    ls23 = ls24;
                                                                 }
-                                                                ls20 = ls21;
+                                                                ls22 = ls23;
                                                             }
-                                                            ls19 = ls20;
+                                                            ls21 = ls22;
                                                         }
-                                                        ls18 = ls19;
+                                                        ls20 = ls21;
                                                     }
-                                                    ls17 = ls18;
+                                                    ls19 = ls20;
                                                 }
-                                                ls16 = ls17;
+                                                ls18 = ls19;
                                             }
-                                            ls15 = ls16;
+                                            ls17 = ls18;
                                         }
-                                        ls14 = ls15;
+                                        ls16 = ls17;
                                     }
-                                    ls13 = ls14;
+                                    ls15 = ls16;
                                 }
-                                ls12 = ls13;
+                                ls14 = ls15;
                             }
-                            ls11 = ls12;
+                            ls13 = ls14;
                         }
-                        ls10 = ls11;
+                        ls10 = ls13;
                     }
                     else
                     {
-                        Value ls28;
+                        Value ls30;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound3 = Runtime.Field(matched1, 0);
-                            ls28 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                            var bound4 = Runtime.Field(matched1, 0);
+                            ls30 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            ls28 = Runtime.NoMatch(matched1);
+                            ls30 = Runtime.NoMatch(matched1);
                         }
-                        ls10 = ls28;
+                        ls10 = ls30;
                     }
                     ls6 = ls10;
                 }
@@ -1400,7 +1440,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: a gap in sequence numbers is refused [native]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: \"|a gap in sequence numbers is refused| [native]");
         }
         else
         {
@@ -1427,7 +1467,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a gap in sequence numbers is refused [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a gap in sequence numbers is refused| [native] boundary")]
     public void LawBrokerAGapInSequenceNumbersIsRefused_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -1437,10 +1477,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerAGapInSequenceNumbersIsRefusedCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: a gap in sequence numbers is refused [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|a gap in sequence numbers is refused| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a gap in sequence numbers is refused [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a gap in sequence numbers is refused| [native] property")]
     public void LawBrokerAGapInSequenceNumbersIsRefused_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -1488,22 +1528,26 @@ public sealed class LawtwinKafka
         {
             return LawBrokerAGapInSequenceNumbersIsRefusedCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: a gap in sequence numbers is refused [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|a gap in sequence numbers is refused| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: a gap in sequence numbers is refused [cluster]
+    // Law: lawtwin.kafka::Broker: "|a gap in sequence numbers is refused| [cluster]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Broker: a gap in sequence numbers is refused [cluster]
-    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created (_input0) (1)
-    // implies match (attempt (initProducerIdRequest (Maybe::Nothing()))) { Either::Left _match0__0__e
-    // -> false; Either::Right _match0__1__pe -> match (attempt (produceRequest
-    // (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (Maybe::Just(tagOf
-    // (_match0__1__pe) (1))) (_input1))) { Either::Left _match1__0__lawspecFailure -> match
-    // (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber ->
-    // true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
+    // Broker: "|a gap in sequence numbers is refused| [cluster]
+    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created (_input0) (1)
+    // implies let _let0__it = attempt (initProducerIdRequest (Maybe::Nothing())) in match (_let0__it) {
+    // Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> match (attempt (produceRequest (let
+    // _let2___lawspecRecordField0 = _input0 in let _let3___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___lawspecRecordField0,
+    // _let3___lawspecRecordField1)) (Maybe::Just(tagOf (_match1__1___lawspecSelection0x0) (1)))
+    // (_input1))) { Either::Left _match2__0__lawspecFailure -> let _let3__it =
+    // _match2__0__lawspecFailure in match (_let3__it) {
+    // lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber -> true;
+    // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidPartitions -> false;
@@ -1519,7 +1563,7 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match1__1__lawspecResult -> false } } = true
+    // _match2__1__lawspecResult -> false } } = true end for all
     private static Value LawBrokerAGapInSequenceNumbersIsRefused2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -1539,11 +1583,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -1551,10 +1596,14 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     var ls7 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("Maybe::Just", Fn.List<Value>(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, bound1, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input1)), Scalar.TypeOf("Int64"), schema);
+                        var bound5 = input0;
+                        var bound6 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                        var ls11 = Schema.Construct("Maybe::Just", Fn.List<Value>(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, bound2, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema);
+                        var ls12 = Scalar.TypeOf("Int64");
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound5, bound6), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls11, input1)), ls12, schema);
                     });
                     var ls8 = Fn.F1((Value failureValue_2) =>
                     {
@@ -1568,176 +1617,177 @@ public sealed class LawtwinKafka
                     Value ls10;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound2 = Runtime.Field(matched1, 0);
-                        var matched2 = bound2;
-                        Value ls11;
+                        var bound3 = Runtime.Field(matched1, 0);
+                        var bound7 = bound3;
+                        var matched2 = bound7;
+                        Value ls13;
                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber", matched2))
                         {
-                            ls11 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                            ls13 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            Value ls12;
+                            Value ls14;
                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", matched2))
                             {
-                                ls12 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                ls14 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                             }
                             else
                             {
-                                Value ls13;
+                                Value ls15;
                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists", matched2))
                                 {
-                                    ls13 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                    ls15 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                 }
                                 else
                                 {
-                                    Value ls14;
+                                    Value ls16;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTopic", matched2))
                                     {
-                                        ls14 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                        ls16 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        Value ls15;
+                                        Value ls17;
                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidPartitions", matched2))
                                         {
-                                            ls15 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                            ls17 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                         }
                                         else
                                         {
-                                            Value ls16;
+                                            Value ls18;
                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRecord", matched2))
                                             {
-                                                ls16 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                ls18 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                             }
                                             else
                                             {
-                                                Value ls17;
+                                                Value ls19;
                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRequest", matched2))
                                                 {
-                                                    ls17 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                    ls19 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                 }
                                                 else
                                                 {
-                                                    Value ls18;
+                                                    Value ls20;
                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange", matched2))
                                                     {
-                                                        ls18 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                        ls20 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                     }
                                                     else
                                                     {
-                                                        Value ls19;
+                                                        Value ls21;
                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch", matched2))
                                                         {
-                                                            ls19 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                            ls21 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                         }
                                                         else
                                                         {
-                                                            Value ls20;
+                                                            Value ls22;
                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::ProducerFenced", matched2))
                                                             {
-                                                                ls20 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                ls22 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                             }
                                                             else
                                                             {
-                                                                Value ls21;
+                                                                Value ls23;
                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownProducerId", matched2))
                                                                 {
-                                                                    ls21 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                    ls23 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                 }
                                                                 else
                                                                 {
-                                                                    Value ls22;
+                                                                    Value ls24;
                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping", matched2))
                                                                     {
-                                                                        ls22 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                        ls24 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                     }
                                                                     else
                                                                     {
-                                                                        Value ls23;
+                                                                        Value ls25;
                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTxnState", matched2))
                                                                         {
-                                                                            ls23 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                            ls25 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                         }
                                                                         else
                                                                         {
-                                                                            Value ls24;
+                                                                            Value ls26;
                                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidGroupId", matched2))
                                                                             {
-                                                                                ls24 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                ls26 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                             }
                                                                             else
                                                                             {
-                                                                                Value ls25;
+                                                                                Value ls27;
                                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownMemberId", matched2))
                                                                                 {
-                                                                                    ls25 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                    ls27 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    Value ls26;
+                                                                                    Value ls28;
                                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalGeneration", matched2))
                                                                                     {
-                                                                                        ls26 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                        ls28 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        Value ls27;
+                                                                                        Value ls29;
                                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalState", matched2))
                                                                                         {
-                                                                                            ls27 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                            ls29 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                         }
                                                                                         else
                                                                                         {
-                                                                                            ls27 = Runtime.NoMatch(matched2);
+                                                                                            ls29 = Runtime.NoMatch(matched2);
                                                                                         }
-                                                                                        ls26 = ls27;
+                                                                                        ls28 = ls29;
                                                                                     }
-                                                                                    ls25 = ls26;
+                                                                                    ls27 = ls28;
                                                                                 }
-                                                                                ls24 = ls25;
+                                                                                ls26 = ls27;
                                                                             }
-                                                                            ls23 = ls24;
+                                                                            ls25 = ls26;
                                                                         }
-                                                                        ls22 = ls23;
+                                                                        ls24 = ls25;
                                                                     }
-                                                                    ls21 = ls22;
+                                                                    ls23 = ls24;
                                                                 }
-                                                                ls20 = ls21;
+                                                                ls22 = ls23;
                                                             }
-                                                            ls19 = ls20;
+                                                            ls21 = ls22;
                                                         }
-                                                        ls18 = ls19;
+                                                        ls20 = ls21;
                                                     }
-                                                    ls17 = ls18;
+                                                    ls19 = ls20;
                                                 }
-                                                ls16 = ls17;
+                                                ls18 = ls19;
                                             }
-                                            ls15 = ls16;
+                                            ls17 = ls18;
                                         }
-                                        ls14 = ls15;
+                                        ls16 = ls17;
                                     }
-                                    ls13 = ls14;
+                                    ls15 = ls16;
                                 }
-                                ls12 = ls13;
+                                ls14 = ls15;
                             }
-                            ls11 = ls12;
+                            ls13 = ls14;
                         }
-                        ls10 = ls11;
+                        ls10 = ls13;
                     }
                     else
                     {
-                        Value ls28;
+                        Value ls30;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound3 = Runtime.Field(matched1, 0);
-                            ls28 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                            var bound4 = Runtime.Field(matched1, 0);
+                            ls30 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            ls28 = Runtime.NoMatch(matched1);
+                            ls30 = Runtime.NoMatch(matched1);
                         }
-                        ls10 = ls28;
+                        ls10 = ls30;
                     }
                     ls6 = ls10;
                 }
@@ -1748,7 +1798,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: a gap in sequence numbers is refused [cluster]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: \"|a gap in sequence numbers is refused| [cluster]");
         }
         else
         {
@@ -1774,7 +1824,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Broker", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a gap in sequence numbers is refused [cluster] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a gap in sequence numbers is refused| [cluster] boundary")]
     public void LawBrokerAGapInSequenceNumbersIsRefused2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -1784,10 +1834,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerAGapInSequenceNumbersIsRefused2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: a gap in sequence numbers is refused [cluster]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|a gap in sequence numbers is refused| [cluster]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a gap in sequence numbers is refused [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a gap in sequence numbers is refused| [cluster] property")]
     public void LawBrokerAGapInSequenceNumbersIsRefused2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -1835,30 +1885,37 @@ public sealed class LawtwinKafka
         {
             return LawBrokerAGapInSequenceNumbersIsRefused2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: a gap in sequence numbers is refused [cluster]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|a gap in sequence numbers is refused| [cluster]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: a new epoch fences the older producer [native]
+    // Law: lawtwin.kafka::Broker: "|a new epoch fences the older producer| [native]
     // Description: Initialising a transactional id again bumps its epoch. Every request
     // stamped with the older epoch is refused from then on, so a zombie
     // instance can no longer write.
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Broker: a new epoch fences the older producer [native]
-    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created
-    // (_input0) (1) implies let _let0__tp =
-    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt
-    // (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false;
-    // Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) {
-    // Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy
-    // (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1)
-    // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-    // _matchfield0__producerId _matchfield1__producerEpoch -> _matchfield0__producerId }) (match
-    // (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-    // _matchfield2__producerId _matchfield3__producerEpoch -> _matchfield3__producerEpoch })
-    // (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
-    // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
+    // Broker: "|a new epoch fences the older producer| [native]
+    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
+    // (_input0) (1) implies let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__it = attempt (initProducerIdRequest
+    // (Maybe::Just(_input1))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
+    // false; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = attempt
+    // (initProducerIdRequest (Maybe::Just(_input1))) in match (_let3__it) { Either::Left
+    // _match4__0___match__lawspecSelection0x0_0 -> false; Either::Right
+    // _match4__1___match__lawspecSelection0x0_0 -> ((fencedBy (_match2__1___lawspecSelection0x0)
+    // (_match4__1___match__lawspecSelection0x0_0) And match (attempt (addPartitionsToTxnRequest
+    // (_input1) (match (_match2__1___lawspecSelection0x0) {
+    // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _matchfield0__producerId
+    // _matchfield1__producerEpoch -> _matchfield0__producerId }) (match
+    // (_match2__1___lawspecSelection0x0) {
+    // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _matchfield2__producerId
+    // _matchfield3__producerEpoch -> _matchfield3__producerEpoch }) (List::Cons(_let0__tp,
+    // List::Nil())))) { Either::Left _match5__0__lawspecFailure -> let _let6__it =
+    // _match5__0__lawspecFailure in match (_let6__it) {
+    // lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> false;
@@ -1875,9 +1932,9 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp)
-    // (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure
-    // -> match (_match3__0__lawspecFailure) {
+    // _match5__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp)
+    // (Maybe::Just(tagOf (_match2__1___lawspecSelection0x0) (0))) (_input2))) { Either::Left
+    // _match5__0__lawspecFailure -> let _let6__it = _match5__0__lawspecFailure in match (_let6__it) {
     // lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -1895,7 +1952,7 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match3__1__lawspecResult -> false }) } } = true
+    // _match5__1__lawspecResult -> false }) } } = true end for all
     private static Value LawBrokerANewEpochFencesTheOlderProducerBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -1905,7 +1962,9 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             var ls1 = Fn.F0(() =>
             {
                 return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "initProducerIdRequest", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input1), Scalar.TypeOf("Maybe (Text)"), schema))), Scalar.TypeOf("lawtwin.kafka.model::type::ProducerIdAndEpoch"), schema);
@@ -1918,11 +1977,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound3;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound1 = Runtime.Field(matched0, 0);
+                var bound4 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -1930,7 +1990,7 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound2 = Runtime.Field(matched0, 0);
+                    var bound5 = Runtime.Field(matched0, 0);
                     var ls7 = Fn.F0(() =>
                     {
                         return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "initProducerIdRequest", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input1), Scalar.TypeOf("Maybe (Text)"), schema))), Scalar.TypeOf("lawtwin.kafka.model::type::ProducerIdAndEpoch"), schema);
@@ -1943,11 +2003,12 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
                     });
-                    var matched1 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var bound6 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var matched1 = bound6;
                     Value ls10;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound3 = Runtime.Field(matched1, 0);
+                        var bound7 = Runtime.Field(matched1, 0);
                         ls10 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                     }
                     else
@@ -1955,32 +2016,32 @@ public sealed class LawtwinKafka
                         Value ls11;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound4 = Runtime.Field(matched1, 0);
+                            var bound8 = Runtime.Field(matched1, 0);
                             Value ls12;
                             Value ls13;
-                            if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.FencedBy(schema, symbols, bound2, bound4)))
+                            if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.FencedBy(schema, symbols, bound5, bound8)))
                             {
                                 var ls14 = Fn.F0(() =>
                                 {
-                                    var matched2 = bound2;
+                                    var matched2 = bound5;
                                     Value ls18;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch", matched2))
                                     {
-                                        var bound7 = Runtime.Field(matched2, 0);
-                                        var bound8 = Runtime.Field(matched2, 1);
-                                        ls18 = bound7;
+                                        var bound11 = Runtime.Field(matched2, 0);
+                                        var bound12 = Runtime.Field(matched2, 1);
+                                        ls18 = bound11;
                                     }
                                     else
                                     {
                                         ls18 = Runtime.NoMatch(matched2);
                                     }
-                                    var matched3 = bound2;
+                                    var matched3 = bound5;
                                     Value ls19;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch", matched3))
                                     {
-                                        var bound9 = Runtime.Field(matched3, 0);
-                                        var bound10 = Runtime.Field(matched3, 1);
-                                        ls19 = bound10;
+                                        var bound13 = Runtime.Field(matched3, 0);
+                                        var bound14 = Runtime.Field(matched3, 1);
+                                        ls19 = bound14;
                                     }
                                     else
                                     {
@@ -2002,8 +2063,9 @@ public sealed class LawtwinKafka
                                 Value ls17;
                                 if (Runtime.HasTag("Either::Left", matched4))
                                 {
-                                    var bound5 = Runtime.Field(matched4, 0);
-                                    var matched5 = bound5;
+                                    var bound9 = Runtime.Field(matched4, 0);
+                                    var bound15 = bound9;
+                                    var matched5 = bound15;
                                     Value ls22;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::ProducerFenced", matched5))
                                     {
@@ -2164,7 +2226,7 @@ public sealed class LawtwinKafka
                                     Value ls39;
                                     if (Runtime.HasTag("Either::Right", matched4))
                                     {
-                                        var bound6 = Runtime.Field(matched4, 0);
+                                        var bound10 = Runtime.Field(matched4, 0);
                                         ls39 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
@@ -2183,7 +2245,7 @@ public sealed class LawtwinKafka
                             {
                                 var ls40 = Fn.F0(() =>
                                 {
-                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, Schema.Construct("Maybe::Just", Fn.List<Value>(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, bound2, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input2)), Scalar.TypeOf("Int64"), schema);
+                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, Schema.Construct("Maybe::Just", Fn.List<Value>(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, bound5, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input2)), Scalar.TypeOf("Int64"), schema);
                                 });
                                 var ls41 = Fn.F1((Value failureValue_6) =>
                                 {
@@ -2197,8 +2259,9 @@ public sealed class LawtwinKafka
                                 Value ls43;
                                 if (Runtime.HasTag("Either::Left", matched6))
                                 {
-                                    var bound5_1 = Runtime.Field(matched6, 0);
-                                    var matched7 = bound5_1;
+                                    var bound9_1 = Runtime.Field(matched6, 0);
+                                    var bound15_1 = bound9_1;
+                                    var matched7 = bound15_1;
                                     Value ls44;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch", matched7))
                                     {
@@ -2359,7 +2422,7 @@ public sealed class LawtwinKafka
                                     Value ls61;
                                     if (Runtime.HasTag("Either::Right", matched6))
                                     {
-                                        var bound6_1 = Runtime.Field(matched6, 0);
+                                        var bound10_1 = Runtime.Field(matched6, 0);
                                         ls61 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
@@ -2391,7 +2454,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: a new epoch fences the older producer [native]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: \"|a new epoch fences the older producer| [native]");
         }
         else
         {
@@ -2418,7 +2481,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a new epoch fences the older producer [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a new epoch fences the older producer| [native] boundary")]
     public void LawBrokerANewEpochFencesTheOlderProducer_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -2428,10 +2491,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerANewEpochFencesTheOlderProducerCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: a new epoch fences the older producer [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|a new epoch fences the older producer| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a new epoch fences the older producer [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a new epoch fences the older producer| [native] property")]
     public void LawBrokerANewEpochFencesTheOlderProducer_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -2497,30 +2560,37 @@ public sealed class LawtwinKafka
         {
             return LawBrokerANewEpochFencesTheOlderProducerCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: a new epoch fences the older producer [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|a new epoch fences the older producer| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: a new epoch fences the older producer [cluster]
+    // Law: lawtwin.kafka::Broker: "|a new epoch fences the older producer| [cluster]
     // Description: Initialising a transactional id again bumps its epoch. Every request
     // stamped with the older epoch is refused from then on, so a zombie
     // instance can no longer write.
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Broker: a new epoch fences the older producer [cluster]
-    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created
-    // (_input0) (1) implies let _let0__tp =
-    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt
-    // (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false;
-    // Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) {
-    // Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy
-    // (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1)
-    // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-    // _matchfield0__producerId _matchfield1__producerEpoch -> _matchfield0__producerId }) (match
-    // (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-    // _matchfield2__producerId _matchfield3__producerEpoch -> _matchfield3__producerEpoch })
-    // (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
-    // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
+    // Broker: "|a new epoch fences the older producer| [cluster]
+    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
+    // (_input0) (1) implies let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__it = attempt (initProducerIdRequest
+    // (Maybe::Just(_input1))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
+    // false; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = attempt
+    // (initProducerIdRequest (Maybe::Just(_input1))) in match (_let3__it) { Either::Left
+    // _match4__0___match__lawspecSelection0x0_0 -> false; Either::Right
+    // _match4__1___match__lawspecSelection0x0_0 -> ((fencedBy (_match2__1___lawspecSelection0x0)
+    // (_match4__1___match__lawspecSelection0x0_0) And match (attempt (addPartitionsToTxnRequest
+    // (_input1) (match (_match2__1___lawspecSelection0x0) {
+    // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _matchfield0__producerId
+    // _matchfield1__producerEpoch -> _matchfield0__producerId }) (match
+    // (_match2__1___lawspecSelection0x0) {
+    // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _matchfield2__producerId
+    // _matchfield3__producerEpoch -> _matchfield3__producerEpoch }) (List::Cons(_let0__tp,
+    // List::Nil())))) { Either::Left _match5__0__lawspecFailure -> let _let6__it =
+    // _match5__0__lawspecFailure in match (_let6__it) {
+    // lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> false;
@@ -2537,9 +2607,9 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp)
-    // (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure
-    // -> match (_match3__0__lawspecFailure) {
+    // _match5__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp)
+    // (Maybe::Just(tagOf (_match2__1___lawspecSelection0x0) (0))) (_input2))) { Either::Left
+    // _match5__0__lawspecFailure -> let _let6__it = _match5__0__lawspecFailure in match (_let6__it) {
     // lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -2557,7 +2627,7 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match3__1__lawspecResult -> false }) } } = true
+    // _match5__1__lawspecResult -> false }) } } = true end for all
     private static Value LawBrokerANewEpochFencesTheOlderProducer2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -2566,7 +2636,9 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             var ls1 = Fn.F0(() =>
             {
                 return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "initProducerIdRequest", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input1), Scalar.TypeOf("Maybe (Text)"), schema))), Scalar.TypeOf("lawtwin.kafka.model::type::ProducerIdAndEpoch"), schema);
@@ -2579,11 +2651,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound3;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound1 = Runtime.Field(matched0, 0);
+                var bound4 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -2591,7 +2664,7 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound2 = Runtime.Field(matched0, 0);
+                    var bound5 = Runtime.Field(matched0, 0);
                     var ls7 = Fn.F0(() =>
                     {
                         return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "initProducerIdRequest", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input1), Scalar.TypeOf("Maybe (Text)"), schema))), Scalar.TypeOf("lawtwin.kafka.model::type::ProducerIdAndEpoch"), schema);
@@ -2604,11 +2677,12 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
                     });
-                    var matched1 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var bound6 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var matched1 = bound6;
                     Value ls10;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound3 = Runtime.Field(matched1, 0);
+                        var bound7 = Runtime.Field(matched1, 0);
                         ls10 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                     }
                     else
@@ -2616,32 +2690,32 @@ public sealed class LawtwinKafka
                         Value ls11;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound4 = Runtime.Field(matched1, 0);
+                            var bound8 = Runtime.Field(matched1, 0);
                             Value ls12;
                             Value ls13;
-                            if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.FencedBy(schema, symbols, bound2, bound4)))
+                            if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.FencedBy(schema, symbols, bound5, bound8)))
                             {
                                 var ls14 = Fn.F0(() =>
                                 {
-                                    var matched2 = bound2;
+                                    var matched2 = bound5;
                                     Value ls18;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch", matched2))
                                     {
-                                        var bound7 = Runtime.Field(matched2, 0);
-                                        var bound8 = Runtime.Field(matched2, 1);
-                                        ls18 = bound7;
+                                        var bound11 = Runtime.Field(matched2, 0);
+                                        var bound12 = Runtime.Field(matched2, 1);
+                                        ls18 = bound11;
                                     }
                                     else
                                     {
                                         ls18 = Runtime.NoMatch(matched2);
                                     }
-                                    var matched3 = bound2;
+                                    var matched3 = bound5;
                                     Value ls19;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch", matched3))
                                     {
-                                        var bound9 = Runtime.Field(matched3, 0);
-                                        var bound10 = Runtime.Field(matched3, 1);
-                                        ls19 = bound10;
+                                        var bound13 = Runtime.Field(matched3, 0);
+                                        var bound14 = Runtime.Field(matched3, 1);
+                                        ls19 = bound14;
                                     }
                                     else
                                     {
@@ -2663,8 +2737,9 @@ public sealed class LawtwinKafka
                                 Value ls17;
                                 if (Runtime.HasTag("Either::Left", matched4))
                                 {
-                                    var bound5 = Runtime.Field(matched4, 0);
-                                    var matched5 = bound5;
+                                    var bound9 = Runtime.Field(matched4, 0);
+                                    var bound15 = bound9;
+                                    var matched5 = bound15;
                                     Value ls22;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::ProducerFenced", matched5))
                                     {
@@ -2825,7 +2900,7 @@ public sealed class LawtwinKafka
                                     Value ls39;
                                     if (Runtime.HasTag("Either::Right", matched4))
                                     {
-                                        var bound6 = Runtime.Field(matched4, 0);
+                                        var bound10 = Runtime.Field(matched4, 0);
                                         ls39 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
@@ -2844,7 +2919,7 @@ public sealed class LawtwinKafka
                             {
                                 var ls40 = Fn.F0(() =>
                                 {
-                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, Schema.Construct("Maybe::Just", Fn.List<Value>(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, bound2, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input2)), Scalar.TypeOf("Int64"), schema);
+                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, Schema.Construct("Maybe::Just", Fn.List<Value>(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, bound5, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input2)), Scalar.TypeOf("Int64"), schema);
                                 });
                                 var ls41 = Fn.F1((Value failureValue_6) =>
                                 {
@@ -2858,8 +2933,9 @@ public sealed class LawtwinKafka
                                 Value ls43;
                                 if (Runtime.HasTag("Either::Left", matched6))
                                 {
-                                    var bound5_1 = Runtime.Field(matched6, 0);
-                                    var matched7 = bound5_1;
+                                    var bound9_1 = Runtime.Field(matched6, 0);
+                                    var bound15_1 = bound9_1;
+                                    var matched7 = bound15_1;
                                     Value ls44;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch", matched7))
                                     {
@@ -3020,7 +3096,7 @@ public sealed class LawtwinKafka
                                     Value ls61;
                                     if (Runtime.HasTag("Either::Right", matched6))
                                     {
-                                        var bound6_1 = Runtime.Field(matched6, 0);
+                                        var bound10_1 = Runtime.Field(matched6, 0);
                                         ls61 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
@@ -3052,7 +3128,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: a new epoch fences the older producer [cluster]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: \"|a new epoch fences the older producer| [cluster]");
         }
         else
         {
@@ -3078,7 +3154,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Broker", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a new epoch fences the older producer [cluster] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a new epoch fences the older producer| [cluster] boundary")]
     public void LawBrokerANewEpochFencesTheOlderProducer2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -3088,10 +3164,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerANewEpochFencesTheOlderProducer2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: a new epoch fences the older producer [cluster]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|a new epoch fences the older producer| [cluster]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a new epoch fences the older producer [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a new epoch fences the older producer| [cluster] property")]
     public void LawBrokerANewEpochFencesTheOlderProducer2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -3157,10 +3233,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerANewEpochFencesTheOlderProducer2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: a new epoch fences the older producer [cluster]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|a new epoch fences the older producer| [cluster]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: read-committed fetches never see open or aborted transactions
+    // Law: lawtwin.kafka::Broker: "|read-committed fetches never see open or aborted transactions|
     // [native]
     // Description: While a transaction is open its records are past the last stable
     // offset, which read-committed consumers do not pass. Once it aborts its
@@ -3169,9 +3245,10 @@ public sealed class LawtwinKafka
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Broker: read-committed fetches never see open or aborted transactions [native]
-    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created
-    // (_input0) (1) implies transactionThenRead (_input0) (_input1) (_input2) (false) = true
+    // Broker: "|read-committed fetches never see open or aborted transactions| [native]
+    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
+    // (_input0) (1) implies transactionThenRead (_input0) (_input1) (_input2) (false) = true end for
+    // all
     private static Value LawBrokerReadCommittedFetchesNeverSeeOpenOrBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -3181,7 +3258,7 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.TransactionThenRead(schema, symbols, input0, input1, input2, Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema)), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: read-committed fetches never see open or aborted transactions [native]");
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.TransactionThenRead(schema, symbols, input0, input1, input2, Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema)), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: \"|read-committed fetches never see open or aborted transactions| [native]");
         }
         else
         {
@@ -3208,7 +3285,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: read-committed fetches never see open or aborted transactions [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|read-committed fetches never see open or aborted transactions| [native] boundary")]
     public void LawBrokerReadCommittedFetchesNeverSeeOpenOr_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -3218,10 +3295,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerReadCommittedFetchesNeverSeeOpenOrCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: read-committed fetches never see open or aborted transactions [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|read-committed fetches never see open or aborted transactions| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: read-committed fetches never see open or aborted transactions [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|read-committed fetches never see open or aborted transactions| [native] property")]
     public void LawBrokerReadCommittedFetchesNeverSeeOpenOr_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -3287,10 +3364,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerReadCommittedFetchesNeverSeeOpenOrCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: read-committed fetches never see open or aborted transactions [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|read-committed fetches never see open or aborted transactions| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: read-committed fetches never see open or aborted transactions
+    // Law: lawtwin.kafka::Broker: "|read-committed fetches never see open or aborted transactions|
     // [cluster]
     // Description: While a transaction is open its records are past the last stable
     // offset, which read-committed consumers do not pass. Once it aborts its
@@ -3299,9 +3376,10 @@ public sealed class LawtwinKafka
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Broker: read-committed fetches never see open or aborted transactions [cluster]
-    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created
-    // (_input0) (1) implies transactionThenRead (_input0) (_input1) (_input2) (false) = true
+    // Broker: "|read-committed fetches never see open or aborted transactions| [cluster]
+    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
+    // (_input0) (1) implies transactionThenRead (_input0) (_input1) (_input2) (false) = true end for
+    // all
     private static Value LawBrokerReadCommittedFetchesNeverSeeOpenOr2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -3310,7 +3388,7 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.TransactionThenRead(schema, symbols, input0, input1, input2, Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema)), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: read-committed fetches never see open or aborted transactions [cluster]");
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.TransactionThenRead(schema, symbols, input0, input1, input2, Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema)), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: \"|read-committed fetches never see open or aborted transactions| [cluster]");
         }
         else
         {
@@ -3336,7 +3414,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Broker", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: read-committed fetches never see open or aborted transactions [cluster] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|read-committed fetches never see open or aborted transactions| [cluster] boundary")]
     public void LawBrokerReadCommittedFetchesNeverSeeOpenOr2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -3346,10 +3424,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerReadCommittedFetchesNeverSeeOpenOr2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: read-committed fetches never see open or aborted transactions [cluster]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|read-committed fetches never see open or aborted transactions| [cluster]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: read-committed fetches never see open or aborted transactions [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|read-committed fetches never see open or aborted transactions| [cluster] property")]
     public void LawBrokerReadCommittedFetchesNeverSeeOpenOr2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -3415,17 +3493,17 @@ public sealed class LawtwinKafka
         {
             return LawBrokerReadCommittedFetchesNeverSeeOpenOr2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: read-committed fetches never see open or aborted transactions [cluster]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|read-committed fetches never see open or aborted transactions| [cluster]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: a committed transaction is read whole and in order [native]
+    // Law: lawtwin.kafka::Broker: "|a committed transaction is read whole and in order| [native]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Broker: a committed transaction is read whole and in order [native]
-    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created
-    // (_input0) (1) implies transactionThenRead (_input0) (_input1) (_input2) (true) = true
+    // Broker: "|a committed transaction is read whole and in order| [native]
+    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
+    // (_input0) (1) implies transactionThenRead (_input0) (_input1) (_input2) (true) = true end for all
     private static Value LawBrokerACommittedTransactionIsReadWholeAndBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -3435,7 +3513,7 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.TransactionThenRead(schema, symbols, input0, input1, input2, Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema)), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: a committed transaction is read whole and in order [native]");
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.TransactionThenRead(schema, symbols, input0, input1, input2, Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema)), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: \"|a committed transaction is read whole and in order| [native]");
         }
         else
         {
@@ -3462,7 +3540,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a committed transaction is read whole and in order [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a committed transaction is read whole and in order| [native] boundary")]
     public void LawBrokerACommittedTransactionIsReadWholeAnd_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -3472,10 +3550,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerACommittedTransactionIsReadWholeAndCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: a committed transaction is read whole and in order [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|a committed transaction is read whole and in order| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a committed transaction is read whole and in order [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a committed transaction is read whole and in order| [native] property")]
     public void LawBrokerACommittedTransactionIsReadWholeAnd_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -3541,17 +3619,17 @@ public sealed class LawtwinKafka
         {
             return LawBrokerACommittedTransactionIsReadWholeAndCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: a committed transaction is read whole and in order [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|a committed transaction is read whole and in order| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: a committed transaction is read whole and in order [cluster]
+    // Law: lawtwin.kafka::Broker: "|a committed transaction is read whole and in order| [cluster]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Broker: a committed transaction is read whole and in order [cluster]
-    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created
-    // (_input0) (1) implies transactionThenRead (_input0) (_input1) (_input2) (true) = true
+    // Broker: "|a committed transaction is read whole and in order| [cluster]
+    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
+    // (_input0) (1) implies transactionThenRead (_input0) (_input1) (_input2) (true) = true end for all
     private static Value LawBrokerACommittedTransactionIsReadWholeAnd2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -3560,7 +3638,7 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.TransactionThenRead(schema, symbols, input0, input1, input2, Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema)), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: a committed transaction is read whole and in order [cluster]");
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.TransactionThenRead(schema, symbols, input0, input1, input2, Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema)), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: \"|a committed transaction is read whole and in order| [cluster]");
         }
         else
         {
@@ -3586,7 +3664,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Broker", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a committed transaction is read whole and in order [cluster] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a committed transaction is read whole and in order| [cluster] boundary")]
     public void LawBrokerACommittedTransactionIsReadWholeAnd2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -3596,10 +3674,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerACommittedTransactionIsReadWholeAnd2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: a committed transaction is read whole and in order [cluster]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|a committed transaction is read whole and in order| [cluster]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a committed transaction is read whole and in order [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a committed transaction is read whole and in order| [cluster] property")]
     public void LawBrokerACommittedTransactionIsReadWholeAnd2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -3665,17 +3743,17 @@ public sealed class LawtwinKafka
         {
             return LawBrokerACommittedTransactionIsReadWholeAnd2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: a committed transaction is read whole and in order [cluster]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|a committed transaction is read whole and in order| [cluster]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [native]
+    // Law: lawtwin.kafka::Broker: "|offsets sent in a transaction are committed only with it| [native]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Broker: offsets sent in a transaction are committed only with it [native]
-    // for all (t :: Text) (txid :: Text) (g :: Text) (offset :: Int64) . created (_input0) (1) implies
-    // transactionalOffsets (_input0) (_input1) (_input2) (_input3) = true
+    // Broker: "|offsets sent in a transaction are committed only with it| [native]
+    // for all (t :: Text) (txid :: Text) (g :: Text) (offset :: Int64) => created (_input0) (1) implies
+    // transactionalOffsets (_input0) (_input1) (_input2) (_input3) = true end for all
     private static Value LawBrokerOffsetsSentInATransactionAreBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -3686,7 +3764,7 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.TransactionalOffsets(schema, symbols, input0, input1, input2, input3), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [native]");
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.TransactionalOffsets(schema, symbols, input0, input1, input2, input3), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [native]");
         }
         else
         {
@@ -3713,7 +3791,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [native] boundary")]
     public void LawBrokerOffsetsSentInATransactionAre_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -3723,10 +3801,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerOffsetsSentInATransactionAreCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [native] property")]
     public void LawBrokerOffsetsSentInATransactionAre_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -3850,7 +3928,7 @@ public sealed class LawtwinKafka
             }
             return ls20;
         });
-        Search.Replay("lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -3859,19 +3937,19 @@ public sealed class LawtwinKafka
             {
                 return LawBrokerOffsetsSentInATransactionAreCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [native]", ls24, values_1, ls25);
+            return Search.Guard("lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [native]", ls24, values_1, ls25);
         });
-        Property.Check("lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [cluster]
+    // Law: lawtwin.kafka::Broker: "|offsets sent in a transaction are committed only with it| [cluster]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Broker: offsets sent in a transaction are committed only with it [cluster]
-    // for all (t :: Text) (txid :: Text) (g :: Text) (offset :: Int64) . created (_input0) (1) implies
-    // transactionalOffsets (_input0) (_input1) (_input2) (_input3) = true
+    // Broker: "|offsets sent in a transaction are committed only with it| [cluster]
+    // for all (t :: Text) (txid :: Text) (g :: Text) (offset :: Int64) => created (_input0) (1) implies
+    // transactionalOffsets (_input0) (_input1) (_input2) (_input3) = true end for all
     private static Value LawBrokerOffsetsSentInATransactionAre2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -3881,7 +3959,7 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.TransactionalOffsets(schema, symbols, input0, input1, input2, input3), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [cluster]");
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.TransactionalOffsets(schema, symbols, input0, input1, input2, input3), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [cluster]");
         }
         else
         {
@@ -3907,7 +3985,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Broker", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [cluster] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [cluster] boundary")]
     public void LawBrokerOffsetsSentInATransactionAre2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -3917,10 +3995,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerOffsetsSentInATransactionAre2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [cluster]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [cluster]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [cluster] property")]
     public void LawBrokerOffsetsSentInATransactionAre2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -4044,7 +4122,7 @@ public sealed class LawtwinKafka
             }
             return ls20;
         });
-        Search.Replay("lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [cluster]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [cluster]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -4053,22 +4131,22 @@ public sealed class LawtwinKafka
             {
                 return LawBrokerOffsetsSentInATransactionAre2Case(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [cluster]", ls24, values_1, ls25);
+            return Search.Guard("lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [cluster]", ls24, values_1, ls25);
         });
-        Property.Check("lawtwin.kafka::Broker: offsets sent in a transaction are committed only with it [cluster]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Broker: \"|offsets sent in a transaction are committed only with it| [cluster]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Broker: the coordinator assigns every partition exactly once [native]
+    // Law: lawtwin.kafka::Broker: "|the coordinator assigns every partition exactly once| [native]
     // Description: After members join, the partitions of the topic they subscribe to are
     // shared out so that each partition has exactly one owner in the
     // generation.
     // Rationale:
     // References: KIP-848
     // Expansion:
-    // Broker: the coordinator assigns every partition exactly once [native]
-    // for all (t :: Text) (n :: Int32) (g :: Text) (ids :: List (Text)) . created (_input0) (_input1)
+    // Broker: "|the coordinator assigns every partition exactly once| [native]
+    // for all (t :: Text) (n :: Int32) (g :: Text) (ids :: List (Text)) => created (_input0) (_input1)
     // implies (joinAll (_input2) (memberIds (_input3)) (List::Cons(_input0, List::Nil())) And
-    // coversOnce (_input0) (_input1) (describeGroupRequest (_input2))) = true
+    // coversOnce (_input0) (_input1) (describeGroupRequest (_input2))) = true end for all
     private static Value LawBrokerTheCoordinatorAssignsEveryPartitionBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -4089,7 +4167,7 @@ public sealed class LawtwinKafka
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Broker: the coordinator assigns every partition exactly once [native]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Broker: \"|the coordinator assigns every partition exactly once| [native]");
         }
         else
         {
@@ -4116,7 +4194,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: the coordinator assigns every partition exactly once [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|the coordinator assigns every partition exactly once| [native] property")]
     public void LawBrokerTheCoordinatorAssignsEveryPartition_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -4300,7 +4378,7 @@ public sealed class LawtwinKafka
             }
             return ls23;
         });
-        Search.Replay("lawtwin.kafka::Broker: the coordinator assigns every partition exactly once [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Broker: \"|the coordinator assigns every partition exactly once| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -4309,22 +4387,22 @@ public sealed class LawtwinKafka
             {
                 return LawBrokerTheCoordinatorAssignsEveryPartitionCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Broker: the coordinator assigns every partition exactly once [native]", ls30, values_1, ls31);
+            return Search.Guard("lawtwin.kafka::Broker: \"|the coordinator assigns every partition exactly once| [native]", ls30, values_1, ls31);
         });
-        Property.Check("lawtwin.kafka::Broker: the coordinator assigns every partition exactly once [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Broker: \"|the coordinator assigns every partition exactly once| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Broker: the coordinator assigns every partition exactly once [cluster]
+    // Law: lawtwin.kafka::Broker: "|the coordinator assigns every partition exactly once| [cluster]
     // Description: After members join, the partitions of the topic they subscribe to are
     // shared out so that each partition has exactly one owner in the
     // generation.
     // Rationale:
     // References: KIP-848
     // Expansion:
-    // Broker: the coordinator assigns every partition exactly once [cluster]
-    // for all (t :: Text) (n :: Int32) (g :: Text) (ids :: List (Text)) . created (_input0) (_input1)
+    // Broker: "|the coordinator assigns every partition exactly once| [cluster]
+    // for all (t :: Text) (n :: Int32) (g :: Text) (ids :: List (Text)) => created (_input0) (_input1)
     // implies (joinAll (_input2) (memberIds (_input3)) (List::Cons(_input0, List::Nil())) And
-    // coversOnce (_input0) (_input1) (describeGroupRequest (_input2))) = true
+    // coversOnce (_input0) (_input1) (describeGroupRequest (_input2))) = true end for all
     private static Value LawBrokerTheCoordinatorAssignsEveryPartition2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -4344,7 +4422,7 @@ public sealed class LawtwinKafka
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Broker: the coordinator assigns every partition exactly once [cluster]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Broker: \"|the coordinator assigns every partition exactly once| [cluster]");
         }
         else
         {
@@ -4370,7 +4448,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Broker", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: the coordinator assigns every partition exactly once [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|the coordinator assigns every partition exactly once| [cluster] property")]
     public void LawBrokerTheCoordinatorAssignsEveryPartition2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -4554,7 +4632,7 @@ public sealed class LawtwinKafka
             }
             return ls23;
         });
-        Search.Replay("lawtwin.kafka::Broker: the coordinator assigns every partition exactly once [cluster]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Broker: \"|the coordinator assigns every partition exactly once| [cluster]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -4563,28 +4641,34 @@ public sealed class LawtwinKafka
             {
                 return LawBrokerTheCoordinatorAssignsEveryPartition2Case(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Broker: the coordinator assigns every partition exactly once [cluster]", ls30, values_1, ls31);
+            return Search.Guard("lawtwin.kafka::Broker: \"|the coordinator assigns every partition exactly once| [cluster]", ls30, values_1, ls31);
         });
-        Property.Check("lawtwin.kafka::Broker: the coordinator assigns every partition exactly once [cluster]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Broker: \"|the coordinator assigns every partition exactly once| [cluster]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Broker: a member of an older generation cannot commit [native]
+    // Law: lawtwin.kafka::Broker: "|a member of an older generation cannot commit| [native]
     // Description: A new member starts a new generation. A member still at the old one is
     // told to rejoin, and its commits are refused, so it cannot overwrite the
     // offsets of the partitions it may have lost.
     // Rationale:
     // References:
     // Expansion:
-    // Broker: a member of an older generation cannot commit [native]
-    // for all (t :: Text) (g :: Text) (one :: Text) (other :: Text) . created (_input0) (1) implies
-    // match (attempt (joinGroupRequest (_input1) (_input2) (List::Cons(_input0, List::Nil())))) {
-    // Either::Left _match0__0__e -> false; Either::Right _match0__1__old -> match (attempt
-    // (joinGroupRequest (_input1) (_input3) (List::Cons(_input0, List::Nil())))) { Either::Left
-    // _match1__0__e -> false; Either::Right _match1__1__new -> (((_match0__1__old < _match1__1__new)
-    // And match (attempt (offsetCommitRequest (_input1) (_input2) (_match0__1__old)
-    // (List::Cons(lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(lawtwin.kafka.model::type::TopicP
-    // artition::TopicPartition(_input0, 0), 0), List::Nil())))) { Either::Left
-    // _match2__0__lawspecFailure -> match (_match2__0__lawspecFailure) {
+    // Broker: "|a member of an older generation cannot commit| [native]
+    // for all (t :: Text) (g :: Text) (one :: Text) (other :: Text) => created (_input0) (1) implies
+    // let _let0__it = attempt (joinGroupRequest (_input1) (_input2) (List::Cons(_input0, List::Nil())))
+    // in match (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> let _let2__it = attempt (joinGroupRequest (_input1) (_input3)
+    // (List::Cons(_input0, List::Nil()))) in match (_let2__it) { Either::Left
+    // _match3__0___match__lawspecSelection0x0_0 -> false; Either::Right
+    // _match3__1___match__lawspecSelection0x0_0 -> (((_match1__1___lawspecSelection0x0 <
+    // _match3__1___match__lawspecSelection0x0_0) And match (attempt (offsetCommitRequest (_input1)
+    // (_input2) (_match1__1___lawspecSelection0x0) (List::Cons(let _let4___lawspecRecordField0 = let
+    // _let4___lawspecRecordField0 = _input0 in let _let5___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let4___lawspecRecordField0,
+    // _let5___lawspecRecordField1) in let _let5___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_let4___lawspecRecordField0,
+    // _let5___lawspecRecordField1), List::Nil())))) { Either::Left _match4__0__lawspecFailure -> let
+    // _let5__it = _match4__0__lawspecFailure in match (_let5__it) {
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -4602,9 +4686,10 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::InvalidGroupId -> false;
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match2__1__lawspecResult -> false }) And match (attempt (heartbeatRequest (_input1) (_input2)
-    // (_match0__1__old))) { Either::Left _match2__0__lawspecFailure -> match
-    // (_match2__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> true;
+    // _match4__1__lawspecResult -> false }) And match (attempt (heartbeatRequest (_input1) (_input2)
+    // (_match1__1___lawspecSelection0x0))) { Either::Left _match4__0__lawspecFailure -> let _let5__it =
+    // _match4__0__lawspecFailure in match (_let5__it) {
+    // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> false;
@@ -4621,7 +4706,7 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::InvalidGroupId -> false;
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match2__1__lawspecResult -> false }) } } = true
+    // _match4__1__lawspecResult -> false }) } } = true end for all
     private static Value LawBrokerAMemberOfAnOlderGenerationCannotBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -4644,11 +4729,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -4656,7 +4742,7 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     var ls7 = Fn.F0(() =>
                     {
                         return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "joinGroupRequest", Fn.List<Value>(input1, input3, Schema.Construct("List::Cons", Fn.List<Value>(input0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (Text)"), schema)), Scalar.TypeOf("List (Text)"), schema))), Scalar.TypeOf("Int32"), schema);
@@ -4669,11 +4755,12 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
                     });
-                    var matched1 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var matched1 = bound3;
                     Value ls10;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound2 = Runtime.Field(matched1, 0);
+                        var bound4 = Runtime.Field(matched1, 0);
                         ls10 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                     }
                     else
@@ -4681,14 +4768,21 @@ public sealed class LawtwinKafka
                         Value ls11;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound3 = Runtime.Field(matched1, 0);
+                            var bound5 = Runtime.Field(matched1, 0);
                             Value ls12;
                             Value ls13;
-                            if (Runtime.Truth(Scalar.Binary("<", bound1, bound3, "Int32", "Int32")))
+                            if (Runtime.Truth(Scalar.Binary("<", bound2, bound5, "Int32", "Int32")))
                             {
                                 var ls14 = Fn.F0(() =>
                                 {
-                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "offsetCommitRequest", Fn.List<Value>(input1, input2, bound1, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema))), Scalar.TypeOf("Unit"), schema);
+                                    var bound8 = input0;
+                                    var bound9 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                                    var bound8_1 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound8, bound9), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+                                    var bound9_1 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema);
+                                    var ls18 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema);
+                                    var ls19 = Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)");
+                                    var ls20 = Scalar.TypeOf("Unit");
+                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "offsetCommitRequest", Fn.List<Value>(input1, input2, bound2, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(bound8_1, bound9_1), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), ls18), ls19, schema))), ls20, schema);
                                 });
                                 var ls15 = Fn.F1((Value failureValue_4) =>
                                 {
@@ -4702,176 +4796,177 @@ public sealed class LawtwinKafka
                                 Value ls17;
                                 if (Runtime.HasTag("Either::Left", matched2))
                                 {
-                                    var bound4 = Runtime.Field(matched2, 0);
-                                    var matched3 = bound4;
-                                    Value ls18;
+                                    var bound6 = Runtime.Field(matched2, 0);
+                                    var bound10 = bound6;
+                                    var matched3 = bound10;
+                                    Value ls21;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalGeneration", matched3))
                                     {
-                                        ls18 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                                        ls21 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        Value ls19;
+                                        Value ls22;
                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", matched3))
                                         {
-                                            ls19 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                            ls22 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                         }
                                         else
                                         {
-                                            Value ls20;
+                                            Value ls23;
                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists", matched3))
                                             {
-                                                ls20 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                ls23 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                             }
                                             else
                                             {
-                                                Value ls21;
+                                                Value ls24;
                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTopic", matched3))
                                                 {
-                                                    ls21 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                    ls24 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                 }
                                                 else
                                                 {
-                                                    Value ls22;
+                                                    Value ls25;
                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidPartitions", matched3))
                                                     {
-                                                        ls22 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                        ls25 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                     }
                                                     else
                                                     {
-                                                        Value ls23;
+                                                        Value ls26;
                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRecord", matched3))
                                                         {
-                                                            ls23 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                            ls26 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                         }
                                                         else
                                                         {
-                                                            Value ls24;
+                                                            Value ls27;
                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRequest", matched3))
                                                             {
-                                                                ls24 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                ls27 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                             }
                                                             else
                                                             {
-                                                                Value ls25;
+                                                                Value ls28;
                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange", matched3))
                                                                 {
-                                                                    ls25 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                    ls28 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                 }
                                                                 else
                                                                 {
-                                                                    Value ls26;
+                                                                    Value ls29;
                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber", matched3))
                                                                     {
-                                                                        ls26 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                        ls29 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                     }
                                                                     else
                                                                     {
-                                                                        Value ls27;
+                                                                        Value ls30;
                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch", matched3))
                                                                         {
-                                                                            ls27 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                            ls30 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                         }
                                                                         else
                                                                         {
-                                                                            Value ls28;
+                                                                            Value ls31;
                                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::ProducerFenced", matched3))
                                                                             {
-                                                                                ls28 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                ls31 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                             }
                                                                             else
                                                                             {
-                                                                                Value ls29;
+                                                                                Value ls32;
                                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownProducerId", matched3))
                                                                                 {
-                                                                                    ls29 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                    ls32 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    Value ls30;
+                                                                                    Value ls33;
                                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping", matched3))
                                                                                     {
-                                                                                        ls30 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                        ls33 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        Value ls31;
+                                                                                        Value ls34;
                                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTxnState", matched3))
                                                                                         {
-                                                                                            ls31 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                            ls34 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                         }
                                                                                         else
                                                                                         {
-                                                                                            Value ls32;
+                                                                                            Value ls35;
                                                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidGroupId", matched3))
                                                                                             {
-                                                                                                ls32 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                                ls35 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                             }
                                                                                             else
                                                                                             {
-                                                                                                Value ls33;
+                                                                                                Value ls36;
                                                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownMemberId", matched3))
                                                                                                 {
-                                                                                                    ls33 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                                    ls36 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                                 }
                                                                                                 else
                                                                                                 {
-                                                                                                    Value ls34;
+                                                                                                    Value ls37;
                                                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalState", matched3))
                                                                                                     {
-                                                                                                        ls34 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                                        ls37 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                                     }
                                                                                                     else
                                                                                                     {
-                                                                                                        ls34 = Runtime.NoMatch(matched3);
+                                                                                                        ls37 = Runtime.NoMatch(matched3);
                                                                                                     }
-                                                                                                    ls33 = ls34;
+                                                                                                    ls36 = ls37;
                                                                                                 }
-                                                                                                ls32 = ls33;
+                                                                                                ls35 = ls36;
                                                                                             }
-                                                                                            ls31 = ls32;
+                                                                                            ls34 = ls35;
                                                                                         }
-                                                                                        ls30 = ls31;
+                                                                                        ls33 = ls34;
                                                                                     }
-                                                                                    ls29 = ls30;
+                                                                                    ls32 = ls33;
                                                                                 }
-                                                                                ls28 = ls29;
+                                                                                ls31 = ls32;
                                                                             }
-                                                                            ls27 = ls28;
+                                                                            ls30 = ls31;
                                                                         }
-                                                                        ls26 = ls27;
+                                                                        ls29 = ls30;
                                                                     }
-                                                                    ls25 = ls26;
+                                                                    ls28 = ls29;
                                                                 }
-                                                                ls24 = ls25;
+                                                                ls27 = ls28;
                                                             }
-                                                            ls23 = ls24;
+                                                            ls26 = ls27;
                                                         }
-                                                        ls22 = ls23;
+                                                        ls25 = ls26;
                                                     }
-                                                    ls21 = ls22;
+                                                    ls24 = ls25;
                                                 }
-                                                ls20 = ls21;
+                                                ls23 = ls24;
                                             }
-                                            ls19 = ls20;
+                                            ls22 = ls23;
                                         }
-                                        ls18 = ls19;
+                                        ls21 = ls22;
                                     }
-                                    ls17 = ls18;
+                                    ls17 = ls21;
                                 }
                                 else
                                 {
-                                    Value ls35;
+                                    Value ls38;
                                     if (Runtime.HasTag("Either::Right", matched2))
                                     {
-                                        var bound5 = Runtime.Field(matched2, 0);
-                                        ls35 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                        var bound7 = Runtime.Field(matched2, 0);
+                                        ls38 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        ls35 = Runtime.NoMatch(matched2);
+                                        ls38 = Runtime.NoMatch(matched2);
                                     }
-                                    ls17 = ls35;
+                                    ls17 = ls38;
                                 }
                                 ls13 = ls17;
                             }
@@ -4881,194 +4976,195 @@ public sealed class LawtwinKafka
                             }
                             if (Runtime.Truth(ls13))
                             {
-                                var ls36 = Fn.F0(() =>
+                                var ls39 = Fn.F0(() =>
                                 {
-                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "heartbeatRequest", Fn.List<Value>(input1, input2, bound1)), Scalar.TypeOf("Unit"), schema);
+                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "heartbeatRequest", Fn.List<Value>(input1, input2, bound2)), Scalar.TypeOf("Unit"), schema);
                                 });
-                                var ls37 = Fn.F1((Value failureValue_6) =>
+                                var ls40 = Fn.F1((Value failureValue_6) =>
                                 {
                                     return Schema.Construct("Either::Right", Fn.List<Value>(failureValue_6), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
                                 });
-                                var ls38 = Fn.F1((Value failureValue_7) =>
+                                var ls41 = Fn.F1((Value failureValue_7) =>
                                 {
                                     return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_7), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
                                 });
-                                var matched4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls36, ls37, ls38);
-                                Value ls39;
+                                var matched4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls39, ls40, ls41);
+                                Value ls42;
                                 if (Runtime.HasTag("Either::Left", matched4))
                                 {
-                                    var bound4_1 = Runtime.Field(matched4, 0);
-                                    var matched5 = bound4_1;
-                                    Value ls40;
+                                    var bound6_1 = Runtime.Field(matched4, 0);
+                                    var bound10_1 = bound6_1;
+                                    var matched5 = bound10_1;
+                                    Value ls43;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalGeneration", matched5))
                                     {
-                                        ls40 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                                        ls43 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        Value ls41;
+                                        Value ls44;
                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", matched5))
                                         {
-                                            ls41 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                            ls44 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                         }
                                         else
                                         {
-                                            Value ls42;
+                                            Value ls45;
                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists", matched5))
                                             {
-                                                ls42 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                ls45 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                             }
                                             else
                                             {
-                                                Value ls43;
+                                                Value ls46;
                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTopic", matched5))
                                                 {
-                                                    ls43 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                    ls46 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                 }
                                                 else
                                                 {
-                                                    Value ls44;
+                                                    Value ls47;
                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidPartitions", matched5))
                                                     {
-                                                        ls44 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                        ls47 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                     }
                                                     else
                                                     {
-                                                        Value ls45;
+                                                        Value ls48;
                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRecord", matched5))
                                                         {
-                                                            ls45 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                            ls48 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                         }
                                                         else
                                                         {
-                                                            Value ls46;
+                                                            Value ls49;
                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRequest", matched5))
                                                             {
-                                                                ls46 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                ls49 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                             }
                                                             else
                                                             {
-                                                                Value ls47;
+                                                                Value ls50;
                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange", matched5))
                                                                 {
-                                                                    ls47 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                    ls50 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                 }
                                                                 else
                                                                 {
-                                                                    Value ls48;
+                                                                    Value ls51;
                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber", matched5))
                                                                     {
-                                                                        ls48 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                        ls51 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                     }
                                                                     else
                                                                     {
-                                                                        Value ls49;
+                                                                        Value ls52;
                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch", matched5))
                                                                         {
-                                                                            ls49 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                            ls52 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                         }
                                                                         else
                                                                         {
-                                                                            Value ls50;
+                                                                            Value ls53;
                                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::ProducerFenced", matched5))
                                                                             {
-                                                                                ls50 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                ls53 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                             }
                                                                             else
                                                                             {
-                                                                                Value ls51;
+                                                                                Value ls54;
                                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownProducerId", matched5))
                                                                                 {
-                                                                                    ls51 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                    ls54 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    Value ls52;
+                                                                                    Value ls55;
                                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping", matched5))
                                                                                     {
-                                                                                        ls52 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                        ls55 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        Value ls53;
+                                                                                        Value ls56;
                                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTxnState", matched5))
                                                                                         {
-                                                                                            ls53 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                            ls56 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                         }
                                                                                         else
                                                                                         {
-                                                                                            Value ls54;
+                                                                                            Value ls57;
                                                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidGroupId", matched5))
                                                                                             {
-                                                                                                ls54 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                                ls57 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                             }
                                                                                             else
                                                                                             {
-                                                                                                Value ls55;
+                                                                                                Value ls58;
                                                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownMemberId", matched5))
                                                                                                 {
-                                                                                                    ls55 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                                    ls58 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                                 }
                                                                                                 else
                                                                                                 {
-                                                                                                    Value ls56;
+                                                                                                    Value ls59;
                                                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalState", matched5))
                                                                                                     {
-                                                                                                        ls56 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                                        ls59 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                                     }
                                                                                                     else
                                                                                                     {
-                                                                                                        ls56 = Runtime.NoMatch(matched5);
+                                                                                                        ls59 = Runtime.NoMatch(matched5);
                                                                                                     }
-                                                                                                    ls55 = ls56;
+                                                                                                    ls58 = ls59;
                                                                                                 }
-                                                                                                ls54 = ls55;
+                                                                                                ls57 = ls58;
                                                                                             }
-                                                                                            ls53 = ls54;
+                                                                                            ls56 = ls57;
                                                                                         }
-                                                                                        ls52 = ls53;
+                                                                                        ls55 = ls56;
                                                                                     }
-                                                                                    ls51 = ls52;
+                                                                                    ls54 = ls55;
                                                                                 }
-                                                                                ls50 = ls51;
+                                                                                ls53 = ls54;
                                                                             }
-                                                                            ls49 = ls50;
+                                                                            ls52 = ls53;
                                                                         }
-                                                                        ls48 = ls49;
+                                                                        ls51 = ls52;
                                                                     }
-                                                                    ls47 = ls48;
+                                                                    ls50 = ls51;
                                                                 }
-                                                                ls46 = ls47;
+                                                                ls49 = ls50;
                                                             }
-                                                            ls45 = ls46;
+                                                            ls48 = ls49;
                                                         }
-                                                        ls44 = ls45;
+                                                        ls47 = ls48;
                                                     }
-                                                    ls43 = ls44;
+                                                    ls46 = ls47;
                                                 }
-                                                ls42 = ls43;
+                                                ls45 = ls46;
                                             }
-                                            ls41 = ls42;
+                                            ls44 = ls45;
                                         }
-                                        ls40 = ls41;
+                                        ls43 = ls44;
                                     }
-                                    ls39 = ls40;
+                                    ls42 = ls43;
                                 }
                                 else
                                 {
-                                    Value ls57;
+                                    Value ls60;
                                     if (Runtime.HasTag("Either::Right", matched4))
                                     {
-                                        var bound5_1 = Runtime.Field(matched4, 0);
-                                        ls57 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                        var bound7_1 = Runtime.Field(matched4, 0);
+                                        ls60 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        ls57 = Runtime.NoMatch(matched4);
+                                        ls60 = Runtime.NoMatch(matched4);
                                     }
-                                    ls39 = ls57;
+                                    ls42 = ls60;
                                 }
-                                ls12 = ls39;
+                                ls12 = ls42;
                             }
                             else
                             {
@@ -5091,7 +5187,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: a member of an older generation cannot commit [native]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: \"|a member of an older generation cannot commit| [native]");
         }
         else
         {
@@ -5118,7 +5214,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a member of an older generation cannot commit [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a member of an older generation cannot commit| [native] property")]
     public void LawBrokerAMemberOfAnOlderGenerationCannot_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -5260,7 +5356,7 @@ public sealed class LawtwinKafka
             }
             return ls21;
         });
-        Search.Replay("lawtwin.kafka::Broker: a member of an older generation cannot commit [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Broker: \"|a member of an older generation cannot commit| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -5269,28 +5365,34 @@ public sealed class LawtwinKafka
             {
                 return LawBrokerAMemberOfAnOlderGenerationCannotCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Broker: a member of an older generation cannot commit [native]", ls26, values_1, ls27);
+            return Search.Guard("lawtwin.kafka::Broker: \"|a member of an older generation cannot commit| [native]", ls26, values_1, ls27);
         });
-        Property.Check("lawtwin.kafka::Broker: a member of an older generation cannot commit [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Broker: \"|a member of an older generation cannot commit| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Broker: a member of an older generation cannot commit [cluster]
+    // Law: lawtwin.kafka::Broker: "|a member of an older generation cannot commit| [cluster]
     // Description: A new member starts a new generation. A member still at the old one is
     // told to rejoin, and its commits are refused, so it cannot overwrite the
     // offsets of the partitions it may have lost.
     // Rationale:
     // References:
     // Expansion:
-    // Broker: a member of an older generation cannot commit [cluster]
-    // for all (t :: Text) (g :: Text) (one :: Text) (other :: Text) . created (_input0) (1) implies
-    // match (attempt (joinGroupRequest (_input1) (_input2) (List::Cons(_input0, List::Nil())))) {
-    // Either::Left _match0__0__e -> false; Either::Right _match0__1__old -> match (attempt
-    // (joinGroupRequest (_input1) (_input3) (List::Cons(_input0, List::Nil())))) { Either::Left
-    // _match1__0__e -> false; Either::Right _match1__1__new -> (((_match0__1__old < _match1__1__new)
-    // And match (attempt (offsetCommitRequest (_input1) (_input2) (_match0__1__old)
-    // (List::Cons(lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(lawtwin.kafka.model::type::TopicP
-    // artition::TopicPartition(_input0, 0), 0), List::Nil())))) { Either::Left
-    // _match2__0__lawspecFailure -> match (_match2__0__lawspecFailure) {
+    // Broker: "|a member of an older generation cannot commit| [cluster]
+    // for all (t :: Text) (g :: Text) (one :: Text) (other :: Text) => created (_input0) (1) implies
+    // let _let0__it = attempt (joinGroupRequest (_input1) (_input2) (List::Cons(_input0, List::Nil())))
+    // in match (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> let _let2__it = attempt (joinGroupRequest (_input1) (_input3)
+    // (List::Cons(_input0, List::Nil()))) in match (_let2__it) { Either::Left
+    // _match3__0___match__lawspecSelection0x0_0 -> false; Either::Right
+    // _match3__1___match__lawspecSelection0x0_0 -> (((_match1__1___lawspecSelection0x0 <
+    // _match3__1___match__lawspecSelection0x0_0) And match (attempt (offsetCommitRequest (_input1)
+    // (_input2) (_match1__1___lawspecSelection0x0) (List::Cons(let _let4___lawspecRecordField0 = let
+    // _let4___lawspecRecordField0 = _input0 in let _let5___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let4___lawspecRecordField0,
+    // _let5___lawspecRecordField1) in let _let5___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_let4___lawspecRecordField0,
+    // _let5___lawspecRecordField1), List::Nil())))) { Either::Left _match4__0__lawspecFailure -> let
+    // _let5__it = _match4__0__lawspecFailure in match (_let5__it) {
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -5308,9 +5410,10 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::InvalidGroupId -> false;
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match2__1__lawspecResult -> false }) And match (attempt (heartbeatRequest (_input1) (_input2)
-    // (_match0__1__old))) { Either::Left _match2__0__lawspecFailure -> match
-    // (_match2__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> true;
+    // _match4__1__lawspecResult -> false }) And match (attempt (heartbeatRequest (_input1) (_input2)
+    // (_match1__1___lawspecSelection0x0))) { Either::Left _match4__0__lawspecFailure -> let _let5__it =
+    // _match4__0__lawspecFailure in match (_let5__it) {
+    // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> false;
@@ -5327,7 +5430,7 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::InvalidGroupId -> false;
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match2__1__lawspecResult -> false }) } } = true
+    // _match4__1__lawspecResult -> false }) } } = true end for all
     private static Value LawBrokerAMemberOfAnOlderGenerationCannot2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -5349,11 +5452,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -5361,7 +5465,7 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     var ls7 = Fn.F0(() =>
                     {
                         return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "joinGroupRequest", Fn.List<Value>(input1, input3, Schema.Construct("List::Cons", Fn.List<Value>(input0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (Text)"), schema)), Scalar.TypeOf("List (Text)"), schema))), Scalar.TypeOf("Int32"), schema);
@@ -5374,11 +5478,12 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
                     });
-                    var matched1 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var matched1 = bound3;
                     Value ls10;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound2 = Runtime.Field(matched1, 0);
+                        var bound4 = Runtime.Field(matched1, 0);
                         ls10 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                     }
                     else
@@ -5386,14 +5491,21 @@ public sealed class LawtwinKafka
                         Value ls11;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound3 = Runtime.Field(matched1, 0);
+                            var bound5 = Runtime.Field(matched1, 0);
                             Value ls12;
                             Value ls13;
-                            if (Runtime.Truth(Scalar.Binary("<", bound1, bound3, "Int32", "Int32")))
+                            if (Runtime.Truth(Scalar.Binary("<", bound2, bound5, "Int32", "Int32")))
                             {
                                 var ls14 = Fn.F0(() =>
                                 {
-                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "offsetCommitRequest", Fn.List<Value>(input1, input2, bound1, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema))), Scalar.TypeOf("Unit"), schema);
+                                    var bound8 = input0;
+                                    var bound9 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                                    var bound8_1 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound8, bound9), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+                                    var bound9_1 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema);
+                                    var ls18 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema);
+                                    var ls19 = Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)");
+                                    var ls20 = Scalar.TypeOf("Unit");
+                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "offsetCommitRequest", Fn.List<Value>(input1, input2, bound2, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(bound8_1, bound9_1), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), ls18), ls19, schema))), ls20, schema);
                                 });
                                 var ls15 = Fn.F1((Value failureValue_4) =>
                                 {
@@ -5407,176 +5519,177 @@ public sealed class LawtwinKafka
                                 Value ls17;
                                 if (Runtime.HasTag("Either::Left", matched2))
                                 {
-                                    var bound4 = Runtime.Field(matched2, 0);
-                                    var matched3 = bound4;
-                                    Value ls18;
+                                    var bound6 = Runtime.Field(matched2, 0);
+                                    var bound10 = bound6;
+                                    var matched3 = bound10;
+                                    Value ls21;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalGeneration", matched3))
                                     {
-                                        ls18 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                                        ls21 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        Value ls19;
+                                        Value ls22;
                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", matched3))
                                         {
-                                            ls19 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                            ls22 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                         }
                                         else
                                         {
-                                            Value ls20;
+                                            Value ls23;
                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists", matched3))
                                             {
-                                                ls20 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                ls23 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                             }
                                             else
                                             {
-                                                Value ls21;
+                                                Value ls24;
                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTopic", matched3))
                                                 {
-                                                    ls21 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                    ls24 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                 }
                                                 else
                                                 {
-                                                    Value ls22;
+                                                    Value ls25;
                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidPartitions", matched3))
                                                     {
-                                                        ls22 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                        ls25 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                     }
                                                     else
                                                     {
-                                                        Value ls23;
+                                                        Value ls26;
                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRecord", matched3))
                                                         {
-                                                            ls23 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                            ls26 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                         }
                                                         else
                                                         {
-                                                            Value ls24;
+                                                            Value ls27;
                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRequest", matched3))
                                                             {
-                                                                ls24 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                ls27 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                             }
                                                             else
                                                             {
-                                                                Value ls25;
+                                                                Value ls28;
                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange", matched3))
                                                                 {
-                                                                    ls25 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                    ls28 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                 }
                                                                 else
                                                                 {
-                                                                    Value ls26;
+                                                                    Value ls29;
                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber", matched3))
                                                                     {
-                                                                        ls26 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                        ls29 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                     }
                                                                     else
                                                                     {
-                                                                        Value ls27;
+                                                                        Value ls30;
                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch", matched3))
                                                                         {
-                                                                            ls27 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                            ls30 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                         }
                                                                         else
                                                                         {
-                                                                            Value ls28;
+                                                                            Value ls31;
                                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::ProducerFenced", matched3))
                                                                             {
-                                                                                ls28 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                ls31 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                             }
                                                                             else
                                                                             {
-                                                                                Value ls29;
+                                                                                Value ls32;
                                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownProducerId", matched3))
                                                                                 {
-                                                                                    ls29 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                    ls32 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    Value ls30;
+                                                                                    Value ls33;
                                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping", matched3))
                                                                                     {
-                                                                                        ls30 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                        ls33 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        Value ls31;
+                                                                                        Value ls34;
                                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTxnState", matched3))
                                                                                         {
-                                                                                            ls31 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                            ls34 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                         }
                                                                                         else
                                                                                         {
-                                                                                            Value ls32;
+                                                                                            Value ls35;
                                                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidGroupId", matched3))
                                                                                             {
-                                                                                                ls32 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                                ls35 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                             }
                                                                                             else
                                                                                             {
-                                                                                                Value ls33;
+                                                                                                Value ls36;
                                                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownMemberId", matched3))
                                                                                                 {
-                                                                                                    ls33 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                                    ls36 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                                 }
                                                                                                 else
                                                                                                 {
-                                                                                                    Value ls34;
+                                                                                                    Value ls37;
                                                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalState", matched3))
                                                                                                     {
-                                                                                                        ls34 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                                        ls37 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                                     }
                                                                                                     else
                                                                                                     {
-                                                                                                        ls34 = Runtime.NoMatch(matched3);
+                                                                                                        ls37 = Runtime.NoMatch(matched3);
                                                                                                     }
-                                                                                                    ls33 = ls34;
+                                                                                                    ls36 = ls37;
                                                                                                 }
-                                                                                                ls32 = ls33;
+                                                                                                ls35 = ls36;
                                                                                             }
-                                                                                            ls31 = ls32;
+                                                                                            ls34 = ls35;
                                                                                         }
-                                                                                        ls30 = ls31;
+                                                                                        ls33 = ls34;
                                                                                     }
-                                                                                    ls29 = ls30;
+                                                                                    ls32 = ls33;
                                                                                 }
-                                                                                ls28 = ls29;
+                                                                                ls31 = ls32;
                                                                             }
-                                                                            ls27 = ls28;
+                                                                            ls30 = ls31;
                                                                         }
-                                                                        ls26 = ls27;
+                                                                        ls29 = ls30;
                                                                     }
-                                                                    ls25 = ls26;
+                                                                    ls28 = ls29;
                                                                 }
-                                                                ls24 = ls25;
+                                                                ls27 = ls28;
                                                             }
-                                                            ls23 = ls24;
+                                                            ls26 = ls27;
                                                         }
-                                                        ls22 = ls23;
+                                                        ls25 = ls26;
                                                     }
-                                                    ls21 = ls22;
+                                                    ls24 = ls25;
                                                 }
-                                                ls20 = ls21;
+                                                ls23 = ls24;
                                             }
-                                            ls19 = ls20;
+                                            ls22 = ls23;
                                         }
-                                        ls18 = ls19;
+                                        ls21 = ls22;
                                     }
-                                    ls17 = ls18;
+                                    ls17 = ls21;
                                 }
                                 else
                                 {
-                                    Value ls35;
+                                    Value ls38;
                                     if (Runtime.HasTag("Either::Right", matched2))
                                     {
-                                        var bound5 = Runtime.Field(matched2, 0);
-                                        ls35 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                        var bound7 = Runtime.Field(matched2, 0);
+                                        ls38 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        ls35 = Runtime.NoMatch(matched2);
+                                        ls38 = Runtime.NoMatch(matched2);
                                     }
-                                    ls17 = ls35;
+                                    ls17 = ls38;
                                 }
                                 ls13 = ls17;
                             }
@@ -5586,194 +5699,195 @@ public sealed class LawtwinKafka
                             }
                             if (Runtime.Truth(ls13))
                             {
-                                var ls36 = Fn.F0(() =>
+                                var ls39 = Fn.F0(() =>
                                 {
-                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "heartbeatRequest", Fn.List<Value>(input1, input2, bound1)), Scalar.TypeOf("Unit"), schema);
+                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "heartbeatRequest", Fn.List<Value>(input1, input2, bound2)), Scalar.TypeOf("Unit"), schema);
                                 });
-                                var ls37 = Fn.F1((Value failureValue_6) =>
+                                var ls40 = Fn.F1((Value failureValue_6) =>
                                 {
                                     return Schema.Construct("Either::Right", Fn.List<Value>(failureValue_6), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
                                 });
-                                var ls38 = Fn.F1((Value failureValue_7) =>
+                                var ls41 = Fn.F1((Value failureValue_7) =>
                                 {
                                     return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_7), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
                                 });
-                                var matched4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls36, ls37, ls38);
-                                Value ls39;
+                                var matched4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls39, ls40, ls41);
+                                Value ls42;
                                 if (Runtime.HasTag("Either::Left", matched4))
                                 {
-                                    var bound4_1 = Runtime.Field(matched4, 0);
-                                    var matched5 = bound4_1;
-                                    Value ls40;
+                                    var bound6_1 = Runtime.Field(matched4, 0);
+                                    var bound10_1 = bound6_1;
+                                    var matched5 = bound10_1;
+                                    Value ls43;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalGeneration", matched5))
                                     {
-                                        ls40 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                                        ls43 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        Value ls41;
+                                        Value ls44;
                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", matched5))
                                         {
-                                            ls41 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                            ls44 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                         }
                                         else
                                         {
-                                            Value ls42;
+                                            Value ls45;
                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists", matched5))
                                             {
-                                                ls42 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                ls45 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                             }
                                             else
                                             {
-                                                Value ls43;
+                                                Value ls46;
                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTopic", matched5))
                                                 {
-                                                    ls43 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                    ls46 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                 }
                                                 else
                                                 {
-                                                    Value ls44;
+                                                    Value ls47;
                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidPartitions", matched5))
                                                     {
-                                                        ls44 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                        ls47 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                     }
                                                     else
                                                     {
-                                                        Value ls45;
+                                                        Value ls48;
                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRecord", matched5))
                                                         {
-                                                            ls45 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                            ls48 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                         }
                                                         else
                                                         {
-                                                            Value ls46;
+                                                            Value ls49;
                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRequest", matched5))
                                                             {
-                                                                ls46 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                ls49 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                             }
                                                             else
                                                             {
-                                                                Value ls47;
+                                                                Value ls50;
                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange", matched5))
                                                                 {
-                                                                    ls47 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                    ls50 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                 }
                                                                 else
                                                                 {
-                                                                    Value ls48;
+                                                                    Value ls51;
                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber", matched5))
                                                                     {
-                                                                        ls48 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                        ls51 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                     }
                                                                     else
                                                                     {
-                                                                        Value ls49;
+                                                                        Value ls52;
                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch", matched5))
                                                                         {
-                                                                            ls49 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                            ls52 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                         }
                                                                         else
                                                                         {
-                                                                            Value ls50;
+                                                                            Value ls53;
                                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::ProducerFenced", matched5))
                                                                             {
-                                                                                ls50 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                ls53 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                             }
                                                                             else
                                                                             {
-                                                                                Value ls51;
+                                                                                Value ls54;
                                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownProducerId", matched5))
                                                                                 {
-                                                                                    ls51 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                    ls54 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    Value ls52;
+                                                                                    Value ls55;
                                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping", matched5))
                                                                                     {
-                                                                                        ls52 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                        ls55 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        Value ls53;
+                                                                                        Value ls56;
                                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTxnState", matched5))
                                                                                         {
-                                                                                            ls53 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                            ls56 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                         }
                                                                                         else
                                                                                         {
-                                                                                            Value ls54;
+                                                                                            Value ls57;
                                                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidGroupId", matched5))
                                                                                             {
-                                                                                                ls54 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                                ls57 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                             }
                                                                                             else
                                                                                             {
-                                                                                                Value ls55;
+                                                                                                Value ls58;
                                                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownMemberId", matched5))
                                                                                                 {
-                                                                                                    ls55 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                                    ls58 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                                 }
                                                                                                 else
                                                                                                 {
-                                                                                                    Value ls56;
+                                                                                                    Value ls59;
                                                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalState", matched5))
                                                                                                     {
-                                                                                                        ls56 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                                        ls59 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                                     }
                                                                                                     else
                                                                                                     {
-                                                                                                        ls56 = Runtime.NoMatch(matched5);
+                                                                                                        ls59 = Runtime.NoMatch(matched5);
                                                                                                     }
-                                                                                                    ls55 = ls56;
+                                                                                                    ls58 = ls59;
                                                                                                 }
-                                                                                                ls54 = ls55;
+                                                                                                ls57 = ls58;
                                                                                             }
-                                                                                            ls53 = ls54;
+                                                                                            ls56 = ls57;
                                                                                         }
-                                                                                        ls52 = ls53;
+                                                                                        ls55 = ls56;
                                                                                     }
-                                                                                    ls51 = ls52;
+                                                                                    ls54 = ls55;
                                                                                 }
-                                                                                ls50 = ls51;
+                                                                                ls53 = ls54;
                                                                             }
-                                                                            ls49 = ls50;
+                                                                            ls52 = ls53;
                                                                         }
-                                                                        ls48 = ls49;
+                                                                        ls51 = ls52;
                                                                     }
-                                                                    ls47 = ls48;
+                                                                    ls50 = ls51;
                                                                 }
-                                                                ls46 = ls47;
+                                                                ls49 = ls50;
                                                             }
-                                                            ls45 = ls46;
+                                                            ls48 = ls49;
                                                         }
-                                                        ls44 = ls45;
+                                                        ls47 = ls48;
                                                     }
-                                                    ls43 = ls44;
+                                                    ls46 = ls47;
                                                 }
-                                                ls42 = ls43;
+                                                ls45 = ls46;
                                             }
-                                            ls41 = ls42;
+                                            ls44 = ls45;
                                         }
-                                        ls40 = ls41;
+                                        ls43 = ls44;
                                     }
-                                    ls39 = ls40;
+                                    ls42 = ls43;
                                 }
                                 else
                                 {
-                                    Value ls57;
+                                    Value ls60;
                                     if (Runtime.HasTag("Either::Right", matched4))
                                     {
-                                        var bound5_1 = Runtime.Field(matched4, 0);
-                                        ls57 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                        var bound7_1 = Runtime.Field(matched4, 0);
+                                        ls60 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        ls57 = Runtime.NoMatch(matched4);
+                                        ls60 = Runtime.NoMatch(matched4);
                                     }
-                                    ls39 = ls57;
+                                    ls42 = ls60;
                                 }
-                                ls12 = ls39;
+                                ls12 = ls42;
                             }
                             else
                             {
@@ -5796,7 +5910,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: a member of an older generation cannot commit [cluster]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Broker: \"|a member of an older generation cannot commit| [cluster]");
         }
         else
         {
@@ -5822,7 +5936,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Broker", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: a member of an older generation cannot commit [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|a member of an older generation cannot commit| [cluster] property")]
     public void LawBrokerAMemberOfAnOlderGenerationCannot2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -5964,7 +6078,7 @@ public sealed class LawtwinKafka
             }
             return ls21;
         });
-        Search.Replay("lawtwin.kafka::Broker: a member of an older generation cannot commit [cluster]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Broker: \"|a member of an older generation cannot commit| [cluster]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -5973,19 +6087,19 @@ public sealed class LawtwinKafka
             {
                 return LawBrokerAMemberOfAnOlderGenerationCannot2Case(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Broker: a member of an older generation cannot commit [cluster]", ls26, values_1, ls27);
+            return Search.Guard("lawtwin.kafka::Broker: \"|a member of an older generation cannot commit| [cluster]", ls26, values_1, ls27);
         });
-        Property.Check("lawtwin.kafka::Broker: a member of an older generation cannot commit [cluster]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Broker: \"|a member of an older generation cannot commit| [cluster]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Broker: the stable offset never passes the high watermark [native]
+    // Law: lawtwin.kafka::Broker: "|the stable offset never passes the high watermark| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Broker: the stable offset never passes the high watermark [native]
-    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created
-    // (_input0) (1) implies stableBelowHigh (_input0) (_input1) (_input2) = true
+    // Broker: "|the stable offset never passes the high watermark| [native]
+    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
+    // (_input0) (1) implies stableBelowHigh (_input0) (_input1) (_input2) = true end for all
     private static Value LawBrokerTheStableOffsetNeverPassesTheHighBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -5995,7 +6109,7 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.StableBelowHigh(schema, symbols, input0, input1, input2), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: the stable offset never passes the high watermark [native]");
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.StableBelowHigh(schema, symbols, input0, input1, input2), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: \"|the stable offset never passes the high watermark| [native]");
         }
         else
         {
@@ -6022,7 +6136,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: the stable offset never passes the high watermark [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|the stable offset never passes the high watermark| [native] boundary")]
     public void LawBrokerTheStableOffsetNeverPassesTheHigh_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -6032,10 +6146,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerTheStableOffsetNeverPassesTheHighCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: the stable offset never passes the high watermark [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|the stable offset never passes the high watermark| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: the stable offset never passes the high watermark [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|the stable offset never passes the high watermark| [native] property")]
     public void LawBrokerTheStableOffsetNeverPassesTheHigh_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -6101,17 +6215,17 @@ public sealed class LawtwinKafka
         {
             return LawBrokerTheStableOffsetNeverPassesTheHighCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: the stable offset never passes the high watermark [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|the stable offset never passes the high watermark| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Broker: the stable offset never passes the high watermark [cluster]
+    // Law: lawtwin.kafka::Broker: "|the stable offset never passes the high watermark| [cluster]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Broker: the stable offset never passes the high watermark [cluster]
-    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created
-    // (_input0) (1) implies stableBelowHigh (_input0) (_input1) (_input2) = true
+    // Broker: "|the stable offset never passes the high watermark| [cluster]
+    // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
+    // (_input0) (1) implies stableBelowHigh (_input0) (_input1) (_input2) = true end for all
     private static Value LawBrokerTheStableOffsetNeverPassesTheHigh2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -6120,7 +6234,7 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.StableBelowHigh(schema, symbols, input0, input1, input2), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: the stable offset never passes the high watermark [cluster]");
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.StableBelowHigh(schema, symbols, input0, input1, input2), Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema), "lawtwin.kafka::Broker: \"|the stable offset never passes the high watermark| [cluster]");
         }
         else
         {
@@ -6146,7 +6260,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Broker", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: the stable offset never passes the high watermark [cluster] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|the stable offset never passes the high watermark| [cluster] boundary")]
     public void LawBrokerTheStableOffsetNeverPassesTheHigh2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -6156,10 +6270,10 @@ public sealed class LawtwinKafka
         {
             return LawBrokerTheStableOffsetNeverPassesTheHigh2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Broker: the stable offset never passes the high watermark [cluster]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Broker: \"|the stable offset never passes the high watermark| [cluster]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Broker: the stable offset never passes the high watermark [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Broker: \"|the stable offset never passes the high watermark| [cluster] property")]
     public void LawBrokerTheStableOffsetNeverPassesTheHigh2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -6225,18 +6339,18 @@ public sealed class LawtwinKafka
         {
             return LawBrokerTheStableOffsetNeverPassesTheHigh2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Broker: the stable offset never passes the high watermark [cluster]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Broker: \"|the stable offset never passes the high watermark| [cluster]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Admin: a new topic has the partitions asked for [native]
+    // Law: lawtwin.kafka::Admin: "|a new topic has the partitions asked for| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Admin: a new topic has the partitions asked for [native]
-    // for all (t :: Text) (n :: Int32) . match (attempt (createTopic (_input0) (_input1))) {
+    // Admin: "|a new topic has the partitions asked for| [native]
+    // for all (t :: Text) (n :: Int32) => match (attempt (createTopic (_input0) (_input1))) {
     // Either::Left _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true
-    // } implies partitionsFor (_input0) = Maybe::Just(_input1)
+    // } implies partitionsFor (_input0) = Maybe::Just(_input1) end for all
     private static Value LawAdminANewTopicHasThePartitionsAskedForBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -6278,7 +6392,7 @@ public sealed class LawtwinKafka
         }
         if (Runtime.Truth(ls4))
         {
-            ls0 = Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Admin", "partitionsFor", Fn.List<Value>(input0)), Scalar.TypeOf("Maybe (Int32)"), schema), Schema.Construct("Maybe::Just", Fn.List<Value>(input1), Scalar.TypeOf("Maybe (Int32)"), schema), "lawtwin.kafka::Admin: a new topic has the partitions asked for [native]");
+            ls0 = Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Admin", "partitionsFor", Fn.List<Value>(input0)), Scalar.TypeOf("Maybe (Int32)"), schema), Schema.Construct("Maybe::Just", Fn.List<Value>(input1), Scalar.TypeOf("Maybe (Int32)"), schema), "lawtwin.kafka::Admin: \"|a new topic has the partitions asked for| [native]");
         }
         else
         {
@@ -6305,7 +6419,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Admin: a new topic has the partitions asked for [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Admin: \"|a new topic has the partitions asked for| [native] property")]
     public void LawAdminANewTopicHasThePartitionsAskedFor_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -6391,7 +6505,7 @@ public sealed class LawtwinKafka
             }
             return ls13;
         });
-        Search.Replay("lawtwin.kafka::Admin: a new topic has the partitions asked for [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Admin: \"|a new topic has the partitions asked for| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -6400,20 +6514,20 @@ public sealed class LawtwinKafka
             {
                 return LawAdminANewTopicHasThePartitionsAskedForCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Admin: a new topic has the partitions asked for [native]", ls16, values_1, ls17);
+            return Search.Guard("lawtwin.kafka::Admin: \"|a new topic has the partitions asked for| [native]", ls16, values_1, ls17);
         });
-        Property.Check("lawtwin.kafka::Admin: a new topic has the partitions asked for [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Admin: \"|a new topic has the partitions asked for| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Admin: a new topic has the partitions asked for [cluster]
+    // Law: lawtwin.kafka::Admin: "|a new topic has the partitions asked for| [cluster]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Admin: a new topic has the partitions asked for [cluster]
-    // for all (t :: Text) (n :: Int32) . match (attempt (createTopic (_input0) (_input1))) {
+    // Admin: "|a new topic has the partitions asked for| [cluster]
+    // for all (t :: Text) (n :: Int32) => match (attempt (createTopic (_input0) (_input1))) {
     // Either::Left _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true
-    // } implies partitionsFor (_input0) = Maybe::Just(_input1)
+    // } implies partitionsFor (_input0) = Maybe::Just(_input1) end for all
     private static Value LawAdminANewTopicHasThePartitionsAskedFor2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -6454,7 +6568,7 @@ public sealed class LawtwinKafka
         }
         if (Runtime.Truth(ls4))
         {
-            ls0 = Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Admin", "partitionsFor", Fn.List<Value>(input0)), Scalar.TypeOf("Maybe (Int32)"), schema), Schema.Construct("Maybe::Just", Fn.List<Value>(input1), Scalar.TypeOf("Maybe (Int32)"), schema), "lawtwin.kafka::Admin: a new topic has the partitions asked for [cluster]");
+            ls0 = Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Admin", "partitionsFor", Fn.List<Value>(input0)), Scalar.TypeOf("Maybe (Int32)"), schema), Schema.Construct("Maybe::Just", Fn.List<Value>(input1), Scalar.TypeOf("Maybe (Int32)"), schema), "lawtwin.kafka::Admin: \"|a new topic has the partitions asked for| [cluster]");
         }
         else
         {
@@ -6480,7 +6594,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Admin", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Admin: a new topic has the partitions asked for [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Admin: \"|a new topic has the partitions asked for| [cluster] property")]
     public void LawAdminANewTopicHasThePartitionsAskedFor2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -6566,7 +6680,7 @@ public sealed class LawtwinKafka
             }
             return ls13;
         });
-        Search.Replay("lawtwin.kafka::Admin: a new topic has the partitions asked for [cluster]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Admin: \"|a new topic has the partitions asked for| [cluster]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -6575,20 +6689,20 @@ public sealed class LawtwinKafka
             {
                 return LawAdminANewTopicHasThePartitionsAskedFor2Case(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Admin: a new topic has the partitions asked for [cluster]", ls16, values_1, ls17);
+            return Search.Guard("lawtwin.kafka::Admin: \"|a new topic has the partitions asked for| [cluster]", ls16, values_1, ls17);
         });
-        Property.Check("lawtwin.kafka::Admin: a new topic has the partitions asked for [cluster]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Admin: \"|a new topic has the partitions asked for| [cluster]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Admin: a topic is created once [native]
+    // Law: lawtwin.kafka::Admin: "|a topic is created once| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Admin: a topic is created once [native]
-    // for all (t :: Text) (n :: Int32) . match (attempt (let _let0__first = attempt (createTopic
+    // Admin: "|a topic is created once| [native]
+    // for all (t :: Text) (n :: Int32) => match (attempt (let _let0__first = attempt (createTopic
     // (_input0) (_input1)) in createTopic (_input0) (_input1))) { Either::Left
-    // _match0__0__lawspecFailure -> match (_match0__0__lawspecFailure) {
+    // _match0__0__lawspecFailure -> let _let1__it = _match0__0__lawspecFailure in match (_let1__it) {
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> false;
@@ -6606,7 +6720,7 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match0__1__lawspecResult -> false } = true
+    // _match0__1__lawspecResult -> false } = true end for all
     private static Value LawAdminATopicIsCreatedOnceNativeBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -6642,7 +6756,8 @@ public sealed class LawtwinKafka
         if (Runtime.HasTag("Either::Left", matched0))
         {
             var bound0 = Runtime.Field(matched0, 0);
-            var matched1 = bound0;
+            var bound3 = bound0;
+            var matched1 = bound3;
             Value ls8;
             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists", matched1))
             {
@@ -6813,7 +6928,7 @@ public sealed class LawtwinKafka
             ls3 = ls25;
         }
         var ls4 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-        return Runtime.AssertEqual(ls3, ls4, "lawtwin.kafka::Admin: a topic is created once [native]");
+        return Runtime.AssertEqual(ls3, ls4, "lawtwin.kafka::Admin: \"|a topic is created once| [native]");
     }
 
     private static Value LawAdminATopicIsCreatedOnceNativeCase(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
@@ -6834,7 +6949,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Admin: a topic is created once [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Admin: \"|a topic is created once| [native] property")]
     public void LawAdminATopicIsCreatedOnceNative_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -6920,7 +7035,7 @@ public sealed class LawtwinKafka
             }
             return ls13;
         });
-        Search.Replay("lawtwin.kafka::Admin: a topic is created once [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Admin: \"|a topic is created once| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -6929,20 +7044,20 @@ public sealed class LawtwinKafka
             {
                 return LawAdminATopicIsCreatedOnceNativeCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Admin: a topic is created once [native]", ls16, values_1, ls17);
+            return Search.Guard("lawtwin.kafka::Admin: \"|a topic is created once| [native]", ls16, values_1, ls17);
         });
-        Property.Check("lawtwin.kafka::Admin: a topic is created once [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Admin: \"|a topic is created once| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Admin: a topic is created once [cluster]
+    // Law: lawtwin.kafka::Admin: "|a topic is created once| [cluster]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Admin: a topic is created once [cluster]
-    // for all (t :: Text) (n :: Int32) . match (attempt (let _let0__first = attempt (createTopic
+    // Admin: "|a topic is created once| [cluster]
+    // for all (t :: Text) (n :: Int32) => match (attempt (let _let0__first = attempt (createTopic
     // (_input0) (_input1)) in createTopic (_input0) (_input1))) { Either::Left
-    // _match0__0__lawspecFailure -> match (_match0__0__lawspecFailure) {
+    // _match0__0__lawspecFailure -> let _let1__it = _match0__0__lawspecFailure in match (_let1__it) {
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> false;
@@ -6960,7 +7075,7 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match0__1__lawspecResult -> false } = true
+    // _match0__1__lawspecResult -> false } = true end for all
     private static Value LawAdminATopicIsCreatedOnceClusterBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -6995,7 +7110,8 @@ public sealed class LawtwinKafka
         if (Runtime.HasTag("Either::Left", matched0))
         {
             var bound0 = Runtime.Field(matched0, 0);
-            var matched1 = bound0;
+            var bound3 = bound0;
+            var matched1 = bound3;
             Value ls8;
             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists", matched1))
             {
@@ -7166,7 +7282,7 @@ public sealed class LawtwinKafka
             ls3 = ls25;
         }
         var ls4 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-        return Runtime.AssertEqual(ls3, ls4, "lawtwin.kafka::Admin: a topic is created once [cluster]");
+        return Runtime.AssertEqual(ls3, ls4, "lawtwin.kafka::Admin: \"|a topic is created once| [cluster]");
     }
 
     private static Value LawAdminATopicIsCreatedOnceClusterCase(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
@@ -7186,7 +7302,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Admin", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Admin: a topic is created once [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Admin: \"|a topic is created once| [cluster] property")]
     public void LawAdminATopicIsCreatedOnceCluster_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -7272,7 +7388,7 @@ public sealed class LawtwinKafka
             }
             return ls13;
         });
-        Search.Replay("lawtwin.kafka::Admin: a topic is created once [cluster]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Admin: \"|a topic is created once| [cluster]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -7281,21 +7397,21 @@ public sealed class LawtwinKafka
             {
                 return LawAdminATopicIsCreatedOnceClusterCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Admin: a topic is created once [cluster]", ls16, values_1, ls17);
+            return Search.Guard("lawtwin.kafka::Admin: \"|a topic is created once| [cluster]", ls16, values_1, ls17);
         });
-        Property.Check("lawtwin.kafka::Admin: a topic is created once [cluster]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Admin: \"|a topic is created once| [cluster]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Admin: a topic's partitions only grow [native]
+    // Law: lawtwin.kafka::Admin: "|a topic's partitions only grow| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Admin: a topic's partitions only grow [native]
-    // for all (t :: Text) (n :: Int32) . match (attempt (createTopic (_input0) (_input1))) {
+    // Admin: "|a topic's partitions only grow| [native]
+    // for all (t :: Text) (n :: Int32) => match (attempt (createTopic (_input0) (_input1))) {
     // Either::Left _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true
     // } implies ((match (attempt (createPartitions (_input0) (_input1))) { Either::Left
-    // _match0__0__lawspecFailure -> match (_match0__0__lawspecFailure) {
+    // _match0__0__lawspecFailure -> let _let1__it = _match0__0__lawspecFailure in match (_let1__it) {
     // lawtwin.kafka.model::type::KafkaError::InvalidPartitions -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -7316,7 +7432,7 @@ public sealed class LawtwinKafka
     // _match0__1__lawspecResult -> false } And match (attempt (createPartitions (_input0)
     // (lawspecCollectionsSaturatingInt32 ((_input1 + 1))))) { Either::Left _match0__0__railwayError0 ->
     // false; Either::Right _match0__1__railwayValue1 -> true }) And (partitionsFor (_input0) ==
-    // Maybe::Just(lawspecCollectionsSaturatingInt32 ((_input1 + 1))))) = true
+    // Maybe::Just(lawspecCollectionsSaturatingInt32 ((_input1 + 1))))) = true end for all
     private static Value LawAdminATopicSPartitionsOnlyGrowNativeBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -7377,7 +7493,8 @@ public sealed class LawtwinKafka
             if (Runtime.HasTag("Either::Left", matched0_1))
             {
                 var bound0_1 = Runtime.Field(matched0_1, 0);
-                var matched1 = bound0_1;
+                var bound2 = bound0_1;
+                var matched1 = bound2;
                 Value ls13;
                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidPartitions", matched1))
                 {
@@ -7565,7 +7682,7 @@ public sealed class LawtwinKafka
                 Value ls34;
                 if (Runtime.HasTag("Either::Left", matched2))
                 {
-                    var bound2 = Runtime.Field(matched2, 0);
+                    var bound3 = Runtime.Field(matched2, 0);
                     ls34 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -7573,7 +7690,7 @@ public sealed class LawtwinKafka
                     Value ls35;
                     if (Runtime.HasTag("Either::Right", matched2))
                     {
-                        var bound3 = Runtime.Field(matched2, 0);
+                        var bound4 = Runtime.Field(matched2, 0);
                         ls35 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                     }
                     else
@@ -7597,7 +7714,7 @@ public sealed class LawtwinKafka
                 ls6 = V.Bool(false);
             }
             var ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls6, ls7, "lawtwin.kafka::Admin: a topic's partitions only grow [native]");
+            ls0 = Runtime.AssertEqual(ls6, ls7, "lawtwin.kafka::Admin: \"|a topic's partitions only grow| [native]");
         }
         else
         {
@@ -7624,7 +7741,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Admin: a topic's partitions only grow [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Admin: \"|a topic's partitions only grow| [native] property")]
     public void LawAdminATopicSPartitionsOnlyGrowNative_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -7710,7 +7827,7 @@ public sealed class LawtwinKafka
             }
             return ls13;
         });
-        Search.Replay("lawtwin.kafka::Admin: a topic's partitions only grow [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Admin: \"|a topic's partitions only grow| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -7719,21 +7836,21 @@ public sealed class LawtwinKafka
             {
                 return LawAdminATopicSPartitionsOnlyGrowNativeCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Admin: a topic's partitions only grow [native]", ls16, values_1, ls17);
+            return Search.Guard("lawtwin.kafka::Admin: \"|a topic's partitions only grow| [native]", ls16, values_1, ls17);
         });
-        Property.Check("lawtwin.kafka::Admin: a topic's partitions only grow [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Admin: \"|a topic's partitions only grow| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Admin: a topic's partitions only grow [cluster]
+    // Law: lawtwin.kafka::Admin: "|a topic's partitions only grow| [cluster]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Admin: a topic's partitions only grow [cluster]
-    // for all (t :: Text) (n :: Int32) . match (attempt (createTopic (_input0) (_input1))) {
+    // Admin: "|a topic's partitions only grow| [cluster]
+    // for all (t :: Text) (n :: Int32) => match (attempt (createTopic (_input0) (_input1))) {
     // Either::Left _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true
     // } implies ((match (attempt (createPartitions (_input0) (_input1))) { Either::Left
-    // _match0__0__lawspecFailure -> match (_match0__0__lawspecFailure) {
+    // _match0__0__lawspecFailure -> let _let1__it = _match0__0__lawspecFailure in match (_let1__it) {
     // lawtwin.kafka.model::type::KafkaError::InvalidPartitions -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -7754,7 +7871,7 @@ public sealed class LawtwinKafka
     // _match0__1__lawspecResult -> false } And match (attempt (createPartitions (_input0)
     // (lawspecCollectionsSaturatingInt32 ((_input1 + 1))))) { Either::Left _match0__0__railwayError0 ->
     // false; Either::Right _match0__1__railwayValue1 -> true }) And (partitionsFor (_input0) ==
-    // Maybe::Just(lawspecCollectionsSaturatingInt32 ((_input1 + 1))))) = true
+    // Maybe::Just(lawspecCollectionsSaturatingInt32 ((_input1 + 1))))) = true end for all
     private static Value LawAdminATopicSPartitionsOnlyGrowClusterBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -7814,7 +7931,8 @@ public sealed class LawtwinKafka
             if (Runtime.HasTag("Either::Left", matched0_1))
             {
                 var bound0_1 = Runtime.Field(matched0_1, 0);
-                var matched1 = bound0_1;
+                var bound2 = bound0_1;
+                var matched1 = bound2;
                 Value ls13;
                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidPartitions", matched1))
                 {
@@ -8002,7 +8120,7 @@ public sealed class LawtwinKafka
                 Value ls34;
                 if (Runtime.HasTag("Either::Left", matched2))
                 {
-                    var bound2 = Runtime.Field(matched2, 0);
+                    var bound3 = Runtime.Field(matched2, 0);
                     ls34 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -8010,7 +8128,7 @@ public sealed class LawtwinKafka
                     Value ls35;
                     if (Runtime.HasTag("Either::Right", matched2))
                     {
-                        var bound3 = Runtime.Field(matched2, 0);
+                        var bound4 = Runtime.Field(matched2, 0);
                         ls35 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                     }
                     else
@@ -8034,7 +8152,7 @@ public sealed class LawtwinKafka
                 ls6 = V.Bool(false);
             }
             var ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls6, ls7, "lawtwin.kafka::Admin: a topic's partitions only grow [cluster]");
+            ls0 = Runtime.AssertEqual(ls6, ls7, "lawtwin.kafka::Admin: \"|a topic's partitions only grow| [cluster]");
         }
         else
         {
@@ -8060,7 +8178,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Admin", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Admin: a topic's partitions only grow [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Admin: \"|a topic's partitions only grow| [cluster] property")]
     public void LawAdminATopicSPartitionsOnlyGrowCluster_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -8146,7 +8264,7 @@ public sealed class LawtwinKafka
             }
             return ls13;
         });
-        Search.Replay("lawtwin.kafka::Admin: a topic's partitions only grow [cluster]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Admin: \"|a topic's partitions only grow| [cluster]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -8155,26 +8273,29 @@ public sealed class LawtwinKafka
             {
                 return LawAdminATopicSPartitionsOnlyGrowClusterCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Admin: a topic's partitions only grow [cluster]", ls16, values_1, ls17);
+            return Search.Guard("lawtwin.kafka::Admin: \"|a topic's partitions only grow| [cluster]", ls16, values_1, ls17);
         });
-        Property.Check("lawtwin.kafka::Admin: a topic's partitions only grow [cluster]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Admin: \"|a topic's partitions only grow| [cluster]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Admin: a new topic starts at offset zero [native]
+    // Law: lawtwin.kafka::Admin: "|a new topic starts at offset zero| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Admin: a new topic starts at offset zero [native]
-    // for all (t :: Text) (n :: Int32) . match (attempt (createTopic (_input0) (_input1))) {
+    // Admin: "|a new topic starts at offset zero| [native]
+    // for all (t :: Text) (n :: Int32) => match (attempt (createTopic (_input0) (_input1))) {
     // Either::Left _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true
-    // } implies ((attempt (listOffsets
-    // (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0))
-    // (lawtwin.kafka.model::type::OffsetSpec::Earliest())
+    // } implies ((attempt (listOffsets (let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1)) (lawtwin.kafka.model::type::OffsetSpec::Earliest())
     // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())) == Either::Right(0)) And (attempt
-    // (listOffsets (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0))
-    // (lawtwin.kafka.model::type::OffsetSpec::Latest())
-    // (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted())) == Either::Right(0))) = true
+    // (listOffsets (let _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1)) (lawtwin.kafka.model::type::OffsetSpec::Latest())
+    // (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted())) == Either::Right(0))) = true end
+    // for all
     private static Value LawAdminANewTopicStartsAtOffsetZeroNativeBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -8219,7 +8340,12 @@ public sealed class LawtwinKafka
             Value ls6;
             var ls8 = Fn.F0(() =>
             {
-                return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Admin", "listOffsets", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Earliest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema), Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema))), Scalar.TypeOf("Int64"), schema);
+                var bound0_1 = input0;
+                var bound1_1 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                var ls12 = Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Earliest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema);
+                var ls13 = Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema);
+                var ls14 = Scalar.TypeOf("Int64");
+                return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Admin", "listOffsets", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound0_1, bound1_1), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls12, ls13)), ls14, schema);
             });
             var ls9 = Fn.F1((Value failureValue_2) =>
             {
@@ -8232,27 +8358,32 @@ public sealed class LawtwinKafka
             var ls11 = Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
             if (Runtime.Truth(Scalar.Binary("==", Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls8, ls9, ls10), ls11, "Either (lawtwin.kafka.model::type::KafkaError) (Int64)", "Either (lawtwin.kafka.model::type::KafkaError) (Int64)")))
             {
-                var ls12 = Fn.F0(() =>
+                var ls15 = Fn.F0(() =>
                 {
-                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Admin", "listOffsets", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Latest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema), Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadCommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema))), Scalar.TypeOf("Int64"), schema);
+                    var bound0_2 = input0;
+                    var bound1_2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                    var ls19 = Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Latest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema);
+                    var ls20 = Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadCommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema);
+                    var ls21 = Scalar.TypeOf("Int64");
+                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Admin", "listOffsets", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound0_2, bound1_2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls19, ls20)), ls21, schema);
                 });
-                var ls13 = Fn.F1((Value failureValue_4) =>
+                var ls16 = Fn.F1((Value failureValue_4) =>
                 {
                     return Schema.Construct("Either::Right", Fn.List<Value>(failureValue_4), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                 });
-                var ls14 = Fn.F1((Value failureValue_5) =>
+                var ls17 = Fn.F1((Value failureValue_5) =>
                 {
                     return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_5), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                 });
-                var ls15 = Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
-                ls6 = Scalar.Binary("==", Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls12, ls13, ls14), ls15, "Either (lawtwin.kafka.model::type::KafkaError) (Int64)", "Either (lawtwin.kafka.model::type::KafkaError) (Int64)");
+                var ls18 = Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
+                ls6 = Scalar.Binary("==", Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls15, ls16, ls17), ls18, "Either (lawtwin.kafka.model::type::KafkaError) (Int64)", "Either (lawtwin.kafka.model::type::KafkaError) (Int64)");
             }
             else
             {
                 ls6 = V.Bool(false);
             }
             var ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls6, ls7, "lawtwin.kafka::Admin: a new topic starts at offset zero [native]");
+            ls0 = Runtime.AssertEqual(ls6, ls7, "lawtwin.kafka::Admin: \"|a new topic starts at offset zero| [native]");
         }
         else
         {
@@ -8279,7 +8410,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Admin: a new topic starts at offset zero [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Admin: \"|a new topic starts at offset zero| [native] property")]
     public void LawAdminANewTopicStartsAtOffsetZeroNative_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -8365,7 +8496,7 @@ public sealed class LawtwinKafka
             }
             return ls13;
         });
-        Search.Replay("lawtwin.kafka::Admin: a new topic starts at offset zero [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Admin: \"|a new topic starts at offset zero| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -8374,26 +8505,29 @@ public sealed class LawtwinKafka
             {
                 return LawAdminANewTopicStartsAtOffsetZeroNativeCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Admin: a new topic starts at offset zero [native]", ls16, values_1, ls17);
+            return Search.Guard("lawtwin.kafka::Admin: \"|a new topic starts at offset zero| [native]", ls16, values_1, ls17);
         });
-        Property.Check("lawtwin.kafka::Admin: a new topic starts at offset zero [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Admin: \"|a new topic starts at offset zero| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Admin: a new topic starts at offset zero [cluster]
+    // Law: lawtwin.kafka::Admin: "|a new topic starts at offset zero| [cluster]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Admin: a new topic starts at offset zero [cluster]
-    // for all (t :: Text) (n :: Int32) . match (attempt (createTopic (_input0) (_input1))) {
+    // Admin: "|a new topic starts at offset zero| [cluster]
+    // for all (t :: Text) (n :: Int32) => match (attempt (createTopic (_input0) (_input1))) {
     // Either::Left _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true
-    // } implies ((attempt (listOffsets
-    // (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0))
-    // (lawtwin.kafka.model::type::OffsetSpec::Earliest())
+    // } implies ((attempt (listOffsets (let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1)) (lawtwin.kafka.model::type::OffsetSpec::Earliest())
     // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())) == Either::Right(0)) And (attempt
-    // (listOffsets (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0))
-    // (lawtwin.kafka.model::type::OffsetSpec::Latest())
-    // (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted())) == Either::Right(0))) = true
+    // (listOffsets (let _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1)) (lawtwin.kafka.model::type::OffsetSpec::Latest())
+    // (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted())) == Either::Right(0))) = true end
+    // for all
     private static Value LawAdminANewTopicStartsAtOffsetZeroClusterBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -8437,7 +8571,12 @@ public sealed class LawtwinKafka
             Value ls6;
             var ls8 = Fn.F0(() =>
             {
-                return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Admin", "listOffsets", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Earliest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema), Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema))), Scalar.TypeOf("Int64"), schema);
+                var bound0_1 = input0;
+                var bound1_1 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                var ls12 = Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Earliest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema);
+                var ls13 = Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema);
+                var ls14 = Scalar.TypeOf("Int64");
+                return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Admin", "listOffsets", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound0_1, bound1_1), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls12, ls13)), ls14, schema);
             });
             var ls9 = Fn.F1((Value failureValue_2) =>
             {
@@ -8450,27 +8589,32 @@ public sealed class LawtwinKafka
             var ls11 = Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
             if (Runtime.Truth(Scalar.Binary("==", Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls8, ls9, ls10), ls11, "Either (lawtwin.kafka.model::type::KafkaError) (Int64)", "Either (lawtwin.kafka.model::type::KafkaError) (Int64)")))
             {
-                var ls12 = Fn.F0(() =>
+                var ls15 = Fn.F0(() =>
                 {
-                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Admin", "listOffsets", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Latest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema), Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadCommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema))), Scalar.TypeOf("Int64"), schema);
+                    var bound0_2 = input0;
+                    var bound1_2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                    var ls19 = Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Latest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema);
+                    var ls20 = Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadCommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema);
+                    var ls21 = Scalar.TypeOf("Int64");
+                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Admin", "listOffsets", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound0_2, bound1_2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls19, ls20)), ls21, schema);
                 });
-                var ls13 = Fn.F1((Value failureValue_4) =>
+                var ls16 = Fn.F1((Value failureValue_4) =>
                 {
                     return Schema.Construct("Either::Right", Fn.List<Value>(failureValue_4), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                 });
-                var ls14 = Fn.F1((Value failureValue_5) =>
+                var ls17 = Fn.F1((Value failureValue_5) =>
                 {
                     return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_5), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                 });
-                var ls15 = Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
-                ls6 = Scalar.Binary("==", Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls12, ls13, ls14), ls15, "Either (lawtwin.kafka.model::type::KafkaError) (Int64)", "Either (lawtwin.kafka.model::type::KafkaError) (Int64)");
+                var ls18 = Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
+                ls6 = Scalar.Binary("==", Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls15, ls16, ls17), ls18, "Either (lawtwin.kafka.model::type::KafkaError) (Int64)", "Either (lawtwin.kafka.model::type::KafkaError) (Int64)");
             }
             else
             {
                 ls6 = V.Bool(false);
             }
             var ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls6, ls7, "lawtwin.kafka::Admin: a new topic starts at offset zero [cluster]");
+            ls0 = Runtime.AssertEqual(ls6, ls7, "lawtwin.kafka::Admin: \"|a new topic starts at offset zero| [cluster]");
         }
         else
         {
@@ -8496,7 +8640,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Admin", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Admin: a new topic starts at offset zero [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Admin: \"|a new topic starts at offset zero| [cluster] property")]
     public void LawAdminANewTopicStartsAtOffsetZeroCluster_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -8582,7 +8726,7 @@ public sealed class LawtwinKafka
             }
             return ls13;
         });
-        Search.Replay("lawtwin.kafka::Admin: a new topic starts at offset zero [cluster]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Admin: \"|a new topic starts at offset zero| [cluster]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -8591,19 +8735,19 @@ public sealed class LawtwinKafka
             {
                 return LawAdminANewTopicStartsAtOffsetZeroClusterCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Admin: a new topic starts at offset zero [cluster]", ls16, values_1, ls17);
+            return Search.Guard("lawtwin.kafka::Admin: \"|a new topic starts at offset zero| [cluster]", ls16, values_1, ls17);
         });
-        Property.Check("lawtwin.kafka::Admin: a new topic starts at offset zero [cluster]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Admin: \"|a new topic starts at offset zero| [cluster]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Admin: an invalid topic name is refused [native]
+    // Law: lawtwin.kafka::Admin: "|an invalid topic name is refused| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Admin: an invalid topic name is refused [native]
-    // for all (n :: Int32) . match (attempt (createTopic ("") (_input0))) { Either::Left
-    // _match0__0__lawspecFailure -> match (_match0__0__lawspecFailure) {
+    // Admin: "|an invalid topic name is refused| [native]
+    // for all (n :: Int32) => match (attempt (createTopic ("") (_input0))) { Either::Left
+    // _match0__0__lawspecFailure -> let _let1__it = _match0__0__lawspecFailure in match (_let1__it) {
     // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -8622,8 +8766,8 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
     // _match0__1__lawspecResult -> false } = true and match (attempt (createTopic ("..") (_input0))) {
-    // Either::Left _match0__0__lawspecFailure -> match (_match0__0__lawspecFailure) {
-    // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> true;
+    // Either::Left _match0__0__lawspecFailure -> let _let1__it = _match0__0__lawspecFailure in match
+    // (_let1__it) { lawtwin.kafka.model::type::KafkaError::InvalidTopic -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidPartitions -> false;
@@ -8640,7 +8784,7 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match0__1__lawspecResult -> false } = true
+    // _match0__1__lawspecResult -> false } = true end for all
     private static Value LawAdminAnInvalidTopicNameIsRefusedNativeBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -8663,7 +8807,8 @@ public sealed class LawtwinKafka
         if (Runtime.HasTag("Either::Left", matched0))
         {
             var bound0 = Runtime.Field(matched0, 0);
-            var matched1 = bound0;
+            var bound2 = bound0;
+            var matched1 = bound2;
             Value ls6;
             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTopic", matched1))
             {
@@ -8834,7 +8979,7 @@ public sealed class LawtwinKafka
             ls4 = ls23;
         }
         var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-        if (Runtime.Truth(Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Admin: an invalid topic name is refused [native]")))
+        if (Runtime.Truth(Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Admin: \"|an invalid topic name is refused| [native]")))
         {
             Value ls24;
             var ls25 = Fn.F0(() =>
@@ -8854,7 +8999,8 @@ public sealed class LawtwinKafka
             if (Runtime.HasTag("Either::Left", matched0_1))
             {
                 var bound0_1 = Runtime.Field(matched0_1, 0);
-                var matched1_1 = bound0_1;
+                var bound2_1 = bound0_1;
+                var matched1_1 = bound2_1;
                 Value ls30;
                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTopic", matched1_1))
                 {
@@ -9025,7 +9171,7 @@ public sealed class LawtwinKafka
                 ls28 = ls47;
             }
             var ls29 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            if (Runtime.Truth(Runtime.AssertEqual(ls28, ls29, "lawtwin.kafka::Admin: an invalid topic name is refused [native]")))
+            if (Runtime.Truth(Runtime.AssertEqual(ls28, ls29, "lawtwin.kafka::Admin: \"|an invalid topic name is refused| [native]")))
             {
                 ls24 = V.Bool(true);
             }
@@ -9060,86 +9206,27 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Admin: an invalid topic name is refused [native] property")]
-    public void LawAdminAnInvalidTopicNameIsRefusedNative_Property()
+    [Fact(DisplayName = "lawtwin.kafka::Admin: \"|an invalid topic name is refused| [native] boundary")]
+    public void LawAdminAnInvalidTopicNameIsRefusedNative_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
         var schema = LawSpec.Generated.Program.Schema;
-        var generation = Property.Generation(schema, symbols, 10000);
-        var ls0 = Fn.F1((Value input0) =>
+        var ls0 = Fn.List<FSharpList<Value>>(Fn.List<Value>(V.Int(new BigInteger(1L))), Fn.List<Value>(V.Int(new BigInteger(2L))), Fn.List<Value>(V.Int(new BigInteger(3L))), Fn.List<Value>(V.Int(new BigInteger(4L))), Fn.List<Value>(V.Int(new BigInteger(5L))), Fn.List<Value>(V.Int(new BigInteger(6L))), Fn.List<Value>(V.Int(new BigInteger(7L))), Fn.List<Value>(V.Int(new BigInteger(8L))), Fn.List<Value>(V.Int(new BigInteger(9L))), Fn.List<Value>(V.Int(new BigInteger(10L))), Fn.List<Value>(V.Int(new BigInteger(11L))), Fn.List<Value>(V.Int(new BigInteger(12L))), Fn.List<Value>(V.Int(new BigInteger(13L))), Fn.List<Value>(V.Int(new BigInteger(14L))), Fn.List<Value>(V.Int(new BigInteger(15L))), Fn.List<Value>(V.Int(new BigInteger(16L))), Fn.List<Value>(V.Int(new BigInteger(17L))), Fn.List<Value>(V.Int(new BigInteger(18L))), Fn.List<Value>(V.Int(new BigInteger(19L))), Fn.List<Value>(V.Int(new BigInteger(20L))), Fn.List<Value>(V.Int(new BigInteger(21L))), Fn.List<Value>(V.Int(new BigInteger(22L))), Fn.List<Value>(V.Int(new BigInteger(23L))), Fn.List<Value>(V.Int(new BigInteger(24L))), Fn.List<Value>(V.Int(new BigInteger(25L))), Fn.List<Value>(V.Int(new BigInteger(26L))), Fn.List<Value>(V.Int(new BigInteger(27L))), Fn.List<Value>(V.Int(new BigInteger(28L))), Fn.List<Value>(V.Int(new BigInteger(29L))), Fn.List<Value>(V.Int(new BigInteger(30L))), Fn.List<Value>(V.Int(new BigInteger(31L))), Fn.List<Value>(V.Int(new BigInteger(32L))), Fn.List<Value>(V.Int(new BigInteger(33L))), Fn.List<Value>(V.Int(new BigInteger(34L))), Fn.List<Value>(V.Int(new BigInteger(35L))), Fn.List<Value>(V.Int(new BigInteger(36L))), Fn.List<Value>(V.Int(new BigInteger(37L))), Fn.List<Value>(V.Int(new BigInteger(38L))), Fn.List<Value>(V.Int(new BigInteger(39L))), Fn.List<Value>(V.Int(new BigInteger(40L))), Fn.List<Value>(V.Int(new BigInteger(41L))), Fn.List<Value>(V.Int(new BigInteger(42L))), Fn.List<Value>(V.Int(new BigInteger(43L))), Fn.List<Value>(V.Int(new BigInteger(44L))), Fn.List<Value>(V.Int(new BigInteger(45L))), Fn.List<Value>(V.Int(new BigInteger(46L))), Fn.List<Value>(V.Int(new BigInteger(47L))), Fn.List<Value>(V.Int(new BigInteger(48L))), Fn.List<Value>(V.Int(new BigInteger(49L))), Fn.List<Value>(V.Int(new BigInteger(50L))), Fn.List<Value>(V.Int(new BigInteger(51L))), Fn.List<Value>(V.Int(new BigInteger(52L))), Fn.List<Value>(V.Int(new BigInteger(53L))), Fn.List<Value>(V.Int(new BigInteger(54L))), Fn.List<Value>(V.Int(new BigInteger(55L))), Fn.List<Value>(V.Int(new BigInteger(56L))), Fn.List<Value>(V.Int(new BigInteger(57L))), Fn.List<Value>(V.Int(new BigInteger(58L))), Fn.List<Value>(V.Int(new BigInteger(59L))), Fn.List<Value>(V.Int(new BigInteger(60L))), Fn.List<Value>(V.Int(new BigInteger(61L))), Fn.List<Value>(V.Int(new BigInteger(62L))), Fn.List<Value>(V.Int(new BigInteger(63L))), Fn.List<Value>(V.Int(new BigInteger(64L))));
+        var ls1 = Fn.F1((FSharpList<Value> values) =>
         {
-            bool ls7;
-            Value ls8;
-            if (Runtime.Truth(Scalar.Binary(">=", input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema), "Int32", "Integer")))
-            {
-                ls8 = Scalar.Binary("<=", input0, Schema.Validate(V.Int(new BigInteger(64L)), Scalar.TypeOf("Integer"), schema), "Int32", "Integer");
-            }
-            else
-            {
-                ls8 = V.Bool(false);
-            }
-            if (Runtime.Truth(ls8))
-            {
-                ls7 = true;
-            }
-            else
-            {
-                ls7 = false;
-            }
-            return ls7;
+            return LawAdminAnInvalidTopicNameIsRefusedNativeCase(schema, symbols, values);
         });
-        var ls1 = Generators.Generator(generation, Scalar.TypeOf("Int32"), Fn.List<Generators.Bound>(Generators.CompareBound(">=", Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema)), Generators.CompareBound("<=", Schema.Validate(V.Int(new BigInteger(64L)), Scalar.TypeOf("Integer"), schema))), Fn.List<Value>(V.Int(new BigInteger(-2147483648L)), V.Int(new BigInteger(-1L)), V.Int(new BigInteger(0L)), V.Int(new BigInteger(2147483647L))), Generators.NoIndex());
-        var ls2 = Fn.F1((Value input0_1) =>
-        {
-            return Gen.Constant(Fn.List<Value>(input0_1));
-        });
-        var generator = Gen.Bind(Gen.Refine(ls0, ls1), ls2);
-        var ls3 = Fn.List<string>("(int Int32 1 64)");
-        var ls4 = Fn.F1((FSharpList<Value> values) =>
-        {
-            var input0_2 = Runtime.Item(0, values);
-            FSharpOption<Value> ls9;
-            Value ls10;
-            if (Runtime.Truth(Scalar.Binary(">=", input0_2, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema), "Int32", "Integer")))
-            {
-                ls10 = Scalar.Binary("<=", input0_2, Schema.Validate(V.Int(new BigInteger(64L)), Scalar.TypeOf("Integer"), schema), "Int32", "Integer");
-            }
-            else
-            {
-                ls10 = V.Bool(false);
-            }
-            if (Runtime.Truth(ls10))
-            {
-                ls9 = Runtime.Some(LawAdminAnInvalidTopicNameIsRefusedNativeCase(schema, symbols, values));
-            }
-            else
-            {
-                ls9 = FSharpOption<Value>.None;
-            }
-            return ls9;
-        });
-        Search.Replay("lawtwin.kafka::Admin: an invalid topic name is refused [native]", ls3, ls4);
-        var ls5 = Property.Settings(100, 10000, 1000);
-        var ls6 = Fn.F1((FSharpList<Value> values_1) =>
-        {
-            var ls11 = Fn.List<string>("(int Int32 1 64)");
-            var ls12 = Fn.F0(() =>
-            {
-                return LawAdminAnInvalidTopicNameIsRefusedNativeCase(schema, symbols, values_1);
-            });
-            return Search.Guard("lawtwin.kafka::Admin: an invalid topic name is refused [native]", ls11, values_1, ls12);
-        });
-        Property.Check("lawtwin.kafka::Admin: an invalid topic name is refused [native]", ls5, generator, ls6);
+        Property.Boundaries("lawtwin.kafka::Admin: \"|an invalid topic name is refused| [native]", ls0, ls1);
     }
 
-    // Law: lawtwin.kafka::Admin: an invalid topic name is refused [cluster]
+    // Law: lawtwin.kafka::Admin: "|an invalid topic name is refused| [cluster]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Admin: an invalid topic name is refused [cluster]
-    // for all (n :: Int32) . match (attempt (createTopic ("") (_input0))) { Either::Left
-    // _match0__0__lawspecFailure -> match (_match0__0__lawspecFailure) {
+    // Admin: "|an invalid topic name is refused| [cluster]
+    // for all (n :: Int32) => match (attempt (createTopic ("") (_input0))) { Either::Left
+    // _match0__0__lawspecFailure -> let _let1__it = _match0__0__lawspecFailure in match (_let1__it) {
     // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -9158,8 +9245,8 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
     // _match0__1__lawspecResult -> false } = true and match (attempt (createTopic ("..") (_input0))) {
-    // Either::Left _match0__0__lawspecFailure -> match (_match0__0__lawspecFailure) {
-    // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> true;
+    // Either::Left _match0__0__lawspecFailure -> let _let1__it = _match0__0__lawspecFailure in match
+    // (_let1__it) { lawtwin.kafka.model::type::KafkaError::InvalidTopic -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidPartitions -> false;
@@ -9176,7 +9263,7 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match0__1__lawspecResult -> false } = true
+    // _match0__1__lawspecResult -> false } = true end for all
     private static Value LawAdminAnInvalidTopicNameIsRefusedClusterBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -9198,7 +9285,8 @@ public sealed class LawtwinKafka
         if (Runtime.HasTag("Either::Left", matched0))
         {
             var bound0 = Runtime.Field(matched0, 0);
-            var matched1 = bound0;
+            var bound2 = bound0;
+            var matched1 = bound2;
             Value ls6;
             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTopic", matched1))
             {
@@ -9369,7 +9457,7 @@ public sealed class LawtwinKafka
             ls4 = ls23;
         }
         var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-        if (Runtime.Truth(Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Admin: an invalid topic name is refused [cluster]")))
+        if (Runtime.Truth(Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Admin: \"|an invalid topic name is refused| [cluster]")))
         {
             Value ls24;
             var ls25 = Fn.F0(() =>
@@ -9389,7 +9477,8 @@ public sealed class LawtwinKafka
             if (Runtime.HasTag("Either::Left", matched0_1))
             {
                 var bound0_1 = Runtime.Field(matched0_1, 0);
-                var matched1_1 = bound0_1;
+                var bound2_1 = bound0_1;
+                var matched1_1 = bound2_1;
                 Value ls30;
                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTopic", matched1_1))
                 {
@@ -9560,7 +9649,7 @@ public sealed class LawtwinKafka
                 ls28 = ls47;
             }
             var ls29 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            if (Runtime.Truth(Runtime.AssertEqual(ls28, ls29, "lawtwin.kafka::Admin: an invalid topic name is refused [cluster]")))
+            if (Runtime.Truth(Runtime.AssertEqual(ls28, ls29, "lawtwin.kafka::Admin: \"|an invalid topic name is refused| [cluster]")))
             {
                 ls24 = V.Bool(true);
             }
@@ -9594,86 +9683,27 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Admin", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Admin: an invalid topic name is refused [cluster] property")]
-    public void LawAdminAnInvalidTopicNameIsRefusedCluster_Property()
+    [Fact(DisplayName = "lawtwin.kafka::Admin: \"|an invalid topic name is refused| [cluster] boundary")]
+    public void LawAdminAnInvalidTopicNameIsRefusedCluster_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
         var schema = LawSpec.Generated.Program.Schema;
-        var generation = Property.Generation(schema, symbols, 10000);
-        var ls0 = Fn.F1((Value input0) =>
+        var ls0 = Fn.List<FSharpList<Value>>(Fn.List<Value>(V.Int(new BigInteger(1L))), Fn.List<Value>(V.Int(new BigInteger(2L))), Fn.List<Value>(V.Int(new BigInteger(3L))), Fn.List<Value>(V.Int(new BigInteger(4L))), Fn.List<Value>(V.Int(new BigInteger(5L))), Fn.List<Value>(V.Int(new BigInteger(6L))), Fn.List<Value>(V.Int(new BigInteger(7L))), Fn.List<Value>(V.Int(new BigInteger(8L))), Fn.List<Value>(V.Int(new BigInteger(9L))), Fn.List<Value>(V.Int(new BigInteger(10L))), Fn.List<Value>(V.Int(new BigInteger(11L))), Fn.List<Value>(V.Int(new BigInteger(12L))), Fn.List<Value>(V.Int(new BigInteger(13L))), Fn.List<Value>(V.Int(new BigInteger(14L))), Fn.List<Value>(V.Int(new BigInteger(15L))), Fn.List<Value>(V.Int(new BigInteger(16L))), Fn.List<Value>(V.Int(new BigInteger(17L))), Fn.List<Value>(V.Int(new BigInteger(18L))), Fn.List<Value>(V.Int(new BigInteger(19L))), Fn.List<Value>(V.Int(new BigInteger(20L))), Fn.List<Value>(V.Int(new BigInteger(21L))), Fn.List<Value>(V.Int(new BigInteger(22L))), Fn.List<Value>(V.Int(new BigInteger(23L))), Fn.List<Value>(V.Int(new BigInteger(24L))), Fn.List<Value>(V.Int(new BigInteger(25L))), Fn.List<Value>(V.Int(new BigInteger(26L))), Fn.List<Value>(V.Int(new BigInteger(27L))), Fn.List<Value>(V.Int(new BigInteger(28L))), Fn.List<Value>(V.Int(new BigInteger(29L))), Fn.List<Value>(V.Int(new BigInteger(30L))), Fn.List<Value>(V.Int(new BigInteger(31L))), Fn.List<Value>(V.Int(new BigInteger(32L))), Fn.List<Value>(V.Int(new BigInteger(33L))), Fn.List<Value>(V.Int(new BigInteger(34L))), Fn.List<Value>(V.Int(new BigInteger(35L))), Fn.List<Value>(V.Int(new BigInteger(36L))), Fn.List<Value>(V.Int(new BigInteger(37L))), Fn.List<Value>(V.Int(new BigInteger(38L))), Fn.List<Value>(V.Int(new BigInteger(39L))), Fn.List<Value>(V.Int(new BigInteger(40L))), Fn.List<Value>(V.Int(new BigInteger(41L))), Fn.List<Value>(V.Int(new BigInteger(42L))), Fn.List<Value>(V.Int(new BigInteger(43L))), Fn.List<Value>(V.Int(new BigInteger(44L))), Fn.List<Value>(V.Int(new BigInteger(45L))), Fn.List<Value>(V.Int(new BigInteger(46L))), Fn.List<Value>(V.Int(new BigInteger(47L))), Fn.List<Value>(V.Int(new BigInteger(48L))), Fn.List<Value>(V.Int(new BigInteger(49L))), Fn.List<Value>(V.Int(new BigInteger(50L))), Fn.List<Value>(V.Int(new BigInteger(51L))), Fn.List<Value>(V.Int(new BigInteger(52L))), Fn.List<Value>(V.Int(new BigInteger(53L))), Fn.List<Value>(V.Int(new BigInteger(54L))), Fn.List<Value>(V.Int(new BigInteger(55L))), Fn.List<Value>(V.Int(new BigInteger(56L))), Fn.List<Value>(V.Int(new BigInteger(57L))), Fn.List<Value>(V.Int(new BigInteger(58L))), Fn.List<Value>(V.Int(new BigInteger(59L))), Fn.List<Value>(V.Int(new BigInteger(60L))), Fn.List<Value>(V.Int(new BigInteger(61L))), Fn.List<Value>(V.Int(new BigInteger(62L))), Fn.List<Value>(V.Int(new BigInteger(63L))), Fn.List<Value>(V.Int(new BigInteger(64L))));
+        var ls1 = Fn.F1((FSharpList<Value> values) =>
         {
-            bool ls7;
-            Value ls8;
-            if (Runtime.Truth(Scalar.Binary(">=", input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema), "Int32", "Integer")))
-            {
-                ls8 = Scalar.Binary("<=", input0, Schema.Validate(V.Int(new BigInteger(64L)), Scalar.TypeOf("Integer"), schema), "Int32", "Integer");
-            }
-            else
-            {
-                ls8 = V.Bool(false);
-            }
-            if (Runtime.Truth(ls8))
-            {
-                ls7 = true;
-            }
-            else
-            {
-                ls7 = false;
-            }
-            return ls7;
+            return LawAdminAnInvalidTopicNameIsRefusedClusterCase(schema, symbols, values);
         });
-        var ls1 = Generators.Generator(generation, Scalar.TypeOf("Int32"), Fn.List<Generators.Bound>(Generators.CompareBound(">=", Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema)), Generators.CompareBound("<=", Schema.Validate(V.Int(new BigInteger(64L)), Scalar.TypeOf("Integer"), schema))), Fn.List<Value>(V.Int(new BigInteger(-2147483648L)), V.Int(new BigInteger(-1L)), V.Int(new BigInteger(0L)), V.Int(new BigInteger(2147483647L))), Generators.NoIndex());
-        var ls2 = Fn.F1((Value input0_1) =>
-        {
-            return Gen.Constant(Fn.List<Value>(input0_1));
-        });
-        var generator = Gen.Bind(Gen.Refine(ls0, ls1), ls2);
-        var ls3 = Fn.List<string>("(int Int32 1 64)");
-        var ls4 = Fn.F1((FSharpList<Value> values) =>
-        {
-            var input0_2 = Runtime.Item(0, values);
-            FSharpOption<Value> ls9;
-            Value ls10;
-            if (Runtime.Truth(Scalar.Binary(">=", input0_2, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema), "Int32", "Integer")))
-            {
-                ls10 = Scalar.Binary("<=", input0_2, Schema.Validate(V.Int(new BigInteger(64L)), Scalar.TypeOf("Integer"), schema), "Int32", "Integer");
-            }
-            else
-            {
-                ls10 = V.Bool(false);
-            }
-            if (Runtime.Truth(ls10))
-            {
-                ls9 = Runtime.Some(LawAdminAnInvalidTopicNameIsRefusedClusterCase(schema, symbols, values));
-            }
-            else
-            {
-                ls9 = FSharpOption<Value>.None;
-            }
-            return ls9;
-        });
-        Search.Replay("lawtwin.kafka::Admin: an invalid topic name is refused [cluster]", ls3, ls4);
-        var ls5 = Property.Settings(100, 10000, 1000);
-        var ls6 = Fn.F1((FSharpList<Value> values_1) =>
-        {
-            var ls11 = Fn.List<string>("(int Int32 1 64)");
-            var ls12 = Fn.F0(() =>
-            {
-                return LawAdminAnInvalidTopicNameIsRefusedClusterCase(schema, symbols, values_1);
-            });
-            return Search.Guard("lawtwin.kafka::Admin: an invalid topic name is refused [cluster]", ls11, values_1, ls12);
-        });
-        Property.Check("lawtwin.kafka::Admin: an invalid topic name is refused [cluster]", ls5, generator, ls6);
+        Property.Boundaries("lawtwin.kafka::Admin: \"|an invalid topic name is refused| [cluster]", ls0, ls1);
     }
 
-    // Law: lawtwin.kafka::Partitioner: a chosen partition exists [native]
+    // Law: lawtwin.kafka::Partitioner: "|a chosen partition exists| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Partitioner: a chosen partition exists [native]
-    // for all (key :: Maybe (Bytes)) (n :: Int32) . let _let0__p = choosePartition (_input0) (_input1)
-    // in ((_let0__p >= 0) And (_let0__p < _input1)) = true
+    // Partitioner: "|a chosen partition exists| [native]
+    // for all (key :: Maybe (Bytes)) (n :: Int32) => let _let0__p = choosePartition (_input0) (_input1)
+    // in ((_let0__p >= 0) And (_let0__p < _input1)) = true end for all
     private static Value LawPartitionerAChosenPartitionExistsNativeBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -9690,7 +9720,7 @@ public sealed class LawtwinKafka
             ls0 = V.Bool(false);
         }
         var ls1 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-        return Runtime.AssertEqual(ls0, ls1, "lawtwin.kafka::Partitioner: a chosen partition exists [native]");
+        return Runtime.AssertEqual(ls0, ls1, "lawtwin.kafka::Partitioner: \"|a chosen partition exists| [native]");
     }
 
     private static Value LawPartitionerAChosenPartitionExistsNativeCase(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
@@ -9711,7 +9741,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Partitioner: a chosen partition exists [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Partitioner: \"|a chosen partition exists| [native] property")]
     public void LawPartitionerAChosenPartitionExistsNative_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -9755,17 +9785,17 @@ public sealed class LawtwinKafka
         {
             return LawPartitionerAChosenPartitionExistsNativeCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Partitioner: a chosen partition exists [native]", ls2, generator, ls3);
+        Property.Check("lawtwin.kafka::Partitioner: \"|a chosen partition exists| [native]", ls2, generator, ls3);
     }
 
-    // Law: lawtwin.kafka::Partitioner: a chosen partition exists [murmurPartitioner]
+    // Law: lawtwin.kafka::Partitioner: "|a chosen partition exists| [murmurPartitioner]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Partitioner: a chosen partition exists [murmurPartitioner]
-    // for all (key :: Maybe (Bytes)) (n :: Int32) . let _let0__p = choosePartition (_input0) (_input1)
-    // in ((_let0__p >= 0) And (_let0__p < _input1)) = true
+    // Partitioner: "|a chosen partition exists| [murmurPartitioner]
+    // for all (key :: Maybe (Bytes)) (n :: Int32) => let _let0__p = choosePartition (_input0) (_input1)
+    // in ((_let0__p >= 0) And (_let0__p < _input1)) = true end for all
     private static Value LawPartitionerAChosenPartitionExistsBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -9781,7 +9811,7 @@ public sealed class LawtwinKafka
             ls0 = V.Bool(false);
         }
         var ls1 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-        return Runtime.AssertEqual(ls0, ls1, "lawtwin.kafka::Partitioner: a chosen partition exists [murmurPartitioner]");
+        return Runtime.AssertEqual(ls0, ls1, "lawtwin.kafka::Partitioner: \"|a chosen partition exists| [murmurPartitioner]");
     }
 
     private static Value LawPartitionerAChosenPartitionExistsCase(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
@@ -9797,7 +9827,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Partitioner", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Partitioner: a chosen partition exists [murmurPartitioner] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Partitioner: \"|a chosen partition exists| [murmurPartitioner] property")]
     public void LawPartitionerAChosenPartitionExists_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -9841,23 +9871,23 @@ public sealed class LawtwinKafka
         {
             return LawPartitionerAChosenPartitionExistsCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Partitioner: a chosen partition exists [murmurPartitioner]", ls2, generator, ls3);
+        Property.Check("lawtwin.kafka::Partitioner: \"|a chosen partition exists| [murmurPartitioner]", ls2, generator, ls3);
     }
 
-    // Law: lawtwin.kafka::Partitioner: a key always goes to the same partition [native]
+    // Law: lawtwin.kafka::Partitioner: "|a key always goes to the same partition| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Partitioner: a key always goes to the same partition [native]
-    // for all (key :: Bytes) (n :: Int32) . choosePartition (Maybe::Just(_input0)) (_input1) =
-    // choosePartition (Maybe::Just(_input0)) (_input1)
+    // Partitioner: "|a key always goes to the same partition| [native]
+    // for all (key :: Bytes) (n :: Int32) => choosePartition (Maybe::Just(_input0)) (_input1) =
+    // choosePartition (Maybe::Just(_input0)) (_input1) end for all
     private static Value LawPartitionerAKeyAlwaysGoesToTheSameBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
         var input1 = Runtime.Item(1, inputs);
         var resource0 = Runtime.Item(0, resources);
-        return Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Partitioner", "choosePartition", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input0), Scalar.TypeOf("Maybe (Bytes)"), schema), input1)), Scalar.TypeOf("Int32"), schema), Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Partitioner", "choosePartition", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input0), Scalar.TypeOf("Maybe (Bytes)"), schema), input1)), Scalar.TypeOf("Int32"), schema), "lawtwin.kafka::Partitioner: a key always goes to the same partition [native]");
+        return Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Partitioner", "choosePartition", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input0), Scalar.TypeOf("Maybe (Bytes)"), schema), input1)), Scalar.TypeOf("Int32"), schema), Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Partitioner", "choosePartition", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input0), Scalar.TypeOf("Maybe (Bytes)"), schema), input1)), Scalar.TypeOf("Int32"), schema), "lawtwin.kafka::Partitioner: \"|a key always goes to the same partition| [native]");
     }
 
     private static Value LawPartitionerAKeyAlwaysGoesToTheSameCase(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
@@ -9878,7 +9908,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Partitioner: a key always goes to the same partition [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Partitioner: \"|a key always goes to the same partition| [native] property")]
     public void LawPartitionerAKeyAlwaysGoesToTheSame_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -9922,22 +9952,22 @@ public sealed class LawtwinKafka
         {
             return LawPartitionerAKeyAlwaysGoesToTheSameCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Partitioner: a key always goes to the same partition [native]", ls2, generator, ls3);
+        Property.Check("lawtwin.kafka::Partitioner: \"|a key always goes to the same partition| [native]", ls2, generator, ls3);
     }
 
-    // Law: lawtwin.kafka::Partitioner: a key always goes to the same partition [murmurPartitioner]
+    // Law: lawtwin.kafka::Partitioner: "|a key always goes to the same partition| [murmurPartitioner]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Partitioner: a key always goes to the same partition [murmurPartitioner]
-    // for all (key :: Bytes) (n :: Int32) . choosePartition (Maybe::Just(_input0)) (_input1) =
-    // choosePartition (Maybe::Just(_input0)) (_input1)
+    // Partitioner: "|a key always goes to the same partition| [murmurPartitioner]
+    // for all (key :: Bytes) (n :: Int32) => choosePartition (Maybe::Just(_input0)) (_input1) =
+    // choosePartition (Maybe::Just(_input0)) (_input1) end for all
     private static Value LawPartitionerAKeyAlwaysGoesToTheSame2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
         var input1 = Runtime.Item(1, inputs);
-        return Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Partitioner", "choosePartition", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input0), Scalar.TypeOf("Maybe (Bytes)"), schema), input1)), Scalar.TypeOf("Int32"), schema), Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Partitioner", "choosePartition", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input0), Scalar.TypeOf("Maybe (Bytes)"), schema), input1)), Scalar.TypeOf("Int32"), schema), "lawtwin.kafka::Partitioner: a key always goes to the same partition [murmurPartitioner]");
+        return Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Partitioner", "choosePartition", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input0), Scalar.TypeOf("Maybe (Bytes)"), schema), input1)), Scalar.TypeOf("Int32"), schema), Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Partitioner", "choosePartition", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input0), Scalar.TypeOf("Maybe (Bytes)"), schema), input1)), Scalar.TypeOf("Int32"), schema), "lawtwin.kafka::Partitioner: \"|a key always goes to the same partition| [murmurPartitioner]");
     }
 
     private static Value LawPartitionerAKeyAlwaysGoesToTheSame2Case(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
@@ -9953,7 +9983,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Partitioner", ls0)), ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Partitioner: a key always goes to the same partition [murmurPartitioner] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Partitioner: \"|a key always goes to the same partition| [murmurPartitioner] property")]
     public void LawPartitionerAKeyAlwaysGoesToTheSame2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -9997,24 +10027,29 @@ public sealed class LawtwinKafka
         {
             return LawPartitionerAKeyAlwaysGoesToTheSame2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Partitioner: a key always goes to the same partition [murmurPartitioner]", ls2, generator, ls3);
+        Property.Check("lawtwin.kafka::Partitioner: \"|a key always goes to the same partition| [murmurPartitioner]", ls2, generator, ls3);
     }
 
-    // Law: lawtwin.kafka::Producer: records sent to one partition are read in the order sent [native]
+    // Law: lawtwin.kafka::Producer: "|records sent to one partition are read in the order sent|
+    // [native]
     // Description: Within one partition, records are stored and read in the order they
     // were sent: the later send gets the next offset, and a consumer reading
     // from the first gets both, first to last.
     // Rationale:
     // References:
     // Expansion:
-    // Producer: records sent to one partition are read in the order sent [native]
+    // Producer: "|records sent to one partition are read in the order sent| [native]
     // for all (t :: Text) (first :: lawtwin.kafka.model::type::Record) (second ::
-    // lawtwin.kafka.model::type::Record) . created (_input0) (1) implies let _let0__a = send
-    // (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1)) in let _let1__b = send
-    // (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2)) in readInOrder (_let0__a)
-    // (_let1__b) (_input1) (_input2) = true
+    // lawtwin.kafka.model::type::Record) => created (_input0) (1) implies let _let0__a = send (let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _let2___lawspecRecordField2 = _input1
+    // in lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1, _let2___lawspecRecordField2)) in let _let1__b = send (let
+    // _let1___lawspecRecordField0 = _input0 in let _let2___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _let3___lawspecRecordField2 = _input2
+    // in lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRecordField0,
+    // _let2___lawspecRecordField1, _let3___lawspecRecordField2)) in readInOrder (_let0__a) (_let1__b)
+    // (_input1) (_input2) = true end for all
     private static Value LawProducerRecordsSentToOnePartitionAreReadBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -10024,10 +10059,18 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input1), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            var bound1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input2), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            var ls1 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.ReadInOrder(schema, symbols, bound0, bound1, input1, input2), ls1, "lawtwin.kafka::Producer: records sent to one partition are read in the order sent [native]");
+            var bound1 = input0;
+            var bound2 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound3 = input1;
+            var ls1 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound1, bound2, bound3), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls1, schema);
+            var bound5 = input0;
+            var bound6 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound7 = input2;
+            var ls2 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var bound4 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound5, bound6, bound7), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls2, schema);
+            var ls3 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.ReadInOrder(schema, symbols, bound0, bound4, input1, input2), ls3, "lawtwin.kafka::Producer: \"|records sent to one partition are read in the order sent| [native]");
         }
         else
         {
@@ -10054,7 +10097,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: records sent to one partition are read in the order sent [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|records sent to one partition are read in the order sent| [native] boundary")]
     public void LawProducerRecordsSentToOnePartitionAreRead_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -10064,10 +10107,10 @@ public sealed class LawtwinKafka
         {
             return LawProducerRecordsSentToOnePartitionAreReadCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Producer: records sent to one partition are read in the order sent [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Producer: \"|records sent to one partition are read in the order sent| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: records sent to one partition are read in the order sent [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|records sent to one partition are read in the order sent| [native] property")]
     public void LawProducerRecordsSentToOnePartitionAreRead_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -10107,25 +10150,30 @@ public sealed class LawtwinKafka
         {
             return LawProducerRecordsSentToOnePartitionAreReadCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Producer: records sent to one partition are read in the order sent [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Producer: \"|records sent to one partition are read in the order sent| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Producer: a flushed record is in the log [native]
+    // Law: lawtwin.kafka::Producer: "|a flushed record is in the log| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Producer: a flushed record is in the log [native]
-    // for all (t :: Text) (r :: lawtwin.kafka.model::type::Record) . created (_input0) (1) implies
-    // match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e ->
-    // false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt
-    // (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0))
-    // (lawtwin.kafka.model::type::OffsetSpec::Latest())
-    // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e ->
-    // false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt ->
-    // _matchfield1__sentAt }) } } = true
+    // Producer: "|a flushed record is in the log| [native]
+    // for all (t :: Text) (r :: lawtwin.kafka.model::type::Record) => created (_input0) (1) implies let
+    // _let0__it = send (let _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _let2___lawspecRecordField2 = _input1
+    // in lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1, _let2___lawspecRecordField2)) in match (_let0__it) { Either::Left
+    // _match1__0___lawspecSelection0x0 -> false; Either::Right _match1__1___lawspecSelection0x0 -> let
+    // _let2__lawspecIgnored = flush in let _let3__it = attempt (listOffsetsRequest (let
+    // _let3___lawspecRecordField0 = _input0 in let _let4___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let3___lawspecRecordField0,
+    // _let4___lawspecRecordField1)) (lawtwin.kafka.model::type::OffsetSpec::Latest())
+    // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())) in match (_let3__it) {
+    // Either::Left _match4__0___match__lawspecSelection0x0_0 -> false; Either::Right
+    // _match4__1___match__lawspecSelection0x0_0 -> (_match4__1___match__lawspecSelection0x0_0 > match
+    // (_match1__1___lawspecSelection0x0) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
+    // _matchfield0__sentTo _matchfield1__sentAt -> _matchfield1__sentAt }) } } = true end for all
     private static Value LawProducerAFlushedRecordIsInTheLogNativeBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -10134,75 +10182,86 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var matched0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input1), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            Value ls1;
+            var bound1 = input0;
+            var bound2 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound3 = input1;
+            var ls1 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound1, bound2, bound3), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls1, schema);
+            var matched0 = bound0;
+            Value ls2;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
-                ls1 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                var bound4 = Runtime.Field(matched0, 0);
+                ls2 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
             {
-                Value ls3;
+                Value ls4;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
-                    var bound2 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "flush", Fn.List<Value>()), Scalar.TypeOf("Unit"), schema);
-                    var ls4 = Fn.F0(() =>
+                    var bound5 = Runtime.Field(matched0, 0);
+                    var bound6 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "flush", Fn.List<Value>()), Scalar.TypeOf("Unit"), schema);
+                    var ls5 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "listOffsetsRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Latest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema), Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema))), Scalar.TypeOf("Int64"), schema);
+                        var bound8 = input0;
+                        var bound9 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                        var ls9 = Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Latest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema);
+                        var ls10 = Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema);
+                        var ls11 = Scalar.TypeOf("Int64");
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "listOffsetsRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound8, bound9), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls9, ls10)), ls11, schema);
                     });
-                    var ls5 = Fn.F1((Value failureValue) =>
+                    var ls6 = Fn.F1((Value failureValue) =>
                     {
                         return Schema.Construct("Either::Right", Fn.List<Value>(failureValue), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                     });
-                    var ls6 = Fn.F1((Value failureValue_1) =>
+                    var ls7 = Fn.F1((Value failureValue_1) =>
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                     });
-                    var matched1 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls4, ls5, ls6);
-                    Value ls7;
+                    var bound7 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls5, ls6, ls7);
+                    var matched1 = bound7;
+                    Value ls8;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound3 = Runtime.Field(matched1, 0);
-                        ls7 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                        var bound10 = Runtime.Field(matched1, 0);
+                        ls8 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                     }
                     else
                     {
-                        Value ls8;
+                        Value ls12;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound4 = Runtime.Field(matched1, 0);
-                            var matched2 = bound1;
-                            Value ls9;
+                            var bound11 = Runtime.Field(matched1, 0);
+                            var matched2 = bound5;
+                            Value ls13;
                             if (Runtime.HasTag("lawtwin.kafka::type::RecordMetadata::RecordMetadata", matched2))
                             {
-                                var bound5 = Runtime.Field(matched2, 0);
-                                var bound6 = Runtime.Field(matched2, 1);
-                                ls9 = bound6;
+                                var bound12 = Runtime.Field(matched2, 0);
+                                var bound13 = Runtime.Field(matched2, 1);
+                                ls13 = bound13;
                             }
                             else
                             {
-                                ls9 = Runtime.NoMatch(matched2);
+                                ls13 = Runtime.NoMatch(matched2);
                             }
-                            ls8 = Scalar.Binary(">", bound4, ls9, "Int64", "Int64");
+                            ls12 = Scalar.Binary(">", bound11, ls13, "Int64", "Int64");
                         }
                         else
                         {
-                            ls8 = Runtime.NoMatch(matched1);
+                            ls12 = Runtime.NoMatch(matched1);
                         }
-                        ls7 = ls8;
+                        ls8 = ls12;
                     }
-                    ls3 = ls7;
+                    ls4 = ls8;
                 }
                 else
                 {
-                    ls3 = Runtime.NoMatch(matched0);
+                    ls4 = Runtime.NoMatch(matched0);
                 }
-                ls1 = ls3;
+                ls2 = ls4;
             }
-            var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Producer: a flushed record is in the log [native]");
+            var ls3 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+            ls0 = Runtime.AssertEqual(ls2, ls3, "lawtwin.kafka::Producer: \"|a flushed record is in the log| [native]");
         }
         else
         {
@@ -10229,7 +10288,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|a flushed record is in the log| [native] boundary")]
     public void LawProducerAFlushedRecordIsInTheLogNative_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -10239,10 +10298,10 @@ public sealed class LawtwinKafka
         {
             return LawProducerAFlushedRecordIsInTheLogNativeCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Producer: a flushed record is in the log [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Producer: \"|a flushed record is in the log| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: a flushed record is in the log [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|a flushed record is in the log| [native] property")]
     public void LawProducerAFlushedRecordIsInTheLogNative_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -10277,27 +10336,31 @@ public sealed class LawtwinKafka
         {
             return LawProducerAFlushedRecordIsInTheLogNativeCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Producer: a flushed record is in the log [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Producer: \"|a flushed record is in the log| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Producer: an idempotent producer's retried send is written once [native]
+    // Law: lawtwin.kafka::Producer: "|an idempotent producer's retried send is written once| [native]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Producer: an idempotent producer's retried send is written once [native]
-    // for all (t :: Text) (r :: lawtwin.kafka.model::type::Record) . created (_input0) (1) implies let
-    // _let0__id = enableIdempotence in let _let1__sent = send
-    // (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1)) in let _let2__retried =
-    // retryLastSend in (((match (_let0__id) { Either::Left _match3__0__railwayError0 -> false;
-    // Either::Right _match3__1__railwayValue1 -> true } And (_let1__sent == _let2__retried)) And
-    // followsOne (_let1__sent) (attempt (listOffsetsRequest
-    // (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0))
-    // (lawtwin.kafka.model::type::OffsetSpec::Latest())
-    // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) And (producerIdentity == match
-    // (_let0__id) { Either::Right _match3__0__pe -> Maybe::Just(_match3__0__pe); Either::Left
-    // _match3__1__e -> Maybe::Nothing() })) = true
+    // Producer: "|an idempotent producer's retried send is written once| [native]
+    // for all (t :: Text) (r :: lawtwin.kafka.model::type::Record) => created (_input0) (1) implies let
+    // _let0__id = enableIdempotence in let _let1__sent = send (let _let1___lawspecRecordField0 =
+    // _input0 in let _let2___lawspecRecordField1 = lawtwin.kafka::type::PartitionChoice::ToPartition(0)
+    // in let _let3___lawspecRecordField2 = _input1 in
+    // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRecordField0,
+    // _let2___lawspecRecordField1, _let3___lawspecRecordField2)) in let _let2__retried = retryLastSend
+    // in (((match (_let0__id) { Either::Left _match3__0__railwayError0 -> false; Either::Right
+    // _match3__1__railwayValue1 -> true } And (_let1__sent == _let2__retried)) And followsOne
+    // (_let1__sent) (attempt (listOffsetsRequest (let _let3___lawspecRecordField0 = _input0 in let
+    // _let4___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let3___lawspecRecordField0,
+    // _let4___lawspecRecordField1)) (lawtwin.kafka.model::type::OffsetSpec::Latest())
+    // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) And (producerIdentity == let
+    // _let3__it = _let0__id in match (_let3__it) { Either::Right _match4__0___lawspecSelection0x0 ->
+    // Maybe::Just(_match4__0___lawspecSelection0x0); Either::Left _match4__1___lawspecSelection0x0 ->
+    // Maybe::Nothing() })) = true end for all
     private static Value LawProducerAnIdempotentProducerSRetriedSendBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -10307,35 +10370,64 @@ public sealed class LawtwinKafka
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
             var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "enableIdempotence", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
-            var bound1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input1), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            var bound2 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "retryLastSend", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            Value ls1;
-            Value ls3;
+            var bound2 = input0;
+            var bound3 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound4 = input1;
+            var ls1 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var bound1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound2, bound3, bound4), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls1, schema);
+            var bound5 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "retryLastSend", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
+            Value ls2;
             Value ls4;
-            var matched0 = bound0;
             Value ls5;
+            var matched0 = bound0;
+            Value ls6;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound3 = Runtime.Field(matched0, 0);
-                ls5 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                var bound6 = Runtime.Field(matched0, 0);
+                ls6 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
             {
-                Value ls6;
+                Value ls7;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound4 = Runtime.Field(matched0, 0);
-                    ls6 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                    var bound7 = Runtime.Field(matched0, 0);
+                    ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                 }
                 else
                 {
-                    ls6 = Runtime.NoMatch(matched0);
+                    ls7 = Runtime.NoMatch(matched0);
                 }
-                ls5 = ls6;
+                ls6 = ls7;
+            }
+            if (Runtime.Truth(ls6))
+            {
+                ls5 = Scalar.Binary("==", bound1, bound5, "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)", "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            }
+            else
+            {
+                ls5 = V.Bool(false);
             }
             if (Runtime.Truth(ls5))
             {
-                ls4 = Scalar.Binary("==", bound1, bound2, "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)", "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+                var ls8 = Fn.F0(() =>
+                {
+                    var bound8 = input0;
+                    var bound9 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                    var ls11 = Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Latest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema);
+                    var ls12 = Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema);
+                    var ls13 = Scalar.TypeOf("Int64");
+                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "listOffsetsRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound8, bound9), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls11, ls12)), ls13, schema);
+                });
+                var ls9 = Fn.F1((Value failureValue) =>
+                {
+                    return Schema.Construct("Either::Right", Fn.List<Value>(failureValue), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
+                });
+                var ls10 = Fn.F1((Value failureValue_1) =>
+                {
+                    return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
+                });
+                ls4 = LawSpec.Generated.LawtwinKafka.FollowsOne(schema, symbols, bound1, Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls8, ls9, ls10));
             }
             else
             {
@@ -10343,56 +10435,37 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls4))
             {
-                var ls7 = Fn.F0(() =>
-                {
-                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "listOffsetsRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Latest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema), Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema))), Scalar.TypeOf("Int64"), schema);
-                });
-                var ls8 = Fn.F1((Value failureValue) =>
-                {
-                    return Schema.Construct("Either::Right", Fn.List<Value>(failureValue), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
-                });
-                var ls9 = Fn.F1((Value failureValue_1) =>
-                {
-                    return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
-                });
-                ls3 = LawSpec.Generated.LawtwinKafka.FollowsOne(schema, symbols, bound1, Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9));
-            }
-            else
-            {
-                ls3 = V.Bool(false);
-            }
-            if (Runtime.Truth(ls3))
-            {
-                var ls10 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "producerIdentity", Fn.List<Value>()), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
-                var matched1 = bound0;
-                Value ls11;
+                var ls14 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "producerIdentity", Fn.List<Value>()), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
+                var bound10 = bound0;
+                var matched1 = bound10;
+                Value ls15;
                 if (Runtime.HasTag("Either::Right", matched1))
                 {
-                    var bound5 = Runtime.Field(matched1, 0);
-                    ls11 = Schema.Construct("Maybe::Just", Fn.List<Value>(bound5), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
+                    var bound11 = Runtime.Field(matched1, 0);
+                    ls15 = Schema.Construct("Maybe::Just", Fn.List<Value>(bound11), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
                 }
                 else
                 {
-                    Value ls12;
+                    Value ls16;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound6 = Runtime.Field(matched1, 0);
-                        ls12 = Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
+                        var bound12 = Runtime.Field(matched1, 0);
+                        ls16 = Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
                     }
                     else
                     {
-                        ls12 = Runtime.NoMatch(matched1);
+                        ls16 = Runtime.NoMatch(matched1);
                     }
-                    ls11 = ls12;
+                    ls15 = ls16;
                 }
-                ls1 = Scalar.Binary("==", ls10, ls11, "Maybe lawtwin.kafka.model::type::ProducerIdAndEpoch", "Maybe lawtwin.kafka.model::type::ProducerIdAndEpoch");
+                ls2 = Scalar.Binary("==", ls14, ls15, "Maybe lawtwin.kafka.model::type::ProducerIdAndEpoch", "Maybe lawtwin.kafka.model::type::ProducerIdAndEpoch");
             }
             else
             {
-                ls1 = V.Bool(false);
+                ls2 = V.Bool(false);
             }
-            var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Producer: an idempotent producer's retried send is written once [native]");
+            var ls3 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+            ls0 = Runtime.AssertEqual(ls2, ls3, "lawtwin.kafka::Producer: \"|an idempotent producer's retried send is written once| [native]");
         }
         else
         {
@@ -10419,7 +10492,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: an idempotent producer's retried send is written once [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|an idempotent producer's retried send is written once| [native] boundary")]
     public void LawProducerAnIdempotentProducerSRetriedSend_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -10429,10 +10502,10 @@ public sealed class LawtwinKafka
         {
             return LawProducerAnIdempotentProducerSRetriedSendCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Producer: an idempotent producer's retried send is written once [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Producer: \"|an idempotent producer's retried send is written once| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: an idempotent producer's retried send is written once [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|an idempotent producer's retried send is written once| [native] property")]
     public void LawProducerAnIdempotentProducerSRetriedSend_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -10467,24 +10540,34 @@ public sealed class LawtwinKafka
         {
             return LawProducerAnIdempotentProducerSRetriedSendCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Producer: an idempotent producer's retried send is written once [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Producer: \"|an idempotent producer's retried send is written once| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Producer: records with one key go to one partition [native]
+    // Law: lawtwin.kafka::Producer: "|records with one key go to one partition| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Producer: records with one key go to one partition [native]
+    // Producer: "|records with one key go to one partition| [native]
     // for all (t :: Text) (n :: Int32) (key :: Bytes) (first :: Maybe (Bytes)) (second :: Maybe
-    // (Bytes)) . created (_input0) (_input1) implies let _let0__a = send
-    // (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ByKey(),
-    // lawtwin.kafka.model::type::Record::Record(Maybe::Just(_input2), _input3, List::Nil()))) in let
-    // _let1__b = send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ByKey(),
-    // lawtwin.kafka.model::type::Record::Record(Maybe::Just(_input2), _input4, List::Nil()))) in
-    // samePartition (_let0__a) (_let1__b) = true
+    // (Bytes)) => created (_input0) (_input1) implies let _let0__a = send (let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ByKey() in let _let2___lawspecRecordField2 = let
+    // _let2___lawspecRecordField0 = Maybe::Just(_input2) in let _let3___lawspecRecordField1 = _input3
+    // in let _let4___lawspecRecordField2 = List::Nil() in
+    // lawtwin.kafka.model::type::Record::Record(_let2___lawspecRecordField0,
+    // _let3___lawspecRecordField1, _let4___lawspecRecordField2) in
+    // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1, _let2___lawspecRecordField2)) in let _let1__b = send (let
+    // _let1___lawspecRecordField0 = _input0 in let _let2___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ByKey() in let _let3___lawspecRecordField2 = let
+    // _let3___lawspecRecordField0 = Maybe::Just(_input2) in let _let4___lawspecRecordField1 = _input4
+    // in let _let5___lawspecRecordField2 = List::Nil() in
+    // lawtwin.kafka.model::type::Record::Record(_let3___lawspecRecordField0,
+    // _let4___lawspecRecordField1, _let5___lawspecRecordField2) in
+    // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRecordField0,
+    // _let2___lawspecRecordField1, _let3___lawspecRecordField2)) in samePartition (_let0__a) (_let1__b)
+    // = true end for all
     private static Value LawProducerRecordsWithOneKeyGoToOneBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -10496,10 +10579,24 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, input1)))
         {
-            var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ByKey", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), Schema.Construct("lawtwin.kafka.model::type::Record::Record", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input2), Scalar.TypeOf("Maybe (Bytes)"), schema), input3, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Header)"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::Record"), schema)), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            var bound1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ByKey", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), Schema.Construct("lawtwin.kafka.model::type::Record::Record", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input2), Scalar.TypeOf("Maybe (Bytes)"), schema), input4, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Header)"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::Record"), schema)), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            var ls1 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.SamePartition(schema, symbols, bound0, bound1), ls1, "lawtwin.kafka::Producer: records with one key go to one partition [native]");
+            var bound1 = input0;
+            var bound2 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ByKey", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound4 = Schema.Construct("Maybe::Just", Fn.List<Value>(input2), Scalar.TypeOf("Maybe (Bytes)"), schema);
+            var bound5 = input3;
+            var bound6 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Header)"), schema);
+            var bound3 = Schema.Construct("lawtwin.kafka.model::type::Record::Record", Fn.List<Value>(bound4, bound5, bound6), Scalar.TypeOf("lawtwin.kafka.model::type::Record"), schema);
+            var ls1 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound1, bound2, bound3), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls1, schema);
+            var bound8 = input0;
+            var bound9 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ByKey", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound11 = Schema.Construct("Maybe::Just", Fn.List<Value>(input2), Scalar.TypeOf("Maybe (Bytes)"), schema);
+            var bound12 = input4;
+            var bound13 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Header)"), schema);
+            var bound10 = Schema.Construct("lawtwin.kafka.model::type::Record::Record", Fn.List<Value>(bound11, bound12, bound13), Scalar.TypeOf("lawtwin.kafka.model::type::Record"), schema);
+            var ls2 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var bound7 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound8, bound9, bound10), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls2, schema);
+            var ls3 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.SamePartition(schema, symbols, bound0, bound7), ls3, "lawtwin.kafka::Producer: \"|records with one key go to one partition| [native]");
         }
         else
         {
@@ -10526,7 +10623,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: records with one key go to one partition [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|records with one key go to one partition| [native] property")]
     public void LawProducerRecordsWithOneKeyGoToOne_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -10598,19 +10695,22 @@ public sealed class LawtwinKafka
         {
             return LawProducerRecordsWithOneKeyGoToOneCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Producer: records with one key go to one partition [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Producer: \"|records with one key go to one partition| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Producer: a send to a partition the topic lacks is refused [native]
+    // Law: lawtwin.kafka::Producer: "|a send to a partition the topic lacks is refused| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Producer: a send to a partition the topic lacks is refused [native]
-    // for all (t :: Text) (n :: Int32) (r :: lawtwin.kafka.model::type::Record) . created (_input0)
-    // (_input1) implies send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(_input1), _input2)) =
-    // Either::Left(lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition())
+    // Producer: "|a send to a partition the topic lacks is refused| [native]
+    // for all (t :: Text) (n :: Int32) (r :: lawtwin.kafka.model::type::Record) => created (_input0)
+    // (_input1) implies send (let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = lawtwin.kafka::type::PartitionChoice::ToPartition(_input1) in let
+    // _let2___lawspecRecordField2 = _input2 in
+    // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1, _let2___lawspecRecordField2)) =
+    // Either::Left(lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition()) end for all
     private static Value LawProducerASendToAPartitionTheTopicLacksBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -10620,7 +10720,12 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, input1)))
         {
-            ls0 = Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(input1), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input2), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema), Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema), "lawtwin.kafka::Producer: a send to a partition the topic lacks is refused [native]");
+            var bound0 = input0;
+            var bound1 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(input1), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound2 = input2;
+            var ls1 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var ls2 = Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
+            ls0 = Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound0, bound1, bound2), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls1, schema), ls2, "lawtwin.kafka::Producer: \"|a send to a partition the topic lacks is refused| [native]");
         }
         else
         {
@@ -10647,7 +10752,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: a send to a partition the topic lacks is refused [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|a send to a partition the topic lacks is refused| [native] property")]
     public void LawProducerASendToAPartitionTheTopicLacks_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -10709,23 +10814,24 @@ public sealed class LawtwinKafka
         {
             return LawProducerASendToAPartitionTheTopicLacksCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Producer: a send to a partition the topic lacks is refused [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Producer: \"|a send to a partition the topic lacks is refused| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Consumer: a restarted consumer resumes at its committed offset [native]
+    // Law: lawtwin.kafka::Consumer: "|a restarted consumer resumes at its committed offset| [native]
     // Description: A consumer polls, commits and closes. When it subscribes again, it
     // starts from the committed offset: a record is delivered again only at
     // or after it, never before, so none is lost.
     // Rationale:
     // References:
     // Expansion:
-    // Consumer: a restarted consumer resumes at its committed offset [native]
+    // Consumer: "|a restarted consumer resumes at its committed offset| [native]
     // for all (t :: Text) (g :: Text) (m :: Text) (batch :: List (lawtwin.kafka.model::type::Record))
-    // (n :: Int32) . created (_input0) (1) implies (match (attempt (produceRequest
-    // (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (Maybe::Nothing())
-    // (_input3))) { Either::Left _match0__0__railwayError0 -> false; Either::Right
-    // _match0__1__railwayValue1 -> true } And resumesAtCommitted (_input0) (_input1) (_input2)
-    // (_input4)) = true
+    // (n :: Int32) => created (_input0) (1) implies (match (attempt (produceRequest (let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1)) (Maybe::Nothing()) (_input3))) { Either::Left
+    // _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true } And
+    // resumesAtCommitted (_input0) (_input1) (_input2) (_input4)) = true end for all
     private static Value LawConsumerARestartedConsumerResumesAtItsBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -10740,7 +10846,11 @@ public sealed class LawtwinKafka
             Value ls1;
             var ls3 = Fn.F0(() =>
             {
-                return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input3)), Scalar.TypeOf("Int64"), schema);
+                var bound2 = input0;
+                var bound3 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                var ls7 = Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema);
+                var ls8 = Scalar.TypeOf("Int64");
+                return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound2, bound3), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls7, input3)), ls8, schema);
             });
             var ls4 = Fn.F1((Value failureValue) =>
             {
@@ -10759,17 +10869,17 @@ public sealed class LawtwinKafka
             }
             else
             {
-                Value ls7;
+                Value ls9;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
                     var bound1 = Runtime.Field(matched0, 0);
-                    ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                    ls9 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                 }
                 else
                 {
-                    ls7 = Runtime.NoMatch(matched0);
+                    ls9 = Runtime.NoMatch(matched0);
                 }
-                ls6 = ls7;
+                ls6 = ls9;
             }
             if (Runtime.Truth(ls6))
             {
@@ -10780,7 +10890,7 @@ public sealed class LawtwinKafka
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Consumer: a restarted consumer resumes at its committed offset [native]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Consumer: \"|a restarted consumer resumes at its committed offset| [native]");
         }
         else
         {
@@ -10807,7 +10917,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: a restarted consumer resumes at its committed offset [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|a restarted consumer resumes at its committed offset| [native] property")]
     public void LawConsumerARestartedConsumerResumesAtIts_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -10918,22 +11028,25 @@ public sealed class LawtwinKafka
         {
             return LawConsumerARestartedConsumerResumesAtItsCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Consumer: a restarted consumer resumes at its committed offset [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Consumer: \"|a restarted consumer resumes at its committed offset| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Consumer: a poll reads each partition in offset order [native]
+    // Law: lawtwin.kafka::Consumer: "|a poll reads each partition in offset order| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Consumer: a poll reads each partition in offset order [native]
-    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created (_input0) (1)
-    // implies let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in
-    // (match (attempt (produceRequest (_let0__tp) (Maybe::Nothing()) (_input1))) { Either::Left
-    // _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And let
-    // _let1__lawspecIgnored = assign (List::Cons(_let0__tp, List::Nil())) in match (poll (10)) {
-    // Either::Left _match2__0__e -> false; Either::Right _match2__1__rs -> increasing (receivedOffsets
-    // (_match2__1__rs)) }) = true
+    // Consumer: "|a poll reads each partition in offset order| [native]
+    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created (_input0) (1)
+    // implies let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in (match (attempt (produceRequest (_let0__tp) (Maybe::Nothing())
+    // (_input1))) { Either::Left _match1__0__railwayError0 -> false; Either::Right
+    // _match1__1__railwayValue1 -> true } And let _let1__lawspecIgnored = assign (List::Cons(_let0__tp,
+    // List::Nil())) in let _let2__it = poll (10) in match (_let2__it) { Either::Left
+    // _match3__0___lawspecSelection0x0 -> false; Either::Right _match3__1___lawspecSelection0x0 ->
+    // increasing (receivedOffsets (_match3__1___lawspecSelection0x0)) }) = true end for all
     private static Value LawConsumerAPollReadsEachPartitionInOffsetBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -10942,7 +11055,9 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             Value ls1;
             var ls3 = Fn.F0(() =>
             {
@@ -10960,7 +11075,7 @@ public sealed class LawtwinKafka
             Value ls6;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound1 = Runtime.Field(matched0, 0);
+                var bound3 = Runtime.Field(matched0, 0);
                 ls6 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -10968,7 +11083,7 @@ public sealed class LawtwinKafka
                 Value ls7;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound2 = Runtime.Field(matched0, 0);
+                    var bound4 = Runtime.Field(matched0, 0);
                     ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -10979,12 +11094,13 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls6))
             {
-                var bound3 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(bound0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
-                var matched1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "poll", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(10L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka::type::ConsumerRecord))"), schema);
+                var bound5 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(bound0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
+                var bound6 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "poll", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(10L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka::type::ConsumerRecord))"), schema);
+                var matched1 = bound6;
                 Value ls8;
                 if (Runtime.HasTag("Either::Left", matched1))
                 {
-                    var bound4 = Runtime.Field(matched1, 0);
+                    var bound7 = Runtime.Field(matched1, 0);
                     ls8 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -10992,8 +11108,8 @@ public sealed class LawtwinKafka
                     Value ls9;
                     if (Runtime.HasTag("Either::Right", matched1))
                     {
-                        var bound5 = Runtime.Field(matched1, 0);
-                        ls9 = LawSpec.Generated.LawtwinKafka.Increasing(schema, symbols, LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, bound5));
+                        var bound8 = Runtime.Field(matched1, 0);
+                        ls9 = LawSpec.Generated.LawtwinKafka.Increasing(schema, symbols, LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, bound8));
                     }
                     else
                     {
@@ -11008,7 +11124,7 @@ public sealed class LawtwinKafka
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Consumer: a poll reads each partition in offset order [native]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Consumer: \"|a poll reads each partition in offset order| [native]");
         }
         else
         {
@@ -11035,7 +11151,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: a poll reads each partition in offset order [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|a poll reads each partition in offset order| [native] boundary")]
     public void LawConsumerAPollReadsEachPartitionInOffset_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -11045,10 +11161,10 @@ public sealed class LawtwinKafka
         {
             return LawConsumerAPollReadsEachPartitionInOffsetCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Consumer: a poll reads each partition in offset order [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Consumer: \"|a poll reads each partition in offset order| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: a poll reads each partition in offset order [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|a poll reads each partition in offset order| [native] property")]
     public void LawConsumerAPollReadsEachPartitionInOffset_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -11096,19 +11212,21 @@ public sealed class LawtwinKafka
         {
             return LawConsumerAPollReadsEachPartitionInOffsetCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Consumer: a poll reads each partition in offset order [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Consumer: \"|a poll reads each partition in offset order| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Consumer: seek sets the position [native]
+    // Law: lawtwin.kafka::Consumer: "|seek sets the position| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Consumer: seek sets the position [native]
-    // for all (t :: Text) (offset :: Int64) . created (_input0) (1) implies let _let0__tp =
-    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in let
-    // _let1__lawspecIgnored = assign (List::Cons(_let0__tp, List::Nil())) in let _let2__lawspecIgnored
-    // = seek (_let0__tp) (_input1) in position (_let0__tp) = Either::Right(_input1)
+    // Consumer: "|seek sets the position| [native]
+    // for all (t :: Text) (offset :: Int64) => created (_input0) (1) implies let _let0__tp = let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__lawspecIgnored = assign (List::Cons(_let0__tp,
+    // List::Nil())) in let _let2__lawspecIgnored = seek (_let0__tp) (_input1) in position (_let0__tp) =
+    // Either::Right(_input1) end for all
     private static Value LawConsumerSeekSetsThePositionNativeBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -11117,11 +11235,13 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
-            var bound1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(bound0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
-            var bound2 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "seek", Fn.List<Value>(bound0, input1)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound3 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(bound0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
+            var bound4 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "seek", Fn.List<Value>(bound0, input1)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
             var ls1 = Schema.Construct("Either::Right", Fn.List<Value>(input1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
-            ls0 = Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "position", Fn.List<Value>(bound0)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema), ls1, "lawtwin.kafka::Consumer: seek sets the position [native]");
+            ls0 = Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "position", Fn.List<Value>(bound0)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema), ls1, "lawtwin.kafka::Consumer: \"|seek sets the position| [native]");
         }
         else
         {
@@ -11148,7 +11268,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: seek sets the position [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|seek sets the position| [native] boundary")]
     public void LawConsumerSeekSetsThePositionNative_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -11158,10 +11278,10 @@ public sealed class LawtwinKafka
         {
             return LawConsumerSeekSetsThePositionNativeCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Consumer: seek sets the position [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Consumer: \"|seek sets the position| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: seek sets the position [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|seek sets the position| [native] property")]
     public void LawConsumerSeekSetsThePositionNative_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -11229,7 +11349,7 @@ public sealed class LawtwinKafka
             }
             return ls12;
         });
-        Search.Replay("lawtwin.kafka::Consumer: seek sets the position [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Consumer: \"|seek sets the position| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -11238,29 +11358,41 @@ public sealed class LawtwinKafka
             {
                 return LawConsumerSeekSetsThePositionNativeCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Consumer: seek sets the position [native]", ls14, values_1, ls15);
+            return Search.Guard("lawtwin.kafka::Consumer: \"|seek sets the position| [native]", ls14, values_1, ls15);
         });
-        Property.Check("lawtwin.kafka::Consumer: seek sets the position [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Consumer: \"|seek sets the position| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Consumer: only an assigned partition has a position [native]
+    // Law: lawtwin.kafka::Consumer: "|only an assigned partition has a position| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Consumer: only an assigned partition has a position [native]
-    // for all (t :: Text) (other :: Text) . let _let0__lawspecIgnored = assign
-    // (List::Cons(lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0), List::Nil()))
-    // in position (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input1, 0)) =
-    // Either::Left(lawtwin.kafka.model::type::KafkaError::IllegalState())
+    // Consumer: "|only an assigned partition has a position| [native]
+    // for all (t :: Text) (other :: Text) => let _let0__lawspecIgnored = assign (List::Cons(let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1), List::Nil())) in position (let _let1___lawspecRecordField0 =
+    // _input1 in let _let2___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let1___lawspecRecordField0,
+    // _let2___lawspecRecordField1)) =
+    // Either::Left(lawtwin.kafka.model::type::KafkaError::IllegalState()) end for all
     private static Value LawConsumerOnlyAnAssignedPartitionHasABody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
         var input1 = Runtime.Item(1, inputs);
         var resource0 = Runtime.Item(0, resources);
-        var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
-        var ls0 = Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::IllegalState", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
-        return Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "position", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input1, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema), ls0, "lawtwin.kafka::Consumer: only an assigned partition has a position [native]");
+        var bound1 = input0;
+        var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+        var ls0 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema);
+        var ls1 = Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)");
+        var ls2 = Scalar.TypeOf("Unit");
+        var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls0), ls1, schema))), ls2, schema);
+        var bound3 = input1;
+        var bound4 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+        var ls3 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)");
+        var ls4 = Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::IllegalState", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
+        return Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "position", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound3, bound4), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema))), ls3, schema), ls4, "lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [native]");
     }
 
     private static Value LawConsumerOnlyAnAssignedPartitionHasACase(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
@@ -11281,7 +11413,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: only an assigned partition has a position [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [native] boundary")]
     public void LawConsumerOnlyAnAssignedPartitionHasA_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -11291,10 +11423,10 @@ public sealed class LawtwinKafka
         {
             return LawConsumerOnlyAnAssignedPartitionHasACase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Consumer: only an assigned partition has a position [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: only an assigned partition has a position [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [native] property")]
     public void LawConsumerOnlyAnAssignedPartitionHasA_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -11362,7 +11494,7 @@ public sealed class LawtwinKafka
             }
             return ls12;
         });
-        Search.Replay("lawtwin.kafka::Consumer: only an assigned partition has a position [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -11371,31 +11503,37 @@ public sealed class LawtwinKafka
             {
                 return LawConsumerOnlyAnAssignedPartitionHasACase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Consumer: only an assigned partition has a position [native]", ls14, values_1, ls15);
+            return Search.Guard("lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [native]", ls14, values_1, ls15);
         });
-        Property.Check("lawtwin.kafka::Consumer: only an assigned partition has a position [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Consumer: a read-committed consumer never sees aborted records [native]
+    // Law: lawtwin.kafka::Consumer: "|a read-committed consumer never sees aborted records| [native]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Consumer: a read-committed consumer never sees aborted records [native]
+    // Consumer: "|a read-committed consumer never sees aborted records| [native]
     // for all (t :: Text) (txid :: Text) (aborted :: lawtwin.kafka.model::type::Record) (plain ::
-    // lawtwin.kafka.model::type::Record) . created (_input0) (1) implies let _let0__tp =
-    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in let _let1__a =
-    // writeAborted (_let0__tp) (_input1) (_input2) in let _let2__p = attempt (produceRequest
-    // (_let0__tp) (Maybe::Nothing()) (List::Cons(_input3, List::Nil()))) in let _let3__lawspecIgnored =
-    // setIsolationLevel (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted()) in let
-    // _let4__lawspecIgnored = assign (List::Cons(_let0__tp, List::Nil())) in match (poll (100)) {
-    // Either::Left _match5__0__e -> false; Either::Right _match5__1__rs -> (match (_let1__a) {
-    // Maybe::Just _match6__0__o -> Not(lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
-    // (_match6__0__o) (lawspec_lawspecCollectionsSetOf_b2e15487e0114c0 (receivedOffsets
-    // (_match5__1__rs)))); Maybe::Nothing -> false } And match (_let2__p) { Either::Right _match6__0__o
-    // -> lawspec_lawspecCollectionsSetMember_ad24e518e9752b84 (_match6__0__o)
-    // (lawspec_lawspecCollectionsSetOf_b2e15487e0114c0 (receivedOffsets (_match5__1__rs)));
-    // Either::Left _match6__1__e -> false }) } = true
+    // lawtwin.kafka.model::type::Record) => created (_input0) (1) implies let _let0__tp = let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__a = writeAborted (_let0__tp) (_input1) (_input2) in
+    // let _let2__p = attempt (produceRequest (_let0__tp) (Maybe::Nothing()) (List::Cons(_input3,
+    // List::Nil()))) in let _let3__lawspecIgnored = setIsolationLevel
+    // (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted()) in let _let4__lawspecIgnored =
+    // assign (List::Cons(_let0__tp, List::Nil())) in let _let5__it = poll (100) in match (_let5__it) {
+    // Either::Left _match6__0___lawspecSelection0x0 -> false; Either::Right
+    // _match6__1___lawspecSelection0x0 -> (let _let7__it = _let1__a in match (_let7__it) { Maybe::Just
+    // _match8__0___match__lawspecSelection0x0_0 ->
+    // Not(lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
+    // (_match8__0___match__lawspecSelection0x0_0) (lawspec_lawspecCollectionsSetOf_b2e15487e0114c0
+    // (receivedOffsets (_match6__1___lawspecSelection0x0)))); Maybe::Nothing -> false } And let
+    // _let7__it = _let2__p in match (_let7__it) { Either::Right
+    // _match8__0___match__lawspecSelection0x0_0 -> lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
+    // (_match8__0___match__lawspecSelection0x0_0) (lawspec_lawspecCollectionsSetOf_b2e15487e0114c0
+    // (receivedOffsets (_match6__1___lawspecSelection0x0))); Either::Left
+    // _match8__1___match__lawspecSelection0x0_0 -> false }) } = true end for all
     private static Value LawConsumerAReadCommittedConsumerNeverSeesBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -11406,8 +11544,10 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
-            var bound1 = LawSpec.Generated.LawtwinKafka.WriteAborted(schema, symbols, bound0, input1, input2);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound3 = LawSpec.Generated.LawtwinKafka.WriteAborted(schema, symbols, bound0, input1, input2);
             var ls1 = Fn.F0(() =>
             {
                 return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), Schema.Construct("List::Cons", Fn.List<Value>(input3, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema))), Scalar.TypeOf("Int64"), schema);
@@ -11420,14 +11560,15 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
             });
-            var bound2 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
-            var bound3 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "setIsolationLevel", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadCommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema))), Scalar.TypeOf("Unit"), schema);
-            var bound4 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(bound0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
-            var matched0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "poll", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(100L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka::type::ConsumerRecord))"), schema);
+            var bound4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound5 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "setIsolationLevel", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadCommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema))), Scalar.TypeOf("Unit"), schema);
+            var bound6 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(bound0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
+            var bound7 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "poll", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(100L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka::type::ConsumerRecord))"), schema);
+            var matched0 = bound7;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound5 = Runtime.Field(matched0, 0);
+                var bound8 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -11435,14 +11576,15 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound6 = Runtime.Field(matched0, 0);
+                    var bound9 = Runtime.Field(matched0, 0);
                     Value ls7;
-                    var matched1 = bound1;
+                    var bound10 = bound3;
+                    var matched1 = bound10;
                     Value ls8;
                     if (Runtime.HasTag("Maybe::Just", matched1))
                     {
-                        var bound7 = Runtime.Field(matched1, 0);
-                        ls8 = Runtime.Not(LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetMemberAd24e518e9752b84(schema, symbols, bound7, LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetOfB2e15487e0114c0(schema, symbols, LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, bound6))));
+                        var bound11 = Runtime.Field(matched1, 0);
+                        ls8 = Runtime.Not(LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetMemberAd24e518e9752b84(schema, symbols, bound11, LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetOfB2e15487e0114c0(schema, symbols, LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, bound9))));
                     }
                     else
                     {
@@ -11459,19 +11601,20 @@ public sealed class LawtwinKafka
                     }
                     if (Runtime.Truth(ls8))
                     {
-                        var matched2 = bound2;
+                        var bound10_1 = bound4;
+                        var matched2 = bound10_1;
                         Value ls10;
                         if (Runtime.HasTag("Either::Right", matched2))
                         {
-                            var bound7_1 = Runtime.Field(matched2, 0);
-                            ls10 = LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetMemberAd24e518e9752b84(schema, symbols, bound7_1, LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetOfB2e15487e0114c0(schema, symbols, LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, bound6)));
+                            var bound11_1 = Runtime.Field(matched2, 0);
+                            ls10 = LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetMemberAd24e518e9752b84(schema, symbols, bound11_1, LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetOfB2e15487e0114c0(schema, symbols, LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, bound9)));
                         }
                         else
                         {
                             Value ls11;
                             if (Runtime.HasTag("Either::Left", matched2))
                             {
-                                var bound8 = Runtime.Field(matched2, 0);
+                                var bound12 = Runtime.Field(matched2, 0);
                                 ls11 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                             }
                             else
@@ -11495,7 +11638,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Consumer: a read-committed consumer never sees aborted records [native]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Consumer: \"|a read-committed consumer never sees aborted records| [native]");
         }
         else
         {
@@ -11522,7 +11665,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: a read-committed consumer never sees aborted records [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|a read-committed consumer never sees aborted records| [native] boundary")]
     public void LawConsumerAReadCommittedConsumerNeverSees_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -11532,10 +11675,10 @@ public sealed class LawtwinKafka
         {
             return LawConsumerAReadCommittedConsumerNeverSeesCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Consumer: a read-committed consumer never sees aborted records [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Consumer: \"|a read-committed consumer never sees aborted records| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: a read-committed consumer never sees aborted records [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|a read-committed consumer never sees aborted records| [native] property")]
     public void LawConsumerAReadCommittedConsumerNeverSees_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -11593,19 +11736,19 @@ public sealed class LawtwinKafka
         {
             return LawConsumerAReadCommittedConsumerNeverSeesCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Consumer: a read-committed consumer never sees aborted records [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Consumer: \"|a read-committed consumer never sees aborted records| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::GroupCoordinator: every partition has exactly one owner in a generation
+    // Law: lawtwin.kafka::GroupCoordinator: "|every partition has exactly one owner in a generation|
     // [native]
     // Description:
     // Rationale:
     // References: KIP-848
     // Expansion:
-    // GroupCoordinator: every partition has exactly one owner in a generation [native]
-    // for all (t :: Text) (n :: Int32) (g :: Text) (ids :: List (Text)) . created (_input0) (_input1)
+    // GroupCoordinator: "|every partition has exactly one owner in a generation| [native]
+    // for all (t :: Text) (n :: Int32) (g :: Text) (ids :: List (Text)) => created (_input0) (_input1)
     // implies (joinEach (_input2) (memberIds (_input3)) (List::Cons(_input0, List::Nil())) And
-    // coversOnce (_input0) (_input1) (describeGroup (_input2))) = true
+    // coversOnce (_input0) (_input1) (describeGroup (_input2))) = true end for all
     private static Value LawGroupcoordinatorEveryPartitionHasExactlyOneBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -11626,7 +11769,7 @@ public sealed class LawtwinKafka
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::GroupCoordinator: every partition has exactly one owner in a generation [native]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::GroupCoordinator: \"|every partition has exactly one owner in a generation| [native]");
         }
         else
         {
@@ -11653,7 +11796,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: every partition has exactly one owner in a generation [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|every partition has exactly one owner in a generation| [native] property")]
     public void LawGroupcoordinatorEveryPartitionHasExactlyOne_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -11837,7 +11980,7 @@ public sealed class LawtwinKafka
             }
             return ls23;
         });
-        Search.Replay("lawtwin.kafka::GroupCoordinator: every partition has exactly one owner in a generation [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::GroupCoordinator: \"|every partition has exactly one owner in a generation| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -11846,21 +11989,21 @@ public sealed class LawtwinKafka
             {
                 return LawGroupcoordinatorEveryPartitionHasExactlyOneCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::GroupCoordinator: every partition has exactly one owner in a generation [native]", ls30, values_1, ls31);
+            return Search.Guard("lawtwin.kafka::GroupCoordinator: \"|every partition has exactly one owner in a generation| [native]", ls30, values_1, ls31);
         });
-        Property.Check("lawtwin.kafka::GroupCoordinator: every partition has exactly one owner in a generation [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::GroupCoordinator: \"|every partition has exactly one owner in a generation| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::GroupCoordinator: every partition has exactly one owner in a generation
+    // Law: lawtwin.kafka::GroupCoordinator: "|every partition has exactly one owner in a generation|
     // [cluster]
     // Description:
     // Rationale:
     // References: KIP-848
     // Expansion:
-    // GroupCoordinator: every partition has exactly one owner in a generation [cluster]
-    // for all (t :: Text) (n :: Int32) (g :: Text) (ids :: List (Text)) . created (_input0) (_input1)
+    // GroupCoordinator: "|every partition has exactly one owner in a generation| [cluster]
+    // for all (t :: Text) (n :: Int32) (g :: Text) (ids :: List (Text)) => created (_input0) (_input1)
     // implies (joinEach (_input2) (memberIds (_input3)) (List::Cons(_input0, List::Nil())) And
-    // coversOnce (_input0) (_input1) (describeGroup (_input2))) = true
+    // coversOnce (_input0) (_input1) (describeGroup (_input2))) = true end for all
     private static Value LawGroupcoordinatorEveryPartitionHasExactlyOne2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -11880,7 +12023,7 @@ public sealed class LawtwinKafka
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::GroupCoordinator: every partition has exactly one owner in a generation [cluster]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::GroupCoordinator: \"|every partition has exactly one owner in a generation| [cluster]");
         }
         else
         {
@@ -11914,7 +12057,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::GroupCoordinator", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1)), ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: every partition has exactly one owner in a generation [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|every partition has exactly one owner in a generation| [cluster] property")]
     public void LawGroupcoordinatorEveryPartitionHasExactlyOne2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -12098,7 +12241,7 @@ public sealed class LawtwinKafka
             }
             return ls23;
         });
-        Search.Replay("lawtwin.kafka::GroupCoordinator: every partition has exactly one owner in a generation [cluster]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::GroupCoordinator: \"|every partition has exactly one owner in a generation| [cluster]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -12107,26 +12250,28 @@ public sealed class LawtwinKafka
             {
                 return LawGroupcoordinatorEveryPartitionHasExactlyOne2Case(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::GroupCoordinator: every partition has exactly one owner in a generation [cluster]", ls30, values_1, ls31);
+            return Search.Guard("lawtwin.kafka::GroupCoordinator: \"|every partition has exactly one owner in a generation| [cluster]", ls30, values_1, ls31);
         });
-        Property.Check("lawtwin.kafka::GroupCoordinator: every partition has exactly one owner in a generation [cluster]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::GroupCoordinator: \"|every partition has exactly one owner in a generation| [cluster]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows
-    // [native]
+    // Law: lawtwin.kafka::GroupCoordinator: "|a sync gives a member the partitions the group view
+    // shows| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // GroupCoordinator: a sync gives a member the partitions the group view shows [native]
-    // for all (t :: Text) (n :: Int32) (g :: Text) (m :: Text) . created (_input0) (_input1) implies
-    // match (attempt (joinGroup (_input2) (_input3) (List::Cons(_input0, List::Nil())))) { Either::Left
-    // _match0__0__e -> false; Either::Right _match0__1__gen -> match (attempt (syncGroup (_input2)
-    // (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right
-    // _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match
-    // (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView
-    // _matchfield0__generation _matchfield1__members -> _matchfield0__generation } == _match0__1__gen))
-    // } } = true
+    // GroupCoordinator: "|a sync gives a member the partitions the group view shows| [native]
+    // for all (t :: Text) (n :: Int32) (g :: Text) (m :: Text) => created (_input0) (_input1) implies
+    // let _let0__it = attempt (joinGroup (_input2) (_input3) (List::Cons(_input0, List::Nil()))) in
+    // match (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> let _let2__it = attempt (syncGroup (_input2) (_input3)
+    // (_match1__1___lawspecSelection0x0)) in match (_let2__it) { Either::Left
+    // _match3__0___match__lawspecSelection0x0_0 -> false; Either::Right
+    // _match3__1___match__lawspecSelection0x0_0 -> ((viewOf (_input3) (describeGroup (_input2)) ==
+    // _match3__1___match__lawspecSelection0x0_0) And (match (describeGroup (_input2)) {
+    // lawtwin.kafka.model::type::GroupView::GroupView _matchfield0__generation _matchfield1__members ->
+    // _matchfield0__generation } == _match1__1___lawspecSelection0x0)) } } = true end for all
     private static Value LawGroupcoordinatorASyncGivesAMemberTheBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -12149,11 +12294,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -12161,10 +12307,10 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     var ls7 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "syncGroup", Fn.List<Value>(input2, input3, bound1)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema);
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "syncGroup", Fn.List<Value>(input2, input3, bound2)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema);
                     });
                     var ls8 = Fn.F1((Value failureValue_2) =>
                     {
@@ -12174,11 +12320,12 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka.model::type::TopicPartition))"), schema);
                     });
-                    var matched1 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var matched1 = bound3;
                     Value ls10;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound2 = Runtime.Field(matched1, 0);
+                        var bound4 = Runtime.Field(matched1, 0);
                         ls10 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                     }
                     else
@@ -12186,23 +12333,23 @@ public sealed class LawtwinKafka
                         Value ls11;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound3 = Runtime.Field(matched1, 0);
+                            var bound5 = Runtime.Field(matched1, 0);
                             Value ls12;
-                            if (Runtime.Truth(Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.ViewOf(schema, symbols, input3, Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "describeGroup", Fn.List<Value>(input2)), Scalar.TypeOf("lawtwin.kafka.model::type::GroupView"), schema)), bound3, "List lawtwin.kafka.model::type::TopicPartition", "List lawtwin.kafka.model::type::TopicPartition")))
+                            if (Runtime.Truth(Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.ViewOf(schema, symbols, input3, Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "describeGroup", Fn.List<Value>(input2)), Scalar.TypeOf("lawtwin.kafka.model::type::GroupView"), schema)), bound5, "List lawtwin.kafka.model::type::TopicPartition", "List lawtwin.kafka.model::type::TopicPartition")))
                             {
                                 var matched2 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "describeGroup", Fn.List<Value>(input2)), Scalar.TypeOf("lawtwin.kafka.model::type::GroupView"), schema);
                                 Value ls13;
                                 if (Runtime.HasTag("lawtwin.kafka.model::type::GroupView::GroupView", matched2))
                                 {
-                                    var bound4 = Runtime.Field(matched2, 0);
-                                    var bound5 = Runtime.Field(matched2, 1);
-                                    ls13 = bound4;
+                                    var bound6 = Runtime.Field(matched2, 0);
+                                    var bound7 = Runtime.Field(matched2, 1);
+                                    ls13 = bound6;
                                 }
                                 else
                                 {
                                     ls13 = Runtime.NoMatch(matched2);
                                 }
-                                ls12 = Scalar.Binary("==", ls13, bound1, "Int32", "Int32");
+                                ls12 = Scalar.Binary("==", ls13, bound2, "Int32", "Int32");
                             }
                             else
                             {
@@ -12225,7 +12372,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [native]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: \"|a sync gives a member the partitions the group view shows| [native]");
         }
         else
         {
@@ -12252,7 +12399,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|a sync gives a member the partitions the group view shows| [native] property")]
     public void LawGroupcoordinatorASyncGivesAMemberThe_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -12394,7 +12541,7 @@ public sealed class LawtwinKafka
             }
             return ls21;
         });
-        Search.Replay("lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::GroupCoordinator: \"|a sync gives a member the partitions the group view shows| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -12403,26 +12550,28 @@ public sealed class LawtwinKafka
             {
                 return LawGroupcoordinatorASyncGivesAMemberTheCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [native]", ls26, values_1, ls27);
+            return Search.Guard("lawtwin.kafka::GroupCoordinator: \"|a sync gives a member the partitions the group view shows| [native]", ls26, values_1, ls27);
         });
-        Property.Check("lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::GroupCoordinator: \"|a sync gives a member the partitions the group view shows| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows
-    // [cluster]
+    // Law: lawtwin.kafka::GroupCoordinator: "|a sync gives a member the partitions the group view
+    // shows| [cluster]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // GroupCoordinator: a sync gives a member the partitions the group view shows [cluster]
-    // for all (t :: Text) (n :: Int32) (g :: Text) (m :: Text) . created (_input0) (_input1) implies
-    // match (attempt (joinGroup (_input2) (_input3) (List::Cons(_input0, List::Nil())))) { Either::Left
-    // _match0__0__e -> false; Either::Right _match0__1__gen -> match (attempt (syncGroup (_input2)
-    // (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right
-    // _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match
-    // (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView
-    // _matchfield0__generation _matchfield1__members -> _matchfield0__generation } == _match0__1__gen))
-    // } } = true
+    // GroupCoordinator: "|a sync gives a member the partitions the group view shows| [cluster]
+    // for all (t :: Text) (n :: Int32) (g :: Text) (m :: Text) => created (_input0) (_input1) implies
+    // let _let0__it = attempt (joinGroup (_input2) (_input3) (List::Cons(_input0, List::Nil()))) in
+    // match (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> let _let2__it = attempt (syncGroup (_input2) (_input3)
+    // (_match1__1___lawspecSelection0x0)) in match (_let2__it) { Either::Left
+    // _match3__0___match__lawspecSelection0x0_0 -> false; Either::Right
+    // _match3__1___match__lawspecSelection0x0_0 -> ((viewOf (_input3) (describeGroup (_input2)) ==
+    // _match3__1___match__lawspecSelection0x0_0) And (match (describeGroup (_input2)) {
+    // lawtwin.kafka.model::type::GroupView::GroupView _matchfield0__generation _matchfield1__members ->
+    // _matchfield0__generation } == _match1__1___lawspecSelection0x0)) } } = true end for all
     private static Value LawGroupcoordinatorASyncGivesAMemberThe2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -12444,11 +12593,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -12456,10 +12606,10 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     var ls7 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "syncGroup", Fn.List<Value>(input2, input3, bound1)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema);
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "syncGroup", Fn.List<Value>(input2, input3, bound2)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema);
                     });
                     var ls8 = Fn.F1((Value failureValue_2) =>
                     {
@@ -12469,11 +12619,12 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka.model::type::TopicPartition))"), schema);
                     });
-                    var matched1 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var matched1 = bound3;
                     Value ls10;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound2 = Runtime.Field(matched1, 0);
+                        var bound4 = Runtime.Field(matched1, 0);
                         ls10 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                     }
                     else
@@ -12481,23 +12632,23 @@ public sealed class LawtwinKafka
                         Value ls11;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound3 = Runtime.Field(matched1, 0);
+                            var bound5 = Runtime.Field(matched1, 0);
                             Value ls12;
-                            if (Runtime.Truth(Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.ViewOf(schema, symbols, input3, Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "describeGroup", Fn.List<Value>(input2)), Scalar.TypeOf("lawtwin.kafka.model::type::GroupView"), schema)), bound3, "List lawtwin.kafka.model::type::TopicPartition", "List lawtwin.kafka.model::type::TopicPartition")))
+                            if (Runtime.Truth(Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.ViewOf(schema, symbols, input3, Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "describeGroup", Fn.List<Value>(input2)), Scalar.TypeOf("lawtwin.kafka.model::type::GroupView"), schema)), bound5, "List lawtwin.kafka.model::type::TopicPartition", "List lawtwin.kafka.model::type::TopicPartition")))
                             {
                                 var matched2 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "describeGroup", Fn.List<Value>(input2)), Scalar.TypeOf("lawtwin.kafka.model::type::GroupView"), schema);
                                 Value ls13;
                                 if (Runtime.HasTag("lawtwin.kafka.model::type::GroupView::GroupView", matched2))
                                 {
-                                    var bound4 = Runtime.Field(matched2, 0);
-                                    var bound5 = Runtime.Field(matched2, 1);
-                                    ls13 = bound4;
+                                    var bound6 = Runtime.Field(matched2, 0);
+                                    var bound7 = Runtime.Field(matched2, 1);
+                                    ls13 = bound6;
                                 }
                                 else
                                 {
                                     ls13 = Runtime.NoMatch(matched2);
                                 }
-                                ls12 = Scalar.Binary("==", ls13, bound1, "Int32", "Int32");
+                                ls12 = Scalar.Binary("==", ls13, bound2, "Int32", "Int32");
                             }
                             else
                             {
@@ -12520,7 +12671,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [cluster]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: \"|a sync gives a member the partitions the group view shows| [cluster]");
         }
         else
         {
@@ -12554,7 +12705,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::GroupCoordinator", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1)), ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|a sync gives a member the partitions the group view shows| [cluster] property")]
     public void LawGroupcoordinatorASyncGivesAMemberThe2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -12696,7 +12847,7 @@ public sealed class LawtwinKafka
             }
             return ls21;
         });
-        Search.Replay("lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [cluster]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::GroupCoordinator: \"|a sync gives a member the partitions the group view shows| [cluster]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -12705,25 +12856,29 @@ public sealed class LawtwinKafka
             {
                 return LawGroupcoordinatorASyncGivesAMemberThe2Case(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [cluster]", ls26, values_1, ls27);
+            return Search.Guard("lawtwin.kafka::GroupCoordinator: \"|a sync gives a member the partitions the group view shows| [cluster]", ls26, values_1, ls27);
         });
-        Property.Check("lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [cluster]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::GroupCoordinator: \"|a sync gives a member the partitions the group view shows| [cluster]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::GroupCoordinator: a commit from an older generation is refused [native]
+    // Law: lawtwin.kafka::GroupCoordinator: "|a commit from an older generation is refused| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // GroupCoordinator: a commit from an older generation is refused [native]
-    // for all (t :: Text) (g :: Text) (one :: Text) (other :: Text) . created (_input0) (1) implies
-    // match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left
-    // _match0__0__e -> false; Either::Right _match0__1__old -> let _let1__new = attempt (joinGroup
-    // (_input1) (_input3) (List::Cons(_input0, List::Nil()))) in (match (attempt (commitOffsets
-    // (_input1) (_input2) (_match0__1__old)
-    // (List::Cons(lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(lawtwin.kafka.model::type::TopicP
-    // artition::TopicPartition(_input0, 0), 0), List::Nil())))) { Either::Left
-    // _match2__0__lawspecFailure -> match (_match2__0__lawspecFailure) {
+    // GroupCoordinator: "|a commit from an older generation is refused| [native]
+    // for all (t :: Text) (g :: Text) (one :: Text) (other :: Text) => created (_input0) (1) implies
+    // let _let0__it = attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil()))) in
+    // match (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> let _let2__new = attempt (joinGroup (_input1) (_input3)
+    // (List::Cons(_input0, List::Nil()))) in (match (attempt (commitOffsets (_input1) (_input2)
+    // (_match1__1___lawspecSelection0x0) (List::Cons(let _let3___lawspecRecordField0 = let
+    // _let3___lawspecRecordField0 = _input0 in let _let4___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let3___lawspecRecordField0,
+    // _let4___lawspecRecordField1) in let _let4___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_let3___lawspecRecordField0,
+    // _let4___lawspecRecordField1), List::Nil())))) { Either::Left _match3__0__lawspecFailure -> let
+    // _let4__it = _match3__0__lawspecFailure in match (_let4__it) {
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -12741,12 +12896,16 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::InvalidGroupId -> false;
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match2__1__lawspecResult -> false } And match (_let1__new) { Either::Left _match2__0__e ->
-    // false; Either::Right _match2__1__gen -> match (attempt (commitOffsets (_input1) (_input3)
-    // (_match2__1__gen)
-    // (List::Cons(lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(lawtwin.kafka.model::type::TopicP
-    // artition::TopicPartition(_input0, 0), 0), List::Nil())))) { Either::Left
-    // _match3__0__railwayError0 -> false; Either::Right _match3__1__railwayValue1 -> true } }) } = true
+    // _match3__1__lawspecResult -> false } And let _let3__it = _let2__new in match (_let3__it) {
+    // Either::Left _match4__0___match__lawspecSelection0x0_0 -> false; Either::Right
+    // _match4__1___match__lawspecSelection0x0_0 -> match (attempt (commitOffsets (_input1) (_input3)
+    // (_match4__1___match__lawspecSelection0x0_0) (List::Cons(let _let5___lawspecRecordField0 = let
+    // _let5___lawspecRecordField0 = _input0 in let _let6___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let5___lawspecRecordField0,
+    // _let6___lawspecRecordField1) in let _let6___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_let5___lawspecRecordField0,
+    // _let6___lawspecRecordField1), List::Nil())))) { Either::Left _match5__0__railwayError0 -> false;
+    // Either::Right _match5__1__railwayValue1 -> true } }) } = true end for all
     private static Value LawGroupcoordinatorACommitFromAnOlderBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -12769,11 +12928,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -12781,7 +12941,7 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     var ls7 = Fn.F0(() =>
                     {
                         return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "joinGroup", Fn.List<Value>(input1, input3, Schema.Construct("List::Cons", Fn.List<Value>(input0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (Text)"), schema)), Scalar.TypeOf("List (Text)"), schema))), Scalar.TypeOf("Int32"), schema);
@@ -12794,11 +12954,18 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
                     });
-                    var bound2 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
                     Value ls10;
                     var ls11 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "commitOffsets", Fn.List<Value>(input1, input2, bound1, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema))), Scalar.TypeOf("Unit"), schema);
+                        var bound6 = input0;
+                        var bound7 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                        var bound6_1 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound6, bound7), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+                        var bound7_1 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema);
+                        var ls15 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema);
+                        var ls16 = Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)");
+                        var ls17 = Scalar.TypeOf("Unit");
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "commitOffsets", Fn.List<Value>(input1, input2, bound2, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(bound6_1, bound7_1), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), ls15), ls16, schema))), ls17, schema);
                     });
                     var ls12 = Fn.F1((Value failureValue_4) =>
                     {
@@ -12812,234 +12979,243 @@ public sealed class LawtwinKafka
                     Value ls14;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound3 = Runtime.Field(matched1, 0);
-                        var matched2 = bound3;
-                        Value ls15;
+                        var bound4 = Runtime.Field(matched1, 0);
+                        var bound8 = bound4;
+                        var matched2 = bound8;
+                        Value ls18;
                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalGeneration", matched2))
                         {
-                            ls15 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                            ls18 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            Value ls16;
+                            Value ls19;
                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", matched2))
                             {
-                                ls16 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                ls19 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                             }
                             else
                             {
-                                Value ls17;
+                                Value ls20;
                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists", matched2))
                                 {
-                                    ls17 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                    ls20 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                 }
                                 else
                                 {
-                                    Value ls18;
+                                    Value ls21;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTopic", matched2))
                                     {
-                                        ls18 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                        ls21 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        Value ls19;
+                                        Value ls22;
                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidPartitions", matched2))
                                         {
-                                            ls19 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                            ls22 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                         }
                                         else
                                         {
-                                            Value ls20;
+                                            Value ls23;
                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRecord", matched2))
                                             {
-                                                ls20 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                ls23 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                             }
                                             else
                                             {
-                                                Value ls21;
+                                                Value ls24;
                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRequest", matched2))
                                                 {
-                                                    ls21 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                    ls24 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                 }
                                                 else
                                                 {
-                                                    Value ls22;
+                                                    Value ls25;
                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange", matched2))
                                                     {
-                                                        ls22 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                        ls25 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                     }
                                                     else
                                                     {
-                                                        Value ls23;
+                                                        Value ls26;
                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber", matched2))
                                                         {
-                                                            ls23 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                            ls26 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                         }
                                                         else
                                                         {
-                                                            Value ls24;
+                                                            Value ls27;
                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch", matched2))
                                                             {
-                                                                ls24 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                ls27 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                             }
                                                             else
                                                             {
-                                                                Value ls25;
+                                                                Value ls28;
                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::ProducerFenced", matched2))
                                                                 {
-                                                                    ls25 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                    ls28 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                 }
                                                                 else
                                                                 {
-                                                                    Value ls26;
+                                                                    Value ls29;
                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownProducerId", matched2))
                                                                     {
-                                                                        ls26 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                        ls29 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                     }
                                                                     else
                                                                     {
-                                                                        Value ls27;
+                                                                        Value ls30;
                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping", matched2))
                                                                         {
-                                                                            ls27 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                            ls30 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                         }
                                                                         else
                                                                         {
-                                                                            Value ls28;
+                                                                            Value ls31;
                                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTxnState", matched2))
                                                                             {
-                                                                                ls28 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                ls31 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                             }
                                                                             else
                                                                             {
-                                                                                Value ls29;
+                                                                                Value ls32;
                                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidGroupId", matched2))
                                                                                 {
-                                                                                    ls29 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                    ls32 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    Value ls30;
+                                                                                    Value ls33;
                                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownMemberId", matched2))
                                                                                     {
-                                                                                        ls30 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                        ls33 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        Value ls31;
+                                                                                        Value ls34;
                                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalState", matched2))
                                                                                         {
-                                                                                            ls31 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                            ls34 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                         }
                                                                                         else
                                                                                         {
-                                                                                            ls31 = Runtime.NoMatch(matched2);
+                                                                                            ls34 = Runtime.NoMatch(matched2);
                                                                                         }
-                                                                                        ls30 = ls31;
+                                                                                        ls33 = ls34;
                                                                                     }
-                                                                                    ls29 = ls30;
+                                                                                    ls32 = ls33;
                                                                                 }
-                                                                                ls28 = ls29;
+                                                                                ls31 = ls32;
                                                                             }
-                                                                            ls27 = ls28;
+                                                                            ls30 = ls31;
                                                                         }
-                                                                        ls26 = ls27;
+                                                                        ls29 = ls30;
                                                                     }
-                                                                    ls25 = ls26;
+                                                                    ls28 = ls29;
                                                                 }
-                                                                ls24 = ls25;
+                                                                ls27 = ls28;
                                                             }
-                                                            ls23 = ls24;
+                                                            ls26 = ls27;
                                                         }
-                                                        ls22 = ls23;
+                                                        ls25 = ls26;
                                                     }
-                                                    ls21 = ls22;
+                                                    ls24 = ls25;
                                                 }
-                                                ls20 = ls21;
+                                                ls23 = ls24;
                                             }
-                                            ls19 = ls20;
+                                            ls22 = ls23;
                                         }
-                                        ls18 = ls19;
+                                        ls21 = ls22;
                                     }
-                                    ls17 = ls18;
+                                    ls20 = ls21;
                                 }
-                                ls16 = ls17;
+                                ls19 = ls20;
                             }
-                            ls15 = ls16;
+                            ls18 = ls19;
                         }
-                        ls14 = ls15;
+                        ls14 = ls18;
                     }
                     else
                     {
-                        Value ls32;
+                        Value ls35;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound4 = Runtime.Field(matched1, 0);
-                            ls32 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                            var bound5 = Runtime.Field(matched1, 0);
+                            ls35 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            ls32 = Runtime.NoMatch(matched1);
+                            ls35 = Runtime.NoMatch(matched1);
                         }
-                        ls14 = ls32;
+                        ls14 = ls35;
                     }
                     if (Runtime.Truth(ls14))
                     {
-                        var matched3 = bound2;
-                        Value ls33;
+                        var bound9 = bound3;
+                        var matched3 = bound9;
+                        Value ls36;
                         if (Runtime.HasTag("Either::Left", matched3))
                         {
-                            var bound5 = Runtime.Field(matched3, 0);
-                            ls33 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                            var bound10 = Runtime.Field(matched3, 0);
+                            ls36 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            Value ls34;
+                            Value ls37;
                             if (Runtime.HasTag("Either::Right", matched3))
                             {
-                                var bound6 = Runtime.Field(matched3, 0);
-                                var ls35 = Fn.F0(() =>
+                                var bound11 = Runtime.Field(matched3, 0);
+                                var ls38 = Fn.F0(() =>
                                 {
-                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "commitOffsets", Fn.List<Value>(input1, input3, bound6, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema))), Scalar.TypeOf("Unit"), schema);
+                                    var bound14 = input0;
+                                    var bound15 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                                    var bound14_1 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound14, bound15), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+                                    var bound15_1 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema);
+                                    var ls42 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema);
+                                    var ls43 = Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)");
+                                    var ls44 = Scalar.TypeOf("Unit");
+                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "commitOffsets", Fn.List<Value>(input1, input3, bound11, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(bound14_1, bound15_1), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), ls42), ls43, schema))), ls44, schema);
                                 });
-                                var ls36 = Fn.F1((Value failureValue_6) =>
+                                var ls39 = Fn.F1((Value failureValue_6) =>
                                 {
                                     return Schema.Construct("Either::Right", Fn.List<Value>(failureValue_6), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
                                 });
-                                var ls37 = Fn.F1((Value failureValue_7) =>
+                                var ls40 = Fn.F1((Value failureValue_7) =>
                                 {
                                     return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_7), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
                                 });
-                                var matched4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls35, ls36, ls37);
-                                Value ls38;
+                                var matched4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls38, ls39, ls40);
+                                Value ls41;
                                 if (Runtime.HasTag("Either::Left", matched4))
                                 {
-                                    var bound7 = Runtime.Field(matched4, 0);
-                                    ls38 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                    var bound12 = Runtime.Field(matched4, 0);
+                                    ls41 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                 }
                                 else
                                 {
-                                    Value ls39;
+                                    Value ls45;
                                     if (Runtime.HasTag("Either::Right", matched4))
                                     {
-                                        var bound8 = Runtime.Field(matched4, 0);
-                                        ls39 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                                        var bound13 = Runtime.Field(matched4, 0);
+                                        ls45 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        ls39 = Runtime.NoMatch(matched4);
+                                        ls45 = Runtime.NoMatch(matched4);
                                     }
-                                    ls38 = ls39;
+                                    ls41 = ls45;
                                 }
-                                ls34 = ls38;
+                                ls37 = ls41;
                             }
                             else
                             {
-                                ls34 = Runtime.NoMatch(matched3);
+                                ls37 = Runtime.NoMatch(matched3);
                             }
-                            ls33 = ls34;
+                            ls36 = ls37;
                         }
-                        ls10 = ls33;
+                        ls10 = ls36;
                     }
                     else
                     {
@@ -13054,7 +13230,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: a commit from an older generation is refused [native]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: \"|a commit from an older generation is refused| [native]");
         }
         else
         {
@@ -13081,7 +13257,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: a commit from an older generation is refused [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|a commit from an older generation is refused| [native] property")]
     public void LawGroupcoordinatorACommitFromAnOlder_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -13223,7 +13399,7 @@ public sealed class LawtwinKafka
             }
             return ls21;
         });
-        Search.Replay("lawtwin.kafka::GroupCoordinator: a commit from an older generation is refused [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::GroupCoordinator: \"|a commit from an older generation is refused| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -13232,25 +13408,29 @@ public sealed class LawtwinKafka
             {
                 return LawGroupcoordinatorACommitFromAnOlderCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::GroupCoordinator: a commit from an older generation is refused [native]", ls26, values_1, ls27);
+            return Search.Guard("lawtwin.kafka::GroupCoordinator: \"|a commit from an older generation is refused| [native]", ls26, values_1, ls27);
         });
-        Property.Check("lawtwin.kafka::GroupCoordinator: a commit from an older generation is refused [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::GroupCoordinator: \"|a commit from an older generation is refused| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::GroupCoordinator: a commit from an older generation is refused [cluster]
+    // Law: lawtwin.kafka::GroupCoordinator: "|a commit from an older generation is refused| [cluster]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // GroupCoordinator: a commit from an older generation is refused [cluster]
-    // for all (t :: Text) (g :: Text) (one :: Text) (other :: Text) . created (_input0) (1) implies
-    // match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left
-    // _match0__0__e -> false; Either::Right _match0__1__old -> let _let1__new = attempt (joinGroup
-    // (_input1) (_input3) (List::Cons(_input0, List::Nil()))) in (match (attempt (commitOffsets
-    // (_input1) (_input2) (_match0__1__old)
-    // (List::Cons(lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(lawtwin.kafka.model::type::TopicP
-    // artition::TopicPartition(_input0, 0), 0), List::Nil())))) { Either::Left
-    // _match2__0__lawspecFailure -> match (_match2__0__lawspecFailure) {
+    // GroupCoordinator: "|a commit from an older generation is refused| [cluster]
+    // for all (t :: Text) (g :: Text) (one :: Text) (other :: Text) => created (_input0) (1) implies
+    // let _let0__it = attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil()))) in
+    // match (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> let _let2__new = attempt (joinGroup (_input1) (_input3)
+    // (List::Cons(_input0, List::Nil()))) in (match (attempt (commitOffsets (_input1) (_input2)
+    // (_match1__1___lawspecSelection0x0) (List::Cons(let _let3___lawspecRecordField0 = let
+    // _let3___lawspecRecordField0 = _input0 in let _let4___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let3___lawspecRecordField0,
+    // _let4___lawspecRecordField1) in let _let4___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_let3___lawspecRecordField0,
+    // _let4___lawspecRecordField1), List::Nil())))) { Either::Left _match3__0__lawspecFailure -> let
+    // _let4__it = _match3__0__lawspecFailure in match (_let4__it) {
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -13268,12 +13448,16 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::InvalidGroupId -> false;
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match2__1__lawspecResult -> false } And match (_let1__new) { Either::Left _match2__0__e ->
-    // false; Either::Right _match2__1__gen -> match (attempt (commitOffsets (_input1) (_input3)
-    // (_match2__1__gen)
-    // (List::Cons(lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(lawtwin.kafka.model::type::TopicP
-    // artition::TopicPartition(_input0, 0), 0), List::Nil())))) { Either::Left
-    // _match3__0__railwayError0 -> false; Either::Right _match3__1__railwayValue1 -> true } }) } = true
+    // _match3__1__lawspecResult -> false } And let _let3__it = _let2__new in match (_let3__it) {
+    // Either::Left _match4__0___match__lawspecSelection0x0_0 -> false; Either::Right
+    // _match4__1___match__lawspecSelection0x0_0 -> match (attempt (commitOffsets (_input1) (_input3)
+    // (_match4__1___match__lawspecSelection0x0_0) (List::Cons(let _let5___lawspecRecordField0 = let
+    // _let5___lawspecRecordField0 = _input0 in let _let6___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let5___lawspecRecordField0,
+    // _let6___lawspecRecordField1) in let _let6___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_let5___lawspecRecordField0,
+    // _let6___lawspecRecordField1), List::Nil())))) { Either::Left _match5__0__railwayError0 -> false;
+    // Either::Right _match5__1__railwayValue1 -> true } }) } = true end for all
     private static Value LawGroupcoordinatorACommitFromAnOlder2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -13295,11 +13479,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -13307,7 +13492,7 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     var ls7 = Fn.F0(() =>
                     {
                         return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "joinGroup", Fn.List<Value>(input1, input3, Schema.Construct("List::Cons", Fn.List<Value>(input0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (Text)"), schema)), Scalar.TypeOf("List (Text)"), schema))), Scalar.TypeOf("Int32"), schema);
@@ -13320,11 +13505,18 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
                     });
-                    var bound2 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
                     Value ls10;
                     var ls11 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "commitOffsets", Fn.List<Value>(input1, input2, bound1, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema))), Scalar.TypeOf("Unit"), schema);
+                        var bound6 = input0;
+                        var bound7 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                        var bound6_1 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound6, bound7), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+                        var bound7_1 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema);
+                        var ls15 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema);
+                        var ls16 = Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)");
+                        var ls17 = Scalar.TypeOf("Unit");
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "commitOffsets", Fn.List<Value>(input1, input2, bound2, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(bound6_1, bound7_1), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), ls15), ls16, schema))), ls17, schema);
                     });
                     var ls12 = Fn.F1((Value failureValue_4) =>
                     {
@@ -13338,234 +13530,243 @@ public sealed class LawtwinKafka
                     Value ls14;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound3 = Runtime.Field(matched1, 0);
-                        var matched2 = bound3;
-                        Value ls15;
+                        var bound4 = Runtime.Field(matched1, 0);
+                        var bound8 = bound4;
+                        var matched2 = bound8;
+                        Value ls18;
                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalGeneration", matched2))
                         {
-                            ls15 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                            ls18 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            Value ls16;
+                            Value ls19;
                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", matched2))
                             {
-                                ls16 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                ls19 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                             }
                             else
                             {
-                                Value ls17;
+                                Value ls20;
                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists", matched2))
                                 {
-                                    ls17 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                    ls20 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                 }
                                 else
                                 {
-                                    Value ls18;
+                                    Value ls21;
                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTopic", matched2))
                                     {
-                                        ls18 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                        ls21 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        Value ls19;
+                                        Value ls22;
                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidPartitions", matched2))
                                         {
-                                            ls19 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                            ls22 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                         }
                                         else
                                         {
-                                            Value ls20;
+                                            Value ls23;
                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRecord", matched2))
                                             {
-                                                ls20 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                ls23 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                             }
                                             else
                                             {
-                                                Value ls21;
+                                                Value ls24;
                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidRequest", matched2))
                                                 {
-                                                    ls21 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                    ls24 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                 }
                                                 else
                                                 {
-                                                    Value ls22;
+                                                    Value ls25;
                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange", matched2))
                                                     {
-                                                        ls22 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                        ls25 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                     }
                                                     else
                                                     {
-                                                        Value ls23;
+                                                        Value ls26;
                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber", matched2))
                                                         {
-                                                            ls23 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                            ls26 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                         }
                                                         else
                                                         {
-                                                            Value ls24;
+                                                            Value ls27;
                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch", matched2))
                                                             {
-                                                                ls24 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                ls27 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                             }
                                                             else
                                                             {
-                                                                Value ls25;
+                                                                Value ls28;
                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::ProducerFenced", matched2))
                                                                 {
-                                                                    ls25 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                    ls28 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                 }
                                                                 else
                                                                 {
-                                                                    Value ls26;
+                                                                    Value ls29;
                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownProducerId", matched2))
                                                                     {
-                                                                        ls26 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                        ls29 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                     }
                                                                     else
                                                                     {
-                                                                        Value ls27;
+                                                                        Value ls30;
                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping", matched2))
                                                                         {
-                                                                            ls27 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                            ls30 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                         }
                                                                         else
                                                                         {
-                                                                            Value ls28;
+                                                                            Value ls31;
                                                                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidTxnState", matched2))
                                                                             {
-                                                                                ls28 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                ls31 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                             }
                                                                             else
                                                                             {
-                                                                                Value ls29;
+                                                                                Value ls32;
                                                                                 if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::InvalidGroupId", matched2))
                                                                                 {
-                                                                                    ls29 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                    ls32 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    Value ls30;
+                                                                                    Value ls33;
                                                                                     if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownMemberId", matched2))
                                                                                     {
-                                                                                        ls30 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                        ls33 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        Value ls31;
+                                                                                        Value ls34;
                                                                                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalState", matched2))
                                                                                         {
-                                                                                            ls31 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                                                                            ls34 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                                                                         }
                                                                                         else
                                                                                         {
-                                                                                            ls31 = Runtime.NoMatch(matched2);
+                                                                                            ls34 = Runtime.NoMatch(matched2);
                                                                                         }
-                                                                                        ls30 = ls31;
+                                                                                        ls33 = ls34;
                                                                                     }
-                                                                                    ls29 = ls30;
+                                                                                    ls32 = ls33;
                                                                                 }
-                                                                                ls28 = ls29;
+                                                                                ls31 = ls32;
                                                                             }
-                                                                            ls27 = ls28;
+                                                                            ls30 = ls31;
                                                                         }
-                                                                        ls26 = ls27;
+                                                                        ls29 = ls30;
                                                                     }
-                                                                    ls25 = ls26;
+                                                                    ls28 = ls29;
                                                                 }
-                                                                ls24 = ls25;
+                                                                ls27 = ls28;
                                                             }
-                                                            ls23 = ls24;
+                                                            ls26 = ls27;
                                                         }
-                                                        ls22 = ls23;
+                                                        ls25 = ls26;
                                                     }
-                                                    ls21 = ls22;
+                                                    ls24 = ls25;
                                                 }
-                                                ls20 = ls21;
+                                                ls23 = ls24;
                                             }
-                                            ls19 = ls20;
+                                            ls22 = ls23;
                                         }
-                                        ls18 = ls19;
+                                        ls21 = ls22;
                                     }
-                                    ls17 = ls18;
+                                    ls20 = ls21;
                                 }
-                                ls16 = ls17;
+                                ls19 = ls20;
                             }
-                            ls15 = ls16;
+                            ls18 = ls19;
                         }
-                        ls14 = ls15;
+                        ls14 = ls18;
                     }
                     else
                     {
-                        Value ls32;
+                        Value ls35;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound4 = Runtime.Field(matched1, 0);
-                            ls32 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                            var bound5 = Runtime.Field(matched1, 0);
+                            ls35 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            ls32 = Runtime.NoMatch(matched1);
+                            ls35 = Runtime.NoMatch(matched1);
                         }
-                        ls14 = ls32;
+                        ls14 = ls35;
                     }
                     if (Runtime.Truth(ls14))
                     {
-                        var matched3 = bound2;
-                        Value ls33;
+                        var bound9 = bound3;
+                        var matched3 = bound9;
+                        Value ls36;
                         if (Runtime.HasTag("Either::Left", matched3))
                         {
-                            var bound5 = Runtime.Field(matched3, 0);
-                            ls33 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                            var bound10 = Runtime.Field(matched3, 0);
+                            ls36 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            Value ls34;
+                            Value ls37;
                             if (Runtime.HasTag("Either::Right", matched3))
                             {
-                                var bound6 = Runtime.Field(matched3, 0);
-                                var ls35 = Fn.F0(() =>
+                                var bound11 = Runtime.Field(matched3, 0);
+                                var ls38 = Fn.F0(() =>
                                 {
-                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "commitOffsets", Fn.List<Value>(input1, input3, bound6, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema))), Scalar.TypeOf("Unit"), schema);
+                                    var bound14 = input0;
+                                    var bound15 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                                    var bound14_1 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound14, bound15), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+                                    var bound15_1 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int64"), schema);
+                                    var ls42 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema);
+                                    var ls43 = Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)");
+                                    var ls44 = Scalar.TypeOf("Unit");
+                                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "commitOffsets", Fn.List<Value>(input1, input3, bound11, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(bound14_1, bound15_1), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), ls42), ls43, schema))), ls44, schema);
                                 });
-                                var ls36 = Fn.F1((Value failureValue_6) =>
+                                var ls39 = Fn.F1((Value failureValue_6) =>
                                 {
                                     return Schema.Construct("Either::Right", Fn.List<Value>(failureValue_6), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
                                 });
-                                var ls37 = Fn.F1((Value failureValue_7) =>
+                                var ls40 = Fn.F1((Value failureValue_7) =>
                                 {
                                     return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_7), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
                                 });
-                                var matched4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls35, ls36, ls37);
-                                Value ls38;
+                                var matched4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls38, ls39, ls40);
+                                Value ls41;
                                 if (Runtime.HasTag("Either::Left", matched4))
                                 {
-                                    var bound7 = Runtime.Field(matched4, 0);
-                                    ls38 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                                    var bound12 = Runtime.Field(matched4, 0);
+                                    ls41 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                 }
                                 else
                                 {
-                                    Value ls39;
+                                    Value ls45;
                                     if (Runtime.HasTag("Either::Right", matched4))
                                     {
-                                        var bound8 = Runtime.Field(matched4, 0);
-                                        ls39 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                                        var bound13 = Runtime.Field(matched4, 0);
+                                        ls45 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
                                     {
-                                        ls39 = Runtime.NoMatch(matched4);
+                                        ls45 = Runtime.NoMatch(matched4);
                                     }
-                                    ls38 = ls39;
+                                    ls41 = ls45;
                                 }
-                                ls34 = ls38;
+                                ls37 = ls41;
                             }
                             else
                             {
-                                ls34 = Runtime.NoMatch(matched3);
+                                ls37 = Runtime.NoMatch(matched3);
                             }
-                            ls33 = ls34;
+                            ls36 = ls37;
                         }
-                        ls10 = ls33;
+                        ls10 = ls36;
                     }
                     else
                     {
@@ -13580,7 +13781,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: a commit from an older generation is refused [cluster]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: \"|a commit from an older generation is refused| [cluster]");
         }
         else
         {
@@ -13614,7 +13815,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::GroupCoordinator", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1)), ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: a commit from an older generation is refused [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|a commit from an older generation is refused| [cluster] property")]
     public void LawGroupcoordinatorACommitFromAnOlder2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -13756,7 +13957,7 @@ public sealed class LawtwinKafka
             }
             return ls21;
         });
-        Search.Replay("lawtwin.kafka::GroupCoordinator: a commit from an older generation is refused [cluster]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::GroupCoordinator: \"|a commit from an older generation is refused| [cluster]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -13765,26 +13966,28 @@ public sealed class LawtwinKafka
             {
                 return LawGroupcoordinatorACommitFromAnOlder2Case(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::GroupCoordinator: a commit from an older generation is refused [cluster]", ls26, values_1, ls27);
+            return Search.Guard("lawtwin.kafka::GroupCoordinator: \"|a commit from an older generation is refused| [cluster]", ls26, values_1, ls27);
         });
-        Property.Check("lawtwin.kafka::GroupCoordinator: a commit from an older generation is refused [cluster]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::GroupCoordinator: \"|a commit from an older generation is refused| [cluster]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::GroupCoordinator: a heartbeat from an older generation asks the member to
-    // rejoin [native]
+    // Law: lawtwin.kafka::GroupCoordinator: "|a heartbeat from an older generation asks the member to
+    // rejoin| [native]
     // Description: A rebalance moves the group to a new generation. A member at the old
     // one is told so on its next heartbeat; when it rejoins with the same
     // subscription it learns the new generation without starting another.
     // Rationale:
     // References:
     // Expansion:
-    // GroupCoordinator: a heartbeat from an older generation asks the member to rejoin [native]
-    // for all (t :: Text) (g :: Text) (one :: Text) (other :: Text) . created (_input0) (1) implies
-    // match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left
-    // _match0__0__e -> false; Either::Right _match0__1__old -> let _let1__new = attempt (joinGroup
-    // (_input1) (_input3) (List::Cons(_input0, List::Nil()))) in (match (attempt (heartbeat (_input1)
-    // (_input2) (_match0__1__old))) { Either::Left _match2__0__lawspecFailure -> match
-    // (_match2__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> true;
+    // GroupCoordinator: "|a heartbeat from an older generation asks the member to rejoin| [native]
+    // for all (t :: Text) (g :: Text) (one :: Text) (other :: Text) => created (_input0) (1) implies
+    // let _let0__it = attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil()))) in
+    // match (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> let _let2__new = attempt (joinGroup (_input1) (_input3)
+    // (List::Cons(_input0, List::Nil()))) in (match (attempt (heartbeat (_input1) (_input2)
+    // (_match1__1___lawspecSelection0x0))) { Either::Left _match3__0__lawspecFailure -> let _let4__it =
+    // _match3__0__lawspecFailure in match (_let4__it) {
+    // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> false;
@@ -13801,11 +14004,13 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::InvalidGroupId -> false;
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match2__1__lawspecResult -> false } And match (attempt (joinGroup (_input1) (_input2)
-    // (List::Cons(_input0, List::Nil())))) { Either::Left _match2__0__e -> false; Either::Right
-    // _match2__1__rejoined -> ((_let1__new == Either::Right(_match2__1__rejoined)) And match (attempt
-    // (heartbeat (_input1) (_input2) (_match2__1__rejoined))) { Either::Left _match3__0__railwayError0
-    // -> false; Either::Right _match3__1__railwayValue1 -> true }) }) } = true
+    // _match3__1__lawspecResult -> false } And let _let3__it = attempt (joinGroup (_input1) (_input2)
+    // (List::Cons(_input0, List::Nil()))) in match (_let3__it) { Either::Left
+    // _match4__0___match__lawspecSelection0x0_0 -> false; Either::Right
+    // _match4__1___match__lawspecSelection0x0_0 -> ((_let2__new ==
+    // Either::Right(_match4__1___match__lawspecSelection0x0_0)) And match (attempt (heartbeat (_input1)
+    // (_input2) (_match4__1___match__lawspecSelection0x0_0))) { Either::Left _match5__0__railwayError0
+    // -> false; Either::Right _match5__1__railwayValue1 -> true }) }) } = true end for all
     private static Value LawGroupcoordinatorAHeartbeatFromAnOlderBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -13828,11 +14033,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -13840,7 +14046,7 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     var ls7 = Fn.F0(() =>
                     {
                         return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "joinGroup", Fn.List<Value>(input1, input3, Schema.Construct("List::Cons", Fn.List<Value>(input0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (Text)"), schema)), Scalar.TypeOf("List (Text)"), schema))), Scalar.TypeOf("Int32"), schema);
@@ -13853,11 +14059,11 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
                     });
-                    var bound2 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
                     Value ls10;
                     var ls11 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "heartbeat", Fn.List<Value>(input1, input2, bound1)), Scalar.TypeOf("Unit"), schema);
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "heartbeat", Fn.List<Value>(input1, input2, bound2)), Scalar.TypeOf("Unit"), schema);
                     });
                     var ls12 = Fn.F1((Value failureValue_4) =>
                     {
@@ -13871,8 +14077,9 @@ public sealed class LawtwinKafka
                     Value ls14;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound3 = Runtime.Field(matched1, 0);
-                        var matched2 = bound3;
+                        var bound4 = Runtime.Field(matched1, 0);
+                        var bound6 = bound4;
+                        var matched2 = bound6;
                         Value ls15;
                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalGeneration", matched2))
                         {
@@ -14033,7 +14240,7 @@ public sealed class LawtwinKafka
                         Value ls32;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound4 = Runtime.Field(matched1, 0);
+                            var bound5 = Runtime.Field(matched1, 0);
                             ls32 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                         }
                         else
@@ -14056,11 +14263,12 @@ public sealed class LawtwinKafka
                         {
                             return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_7), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
                         });
-                        var matched3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls33, ls34, ls35);
+                        var bound7 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls33, ls34, ls35);
+                        var matched3 = bound7;
                         Value ls36;
                         if (Runtime.HasTag("Either::Left", matched3))
                         {
-                            var bound5 = Runtime.Field(matched3, 0);
+                            var bound8 = Runtime.Field(matched3, 0);
                             ls36 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                         }
                         else
@@ -14068,13 +14276,13 @@ public sealed class LawtwinKafka
                             Value ls37;
                             if (Runtime.HasTag("Either::Right", matched3))
                             {
-                                var bound6 = Runtime.Field(matched3, 0);
+                                var bound9 = Runtime.Field(matched3, 0);
                                 Value ls38;
-                                if (Runtime.Truth(Scalar.Binary("==", bound2, Schema.Construct("Either::Right", Fn.List<Value>(bound6), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (Int32)", "Either (lawtwin.kafka.model::type::KafkaError) (Int32)")))
+                                if (Runtime.Truth(Scalar.Binary("==", bound3, Schema.Construct("Either::Right", Fn.List<Value>(bound9), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (Int32)", "Either (lawtwin.kafka.model::type::KafkaError) (Int32)")))
                                 {
                                     var ls39 = Fn.F0(() =>
                                     {
-                                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "heartbeat", Fn.List<Value>(input1, input2, bound6)), Scalar.TypeOf("Unit"), schema);
+                                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "heartbeat", Fn.List<Value>(input1, input2, bound9)), Scalar.TypeOf("Unit"), schema);
                                     });
                                     var ls40 = Fn.F1((Value failureValue_8) =>
                                     {
@@ -14088,7 +14296,7 @@ public sealed class LawtwinKafka
                                     Value ls42;
                                     if (Runtime.HasTag("Either::Left", matched4))
                                     {
-                                        var bound7 = Runtime.Field(matched4, 0);
+                                        var bound10 = Runtime.Field(matched4, 0);
                                         ls42 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
@@ -14096,7 +14304,7 @@ public sealed class LawtwinKafka
                                         Value ls43;
                                         if (Runtime.HasTag("Either::Right", matched4))
                                         {
-                                            var bound8 = Runtime.Field(matched4, 0);
+                                            var bound11 = Runtime.Field(matched4, 0);
                                             ls43 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                                         }
                                         else
@@ -14134,7 +14342,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: a heartbeat from an older generation asks the member to rejoin [native]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: \"|a heartbeat from an older generation asks the member to rejoin| [native]");
         }
         else
         {
@@ -14161,7 +14369,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: a heartbeat from an older generation asks the member to rejoin [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|a heartbeat from an older generation asks the member to rejoin| [native] property")]
     public void LawGroupcoordinatorAHeartbeatFromAnOlder_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -14303,7 +14511,7 @@ public sealed class LawtwinKafka
             }
             return ls21;
         });
-        Search.Replay("lawtwin.kafka::GroupCoordinator: a heartbeat from an older generation asks the member to rejoin [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::GroupCoordinator: \"|a heartbeat from an older generation asks the member to rejoin| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -14312,26 +14520,28 @@ public sealed class LawtwinKafka
             {
                 return LawGroupcoordinatorAHeartbeatFromAnOlderCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::GroupCoordinator: a heartbeat from an older generation asks the member to rejoin [native]", ls26, values_1, ls27);
+            return Search.Guard("lawtwin.kafka::GroupCoordinator: \"|a heartbeat from an older generation asks the member to rejoin| [native]", ls26, values_1, ls27);
         });
-        Property.Check("lawtwin.kafka::GroupCoordinator: a heartbeat from an older generation asks the member to rejoin [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::GroupCoordinator: \"|a heartbeat from an older generation asks the member to rejoin| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::GroupCoordinator: a heartbeat from an older generation asks the member to
-    // rejoin [cluster]
+    // Law: lawtwin.kafka::GroupCoordinator: "|a heartbeat from an older generation asks the member to
+    // rejoin| [cluster]
     // Description: A rebalance moves the group to a new generation. A member at the old
     // one is told so on its next heartbeat; when it rejoins with the same
     // subscription it learns the new generation without starting another.
     // Rationale:
     // References:
     // Expansion:
-    // GroupCoordinator: a heartbeat from an older generation asks the member to rejoin [cluster]
-    // for all (t :: Text) (g :: Text) (one :: Text) (other :: Text) . created (_input0) (1) implies
-    // match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left
-    // _match0__0__e -> false; Either::Right _match0__1__old -> let _let1__new = attempt (joinGroup
-    // (_input1) (_input3) (List::Cons(_input0, List::Nil()))) in (match (attempt (heartbeat (_input1)
-    // (_input2) (_match0__1__old))) { Either::Left _match2__0__lawspecFailure -> match
-    // (_match2__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> true;
+    // GroupCoordinator: "|a heartbeat from an older generation asks the member to rejoin| [cluster]
+    // for all (t :: Text) (g :: Text) (one :: Text) (other :: Text) => created (_input0) (1) implies
+    // let _let0__it = attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil()))) in
+    // match (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> let _let2__new = attempt (joinGroup (_input1) (_input3)
+    // (List::Cons(_input0, List::Nil()))) in (match (attempt (heartbeat (_input1) (_input2)
+    // (_match1__1___lawspecSelection0x0))) { Either::Left _match3__0__lawspecFailure -> let _let4__it =
+    // _match3__0__lawspecFailure in match (_let4__it) {
+    // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
     // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> false;
@@ -14348,11 +14558,13 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::InvalidGroupId -> false;
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match2__1__lawspecResult -> false } And match (attempt (joinGroup (_input1) (_input2)
-    // (List::Cons(_input0, List::Nil())))) { Either::Left _match2__0__e -> false; Either::Right
-    // _match2__1__rejoined -> ((_let1__new == Either::Right(_match2__1__rejoined)) And match (attempt
-    // (heartbeat (_input1) (_input2) (_match2__1__rejoined))) { Either::Left _match3__0__railwayError0
-    // -> false; Either::Right _match3__1__railwayValue1 -> true }) }) } = true
+    // _match3__1__lawspecResult -> false } And let _let3__it = attempt (joinGroup (_input1) (_input2)
+    // (List::Cons(_input0, List::Nil()))) in match (_let3__it) { Either::Left
+    // _match4__0___match__lawspecSelection0x0_0 -> false; Either::Right
+    // _match4__1___match__lawspecSelection0x0_0 -> ((_let2__new ==
+    // Either::Right(_match4__1___match__lawspecSelection0x0_0)) And match (attempt (heartbeat (_input1)
+    // (_input2) (_match4__1___match__lawspecSelection0x0_0))) { Either::Left _match5__0__railwayError0
+    // -> false; Either::Right _match5__1__railwayValue1 -> true }) }) } = true end for all
     private static Value LawGroupcoordinatorAHeartbeatFromAnOlder2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -14374,11 +14586,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -14386,7 +14599,7 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     var ls7 = Fn.F0(() =>
                     {
                         return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "joinGroup", Fn.List<Value>(input1, input3, Schema.Construct("List::Cons", Fn.List<Value>(input0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (Text)"), schema)), Scalar.TypeOf("List (Text)"), schema))), Scalar.TypeOf("Int32"), schema);
@@ -14399,11 +14612,11 @@ public sealed class LawtwinKafka
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_3), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
                     });
-                    var bound2 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
+                    var bound3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9);
                     Value ls10;
                     var ls11 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "heartbeat", Fn.List<Value>(input1, input2, bound1)), Scalar.TypeOf("Unit"), schema);
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "heartbeat", Fn.List<Value>(input1, input2, bound2)), Scalar.TypeOf("Unit"), schema);
                     });
                     var ls12 = Fn.F1((Value failureValue_4) =>
                     {
@@ -14417,8 +14630,9 @@ public sealed class LawtwinKafka
                     Value ls14;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound3 = Runtime.Field(matched1, 0);
-                        var matched2 = bound3;
+                        var bound4 = Runtime.Field(matched1, 0);
+                        var bound6 = bound4;
+                        var matched2 = bound6;
                         Value ls15;
                         if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::IllegalGeneration", matched2))
                         {
@@ -14579,7 +14793,7 @@ public sealed class LawtwinKafka
                         Value ls32;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound4 = Runtime.Field(matched1, 0);
+                            var bound5 = Runtime.Field(matched1, 0);
                             ls32 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                         }
                         else
@@ -14602,11 +14816,12 @@ public sealed class LawtwinKafka
                         {
                             return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_7), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
                         });
-                        var matched3 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls33, ls34, ls35);
+                        var bound7 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls33, ls34, ls35);
+                        var matched3 = bound7;
                         Value ls36;
                         if (Runtime.HasTag("Either::Left", matched3))
                         {
-                            var bound5 = Runtime.Field(matched3, 0);
+                            var bound8 = Runtime.Field(matched3, 0);
                             ls36 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                         }
                         else
@@ -14614,13 +14829,13 @@ public sealed class LawtwinKafka
                             Value ls37;
                             if (Runtime.HasTag("Either::Right", matched3))
                             {
-                                var bound6 = Runtime.Field(matched3, 0);
+                                var bound9 = Runtime.Field(matched3, 0);
                                 Value ls38;
-                                if (Runtime.Truth(Scalar.Binary("==", bound2, Schema.Construct("Either::Right", Fn.List<Value>(bound6), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (Int32)", "Either (lawtwin.kafka.model::type::KafkaError) (Int32)")))
+                                if (Runtime.Truth(Scalar.Binary("==", bound3, Schema.Construct("Either::Right", Fn.List<Value>(bound9), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (Int32)", "Either (lawtwin.kafka.model::type::KafkaError) (Int32)")))
                                 {
                                     var ls39 = Fn.F0(() =>
                                     {
-                                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "heartbeat", Fn.List<Value>(input1, input2, bound6)), Scalar.TypeOf("Unit"), schema);
+                                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "heartbeat", Fn.List<Value>(input1, input2, bound9)), Scalar.TypeOf("Unit"), schema);
                                     });
                                     var ls40 = Fn.F1((Value failureValue_8) =>
                                     {
@@ -14634,7 +14849,7 @@ public sealed class LawtwinKafka
                                     Value ls42;
                                     if (Runtime.HasTag("Either::Left", matched4))
                                     {
-                                        var bound7 = Runtime.Field(matched4, 0);
+                                        var bound10 = Runtime.Field(matched4, 0);
                                         ls42 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                                     }
                                     else
@@ -14642,7 +14857,7 @@ public sealed class LawtwinKafka
                                         Value ls43;
                                         if (Runtime.HasTag("Either::Right", matched4))
                                         {
-                                            var bound8 = Runtime.Field(matched4, 0);
+                                            var bound11 = Runtime.Field(matched4, 0);
                                             ls43 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                                         }
                                         else
@@ -14680,7 +14895,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: a heartbeat from an older generation asks the member to rejoin [cluster]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: \"|a heartbeat from an older generation asks the member to rejoin| [cluster]");
         }
         else
         {
@@ -14714,7 +14929,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::GroupCoordinator", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1)), ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: a heartbeat from an older generation asks the member to rejoin [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|a heartbeat from an older generation asks the member to rejoin| [cluster] property")]
     public void LawGroupcoordinatorAHeartbeatFromAnOlder2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -14856,7 +15071,7 @@ public sealed class LawtwinKafka
             }
             return ls21;
         });
-        Search.Replay("lawtwin.kafka::GroupCoordinator: a heartbeat from an older generation asks the member to rejoin [cluster]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::GroupCoordinator: \"|a heartbeat from an older generation asks the member to rejoin| [cluster]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -14865,25 +15080,27 @@ public sealed class LawtwinKafka
             {
                 return LawGroupcoordinatorAHeartbeatFromAnOlder2Case(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::GroupCoordinator: a heartbeat from an older generation asks the member to rejoin [cluster]", ls26, values_1, ls27);
+            return Search.Guard("lawtwin.kafka::GroupCoordinator: \"|a heartbeat from an older generation asks the member to rejoin| [cluster]", ls26, values_1, ls27);
         });
-        Property.Check("lawtwin.kafka::GroupCoordinator: a heartbeat from an older generation asks the member to rejoin [cluster]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::GroupCoordinator: \"|a heartbeat from an older generation asks the member to rejoin| [cluster]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native]
+    // Law: lawtwin.kafka::GroupCoordinator: "|leaving starts a new generation| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // GroupCoordinator: leaving starts a new generation [native]
-    // for all (t :: Text) (g :: Text) (m :: Text) . created (_input0) (1) implies match (attempt
-    // (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e
-    // -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) {
-    // Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true
+    // GroupCoordinator: "|leaving starts a new generation| [native]
+    // for all (t :: Text) (g :: Text) (m :: Text) => created (_input0) (1) implies let _let0__it =
+    // attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil()))) in match (_let0__it) {
+    // Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> ((match (attempt (leaveGroup (_input1) (_input2))) {
+    // Either::Left _match2__0__railwayError0 -> false; Either::Right _match2__1__railwayValue1 -> true
     // } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView
-    // _matchfield0__generation _matchfield1__members -> _matchfield0__generation } > _match0__1__gen))
-    // And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left
-    // _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
+    // _matchfield0__generation _matchfield1__members -> _matchfield0__generation } >
+    // _match1__1___lawspecSelection0x0)) And match (attempt (heartbeat (_input1) (_input2)
+    // (_match1__1___lawspecSelection0x0))) { Either::Left _match2__0__lawspecFailure -> let _let3__it =
+    // _match2__0__lawspecFailure in match (_let3__it) {
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -14901,7 +15118,7 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::InvalidGroupId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match1__1__lawspecResult -> false }) } = true
+    // _match2__1__lawspecResult -> false }) } = true end for all
     private static Value LawGroupcoordinatorLeavingStartsANewGenerationBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -14923,11 +15140,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -14935,7 +15153,7 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     Value ls7;
                     Value ls8;
                     var ls9 = Fn.F0(() =>
@@ -14954,7 +15172,7 @@ public sealed class LawtwinKafka
                     Value ls12;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound2 = Runtime.Field(matched1, 0);
+                        var bound3 = Runtime.Field(matched1, 0);
                         ls12 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                     }
                     else
@@ -14962,7 +15180,7 @@ public sealed class LawtwinKafka
                         Value ls13;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound3 = Runtime.Field(matched1, 0);
+                            var bound4 = Runtime.Field(matched1, 0);
                             ls13 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                         }
                         else
@@ -14977,15 +15195,15 @@ public sealed class LawtwinKafka
                         Value ls14;
                         if (Runtime.HasTag("lawtwin.kafka.model::type::GroupView::GroupView", matched2))
                         {
-                            var bound4 = Runtime.Field(matched2, 0);
-                            var bound5 = Runtime.Field(matched2, 1);
-                            ls14 = bound4;
+                            var bound5 = Runtime.Field(matched2, 0);
+                            var bound6 = Runtime.Field(matched2, 1);
+                            ls14 = bound5;
                         }
                         else
                         {
                             ls14 = Runtime.NoMatch(matched2);
                         }
-                        ls8 = Scalar.Binary(">", ls14, bound1, "Int32", "Int32");
+                        ls8 = Scalar.Binary(">", ls14, bound2, "Int32", "Int32");
                     }
                     else
                     {
@@ -14995,7 +15213,7 @@ public sealed class LawtwinKafka
                     {
                         var ls15 = Fn.F0(() =>
                         {
-                            return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "heartbeat", Fn.List<Value>(input1, input2, bound1)), Scalar.TypeOf("Unit"), schema);
+                            return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "heartbeat", Fn.List<Value>(input1, input2, bound2)), Scalar.TypeOf("Unit"), schema);
                         });
                         var ls16 = Fn.F1((Value failureValue_4) =>
                         {
@@ -15009,8 +15227,9 @@ public sealed class LawtwinKafka
                         Value ls18;
                         if (Runtime.HasTag("Either::Left", matched3))
                         {
-                            var bound6 = Runtime.Field(matched3, 0);
-                            var matched4 = bound6;
+                            var bound7 = Runtime.Field(matched3, 0);
+                            var bound9 = bound7;
+                            var matched4 = bound9;
                             Value ls19;
                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownMemberId", matched4))
                             {
@@ -15171,7 +15390,7 @@ public sealed class LawtwinKafka
                             Value ls36;
                             if (Runtime.HasTag("Either::Right", matched3))
                             {
-                                var bound7 = Runtime.Field(matched3, 0);
+                                var bound8 = Runtime.Field(matched3, 0);
                                 ls36 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                             }
                             else
@@ -15195,7 +15414,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [native]");
         }
         else
         {
@@ -15222,7 +15441,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [native] boundary")]
     public void LawGroupcoordinatorLeavingStartsANewGeneration_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -15232,10 +15451,10 @@ public sealed class LawtwinKafka
         {
             return LawGroupcoordinatorLeavingStartsANewGenerationCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [native] property")]
     public void LawGroupcoordinatorLeavingStartsANewGeneration_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -15331,7 +15550,7 @@ public sealed class LawtwinKafka
             }
             return ls16;
         });
-        Search.Replay("lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -15340,25 +15559,27 @@ public sealed class LawtwinKafka
             {
                 return LawGroupcoordinatorLeavingStartsANewGenerationCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native]", ls19, values_1, ls20);
+            return Search.Guard("lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [native]", ls19, values_1, ls20);
         });
-        Property.Check("lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster]
+    // Law: lawtwin.kafka::GroupCoordinator: "|leaving starts a new generation| [cluster]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // GroupCoordinator: leaving starts a new generation [cluster]
-    // for all (t :: Text) (g :: Text) (m :: Text) . created (_input0) (1) implies match (attempt
-    // (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e
-    // -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) {
-    // Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true
+    // GroupCoordinator: "|leaving starts a new generation| [cluster]
+    // for all (t :: Text) (g :: Text) (m :: Text) => created (_input0) (1) implies let _let0__it =
+    // attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil()))) in match (_let0__it) {
+    // Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> ((match (attempt (leaveGroup (_input1) (_input2))) {
+    // Either::Left _match2__0__railwayError0 -> false; Either::Right _match2__1__railwayValue1 -> true
     // } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView
-    // _matchfield0__generation _matchfield1__members -> _matchfield0__generation } > _match0__1__gen))
-    // And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left
-    // _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
+    // _matchfield0__generation _matchfield1__members -> _matchfield0__generation } >
+    // _match1__1___lawspecSelection0x0)) And match (attempt (heartbeat (_input1) (_input2)
+    // (_match1__1___lawspecSelection0x0))) { Either::Left _match2__0__lawspecFailure -> let _let3__it =
+    // _match2__0__lawspecFailure in match (_let3__it) {
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -15376,7 +15597,7 @@ public sealed class LawtwinKafka
     // lawtwin.kafka.model::type::KafkaError::InvalidGroupId -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
     // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
-    // _match1__1__lawspecResult -> false }) } = true
+    // _match2__1__lawspecResult -> false }) } = true end for all
     private static Value LawGroupcoordinatorLeavingStartsANewGeneration2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -15397,11 +15618,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -15409,7 +15631,7 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     Value ls7;
                     Value ls8;
                     var ls9 = Fn.F0(() =>
@@ -15428,7 +15650,7 @@ public sealed class LawtwinKafka
                     Value ls12;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound2 = Runtime.Field(matched1, 0);
+                        var bound3 = Runtime.Field(matched1, 0);
                         ls12 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                     }
                     else
@@ -15436,7 +15658,7 @@ public sealed class LawtwinKafka
                         Value ls13;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound3 = Runtime.Field(matched1, 0);
+                            var bound4 = Runtime.Field(matched1, 0);
                             ls13 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                         }
                         else
@@ -15451,15 +15673,15 @@ public sealed class LawtwinKafka
                         Value ls14;
                         if (Runtime.HasTag("lawtwin.kafka.model::type::GroupView::GroupView", matched2))
                         {
-                            var bound4 = Runtime.Field(matched2, 0);
-                            var bound5 = Runtime.Field(matched2, 1);
-                            ls14 = bound4;
+                            var bound5 = Runtime.Field(matched2, 0);
+                            var bound6 = Runtime.Field(matched2, 1);
+                            ls14 = bound5;
                         }
                         else
                         {
                             ls14 = Runtime.NoMatch(matched2);
                         }
-                        ls8 = Scalar.Binary(">", ls14, bound1, "Int32", "Int32");
+                        ls8 = Scalar.Binary(">", ls14, bound2, "Int32", "Int32");
                     }
                     else
                     {
@@ -15469,7 +15691,7 @@ public sealed class LawtwinKafka
                     {
                         var ls15 = Fn.F0(() =>
                         {
-                            return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "heartbeat", Fn.List<Value>(input1, input2, bound1)), Scalar.TypeOf("Unit"), schema);
+                            return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "heartbeat", Fn.List<Value>(input1, input2, bound2)), Scalar.TypeOf("Unit"), schema);
                         });
                         var ls16 = Fn.F1((Value failureValue_4) =>
                         {
@@ -15483,8 +15705,9 @@ public sealed class LawtwinKafka
                         Value ls18;
                         if (Runtime.HasTag("Either::Left", matched3))
                         {
-                            var bound6 = Runtime.Field(matched3, 0);
-                            var matched4 = bound6;
+                            var bound7 = Runtime.Field(matched3, 0);
+                            var bound9 = bound7;
+                            var matched4 = bound9;
                             Value ls19;
                             if (Runtime.HasTag("lawtwin.kafka.model::type::KafkaError::UnknownMemberId", matched4))
                             {
@@ -15645,7 +15868,7 @@ public sealed class LawtwinKafka
                             Value ls36;
                             if (Runtime.HasTag("Either::Right", matched3))
                             {
-                                var bound7 = Runtime.Field(matched3, 0);
+                                var bound8 = Runtime.Field(matched3, 0);
                                 ls36 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                             }
                             else
@@ -15669,7 +15892,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [cluster]");
         }
         else
         {
@@ -15703,7 +15926,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::GroupCoordinator", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1)), ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [cluster] boundary")]
     public void LawGroupcoordinatorLeavingStartsANewGeneration2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -15713,10 +15936,10 @@ public sealed class LawtwinKafka
         {
             return LawGroupcoordinatorLeavingStartsANewGeneration2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [cluster]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [cluster] property")]
     public void LawGroupcoordinatorLeavingStartsANewGeneration2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -15812,7 +16035,7 @@ public sealed class LawtwinKafka
             }
             return ls16;
         });
-        Search.Replay("lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [cluster]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -15821,26 +16044,31 @@ public sealed class LawtwinKafka
             {
                 return LawGroupcoordinatorLeavingStartsANewGeneration2Case(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster]", ls19, values_1, ls20);
+            return Search.Guard("lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [cluster]", ls19, values_1, ls20);
         });
-        Property.Check("lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::GroupCoordinator: \"|leaving starts a new generation| [cluster]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [native]
+    // Law: lawtwin.kafka::GroupCoordinator: "|a committed offset can be fetched| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // GroupCoordinator: a committed offset can be fetched [native]
-    // for all (t :: Text) (g :: Text) (m :: Text) (offset :: Int64) . created (_input0) (1) implies
-    // match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left
-    // _match0__0__e -> false; Either::Right _match0__1__gen -> (match (attempt (commitOffsets (_input1)
-    // (_input2) (_match0__1__gen)
-    // (List::Cons(lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(lawtwin.kafka.model::type::TopicP
-    // artition::TopicPartition(_input0, 0), _input3), List::Nil())))) { Either::Left
-    // _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And
-    // (fetchOffset (_input1) (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) ==
-    // Maybe::Just(_input3))) } = true
+    // GroupCoordinator: "|a committed offset can be fetched| [native]
+    // for all (t :: Text) (g :: Text) (m :: Text) (offset :: Int64) => created (_input0) (1) implies
+    // let _let0__it = attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil()))) in
+    // match (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> (match (attempt (commitOffsets (_input1) (_input2)
+    // (_match1__1___lawspecSelection0x0) (List::Cons(let _let2___lawspecRecordField0 = let
+    // _let2___lawspecRecordField0 = _input0 in let _let3___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___lawspecRecordField0,
+    // _let3___lawspecRecordField1) in let _let3___lawspecRecordField1 = _input3 in
+    // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_let2___lawspecRecordField0,
+    // _let3___lawspecRecordField1), List::Nil())))) { Either::Left _match2__0__railwayError0 -> false;
+    // Either::Right _match2__1__railwayValue1 -> true } And (fetchOffset (_input1) (let
+    // _let2___lawspecRecordField0 = _input0 in let _let3___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___lawspecRecordField0,
+    // _let3___lawspecRecordField1)) == Maybe::Just(_input3))) } = true end for all
     private static Value LawGroupcoordinatorACommittedOffsetCanBeBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -15863,11 +16091,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -15875,11 +16104,18 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     Value ls7;
                     var ls8 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "commitOffsets", Fn.List<Value>(input1, input2, bound1, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), input3), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema))), Scalar.TypeOf("Unit"), schema);
+                        var bound5 = input0;
+                        var bound6 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                        var bound5_1 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound5, bound6), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+                        var bound6_1 = input3;
+                        var ls12 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema);
+                        var ls13 = Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)");
+                        var ls14 = Scalar.TypeOf("Unit");
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "commitOffsets", Fn.List<Value>(input1, input2, bound2, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(bound5_1, bound6_1), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), ls12), ls13, schema))), ls14, schema);
                     });
                     var ls9 = Fn.F1((Value failureValue_2) =>
                     {
@@ -15893,26 +16129,30 @@ public sealed class LawtwinKafka
                     Value ls11;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound2 = Runtime.Field(matched1, 0);
+                        var bound3 = Runtime.Field(matched1, 0);
                         ls11 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                     }
                     else
                     {
-                        Value ls12;
+                        Value ls15;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound3 = Runtime.Field(matched1, 0);
-                            ls12 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                            var bound4 = Runtime.Field(matched1, 0);
+                            ls15 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            ls12 = Runtime.NoMatch(matched1);
+                            ls15 = Runtime.NoMatch(matched1);
                         }
-                        ls11 = ls12;
+                        ls11 = ls15;
                     }
                     if (Runtime.Truth(ls11))
                     {
-                        ls7 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "fetchOffset", Fn.List<Value>(input1, Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema))), Scalar.TypeOf("Maybe (Int64)"), schema), Schema.Construct("Maybe::Just", Fn.List<Value>(input3), Scalar.TypeOf("Maybe (Int64)"), schema), "Maybe Int64", "Maybe Int64");
+                        var bound5_2 = input0;
+                        var bound6_2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                        var ls16 = Scalar.TypeOf("Maybe (Int64)");
+                        var ls17 = Schema.Construct("Maybe::Just", Fn.List<Value>(input3), Scalar.TypeOf("Maybe (Int64)"), schema);
+                        ls7 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "fetchOffset", Fn.List<Value>(input1, Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound5_2, bound6_2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema))), ls16, schema), ls17, "Maybe Int64", "Maybe Int64");
                     }
                     else
                     {
@@ -15927,7 +16167,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [native]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [native]");
         }
         else
         {
@@ -15954,7 +16194,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [native] boundary")]
     public void LawGroupcoordinatorACommittedOffsetCanBe_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -15964,10 +16204,10 @@ public sealed class LawtwinKafka
         {
             return LawGroupcoordinatorACommittedOffsetCanBeCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [native] property")]
     public void LawGroupcoordinatorACommittedOffsetCanBe_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -16091,7 +16331,7 @@ public sealed class LawtwinKafka
             }
             return ls20;
         });
-        Search.Replay("lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -16100,26 +16340,31 @@ public sealed class LawtwinKafka
             {
                 return LawGroupcoordinatorACommittedOffsetCanBeCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [native]", ls24, values_1, ls25);
+            return Search.Guard("lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [native]", ls24, values_1, ls25);
         });
-        Property.Check("lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [cluster]
+    // Law: lawtwin.kafka::GroupCoordinator: "|a committed offset can be fetched| [cluster]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // GroupCoordinator: a committed offset can be fetched [cluster]
-    // for all (t :: Text) (g :: Text) (m :: Text) (offset :: Int64) . created (_input0) (1) implies
-    // match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left
-    // _match0__0__e -> false; Either::Right _match0__1__gen -> (match (attempt (commitOffsets (_input1)
-    // (_input2) (_match0__1__gen)
-    // (List::Cons(lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(lawtwin.kafka.model::type::TopicP
-    // artition::TopicPartition(_input0, 0), _input3), List::Nil())))) { Either::Left
-    // _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And
-    // (fetchOffset (_input1) (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) ==
-    // Maybe::Just(_input3))) } = true
+    // GroupCoordinator: "|a committed offset can be fetched| [cluster]
+    // for all (t :: Text) (g :: Text) (m :: Text) (offset :: Int64) => created (_input0) (1) implies
+    // let _let0__it = attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil()))) in
+    // match (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
+    // _match1__1___lawspecSelection0x0 -> (match (attempt (commitOffsets (_input1) (_input2)
+    // (_match1__1___lawspecSelection0x0) (List::Cons(let _let2___lawspecRecordField0 = let
+    // _let2___lawspecRecordField0 = _input0 in let _let3___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___lawspecRecordField0,
+    // _let3___lawspecRecordField1) in let _let3___lawspecRecordField1 = _input3 in
+    // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_let2___lawspecRecordField0,
+    // _let3___lawspecRecordField1), List::Nil())))) { Either::Left _match2__0__railwayError0 -> false;
+    // Either::Right _match2__1__railwayValue1 -> true } And (fetchOffset (_input1) (let
+    // _let2___lawspecRecordField0 = _input0 in let _let3___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___lawspecRecordField0,
+    // _let3___lawspecRecordField1)) == Maybe::Just(_input3))) } = true end for all
     private static Value LawGroupcoordinatorACommittedOffsetCanBe2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -16141,11 +16386,12 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int32)"), schema);
             });
-            var matched0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound0 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var matched0 = bound0;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
+                var bound1 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -16153,11 +16399,18 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
+                    var bound2 = Runtime.Field(matched0, 0);
                     Value ls7;
                     var ls8 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "commitOffsets", Fn.List<Value>(input1, input2, bound1, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), input3), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema))), Scalar.TypeOf("Unit"), schema);
+                        var bound5 = input0;
+                        var bound6 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                        var bound5_1 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound5, bound6), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+                        var bound6_1 = input3;
+                        var ls12 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema);
+                        var ls13 = Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)");
+                        var ls14 = Scalar.TypeOf("Unit");
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "commitOffsets", Fn.List<Value>(input1, input2, bound2, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(bound5_1, bound6_1), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), ls12), ls13, schema))), ls14, schema);
                     });
                     var ls9 = Fn.F1((Value failureValue_2) =>
                     {
@@ -16171,26 +16424,30 @@ public sealed class LawtwinKafka
                     Value ls11;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound2 = Runtime.Field(matched1, 0);
+                        var bound3 = Runtime.Field(matched1, 0);
                         ls11 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                     }
                     else
                     {
-                        Value ls12;
+                        Value ls15;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound3 = Runtime.Field(matched1, 0);
-                            ls12 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                            var bound4 = Runtime.Field(matched1, 0);
+                            ls15 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            ls12 = Runtime.NoMatch(matched1);
+                            ls15 = Runtime.NoMatch(matched1);
                         }
-                        ls11 = ls12;
+                        ls11 = ls15;
                     }
                     if (Runtime.Truth(ls11))
                     {
-                        ls7 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "fetchOffset", Fn.List<Value>(input1, Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema))), Scalar.TypeOf("Maybe (Int64)"), schema), Schema.Construct("Maybe::Just", Fn.List<Value>(input3), Scalar.TypeOf("Maybe (Int64)"), schema), "Maybe Int64", "Maybe Int64");
+                        var bound5_2 = input0;
+                        var bound6_2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                        var ls16 = Scalar.TypeOf("Maybe (Int64)");
+                        var ls17 = Schema.Construct("Maybe::Just", Fn.List<Value>(input3), Scalar.TypeOf("Maybe (Int64)"), schema);
+                        ls7 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::GroupCoordinator", "fetchOffset", Fn.List<Value>(input1, Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound5_2, bound6_2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema))), ls16, schema), ls17, "Maybe Int64", "Maybe Int64");
                     }
                     else
                     {
@@ -16205,7 +16462,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [cluster]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [cluster]");
         }
         else
         {
@@ -16239,7 +16496,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::GroupCoordinator", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1)), ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [cluster] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [cluster] boundary")]
     public void LawGroupcoordinatorACommittedOffsetCanBe2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -16249,10 +16506,10 @@ public sealed class LawtwinKafka
         {
             return LawGroupcoordinatorACommittedOffsetCanBe2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [cluster]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [cluster]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [cluster] property")]
+    [Fact(DisplayName = "lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [cluster] property")]
     public void LawGroupcoordinatorACommittedOffsetCanBe2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -16376,7 +16633,7 @@ public sealed class LawtwinKafka
             }
             return ls20;
         });
-        Search.Replay("lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [cluster]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [cluster]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -16385,26 +16642,29 @@ public sealed class LawtwinKafka
             {
                 return LawGroupcoordinatorACommittedOffsetCanBe2Case(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [cluster]", ls24, values_1, ls25);
+            return Search.Guard("lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [cluster]", ls24, values_1, ls25);
         });
-        Property.Check("lawtwin.kafka::GroupCoordinator: a committed offset can be fetched [cluster]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::GroupCoordinator: \"|a committed offset can be fetched| [cluster]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Transactions: a newer instance fences a zombie [native]
+    // Law: lawtwin.kafka::Transactions: "|a newer instance fences a zombie| [native]
     // Description: Another instance initialises the same transactional id. The first
     // instance is now a zombie: its next transactional request is fenced.
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Transactions: a newer instance fences a zombie [native]
-    // for all (t :: Text) (txid :: Text) (r :: lawtwin.kafka.model::type::Record) . created (_input0)
+    // Transactions: "|a newer instance fences a zombie| [native]
+    // for all (t :: Text) (txid :: Text) (r :: lawtwin.kafka.model::type::Record) => created (_input0)
     // (1) implies (((match (initTransactions (_input1)) { Either::Left _match0__0__railwayError0 ->
     // false; Either::Right _match0__1__railwayValue1 -> true } And (beginTransaction ==
     // Either::Right(unitValue))) And match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) {
-    // Either::Left _match0__0__railwayError2 -> false; Either::Right _match0__1__railwayValue3 -> true
-    // }) And (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2)) ==
-    // Either::Left(lawtwin.kafka.model::type::KafkaError::ProducerFenced()))) = true
+    // Either::Left _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true
+    // }) And (sendInTransaction (let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let
+    // _let2___lawspecRecordField2 = _input2 in
+    // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1, _let2___lawspecRecordField2)) ==
+    // Either::Left(lawtwin.kafka.model::type::KafkaError::ProducerFenced()))) = true end for all
     private static Value LawTransactionsANewerInstanceFencesAZombieBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -16464,7 +16724,7 @@ public sealed class LawtwinKafka
                 Value ls10;
                 if (Runtime.HasTag("Either::Left", matched1))
                 {
-                    var bound2 = Runtime.Field(matched1, 0);
+                    var bound0_1 = Runtime.Field(matched1, 0);
                     ls10 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -16472,7 +16732,7 @@ public sealed class LawtwinKafka
                     Value ls11;
                     if (Runtime.HasTag("Either::Right", matched1))
                     {
-                        var bound3 = Runtime.Field(matched1, 0);
+                        var bound1_1 = Runtime.Field(matched1, 0);
                         ls11 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                     }
                     else
@@ -16489,14 +16749,19 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls3))
             {
-                ls1 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input2), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema), Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::ProducerFenced", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)", "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+                var bound2 = input0;
+                var bound3 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+                var bound4 = input2;
+                var ls12 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+                var ls13 = Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::ProducerFenced", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
+                ls1 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound2, bound3, bound4), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls12, schema), ls13, "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)", "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
             }
             else
             {
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: a newer instance fences a zombie [native]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: \"|a newer instance fences a zombie| [native]");
         }
         else
         {
@@ -16523,7 +16788,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: a newer instance fences a zombie [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|a newer instance fences a zombie| [native] boundary")]
     public void LawTransactionsANewerInstanceFencesAZombie_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -16533,10 +16798,10 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsANewerInstanceFencesAZombieCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Transactions: a newer instance fences a zombie [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Transactions: \"|a newer instance fences a zombie| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: a newer instance fences a zombie [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|a newer instance fences a zombie| [native] property")]
     public void LawTransactionsANewerInstanceFencesAZombie_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -16589,26 +16854,31 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsANewerInstanceFencesAZombieCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Transactions: a newer instance fences a zombie [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Transactions: \"|a newer instance fences a zombie| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Transactions: aborted records are never read committed [native]
+    // Law: lawtwin.kafka::Transactions: "|aborted records are never read committed| [native]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Transactions: aborted records are never read committed [native]
-    // for all (t :: Text) (txid :: Text) (r :: lawtwin.kafka.model::type::Record) . created (_input0)
-    // (1) implies let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)
-    // in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false;
-    // Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction ==
-    // Either::Right(unitValue))) And match (sendInTransaction
-    // (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e ->
-    // false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
-    // (committedFrom (_let0__tp) (match (_match1__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt ->
-    // _matchfield1__sentAt }) == List::Nil())) }) = true
+    // Transactions: "|aborted records are never read committed| [native]
+    // for all (t :: Text) (txid :: Text) (r :: lawtwin.kafka.model::type::Record) => created (_input0)
+    // (1) implies let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in ((match (initTransactions (_input1)) { Either::Left
+    // _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And
+    // (beginTransaction == Either::Right(unitValue))) And let _let1__it = sendInTransaction (let
+    // _let1___lawspecRecordField0 = _input0 in let _let2___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _let3___lawspecRecordField2 = _input2
+    // in lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRecordField0,
+    // _let2___lawspecRecordField1, _let3___lawspecRecordField2)) in match (_let1__it) { Either::Left
+    // _match2__0___lawspecSelection0x0 -> false; Either::Right _match2__1___lawspecSelection0x0 ->
+    // ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match
+    // (_match2__1___lawspecSelection0x0) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
+    // _matchfield0__sentTo _matchfield1__sentAt -> _matchfield1__sentAt }) == List::Nil())) }) = true
+    // end for all
     private static Value LawTransactionsAbortedRecordsAreNeverReadBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -16618,14 +16888,16 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             Value ls1;
             Value ls3;
             var matched0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "initTransactions", Fn.List<Value>(input1)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound1 = Runtime.Field(matched0, 0);
+                var bound3 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -16633,7 +16905,7 @@ public sealed class LawtwinKafka
                 Value ls5;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound2 = Runtime.Field(matched0, 0);
+                    var bound4 = Runtime.Field(matched0, 0);
                     ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -16652,57 +16924,62 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls3))
             {
-                var matched1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input2), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-                Value ls6;
+                var bound6 = input0;
+                var bound7 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+                var bound8 = input2;
+                var ls6 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+                var bound5 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound6, bound7, bound8), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls6, schema);
+                var matched1 = bound5;
+                Value ls7;
                 if (Runtime.HasTag("Either::Left", matched1))
                 {
-                    var bound3 = Runtime.Field(matched1, 0);
-                    ls6 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                    var bound9 = Runtime.Field(matched1, 0);
+                    ls7 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                 }
                 else
                 {
-                    Value ls7;
+                    Value ls8;
                     if (Runtime.HasTag("Either::Right", matched1))
                     {
-                        var bound4 = Runtime.Field(matched1, 0);
-                        Value ls8;
+                        var bound10 = Runtime.Field(matched1, 0);
+                        Value ls9;
                         if (Runtime.Truth(Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "abortTransaction", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Unit, Scalar.TypeOf("Unit"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either (lawtwin.kafka.model::type::KafkaError) (Unit)")))
                         {
-                            var matched2 = bound4;
-                            Value ls9;
+                            var matched2 = bound10;
+                            Value ls10;
                             if (Runtime.HasTag("lawtwin.kafka::type::RecordMetadata::RecordMetadata", matched2))
                             {
-                                var bound5 = Runtime.Field(matched2, 0);
-                                var bound6 = Runtime.Field(matched2, 1);
-                                ls9 = bound6;
+                                var bound11 = Runtime.Field(matched2, 0);
+                                var bound12 = Runtime.Field(matched2, 1);
+                                ls10 = bound12;
                             }
                             else
                             {
-                                ls9 = Runtime.NoMatch(matched2);
+                                ls10 = Runtime.NoMatch(matched2);
                             }
-                            var ls10 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema);
-                            ls8 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, bound0, ls9), ls10, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
+                            var ls11 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema);
+                            ls9 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, bound0, ls10), ls11, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
                         }
                         else
                         {
-                            ls8 = V.Bool(false);
+                            ls9 = V.Bool(false);
                         }
-                        ls7 = ls8;
+                        ls8 = ls9;
                     }
                     else
                     {
-                        ls7 = Runtime.NoMatch(matched1);
+                        ls8 = Runtime.NoMatch(matched1);
                     }
-                    ls6 = ls7;
+                    ls7 = ls8;
                 }
-                ls1 = ls6;
+                ls1 = ls7;
             }
             else
             {
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: aborted records are never read committed [native]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: \"|aborted records are never read committed| [native]");
         }
         else
         {
@@ -16729,7 +17006,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: aborted records are never read committed [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|aborted records are never read committed| [native] boundary")]
     public void LawTransactionsAbortedRecordsAreNeverRead_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -16739,10 +17016,10 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsAbortedRecordsAreNeverReadCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Transactions: aborted records are never read committed [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Transactions: \"|aborted records are never read committed| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: aborted records are never read committed [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|aborted records are never read committed| [native] property")]
     public void LawTransactionsAbortedRecordsAreNeverRead_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -16795,33 +17072,41 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsAbortedRecordsAreNeverReadCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Transactions: aborted records are never read committed [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Transactions: \"|aborted records are never read committed| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Transactions: committed records are read committed together and in order
+    // Law: lawtwin.kafka::Transactions: "|committed records are read committed together and in order|
     // [native]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Transactions: committed records are read committed together and in order [native]
+    // Transactions: "|committed records are read committed together and in order| [native]
     // for all (t :: Text) (txid :: Text) (first :: lawtwin.kafka.model::type::Record) (second ::
-    // lawtwin.kafka.model::type::Record) . created (_input0) (1) implies let _let0__tp =
-    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match
-    // (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right
-    // _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match
-    // (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e ->
-    // false; Either::Right _match1__1__md -> (((match (sendInTransaction
-    // (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
-    // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
-    // (committedFrom (_let0__tp) (match (_match1__1__md) {
+    // lawtwin.kafka.model::type::Record) => created (_input0) (1) implies let _let0__tp = let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in ((match (initTransactions (_input1)) { Either::Left
+    // _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And
+    // (beginTransaction == Either::Right(unitValue))) And let _let1__it = sendInTransaction (let
+    // _let1___lawspecRecordField0 = _input0 in let _let2___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _let3___lawspecRecordField2 = _input2
+    // in lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRecordField0,
+    // _let2___lawspecRecordField1, _let3___lawspecRecordField2)) in match (_let1__it) { Either::Left
+    // _match2__0___lawspecSelection0x0 -> false; Either::Right _match2__1___lawspecSelection0x0 ->
+    // (((match (sendInTransaction (let _let3___lawspecRecordField0 = _input0 in let
+    // _let4___lawspecRecordField1 = lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let
+    // _let5___lawspecRecordField2 = _input3 in
+    // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let3___lawspecRecordField0,
+    // _let4___lawspecRecordField1, _let5___lawspecRecordField2))) { Either::Left
+    // _match3__0__railwayError0 -> false; Either::Right _match3__1__railwayValue1 -> true } And
+    // (committedFrom (_let0__tp) (match (_match2__1___lawspecSelection0x0) {
     // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt ->
     // _matchfield1__sentAt }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And
-    // (committedFrom (_let0__tp) (match (_match1__1__md) {
+    // (committedFrom (_let0__tp) (match (_match2__1___lawspecSelection0x0) {
     // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield2__sentTo _matchfield3__sentAt ->
-    // _matchfield3__sentAt }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
+    // _matchfield3__sentAt }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true end
+    // for all
     private static Value LawTransactionsCommittedRecordsAreReadBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -16832,14 +17117,16 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             Value ls1;
             Value ls3;
             var matched0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "initTransactions", Fn.List<Value>(input1)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound1 = Runtime.Field(matched0, 0);
+                var bound3 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -16847,7 +17134,7 @@ public sealed class LawtwinKafka
                 Value ls5;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound2 = Runtime.Field(matched0, 0);
+                    var bound4 = Runtime.Field(matched0, 0);
                     ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -16866,59 +17153,76 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls3))
             {
-                var matched1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input2), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-                Value ls6;
+                var bound6 = input0;
+                var bound7 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+                var bound8 = input2;
+                var ls6 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+                var bound5 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound6, bound7, bound8), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls6, schema);
+                var matched1 = bound5;
+                Value ls7;
                 if (Runtime.HasTag("Either::Left", matched1))
                 {
-                    var bound3 = Runtime.Field(matched1, 0);
-                    ls6 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                    var bound9 = Runtime.Field(matched1, 0);
+                    ls7 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                 }
                 else
                 {
-                    Value ls7;
+                    Value ls8;
                     if (Runtime.HasTag("Either::Right", matched1))
                     {
-                        var bound4 = Runtime.Field(matched1, 0);
-                        Value ls8;
+                        var bound10 = Runtime.Field(matched1, 0);
                         Value ls9;
                         Value ls10;
-                        var matched2 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input3), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
                         Value ls11;
+                        var bound13 = input0;
+                        var bound14 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+                        var bound15 = input3;
+                        var ls12 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+                        var matched2 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound13, bound14, bound15), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls12, schema);
+                        Value ls13;
                         if (Runtime.HasTag("Either::Left", matched2))
                         {
-                            var bound5 = Runtime.Field(matched2, 0);
-                            ls11 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                            var bound11 = Runtime.Field(matched2, 0);
+                            ls13 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            Value ls12;
+                            Value ls14;
                             if (Runtime.HasTag("Either::Right", matched2))
                             {
-                                var bound6 = Runtime.Field(matched2, 0);
-                                ls12 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                                var bound12 = Runtime.Field(matched2, 0);
+                                ls14 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                             }
                             else
                             {
-                                ls12 = Runtime.NoMatch(matched2);
+                                ls14 = Runtime.NoMatch(matched2);
                             }
-                            ls11 = ls12;
+                            ls13 = ls14;
+                        }
+                        if (Runtime.Truth(ls13))
+                        {
+                            var matched3 = bound10;
+                            Value ls15;
+                            if (Runtime.HasTag("lawtwin.kafka::type::RecordMetadata::RecordMetadata", matched3))
+                            {
+                                var bound16 = Runtime.Field(matched3, 0);
+                                var bound17 = Runtime.Field(matched3, 1);
+                                ls15 = bound17;
+                            }
+                            else
+                            {
+                                ls15 = Runtime.NoMatch(matched3);
+                            }
+                            var ls16 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema);
+                            ls11 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, bound0, ls15), ls16, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
+                        }
+                        else
+                        {
+                            ls11 = V.Bool(false);
                         }
                         if (Runtime.Truth(ls11))
                         {
-                            var matched3 = bound4;
-                            Value ls13;
-                            if (Runtime.HasTag("lawtwin.kafka::type::RecordMetadata::RecordMetadata", matched3))
-                            {
-                                var bound7 = Runtime.Field(matched3, 0);
-                                var bound8 = Runtime.Field(matched3, 1);
-                                ls13 = bound8;
-                            }
-                            else
-                            {
-                                ls13 = Runtime.NoMatch(matched3);
-                            }
-                            var ls14 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema);
-                            ls10 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, bound0, ls13), ls14, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
+                            ls10 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "commitTransaction", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Unit, Scalar.TypeOf("Unit"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either (lawtwin.kafka.model::type::KafkaError) (Unit)");
                         }
                         else
                         {
@@ -16926,49 +17230,41 @@ public sealed class LawtwinKafka
                         }
                         if (Runtime.Truth(ls10))
                         {
-                            ls9 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "commitTransaction", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Unit, Scalar.TypeOf("Unit"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either (lawtwin.kafka.model::type::KafkaError) (Unit)");
+                            var matched4 = bound10;
+                            Value ls17;
+                            if (Runtime.HasTag("lawtwin.kafka::type::RecordMetadata::RecordMetadata", matched4))
+                            {
+                                var bound18 = Runtime.Field(matched4, 0);
+                                var bound19 = Runtime.Field(matched4, 1);
+                                ls17 = bound19;
+                            }
+                            else
+                            {
+                                ls17 = Runtime.NoMatch(matched4);
+                            }
+                            var ls18 = Schema.Construct("List::Cons", Fn.List<Value>(input2, Schema.Construct("List::Cons", Fn.List<Value>(input3, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema);
+                            ls9 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, bound0, ls17), ls18, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
                         }
                         else
                         {
                             ls9 = V.Bool(false);
                         }
-                        if (Runtime.Truth(ls9))
-                        {
-                            var matched4 = bound4;
-                            Value ls15;
-                            if (Runtime.HasTag("lawtwin.kafka::type::RecordMetadata::RecordMetadata", matched4))
-                            {
-                                var bound9 = Runtime.Field(matched4, 0);
-                                var bound10 = Runtime.Field(matched4, 1);
-                                ls15 = bound10;
-                            }
-                            else
-                            {
-                                ls15 = Runtime.NoMatch(matched4);
-                            }
-                            var ls16 = Schema.Construct("List::Cons", Fn.List<Value>(input2, Schema.Construct("List::Cons", Fn.List<Value>(input3, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema);
-                            ls8 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, bound0, ls15), ls16, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
-                        }
-                        else
-                        {
-                            ls8 = V.Bool(false);
-                        }
-                        ls7 = ls8;
+                        ls8 = ls9;
                     }
                     else
                     {
-                        ls7 = Runtime.NoMatch(matched1);
+                        ls8 = Runtime.NoMatch(matched1);
                     }
-                    ls6 = ls7;
+                    ls7 = ls8;
                 }
-                ls1 = ls6;
+                ls1 = ls7;
             }
             else
             {
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: \"|committed records are read committed together and in order| [native]");
         }
         else
         {
@@ -16995,7 +17291,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|committed records are read committed together and in order| [native] boundary")]
     public void LawTransactionsCommittedRecordsAreRead_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -17005,10 +17301,10 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsCommittedRecordsAreReadCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Transactions: committed records are read committed together and in order [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Transactions: \"|committed records are read committed together and in order| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|committed records are read committed together and in order| [native] property")]
     public void LawTransactionsCommittedRecordsAreRead_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -17066,25 +17362,28 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsCommittedRecordsAreReadCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Transactions: committed records are read committed together and in order [native]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Transactions: \"|committed records are read committed together and in order| [native]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed
+    // Law: lawtwin.kafka::Transactions: "|offsets sent in an aborted transaction are not committed|
     // [native]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Transactions: offsets sent in an aborted transaction are not committed [native]
-    // for all (t :: Text) (txid :: Text) (g :: Text) (offset :: Int64) . created (_input0) (1) implies
-    // let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in let
-    // _let1__before = offsetFetchRequest (_input2) (_let0__tp) in ((((match (initTransactions
-    // (_input1)) { Either::Left _match2__0__railwayError0 -> false; Either::Right
-    // _match2__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And
-    // (sendOffsetsToTransaction (_input2)
-    // (List::Cons(lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_let0__tp, _input3),
-    // List::Nil())) == Either::Right(unitValue))) And (abortTransaction == Either::Right(unitValue)))
-    // And (offsetFetchRequest (_input2) (_let0__tp) == _let1__before)) = true
+    // Transactions: "|offsets sent in an aborted transaction are not committed| [native]
+    // for all (t :: Text) (txid :: Text) (g :: Text) (offset :: Int64) => created (_input0) (1) implies
+    // let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0
+    // in lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__before = offsetFetchRequest (_input2) (_let0__tp) in
+    // ((((match (initTransactions (_input1)) { Either::Left _match2__0__railwayError0 -> false;
+    // Either::Right _match2__1__railwayValue1 -> true } And (beginTransaction ==
+    // Either::Right(unitValue))) And (sendOffsetsToTransaction (_input2) (List::Cons(let
+    // _let2___lawspecRecordField0 = _let0__tp in let _let3___lawspecRecordField1 = _input3 in
+    // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_let2___lawspecRecordField0,
+    // _let3___lawspecRecordField1), List::Nil())) == Either::Right(unitValue))) And (abortTransaction
+    // == Either::Right(unitValue))) And (offsetFetchRequest (_input2) (_let0__tp) == _let1__before)) =
+    // true end for all
     private static Value LawTransactionsOffsetsSentInAnAbortedBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -17095,8 +17394,10 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
-            var bound1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "offsetFetchRequest", Fn.List<Value>(input2, bound0)), Scalar.TypeOf("Maybe (Int64)"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound3 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "offsetFetchRequest", Fn.List<Value>(input2, bound0)), Scalar.TypeOf("Maybe (Int64)"), schema);
             Value ls1;
             Value ls3;
             Value ls4;
@@ -17105,7 +17406,7 @@ public sealed class LawtwinKafka
             Value ls6;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound2 = Runtime.Field(matched0, 0);
+                var bound4 = Runtime.Field(matched0, 0);
                 ls6 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -17113,7 +17414,7 @@ public sealed class LawtwinKafka
                 Value ls7;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound3 = Runtime.Field(matched0, 0);
+                    var bound5 = Runtime.Field(matched0, 0);
                     ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -17132,7 +17433,13 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls5))
             {
-                ls4 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendOffsetsToTransaction", Fn.List<Value>(input2, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(bound0, input3), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Unit, Scalar.TypeOf("Unit"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either (lawtwin.kafka.model::type::KafkaError) (Unit)");
+                var bound6 = bound0;
+                var bound7 = input3;
+                var ls8 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema);
+                var ls9 = Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)");
+                var ls10 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)");
+                var ls11 = Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Unit, Scalar.TypeOf("Unit"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
+                ls4 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendOffsetsToTransaction", Fn.List<Value>(input2, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(bound6, bound7), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), ls8), ls9, schema))), ls10, schema), ls11, "Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either (lawtwin.kafka.model::type::KafkaError) (Unit)");
             }
             else
             {
@@ -17148,14 +17455,14 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls3))
             {
-                ls1 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "offsetFetchRequest", Fn.List<Value>(input2, bound0)), Scalar.TypeOf("Maybe (Int64)"), schema), bound1, "Maybe Int64", "Maybe Int64");
+                ls1 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "offsetFetchRequest", Fn.List<Value>(input2, bound0)), Scalar.TypeOf("Maybe (Int64)"), schema), bound3, "Maybe Int64", "Maybe Int64");
             }
             else
             {
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [native]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [native]");
         }
         else
         {
@@ -17182,7 +17489,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [native] boundary")]
     public void LawTransactionsOffsetsSentInAnAborted_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -17192,10 +17499,10 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsOffsetsSentInAnAbortedCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [native] property")]
     public void LawTransactionsOffsetsSentInAnAborted_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -17319,7 +17626,7 @@ public sealed class LawtwinKafka
             }
             return ls20;
         });
-        Search.Replay("lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -17328,26 +17635,26 @@ public sealed class LawtwinKafka
             {
                 return LawTransactionsOffsetsSentInAnAbortedCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [native]", ls24, values_1, ls25);
+            return Search.Guard("lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [native]", ls24, values_1, ls25);
         });
-        Property.Check("lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Transactions: a transaction must begin before it ends [native]
+    // Law: lawtwin.kafka::Transactions: "|a transaction must begin before it ends| [native]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Transactions: a transaction must begin before it ends [native]
-    // for all (txid :: Text) . let _let0__id = initTransactions (_input0) in commitTransaction =
-    // Either::Left(lawtwin.kafka.model::type::KafkaError::IllegalState())
+    // Transactions: "|a transaction must begin before it ends| [native]
+    // for all (txid :: Text) => let _let0__id = initTransactions (_input0) in commitTransaction =
+    // Either::Left(lawtwin.kafka.model::type::KafkaError::IllegalState()) end for all
     private static Value LawTransactionsATransactionMustBeginBeforeItBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs, FSharpList<Value> resources)
     {
         var input0 = Runtime.Item(0, inputs);
         var resource0 = Runtime.Item(0, resources);
         var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "initTransactions", Fn.List<Value>(input0)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
         var ls0 = Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::IllegalState", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
-        return Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "commitTransaction", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), ls0, "lawtwin.kafka::Transactions: a transaction must begin before it ends [native]");
+        return Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "commitTransaction", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), ls0, "lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [native]");
     }
 
     private static Value LawTransactionsATransactionMustBeginBeforeItCase(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
@@ -17368,7 +17675,7 @@ public sealed class LawtwinKafka
         return Resources.WithResource(ls0, ls1, ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: a transaction must begin before it ends [native] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [native] boundary")]
     public void LawTransactionsATransactionMustBeginBeforeIt_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -17378,10 +17685,10 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsATransactionMustBeginBeforeItCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Transactions: a transaction must begin before it ends [native]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [native]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: a transaction must begin before it ends [native] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [native] property")]
     public void LawTransactionsATransactionMustBeginBeforeIt_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -17421,7 +17728,7 @@ public sealed class LawtwinKafka
             }
             return ls8;
         });
-        Search.Replay("lawtwin.kafka::Transactions: a transaction must begin before it ends [native]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [native]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -17430,12 +17737,12 @@ public sealed class LawtwinKafka
             {
                 return LawTransactionsATransactionMustBeginBeforeItCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Transactions: a transaction must begin before it ends [native]", ls9, values_1, ls10);
+            return Search.Guard("lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [native]", ls9, values_1, ls10);
         });
-        Property.Check("lawtwin.kafka::Transactions: a transaction must begin before it ends [native]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [native]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Producer: records sent to one partition are read in the order sent
+    // Law: lawtwin.kafka::Producer: "|records sent to one partition are read in the order sent|
     // [reference]
     // Description: Within one partition, records are stored and read in the order they
     // were sent: the later send gets the next offset, and a consumer reading
@@ -17443,14 +17750,18 @@ public sealed class LawtwinKafka
     // Rationale:
     // References:
     // Expansion:
-    // Producer: records sent to one partition are read in the order sent [reference]
+    // Producer: "|records sent to one partition are read in the order sent| [reference]
     // for all (t :: Text) (first :: lawtwin.kafka.model::type::Record) (second ::
-    // lawtwin.kafka.model::type::Record) . created (_input0) (1) implies let _let0__a = send
-    // (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1)) in let _let1__b = send
-    // (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2)) in readInOrder (_let0__a)
-    // (_let1__b) (_input1) (_input2) = true
+    // lawtwin.kafka.model::type::Record) => created (_input0) (1) implies let _let0__a = send (let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _let2___lawspecRecordField2 = _input1
+    // in lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1, _let2___lawspecRecordField2)) in let _let1__b = send (let
+    // _let1___lawspecRecordField0 = _input0 in let _let2___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _let3___lawspecRecordField2 = _input2
+    // in lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRecordField0,
+    // _let2___lawspecRecordField1, _let3___lawspecRecordField2)) in readInOrder (_let0__a) (_let1__b)
+    // (_input1) (_input2) = true end for all
     private static Value LawProducerRecordsSentToOnePartitionAreRead2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -17459,10 +17770,18 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input1), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            var bound1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input2), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            var ls1 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.ReadInOrder(schema, symbols, bound0, bound1, input1, input2), ls1, "lawtwin.kafka::Producer: records sent to one partition are read in the order sent [reference]");
+            var bound1 = input0;
+            var bound2 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound3 = input1;
+            var ls1 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound1, bound2, bound3), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls1, schema);
+            var bound5 = input0;
+            var bound6 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound7 = input2;
+            var ls2 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var bound4 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound5, bound6, bound7), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls2, schema);
+            var ls3 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.ReadInOrder(schema, symbols, bound0, bound4, input1, input2), ls3, "lawtwin.kafka::Producer: \"|records sent to one partition are read in the order sent| [reference]");
         }
         else
         {
@@ -17500,7 +17819,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Producer", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1), Fn.Tuple("lawtwin.kafka::ability::Consumer", ls2), Fn.Tuple("lawtwin.kafka::ability::Partitioner", ls3)), ls4);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: records sent to one partition are read in the order sent [reference] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|records sent to one partition are read in the order sent| [reference] boundary")]
     public void LawProducerRecordsSentToOnePartitionAreRead2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -17510,10 +17829,10 @@ public sealed class LawtwinKafka
         {
             return LawProducerRecordsSentToOnePartitionAreRead2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Producer: records sent to one partition are read in the order sent [reference]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Producer: \"|records sent to one partition are read in the order sent| [reference]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: records sent to one partition are read in the order sent [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|records sent to one partition are read in the order sent| [reference] property")]
     public void LawProducerRecordsSentToOnePartitionAreRead2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -17553,25 +17872,30 @@ public sealed class LawtwinKafka
         {
             return LawProducerRecordsSentToOnePartitionAreRead2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Producer: records sent to one partition are read in the order sent [reference]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Producer: \"|records sent to one partition are read in the order sent| [reference]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Producer: a flushed record is in the log [reference]
+    // Law: lawtwin.kafka::Producer: "|a flushed record is in the log| [reference]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Producer: a flushed record is in the log [reference]
-    // for all (t :: Text) (r :: lawtwin.kafka.model::type::Record) . created (_input0) (1) implies
-    // match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e ->
-    // false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt
-    // (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0))
-    // (lawtwin.kafka.model::type::OffsetSpec::Latest())
-    // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e ->
-    // false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt ->
-    // _matchfield1__sentAt }) } } = true
+    // Producer: "|a flushed record is in the log| [reference]
+    // for all (t :: Text) (r :: lawtwin.kafka.model::type::Record) => created (_input0) (1) implies let
+    // _let0__it = send (let _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _let2___lawspecRecordField2 = _input1
+    // in lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1, _let2___lawspecRecordField2)) in match (_let0__it) { Either::Left
+    // _match1__0___lawspecSelection0x0 -> false; Either::Right _match1__1___lawspecSelection0x0 -> let
+    // _let2__lawspecIgnored = flush in let _let3__it = attempt (listOffsetsRequest (let
+    // _let3___lawspecRecordField0 = _input0 in let _let4___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let3___lawspecRecordField0,
+    // _let4___lawspecRecordField1)) (lawtwin.kafka.model::type::OffsetSpec::Latest())
+    // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())) in match (_let3__it) {
+    // Either::Left _match4__0___match__lawspecSelection0x0_0 -> false; Either::Right
+    // _match4__1___match__lawspecSelection0x0_0 -> (_match4__1___match__lawspecSelection0x0_0 > match
+    // (_match1__1___lawspecSelection0x0) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
+    // _matchfield0__sentTo _matchfield1__sentAt -> _matchfield1__sentAt }) } } = true end for all
     private static Value LawProducerAFlushedRecordIsInTheLogBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -17579,75 +17903,86 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var matched0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input1), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            Value ls1;
+            var bound1 = input0;
+            var bound2 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound3 = input1;
+            var ls1 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound1, bound2, bound3), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls1, schema);
+            var matched0 = bound0;
+            Value ls2;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound0 = Runtime.Field(matched0, 0);
-                ls1 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                var bound4 = Runtime.Field(matched0, 0);
+                ls2 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
             {
-                Value ls3;
+                Value ls4;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound1 = Runtime.Field(matched0, 0);
-                    var bound2 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "flush", Fn.List<Value>()), Scalar.TypeOf("Unit"), schema);
-                    var ls4 = Fn.F0(() =>
+                    var bound5 = Runtime.Field(matched0, 0);
+                    var bound6 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "flush", Fn.List<Value>()), Scalar.TypeOf("Unit"), schema);
+                    var ls5 = Fn.F0(() =>
                     {
-                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "listOffsetsRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Latest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema), Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema))), Scalar.TypeOf("Int64"), schema);
+                        var bound8 = input0;
+                        var bound9 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                        var ls9 = Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Latest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema);
+                        var ls10 = Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema);
+                        var ls11 = Scalar.TypeOf("Int64");
+                        return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "listOffsetsRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound8, bound9), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls9, ls10)), ls11, schema);
                     });
-                    var ls5 = Fn.F1((Value failureValue) =>
+                    var ls6 = Fn.F1((Value failureValue) =>
                     {
                         return Schema.Construct("Either::Right", Fn.List<Value>(failureValue), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                     });
-                    var ls6 = Fn.F1((Value failureValue_1) =>
+                    var ls7 = Fn.F1((Value failureValue_1) =>
                     {
                         return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
                     });
-                    var matched1 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls4, ls5, ls6);
-                    Value ls7;
+                    var bound7 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls5, ls6, ls7);
+                    var matched1 = bound7;
+                    Value ls8;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound3 = Runtime.Field(matched1, 0);
-                        ls7 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                        var bound10 = Runtime.Field(matched1, 0);
+                        ls8 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                     }
                     else
                     {
-                        Value ls8;
+                        Value ls12;
                         if (Runtime.HasTag("Either::Right", matched1))
                         {
-                            var bound4 = Runtime.Field(matched1, 0);
-                            var matched2 = bound1;
-                            Value ls9;
+                            var bound11 = Runtime.Field(matched1, 0);
+                            var matched2 = bound5;
+                            Value ls13;
                             if (Runtime.HasTag("lawtwin.kafka::type::RecordMetadata::RecordMetadata", matched2))
                             {
-                                var bound5 = Runtime.Field(matched2, 0);
-                                var bound6 = Runtime.Field(matched2, 1);
-                                ls9 = bound6;
+                                var bound12 = Runtime.Field(matched2, 0);
+                                var bound13 = Runtime.Field(matched2, 1);
+                                ls13 = bound13;
                             }
                             else
                             {
-                                ls9 = Runtime.NoMatch(matched2);
+                                ls13 = Runtime.NoMatch(matched2);
                             }
-                            ls8 = Scalar.Binary(">", bound4, ls9, "Int64", "Int64");
+                            ls12 = Scalar.Binary(">", bound11, ls13, "Int64", "Int64");
                         }
                         else
                         {
-                            ls8 = Runtime.NoMatch(matched1);
+                            ls12 = Runtime.NoMatch(matched1);
                         }
-                        ls7 = ls8;
+                        ls8 = ls12;
                     }
-                    ls3 = ls7;
+                    ls4 = ls8;
                 }
                 else
                 {
-                    ls3 = Runtime.NoMatch(matched0);
+                    ls4 = Runtime.NoMatch(matched0);
                 }
-                ls1 = ls3;
+                ls2 = ls4;
             }
-            var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Producer: a flushed record is in the log [reference]");
+            var ls3 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+            ls0 = Runtime.AssertEqual(ls2, ls3, "lawtwin.kafka::Producer: \"|a flushed record is in the log| [reference]");
         }
         else
         {
@@ -17681,7 +18016,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Producer", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1), Fn.Tuple("lawtwin.kafka::ability::Partitioner", ls2)), ls3);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|a flushed record is in the log| [reference] boundary")]
     public void LawProducerAFlushedRecordIsInTheLog_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -17691,10 +18026,10 @@ public sealed class LawtwinKafka
         {
             return LawProducerAFlushedRecordIsInTheLogCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Producer: a flushed record is in the log [reference]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Producer: \"|a flushed record is in the log| [reference]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: a flushed record is in the log [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|a flushed record is in the log| [reference] property")]
     public void LawProducerAFlushedRecordIsInTheLog_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -17729,27 +18064,32 @@ public sealed class LawtwinKafka
         {
             return LawProducerAFlushedRecordIsInTheLogCase(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Producer: a flushed record is in the log [reference]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Producer: \"|a flushed record is in the log| [reference]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Producer: an idempotent producer's retried send is written once [reference]
+    // Law: lawtwin.kafka::Producer: "|an idempotent producer's retried send is written once|
+    // [reference]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Producer: an idempotent producer's retried send is written once [reference]
-    // for all (t :: Text) (r :: lawtwin.kafka.model::type::Record) . created (_input0) (1) implies let
-    // _let0__id = enableIdempotence in let _let1__sent = send
-    // (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1)) in let _let2__retried =
-    // retryLastSend in (((match (_let0__id) { Either::Left _match3__0__railwayError0 -> false;
-    // Either::Right _match3__1__railwayValue1 -> true } And (_let1__sent == _let2__retried)) And
-    // followsOne (_let1__sent) (attempt (listOffsetsRequest
-    // (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0))
-    // (lawtwin.kafka.model::type::OffsetSpec::Latest())
-    // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) And (producerIdentity == match
-    // (_let0__id) { Either::Right _match3__0__pe -> Maybe::Just(_match3__0__pe); Either::Left
-    // _match3__1__e -> Maybe::Nothing() })) = true
+    // Producer: "|an idempotent producer's retried send is written once| [reference]
+    // for all (t :: Text) (r :: lawtwin.kafka.model::type::Record) => created (_input0) (1) implies let
+    // _let0__id = enableIdempotence in let _let1__sent = send (let _let1___lawspecRecordField0 =
+    // _input0 in let _let2___lawspecRecordField1 = lawtwin.kafka::type::PartitionChoice::ToPartition(0)
+    // in let _let3___lawspecRecordField2 = _input1 in
+    // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRecordField0,
+    // _let2___lawspecRecordField1, _let3___lawspecRecordField2)) in let _let2__retried = retryLastSend
+    // in (((match (_let0__id) { Either::Left _match3__0__railwayError0 -> false; Either::Right
+    // _match3__1__railwayValue1 -> true } And (_let1__sent == _let2__retried)) And followsOne
+    // (_let1__sent) (attempt (listOffsetsRequest (let _let3___lawspecRecordField0 = _input0 in let
+    // _let4___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let3___lawspecRecordField0,
+    // _let4___lawspecRecordField1)) (lawtwin.kafka.model::type::OffsetSpec::Latest())
+    // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) And (producerIdentity == let
+    // _let3__it = _let0__id in match (_let3__it) { Either::Right _match4__0___lawspecSelection0x0 ->
+    // Maybe::Just(_match4__0___lawspecSelection0x0); Either::Left _match4__1___lawspecSelection0x0 ->
+    // Maybe::Nothing() })) = true end for all
     private static Value LawProducerAnIdempotentProducerSRetriedSend2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -17758,35 +18098,64 @@ public sealed class LawtwinKafka
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
             var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "enableIdempotence", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
-            var bound1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input1), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            var bound2 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "retryLastSend", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            Value ls1;
-            Value ls3;
+            var bound2 = input0;
+            var bound3 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound4 = input1;
+            var ls1 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var bound1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound2, bound3, bound4), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls1, schema);
+            var bound5 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "retryLastSend", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
+            Value ls2;
             Value ls4;
-            var matched0 = bound0;
             Value ls5;
+            var matched0 = bound0;
+            Value ls6;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound3 = Runtime.Field(matched0, 0);
-                ls5 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                var bound6 = Runtime.Field(matched0, 0);
+                ls6 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
             {
-                Value ls6;
+                Value ls7;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound4 = Runtime.Field(matched0, 0);
-                    ls6 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                    var bound7 = Runtime.Field(matched0, 0);
+                    ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                 }
                 else
                 {
-                    ls6 = Runtime.NoMatch(matched0);
+                    ls7 = Runtime.NoMatch(matched0);
                 }
-                ls5 = ls6;
+                ls6 = ls7;
+            }
+            if (Runtime.Truth(ls6))
+            {
+                ls5 = Scalar.Binary("==", bound1, bound5, "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)", "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            }
+            else
+            {
+                ls5 = V.Bool(false);
             }
             if (Runtime.Truth(ls5))
             {
-                ls4 = Scalar.Binary("==", bound1, bound2, "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)", "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+                var ls8 = Fn.F0(() =>
+                {
+                    var bound8 = input0;
+                    var bound9 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                    var ls11 = Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Latest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema);
+                    var ls12 = Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema);
+                    var ls13 = Scalar.TypeOf("Int64");
+                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "listOffsetsRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound8, bound9), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls11, ls12)), ls13, schema);
+                });
+                var ls9 = Fn.F1((Value failureValue) =>
+                {
+                    return Schema.Construct("Either::Right", Fn.List<Value>(failureValue), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
+                });
+                var ls10 = Fn.F1((Value failureValue_1) =>
+                {
+                    return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
+                });
+                ls4 = LawSpec.Generated.LawtwinKafka.FollowsOne(schema, symbols, bound1, Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls8, ls9, ls10));
             }
             else
             {
@@ -17794,56 +18163,37 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls4))
             {
-                var ls7 = Fn.F0(() =>
-                {
-                    return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "listOffsetsRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("lawtwin.kafka.model::type::OffsetSpec::Latest", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetSpec"), schema), Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema))), Scalar.TypeOf("Int64"), schema);
-                });
-                var ls8 = Fn.F1((Value failureValue) =>
-                {
-                    return Schema.Construct("Either::Right", Fn.List<Value>(failureValue), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
-                });
-                var ls9 = Fn.F1((Value failureValue_1) =>
-                {
-                    return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
-                });
-                ls3 = LawSpec.Generated.LawtwinKafka.FollowsOne(schema, symbols, bound1, Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls7, ls8, ls9));
-            }
-            else
-            {
-                ls3 = V.Bool(false);
-            }
-            if (Runtime.Truth(ls3))
-            {
-                var ls10 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "producerIdentity", Fn.List<Value>()), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
-                var matched1 = bound0;
-                Value ls11;
+                var ls14 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "producerIdentity", Fn.List<Value>()), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
+                var bound10 = bound0;
+                var matched1 = bound10;
+                Value ls15;
                 if (Runtime.HasTag("Either::Right", matched1))
                 {
-                    var bound5 = Runtime.Field(matched1, 0);
-                    ls11 = Schema.Construct("Maybe::Just", Fn.List<Value>(bound5), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
+                    var bound11 = Runtime.Field(matched1, 0);
+                    ls15 = Schema.Construct("Maybe::Just", Fn.List<Value>(bound11), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
                 }
                 else
                 {
-                    Value ls12;
+                    Value ls16;
                     if (Runtime.HasTag("Either::Left", matched1))
                     {
-                        var bound6 = Runtime.Field(matched1, 0);
-                        ls12 = Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
+                        var bound12 = Runtime.Field(matched1, 0);
+                        ls16 = Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
                     }
                     else
                     {
-                        ls12 = Runtime.NoMatch(matched1);
+                        ls16 = Runtime.NoMatch(matched1);
                     }
-                    ls11 = ls12;
+                    ls15 = ls16;
                 }
-                ls1 = Scalar.Binary("==", ls10, ls11, "Maybe lawtwin.kafka.model::type::ProducerIdAndEpoch", "Maybe lawtwin.kafka.model::type::ProducerIdAndEpoch");
+                ls2 = Scalar.Binary("==", ls14, ls15, "Maybe lawtwin.kafka.model::type::ProducerIdAndEpoch", "Maybe lawtwin.kafka.model::type::ProducerIdAndEpoch");
             }
             else
             {
-                ls1 = V.Bool(false);
+                ls2 = V.Bool(false);
             }
-            var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Producer: an idempotent producer's retried send is written once [reference]");
+            var ls3 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+            ls0 = Runtime.AssertEqual(ls2, ls3, "lawtwin.kafka::Producer: \"|an idempotent producer's retried send is written once| [reference]");
         }
         else
         {
@@ -17877,7 +18227,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Producer", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1), Fn.Tuple("lawtwin.kafka::ability::Partitioner", ls2)), ls3);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: an idempotent producer's retried send is written once [reference] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|an idempotent producer's retried send is written once| [reference] boundary")]
     public void LawProducerAnIdempotentProducerSRetriedSend2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -17887,10 +18237,10 @@ public sealed class LawtwinKafka
         {
             return LawProducerAnIdempotentProducerSRetriedSend2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Producer: an idempotent producer's retried send is written once [reference]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Producer: \"|an idempotent producer's retried send is written once| [reference]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: an idempotent producer's retried send is written once [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|an idempotent producer's retried send is written once| [reference] property")]
     public void LawProducerAnIdempotentProducerSRetriedSend2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -17925,24 +18275,34 @@ public sealed class LawtwinKafka
         {
             return LawProducerAnIdempotentProducerSRetriedSend2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Producer: an idempotent producer's retried send is written once [reference]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Producer: \"|an idempotent producer's retried send is written once| [reference]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Producer: records with one key go to one partition [reference]
+    // Law: lawtwin.kafka::Producer: "|records with one key go to one partition| [reference]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Producer: records with one key go to one partition [reference]
+    // Producer: "|records with one key go to one partition| [reference]
     // for all (t :: Text) (n :: Int32) (key :: Bytes) (first :: Maybe (Bytes)) (second :: Maybe
-    // (Bytes)) . created (_input0) (_input1) implies let _let0__a = send
-    // (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ByKey(),
-    // lawtwin.kafka.model::type::Record::Record(Maybe::Just(_input2), _input3, List::Nil()))) in let
-    // _let1__b = send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ByKey(),
-    // lawtwin.kafka.model::type::Record::Record(Maybe::Just(_input2), _input4, List::Nil()))) in
-    // samePartition (_let0__a) (_let1__b) = true
+    // (Bytes)) => created (_input0) (_input1) implies let _let0__a = send (let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ByKey() in let _let2___lawspecRecordField2 = let
+    // _let2___lawspecRecordField0 = Maybe::Just(_input2) in let _let3___lawspecRecordField1 = _input3
+    // in let _let4___lawspecRecordField2 = List::Nil() in
+    // lawtwin.kafka.model::type::Record::Record(_let2___lawspecRecordField0,
+    // _let3___lawspecRecordField1, _let4___lawspecRecordField2) in
+    // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1, _let2___lawspecRecordField2)) in let _let1__b = send (let
+    // _let1___lawspecRecordField0 = _input0 in let _let2___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ByKey() in let _let3___lawspecRecordField2 = let
+    // _let3___lawspecRecordField0 = Maybe::Just(_input2) in let _let4___lawspecRecordField1 = _input4
+    // in let _let5___lawspecRecordField2 = List::Nil() in
+    // lawtwin.kafka.model::type::Record::Record(_let3___lawspecRecordField0,
+    // _let4___lawspecRecordField1, _let5___lawspecRecordField2) in
+    // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRecordField0,
+    // _let2___lawspecRecordField1, _let3___lawspecRecordField2)) in samePartition (_let0__a) (_let1__b)
+    // = true end for all
     private static Value LawProducerRecordsWithOneKeyGoToOne2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -17953,10 +18313,24 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, input1)))
         {
-            var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ByKey", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), Schema.Construct("lawtwin.kafka.model::type::Record::Record", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input2), Scalar.TypeOf("Maybe (Bytes)"), schema), input3, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Header)"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::Record"), schema)), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            var bound1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ByKey", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), Schema.Construct("lawtwin.kafka.model::type::Record::Record", Fn.List<Value>(Schema.Construct("Maybe::Just", Fn.List<Value>(input2), Scalar.TypeOf("Maybe (Bytes)"), schema), input4, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Header)"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::Record"), schema)), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-            var ls1 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.SamePartition(schema, symbols, bound0, bound1), ls1, "lawtwin.kafka::Producer: records with one key go to one partition [reference]");
+            var bound1 = input0;
+            var bound2 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ByKey", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound4 = Schema.Construct("Maybe::Just", Fn.List<Value>(input2), Scalar.TypeOf("Maybe (Bytes)"), schema);
+            var bound5 = input3;
+            var bound6 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Header)"), schema);
+            var bound3 = Schema.Construct("lawtwin.kafka.model::type::Record::Record", Fn.List<Value>(bound4, bound5, bound6), Scalar.TypeOf("lawtwin.kafka.model::type::Record"), schema);
+            var ls1 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound1, bound2, bound3), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls1, schema);
+            var bound8 = input0;
+            var bound9 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ByKey", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound11 = Schema.Construct("Maybe::Just", Fn.List<Value>(input2), Scalar.TypeOf("Maybe (Bytes)"), schema);
+            var bound12 = input4;
+            var bound13 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Header)"), schema);
+            var bound10 = Schema.Construct("lawtwin.kafka.model::type::Record::Record", Fn.List<Value>(bound11, bound12, bound13), Scalar.TypeOf("lawtwin.kafka.model::type::Record"), schema);
+            var ls2 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var bound7 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound8, bound9, bound10), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls2, schema);
+            var ls3 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+            ls0 = Runtime.AssertEqual(LawSpec.Generated.LawtwinKafka.SamePartition(schema, symbols, bound0, bound7), ls3, "lawtwin.kafka::Producer: \"|records with one key go to one partition| [reference]");
         }
         else
         {
@@ -17990,7 +18364,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Producer", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1), Fn.Tuple("lawtwin.kafka::ability::Partitioner", ls2)), ls3);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: records with one key go to one partition [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|records with one key go to one partition| [reference] property")]
     public void LawProducerRecordsWithOneKeyGoToOne2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -18062,19 +18436,22 @@ public sealed class LawtwinKafka
         {
             return LawProducerRecordsWithOneKeyGoToOne2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Producer: records with one key go to one partition [reference]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Producer: \"|records with one key go to one partition| [reference]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Producer: a send to a partition the topic lacks is refused [reference]
+    // Law: lawtwin.kafka::Producer: "|a send to a partition the topic lacks is refused| [reference]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Producer: a send to a partition the topic lacks is refused [reference]
-    // for all (t :: Text) (n :: Int32) (r :: lawtwin.kafka.model::type::Record) . created (_input0)
-    // (_input1) implies send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(_input1), _input2)) =
-    // Either::Left(lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition())
+    // Producer: "|a send to a partition the topic lacks is refused| [reference]
+    // for all (t :: Text) (n :: Int32) (r :: lawtwin.kafka.model::type::Record) => created (_input0)
+    // (_input1) implies send (let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = lawtwin.kafka::type::PartitionChoice::ToPartition(_input1) in let
+    // _let2___lawspecRecordField2 = _input2 in
+    // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1, _let2___lawspecRecordField2)) =
+    // Either::Left(lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition()) end for all
     private static Value LawProducerASendToAPartitionTheTopicLacks2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -18083,7 +18460,12 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, input1)))
         {
-            ls0 = Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(input1), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input2), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema), Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema), "lawtwin.kafka::Producer: a send to a partition the topic lacks is refused [reference]");
+            var bound0 = input0;
+            var bound1 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(input1), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+            var bound2 = input2;
+            var ls1 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+            var ls2 = Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
+            ls0 = Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Producer", "send", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound0, bound1, bound2), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls1, schema), ls2, "lawtwin.kafka::Producer: \"|a send to a partition the topic lacks is refused| [reference]");
         }
         else
         {
@@ -18117,7 +18499,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Producer", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1), Fn.Tuple("lawtwin.kafka::ability::Partitioner", ls2)), ls3);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Producer: a send to a partition the topic lacks is refused [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Producer: \"|a send to a partition the topic lacks is refused| [reference] property")]
     public void LawProducerASendToAPartitionTheTopicLacks2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -18179,23 +18561,24 @@ public sealed class LawtwinKafka
         {
             return LawProducerASendToAPartitionTheTopicLacks2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Producer: a send to a partition the topic lacks is refused [reference]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Producer: \"|a send to a partition the topic lacks is refused| [reference]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Consumer: a restarted consumer resumes at its committed offset [reference]
+    // Law: lawtwin.kafka::Consumer: "|a restarted consumer resumes at its committed offset| [reference]
     // Description: A consumer polls, commits and closes. When it subscribes again, it
     // starts from the committed offset: a record is delivered again only at
     // or after it, never before, so none is lost.
     // Rationale:
     // References:
     // Expansion:
-    // Consumer: a restarted consumer resumes at its committed offset [reference]
+    // Consumer: "|a restarted consumer resumes at its committed offset| [reference]
     // for all (t :: Text) (g :: Text) (m :: Text) (batch :: List (lawtwin.kafka.model::type::Record))
-    // (n :: Int32) . created (_input0) (1) implies (match (attempt (produceRequest
-    // (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (Maybe::Nothing())
-    // (_input3))) { Either::Left _match0__0__railwayError0 -> false; Either::Right
-    // _match0__1__railwayValue1 -> true } And resumesAtCommitted (_input0) (_input1) (_input2)
-    // (_input4)) = true
+    // (n :: Int32) => created (_input0) (1) implies (match (attempt (produceRequest (let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1)) (Maybe::Nothing()) (_input3))) { Either::Left
+    // _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true } And
+    // resumesAtCommitted (_input0) (_input1) (_input2) (_input4)) = true end for all
     private static Value LawConsumerARestartedConsumerResumesAtIts2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -18209,7 +18592,11 @@ public sealed class LawtwinKafka
             Value ls1;
             var ls3 = Fn.F0(() =>
             {
-                return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), input3)), Scalar.TypeOf("Int64"), schema);
+                var bound2 = input0;
+                var bound3 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+                var ls7 = Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema);
+                var ls8 = Scalar.TypeOf("Int64");
+                return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound2, bound3), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls7, input3)), ls8, schema);
             });
             var ls4 = Fn.F1((Value failureValue) =>
             {
@@ -18228,17 +18615,17 @@ public sealed class LawtwinKafka
             }
             else
             {
-                Value ls7;
+                Value ls9;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
                     var bound1 = Runtime.Field(matched0, 0);
-                    ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                    ls9 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                 }
                 else
                 {
-                    ls7 = Runtime.NoMatch(matched0);
+                    ls9 = Runtime.NoMatch(matched0);
                 }
-                ls6 = ls7;
+                ls6 = ls9;
             }
             if (Runtime.Truth(ls6))
             {
@@ -18249,7 +18636,7 @@ public sealed class LawtwinKafka
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Consumer: a restarted consumer resumes at its committed offset [reference]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Consumer: \"|a restarted consumer resumes at its committed offset| [reference]");
         }
         else
         {
@@ -18279,7 +18666,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Consumer", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1)), ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: a restarted consumer resumes at its committed offset [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|a restarted consumer resumes at its committed offset| [reference] property")]
     public void LawConsumerARestartedConsumerResumesAtIts2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -18390,22 +18777,25 @@ public sealed class LawtwinKafka
         {
             return LawConsumerARestartedConsumerResumesAtIts2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Consumer: a restarted consumer resumes at its committed offset [reference]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Consumer: \"|a restarted consumer resumes at its committed offset| [reference]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Consumer: a poll reads each partition in offset order [reference]
+    // Law: lawtwin.kafka::Consumer: "|a poll reads each partition in offset order| [reference]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Consumer: a poll reads each partition in offset order [reference]
-    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) . created (_input0) (1)
-    // implies let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in
-    // (match (attempt (produceRequest (_let0__tp) (Maybe::Nothing()) (_input1))) { Either::Left
-    // _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And let
-    // _let1__lawspecIgnored = assign (List::Cons(_let0__tp, List::Nil())) in match (poll (10)) {
-    // Either::Left _match2__0__e -> false; Either::Right _match2__1__rs -> increasing (receivedOffsets
-    // (_match2__1__rs)) }) = true
+    // Consumer: "|a poll reads each partition in offset order| [reference]
+    // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created (_input0) (1)
+    // implies let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in (match (attempt (produceRequest (_let0__tp) (Maybe::Nothing())
+    // (_input1))) { Either::Left _match1__0__railwayError0 -> false; Either::Right
+    // _match1__1__railwayValue1 -> true } And let _let1__lawspecIgnored = assign (List::Cons(_let0__tp,
+    // List::Nil())) in let _let2__it = poll (10) in match (_let2__it) { Either::Left
+    // _match3__0___lawspecSelection0x0 -> false; Either::Right _match3__1___lawspecSelection0x0 ->
+    // increasing (receivedOffsets (_match3__1___lawspecSelection0x0)) }) = true end for all
     private static Value LawConsumerAPollReadsEachPartitionInOffset2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -18413,7 +18803,9 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             Value ls1;
             var ls3 = Fn.F0(() =>
             {
@@ -18431,7 +18823,7 @@ public sealed class LawtwinKafka
             Value ls6;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound1 = Runtime.Field(matched0, 0);
+                var bound3 = Runtime.Field(matched0, 0);
                 ls6 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -18439,7 +18831,7 @@ public sealed class LawtwinKafka
                 Value ls7;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound2 = Runtime.Field(matched0, 0);
+                    var bound4 = Runtime.Field(matched0, 0);
                     ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -18450,12 +18842,13 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls6))
             {
-                var bound3 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(bound0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
-                var matched1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "poll", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(10L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka::type::ConsumerRecord))"), schema);
+                var bound5 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(bound0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
+                var bound6 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "poll", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(10L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka::type::ConsumerRecord))"), schema);
+                var matched1 = bound6;
                 Value ls8;
                 if (Runtime.HasTag("Either::Left", matched1))
                 {
-                    var bound4 = Runtime.Field(matched1, 0);
+                    var bound7 = Runtime.Field(matched1, 0);
                     ls8 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -18463,8 +18856,8 @@ public sealed class LawtwinKafka
                     Value ls9;
                     if (Runtime.HasTag("Either::Right", matched1))
                     {
-                        var bound5 = Runtime.Field(matched1, 0);
-                        ls9 = LawSpec.Generated.LawtwinKafka.Increasing(schema, symbols, LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, bound5));
+                        var bound8 = Runtime.Field(matched1, 0);
+                        ls9 = LawSpec.Generated.LawtwinKafka.Increasing(schema, symbols, LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, bound8));
                     }
                     else
                     {
@@ -18479,7 +18872,7 @@ public sealed class LawtwinKafka
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Consumer: a poll reads each partition in offset order [reference]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Consumer: \"|a poll reads each partition in offset order| [reference]");
         }
         else
         {
@@ -18509,7 +18902,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Consumer", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1)), ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: a poll reads each partition in offset order [reference] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|a poll reads each partition in offset order| [reference] boundary")]
     public void LawConsumerAPollReadsEachPartitionInOffset2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -18519,10 +18912,10 @@ public sealed class LawtwinKafka
         {
             return LawConsumerAPollReadsEachPartitionInOffset2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Consumer: a poll reads each partition in offset order [reference]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Consumer: \"|a poll reads each partition in offset order| [reference]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: a poll reads each partition in offset order [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|a poll reads each partition in offset order| [reference] property")]
     public void LawConsumerAPollReadsEachPartitionInOffset2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -18570,19 +18963,21 @@ public sealed class LawtwinKafka
         {
             return LawConsumerAPollReadsEachPartitionInOffset2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Consumer: a poll reads each partition in offset order [reference]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Consumer: \"|a poll reads each partition in offset order| [reference]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Consumer: seek sets the position [reference]
+    // Law: lawtwin.kafka::Consumer: "|seek sets the position| [reference]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Consumer: seek sets the position [reference]
-    // for all (t :: Text) (offset :: Int64) . created (_input0) (1) implies let _let0__tp =
-    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in let
-    // _let1__lawspecIgnored = assign (List::Cons(_let0__tp, List::Nil())) in let _let2__lawspecIgnored
-    // = seek (_let0__tp) (_input1) in position (_let0__tp) = Either::Right(_input1)
+    // Consumer: "|seek sets the position| [reference]
+    // for all (t :: Text) (offset :: Int64) => created (_input0) (1) implies let _let0__tp = let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__lawspecIgnored = assign (List::Cons(_let0__tp,
+    // List::Nil())) in let _let2__lawspecIgnored = seek (_let0__tp) (_input1) in position (_let0__tp) =
+    // Either::Right(_input1) end for all
     private static Value LawConsumerSeekSetsThePositionReferenceBody(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -18590,11 +18985,13 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
-            var bound1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(bound0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
-            var bound2 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "seek", Fn.List<Value>(bound0, input1)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound3 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(bound0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
+            var bound4 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "seek", Fn.List<Value>(bound0, input1)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
             var ls1 = Schema.Construct("Either::Right", Fn.List<Value>(input1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
-            ls0 = Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "position", Fn.List<Value>(bound0)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema), ls1, "lawtwin.kafka::Consumer: seek sets the position [reference]");
+            ls0 = Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "position", Fn.List<Value>(bound0)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema), ls1, "lawtwin.kafka::Consumer: \"|seek sets the position| [reference]");
         }
         else
         {
@@ -18624,7 +19021,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Consumer", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1)), ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: seek sets the position [reference] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|seek sets the position| [reference] boundary")]
     public void LawConsumerSeekSetsThePositionReference_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -18634,10 +19031,10 @@ public sealed class LawtwinKafka
         {
             return LawConsumerSeekSetsThePositionReferenceCase(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Consumer: seek sets the position [reference]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Consumer: \"|seek sets the position| [reference]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: seek sets the position [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|seek sets the position| [reference] property")]
     public void LawConsumerSeekSetsThePositionReference_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -18705,7 +19102,7 @@ public sealed class LawtwinKafka
             }
             return ls12;
         });
-        Search.Replay("lawtwin.kafka::Consumer: seek sets the position [reference]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Consumer: \"|seek sets the position| [reference]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -18714,28 +19111,40 @@ public sealed class LawtwinKafka
             {
                 return LawConsumerSeekSetsThePositionReferenceCase(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Consumer: seek sets the position [reference]", ls14, values_1, ls15);
+            return Search.Guard("lawtwin.kafka::Consumer: \"|seek sets the position| [reference]", ls14, values_1, ls15);
         });
-        Property.Check("lawtwin.kafka::Consumer: seek sets the position [reference]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Consumer: \"|seek sets the position| [reference]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Consumer: only an assigned partition has a position [reference]
+    // Law: lawtwin.kafka::Consumer: "|only an assigned partition has a position| [reference]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Consumer: only an assigned partition has a position [reference]
-    // for all (t :: Text) (other :: Text) . let _let0__lawspecIgnored = assign
-    // (List::Cons(lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0), List::Nil()))
-    // in position (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input1, 0)) =
-    // Either::Left(lawtwin.kafka.model::type::KafkaError::IllegalState())
+    // Consumer: "|only an assigned partition has a position| [reference]
+    // for all (t :: Text) (other :: Text) => let _let0__lawspecIgnored = assign (List::Cons(let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1), List::Nil())) in position (let _let1___lawspecRecordField0 =
+    // _input1 in let _let2___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let1___lawspecRecordField0,
+    // _let2___lawspecRecordField1)) =
+    // Either::Left(lawtwin.kafka.model::type::KafkaError::IllegalState()) end for all
     private static Value LawConsumerOnlyAnAssignedPartitionHasA2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
         var input1 = Runtime.Item(1, inputs);
-        var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
-        var ls0 = Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::IllegalState", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
-        return Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "position", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input1, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema), ls0, "lawtwin.kafka::Consumer: only an assigned partition has a position [reference]");
+        var bound1 = input0;
+        var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+        var ls0 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema);
+        var ls1 = Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)");
+        var ls2 = Scalar.TypeOf("Unit");
+        var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema), ls0), ls1, schema))), ls2, schema);
+        var bound3 = input1;
+        var bound4 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+        var ls3 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)");
+        var ls4 = Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::IllegalState", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
+        return Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "position", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound3, bound4), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema))), ls3, schema), ls4, "lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [reference]");
     }
 
     private static Value LawConsumerOnlyAnAssignedPartitionHasA2Case(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
@@ -18759,7 +19168,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Consumer", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1)), ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: only an assigned partition has a position [reference] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [reference] boundary")]
     public void LawConsumerOnlyAnAssignedPartitionHasA2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -18769,10 +19178,10 @@ public sealed class LawtwinKafka
         {
             return LawConsumerOnlyAnAssignedPartitionHasA2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Consumer: only an assigned partition has a position [reference]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [reference]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: only an assigned partition has a position [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [reference] property")]
     public void LawConsumerOnlyAnAssignedPartitionHasA2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -18840,7 +19249,7 @@ public sealed class LawtwinKafka
             }
             return ls12;
         });
-        Search.Replay("lawtwin.kafka::Consumer: only an assigned partition has a position [reference]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [reference]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -18849,31 +19258,37 @@ public sealed class LawtwinKafka
             {
                 return LawConsumerOnlyAnAssignedPartitionHasA2Case(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Consumer: only an assigned partition has a position [reference]", ls14, values_1, ls15);
+            return Search.Guard("lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [reference]", ls14, values_1, ls15);
         });
-        Property.Check("lawtwin.kafka::Consumer: only an assigned partition has a position [reference]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Consumer: \"|only an assigned partition has a position| [reference]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Consumer: a read-committed consumer never sees aborted records [reference]
+    // Law: lawtwin.kafka::Consumer: "|a read-committed consumer never sees aborted records| [reference]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Consumer: a read-committed consumer never sees aborted records [reference]
+    // Consumer: "|a read-committed consumer never sees aborted records| [reference]
     // for all (t :: Text) (txid :: Text) (aborted :: lawtwin.kafka.model::type::Record) (plain ::
-    // lawtwin.kafka.model::type::Record) . created (_input0) (1) implies let _let0__tp =
-    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in let _let1__a =
-    // writeAborted (_let0__tp) (_input1) (_input2) in let _let2__p = attempt (produceRequest
-    // (_let0__tp) (Maybe::Nothing()) (List::Cons(_input3, List::Nil()))) in let _let3__lawspecIgnored =
-    // setIsolationLevel (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted()) in let
-    // _let4__lawspecIgnored = assign (List::Cons(_let0__tp, List::Nil())) in match (poll (100)) {
-    // Either::Left _match5__0__e -> false; Either::Right _match5__1__rs -> (match (_let1__a) {
-    // Maybe::Just _match6__0__o -> Not(lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
-    // (_match6__0__o) (lawspec_lawspecCollectionsSetOf_b2e15487e0114c0 (receivedOffsets
-    // (_match5__1__rs)))); Maybe::Nothing -> false } And match (_let2__p) { Either::Right _match6__0__o
-    // -> lawspec_lawspecCollectionsSetMember_ad24e518e9752b84 (_match6__0__o)
-    // (lawspec_lawspecCollectionsSetOf_b2e15487e0114c0 (receivedOffsets (_match5__1__rs)));
-    // Either::Left _match6__1__e -> false }) } = true
+    // lawtwin.kafka.model::type::Record) => created (_input0) (1) implies let _let0__tp = let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__a = writeAborted (_let0__tp) (_input1) (_input2) in
+    // let _let2__p = attempt (produceRequest (_let0__tp) (Maybe::Nothing()) (List::Cons(_input3,
+    // List::Nil()))) in let _let3__lawspecIgnored = setIsolationLevel
+    // (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted()) in let _let4__lawspecIgnored =
+    // assign (List::Cons(_let0__tp, List::Nil())) in let _let5__it = poll (100) in match (_let5__it) {
+    // Either::Left _match6__0___lawspecSelection0x0 -> false; Either::Right
+    // _match6__1___lawspecSelection0x0 -> (let _let7__it = _let1__a in match (_let7__it) { Maybe::Just
+    // _match8__0___match__lawspecSelection0x0_0 ->
+    // Not(lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
+    // (_match8__0___match__lawspecSelection0x0_0) (lawspec_lawspecCollectionsSetOf_b2e15487e0114c0
+    // (receivedOffsets (_match6__1___lawspecSelection0x0)))); Maybe::Nothing -> false } And let
+    // _let7__it = _let2__p in match (_let7__it) { Either::Right
+    // _match8__0___match__lawspecSelection0x0_0 -> lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
+    // (_match8__0___match__lawspecSelection0x0_0) (lawspec_lawspecCollectionsSetOf_b2e15487e0114c0
+    // (receivedOffsets (_match6__1___lawspecSelection0x0))); Either::Left
+    // _match8__1___match__lawspecSelection0x0_0 -> false }) } = true end for all
     private static Value LawConsumerAReadCommittedConsumerNeverSees2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -18883,8 +19298,10 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
-            var bound1 = LawSpec.Generated.LawtwinKafka.WriteAborted(schema, symbols, bound0, input1, input2);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound3 = LawSpec.Generated.LawtwinKafka.WriteAborted(schema, symbols, bound0, input1, input2);
             var ls1 = Fn.F0(() =>
             {
                 return Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "produceRequest", Fn.List<Value>(bound0, Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (lawtwin.kafka.model::type::ProducerTag)"), schema), Schema.Construct("List::Cons", Fn.List<Value>(input3, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema))), Scalar.TypeOf("Int64"), schema);
@@ -18897,14 +19314,15 @@ public sealed class LawtwinKafka
             {
                 return Schema.Construct("Either::Left", Fn.List<Value>(failureValue_1), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Int64)"), schema);
             });
-            var bound2 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
-            var bound3 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "setIsolationLevel", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadCommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema))), Scalar.TypeOf("Unit"), schema);
-            var bound4 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(bound0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
-            var matched0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "poll", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(100L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka::type::ConsumerRecord))"), schema);
+            var bound4 = Effects.Attempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", ls1, ls2, ls3);
+            var bound5 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "setIsolationLevel", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::IsolationLevel::ReadCommitted", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::IsolationLevel"), schema))), Scalar.TypeOf("Unit"), schema);
+            var bound6 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "assign", Fn.List<Value>(Schema.Construct("List::Cons", Fn.List<Value>(bound0, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::TopicPartition)"), schema))), Scalar.TypeOf("Unit"), schema);
+            var bound7 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Consumer", "poll", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(100L)), Scalar.TypeOf("Int32"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka::type::ConsumerRecord))"), schema);
+            var matched0 = bound7;
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound5 = Runtime.Field(matched0, 0);
+                var bound8 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -18912,14 +19330,15 @@ public sealed class LawtwinKafka
                 Value ls6;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound6 = Runtime.Field(matched0, 0);
+                    var bound9 = Runtime.Field(matched0, 0);
                     Value ls7;
-                    var matched1 = bound1;
+                    var bound10 = bound3;
+                    var matched1 = bound10;
                     Value ls8;
                     if (Runtime.HasTag("Maybe::Just", matched1))
                     {
-                        var bound7 = Runtime.Field(matched1, 0);
-                        ls8 = Runtime.Not(LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetMemberAd24e518e9752b84(schema, symbols, bound7, LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetOfB2e15487e0114c0(schema, symbols, LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, bound6))));
+                        var bound11 = Runtime.Field(matched1, 0);
+                        ls8 = Runtime.Not(LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetMemberAd24e518e9752b84(schema, symbols, bound11, LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetOfB2e15487e0114c0(schema, symbols, LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, bound9))));
                     }
                     else
                     {
@@ -18936,19 +19355,20 @@ public sealed class LawtwinKafka
                     }
                     if (Runtime.Truth(ls8))
                     {
-                        var matched2 = bound2;
+                        var bound10_1 = bound4;
+                        var matched2 = bound10_1;
                         Value ls10;
                         if (Runtime.HasTag("Either::Right", matched2))
                         {
-                            var bound7_1 = Runtime.Field(matched2, 0);
-                            ls10 = LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetMemberAd24e518e9752b84(schema, symbols, bound7_1, LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetOfB2e15487e0114c0(schema, symbols, LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, bound6)));
+                            var bound11_1 = Runtime.Field(matched2, 0);
+                            ls10 = LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetMemberAd24e518e9752b84(schema, symbols, bound11_1, LawSpec.Generated.LawtwinKafka.LawspecLawspecCollectionsSetOfB2e15487e0114c0(schema, symbols, LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, bound9)));
                         }
                         else
                         {
                             Value ls11;
                             if (Runtime.HasTag("Either::Left", matched2))
                             {
-                                var bound8 = Runtime.Field(matched2, 0);
+                                var bound12 = Runtime.Field(matched2, 0);
                                 ls11 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                             }
                             else
@@ -18972,7 +19392,7 @@ public sealed class LawtwinKafka
                 ls4 = ls6;
             }
             var ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Consumer: a read-committed consumer never sees aborted records [reference]");
+            ls0 = Runtime.AssertEqual(ls4, ls5, "lawtwin.kafka::Consumer: \"|a read-committed consumer never sees aborted records| [reference]");
         }
         else
         {
@@ -19002,7 +19422,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Consumer", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1)), ls2);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: a read-committed consumer never sees aborted records [reference] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|a read-committed consumer never sees aborted records| [reference] boundary")]
     public void LawConsumerAReadCommittedConsumerNeverSees2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -19012,10 +19432,10 @@ public sealed class LawtwinKafka
         {
             return LawConsumerAReadCommittedConsumerNeverSees2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Consumer: a read-committed consumer never sees aborted records [reference]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Consumer: \"|a read-committed consumer never sees aborted records| [reference]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Consumer: a read-committed consumer never sees aborted records [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Consumer: \"|a read-committed consumer never sees aborted records| [reference] property")]
     public void LawConsumerAReadCommittedConsumerNeverSees2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -19073,24 +19493,27 @@ public sealed class LawtwinKafka
         {
             return LawConsumerAReadCommittedConsumerNeverSees2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Consumer: a read-committed consumer never sees aborted records [reference]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Consumer: \"|a read-committed consumer never sees aborted records| [reference]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Transactions: a newer instance fences a zombie [reference]
+    // Law: lawtwin.kafka::Transactions: "|a newer instance fences a zombie| [reference]
     // Description: Another instance initialises the same transactional id. The first
     // instance is now a zombie: its next transactional request is fenced.
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Transactions: a newer instance fences a zombie [reference]
-    // for all (t :: Text) (txid :: Text) (r :: lawtwin.kafka.model::type::Record) . created (_input0)
+    // Transactions: "|a newer instance fences a zombie| [reference]
+    // for all (t :: Text) (txid :: Text) (r :: lawtwin.kafka.model::type::Record) => created (_input0)
     // (1) implies (((match (initTransactions (_input1)) { Either::Left _match0__0__railwayError0 ->
     // false; Either::Right _match0__1__railwayValue1 -> true } And (beginTransaction ==
     // Either::Right(unitValue))) And match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) {
-    // Either::Left _match0__0__railwayError2 -> false; Either::Right _match0__1__railwayValue3 -> true
-    // }) And (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2)) ==
-    // Either::Left(lawtwin.kafka.model::type::KafkaError::ProducerFenced()))) = true
+    // Either::Left _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true
+    // }) And (sendInTransaction (let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let
+    // _let2___lawspecRecordField2 = _input2 in
+    // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1, _let2___lawspecRecordField2)) ==
+    // Either::Left(lawtwin.kafka.model::type::KafkaError::ProducerFenced()))) = true end for all
     private static Value LawTransactionsANewerInstanceFencesAZombie2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -19149,7 +19572,7 @@ public sealed class LawtwinKafka
                 Value ls10;
                 if (Runtime.HasTag("Either::Left", matched1))
                 {
-                    var bound2 = Runtime.Field(matched1, 0);
+                    var bound0_1 = Runtime.Field(matched1, 0);
                     ls10 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -19157,7 +19580,7 @@ public sealed class LawtwinKafka
                     Value ls11;
                     if (Runtime.HasTag("Either::Right", matched1))
                     {
-                        var bound3 = Runtime.Field(matched1, 0);
+                        var bound1_1 = Runtime.Field(matched1, 0);
                         ls11 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                     }
                     else
@@ -19174,14 +19597,19 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls3))
             {
-                ls1 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input2), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema), Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::ProducerFenced", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)", "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+                var bound2 = input0;
+                var bound3 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+                var bound4 = input2;
+                var ls12 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+                var ls13 = Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::ProducerFenced", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
+                ls1 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound2, bound3, bound4), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls12, schema), ls13, "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)", "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
             }
             else
             {
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: a newer instance fences a zombie [reference]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: \"|a newer instance fences a zombie| [reference]");
         }
         else
         {
@@ -19215,7 +19643,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Transactions", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1), Fn.Tuple("lawtwin.kafka::ability::Partitioner", ls2)), ls3);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: a newer instance fences a zombie [reference] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|a newer instance fences a zombie| [reference] boundary")]
     public void LawTransactionsANewerInstanceFencesAZombie2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -19225,10 +19653,10 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsANewerInstanceFencesAZombie2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Transactions: a newer instance fences a zombie [reference]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Transactions: \"|a newer instance fences a zombie| [reference]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: a newer instance fences a zombie [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|a newer instance fences a zombie| [reference] property")]
     public void LawTransactionsANewerInstanceFencesAZombie2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -19281,26 +19709,31 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsANewerInstanceFencesAZombie2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Transactions: a newer instance fences a zombie [reference]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Transactions: \"|a newer instance fences a zombie| [reference]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Transactions: aborted records are never read committed [reference]
+    // Law: lawtwin.kafka::Transactions: "|aborted records are never read committed| [reference]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Transactions: aborted records are never read committed [reference]
-    // for all (t :: Text) (txid :: Text) (r :: lawtwin.kafka.model::type::Record) . created (_input0)
-    // (1) implies let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)
-    // in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false;
-    // Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction ==
-    // Either::Right(unitValue))) And match (sendInTransaction
-    // (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e ->
-    // false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
-    // (committedFrom (_let0__tp) (match (_match1__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt ->
-    // _matchfield1__sentAt }) == List::Nil())) }) = true
+    // Transactions: "|aborted records are never read committed| [reference]
+    // for all (t :: Text) (txid :: Text) (r :: lawtwin.kafka.model::type::Record) => created (_input0)
+    // (1) implies let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let
+    // _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in ((match (initTransactions (_input1)) { Either::Left
+    // _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And
+    // (beginTransaction == Either::Right(unitValue))) And let _let1__it = sendInTransaction (let
+    // _let1___lawspecRecordField0 = _input0 in let _let2___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _let3___lawspecRecordField2 = _input2
+    // in lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRecordField0,
+    // _let2___lawspecRecordField1, _let3___lawspecRecordField2)) in match (_let1__it) { Either::Left
+    // _match2__0___lawspecSelection0x0 -> false; Either::Right _match2__1___lawspecSelection0x0 ->
+    // ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match
+    // (_match2__1___lawspecSelection0x0) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
+    // _matchfield0__sentTo _matchfield1__sentAt -> _matchfield1__sentAt }) == List::Nil())) }) = true
+    // end for all
     private static Value LawTransactionsAbortedRecordsAreNeverRead2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -19309,14 +19742,16 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             Value ls1;
             Value ls3;
             var matched0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "initTransactions", Fn.List<Value>(input1)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound1 = Runtime.Field(matched0, 0);
+                var bound3 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -19324,7 +19759,7 @@ public sealed class LawtwinKafka
                 Value ls5;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound2 = Runtime.Field(matched0, 0);
+                    var bound4 = Runtime.Field(matched0, 0);
                     ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -19343,57 +19778,62 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls3))
             {
-                var matched1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input2), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-                Value ls6;
+                var bound6 = input0;
+                var bound7 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+                var bound8 = input2;
+                var ls6 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+                var bound5 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound6, bound7, bound8), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls6, schema);
+                var matched1 = bound5;
+                Value ls7;
                 if (Runtime.HasTag("Either::Left", matched1))
                 {
-                    var bound3 = Runtime.Field(matched1, 0);
-                    ls6 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                    var bound9 = Runtime.Field(matched1, 0);
+                    ls7 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                 }
                 else
                 {
-                    Value ls7;
+                    Value ls8;
                     if (Runtime.HasTag("Either::Right", matched1))
                     {
-                        var bound4 = Runtime.Field(matched1, 0);
-                        Value ls8;
+                        var bound10 = Runtime.Field(matched1, 0);
+                        Value ls9;
                         if (Runtime.Truth(Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "abortTransaction", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Unit, Scalar.TypeOf("Unit"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either (lawtwin.kafka.model::type::KafkaError) (Unit)")))
                         {
-                            var matched2 = bound4;
-                            Value ls9;
+                            var matched2 = bound10;
+                            Value ls10;
                             if (Runtime.HasTag("lawtwin.kafka::type::RecordMetadata::RecordMetadata", matched2))
                             {
-                                var bound5 = Runtime.Field(matched2, 0);
-                                var bound6 = Runtime.Field(matched2, 1);
-                                ls9 = bound6;
+                                var bound11 = Runtime.Field(matched2, 0);
+                                var bound12 = Runtime.Field(matched2, 1);
+                                ls10 = bound12;
                             }
                             else
                             {
-                                ls9 = Runtime.NoMatch(matched2);
+                                ls10 = Runtime.NoMatch(matched2);
                             }
-                            var ls10 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema);
-                            ls8 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, bound0, ls9), ls10, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
+                            var ls11 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema);
+                            ls9 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, bound0, ls10), ls11, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
                         }
                         else
                         {
-                            ls8 = V.Bool(false);
+                            ls9 = V.Bool(false);
                         }
-                        ls7 = ls8;
+                        ls8 = ls9;
                     }
                     else
                     {
-                        ls7 = Runtime.NoMatch(matched1);
+                        ls8 = Runtime.NoMatch(matched1);
                     }
-                    ls6 = ls7;
+                    ls7 = ls8;
                 }
-                ls1 = ls6;
+                ls1 = ls7;
             }
             else
             {
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: aborted records are never read committed [reference]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: \"|aborted records are never read committed| [reference]");
         }
         else
         {
@@ -19427,7 +19867,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Transactions", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1), Fn.Tuple("lawtwin.kafka::ability::Partitioner", ls2)), ls3);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: aborted records are never read committed [reference] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|aborted records are never read committed| [reference] boundary")]
     public void LawTransactionsAbortedRecordsAreNeverRead2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -19437,10 +19877,10 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsAbortedRecordsAreNeverRead2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Transactions: aborted records are never read committed [reference]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Transactions: \"|aborted records are never read committed| [reference]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: aborted records are never read committed [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|aborted records are never read committed| [reference] property")]
     public void LawTransactionsAbortedRecordsAreNeverRead2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -19493,33 +19933,41 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsAbortedRecordsAreNeverRead2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Transactions: aborted records are never read committed [reference]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Transactions: \"|aborted records are never read committed| [reference]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Transactions: committed records are read committed together and in order
+    // Law: lawtwin.kafka::Transactions: "|committed records are read committed together and in order|
     // [reference]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Transactions: committed records are read committed together and in order [reference]
+    // Transactions: "|committed records are read committed together and in order| [reference]
     // for all (t :: Text) (txid :: Text) (first :: lawtwin.kafka.model::type::Record) (second ::
-    // lawtwin.kafka.model::type::Record) . created (_input0) (1) implies let _let0__tp =
-    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match
-    // (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right
-    // _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match
-    // (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e ->
-    // false; Either::Right _match1__1__md -> (((match (sendInTransaction
-    // (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0,
-    // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
-    // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
-    // (committedFrom (_let0__tp) (match (_match1__1__md) {
+    // lawtwin.kafka.model::type::Record) => created (_input0) (1) implies let _let0__tp = let
+    // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
+    // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in ((match (initTransactions (_input1)) { Either::Left
+    // _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And
+    // (beginTransaction == Either::Right(unitValue))) And let _let1__it = sendInTransaction (let
+    // _let1___lawspecRecordField0 = _input0 in let _let2___lawspecRecordField1 =
+    // lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _let3___lawspecRecordField2 = _input2
+    // in lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRecordField0,
+    // _let2___lawspecRecordField1, _let3___lawspecRecordField2)) in match (_let1__it) { Either::Left
+    // _match2__0___lawspecSelection0x0 -> false; Either::Right _match2__1___lawspecSelection0x0 ->
+    // (((match (sendInTransaction (let _let3___lawspecRecordField0 = _input0 in let
+    // _let4___lawspecRecordField1 = lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let
+    // _let5___lawspecRecordField2 = _input3 in
+    // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let3___lawspecRecordField0,
+    // _let4___lawspecRecordField1, _let5___lawspecRecordField2))) { Either::Left
+    // _match3__0__railwayError0 -> false; Either::Right _match3__1__railwayValue1 -> true } And
+    // (committedFrom (_let0__tp) (match (_match2__1___lawspecSelection0x0) {
     // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt ->
     // _matchfield1__sentAt }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And
-    // (committedFrom (_let0__tp) (match (_match1__1__md) {
+    // (committedFrom (_let0__tp) (match (_match2__1___lawspecSelection0x0) {
     // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield2__sentTo _matchfield3__sentAt ->
-    // _matchfield3__sentAt }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
+    // _matchfield3__sentAt }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true end
+    // for all
     private static Value LawTransactionsCommittedRecordsAreRead2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -19529,14 +19977,16 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
             Value ls1;
             Value ls3;
             var matched0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "initTransactions", Fn.List<Value>(input1)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
             Value ls4;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound1 = Runtime.Field(matched0, 0);
+                var bound3 = Runtime.Field(matched0, 0);
                 ls4 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -19544,7 +19994,7 @@ public sealed class LawtwinKafka
                 Value ls5;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound2 = Runtime.Field(matched0, 0);
+                    var bound4 = Runtime.Field(matched0, 0);
                     ls5 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -19563,59 +20013,76 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls3))
             {
-                var matched1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input2), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
-                Value ls6;
+                var bound6 = input0;
+                var bound7 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+                var bound8 = input2;
+                var ls6 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+                var bound5 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound6, bound7, bound8), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls6, schema);
+                var matched1 = bound5;
+                Value ls7;
                 if (Runtime.HasTag("Either::Left", matched1))
                 {
-                    var bound3 = Runtime.Field(matched1, 0);
-                    ls6 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                    var bound9 = Runtime.Field(matched1, 0);
+                    ls7 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                 }
                 else
                 {
-                    Value ls7;
+                    Value ls8;
                     if (Runtime.HasTag("Either::Right", matched1))
                     {
-                        var bound4 = Runtime.Field(matched1, 0);
-                        Value ls8;
+                        var bound10 = Runtime.Field(matched1, 0);
                         Value ls9;
                         Value ls10;
-                        var matched2 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(input0, Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema), input3), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)"), schema);
                         Value ls11;
+                        var bound13 = input0;
+                        var bound14 = Schema.Construct("lawtwin.kafka::type::PartitionChoice::ToPartition", Fn.List<Value>(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka::type::PartitionChoice"), schema);
+                        var bound15 = input3;
+                        var ls12 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)");
+                        var matched2 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendInTransaction", Fn.List<Value>(Schema.Construct("lawtwin.kafka::type::ProducerRecord::ProducerRecord", Fn.List<Value>(bound13, bound14, bound15), Scalar.TypeOf("lawtwin.kafka::type::ProducerRecord"), schema))), ls12, schema);
+                        Value ls13;
                         if (Runtime.HasTag("Either::Left", matched2))
                         {
-                            var bound5 = Runtime.Field(matched2, 0);
-                            ls11 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
+                            var bound11 = Runtime.Field(matched2, 0);
+                            ls13 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
                         }
                         else
                         {
-                            Value ls12;
+                            Value ls14;
                             if (Runtime.HasTag("Either::Right", matched2))
                             {
-                                var bound6 = Runtime.Field(matched2, 0);
-                                ls12 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
+                                var bound12 = Runtime.Field(matched2, 0);
+                                ls14 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                             }
                             else
                             {
-                                ls12 = Runtime.NoMatch(matched2);
+                                ls14 = Runtime.NoMatch(matched2);
                             }
-                            ls11 = ls12;
+                            ls13 = ls14;
+                        }
+                        if (Runtime.Truth(ls13))
+                        {
+                            var matched3 = bound10;
+                            Value ls15;
+                            if (Runtime.HasTag("lawtwin.kafka::type::RecordMetadata::RecordMetadata", matched3))
+                            {
+                                var bound16 = Runtime.Field(matched3, 0);
+                                var bound17 = Runtime.Field(matched3, 1);
+                                ls15 = bound17;
+                            }
+                            else
+                            {
+                                ls15 = Runtime.NoMatch(matched3);
+                            }
+                            var ls16 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema);
+                            ls11 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, bound0, ls15), ls16, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
+                        }
+                        else
+                        {
+                            ls11 = V.Bool(false);
                         }
                         if (Runtime.Truth(ls11))
                         {
-                            var matched3 = bound4;
-                            Value ls13;
-                            if (Runtime.HasTag("lawtwin.kafka::type::RecordMetadata::RecordMetadata", matched3))
-                            {
-                                var bound7 = Runtime.Field(matched3, 0);
-                                var bound8 = Runtime.Field(matched3, 1);
-                                ls13 = bound8;
-                            }
-                            else
-                            {
-                                ls13 = Runtime.NoMatch(matched3);
-                            }
-                            var ls14 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema);
-                            ls10 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, bound0, ls13), ls14, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
+                            ls10 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "commitTransaction", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Unit, Scalar.TypeOf("Unit"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either (lawtwin.kafka.model::type::KafkaError) (Unit)");
                         }
                         else
                         {
@@ -19623,49 +20090,41 @@ public sealed class LawtwinKafka
                         }
                         if (Runtime.Truth(ls10))
                         {
-                            ls9 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "commitTransaction", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Unit, Scalar.TypeOf("Unit"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either (lawtwin.kafka.model::type::KafkaError) (Unit)");
+                            var matched4 = bound10;
+                            Value ls17;
+                            if (Runtime.HasTag("lawtwin.kafka::type::RecordMetadata::RecordMetadata", matched4))
+                            {
+                                var bound18 = Runtime.Field(matched4, 0);
+                                var bound19 = Runtime.Field(matched4, 1);
+                                ls17 = bound19;
+                            }
+                            else
+                            {
+                                ls17 = Runtime.NoMatch(matched4);
+                            }
+                            var ls18 = Schema.Construct("List::Cons", Fn.List<Value>(input2, Schema.Construct("List::Cons", Fn.List<Value>(input3, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema);
+                            ls9 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, bound0, ls17), ls18, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
                         }
                         else
                         {
                             ls9 = V.Bool(false);
                         }
-                        if (Runtime.Truth(ls9))
-                        {
-                            var matched4 = bound4;
-                            Value ls15;
-                            if (Runtime.HasTag("lawtwin.kafka::type::RecordMetadata::RecordMetadata", matched4))
-                            {
-                                var bound9 = Runtime.Field(matched4, 0);
-                                var bound10 = Runtime.Field(matched4, 1);
-                                ls15 = bound10;
-                            }
-                            else
-                            {
-                                ls15 = Runtime.NoMatch(matched4);
-                            }
-                            var ls16 = Schema.Construct("List::Cons", Fn.List<Value>(input2, Schema.Construct("List::Cons", Fn.List<Value>(input3, Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::Record)"), schema);
-                            ls8 = Scalar.Binary("==", LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, bound0, ls15), ls16, "List lawtwin.kafka.model::type::Record", "List lawtwin.kafka.model::type::Record");
-                        }
-                        else
-                        {
-                            ls8 = V.Bool(false);
-                        }
-                        ls7 = ls8;
+                        ls8 = ls9;
                     }
                     else
                     {
-                        ls7 = Runtime.NoMatch(matched1);
+                        ls8 = Runtime.NoMatch(matched1);
                     }
-                    ls6 = ls7;
+                    ls7 = ls8;
                 }
-                ls1 = ls6;
+                ls1 = ls7;
             }
             else
             {
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: \"|committed records are read committed together and in order| [reference]");
         }
         else
         {
@@ -19699,7 +20158,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Transactions", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1), Fn.Tuple("lawtwin.kafka::ability::Partitioner", ls2)), ls3);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|committed records are read committed together and in order| [reference] boundary")]
     public void LawTransactionsCommittedRecordsAreRead2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -19709,10 +20168,10 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsCommittedRecordsAreRead2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Transactions: committed records are read committed together and in order [reference]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Transactions: \"|committed records are read committed together and in order| [reference]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|committed records are read committed together and in order| [reference] property")]
     public void LawTransactionsCommittedRecordsAreRead2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -19770,25 +20229,28 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsCommittedRecordsAreRead2Case(schema, symbols, values);
         });
-        Property.Check("lawtwin.kafka::Transactions: committed records are read committed together and in order [reference]", ls3, generator, ls4);
+        Property.Check("lawtwin.kafka::Transactions: \"|committed records are read committed together and in order| [reference]", ls3, generator, ls4);
     }
 
-    // Law: lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed
+    // Law: lawtwin.kafka::Transactions: "|offsets sent in an aborted transaction are not committed|
     // [reference]
     // Description:
     // Rationale:
     // References: KIP-98
     // Expansion:
-    // Transactions: offsets sent in an aborted transaction are not committed [reference]
-    // for all (t :: Text) (txid :: Text) (g :: Text) (offset :: Int64) . created (_input0) (1) implies
-    // let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in let
-    // _let1__before = offsetFetchRequest (_input2) (_let0__tp) in ((((match (initTransactions
-    // (_input1)) { Either::Left _match2__0__railwayError0 -> false; Either::Right
-    // _match2__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And
-    // (sendOffsetsToTransaction (_input2)
-    // (List::Cons(lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_let0__tp, _input3),
-    // List::Nil())) == Either::Right(unitValue))) And (abortTransaction == Either::Right(unitValue)))
-    // And (offsetFetchRequest (_input2) (_let0__tp) == _let1__before)) = true
+    // Transactions: "|offsets sent in an aborted transaction are not committed| [reference]
+    // for all (t :: Text) (txid :: Text) (g :: Text) (offset :: Int64) => created (_input0) (1) implies
+    // let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0
+    // in lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
+    // _let1___lawspecRecordField1) in let _let1__before = offsetFetchRequest (_input2) (_let0__tp) in
+    // ((((match (initTransactions (_input1)) { Either::Left _match2__0__railwayError0 -> false;
+    // Either::Right _match2__1__railwayValue1 -> true } And (beginTransaction ==
+    // Either::Right(unitValue))) And (sendOffsetsToTransaction (_input2) (List::Cons(let
+    // _let2___lawspecRecordField0 = _let0__tp in let _let3___lawspecRecordField1 = _input3 in
+    // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_let2___lawspecRecordField0,
+    // _let3___lawspecRecordField1), List::Nil())) == Either::Right(unitValue))) And (abortTransaction
+    // == Either::Right(unitValue))) And (offsetFetchRequest (_input2) (_let0__tp) == _let1__before)) =
+    // true end for all
     private static Value LawTransactionsOffsetsSentInAnAborted2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
@@ -19798,8 +20260,10 @@ public sealed class LawtwinKafka
         Value ls0;
         if (Runtime.Truth(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, input0, Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Int32"), schema))))
         {
-            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(input0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema)), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
-            var bound1 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "offsetFetchRequest", Fn.List<Value>(input2, bound0)), Scalar.TypeOf("Maybe (Int64)"), schema);
+            var bound1 = input0;
+            var bound2 = Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Int32"), schema);
+            var bound0 = Schema.Construct("lawtwin.kafka.model::type::TopicPartition::TopicPartition", Fn.List<Value>(bound1, bound2), Scalar.TypeOf("lawtwin.kafka.model::type::TopicPartition"), schema);
+            var bound3 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "offsetFetchRequest", Fn.List<Value>(input2, bound0)), Scalar.TypeOf("Maybe (Int64)"), schema);
             Value ls1;
             Value ls3;
             Value ls4;
@@ -19808,7 +20272,7 @@ public sealed class LawtwinKafka
             Value ls6;
             if (Runtime.HasTag("Either::Left", matched0))
             {
-                var bound2 = Runtime.Field(matched0, 0);
+                var bound4 = Runtime.Field(matched0, 0);
                 ls6 = Schema.Validate(V.Bool(false), Scalar.TypeOf("Bool"), schema);
             }
             else
@@ -19816,7 +20280,7 @@ public sealed class LawtwinKafka
                 Value ls7;
                 if (Runtime.HasTag("Either::Right", matched0))
                 {
-                    var bound3 = Runtime.Field(matched0, 0);
+                    var bound5 = Runtime.Field(matched0, 0);
                     ls7 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
                 }
                 else
@@ -19835,7 +20299,13 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls5))
             {
-                ls4 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendOffsetsToTransaction", Fn.List<Value>(input2, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(bound0, input3), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema)), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema))), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Unit, Scalar.TypeOf("Unit"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), "Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either (lawtwin.kafka.model::type::KafkaError) (Unit)");
+                var bound6 = bound0;
+                var bound7 = input3;
+                var ls8 = Schema.Construct("List::Nil", Fn.List<Value>(), Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)"), schema);
+                var ls9 = Scalar.TypeOf("List (lawtwin.kafka.model::type::OffsetEntry)");
+                var ls10 = Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)");
+                var ls11 = Schema.Construct("Either::Right", Fn.List<Value>(Schema.Validate(V.Unit, Scalar.TypeOf("Unit"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
+                ls4 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "sendOffsetsToTransaction", Fn.List<Value>(input2, Schema.Construct("List::Cons", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", Fn.List<Value>(bound6, bound7), Scalar.TypeOf("lawtwin.kafka.model::type::OffsetEntry"), schema), ls8), ls9, schema))), ls10, schema), ls11, "Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either (lawtwin.kafka.model::type::KafkaError) (Unit)");
             }
             else
             {
@@ -19851,14 +20321,14 @@ public sealed class LawtwinKafka
             }
             if (Runtime.Truth(ls3))
             {
-                ls1 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "offsetFetchRequest", Fn.List<Value>(input2, bound0)), Scalar.TypeOf("Maybe (Int64)"), schema), bound1, "Maybe Int64", "Maybe Int64");
+                ls1 = Scalar.Binary("==", Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Broker", "offsetFetchRequest", Fn.List<Value>(input2, bound0)), Scalar.TypeOf("Maybe (Int64)"), schema), bound3, "Maybe Int64", "Maybe Int64");
             }
             else
             {
                 ls1 = V.Bool(false);
             }
             var ls2 = Schema.Validate(V.Bool(true), Scalar.TypeOf("Bool"), schema);
-            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [reference]");
+            ls0 = Runtime.AssertEqual(ls1, ls2, "lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [reference]");
         }
         else
         {
@@ -19892,7 +20362,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Transactions", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1), Fn.Tuple("lawtwin.kafka::ability::Partitioner", ls2)), ls3);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [reference] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [reference] boundary")]
     public void LawTransactionsOffsetsSentInAnAborted2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -19902,10 +20372,10 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsOffsetsSentInAnAborted2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [reference]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [reference]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [reference] property")]
     public void LawTransactionsOffsetsSentInAnAborted2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -20029,7 +20499,7 @@ public sealed class LawtwinKafka
             }
             return ls20;
         });
-        Search.Replay("lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [reference]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [reference]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -20038,25 +20508,25 @@ public sealed class LawtwinKafka
             {
                 return LawTransactionsOffsetsSentInAnAborted2Case(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [reference]", ls24, values_1, ls25);
+            return Search.Guard("lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [reference]", ls24, values_1, ls25);
         });
-        Property.Check("lawtwin.kafka::Transactions: offsets sent in an aborted transaction are not committed [reference]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Transactions: \"|offsets sent in an aborted transaction are not committed| [reference]", ls5, generator, ls6);
     }
 
-    // Law: lawtwin.kafka::Transactions: a transaction must begin before it ends [reference]
+    // Law: lawtwin.kafka::Transactions: "|a transaction must begin before it ends| [reference]
     // Description:
     // Rationale:
     // References:
     // Expansion:
-    // Transactions: a transaction must begin before it ends [reference]
-    // for all (txid :: Text) . let _let0__id = initTransactions (_input0) in commitTransaction =
-    // Either::Left(lawtwin.kafka.model::type::KafkaError::IllegalState())
+    // Transactions: "|a transaction must begin before it ends| [reference]
+    // for all (txid :: Text) => let _let0__id = initTransactions (_input0) in commitTransaction =
+    // Either::Left(lawtwin.kafka.model::type::KafkaError::IllegalState()) end for all
     private static Value LawTransactionsATransactionMustBeginBeforeIt2Body(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
     {
         var input0 = Runtime.Item(0, inputs);
         var bound0 = Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "initTransactions", Fn.List<Value>(input0)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)"), schema);
         var ls0 = Schema.Construct("Either::Left", Fn.List<Value>(Schema.Construct("lawtwin.kafka.model::type::KafkaError::IllegalState", Fn.List<Value>(), Scalar.TypeOf("lawtwin.kafka.model::type::KafkaError"), schema)), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema);
-        return Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "commitTransaction", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), ls0, "lawtwin.kafka::Transactions: a transaction must begin before it ends [reference]");
+        return Runtime.AssertEqual(Schema.Validate(Effects.Perform(schema, "lawtwin.kafka::ability::Transactions", "commitTransaction", Fn.List<Value>()), Scalar.TypeOf("Either (lawtwin.kafka.model::type::KafkaError) (Unit)"), schema), ls0, "lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [reference]");
     }
 
     private static Value LawTransactionsATransactionMustBeginBeforeIt2Case(Schema.Schema schema, Scalar.SymbolContext symbols, FSharpList<Value> inputs)
@@ -20084,7 +20554,7 @@ public sealed class LawtwinKafka
         return Effects.WithScope(schema, Fn.List<Tuple<string, FSharpFunc<Schema.Schema, Effects.Handler>>>(Fn.Tuple("lawtwin.kafka::ability::Transactions", ls0), Fn.Tuple("lawtwin.kafka::ability::Broker", ls1), Fn.Tuple("lawtwin.kafka::ability::Partitioner", ls2)), ls3);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: a transaction must begin before it ends [reference] boundary")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [reference] boundary")]
     public void LawTransactionsATransactionMustBeginBeforeIt2_Boundary()
     {
         var symbols = new Scalar.SymbolContext();
@@ -20094,10 +20564,10 @@ public sealed class LawtwinKafka
         {
             return LawTransactionsATransactionMustBeginBeforeIt2Case(schema, symbols, values);
         });
-        Property.Boundaries("lawtwin.kafka::Transactions: a transaction must begin before it ends [reference]", ls0, ls1);
+        Property.Boundaries("lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [reference]", ls0, ls1);
     }
 
-    [Fact(DisplayName = "lawtwin.kafka::Transactions: a transaction must begin before it ends [reference] property")]
+    [Fact(DisplayName = "lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [reference] property")]
     public void LawTransactionsATransactionMustBeginBeforeIt2_Property()
     {
         var symbols = new Scalar.SymbolContext();
@@ -20137,7 +20607,7 @@ public sealed class LawtwinKafka
             }
             return ls8;
         });
-        Search.Replay("lawtwin.kafka::Transactions: a transaction must begin before it ends [reference]", ls3, ls4);
+        Search.Replay("lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [reference]", ls3, ls4);
         var ls5 = Property.Settings(100, 10000, 1000);
         var ls6 = Fn.F1((FSharpList<Value> values_1) =>
         {
@@ -20146,8 +20616,8 @@ public sealed class LawtwinKafka
             {
                 return LawTransactionsATransactionMustBeginBeforeIt2Case(schema, symbols, values_1);
             });
-            return Search.Guard("lawtwin.kafka::Transactions: a transaction must begin before it ends [reference]", ls9, values_1, ls10);
+            return Search.Guard("lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [reference]", ls9, values_1, ls10);
         });
-        Property.Check("lawtwin.kafka::Transactions: a transaction must begin before it ends [reference]", ls5, generator, ls6);
+        Property.Check("lawtwin.kafka::Transactions: \"|a transaction must begin before it ends| [reference]", ls5, generator, ls6);
     }
 }

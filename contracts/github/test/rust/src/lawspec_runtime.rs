@@ -537,6 +537,12 @@ pub fn equal(a: &Value, b: &Value) -> Result<bool> {
         | (Value::Left(x), Value::Left(y))
         | (Value::Right(x), Value::Right(y)) => equal(x, y),
         (Value::Data(left_tag, _), Value::Data(right_tag, _)) if left_tag != right_tag => Ok(false),
+        (Value::Data(tag, left), Value::Data(_, right)) if tag == EQ_SET_TAG => {
+            match (left.as_slice(), right.as_slice()) {
+                ([Value::List(xs)], [Value::List(ys)]) => same_members(xs, ys),
+                _ => Err("Eq-only set equality requires one List field".into()),
+            }
+        }
         (Value::List(xs), Value::List(ys)) | (Value::Data(_, xs), Value::Data(_, ys)) => {
             if xs.len() != ys.len() {
                 return Ok(false);
@@ -550,6 +556,26 @@ pub fn equal(a: &Value, b: &Value) -> Result<bool> {
         }
         _ => Ok(a == b),
     }
+}
+
+pub const EQ_SET_TAG: &str = "lawspec.collections::type::EqSet::EqSetItems";
+
+fn member(value: &Value, candidates: &[Value]) -> Result<bool> {
+    for candidate in candidates { if equal(value, candidate)? { return Ok(true); } }
+    Ok(false)
+}
+
+pub fn same_members(left: &[Value], right: &[Value]) -> Result<bool> {
+    for value in left { if !member(value, right)? { return Ok(false); } }
+    for value in right { if !member(value, left)? { return Ok(false); } }
+    Ok(true)
+}
+
+pub fn distinct_members(items: &[Value]) -> Result<bool> {
+    for (index, value) in items.iter().enumerate() {
+        if member(value, &items[..index])? { return Ok(false); }
+    }
+    Ok(true)
 }
 
 /// `domain` is the compiler-resolved arithmetic evidence, never inferred here.
@@ -1080,7 +1106,7 @@ pub type Refinements = Vec<(&'static str, Vec<(usize, TypeRef)>, usize)>;
 /// A prefix index term: `c<n>`, `f<field>[.<index>]` or an operator.
 enum SchemaIndexTerm {
     Constant(BigInt),
-    Field(usize, usize),
+    Field(Vec<usize>, usize),
     Apply(&'static str, Box<SchemaIndexTerm>, Box<SchemaIndexTerm>),
 }
 
@@ -1092,14 +1118,17 @@ fn parse_schema_index(tokens: &[&'static str], at: &mut usize) -> Result<SchemaI
             digits.parse().map_err(|_| "malformed index term".to_string())?,
         ));
     }
-    if let Some(reference) = token.strip_prefix('f') {
+    if token.starts_with('f') || token.starts_with('p') {
+        let reference = &token[1..];
         let mut parts = reference.splitn(2, '.');
-        let position = parts.next().unwrap_or("").parse().map_err(|_| "malformed index term".to_string())?;
+        let path = parts.next().unwrap_or("").split('/').map(|p| p.parse::<usize>())
+            .collect::<std::result::Result<Vec<_>, _>>().map_err(|_| "malformed index field path".to_string())?;
+        if token.starts_with('f') && path.len() != 1 { return Err("malformed index field path".into()); }
         let index = match parts.next() {
             Some(index) => index.parse().map_err(|_| "malformed index term".to_string())?,
             None => 0,
         };
-        return Ok(SchemaIndexTerm::Field(position, index));
+        return Ok(SchemaIndexTerm::Field(path, index));
     }
     let left = parse_schema_index(tokens, at)?;
     let right = parse_schema_index(tokens, at)?;
@@ -1109,11 +1138,11 @@ fn parse_schema_index(tokens: &[&'static str], at: &mut usize) -> Result<SchemaI
 /// Natural index arithmetic; `None` when an operation has no natural value.
 fn eval_schema_index(
     term: &SchemaIndexTerm,
-    field: &mut dyn FnMut(usize, usize) -> Result<BigInt>,
+    field: &mut dyn FnMut(&[usize], usize) -> Result<BigInt>,
 ) -> Result<Option<BigInt>> {
     Ok(match term {
         SchemaIndexTerm::Constant(value) => Some(value.clone()),
-        SchemaIndexTerm::Field(position, index) => Some(field(*position, *index)?),
+        SchemaIndexTerm::Field(path, index) => Some(field(path, *index)?),
         SchemaIndexTerm::Apply(op, left, right) => {
             let (Some(x), Some(y)) = (eval_schema_index(left, field)?, eval_schema_index(right, field)?) else {
                 return Ok(None);
@@ -1293,11 +1322,30 @@ impl Schema {
             .ok_or_else(|| format!("no index for {name}"))?;
         let tokens: Vec<&'static str> = text.split(' ').collect();
         let term = parse_schema_index(&tokens, &mut 0)?;
-        let mut field = |position: usize, child: usize| -> Result<BigInt> {
-            let field_type = constructor.fields.get(position).ok_or("malformed index term")?.instantiate(arguments)?;
-            self.index_of(&field_type, &fields[position], child)
+        let types = constructor.fields.iter().map(|t| t.instantiate(arguments)).collect::<Result<Vec<_>>>()?;
+        let mut field = |path: &[usize], child: usize| -> Result<BigInt> {
+            self.index_at_path(&types, fields, path, child)
         };
         eval_schema_index(&term, &mut field)?.ok_or_else(|| format!("index of {tag} has no natural value"))
+    }
+
+    fn index_at_path(&self, types: &[TypeRef], values: &[Value], path: &[usize], index: usize) -> Result<BigInt> {
+        let (position, rest) = path.split_first().ok_or("empty index field path")?;
+        let ty = types.get(*position).ok_or("invalid index field path")?;
+        let value = values.get(*position).ok_or("invalid index field path")?;
+        if rest.is_empty() { return self.index_of(ty, value, index); }
+        let (TypeRef::Named(name, arguments), Value::Data(tag, fields)) = (ty, value) else {
+            return Err("index field path must traverse a structural record".into());
+        };
+        if !name.starts_with("lawspec::structural::record::") {
+            return Err("index field path must traverse a structural record".into());
+        }
+        let definition = self.definitions.get(name).ok_or("unknown structural record")?;
+        if definition.constructors.len() != 1 || definition.constructors[0].tag != *tag {
+            return Err("invalid structural record in index field path".into());
+        }
+        let types = definition.constructors[0].fields.iter().map(|t| t.instantiate(arguments)).collect::<Result<Vec<_>>>()?;
+        self.index_at_path(&types, fields, rest, index)
     }
 
     pub fn with_contracts(
@@ -1666,6 +1714,13 @@ impl Schema {
                 })
                 .collect::<std::result::Result<_, ValidationFailure>>()?;
             if !native {
+                if *name == "lawspec.collections::type::EqSet" {
+                    if let [Value::List(items)] = checked.as_slice() {
+                        if !distinct_members(items)? {
+                            return Err(ValidationFailure::Rejected("Eq-only set: duplicate equal elements".into()));
+                        }
+                    }
+                }
                 if let Some(predicates) = self.contracts.get(constructor.tag) {
                     for (index, predicate) in predicates.iter().enumerate() {
                         let label = format!("{tag}: field refinement {}", index + 1);
@@ -1686,9 +1741,9 @@ impl Schema {
                     let mut at = 1;
                     let left = parse_schema_index(&tokens, &mut at)?;
                     let right = parse_schema_index(&tokens, &mut at)?;
-                    let mut field = |position: usize, child: usize| -> Result<BigInt> {
-                        let field_type = constructor.fields.get(position).ok_or("malformed index term")?.instantiate(arguments)?;
-                        self.index_of(&field_type, &checked[position], child)
+                    let types = constructor.fields.iter().map(|t| t.instantiate(arguments)).collect::<Result<Vec<_>>>()?;
+                    let mut field = |path: &[usize], child: usize| -> Result<BigInt> {
+                        self.index_at_path(&types, &checked, path, child)
                     };
                     let x = eval_schema_index(&left, &mut field)?;
                     let y = eval_schema_index(&right, &mut field)?;
@@ -2985,6 +3040,7 @@ fn matcher_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
         "endsWith" => Value::Bool(text(0)?.ends_with(text(1)?)),
         "textContains" => Value::Bool(text(0)?.contains(text(1)?)),
         "regexMatches" => Value::Bool(regex_matches(text(0)?, text(1)?)?),
+        "incompleteSearch" => return Err(text(0)?.to_owned()),
         "recorded" => Value::Bool(recorded(text(0)?, args.get(1).ok_or("recorded expects a value")?)?),
         "acquireResource" => Value::Text(acquire_resource(text(0)?)?),
         "releaseResource" => {
@@ -6229,6 +6285,46 @@ pub fn check_scenario(model: &Model, spec: &str) -> std::result::Result<(), Stri
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn nested_structural_index_guards_remain_checked() {
+        let chain = TypeRef::named("PathChain", vec![]);
+        let inner = TypeRef::named("lawspec::structural::record::inner", vec![]);
+        let outer = TypeRef::named("lawspec::structural::record::outer", vec![]);
+        let wrapper = TypeRef::named("PathWrapper", vec![]);
+        let schema = Schema::new(vec![
+            DataSchema { name: "PathChain", parameters: 0, constructors: vec![
+                ConstructorSchema { tag: "Stop", fields: vec![] },
+                ConstructorSchema { tag: "Next", fields: vec![chain.clone()] }] },
+            DataSchema { name: "lawspec::structural::record::inner", parameters: 0,
+                constructors: vec![ConstructorSchema { tag: "Inner", fields: vec![chain.clone()] }] },
+            DataSchema { name: "lawspec::structural::record::outer", parameters: 0,
+                constructors: vec![ConstructorSchema { tag: "Outer", fields: vec![inner,chain] }] },
+            DataSchema { name: "PathWrapper", parameters: 0,
+                constructors: vec![ConstructorSchema { tag: "Wrap", fields: vec![outer.clone()] }] },
+        ]).unwrap().with_indices(&[
+            ("Stop", &["c0","c10"]), ("Next", &["+ f0 c1","+ f0.1 c1"]),
+            ("Outer", &["== p0/0.0 f1"]),
+            ("Wrap", &["p0/0/0.0","p0/0/0.1","== p0/0/0.1 + p0/1.0 c10","== p0/0/0.0 p0/1.0",">= p0/0/0.0 c1"]),
+        ]);
+        let stop = construct_data("Stop", vec![]);
+        let one = construct_data("Next", vec![stop.clone()]);
+        let two = construct_data("Next", vec![one.clone()]);
+        let wrap = |left, right| construct_data("Wrap", vec![construct_data("Outer", vec![
+            construct_data("Inner", vec![left]),right])]);
+        for bits in [32,64] {
+            let product = |left, right| construct_data("Outer", vec![construct_data("Inner", vec![left]),right]);
+            assert!(schema.validate(product(two.clone(),two.clone()), &outer, bits).is_ok());
+            assert!(schema.validate(product(two.clone(),stop.clone()), &outer, bits).is_err());
+            let good = wrap(two.clone(),two.clone());
+            assert!(schema.validate(good.clone(), &wrapper, bits).is_ok());
+            assert_eq!(schema.index_of(&wrapper, &good, 0).unwrap(), BigInt::from(2));
+            assert_eq!(schema.index_of(&wrapper, &good, 1).unwrap(), BigInt::from(12));
+            assert!(schema.validate(wrap(two.clone(),one.clone()), &wrapper, bits).is_err());
+            assert!(schema.validate(wrap(stop.clone(),stop.clone()), &wrapper, bits).is_err());
+            assert!(schema.index_at_path(&[wrapper.clone()], &[good.clone()], &[0,0,1,0], 0).is_err());
+            assert!(schema.index_at_path(&[wrapper.clone()], &[good], &[9], 0).is_err());
+        }
+    }
     fn int(n: i64) -> Value {
         Value::Integer(n.into())
     }

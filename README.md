@@ -49,7 +49,8 @@ twin. [The three planes](docs/explanation/three-planes.md) explains why.
 | `docs/` | The documentation: explanation, reference and how-to pages |
 
 [The roadmap](docs/explanation/roadmap.md) lists what each release
-covers.
+covers. The [0.26 alignment receipt](docs/reference/lawspec-026-upgrade.md)
+records the current compiler integration and its acceptance scope.
 
 ## The Kafka twin
 
@@ -103,9 +104,12 @@ make contract-check      # compile the package and its laws
 make contract-test       # run them on every target (TARGET=rust, for example, for one)
 ```
 
-The contracts need LawSpec 0.23.0; stage it from npm first with
-`make lawspec-stage` (or from a LawSpec checkout with
-`make lawspec-stage LAWSPEC_HOME=<checkout>`). You also need Node 22 or
+The contracts use LawSpec 0.26.0. For this upgrade, stage a built LawSpec
+checkout containing `24e8706c` with
+`make lawspec-stage LAWSPEC_HOME=<checkout>`; its public embedding additions
+are required, so the version label alone is insufficient. A published package
+containing those additions can instead be staged with `make lawspec-stage`.
+You also need Node 22 or
 later, Rust 1.85 or later with CMake, and Python 3.13 or later; Go, a JDK
 with Maven, Gradle, and the .NET 10 SDK run the Kafka contract's other targets and the
 conformance kit's clients, and podman builds the image. `make help` lists

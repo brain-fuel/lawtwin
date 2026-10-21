@@ -35,17 +35,23 @@ twins/http/rust/                  the Rust core, with its Containerfile
 ## Which contracts a core serves
 
 A core is a registry of compiled contracts, and serves the one it is
-started with (ref:DEC-http-contract-registry). The Rust core's `build.rs`
-finds every directory under `contracts/` with a wire map and a generated
-Rust test project, brings that project's sources in as a module of its own
-(LawSpec names every test crate alike, so they cannot all be dependencies),
-and binds the contract's `reference` handler: for each operation, a case
-that runs the same typed definition over a state the twin owns and gives a
-raised `ApiError` back as a value. One program and one image serve every
-compiled contract; `lawtwin-http --contracts` lists them.
+started with (ref:DEC-http-contract-registry). Each contract's generated Rust
+library is a normal Cargo dependency with a distinct package identity.
+`lawtwin import openapi` emits `lawtwin-embed.rs` from its OpenAPI IR; the
+adapter calls the reference handler's public `try_` operations and uses
+`state` / `set_state` for independent snapshots. No build script reads or
+rewrites generated Rust sources or private definition names. One program and
+one image serve every registered contract; `lawtwin-http --contracts` lists
+them.
 
-To serve a new contract: import it (`lawtwin import openapi`), generate its
-test project (`lawspec generate`), and rebuild the core.
+To serve a new contract: import it, generate its test project with the pinned
+LawSpec compiler, add its package as a dependency in
+`twins/http/rust/Cargo.toml` under the alias `<package_with_underscores>_model`,
+and register its emitted adapter in `twins/http/rust/src/contracts.rs`.
+Rebuild the core. The explicit registry makes the compiler check every adapter
+against its public model API. `make openapi-compile-check` compiles fresh
+OpenAPI 3.0/3.1 imports and their adapters, including constrained records,
+maps and unions.
 
 ## The core interface
 

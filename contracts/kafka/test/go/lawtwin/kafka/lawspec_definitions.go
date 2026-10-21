@@ -3983,7 +3983,7 @@ func lawSpecEvaluate118(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 
 func lawSpecEvaluate119(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawtwin.kafka::lawspecCollectionsBoundedIntSize", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Just", []LawSpecValue{lsHelper("IntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Just", []LawSpecValue{lsHelper("IntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) })
 		return result
 	})
 }
@@ -4006,14 +4006,14 @@ func lawSpecEvaluate123(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 
 func lawSpecEvaluate124(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawtwin.kafka::lawspecCollectionsBoundedUIntPtr", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Just", []LawSpecValue{lsHelper("UIntPtr", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Just", []LawSpecValue{lsHelper("UIntPtr", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) })
 		return result
 	})
 }
 
 func lawSpecEvaluate125(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawtwin.kafka::lawspecCollectionsBoundedUIntSize", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Just", []LawSpecValue{lsHelper("UIntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Just", []LawSpecValue{lsHelper("UIntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) })
 		return result
 	})
 }
@@ -4036,7 +4036,7 @@ func lawSpecEvaluate129(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 
 func lawSpecEvaluate130(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawtwin.kafka::lawspecCollectionsSaturatingIntSize", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))) { return lsConvert("IntSize", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), 64) }; return func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) { return lsConvert("IntSize", lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64), 64) }; return lsHelper("IntSize", []LawSpecValue{value0}, 64) }() }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))) { return lsConvert("IntSize", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), 64) }; return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) { return lsConvert("IntSize", lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64), 64) }; return lsHelper("IntSize", []LawSpecValue{value0}, 64) }) })
 		return result
 	})
 }
@@ -4059,14 +4059,14 @@ func lawSpecEvaluate134(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 
 func lawSpecEvaluate135(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawtwin.kafka::lawspecCollectionsSaturatingUIntPtr", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))) { return lsConvert("UIntPtr", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), 64) }; return func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsConvert("UIntPtr", lsConvert("Integer", lsInteger("Integer", "0"), 64), 64) }; return lsHelper("UIntPtr", []LawSpecValue{value0}, 64) }() }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))) { return lsConvert("UIntPtr", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), 64) }; return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsConvert("UIntPtr", lsConvert("Integer", lsInteger("Integer", "0"), 64), 64) }; return lsHelper("UIntPtr", []LawSpecValue{value0}, 64) }) })
 		return result
 	})
 }
 
 func lawSpecEvaluate136(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawtwin.kafka::lawspecCollectionsSaturatingUIntSize", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))) { return lsConvert("UIntSize", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), 64) }; return func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsConvert("UIntSize", lsConvert("Integer", lsInteger("Integer", "0"), 64), 64) }; return lsHelper("UIntSize", []LawSpecValue{value0}, 64) }() }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))) { return lsConvert("UIntSize", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), 64) }; return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsConvert("UIntSize", lsConvert("Integer", lsInteger("Integer", "0"), 64), 64) }; return lsHelper("UIntSize", []LawSpecValue{value0}, 64) }) })
 		return result
 	})
 }
@@ -4089,11 +4089,11 @@ func lawSpecEvaluate140(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 
 func lawSpecEvaluate141(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawtwin.kafka::lawspecCollectionsWrappingIntSize", func() LawSpecValue {
-		result := func() LawSpecValue {
+		result := lsEvaluate(func() LawSpecValue {
 			value1 := lsBinary("rem", lsBinary("-", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64)), lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64)))
 			_ = value1
-			return func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("IntSize", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))}, 64) }; return lsHelper("IntSize", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))}, 64) }()
-		}()
+			return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("IntSize", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))}, 64) }; return lsHelper("IntSize", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))}, 64) })
+		})
 		return result
 	})
 }
@@ -4116,22 +4116,22 @@ func lawSpecEvaluate145(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 
 func lawSpecEvaluate146(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawtwin.kafka::lawspecCollectionsWrappingUIntPtr", func() LawSpecValue {
-		result := func() LawSpecValue {
+		result := lsEvaluate(func() LawSpecValue {
 			value1 := lsBinary("rem", lsBinary("-", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64)))
 			_ = value1
-			return func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("UIntPtr", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }; return lsHelper("UIntPtr", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }()
-		}()
+			return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("UIntPtr", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }; return lsHelper("UIntPtr", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) })
+		})
 		return result
 	})
 }
 
 func lawSpecEvaluate147(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawtwin.kafka::lawspecCollectionsWrappingUIntSize", func() LawSpecValue {
-		result := func() LawSpecValue {
+		result := lsEvaluate(func() LawSpecValue {
 			value1 := lsBinary("rem", lsBinary("-", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64)))
 			_ = value1
-			return func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("UIntSize", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }; return lsHelper("UIntSize", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }()
-		}()
+			return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("UIntSize", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }; return lsHelper("UIntSize", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) })
+		})
 		return result
 	})
 }

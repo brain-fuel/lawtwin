@@ -77,6 +77,8 @@ private fun _lawspecScalarGenerator(type: String): Arb<LawSpecRuntime.Value> =
                     } else {
                         java.math.BigInteger(_bytes)
                     }
+                _integer
+            }.map { _integer ->
                 LawSpecRuntime.integer("Int64", _integer.toString())
             }
         }
@@ -99,6 +101,8 @@ private fun _lawspecScalarGenerator(type: String): Arb<LawSpecRuntime.Value> =
                     } else {
                         java.math.BigInteger(1, _bytes)
                     }
+                _integer
+            }.map { _integer ->
                 LawSpecRuntime.integer("UInt32", _integer.toString())
             }
         }
@@ -111,6 +115,8 @@ private fun _lawspecScalarGenerator(type: String): Arb<LawSpecRuntime.Value> =
                     } else {
                         java.math.BigInteger(1, _bytes)
                     }
+                _integer
+            }.map { _integer ->
                 LawSpecRuntime.integer("UInt64", _integer.toString())
             }
         }
@@ -123,6 +129,8 @@ private fun _lawspecScalarGenerator(type: String): Arb<LawSpecRuntime.Value> =
                     } else {
                         java.math.BigInteger(_bytes)
                     }
+                _integer
+            }.map { _integer ->
                 LawSpecRuntime.integer("IntSize", _integer.toString())
             }
         }
@@ -135,6 +143,8 @@ private fun _lawspecScalarGenerator(type: String): Arb<LawSpecRuntime.Value> =
                     } else {
                         java.math.BigInteger(1, _bytes)
                     }
+                _integer
+            }.map { _integer ->
                 LawSpecRuntime.integer("UIntSize", _integer.toString())
             }
         }
@@ -147,6 +157,8 @@ private fun _lawspecScalarGenerator(type: String): Arb<LawSpecRuntime.Value> =
                     } else {
                         java.math.BigInteger(1, _bytes)
                     }
+                _integer
+            }.map { _integer ->
                 LawSpecRuntime.integer("UIntPtr", _integer.toString())
             }
         }
@@ -159,6 +171,8 @@ private fun _lawspecScalarGenerator(type: String): Arb<LawSpecRuntime.Value> =
                     } else {
                         java.math.BigInteger(_bytes)
                     }
+                _integer
+            }.map { _integer ->
                 LawSpecRuntime.integer("Integer", _integer.toString())
             }
         }
@@ -171,6 +185,8 @@ private fun _lawspecScalarGenerator(type: String): Arb<LawSpecRuntime.Value> =
                     } else {
                         java.math.BigInteger(_bytes)
                     }
+                _integer
+            }.map { _integer ->
                 LawSpecRuntime.integer("BigInt", _integer.toString())
             }
         }
@@ -183,6 +199,8 @@ private fun _lawspecScalarGenerator(type: String): Arb<LawSpecRuntime.Value> =
                     } else {
                         java.math.BigInteger(1, _bytes)
                     }
+                _integer
+            }.map { _integer ->
                 LawSpecRuntime.integer("BigUInt", _integer.toString())
             }
         }
@@ -196,6 +214,8 @@ private fun _lawspecScalarGenerator(type: String): Arb<LawSpecRuntime.Value> =
                         } else {
                             java.math.BigInteger(_bytes)
                         }
+                    _integer
+                }.map { _integer ->
                     LawSpecRuntime.integer("BigInt", _integer.toString())
                 },
                 Arb.int(-20..20),
@@ -216,6 +236,8 @@ private fun _lawspecScalarGenerator(type: String): Arb<LawSpecRuntime.Value> =
                         } else {
                             java.math.BigInteger(_bytes)
                         }
+                    _integer
+                }.map { _integer ->
                     LawSpecRuntime.integer("BigInt", _integer.toString())
                 },
                 lawspecList(Arb.int(0..255), 0..32).map { _raw ->
@@ -226,6 +248,8 @@ private fun _lawspecScalarGenerator(type: String): Arb<LawSpecRuntime.Value> =
                         } else {
                             java.math.BigInteger(1, _bytes)
                         }
+                    _integer
+                }.map { _integer ->
                     LawSpecRuntime.integer("BigUInt", _integer.toString())
                 },
             ) { _numerator, _denominator ->

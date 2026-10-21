@@ -45,6 +45,11 @@ class Pair[_T0, _T1]:
 
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
+class Set[_T0]:
+    value: _builtins.list[_T0]
+
+
+@_dataclasses.dataclass(frozen=True, slots=True, eq=False)
 class Regex:
     pattern: _builtins.str
 
@@ -60,7 +65,7 @@ class PartitionChoice:
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
 class PartitionChoiceToPartition(PartitionChoice):
-    chosen: _builtins.int
+    value: _builtins.int
 
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
@@ -339,17 +344,12 @@ class LogEntry:
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
 class LogEntryDataEntry(LogEntry):
-    entryOffset: _builtins.int
-    entryRecord: Record
-    writer: _builtins.int
-    transactional: _builtins.bool
+    value: Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be
 
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
 class LogEntryControlEntry(LogEntry):
-    markerOffset: _builtins.int
-    markerWriter: _builtins.int
-    commits: _builtins.bool
+    value: Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3
 
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
@@ -398,8 +398,7 @@ class TxnStateNoTxn(TxnState):
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
 class TxnStateOngoing(TxnState):
-    txnPartitions: _builtins.list[TopicPartition]
-    txnOffsets: _builtins.list[PendingOffset]
+    value: Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee
 
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
@@ -434,6 +433,27 @@ class BrokerState:
         _builtins.tuple[GroupPartition, _builtins.int],
         ...
     ]
+
+
+@_dataclasses.dataclass(frozen=True, slots=True, eq=False)
+class Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be:
+    entryOffset: _builtins.int
+    entryRecord: Record
+    transactional: _builtins.bool
+    writer: _builtins.int
+
+
+@_dataclasses.dataclass(frozen=True, slots=True, eq=False)
+class Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3:
+    commits: _builtins.bool
+    markerOffset: _builtins.int
+    markerWriter: _builtins.int
+
+
+@_dataclasses.dataclass(frozen=True, slots=True, eq=False)
+class Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee:
+    txnOffsets: _builtins.list[PendingOffset]
+    txnPartitions: _builtins.list[TopicPartition]
 
 
 def make_schema():
@@ -496,11 +516,27 @@ def make_schema():
                         "lawspec.collections::type::Set::SetItems",
                         [
                             _schema.Field(
-                                "items",
+                                "value",
                                 _schema.Named("List", [_schema.Parameter(0)]),
                             ),
                         ],
                         None,
+                    ),
+                ],
+            ),
+            _schema.Definition(
+                "lawspec.collections::type::EqSet",
+                1,
+                [
+                    _schema.Constructor(
+                        "lawspec.collections::type::EqSet::EqSetItems",
+                        [
+                            _schema.Field(
+                                "value",
+                                _schema.Named("List", [_schema.Parameter(0)]),
+                            ),
+                        ],
+                        Set,
                     ),
                 ],
             ),
@@ -512,7 +548,7 @@ def make_schema():
                         "lawspec.collections::type::KeyVal::KeyValEntries",
                         [
                             _schema.Field(
-                                "entries",
+                                "value",
                                 _schema.Named(
                                     "List",
                                     [
@@ -548,7 +584,7 @@ def make_schema():
                 [
                     _schema.Constructor(
                         "lawtwin.kafka::type::PartitionChoice::ToPartition",
-                        [_schema.Field("chosen", _schema.Named("Int32"))],
+                        [_schema.Field("value", _schema.Named("Int32"))],
                         PartitionChoiceToPartition,
                     ),
                     _schema.Constructor(
@@ -1422,19 +1458,35 @@ def make_schema():
                         "lawtwin.kafka.model::type::LogEntry::DataEntry",
                         [
                             _schema.Field(
-                                "entryOffset",
-                                _schema.Named("Int64"),
-                            ),
-                            _schema.Field(
-                                "entryRecord",
+                                "value",
                                 _schema.Named(
-                                    "lawtwin.kafka.model::type::Record",
+                                    (
+                                        "laws"
+                                        "pec:"
+                                        ":str"
+                                        "uctu"
+                                        "ral:"
+                                        ":rec"
+                                        "ord:"
+                                        ":71d"
+                                        "dc69"
+                                        "2ac9"
+                                        "521d"
+                                        "9d1f"
+                                        "5404"
+                                        "c573"
+                                        "37ef"
+                                        "3fb4"
+                                        "c795"
+                                        "693e"
+                                        "c774"
+                                        "d544"
+                                        "3d94"
+                                        "5ea3"
+                                        "4e0b"
+                                        "e"
+                                    ),
                                 ),
-                            ),
-                            _schema.Field("writer", _schema.Named("Int64")),
-                            _schema.Field(
-                                "transactional",
-                                _schema.Named("Bool"),
                             ),
                         ],
                         LogEntryDataEntry,
@@ -1443,14 +1495,36 @@ def make_schema():
                         "lawtwin.kafka.model::type::LogEntry::ControlEntry",
                         [
                             _schema.Field(
-                                "markerOffset",
-                                _schema.Named("Int64"),
+                                "value",
+                                _schema.Named(
+                                    (
+                                        "laws"
+                                        "pec:"
+                                        ":str"
+                                        "uctu"
+                                        "ral:"
+                                        ":rec"
+                                        "ord:"
+                                        ":25c"
+                                        "3f95"
+                                        "0e34"
+                                        "31c9"
+                                        "1cee"
+                                        "db89"
+                                        "b1ad"
+                                        "b06d"
+                                        "a7d2"
+                                        "d7d2"
+                                        "0322"
+                                        "b03e"
+                                        "1f64"
+                                        "f634"
+                                        "18e4"
+                                        "5d7e"
+                                        "3"
+                                    ),
+                                ),
                             ),
-                            _schema.Field(
-                                "markerWriter",
-                                _schema.Named("Int64"),
-                            ),
-                            _schema.Field("commits", _schema.Named("Bool")),
                         ],
                         LogEntryControlEntry,
                     ),
@@ -1639,48 +1713,34 @@ def make_schema():
                         "lawtwin.kafka.model::type::TxnState::Ongoing",
                         [
                             _schema.Field(
-                                "txnPartitions",
+                                "value",
                                 _schema.Named(
-                                    "List",
-                                    [
-                                        _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::T"
-                                                "opic"
-                                                "Part"
-                                                "itio"
-                                                "n"
-                                            ),
-                                        ),
-                                    ],
-                                ),
-                            ),
-                            _schema.Field(
-                                "txnOffsets",
-                                _schema.Named(
-                                    "List",
-                                    [
-                                        _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::P"
-                                                "endi"
-                                                "ngOf"
-                                                "fset"
-                                            ),
-                                        ),
-                                    ],
+                                    (
+                                        "laws"
+                                        "pec:"
+                                        ":str"
+                                        "uctu"
+                                        "ral:"
+                                        ":rec"
+                                        "ord:"
+                                        ":d32"
+                                        "5eb2"
+                                        "8450"
+                                        "b9e0"
+                                        "9a62"
+                                        "7168"
+                                        "741f"
+                                        "b2db"
+                                        "9ff0"
+                                        "8256"
+                                        "d915"
+                                        "4032"
+                                        "ca57"
+                                        "f8e9"
+                                        "7660"
+                                        "258e"
+                                        "e"
+                                    ),
                                 ),
                             ),
                         ],
@@ -1932,6 +1992,111 @@ def make_schema():
                             ),
                         ],
                         BrokerState,
+                    ),
+                ],
+            ),
+            _schema.Definition(
+                "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be",
+                0,
+                [
+                    _schema.Constructor(
+                        "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record",
+                        [
+                            _schema.Field(
+                                "entryOffset",
+                                _schema.Named("Int64"),
+                            ),
+                            _schema.Field(
+                                "entryRecord",
+                                _schema.Named(
+                                    "lawtwin.kafka.model::type::Record",
+                                ),
+                            ),
+                            _schema.Field(
+                                "transactional",
+                                _schema.Named("Bool"),
+                            ),
+                            _schema.Field("writer", _schema.Named("Int64")),
+                        ],
+                        Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be,
+                    ),
+                ],
+            ),
+            _schema.Definition(
+                "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3",
+                0,
+                [
+                    _schema.Constructor(
+                        "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record",
+                        [
+                            _schema.Field("commits", _schema.Named("Bool")),
+                            _schema.Field(
+                                "markerOffset",
+                                _schema.Named("Int64"),
+                            ),
+                            _schema.Field(
+                                "markerWriter",
+                                _schema.Named("Int64"),
+                            ),
+                        ],
+                        Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3,
+                    ),
+                ],
+            ),
+            _schema.Definition(
+                "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee",
+                0,
+                [
+                    _schema.Constructor(
+                        "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record",
+                        [
+                            _schema.Field(
+                                "txnOffsets",
+                                _schema.Named(
+                                    "List",
+                                    [
+                                        _schema.Named(
+                                            (
+                                                "lawt"
+                                                "win."
+                                                "kafk"
+                                                "a.mo"
+                                                "del:"
+                                                ":typ"
+                                                "e::P"
+                                                "endi"
+                                                "ngOf"
+                                                "fset"
+                                            ),
+                                        ),
+                                    ],
+                                ),
+                            ),
+                            _schema.Field(
+                                "txnPartitions",
+                                _schema.Named(
+                                    "List",
+                                    [
+                                        _schema.Named(
+                                            (
+                                                "lawt"
+                                                "win."
+                                                "kafk"
+                                                "a.mo"
+                                                "del:"
+                                                ":typ"
+                                                "e::T"
+                                                "opic"
+                                                "Part"
+                                                "itio"
+                                                "n"
+                                            ),
+                                        ),
+                                    ],
+                                ),
+                            ),
+                        ],
+                        Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee,
                     ),
                 ],
             ),

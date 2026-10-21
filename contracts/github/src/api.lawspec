@@ -17,9 +17,9 @@ connectService :: Unit -> Service
 disconnectService :: Service -> Unit
 
 resource Service is
-  acquire is connectService unitValue end
-  release service is disconnectService service end
-end
+  acquire is connectService unitValue end acquire
+  release service is disconnectService service end release
+end resource
 
 -- ---------------------------------------------------------------------------
 -- IssuesApi
@@ -47,144 +47,153 @@ ability IssuesApi with Service is
   -- PATCH /repos/{owner}/{repo}/milestones/{milestone_number}: Update a milestone
   issuesUpdateMilestone :: Text -> Text -> Int64 -> Maybe IssuesUpdateMilestoneBody -> Milestone fails with ApiError
 laws
-  law `a created label reads back` is
-    definition is
-      `for all` (owner :: Text) (repo :: Text) (body :: IssuesCreateLabelBody) .
+  law "|a created label reads back| is
+    definition :
+      for all (owner :: Text) (repo :: Text) (body :: IssuesCreateLabelBody) =>
         (let sent = body in
-         match prelude.attempt (issuesCreateLabel owner repo sent) with
-         | Left failure -> true
-         | Right created ->
-             let key = sent.name in prelude.attempt (issuesGetLabel owner repo key) == Right created
-         end) = true
-    end
-  end
-  law `a deleted label is not found` is
-    definition is
-      `for all` (owner :: Text) (repo :: Text) (body :: IssuesCreateLabelBody) .
+         first matching case of prelude.attempt (issuesCreateLabel owner repo sent) :
+         when Left failure then true
+         when Right created then
+             let key = sent.name in prelude.attempt (issuesGetLabel owner repo key) = Right created end let
+         end case
+         end let) = true end for all
+    end definition
+  end law
+  law "|a deleted label is not found| is
+    definition :
+      for all (owner :: Text) (repo :: Text) (body :: IssuesCreateLabelBody) =>
         (let sent = body in
-         match prelude.attempt (issuesCreateLabel owner repo sent) with
-         | Left failure -> true
-         | Right created ->
-             let key = sent.name in (let gone = prelude.attempt (issuesDeleteLabel owner repo key) in prelude.attempt (issuesGetLabel owner repo key) == Left NotFound)
-         end) = true
-    end
-  end
-  law `the list holds a created label` is
-    definition is
-      `for all` (owner :: Text) (repo :: Text) (body :: IssuesCreateLabelBody) .
+         first matching case of prelude.attempt (issuesCreateLabel owner repo sent) :
+         when Left failure then true
+         when Right created then
+             let key = sent.name in (let gone = prelude.attempt (issuesDeleteLabel owner repo key) in prelude.attempt (issuesGetLabel owner repo key) = Left NotFound end let) end let
+         end case
+         end let) = true end for all
+    end definition
+  end law
+  law "|the list holds a created label| is
+    definition :
+      for all (owner :: Text) (repo :: Text) (body :: IssuesCreateLabelBody) =>
         (let sent = body in
-         match prelude.attempt (issuesCreateLabel owner repo sent) with
-         | Left failure -> true
-         | Right created ->
-             match prelude.attempt (issuesListLabelsForRepo owner repo Nothing Nothing) with
-             | Left failure -> false
-             | Right listed -> model.containsLabel created listed
-             end
-         end) = true
-    end
-  end
-  law `an update changes only the fields it gives to a label` is
-    definition is
-      `for all` (owner :: Text) (repo :: Text) (body :: IssuesCreateLabelBody) (change :: IssuesUpdateLabelBody) .
+         first matching case of prelude.attempt (issuesCreateLabel owner repo sent) :
+         when Left failure then true
+         when Right created then
+             first matching case of prelude.attempt (issuesListLabelsForRepo owner repo Nothing Nothing) :
+             when Left failure then false
+             when Right listed then model.containsLabel created listed
+             end case
+         end case
+         end let) = true end for all
+    end definition
+  end law
+  law "|an update changes only the fields it gives to a label| is
+    definition :
+      for all (owner :: Text) (repo :: Text) (body :: IssuesCreateLabelBody) (change :: IssuesUpdateLabelBody) =>
         (let sent = body in
-         match prelude.attempt (issuesCreateLabel owner repo sent) with
-         | Left failure -> true
-         | Right created ->
-             let key = sent.name in match prelude.attempt (issuesGetLabel owner repo key) with
-             | Left failure -> false
-             | Right before ->
-                 match prelude.attempt (issuesUpdateLabel owner repo key (Just change)) with
-                 | Left failure -> true
-                 | Right changed ->
-                     match prelude.attempt (issuesGetLabel owner repo key) with
-                     | Left failure -> false
-                     | Right after -> after.id == before.id
-                     && after.nodeId == before.nodeId
-                     && after.url == before.url
-                     && after.description_ == (match change.description_ with | Nothing -> before.description_ | Just given -> Just given end)
-                     && after.color == (match change.color with | Nothing -> before.color | Just given -> given end)
-                     && after.default_ == before.default_
-                     && after.archivedAt == before.archivedAt
-                     && after.archivedBy == before.archivedBy
-                     end
-                 end
-             end
-         end) = true
-    end
-  end
-  law `a created milestone reads back` is
-    definition is
-      `for all` (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (dueOnValue :: IssuesCreateMilestoneBodyDueOn) .
+         first matching case of prelude.attempt (issuesCreateLabel owner repo sent) :
+         when Left failure then true
+         when Right created then
+             let key = sent.name in first matching case of prelude.attempt (issuesGetLabel owner repo key) :
+             when Left failure then false
+             when Right before then
+                 first matching case of prelude.attempt (issuesUpdateLabel owner repo key (Just change)) :
+                 when Left failure then true
+                 when Right changed then
+                     first matching case of prelude.attempt (issuesGetLabel owner repo key) :
+                     when Left failure then false
+                     when Right after then after.id = before.id
+                     && after.nodeId = before.nodeId
+                     && after.url = before.url
+                     && after.description_ = (first matching case of change.description_ : when Nothing then before.description_ when Just given then Just given end case)
+                     && after.color = (first matching case of change.color : when Nothing then before.color when Just given then given end case)
+                     && after.default_ = before.default_
+                     && after.archivedAt = before.archivedAt
+                     && after.archivedBy = before.archivedBy
+                     end case
+                 end case
+             end case end let
+         end case
+         end let) = true end for all
+    end definition
+  end law
+  law "|a created milestone reads back| is
+    definition :
+      for all (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (dueOnValue :: IssuesCreateMilestoneBodyDueOn) =>
         (let sent = (body with dueOn = Just dueOnValue) in
-         match prelude.attempt (issuesCreateMilestone owner repo sent) with
-         | Left failure -> true
-         | Right created ->
-             let key = created.number in prelude.attempt (issuesGetMilestone owner repo key) == Right created
-         end) = true
-    end
-  end
-  law `a deleted milestone is not found` is
-    definition is
-      `for all` (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (dueOnValue :: IssuesCreateMilestoneBodyDueOn) .
+         first matching case of prelude.attempt (issuesCreateMilestone owner repo sent) :
+         when Left failure then true
+         when Right created then
+             let key = created.number in prelude.attempt (issuesGetMilestone owner repo key) = Right created end let
+         end case
+         end let) = true end for all
+    end definition
+  end law
+  law "|a deleted milestone is not found| is
+    definition :
+      for all (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (dueOnValue :: IssuesCreateMilestoneBodyDueOn) =>
         (let sent = (body with dueOn = Just dueOnValue) in
-         match prelude.attempt (issuesCreateMilestone owner repo sent) with
-         | Left failure -> true
-         | Right created ->
-             let key = created.number in (let gone = prelude.attempt (issuesDeleteMilestone owner repo key) in prelude.attempt (issuesGetMilestone owner repo key) == Left NotFound)
-         end) = true
-    end
-  end
-  law `the list holds a created milestone` is
-    definition is
-      `for all` (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (dueOnValue :: IssuesCreateMilestoneBodyDueOn) .
+         first matching case of prelude.attempt (issuesCreateMilestone owner repo sent) :
+         when Left failure then true
+         when Right created then
+             let key = created.number in (let gone = prelude.attempt (issuesDeleteMilestone owner repo key) in prelude.attempt (issuesGetMilestone owner repo key) = Left NotFound end let) end let
+         end case
+         end let) = true end for all
+    end definition
+  end law
+  law "|the list holds a created milestone| is
+    definition :
+      for all (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (dueOnValue :: IssuesCreateMilestoneBodyDueOn) =>
         (let sent = (body with dueOn = Just dueOnValue) in
-         match prelude.attempt (issuesCreateMilestone owner repo sent) with
-         | Left failure -> true
-         | Right created ->
-             match prelude.attempt (issuesListMilestones owner repo Nothing Nothing Nothing Nothing Nothing) with
-             | Left failure -> false
-             | Right listed -> model.containsMilestone created listed
-             end
-         end) = true
-    end
-  end
-  law `an update changes only the fields it gives to a milestone` is
-    definition is
-      `for all` (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (dueOnValue :: IssuesCreateMilestoneBodyDueOn) (change :: IssuesUpdateMilestoneBody) .
+         first matching case of prelude.attempt (issuesCreateMilestone owner repo sent) :
+         when Left failure then true
+         when Right created then
+             first matching case of prelude.attempt (issuesListMilestones owner repo Nothing Nothing Nothing Nothing Nothing) :
+             when Left failure then false
+             when Right listed then model.containsMilestone created listed
+             end case
+         end case
+         end let) = true end for all
+    end definition
+  end law
+  law "|an update changes only the fields it gives to a milestone| is
+    definition :
+      for all (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (dueOnValue :: IssuesCreateMilestoneBodyDueOn) (change :: IssuesUpdateMilestoneBody) =>
         (let sent = (body with dueOn = Just dueOnValue) in
-         match prelude.attempt (issuesCreateMilestone owner repo sent) with
-         | Left failure -> true
-         | Right created ->
-             let key = created.number in match prelude.attempt (issuesGetMilestone owner repo key) with
-             | Left failure -> false
-             | Right before ->
-                 match prelude.attempt (issuesUpdateMilestone owner repo key (Just change)) with
-                 | Left failure -> true
-                 | Right changed ->
-                     match prelude.attempt (issuesGetMilestone owner repo key) with
-                     | Left failure -> false
-                     | Right after -> after.url == before.url
-                     && after.htmlUrl == before.htmlUrl
-                     && after.labelsUrl == before.labelsUrl
-                     && after.id == before.id
-                     && after.nodeId == before.nodeId
-                     && after.state_ == (match change.state_ with | Nothing -> before.state_ | Just given -> given end)
-                     && after.title == (match change.title with | Nothing -> before.title | Just given -> given end)
-                     && after.description_ == (match change.description_ with | Nothing -> before.description_ | Just given -> Just given end)
-                     && after.creator == before.creator
-                     && after.openIssues == before.openIssues
-                     && after.closedIssues == before.closedIssues
-                     && after.createdAt == before.createdAt
-                     && after.updatedAt == before.updatedAt
-                     && after.closedAt == before.closedAt
-                     && after.dueOn == (match change.dueOn with | Nothing -> before.dueOn | Just given -> Just given end)
-                     end
-                 end
-             end
-         end) = true
-    end
-  end
-end
+         first matching case of prelude.attempt (issuesCreateMilestone owner repo sent) :
+         when Left failure then true
+         when Right created then
+             let key = created.number in first matching case of prelude.attempt (issuesGetMilestone owner repo key) :
+             when Left failure then false
+             when Right before then
+                 first matching case of prelude.attempt (issuesUpdateMilestone owner repo key (Just change)) :
+                 when Left failure then true
+                 when Right changed then
+                     first matching case of prelude.attempt (issuesGetMilestone owner repo key) :
+                     when Left failure then false
+                     when Right after then after.url = before.url
+                     && after.htmlUrl = before.htmlUrl
+                     && after.labelsUrl = before.labelsUrl
+                     && after.id = before.id
+                     && after.nodeId = before.nodeId
+                     && after.state_ = (first matching case of change.state_ : when Nothing then before.state_ when Just given then given end case)
+                     && after.title = (first matching case of change.title : when Nothing then before.title when Just given then given end case)
+                     && after.description_ = (first matching case of change.description_ : when Nothing then before.description_ when Just given then Just given end case)
+                     && after.creator = before.creator
+                     && after.openIssues = before.openIssues
+                     && after.closedIssues = before.closedIssues
+                     && after.createdAt = before.createdAt
+                     && after.updatedAt = before.updatedAt
+                     && after.closedAt = before.closedAt
+                     && after.dueOn = (first matching case of change.dueOn : when Nothing then before.dueOn when Just given then Just given end case)
+                     end case
+                 end case
+             end case end let
+         end case
+         end let) = true end for all
+    end definition
+  end law
+end laws
+end ability
 
 -- ---------------------------------------------------------------------------
 -- The reference model
@@ -194,14 +203,15 @@ end
 -- it when the importer recognised what it does, otherwise by the
 -- hand-written unit.
 handler reference for IssuesApi with state state :: State start model.emptyState unitValue is
-  issuesListLabelsForRepo by model.modelIssuesListLabelsForRepo
-  issuesCreateLabel by model.modelIssuesCreateLabel
-  issuesGetLabel by model.modelIssuesGetLabel
-  issuesDeleteLabel by model.modelIssuesDeleteLabel
-  issuesUpdateLabel by model.modelIssuesUpdateLabel
-  issuesListMilestones by model.modelIssuesListMilestones
-  issuesCreateMilestone by model.modelIssuesCreateMilestone
-  issuesGetMilestone by model.modelIssuesGetMilestone
-  issuesDeleteMilestone by model.modelIssuesDeleteMilestone
-  issuesUpdateMilestone by model.modelIssuesUpdateMilestone
-end
+  operation issuesListLabelsForRepo by model.modelIssuesListLabelsForRepo end operation
+  operation issuesCreateLabel by model.modelIssuesCreateLabel end operation
+  operation issuesGetLabel by model.modelIssuesGetLabel end operation
+  operation issuesDeleteLabel by model.modelIssuesDeleteLabel end operation
+  operation issuesUpdateLabel by model.modelIssuesUpdateLabel end operation
+  operation issuesListMilestones by model.modelIssuesListMilestones end operation
+  operation issuesCreateMilestone by model.modelIssuesCreateMilestone end operation
+  operation issuesGetMilestone by model.modelIssuesGetMilestone end operation
+  operation issuesDeleteMilestone by model.modelIssuesDeleteMilestone end operation
+  operation issuesUpdateMilestone by model.modelIssuesUpdateMilestone end operation
+end handler
+end unit

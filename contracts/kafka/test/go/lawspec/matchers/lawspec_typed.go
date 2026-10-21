@@ -43,7 +43,7 @@ type lsfPartitionChoice interface {
 }
 
 type lsfPartitionChoice_ToPartition struct {
-	fChosen int32
+	fValue int32
 }
 
 func (*lsfPartitionChoice_ToPartition) lsfTaglsfPartitionChoice() int { return 0 }
@@ -224,18 +224,13 @@ type lsfLogEntry interface {
 }
 
 type lsfLogEntry_DataEntry struct {
-	fEntryOffset int64
-	fEntryRecord *lsfRecord
-	fWriter int64
-	fTransactional bool
+	fValue *lsfRecord71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be
 }
 
 func (*lsfLogEntry_DataEntry) lsfTaglsfLogEntry() int { return 0 }
 
 type lsfLogEntry_ControlEntry struct {
-	fMarkerOffset int64
-	fMarkerWriter int64
-	fCommits bool
+	fValue *lsfRecord25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3
 }
 
 func (*lsfLogEntry_ControlEntry) lsfTaglsfLogEntry() int { return 1 }
@@ -282,8 +277,7 @@ type lsfTxnState_NoTxn struct {}
 func (*lsfTxnState_NoTxn) lsfTaglsfTxnState() int { return 0 }
 
 type lsfTxnState_Ongoing struct {
-	fTxnPartitions *lsfList[*lsfTopicPartition]
-	fTxnOffsets *lsfList[*lsfPendingOffset]
+	fValue *lsfRecordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee
 }
 
 func (*lsfTxnState_Ongoing) lsfTaglsfTxnState() int { return 1 }
@@ -321,6 +315,27 @@ type lsfBrokerState struct {
 	fCommitted *lsfMap[*lsfGroupPartition, int64]
 }
 
+// lsfRecord71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be is Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be (lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be).
+type lsfRecord71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be struct {
+	fEntryOffset int64
+	fEntryRecord *lsfRecord
+	fTransactional bool
+	fWriter int64
+}
+
+// lsfRecord25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 is Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 (lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3).
+type lsfRecord25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 struct {
+	fCommits bool
+	fMarkerOffset int64
+	fMarkerWriter int64
+}
+
+// lsfRecordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee is Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee (lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee).
+type lsfRecordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee struct {
+	fTxnOffsets *lsfList[*lsfPendingOffset]
+	fTxnPartitions *lsfList[*lsfTopicPartition]
+}
+
 func lsfEntryOf[K any, V any](k K, v V) *lsfEntry[K, V] { return &lsfEntry[K, V]{k, v} }
 
 func lsfKeyValOf[K any, V any](es *lsfList[*lsfEntry[K, V]], cmp func(K, K) int) *lsfMap[K, V] {
@@ -339,8 +354,9 @@ func lsfOrderingOf(c int) lsfOrdering {
 
 // lsfMatchersMatchesRegex_52d1c22e is lawspec.matchers::matchersMatchesRegex.
 func lsfMatchersMatchesRegex_52d1c22e(lT0 string, lR1 *lsfRegex) bool {
-	lP2 := lR1.fPattern
-	return lsfRegexMatches(lP2, lT0)
+	lIt2 := lR1
+	lv_lawspecselection0x03 := lIt2.fPattern
+	return lsfRegexMatches(lv_lawspecselection0x03, lT0)
 }
 
 func lsfFrom_d267428fb2ca(v LawSpecValue) bool {

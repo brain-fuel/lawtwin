@@ -1,5 +1,5 @@
 [package]
-name = "lawspec-example"
+name = "lawtwin-petstore-model"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.85"
@@ -13,3 +13,6 @@ num-traits = "=0.2.19"
 
 [dev-dependencies]
 proptest = "=1.11.0"
+
+[lib]
+name = "lawspec_example"

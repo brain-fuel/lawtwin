@@ -2974,35 +2974,6 @@ def kafkaTransactionsStart(
         ) from error
 
 
-def keepBoundedArithmetic(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-) -> _builtins.int:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_595(symbols, argument_0)
-        return _lawspec_schema.to_native(
-            _schema.Named("Int64"),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            "contracttest.kafka::keepBoundedArithmetic: "
-            + _builtins.str(error),
-        ) from error
-
-
 def lawspecCollectionsBoundedInt16(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     value_0: _builtins.int,
@@ -3014,7 +2985,7 @@ def lawspecCollectionsBoundedInt16(
             64,
             symbols,
         )
-        result = _definitions.evaluate_596(symbols, argument_0)
+        result = _definitions.evaluate_595(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int16")]),
             result,
@@ -3043,7 +3014,7 @@ def lawspecCollectionsBoundedInt32(
             64,
             symbols,
         )
-        result = _definitions.evaluate_597(symbols, argument_0)
+        result = _definitions.evaluate_596(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int32")]),
             result,
@@ -3072,7 +3043,7 @@ def lawspecCollectionsBoundedInt64(
             64,
             symbols,
         )
-        result = _definitions.evaluate_598(symbols, argument_0)
+        result = _definitions.evaluate_597(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
@@ -3101,7 +3072,7 @@ def lawspecCollectionsBoundedInt8(
             64,
             symbols,
         )
-        result = _definitions.evaluate_599(symbols, argument_0)
+        result = _definitions.evaluate_598(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int8")]),
             result,
@@ -3130,7 +3101,7 @@ def lawspecCollectionsBoundedIntSize(
             64,
             symbols,
         )
-        result = _definitions.evaluate_600(symbols, argument_0)
+        result = _definitions.evaluate_599(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("IntSize")]),
             result,
@@ -3159,7 +3130,7 @@ def lawspecCollectionsBoundedUInt16(
             64,
             symbols,
         )
-        result = _definitions.evaluate_601(symbols, argument_0)
+        result = _definitions.evaluate_600(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UInt16")]),
             result,
@@ -3188,7 +3159,7 @@ def lawspecCollectionsBoundedUInt32(
             64,
             symbols,
         )
-        result = _definitions.evaluate_602(symbols, argument_0)
+        result = _definitions.evaluate_601(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UInt32")]),
             result,
@@ -3217,7 +3188,7 @@ def lawspecCollectionsBoundedUInt64(
             64,
             symbols,
         )
-        result = _definitions.evaluate_603(symbols, argument_0)
+        result = _definitions.evaluate_602(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UInt64")]),
             result,
@@ -3246,7 +3217,7 @@ def lawspecCollectionsBoundedUInt8(
             64,
             symbols,
         )
-        result = _definitions.evaluate_604(symbols, argument_0)
+        result = _definitions.evaluate_603(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UInt8")]),
             result,
@@ -3275,7 +3246,7 @@ def lawspecCollectionsBoundedUIntPtr(
             64,
             symbols,
         )
-        result = _definitions.evaluate_605(symbols, argument_0)
+        result = _definitions.evaluate_604(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
             result,
@@ -3304,7 +3275,7 @@ def lawspecCollectionsBoundedUIntSize(
             64,
             symbols,
         )
-        result = _definitions.evaluate_606(symbols, argument_0)
+        result = _definitions.evaluate_605(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UIntSize")]),
             result,
@@ -3333,7 +3304,7 @@ def lawspecCollectionsSaturatingInt16(
             64,
             symbols,
         )
-        result = _definitions.evaluate_607(symbols, argument_0)
+        result = _definitions.evaluate_606(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Int16"),
             result,
@@ -3362,7 +3333,7 @@ def lawspecCollectionsSaturatingInt32(
             64,
             symbols,
         )
-        result = _definitions.evaluate_608(symbols, argument_0)
+        result = _definitions.evaluate_607(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
@@ -3391,7 +3362,7 @@ def lawspecCollectionsSaturatingInt64(
             64,
             symbols,
         )
-        result = _definitions.evaluate_609(symbols, argument_0)
+        result = _definitions.evaluate_608(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
@@ -3420,7 +3391,7 @@ def lawspecCollectionsSaturatingInt8(
             64,
             symbols,
         )
-        result = _definitions.evaluate_610(symbols, argument_0)
+        result = _definitions.evaluate_609(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Int8"),
             result,
@@ -3449,7 +3420,7 @@ def lawspecCollectionsSaturatingIntSize(
             64,
             symbols,
         )
-        result = _definitions.evaluate_611(symbols, argument_0)
+        result = _definitions.evaluate_610(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("IntSize"),
             result,
@@ -3478,7 +3449,7 @@ def lawspecCollectionsSaturatingUInt16(
             64,
             symbols,
         )
-        result = _definitions.evaluate_612(symbols, argument_0)
+        result = _definitions.evaluate_611(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UInt16"),
             result,
@@ -3507,7 +3478,7 @@ def lawspecCollectionsSaturatingUInt32(
             64,
             symbols,
         )
-        result = _definitions.evaluate_613(symbols, argument_0)
+        result = _definitions.evaluate_612(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
@@ -3536,7 +3507,7 @@ def lawspecCollectionsSaturatingUInt64(
             64,
             symbols,
         )
-        result = _definitions.evaluate_614(symbols, argument_0)
+        result = _definitions.evaluate_613(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UInt64"),
             result,
@@ -3565,7 +3536,7 @@ def lawspecCollectionsSaturatingUInt8(
             64,
             symbols,
         )
-        result = _definitions.evaluate_615(symbols, argument_0)
+        result = _definitions.evaluate_614(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UInt8"),
             result,
@@ -3594,7 +3565,7 @@ def lawspecCollectionsSaturatingUIntPtr(
             64,
             symbols,
         )
-        result = _definitions.evaluate_616(symbols, argument_0)
+        result = _definitions.evaluate_615(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UIntPtr"),
             result,
@@ -3623,7 +3594,7 @@ def lawspecCollectionsSaturatingUIntSize(
             64,
             symbols,
         )
-        result = _definitions.evaluate_617(symbols, argument_0)
+        result = _definitions.evaluate_616(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UIntSize"),
             result,
@@ -3652,7 +3623,7 @@ def lawspecCollectionsWrappingInt16(
             64,
             symbols,
         )
-        result = _definitions.evaluate_618(symbols, argument_0)
+        result = _definitions.evaluate_617(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Int16"),
             result,
@@ -3681,7 +3652,7 @@ def lawspecCollectionsWrappingInt32(
             64,
             symbols,
         )
-        result = _definitions.evaluate_619(symbols, argument_0)
+        result = _definitions.evaluate_618(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
@@ -3710,7 +3681,7 @@ def lawspecCollectionsWrappingInt64(
             64,
             symbols,
         )
-        result = _definitions.evaluate_620(symbols, argument_0)
+        result = _definitions.evaluate_619(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
@@ -3739,7 +3710,7 @@ def lawspecCollectionsWrappingInt8(
             64,
             symbols,
         )
-        result = _definitions.evaluate_621(symbols, argument_0)
+        result = _definitions.evaluate_620(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Int8"),
             result,
@@ -3768,7 +3739,7 @@ def lawspecCollectionsWrappingIntSize(
             64,
             symbols,
         )
-        result = _definitions.evaluate_622(symbols, argument_0)
+        result = _definitions.evaluate_621(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("IntSize"),
             result,
@@ -3797,7 +3768,7 @@ def lawspecCollectionsWrappingUInt16(
             64,
             symbols,
         )
-        result = _definitions.evaluate_623(symbols, argument_0)
+        result = _definitions.evaluate_622(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UInt16"),
             result,
@@ -3826,7 +3797,7 @@ def lawspecCollectionsWrappingUInt32(
             64,
             symbols,
         )
-        result = _definitions.evaluate_624(symbols, argument_0)
+        result = _definitions.evaluate_623(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
@@ -3855,7 +3826,7 @@ def lawspecCollectionsWrappingUInt64(
             64,
             symbols,
         )
-        result = _definitions.evaluate_625(symbols, argument_0)
+        result = _definitions.evaluate_624(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UInt64"),
             result,
@@ -3884,7 +3855,7 @@ def lawspecCollectionsWrappingUInt8(
             64,
             symbols,
         )
-        result = _definitions.evaluate_626(symbols, argument_0)
+        result = _definitions.evaluate_625(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UInt8"),
             result,
@@ -3913,7 +3884,7 @@ def lawspecCollectionsWrappingUIntPtr(
             64,
             symbols,
         )
-        result = _definitions.evaluate_627(symbols, argument_0)
+        result = _definitions.evaluate_626(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UIntPtr"),
             result,
@@ -3942,7 +3913,7 @@ def lawspecCollectionsWrappingUIntSize(
             64,
             symbols,
         )
-        result = _definitions.evaluate_628(symbols, argument_0)
+        result = _definitions.evaluate_627(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UIntSize"),
             result,
@@ -3991,7 +3962,7 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_62318b0a9a214051(
             64,
             symbols,
         )
-        result = _definitions.evaluate_629(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_628(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4068,7 +4039,7 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5(
             64,
             symbols,
         )
-        result = _definitions.evaluate_630(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_629(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4137,7 +4108,7 @@ def lawspec_lawspecCollectionsKeyValDelete_95f14dd183eea025(
             64,
             symbols,
         )
-        result = _definitions.evaluate_631(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_630(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -4203,7 +4174,7 @@ def lawspec_lawspecCollectionsKeyValDelete_d7a338e61b94bc91(
             64,
             symbols,
         )
-        result = _definitions.evaluate_632(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_631(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -4265,7 +4236,7 @@ def lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4(
             64,
             symbols,
         )
-        result = _definitions.evaluate_633(symbols, argument_0)
+        result = _definitions.evaluate_632(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4344,7 +4315,7 @@ def lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c(
             64,
             symbols,
         )
-        result = _definitions.evaluate_634(symbols, argument_0)
+        result = _definitions.evaluate_633(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4429,7 +4400,7 @@ def lawspec_lawspecCollectionsKeyValEntries_df543c4156f9821a(
             64,
             symbols,
         )
-        result = _definitions.evaluate_635(symbols, argument_0)
+        result = _definitions.evaluate_634(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4513,7 +4484,7 @@ def lawspec_lawspecCollectionsKeyValFromItems_18760777c36ef587(
             64,
             symbols,
         )
-        result = _definitions.evaluate_636(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_635(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4594,7 +4565,7 @@ def lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f(
             64,
             symbols,
         )
-        result = _definitions.evaluate_637(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_636(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4675,7 +4646,7 @@ def lawspec_lawspecCollectionsKeyValFromItems_224702891e6ebfba(
             64,
             symbols,
         )
-        result = _definitions.evaluate_638(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_637(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4766,7 +4737,7 @@ def lawspec_lawspecCollectionsKeyValFromItems_28070fe12955af99(
             64,
             symbols,
         )
-        result = _definitions.evaluate_639(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_638(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4858,7 +4829,7 @@ def lawspec_lawspecCollectionsKeyValFromItems_30e2507dcc3ef9ac(
             64,
             symbols,
         )
-        result = _definitions.evaluate_640(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_639(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4952,7 +4923,7 @@ def lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a2b9e(
             64,
             symbols,
         )
-        result = _definitions.evaluate_641(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_640(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -5048,7 +5019,7 @@ def lawspec_lawspecCollectionsKeyValFromItems_656b3e1b81a0457e(
             64,
             symbols,
         )
-        result = _definitions.evaluate_642(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_641(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -5144,7 +5115,7 @@ def lawspec_lawspecCollectionsKeyValFromItems_85bb2eea042e5fe3(
             64,
             symbols,
         )
-        result = _definitions.evaluate_643(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_642(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -5246,7 +5217,7 @@ def lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1eb10(
             64,
             symbols,
         )
-        result = _definitions.evaluate_644(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_643(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -5358,7 +5329,7 @@ def lawspec_lawspecCollectionsKeyValFromItems_dd3ea08b63484ff8(
             64,
             symbols,
         )
-        result = _definitions.evaluate_645(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_644(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -5499,7 +5470,7 @@ def lawspec_lawspecCollectionsKeyValFromItems_ead6d6bde1a20a26(
             64,
             symbols,
         )
-        result = _definitions.evaluate_646(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_645(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -5612,7 +5583,7 @@ def lawspec_lawspecCollectionsKeyValFromItems_faa46e63cbcd14e9(
             64,
             symbols,
         )
-        result = _definitions.evaluate_647(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_646(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -5688,7 +5659,7 @@ def lawspec_lawspecCollectionsKeyValKeysItems_e233e49033adca72(
             64,
             symbols,
         )
-        result = _definitions.evaluate_648(symbols, argument_0)
+        result = _definitions.evaluate_647(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Text")]),
             result,
@@ -5744,7 +5715,7 @@ def lawspec_lawspecCollectionsKeyValKeys_c7c332043746df98(
             64,
             symbols,
         )
-        result = _definitions.evaluate_649(symbols, argument_0)
+        result = _definitions.evaluate_648(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Text")]),
             result,
@@ -5820,7 +5791,7 @@ def lawspec_lawspecCollectionsKeyValLookupItems_136cc6772b4e992f(
             64,
             symbols,
         )
-        result = _definitions.evaluate_650(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_649(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
@@ -5903,7 +5874,7 @@ def lawspec_lawspecCollectionsKeyValLookupItems_1eb69f0fdf3c8f0b(
             64,
             symbols,
         )
-        result = _definitions.evaluate_651(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_650(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
@@ -5969,7 +5940,7 @@ def lawspec_lawspecCollectionsKeyValLookupItems_5756b26180726581(
             64,
             symbols,
         )
-        result = _definitions.evaluate_652(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_651(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
@@ -6040,7 +6011,7 @@ def lawspec_lawspecCollectionsKeyValLookupItems_69280184901ea585(
             64,
             symbols,
         )
-        result = _definitions.evaluate_653(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_652(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
@@ -6133,7 +6104,7 @@ def lawspec_lawspecCollectionsKeyValLookupItems_82603a5935440f75(
             64,
             symbols,
         )
-        result = _definitions.evaluate_654(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_653(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
@@ -6216,7 +6187,7 @@ def lawspec_lawspecCollectionsKeyValLookupItems_8c8e1453bfc42ee5(
             64,
             symbols,
         )
-        result = _definitions.evaluate_655(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_654(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
@@ -6285,7 +6256,7 @@ def lawspec_lawspecCollectionsKeyValLookupItems_9428a088248757a3(
             64,
             symbols,
         )
-        result = _definitions.evaluate_656(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_655(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int32")]),
             result,
@@ -6356,7 +6327,7 @@ def lawspec_lawspecCollectionsKeyValLookupItems_b5b730fd09d3f4b3(
             64,
             symbols,
         )
-        result = _definitions.evaluate_657(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_656(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
@@ -6427,7 +6398,7 @@ def lawspec_lawspecCollectionsKeyValLookupItems_d4fb9ceeaac376dd(
             64,
             symbols,
         )
-        result = _definitions.evaluate_658(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_657(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int32")]),
             result,
@@ -6493,7 +6464,7 @@ def lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f41725375(
             64,
             symbols,
         )
-        result = _definitions.evaluate_659(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_658(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
@@ -6562,7 +6533,7 @@ def lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96abfdf11(
             64,
             symbols,
         )
-        result = _definitions.evaluate_660(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_659(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
@@ -6640,7 +6611,7 @@ def lawspec_lawspecCollectionsKeyValLookupItems_f23b5066cffbd6eb(
             64,
             symbols,
         )
-        result = _definitions.evaluate_661(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_660(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
@@ -6707,7 +6678,7 @@ def lawspec_lawspecCollectionsKeyValLookup_61e51068439aa457(
             64,
             symbols,
         )
-        result = _definitions.evaluate_662(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_661(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
@@ -6780,7 +6751,7 @@ def lawspec_lawspecCollectionsKeyValLookup_65f44f3855baf0a5(
             64,
             symbols,
         )
-        result = _definitions.evaluate_663(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_662(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
@@ -6858,7 +6829,7 @@ def lawspec_lawspecCollectionsKeyValLookup_7acdaa8dcd255941(
             64,
             symbols,
         )
-        result = _definitions.evaluate_664(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_663(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
@@ -6927,7 +6898,7 @@ def lawspec_lawspecCollectionsKeyValLookup_7e86ea7b8af5f7e9(
             64,
             symbols,
         )
-        result = _definitions.evaluate_665(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_664(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int32")]),
             result,
@@ -6987,7 +6958,7 @@ def lawspec_lawspecCollectionsKeyValLookup_a6a374938d1c1ef1(
             64,
             symbols,
         )
-        result = _definitions.evaluate_666(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_665(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
@@ -7053,7 +7024,7 @@ def lawspec_lawspecCollectionsKeyValLookup_be6dfdcf4e9ae9f5(
             64,
             symbols,
         )
-        result = _definitions.evaluate_667(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_666(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
@@ -7113,7 +7084,7 @@ def lawspec_lawspecCollectionsKeyValLookup_d32eccc04e0ce84b(
             64,
             symbols,
         )
-        result = _definitions.evaluate_668(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_667(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
@@ -7179,7 +7150,7 @@ def lawspec_lawspecCollectionsKeyValLookup_d45d335232ddb9f5(
             64,
             symbols,
         )
-        result = _definitions.evaluate_669(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_668(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
@@ -7242,7 +7213,7 @@ def lawspec_lawspecCollectionsKeyValLookup_e75784f293b348fb(
             64,
             symbols,
         )
-        result = _definitions.evaluate_670(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_669(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
@@ -7305,7 +7276,7 @@ def lawspec_lawspecCollectionsKeyValLookup_ed82ee3bc3ed7c07(
             64,
             symbols,
         )
-        result = _definitions.evaluate_671(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_670(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int32")]),
             result,
@@ -7378,7 +7349,7 @@ def lawspec_lawspecCollectionsKeyValLookup_f0a5427404f6c2eb(
             64,
             symbols,
         )
-        result = _definitions.evaluate_672(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_671(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
@@ -7453,7 +7424,7 @@ def lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594f(
             64,
             symbols,
         )
-        result = _definitions.evaluate_673(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_672(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
@@ -7538,7 +7509,7 @@ def lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc(
             64,
             symbols,
         )
-        result = _definitions.evaluate_674(symbols, argument_0)
+        result = _definitions.evaluate_673(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -7611,7 +7582,7 @@ def lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54(
             64,
             symbols,
         )
-        result = _definitions.evaluate_675(symbols, argument_0)
+        result = _definitions.evaluate_674(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -7679,7 +7650,7 @@ def lawspec_lawspecCollectionsKeyValOf_610caa8fbb581a02(
             64,
             symbols,
         )
-        result = _definitions.evaluate_676(symbols, argument_0)
+        result = _definitions.evaluate_675(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -7754,7 +7725,7 @@ def lawspec_lawspecCollectionsKeyValOf_a0c1d9feb5051d04(
             64,
             symbols,
         )
-        result = _definitions.evaluate_677(symbols, argument_0)
+        result = _definitions.evaluate_676(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -7829,7 +7800,7 @@ def lawspec_lawspecCollectionsKeyValOf_a4eebf20bfcd02b4(
             64,
             symbols,
         )
-        result = _definitions.evaluate_678(symbols, argument_0)
+        result = _definitions.evaluate_677(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -7904,7 +7875,7 @@ def lawspec_lawspecCollectionsKeyValOf_bd30e4f0b318724c(
             64,
             symbols,
         )
-        result = _definitions.evaluate_679(symbols, argument_0)
+        result = _definitions.evaluate_678(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -7967,7 +7938,7 @@ def lawspec_lawspecCollectionsKeyValOf_c9f1a347a852b1c2(
             64,
             symbols,
         )
-        result = _definitions.evaluate_680(symbols, argument_0)
+        result = _definitions.evaluate_679(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -8032,7 +8003,7 @@ def lawspec_lawspecCollectionsKeyValOf_ca750953e04bcf02(
             64,
             symbols,
         )
-        result = _definitions.evaluate_681(symbols, argument_0)
+        result = _definitions.evaluate_680(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -8095,7 +8066,7 @@ def lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e(
             64,
             symbols,
         )
-        result = _definitions.evaluate_682(symbols, argument_0)
+        result = _definitions.evaluate_681(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -8160,7 +8131,7 @@ def lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a(
             64,
             symbols,
         )
-        result = _definitions.evaluate_683(symbols, argument_0)
+        result = _definitions.evaluate_682(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -8223,7 +8194,7 @@ def lawspec_lawspecCollectionsKeyValOf_e41901007f8d5eea(
             64,
             symbols,
         )
-        result = _definitions.evaluate_684(symbols, argument_0)
+        result = _definitions.evaluate_683(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -8288,7 +8259,7 @@ def lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48(
             64,
             symbols,
         )
-        result = _definitions.evaluate_685(symbols, argument_0)
+        result = _definitions.evaluate_684(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -8365,7 +8336,7 @@ def lawspec_lawspecCollectionsKeyValPutItems_1a60d73f2ea7655c(
             64,
             symbols,
         )
-        result = _definitions.evaluate_686(
+        result = _definitions.evaluate_685(
             symbols,
             argument_0,
             argument_1,
@@ -8455,7 +8426,7 @@ def lawspec_lawspecCollectionsKeyValPutItems_1d4fcedc9b0136e2(
             64,
             symbols,
         )
-        result = _definitions.evaluate_687(
+        result = _definitions.evaluate_686(
             symbols,
             argument_0,
             argument_1,
@@ -8560,7 +8531,7 @@ def lawspec_lawspecCollectionsKeyValPutItems_2a3018cf45ad1ad9(
             64,
             symbols,
         )
-        result = _definitions.evaluate_688(
+        result = _definitions.evaluate_687(
             symbols,
             argument_0,
             argument_1,
@@ -8655,7 +8626,7 @@ def lawspec_lawspecCollectionsKeyValPutItems_4b9848f70e8b7f53(
             64,
             symbols,
         )
-        result = _definitions.evaluate_689(
+        result = _definitions.evaluate_688(
             symbols,
             argument_0,
             argument_1,
@@ -8740,7 +8711,7 @@ def lawspec_lawspecCollectionsKeyValPutItems_4c71dc98d5546e58(
             64,
             symbols,
         )
-        result = _definitions.evaluate_690(
+        result = _definitions.evaluate_689(
             symbols,
             argument_0,
             argument_1,
@@ -8854,7 +8825,7 @@ def lawspec_lawspecCollectionsKeyValPutItems_565019ca06de701f(
             64,
             symbols,
         )
-        result = _definitions.evaluate_691(
+        result = _definitions.evaluate_690(
             symbols,
             argument_0,
             argument_1,
@@ -8966,7 +8937,7 @@ def lawspec_lawspecCollectionsKeyValPutItems_854f1183117f06f5(
             64,
             symbols,
         )
-        result = _definitions.evaluate_692(
+        result = _definitions.evaluate_691(
             symbols,
             argument_0,
             argument_1,
@@ -9059,7 +9030,7 @@ def lawspec_lawspecCollectionsKeyValPutItems_9bdf97a44332ea1(
             64,
             symbols,
         )
-        result = _definitions.evaluate_693(
+        result = _definitions.evaluate_692(
             symbols,
             argument_0,
             argument_1,
@@ -9152,7 +9123,7 @@ def lawspec_lawspecCollectionsKeyValPutItems_a229945e8cb36750(
             64,
             symbols,
         )
-        result = _definitions.evaluate_694(
+        result = _definitions.evaluate_693(
             symbols,
             argument_0,
             argument_1,
@@ -9247,7 +9218,7 @@ def lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214c4(
             64,
             symbols,
         )
-        result = _definitions.evaluate_695(
+        result = _definitions.evaluate_694(
             symbols,
             argument_0,
             argument_1,
@@ -9340,7 +9311,7 @@ def lawspec_lawspecCollectionsKeyValPutItems_b8b82d61b25bb98d(
             64,
             symbols,
         )
-        result = _definitions.evaluate_696(
+        result = _definitions.evaluate_695(
             symbols,
             argument_0,
             argument_1,
@@ -9439,7 +9410,7 @@ def lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88cae9b(
             64,
             symbols,
         )
-        result = _definitions.evaluate_697(
+        result = _definitions.evaluate_696(
             symbols,
             argument_0,
             argument_1,
@@ -9532,7 +9503,7 @@ def lawspec_lawspecCollectionsKeyValPut_1e5631cf1010f058(
             64,
             symbols,
         )
-        result = _definitions.evaluate_698(
+        result = _definitions.evaluate_697(
             symbols,
             argument_0,
             argument_1,
@@ -9612,7 +9583,7 @@ def lawspec_lawspecCollectionsKeyValPut_64ef6963a054fec9(
             64,
             symbols,
         )
-        result = _definitions.evaluate_699(
+        result = _definitions.evaluate_698(
             symbols,
             argument_0,
             argument_1,
@@ -9698,7 +9669,7 @@ def lawspec_lawspecCollectionsKeyValPut_6a32d437b06cf1fb(
             64,
             symbols,
         )
-        result = _definitions.evaluate_700(
+        result = _definitions.evaluate_699(
             symbols,
             argument_0,
             argument_1,
@@ -9788,7 +9759,7 @@ def lawspec_lawspecCollectionsKeyValPut_84321765782615b9(
             64,
             symbols,
         )
-        result = _definitions.evaluate_701(
+        result = _definitions.evaluate_700(
             symbols,
             argument_0,
             argument_1,
@@ -9878,7 +9849,7 @@ def lawspec_lawspecCollectionsKeyValPut_9e5f815c293ac9e1(
             64,
             symbols,
         )
-        result = _definitions.evaluate_702(
+        result = _definitions.evaluate_701(
             symbols,
             argument_0,
             argument_1,
@@ -9955,7 +9926,7 @@ def lawspec_lawspecCollectionsKeyValPut_a0581d6dd36c2e58(
             64,
             symbols,
         )
-        result = _definitions.evaluate_703(
+        result = _definitions.evaluate_702(
             symbols,
             argument_0,
             argument_1,
@@ -10029,7 +10000,7 @@ def lawspec_lawspecCollectionsKeyValPut_a2a3515700f0a6f(
             64,
             symbols,
         )
-        result = _definitions.evaluate_704(
+        result = _definitions.evaluate_703(
             symbols,
             argument_0,
             argument_1,
@@ -10109,7 +10080,7 @@ def lawspec_lawspecCollectionsKeyValPut_cab6769a52b0163d(
             64,
             symbols,
         )
-        result = _definitions.evaluate_705(
+        result = _definitions.evaluate_704(
             symbols,
             argument_0,
             argument_1,
@@ -10189,7 +10160,7 @@ def lawspec_lawspecCollectionsKeyValPut_d00f0719b7ec97ee(
             64,
             symbols,
         )
-        result = _definitions.evaluate_706(
+        result = _definitions.evaluate_705(
             symbols,
             argument_0,
             argument_1,
@@ -10269,7 +10240,7 @@ def lawspec_lawspecCollectionsKeyValPut_d378e301aa895004(
             64,
             symbols,
         )
-        result = _definitions.evaluate_707(
+        result = _definitions.evaluate_706(
             symbols,
             argument_0,
             argument_1,
@@ -10346,7 +10317,7 @@ def lawspec_lawspecCollectionsKeyValPut_d4f4392b8878a23c(
             64,
             symbols,
         )
-        result = _definitions.evaluate_708(
+        result = _definitions.evaluate_707(
             symbols,
             argument_0,
             argument_1,
@@ -10436,7 +10407,7 @@ def lawspec_lawspecCollectionsKeyValPut_ee3ccd7601ddf107(
             64,
             symbols,
         )
-        result = _definitions.evaluate_709(
+        result = _definitions.evaluate_708(
             symbols,
             argument_0,
             argument_1,
@@ -10511,7 +10482,7 @@ def lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae(
             64,
             symbols,
         )
-        result = _definitions.evaluate_710(symbols, argument_0)
+        result = _definitions.evaluate_709(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int64")]),
             result,
@@ -10565,7 +10536,7 @@ def lawspec_lawspecCollectionsKeyValValues_152cb3cfa5a69daa(
             64,
             symbols,
         )
-        result = _definitions.evaluate_711(symbols, argument_0)
+        result = _definitions.evaluate_710(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int64")]),
             result,
@@ -10622,7 +10593,7 @@ def lawspec_lawspecCollectionsSetFromItems_25b2070f526ff089(
             64,
             symbols,
         )
-        result = _definitions.evaluate_712(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_711(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Text")]),
             result,
@@ -10679,7 +10650,7 @@ def lawspec_lawspecCollectionsSetFromItems_ffc9b33e7d19d87c(
             64,
             symbols,
         )
-        result = _definitions.evaluate_713(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_712(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int32")]),
             result,
@@ -10736,7 +10707,7 @@ def lawspec_lawspecCollectionsSetInsertItems_a3dc35e775ac9977(
             64,
             symbols,
         )
-        result = _definitions.evaluate_714(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_713(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Text")]),
             result,
@@ -10793,7 +10764,7 @@ def lawspec_lawspecCollectionsSetInsertItems_fee347ca5af6d966(
             64,
             symbols,
         )
-        result = _definitions.evaluate_715(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_714(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int32")]),
             result,
@@ -10843,7 +10814,7 @@ def lawspec_lawspecCollectionsSetOf_83f32212ffd7f646(
             64,
             symbols,
         )
-        result = _definitions.evaluate_716(symbols, argument_0)
+        result = _definitions.evaluate_715(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Set",
@@ -10894,7 +10865,7 @@ def lawspec_lawspecCollectionsSetOf_9446af497e0eb47e(
             64,
             symbols,
         )
-        result = _definitions.evaluate_717(symbols, argument_0)
+        result = _definitions.evaluate_716(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Set",
@@ -10952,7 +10923,7 @@ def lawspec_lawspecCollectionsSetRemoveItems_a3dc35e775ac9977(
             64,
             symbols,
         )
-        result = _definitions.evaluate_718(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_717(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Text")]),
             result,
@@ -11012,7 +10983,7 @@ def lawspec_lawspecCollectionsSetRemove_1fda0e8e73969c67(
             64,
             symbols,
         )
-        result = _definitions.evaluate_719(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_718(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Set",
@@ -11077,7 +11048,7 @@ def lawspec_lawspecCollectionsSetUnion_f2139edefc699bed(
             64,
             symbols,
         )
-        result = _definitions.evaluate_720(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_719(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Set",
@@ -11136,7 +11107,7 @@ def lawtwinKafkaAllAtLeast(
             64,
             symbols,
         )
-        result = _definitions.evaluate_721(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_720(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
@@ -11175,7 +11146,7 @@ def lawtwinKafkaAssignmentIn(
             64,
             symbols,
         )
-        result = _definitions.evaluate_722(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_721(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -11219,7 +11190,7 @@ def lawtwinKafkaCommittedFrom(
             64,
             symbols,
         )
-        result = _definitions.evaluate_723(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_722(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -11261,7 +11232,7 @@ def lawtwinKafkaConsumerAssign(
             64,
             symbols,
         )
-        result = _definitions.evaluate_724(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_723(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11301,7 +11272,7 @@ def lawtwinKafkaConsumerClose(
             64,
             symbols,
         )
-        result = _definitions.evaluate_725(symbols, argument_0)
+        result = _definitions.evaluate_724(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11344,7 +11315,7 @@ def lawtwinKafkaConsumerCommit(
             64,
             symbols,
         )
-        result = _definitions.evaluate_726(symbols, argument_0)
+        result = _definitions.evaluate_725(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11399,7 +11370,7 @@ def lawtwinKafkaConsumerCommitted(
             64,
             symbols,
         )
-        result = _definitions.evaluate_727(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_726(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11441,7 +11412,7 @@ def lawtwinKafkaConsumerIsolation(
             64,
             symbols,
         )
-        result = _definitions.evaluate_728(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_727(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11505,7 +11476,7 @@ def lawtwinKafkaConsumerJoin(
             64,
             symbols,
         )
-        result = _definitions.evaluate_729(
+        result = _definitions.evaluate_728(
             symbols,
             argument_0,
             argument_1,
@@ -11588,7 +11559,7 @@ def lawtwinKafkaConsumerPoll(
             64,
             symbols,
         )
-        result = _definitions.evaluate_730(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_729(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11650,7 +11621,7 @@ def lawtwinKafkaConsumerPosition(
             64,
             symbols,
         )
-        result = _definitions.evaluate_731(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_730(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11700,7 +11671,7 @@ def lawtwinKafkaConsumerPositionOf(
             64,
             symbols,
         )
-        result = _definitions.evaluate_732(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_731(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11753,7 +11724,7 @@ def lawtwinKafkaConsumerRecords(
             64,
             symbols,
         )
-        result = _definitions.evaluate_733(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_732(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -11793,7 +11764,7 @@ def lawtwinKafkaConsumerRefresh(
             64,
             symbols,
         )
-        result = _definitions.evaluate_734(symbols, argument_0)
+        result = _definitions.evaluate_733(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11853,7 +11824,7 @@ def lawtwinKafkaConsumerSeek(
             64,
             symbols,
         )
-        result = _definitions.evaluate_735(
+        result = _definitions.evaluate_734(
             symbols,
             argument_0,
             argument_1,
@@ -11915,7 +11886,7 @@ def lawtwinKafkaCoversOnce(
             64,
             symbols,
         )
-        result = _definitions.evaluate_736(
+        result = _definitions.evaluate_735(
             symbols,
             argument_0,
             argument_1,
@@ -11961,7 +11932,7 @@ def lawtwinKafkaCreated(
             64,
             symbols,
         )
-        result = _definitions.evaluate_737(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_736(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
@@ -11996,7 +11967,7 @@ def lawtwinKafkaFencedBy(
             64,
             symbols,
         )
-        result = _definitions.evaluate_738(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_737(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
@@ -12054,7 +12025,7 @@ def lawtwinKafkaFollowsBatch(
             64,
             symbols,
         )
-        result = _definitions.evaluate_739(
+        result = _definitions.evaluate_738(
             symbols,
             argument_0,
             argument_1,
@@ -12107,7 +12078,7 @@ def lawtwinKafkaFollowsOne(
             64,
             symbols,
         )
-        result = _definitions.evaluate_740(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_739(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
@@ -12136,7 +12107,7 @@ def lawtwinKafkaFreshConsumer(
             64,
             symbols,
         )
-        result = _definitions.evaluate_741(symbols, argument_0)
+        result = _definitions.evaluate_740(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
             result,
@@ -12165,7 +12136,7 @@ def lawtwinKafkaFreshProducer(
             64,
             symbols,
         )
-        result = _definitions.evaluate_742(symbols, argument_0)
+        result = _definitions.evaluate_741(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka::type::ProducerState"),
             result,
@@ -12194,7 +12165,7 @@ def lawtwinKafkaFreshTransactions(
             64,
             symbols,
         )
-        result = _definitions.evaluate_743(symbols, argument_0)
+        result = _definitions.evaluate_742(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
             result,
@@ -12223,7 +12194,7 @@ def lawtwinKafkaIdentityOf(
             64,
             symbols,
         )
-        result = _definitions.evaluate_744(symbols, argument_0)
+        result = _definitions.evaluate_743(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -12278,7 +12249,7 @@ def lawtwinKafkaIncreasing(
             64,
             symbols,
         )
-        result = _definitions.evaluate_745(symbols, argument_0)
+        result = _definitions.evaluate_744(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
@@ -12326,7 +12297,7 @@ def lawtwinKafkaJoinAll(
             64,
             symbols,
         )
-        result = _definitions.evaluate_746(
+        result = _definitions.evaluate_745(
             symbols,
             argument_0,
             argument_1,
@@ -12378,7 +12349,7 @@ def lawtwinKafkaJoinEach(
             64,
             symbols,
         )
-        result = _definitions.evaluate_747(
+        result = _definitions.evaluate_746(
             symbols,
             argument_0,
             argument_1,
@@ -12447,7 +12418,7 @@ def lawtwinKafkaKeepPositions(
             64,
             symbols,
         )
-        result = _definitions.evaluate_748(
+        result = _definitions.evaluate_747(
             symbols,
             argument_0,
             argument_1,
@@ -12487,7 +12458,7 @@ def lawtwinKafkaMemberIds(
             64,
             symbols,
         )
-        result = _definitions.evaluate_749(symbols, argument_0)
+        result = _definitions.evaluate_748(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Text")]),
             result,
@@ -12529,7 +12500,7 @@ def lawtwinKafkaMissingFrom(
             64,
             symbols,
         )
-        result = _definitions.evaluate_750(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_749(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -12592,7 +12563,7 @@ def lawtwinKafkaModelAddPartitionsToTxn(
             64,
             symbols,
         )
-        result = _definitions.evaluate_751(
+        result = _definitions.evaluate_750(
             symbols,
             argument_0,
             argument_1,
@@ -12644,7 +12615,7 @@ def lawtwinKafkaModelAllKnown(
             64,
             symbols,
         )
-        result = _definitions.evaluate_752(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_751(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
@@ -12697,7 +12668,7 @@ def lawtwinKafkaModelAppendBatch(
             64,
             symbols,
         )
-        result = _definitions.evaluate_753(
+        result = _definitions.evaluate_752(
             symbols,
             argument_0,
             argument_1,
@@ -12766,7 +12737,7 @@ def lawtwinKafkaModelAppendRecords(
             64,
             symbols,
         )
-        result = _definitions.evaluate_754(
+        result = _definitions.evaluate_753(
             symbols,
             argument_0,
             argument_1,
@@ -12821,7 +12792,7 @@ def lawtwinKafkaModelApplyOffsets(
             64,
             symbols,
         )
-        result = _definitions.evaluate_755(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_754(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
             result,
@@ -12894,7 +12865,7 @@ def lawtwinKafkaModelAssignPartitions(
             64,
             symbols,
         )
-        result = _definitions.evaluate_756(
+        result = _definitions.evaluate_755(
             symbols,
             argument_0,
             argument_1,
@@ -12973,7 +12944,7 @@ def lawtwinKafkaModelAssignTo(
             64,
             symbols,
         )
-        result = _definitions.evaluate_757(
+        result = _definitions.evaluate_756(
             symbols,
             argument_0,
             argument_1,
@@ -13070,7 +13041,7 @@ def lawtwinKafkaModelAssignTopics(
             64,
             symbols,
         )
-        result = _definitions.evaluate_758(
+        result = _definitions.evaluate_757(
             symbols,
             argument_0,
             argument_1,
@@ -13139,7 +13110,7 @@ def lawtwinKafkaModelCheckMember(
             64,
             symbols,
         )
-        result = _definitions.evaluate_759(
+        result = _definitions.evaluate_758(
             symbols,
             argument_0,
             argument_1,
@@ -13195,7 +13166,7 @@ def lawtwinKafkaModelCheckTxnProducer(
             64,
             symbols,
         )
-        result = _definitions.evaluate_760(
+        result = _definitions.evaluate_759(
             symbols,
             argument_0,
             argument_1,
@@ -13247,7 +13218,7 @@ def lawtwinKafkaModelCommitAll(
             64,
             symbols,
         )
-        result = _definitions.evaluate_761(
+        result = _definitions.evaluate_760(
             symbols,
             argument_0,
             argument_1,
@@ -13294,7 +13265,7 @@ def lawtwinKafkaModelComputeAssignment(
             64,
             symbols,
         )
-        result = _definitions.evaluate_762(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_761(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -13350,7 +13321,7 @@ def lawtwinKafkaModelCreatePartitions(
             64,
             symbols,
         )
-        result = _definitions.evaluate_763(
+        result = _definitions.evaluate_762(
             symbols,
             argument_0,
             argument_1,
@@ -13404,7 +13375,7 @@ def lawtwinKafkaModelCreateTopic(
             64,
             symbols,
         )
-        result = _definitions.evaluate_764(
+        result = _definitions.evaluate_763(
             symbols,
             argument_0,
             argument_1,
@@ -13451,7 +13422,7 @@ def lawtwinKafkaModelDescribeGroup(
             64,
             symbols,
         )
-        result = _definitions.evaluate_765(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_764(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -13509,7 +13480,7 @@ def lawtwinKafkaModelEmptyAssignments(
             64,
             symbols,
         )
-        result = _definitions.evaluate_766(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_765(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -13551,7 +13522,7 @@ def lawtwinKafkaModelEmptyBroker(
             64,
             symbols,
         )
-        result = _definitions.evaluate_767(symbols, argument_0)
+        result = _definitions.evaluate_766(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
             result,
@@ -13580,7 +13551,7 @@ def lawtwinKafkaModelEmptyGroup(
             64,
             symbols,
         )
-        result = _definitions.evaluate_768(symbols, argument_0)
+        result = _definitions.evaluate_767(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::Group"),
             result,
@@ -13609,7 +13580,7 @@ def lawtwinKafkaModelEmptyLog(
             64,
             symbols,
         )
-        result = _definitions.evaluate_769(symbols, argument_0)
+        result = _definitions.evaluate_768(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
             result,
@@ -13666,7 +13637,7 @@ def lawtwinKafkaModelEndTxn(
             64,
             symbols,
         )
-        result = _definitions.evaluate_770(
+        result = _definitions.evaluate_769(
             symbols,
             argument_0,
             argument_1,
@@ -13718,7 +13689,7 @@ def lawtwinKafkaModelExpectedSequence(
             64,
             symbols,
         )
-        result = _definitions.evaluate_771(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_770(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
@@ -13775,7 +13746,7 @@ def lawtwinKafkaModelFetch(
             64,
             symbols,
         )
-        result = _definitions.evaluate_772(
+        result = _definitions.evaluate_771(
             symbols,
             argument_0,
             argument_1,
@@ -13841,7 +13812,7 @@ def lawtwinKafkaModelFindDuplicate(
             64,
             symbols,
         )
-        result = _definitions.evaluate_773(
+        result = _definitions.evaluate_772(
             symbols,
             argument_0,
             argument_1,
@@ -13897,7 +13868,7 @@ def lawtwinKafkaModelFinishTxn(
             64,
             symbols,
         )
-        result = _definitions.evaluate_774(
+        result = _definitions.evaluate_773(
             symbols,
             argument_0,
             argument_1,
@@ -13939,7 +13910,7 @@ def lawtwinKafkaModelGroupOf(
             64,
             symbols,
         )
-        result = _definitions.evaluate_775(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_774(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::Group"),
             result,
@@ -13989,7 +13960,7 @@ def lawtwinKafkaModelHeartbeat(
             64,
             symbols,
         )
-        result = _definitions.evaluate_776(
+        result = _definitions.evaluate_775(
             symbols,
             argument_0,
             argument_1,
@@ -14030,7 +14001,7 @@ def lawtwinKafkaModelHighWatermark(
             64,
             symbols,
         )
-        result = _definitions.evaluate_777(symbols, argument_0)
+        result = _definitions.evaluate_776(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
@@ -14066,7 +14037,7 @@ def lawtwinKafkaModelInitProducerId(
             64,
             symbols,
         )
-        result = _definitions.evaluate_778(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_777(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -14120,7 +14091,7 @@ def lawtwinKafkaModelIsAborted(
             64,
             symbols,
         )
-        result = _definitions.evaluate_779(
+        result = _definitions.evaluate_778(
             symbols,
             argument_0,
             argument_1,
@@ -14175,7 +14146,7 @@ def lawtwinKafkaModelJoinGroup(
             64,
             symbols,
         )
-        result = _definitions.evaluate_780(
+        result = _definitions.evaluate_779(
             symbols,
             argument_0,
             argument_1,
@@ -14223,7 +14194,7 @@ def lawtwinKafkaModelKnownPartition(
             64,
             symbols,
         )
-        result = _definitions.evaluate_781(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_780(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
@@ -14262,7 +14233,7 @@ def lawtwinKafkaModelLastOffsetOf(
             64,
             symbols,
         )
-        result = _definitions.evaluate_782(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_781(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
@@ -14291,7 +14262,7 @@ def lawtwinKafkaModelLastStableOffset(
             64,
             symbols,
         )
-        result = _definitions.evaluate_783(symbols, argument_0)
+        result = _definitions.evaluate_782(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
@@ -14334,7 +14305,7 @@ def lawtwinKafkaModelLeaveGroup(
             64,
             symbols,
         )
-        result = _definitions.evaluate_784(
+        result = _definitions.evaluate_783(
             symbols,
             argument_0,
             argument_1,
@@ -14395,7 +14366,7 @@ def lawtwinKafkaModelListOffsets(
             64,
             symbols,
         )
-        result = _definitions.evaluate_785(
+        result = _definitions.evaluate_784(
             symbols,
             argument_0,
             argument_1,
@@ -14443,7 +14414,7 @@ def lawtwinKafkaModelLogOf(
             64,
             symbols,
         )
-        result = _definitions.evaluate_786(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_785(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
             result,
@@ -14479,7 +14450,7 @@ def lawtwinKafkaModelMax64(
             64,
             symbols,
         )
-        result = _definitions.evaluate_787(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_786(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
@@ -14508,7 +14479,7 @@ def lawtwinKafkaModelMaxPartitions(
             64,
             symbols,
         )
-        result = _definitions.evaluate_788(symbols, argument_0)
+        result = _definitions.evaluate_787(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
@@ -14569,7 +14540,7 @@ def lawtwinKafkaModelMemberViews(
             64,
             symbols,
         )
-        result = _definitions.evaluate_789(symbols, argument_0)
+        result = _definitions.evaluate_788(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -14608,7 +14579,7 @@ def lawtwinKafkaModelMetadata(
             64,
             symbols,
         )
-        result = _definitions.evaluate_790(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_789(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -14650,7 +14621,7 @@ def lawtwinKafkaModelMin64(
             64,
             symbols,
         )
-        result = _definitions.evaluate_791(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_790(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
@@ -14686,7 +14657,7 @@ def lawtwinKafkaModelMinOf(
             64,
             symbols,
         )
-        result = _definitions.evaluate_792(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_791(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
@@ -14722,7 +14693,7 @@ def lawtwinKafkaModelNewProducer(
             64,
             symbols,
         )
-        result = _definitions.evaluate_793(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_792(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -14786,7 +14757,7 @@ def lawtwinKafkaModelNextFetchOffset(
             64,
             symbols,
         )
-        result = _definitions.evaluate_794(
+        result = _definitions.evaluate_793(
             symbols,
             argument_0,
             argument_1,
@@ -14852,7 +14823,7 @@ def lawtwinKafkaModelOffsetCommit(
             64,
             symbols,
         )
-        result = _definitions.evaluate_795(
+        result = _definitions.evaluate_794(
             symbols,
             argument_0,
             argument_1,
@@ -14908,7 +14879,7 @@ def lawtwinKafkaModelOffsetFetch(
             64,
             symbols,
         )
-        result = _definitions.evaluate_796(
+        result = _definitions.evaluate_795(
             symbols,
             argument_0,
             argument_1,
@@ -14951,7 +14922,7 @@ def lawtwinKafkaModelOffsetPartitions(
             64,
             symbols,
         )
-        result = _definitions.evaluate_797(symbols, argument_0)
+        result = _definitions.evaluate_796(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -14990,7 +14961,7 @@ def lawtwinKafkaModelPartitionCountOf(
             64,
             symbols,
         )
-        result = _definitions.evaluate_798(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_797(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int32")]),
             result,
@@ -15019,7 +14990,7 @@ def lawtwinKafkaModelPartitionsBelow(
             64,
             symbols,
         )
-        result = _definitions.evaluate_799(symbols, argument_0)
+        result = _definitions.evaluate_798(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int32")]),
             result,
@@ -15068,7 +15039,7 @@ def lawtwinKafkaModelPendingFor(
             64,
             symbols,
         )
-        result = _definitions.evaluate_800(
+        result = _definitions.evaluate_799(
             symbols,
             argument_0,
             argument_1,
@@ -15132,7 +15103,7 @@ def lawtwinKafkaModelProduce(
             64,
             symbols,
         )
-        result = _definitions.evaluate_801(
+        result = _definitions.evaluate_800(
             symbols,
             argument_0,
             argument_1,
@@ -15204,7 +15175,7 @@ def lawtwinKafkaModelProduceTagged(
             64,
             symbols,
         )
-        result = _definitions.evaluate_802(
+        result = _definitions.evaluate_801(
             symbols,
             argument_0,
             argument_1,
@@ -15260,7 +15231,7 @@ def lawtwinKafkaModelPutGroup(
             64,
             symbols,
         )
-        result = _definitions.evaluate_803(
+        result = _definitions.evaluate_802(
             symbols,
             argument_0,
             argument_1,
@@ -15308,7 +15279,7 @@ def lawtwinKafkaModelPutLog(
             64,
             symbols,
         )
-        result = _definitions.evaluate_804(
+        result = _definitions.evaluate_803(
             symbols,
             argument_0,
             argument_1,
@@ -15356,7 +15327,7 @@ def lawtwinKafkaModelPutProducer(
             64,
             symbols,
         )
-        result = _definitions.evaluate_805(
+        result = _definitions.evaluate_804(
             symbols,
             argument_0,
             argument_1,
@@ -15434,7 +15405,7 @@ def lawtwinKafkaModelReadable(
             64,
             symbols,
         )
-        result = _definitions.evaluate_806(
+        result = _definitions.evaluate_805(
             symbols,
             argument_0,
             argument_1,
@@ -15481,7 +15452,7 @@ def lawtwinKafkaModelRebalance(
             64,
             symbols,
         )
-        result = _definitions.evaluate_807(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_806(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::Group"),
             result,
@@ -15548,7 +15519,7 @@ def lawtwinKafkaModelRebalanceGroups(
             64,
             symbols,
         )
-        result = _definitions.evaluate_808(
+        result = _definitions.evaluate_807(
             symbols,
             argument_0,
             argument_1,
@@ -15596,7 +15567,7 @@ def lawtwinKafkaModelRebalanceTopic(
             64,
             symbols,
         )
-        result = _definitions.evaluate_809(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_808(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
             result,
@@ -15639,7 +15610,7 @@ def lawtwinKafkaModelRememberBatch(
             64,
             symbols,
         )
-        result = _definitions.evaluate_810(
+        result = _definitions.evaluate_809(
             symbols,
             argument_0,
             argument_1,
@@ -15686,7 +15657,7 @@ def lawtwinKafkaModelReversePending(
             64,
             symbols,
         )
-        result = _definitions.evaluate_811(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_810(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -15741,7 +15712,7 @@ def lawtwinKafkaModelSubscribedTopics(
             64,
             symbols,
         )
-        result = _definitions.evaluate_812(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_811(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Set",
@@ -15793,7 +15764,7 @@ def lawtwinKafkaModelSubscribersOf(
             64,
             symbols,
         )
-        result = _definitions.evaluate_813(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_812(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Text")]),
             result,
@@ -15829,7 +15800,7 @@ def lawtwinKafkaModelSubscribesTo(
             64,
             symbols,
         )
-        result = _definitions.evaluate_814(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_813(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
@@ -15879,7 +15850,7 @@ def lawtwinKafkaModelSyncGroup(
             64,
             symbols,
         )
-        result = _definitions.evaluate_815(
+        result = _definitions.evaluate_814(
             symbols,
             argument_0,
             argument_1,
@@ -15934,7 +15905,7 @@ def lawtwinKafkaModelTxnHasPartition(
             64,
             symbols,
         )
-        result = _definitions.evaluate_816(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_815(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
@@ -16001,7 +15972,7 @@ def lawtwinKafkaModelTxnOffsetCommit(
             64,
             symbols,
         )
-        result = _definitions.evaluate_817(
+        result = _definitions.evaluate_816(
             symbols,
             argument_0,
             argument_1,
@@ -16057,7 +16028,7 @@ def lawtwinKafkaModelUnionPartitions(
             64,
             symbols,
         )
-        result = _definitions.evaluate_818(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_817(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -16089,7 +16060,7 @@ def lawtwinKafkaModelValidTopicName(
             64,
             symbols,
         )
-        result = _definitions.evaluate_819(symbols, argument_0)
+        result = _definitions.evaluate_818(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
@@ -16132,7 +16103,7 @@ def lawtwinKafkaModelWriteMarker(
             64,
             symbols,
         )
-        result = _definitions.evaluate_820(
+        result = _definitions.evaluate_819(
             symbols,
             argument_0,
             argument_1,
@@ -16190,7 +16161,7 @@ def lawtwinKafkaModelWriteMarkers(
             64,
             symbols,
         )
-        result = _definitions.evaluate_821(
+        result = _definitions.evaluate_820(
             symbols,
             argument_0,
             argument_1,
@@ -16232,7 +16203,7 @@ def lawtwinKafkaMul32(
             64,
             symbols,
         )
-        result = _definitions.evaluate_822(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_821(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
@@ -16260,7 +16231,7 @@ def lawtwinKafkaMurmur2(
             64,
             symbols,
         )
-        result = _definitions.evaluate_823(symbols, argument_0)
+        result = _definitions.evaluate_822(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
@@ -16295,7 +16266,7 @@ def lawtwinKafkaMurmurChunks(
             64,
             symbols,
         )
-        result = _definitions.evaluate_824(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_823(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
@@ -16324,7 +16295,7 @@ def lawtwinKafkaMurmurM(
             64,
             symbols,
         )
-        result = _definitions.evaluate_825(symbols, argument_0)
+        result = _definitions.evaluate_824(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
@@ -16362,7 +16333,7 @@ def lawtwinKafkaOwnedOf(
             64,
             symbols,
         )
-        result = _definitions.evaluate_826(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_825(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int32")]),
             result,
@@ -16413,7 +16384,7 @@ def lawtwinKafkaPartitionOf(
             64,
             symbols,
         )
-        result = _definitions.evaluate_827(
+        result = _definitions.evaluate_826(
             symbols,
             argument_0,
             argument_1,
@@ -16463,7 +16434,7 @@ def lawtwinKafkaPartitionsOfTopic(
             64,
             symbols,
         )
-        result = _definitions.evaluate_828(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_827(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int32")]),
             result,
@@ -16527,7 +16498,7 @@ def lawtwinKafkaPollPartitions(
             64,
             symbols,
         )
-        result = _definitions.evaluate_829(
+        result = _definitions.evaluate_828(
             symbols,
             argument_0,
             argument_1,
@@ -16602,7 +16573,7 @@ def lawtwinKafkaPositionsToCommit(
             64,
             symbols,
         )
-        result = _definitions.evaluate_830(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_829(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -16634,7 +16605,7 @@ def lawtwinKafkaProducerFlush(
             64,
             symbols,
         )
-        result = _definitions.evaluate_831(symbols, argument_0)
+        result = _definitions.evaluate_830(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -16677,7 +16648,7 @@ def lawtwinKafkaProducerIdempotent(
             64,
             symbols,
         )
-        result = _definitions.evaluate_832(symbols, argument_0)
+        result = _definitions.evaluate_831(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -16743,7 +16714,7 @@ def lawtwinKafkaProducerRetry(
             64,
             symbols,
         )
-        result = _definitions.evaluate_833(symbols, argument_0)
+        result = _definitions.evaluate_832(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -16807,7 +16778,7 @@ def lawtwinKafkaProducerSend(
             64,
             symbols,
         )
-        result = _definitions.evaluate_834(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_833(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -16871,7 +16842,7 @@ def lawtwinKafkaReadFrom(
             64,
             symbols,
         )
-        result = _definitions.evaluate_835(
+        result = _definitions.evaluate_834(
             symbols,
             argument_0,
             argument_1,
@@ -16946,7 +16917,7 @@ def lawtwinKafkaReadInOrder(
             64,
             symbols,
         )
-        result = _definitions.evaluate_836(
+        result = _definitions.evaluate_835(
             symbols,
             argument_0,
             argument_1,
@@ -16984,7 +16955,7 @@ def lawtwinKafkaReceivedOffsets(
             64,
             symbols,
         )
-        result = _definitions.evaluate_837(symbols, argument_0)
+        result = _definitions.evaluate_836(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int64")]),
             result,
@@ -17016,7 +16987,7 @@ def lawtwinKafkaReceivedRecords(
             64,
             symbols,
         )
-        result = _definitions.evaluate_838(symbols, argument_0)
+        result = _definitions.evaluate_837(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -17051,7 +17022,7 @@ def lawtwinKafkaRecordsOf(
             64,
             symbols,
         )
-        result = _definitions.evaluate_839(symbols, argument_0)
+        result = _definitions.evaluate_838(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -17109,7 +17080,7 @@ def lawtwinKafkaResumesAtCommitted(
             64,
             symbols,
         )
-        result = _definitions.evaluate_840(
+        result = _definitions.evaluate_839(
             symbols,
             argument_0,
             argument_1,
@@ -17163,7 +17134,7 @@ def lawtwinKafkaSamePartition(
             64,
             symbols,
         )
-        result = _definitions.evaluate_841(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_840(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
@@ -17208,7 +17179,7 @@ def lawtwinKafkaSequenceFor(
             64,
             symbols,
         )
-        result = _definitions.evaluate_842(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_841(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
@@ -17240,7 +17211,7 @@ def lawtwinKafkaSmallBatch(
             64,
             symbols,
         )
-        result = _definitions.evaluate_843(symbols, argument_0)
+        result = _definitions.evaluate_842(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
@@ -17291,7 +17262,7 @@ def lawtwinKafkaStableBelowHigh(
             64,
             symbols,
         )
-        result = _definitions.evaluate_844(
+        result = _definitions.evaluate_843(
             symbols,
             argument_0,
             argument_1,
@@ -17339,7 +17310,7 @@ def lawtwinKafkaTagFor(
             64,
             symbols,
         )
-        result = _definitions.evaluate_845(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_844(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
@@ -17377,7 +17348,7 @@ def lawtwinKafkaTagOf(
             64,
             symbols,
         )
-        result = _definitions.evaluate_846(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_845(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::ProducerTag"),
             result,
@@ -17405,7 +17376,7 @@ def lawtwinKafkaToPositive(
             64,
             symbols,
         )
-        result = _definitions.evaluate_847(symbols, argument_0)
+        result = _definitions.evaluate_846(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
@@ -17463,7 +17434,7 @@ def lawtwinKafkaTransactionThenRead(
             64,
             symbols,
         )
-        result = _definitions.evaluate_848(
+        result = _definitions.evaluate_847(
             symbols,
             argument_0,
             argument_1,
@@ -17524,7 +17495,7 @@ def lawtwinKafkaTransactionalOffsets(
             64,
             symbols,
         )
-        result = _definitions.evaluate_849(
+        result = _definitions.evaluate_848(
             symbols,
             argument_0,
             argument_1,
@@ -17567,7 +17538,7 @@ def lawtwinKafkaTransactionsAbort(
             64,
             symbols,
         )
-        result = _definitions.evaluate_850(symbols, argument_0)
+        result = _definitions.evaluate_849(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -17628,7 +17599,7 @@ def lawtwinKafkaTransactionsAdd(
             64,
             symbols,
         )
-        result = _definitions.evaluate_851(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_850(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -17674,7 +17645,7 @@ def lawtwinKafkaTransactionsBegin(
             64,
             symbols,
         )
-        result = _definitions.evaluate_852(symbols, argument_0)
+        result = _definitions.evaluate_851(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -17725,7 +17696,7 @@ def lawtwinKafkaTransactionsCommit(
             64,
             symbols,
         )
-        result = _definitions.evaluate_853(symbols, argument_0)
+        result = _definitions.evaluate_852(symbols, argument_0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -17783,7 +17754,7 @@ def lawtwinKafkaTransactionsEnd(
             64,
             symbols,
         )
-        result = _definitions.evaluate_854(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_853(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -17841,7 +17812,7 @@ def lawtwinKafkaTransactionsInit(
             64,
             symbols,
         )
-        result = _definitions.evaluate_855(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_854(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -17924,7 +17895,7 @@ def lawtwinKafkaTransactionsOffsets(
             64,
             symbols,
         )
-        result = _definitions.evaluate_856(
+        result = _definitions.evaluate_855(
             symbols,
             argument_0,
             argument_1,
@@ -17991,7 +17962,7 @@ def lawtwinKafkaTransactionsSend(
             64,
             symbols,
         )
-        result = _definitions.evaluate_857(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_856(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -18048,7 +18019,7 @@ def lawtwinKafkaUncommittedFrom(
             64,
             symbols,
         )
-        result = _definitions.evaluate_858(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_857(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -18087,7 +18058,7 @@ def lawtwinKafkaViewOf(
             64,
             symbols,
         )
-        result = _definitions.evaluate_859(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_858(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -18156,7 +18127,7 @@ def lawtwinKafkaWithAssignment(
             64,
             symbols,
         )
-        result = _definitions.evaluate_860(
+        result = _definitions.evaluate_859(
             symbols,
             argument_0,
             argument_1,
@@ -18207,7 +18178,7 @@ def lawtwinKafkaWithPosition(
             64,
             symbols,
         )
-        result = _definitions.evaluate_861(
+        result = _definitions.evaluate_860(
             symbols,
             argument_0,
             argument_1,
@@ -18260,7 +18231,7 @@ def lawtwinKafkaWriteAborted(
             64,
             symbols,
         )
-        result = _definitions.evaluate_862(
+        result = _definitions.evaluate_861(
             symbols,
             argument_0,
             argument_1,
@@ -18301,7 +18272,7 @@ def lawtwinKafkaXor32(
             64,
             symbols,
         )
-        result = _definitions.evaluate_863(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_862(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
@@ -18343,7 +18314,7 @@ def lawtwinKafkaXorBits(
             64,
             symbols,
         )
-        result = _definitions.evaluate_864(
+        result = _definitions.evaluate_863(
             symbols,
             argument_0,
             argument_1,
@@ -18383,7 +18354,7 @@ def murmurPartitionerChoosePartition(
             64,
             symbols,
         )
-        result = _definitions.evaluate_865(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_864(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
@@ -18397,5 +18368,34 @@ def murmurPartitionerChoosePartition(
     ) as error:
         raise _builtins.ValueError(
             "contracttest.kafka::murmurPartitionerChoosePartition: "
+            + _builtins.str(error),
+        ) from error
+
+
+def suiteNamesThePackage(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    value_0: ls.Absence,
+) -> ls.Absence:
+    try:
+        argument_0 = _lawspec_schema.from_native(
+            _schema.Named("Unit"),
+            value_0,
+            64,
+            symbols,
+        )
+        result = _definitions.evaluate_865(symbols, argument_0)
+        return _lawspec_schema.to_native(
+            _schema.Named("Unit"),
+            result,
+            64,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::suiteNamesThePackage: "
             + _builtins.str(error),
         ) from error

@@ -25,7 +25,11 @@ pub struct Violation {
 }
 
 fn v(law: &str, detail: String, seq: Option<u64>) -> Violation {
-    Violation { law: law.into(), detail, seq }
+    Violation {
+        law: law.into(),
+        detail,
+        seq,
+    }
 }
 
 /// Checks a topic name as the contract does.
@@ -33,7 +37,9 @@ pub fn valid_topic_name(name: &str) -> bool {
     (1..=249).contains(&name.len())
         && name != "."
         && name != ".."
-        && name.chars().all(|c| c.is_ascii_alphanumeric() || c == '.' || c == '_' || c == '-')
+        && name
+            .chars()
+            .all(|c| c.is_ascii_alphanumeric() || c == '.' || c == '_' || c == '-')
 }
 
 /// The invariants of a state of the model, each named by its law.
@@ -41,18 +47,32 @@ pub fn check_state(b: &data::BrokerState) -> Vec<Violation> {
     let mut out = vec![];
     for (name, n) in &b.topics {
         if !valid_topic_name(name) {
-            out.push(v("an invalid topic name is refused", format!("the topic {name:?} exists"), None));
+            out.push(v(
+                "an invalid topic name is refused",
+                format!("the topic {name:?} exists"),
+                None,
+            ));
         }
         if !(1..=1024).contains(n) {
-            out.push(v("a new topic has the partitions asked for", format!("{name} has {n} partitions"), None));
+            out.push(v(
+                "a new topic has the partitions asked for",
+                format!("{name} has {n} partitions"),
+                None,
+            ));
         }
     }
     for (tp, log) in &b.logs {
-        let known = b.topics.get(&tp.topic).is_some_and(|n| tp.partition >= 0 && tp.partition < *n);
+        let known = b
+            .topics
+            .get(&tp.topic)
+            .is_some_and(|n| tp.partition >= 0 && tp.partition < *n);
         if !known {
             out.push(v(
                 "a send to a partition the topic lacks is refused",
-                format!("{}-{} has a log but the topic has no such partition", tp.topic, tp.partition),
+                format!(
+                    "{}-{} has a log but the topic has no such partition",
+                    tp.topic, tp.partition
+                ),
                 None,
             ));
         }
@@ -60,45 +80,72 @@ pub fn check_state(b: &data::BrokerState) -> Vec<Violation> {
         let mut expected = log.logEndOffset;
         for e in &log.entries {
             let o = match e {
-                data::LogEntry::DataEntry { entryOffset, .. } => *entryOffset,
-                data::LogEntry::ControlEntry { markerOffset, .. } => *markerOffset,
+                data::LogEntry::DataEntry { value } => value.entryOffset,
+                data::LogEntry::ControlEntry { value } => value.markerOffset,
             };
             expected -= 1;
             if o != expected {
                 out.push(v(
                     "offsets in a partition are dense and increasing",
-                    format!("{}-{} has an entry at {o} where {expected} belongs", tp.topic, tp.partition),
+                    format!(
+                        "{}-{} has an entry at {o} where {expected} belongs",
+                        tp.topic, tp.partition
+                    ),
                     None,
                 ));
                 break;
             }
         }
-        if expected != 0 && out.iter().all(|x| x.law != "offsets in a partition are dense and increasing") {
+        if expected != 0
+            && out
+                .iter()
+                .all(|x| x.law != "offsets in a partition are dense and increasing")
+        {
             out.push(v(
                 "offsets in a partition are dense and increasing",
-                format!("{}-{} has {} entries below a log end of {}", tp.topic, tp.partition, log.entries.len(), log.logEndOffset),
+                format!(
+                    "{}-{} has {} entries below a log end of {}",
+                    tp.topic,
+                    tp.partition,
+                    log.entries.len(),
+                    log.logEndOffset
+                ),
                 None,
             ));
         }
-        let lso = log.openTxns.values().copied().fold(log.logEndOffset, i64::min);
+        let lso = log
+            .openTxns
+            .values()
+            .copied()
+            .fold(log.logEndOffset, i64::min);
         if lso > log.logEndOffset || log.openTxns.values().any(|f| *f > log.logEndOffset) {
             out.push(v(
                 "the stable offset never passes the high watermark",
-                format!("{}-{}: stable offset {lso}, high watermark {}", tp.topic, tp.partition, log.logEndOffset),
+                format!(
+                    "{}-{}: stable offset {lso}, high watermark {}",
+                    tp.topic, tp.partition, log.logEndOffset
+                ),
                 None,
             ));
         }
     }
     for (pid, p) in &b.producers {
         if p.epoch < 0 {
-            out.push(v("a new epoch fences the older producer", format!("producer {pid} has epoch {}", p.epoch), None));
+            out.push(v(
+                "a new epoch fences the older producer",
+                format!("producer {pid} has epoch {}", p.epoch),
+                None,
+            ));
         }
     }
     for (g, group) in &b.groups {
         let mut owners: BTreeMap<(String, i32), Vec<&str>> = BTreeMap::new();
         for (m, tps) in &group.assignment {
             for tp in tps {
-                owners.entry((tp.topic.clone(), tp.partition)).or_default().push(m);
+                owners
+                    .entry((tp.topic.clone(), tp.partition))
+                    .or_default()
+                    .push(m);
             }
         }
         let topics: BTreeSet<&String> = group.subscriptions.values().flatten().collect();
@@ -159,7 +206,10 @@ pub fn check_history(entries: &[Entry]) -> Vec<Violation> {
             let log = logs.entry(tp.clone()).or_default();
             if !commit {
                 if let Some(first) = p.first.get(&tp) {
-                    aborted.entry(tp.clone()).or_default().push((pid, *first, log.end));
+                    aborted
+                        .entry(tp.clone())
+                        .or_default()
+                        .push((pid, *first, log.end));
                 }
             }
             log.end += 1;
@@ -198,12 +248,23 @@ pub fn check_history(entries: &[Entry]) -> Vec<Violation> {
         };
         match (op, ok) {
             (Op::ProduceRequest { tp, tag, records }, Some(Outcome::Number(base))) => {
-                let key = tag.as_ref().map(|t| (t.producer_id, t.producer_epoch, t.base_sequence, records.len(), tp.clone()));
+                let key = tag.as_ref().map(|t| {
+                    (
+                        t.producer_id,
+                        t.producer_epoch,
+                        t.base_sequence,
+                        records.len(),
+                        tp.clone(),
+                    )
+                });
                 if let Some(first) = key.as_ref().and_then(|k| batches.get(k)) {
                     if first != base {
                         out.push(v(
                             "an idempotent retry is written once",
-                            format!("a retry to {}-{} got offset {base}; the first write got {first}", tp.topic, tp.partition),
+                            format!(
+                                "a retry to {}-{} got offset {base}; the first write got {first}",
+                                tp.topic, tp.partition
+                            ),
                             seq,
                         ));
                     }
@@ -213,14 +274,20 @@ pub fn check_history(entries: &[Entry]) -> Vec<Violation> {
                 if *base != log.end {
                     out.push(v(
                         "offsets in a partition are dense and increasing",
-                        format!("a batch to {}-{} got offset {base}; the log ended at {}", tp.topic, tp.partition, log.end),
+                        format!(
+                            "a batch to {}-{} got offset {base}; the log ended at {}",
+                            tp.topic, tp.partition, log.end
+                        ),
                         seq,
                     ));
                 }
                 let writer = tag.as_ref().map(|t| t.producer_id).unwrap_or(-1);
-                let transactional = producers.get(&writer).is_some_and(|p| p.transactional_id.is_some());
+                let transactional = producers
+                    .get(&writer)
+                    .is_some_and(|p| p.transactional_id.is_some());
                 for (i, r) in records.iter().enumerate() {
-                    log.records.insert(base + i as i64, (r.clone(), writer, transactional));
+                    log.records
+                        .insert(base + i as i64, (r.clone(), writer, transactional));
                 }
                 log.end = base + records.len() as i64;
                 if let Some(k) = key {
@@ -235,11 +302,22 @@ pub fn check_history(entries: &[Entry]) -> Vec<Violation> {
             (Op::ProduceRequest { tag: Some(t), .. }, None) => {
                 let _ = t;
             }
-            (Op::FetchRequest { tp, offset, isolation, .. }, Some(Outcome::Fetch(f))) => {
+            (
+                Op::FetchRequest {
+                    tp,
+                    offset,
+                    isolation,
+                    ..
+                },
+                Some(Outcome::Fetch(f)),
+            ) => {
                 if f.last_stable_offset > f.high_watermark {
                     out.push(v(
                         "the stable offset never passes the high watermark",
-                        format!("{}-{}: stable offset {}, high watermark {}", tp.topic, tp.partition, f.last_stable_offset, f.high_watermark),
+                        format!(
+                            "{}-{}: stable offset {}, high watermark {}",
+                            tp.topic, tp.partition, f.last_stable_offset, f.high_watermark
+                        ),
                         seq,
                     ));
                 }
@@ -248,7 +326,10 @@ pub fn check_history(entries: &[Entry]) -> Vec<Violation> {
                     if r.offset <= last {
                         out.push(v(
                             "a batch reads back whole and in order",
-                            format!("a fetch from {}-{} gave offset {} after {last}", tp.topic, tp.partition, r.offset),
+                            format!(
+                                "a fetch from {}-{} gave offset {} after {last}",
+                                tp.topic, tp.partition, r.offset
+                            ),
                             seq,
                         ));
                     }
@@ -258,15 +339,22 @@ pub fn check_history(entries: &[Entry]) -> Vec<Violation> {
                         if written != &r.record {
                             out.push(v(
                                 "a batch reads back whole and in order",
-                                format!("{}-{} at {} reads back other than written", tp.topic, tp.partition, r.offset),
+                                format!(
+                                    "{}-{} at {} reads back other than written",
+                                    tp.topic, tp.partition, r.offset
+                                ),
                                 seq,
                             ));
                         }
                         if *isolation == Isolation::ReadCommitted && *transactional {
-                            let in_aborted = aborted
-                                .get(tp)
-                                .is_some_and(|a| a.iter().any(|(w, lo, hi)| w == writer && r.offset >= *lo && r.offset <= *hi));
-                            let open = producers.get(writer).is_some_and(|p| p.first.get(tp).is_some_and(|first| r.offset >= *first));
+                            let in_aborted = aborted.get(tp).is_some_and(|a| {
+                                a.iter().any(|(w, lo, hi)| {
+                                    w == writer && r.offset >= *lo && r.offset <= *hi
+                                })
+                            });
+                            let open = producers.get(writer).is_some_and(|p| {
+                                p.first.get(tp).is_some_and(|first| r.offset >= *first)
+                            });
                             if in_aborted || open {
                                 out.push(v(
                                     "read-committed fetches never see open or aborted transactions",
@@ -284,14 +372,30 @@ pub fn check_history(entries: &[Entry]) -> Vec<Violation> {
                     }
                 }
             }
-            (Op::InitProducerIdRequest { transactional_id }, Some(Outcome::Producer { producer_id, producer_epoch })) => {
+            (
+                Op::InitProducerIdRequest { transactional_id },
+                Some(Outcome::Producer {
+                    producer_id,
+                    producer_epoch,
+                }),
+            ) => {
                 if let Some(id) = transactional_id {
                     if let Some(old) = by_txid.get(id).copied() {
                         if let Some(mut p) = producers.remove(&old) {
                             if p.open {
-                                end_txn(old, false, &mut p, &mut logs, &mut aborted, &mut committed);
+                                end_txn(
+                                    old,
+                                    false,
+                                    &mut p,
+                                    &mut logs,
+                                    &mut aborted,
+                                    &mut committed,
+                                );
                             }
-                            if old == *producer_id && *producer_epoch <= p.epoch && p.epoch != i16::MAX {
+                            if old == *producer_id
+                                && *producer_epoch <= p.epoch
+                                && p.epoch != i16::MAX
+                            {
                                 out.push(v(
                                     "a new epoch fences the older producer",
                                     format!("{id} was initialised again at epoch {producer_epoch}, not above {}", p.epoch),
@@ -304,49 +408,128 @@ pub fn check_history(entries: &[Entry]) -> Vec<Violation> {
                 }
                 producers.insert(
                     *producer_id,
-                    Producer { transactional_id: transactional_id.clone(), epoch: *producer_epoch, ..Default::default() },
+                    Producer {
+                        transactional_id: transactional_id.clone(),
+                        epoch: *producer_epoch,
+                        ..Default::default()
+                    },
                 );
             }
-            (Op::AddPartitionsToTxnRequest { producer_id, producer_epoch, partitions, .. }, Some(_)) => {
+            (
+                Op::AddPartitionsToTxnRequest {
+                    producer_id,
+                    producer_epoch,
+                    partitions,
+                    ..
+                },
+                Some(_),
+            ) => {
                 if let Some(p) = producers.get_mut(producer_id) {
                     if *producer_epoch < p.epoch {
-                        out.push(v("a new epoch fences the older producer", format!("epoch {producer_epoch} added partitions after epoch {}", p.epoch), seq));
+                        out.push(v(
+                            "a new epoch fences the older producer",
+                            format!(
+                                "epoch {producer_epoch} added partitions after epoch {}",
+                                p.epoch
+                            ),
+                            seq,
+                        ));
                     }
                     p.partitions.extend(partitions.iter().cloned());
                     p.open = true;
                 }
             }
-            (Op::TxnOffsetCommitRequest { producer_id, producer_epoch, group, offsets, .. }, Some(_)) => {
+            (
+                Op::TxnOffsetCommitRequest {
+                    producer_id,
+                    producer_epoch,
+                    group,
+                    offsets,
+                    ..
+                },
+                Some(_),
+            ) => {
                 if let Some(p) = producers.get_mut(producer_id) {
                     if *producer_epoch < p.epoch {
-                        out.push(v("a new epoch fences the older producer", format!("epoch {producer_epoch} sent offsets after epoch {}", p.epoch), seq));
+                        out.push(v(
+                            "a new epoch fences the older producer",
+                            format!(
+                                "epoch {producer_epoch} sent offsets after epoch {}",
+                                p.epoch
+                            ),
+                            seq,
+                        ));
                     }
                     for o in offsets {
-                        p.offsets.push((group.clone(), Tp { topic: o.topic.clone(), partition: o.partition }, o.offset));
+                        p.offsets.push((
+                            group.clone(),
+                            Tp {
+                                topic: o.topic.clone(),
+                                partition: o.partition,
+                            },
+                            o.offset,
+                        ));
                     }
                     p.open = true;
                 }
             }
-            (Op::EndTxnRequest { producer_id, producer_epoch, commit, .. }, Some(_)) => {
+            (
+                Op::EndTxnRequest {
+                    producer_id,
+                    producer_epoch,
+                    commit,
+                    ..
+                },
+                Some(_),
+            ) => {
                 if let Some(mut p) = producers.remove(producer_id) {
                     if *producer_epoch < p.epoch {
-                        out.push(v("a new epoch fences the older producer", format!("epoch {producer_epoch} ended a transaction after epoch {}", p.epoch), seq));
+                        out.push(v(
+                            "a new epoch fences the older producer",
+                            format!(
+                                "epoch {producer_epoch} ended a transaction after epoch {}",
+                                p.epoch
+                            ),
+                            seq,
+                        ));
                     }
                     if !p.open {
-                        out.push(v("a transaction must begin before it ends", format!("producer {producer_id} ended no transaction"), seq));
+                        out.push(v(
+                            "a transaction must begin before it ends",
+                            format!("producer {producer_id} ended no transaction"),
+                            seq,
+                        ));
                     }
-                    end_txn(*producer_id, *commit, &mut p, &mut logs, &mut aborted, &mut committed);
+                    end_txn(
+                        *producer_id,
+                        *commit,
+                        &mut p,
+                        &mut logs,
+                        &mut aborted,
+                        &mut committed,
+                    );
                     producers.insert(*producer_id, p);
                 }
             }
             (Op::JoinGroupRequest { group, .. }, Some(Outcome::Number(g))) => {
                 let known = generations.entry(group.clone()).or_insert(*g as i32);
                 if (*g as i32) < *known {
-                    out.push(v("a member of an older generation cannot commit", format!("group {group} went back to generation {g}"), seq));
+                    out.push(v(
+                        "a member of an older generation cannot commit",
+                        format!("group {group} went back to generation {g}"),
+                        seq,
+                    ));
                 }
                 *known = (*known).max(*g as i32);
             }
-            (Op::SyncGroupRequest { group, member, generation }, Some(Outcome::Partitions(tps))) => {
+            (
+                Op::SyncGroupRequest {
+                    group,
+                    member,
+                    generation,
+                },
+                Some(Outcome::Partitions(tps)),
+            ) => {
                 for tp in tps {
                     let key = (group.clone(), *generation, tp.clone());
                     match owners.get(&key) {
@@ -362,13 +545,35 @@ pub fn check_history(entries: &[Entry]) -> Vec<Violation> {
                 }
                 stale(&generations, group, *generation, seq, &mut out);
             }
-            (Op::HeartbeatRequest { group, generation, .. }, Some(_)) => stale(&generations, group, *generation, seq, &mut out),
-            (Op::OffsetCommitRequest { group, generation, offsets, member }, Some(_)) => {
+            (
+                Op::HeartbeatRequest {
+                    group, generation, ..
+                },
+                Some(_),
+            ) => stale(&generations, group, *generation, seq, &mut out),
+            (
+                Op::OffsetCommitRequest {
+                    group,
+                    generation,
+                    offsets,
+                    member,
+                },
+                Some(_),
+            ) => {
                 if !(member.is_empty() && *generation == -1) {
                     stale(&generations, group, *generation, seq, &mut out);
                 }
                 for o in offsets {
-                    committed.insert((group.clone(), Tp { topic: o.topic.clone(), partition: o.partition }), o.offset);
+                    committed.insert(
+                        (
+                            group.clone(),
+                            Tp {
+                                topic: o.topic.clone(),
+                                partition: o.partition,
+                            },
+                        ),
+                        o.offset,
+                    );
                 }
             }
             (Op::OffsetFetchRequest { group, tp }, Some(Outcome::Maybe(got))) => {
@@ -376,7 +581,10 @@ pub fn check_history(entries: &[Entry]) -> Vec<Violation> {
                     if got != &Some(*want) {
                         out.push(v(
                             "a committed offset can be fetched",
-                            format!("group {group} committed {want} for {}-{} and fetched {got:?}", tp.topic, tp.partition),
+                            format!(
+                                "group {group} committed {want} for {}-{} and fetched {got:?}",
+                                tp.topic, tp.partition
+                            ),
                             seq,
                         ));
                     }
@@ -388,7 +596,13 @@ pub fn check_history(entries: &[Entry]) -> Vec<Violation> {
     out
 }
 
-fn stale(generations: &BTreeMap<String, i32>, group: &str, generation: i32, seq: Option<u64>, out: &mut Vec<Violation>) {
+fn stale(
+    generations: &BTreeMap<String, i32>,
+    group: &str,
+    generation: i32,
+    seq: Option<u64>,
+    out: &mut Vec<Violation>,
+) {
     if let Some(known) = generations.get(group) {
         if generation < *known {
             out.push(v(

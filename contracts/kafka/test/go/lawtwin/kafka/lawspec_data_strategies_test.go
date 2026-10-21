@@ -261,7 +261,7 @@ func lsBuildDataStrategy(schema *lawSpecSchema, reference lawSpecTypeRef, bits, 
 	}
 	schema.check(reference, 0)
 	construct := func(t lawSpecTypeRef, tag string, values []LawSpecValue, bits int) LawSpecValue {
-		if checked != nil {
+		if checked != nil || t.name == "lawspec.collections::type::EqSet" {
 			return LawSpecValue{t.key(), lawSpecData{tag, values}}
 		}
 		return schema.construct(t, tag, values, bits)
@@ -405,7 +405,9 @@ func lsBuildDataStrategy(schema *lawSpecSchema, reference lawSpecTypeRef, bits, 
 				}
 			}
 			result = rapid.OneOf(alternatives...)
-			if key, canonical := lsCanonicalKeys[typeRef.name]; canonical {
+			if typeRef.name == "lawspec.collections::type::EqSet" {
+				result = rapid.Map(result, lsCanonicalEqSet)
+			} else if key, canonical := lsCanonicalKeys[typeRef.name]; canonical {
 				result = rapid.Map(result, func(value LawSpecValue) LawSpecValue { return lsCanonical(value, key) })
 			}
 		} else if len(typeRef.arguments) == 0 {
@@ -844,6 +846,26 @@ func lsCanonical(value LawSpecValue, key func(LawSpecValue) LawSpecValue) LawSpe
 	distinct := []LawSpecValue{}
 	for index, item := range items {
 		if index == 0 || lsCompareValues(key(items[index-1]), key(item)) != 0 {
+			distinct = append(distinct, item)
+		}
+	}
+	return LawSpecValue{value.Type, lawSpecData{data.tag, []LawSpecValue{{list.Type, distinct}}}}
+}
+
+// Equality-based sets retain first occurrences without invoking the portable order.
+func lsCanonicalEqSet(value LawSpecValue) LawSpecValue {
+	data := value.Data.(lawSpecData)
+	list := data.fields[0]
+	distinct := []LawSpecValue{}
+	for _, item := range list.Data.([]LawSpecValue) {
+		found := false
+		for _, prior := range distinct {
+			if lsEqual(item, prior) {
+				found = true
+				break
+			}
+		}
+		if !found {
 			distinct = append(distinct, item)
 		}
 	}

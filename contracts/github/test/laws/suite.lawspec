@@ -5,4 +5,6 @@ import lawtwin.github as api
 -- The project that runs the lawtwin.github contract's laws. Its native handlers
 -- answer through the reference model; see the native handlers in rust/src
 -- and python/src.
-definition suiteNamesThePackage (u :: Unit) :: Unit is unitValue end
+function suiteNamesThePackage (u :: Unit) -> Unit is unitValue end function
+
+end unit

@@ -8,6 +8,25 @@ title: Roadmap
 Each release adds dependencies, or deepens how far a twin can be trusted.
 What a release covers is decided in the ledger (ref:DEC-first-release-scope).
 
+## Path to 1.0
+
+The required dependency families are Kafka, HTTP/OpenAPI and Cassandra.
+Ordinary minor releases continue through the cross-project gates in
+LawSpec's authoritative `LAWSPEC-PRE-1.0-REVIEW.md`: bring LawTwin current
+on 0.26; CALM 1.2 architecture and real/twin bindings in Ironframe;
+measurement and Cassandra; a core per program target; advanced verification
+and demonstrations; compatibility, canonical review and release sign-off.
+Application deployment is optional; exported topology, infrastructure and
+settings work with externally deployed applications.
+
+Cassandra performance budgets follow measurements, separating downloads,
+readiness, reset, memory and the full stack. Prefer one fixture container
+with logical replicas, tunable consistency, replication faults and lightweight
+transactions. Distributed behavior must be checked against a real cluster.
+A single-node fallback requires measured justification and explicit reduced
+coverage. No Cassandra fixture or budget is claimed by the 0.26 upgrade.
+Other dependency families listed below remain later work.
+
 ## 0.1: Kafka and HTTP
 
 **Kafka.**
@@ -81,7 +100,6 @@ suite. The order follows how often a dependency blocks a test.
 3. **S3**: buckets, objects, versions, multipart uploads, read-after-write.
 4. **Queues**: SQS (visibility timeouts, dead-letter queues, FIFO groups) and
    RabbitMQ (exchanges, routing, acknowledgements).
-5. **Cassandra**: tunable consistency, lightweight transactions.
 6. **Document and key-value stores**: MongoDB and DynamoDB, with conditional
    writes and streams.
 7. **Search**: Elasticsearch and OpenSearch, with refresh and near-real-time

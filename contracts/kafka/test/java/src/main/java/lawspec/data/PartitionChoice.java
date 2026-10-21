@@ -2,6 +2,6 @@
 package lawspec.data;
 
 public sealed interface PartitionChoice permits PartitionChoice.ToPartition, PartitionChoice.ByKey {
-  record ToPartition(java.lang.Integer chosen) implements PartitionChoice {}
+  record ToPartition(java.lang.Integer value) implements PartitionChoice {}
   record ByKey() implements PartitionChoice {}
 }

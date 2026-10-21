@@ -5,6 +5,34 @@ title: LawSpec gap report
 ---
 # LawSpec gap report
 
+## Current 0.26 recheck — 20 October 2026
+
+The numbered reports below are historical discovery records, including their
+original syntax and measurements. They are not a current unsupported-feature
+list. LawTwin now consumes configuration version 2 and language profile
+`1.0-rc.2`, with explicit verification-layer selection. No migration command or
+compatibility parser has been restored.
+
+| Historical gaps | Current mechanism and checked scope |
+| --- | --- |
+| 1–15, 17–21, 23–27, 33 | Retain their recorded closed status. The current Kafka and HTTP packages compile with mandatory definition validation. The Kafka composition still shares one resource/model and has 79 law runs; its collections helpers now come from the package without the unused local arithmetic workaround. Native acceptance is recorded separately from compilation. |
+| 16 | Kafka uses the generated typed handler with persistent state. This closes the whole-state copy on ordinary requests for this model, not a promise that every LawSpec definition runs typed. Dynamic handlers retain their explicit slower path. Historical throughput numbers below are not new 0.26 measurements. |
+| 22 | The old branch's stale package is historical. The pinned CLI can be staged from npm or a checkout; checkout staging checks the requested package version and records the native compiler fingerprint. Local compiler fixes do not imply a published package. |
+| 28 | Generated Rust handlers expose failure-returning `try_` operations, including the dynamic path exercised by the OpenAPI 3.1 fixture. Declared failures and model defects remain distinct. |
+| 29 | Public native `state` / `set_state` accessors support inspection and restoration. Kafka's typed snapshots share persistent data. HTTP clone/force snapshots use native copies and independent handler instances. |
+| 30 | Kafka calls public operations; the importer emits HTTP adapters from its OpenAPI IR and links ordinary generated Cargo libraries. Both source-scraping build scripts are removed. No private definition names are an interface. |
+| 31 | Both generated dependency libraries compile without generated-code warnings. |
+| 32 | `make contract-generate-check` checks current generated consumers. `make openapi-import-check` compares fresh importer-owned output in a scratch directory without touching maintained or handwritten files. Cold/warm compiler determinism retains its independent LawSpec acceptance gate. |
+
+`make openapi-compile-check` compiles four fresh 3.0/3.1 imports and their
+native Rust adapters, covering records, singleton enums, unions, maps and
+constraints. Core protocol conformance, fault/reset histories, replay and
+independent real-provider comparisons remain separate gates. Compiler/model
+agreement alone is not provider fidelity. See the [upgrade receipt](../reference/lawspec-026-upgrade.md) for the
+actual executed checks, identities and remaining limits.
+
+## Historical reports
+
 Writing the Kafka contract in LawSpec 0.21.0 (ref:lawspec) showed what the
 language could not state, or could not generate well, for a dependency
 contract of this size. LawSpec branch `lawspec-gaps` closes all but one of

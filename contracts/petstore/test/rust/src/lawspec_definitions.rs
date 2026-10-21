@@ -2628,10 +2628,13 @@ pub mod typed {
 
     /// lawspec.matchers::matchersMatchesRegex
     pub fn matchersMatchesRegex_52d1c22e(t_0: ls::fast::Text, r_1: Regex) -> ls::Result<bool> {
-        Ok(match &*r_1.0 {
-            RegexNode::Regex(field_3) => {
-                let p_2 = field_3.clone();
-                ls::regex_matches(&p_2.clone(), &t_0.clone())?
+        Ok({
+            let it_2 = r_1.clone();
+            match &*it_2.0 {
+                RegexNode::Regex(field_4) => {
+                    let v_lawspecselection0x0_3 = field_4.clone();
+                    ls::regex_matches(&v_lawspecselection0x0_3.clone(), &t_0.clone())?
+                }
             }
         })
     }
@@ -2641,37 +2644,43 @@ pub mod typed {
         k_0: i64,
         es_1: ls::fast::List<Entry<i64, Pet>>,
     ) -> ls::Result<ls::fast::List<Entry<i64, Pet>>> {
-        Ok(match es_1.uncons() {
-            None => {
-                es_1.clone()
-            }
-            Some((field_4, field_5)) => {
-                let e_2 = field_4.clone();
-                let t_3 = field_5.clone();
-                match &*e_2.0 {
-                    EntryNode::Entry(field_7, _) => {
-                        let key_6 = field_7.clone();
-                        {
-                            let matched_8 = match ls::fast::POrd::pcmp(&k_0, &key_6) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_8 {
-                                Ordering_2::Less => {
-                                    es_1.clone()
-                                }
-                                Ordering_2::Equal => {
-                                    t_3.clone()
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_2.clone(),
-                                        lawspecCollectionsKeyValDeleteItems_8ede0895(
-                                            k_0,
-                                            t_3.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_2 = es_1.clone();
+            match it_2.uncons() {
+                None => {
+                    es_1.clone()
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    {
+                        let it_7 = v_lawspecselection0x0_3.clone();
+                        match &*it_7.0 {
+                            EntryNode::Entry(field_9, _) => {
+                                let v_match__lawspecselection0x0_0_8 = field_9.clone();
+                                {
+                                    let it_10 = match ls::fast::POrd::pcmp(&k_0, &v_match__lawspecselection0x0_0_8) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_10 {
+                                        Ordering_2::Less => {
+                                            es_1.clone()
+                                        }
+                                        Ordering_2::Equal => {
+                                            v_lawspecselection0x1_4.clone()
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_3.clone(),
+                                                lawspecCollectionsKeyValDeleteItems_8ede0895(
+                                                    k_0,
+                                                    v_lawspecselection0x1_4.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -2686,37 +2695,43 @@ pub mod typed {
         k_0: ls::fast::Text,
         es_1: ls::fast::List<Entry<ls::fast::Text, User>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, User>>> {
-        Ok(match es_1.uncons() {
-            None => {
-                es_1.clone()
-            }
-            Some((field_4, field_5)) => {
-                let e_2 = field_4.clone();
-                let t_3 = field_5.clone();
-                match &*e_2.0 {
-                    EntryNode::Entry(field_7, _) => {
-                        let key_6 = field_7.clone();
-                        {
-                            let matched_8 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_6.clone()) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_8 {
-                                Ordering_2::Less => {
-                                    es_1.clone()
-                                }
-                                Ordering_2::Equal => {
-                                    t_3.clone()
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_2.clone(),
-                                        lawspecCollectionsKeyValDeleteItems_306e4a61(
-                                            k_0.clone(),
-                                            t_3.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_2 = es_1.clone();
+            match it_2.uncons() {
+                None => {
+                    es_1.clone()
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    {
+                        let it_7 = v_lawspecselection0x0_3.clone();
+                        match &*it_7.0 {
+                            EntryNode::Entry(field_9, _) => {
+                                let v_match__lawspecselection0x0_0_8 = field_9.clone();
+                                {
+                                    let it_10 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_8.clone()) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_10 {
+                                        Ordering_2::Less => {
+                                            es_1.clone()
+                                        }
+                                        Ordering_2::Equal => {
+                                            v_lawspecselection0x1_4.clone()
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_3.clone(),
+                                                lawspecCollectionsKeyValDeleteItems_306e4a61(
+                                                    k_0.clone(),
+                                                    v_lawspecselection0x1_4.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -2731,37 +2746,43 @@ pub mod typed {
         k_0: i64,
         es_1: ls::fast::List<Entry<i64, Order>>,
     ) -> ls::Result<ls::fast::List<Entry<i64, Order>>> {
-        Ok(match es_1.uncons() {
-            None => {
-                es_1.clone()
-            }
-            Some((field_4, field_5)) => {
-                let e_2 = field_4.clone();
-                let t_3 = field_5.clone();
-                match &*e_2.0 {
-                    EntryNode::Entry(field_7, _) => {
-                        let key_6 = field_7.clone();
-                        {
-                            let matched_8 = match ls::fast::POrd::pcmp(&k_0, &key_6) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_8 {
-                                Ordering_2::Less => {
-                                    es_1.clone()
-                                }
-                                Ordering_2::Equal => {
-                                    t_3.clone()
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_2.clone(),
-                                        lawspecCollectionsKeyValDeleteItems_f46df0ad(
-                                            k_0,
-                                            t_3.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_2 = es_1.clone();
+            match it_2.uncons() {
+                None => {
+                    es_1.clone()
+                }
+                Some((field_5, field_6)) => {
+                    let v_lawspecselection0x0_3 = field_5.clone();
+                    let v_lawspecselection0x1_4 = field_6.clone();
+                    {
+                        let it_7 = v_lawspecselection0x0_3.clone();
+                        match &*it_7.0 {
+                            EntryNode::Entry(field_9, _) => {
+                                let v_match__lawspecselection0x0_0_8 = field_9.clone();
+                                {
+                                    let it_10 = match ls::fast::POrd::pcmp(&k_0, &v_match__lawspecselection0x0_0_8) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_10 {
+                                        Ordering_2::Less => {
+                                            es_1.clone()
+                                        }
+                                        Ordering_2::Equal => {
+                                            v_lawspecselection0x1_4.clone()
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_3.clone(),
+                                                lawspecCollectionsKeyValDeleteItems_f46df0ad(
+                                                    k_0,
+                                                    v_lawspecselection0x1_4.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -2801,27 +2822,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<i64, Order>>,
     ) -> ls::Result<ls::fast::List<Entry<i64, Order>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_102b61ab(
-                                    key_6,
-                                    value_7.clone(),
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_102b61ab(
+                                            v_match__lawspecselection0x0_0_8,
+                                            v_match__lawspecselection0x1_0_9.clone(),
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -2836,27 +2863,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<ls::fast::Text, User>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, User>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_19d16932(
-                                    key_6.clone(),
-                                    value_7.clone(),
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_19d16932(
+                                            v_match__lawspecselection0x0_0_8.clone(),
+                                            v_match__lawspecselection0x1_0_9.clone(),
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -2871,27 +2904,33 @@ pub mod typed {
         mut acc_1: ls::fast::List<Entry<i64, Pet>>,
     ) -> ls::Result<ls::fast::List<Entry<i64, Pet>>> {
         loop {
-            return Ok(match es_0.uncons() {
-                None => {
-                    acc_1.clone()
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let next_10 = t_3.clone();
-                                let next_11 = lawspecCollectionsKeyValPutItems_b231a093(
-                                    key_6,
-                                    value_7.clone(),
-                                    acc_1.clone(),
-                                )?;
-                                es_0 = next_10;
-                                acc_1 = next_11;
-                                continue
+            return Ok({
+                let it_2 = es_0.clone();
+                match it_2.uncons() {
+                    None => {
+                        acc_1.clone()
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let next_12 = v_lawspecselection0x1_4.clone();
+                                        let next_13 = lawspecCollectionsKeyValPutItems_b231a093(
+                                            v_match__lawspecselection0x0_0_8,
+                                            v_match__lawspecselection0x1_0_9.clone(),
+                                            acc_1.clone(),
+                                        )?;
+                                        es_0 = next_12;
+                                        acc_1 = next_13;
+                                        continue
+                                    }
+                                }
                             }
                         }
                     }
@@ -2906,35 +2945,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<ls::fast::Text, User>>,
     ) -> ls::Result<Option<User>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_6.clone()) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7.clone())
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_8.clone()) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9.clone())
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -2952,35 +2997,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<i64, Order>>,
     ) -> ls::Result<Option<Order>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0, &key_6) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7.clone())
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0, &v_match__lawspecselection0x0_0_8) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9.clone())
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -2998,35 +3049,41 @@ pub mod typed {
         mut es_1: ls::fast::List<Entry<i64, Pet>>,
     ) -> ls::Result<Option<Pet>> {
         loop {
-            return Ok(match es_1.uncons() {
-                None => {
-                    None
-                }
-                Some((field_4, field_5)) => {
-                    let e_2 = field_4.clone();
-                    let t_3 = field_5.clone();
-                    match &*e_2.0 {
-                        EntryNode::Entry(field_8, field_9) => {
-                            let key_6 = field_8.clone();
-                            let value_7 = field_9.clone();
-                            {
-                                let matched_10 = match ls::fast::POrd::pcmp(&k_0, &key_6) {
-                                    std::cmp::Ordering::Less => Ordering_2::Less,
-                                    std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                    std::cmp::Ordering::Greater => Ordering_2::Greater,
-                                };
-                                match matched_10 {
-                                    Ordering_2::Less => {
-                                        None
-                                    }
-                                    Ordering_2::Equal => {
-                                        Some(value_7.clone())
-                                    }
-                                    Ordering_2::Greater => {
-                                        {
-                                            let next_11 = t_3.clone();
-                                            es_1 = next_11;
-                                            continue
+            return Ok({
+                let it_2 = es_1.clone();
+                match it_2.uncons() {
+                    None => {
+                        None
+                    }
+                    Some((field_5, field_6)) => {
+                        let v_lawspecselection0x0_3 = field_5.clone();
+                        let v_lawspecselection0x1_4 = field_6.clone();
+                        {
+                            let it_7 = v_lawspecselection0x0_3.clone();
+                            match &*it_7.0 {
+                                EntryNode::Entry(field_10, field_11) => {
+                                    let v_match__lawspecselection0x0_0_8 = field_10.clone();
+                                    let v_match__lawspecselection0x1_0_9 = field_11.clone();
+                                    {
+                                        let it_12 = match ls::fast::POrd::pcmp(&k_0, &v_match__lawspecselection0x0_0_8) {
+                                            std::cmp::Ordering::Less => Ordering_2::Less,
+                                            std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                            std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                        };
+                                        match it_12 {
+                                            Ordering_2::Less => {
+                                                None
+                                            }
+                                            Ordering_2::Equal => {
+                                                Some(v_match__lawspecselection0x1_0_9.clone())
+                                            }
+                                            Ordering_2::Greater => {
+                                                {
+                                                    let next_13 = v_lawspecselection0x1_4.clone();
+                                                    es_1 = next_13;
+                                                    continue
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -3089,53 +3146,62 @@ pub mod typed {
         v_1: User,
         es_2: ls::fast::List<Entry<ls::fast::Text, User>>,
     ) -> ls::Result<ls::fast::List<Entry<ls::fast::Text, User>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0.clone(), v_1.clone()))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0.clone(), &key_7.clone()) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_19d16932(
-                                            k_0.clone(),
-                                            v_1.clone(),
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0.clone();
+                            {
+                                let v_lawspecrecordfield1_5 = v_1.clone();
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4.clone(), v_lawspecrecordfield1_5.clone())))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0.clone(), &v_match__lawspecselection0x0_0_11.clone()) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14.clone(), v_lawspecrecordfield1_15.clone())))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0.clone();
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16.clone(), v_lawspecrecordfield1_17.clone())))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_19d16932(
+                                                    k_0.clone(),
+                                                    v_1.clone(),
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -3151,53 +3217,62 @@ pub mod typed {
         v_1: Order,
         es_2: ls::fast::List<Entry<i64, Order>>,
     ) -> ls::Result<ls::fast::List<Entry<i64, Order>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0, v_1.clone()))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0, &key_7) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0,
-                                            v_1.clone(),
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0,
-                                            v_1.clone(),
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_102b61ab(
-                                            k_0,
-                                            v_1.clone(),
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0;
+                            {
+                                let v_lawspecrecordfield1_5 = v_1.clone();
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4, v_lawspecrecordfield1_5.clone())))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0, &v_match__lawspecselection0x0_0_11) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0;
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14, v_lawspecrecordfield1_15.clone())))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0;
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16, v_lawspecrecordfield1_17.clone())))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_102b61ab(
+                                                    k_0,
+                                                    v_1.clone(),
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -3213,53 +3288,62 @@ pub mod typed {
         v_1: Pet,
         es_2: ls::fast::List<Entry<i64, Pet>>,
     ) -> ls::Result<ls::fast::List<Entry<i64, Pet>>> {
-        Ok(match es_2.uncons() {
-            None => {
-                ls::fast::List::cons(
-                    Entry(std::sync::Arc::new(EntryNode::Entry(k_0, v_1.clone()))),
-                    ls::fast::List::nil(),
-                )
-            }
-            Some((field_5, field_6)) => {
-                let e_3 = field_5.clone();
-                let t_4 = field_6.clone();
-                match &*e_3.0 {
-                    EntryNode::Entry(field_8, _) => {
-                        let key_7 = field_8.clone();
-                        {
-                            let matched_9 = match ls::fast::POrd::pcmp(&k_0, &key_7) {
-                                std::cmp::Ordering::Less => Ordering_2::Less,
-                                std::cmp::Ordering::Equal => Ordering_2::Equal,
-                                std::cmp::Ordering::Greater => Ordering_2::Greater,
-                            };
-                            match matched_9 {
-                                Ordering_2::Less => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0,
-                                            v_1.clone(),
-                                        ))),
-                                        es_2.clone(),
-                                    )
-                                }
-                                Ordering_2::Equal => {
-                                    ls::fast::List::cons(
-                                        Entry(std::sync::Arc::new(EntryNode::Entry(
-                                            k_0,
-                                            v_1.clone(),
-                                        ))),
-                                        t_4.clone(),
-                                    )
-                                }
-                                Ordering_2::Greater => {
-                                    ls::fast::List::cons(
-                                        e_3.clone(),
-                                        lawspecCollectionsKeyValPutItems_b231a093(
-                                            k_0,
-                                            v_1.clone(),
-                                            t_4.clone(),
-                                        )?,
-                                    )
+        Ok({
+            let it_3 = es_2.clone();
+            match it_3.uncons() {
+                None => {
+                    ls::fast::List::cons({
+                            let v_lawspecrecordfield0_4 = k_0;
+                            {
+                                let v_lawspecrecordfield1_5 = v_1.clone();
+                                Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_4, v_lawspecrecordfield1_5.clone())))
+                            }
+                        }, ls::fast::List::nil())
+                }
+                Some((field_8, field_9)) => {
+                    let v_lawspecselection0x0_6 = field_8.clone();
+                    let v_lawspecselection0x1_7 = field_9.clone();
+                    {
+                        let it_10 = v_lawspecselection0x0_6.clone();
+                        match &*it_10.0 {
+                            EntryNode::Entry(field_12, _) => {
+                                let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                {
+                                    let it_13 = match ls::fast::POrd::pcmp(&k_0, &v_match__lawspecselection0x0_0_11) {
+                                        std::cmp::Ordering::Less => Ordering_2::Less,
+                                        std::cmp::Ordering::Equal => Ordering_2::Equal,
+                                        std::cmp::Ordering::Greater => Ordering_2::Greater,
+                                    };
+                                    match it_13 {
+                                        Ordering_2::Less => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_14 = k_0;
+                                                    {
+                                                        let v_lawspecrecordfield1_15 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_14, v_lawspecrecordfield1_15.clone())))
+                                                    }
+                                                }, es_2.clone())
+                                        }
+                                        Ordering_2::Equal => {
+                                            ls::fast::List::cons({
+                                                    let v_lawspecrecordfield0_16 = k_0;
+                                                    {
+                                                        let v_lawspecrecordfield1_17 = v_1.clone();
+                                                        Entry(std::sync::Arc::new(EntryNode::Entry(v_lawspecrecordfield0_16, v_lawspecrecordfield1_17.clone())))
+                                                    }
+                                                }, v_lawspecselection0x1_7.clone())
+                                        }
+                                        Ordering_2::Greater => {
+                                            ls::fast::List::cons(
+                                                v_lawspecselection0x0_6.clone(),
+                                                lawspecCollectionsKeyValPutItems_b231a093(
+                                                    k_0,
+                                                    v_1.clone(),
+                                                    v_lawspecselection0x1_7.clone(),
+                                                )?,
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -3398,13 +3482,28 @@ pub mod typed {
 
     /// lawtwin.petstore::lawtwinPetstoreModelEmptyState
     pub fn lawtwinPetstoreModelEmptyState_9f93bc81(u_0: ()) -> ls::Result<State> {
-        Ok(State(std::sync::Arc::new(StateNode::State(
-            ls::fast::Map::new(),
-            1i64,
-            ls::fast::Map::new(),
-            1i64,
-            ls::fast::Map::new(),
-        ))))
+        Ok({
+            let v_lawspecrecordfield0_1 = ls::fast::Map::new();
+            {
+                let v_lawspecrecordfield1_2 = 1i64;
+                {
+                    let v_lawspecrecordfield2_3 = ls::fast::Map::new();
+                    {
+                        let v_lawspecrecordfield3_4 = 1i64;
+                        {
+                            let v_lawspecrecordfield4_5 = ls::fast::Map::new();
+                            State(std::sync::Arc::new(StateNode::State(
+                                v_lawspecrecordfield0_1.clone(),
+                                v_lawspecrecordfield1_2,
+                                v_lawspecrecordfield2_3.clone(),
+                                v_lawspecrecordfield3_4,
+                                v_lawspecrecordfield4_5.clone(),
+                            )))
+                        }
+                    }
+                }
+            }
+        })
     }
 
     /// lawtwin.petstore::lawtwinPetstoreModelModelAddPet
@@ -3414,16 +3513,16 @@ pub mod typed {
     ) -> ls::Result<Pair<Pet, State>> {
         Ok({
             let key_9 = {
-                let matched_4 = match &*body_0.0 {
+                let it_4 = match &*body_0.0 {
                     PetNode::Pet(field_3, _, _, _, _, _) => {
                         let lawspecfieldid_2 = field_3.clone();
                         lawspecfieldid_2.clone()
                     }
                 };
-                match &matched_4 {
+                match &it_4 {
                     Some(field_6) => {
-                        let given_5 = field_6.clone();
-                        given_5
+                        let v_lawspecselection0x0_5 = field_6.clone();
+                        v_lawspecselection0x0_5
                     }
                     None => {
                         match &*current__1.0 {
@@ -3457,13 +3556,13 @@ pub mod typed {
                     }
                 };
                 {
-                    let matched_24 = match &*current__1.0 {
+                    let it_24 = match &*current__1.0 {
                         StateNode::State(field_23, _, _, _, _) => {
                             let lawspecfieldpets_22 = field_23.clone();
                             lawspecfieldpets_22.clone()
                         }
                     }.get(&key_9).cloned();
-                    match &matched_24 {
+                    match &it_24 {
                         Some(_) => {
                             {
                                 ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::UnprocessableEntity));
@@ -3528,75 +3627,78 @@ pub mod typed {
         body_0: Option<User>,
         current__1: State,
     ) -> ls::Result<Pair<User, State>> {
-        Ok(match &body_0 {
-            None => {
-                {
-                    ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::BadRequest));
-                    unreachable!()
+        Ok({
+            let it_2 = body_0.clone();
+            match &it_2 {
+                None => {
+                    {
+                        ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::BadRequest));
+                        unreachable!()
+                    }
                 }
-            }
-            Some(field_3) => {
-                let sent_2 = field_3.clone();
-                {
-                    let matched_6 = match &*sent_2.0 {
-                        UserNode::User(_, field_5, _, _, _, _, _, _) => {
-                            let lawspecfieldusername_4 = field_5.clone();
-                            lawspecfieldusername_4.clone()
-                        }
-                    };
-                    match &matched_6 {
-                        None => {
-                            {
-                                ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::BadRequest));
-                                unreachable!()
+                Some(field_4) => {
+                    let v_lawspecselection0x0_3 = field_4.clone();
+                    {
+                        let it_7 = match &*v_lawspecselection0x0_3.0 {
+                            UserNode::User(_, field_6, _, _, _, _, _, _) => {
+                                let lawspecfieldusername_5 = field_6.clone();
+                                lawspecfieldusername_5.clone()
                             }
-                        }
-                        Some(field_8) => {
-                            let given_7 = field_8.clone();
-                            {
-                                let key_9 = given_7.clone();
+                        };
+                        match &it_7 {
+                            None => {
                                 {
-                                    let stored_25 = {
-                                        let replacement_10 = Some(key_9.clone());
-                                        match &*sent_2.0 {
-                                            UserNode::User(field_18, _, field_19, field_20, field_21, field_22, field_23, field_24) => {
-                                                let lawspecfieldid_11 = field_18.clone();
-                                                let lawspecfieldfirstname_12 = field_19.clone();
-                                                let lawspecfieldlastname_13 = field_20.clone();
-                                                let lawspecfieldemail_14 = field_21.clone();
-                                                let lawspecfieldpassword_15 = field_22.clone();
-                                                let lawspecfieldphone_16 = field_23.clone();
-                                                let lawspecfielduserstatus_17 = field_24.clone();
-                                                User(std::sync::Arc::new(UserNode::User(
-                                                    lawspecfieldid_11.clone(),
-                                                    replacement_10.clone(),
-                                                    lawspecfieldfirstname_12.clone(),
-                                                    lawspecfieldlastname_13.clone(),
-                                                    lawspecfieldemail_14.clone(),
-                                                    lawspecfieldpassword_15.clone(),
-                                                    lawspecfieldphone_16.clone(),
-                                                    lawspecfielduserstatus_17.clone(),
-                                                )))
-                                            }
-                                        }
-                                    };
-                                    Pair(std::sync::Arc::new(PairNode::Pair(stored_25.clone(), {
-                                            let replacement_28 = match &*current__1.0 {
-                                                StateNode::State(_, _, _, _, field_27) => {
-                                                    let lawspecfieldusers_26 = field_27.clone();
-                                                    lawspecfieldusers_26.clone()
-                                                }
-                                            }.insert(key_9.clone(), stored_25.clone());
-                                            match &*current__1.0 {
-                                                StateNode::State(field_33, field_34, field_35, field_36, _) => {
-                                                    let lawspecfieldpets_29 = field_33.clone();
-                                                    let lawspecfieldnextpetkey_30 = field_34.clone();
-                                                    let lawspecfieldorders_31 = field_35.clone();
-                                                    let lawspecfieldnextorderkey_32 = field_36.clone();
-                                                    State(std::sync::Arc::new(StateNode::State(lawspecfieldpets_29.clone(), lawspecfieldnextpetkey_30, lawspecfieldorders_31.clone(), lawspecfieldnextorderkey_32, replacement_28.clone())))
+                                    ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::BadRequest));
+                                    unreachable!()
+                                }
+                            }
+                            Some(field_9) => {
+                                let v_match__lawspecselection0x0_0_8 = field_9.clone();
+                                {
+                                    let key_10 = v_match__lawspecselection0x0_0_8.clone();
+                                    {
+                                        let stored_26 = {
+                                            let replacement_11 = Some(key_10.clone());
+                                            match &*v_lawspecselection0x0_3.0 {
+                                                UserNode::User(field_19, _, field_20, field_21, field_22, field_23, field_24, field_25) => {
+                                                    let lawspecfieldid_12 = field_19.clone();
+                                                    let lawspecfieldfirstname_13 = field_20.clone();
+                                                    let lawspecfieldlastname_14 = field_21.clone();
+                                                    let lawspecfieldemail_15 = field_22.clone();
+                                                    let lawspecfieldpassword_16 = field_23.clone();
+                                                    let lawspecfieldphone_17 = field_24.clone();
+                                                    let lawspecfielduserstatus_18 = field_25.clone();
+                                                    User(std::sync::Arc::new(UserNode::User(
+                                                        lawspecfieldid_12.clone(),
+                                                        replacement_11.clone(),
+                                                        lawspecfieldfirstname_13.clone(),
+                                                        lawspecfieldlastname_14.clone(),
+                                                        lawspecfieldemail_15.clone(),
+                                                        lawspecfieldpassword_16.clone(),
+                                                        lawspecfieldphone_17.clone(),
+                                                        lawspecfielduserstatus_18.clone(),
+                                                    )))
                                                 }
                                             }
-                                        })))
+                                        };
+                                        Pair(std::sync::Arc::new(PairNode::Pair(stored_26.clone(), {
+                                                let replacement_29 = match &*current__1.0 {
+                                                    StateNode::State(_, _, _, _, field_28) => {
+                                                        let lawspecfieldusers_27 = field_28.clone();
+                                                        lawspecfieldusers_27.clone()
+                                                    }
+                                                }.insert(key_10.clone(), stored_26.clone());
+                                                match &*current__1.0 {
+                                                    StateNode::State(field_34, field_35, field_36, field_37, _) => {
+                                                        let lawspecfieldpets_30 = field_34.clone();
+                                                        let lawspecfieldnextpetkey_31 = field_35.clone();
+                                                        let lawspecfieldorders_32 = field_36.clone();
+                                                        let lawspecfieldnextorderkey_33 = field_37.clone();
+                                                        State(std::sync::Arc::new(StateNode::State(lawspecfieldpets_30.clone(), lawspecfieldnextpetkey_31, lawspecfieldorders_32.clone(), lawspecfieldnextorderkey_33, replacement_29.clone())))
+                                                    }
+                                                }
+                                            })))
+                                    }
                                 }
                             }
                         }
@@ -3612,13 +3714,13 @@ pub mod typed {
         current__1: State,
     ) -> ls::Result<Pair<(), State>> {
         Ok({
-            let matched_4 = match &*current__1.0 {
+            let it_4 = match &*current__1.0 {
                 StateNode::State(_, _, field_3, _, _) => {
                     let lawspecfieldorders_2 = field_3.clone();
                     lawspecfieldorders_2.clone()
                 }
             }.get(&orderid_0).cloned();
-            match &matched_4 {
+            match &it_4 {
                 None => {
                     {
                         ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::NotFound));
@@ -3655,13 +3757,13 @@ pub mod typed {
         current__2: State,
     ) -> ls::Result<Pair<(), State>> {
         Ok({
-            let matched_5 = match &*current__2.0 {
+            let it_5 = match &*current__2.0 {
                 StateNode::State(field_4, _, _, _, _) => {
                     let lawspecfieldpets_3 = field_4.clone();
                     lawspecfieldpets_3.clone()
                 }
             }.get(&petid_0).cloned();
-            match &matched_5 {
+            match &it_5 {
                 None => {
                     {
                         ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::NotFound));
@@ -3697,13 +3799,13 @@ pub mod typed {
         current__1: State,
     ) -> ls::Result<Pair<(), State>> {
         Ok({
-            let matched_4 = match &*current__1.0 {
+            let it_4 = match &*current__1.0 {
                 StateNode::State(_, _, _, _, field_3) => {
                     let lawspecfieldusers_2 = field_3.clone();
                     lawspecfieldusers_2.clone()
                 }
             }.get(&username_0.clone()).cloned();
-            match &matched_4 {
+            match &it_4 {
                 None => {
                     {
                         ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::NotFound));
@@ -3739,13 +3841,13 @@ pub mod typed {
         current__1: State,
     ) -> ls::Result<Pair<Order, State>> {
         Ok({
-            let matched_4 = match &*current__1.0 {
+            let it_4 = match &*current__1.0 {
                 StateNode::State(_, _, field_3, _, _) => {
                     let lawspecfieldorders_2 = field_3.clone();
                     lawspecfieldorders_2.clone()
                 }
             }.get(&orderid_0).cloned();
-            match &matched_4 {
+            match &it_4 {
                 None => {
                     {
                         ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::NotFound));
@@ -3753,8 +3855,11 @@ pub mod typed {
                     }
                 }
                 Some(field_6) => {
-                    let found_5 = field_6.clone();
-                    Pair(std::sync::Arc::new(PairNode::Pair(found_5.clone(), current__1.clone())))
+                    let v_lawspecselection0x0_5 = field_6.clone();
+                    Pair(std::sync::Arc::new(PairNode::Pair(
+                        v_lawspecselection0x0_5.clone(),
+                        current__1.clone(),
+                    )))
                 }
             }
         })
@@ -3766,13 +3871,13 @@ pub mod typed {
         current__1: State,
     ) -> ls::Result<Pair<Pet, State>> {
         Ok({
-            let matched_4 = match &*current__1.0 {
+            let it_4 = match &*current__1.0 {
                 StateNode::State(field_3, _, _, _, _) => {
                     let lawspecfieldpets_2 = field_3.clone();
                     lawspecfieldpets_2.clone()
                 }
             }.get(&petid_0).cloned();
-            match &matched_4 {
+            match &it_4 {
                 None => {
                     {
                         ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::NotFound));
@@ -3780,8 +3885,11 @@ pub mod typed {
                     }
                 }
                 Some(field_6) => {
-                    let found_5 = field_6.clone();
-                    Pair(std::sync::Arc::new(PairNode::Pair(found_5.clone(), current__1.clone())))
+                    let v_lawspecselection0x0_5 = field_6.clone();
+                    Pair(std::sync::Arc::new(PairNode::Pair(
+                        v_lawspecselection0x0_5.clone(),
+                        current__1.clone(),
+                    )))
                 }
             }
         })
@@ -3793,13 +3901,13 @@ pub mod typed {
         current__1: State,
     ) -> ls::Result<Pair<User, State>> {
         Ok({
-            let matched_4 = match &*current__1.0 {
+            let it_4 = match &*current__1.0 {
                 StateNode::State(_, _, _, _, field_3) => {
                     let lawspecfieldusers_2 = field_3.clone();
                     lawspecfieldusers_2.clone()
                 }
             }.get(&username_0.clone()).cloned();
-            match &matched_4 {
+            match &it_4 {
                 None => {
                     {
                         ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::NotFound));
@@ -3807,8 +3915,11 @@ pub mod typed {
                     }
                 }
                 Some(field_6) => {
-                    let found_5 = field_6.clone();
-                    Pair(std::sync::Arc::new(PairNode::Pair(found_5.clone(), current__1.clone())))
+                    let v_lawspecselection0x0_5 = field_6.clone();
+                    Pair(std::sync::Arc::new(PairNode::Pair(
+                        v_lawspecselection0x0_5.clone(),
+                        current__1.clone(),
+                    )))
                 }
             }
         })
@@ -3819,13 +3930,16 @@ pub mod typed {
         body_0: Option<Order>,
         current__1: State,
     ) -> ls::Result<Pair<Order, State>> {
-        Ok(if !(match &body_0 {
-            None => {
-                true
-            }
-            Some(field_3) => {
-                let present0_2 = field_3.clone();
-                lawtwinPetstoreModelValidOrder_62eb4720(present0_2.clone())?
+        Ok(if !({
+            let it_2 = body_0.clone();
+            match &it_2 {
+                None => {
+                    true
+                }
+                Some(field_4) => {
+                    let v_lawspecselection0x0_3 = field_4.clone();
+                    lawtwinPetstoreModelValidOrder_62eb4720(v_lawspecselection0x0_3.clone())?
+                }
             }
         }) {
             {
@@ -3833,119 +3947,139 @@ pub mod typed {
                 unreachable!()
             }
         } else {
-            match &body_0 {
-                None => {
-                    {
-                        ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::UnprocessableEntity));
-                        unreachable!()
-                    }
-                }
-                Some(field_5) => {
-                    let sent_4 = field_5.clone();
-                    {
-                        let key_13 = {
-                            let matched_8 = match &*sent_4.0 {
-                                OrderNode::Order(field_7, _, _, _, _, _) => {
-                                    let lawspecfieldid_6 = field_7.clone();
-                                    lawspecfieldid_6.clone()
-                                }
-                            };
-                            match &matched_8 {
-                                Some(field_10) => {
-                                    let given_9 = field_10.clone();
-                                    given_9
-                                }
-                                None => {
-                                    match &*current__1.0 {
-                                        StateNode::State(_, _, _, field_12, _) => {
-                                            let lawspecfieldnextorderkey_11 = field_12.clone();
-                                            lawspecfieldnextorderkey_11
-                                        }
-                                    }
-                                }
-                            }
-                        };
+            {
+                let it_5 = body_0.clone();
+                match &it_5 {
+                    None => {
                         {
-                            let stored_25 = {
-                                let replacement_14 = Some(key_13);
-                                match &*sent_4.0 {
-                                    OrderNode::Order(_, field_20, field_21, field_22, field_23, field_24) => {
-                                        let lawspecfieldpetid_15 = field_20.clone();
-                                        let lawspecfieldquantity_16 = field_21.clone();
-                                        let lawspecfieldshipdate_17 = field_22.clone();
-                                        let lawspecfieldstatus_18 = field_23.clone();
-                                        let lawspecfieldcomplete_19 = field_24.clone();
-                                        Order(std::sync::Arc::new(OrderNode::Order(
-                                            replacement_14.clone(),
-                                            lawspecfieldpetid_15.clone(),
-                                            lawspecfieldquantity_16.clone(),
-                                            lawspecfieldshipdate_17.clone(),
-                                            lawspecfieldstatus_18.clone(),
-                                            lawspecfieldcomplete_19.clone(),
-                                        )))
+                            ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::UnprocessableEntity));
+                            unreachable!()
+                        }
+                    }
+                    Some(field_7) => {
+                        let v_lawspecselection0x0_6 = field_7.clone();
+                        {
+                            let key_15 = {
+                                let it_10 = match &*v_lawspecselection0x0_6.0 {
+                                    OrderNode::Order(field_9, _, _, _, _, _) => {
+                                        let lawspecfieldid_8 = field_9.clone();
+                                        lawspecfieldid_8.clone()
+                                    }
+                                };
+                                match &it_10 {
+                                    Some(field_12) => {
+                                        let v_match__lawspecselection0x0_0_11 = field_12.clone();
+                                        v_match__lawspecselection0x0_0_11
+                                    }
+                                    None => {
+                                        match &*current__1.0 {
+                                            StateNode::State(_, _, _, field_14, _) => {
+                                                let lawspecfieldnextorderkey_13 = field_14.clone();
+                                                lawspecfieldnextorderkey_13
+                                            }
+                                        }
                                     }
                                 }
                             };
                             {
-                                let matched_28 = match &*current__1.0 {
-                                    StateNode::State(_, _, field_27, _, _) => {
-                                        let lawspecfieldorders_26 = field_27.clone();
-                                        lawspecfieldorders_26.clone()
-                                    }
-                                }.get(&key_13).cloned();
-                                match &matched_28 {
-                                    Some(_) => {
-                                        {
-                                            ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::UnprocessableEntity));
-                                            unreachable!()
+                                let stored_27 = {
+                                    let replacement_16 = Some(key_15);
+                                    match &*v_lawspecselection0x0_6.0 {
+                                        OrderNode::Order(_, field_22, field_23, field_24, field_25, field_26) => {
+                                            let lawspecfieldpetid_17 = field_22.clone();
+                                            let lawspecfieldquantity_18 = field_23.clone();
+                                            let lawspecfieldshipdate_19 = field_24.clone();
+                                            let lawspecfieldstatus_20 = field_25.clone();
+                                            let lawspecfieldcomplete_21 = field_26.clone();
+                                            Order(std::sync::Arc::new(OrderNode::Order(
+                                                replacement_16.clone(),
+                                                lawspecfieldpetid_17.clone(),
+                                                lawspecfieldquantity_18.clone(),
+                                                lawspecfieldshipdate_19.clone(),
+                                                lawspecfieldstatus_20.clone(),
+                                                lawspecfieldcomplete_21.clone(),
+                                            )))
                                         }
                                     }
-                                    None => {
-                                        Pair(std::sync::Arc::new(PairNode::Pair(stored_25.clone(), {
-                                                let replacement_33 = if (key_13 >= match &*current__1.0 {
-                                                    StateNode::State(_, _, _, field_30, _) => {
-                                                        let lawspecfieldnextorderkey_29 = field_30.clone();
-                                                        lawspecfieldnextorderkey_29
-                                                    }
-                                                }) {
-                                                    lawtwinPetstoreModelAfter64_d44b61a4(key_13)?
-                                                } else {
-                                                    match &*current__1.0 {
+                                };
+                                {
+                                    let it_30 = match &*current__1.0 {
+                                        StateNode::State(_, _, field_29, _, _) => {
+                                            let lawspecfieldorders_28 = field_29.clone();
+                                            lawspecfieldorders_28.clone()
+                                        }
+                                    }.get(&key_15).cloned();
+                                    match &it_30 {
+                                        Some(_) => {
+                                            {
+                                                ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::UnprocessableEntity));
+                                                unreachable!()
+                                            }
+                                        }
+                                        None => {
+                                            Pair(std::sync::Arc::new(PairNode::Pair(
+                                                stored_27.clone(),
+                                                {
+                                                    let replacement_35 = if (key_15 >= match &*current__1.0 {
                                                         StateNode::State(_, _, _, field_32, _) => {
                                                             let lawspecfieldnextorderkey_31 = field_32.clone();
                                                             lawspecfieldnextorderkey_31
                                                         }
-                                                    }
-                                                };
-                                                {
-                                                    let matched_45 = {
-                                                        let replacement_36 = match &*current__1.0 {
-                                                            StateNode::State(_, _, field_35, _, _) => {
-                                                                let lawspecfieldorders_34 = field_35.clone();
-                                                                lawspecfieldorders_34.clone()
-                                                            }
-                                                        }.insert(key_13, stored_25.clone());
+                                                    }) {
+                                                        lawtwinPetstoreModelAfter64_d44b61a4(
+                                                            key_15,
+                                                        )?
+                                                    } else {
                                                         match &*current__1.0 {
-                                                            StateNode::State(field_41, field_42, _, field_43, field_44) => {
-                                                                let lawspecfieldpets_37 = field_41.clone();
-                                                                let lawspecfieldnextpetkey_38 = field_42.clone();
-                                                                let lawspecfieldnextorderkey_39 = field_43.clone();
-                                                                let lawspecfieldusers_40 = field_44.clone();
-                                                                State(std::sync::Arc::new(StateNode::State(lawspecfieldpets_37.clone(), lawspecfieldnextpetkey_38, replacement_36.clone(), lawspecfieldnextorderkey_39, lawspecfieldusers_40.clone())))
+                                                            StateNode::State(_, _, _, field_34, _) => {
+                                                                let lawspecfieldnextorderkey_33 = field_34.clone();
+                                                                lawspecfieldnextorderkey_33
                                                             }
                                                         }
                                                     };
-                                                    match &*matched_45.0 {
-                                                        StateNode::State(field_50, field_51, field_52, _, field_53) => {
-                                                            let lawspecfieldpets_46 = field_50.clone();
-                                                            let lawspecfieldnextpetkey_47 = field_51.clone();
-                                                            let lawspecfieldorders_48 = field_52.clone();
-                                                            let lawspecfieldusers_49 = field_53.clone();
-                                                            State(std::sync::Arc::new(StateNode::State(lawspecfieldpets_46.clone(), lawspecfieldnextpetkey_47, lawspecfieldorders_48.clone(), replacement_33, lawspecfieldusers_49.clone())))
+                                                    {
+                                                        let matched_47 = {
+                                                            let replacement_38 = match &*current__1.0 {
+                                                                StateNode::State(_, _, field_37, _, _) => {
+                                                                    let lawspecfieldorders_36 = field_37.clone();
+                                                                    lawspecfieldorders_36.clone()
+                                                                }
+                                                            }.insert(key_15, stored_27.clone());
+                                                            match &*current__1.0 {
+                                                                StateNode::State(field_43, field_44, _, field_45, field_46) => {
+                                                                    let lawspecfieldpets_39 = field_43.clone();
+                                                                    let lawspecfieldnextpetkey_40 = field_44.clone();
+                                                                    let lawspecfieldnextorderkey_41 = field_45.clone();
+                                                                    let lawspecfieldusers_42 = field_46.clone();
+                                                                    State(std::sync::Arc::new(StateNode::State(
+                                                                        lawspecfieldpets_39.clone(),
+                                                                        lawspecfieldnextpetkey_40,
+                                                                        replacement_38.clone(),
+                                                                        lawspecfieldnextorderkey_41,
+                                                                        lawspecfieldusers_42.clone(),
+                                                                    )))
+                                                                }
+                                                            }
+                                                        };
+                                                        match &*matched_47.0 {
+                                                            StateNode::State(field_52, field_53, field_54, _, field_55) => {
+                                                                let lawspecfieldpets_48 = field_52.clone();
+                                                                let lawspecfieldnextpetkey_49 = field_53.clone();
+                                                                let lawspecfieldorders_50 = field_54.clone();
+                                                                let lawspecfieldusers_51 = field_55.clone();
+                                                                State(std::sync::Arc::new(StateNode::State(
+                                                                    lawspecfieldpets_48.clone(),
+                                                                    lawspecfieldnextpetkey_49,
+                                                                    lawspecfieldorders_50.clone(),
+                                                                    replacement_35,
+                                                                    lawspecfieldusers_51.clone(),
+                                                                )))
+                                                            }
                                                         }
                                                     }
-                                                }
-                                            })))
+                                                },
+                                            )))
+                                        }
                                     }
                                 }
                             }
@@ -3962,13 +4096,13 @@ pub mod typed {
         current__1: State,
     ) -> ls::Result<Pair<Pet, State>> {
         Ok({
-            let matched_4 = match &*body_0.0 {
+            let it_4 = match &*body_0.0 {
                 PetNode::Pet(field_3, _, _, _, _, _) => {
                     let lawspecfieldid_2 = field_3.clone();
                     lawspecfieldid_2.clone()
                 }
             };
-            match &matched_4 {
+            match &it_4 {
                 None => {
                     {
                         ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::UnprocessableEntity));
@@ -3976,15 +4110,15 @@ pub mod typed {
                     }
                 }
                 Some(field_6) => {
-                    let key_5 = field_6.clone();
+                    let v_lawspecselection0x0_5 = field_6.clone();
                     {
-                        let matched_9 = match &*current__1.0 {
+                        let it_9 = match &*current__1.0 {
                             StateNode::State(field_8, _, _, _, _) => {
                                 let lawspecfieldpets_7 = field_8.clone();
                                 lawspecfieldpets_7.clone()
                             }
-                        }.get(&key_5).cloned();
-                        match &matched_9 {
+                        }.get(&v_lawspecselection0x0_5).cloned();
+                        match &it_9 {
                             None => {
                                 {
                                     ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::NotFound));
@@ -3994,7 +4128,7 @@ pub mod typed {
                             Some(_) => {
                                 {
                                     let stored_21 = {
-                                        let replacement_10 = Some(key_5);
+                                        let replacement_10 = Some(v_lawspecselection0x0_5);
                                         match &*body_0.0 {
                                             PetNode::Pet(_, field_16, field_17, field_18, field_19, field_20) => {
                                                 let lawspecfieldname_11 = field_16.clone();
@@ -4019,7 +4153,7 @@ pub mod typed {
                                                     let lawspecfieldpets_22 = field_23.clone();
                                                     lawspecfieldpets_22.clone()
                                                 }
-                                            }.insert(key_5, stored_21.clone());
+                                            }.insert(v_lawspecselection0x0_5, stored_21.clone());
                                             match &*current__1.0 {
                                                 StateNode::State(_, field_29, field_30, field_31, field_32) => {
                                                     let lawspecfieldnextpetkey_25 = field_29.clone();
@@ -4045,74 +4179,77 @@ pub mod typed {
         body_1: Option<User>,
         current__2: State,
     ) -> ls::Result<Pair<(), State>> {
-        Ok(match &body_1 {
-            None => {
-                {
-                    ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::BadRequest));
-                    unreachable!()
-                }
-            }
-            Some(field_4) => {
-                let sent_3 = field_4.clone();
-                {
-                    let key_5 = username_0.clone();
+        Ok({
+            let it_3 = body_1.clone();
+            match &it_3 {
+                None => {
                     {
-                        let matched_8 = match &*current__2.0 {
-                            StateNode::State(_, _, _, _, field_7) => {
-                                let lawspecfieldusers_6 = field_7.clone();
-                                lawspecfieldusers_6.clone()
-                            }
-                        }.get(&key_5.clone()).cloned();
-                        match &matched_8 {
-                            None => {
-                                {
-                                    ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::NotFound));
-                                    unreachable!()
+                        ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::BadRequest));
+                        unreachable!()
+                    }
+                }
+                Some(field_5) => {
+                    let v_lawspecselection0x0_4 = field_5.clone();
+                    {
+                        let key_6 = username_0.clone();
+                        {
+                            let it_9 = match &*current__2.0 {
+                                StateNode::State(_, _, _, _, field_8) => {
+                                    let lawspecfieldusers_7 = field_8.clone();
+                                    lawspecfieldusers_7.clone()
                                 }
-                            }
-                            Some(_) => {
-                                {
-                                    let stored_24 = {
-                                        let replacement_9 = Some(key_5.clone());
-                                        match &*sent_3.0 {
-                                            UserNode::User(field_17, _, field_18, field_19, field_20, field_21, field_22, field_23) => {
-                                                let lawspecfieldid_10 = field_17.clone();
-                                                let lawspecfieldfirstname_11 = field_18.clone();
-                                                let lawspecfieldlastname_12 = field_19.clone();
-                                                let lawspecfieldemail_13 = field_20.clone();
-                                                let lawspecfieldpassword_14 = field_21.clone();
-                                                let lawspecfieldphone_15 = field_22.clone();
-                                                let lawspecfielduserstatus_16 = field_23.clone();
-                                                User(std::sync::Arc::new(UserNode::User(
-                                                    lawspecfieldid_10.clone(),
-                                                    replacement_9.clone(),
-                                                    lawspecfieldfirstname_11.clone(),
-                                                    lawspecfieldlastname_12.clone(),
-                                                    lawspecfieldemail_13.clone(),
-                                                    lawspecfieldpassword_14.clone(),
-                                                    lawspecfieldphone_15.clone(),
-                                                    lawspecfielduserstatus_16.clone(),
-                                                )))
-                                            }
-                                        }
-                                    };
-                                    Pair(std::sync::Arc::new(PairNode::Pair((), {
-                                            let replacement_27 = match &*current__2.0 {
-                                                StateNode::State(_, _, _, _, field_26) => {
-                                                    let lawspecfieldusers_25 = field_26.clone();
-                                                    lawspecfieldusers_25.clone()
-                                                }
-                                            }.insert(key_5.clone(), stored_24.clone());
-                                            match &*current__2.0 {
-                                                StateNode::State(field_32, field_33, field_34, field_35, _) => {
-                                                    let lawspecfieldpets_28 = field_32.clone();
-                                                    let lawspecfieldnextpetkey_29 = field_33.clone();
-                                                    let lawspecfieldorders_30 = field_34.clone();
-                                                    let lawspecfieldnextorderkey_31 = field_35.clone();
-                                                    State(std::sync::Arc::new(StateNode::State(lawspecfieldpets_28.clone(), lawspecfieldnextpetkey_29, lawspecfieldorders_30.clone(), lawspecfieldnextorderkey_31, replacement_27.clone())))
+                            }.get(&key_6.clone()).cloned();
+                            match &it_9 {
+                                None => {
+                                    {
+                                        ls::raise_failure("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", ls::fast::Dyn::to_dyn(&ApiError::NotFound));
+                                        unreachable!()
+                                    }
+                                }
+                                Some(_) => {
+                                    {
+                                        let stored_25 = {
+                                            let replacement_10 = Some(key_6.clone());
+                                            match &*v_lawspecselection0x0_4.0 {
+                                                UserNode::User(field_18, _, field_19, field_20, field_21, field_22, field_23, field_24) => {
+                                                    let lawspecfieldid_11 = field_18.clone();
+                                                    let lawspecfieldfirstname_12 = field_19.clone();
+                                                    let lawspecfieldlastname_13 = field_20.clone();
+                                                    let lawspecfieldemail_14 = field_21.clone();
+                                                    let lawspecfieldpassword_15 = field_22.clone();
+                                                    let lawspecfieldphone_16 = field_23.clone();
+                                                    let lawspecfielduserstatus_17 = field_24.clone();
+                                                    User(std::sync::Arc::new(UserNode::User(
+                                                        lawspecfieldid_11.clone(),
+                                                        replacement_10.clone(),
+                                                        lawspecfieldfirstname_12.clone(),
+                                                        lawspecfieldlastname_13.clone(),
+                                                        lawspecfieldemail_14.clone(),
+                                                        lawspecfieldpassword_15.clone(),
+                                                        lawspecfieldphone_16.clone(),
+                                                        lawspecfielduserstatus_17.clone(),
+                                                    )))
                                                 }
                                             }
-                                        })))
+                                        };
+                                        Pair(std::sync::Arc::new(PairNode::Pair((), {
+                                                let replacement_28 = match &*current__2.0 {
+                                                    StateNode::State(_, _, _, _, field_27) => {
+                                                        let lawspecfieldusers_26 = field_27.clone();
+                                                        lawspecfieldusers_26.clone()
+                                                    }
+                                                }.insert(key_6.clone(), stored_25.clone());
+                                                match &*current__2.0 {
+                                                    StateNode::State(field_33, field_34, field_35, field_36, _) => {
+                                                        let lawspecfieldpets_29 = field_33.clone();
+                                                        let lawspecfieldnextpetkey_30 = field_34.clone();
+                                                        let lawspecfieldorders_31 = field_35.clone();
+                                                        let lawspecfieldnextorderkey_32 = field_36.clone();
+                                                        State(std::sync::Arc::new(StateNode::State(lawspecfieldpets_29.clone(), lawspecfieldnextpetkey_30, lawspecfieldorders_31.clone(), lawspecfieldnextorderkey_32, replacement_28.clone())))
+                                                    }
+                                                }
+                                            })))
+                                    }
                                 }
                             }
                         }
@@ -4125,22 +4262,22 @@ pub mod typed {
     /// lawtwin.petstore::lawtwinPetstoreModelValidOrder
     pub fn lawtwinPetstoreModelValidOrder_62eb4720(value_0: Order) -> ls::Result<bool> {
         Ok({
-            let matched_3 = match &*value_0.0 {
+            let it_3 = match &*value_0.0 {
                 OrderNode::Order(_, _, _, field_2, _, _) => {
                     let lawspecfieldshipdate_1 = field_2.clone();
                     lawspecfieldshipdate_1.clone()
                 }
             };
-            match &matched_3 {
+            match &it_3 {
                 None => {
                     true
                 }
                 Some(field_5) => {
-                    let present0_4 = field_5.clone();
+                    let v_lawspecselection0x0_4 = field_5.clone();
                     ls::regex_matches(&ls::fast::text(concat!(
                         "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\",
                         ".\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})",
-                    )), &present0_4.clone())?
+                    )), &v_lawspecselection0x0_4.clone())?
                 }
             }
         })

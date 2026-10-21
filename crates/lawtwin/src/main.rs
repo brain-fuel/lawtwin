@@ -10,8 +10,8 @@ mod api;
 mod control;
 mod emit;
 mod http;
-mod kafka;
 mod ir;
+mod kafka;
 mod names;
 mod natives;
 mod openapi;
@@ -148,6 +148,10 @@ fn import_openapi(o: &Options) -> Result<(), String> {
     )?;
     write(&src.join("model.lawspec"), &package.model)?;
     write(&src.join("api.lawspec"), &package.facade)?;
+    write(
+        &o.out.join("lawtwin-embed.rs"),
+        &natives::embedding(&o.package, &o.version, &types, &api),
+    )?;
     let hand = src.join("handwritten.lawspec");
     if !write_once(&hand, &package.handwritten)? {
         let existing =
@@ -155,7 +159,10 @@ fn import_openapi(o: &Options) -> Result<(), String> {
         let missing: Vec<&String> = package
             .unmodelled
             .iter()
-            .filter(|op| !existing.contains(&format!("definition {op} ")))
+            .filter(|op| {
+                !existing.contains(&format!("procedure {op} "))
+                    && !existing.contains(&format!("function {op} "))
+            })
             .collect();
         if !missing.is_empty() {
             eprintln!(
@@ -199,7 +206,10 @@ fn import_openapi(o: &Options) -> Result<(), String> {
         &test.join("laws/suite.lawspec"),
         &natives::suite(&o.package),
     )?;
-    write_once(&test.join("rust/Cargo.toml"), natives::CARGO_TOML)?;
+    write_once(
+        &test.join("rust/Cargo.toml"),
+        &natives::cargo_toml(&o.package),
+    )?;
     write_once(&test.join("rust/src/lib.rs"), natives::LIB_RS)?;
     write_once(&test.join("python/pyproject.toml"), natives::PYPROJECT)?;
     let unit_path = o.package.replace('.', "/");
@@ -232,7 +242,10 @@ fn import_openapi(o: &Options) -> Result<(), String> {
 
 /// The usage text, with the control-plane commands.
 fn usage() -> String {
-    USAGE.replace("{CONTROL}", &format!("{}\n{}\n{}", control::USAGE, http::USAGE, kafka::USAGE))
+    USAGE.replace(
+        "{CONTROL}",
+        &format!("{}\n{}\n{}", control::USAGE, http::USAGE, kafka::USAGE),
+    )
 }
 
 fn main() -> ExitCode {

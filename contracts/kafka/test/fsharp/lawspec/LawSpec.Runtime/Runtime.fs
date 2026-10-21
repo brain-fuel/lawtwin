@@ -162,6 +162,7 @@ let recorded (key: Value) (value: Value) (t: TypeRef) (schema: Schema.Schema) : 
 [<CompiledName("Helper")>]
 let helper (name: string) (values: Value list) (types: string list) (bits: int) : Value =
     match name, values with
+    | "incompleteSearch", [ Text reason ] -> failwith reason
     | "unreachable", _ -> Fail.raiseWith "Unreachable" ""
     | "regexMatches", [ Text pattern; Text text ] -> Bool(Regex.matches pattern text)
     | "recorded", [ Text key; value ] when List.length types < 2 -> recordedText key (Recorded.renderPlain value)

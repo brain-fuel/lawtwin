@@ -440,14 +440,6 @@ public static class ContracttestKafka
         return LawSpec.Data.Codecs.TransactionState().ToNative.Invoke(LawSpec.Generated.ContracttestKafka.KafkaTransactionsStart(schema, symbols, V.Unit));
     }
 
-    /// <summary>contracttest.kafka::keepBoundedArithmetic</summary>
-    public static long KeepBoundedArithmetic(long value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.ContracttestKafka.KeepBoundedArithmetic(schema, symbols, Codecs.Int64.FromNative.Invoke(value0)));
-    }
-
     /// <summary>contracttest.kafka::lawspecCollectionsBoundedInt16</summary>
     public static FSharpOption<short> LawspecCollectionsBoundedInt16(System.Numerics.BigInteger value0)
     {
@@ -2606,5 +2598,13 @@ public static class ContracttestKafka
         var schema = LawSpec.Generated.Program.Schema;
         var symbols = new Scalar.SymbolContext();
         return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.ContracttestKafka.MurmurPartitionerChoosePartition(schema, symbols, Codecs.Maybe(Codecs.Bytes).FromNative.Invoke(value0), Codecs.Int32.FromNative.Invoke(value1)));
+    }
+
+    /// <summary>contracttest.kafka::suiteNamesThePackage</summary>
+    public static void SuiteNamesThePackage()
+    {
+        var schema = LawSpec.Generated.Program.Schema;
+        var symbols = new Scalar.SymbolContext();
+        LawSpec.Generated.ContracttestKafka.SuiteNamesThePackage(schema, symbols, V.Unit);
     }
 }

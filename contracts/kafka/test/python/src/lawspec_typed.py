@@ -383,522 +383,532 @@ def Def_wrappingUInt8_6ce2e7d2(value_76):
 
 # lawspec.matchers::matchersMatchesRegex
 def Def_matchersMatchesRegex_52d1c22e(t_80, r_81):
-    p_82 = r_81[0]
-    return lsf_regex_matches(p_82, t_80)
+    it_82 = r_81
+    v_lawspecselection0x0_83 = it_82[0]
+    return lsf_regex_matches(v_lawspecselection0x0_83, t_80)
 
 
 # lawtwin.kafka::allAtLeast
-def Def_allAtLeast_3df55027(floor_83, xs_84):
-    if xs_84 is None:
+def Def_allAtLeast_3df55027(floor_84, xs_85):
+    it_86 = xs_85
+    if it_86 is None:
         return True
     else:
-        h_85 = xs_84[0]
-        t_86 = xs_84[1]
-        return ((h_85 >= floor_83) and Def_allAtLeast_3df55027(floor_83, t_86))
+        v_lawspecselection0x0_87 = it_86[0]
+        v_lawspecselection0x1_88 = it_86[1]
+        return ((v_lawspecselection0x0_87 >= floor_84) and Def_allAtLeast_3df55027(floor_84, v_lawspecselection0x1_88))
 
 
 # lawtwin.kafka::assignmentIn
-def Def_assignmentIn_4b795225(m_87, ms_88):
+def Def_assignmentIn_4b795225(m_89, ms_90):
     while True:
-        if ms_88 is None:
+        it_91 = ms_90
+        if it_91 is None:
             return None
         else:
-            a_89 = ms_88[0]
-            rest_90 = ms_88[1]
-            lawspecfieldmemberid_92 = a_89[0]
-            value_91 = lawspecfieldmemberid_92
-            if (value_91 == m_87):
-                lawspecfieldassigned_93 = a_89[1]
-                return lawspecfieldassigned_93
+            v_lawspecselection0x0_92 = it_91[0]
+            v_lawspecselection0x1_93 = it_91[1]
+            lawspecfieldmemberid_95 = v_lawspecselection0x0_92[0]
+            value_94 = lawspecfieldmemberid_95
+            if (value_94 == m_89):
+                lawspecfieldassigned_96 = v_lawspecselection0x0_92[1]
+                return lawspecfieldassigned_96
             else:
-                next_94 = rest_90
-                ms_88 = next_94
+                next_97 = v_lawspecselection0x1_93
+                ms_90 = next_97
                 continue
 
 
 # lawtwin.kafka::clusterAddPartitionsToTxnRequest
-def Def_clusterAddPartitionsToTxnRequest_026ba83d(state_95, value0_96, value1_97, value2_98, value3_99):
-    return Def_lawtwinKafkaModelAddPartitionsToTxn_8d367d82(value0_96, value1_97, value2_98, value3_99, state_95)
+def Def_clusterAddPartitionsToTxnRequest_026ba83d(state_98, value0_99, value1_100, value2_101, value3_102):
+    return Def_lawtwinKafkaModelAddPartitionsToTxn_8d367d82(value0_99, value1_100, value2_101, value3_102, state_98)
 
 
 # lawtwin.kafka::clusterCommitOffsets
-def Def_clusterCommitOffsets_d3b39e4c(state_100, value0_101, value1_102, value2_103, value3_104):
-    return Def_lawtwinKafkaModelOffsetCommit_01d91ef0(value0_101, value1_102, value2_103, value3_104, state_100)
+def Def_clusterCommitOffsets_d3b39e4c(state_103, value0_104, value1_105, value2_106, value3_107):
+    return Def_lawtwinKafkaModelOffsetCommit_01d91ef0(value0_104, value1_105, value2_106, value3_107, state_103)
 
 
 # lawtwin.kafka::clusterCreatePartitions
-def Def_clusterCreatePartitions_0f2bdce3(state_105, value0_106, value1_107):
-    return Def_lawtwinKafkaModelCreatePartitions_8c9ce76b(value0_106, value1_107, state_105)
+def Def_clusterCreatePartitions_0f2bdce3(state_108, value0_109, value1_110):
+    return Def_lawtwinKafkaModelCreatePartitions_8c9ce76b(value0_109, value1_110, state_108)
 
 
 # lawtwin.kafka::clusterCreateTopic
-def Def_clusterCreateTopic_25a8c8e9(state_108, value0_109, value1_110):
-    return Def_lawtwinKafkaModelCreateTopic_0d831a39(value0_109, value1_110, state_108)
+def Def_clusterCreateTopic_25a8c8e9(state_111, value0_112, value1_113):
+    return Def_lawtwinKafkaModelCreateTopic_0d831a39(value0_112, value1_113, state_111)
 
 
 # lawtwin.kafka::clusterDescribeGroup
-def Def_clusterDescribeGroup_c1f8efd4(state_111, value0_112):
-    return Def_lawtwinKafkaModelDescribeGroup_bf8df8f8(value0_112, state_111)
+def Def_clusterDescribeGroup_c1f8efd4(state_114, value0_115):
+    return Def_lawtwinKafkaModelDescribeGroup_bf8df8f8(value0_115, state_114)
 
 
 # lawtwin.kafka::clusterEndTxnRequest
-def Def_clusterEndTxnRequest_e8879acb(state_113, value0_114, value1_115, value2_116, value3_117):
-    return Def_lawtwinKafkaModelEndTxn_b2637a52(value0_114, value1_115, value2_116, value3_117, state_113)
+def Def_clusterEndTxnRequest_e8879acb(state_116, value0_117, value1_118, value2_119, value3_120):
+    return Def_lawtwinKafkaModelEndTxn_b2637a52(value0_117, value1_118, value2_119, value3_120, state_116)
 
 
 # lawtwin.kafka::clusterFetchOffset
-def Def_clusterFetchOffset_53ffef89(state_118, value0_119, value1_120):
-    return Def_lawtwinKafkaModelOffsetFetch_f56dbfcd(value0_119, value1_120, state_118)
+def Def_clusterFetchOffset_53ffef89(state_121, value0_122, value1_123):
+    return Def_lawtwinKafkaModelOffsetFetch_f56dbfcd(value0_122, value1_123, state_121)
 
 
 # lawtwin.kafka::clusterFetchRequest
-def Def_clusterFetchRequest_53f6507d(state_121, value0_122, value1_123, value2_124, value3_125):
-    return Def_lawtwinKafkaModelFetch_29936450(value0_122, value1_123, value2_124, value3_125, state_121)
+def Def_clusterFetchRequest_53f6507d(state_124, value0_125, value1_126, value2_127, value3_128):
+    return Def_lawtwinKafkaModelFetch_29936450(value0_125, value1_126, value2_127, value3_128, state_124)
 
 
 # lawtwin.kafka::clusterHeartbeat
-def Def_clusterHeartbeat_3af82cc2(state_126, value0_127, value1_128, value2_129):
-    return Def_lawtwinKafkaModelHeartbeat_0f08a54d(value0_127, value1_128, value2_129, state_126)
+def Def_clusterHeartbeat_3af82cc2(state_129, value0_130, value1_131, value2_132):
+    return Def_lawtwinKafkaModelHeartbeat_0f08a54d(value0_130, value1_131, value2_132, state_129)
 
 
 # lawtwin.kafka::clusterInitProducerIdRequest
-def Def_clusterInitProducerIdRequest_f11b7e7d(state_130, value0_131):
-    return Def_lawtwinKafkaModelInitProducerId_cedb7e1b(value0_131, state_130)
+def Def_clusterInitProducerIdRequest_f11b7e7d(state_133, value0_134):
+    return Def_lawtwinKafkaModelInitProducerId_cedb7e1b(value0_134, state_133)
 
 
 # lawtwin.kafka::clusterJoinGroup
-def Def_clusterJoinGroup_2f7f09cb(state_132, value0_133, value1_134, value2_135):
-    return Def_lawtwinKafkaModelJoinGroup_9a1e92f5(value0_133, value1_134, value2_135, state_132)
+def Def_clusterJoinGroup_2f7f09cb(state_135, value0_136, value1_137, value2_138):
+    return Def_lawtwinKafkaModelJoinGroup_9a1e92f5(value0_136, value1_137, value2_138, state_135)
 
 
 # lawtwin.kafka::clusterLeaveGroup
-def Def_clusterLeaveGroup_cd94c353(state_136, value0_137, value1_138):
-    return Def_lawtwinKafkaModelLeaveGroup_5e5a3f69(value0_137, value1_138, state_136)
+def Def_clusterLeaveGroup_cd94c353(state_139, value0_140, value1_141):
+    return Def_lawtwinKafkaModelLeaveGroup_5e5a3f69(value0_140, value1_141, state_139)
 
 
 # lawtwin.kafka::clusterListOffsets
-def Def_clusterListOffsets_1dede442(state_139, value0_140, value1_141, value2_142):
-    return Def_lawtwinKafkaModelListOffsets_9c6c9426(value0_140, value1_141, value2_142, state_139)
+def Def_clusterListOffsets_1dede442(state_142, value0_143, value1_144, value2_145):
+    return Def_lawtwinKafkaModelListOffsets_9c6c9426(value0_143, value1_144, value2_145, state_142)
 
 
 # lawtwin.kafka::clusterMetadataRequest
-def Def_clusterMetadataRequest_3507727c(state_143, value0_144):
-    return Def_lawtwinKafkaModelMetadata_97bb5c4c(value0_144, state_143)
+def Def_clusterMetadataRequest_3507727c(state_146, value0_147):
+    return Def_lawtwinKafkaModelMetadata_97bb5c4c(value0_147, state_146)
 
 
 # lawtwin.kafka::clusterProduceRequest
-def Def_clusterProduceRequest_619c7f1f(state_145, value0_146, value1_147, value2_148):
-    return Def_lawtwinKafkaModelProduce_834568df(value0_146, value1_147, value2_148, state_145)
+def Def_clusterProduceRequest_619c7f1f(state_148, value0_149, value1_150, value2_151):
+    return Def_lawtwinKafkaModelProduce_834568df(value0_149, value1_150, value2_151, state_148)
 
 
 # lawtwin.kafka::clusterStart
-def Def_clusterStart_659e952a(lawspecunit_149):
+def Def_clusterStart_659e952a(lawspecunit_152):
     return Def_lawtwinKafkaModelEmptyBroker_d5fd8237(None)
 
 
 # lawtwin.kafka::clusterSyncGroup
-def Def_clusterSyncGroup_fa44a945(state_150, value0_151, value1_152, value2_153):
-    return Def_lawtwinKafkaModelSyncGroup_b3d01c80(value0_151, value1_152, value2_153, state_150)
+def Def_clusterSyncGroup_fa44a945(state_153, value0_154, value1_155, value2_156):
+    return Def_lawtwinKafkaModelSyncGroup_b3d01c80(value0_154, value1_155, value2_156, state_153)
 
 
 # lawtwin.kafka::clusterTxnOffsetCommitRequest
-def Def_clusterTxnOffsetCommitRequest_08ba35de(state_154, value0_155, value1_156, value2_157, value3_158, value4_159):
-    return Def_lawtwinKafkaModelTxnOffsetCommit_84c6b2bb(value0_155, value1_156, value2_157, value3_158, value4_159, state_154)
+def Def_clusterTxnOffsetCommitRequest_08ba35de(state_157, value0_158, value1_159, value2_160, value3_161, value4_162):
+    return Def_lawtwinKafkaModelTxnOffsetCommit_84c6b2bb(value0_158, value1_159, value2_160, value3_161, value4_162, state_157)
 
 
 # lawtwin.kafka::committedFrom
-def Def_committedFrom_a524f37d(symbols, tp_160, offset_161):
-    return Def_readFrom_f028a48d(symbols, tp_160, offset_161, 0)
+def Def_committedFrom_a524f37d(symbols, tp_163, offset_164):
+    return Def_readFrom_f028a48d(symbols, tp_163, offset_164, 0)
 
 
 # lawtwin.kafka::consumerAssign
-def Def_consumerAssign_793a07ba(tps_162, c_163):
-    return (None, Def_withAssignment_7d6291b1((), '', (-1), None, tps_162, c_163))
+def Def_consumerAssign_793a07ba(tps_165, c_166):
+    return (None, Def_withAssignment_7d6291b1((), '', (-1), None, tps_165, c_166))
 
 
 # lawtwin.kafka::consumerClose
-def Def_consumerClose_00c5e7f3(symbols, c_164):
-    lawspecfieldgroup_166 = c_164[0]
-    value_165 = lawspecfieldgroup_166
-    matched_167 = value_165
-    if matched_167:
-        group_168 = matched_167[0]
+def Def_consumerClose_00c5e7f3(symbols, c_167):
+    lawspecfieldgroup_169 = c_167[0]
+    value_168 = lawspecfieldgroup_169
+    it_170 = value_168
+    if it_170:
+        v_lawspecselection0x0_171 = it_170[0]
         try:
-            lawspecfieldmember_172 = c_164[1]
-            value_171 = lawspecfieldmember_172
+            lawspecfieldmember_175 = c_167[1]
+            value_174 = lawspecfieldmember_175
             try:
-                performed_173 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').leaveGroupRequest(nout_437d0abf423f(group_168, symbols), nout_437d0abf423f(value_171, symbols))
+                performed_176 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').leaveGroupRequest(nout_437d0abf423f(v_lawspecselection0x0_171, symbols), nout_437d0abf423f(value_174, symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_170 = (1, nin_b120ceed78cb(performed_173, symbols))
+            attempted_173 = (1, nin_b120ceed78cb(performed_176, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_170 = (0, from_26c7dcf285c5(failure.value))
-        matched_174 = attempted_170
-        if matched_174[0]:
-            lawspecvalue_175 = matched_174[1]
-            value_169 = (1, lawspecvalue_175)
+            attempted_173 = (0, from_26c7dcf285c5(failure.value))
+        matched_177 = attempted_173
+        if matched_177[0]:
+            lawspecvalue_178 = matched_177[1]
+            value_172 = (1, lawspecvalue_178)
         else:
-            lawspecfailure_176 = matched_174[1]
-            value_169 = (0, lawspecfailure_176)
-        left_177 = value_169
+            lawspecfailure_179 = matched_177[1]
+            value_172 = (0, lawspecfailure_179)
+        left_180 = value_172
         return (None, Def_freshConsumer_c2da4184(None))
     else:
         return (None, Def_freshConsumer_c2da4184(None))
 
 
 # lawtwin.kafka::consumerCommit
-def Def_consumerCommit_787f4c15(symbols, c_178):
-    lawspecfieldgroup_180 = c_178[0]
-    value_179 = lawspecfieldgroup_180
-    matched_181 = value_179
-    if matched_181:
-        group_182 = matched_181[0]
+def Def_consumerCommit_787f4c15(symbols, c_181):
+    lawspecfieldgroup_183 = c_181[0]
+    value_182 = lawspecfieldgroup_183
+    it_184 = value_182
+    if it_184:
+        v_lawspecselection0x0_185 = it_184[0]
         try:
-            lawspecfieldmember_186 = c_178[1]
-            value_185 = lawspecfieldmember_186
-            lawspecfieldgeneration_188 = c_178[2]
-            value_187 = lawspecfieldgeneration_188
-            lawspecfieldassigned_190 = c_178[4]
-            value_189 = lawspecfieldassigned_190
-            lawspecfieldpositions_192 = c_178[5]
-            value_191 = lawspecfieldpositions_192
+            lawspecfieldmember_189 = c_181[1]
+            value_188 = lawspecfieldmember_189
+            lawspecfieldgeneration_191 = c_181[2]
+            value_190 = lawspecfieldgeneration_191
+            lawspecfieldassigned_193 = c_181[4]
+            value_192 = lawspecfieldassigned_193
+            lawspecfieldpositions_195 = c_181[5]
+            value_194 = lawspecfieldpositions_195
             try:
-                performed_193 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').offsetCommitRequest(nout_437d0abf423f(group_182, symbols), nout_437d0abf423f(value_185, symbols), nout_b862204e9be7(value_187, symbols), nout_582052f40a9c(Def_positionsToCommit_67969440(value_189, value_191), symbols))
+                performed_196 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').offsetCommitRequest(nout_437d0abf423f(v_lawspecselection0x0_185, symbols), nout_437d0abf423f(value_188, symbols), nout_b862204e9be7(value_190, symbols), nout_582052f40a9c(Def_positionsToCommit_67969440(value_192, value_194), symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_184 = (1, nin_b120ceed78cb(performed_193, symbols))
+            attempted_187 = (1, nin_b120ceed78cb(performed_196, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_184 = (0, from_26c7dcf285c5(failure.value))
-        matched_194 = attempted_184
-        if matched_194[0]:
-            lawspecvalue_195 = matched_194[1]
-            value_183 = (1, lawspecvalue_195)
+            attempted_187 = (0, from_26c7dcf285c5(failure.value))
+        matched_197 = attempted_187
+        if matched_197[0]:
+            lawspecvalue_198 = matched_197[1]
+            value_186 = (1, lawspecvalue_198)
         else:
-            lawspecfailure_196 = matched_194[1]
-            value_183 = (0, lawspecfailure_196)
-        return (value_183, c_178)
+            lawspecfailure_199 = matched_197[1]
+            value_186 = (0, lawspecfailure_199)
+        return (value_186, c_181)
     else:
-        return ((0, 2), c_178)
+        return ((0, 2), c_181)
 
 
 # lawtwin.kafka::consumerCommitted
-def Def_consumerCommitted_06365ac2(symbols, tp_197, c_198):
-    lawspecfieldgroup_200 = c_198[0]
-    value_199 = lawspecfieldgroup_200
-    matched_201 = value_199
-    if matched_201:
-        group_202 = matched_201[0]
-        performed_203 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').offsetFetchRequest(nout_437d0abf423f(group_202, symbols), nout_57a515e0e489(tp_197, symbols))
-        return (nin_c09136e29464(performed_203, symbols), c_198)
+def Def_consumerCommitted_06365ac2(symbols, tp_200, c_201):
+    lawspecfieldgroup_203 = c_201[0]
+    value_202 = lawspecfieldgroup_203
+    it_204 = value_202
+    if it_204:
+        v_lawspecselection0x0_205 = it_204[0]
+        performed_206 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').offsetFetchRequest(nout_437d0abf423f(v_lawspecselection0x0_205, symbols), nout_57a515e0e489(tp_200, symbols))
+        return (nin_c09136e29464(performed_206, symbols), c_201)
     else:
-        return ((), c_198)
+        return ((), c_201)
 
 
 # lawtwin.kafka::consumerIsolation
-def Def_consumerIsolation_2aacd289(level_204, c_205):
-    replacement_207 = level_204
-    lawspecfieldgroup_208 = c_205[0]
-    lawspecfieldmember_209 = c_205[1]
-    lawspecfieldgeneration_210 = c_205[2]
-    lawspecfieldsubscription_211 = c_205[3]
-    lawspecfieldassigned_212 = c_205[4]
-    lawspecfieldpositions_213 = c_205[5]
-    value_206 = (lawspecfieldgroup_208, lawspecfieldmember_209, lawspecfieldgeneration_210, lawspecfieldsubscription_211, lawspecfieldassigned_212, lawspecfieldpositions_213, replacement_207)
-    return (None, value_206)
+def Def_consumerIsolation_2aacd289(level_207, c_208):
+    replacement_210 = level_207
+    lawspecfieldgroup_211 = c_208[0]
+    lawspecfieldmember_212 = c_208[1]
+    lawspecfieldgeneration_213 = c_208[2]
+    lawspecfieldsubscription_214 = c_208[3]
+    lawspecfieldassigned_215 = c_208[4]
+    lawspecfieldpositions_216 = c_208[5]
+    value_209 = (lawspecfieldgroup_211, lawspecfieldmember_212, lawspecfieldgeneration_213, lawspecfieldsubscription_214, lawspecfieldassigned_215, lawspecfieldpositions_216, replacement_210)
+    return (None, value_209)
 
 
 # lawtwin.kafka::consumerJoin
-def Def_consumerJoin_198e034e(symbols, g_214, m_215, topics_216, c_217):
+def Def_consumerJoin_198e034e(symbols, g_217, m_218, topics_219, c_220):
     try:
         try:
-            performed_220 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').joinGroupRequest(nout_437d0abf423f(g_214, symbols), nout_437d0abf423f(m_215, symbols), nout_8ec0351dc657(topics_216, symbols))
+            performed_223 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').joinGroupRequest(nout_437d0abf423f(g_217, symbols), nout_437d0abf423f(m_218, symbols), nout_8ec0351dc657(topics_219, symbols))
         except ls.Fail as error:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                 "lawtwin.kafka.model::type::KafkaError",
             ), error.value, 64, symbols)) from error
-        attempted_219 = (1, nin_b862204e9be7(performed_220, symbols))
+        attempted_222 = (1, nin_b862204e9be7(performed_223, symbols))
     except ls.Failure as failure:
         if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
             raise
-        attempted_219 = (0, from_26c7dcf285c5(failure.value))
-    matched_221 = attempted_219
-    if matched_221[0]:
-        lawspecvalue_222 = matched_221[1]
-        value_218 = (1, lawspecvalue_222)
-    else:
-        lawspecfailure_223 = matched_221[1]
-        value_218 = (0, lawspecfailure_223)
-    matched_224 = value_218
+        attempted_222 = (0, from_26c7dcf285c5(failure.value))
+    matched_224 = attempted_222
     if matched_224[0]:
-        gen_225 = matched_224[1]
+        lawspecvalue_225 = matched_224[1]
+        value_221 = (1, lawspecvalue_225)
+    else:
+        lawspecfailure_226 = matched_224[1]
+        value_221 = (0, lawspecfailure_226)
+    it_227 = value_221
+    if it_227[0]:
+        v_lawspecselection0x0_228 = it_227[1]
         try:
             try:
-                performed_228 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').syncGroupRequest(nout_437d0abf423f(g_214, symbols), nout_437d0abf423f(m_215, symbols), nout_b862204e9be7(gen_225, symbols))
+                performed_231 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').syncGroupRequest(nout_437d0abf423f(g_217, symbols), nout_437d0abf423f(m_218, symbols), nout_b862204e9be7(v_lawspecselection0x0_228, symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_227 = (1, nin_3250492fe9ac(performed_228, symbols))
+            attempted_230 = (1, nin_3250492fe9ac(performed_231, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_227 = (0, from_26c7dcf285c5(failure.value))
-        matched_229 = attempted_227
-        if matched_229[0]:
-            lawspecvalue_230 = matched_229[1]
-            value_226 = (1, lawspecvalue_230)
-        else:
-            lawspecfailure_231 = matched_229[1]
-            value_226 = (0, lawspecfailure_231)
-        matched_232 = value_226
+            attempted_230 = (0, from_26c7dcf285c5(failure.value))
+        matched_232 = attempted_230
         if matched_232[0]:
-            tps_233 = matched_232[1]
-            return ((1, tps_233), Def_withAssignment_7d6291b1((g_214,), m_215, gen_225, topics_216, tps_233, c_217))
+            lawspecvalue_233 = matched_232[1]
+            value_229 = (1, lawspecvalue_233)
         else:
-            e_234 = matched_232[1]
-            return ((0, e_234), c_217)
+            lawspecfailure_234 = matched_232[1]
+            value_229 = (0, lawspecfailure_234)
+        it_235 = value_229
+        if it_235[0]:
+            v_match__lawspecselection0x0_0_236 = it_235[1]
+            return ((1, v_match__lawspecselection0x0_0_236), Def_withAssignment_7d6291b1((g_217,), m_218, v_lawspecselection0x0_228, topics_219, v_match__lawspecselection0x0_0_236, c_220))
+        else:
+            v_match__lawspecselection0x0_0_237 = it_235[1]
+            return ((0, v_match__lawspecselection0x0_0_237), c_220)
     else:
-        e_235 = matched_224[1]
-        return ((0, e_235), c_217)
+        v_lawspecselection0x0_238 = it_227[1]
+        return ((0, v_lawspecselection0x0_238), c_220)
 
 
 # lawtwin.kafka::consumerPoll
-def Def_consumerPoll_d12c6262(symbols, n_236, c_237):
-    refreshed_238 = Def_consumerRefresh_99e956fa(symbols, c_237)
-    lawspecfieldfirst_240 = refreshed_238[0]
-    value_239 = lawspecfieldfirst_240
-    matched_241 = value_239
-    if matched_241[0]:
-        lawspecfieldsecond_244 = refreshed_238[1]
-        value_243 = lawspecfieldsecond_244
-        matched_245 = value_243
-        lawspecfieldassigned_246 = matched_245[4]
-        value_242 = lawspecfieldassigned_246
-        lawspecfieldsecond_248 = refreshed_238[1]
-        value_247 = lawspecfieldsecond_248
-        return Def_pollPartitions_9d6feda1(symbols, value_242, n_236, value_247, None)
-    else:
-        e_249 = matched_241[1]
-        lawspecfieldsecond_251 = refreshed_238[1]
+def Def_consumerPoll_d12c6262(symbols, n_239, c_240):
+    refreshed_241 = Def_consumerRefresh_99e956fa(symbols, c_240)
+    lawspecfieldfirst_243 = refreshed_241[0]
+    value_242 = lawspecfieldfirst_243
+    it_244 = value_242
+    if it_244[0]:
+        lawspecfieldsecond_247 = refreshed_241[1]
+        value_246 = lawspecfieldsecond_247
+        matched_248 = value_246
+        lawspecfieldassigned_249 = matched_248[4]
+        value_245 = lawspecfieldassigned_249
+        lawspecfieldsecond_251 = refreshed_241[1]
         value_250 = lawspecfieldsecond_251
-        return ((0, e_249), value_250)
+        return Def_pollPartitions_9d6feda1(symbols, value_245, n_239, value_250, None)
+    else:
+        v_lawspecselection0x0_252 = it_244[1]
+        lawspecfieldsecond_254 = refreshed_241[1]
+        value_253 = lawspecfieldsecond_254
+        return ((0, v_lawspecselection0x0_252), value_253)
 
 
 # lawtwin.kafka::consumerPosition
-def Def_consumerPosition_4da411a3(symbols, tp_252, c_253):
-    lawspecfieldpositions_255 = c_253[5]
-    value_254 = lawspecfieldpositions_255
-    matched_256 = lsf_lookup(value_254, tp_252)
-    if matched_256:
-        o_257 = matched_256[0]
-        return (o_257, c_253)
+def Def_consumerPosition_4da411a3(symbols, tp_255, c_256):
+    lawspecfieldpositions_258 = c_256[5]
+    value_257 = lawspecfieldpositions_258
+    it_259 = lsf_lookup(value_257, tp_255)
+    if it_259:
+        v_lawspecselection0x0_260 = it_259[0]
+        return (v_lawspecselection0x0_260, c_256)
     else:
-        lawspecfieldgroup_260 = c_253[0]
-        value_259 = lawspecfieldgroup_260
-        matched_261 = value_259
-        if matched_261:
-            group_262 = matched_261[0]
-            performed_263 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').offsetFetchRequest(nout_437d0abf423f(group_262, symbols), nout_57a515e0e489(tp_252, symbols))
-            matched_264 = nin_c09136e29464(performed_263, symbols)
-            if matched_264:
-                o_265 = matched_264[0]
-                value_258 = o_265
+        lawspecfieldgroup_263 = c_256[0]
+        value_262 = lawspecfieldgroup_263
+        it_264 = value_262
+        if it_264:
+            v_lawspecselection0x0_265 = it_264[0]
+            performed_266 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').offsetFetchRequest(nout_437d0abf423f(v_lawspecselection0x0_265, symbols), nout_57a515e0e489(tp_255, symbols))
+            it_267 = nin_c09136e29464(performed_266, symbols)
+            if it_267:
+                v_match__lawspecselection0x0_0_268 = it_267[0]
+                value_261 = v_match__lawspecselection0x0_0_268
             else:
-                value_258 = 0
+                value_261 = 0
         else:
-            value_258 = 0
-        from_266 = value_258
-        return (from_266, Def_withPosition_867e6b19(tp_252, from_266, c_253))
+            value_261 = 0
+        from_269 = value_261
+        return (from_269, Def_withPosition_867e6b19(tp_255, from_269, c_256))
 
 
 # lawtwin.kafka::consumerPositionOf
-def Def_consumerPositionOf_71a8a523(symbols, tp_267, c_268):
-    lawspecfieldassigned_270 = c_268[4]
-    value_269 = lawspecfieldassigned_270
-    all_271 = True
-    cell_272 = value_269
-    while cell_272 is not None:
-        item_273 = cell_272[0]
-        if not ((item_273 != tp_267)):
-            all_271 = False
+def Def_consumerPositionOf_71a8a523(symbols, tp_270, c_271):
+    lawspecfieldassigned_273 = c_271[4]
+    value_272 = lawspecfieldassigned_273
+    all_274 = True
+    cell_275 = value_272
+    while cell_275 is not None:
+        item_276 = cell_275[0]
+        if not ((item_276 != tp_270)):
+            all_274 = False
             break
-        cell_272 = cell_272[1]
-    if (not all_271):
-        p_274 = Def_consumerPosition_4da411a3(symbols, tp_267, c_268)
-        lawspecfieldfirst_276 = p_274[0]
-        value_275 = lawspecfieldfirst_276
-        lawspecfieldsecond_278 = p_274[1]
-        value_277 = lawspecfieldsecond_278
-        return ((1, value_275), value_277)
+        cell_275 = cell_275[1]
+    if (not all_274):
+        p_277 = Def_consumerPosition_4da411a3(symbols, tp_270, c_271)
+        lawspecfieldfirst_279 = p_277[0]
+        value_278 = lawspecfieldfirst_279
+        lawspecfieldsecond_281 = p_277[1]
+        value_280 = lawspecfieldsecond_281
+        return ((1, value_278), value_280)
     else:
-        return ((0, 1), c_268)
+        return ((0, 1), c_271)
 
 
 # lawtwin.kafka::consumerRecords
-def Def_consumerRecords_9d810f29(tp_279, rs_280):
-    if rs_280 is None:
+def Def_consumerRecords_9d810f29(tp_282, rs_283):
+    it_284 = rs_283
+    if it_284 is None:
         return None
     else:
-        r_281 = rs_280[0]
-        rest_282 = rs_280[1]
-        lawspecfieldoffset_284 = r_281[0]
-        value_283 = lawspecfieldoffset_284
-        lawspecfieldentry_286 = r_281[1]
-        value_285 = lawspecfieldentry_286
-        return lsf_cons((tp_279, value_283, value_285), Def_consumerRecords_9d810f29(tp_279, rest_282))
+        v_lawspecselection0x0_285 = it_284[0]
+        v_lawspecselection0x1_286 = it_284[1]
+        v_lawspecrecordfield0_288 = tp_282
+        lawspecfieldoffset_290 = v_lawspecselection0x0_285[0]
+        value_289 = lawspecfieldoffset_290
+        v_lawspecrecordfield1_291 = value_289
+        lawspecfieldentry_293 = v_lawspecselection0x0_285[1]
+        value_292 = lawspecfieldentry_293
+        v_lawspecrecordfield2_294 = value_292
+        value_287 = (v_lawspecrecordfield0_288, v_lawspecrecordfield1_291, v_lawspecrecordfield2_294)
+        return lsf_cons(value_287, Def_consumerRecords_9d810f29(tp_282, v_lawspecselection0x1_286))
 
 
 # lawtwin.kafka::consumerRefresh
-def Def_consumerRefresh_99e956fa(symbols, c_287):
-    lawspecfieldgroup_289 = c_287[0]
-    value_288 = lawspecfieldgroup_289
-    matched_290 = value_288
-    if matched_290:
-        group_291 = matched_290[0]
+def Def_consumerRefresh_99e956fa(symbols, c_295):
+    lawspecfieldgroup_297 = c_295[0]
+    value_296 = lawspecfieldgroup_297
+    it_298 = value_296
+    if it_298:
+        v_lawspecselection0x0_299 = it_298[0]
         try:
-            lawspecfieldmember_295 = c_287[1]
-            value_294 = lawspecfieldmember_295
-            lawspecfieldgeneration_297 = c_287[2]
-            value_296 = lawspecfieldgeneration_297
+            lawspecfieldmember_303 = c_295[1]
+            value_302 = lawspecfieldmember_303
+            lawspecfieldgeneration_305 = c_295[2]
+            value_304 = lawspecfieldgeneration_305
             try:
-                performed_298 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').heartbeatRequest(nout_437d0abf423f(group_291, symbols), nout_437d0abf423f(value_294, symbols), nout_b862204e9be7(value_296, symbols))
+                performed_306 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').heartbeatRequest(nout_437d0abf423f(v_lawspecselection0x0_299, symbols), nout_437d0abf423f(value_302, symbols), nout_b862204e9be7(value_304, symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_293 = (1, nin_b120ceed78cb(performed_298, symbols))
+            attempted_301 = (1, nin_b120ceed78cb(performed_306, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_293 = (0, from_26c7dcf285c5(failure.value))
-        matched_299 = attempted_293
-        if matched_299[0]:
-            lawspecvalue_300 = matched_299[1]
-            value_292 = (1, lawspecvalue_300)
+            attempted_301 = (0, from_26c7dcf285c5(failure.value))
+        matched_307 = attempted_301
+        if matched_307[0]:
+            lawspecvalue_308 = matched_307[1]
+            value_300 = (1, lawspecvalue_308)
         else:
-            lawspecfailure_301 = matched_299[1]
-            value_292 = (0, lawspecfailure_301)
-        matched_302 = value_292
-        if matched_302[0]:
-            return ((1, None), c_287)
+            lawspecfailure_309 = matched_307[1]
+            value_300 = (0, lawspecfailure_309)
+        it_310 = value_300
+        if it_310[0]:
+            return ((1, None), c_295)
         else:
-            e_303 = matched_302[1]
-            if ((e_303 == 0) or (e_303 == 14)):
-                lawspecfieldmember_305 = c_287[1]
-                value_304 = lawspecfieldmember_305
-                lawspecfieldsubscription_307 = c_287[3]
-                value_306 = lawspecfieldsubscription_307
-                s_308 = Def_consumerJoin_198e034e(symbols, group_291, value_304, value_306, c_287)
-                lawspecfieldfirst_310 = s_308[0]
-                value_309 = lawspecfieldfirst_310
-                matched_311 = value_309
-                if matched_311[0]:
-                    lawspecfieldsecond_313 = s_308[1]
-                    value_312 = lawspecfieldsecond_313
-                    return ((1, None), value_312)
+            v_match__lawspecselection0x0_0_311 = it_310[1]
+            if ((v_match__lawspecselection0x0_0_311 == 0) or (v_match__lawspecselection0x0_0_311 == 14)):
+                lawspecfieldmember_313 = c_295[1]
+                value_312 = lawspecfieldmember_313
+                lawspecfieldsubscription_315 = c_295[3]
+                value_314 = lawspecfieldsubscription_315
+                s_316 = Def_consumerJoin_198e034e(symbols, v_lawspecselection0x0_299, value_312, value_314, c_295)
+                lawspecfieldfirst_318 = s_316[0]
+                value_317 = lawspecfieldfirst_318
+                it_319 = value_317
+                if it_319[0]:
+                    lawspecfieldsecond_321 = s_316[1]
+                    value_320 = lawspecfieldsecond_321
+                    return ((1, None), value_320)
                 else:
-                    e2_314 = matched_311[1]
-                    lawspecfieldsecond_316 = s_308[1]
-                    value_315 = lawspecfieldsecond_316
-                    return ((0, e2_314), value_315)
+                    v_match__match__lawspecselection0x0_0_0_322 = it_319[1]
+                    lawspecfieldsecond_324 = s_316[1]
+                    value_323 = lawspecfieldsecond_324
+                    return ((0, v_match__match__lawspecselection0x0_0_0_322), value_323)
             else:
-                return ((0, e_303), c_287)
+                return ((0, v_match__lawspecselection0x0_0_311), c_295)
     else:
-        return ((1, None), c_287)
+        return ((1, None), c_295)
 
 
 # lawtwin.kafka::consumerSeek
-def Def_consumerSeek_975a7017(tp_317, offset_318, c_319):
-    lawspecfieldassigned_321 = c_319[4]
-    value_320 = lawspecfieldassigned_321
-    all_322 = True
-    cell_323 = value_320
-    while cell_323 is not None:
-        item_324 = cell_323[0]
-        if not ((item_324 != tp_317)):
-            all_322 = False
+def Def_consumerSeek_975a7017(tp_325, offset_326, c_327):
+    lawspecfieldassigned_329 = c_327[4]
+    value_328 = lawspecfieldassigned_329
+    all_330 = True
+    cell_331 = value_328
+    while cell_331 is not None:
+        item_332 = cell_331[0]
+        if not ((item_332 != tp_325)):
+            all_330 = False
             break
-        cell_323 = cell_323[1]
-    if ((not all_322) and (offset_318 >= 0)):
-        return ((1, None), Def_withPosition_867e6b19(tp_317, offset_318, c_319))
+        cell_331 = cell_331[1]
+    if ((not all_330) and (offset_326 >= 0)):
+        return ((1, None), Def_withPosition_867e6b19(tp_325, offset_326, c_327))
     else:
-        return ((0, 1), c_319)
+        return ((0, 1), c_327)
 
 
 # lawtwin.kafka::coversOnce
-def Def_coversOnce_231e9ee6(t_325, n_326, view_327):
-    lawspecfieldmembers_329 = view_327[1]
-    value_328 = lawspecfieldmembers_329
-    owned_330 = Def_ownedOf_0d7fb3ae(t_325, value_328)
-    return ((lsf_length(owned_330) == n_326) and eq_cd87ee93b56a(lsf_set_of(owned_330), lsf_set_of(lsf_range_list(0, n_326))))
+def Def_coversOnce_231e9ee6(t_333, n_334, view_335):
+    lawspecfieldmembers_337 = view_335[1]
+    value_336 = lawspecfieldmembers_337
+    owned_338 = Def_ownedOf_0d7fb3ae(t_333, value_336)
+    return ((lsf_length(owned_338) == n_334) and eq_cd87ee93b56a(lsf_set_of(owned_338), lsf_set_of(lsf_range_list(0, n_334))))
 
 
 # lawtwin.kafka::created
-def Def_created_5201db31(symbols, t_331, n_332):
+def Def_created_5201db31(symbols, t_339, n_340):
     try:
         try:
-            performed_335 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').createTopicsRequest(nout_437d0abf423f(t_331, symbols), nout_b862204e9be7(n_332, symbols))
+            performed_343 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').createTopicsRequest(nout_437d0abf423f(t_339, symbols), nout_b862204e9be7(n_340, symbols))
         except ls.Fail as error:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                 "lawtwin.kafka.model::type::KafkaError",
             ), error.value, 64, symbols)) from error
-        attempted_334 = (1, nin_b120ceed78cb(performed_335, symbols))
+        attempted_342 = (1, nin_b120ceed78cb(performed_343, symbols))
     except ls.Failure as failure:
         if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
             raise
-        attempted_334 = (0, from_26c7dcf285c5(failure.value))
-    matched_336 = attempted_334
-    if matched_336[0]:
-        lawspecvalue_337 = matched_336[1]
-        value_333 = (1, lawspecvalue_337)
+        attempted_342 = (0, from_26c7dcf285c5(failure.value))
+    matched_344 = attempted_342
+    if matched_344[0]:
+        lawspecvalue_345 = matched_344[1]
+        value_341 = (1, lawspecvalue_345)
     else:
-        lawspecfailure_338 = matched_336[1]
-        value_333 = (0, lawspecfailure_338)
-    matched_339 = value_333
-    if matched_339[0]:
+        lawspecfailure_346 = matched_344[1]
+        value_341 = (0, lawspecfailure_346)
+    matched_347 = value_341
+    if matched_347[0]:
         return True
     else:
         return False
 
 
 # lawtwin.kafka::fencedBy
-def Def_fencedBy_c383bb89(old_340, new_341):
-    lawspecfieldproducerid_343 = new_341[0]
-    value_342 = lawspecfieldproducerid_343
-    lawspecfieldproducerid_345 = old_340[0]
-    value_344 = lawspecfieldproducerid_345
-    logic_350 = (value_342 == value_344)
-    if logic_350:
-        lawspecfieldproducerepoch_347 = new_341[1]
-        value_346 = lawspecfieldproducerepoch_347
-        lawspecfieldproducerepoch_349 = old_340[1]
-        value_348 = lawspecfieldproducerepoch_349
-        logic_350 = (value_346 > value_348)
-    logic_355 = logic_350
-    if not logic_355:
-        lawspecfieldproducerid_352 = new_341[0]
-        value_351 = lawspecfieldproducerid_352
-        lawspecfieldproducerid_354 = old_340[0]
-        value_353 = lawspecfieldproducerid_354
-        logic_355 = (value_351 != value_353)
-    return logic_355
+def Def_fencedBy_c383bb89(old_348, new_349):
+    lawspecfieldproducerid_351 = new_349[0]
+    value_350 = lawspecfieldproducerid_351
+    lawspecfieldproducerid_353 = old_348[0]
+    value_352 = lawspecfieldproducerid_353
+    logic_358 = (value_350 == value_352)
+    if logic_358:
+        lawspecfieldproducerepoch_355 = new_349[1]
+        value_354 = lawspecfieldproducerepoch_355
+        lawspecfieldproducerepoch_357 = old_348[1]
+        value_356 = lawspecfieldproducerepoch_357
+        logic_358 = (value_354 > value_356)
+    logic_363 = logic_358
+    if not logic_363:
+        lawspecfieldproducerid_360 = new_349[0]
+        value_359 = lawspecfieldproducerid_360
+        lawspecfieldproducerid_362 = old_348[0]
+        value_361 = lawspecfieldproducerid_362
+        logic_363 = (value_359 != value_361)
+    return logic_363
 
 
 # lawtwin.kafka::followsBatch
-def Def_followsBatch_00cf360a(a_356, batch_357, b_358):
-    if a_356[0]:
-        x_359 = a_356[1]
-        if b_358[0]:
-            y_360 = b_358[1]
-            return (y_360 == (x_359 + lsf_length(batch_357)))
+def Def_followsBatch_00cf360a(a_364, batch_365, b_366):
+    it_367 = a_364
+    if it_367[0]:
+        v_lawspecselection0x0_368 = it_367[1]
+        it_369 = b_366
+        if it_369[0]:
+            v_match__lawspecselection0x0_0_370 = it_369[1]
+            return (v_match__lawspecselection0x0_0_370 == (v_lawspecselection0x0_368 + lsf_length(batch_365)))
         else:
             return False
     else:
@@ -906,14 +916,16 @@ def Def_followsBatch_00cf360a(a_356, batch_357, b_358):
 
 
 # lawtwin.kafka::followsOne
-def Def_followsOne_4f3a93e2(a_361, latest_362):
-    if a_361[0]:
-        md_363 = a_361[1]
-        if latest_362[0]:
-            l_364 = latest_362[1]
-            lawspecfieldsentat_366 = md_363[1]
-            value_365 = lawspecfieldsentat_366
-            return (l_364 == (value_365 + 1))
+def Def_followsOne_4f3a93e2(a_371, latest_372):
+    it_373 = a_371
+    if it_373[0]:
+        v_lawspecselection0x0_374 = it_373[1]
+        it_375 = latest_372
+        if it_375[0]:
+            v_match__lawspecselection0x0_0_376 = it_375[1]
+            lawspecfieldsentat_378 = v_lawspecselection0x0_374[1]
+            value_377 = lawspecfieldsentat_378
+            return (v_match__lawspecselection0x0_0_376 == (value_377 + 1))
         else:
             return False
     else:
@@ -921,1591 +933,1840 @@ def Def_followsOne_4f3a93e2(a_361, latest_362):
 
 
 # lawtwin.kafka::freshConsumer
-def Def_freshConsumer_c2da4184(u_367):
-    return ((), '', (-1), None, None, lsf_key_val_of(None), 1)
+def Def_freshConsumer_c2da4184(u_379):
+    v_lawspecrecordfield0_380 = ()
+    v_lawspecrecordfield1_381 = ''
+    v_lawspecrecordfield2_382 = (-1)
+    v_lawspecrecordfield3_383 = None
+    v_lawspecrecordfield4_384 = None
+    v_lawspecrecordfield5_385 = lsf_key_val_of(None)
+    v_lawspecrecordfield6_386 = 1
+    return (v_lawspecrecordfield0_380, v_lawspecrecordfield1_381, v_lawspecrecordfield2_382, v_lawspecrecordfield3_383, v_lawspecrecordfield4_384, v_lawspecrecordfield5_385, v_lawspecrecordfield6_386)
 
 
 # lawtwin.kafka::freshProducer
-def Def_freshProducer_deea7b00(u_368):
-    return ((), lsf_key_val_of(None), ())
+def Def_freshProducer_deea7b00(u_387):
+    v_lawspecrecordfield0_388 = ()
+    v_lawspecrecordfield1_389 = lsf_key_val_of(None)
+    v_lawspecrecordfield2_390 = ()
+    return (v_lawspecrecordfield0_388, v_lawspecrecordfield1_389, v_lawspecrecordfield2_390)
 
 
 # lawtwin.kafka::freshTransactions
-def Def_freshTransactions_533fb432(u_369):
-    return ('', (), lsf_key_val_of(None), False, None, False)
+def Def_freshTransactions_533fb432(u_391):
+    v_lawspecrecordfield0_392 = ''
+    v_lawspecrecordfield1_393 = ()
+    v_lawspecrecordfield2_394 = lsf_key_val_of(None)
+    v_lawspecrecordfield3_395 = False
+    v_lawspecrecordfield4_396 = None
+    v_lawspecrecordfield5_397 = False
+    return (v_lawspecrecordfield0_392, v_lawspecrecordfield1_393, v_lawspecrecordfield2_394, v_lawspecrecordfield3_395, v_lawspecrecordfield4_396, v_lawspecrecordfield5_397)
 
 
 # lawtwin.kafka::identityOf
-def Def_identityOf_96976095(st_370):
-    lawspecfieldidentity_372 = st_370[0]
-    value_371 = lawspecfieldidentity_372
-    return (value_371, st_370)
+def Def_identityOf_96976095(st_398):
+    lawspecfieldidentity_400 = st_398[0]
+    value_399 = lawspecfieldidentity_400
+    return (value_399, st_398)
 
 
 # lawtwin.kafka::increasing
-def Def_increasing_d02ccce0(xs_373):
-    if xs_373 is None:
+def Def_increasing_d02ccce0(xs_401):
+    it_402 = xs_401
+    if it_402 is None:
         return True
     else:
-        h_374 = xs_373[0]
-        t_375 = xs_373[1]
-        if t_375 is None:
+        v_lawspecselection0x0_403 = it_402[0]
+        v_lawspecselection0x1_404 = it_402[1]
+        it_405 = v_lawspecselection0x1_404
+        if it_405 is None:
             return True
         else:
-            h2_376 = t_375[0]
-            return ((h_374 < h2_376) and Def_increasing_d02ccce0(t_375))
+            v_match__lawspecselection0x0_0_406 = it_405[0]
+            return ((v_lawspecselection0x0_403 < v_match__lawspecselection0x0_0_406) and Def_increasing_d02ccce0(v_lawspecselection0x1_404))
 
 
 # lawtwin.kafka::joinAll
-def Def_joinAll_67d573a5(symbols, g_377, ms_378, topics_379):
-    if ms_378 is None:
+def Def_joinAll_67d573a5(symbols, g_407, ms_408, topics_409):
+    it_410 = ms_408
+    if it_410 is None:
         return True
     else:
-        m_380 = ms_378[0]
-        rest_381 = ms_378[1]
+        v_lawspecselection0x0_411 = it_410[0]
+        v_lawspecselection0x1_412 = it_410[1]
         try:
             try:
-                performed_385 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').joinGroupRequest(nout_437d0abf423f(g_377, symbols), nout_437d0abf423f(m_380, symbols), nout_8ec0351dc657(topics_379, symbols))
+                performed_416 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').joinGroupRequest(nout_437d0abf423f(g_407, symbols), nout_437d0abf423f(v_lawspecselection0x0_411, symbols), nout_8ec0351dc657(topics_409, symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_384 = (1, nin_b862204e9be7(performed_385, symbols))
+            attempted_415 = (1, nin_b862204e9be7(performed_416, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_384 = (0, from_26c7dcf285c5(failure.value))
-        matched_386 = attempted_384
-        if matched_386[0]:
-            lawspecvalue_387 = matched_386[1]
-            value_383 = (1, lawspecvalue_387)
+            attempted_415 = (0, from_26c7dcf285c5(failure.value))
+        matched_417 = attempted_415
+        if matched_417[0]:
+            lawspecvalue_418 = matched_417[1]
+            value_414 = (1, lawspecvalue_418)
         else:
-            lawspecfailure_388 = matched_386[1]
-            value_383 = (0, lawspecfailure_388)
-        matched_389 = value_383
-        if matched_389[0]:
-            value_382 = True
+            lawspecfailure_419 = matched_417[1]
+            value_414 = (0, lawspecfailure_419)
+        matched_420 = value_414
+        if matched_420[0]:
+            value_413 = True
         else:
-            value_382 = False
-        return (value_382 and Def_joinAll_67d573a5(symbols, g_377, rest_381, topics_379))
+            value_413 = False
+        return (value_413 and Def_joinAll_67d573a5(symbols, g_407, v_lawspecselection0x1_412, topics_409))
 
 
 # lawtwin.kafka::joinEach
-def Def_joinEach_78c50afb(symbols, g_390, ms_391, topics_392):
-    if ms_391 is None:
+def Def_joinEach_78c50afb(symbols, g_421, ms_422, topics_423):
+    it_424 = ms_422
+    if it_424 is None:
         return True
     else:
-        m_393 = ms_391[0]
-        rest_394 = ms_391[1]
+        v_lawspecselection0x0_425 = it_424[0]
+        v_lawspecselection0x1_426 = it_424[1]
         try:
             try:
-                performed_398 = ls.handler(symbols, 'lawtwin.kafka::ability::GroupCoordinator').joinGroup(nout_437d0abf423f(g_390, symbols), nout_437d0abf423f(m_393, symbols), nout_8ec0351dc657(topics_392, symbols))
+                performed_430 = ls.handler(symbols, 'lawtwin.kafka::ability::GroupCoordinator').joinGroup(nout_437d0abf423f(g_421, symbols), nout_437d0abf423f(v_lawspecselection0x0_425, symbols), nout_8ec0351dc657(topics_423, symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_397 = (1, nin_b862204e9be7(performed_398, symbols))
+            attempted_429 = (1, nin_b862204e9be7(performed_430, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_397 = (0, from_26c7dcf285c5(failure.value))
-        matched_399 = attempted_397
-        if matched_399[0]:
-            lawspecvalue_400 = matched_399[1]
-            value_396 = (1, lawspecvalue_400)
+            attempted_429 = (0, from_26c7dcf285c5(failure.value))
+        matched_431 = attempted_429
+        if matched_431[0]:
+            lawspecvalue_432 = matched_431[1]
+            value_428 = (1, lawspecvalue_432)
         else:
-            lawspecfailure_401 = matched_399[1]
-            value_396 = (0, lawspecfailure_401)
-        matched_402 = value_396
-        if matched_402[0]:
-            value_395 = True
+            lawspecfailure_433 = matched_431[1]
+            value_428 = (0, lawspecfailure_433)
+        matched_434 = value_428
+        if matched_434[0]:
+            value_427 = True
         else:
-            value_395 = False
-        return (value_395 and Def_joinEach_78c50afb(symbols, g_390, rest_394, topics_392))
+            value_427 = False
+        return (value_427 and Def_joinEach_78c50afb(symbols, g_421, v_lawspecselection0x1_426, topics_423))
 
 
 # lawtwin.kafka::kafkaConsumerAssign
-def Def_kafkaConsumerAssign_6414ad54(consumerstate_403, value0_404):
-    return Def_consumerAssign_793a07ba(value0_404, consumerstate_403)
+def Def_kafkaConsumerAssign_6414ad54(consumerstate_435, value0_436):
+    return Def_consumerAssign_793a07ba(value0_436, consumerstate_435)
 
 
 # lawtwin.kafka::kafkaConsumerClose
-def Def_kafkaConsumerClose_ece19793(symbols, consumerstate_405):
-    return Def_consumerClose_00c5e7f3(symbols, consumerstate_405)
+def Def_kafkaConsumerClose_ece19793(symbols, consumerstate_437):
+    return Def_consumerClose_00c5e7f3(symbols, consumerstate_437)
 
 
 # lawtwin.kafka::kafkaConsumerCommitSync
-def Def_kafkaConsumerCommitSync_d47684fe(symbols, consumerstate_406):
-    return Def_consumerCommit_787f4c15(symbols, consumerstate_406)
+def Def_kafkaConsumerCommitSync_d47684fe(symbols, consumerstate_438):
+    return Def_consumerCommit_787f4c15(symbols, consumerstate_438)
 
 
 # lawtwin.kafka::kafkaConsumerCommittedOffset
-def Def_kafkaConsumerCommittedOffset_c045e1a8(symbols, consumerstate_407, value0_408):
-    return Def_consumerCommitted_06365ac2(symbols, value0_408, consumerstate_407)
+def Def_kafkaConsumerCommittedOffset_c045e1a8(symbols, consumerstate_439, value0_440):
+    return Def_consumerCommitted_06365ac2(symbols, value0_440, consumerstate_439)
 
 
 # lawtwin.kafka::kafkaConsumerPoll
-def Def_kafkaConsumerPoll_591504e0(symbols, consumerstate_409, value0_410):
-    return Def_consumerPoll_d12c6262(symbols, value0_410, consumerstate_409)
+def Def_kafkaConsumerPoll_591504e0(symbols, consumerstate_441, value0_442):
+    return Def_consumerPoll_d12c6262(symbols, value0_442, consumerstate_441)
 
 
 # lawtwin.kafka::kafkaConsumerPosition
-def Def_kafkaConsumerPosition_7784665f(symbols, consumerstate_411, value0_412):
-    return Def_consumerPositionOf_71a8a523(symbols, value0_412, consumerstate_411)
+def Def_kafkaConsumerPosition_7784665f(symbols, consumerstate_443, value0_444):
+    return Def_consumerPositionOf_71a8a523(symbols, value0_444, consumerstate_443)
 
 
 # lawtwin.kafka::kafkaConsumerSeek
-def Def_kafkaConsumerSeek_5fe046a7(consumerstate_413, value0_414, value1_415):
-    return Def_consumerSeek_975a7017(value0_414, value1_415, consumerstate_413)
+def Def_kafkaConsumerSeek_5fe046a7(consumerstate_445, value0_446, value1_447):
+    return Def_consumerSeek_975a7017(value0_446, value1_447, consumerstate_445)
 
 
 # lawtwin.kafka::kafkaConsumerSetIsolationLevel
-def Def_kafkaConsumerSetIsolationLevel_bc2459d3(consumerstate_416, value0_417):
-    return Def_consumerIsolation_2aacd289(value0_417, consumerstate_416)
+def Def_kafkaConsumerSetIsolationLevel_bc2459d3(consumerstate_448, value0_449):
+    return Def_consumerIsolation_2aacd289(value0_449, consumerstate_448)
 
 
 # lawtwin.kafka::kafkaConsumerStart
-def Def_kafkaConsumerStart_9e580acc(lawspecunit_418):
+def Def_kafkaConsumerStart_9e580acc(lawspecunit_450):
     return Def_freshConsumer_c2da4184(None)
 
 
 # lawtwin.kafka::kafkaConsumerSubscribe
-def Def_kafkaConsumerSubscribe_ce34eaf5(symbols, consumerstate_419, value0_420, value1_421, value2_422):
-    return Def_consumerJoin_198e034e(symbols, value0_420, value1_421, value2_422, consumerstate_419)
+def Def_kafkaConsumerSubscribe_ce34eaf5(symbols, consumerstate_451, value0_452, value1_453, value2_454):
+    return Def_consumerJoin_198e034e(symbols, value0_452, value1_453, value2_454, consumerstate_451)
 
 
 # lawtwin.kafka::kafkaProducerEnableIdempotence
-def Def_kafkaProducerEnableIdempotence_a79d2db8(symbols, producerstate_423):
-    return Def_producerIdempotent_c8ab8a13(symbols, producerstate_423)
+def Def_kafkaProducerEnableIdempotence_a79d2db8(symbols, producerstate_455):
+    return Def_producerIdempotent_c8ab8a13(symbols, producerstate_455)
 
 
 # lawtwin.kafka::kafkaProducerFlush
-def Def_kafkaProducerFlush_584e906f(producerstate_424):
-    return Def_producerFlush_f30611db(producerstate_424)
+def Def_kafkaProducerFlush_584e906f(producerstate_456):
+    return Def_producerFlush_f30611db(producerstate_456)
 
 
 # lawtwin.kafka::kafkaProducerProducerIdentity
-def Def_kafkaProducerProducerIdentity_a0ee547d(producerstate_425):
-    return Def_identityOf_96976095(producerstate_425)
+def Def_kafkaProducerProducerIdentity_a0ee547d(producerstate_457):
+    return Def_identityOf_96976095(producerstate_457)
 
 
 # lawtwin.kafka::kafkaProducerRetryLastSend
-def Def_kafkaProducerRetryLastSend_9cbd6c72(symbols, producerstate_426):
-    return Def_producerRetry_aaf3a88a(symbols, producerstate_426)
+def Def_kafkaProducerRetryLastSend_9cbd6c72(symbols, producerstate_458):
+    return Def_producerRetry_aaf3a88a(symbols, producerstate_458)
 
 
 # lawtwin.kafka::kafkaProducerSend
-def Def_kafkaProducerSend_a4612365(symbols, producerstate_427, value0_428):
-    return Def_producerSend_9064c6b5(symbols, value0_428, producerstate_427)
+def Def_kafkaProducerSend_a4612365(symbols, producerstate_459, value0_460):
+    return Def_producerSend_9064c6b5(symbols, value0_460, producerstate_459)
 
 
 # lawtwin.kafka::kafkaProducerStart
-def Def_kafkaProducerStart_58ddcfc8(lawspecunit_429):
+def Def_kafkaProducerStart_58ddcfc8(lawspecunit_461):
     return Def_freshProducer_deea7b00(None)
 
 
 # lawtwin.kafka::kafkaTransactionsAbortTransaction
-def Def_kafkaTransactionsAbortTransaction_a2a1e35e(symbols, txnstate_430):
-    return Def_transactionsAbort_256496fb(symbols, txnstate_430)
+def Def_kafkaTransactionsAbortTransaction_a2a1e35e(symbols, txnstate_462):
+    return Def_transactionsAbort_256496fb(symbols, txnstate_462)
 
 
 # lawtwin.kafka::kafkaTransactionsAddPartitionsToTransaction
-def Def_kafkaTransactionsAddPartitionsToTransaction_3d7d0621(symbols, txnstate_431, value0_432):
-    return Def_transactionsAdd_1f41c92e(symbols, value0_432, txnstate_431)
+def Def_kafkaTransactionsAddPartitionsToTransaction_3d7d0621(symbols, txnstate_463, value0_464):
+    return Def_transactionsAdd_1f41c92e(symbols, value0_464, txnstate_463)
 
 
 # lawtwin.kafka::kafkaTransactionsBeginTransaction
-def Def_kafkaTransactionsBeginTransaction_3c1e648e(txnstate_433):
-    return Def_transactionsBegin_5d267b99(txnstate_433)
+def Def_kafkaTransactionsBeginTransaction_3c1e648e(txnstate_465):
+    return Def_transactionsBegin_5d267b99(txnstate_465)
 
 
 # lawtwin.kafka::kafkaTransactionsCommitTransaction
-def Def_kafkaTransactionsCommitTransaction_e0a5e067(symbols, txnstate_434):
-    return Def_transactionsCommit_afadd0fa(symbols, txnstate_434)
+def Def_kafkaTransactionsCommitTransaction_e0a5e067(symbols, txnstate_466):
+    return Def_transactionsCommit_afadd0fa(symbols, txnstate_466)
 
 
 # lawtwin.kafka::kafkaTransactionsInitTransactions
-def Def_kafkaTransactionsInitTransactions_96f85461(symbols, txnstate_435, value0_436):
-    return Def_transactionsInit_d69a08bc(symbols, value0_436, txnstate_435)
+def Def_kafkaTransactionsInitTransactions_96f85461(symbols, txnstate_467, value0_468):
+    return Def_transactionsInit_d69a08bc(symbols, value0_468, txnstate_467)
 
 
 # lawtwin.kafka::kafkaTransactionsSendInTransaction
-def Def_kafkaTransactionsSendInTransaction_09c804c7(symbols, txnstate_437, value0_438):
-    return Def_transactionsSend_558d813c(symbols, value0_438, txnstate_437)
+def Def_kafkaTransactionsSendInTransaction_09c804c7(symbols, txnstate_469, value0_470):
+    return Def_transactionsSend_558d813c(symbols, value0_470, txnstate_469)
 
 
 # lawtwin.kafka::kafkaTransactionsSendOffsetsToTransaction
-def Def_kafkaTransactionsSendOffsetsToTransaction_d24938fc(symbols, txnstate_439, value0_440, value1_441):
-    return Def_transactionsOffsets_b33ea106(symbols, value0_440, value1_441, txnstate_439)
+def Def_kafkaTransactionsSendOffsetsToTransaction_d24938fc(symbols, txnstate_471, value0_472, value1_473):
+    return Def_transactionsOffsets_b33ea106(symbols, value0_472, value1_473, txnstate_471)
 
 
 # lawtwin.kafka::kafkaTransactionsStart
-def Def_kafkaTransactionsStart_68a77cf3(lawspecunit_442):
+def Def_kafkaTransactionsStart_68a77cf3(lawspecunit_474):
     return Def_freshTransactions_533fb432(None)
 
 
 # lawtwin.kafka::keepPositions
-def Def_keepPositions_f10bd26f(tps_443, positions_444, acc_445):
+def Def_keepPositions_f10bd26f(tps_475, positions_476, acc_477):
     while True:
-        if tps_443 is None:
-            return acc_445
+        it_478 = tps_475
+        if it_478 is None:
+            return acc_477
         else:
-            tp_446 = tps_443[0]
-            rest_447 = tps_443[1]
-            matched_448 = lsf_lookup(positions_444, tp_446)
-            if matched_448:
-                o_449 = matched_448[0]
-                next_450 = rest_447
-                next_451 = lsf_put(acc_445, tp_446, o_449)
-                tps_443 = next_450
-                acc_445 = next_451
+            v_lawspecselection0x0_479 = it_478[0]
+            v_lawspecselection0x1_480 = it_478[1]
+            it_481 = lsf_lookup(positions_476, v_lawspecselection0x0_479)
+            if it_481:
+                v_match__lawspecselection0x0_0_482 = it_481[0]
+                next_483 = v_lawspecselection0x1_480
+                next_484 = lsf_put(acc_477, v_lawspecselection0x0_479, v_match__lawspecselection0x0_0_482)
+                tps_475 = next_483
+                acc_477 = next_484
                 continue
             else:
-                next_452 = rest_447
-                tps_443 = next_452
+                next_485 = v_lawspecselection0x1_480
+                tps_475 = next_485
                 continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValDeleteItems_62318b0a9a214051
-def Def_lawspecCollectionsKeyValDeleteItems_5df79bd1(k_453, es_454):
-    if es_454 is None:
-        return es_454
+def Def_lawspecCollectionsKeyValDeleteItems_5df79bd1(k_486, es_487):
+    it_488 = es_487
+    if it_488 is None:
+        return es_487
     else:
-        e_455 = es_454[0]
-        t_456 = es_454[1]
-        key_457 = e_455[0]
-        matched_458 = Ordering_of(lsf_cmp_plain(k_453, key_457))
-        if matched_458 == 0:
-            return t_456
-        elif matched_458 == 1:
-            return lsf_cons(e_455, Def_lawspecCollectionsKeyValDeleteItems_5df79bd1(k_453, t_456))
+        v_lawspecselection0x0_489 = it_488[0]
+        v_lawspecselection0x1_490 = it_488[1]
+        it_491 = v_lawspecselection0x0_489
+        v_match__lawspecselection0x0_0_492 = it_491[0]
+        it_493 = Ordering_of(lsf_cmp_plain(k_486, v_match__lawspecselection0x0_0_492))
+        if it_493 == 0:
+            return v_lawspecselection0x1_490
+        elif it_493 == 1:
+            return lsf_cons(v_lawspecselection0x0_489, Def_lawspecCollectionsKeyValDeleteItems_5df79bd1(k_486, v_lawspecselection0x1_490))
         else:
-            return es_454
+            return es_487
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5
-def Def_lawspecCollectionsKeyValDeleteItems_6394b670(k_459, es_460):
-    if es_460 is None:
-        return es_460
+def Def_lawspecCollectionsKeyValDeleteItems_6394b670(k_494, es_495):
+    it_496 = es_495
+    if it_496 is None:
+        return es_495
     else:
-        e_461 = es_460[0]
-        t_462 = es_460[1]
-        key_463 = e_461[0]
-        matched_464 = Ordering_of(lsf_cmp_plain(k_459, key_463))
-        if matched_464 == 0:
-            return t_462
-        elif matched_464 == 1:
-            return lsf_cons(e_461, Def_lawspecCollectionsKeyValDeleteItems_6394b670(k_459, t_462))
+        v_lawspecselection0x0_497 = it_496[0]
+        v_lawspecselection0x1_498 = it_496[1]
+        it_499 = v_lawspecselection0x0_497
+        v_match__lawspecselection0x0_0_500 = it_499[0]
+        it_501 = Ordering_of(lsf_cmp_plain(k_494, v_match__lawspecselection0x0_0_500))
+        if it_501 == 0:
+            return v_lawspecselection0x1_498
+        elif it_501 == 1:
+            return lsf_cons(v_lawspecselection0x0_497, Def_lawspecCollectionsKeyValDeleteItems_6394b670(k_494, v_lawspecselection0x1_498))
         else:
-            return es_460
+            return es_495
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValDelete_95f14dd183eea025
-def Def_lawspecCollectionsKeyValDelete_daac10f4(k_465, m_466):
-    return lsf_delete(m_466, k_465)
+def Def_lawspecCollectionsKeyValDelete_daac10f4(k_502, m_503):
+    return lsf_delete(m_503, k_502)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValDelete_d7a338e61b94bc91
-def Def_lawspecCollectionsKeyValDelete_9159aa73(k_467, m_468):
-    return lsf_delete(m_468, k_467)
+def Def_lawspecCollectionsKeyValDelete_9159aa73(k_504, m_505):
+    return lsf_delete(m_505, k_504)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4
-def Def_lawspecCollectionsKeyValEntries_a865cc3f(m_469):
-    return lsf_entries_list(m_469)
+def Def_lawspecCollectionsKeyValEntries_a865cc3f(m_506):
+    return lsf_entries_list(m_506)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c
-def Def_lawspecCollectionsKeyValEntries_d490695f(m_470):
-    return lsf_entries_list(m_470)
+def Def_lawspecCollectionsKeyValEntries_d490695f(m_507):
+    return lsf_entries_list(m_507)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_df543c4156f9821a
-def Def_lawspecCollectionsKeyValEntries_90fdb0cf(m_471):
-    return lsf_entries_list(m_471)
+def Def_lawspecCollectionsKeyValEntries_90fdb0cf(m_508):
+    return lsf_entries_list(m_508)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_18760777c36ef587
-def Def_lawspecCollectionsKeyValFromItems_b1d7a6fe(es_472, acc_473):
+def Def_lawspecCollectionsKeyValFromItems_b1d7a6fe(es_509, acc_510):
     while True:
-        if es_472 is None:
-            return acc_473
+        it_511 = es_509
+        if it_511 is None:
+            return acc_510
         else:
-            e_474 = es_472[0]
-            t_475 = es_472[1]
-            key_476 = e_474[0]
-            value_477 = e_474[1]
-            next_478 = t_475
-            next_479 = Def_lawspecCollectionsKeyValPutItems_fb1bb5ca(key_476, value_477, acc_473)
-            es_472 = next_478
-            acc_473 = next_479
+            v_lawspecselection0x0_512 = it_511[0]
+            v_lawspecselection0x1_513 = it_511[1]
+            it_514 = v_lawspecselection0x0_512
+            v_match__lawspecselection0x0_0_515 = it_514[0]
+            v_match__lawspecselection0x1_0_516 = it_514[1]
+            next_517 = v_lawspecselection0x1_513
+            next_518 = Def_lawspecCollectionsKeyValPutItems_fb1bb5ca(v_match__lawspecselection0x0_0_515, v_match__lawspecselection0x1_0_516, acc_510)
+            es_509 = next_517
+            acc_510 = next_518
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f
-def Def_lawspecCollectionsKeyValFromItems_06f4d2c6(es_480, acc_481):
+def Def_lawspecCollectionsKeyValFromItems_06f4d2c6(es_519, acc_520):
     while True:
-        if es_480 is None:
-            return acc_481
+        it_521 = es_519
+        if it_521 is None:
+            return acc_520
         else:
-            e_482 = es_480[0]
-            t_483 = es_480[1]
-            key_484 = e_482[0]
-            value_485 = e_482[1]
-            next_486 = t_483
-            next_487 = Def_lawspecCollectionsKeyValPutItems_5d998955(key_484, value_485, acc_481)
-            es_480 = next_486
-            acc_481 = next_487
+            v_lawspecselection0x0_522 = it_521[0]
+            v_lawspecselection0x1_523 = it_521[1]
+            it_524 = v_lawspecselection0x0_522
+            v_match__lawspecselection0x0_0_525 = it_524[0]
+            v_match__lawspecselection0x1_0_526 = it_524[1]
+            next_527 = v_lawspecselection0x1_523
+            next_528 = Def_lawspecCollectionsKeyValPutItems_5d998955(v_match__lawspecselection0x0_0_525, v_match__lawspecselection0x1_0_526, acc_520)
+            es_519 = next_527
+            acc_520 = next_528
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_224702891e6ebfba
-def Def_lawspecCollectionsKeyValFromItems_a82586cc(es_488, acc_489):
+def Def_lawspecCollectionsKeyValFromItems_a82586cc(es_529, acc_530):
     while True:
-        if es_488 is None:
-            return acc_489
+        it_531 = es_529
+        if it_531 is None:
+            return acc_530
         else:
-            e_490 = es_488[0]
-            t_491 = es_488[1]
-            key_492 = e_490[0]
-            value_493 = e_490[1]
-            next_494 = t_491
-            next_495 = Def_lawspecCollectionsKeyValPutItems_8d4f5385(key_492, value_493, acc_489)
-            es_488 = next_494
-            acc_489 = next_495
+            v_lawspecselection0x0_532 = it_531[0]
+            v_lawspecselection0x1_533 = it_531[1]
+            it_534 = v_lawspecselection0x0_532
+            v_match__lawspecselection0x0_0_535 = it_534[0]
+            v_match__lawspecselection0x1_0_536 = it_534[1]
+            next_537 = v_lawspecselection0x1_533
+            next_538 = Def_lawspecCollectionsKeyValPutItems_8d4f5385(v_match__lawspecselection0x0_0_535, v_match__lawspecselection0x1_0_536, acc_530)
+            es_529 = next_537
+            acc_530 = next_538
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_28070fe12955af99
-def Def_lawspecCollectionsKeyValFromItems_cbeefea2(es_496, acc_497):
+def Def_lawspecCollectionsKeyValFromItems_cbeefea2(es_539, acc_540):
     while True:
-        if es_496 is None:
-            return acc_497
+        it_541 = es_539
+        if it_541 is None:
+            return acc_540
         else:
-            e_498 = es_496[0]
-            t_499 = es_496[1]
-            key_500 = e_498[0]
-            value_501 = e_498[1]
-            next_502 = t_499
-            next_503 = Def_lawspecCollectionsKeyValPutItems_97a64264(key_500, value_501, acc_497)
-            es_496 = next_502
-            acc_497 = next_503
+            v_lawspecselection0x0_542 = it_541[0]
+            v_lawspecselection0x1_543 = it_541[1]
+            it_544 = v_lawspecselection0x0_542
+            v_match__lawspecselection0x0_0_545 = it_544[0]
+            v_match__lawspecselection0x1_0_546 = it_544[1]
+            next_547 = v_lawspecselection0x1_543
+            next_548 = Def_lawspecCollectionsKeyValPutItems_97a64264(v_match__lawspecselection0x0_0_545, v_match__lawspecselection0x1_0_546, acc_540)
+            es_539 = next_547
+            acc_540 = next_548
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_30e2507dcc3ef9ac
-def Def_lawspecCollectionsKeyValFromItems_32478a30(es_504, acc_505):
+def Def_lawspecCollectionsKeyValFromItems_32478a30(es_549, acc_550):
     while True:
-        if es_504 is None:
-            return acc_505
+        it_551 = es_549
+        if it_551 is None:
+            return acc_550
         else:
-            e_506 = es_504[0]
-            t_507 = es_504[1]
-            key_508 = e_506[0]
-            value_509 = e_506[1]
-            next_510 = t_507
-            next_511 = Def_lawspecCollectionsKeyValPutItems_883fe52d(key_508, value_509, acc_505)
-            es_504 = next_510
-            acc_505 = next_511
+            v_lawspecselection0x0_552 = it_551[0]
+            v_lawspecselection0x1_553 = it_551[1]
+            it_554 = v_lawspecselection0x0_552
+            v_match__lawspecselection0x0_0_555 = it_554[0]
+            v_match__lawspecselection0x1_0_556 = it_554[1]
+            next_557 = v_lawspecselection0x1_553
+            next_558 = Def_lawspecCollectionsKeyValPutItems_883fe52d(v_match__lawspecselection0x0_0_555, v_match__lawspecselection0x1_0_556, acc_550)
+            es_549 = next_557
+            acc_550 = next_558
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a2b9e
-def Def_lawspecCollectionsKeyValFromItems_3a24ccf2(es_512, acc_513):
+def Def_lawspecCollectionsKeyValFromItems_3a24ccf2(es_559, acc_560):
     while True:
-        if es_512 is None:
-            return acc_513
+        it_561 = es_559
+        if it_561 is None:
+            return acc_560
         else:
-            e_514 = es_512[0]
-            t_515 = es_512[1]
-            key_516 = e_514[0]
-            value_517 = e_514[1]
-            next_518 = t_515
-            next_519 = Def_lawspecCollectionsKeyValPutItems_28cf0caf(key_516, value_517, acc_513)
-            es_512 = next_518
-            acc_513 = next_519
+            v_lawspecselection0x0_562 = it_561[0]
+            v_lawspecselection0x1_563 = it_561[1]
+            it_564 = v_lawspecselection0x0_562
+            v_match__lawspecselection0x0_0_565 = it_564[0]
+            v_match__lawspecselection0x1_0_566 = it_564[1]
+            next_567 = v_lawspecselection0x1_563
+            next_568 = Def_lawspecCollectionsKeyValPutItems_28cf0caf(v_match__lawspecselection0x0_0_565, v_match__lawspecselection0x1_0_566, acc_560)
+            es_559 = next_567
+            acc_560 = next_568
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_656b3e1b81a0457e
-def Def_lawspecCollectionsKeyValFromItems_1e161219(es_520, acc_521):
+def Def_lawspecCollectionsKeyValFromItems_1e161219(es_569, acc_570):
     while True:
-        if es_520 is None:
-            return acc_521
+        it_571 = es_569
+        if it_571 is None:
+            return acc_570
         else:
-            e_522 = es_520[0]
-            t_523 = es_520[1]
-            key_524 = e_522[0]
-            value_525 = e_522[1]
-            next_526 = t_523
-            next_527 = Def_lawspecCollectionsKeyValPutItems_4266176b(key_524, value_525, acc_521)
-            es_520 = next_526
-            acc_521 = next_527
+            v_lawspecselection0x0_572 = it_571[0]
+            v_lawspecselection0x1_573 = it_571[1]
+            it_574 = v_lawspecselection0x0_572
+            v_match__lawspecselection0x0_0_575 = it_574[0]
+            v_match__lawspecselection0x1_0_576 = it_574[1]
+            next_577 = v_lawspecselection0x1_573
+            next_578 = Def_lawspecCollectionsKeyValPutItems_4266176b(v_match__lawspecselection0x0_0_575, v_match__lawspecselection0x1_0_576, acc_570)
+            es_569 = next_577
+            acc_570 = next_578
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_85bb2eea042e5fe3
-def Def_lawspecCollectionsKeyValFromItems_92b072e4(es_528, acc_529):
+def Def_lawspecCollectionsKeyValFromItems_92b072e4(es_579, acc_580):
     while True:
-        if es_528 is None:
-            return acc_529
+        it_581 = es_579
+        if it_581 is None:
+            return acc_580
         else:
-            e_530 = es_528[0]
-            t_531 = es_528[1]
-            key_532 = e_530[0]
-            value_533 = e_530[1]
-            next_534 = t_531
-            next_535 = Def_lawspecCollectionsKeyValPutItems_c4168a80(key_532, value_533, acc_529)
-            es_528 = next_534
-            acc_529 = next_535
+            v_lawspecselection0x0_582 = it_581[0]
+            v_lawspecselection0x1_583 = it_581[1]
+            it_584 = v_lawspecselection0x0_582
+            v_match__lawspecselection0x0_0_585 = it_584[0]
+            v_match__lawspecselection0x1_0_586 = it_584[1]
+            next_587 = v_lawspecselection0x1_583
+            next_588 = Def_lawspecCollectionsKeyValPutItems_c4168a80(v_match__lawspecselection0x0_0_585, v_match__lawspecselection0x1_0_586, acc_580)
+            es_579 = next_587
+            acc_580 = next_588
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1eb10
-def Def_lawspecCollectionsKeyValFromItems_d863ec47(es_536, acc_537):
+def Def_lawspecCollectionsKeyValFromItems_d863ec47(es_589, acc_590):
     while True:
-        if es_536 is None:
-            return acc_537
+        it_591 = es_589
+        if it_591 is None:
+            return acc_590
         else:
-            e_538 = es_536[0]
-            t_539 = es_536[1]
-            key_540 = e_538[0]
-            value_541 = e_538[1]
-            next_542 = t_539
-            next_543 = Def_lawspecCollectionsKeyValPutItems_523d104d(key_540, value_541, acc_537)
-            es_536 = next_542
-            acc_537 = next_543
+            v_lawspecselection0x0_592 = it_591[0]
+            v_lawspecselection0x1_593 = it_591[1]
+            it_594 = v_lawspecselection0x0_592
+            v_match__lawspecselection0x0_0_595 = it_594[0]
+            v_match__lawspecselection0x1_0_596 = it_594[1]
+            next_597 = v_lawspecselection0x1_593
+            next_598 = Def_lawspecCollectionsKeyValPutItems_523d104d(v_match__lawspecselection0x0_0_595, v_match__lawspecselection0x1_0_596, acc_590)
+            es_589 = next_597
+            acc_590 = next_598
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_dd3ea08b63484ff8
-def Def_lawspecCollectionsKeyValFromItems_4e4ef1c4(es_544, acc_545):
+def Def_lawspecCollectionsKeyValFromItems_4e4ef1c4(es_599, acc_600):
     while True:
-        if es_544 is None:
-            return acc_545
+        it_601 = es_599
+        if it_601 is None:
+            return acc_600
         else:
-            e_546 = es_544[0]
-            t_547 = es_544[1]
-            key_548 = e_546[0]
-            value_549 = e_546[1]
-            next_550 = t_547
-            next_551 = Def_lawspecCollectionsKeyValPutItems_054f1ef1(key_548, value_549, acc_545)
-            es_544 = next_550
-            acc_545 = next_551
+            v_lawspecselection0x0_602 = it_601[0]
+            v_lawspecselection0x1_603 = it_601[1]
+            it_604 = v_lawspecselection0x0_602
+            v_match__lawspecselection0x0_0_605 = it_604[0]
+            v_match__lawspecselection0x1_0_606 = it_604[1]
+            next_607 = v_lawspecselection0x1_603
+            next_608 = Def_lawspecCollectionsKeyValPutItems_054f1ef1(v_match__lawspecselection0x0_0_605, v_match__lawspecselection0x1_0_606, acc_600)
+            es_599 = next_607
+            acc_600 = next_608
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_ead6d6bde1a20a26
-def Def_lawspecCollectionsKeyValFromItems_6be3ca15(es_552, acc_553):
+def Def_lawspecCollectionsKeyValFromItems_6be3ca15(es_609, acc_610):
     while True:
-        if es_552 is None:
-            return acc_553
+        it_611 = es_609
+        if it_611 is None:
+            return acc_610
         else:
-            e_554 = es_552[0]
-            t_555 = es_552[1]
-            key_556 = e_554[0]
-            value_557 = e_554[1]
-            next_558 = t_555
-            next_559 = Def_lawspecCollectionsKeyValPutItems_80dc1939(key_556, value_557, acc_553)
-            es_552 = next_558
-            acc_553 = next_559
+            v_lawspecselection0x0_612 = it_611[0]
+            v_lawspecselection0x1_613 = it_611[1]
+            it_614 = v_lawspecselection0x0_612
+            v_match__lawspecselection0x0_0_615 = it_614[0]
+            v_match__lawspecselection0x1_0_616 = it_614[1]
+            next_617 = v_lawspecselection0x1_613
+            next_618 = Def_lawspecCollectionsKeyValPutItems_80dc1939(v_match__lawspecselection0x0_0_615, v_match__lawspecselection0x1_0_616, acc_610)
+            es_609 = next_617
+            acc_610 = next_618
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_faa46e63cbcd14e9
-def Def_lawspecCollectionsKeyValFromItems_c033ba9e(es_560, acc_561):
+def Def_lawspecCollectionsKeyValFromItems_c033ba9e(es_619, acc_620):
     while True:
-        if es_560 is None:
-            return acc_561
+        it_621 = es_619
+        if it_621 is None:
+            return acc_620
         else:
-            e_562 = es_560[0]
-            t_563 = es_560[1]
-            key_564 = e_562[0]
-            value_565 = e_562[1]
-            next_566 = t_563
-            next_567 = Def_lawspecCollectionsKeyValPutItems_3f0139cf(key_564, value_565, acc_561)
-            es_560 = next_566
-            acc_561 = next_567
+            v_lawspecselection0x0_622 = it_621[0]
+            v_lawspecselection0x1_623 = it_621[1]
+            it_624 = v_lawspecselection0x0_622
+            v_match__lawspecselection0x0_0_625 = it_624[0]
+            v_match__lawspecselection0x1_0_626 = it_624[1]
+            next_627 = v_lawspecselection0x1_623
+            next_628 = Def_lawspecCollectionsKeyValPutItems_3f0139cf(v_match__lawspecselection0x0_0_625, v_match__lawspecselection0x1_0_626, acc_620)
+            es_619 = next_627
+            acc_620 = next_628
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValKeysItems_e233e49033adca72
-def Def_lawspecCollectionsKeyValKeysItems_e033276a(es_568):
-    if es_568 is None:
+def Def_lawspecCollectionsKeyValKeysItems_e033276a(es_629):
+    it_630 = es_629
+    if it_630 is None:
         return None
     else:
-        e_569 = es_568[0]
-        t_570 = es_568[1]
-        key_571 = e_569[0]
-        return lsf_cons(key_571, Def_lawspecCollectionsKeyValKeysItems_e033276a(t_570))
+        v_lawspecselection0x0_631 = it_630[0]
+        v_lawspecselection0x1_632 = it_630[1]
+        it_633 = v_lawspecselection0x0_631
+        v_match__lawspecselection0x0_0_634 = it_633[0]
+        return lsf_cons(v_match__lawspecselection0x0_0_634, Def_lawspecCollectionsKeyValKeysItems_e033276a(v_lawspecselection0x1_632))
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValKeys_c7c332043746df98
-def Def_lawspecCollectionsKeyValKeys_34e9a8ae(m_572):
-    return lsf_keys_list(m_572)
+def Def_lawspecCollectionsKeyValKeys_34e9a8ae(m_635):
+    return lsf_keys_list(m_635)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_136cc6772b4e992f
-def Def_lawspecCollectionsKeyValLookupItems_b9936fbc(k_573, es_574):
+def Def_lawspecCollectionsKeyValLookupItems_b9936fbc(k_636, es_637):
     while True:
-        if es_574 is None:
+        it_638 = es_637
+        if it_638 is None:
             return ()
         else:
-            e_575 = es_574[0]
-            t_576 = es_574[1]
-            key_577 = e_575[0]
-            value_578 = e_575[1]
-            matched_579 = Ordering_of(lsf_cmp_plain(k_573, key_577))
-            if matched_579 == 0:
-                return (value_578,)
-            elif matched_579 == 1:
-                next_580 = t_576
-                es_574 = next_580
+            v_lawspecselection0x0_639 = it_638[0]
+            v_lawspecselection0x1_640 = it_638[1]
+            it_641 = v_lawspecselection0x0_639
+            v_match__lawspecselection0x0_0_642 = it_641[0]
+            v_match__lawspecselection0x1_0_643 = it_641[1]
+            it_644 = Ordering_of(lsf_cmp_plain(k_636, v_match__lawspecselection0x0_0_642))
+            if it_644 == 0:
+                return (v_match__lawspecselection0x1_0_643,)
+            elif it_644 == 1:
+                next_645 = v_lawspecselection0x1_640
+                es_637 = next_645
                 continue
             else:
                 return ()
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_1eb69f0fdf3c8f0b
-def Def_lawspecCollectionsKeyValLookupItems_154c41d9(k_581, es_582):
+def Def_lawspecCollectionsKeyValLookupItems_154c41d9(k_646, es_647):
     while True:
-        if es_582 is None:
+        it_648 = es_647
+        if it_648 is None:
             return ()
         else:
-            e_583 = es_582[0]
-            t_584 = es_582[1]
-            key_585 = e_583[0]
-            value_586 = e_583[1]
-            matched_587 = Ordering_of(lsf_cmp_plain(k_581, key_585))
-            if matched_587 == 0:
-                return (value_586,)
-            elif matched_587 == 1:
-                next_588 = t_584
-                es_582 = next_588
+            v_lawspecselection0x0_649 = it_648[0]
+            v_lawspecselection0x1_650 = it_648[1]
+            it_651 = v_lawspecselection0x0_649
+            v_match__lawspecselection0x0_0_652 = it_651[0]
+            v_match__lawspecselection0x1_0_653 = it_651[1]
+            it_654 = Ordering_of(lsf_cmp_plain(k_646, v_match__lawspecselection0x0_0_652))
+            if it_654 == 0:
+                return (v_match__lawspecselection0x1_0_653,)
+            elif it_654 == 1:
+                next_655 = v_lawspecselection0x1_650
+                es_647 = next_655
                 continue
             else:
                 return ()
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_5756b26180726581
-def Def_lawspecCollectionsKeyValLookupItems_ebcd945a(k_589, es_590):
+def Def_lawspecCollectionsKeyValLookupItems_ebcd945a(k_656, es_657):
     while True:
-        if es_590 is None:
+        it_658 = es_657
+        if it_658 is None:
             return ()
         else:
-            e_591 = es_590[0]
-            t_592 = es_590[1]
-            key_593 = e_591[0]
-            value_594 = e_591[1]
-            matched_595 = Ordering_of(lsf_cmp_plain(k_589, key_593))
-            if matched_595 == 0:
-                return (value_594,)
-            elif matched_595 == 1:
-                next_596 = t_592
-                es_590 = next_596
+            v_lawspecselection0x0_659 = it_658[0]
+            v_lawspecselection0x1_660 = it_658[1]
+            it_661 = v_lawspecselection0x0_659
+            v_match__lawspecselection0x0_0_662 = it_661[0]
+            v_match__lawspecselection0x1_0_663 = it_661[1]
+            it_664 = Ordering_of(lsf_cmp_plain(k_656, v_match__lawspecselection0x0_0_662))
+            if it_664 == 0:
+                return (v_match__lawspecselection0x1_0_663,)
+            elif it_664 == 1:
+                next_665 = v_lawspecselection0x1_660
+                es_657 = next_665
                 continue
             else:
                 return ()
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_69280184901ea585
-def Def_lawspecCollectionsKeyValLookupItems_71a2ad87(k_597, es_598):
+def Def_lawspecCollectionsKeyValLookupItems_71a2ad87(k_666, es_667):
     while True:
-        if es_598 is None:
+        it_668 = es_667
+        if it_668 is None:
             return ()
         else:
-            e_599 = es_598[0]
-            t_600 = es_598[1]
-            key_601 = e_599[0]
-            value_602 = e_599[1]
-            matched_603 = Ordering_of(lsf_cmp_plain(k_597, key_601))
-            if matched_603 == 0:
-                return (value_602,)
-            elif matched_603 == 1:
-                next_604 = t_600
-                es_598 = next_604
+            v_lawspecselection0x0_669 = it_668[0]
+            v_lawspecselection0x1_670 = it_668[1]
+            it_671 = v_lawspecselection0x0_669
+            v_match__lawspecselection0x0_0_672 = it_671[0]
+            v_match__lawspecselection0x1_0_673 = it_671[1]
+            it_674 = Ordering_of(lsf_cmp_plain(k_666, v_match__lawspecselection0x0_0_672))
+            if it_674 == 0:
+                return (v_match__lawspecselection0x1_0_673,)
+            elif it_674 == 1:
+                next_675 = v_lawspecselection0x1_670
+                es_667 = next_675
                 continue
             else:
                 return ()
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_82603a5935440f75
-def Def_lawspecCollectionsKeyValLookupItems_a13d293f(k_605, es_606):
+def Def_lawspecCollectionsKeyValLookupItems_a13d293f(k_676, es_677):
     while True:
-        if es_606 is None:
+        it_678 = es_677
+        if it_678 is None:
             return ()
         else:
-            e_607 = es_606[0]
-            t_608 = es_606[1]
-            key_609 = e_607[0]
-            value_610 = e_607[1]
-            matched_611 = Ordering_of(lsf_cmp_plain(k_605, key_609))
-            if matched_611 == 0:
-                return (value_610,)
-            elif matched_611 == 1:
-                next_612 = t_608
-                es_606 = next_612
+            v_lawspecselection0x0_679 = it_678[0]
+            v_lawspecselection0x1_680 = it_678[1]
+            it_681 = v_lawspecselection0x0_679
+            v_match__lawspecselection0x0_0_682 = it_681[0]
+            v_match__lawspecselection0x1_0_683 = it_681[1]
+            it_684 = Ordering_of(lsf_cmp_plain(k_676, v_match__lawspecselection0x0_0_682))
+            if it_684 == 0:
+                return (v_match__lawspecselection0x1_0_683,)
+            elif it_684 == 1:
+                next_685 = v_lawspecselection0x1_680
+                es_677 = next_685
                 continue
             else:
                 return ()
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_8c8e1453bfc42ee5
-def Def_lawspecCollectionsKeyValLookupItems_9c1371ef(k_613, es_614):
+def Def_lawspecCollectionsKeyValLookupItems_9c1371ef(k_686, es_687):
     while True:
-        if es_614 is None:
+        it_688 = es_687
+        if it_688 is None:
             return ()
         else:
-            e_615 = es_614[0]
-            t_616 = es_614[1]
-            key_617 = e_615[0]
-            value_618 = e_615[1]
-            matched_619 = Ordering_of(lsf_cmp_plain(k_613, key_617))
-            if matched_619 == 0:
-                return (value_618,)
-            elif matched_619 == 1:
-                next_620 = t_616
-                es_614 = next_620
+            v_lawspecselection0x0_689 = it_688[0]
+            v_lawspecselection0x1_690 = it_688[1]
+            it_691 = v_lawspecselection0x0_689
+            v_match__lawspecselection0x0_0_692 = it_691[0]
+            v_match__lawspecselection0x1_0_693 = it_691[1]
+            it_694 = Ordering_of(lsf_cmp_plain(k_686, v_match__lawspecselection0x0_0_692))
+            if it_694 == 0:
+                return (v_match__lawspecselection0x1_0_693,)
+            elif it_694 == 1:
+                next_695 = v_lawspecselection0x1_690
+                es_687 = next_695
                 continue
             else:
                 return ()
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_9428a088248757a3
-def Def_lawspecCollectionsKeyValLookupItems_4e6d941b(k_621, es_622):
+def Def_lawspecCollectionsKeyValLookupItems_4e6d941b(k_696, es_697):
     while True:
-        if es_622 is None:
+        it_698 = es_697
+        if it_698 is None:
             return ()
         else:
-            e_623 = es_622[0]
-            t_624 = es_622[1]
-            key_625 = e_623[0]
-            value_626 = e_623[1]
-            matched_627 = Ordering_of(lsf_cmp_plain(k_621, key_625))
-            if matched_627 == 0:
-                return (value_626,)
-            elif matched_627 == 1:
-                next_628 = t_624
-                es_622 = next_628
+            v_lawspecselection0x0_699 = it_698[0]
+            v_lawspecselection0x1_700 = it_698[1]
+            it_701 = v_lawspecselection0x0_699
+            v_match__lawspecselection0x0_0_702 = it_701[0]
+            v_match__lawspecselection0x1_0_703 = it_701[1]
+            it_704 = Ordering_of(lsf_cmp_plain(k_696, v_match__lawspecselection0x0_0_702))
+            if it_704 == 0:
+                return (v_match__lawspecselection0x1_0_703,)
+            elif it_704 == 1:
+                next_705 = v_lawspecselection0x1_700
+                es_697 = next_705
                 continue
             else:
                 return ()
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_b5b730fd09d3f4b3
-def Def_lawspecCollectionsKeyValLookupItems_634e3159(k_629, es_630):
+def Def_lawspecCollectionsKeyValLookupItems_634e3159(k_706, es_707):
     while True:
-        if es_630 is None:
+        it_708 = es_707
+        if it_708 is None:
             return ()
         else:
-            e_631 = es_630[0]
-            t_632 = es_630[1]
-            key_633 = e_631[0]
-            value_634 = e_631[1]
-            matched_635 = Ordering_of(lsf_cmp_plain(k_629, key_633))
-            if matched_635 == 0:
-                return (value_634,)
-            elif matched_635 == 1:
-                next_636 = t_632
-                es_630 = next_636
+            v_lawspecselection0x0_709 = it_708[0]
+            v_lawspecselection0x1_710 = it_708[1]
+            it_711 = v_lawspecselection0x0_709
+            v_match__lawspecselection0x0_0_712 = it_711[0]
+            v_match__lawspecselection0x1_0_713 = it_711[1]
+            it_714 = Ordering_of(lsf_cmp_plain(k_706, v_match__lawspecselection0x0_0_712))
+            if it_714 == 0:
+                return (v_match__lawspecselection0x1_0_713,)
+            elif it_714 == 1:
+                next_715 = v_lawspecselection0x1_710
+                es_707 = next_715
                 continue
             else:
                 return ()
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_d4fb9ceeaac376dd
-def Def_lawspecCollectionsKeyValLookupItems_eaf6916f(k_637, es_638):
+def Def_lawspecCollectionsKeyValLookupItems_eaf6916f(k_716, es_717):
     while True:
-        if es_638 is None:
+        it_718 = es_717
+        if it_718 is None:
             return ()
         else:
-            e_639 = es_638[0]
-            t_640 = es_638[1]
-            key_641 = e_639[0]
-            value_642 = e_639[1]
-            matched_643 = Ordering_of(lsf_cmp_plain(k_637, key_641))
-            if matched_643 == 0:
-                return (value_642,)
-            elif matched_643 == 1:
-                next_644 = t_640
-                es_638 = next_644
+            v_lawspecselection0x0_719 = it_718[0]
+            v_lawspecselection0x1_720 = it_718[1]
+            it_721 = v_lawspecselection0x0_719
+            v_match__lawspecselection0x0_0_722 = it_721[0]
+            v_match__lawspecselection0x1_0_723 = it_721[1]
+            it_724 = Ordering_of(lsf_cmp_plain(k_716, v_match__lawspecselection0x0_0_722))
+            if it_724 == 0:
+                return (v_match__lawspecselection0x1_0_723,)
+            elif it_724 == 1:
+                next_725 = v_lawspecselection0x1_720
+                es_717 = next_725
                 continue
             else:
                 return ()
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f41725375
-def Def_lawspecCollectionsKeyValLookupItems_ae57d2cd(k_645, es_646):
+def Def_lawspecCollectionsKeyValLookupItems_ae57d2cd(k_726, es_727):
     while True:
-        if es_646 is None:
+        it_728 = es_727
+        if it_728 is None:
             return ()
         else:
-            e_647 = es_646[0]
-            t_648 = es_646[1]
-            key_649 = e_647[0]
-            value_650 = e_647[1]
-            matched_651 = Ordering_of(lsf_cmp_plain(k_645, key_649))
-            if matched_651 == 0:
-                return (value_650,)
-            elif matched_651 == 1:
-                next_652 = t_648
-                es_646 = next_652
+            v_lawspecselection0x0_729 = it_728[0]
+            v_lawspecselection0x1_730 = it_728[1]
+            it_731 = v_lawspecselection0x0_729
+            v_match__lawspecselection0x0_0_732 = it_731[0]
+            v_match__lawspecselection0x1_0_733 = it_731[1]
+            it_734 = Ordering_of(lsf_cmp_plain(k_726, v_match__lawspecselection0x0_0_732))
+            if it_734 == 0:
+                return (v_match__lawspecselection0x1_0_733,)
+            elif it_734 == 1:
+                next_735 = v_lawspecselection0x1_730
+                es_727 = next_735
                 continue
             else:
                 return ()
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96abfdf11
-def Def_lawspecCollectionsKeyValLookupItems_3c718024(k_653, es_654):
+def Def_lawspecCollectionsKeyValLookupItems_3c718024(k_736, es_737):
     while True:
-        if es_654 is None:
+        it_738 = es_737
+        if it_738 is None:
             return ()
         else:
-            e_655 = es_654[0]
-            t_656 = es_654[1]
-            key_657 = e_655[0]
-            value_658 = e_655[1]
-            matched_659 = Ordering_of(lsf_cmp_plain(k_653, key_657))
-            if matched_659 == 0:
-                return (value_658,)
-            elif matched_659 == 1:
-                next_660 = t_656
-                es_654 = next_660
+            v_lawspecselection0x0_739 = it_738[0]
+            v_lawspecselection0x1_740 = it_738[1]
+            it_741 = v_lawspecselection0x0_739
+            v_match__lawspecselection0x0_0_742 = it_741[0]
+            v_match__lawspecselection0x1_0_743 = it_741[1]
+            it_744 = Ordering_of(lsf_cmp_plain(k_736, v_match__lawspecselection0x0_0_742))
+            if it_744 == 0:
+                return (v_match__lawspecselection0x1_0_743,)
+            elif it_744 == 1:
+                next_745 = v_lawspecselection0x1_740
+                es_737 = next_745
                 continue
             else:
                 return ()
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_f23b5066cffbd6eb
-def Def_lawspecCollectionsKeyValLookupItems_8d0d5317(k_661, es_662):
+def Def_lawspecCollectionsKeyValLookupItems_8d0d5317(k_746, es_747):
     while True:
-        if es_662 is None:
+        it_748 = es_747
+        if it_748 is None:
             return ()
         else:
-            e_663 = es_662[0]
-            t_664 = es_662[1]
-            key_665 = e_663[0]
-            value_666 = e_663[1]
-            matched_667 = Ordering_of(lsf_cmp_plain(k_661, key_665))
-            if matched_667 == 0:
-                return (value_666,)
-            elif matched_667 == 1:
-                next_668 = t_664
-                es_662 = next_668
+            v_lawspecselection0x0_749 = it_748[0]
+            v_lawspecselection0x1_750 = it_748[1]
+            it_751 = v_lawspecselection0x0_749
+            v_match__lawspecselection0x0_0_752 = it_751[0]
+            v_match__lawspecselection0x1_0_753 = it_751[1]
+            it_754 = Ordering_of(lsf_cmp_plain(k_746, v_match__lawspecselection0x0_0_752))
+            if it_754 == 0:
+                return (v_match__lawspecselection0x1_0_753,)
+            elif it_754 == 1:
+                next_755 = v_lawspecselection0x1_750
+                es_747 = next_755
                 continue
             else:
                 return ()
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_61e51068439aa457
-def Def_lawspecCollectionsKeyValLookup_a9059595(k_669, m_670):
-    return lsf_lookup(m_670, k_669)
+def Def_lawspecCollectionsKeyValLookup_a9059595(k_756, m_757):
+    return lsf_lookup(m_757, k_756)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_65f44f3855baf0a5
-def Def_lawspecCollectionsKeyValLookup_b2bbd077(k_671, m_672):
-    return lsf_lookup(m_672, k_671)
+def Def_lawspecCollectionsKeyValLookup_b2bbd077(k_758, m_759):
+    return lsf_lookup(m_759, k_758)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_7acdaa8dcd255941
-def Def_lawspecCollectionsKeyValLookup_8a481efc(k_673, m_674):
-    return lsf_lookup(m_674, k_673)
+def Def_lawspecCollectionsKeyValLookup_8a481efc(k_760, m_761):
+    return lsf_lookup(m_761, k_760)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_7e86ea7b8af5f7e9
-def Def_lawspecCollectionsKeyValLookup_8e671f4d(k_675, m_676):
-    return lsf_lookup(m_676, k_675)
+def Def_lawspecCollectionsKeyValLookup_8e671f4d(k_762, m_763):
+    return lsf_lookup(m_763, k_762)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_a6a374938d1c1ef1
-def Def_lawspecCollectionsKeyValLookup_65e9c66c(k_677, m_678):
-    return lsf_lookup(m_678, k_677)
+def Def_lawspecCollectionsKeyValLookup_65e9c66c(k_764, m_765):
+    return lsf_lookup(m_765, k_764)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_be6dfdcf4e9ae9f5
-def Def_lawspecCollectionsKeyValLookup_a6e9da81(k_679, m_680):
-    return lsf_lookup(m_680, k_679)
+def Def_lawspecCollectionsKeyValLookup_a6e9da81(k_766, m_767):
+    return lsf_lookup(m_767, k_766)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_d32eccc04e0ce84b
-def Def_lawspecCollectionsKeyValLookup_24612a0e(k_681, m_682):
-    return lsf_lookup(m_682, k_681)
+def Def_lawspecCollectionsKeyValLookup_24612a0e(k_768, m_769):
+    return lsf_lookup(m_769, k_768)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_d45d335232ddb9f5
-def Def_lawspecCollectionsKeyValLookup_cd13c56f(k_683, m_684):
-    return lsf_lookup(m_684, k_683)
+def Def_lawspecCollectionsKeyValLookup_cd13c56f(k_770, m_771):
+    return lsf_lookup(m_771, k_770)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_e75784f293b348fb
-def Def_lawspecCollectionsKeyValLookup_6946d404(k_685, m_686):
-    return lsf_lookup(m_686, k_685)
+def Def_lawspecCollectionsKeyValLookup_6946d404(k_772, m_773):
+    return lsf_lookup(m_773, k_772)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_ed82ee3bc3ed7c07
-def Def_lawspecCollectionsKeyValLookup_7f47bbb6(k_687, m_688):
-    return lsf_lookup(m_688, k_687)
+def Def_lawspecCollectionsKeyValLookup_7f47bbb6(k_774, m_775):
+    return lsf_lookup(m_775, k_774)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_f0a5427404f6c2eb
-def Def_lawspecCollectionsKeyValLookup_ce7e98b5(k_689, m_690):
-    return lsf_lookup(m_690, k_689)
+def Def_lawspecCollectionsKeyValLookup_ce7e98b5(k_776, m_777):
+    return lsf_lookup(m_777, k_776)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594f
-def Def_lawspecCollectionsKeyValLookup_0bbb87c8(k_691, m_692):
-    return lsf_lookup(m_692, k_691)
+def Def_lawspecCollectionsKeyValLookup_0bbb87c8(k_778, m_779):
+    return lsf_lookup(m_779, k_778)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc
-def Def_lawspecCollectionsKeyValOf_b3b63ee9(es_693):
-    return lsf_key_val_of(es_693)
+def Def_lawspecCollectionsKeyValOf_b3b63ee9(es_780):
+    return lsf_key_val_of(es_780)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54
-def Def_lawspecCollectionsKeyValOf_315c22fb(es_694):
-    return lsf_key_val_of(es_694)
+def Def_lawspecCollectionsKeyValOf_315c22fb(es_781):
+    return lsf_key_val_of(es_781)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_610caa8fbb581a02
-def Def_lawspecCollectionsKeyValOf_8d386a7a(es_695):
-    return lsf_key_val_of(es_695)
+def Def_lawspecCollectionsKeyValOf_8d386a7a(es_782):
+    return lsf_key_val_of(es_782)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_a0c1d9feb5051d04
-def Def_lawspecCollectionsKeyValOf_66dd9a82(es_696):
-    return lsf_key_val_of(es_696)
+def Def_lawspecCollectionsKeyValOf_66dd9a82(es_783):
+    return lsf_key_val_of(es_783)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_a4eebf20bfcd02b4
-def Def_lawspecCollectionsKeyValOf_3adee7cf(es_697):
-    return lsf_key_val_of(es_697)
+def Def_lawspecCollectionsKeyValOf_3adee7cf(es_784):
+    return lsf_key_val_of(es_784)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_bd30e4f0b318724c
-def Def_lawspecCollectionsKeyValOf_a1009097(es_698):
-    return lsf_key_val_of(es_698)
+def Def_lawspecCollectionsKeyValOf_a1009097(es_785):
+    return lsf_key_val_of(es_785)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_c9f1a347a852b1c2
-def Def_lawspecCollectionsKeyValOf_eeff9798(es_699):
-    return lsf_key_val_of(es_699)
+def Def_lawspecCollectionsKeyValOf_eeff9798(es_786):
+    return lsf_key_val_of(es_786)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_ca750953e04bcf02
-def Def_lawspecCollectionsKeyValOf_afdc1c77(es_700):
-    return lsf_key_val_of(es_700)
+def Def_lawspecCollectionsKeyValOf_afdc1c77(es_787):
+    return lsf_key_val_of(es_787)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e
-def Def_lawspecCollectionsKeyValOf_924ce6dd(es_701):
-    return lsf_key_val_of(es_701)
+def Def_lawspecCollectionsKeyValOf_924ce6dd(es_788):
+    return lsf_key_val_of(es_788)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a
-def Def_lawspecCollectionsKeyValOf_66da004b(es_702):
-    return lsf_key_val_of(es_702)
+def Def_lawspecCollectionsKeyValOf_66da004b(es_789):
+    return lsf_key_val_of(es_789)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_e41901007f8d5eea
-def Def_lawspecCollectionsKeyValOf_b2ceee25(es_703):
-    return lsf_key_val_of(es_703)
+def Def_lawspecCollectionsKeyValOf_b2ceee25(es_790):
+    return lsf_key_val_of(es_790)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48
-def Def_lawspecCollectionsKeyValOf_14405d63(es_704):
-    return lsf_key_val_of(es_704)
+def Def_lawspecCollectionsKeyValOf_14405d63(es_791):
+    return lsf_key_val_of(es_791)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_1a60d73f2ea7655c
-def Def_lawspecCollectionsKeyValPutItems_fb1bb5ca(k_705, v_706, es_707):
-    if es_707 is None:
-        return lsf_cons((k_705, v_706), None)
+def Def_lawspecCollectionsKeyValPutItems_fb1bb5ca(k_792, v_793, es_794):
+    it_795 = es_794
+    if it_795 is None:
+        v_lawspecrecordfield0_797 = k_792
+        v_lawspecrecordfield1_798 = v_793
+        value_796 = (v_lawspecrecordfield0_797, v_lawspecrecordfield1_798)
+        return lsf_cons(value_796, None)
     else:
-        e_708 = es_707[0]
-        t_709 = es_707[1]
-        key_710 = e_708[0]
-        matched_711 = Ordering_of(lsf_cmp_plain(k_705, key_710))
-        if matched_711 == 0:
-            return lsf_cons((k_705, v_706), t_709)
-        elif matched_711 == 1:
-            return lsf_cons(e_708, Def_lawspecCollectionsKeyValPutItems_fb1bb5ca(k_705, v_706, t_709))
+        v_lawspecselection0x0_799 = it_795[0]
+        v_lawspecselection0x1_800 = it_795[1]
+        it_801 = v_lawspecselection0x0_799
+        v_match__lawspecselection0x0_0_802 = it_801[0]
+        it_803 = Ordering_of(lsf_cmp_plain(k_792, v_match__lawspecselection0x0_0_802))
+        if it_803 == 0:
+            v_lawspecrecordfield0_805 = k_792
+            v_lawspecrecordfield1_806 = v_793
+            value_804 = (v_lawspecrecordfield0_805, v_lawspecrecordfield1_806)
+            return lsf_cons(value_804, v_lawspecselection0x1_800)
+        elif it_803 == 1:
+            return lsf_cons(v_lawspecselection0x0_799, Def_lawspecCollectionsKeyValPutItems_fb1bb5ca(k_792, v_793, v_lawspecselection0x1_800))
         else:
-            return lsf_cons((k_705, v_706), es_707)
+            v_lawspecrecordfield0_808 = k_792
+            v_lawspecrecordfield1_809 = v_793
+            value_807 = (v_lawspecrecordfield0_808, v_lawspecrecordfield1_809)
+            return lsf_cons(value_807, es_794)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_1d4fcedc9b0136e2
-def Def_lawspecCollectionsKeyValPutItems_97a64264(k_712, v_713, es_714):
-    if es_714 is None:
-        return lsf_cons((k_712, v_713), None)
+def Def_lawspecCollectionsKeyValPutItems_97a64264(k_810, v_811, es_812):
+    it_813 = es_812
+    if it_813 is None:
+        v_lawspecrecordfield0_815 = k_810
+        v_lawspecrecordfield1_816 = v_811
+        value_814 = (v_lawspecrecordfield0_815, v_lawspecrecordfield1_816)
+        return lsf_cons(value_814, None)
     else:
-        e_715 = es_714[0]
-        t_716 = es_714[1]
-        key_717 = e_715[0]
-        matched_718 = Ordering_of(lsf_cmp_plain(k_712, key_717))
-        if matched_718 == 0:
-            return lsf_cons((k_712, v_713), t_716)
-        elif matched_718 == 1:
-            return lsf_cons(e_715, Def_lawspecCollectionsKeyValPutItems_97a64264(k_712, v_713, t_716))
+        v_lawspecselection0x0_817 = it_813[0]
+        v_lawspecselection0x1_818 = it_813[1]
+        it_819 = v_lawspecselection0x0_817
+        v_match__lawspecselection0x0_0_820 = it_819[0]
+        it_821 = Ordering_of(lsf_cmp_plain(k_810, v_match__lawspecselection0x0_0_820))
+        if it_821 == 0:
+            v_lawspecrecordfield0_823 = k_810
+            v_lawspecrecordfield1_824 = v_811
+            value_822 = (v_lawspecrecordfield0_823, v_lawspecrecordfield1_824)
+            return lsf_cons(value_822, v_lawspecselection0x1_818)
+        elif it_821 == 1:
+            return lsf_cons(v_lawspecselection0x0_817, Def_lawspecCollectionsKeyValPutItems_97a64264(k_810, v_811, v_lawspecselection0x1_818))
         else:
-            return lsf_cons((k_712, v_713), es_714)
+            v_lawspecrecordfield0_826 = k_810
+            v_lawspecrecordfield1_827 = v_811
+            value_825 = (v_lawspecrecordfield0_826, v_lawspecrecordfield1_827)
+            return lsf_cons(value_825, es_812)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_2a3018cf45ad1ad9
-def Def_lawspecCollectionsKeyValPutItems_054f1ef1(k_719, v_720, es_721):
-    if es_721 is None:
-        return lsf_cons((k_719, v_720), None)
+def Def_lawspecCollectionsKeyValPutItems_054f1ef1(k_828, v_829, es_830):
+    it_831 = es_830
+    if it_831 is None:
+        v_lawspecrecordfield0_833 = k_828
+        v_lawspecrecordfield1_834 = v_829
+        value_832 = (v_lawspecrecordfield0_833, v_lawspecrecordfield1_834)
+        return lsf_cons(value_832, None)
     else:
-        e_722 = es_721[0]
-        t_723 = es_721[1]
-        key_724 = e_722[0]
-        matched_725 = Ordering_of(lsf_cmp_plain(k_719, key_724))
-        if matched_725 == 0:
-            return lsf_cons((k_719, v_720), t_723)
-        elif matched_725 == 1:
-            return lsf_cons(e_722, Def_lawspecCollectionsKeyValPutItems_054f1ef1(k_719, v_720, t_723))
+        v_lawspecselection0x0_835 = it_831[0]
+        v_lawspecselection0x1_836 = it_831[1]
+        it_837 = v_lawspecselection0x0_835
+        v_match__lawspecselection0x0_0_838 = it_837[0]
+        it_839 = Ordering_of(lsf_cmp_plain(k_828, v_match__lawspecselection0x0_0_838))
+        if it_839 == 0:
+            v_lawspecrecordfield0_841 = k_828
+            v_lawspecrecordfield1_842 = v_829
+            value_840 = (v_lawspecrecordfield0_841, v_lawspecrecordfield1_842)
+            return lsf_cons(value_840, v_lawspecselection0x1_836)
+        elif it_839 == 1:
+            return lsf_cons(v_lawspecselection0x0_835, Def_lawspecCollectionsKeyValPutItems_054f1ef1(k_828, v_829, v_lawspecselection0x1_836))
         else:
-            return lsf_cons((k_719, v_720), es_721)
+            v_lawspecrecordfield0_844 = k_828
+            v_lawspecrecordfield1_845 = v_829
+            value_843 = (v_lawspecrecordfield0_844, v_lawspecrecordfield1_845)
+            return lsf_cons(value_843, es_830)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_4b9848f70e8b7f53
-def Def_lawspecCollectionsKeyValPutItems_8d4f5385(k_726, v_727, es_728):
-    if es_728 is None:
-        return lsf_cons((k_726, v_727), None)
+def Def_lawspecCollectionsKeyValPutItems_8d4f5385(k_846, v_847, es_848):
+    it_849 = es_848
+    if it_849 is None:
+        v_lawspecrecordfield0_851 = k_846
+        v_lawspecrecordfield1_852 = v_847
+        value_850 = (v_lawspecrecordfield0_851, v_lawspecrecordfield1_852)
+        return lsf_cons(value_850, None)
     else:
-        e_729 = es_728[0]
-        t_730 = es_728[1]
-        key_731 = e_729[0]
-        matched_732 = Ordering_of(lsf_cmp_plain(k_726, key_731))
-        if matched_732 == 0:
-            return lsf_cons((k_726, v_727), t_730)
-        elif matched_732 == 1:
-            return lsf_cons(e_729, Def_lawspecCollectionsKeyValPutItems_8d4f5385(k_726, v_727, t_730))
+        v_lawspecselection0x0_853 = it_849[0]
+        v_lawspecselection0x1_854 = it_849[1]
+        it_855 = v_lawspecselection0x0_853
+        v_match__lawspecselection0x0_0_856 = it_855[0]
+        it_857 = Ordering_of(lsf_cmp_plain(k_846, v_match__lawspecselection0x0_0_856))
+        if it_857 == 0:
+            v_lawspecrecordfield0_859 = k_846
+            v_lawspecrecordfield1_860 = v_847
+            value_858 = (v_lawspecrecordfield0_859, v_lawspecrecordfield1_860)
+            return lsf_cons(value_858, v_lawspecselection0x1_854)
+        elif it_857 == 1:
+            return lsf_cons(v_lawspecselection0x0_853, Def_lawspecCollectionsKeyValPutItems_8d4f5385(k_846, v_847, v_lawspecselection0x1_854))
         else:
-            return lsf_cons((k_726, v_727), es_728)
+            v_lawspecrecordfield0_862 = k_846
+            v_lawspecrecordfield1_863 = v_847
+            value_861 = (v_lawspecrecordfield0_862, v_lawspecrecordfield1_863)
+            return lsf_cons(value_861, es_848)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_4c71dc98d5546e58
-def Def_lawspecCollectionsKeyValPutItems_5d998955(k_733, v_734, es_735):
-    if es_735 is None:
-        return lsf_cons((k_733, v_734), None)
+def Def_lawspecCollectionsKeyValPutItems_5d998955(k_864, v_865, es_866):
+    it_867 = es_866
+    if it_867 is None:
+        v_lawspecrecordfield0_869 = k_864
+        v_lawspecrecordfield1_870 = v_865
+        value_868 = (v_lawspecrecordfield0_869, v_lawspecrecordfield1_870)
+        return lsf_cons(value_868, None)
     else:
-        e_736 = es_735[0]
-        t_737 = es_735[1]
-        key_738 = e_736[0]
-        matched_739 = Ordering_of(lsf_cmp_plain(k_733, key_738))
-        if matched_739 == 0:
-            return lsf_cons((k_733, v_734), t_737)
-        elif matched_739 == 1:
-            return lsf_cons(e_736, Def_lawspecCollectionsKeyValPutItems_5d998955(k_733, v_734, t_737))
+        v_lawspecselection0x0_871 = it_867[0]
+        v_lawspecselection0x1_872 = it_867[1]
+        it_873 = v_lawspecselection0x0_871
+        v_match__lawspecselection0x0_0_874 = it_873[0]
+        it_875 = Ordering_of(lsf_cmp_plain(k_864, v_match__lawspecselection0x0_0_874))
+        if it_875 == 0:
+            v_lawspecrecordfield0_877 = k_864
+            v_lawspecrecordfield1_878 = v_865
+            value_876 = (v_lawspecrecordfield0_877, v_lawspecrecordfield1_878)
+            return lsf_cons(value_876, v_lawspecselection0x1_872)
+        elif it_875 == 1:
+            return lsf_cons(v_lawspecselection0x0_871, Def_lawspecCollectionsKeyValPutItems_5d998955(k_864, v_865, v_lawspecselection0x1_872))
         else:
-            return lsf_cons((k_733, v_734), es_735)
+            v_lawspecrecordfield0_880 = k_864
+            v_lawspecrecordfield1_881 = v_865
+            value_879 = (v_lawspecrecordfield0_880, v_lawspecrecordfield1_881)
+            return lsf_cons(value_879, es_866)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_565019ca06de701f
-def Def_lawspecCollectionsKeyValPutItems_80dc1939(k_740, v_741, es_742):
-    if es_742 is None:
-        return lsf_cons((k_740, v_741), None)
+def Def_lawspecCollectionsKeyValPutItems_80dc1939(k_882, v_883, es_884):
+    it_885 = es_884
+    if it_885 is None:
+        v_lawspecrecordfield0_887 = k_882
+        v_lawspecrecordfield1_888 = v_883
+        value_886 = (v_lawspecrecordfield0_887, v_lawspecrecordfield1_888)
+        return lsf_cons(value_886, None)
     else:
-        e_743 = es_742[0]
-        t_744 = es_742[1]
-        key_745 = e_743[0]
-        matched_746 = Ordering_of(lsf_cmp_plain(k_740, key_745))
-        if matched_746 == 0:
-            return lsf_cons((k_740, v_741), t_744)
-        elif matched_746 == 1:
-            return lsf_cons(e_743, Def_lawspecCollectionsKeyValPutItems_80dc1939(k_740, v_741, t_744))
+        v_lawspecselection0x0_889 = it_885[0]
+        v_lawspecselection0x1_890 = it_885[1]
+        it_891 = v_lawspecselection0x0_889
+        v_match__lawspecselection0x0_0_892 = it_891[0]
+        it_893 = Ordering_of(lsf_cmp_plain(k_882, v_match__lawspecselection0x0_0_892))
+        if it_893 == 0:
+            v_lawspecrecordfield0_895 = k_882
+            v_lawspecrecordfield1_896 = v_883
+            value_894 = (v_lawspecrecordfield0_895, v_lawspecrecordfield1_896)
+            return lsf_cons(value_894, v_lawspecselection0x1_890)
+        elif it_893 == 1:
+            return lsf_cons(v_lawspecselection0x0_889, Def_lawspecCollectionsKeyValPutItems_80dc1939(k_882, v_883, v_lawspecselection0x1_890))
         else:
-            return lsf_cons((k_740, v_741), es_742)
+            v_lawspecrecordfield0_898 = k_882
+            v_lawspecrecordfield1_899 = v_883
+            value_897 = (v_lawspecrecordfield0_898, v_lawspecrecordfield1_899)
+            return lsf_cons(value_897, es_884)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_854f1183117f06f5
-def Def_lawspecCollectionsKeyValPutItems_28cf0caf(k_747, v_748, es_749):
-    if es_749 is None:
-        return lsf_cons((k_747, v_748), None)
+def Def_lawspecCollectionsKeyValPutItems_28cf0caf(k_900, v_901, es_902):
+    it_903 = es_902
+    if it_903 is None:
+        v_lawspecrecordfield0_905 = k_900
+        v_lawspecrecordfield1_906 = v_901
+        value_904 = (v_lawspecrecordfield0_905, v_lawspecrecordfield1_906)
+        return lsf_cons(value_904, None)
     else:
-        e_750 = es_749[0]
-        t_751 = es_749[1]
-        key_752 = e_750[0]
-        matched_753 = Ordering_of(lsf_cmp_plain(k_747, key_752))
-        if matched_753 == 0:
-            return lsf_cons((k_747, v_748), t_751)
-        elif matched_753 == 1:
-            return lsf_cons(e_750, Def_lawspecCollectionsKeyValPutItems_28cf0caf(k_747, v_748, t_751))
+        v_lawspecselection0x0_907 = it_903[0]
+        v_lawspecselection0x1_908 = it_903[1]
+        it_909 = v_lawspecselection0x0_907
+        v_match__lawspecselection0x0_0_910 = it_909[0]
+        it_911 = Ordering_of(lsf_cmp_plain(k_900, v_match__lawspecselection0x0_0_910))
+        if it_911 == 0:
+            v_lawspecrecordfield0_913 = k_900
+            v_lawspecrecordfield1_914 = v_901
+            value_912 = (v_lawspecrecordfield0_913, v_lawspecrecordfield1_914)
+            return lsf_cons(value_912, v_lawspecselection0x1_908)
+        elif it_911 == 1:
+            return lsf_cons(v_lawspecselection0x0_907, Def_lawspecCollectionsKeyValPutItems_28cf0caf(k_900, v_901, v_lawspecselection0x1_908))
         else:
-            return lsf_cons((k_747, v_748), es_749)
+            v_lawspecrecordfield0_916 = k_900
+            v_lawspecrecordfield1_917 = v_901
+            value_915 = (v_lawspecrecordfield0_916, v_lawspecrecordfield1_917)
+            return lsf_cons(value_915, es_902)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_9bdf97a44332ea1
-def Def_lawspecCollectionsKeyValPutItems_883fe52d(k_754, v_755, es_756):
-    if es_756 is None:
-        return lsf_cons((k_754, v_755), None)
+def Def_lawspecCollectionsKeyValPutItems_883fe52d(k_918, v_919, es_920):
+    it_921 = es_920
+    if it_921 is None:
+        v_lawspecrecordfield0_923 = k_918
+        v_lawspecrecordfield1_924 = v_919
+        value_922 = (v_lawspecrecordfield0_923, v_lawspecrecordfield1_924)
+        return lsf_cons(value_922, None)
     else:
-        e_757 = es_756[0]
-        t_758 = es_756[1]
-        key_759 = e_757[0]
-        matched_760 = Ordering_of(lsf_cmp_plain(k_754, key_759))
-        if matched_760 == 0:
-            return lsf_cons((k_754, v_755), t_758)
-        elif matched_760 == 1:
-            return lsf_cons(e_757, Def_lawspecCollectionsKeyValPutItems_883fe52d(k_754, v_755, t_758))
+        v_lawspecselection0x0_925 = it_921[0]
+        v_lawspecselection0x1_926 = it_921[1]
+        it_927 = v_lawspecselection0x0_925
+        v_match__lawspecselection0x0_0_928 = it_927[0]
+        it_929 = Ordering_of(lsf_cmp_plain(k_918, v_match__lawspecselection0x0_0_928))
+        if it_929 == 0:
+            v_lawspecrecordfield0_931 = k_918
+            v_lawspecrecordfield1_932 = v_919
+            value_930 = (v_lawspecrecordfield0_931, v_lawspecrecordfield1_932)
+            return lsf_cons(value_930, v_lawspecselection0x1_926)
+        elif it_929 == 1:
+            return lsf_cons(v_lawspecselection0x0_925, Def_lawspecCollectionsKeyValPutItems_883fe52d(k_918, v_919, v_lawspecselection0x1_926))
         else:
-            return lsf_cons((k_754, v_755), es_756)
+            v_lawspecrecordfield0_934 = k_918
+            v_lawspecrecordfield1_935 = v_919
+            value_933 = (v_lawspecrecordfield0_934, v_lawspecrecordfield1_935)
+            return lsf_cons(value_933, es_920)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_a229945e8cb36750
-def Def_lawspecCollectionsKeyValPutItems_3f0139cf(k_761, v_762, es_763):
-    if es_763 is None:
-        return lsf_cons((k_761, v_762), None)
+def Def_lawspecCollectionsKeyValPutItems_3f0139cf(k_936, v_937, es_938):
+    it_939 = es_938
+    if it_939 is None:
+        v_lawspecrecordfield0_941 = k_936
+        v_lawspecrecordfield1_942 = v_937
+        value_940 = (v_lawspecrecordfield0_941, v_lawspecrecordfield1_942)
+        return lsf_cons(value_940, None)
     else:
-        e_764 = es_763[0]
-        t_765 = es_763[1]
-        key_766 = e_764[0]
-        matched_767 = Ordering_of(lsf_cmp_plain(k_761, key_766))
-        if matched_767 == 0:
-            return lsf_cons((k_761, v_762), t_765)
-        elif matched_767 == 1:
-            return lsf_cons(e_764, Def_lawspecCollectionsKeyValPutItems_3f0139cf(k_761, v_762, t_765))
+        v_lawspecselection0x0_943 = it_939[0]
+        v_lawspecselection0x1_944 = it_939[1]
+        it_945 = v_lawspecselection0x0_943
+        v_match__lawspecselection0x0_0_946 = it_945[0]
+        it_947 = Ordering_of(lsf_cmp_plain(k_936, v_match__lawspecselection0x0_0_946))
+        if it_947 == 0:
+            v_lawspecrecordfield0_949 = k_936
+            v_lawspecrecordfield1_950 = v_937
+            value_948 = (v_lawspecrecordfield0_949, v_lawspecrecordfield1_950)
+            return lsf_cons(value_948, v_lawspecselection0x1_944)
+        elif it_947 == 1:
+            return lsf_cons(v_lawspecselection0x0_943, Def_lawspecCollectionsKeyValPutItems_3f0139cf(k_936, v_937, v_lawspecselection0x1_944))
         else:
-            return lsf_cons((k_761, v_762), es_763)
+            v_lawspecrecordfield0_952 = k_936
+            v_lawspecrecordfield1_953 = v_937
+            value_951 = (v_lawspecrecordfield0_952, v_lawspecrecordfield1_953)
+            return lsf_cons(value_951, es_938)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214c4
-def Def_lawspecCollectionsKeyValPutItems_c4168a80(k_768, v_769, es_770):
-    if es_770 is None:
-        return lsf_cons((k_768, v_769), None)
+def Def_lawspecCollectionsKeyValPutItems_c4168a80(k_954, v_955, es_956):
+    it_957 = es_956
+    if it_957 is None:
+        v_lawspecrecordfield0_959 = k_954
+        v_lawspecrecordfield1_960 = v_955
+        value_958 = (v_lawspecrecordfield0_959, v_lawspecrecordfield1_960)
+        return lsf_cons(value_958, None)
     else:
-        e_771 = es_770[0]
-        t_772 = es_770[1]
-        key_773 = e_771[0]
-        matched_774 = Ordering_of(lsf_cmp_plain(k_768, key_773))
-        if matched_774 == 0:
-            return lsf_cons((k_768, v_769), t_772)
-        elif matched_774 == 1:
-            return lsf_cons(e_771, Def_lawspecCollectionsKeyValPutItems_c4168a80(k_768, v_769, t_772))
+        v_lawspecselection0x0_961 = it_957[0]
+        v_lawspecselection0x1_962 = it_957[1]
+        it_963 = v_lawspecselection0x0_961
+        v_match__lawspecselection0x0_0_964 = it_963[0]
+        it_965 = Ordering_of(lsf_cmp_plain(k_954, v_match__lawspecselection0x0_0_964))
+        if it_965 == 0:
+            v_lawspecrecordfield0_967 = k_954
+            v_lawspecrecordfield1_968 = v_955
+            value_966 = (v_lawspecrecordfield0_967, v_lawspecrecordfield1_968)
+            return lsf_cons(value_966, v_lawspecselection0x1_962)
+        elif it_965 == 1:
+            return lsf_cons(v_lawspecselection0x0_961, Def_lawspecCollectionsKeyValPutItems_c4168a80(k_954, v_955, v_lawspecselection0x1_962))
         else:
-            return lsf_cons((k_768, v_769), es_770)
+            v_lawspecrecordfield0_970 = k_954
+            v_lawspecrecordfield1_971 = v_955
+            value_969 = (v_lawspecrecordfield0_970, v_lawspecrecordfield1_971)
+            return lsf_cons(value_969, es_956)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_b8b82d61b25bb98d
-def Def_lawspecCollectionsKeyValPutItems_4266176b(k_775, v_776, es_777):
-    if es_777 is None:
-        return lsf_cons((k_775, v_776), None)
+def Def_lawspecCollectionsKeyValPutItems_4266176b(k_972, v_973, es_974):
+    it_975 = es_974
+    if it_975 is None:
+        v_lawspecrecordfield0_977 = k_972
+        v_lawspecrecordfield1_978 = v_973
+        value_976 = (v_lawspecrecordfield0_977, v_lawspecrecordfield1_978)
+        return lsf_cons(value_976, None)
     else:
-        e_778 = es_777[0]
-        t_779 = es_777[1]
-        key_780 = e_778[0]
-        matched_781 = Ordering_of(lsf_cmp_plain(k_775, key_780))
-        if matched_781 == 0:
-            return lsf_cons((k_775, v_776), t_779)
-        elif matched_781 == 1:
-            return lsf_cons(e_778, Def_lawspecCollectionsKeyValPutItems_4266176b(k_775, v_776, t_779))
+        v_lawspecselection0x0_979 = it_975[0]
+        v_lawspecselection0x1_980 = it_975[1]
+        it_981 = v_lawspecselection0x0_979
+        v_match__lawspecselection0x0_0_982 = it_981[0]
+        it_983 = Ordering_of(lsf_cmp_plain(k_972, v_match__lawspecselection0x0_0_982))
+        if it_983 == 0:
+            v_lawspecrecordfield0_985 = k_972
+            v_lawspecrecordfield1_986 = v_973
+            value_984 = (v_lawspecrecordfield0_985, v_lawspecrecordfield1_986)
+            return lsf_cons(value_984, v_lawspecselection0x1_980)
+        elif it_983 == 1:
+            return lsf_cons(v_lawspecselection0x0_979, Def_lawspecCollectionsKeyValPutItems_4266176b(k_972, v_973, v_lawspecselection0x1_980))
         else:
-            return lsf_cons((k_775, v_776), es_777)
+            v_lawspecrecordfield0_988 = k_972
+            v_lawspecrecordfield1_989 = v_973
+            value_987 = (v_lawspecrecordfield0_988, v_lawspecrecordfield1_989)
+            return lsf_cons(value_987, es_974)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88cae9b
-def Def_lawspecCollectionsKeyValPutItems_523d104d(k_782, v_783, es_784):
-    if es_784 is None:
-        return lsf_cons((k_782, v_783), None)
+def Def_lawspecCollectionsKeyValPutItems_523d104d(k_990, v_991, es_992):
+    it_993 = es_992
+    if it_993 is None:
+        v_lawspecrecordfield0_995 = k_990
+        v_lawspecrecordfield1_996 = v_991
+        value_994 = (v_lawspecrecordfield0_995, v_lawspecrecordfield1_996)
+        return lsf_cons(value_994, None)
     else:
-        e_785 = es_784[0]
-        t_786 = es_784[1]
-        key_787 = e_785[0]
-        matched_788 = Ordering_of(lsf_cmp_plain(k_782, key_787))
-        if matched_788 == 0:
-            return lsf_cons((k_782, v_783), t_786)
-        elif matched_788 == 1:
-            return lsf_cons(e_785, Def_lawspecCollectionsKeyValPutItems_523d104d(k_782, v_783, t_786))
+        v_lawspecselection0x0_997 = it_993[0]
+        v_lawspecselection0x1_998 = it_993[1]
+        it_999 = v_lawspecselection0x0_997
+        v_match__lawspecselection0x0_0_1000 = it_999[0]
+        it_1001 = Ordering_of(lsf_cmp_plain(k_990, v_match__lawspecselection0x0_0_1000))
+        if it_1001 == 0:
+            v_lawspecrecordfield0_1003 = k_990
+            v_lawspecrecordfield1_1004 = v_991
+            value_1002 = (v_lawspecrecordfield0_1003, v_lawspecrecordfield1_1004)
+            return lsf_cons(value_1002, v_lawspecselection0x1_998)
+        elif it_1001 == 1:
+            return lsf_cons(v_lawspecselection0x0_997, Def_lawspecCollectionsKeyValPutItems_523d104d(k_990, v_991, v_lawspecselection0x1_998))
         else:
-            return lsf_cons((k_782, v_783), es_784)
+            v_lawspecrecordfield0_1006 = k_990
+            v_lawspecrecordfield1_1007 = v_991
+            value_1005 = (v_lawspecrecordfield0_1006, v_lawspecrecordfield1_1007)
+            return lsf_cons(value_1005, es_992)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_1e5631cf1010f058
-def Def_lawspecCollectionsKeyValPut_cabf14cc(k_789, v_790, m_791):
-    return lsf_put(m_791, k_789, v_790)
+def Def_lawspecCollectionsKeyValPut_cabf14cc(k_1008, v_1009, m_1010):
+    return lsf_put(m_1010, k_1008, v_1009)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_64ef6963a054fec9
-def Def_lawspecCollectionsKeyValPut_ce8624cf(k_792, v_793, m_794):
-    return lsf_put(m_794, k_792, v_793)
+def Def_lawspecCollectionsKeyValPut_ce8624cf(k_1011, v_1012, m_1013):
+    return lsf_put(m_1013, k_1011, v_1012)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_6a32d437b06cf1fb
-def Def_lawspecCollectionsKeyValPut_5ab157dd(k_795, v_796, m_797):
-    return lsf_put(m_797, k_795, v_796)
+def Def_lawspecCollectionsKeyValPut_5ab157dd(k_1014, v_1015, m_1016):
+    return lsf_put(m_1016, k_1014, v_1015)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_84321765782615b9
-def Def_lawspecCollectionsKeyValPut_c59d14e0(k_798, v_799, m_800):
-    return lsf_put(m_800, k_798, v_799)
+def Def_lawspecCollectionsKeyValPut_c59d14e0(k_1017, v_1018, m_1019):
+    return lsf_put(m_1019, k_1017, v_1018)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_9e5f815c293ac9e1
-def Def_lawspecCollectionsKeyValPut_01a600ed(k_801, v_802, m_803):
-    return lsf_put(m_803, k_801, v_802)
+def Def_lawspecCollectionsKeyValPut_01a600ed(k_1020, v_1021, m_1022):
+    return lsf_put(m_1022, k_1020, v_1021)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_a0581d6dd36c2e58
-def Def_lawspecCollectionsKeyValPut_3034b895(k_804, v_805, m_806):
-    return lsf_put(m_806, k_804, v_805)
+def Def_lawspecCollectionsKeyValPut_3034b895(k_1023, v_1024, m_1025):
+    return lsf_put(m_1025, k_1023, v_1024)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_a2a3515700f0a6f
-def Def_lawspecCollectionsKeyValPut_a8f49e3e(k_807, v_808, m_809):
-    return lsf_put(m_809, k_807, v_808)
+def Def_lawspecCollectionsKeyValPut_a8f49e3e(k_1026, v_1027, m_1028):
+    return lsf_put(m_1028, k_1026, v_1027)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_cab6769a52b0163d
-def Def_lawspecCollectionsKeyValPut_9fc3570a(k_810, v_811, m_812):
-    return lsf_put(m_812, k_810, v_811)
+def Def_lawspecCollectionsKeyValPut_9fc3570a(k_1029, v_1030, m_1031):
+    return lsf_put(m_1031, k_1029, v_1030)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d00f0719b7ec97ee
-def Def_lawspecCollectionsKeyValPut_87e622e8(k_813, v_814, m_815):
-    return lsf_put(m_815, k_813, v_814)
+def Def_lawspecCollectionsKeyValPut_87e622e8(k_1032, v_1033, m_1034):
+    return lsf_put(m_1034, k_1032, v_1033)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d378e301aa895004
-def Def_lawspecCollectionsKeyValPut_3b439cbe(k_816, v_817, m_818):
-    return lsf_put(m_818, k_816, v_817)
+def Def_lawspecCollectionsKeyValPut_3b439cbe(k_1035, v_1036, m_1037):
+    return lsf_put(m_1037, k_1035, v_1036)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d4f4392b8878a23c
-def Def_lawspecCollectionsKeyValPut_5cd34b74(k_819, v_820, m_821):
-    return lsf_put(m_821, k_819, v_820)
+def Def_lawspecCollectionsKeyValPut_5cd34b74(k_1038, v_1039, m_1040):
+    return lsf_put(m_1040, k_1038, v_1039)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_ee3ccd7601ddf107
-def Def_lawspecCollectionsKeyValPut_efc6b866(k_822, v_823, m_824):
-    return lsf_put(m_824, k_822, v_823)
+def Def_lawspecCollectionsKeyValPut_efc6b866(k_1041, v_1042, m_1043):
+    return lsf_put(m_1043, k_1041, v_1042)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae
-def Def_lawspecCollectionsKeyValValuesItems_40ef8eee(es_825):
-    if es_825 is None:
+def Def_lawspecCollectionsKeyValValuesItems_40ef8eee(es_1044):
+    it_1045 = es_1044
+    if it_1045 is None:
         return None
     else:
-        e_826 = es_825[0]
-        t_827 = es_825[1]
-        value_828 = e_826[1]
-        return lsf_cons(value_828, Def_lawspecCollectionsKeyValValuesItems_40ef8eee(t_827))
+        v_lawspecselection0x0_1046 = it_1045[0]
+        v_lawspecselection0x1_1047 = it_1045[1]
+        it_1048 = v_lawspecselection0x0_1046
+        v_match__lawspecselection0x1_0_1049 = it_1048[1]
+        return lsf_cons(v_match__lawspecselection0x1_0_1049, Def_lawspecCollectionsKeyValValuesItems_40ef8eee(v_lawspecselection0x1_1047))
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsKeyValValues_152cb3cfa5a69daa
-def Def_lawspecCollectionsKeyValValues_33bc036c(m_829):
-    return lsf_values_list(m_829)
+def Def_lawspecCollectionsKeyValValues_33bc036c(m_1050):
+    return lsf_values_list(m_1050)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetFromItems_1d74c254059339d3
-def Def_lawspecCollectionsSetFromItems_8d83ec32(xs_830, acc_831):
+def Def_lawspecCollectionsSetFromItems_8d83ec32(xs_1051, acc_1052):
     while True:
-        if xs_830 is None:
-            return acc_831
+        it_1053 = xs_1051
+        if it_1053 is None:
+            return acc_1052
         else:
-            h_832 = xs_830[0]
-            t_833 = xs_830[1]
-            next_834 = t_833
-            next_835 = Def_lawspecCollectionsSetInsertItems_fbbb1c47(h_832, acc_831)
-            xs_830 = next_834
-            acc_831 = next_835
+            v_lawspecselection0x0_1054 = it_1053[0]
+            v_lawspecselection0x1_1055 = it_1053[1]
+            next_1056 = v_lawspecselection0x1_1055
+            next_1057 = Def_lawspecCollectionsSetInsertItems_fbbb1c47(v_lawspecselection0x0_1054, acc_1052)
+            xs_1051 = next_1056
+            acc_1052 = next_1057
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetFromItems_25b2070f526ff089
-def Def_lawspecCollectionsSetFromItems_b46ce3bb(xs_836, acc_837):
+def Def_lawspecCollectionsSetFromItems_b46ce3bb(xs_1058, acc_1059):
     while True:
-        if xs_836 is None:
-            return acc_837
+        it_1060 = xs_1058
+        if it_1060 is None:
+            return acc_1059
         else:
-            h_838 = xs_836[0]
-            t_839 = xs_836[1]
-            next_840 = t_839
-            next_841 = Def_lawspecCollectionsSetInsertItems_fd8b28ec(h_838, acc_837)
-            xs_836 = next_840
-            acc_837 = next_841
+            v_lawspecselection0x0_1061 = it_1060[0]
+            v_lawspecselection0x1_1062 = it_1060[1]
+            next_1063 = v_lawspecselection0x1_1062
+            next_1064 = Def_lawspecCollectionsSetInsertItems_fd8b28ec(v_lawspecselection0x0_1061, acc_1059)
+            xs_1058 = next_1063
+            acc_1059 = next_1064
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetFromItems_ffc9b33e7d19d87c
-def Def_lawspecCollectionsSetFromItems_357dd072(xs_842, acc_843):
+def Def_lawspecCollectionsSetFromItems_357dd072(xs_1065, acc_1066):
     while True:
-        if xs_842 is None:
-            return acc_843
+        it_1067 = xs_1065
+        if it_1067 is None:
+            return acc_1066
         else:
-            h_844 = xs_842[0]
-            t_845 = xs_842[1]
-            next_846 = t_845
-            next_847 = Def_lawspecCollectionsSetInsertItems_708d991b(h_844, acc_843)
-            xs_842 = next_846
-            acc_843 = next_847
+            v_lawspecselection0x0_1068 = it_1067[0]
+            v_lawspecselection0x1_1069 = it_1067[1]
+            next_1070 = v_lawspecselection0x1_1069
+            next_1071 = Def_lawspecCollectionsSetInsertItems_708d991b(v_lawspecselection0x0_1068, acc_1066)
+            xs_1065 = next_1070
+            acc_1066 = next_1071
             continue
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_a3dc35e775ac9977
-def Def_lawspecCollectionsSetInsertItems_fd8b28ec(x_848, xs_849):
-    if xs_849 is None:
-        return lsf_cons(x_848, None)
+def Def_lawspecCollectionsSetInsertItems_fd8b28ec(x_1072, xs_1073):
+    it_1074 = xs_1073
+    if it_1074 is None:
+        return lsf_cons(x_1072, None)
     else:
-        h_850 = xs_849[0]
-        t_851 = xs_849[1]
-        matched_852 = Ordering_of(lsf_cmp_plain(x_848, h_850))
-        if matched_852 == 0:
-            return xs_849
-        elif matched_852 == 1:
-            return lsf_cons(h_850, Def_lawspecCollectionsSetInsertItems_fd8b28ec(x_848, t_851))
+        v_lawspecselection0x0_1075 = it_1074[0]
+        v_lawspecselection0x1_1076 = it_1074[1]
+        it_1077 = Ordering_of(lsf_cmp_plain(x_1072, v_lawspecselection0x0_1075))
+        if it_1077 == 0:
+            return xs_1073
+        elif it_1077 == 1:
+            return lsf_cons(v_lawspecselection0x0_1075, Def_lawspecCollectionsSetInsertItems_fd8b28ec(x_1072, v_lawspecselection0x1_1076))
         else:
-            return lsf_cons(x_848, xs_849)
+            return lsf_cons(x_1072, xs_1073)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_f40de20825416c4f
-def Def_lawspecCollectionsSetInsertItems_fbbb1c47(x_853, xs_854):
-    if xs_854 is None:
-        return lsf_cons(x_853, None)
+def Def_lawspecCollectionsSetInsertItems_fbbb1c47(x_1078, xs_1079):
+    it_1080 = xs_1079
+    if it_1080 is None:
+        return lsf_cons(x_1078, None)
     else:
-        h_855 = xs_854[0]
-        t_856 = xs_854[1]
-        matched_857 = Ordering_of(lsf_cmp_plain(x_853, h_855))
-        if matched_857 == 0:
-            return xs_854
-        elif matched_857 == 1:
-            return lsf_cons(h_855, Def_lawspecCollectionsSetInsertItems_fbbb1c47(x_853, t_856))
+        v_lawspecselection0x0_1081 = it_1080[0]
+        v_lawspecselection0x1_1082 = it_1080[1]
+        it_1083 = Ordering_of(lsf_cmp_plain(x_1078, v_lawspecselection0x0_1081))
+        if it_1083 == 0:
+            return xs_1079
+        elif it_1083 == 1:
+            return lsf_cons(v_lawspecselection0x0_1081, Def_lawspecCollectionsSetInsertItems_fbbb1c47(x_1078, v_lawspecselection0x1_1082))
         else:
-            return lsf_cons(x_853, xs_854)
+            return lsf_cons(x_1078, xs_1079)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_fee347ca5af6d966
-def Def_lawspecCollectionsSetInsertItems_708d991b(x_858, xs_859):
-    if xs_859 is None:
-        return lsf_cons(x_858, None)
+def Def_lawspecCollectionsSetInsertItems_708d991b(x_1084, xs_1085):
+    it_1086 = xs_1085
+    if it_1086 is None:
+        return lsf_cons(x_1084, None)
     else:
-        h_860 = xs_859[0]
-        t_861 = xs_859[1]
-        matched_862 = Ordering_of(lsf_cmp_plain(x_858, h_860))
-        if matched_862 == 0:
-            return xs_859
-        elif matched_862 == 1:
-            return lsf_cons(h_860, Def_lawspecCollectionsSetInsertItems_708d991b(x_858, t_861))
+        v_lawspecselection0x0_1087 = it_1086[0]
+        v_lawspecselection0x1_1088 = it_1086[1]
+        it_1089 = Ordering_of(lsf_cmp_plain(x_1084, v_lawspecselection0x0_1087))
+        if it_1089 == 0:
+            return xs_1085
+        elif it_1089 == 1:
+            return lsf_cons(v_lawspecselection0x0_1087, Def_lawspecCollectionsSetInsertItems_708d991b(x_1084, v_lawspecselection0x1_1088))
         else:
-            return lsf_cons(x_858, xs_859)
+            return lsf_cons(x_1084, xs_1085)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetMemberItems_1cf181337c0427e8
-def Def_lawspecCollectionsSetMemberItems_1ed23db8(x_863, xs_864):
+def Def_lawspecCollectionsSetMemberItems_1ed23db8(x_1090, xs_1091):
     while True:
-        if xs_864 is None:
+        it_1092 = xs_1091
+        if it_1092 is None:
             return False
         else:
-            h_865 = xs_864[0]
-            t_866 = xs_864[1]
-            matched_867 = Ordering_of(lsf_cmp_plain(x_863, h_865))
-            if matched_867 == 0:
+            v_lawspecselection0x0_1093 = it_1092[0]
+            v_lawspecselection0x1_1094 = it_1092[1]
+            it_1095 = Ordering_of(lsf_cmp_plain(x_1090, v_lawspecselection0x0_1093))
+            if it_1095 == 0:
                 return True
-            elif matched_867 == 1:
-                next_868 = t_866
-                xs_864 = next_868
+            elif it_1095 == 1:
+                next_1096 = v_lawspecselection0x1_1094
+                xs_1091 = next_1096
                 continue
             else:
                 return False
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
-def Def_lawspecCollectionsSetMember_b54a7773(x_869, s_870):
-    return lsf_member(s_870, x_869)
+def Def_lawspecCollectionsSetMember_b54a7773(x_1097, s_1098):
+    return lsf_member(s_1098, x_1097)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetOf_83f32212ffd7f646
-def Def_lawspecCollectionsSetOf_381c9692(xs_871):
-    return lsf_set_of(xs_871)
+def Def_lawspecCollectionsSetOf_381c9692(xs_1099):
+    return lsf_set_of(xs_1099)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetOf_9446af497e0eb47e
-def Def_lawspecCollectionsSetOf_04775bf4(xs_872):
-    return lsf_set_of(xs_872)
+def Def_lawspecCollectionsSetOf_04775bf4(xs_1100):
+    return lsf_set_of(xs_1100)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetOf_b2e15487e0114c0
-def Def_lawspecCollectionsSetOf_9f2ef842(xs_873):
-    return lsf_set_of(xs_873)
+def Def_lawspecCollectionsSetOf_9f2ef842(xs_1101):
+    return lsf_set_of(xs_1101)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetRemoveItems_a3dc35e775ac9977
-def Def_lawspecCollectionsSetRemoveItems_64279e04(x_874, xs_875):
-    if xs_875 is None:
-        return xs_875
+def Def_lawspecCollectionsSetRemoveItems_64279e04(x_1102, xs_1103):
+    it_1104 = xs_1103
+    if it_1104 is None:
+        return xs_1103
     else:
-        h_876 = xs_875[0]
-        t_877 = xs_875[1]
-        matched_878 = Ordering_of(lsf_cmp_plain(x_874, h_876))
-        if matched_878 == 0:
-            return t_877
-        elif matched_878 == 1:
-            return lsf_cons(h_876, Def_lawspecCollectionsSetRemoveItems_64279e04(x_874, t_877))
+        v_lawspecselection0x0_1105 = it_1104[0]
+        v_lawspecselection0x1_1106 = it_1104[1]
+        it_1107 = Ordering_of(lsf_cmp_plain(x_1102, v_lawspecselection0x0_1105))
+        if it_1107 == 0:
+            return v_lawspecselection0x1_1106
+        elif it_1107 == 1:
+            return lsf_cons(v_lawspecselection0x0_1105, Def_lawspecCollectionsSetRemoveItems_64279e04(x_1102, v_lawspecselection0x1_1106))
         else:
-            return xs_875
+            return xs_1103
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetRemove_1fda0e8e73969c67
-def Def_lawspecCollectionsSetRemove_7ffea813(x_879, s_880):
-    return lsf_delete(s_880, x_879)
+def Def_lawspecCollectionsSetRemove_7ffea813(x_1108, s_1109):
+    return lsf_delete(s_1109, x_1108)
 
 
 # lawtwin.kafka::lawspec_lawspecCollectionsSetUnion_f2139edefc699bed
-def Def_lawspecCollectionsSetUnion_604ff278(s_881, t_882):
-    return lsf_set_union(s_881, t_882)
+def Def_lawspecCollectionsSetUnion_604ff278(s_1110, t_1111):
+    return lsf_set_union(s_1110, t_1111)
 
 
 # lawtwin.kafka::lawtwinKafkaModelAddPartitionsToTxn
-def Def_lawtwinKafkaModelAddPartitionsToTxn_8d367d82(txid_883, pid_884, epoch_885, tps_886, b_887):
-    entry_888 = Def_lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_883, pid_884, epoch_885, b_887)
-    if (not Def_lawtwinKafkaModelAllKnown_12a378f8(tps_886, b_887)):
+def Def_lawtwinKafkaModelAddPartitionsToTxn_8d367d82(txid_1112, pid_1113, epoch_1114, tps_1115, b_1116):
+    entry_1117 = Def_lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_1112, pid_1113, epoch_1114, b_1116)
+    if (not Def_lawtwinKafkaModelAllKnown_12a378f8(tps_1115, b_1116)):
         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(16))
     else:
-        lawspecfieldtxn_891 = entry_888[2]
-        value_890 = lawspecfieldtxn_891
-        matched_892 = value_890
-        tag_893 = matched_892[0]
-        if tag_893 == 0:
-            value_889 = (1, Def_lawtwinKafkaModelUnionPartitions_c791d224(tps_886, None), None)
+        lawspecfieldtxn_1120 = entry_1117[2]
+        value_1119 = lawspecfieldtxn_1120
+        it_1121 = value_1119
+        tag_1122 = it_1121[0]
+        if tag_1122 == 0:
+            txnpartitions_1124 = Def_lawtwinKafkaModelUnionPartitions_c791d224(tps_1115, None)
+            txnoffsets_1125 = None
+            value_1123 = (txnoffsets_1125, txnpartitions_1124)
+            value_1118 = (1, value_1123)
         else:
-            ps_894 = matched_892[1]
-            os_895 = matched_892[2]
-            value_889 = (1, Def_lawtwinKafkaModelUnionPartitions_c791d224(tps_886, ps_894), os_895)
-        next_896 = value_889
-        replacement_898 = next_896
-        lawspecfieldepoch_899 = entry_888[0]
-        lawspecfieldtransactionalid_900 = entry_888[1]
-        value_897 = (lawspecfieldepoch_899, lawspecfieldtransactionalid_900, replacement_898)
-        return (None, Def_lawtwinKafkaModelPutProducer_4ef907a5(pid_884, value_897, b_887))
+            v_lawspecselection0x0_1126 = it_1121[1]
+            lawspecfieldtxnpartitions_1128 = v_lawspecselection0x0_1126[1]
+            value_1127 = lawspecfieldtxnpartitions_1128
+            v_lawspecselection1x0_1129 = value_1127
+            lawspecfieldtxnoffsets_1131 = v_lawspecselection0x0_1126[0]
+            value_1130 = lawspecfieldtxnoffsets_1131
+            v_lawspecselection1x1_1132 = value_1130
+            txnpartitions_1134 = Def_lawtwinKafkaModelUnionPartitions_c791d224(tps_1115, v_lawspecselection1x0_1129)
+            txnoffsets_1135 = v_lawspecselection1x1_1132
+            value_1133 = (txnoffsets_1135, txnpartitions_1134)
+            value_1118 = (1, value_1133)
+        next_1136 = value_1118
+        replacement_1138 = next_1136
+        lawspecfieldepoch_1139 = entry_1117[0]
+        lawspecfieldtransactionalid_1140 = entry_1117[1]
+        value_1137 = (lawspecfieldepoch_1139, lawspecfieldtransactionalid_1140, replacement_1138)
+        return (None, Def_lawtwinKafkaModelPutProducer_4ef907a5(pid_1113, value_1137, b_1116))
 
 
 # lawtwin.kafka::lawtwinKafkaModelAllKnown
-def Def_lawtwinKafkaModelAllKnown_12a378f8(tps_901, b_902):
-    if tps_901 is None:
+def Def_lawtwinKafkaModelAllKnown_12a378f8(tps_1141, b_1142):
+    it_1143 = tps_1141
+    if it_1143 is None:
         return True
     else:
-        h_903 = tps_901[0]
-        t_904 = tps_901[1]
-        return (Def_lawtwinKafkaModelKnownPartition_71d3099f(h_903, b_902) and Def_lawtwinKafkaModelAllKnown_12a378f8(t_904, b_902))
+        v_lawspecselection0x0_1144 = it_1143[0]
+        v_lawspecselection0x1_1145 = it_1143[1]
+        return (Def_lawtwinKafkaModelKnownPartition_71d3099f(v_lawspecselection0x0_1144, b_1142) and Def_lawtwinKafkaModelAllKnown_12a378f8(v_lawspecselection0x1_1145, b_1142))
 
 
 # lawtwin.kafka::lawtwinKafkaModelAppendBatch
-def Def_lawtwinKafkaModelAppendBatch_8797ae9f(rs_905, writer_906, transactional_907, l_908):
-    lawspecfieldlogendoffset_910 = l_908[1]
-    value_909 = lawspecfieldlogendoffset_910
-    lawspecfieldentries_912 = l_908[0]
-    value_911 = lawspecfieldentries_912
-    appended_913 = Def_lawtwinKafkaModelAppendRecords_f5613738(rs_905, value_909, writer_906, transactional_907, value_911)
-    if transactional_907:
-        lawspecfieldopentxns_916 = l_908[2]
-        value_915 = lawspecfieldopentxns_916
-        matched_917 = lsf_lookup(value_915, writer_906)
-        if matched_917:
-            lawspecfieldopentxns_918 = l_908[2]
-            value_914 = lawspecfieldopentxns_918
+def Def_lawtwinKafkaModelAppendBatch_8797ae9f(rs_1146, writer_1147, transactional_1148, l_1149):
+    lawspecfieldlogendoffset_1151 = l_1149[1]
+    value_1150 = lawspecfieldlogendoffset_1151
+    lawspecfieldentries_1153 = l_1149[0]
+    value_1152 = lawspecfieldentries_1153
+    appended_1154 = Def_lawtwinKafkaModelAppendRecords_f5613738(rs_1146, value_1150, writer_1147, transactional_1148, value_1152)
+    if transactional_1148:
+        lawspecfieldopentxns_1157 = l_1149[2]
+        value_1156 = lawspecfieldopentxns_1157
+        it_1158 = lsf_lookup(value_1156, writer_1147)
+        if it_1158:
+            lawspecfieldopentxns_1159 = l_1149[2]
+            value_1155 = lawspecfieldopentxns_1159
         else:
-            lawspecfieldlogendoffset_920 = l_908[1]
-            value_919 = lawspecfieldlogendoffset_920
-            lawspecfieldopentxns_922 = l_908[2]
-            value_921 = lawspecfieldopentxns_922
-            value_914 = lsf_put(value_921, writer_906, value_919)
+            lawspecfieldlogendoffset_1161 = l_1149[1]
+            value_1160 = lawspecfieldlogendoffset_1161
+            lawspecfieldopentxns_1163 = l_1149[2]
+            value_1162 = lawspecfieldopentxns_1163
+            value_1155 = lsf_put(value_1162, writer_1147, value_1160)
     else:
-        lawspecfieldopentxns_923 = l_908[2]
-        value_914 = lawspecfieldopentxns_923
-    open_924 = value_914
-    replacement_925 = open_924
-    lawspecfieldfirst_928 = appended_913[0]
-    value_927 = lawspecfieldfirst_928
-    replacement_929 = value_927
-    lawspecfieldsecond_932 = appended_913[1]
-    value_931 = lawspecfieldsecond_932
-    replacement_933 = value_931
-    lawspecfieldlogendoffset_934 = l_908[1]
-    lawspecfieldopentxns_935 = l_908[2]
-    lawspecfieldabortedtxns_936 = l_908[3]
-    lawspecfieldbatches_937 = l_908[4]
-    value_930 = (replacement_933, lawspecfieldlogendoffset_934, lawspecfieldopentxns_935, lawspecfieldabortedtxns_936, lawspecfieldbatches_937)
-    matched_938 = value_930
-    lawspecfieldentries_939 = matched_938[0]
-    lawspecfieldopentxns_940 = matched_938[2]
-    lawspecfieldabortedtxns_941 = matched_938[3]
-    lawspecfieldbatches_942 = matched_938[4]
-    value_926 = (lawspecfieldentries_939, replacement_929, lawspecfieldopentxns_940, lawspecfieldabortedtxns_941, lawspecfieldbatches_942)
-    matched_943 = value_926
-    lawspecfieldentries_944 = matched_943[0]
-    lawspecfieldlogendoffset_945 = matched_943[1]
-    lawspecfieldabortedtxns_946 = matched_943[3]
-    lawspecfieldbatches_947 = matched_943[4]
-    return (lawspecfieldentries_944, lawspecfieldlogendoffset_945, replacement_925, lawspecfieldabortedtxns_946, lawspecfieldbatches_947)
+        lawspecfieldopentxns_1164 = l_1149[2]
+        value_1155 = lawspecfieldopentxns_1164
+    open_1165 = value_1155
+    replacement_1166 = open_1165
+    lawspecfieldfirst_1169 = appended_1154[0]
+    value_1168 = lawspecfieldfirst_1169
+    replacement_1170 = value_1168
+    lawspecfieldsecond_1173 = appended_1154[1]
+    value_1172 = lawspecfieldsecond_1173
+    replacement_1174 = value_1172
+    lawspecfieldlogendoffset_1175 = l_1149[1]
+    lawspecfieldopentxns_1176 = l_1149[2]
+    lawspecfieldabortedtxns_1177 = l_1149[3]
+    lawspecfieldbatches_1178 = l_1149[4]
+    value_1171 = (replacement_1174, lawspecfieldlogendoffset_1175, lawspecfieldopentxns_1176, lawspecfieldabortedtxns_1177, lawspecfieldbatches_1178)
+    matched_1179 = value_1171
+    lawspecfieldentries_1180 = matched_1179[0]
+    lawspecfieldopentxns_1181 = matched_1179[2]
+    lawspecfieldabortedtxns_1182 = matched_1179[3]
+    lawspecfieldbatches_1183 = matched_1179[4]
+    value_1167 = (lawspecfieldentries_1180, replacement_1170, lawspecfieldopentxns_1181, lawspecfieldabortedtxns_1182, lawspecfieldbatches_1183)
+    matched_1184 = value_1167
+    lawspecfieldentries_1185 = matched_1184[0]
+    lawspecfieldlogendoffset_1186 = matched_1184[1]
+    lawspecfieldabortedtxns_1187 = matched_1184[3]
+    lawspecfieldbatches_1188 = matched_1184[4]
+    return (lawspecfieldentries_1185, lawspecfieldlogendoffset_1186, replacement_1166, lawspecfieldabortedtxns_1187, lawspecfieldbatches_1188)
 
 
 # lawtwin.kafka::lawtwinKafkaModelAppendRecords
-def Def_lawtwinKafkaModelAppendRecords_f5613738(rs_948, offset_949, writer_950, transactional_951, es_952):
+def Def_lawtwinKafkaModelAppendRecords_f5613738(rs_1189, offset_1190, writer_1191, transactional_1192, es_1193):
     while True:
-        if rs_948 is None:
-            return (offset_949, es_952)
+        it_1194 = rs_1189
+        if it_1194 is None:
+            return (offset_1190, es_1193)
         else:
-            r_953 = rs_948[0]
-            rest_954 = rs_948[1]
-            next_955 = rest_954
-            next_956 = Def_saturatingInt64_5bce4ed8((offset_949 + 1))
-            next_957 = lsf_cons((1, offset_949, r_953, writer_950, transactional_951), es_952)
-            rs_948 = next_955
-            offset_949 = next_956
-            es_952 = next_957
+            v_lawspecselection0x0_1195 = it_1194[0]
+            v_lawspecselection0x1_1196 = it_1194[1]
+            next_1197 = v_lawspecselection0x1_1196
+            next_1198 = Def_saturatingInt64_5bce4ed8((offset_1190 + 1))
+            entryoffset_1200 = offset_1190
+            entryrecord_1201 = v_lawspecselection0x0_1195
+            writer_1202 = writer_1191
+            transactional_1203 = transactional_1192
+            value_1199 = (entryoffset_1200, entryrecord_1201, transactional_1203, writer_1202)
+            next_1204 = lsf_cons((1, value_1199), es_1193)
+            rs_1189 = next_1197
+            offset_1190 = next_1198
+            es_1193 = next_1204
             continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelApplyOffsets
-def Def_lawtwinKafkaModelApplyOffsets_c0f73b56(os_958, b_959):
+def Def_lawtwinKafkaModelApplyOffsets_c0f73b56(os_1205, b_1206):
     while True:
-        if os_958 is None:
-            return b_959
+        it_1207 = os_1205
+        if it_1207 is None:
+            return b_1206
         else:
-            o_960 = os_958[0]
-            rest_961 = os_958[1]
-            next_962 = rest_961
-            lawspecfieldpendinggroup_965 = o_960[0]
-            value_964 = lawspecfieldpendinggroup_965
-            lawspecfieldpendingentry_968 = o_960[1]
-            value_967 = lawspecfieldpendingentry_968
-            matched_969 = value_967
-            lawspecfieldtopicpartition_970 = matched_969[0]
-            value_966 = lawspecfieldtopicpartition_970
-            lawspecfieldpendingentry_973 = o_960[1]
-            value_972 = lawspecfieldpendingentry_973
-            matched_974 = value_972
-            lawspecfieldoffset_975 = matched_974[1]
-            value_971 = lawspecfieldoffset_975
-            lawspecfieldcommitted_977 = b_959[6]
-            value_976 = lawspecfieldcommitted_977
-            replacement_978 = lsf_put(value_976, (value_964, value_966), value_971)
-            lawspecfieldtopics_979 = b_959[0]
-            lawspecfieldlogs_980 = b_959[1]
-            lawspecfieldproducers_981 = b_959[2]
-            lawspecfieldtransactionalids_982 = b_959[3]
-            lawspecfieldnextproducerid_983 = b_959[4]
-            lawspecfieldgroups_984 = b_959[5]
-            value_963 = (lawspecfieldtopics_979, lawspecfieldlogs_980, lawspecfieldproducers_981, lawspecfieldtransactionalids_982, lawspecfieldnextproducerid_983, lawspecfieldgroups_984, replacement_978)
-            next_985 = value_963
-            os_958 = next_962
-            b_959 = next_985
+            v_lawspecselection0x0_1208 = it_1207[0]
+            v_lawspecselection0x1_1209 = it_1207[1]
+            next_1210 = v_lawspecselection0x1_1209
+            lawspecfieldpendinggroup_1214 = v_lawspecselection0x0_1208[0]
+            value_1213 = lawspecfieldpendinggroup_1214
+            v_lawspecrecordfield0_1215 = value_1213
+            lawspecfieldpendingentry_1218 = v_lawspecselection0x0_1208[1]
+            value_1217 = lawspecfieldpendingentry_1218
+            matched_1219 = value_1217
+            lawspecfieldtopicpartition_1220 = matched_1219[0]
+            value_1216 = lawspecfieldtopicpartition_1220
+            v_lawspecrecordfield1_1221 = value_1216
+            value_1212 = (v_lawspecrecordfield0_1215, v_lawspecrecordfield1_1221)
+            lawspecfieldpendingentry_1224 = v_lawspecselection0x0_1208[1]
+            value_1223 = lawspecfieldpendingentry_1224
+            matched_1225 = value_1223
+            lawspecfieldoffset_1226 = matched_1225[1]
+            value_1222 = lawspecfieldoffset_1226
+            lawspecfieldcommitted_1228 = b_1206[6]
+            value_1227 = lawspecfieldcommitted_1228
+            replacement_1229 = lsf_put(value_1227, value_1212, value_1222)
+            lawspecfieldtopics_1230 = b_1206[0]
+            lawspecfieldlogs_1231 = b_1206[1]
+            lawspecfieldproducers_1232 = b_1206[2]
+            lawspecfieldtransactionalids_1233 = b_1206[3]
+            lawspecfieldnextproducerid_1234 = b_1206[4]
+            lawspecfieldgroups_1235 = b_1206[5]
+            value_1211 = (lawspecfieldtopics_1230, lawspecfieldlogs_1231, lawspecfieldproducers_1232, lawspecfieldtransactionalids_1233, lawspecfieldnextproducerid_1234, lawspecfieldgroups_1235, replacement_1229)
+            next_1236 = value_1211
+            os_1205 = next_1210
+            b_1206 = next_1236
             continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelAssignPartitions
-def Def_lawtwinKafkaModelAssignPartitions_598afda2(topic_986, ps_987, owners_988, waiting_989, a_990):
+def Def_lawtwinKafkaModelAssignPartitions_598afda2(topic_1237, ps_1238, owners_1239, waiting_1240, a_1241):
     while True:
-        if ps_987 is None:
-            return a_990
+        it_1242 = ps_1238
+        if it_1242 is None:
+            return a_1241
         else:
-            p_991 = ps_987[0]
-            rest_992 = ps_987[1]
-            if waiting_989 is None:
-                if owners_988 is None:
-                    return a_990
+            v_lawspecselection0x0_1243 = it_1242[0]
+            v_lawspecselection0x1_1244 = it_1242[1]
+            it_1245 = waiting_1240
+            if it_1245 is None:
+                it_1246 = owners_1239
+                if it_1246 is None:
+                    return a_1241
                 else:
-                    owner_993 = owners_988[0]
-                    later_994 = owners_988[1]
-                    next_995 = rest_992
-                    next_996 = later_994
-                    next_997 = Def_lawtwinKafkaModelAssignTo_98dab4ee(owner_993, (topic_986, p_991), a_990)
-                    ps_987 = next_995
-                    waiting_989 = next_996
-                    a_990 = next_997
+                    v_match__lawspecselection0x0_0_1247 = it_1246[0]
+                    v_match__lawspecselection0x1_0_1248 = it_1246[1]
+                    next_1249 = v_lawspecselection0x1_1244
+                    next_1250 = v_match__lawspecselection0x1_0_1248
+                    v_lawspecrecordfield0_1252 = topic_1237
+                    v_lawspecrecordfield1_1253 = v_lawspecselection0x0_1243
+                    value_1251 = (v_lawspecrecordfield0_1252, v_lawspecrecordfield1_1253)
+                    next_1254 = Def_lawtwinKafkaModelAssignTo_98dab4ee(v_match__lawspecselection0x0_0_1247, value_1251, a_1241)
+                    ps_1238 = next_1249
+                    waiting_1240 = next_1250
+                    a_1241 = next_1254
                     continue
             else:
-                owner_998 = waiting_989[0]
-                later_999 = waiting_989[1]
-                next_1000 = rest_992
-                next_1001 = later_999
-                next_1002 = Def_lawtwinKafkaModelAssignTo_98dab4ee(owner_998, (topic_986, p_991), a_990)
-                ps_987 = next_1000
-                waiting_989 = next_1001
-                a_990 = next_1002
+                v_match__lawspecselection0x0_0_1255 = it_1245[0]
+                v_match__lawspecselection0x1_0_1256 = it_1245[1]
+                next_1257 = v_lawspecselection0x1_1244
+                next_1258 = v_match__lawspecselection0x1_0_1256
+                v_lawspecrecordfield0_1260 = topic_1237
+                v_lawspecrecordfield1_1261 = v_lawspecselection0x0_1243
+                value_1259 = (v_lawspecrecordfield0_1260, v_lawspecrecordfield1_1261)
+                next_1262 = Def_lawtwinKafkaModelAssignTo_98dab4ee(v_match__lawspecselection0x0_0_1255, value_1259, a_1241)
+                ps_1238 = next_1257
+                waiting_1240 = next_1258
+                a_1241 = next_1262
                 continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelAssignTo
-def Def_lawtwinKafkaModelAssignTo_98dab4ee(member_1003, tp_1004, a_1005):
-    matched_1006 = lsf_lookup(a_1005, member_1003)
-    if matched_1006:
-        tps_1007 = matched_1006[0]
-        return lsf_put(a_1005, member_1003, lsf_append(tps_1007, lsf_cons(tp_1004, None)))
+def Def_lawtwinKafkaModelAssignTo_98dab4ee(member_1263, tp_1264, a_1265):
+    it_1266 = lsf_lookup(a_1265, member_1263)
+    if it_1266:
+        v_lawspecselection0x0_1267 = it_1266[0]
+        return lsf_put(a_1265, member_1263, lsf_append(v_lawspecselection0x0_1267, lsf_cons(tp_1264, None)))
     else:
-        return lsf_put(a_1005, member_1003, lsf_cons(tp_1004, None))
+        return lsf_put(a_1265, member_1263, lsf_cons(tp_1264, None))
 
 
 # lawtwin.kafka::lawtwinKafkaModelAssignTopics
-def Def_lawtwinKafkaModelAssignTopics_0d94256d(topics_1008, subs_1009, b_1010, a_1011):
+def Def_lawtwinKafkaModelAssignTopics_0d94256d(topics_1268, subs_1269, b_1270, a_1271):
     while True:
-        if topics_1008 is None:
-            return a_1011
+        it_1272 = topics_1268
+        if it_1272 is None:
+            return a_1271
         else:
-            topic_1012 = topics_1008[0]
-            rest_1013 = topics_1008[1]
-            matched_1014 = Def_lawtwinKafkaModelPartitionCountOf_ff180c35(topic_1012, b_1010)
-            if matched_1014:
-                n_1015 = matched_1014[0]
-                next_1016 = rest_1013
-                owners_1018 = Def_lawtwinKafkaModelSubscribersOf_e9347318(topic_1012, subs_1009)
-                value_1017 = Def_lawtwinKafkaModelAssignPartitions_598afda2(topic_1012, Def_lawtwinKafkaModelPartitionsBelow_19525eca(n_1015), owners_1018, owners_1018, a_1011)
-                next_1019 = value_1017
-                topics_1008 = next_1016
-                a_1011 = next_1019
+            v_lawspecselection0x0_1273 = it_1272[0]
+            v_lawspecselection0x1_1274 = it_1272[1]
+            it_1275 = Def_lawtwinKafkaModelPartitionCountOf_ff180c35(v_lawspecselection0x0_1273, b_1270)
+            if it_1275:
+                v_match__lawspecselection0x0_0_1276 = it_1275[0]
+                next_1277 = v_lawspecselection0x1_1274
+                owners_1279 = Def_lawtwinKafkaModelSubscribersOf_e9347318(v_lawspecselection0x0_1273, subs_1269)
+                value_1278 = Def_lawtwinKafkaModelAssignPartitions_598afda2(v_lawspecselection0x0_1273, Def_lawtwinKafkaModelPartitionsBelow_19525eca(v_match__lawspecselection0x0_0_1276), owners_1279, owners_1279, a_1271)
+                next_1280 = value_1278
+                topics_1268 = next_1277
+                a_1271 = next_1280
                 continue
             else:
-                next_1020 = rest_1013
-                topics_1008 = next_1020
+                next_1281 = v_lawspecselection0x1_1274
+                topics_1268 = next_1281
                 continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelCheckMember
-def Def_lawtwinKafkaModelCheckMember_f218b850(g_1021, member_1022, generation_1023, b_1024):
-    if (g_1021 == ''):
+def Def_lawtwinKafkaModelCheckMember_f218b850(g_1282, member_1283, generation_1284, b_1285):
+    if (g_1282 == ''):
         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(2))
     else:
-        group_1025 = Def_lawtwinKafkaModelGroupOf_abe7cb22(g_1021, b_1024)
-        lawspecfieldsubscriptions_1027 = group_1025[1]
-        value_1026 = lawspecfieldsubscriptions_1027
-        matched_1028 = lsf_lookup(value_1026, member_1022)
-        if matched_1028:
-            lawspecfieldgroupgeneration_1030 = group_1025[0]
-            value_1029 = lawspecfieldgroupgeneration_1030
-            if (generation_1023 != value_1029):
+        group_1286 = Def_lawtwinKafkaModelGroupOf_abe7cb22(g_1282, b_1285)
+        lawspecfieldsubscriptions_1288 = group_1286[1]
+        value_1287 = lawspecfieldsubscriptions_1288
+        it_1289 = lsf_lookup(value_1287, member_1283)
+        if it_1289:
+            lawspecfieldgroupgeneration_1291 = group_1286[0]
+            value_1290 = lawspecfieldgroupgeneration_1291
+            if (generation_1284 != value_1290):
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(0))
             else:
-                return group_1025
+                return group_1286
         else:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(14))
 
 
 # lawtwin.kafka::lawtwinKafkaModelCheckTxnProducer
-def Def_lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_1031, pid_1032, epoch_1033, b_1034):
-    lawspecfieldtransactionalids_1036 = b_1034[3]
-    value_1035 = lawspecfieldtransactionalids_1036
-    matched_1037 = lsf_lookup(value_1035, txid_1031)
-    if matched_1037:
-        mapped_1038 = matched_1037[0]
-        if (mapped_1038 != pid_1032):
+def Def_lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_1292, pid_1293, epoch_1294, b_1295):
+    lawspecfieldtransactionalids_1297 = b_1295[3]
+    value_1296 = lawspecfieldtransactionalids_1297
+    it_1298 = lsf_lookup(value_1296, txid_1292)
+    if it_1298:
+        v_lawspecselection0x0_1299 = it_1298[0]
+        if (v_lawspecselection0x0_1299 != pid_1293):
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(5))
         else:
-            lawspecfieldproducers_1040 = b_1034[2]
-            value_1039 = lawspecfieldproducers_1040
-            matched_1041 = lsf_lookup(value_1039, pid_1032)
-            if matched_1041:
-                entry_1042 = matched_1041[0]
-                lawspecfieldepoch_1044 = entry_1042[0]
-                value_1043 = lawspecfieldepoch_1044
-                if (epoch_1033 < value_1043):
+            lawspecfieldproducers_1301 = b_1295[2]
+            value_1300 = lawspecfieldproducers_1301
+            it_1302 = lsf_lookup(value_1300, pid_1293)
+            if it_1302:
+                v_match__lawspecselection0x0_0_1303 = it_1302[0]
+                lawspecfieldepoch_1305 = v_match__lawspecselection0x0_0_1303[0]
+                value_1304 = lawspecfieldepoch_1305
+                if (epoch_1294 < value_1304):
                     raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(12))
                 else:
-                    lawspecfieldepoch_1046 = entry_1042[0]
-                    value_1045 = lawspecfieldepoch_1046
-                    if (epoch_1033 > value_1045):
+                    lawspecfieldepoch_1307 = v_match__lawspecselection0x0_0_1303[0]
+                    value_1306 = lawspecfieldepoch_1307
+                    if (epoch_1294 > value_1306):
                         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(4))
                     else:
-                        return entry_1042
+                        return v_match__lawspecselection0x0_0_1303
             else:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(5))
     else:
@@ -2513,1236 +2774,1377 @@ def Def_lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_1031, pid_1032, epoch_10
 
 
 # lawtwin.kafka::lawtwinKafkaModelCommitAll
-def Def_lawtwinKafkaModelCommitAll_4ae78738(g_1047, offsets_1048, b_1049):
+def Def_lawtwinKafkaModelCommitAll_4ae78738(g_1308, offsets_1309, b_1310):
     while True:
-        if offsets_1048 is None:
-            return b_1049
+        it_1311 = offsets_1309
+        if it_1311 is None:
+            return b_1310
         else:
-            o_1050 = offsets_1048[0]
-            rest_1051 = offsets_1048[1]
-            next_1052 = rest_1051
-            lawspecfieldtopicpartition_1055 = o_1050[0]
-            value_1054 = lawspecfieldtopicpartition_1055
-            lawspecfieldoffset_1057 = o_1050[1]
-            value_1056 = lawspecfieldoffset_1057
-            lawspecfieldcommitted_1059 = b_1049[6]
-            value_1058 = lawspecfieldcommitted_1059
-            replacement_1060 = lsf_put(value_1058, (g_1047, value_1054), value_1056)
-            lawspecfieldtopics_1061 = b_1049[0]
-            lawspecfieldlogs_1062 = b_1049[1]
-            lawspecfieldproducers_1063 = b_1049[2]
-            lawspecfieldtransactionalids_1064 = b_1049[3]
-            lawspecfieldnextproducerid_1065 = b_1049[4]
-            lawspecfieldgroups_1066 = b_1049[5]
-            value_1053 = (lawspecfieldtopics_1061, lawspecfieldlogs_1062, lawspecfieldproducers_1063, lawspecfieldtransactionalids_1064, lawspecfieldnextproducerid_1065, lawspecfieldgroups_1066, replacement_1060)
-            next_1067 = value_1053
-            offsets_1048 = next_1052
-            b_1049 = next_1067
+            v_lawspecselection0x0_1312 = it_1311[0]
+            v_lawspecselection0x1_1313 = it_1311[1]
+            next_1314 = v_lawspecselection0x1_1313
+            v_lawspecrecordfield0_1317 = g_1308
+            lawspecfieldtopicpartition_1319 = v_lawspecselection0x0_1312[0]
+            value_1318 = lawspecfieldtopicpartition_1319
+            v_lawspecrecordfield1_1320 = value_1318
+            value_1316 = (v_lawspecrecordfield0_1317, v_lawspecrecordfield1_1320)
+            lawspecfieldoffset_1322 = v_lawspecselection0x0_1312[1]
+            value_1321 = lawspecfieldoffset_1322
+            lawspecfieldcommitted_1324 = b_1310[6]
+            value_1323 = lawspecfieldcommitted_1324
+            replacement_1325 = lsf_put(value_1323, value_1316, value_1321)
+            lawspecfieldtopics_1326 = b_1310[0]
+            lawspecfieldlogs_1327 = b_1310[1]
+            lawspecfieldproducers_1328 = b_1310[2]
+            lawspecfieldtransactionalids_1329 = b_1310[3]
+            lawspecfieldnextproducerid_1330 = b_1310[4]
+            lawspecfieldgroups_1331 = b_1310[5]
+            value_1315 = (lawspecfieldtopics_1326, lawspecfieldlogs_1327, lawspecfieldproducers_1328, lawspecfieldtransactionalids_1329, lawspecfieldnextproducerid_1330, lawspecfieldgroups_1331, replacement_1325)
+            next_1332 = value_1315
+            offsets_1309 = next_1314
+            b_1310 = next_1332
             continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelComputeAssignment
-def Def_lawtwinKafkaModelComputeAssignment_07bd1943(subscriptions_1068, b_1069):
-    subs_1070 = lsf_entries_list(subscriptions_1068)
-    matched_1072 = Def_lawtwinKafkaModelSubscribedTopics_c1d720b5(subs_1070, lsf_set_of(None))
-    items_1073 = lsf_keys_list(matched_1072)
-    value_1071 = items_1073
-    return Def_lawtwinKafkaModelAssignTopics_0d94256d(value_1071, subs_1070, b_1069, Def_lawtwinKafkaModelEmptyAssignments_91b44e0d(lsf_keys_list(subscriptions_1068), lsf_key_val_of(None)))
+def Def_lawtwinKafkaModelComputeAssignment_07bd1943(subscriptions_1333, b_1334):
+    subs_1335 = lsf_entries_list(subscriptions_1333)
+    matched_1337 = Def_lawtwinKafkaModelSubscribedTopics_c1d720b5(subs_1335, lsf_set_of(None))
+    items_1338 = lsf_keys_list(matched_1337)
+    value_1336 = items_1338
+    return Def_lawtwinKafkaModelAssignTopics_0d94256d(value_1336, subs_1335, b_1334, Def_lawtwinKafkaModelEmptyAssignments_91b44e0d(lsf_keys_list(subscriptions_1333), lsf_key_val_of(None)))
 
 
 # lawtwin.kafka::lawtwinKafkaModelCreatePartitions
-def Def_lawtwinKafkaModelCreatePartitions_8c9ce76b(name_1074, total_1075, b_1076):
-    matched_1077 = Def_lawtwinKafkaModelPartitionCountOf_ff180c35(name_1074, b_1076)
-    if matched_1077:
-        n_1078 = matched_1077[0]
-        if ((total_1075 <= n_1078) or (total_1075 > Def_lawtwinKafkaModelMaxPartitions_6be37992(None))):
+def Def_lawtwinKafkaModelCreatePartitions_8c9ce76b(name_1339, total_1340, b_1341):
+    it_1342 = Def_lawtwinKafkaModelPartitionCountOf_ff180c35(name_1339, b_1341)
+    if it_1342:
+        v_lawspecselection0x0_1343 = it_1342[0]
+        if ((total_1340 <= v_lawspecselection0x0_1343) or (total_1340 > Def_lawtwinKafkaModelMaxPartitions_6be37992(None))):
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(3))
         else:
-            lawspecfieldtopics_1081 = b_1076[0]
-            value_1080 = lawspecfieldtopics_1081
-            replacement_1082 = lsf_put(value_1080, name_1074, total_1075)
-            lawspecfieldlogs_1083 = b_1076[1]
-            lawspecfieldproducers_1084 = b_1076[2]
-            lawspecfieldtransactionalids_1085 = b_1076[3]
-            lawspecfieldnextproducerid_1086 = b_1076[4]
-            lawspecfieldgroups_1087 = b_1076[5]
-            lawspecfieldcommitted_1088 = b_1076[6]
-            value_1079 = (replacement_1082, lawspecfieldlogs_1083, lawspecfieldproducers_1084, lawspecfieldtransactionalids_1085, lawspecfieldnextproducerid_1086, lawspecfieldgroups_1087, lawspecfieldcommitted_1088)
-            return (None, Def_lawtwinKafkaModelRebalanceTopic_823cd68b(name_1074, value_1079))
+            lawspecfieldtopics_1346 = b_1341[0]
+            value_1345 = lawspecfieldtopics_1346
+            replacement_1347 = lsf_put(value_1345, name_1339, total_1340)
+            lawspecfieldlogs_1348 = b_1341[1]
+            lawspecfieldproducers_1349 = b_1341[2]
+            lawspecfieldtransactionalids_1350 = b_1341[3]
+            lawspecfieldnextproducerid_1351 = b_1341[4]
+            lawspecfieldgroups_1352 = b_1341[5]
+            lawspecfieldcommitted_1353 = b_1341[6]
+            value_1344 = (replacement_1347, lawspecfieldlogs_1348, lawspecfieldproducers_1349, lawspecfieldtransactionalids_1350, lawspecfieldnextproducerid_1351, lawspecfieldgroups_1352, lawspecfieldcommitted_1353)
+            return (None, Def_lawtwinKafkaModelRebalanceTopic_823cd68b(name_1339, value_1344))
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(16))
 
 
 # lawtwin.kafka::lawtwinKafkaModelCreateTopic
-def Def_lawtwinKafkaModelCreateTopic_0d831a39(name_1089, n_1090, b_1091):
-    if (not Def_lawtwinKafkaModelValidTopicName_39dd4596(name_1089)):
+def Def_lawtwinKafkaModelCreateTopic_0d831a39(name_1354, n_1355, b_1356):
+    if (not Def_lawtwinKafkaModelValidTopicName_39dd4596(name_1354)):
         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(8))
     else:
-        if ((n_1090 < 1) or (n_1090 > Def_lawtwinKafkaModelMaxPartitions_6be37992(None))):
+        if ((n_1355 < 1) or (n_1355 > Def_lawtwinKafkaModelMaxPartitions_6be37992(None))):
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(3))
         else:
-            matched_1092 = Def_lawtwinKafkaModelPartitionCountOf_ff180c35(name_1089, b_1091)
-            if matched_1092:
+            it_1357 = Def_lawtwinKafkaModelPartitionCountOf_ff180c35(name_1354, b_1356)
+            if it_1357:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(13))
             else:
-                lawspecfieldtopics_1095 = b_1091[0]
-                value_1094 = lawspecfieldtopics_1095
-                replacement_1096 = lsf_put(value_1094, name_1089, n_1090)
-                lawspecfieldlogs_1097 = b_1091[1]
-                lawspecfieldproducers_1098 = b_1091[2]
-                lawspecfieldtransactionalids_1099 = b_1091[3]
-                lawspecfieldnextproducerid_1100 = b_1091[4]
-                lawspecfieldgroups_1101 = b_1091[5]
-                lawspecfieldcommitted_1102 = b_1091[6]
-                value_1093 = (replacement_1096, lawspecfieldlogs_1097, lawspecfieldproducers_1098, lawspecfieldtransactionalids_1099, lawspecfieldnextproducerid_1100, lawspecfieldgroups_1101, lawspecfieldcommitted_1102)
-                return (None, Def_lawtwinKafkaModelRebalanceTopic_823cd68b(name_1089, value_1093))
+                lawspecfieldtopics_1360 = b_1356[0]
+                value_1359 = lawspecfieldtopics_1360
+                replacement_1361 = lsf_put(value_1359, name_1354, n_1355)
+                lawspecfieldlogs_1362 = b_1356[1]
+                lawspecfieldproducers_1363 = b_1356[2]
+                lawspecfieldtransactionalids_1364 = b_1356[3]
+                lawspecfieldnextproducerid_1365 = b_1356[4]
+                lawspecfieldgroups_1366 = b_1356[5]
+                lawspecfieldcommitted_1367 = b_1356[6]
+                value_1358 = (replacement_1361, lawspecfieldlogs_1362, lawspecfieldproducers_1363, lawspecfieldtransactionalids_1364, lawspecfieldnextproducerid_1365, lawspecfieldgroups_1366, lawspecfieldcommitted_1367)
+                return (None, Def_lawtwinKafkaModelRebalanceTopic_823cd68b(name_1354, value_1358))
 
 
 # lawtwin.kafka::lawtwinKafkaModelDescribeGroup
-def Def_lawtwinKafkaModelDescribeGroup_bf8df8f8(g_1103, b_1104):
-    group_1105 = Def_lawtwinKafkaModelGroupOf_abe7cb22(g_1103, b_1104)
-    lawspecfieldgroupgeneration_1107 = group_1105[0]
-    value_1106 = lawspecfieldgroupgeneration_1107
-    lawspecfieldassignment_1109 = group_1105[2]
-    value_1108 = lawspecfieldassignment_1109
-    return ((value_1106, Def_lawtwinKafkaModelMemberViews_a87b1b1a(lsf_entries_list(value_1108))), b_1104)
+def Def_lawtwinKafkaModelDescribeGroup_bf8df8f8(g_1368, b_1369):
+    group_1370 = Def_lawtwinKafkaModelGroupOf_abe7cb22(g_1368, b_1369)
+    lawspecfieldgroupgeneration_1373 = group_1370[0]
+    value_1372 = lawspecfieldgroupgeneration_1373
+    v_lawspecrecordfield0_1374 = value_1372
+    lawspecfieldassignment_1376 = group_1370[2]
+    value_1375 = lawspecfieldassignment_1376
+    v_lawspecrecordfield1_1377 = Def_lawtwinKafkaModelMemberViews_a87b1b1a(lsf_entries_list(value_1375))
+    value_1371 = (v_lawspecrecordfield0_1374, v_lawspecrecordfield1_1377)
+    return (value_1371, b_1369)
 
 
 # lawtwin.kafka::lawtwinKafkaModelEmptyAssignments
-def Def_lawtwinKafkaModelEmptyAssignments_91b44e0d(members_1110, a_1111):
+def Def_lawtwinKafkaModelEmptyAssignments_91b44e0d(members_1378, a_1379):
     while True:
-        if members_1110 is None:
-            return a_1111
+        it_1380 = members_1378
+        if it_1380 is None:
+            return a_1379
         else:
-            m_1112 = members_1110[0]
-            rest_1113 = members_1110[1]
-            next_1114 = rest_1113
-            next_1115 = lsf_put(a_1111, m_1112, None)
-            members_1110 = next_1114
-            a_1111 = next_1115
+            v_lawspecselection0x0_1381 = it_1380[0]
+            v_lawspecselection0x1_1382 = it_1380[1]
+            next_1383 = v_lawspecselection0x1_1382
+            next_1384 = lsf_put(a_1379, v_lawspecselection0x0_1381, None)
+            members_1378 = next_1383
+            a_1379 = next_1384
             continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelEmptyBroker
-def Def_lawtwinKafkaModelEmptyBroker_d5fd8237(u_1116):
-    return (lsf_key_val_of(None), lsf_key_val_of(None), lsf_key_val_of(None), lsf_key_val_of(None), 0, lsf_key_val_of(None), lsf_key_val_of(None))
+def Def_lawtwinKafkaModelEmptyBroker_d5fd8237(u_1385):
+    v_lawspecrecordfield0_1386 = lsf_key_val_of(None)
+    v_lawspecrecordfield1_1387 = lsf_key_val_of(None)
+    v_lawspecrecordfield2_1388 = lsf_key_val_of(None)
+    v_lawspecrecordfield3_1389 = lsf_key_val_of(None)
+    v_lawspecrecordfield4_1390 = 0
+    v_lawspecrecordfield5_1391 = lsf_key_val_of(None)
+    v_lawspecrecordfield6_1392 = lsf_key_val_of(None)
+    return (v_lawspecrecordfield0_1386, v_lawspecrecordfield1_1387, v_lawspecrecordfield2_1388, v_lawspecrecordfield3_1389, v_lawspecrecordfield4_1390, v_lawspecrecordfield5_1391, v_lawspecrecordfield6_1392)
 
 
 # lawtwin.kafka::lawtwinKafkaModelEmptyGroup
-def Def_lawtwinKafkaModelEmptyGroup_2fc4809b(u_1117):
-    return (0, lsf_key_val_of(None), lsf_key_val_of(None))
+def Def_lawtwinKafkaModelEmptyGroup_2fc4809b(u_1393):
+    v_lawspecrecordfield0_1394 = 0
+    v_lawspecrecordfield1_1395 = lsf_key_val_of(None)
+    v_lawspecrecordfield2_1396 = lsf_key_val_of(None)
+    return (v_lawspecrecordfield0_1394, v_lawspecrecordfield1_1395, v_lawspecrecordfield2_1396)
 
 
 # lawtwin.kafka::lawtwinKafkaModelEmptyLog
-def Def_lawtwinKafkaModelEmptyLog_a7825ed0(u_1118):
-    return (None, 0, lsf_key_val_of(None), None, lsf_key_val_of(None))
+def Def_lawtwinKafkaModelEmptyLog_a7825ed0(u_1397):
+    v_lawspecrecordfield0_1398 = None
+    v_lawspecrecordfield1_1399 = 0
+    v_lawspecrecordfield2_1400 = lsf_key_val_of(None)
+    v_lawspecrecordfield3_1401 = None
+    v_lawspecrecordfield4_1402 = lsf_key_val_of(None)
+    return (v_lawspecrecordfield0_1398, v_lawspecrecordfield1_1399, v_lawspecrecordfield2_1400, v_lawspecrecordfield3_1401, v_lawspecrecordfield4_1402)
 
 
 # lawtwin.kafka::lawtwinKafkaModelEndTxn
-def Def_lawtwinKafkaModelEndTxn_b2637a52(txid_1119, pid_1120, epoch_1121, commit_1122, b_1123):
-    entry_1124 = Def_lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_1119, pid_1120, epoch_1121, b_1123)
-    lawspecfieldtxn_1126 = entry_1124[2]
-    value_1125 = lawspecfieldtxn_1126
-    matched_1127 = value_1125
-    tag_1128 = matched_1127[0]
-    if tag_1128 == 0:
+def Def_lawtwinKafkaModelEndTxn_b2637a52(txid_1403, pid_1404, epoch_1405, commit_1406, b_1407):
+    entry_1408 = Def_lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_1403, pid_1404, epoch_1405, b_1407)
+    lawspecfieldtxn_1410 = entry_1408[2]
+    value_1409 = lawspecfieldtxn_1410
+    it_1411 = value_1409
+    tag_1412 = it_1411[0]
+    if tag_1412 == 0:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(9))
     else:
-        replacement_1130 = (0,)
-        lawspecfieldepoch_1131 = entry_1124[0]
-        lawspecfieldtransactionalid_1132 = entry_1124[1]
-        value_1129 = (lawspecfieldepoch_1131, lawspecfieldtransactionalid_1132, replacement_1130)
-        lawspecfieldtxn_1134 = entry_1124[2]
-        value_1133 = lawspecfieldtxn_1134
-        return (None, Def_lawtwinKafkaModelPutProducer_4ef907a5(pid_1120, value_1129, Def_lawtwinKafkaModelFinishTxn_7545803e(pid_1120, commit_1122, value_1133, b_1123)))
+        v_lawspecselection0x0_1413 = it_1411[1]
+        lawspecfieldtxnpartitions_1415 = v_lawspecselection0x0_1413[1]
+        value_1414 = lawspecfieldtxnpartitions_1415
+        v_lawspecselection1x0_1416 = value_1414
+        lawspecfieldtxnoffsets_1418 = v_lawspecselection0x0_1413[0]
+        value_1417 = lawspecfieldtxnoffsets_1418
+        v_lawspecselection1x1_1419 = value_1417
+        replacement_1421 = (0,)
+        lawspecfieldepoch_1422 = entry_1408[0]
+        lawspecfieldtransactionalid_1423 = entry_1408[1]
+        value_1420 = (lawspecfieldepoch_1422, lawspecfieldtransactionalid_1423, replacement_1421)
+        lawspecfieldtxn_1425 = entry_1408[2]
+        value_1424 = lawspecfieldtxn_1425
+        return (None, Def_lawtwinKafkaModelPutProducer_4ef907a5(pid_1404, value_1420, Def_lawtwinKafkaModelFinishTxn_7545803e(pid_1404, commit_1406, value_1424, b_1407)))
 
 
 # lawtwin.kafka::lawtwinKafkaModelExpectedSequence
-def Def_lawtwinKafkaModelExpectedSequence_83e363c8(epoch_1135, ms_1136):
-    if ms_1136 is None:
+def Def_lawtwinKafkaModelExpectedSequence_83e363c8(epoch_1426, ms_1427):
+    it_1428 = ms_1427
+    if it_1428 is None:
         return 0
     else:
-        m_1137 = ms_1136[0]
-        lawspecfieldbatchepoch_1139 = m_1137[0]
-        value_1138 = lawspecfieldbatchepoch_1139
-        if (value_1138 == epoch_1135):
-            lawspecfieldlastsequence_1141 = m_1137[2]
-            value_1140 = lawspecfieldlastsequence_1141
-            return Def_saturatingInt32_9e8d3b43((value_1140 + 1))
+        v_lawspecselection0x0_1429 = it_1428[0]
+        lawspecfieldbatchepoch_1431 = v_lawspecselection0x0_1429[0]
+        value_1430 = lawspecfieldbatchepoch_1431
+        if (value_1430 == epoch_1426):
+            lawspecfieldlastsequence_1433 = v_lawspecselection0x0_1429[2]
+            value_1432 = lawspecfieldlastsequence_1433
+            return Def_saturatingInt32_9e8d3b43((value_1432 + 1))
         else:
             return 0
 
 
 # lawtwin.kafka::lawtwinKafkaModelFetch
-def Def_lawtwinKafkaModelFetch_29936450(tp_1142, from_1143, maxrecords_1144, isolation_1145, b_1146):
-    if (not Def_lawtwinKafkaModelKnownPartition_71d3099f(tp_1142, b_1146)):
+def Def_lawtwinKafkaModelFetch_29936450(tp_1434, from_1435, maxrecords_1436, isolation_1437, b_1438):
+    if (not Def_lawtwinKafkaModelKnownPartition_71d3099f(tp_1434, b_1438)):
         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(16))
     else:
-        l_1147 = Def_lawtwinKafkaModelLogOf_b86b131a(tp_1142, b_1146)
-        hw_1148 = Def_lawtwinKafkaModelHighWatermark_da6ed677(l_1147)
-        lso_1149 = Def_lawtwinKafkaModelLastStableOffset_e8497029(l_1147)
-        if ((from_1143 < 0) or (from_1143 > hw_1148)):
+        l_1439 = Def_lawtwinKafkaModelLogOf_b86b131a(tp_1434, b_1438)
+        hw_1440 = Def_lawtwinKafkaModelHighWatermark_da6ed677(l_1439)
+        lso_1441 = Def_lawtwinKafkaModelLastStableOffset_e8497029(l_1439)
+        if ((from_1435 < 0) or (from_1435 > hw_1440)):
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(10))
         else:
-            if isolation_1145 == 0:
-                value_1150 = True
+            it_1443 = isolation_1437
+            if it_1443 == 0:
+                value_1442 = True
             else:
-                value_1150 = False
-            committedonly_1151 = value_1150
-            if committedonly_1151:
-                value_1152 = lso_1149
+                value_1442 = False
+            committedonly_1444 = value_1442
+            if committedonly_1444:
+                value_1445 = lso_1441
             else:
-                value_1152 = hw_1148
-            limit_1153 = value_1152
-            lawspecfieldentries_1155 = l_1147[0]
-            value_1154 = lawspecfieldentries_1155
-            lawspecfieldabortedtxns_1157 = l_1147[3]
-            value_1156 = lawspecfieldabortedtxns_1157
-            all_1158 = Def_lawtwinKafkaModelReadable_adec3284(value_1154, from_1143, limit_1153, committedonly_1151, value_1156, None)
-            taken_1159 = lsf_slice_list(all_1158, 0, maxrecords_1144)
-            return ((taken_1159, Def_lawtwinKafkaModelNextFetchOffset_28fd5a97(from_1143, limit_1153, taken_1159, all_1158), hw_1148, lso_1149), b_1146)
+                value_1445 = hw_1440
+            limit_1446 = value_1445
+            lawspecfieldentries_1448 = l_1439[0]
+            value_1447 = lawspecfieldentries_1448
+            lawspecfieldabortedtxns_1450 = l_1439[3]
+            value_1449 = lawspecfieldabortedtxns_1450
+            all_1451 = Def_lawtwinKafkaModelReadable_adec3284(value_1447, from_1435, limit_1446, committedonly_1444, value_1449, None)
+            taken_1452 = lsf_slice_list(all_1451, 0, maxrecords_1436)
+            v_lawspecrecordfield0_1454 = taken_1452
+            v_lawspecrecordfield1_1455 = Def_lawtwinKafkaModelNextFetchOffset_28fd5a97(from_1435, limit_1446, taken_1452, all_1451)
+            v_lawspecrecordfield2_1456 = hw_1440
+            v_lawspecrecordfield3_1457 = lso_1441
+            value_1453 = (v_lawspecrecordfield0_1454, v_lawspecrecordfield1_1455, v_lawspecrecordfield2_1456, v_lawspecrecordfield3_1457)
+            return (value_1453, b_1438)
 
 
 # lawtwin.kafka::lawtwinKafkaModelFindDuplicate
-def Def_lawtwinKafkaModelFindDuplicate_3335aea4(epoch_1160, first_1161, last_1162, ms_1163):
+def Def_lawtwinKafkaModelFindDuplicate_3335aea4(epoch_1458, first_1459, last_1460, ms_1461):
     while True:
-        if ms_1163 is None:
+        it_1462 = ms_1461
+        if it_1462 is None:
             return ()
         else:
-            m_1164 = ms_1163[0]
-            rest_1165 = ms_1163[1]
-            lawspecfieldbatchepoch_1167 = m_1164[0]
-            value_1166 = lawspecfieldbatchepoch_1167
-            logic_1170 = (value_1166 == epoch_1160)
-            if logic_1170:
-                lawspecfieldfirstsequence_1169 = m_1164[1]
-                value_1168 = lawspecfieldfirstsequence_1169
-                logic_1170 = (value_1168 == first_1161)
-            logic_1173 = logic_1170
-            if logic_1173:
-                lawspecfieldlastsequence_1172 = m_1164[2]
-                value_1171 = lawspecfieldlastsequence_1172
-                logic_1173 = (value_1171 == last_1162)
-            if logic_1173:
-                lawspecfieldbatchoffset_1175 = m_1164[3]
-                value_1174 = lawspecfieldbatchoffset_1175
-                return (value_1174,)
+            v_lawspecselection0x0_1463 = it_1462[0]
+            v_lawspecselection0x1_1464 = it_1462[1]
+            lawspecfieldbatchepoch_1466 = v_lawspecselection0x0_1463[0]
+            value_1465 = lawspecfieldbatchepoch_1466
+            logic_1469 = (value_1465 == epoch_1458)
+            if logic_1469:
+                lawspecfieldfirstsequence_1468 = v_lawspecselection0x0_1463[1]
+                value_1467 = lawspecfieldfirstsequence_1468
+                logic_1469 = (value_1467 == first_1459)
+            logic_1472 = logic_1469
+            if logic_1472:
+                lawspecfieldlastsequence_1471 = v_lawspecselection0x0_1463[2]
+                value_1470 = lawspecfieldlastsequence_1471
+                logic_1472 = (value_1470 == last_1460)
+            if logic_1472:
+                lawspecfieldbatchoffset_1474 = v_lawspecselection0x0_1463[3]
+                value_1473 = lawspecfieldbatchoffset_1474
+                return (value_1473,)
             else:
-                next_1176 = rest_1165
-                ms_1163 = next_1176
+                next_1475 = v_lawspecselection0x1_1464
+                ms_1461 = next_1475
                 continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelFinishTxn
-def Def_lawtwinKafkaModelFinishTxn_7545803e(pid_1177, commit_1178, txn_1179, b_1180):
-    tag_1181 = txn_1179[0]
-    if tag_1181 == 0:
-        return b_1180
+def Def_lawtwinKafkaModelFinishTxn_7545803e(pid_1476, commit_1477, txn_1478, b_1479):
+    it_1480 = txn_1478
+    tag_1481 = it_1480[0]
+    if tag_1481 == 0:
+        return b_1479
     else:
-        ps_1182 = txn_1179[1]
-        os_1183 = txn_1179[2]
-        marked_1184 = Def_lawtwinKafkaModelWriteMarkers_c507f08e(pid_1177, commit_1178, ps_1182, b_1180)
-        if commit_1178:
-            return Def_lawtwinKafkaModelApplyOffsets_c0f73b56(Def_lawtwinKafkaModelReversePending_51ca5898(os_1183, None), marked_1184)
+        v_lawspecselection0x0_1482 = it_1480[1]
+        lawspecfieldtxnpartitions_1484 = v_lawspecselection0x0_1482[1]
+        value_1483 = lawspecfieldtxnpartitions_1484
+        v_lawspecselection1x0_1485 = value_1483
+        lawspecfieldtxnoffsets_1487 = v_lawspecselection0x0_1482[0]
+        value_1486 = lawspecfieldtxnoffsets_1487
+        v_lawspecselection1x1_1488 = value_1486
+        marked_1489 = Def_lawtwinKafkaModelWriteMarkers_c507f08e(pid_1476, commit_1477, v_lawspecselection1x0_1485, b_1479)
+        if commit_1477:
+            return Def_lawtwinKafkaModelApplyOffsets_c0f73b56(Def_lawtwinKafkaModelReversePending_51ca5898(v_lawspecselection1x1_1488, None), marked_1489)
         else:
-            return marked_1184
+            return marked_1489
 
 
 # lawtwin.kafka::lawtwinKafkaModelGroupOf
-def Def_lawtwinKafkaModelGroupOf_abe7cb22(g_1185, b_1186):
-    lawspecfieldgroups_1188 = b_1186[5]
-    value_1187 = lawspecfieldgroups_1188
-    matched_1189 = lsf_lookup(value_1187, g_1185)
-    if matched_1189:
-        group_1190 = matched_1189[0]
-        return group_1190
+def Def_lawtwinKafkaModelGroupOf_abe7cb22(g_1490, b_1491):
+    lawspecfieldgroups_1493 = b_1491[5]
+    value_1492 = lawspecfieldgroups_1493
+    it_1494 = lsf_lookup(value_1492, g_1490)
+    if it_1494:
+        v_lawspecselection0x0_1495 = it_1494[0]
+        return v_lawspecselection0x0_1495
     else:
         return Def_lawtwinKafkaModelEmptyGroup_2fc4809b(None)
 
 
 # lawtwin.kafka::lawtwinKafkaModelHeartbeat
-def Def_lawtwinKafkaModelHeartbeat_0f08a54d(g_1191, member_1192, generation_1193, b_1194):
-    group_1195 = Def_lawtwinKafkaModelCheckMember_f218b850(g_1191, member_1192, generation_1193, b_1194)
-    return (None, b_1194)
+def Def_lawtwinKafkaModelHeartbeat_0f08a54d(g_1496, member_1497, generation_1498, b_1499):
+    group_1500 = Def_lawtwinKafkaModelCheckMember_f218b850(g_1496, member_1497, generation_1498, b_1499)
+    return (None, b_1499)
 
 
 # lawtwin.kafka::lawtwinKafkaModelHighWatermark
-def Def_lawtwinKafkaModelHighWatermark_da6ed677(l_1196):
-    lawspecfieldlogendoffset_1197 = l_1196[1]
-    return lawspecfieldlogendoffset_1197
+def Def_lawtwinKafkaModelHighWatermark_da6ed677(l_1501):
+    lawspecfieldlogendoffset_1502 = l_1501[1]
+    return lawspecfieldlogendoffset_1502
 
 
 # lawtwin.kafka::lawtwinKafkaModelInitProducerId
-def Def_lawtwinKafkaModelInitProducerId_cedb7e1b(txid_1198, b_1199):
-    if txid_1198:
-        id_1200 = txid_1198[0]
-        if (id_1200 == ''):
+def Def_lawtwinKafkaModelInitProducerId_cedb7e1b(txid_1503, b_1504):
+    it_1505 = txid_1503
+    if it_1505:
+        v_lawspecselection0x0_1506 = it_1505[0]
+        if (v_lawspecselection0x0_1506 == ''):
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(7))
         else:
-            lawspecfieldtransactionalids_1202 = b_1199[3]
-            value_1201 = lawspecfieldtransactionalids_1202
-            matched_1203 = lsf_lookup(value_1201, id_1200)
-            if matched_1203:
-                pid_1204 = matched_1203[0]
-                lawspecfieldproducers_1206 = b_1199[2]
-                value_1205 = lawspecfieldproducers_1206
-                matched_1207 = lsf_lookup(value_1205, pid_1204)
-                if matched_1207:
-                    entry_1208 = matched_1207[0]
-                    lawspecfieldtxn_1210 = entry_1208[2]
-                    value_1209 = lawspecfieldtxn_1210
-                    cleared_1211 = Def_lawtwinKafkaModelFinishTxn_7545803e(pid_1204, False, value_1209, b_1199)
-                    lawspecfieldepoch_1213 = entry_1208[0]
-                    value_1212 = lawspecfieldepoch_1213
-                    if (value_1212 < 32767):
-                        lawspecfieldepoch_1215 = entry_1208[0]
-                        value_1214 = lawspecfieldepoch_1215
-                        bumped_1216 = Def_saturatingInt16_770015a8((value_1214 + 1))
-                        replacement_1218 = (0,)
-                        replacement_1220 = bumped_1216
-                        lawspecfieldtransactionalid_1221 = entry_1208[1]
-                        lawspecfieldtxn_1222 = entry_1208[2]
-                        value_1219 = (replacement_1220, lawspecfieldtransactionalid_1221, lawspecfieldtxn_1222)
-                        matched_1223 = value_1219
-                        lawspecfieldepoch_1224 = matched_1223[0]
-                        lawspecfieldtransactionalid_1225 = matched_1223[1]
-                        value_1217 = (lawspecfieldepoch_1224, lawspecfieldtransactionalid_1225, replacement_1218)
-                        return ((pid_1204, bumped_1216), Def_lawtwinKafkaModelPutProducer_4ef907a5(pid_1204, value_1217, cleared_1211))
+            lawspecfieldtransactionalids_1508 = b_1504[3]
+            value_1507 = lawspecfieldtransactionalids_1508
+            it_1509 = lsf_lookup(value_1507, v_lawspecselection0x0_1506)
+            if it_1509:
+                v_match__lawspecselection0x0_0_1510 = it_1509[0]
+                lawspecfieldproducers_1512 = b_1504[2]
+                value_1511 = lawspecfieldproducers_1512
+                it_1513 = lsf_lookup(value_1511, v_match__lawspecselection0x0_0_1510)
+                if it_1513:
+                    v_match__match__lawspecselection0x0_0_0_1514 = it_1513[0]
+                    lawspecfieldtxn_1516 = v_match__match__lawspecselection0x0_0_0_1514[2]
+                    value_1515 = lawspecfieldtxn_1516
+                    cleared_1517 = Def_lawtwinKafkaModelFinishTxn_7545803e(v_match__lawspecselection0x0_0_1510, False, value_1515, b_1504)
+                    lawspecfieldepoch_1519 = v_match__match__lawspecselection0x0_0_0_1514[0]
+                    value_1518 = lawspecfieldepoch_1519
+                    if (value_1518 < 32767):
+                        lawspecfieldepoch_1521 = v_match__match__lawspecselection0x0_0_0_1514[0]
+                        value_1520 = lawspecfieldepoch_1521
+                        bumped_1522 = Def_saturatingInt16_770015a8((value_1520 + 1))
+                        v_lawspecrecordfield0_1524 = v_match__lawspecselection0x0_0_1510
+                        v_lawspecrecordfield1_1525 = bumped_1522
+                        value_1523 = (v_lawspecrecordfield0_1524, v_lawspecrecordfield1_1525)
+                        replacement_1527 = (0,)
+                        replacement_1529 = bumped_1522
+                        lawspecfieldtransactionalid_1530 = v_match__match__lawspecselection0x0_0_0_1514[1]
+                        lawspecfieldtxn_1531 = v_match__match__lawspecselection0x0_0_0_1514[2]
+                        value_1528 = (replacement_1529, lawspecfieldtransactionalid_1530, lawspecfieldtxn_1531)
+                        matched_1532 = value_1528
+                        lawspecfieldepoch_1533 = matched_1532[0]
+                        lawspecfieldtransactionalid_1534 = matched_1532[1]
+                        value_1526 = (lawspecfieldepoch_1533, lawspecfieldtransactionalid_1534, replacement_1527)
+                        return (value_1523, Def_lawtwinKafkaModelPutProducer_4ef907a5(v_match__lawspecselection0x0_0_1510, value_1526, cleared_1517))
                     else:
-                        return Def_lawtwinKafkaModelNewProducer_89b0852d(txid_1198, cleared_1211)
+                        return Def_lawtwinKafkaModelNewProducer_89b0852d(txid_1503, cleared_1517)
                 else:
-                    return Def_lawtwinKafkaModelNewProducer_89b0852d(txid_1198, b_1199)
+                    return Def_lawtwinKafkaModelNewProducer_89b0852d(txid_1503, b_1504)
             else:
-                return Def_lawtwinKafkaModelNewProducer_89b0852d(txid_1198, b_1199)
+                return Def_lawtwinKafkaModelNewProducer_89b0852d(txid_1503, b_1504)
     else:
-        return Def_lawtwinKafkaModelNewProducer_89b0852d((), b_1199)
+        return Def_lawtwinKafkaModelNewProducer_89b0852d((), b_1504)
 
 
 # lawtwin.kafka::lawtwinKafkaModelIsAborted
-def Def_lawtwinKafkaModelIsAborted_b12645e5(writer_1226, offset_1227, aborted_1228):
-    if aborted_1228 is None:
+def Def_lawtwinKafkaModelIsAborted_b12645e5(writer_1535, offset_1536, aborted_1537):
+    it_1538 = aborted_1537
+    if it_1538 is None:
         return False
     else:
-        a_1229 = aborted_1228[0]
-        rest_1230 = aborted_1228[1]
-        lawspecfieldabortedwriter_1232 = a_1229[0]
-        value_1231 = lawspecfieldabortedwriter_1232
-        logic_1235 = (value_1231 == writer_1226)
-        if logic_1235:
-            lawspecfieldfirstoffset_1234 = a_1229[1]
-            value_1233 = lawspecfieldfirstoffset_1234
-            logic_1235 = (offset_1227 >= value_1233)
-        logic_1238 = logic_1235
-        if logic_1238:
-            lawspecfieldlastoffset_1237 = a_1229[2]
-            value_1236 = lawspecfieldlastoffset_1237
-            logic_1238 = (offset_1227 <= value_1236)
-        return (logic_1238 or Def_lawtwinKafkaModelIsAborted_b12645e5(writer_1226, offset_1227, rest_1230))
+        v_lawspecselection0x0_1539 = it_1538[0]
+        v_lawspecselection0x1_1540 = it_1538[1]
+        lawspecfieldabortedwriter_1542 = v_lawspecselection0x0_1539[0]
+        value_1541 = lawspecfieldabortedwriter_1542
+        logic_1545 = (value_1541 == writer_1535)
+        if logic_1545:
+            lawspecfieldfirstoffset_1544 = v_lawspecselection0x0_1539[1]
+            value_1543 = lawspecfieldfirstoffset_1544
+            logic_1545 = (offset_1536 >= value_1543)
+        logic_1548 = logic_1545
+        if logic_1548:
+            lawspecfieldlastoffset_1547 = v_lawspecselection0x0_1539[2]
+            value_1546 = lawspecfieldlastoffset_1547
+            logic_1548 = (offset_1536 <= value_1546)
+        return (logic_1548 or Def_lawtwinKafkaModelIsAborted_b12645e5(writer_1535, offset_1536, v_lawspecselection0x1_1540))
 
 
 # lawtwin.kafka::lawtwinKafkaModelJoinGroup
-def Def_lawtwinKafkaModelJoinGroup_9a1e92f5(g_1239, member_1240, topics_1241, b_1242):
-    if (g_1239 == ''):
+def Def_lawtwinKafkaModelJoinGroup_9a1e92f5(g_1549, member_1550, topics_1551, b_1552):
+    if (g_1549 == ''):
         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(2))
     else:
-        if (member_1240 == ''):
+        if (member_1550 == ''):
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(14))
         else:
-            group_1243 = Def_lawtwinKafkaModelGroupOf_abe7cb22(g_1239, b_1242)
-            matched_1245 = lsf_set_of(topics_1241)
-            items_1246 = lsf_keys_list(matched_1245)
-            value_1244 = items_1246
-            wanted_1247 = value_1244
-            lawspecfieldsubscriptions_1249 = group_1243[1]
-            value_1248 = lawspecfieldsubscriptions_1249
-            matched_1250 = lsf_lookup(value_1248, member_1240)
-            if matched_1250:
-                existing_1251 = matched_1250[0]
-                if eq_8ec0351dc657(existing_1251, wanted_1247):
-                    lawspecfieldgroupgeneration_1253 = group_1243[0]
-                    value_1252 = lawspecfieldgroupgeneration_1253
-                    return (value_1252, b_1242)
+            group_1553 = Def_lawtwinKafkaModelGroupOf_abe7cb22(g_1549, b_1552)
+            matched_1555 = lsf_set_of(topics_1551)
+            items_1556 = lsf_keys_list(matched_1555)
+            value_1554 = items_1556
+            wanted_1557 = value_1554
+            lawspecfieldsubscriptions_1559 = group_1553[1]
+            value_1558 = lawspecfieldsubscriptions_1559
+            it_1560 = lsf_lookup(value_1558, member_1550)
+            if it_1560:
+                v_lawspecselection0x0_1561 = it_1560[0]
+                if eq_8ec0351dc657(v_lawspecselection0x0_1561, wanted_1557):
+                    lawspecfieldgroupgeneration_1563 = group_1553[0]
+                    value_1562 = lawspecfieldgroupgeneration_1563
+                    return (value_1562, b_1552)
                 else:
-                    lawspecfieldsubscriptions_1256 = group_1243[1]
-                    value_1255 = lawspecfieldsubscriptions_1256
-                    replacement_1257 = lsf_put(value_1255, member_1240, wanted_1247)
-                    lawspecfieldgroupgeneration_1258 = group_1243[0]
-                    lawspecfieldassignment_1259 = group_1243[2]
-                    value_1254 = (lawspecfieldgroupgeneration_1258, replacement_1257, lawspecfieldassignment_1259)
-                    next_1260 = Def_lawtwinKafkaModelRebalance_c9984d55(value_1254, b_1242)
-                    lawspecfieldgroupgeneration_1262 = next_1260[0]
-                    value_1261 = lawspecfieldgroupgeneration_1262
-                    return (value_1261, Def_lawtwinKafkaModelPutGroup_f45eaad0(g_1239, next_1260, b_1242))
+                    lawspecfieldsubscriptions_1566 = group_1553[1]
+                    value_1565 = lawspecfieldsubscriptions_1566
+                    replacement_1567 = lsf_put(value_1565, member_1550, wanted_1557)
+                    lawspecfieldgroupgeneration_1568 = group_1553[0]
+                    lawspecfieldassignment_1569 = group_1553[2]
+                    value_1564 = (lawspecfieldgroupgeneration_1568, replacement_1567, lawspecfieldassignment_1569)
+                    next_1570 = Def_lawtwinKafkaModelRebalance_c9984d55(value_1564, b_1552)
+                    lawspecfieldgroupgeneration_1572 = next_1570[0]
+                    value_1571 = lawspecfieldgroupgeneration_1572
+                    return (value_1571, Def_lawtwinKafkaModelPutGroup_f45eaad0(g_1549, next_1570, b_1552))
             else:
-                lawspecfieldsubscriptions_1265 = group_1243[1]
-                value_1264 = lawspecfieldsubscriptions_1265
-                replacement_1266 = lsf_put(value_1264, member_1240, wanted_1247)
-                lawspecfieldgroupgeneration_1267 = group_1243[0]
-                lawspecfieldassignment_1268 = group_1243[2]
-                value_1263 = (lawspecfieldgroupgeneration_1267, replacement_1266, lawspecfieldassignment_1268)
-                next_1269 = Def_lawtwinKafkaModelRebalance_c9984d55(value_1263, b_1242)
-                lawspecfieldgroupgeneration_1271 = next_1269[0]
-                value_1270 = lawspecfieldgroupgeneration_1271
-                return (value_1270, Def_lawtwinKafkaModelPutGroup_f45eaad0(g_1239, next_1269, b_1242))
+                lawspecfieldsubscriptions_1575 = group_1553[1]
+                value_1574 = lawspecfieldsubscriptions_1575
+                replacement_1576 = lsf_put(value_1574, member_1550, wanted_1557)
+                lawspecfieldgroupgeneration_1577 = group_1553[0]
+                lawspecfieldassignment_1578 = group_1553[2]
+                value_1573 = (lawspecfieldgroupgeneration_1577, replacement_1576, lawspecfieldassignment_1578)
+                next_1579 = Def_lawtwinKafkaModelRebalance_c9984d55(value_1573, b_1552)
+                lawspecfieldgroupgeneration_1581 = next_1579[0]
+                value_1580 = lawspecfieldgroupgeneration_1581
+                return (value_1580, Def_lawtwinKafkaModelPutGroup_f45eaad0(g_1549, next_1579, b_1552))
 
 
 # lawtwin.kafka::lawtwinKafkaModelKnownPartition
-def Def_lawtwinKafkaModelKnownPartition_71d3099f(tp_1272, b_1273):
-    lawspecfieldtopic_1275 = tp_1272[0]
-    value_1274 = lawspecfieldtopic_1275
-    matched_1276 = Def_lawtwinKafkaModelPartitionCountOf_ff180c35(value_1274, b_1273)
-    if matched_1276:
-        n_1277 = matched_1276[0]
-        lawspecfieldpartition_1279 = tp_1272[1]
-        value_1278 = lawspecfieldpartition_1279
-        logic_1282 = (value_1278 >= 0)
-        if logic_1282:
-            lawspecfieldpartition_1281 = tp_1272[1]
-            value_1280 = lawspecfieldpartition_1281
-            logic_1282 = (value_1280 < n_1277)
-        return logic_1282
+def Def_lawtwinKafkaModelKnownPartition_71d3099f(tp_1582, b_1583):
+    lawspecfieldtopic_1585 = tp_1582[0]
+    value_1584 = lawspecfieldtopic_1585
+    it_1586 = Def_lawtwinKafkaModelPartitionCountOf_ff180c35(value_1584, b_1583)
+    if it_1586:
+        v_lawspecselection0x0_1587 = it_1586[0]
+        lawspecfieldpartition_1589 = tp_1582[1]
+        value_1588 = lawspecfieldpartition_1589
+        logic_1592 = (value_1588 >= 0)
+        if logic_1592:
+            lawspecfieldpartition_1591 = tp_1582[1]
+            value_1590 = lawspecfieldpartition_1591
+            logic_1592 = (value_1590 < v_lawspecselection0x0_1587)
+        return logic_1592
     else:
         return False
 
 
 # lawtwin.kafka::lawtwinKafkaModelLastOffsetOf
-def Def_lawtwinKafkaModelLastOffsetOf_544a605b(rs_1283, otherwise_1284):
+def Def_lawtwinKafkaModelLastOffsetOf_544a605b(rs_1593, fallbackoffset_1594):
     while True:
-        if rs_1283 is None:
-            return otherwise_1284
+        it_1595 = rs_1593
+        if it_1595 is None:
+            return fallbackoffset_1594
         else:
-            h_1285 = rs_1283[0]
-            t_1286 = rs_1283[1]
-            next_1287 = t_1286
-            lawspecfieldoffset_1289 = h_1285[0]
-            value_1288 = lawspecfieldoffset_1289
-            next_1290 = value_1288
-            rs_1283 = next_1287
-            otherwise_1284 = next_1290
+            v_lawspecselection0x0_1596 = it_1595[0]
+            v_lawspecselection0x1_1597 = it_1595[1]
+            next_1598 = v_lawspecselection0x1_1597
+            lawspecfieldoffset_1600 = v_lawspecselection0x0_1596[0]
+            value_1599 = lawspecfieldoffset_1600
+            next_1601 = value_1599
+            rs_1593 = next_1598
+            fallbackoffset_1594 = next_1601
             continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelLastStableOffset
-def Def_lawtwinKafkaModelLastStableOffset_e8497029(l_1291):
-    lawspecfieldopentxns_1293 = l_1291[2]
-    value_1292 = lawspecfieldopentxns_1293
-    lawspecfieldlogendoffset_1295 = l_1291[1]
-    value_1294 = lawspecfieldlogendoffset_1295
-    return Def_lawtwinKafkaModelMinOf_c4e891de(lsf_values_list(value_1292), value_1294)
+def Def_lawtwinKafkaModelLastStableOffset_e8497029(l_1602):
+    lawspecfieldopentxns_1604 = l_1602[2]
+    value_1603 = lawspecfieldopentxns_1604
+    lawspecfieldlogendoffset_1606 = l_1602[1]
+    value_1605 = lawspecfieldlogendoffset_1606
+    return Def_lawtwinKafkaModelMinOf_c4e891de(lsf_values_list(value_1603), value_1605)
 
 
 # lawtwin.kafka::lawtwinKafkaModelLeaveGroup
-def Def_lawtwinKafkaModelLeaveGroup_5e5a3f69(g_1296, member_1297, b_1298):
-    group_1299 = Def_lawtwinKafkaModelGroupOf_abe7cb22(g_1296, b_1298)
-    lawspecfieldsubscriptions_1301 = group_1299[1]
-    value_1300 = lawspecfieldsubscriptions_1301
-    matched_1302 = lsf_lookup(value_1300, member_1297)
-    if matched_1302:
-        lawspecfieldsubscriptions_1305 = group_1299[1]
-        value_1304 = lawspecfieldsubscriptions_1305
-        replacement_1306 = lsf_delete(value_1304, member_1297)
-        lawspecfieldgroupgeneration_1307 = group_1299[0]
-        lawspecfieldassignment_1308 = group_1299[2]
-        value_1303 = (lawspecfieldgroupgeneration_1307, replacement_1306, lawspecfieldassignment_1308)
-        return (None, Def_lawtwinKafkaModelPutGroup_f45eaad0(g_1296, Def_lawtwinKafkaModelRebalance_c9984d55(value_1303, b_1298), b_1298))
+def Def_lawtwinKafkaModelLeaveGroup_5e5a3f69(g_1607, member_1608, b_1609):
+    group_1610 = Def_lawtwinKafkaModelGroupOf_abe7cb22(g_1607, b_1609)
+    lawspecfieldsubscriptions_1612 = group_1610[1]
+    value_1611 = lawspecfieldsubscriptions_1612
+    it_1613 = lsf_lookup(value_1611, member_1608)
+    if it_1613:
+        lawspecfieldsubscriptions_1616 = group_1610[1]
+        value_1615 = lawspecfieldsubscriptions_1616
+        replacement_1617 = lsf_delete(value_1615, member_1608)
+        lawspecfieldgroupgeneration_1618 = group_1610[0]
+        lawspecfieldassignment_1619 = group_1610[2]
+        value_1614 = (lawspecfieldgroupgeneration_1618, replacement_1617, lawspecfieldassignment_1619)
+        return (None, Def_lawtwinKafkaModelPutGroup_f45eaad0(g_1607, Def_lawtwinKafkaModelRebalance_c9984d55(value_1614, b_1609), b_1609))
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(14))
 
 
 # lawtwin.kafka::lawtwinKafkaModelListOffsets
-def Def_lawtwinKafkaModelListOffsets_9c6c9426(tp_1309, spec_1310, isolation_1311, b_1312):
-    if (not Def_lawtwinKafkaModelKnownPartition_71d3099f(tp_1309, b_1312)):
+def Def_lawtwinKafkaModelListOffsets_9c6c9426(tp_1620, spec_1621, isolation_1622, b_1623):
+    if (not Def_lawtwinKafkaModelKnownPartition_71d3099f(tp_1620, b_1623)):
         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(16))
     else:
-        l_1313 = Def_lawtwinKafkaModelLogOf_b86b131a(tp_1309, b_1312)
-        if spec_1310 == 0:
-            return (0, b_1312)
+        l_1624 = Def_lawtwinKafkaModelLogOf_b86b131a(tp_1620, b_1623)
+        it_1625 = spec_1621
+        if it_1625 == 0:
+            return (0, b_1623)
         else:
-            if isolation_1311 == 0:
-                return (Def_lawtwinKafkaModelLastStableOffset_e8497029(l_1313), b_1312)
+            it_1626 = isolation_1622
+            if it_1626 == 0:
+                return (Def_lawtwinKafkaModelLastStableOffset_e8497029(l_1624), b_1623)
             else:
-                return (Def_lawtwinKafkaModelHighWatermark_da6ed677(l_1313), b_1312)
+                return (Def_lawtwinKafkaModelHighWatermark_da6ed677(l_1624), b_1623)
 
 
 # lawtwin.kafka::lawtwinKafkaModelLogOf
-def Def_lawtwinKafkaModelLogOf_b86b131a(tp_1314, b_1315):
-    lawspecfieldlogs_1317 = b_1315[1]
-    value_1316 = lawspecfieldlogs_1317
-    matched_1318 = lsf_lookup(value_1316, tp_1314)
-    if matched_1318:
-        l_1319 = matched_1318[0]
-        return l_1319
+def Def_lawtwinKafkaModelLogOf_b86b131a(tp_1627, b_1628):
+    lawspecfieldlogs_1630 = b_1628[1]
+    value_1629 = lawspecfieldlogs_1630
+    it_1631 = lsf_lookup(value_1629, tp_1627)
+    if it_1631:
+        v_lawspecselection0x0_1632 = it_1631[0]
+        return v_lawspecselection0x0_1632
     else:
         return Def_lawtwinKafkaModelEmptyLog_a7825ed0(None)
 
 
 # lawtwin.kafka::lawtwinKafkaModelMax64
-def Def_lawtwinKafkaModelMax64_98542b8b(a_1320, b_1321):
-    if (a_1320 >= b_1321):
-        return a_1320
+def Def_lawtwinKafkaModelMax64_98542b8b(a_1633, b_1634):
+    if (a_1633 >= b_1634):
+        return a_1633
     else:
-        return b_1321
+        return b_1634
 
 
 # lawtwin.kafka::lawtwinKafkaModelMaxPartitions
-def Def_lawtwinKafkaModelMaxPartitions_6be37992(u_1322):
+def Def_lawtwinKafkaModelMaxPartitions_6be37992(u_1635):
     return 1024
 
 
 # lawtwin.kafka::lawtwinKafkaModelMemberViews
-def Def_lawtwinKafkaModelMemberViews_a87b1b1a(a_1323):
-    if a_1323 is None:
+def Def_lawtwinKafkaModelMemberViews_a87b1b1a(a_1636):
+    it_1637 = a_1636
+    if it_1637 is None:
         return None
     else:
-        e_1324 = a_1323[0]
-        rest_1325 = a_1323[1]
-        lawspecfieldkey_1327 = e_1324[0]
-        value_1326 = lawspecfieldkey_1327
-        lawspecfieldvalue_1329 = e_1324[1]
-        value_1328 = lawspecfieldvalue_1329
-        return lsf_cons((value_1326, value_1328), Def_lawtwinKafkaModelMemberViews_a87b1b1a(rest_1325))
+        v_lawspecselection0x0_1638 = it_1637[0]
+        v_lawspecselection0x1_1639 = it_1637[1]
+        lawspecfieldkey_1642 = v_lawspecselection0x0_1638[0]
+        value_1641 = lawspecfieldkey_1642
+        v_lawspecrecordfield0_1643 = value_1641
+        lawspecfieldvalue_1645 = v_lawspecselection0x0_1638[1]
+        value_1644 = lawspecfieldvalue_1645
+        v_lawspecrecordfield1_1646 = value_1644
+        value_1640 = (v_lawspecrecordfield0_1643, v_lawspecrecordfield1_1646)
+        return lsf_cons(value_1640, Def_lawtwinKafkaModelMemberViews_a87b1b1a(v_lawspecselection0x1_1639))
 
 
 # lawtwin.kafka::lawtwinKafkaModelMetadata
-def Def_lawtwinKafkaModelMetadata_97bb5c4c(name_1330, b_1331):
-    return (Def_lawtwinKafkaModelPartitionCountOf_ff180c35(name_1330, b_1331), b_1331)
+def Def_lawtwinKafkaModelMetadata_97bb5c4c(name_1647, b_1648):
+    return (Def_lawtwinKafkaModelPartitionCountOf_ff180c35(name_1647, b_1648), b_1648)
 
 
 # lawtwin.kafka::lawtwinKafkaModelMin64
-def Def_lawtwinKafkaModelMin64_b47ce987(a_1332, b_1333):
-    if (a_1332 <= b_1333):
-        return a_1332
+def Def_lawtwinKafkaModelMin64_b47ce987(a_1649, b_1650):
+    if (a_1649 <= b_1650):
+        return a_1649
     else:
-        return b_1333
+        return b_1650
 
 
 # lawtwin.kafka::lawtwinKafkaModelMinOf
-def Def_lawtwinKafkaModelMinOf_c4e891de(xs_1334, m_1335):
+def Def_lawtwinKafkaModelMinOf_c4e891de(xs_1651, m_1652):
     while True:
-        if xs_1334 is None:
-            return m_1335
+        it_1653 = xs_1651
+        if it_1653 is None:
+            return m_1652
         else:
-            h_1336 = xs_1334[0]
-            t_1337 = xs_1334[1]
-            next_1338 = t_1337
-            next_1339 = Def_lawtwinKafkaModelMin64_b47ce987(h_1336, m_1335)
-            xs_1334 = next_1338
-            m_1335 = next_1339
+            v_lawspecselection0x0_1654 = it_1653[0]
+            v_lawspecselection0x1_1655 = it_1653[1]
+            next_1656 = v_lawspecselection0x1_1655
+            next_1657 = Def_lawtwinKafkaModelMin64_b47ce987(v_lawspecselection0x0_1654, m_1652)
+            xs_1651 = next_1656
+            m_1652 = next_1657
             continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelNewProducer
-def Def_lawtwinKafkaModelNewProducer_89b0852d(txid_1340, b_1341):
-    lawspecfieldnextproducerid_1343 = b_1341[4]
-    value_1342 = lawspecfieldnextproducerid_1343
-    pid_1344 = value_1342
-    replacement_1346 = Def_saturatingInt64_5bce4ed8((pid_1344 + 1))
-    lawspecfieldproducers_1349 = b_1341[2]
-    value_1348 = lawspecfieldproducers_1349
-    replacement_1350 = lsf_put(value_1348, pid_1344, (0, txid_1340, (0,)))
-    lawspecfieldtopics_1351 = b_1341[0]
-    lawspecfieldlogs_1352 = b_1341[1]
-    lawspecfieldtransactionalids_1353 = b_1341[3]
-    lawspecfieldnextproducerid_1354 = b_1341[4]
-    lawspecfieldgroups_1355 = b_1341[5]
-    lawspecfieldcommitted_1356 = b_1341[6]
-    value_1347 = (lawspecfieldtopics_1351, lawspecfieldlogs_1352, replacement_1350, lawspecfieldtransactionalids_1353, lawspecfieldnextproducerid_1354, lawspecfieldgroups_1355, lawspecfieldcommitted_1356)
-    matched_1357 = value_1347
-    lawspecfieldtopics_1358 = matched_1357[0]
-    lawspecfieldlogs_1359 = matched_1357[1]
-    lawspecfieldproducers_1360 = matched_1357[2]
-    lawspecfieldtransactionalids_1361 = matched_1357[3]
-    lawspecfieldgroups_1362 = matched_1357[5]
-    lawspecfieldcommitted_1363 = matched_1357[6]
-    value_1345 = (lawspecfieldtopics_1358, lawspecfieldlogs_1359, lawspecfieldproducers_1360, lawspecfieldtransactionalids_1361, replacement_1346, lawspecfieldgroups_1362, lawspecfieldcommitted_1363)
-    withentry_1364 = value_1345
-    if txid_1340:
-        id_1366 = txid_1340[0]
-        lawspecfieldtransactionalids_1368 = withentry_1364[3]
-        value_1367 = lawspecfieldtransactionalids_1368
-        replacement_1369 = lsf_put(value_1367, id_1366, pid_1344)
-        lawspecfieldtopics_1370 = withentry_1364[0]
-        lawspecfieldlogs_1371 = withentry_1364[1]
-        lawspecfieldproducers_1372 = withentry_1364[2]
-        lawspecfieldnextproducerid_1373 = withentry_1364[4]
-        lawspecfieldgroups_1374 = withentry_1364[5]
-        lawspecfieldcommitted_1375 = withentry_1364[6]
-        value_1365 = (lawspecfieldtopics_1370, lawspecfieldlogs_1371, lawspecfieldproducers_1372, replacement_1369, lawspecfieldnextproducerid_1373, lawspecfieldgroups_1374, lawspecfieldcommitted_1375)
+def Def_lawtwinKafkaModelNewProducer_89b0852d(txid_1658, b_1659):
+    lawspecfieldnextproducerid_1661 = b_1659[4]
+    value_1660 = lawspecfieldnextproducerid_1661
+    pid_1662 = value_1660
+    replacement_1664 = Def_saturatingInt64_5bce4ed8((pid_1662 + 1))
+    v_lawspecrecordfield0_1667 = 0
+    v_lawspecrecordfield1_1668 = txid_1658
+    v_lawspecrecordfield2_1669 = (0,)
+    value_1666 = (v_lawspecrecordfield0_1667, v_lawspecrecordfield1_1668, v_lawspecrecordfield2_1669)
+    lawspecfieldproducers_1671 = b_1659[2]
+    value_1670 = lawspecfieldproducers_1671
+    replacement_1672 = lsf_put(value_1670, pid_1662, value_1666)
+    lawspecfieldtopics_1673 = b_1659[0]
+    lawspecfieldlogs_1674 = b_1659[1]
+    lawspecfieldtransactionalids_1675 = b_1659[3]
+    lawspecfieldnextproducerid_1676 = b_1659[4]
+    lawspecfieldgroups_1677 = b_1659[5]
+    lawspecfieldcommitted_1678 = b_1659[6]
+    value_1665 = (lawspecfieldtopics_1673, lawspecfieldlogs_1674, replacement_1672, lawspecfieldtransactionalids_1675, lawspecfieldnextproducerid_1676, lawspecfieldgroups_1677, lawspecfieldcommitted_1678)
+    matched_1679 = value_1665
+    lawspecfieldtopics_1680 = matched_1679[0]
+    lawspecfieldlogs_1681 = matched_1679[1]
+    lawspecfieldproducers_1682 = matched_1679[2]
+    lawspecfieldtransactionalids_1683 = matched_1679[3]
+    lawspecfieldgroups_1684 = matched_1679[5]
+    lawspecfieldcommitted_1685 = matched_1679[6]
+    value_1663 = (lawspecfieldtopics_1680, lawspecfieldlogs_1681, lawspecfieldproducers_1682, lawspecfieldtransactionalids_1683, replacement_1664, lawspecfieldgroups_1684, lawspecfieldcommitted_1685)
+    withentry_1686 = value_1663
+    it_1688 = txid_1658
+    if it_1688:
+        v_lawspecselection0x0_1689 = it_1688[0]
+        lawspecfieldtransactionalids_1691 = withentry_1686[3]
+        value_1690 = lawspecfieldtransactionalids_1691
+        replacement_1692 = lsf_put(value_1690, v_lawspecselection0x0_1689, pid_1662)
+        lawspecfieldtopics_1693 = withentry_1686[0]
+        lawspecfieldlogs_1694 = withentry_1686[1]
+        lawspecfieldproducers_1695 = withentry_1686[2]
+        lawspecfieldnextproducerid_1696 = withentry_1686[4]
+        lawspecfieldgroups_1697 = withentry_1686[5]
+        lawspecfieldcommitted_1698 = withentry_1686[6]
+        value_1687 = (lawspecfieldtopics_1693, lawspecfieldlogs_1694, lawspecfieldproducers_1695, replacement_1692, lawspecfieldnextproducerid_1696, lawspecfieldgroups_1697, lawspecfieldcommitted_1698)
     else:
-        value_1365 = withentry_1364
-    mapped_1376 = value_1365
-    return ((pid_1344, 0), mapped_1376)
+        value_1687 = withentry_1686
+    mapped_1699 = value_1687
+    v_lawspecrecordfield0_1701 = pid_1662
+    v_lawspecrecordfield1_1702 = 0
+    value_1700 = (v_lawspecrecordfield0_1701, v_lawspecrecordfield1_1702)
+    return (value_1700, mapped_1699)
 
 
 # lawtwin.kafka::lawtwinKafkaModelNextFetchOffset
-def Def_lawtwinKafkaModelNextFetchOffset_28fd5a97(from_1377, limit_1378, taken_1379, all_1380):
-    if (lsf_length(taken_1379) < lsf_length(all_1380)):
-        if taken_1379 is None:
-            return from_1377
+def Def_lawtwinKafkaModelNextFetchOffset_28fd5a97(from_1703, limit_1704, taken_1705, all_1706):
+    if (lsf_length(taken_1705) < lsf_length(all_1706)):
+        it_1707 = taken_1705
+        if it_1707 is None:
+            return from_1703
         else:
-            return Def_saturatingInt64_5bce4ed8((Def_lawtwinKafkaModelLastOffsetOf_544a605b(taken_1379, from_1377) + 1))
+            return Def_saturatingInt64_5bce4ed8((Def_lawtwinKafkaModelLastOffsetOf_544a605b(taken_1705, from_1703) + 1))
     else:
-        return Def_lawtwinKafkaModelMax64_98542b8b(from_1377, limit_1378)
+        return Def_lawtwinKafkaModelMax64_98542b8b(from_1703, limit_1704)
 
 
 # lawtwin.kafka::lawtwinKafkaModelOffsetCommit
-def Def_lawtwinKafkaModelOffsetCommit_01d91ef0(g_1381, member_1382, generation_1383, offsets_1384, b_1385):
-    if (g_1381 == ''):
+def Def_lawtwinKafkaModelOffsetCommit_01d91ef0(g_1708, member_1709, generation_1710, offsets_1711, b_1712):
+    if (g_1708 == ''):
         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(2))
     else:
-        if (not Def_lawtwinKafkaModelAllKnown_12a378f8(Def_lawtwinKafkaModelOffsetPartitions_ffb8aecd(offsets_1384), b_1385)):
+        if (not Def_lawtwinKafkaModelAllKnown_12a378f8(Def_lawtwinKafkaModelOffsetPartitions_ffb8aecd(offsets_1711), b_1712)):
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(16))
         else:
-            group_1386 = Def_lawtwinKafkaModelGroupOf_abe7cb22(g_1381, b_1385)
-            if ((member_1382 == '') and (generation_1383 == (-1))):
-                lawspecfieldsubscriptions_1390 = group_1386[1]
-                value_1389 = lawspecfieldsubscriptions_1390
-                matched_1391 = value_1389
-                items_1392 = lsf_entries_list(matched_1391)
-                value_1388 = items_1392
-                matched_1393 = value_1388
-                if matched_1393 is None:
-                    value_1387 = True
+            group_1713 = Def_lawtwinKafkaModelGroupOf_abe7cb22(g_1708, b_1712)
+            if ((member_1709 == '') and (generation_1710 == (-1))):
+                lawspecfieldsubscriptions_1717 = group_1713[1]
+                value_1716 = lawspecfieldsubscriptions_1717
+                matched_1718 = value_1716
+                items_1719 = lsf_entries_list(matched_1718)
+                value_1715 = items_1719
+                matched_1720 = value_1715
+                if matched_1720 is None:
+                    value_1714 = True
                 else:
-                    value_1387 = False
-                if value_1387:
-                    return (None, Def_lawtwinKafkaModelCommitAll_4ae78738(g_1381, offsets_1384, b_1385))
+                    value_1714 = False
+                if value_1714:
+                    return (None, Def_lawtwinKafkaModelCommitAll_4ae78738(g_1708, offsets_1711, b_1712))
                 else:
                     raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(0))
             else:
-                checked_1394 = Def_lawtwinKafkaModelCheckMember_f218b850(g_1381, member_1382, generation_1383, b_1385)
-                return (None, Def_lawtwinKafkaModelCommitAll_4ae78738(g_1381, offsets_1384, b_1385))
+                checked_1721 = Def_lawtwinKafkaModelCheckMember_f218b850(g_1708, member_1709, generation_1710, b_1712)
+                return (None, Def_lawtwinKafkaModelCommitAll_4ae78738(g_1708, offsets_1711, b_1712))
 
 
 # lawtwin.kafka::lawtwinKafkaModelOffsetFetch
-def Def_lawtwinKafkaModelOffsetFetch_f56dbfcd(g_1395, tp_1396, b_1397):
-    lawspecfieldcommitted_1399 = b_1397[6]
-    value_1398 = lawspecfieldcommitted_1399
-    return (lsf_lookup(value_1398, (g_1395, tp_1396)), b_1397)
+def Def_lawtwinKafkaModelOffsetFetch_f56dbfcd(g_1722, tp_1723, b_1724):
+    v_lawspecrecordfield0_1726 = g_1722
+    v_lawspecrecordfield1_1727 = tp_1723
+    value_1725 = (v_lawspecrecordfield0_1726, v_lawspecrecordfield1_1727)
+    lawspecfieldcommitted_1729 = b_1724[6]
+    value_1728 = lawspecfieldcommitted_1729
+    return (lsf_lookup(value_1728, value_1725), b_1724)
 
 
 # lawtwin.kafka::lawtwinKafkaModelOffsetPartitions
-def Def_lawtwinKafkaModelOffsetPartitions_ffb8aecd(offsets_1400):
-    if offsets_1400 is None:
+def Def_lawtwinKafkaModelOffsetPartitions_ffb8aecd(offsets_1730):
+    it_1731 = offsets_1730
+    if it_1731 is None:
         return None
     else:
-        o_1401 = offsets_1400[0]
-        rest_1402 = offsets_1400[1]
-        lawspecfieldtopicpartition_1404 = o_1401[0]
-        value_1403 = lawspecfieldtopicpartition_1404
-        return lsf_cons(value_1403, Def_lawtwinKafkaModelOffsetPartitions_ffb8aecd(rest_1402))
+        v_lawspecselection0x0_1732 = it_1731[0]
+        v_lawspecselection0x1_1733 = it_1731[1]
+        lawspecfieldtopicpartition_1735 = v_lawspecselection0x0_1732[0]
+        value_1734 = lawspecfieldtopicpartition_1735
+        return lsf_cons(value_1734, Def_lawtwinKafkaModelOffsetPartitions_ffb8aecd(v_lawspecselection0x1_1733))
 
 
 # lawtwin.kafka::lawtwinKafkaModelPartitionCountOf
-def Def_lawtwinKafkaModelPartitionCountOf_ff180c35(topic_1405, b_1406):
-    lawspecfieldtopics_1408 = b_1406[0]
-    value_1407 = lawspecfieldtopics_1408
-    return lsf_lookup(value_1407, topic_1405)
+def Def_lawtwinKafkaModelPartitionCountOf_ff180c35(topic_1736, b_1737):
+    lawspecfieldtopics_1739 = b_1737[0]
+    value_1738 = lawspecfieldtopics_1739
+    return lsf_lookup(value_1738, topic_1736)
 
 
 # lawtwin.kafka::lawtwinKafkaModelPartitionsBelow
-def Def_lawtwinKafkaModelPartitionsBelow_19525eca(n_1409):
-    return lsf_range_list(0, n_1409)
+def Def_lawtwinKafkaModelPartitionsBelow_19525eca(n_1740):
+    return lsf_range_list(0, n_1740)
 
 
 # lawtwin.kafka::lawtwinKafkaModelPendingFor
-def Def_lawtwinKafkaModelPendingFor_50512591(group_1410, offsets_1411, acc_1412):
+def Def_lawtwinKafkaModelPendingFor_50512591(group_1741, offsets_1742, acc_1743):
     while True:
-        if offsets_1411 is None:
-            return acc_1412
+        it_1744 = offsets_1742
+        if it_1744 is None:
+            return acc_1743
         else:
-            o_1413 = offsets_1411[0]
-            rest_1414 = offsets_1411[1]
-            next_1415 = rest_1414
-            next_1416 = lsf_cons((group_1410, o_1413), acc_1412)
-            offsets_1411 = next_1415
-            acc_1412 = next_1416
+            v_lawspecselection0x0_1745 = it_1744[0]
+            v_lawspecselection0x1_1746 = it_1744[1]
+            next_1747 = v_lawspecselection0x1_1746
+            v_lawspecrecordfield0_1749 = group_1741
+            v_lawspecrecordfield1_1750 = v_lawspecselection0x0_1745
+            value_1748 = (v_lawspecrecordfield0_1749, v_lawspecrecordfield1_1750)
+            next_1751 = lsf_cons(value_1748, acc_1743)
+            offsets_1742 = next_1747
+            acc_1743 = next_1751
             continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelProduce
-def Def_lawtwinKafkaModelProduce_834568df(tp_1417, tag_1418, rs_1419, b_1420):
-    if (not Def_lawtwinKafkaModelKnownPartition_71d3099f(tp_1417, b_1420)):
+def Def_lawtwinKafkaModelProduce_834568df(tp_1752, tag_1753, rs_1754, b_1755):
+    if (not Def_lawtwinKafkaModelKnownPartition_71d3099f(tp_1752, b_1755)):
         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(16))
     else:
-        if rs_1419 is None:
-            value_1421 = True
+        if rs_1754 is None:
+            value_1756 = True
         else:
-            value_1421 = False
-        if (value_1421 or (lsf_length(rs_1419) > 100000)):
+            value_1756 = False
+        if (value_1756 or (lsf_length(rs_1754) > 100000)):
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(6))
         else:
-            l_1422 = Def_lawtwinKafkaModelLogOf_b86b131a(tp_1417, b_1420)
-            if tag_1418:
-                t_1423 = tag_1418[0]
-                return Def_lawtwinKafkaModelProduceTagged_86f854e7(tp_1417, t_1423, rs_1419, l_1422, b_1420)
+            l_1757 = Def_lawtwinKafkaModelLogOf_b86b131a(tp_1752, b_1755)
+            it_1758 = tag_1753
+            if it_1758:
+                v_lawspecselection0x0_1759 = it_1758[0]
+                return Def_lawtwinKafkaModelProduceTagged_86f854e7(tp_1752, v_lawspecselection0x0_1759, rs_1754, l_1757, b_1755)
             else:
-                return (Def_lawtwinKafkaModelHighWatermark_da6ed677(l_1422), Def_lawtwinKafkaModelPutLog_cb3cbf5e(tp_1417, Def_lawtwinKafkaModelAppendBatch_8797ae9f(rs_1419, (-1), False, l_1422), b_1420))
+                return (Def_lawtwinKafkaModelHighWatermark_da6ed677(l_1757), Def_lawtwinKafkaModelPutLog_cb3cbf5e(tp_1752, Def_lawtwinKafkaModelAppendBatch_8797ae9f(rs_1754, (-1), False, l_1757), b_1755))
 
 
 # lawtwin.kafka::lawtwinKafkaModelProduceTagged
-def Def_lawtwinKafkaModelProduceTagged_86f854e7(tp_1424, t_1425, rs_1426, l_1427, b_1428):
-    lawspecfieldproducerid_1430 = t_1425[0]
-    value_1429 = lawspecfieldproducerid_1430
-    lawspecfieldproducers_1432 = b_1428[2]
-    value_1431 = lawspecfieldproducers_1432
-    matched_1433 = lsf_lookup(value_1431, value_1429)
-    if matched_1433:
-        entry_1434 = matched_1433[0]
-        lawspecfieldproducerepoch_1436 = t_1425[1]
-        value_1435 = lawspecfieldproducerepoch_1436
-        lawspecfieldepoch_1438 = entry_1434[0]
-        value_1437 = lawspecfieldepoch_1438
-        if (value_1435 != value_1437):
+def Def_lawtwinKafkaModelProduceTagged_86f854e7(tp_1760, t_1761, rs_1762, l_1763, b_1764):
+    lawspecfieldproducerid_1766 = t_1761[0]
+    value_1765 = lawspecfieldproducerid_1766
+    lawspecfieldproducers_1768 = b_1764[2]
+    value_1767 = lawspecfieldproducers_1768
+    it_1769 = lsf_lookup(value_1767, value_1765)
+    if it_1769:
+        v_lawspecselection0x0_1770 = it_1769[0]
+        lawspecfieldproducerepoch_1772 = t_1761[1]
+        value_1771 = lawspecfieldproducerepoch_1772
+        lawspecfieldepoch_1774 = v_lawspecselection0x0_1770[0]
+        value_1773 = lawspecfieldepoch_1774
+        if (value_1771 != value_1773):
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(4))
         else:
-            lawspecfieldtransactionalid_1441 = entry_1434[1]
-            value_1440 = lawspecfieldtransactionalid_1441
-            matched_1442 = value_1440
-            if matched_1442:
-                value_1439 = True
+            lawspecfieldtransactionalid_1777 = v_lawspecselection0x0_1770[1]
+            value_1776 = lawspecfieldtransactionalid_1777
+            it_1778 = value_1776
+            if it_1778:
+                value_1775 = True
             else:
-                value_1439 = False
-            transactional_1443 = value_1439
-            logic_1446 = transactional_1443
-            if logic_1446:
-                lawspecfieldtxn_1445 = entry_1434[2]
-                value_1444 = lawspecfieldtxn_1445
-                logic_1446 = (not Def_lawtwinKafkaModelTxnHasPartition_8fa1cfc0(tp_1424, value_1444))
-            if logic_1446:
+                value_1775 = False
+            transactional_1779 = value_1775
+            logic_1782 = transactional_1779
+            if logic_1782:
+                lawspecfieldtxn_1781 = v_lawspecselection0x0_1770[2]
+                value_1780 = lawspecfieldtxn_1781
+                logic_1782 = (not Def_lawtwinKafkaModelTxnHasPartition_8fa1cfc0(tp_1760, value_1780))
+            if logic_1782:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(9))
             else:
-                lawspecfieldbasesequence_1448 = t_1425[2]
-                value_1447 = lawspecfieldbasesequence_1448
-                last_1449 = Def_saturatingInt32_9e8d3b43(((value_1447 + lsf_length(rs_1426)) - 1))
-                lawspecfieldproducerid_1452 = t_1425[0]
-                value_1451 = lawspecfieldproducerid_1452
-                lawspecfieldbatches_1454 = l_1427[4]
-                value_1453 = lawspecfieldbatches_1454
-                matched_1455 = lsf_lookup(value_1453, value_1451)
-                if matched_1455:
-                    ms_1456 = matched_1455[0]
-                    value_1450 = ms_1456
+                lawspecfieldbasesequence_1784 = t_1761[2]
+                value_1783 = lawspecfieldbasesequence_1784
+                last_1785 = Def_saturatingInt32_9e8d3b43(((value_1783 + lsf_length(rs_1762)) - 1))
+                lawspecfieldproducerid_1788 = t_1761[0]
+                value_1787 = lawspecfieldproducerid_1788
+                lawspecfieldbatches_1790 = l_1763[4]
+                value_1789 = lawspecfieldbatches_1790
+                it_1791 = lsf_lookup(value_1789, value_1787)
+                if it_1791:
+                    v_match__lawspecselection0x0_0_1792 = it_1791[0]
+                    value_1786 = v_match__lawspecselection0x0_0_1792
                 else:
-                    value_1450 = None
-                recent_1457 = value_1450
-                lawspecfieldproducerepoch_1459 = t_1425[1]
-                value_1458 = lawspecfieldproducerepoch_1459
-                lawspecfieldbasesequence_1461 = t_1425[2]
-                value_1460 = lawspecfieldbasesequence_1461
-                matched_1462 = Def_lawtwinKafkaModelFindDuplicate_3335aea4(value_1458, value_1460, last_1449, recent_1457)
-                if matched_1462:
-                    offset_1463 = matched_1462[0]
-                    return (offset_1463, b_1428)
+                    value_1786 = None
+                recent_1793 = value_1786
+                lawspecfieldproducerepoch_1795 = t_1761[1]
+                value_1794 = lawspecfieldproducerepoch_1795
+                lawspecfieldbasesequence_1797 = t_1761[2]
+                value_1796 = lawspecfieldbasesequence_1797
+                it_1798 = Def_lawtwinKafkaModelFindDuplicate_3335aea4(value_1794, value_1796, last_1785, recent_1793)
+                if it_1798:
+                    v_match__lawspecselection0x0_0_1799 = it_1798[0]
+                    return (v_match__lawspecselection0x0_0_1799, b_1764)
                 else:
-                    lawspecfieldbasesequence_1465 = t_1425[2]
-                    value_1464 = lawspecfieldbasesequence_1465
-                    lawspecfieldproducerepoch_1467 = t_1425[1]
-                    value_1466 = lawspecfieldproducerepoch_1467
-                    if (value_1464 != Def_lawtwinKafkaModelExpectedSequence_83e363c8(value_1466, recent_1457)):
+                    lawspecfieldbasesequence_1801 = t_1761[2]
+                    value_1800 = lawspecfieldbasesequence_1801
+                    lawspecfieldproducerepoch_1803 = t_1761[1]
+                    value_1802 = lawspecfieldproducerepoch_1803
+                    if (value_1800 != Def_lawtwinKafkaModelExpectedSequence_83e363c8(value_1802, recent_1793)):
                         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(11))
                     else:
-                        base_1468 = Def_lawtwinKafkaModelHighWatermark_da6ed677(l_1427)
-                        lawspecfieldproducerid_1470 = t_1425[0]
-                        value_1469 = lawspecfieldproducerid_1470
-                        lawspecfieldproducerepoch_1472 = t_1425[1]
-                        value_1471 = lawspecfieldproducerepoch_1472
-                        lawspecfieldbasesequence_1474 = t_1425[2]
-                        value_1473 = lawspecfieldbasesequence_1474
-                        lawspecfieldproducerid_1476 = t_1425[0]
-                        value_1475 = lawspecfieldproducerid_1476
-                        l2_1477 = Def_lawtwinKafkaModelRememberBatch_33fa600f(value_1469, (value_1471, value_1473, last_1449, base_1468), Def_lawtwinKafkaModelAppendBatch_8797ae9f(rs_1426, value_1475, transactional_1443, l_1427))
-                        return (base_1468, Def_lawtwinKafkaModelPutLog_cb3cbf5e(tp_1424, l2_1477, b_1428))
+                        base_1804 = Def_lawtwinKafkaModelHighWatermark_da6ed677(l_1763)
+                        lawspecfieldproducerid_1806 = t_1761[0]
+                        value_1805 = lawspecfieldproducerid_1806
+                        lawspecfieldproducerepoch_1809 = t_1761[1]
+                        value_1808 = lawspecfieldproducerepoch_1809
+                        v_lawspecrecordfield0_1810 = value_1808
+                        lawspecfieldbasesequence_1812 = t_1761[2]
+                        value_1811 = lawspecfieldbasesequence_1812
+                        v_lawspecrecordfield1_1813 = value_1811
+                        v_lawspecrecordfield2_1814 = last_1785
+                        v_lawspecrecordfield3_1815 = base_1804
+                        value_1807 = (v_lawspecrecordfield0_1810, v_lawspecrecordfield1_1813, v_lawspecrecordfield2_1814, v_lawspecrecordfield3_1815)
+                        lawspecfieldproducerid_1817 = t_1761[0]
+                        value_1816 = lawspecfieldproducerid_1817
+                        l2_1818 = Def_lawtwinKafkaModelRememberBatch_33fa600f(value_1805, value_1807, Def_lawtwinKafkaModelAppendBatch_8797ae9f(rs_1762, value_1816, transactional_1779, l_1763))
+                        return (base_1804, Def_lawtwinKafkaModelPutLog_cb3cbf5e(tp_1760, l2_1818, b_1764))
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(15))
 
 
 # lawtwin.kafka::lawtwinKafkaModelPutGroup
-def Def_lawtwinKafkaModelPutGroup_f45eaad0(g_1478, group_1479, b_1480):
-    lawspecfieldgroups_1482 = b_1480[5]
-    value_1481 = lawspecfieldgroups_1482
-    replacement_1483 = lsf_put(value_1481, g_1478, group_1479)
-    lawspecfieldtopics_1484 = b_1480[0]
-    lawspecfieldlogs_1485 = b_1480[1]
-    lawspecfieldproducers_1486 = b_1480[2]
-    lawspecfieldtransactionalids_1487 = b_1480[3]
-    lawspecfieldnextproducerid_1488 = b_1480[4]
-    lawspecfieldcommitted_1489 = b_1480[6]
-    return (lawspecfieldtopics_1484, lawspecfieldlogs_1485, lawspecfieldproducers_1486, lawspecfieldtransactionalids_1487, lawspecfieldnextproducerid_1488, replacement_1483, lawspecfieldcommitted_1489)
+def Def_lawtwinKafkaModelPutGroup_f45eaad0(g_1819, group_1820, b_1821):
+    lawspecfieldgroups_1823 = b_1821[5]
+    value_1822 = lawspecfieldgroups_1823
+    replacement_1824 = lsf_put(value_1822, g_1819, group_1820)
+    lawspecfieldtopics_1825 = b_1821[0]
+    lawspecfieldlogs_1826 = b_1821[1]
+    lawspecfieldproducers_1827 = b_1821[2]
+    lawspecfieldtransactionalids_1828 = b_1821[3]
+    lawspecfieldnextproducerid_1829 = b_1821[4]
+    lawspecfieldcommitted_1830 = b_1821[6]
+    return (lawspecfieldtopics_1825, lawspecfieldlogs_1826, lawspecfieldproducers_1827, lawspecfieldtransactionalids_1828, lawspecfieldnextproducerid_1829, replacement_1824, lawspecfieldcommitted_1830)
 
 
 # lawtwin.kafka::lawtwinKafkaModelPutLog
-def Def_lawtwinKafkaModelPutLog_cb3cbf5e(tp_1490, l_1491, b_1492):
-    lawspecfieldlogs_1494 = b_1492[1]
-    value_1493 = lawspecfieldlogs_1494
-    replacement_1495 = lsf_put(value_1493, tp_1490, l_1491)
-    lawspecfieldtopics_1496 = b_1492[0]
-    lawspecfieldproducers_1497 = b_1492[2]
-    lawspecfieldtransactionalids_1498 = b_1492[3]
-    lawspecfieldnextproducerid_1499 = b_1492[4]
-    lawspecfieldgroups_1500 = b_1492[5]
-    lawspecfieldcommitted_1501 = b_1492[6]
-    return (lawspecfieldtopics_1496, replacement_1495, lawspecfieldproducers_1497, lawspecfieldtransactionalids_1498, lawspecfieldnextproducerid_1499, lawspecfieldgroups_1500, lawspecfieldcommitted_1501)
+def Def_lawtwinKafkaModelPutLog_cb3cbf5e(tp_1831, l_1832, b_1833):
+    lawspecfieldlogs_1835 = b_1833[1]
+    value_1834 = lawspecfieldlogs_1835
+    replacement_1836 = lsf_put(value_1834, tp_1831, l_1832)
+    lawspecfieldtopics_1837 = b_1833[0]
+    lawspecfieldproducers_1838 = b_1833[2]
+    lawspecfieldtransactionalids_1839 = b_1833[3]
+    lawspecfieldnextproducerid_1840 = b_1833[4]
+    lawspecfieldgroups_1841 = b_1833[5]
+    lawspecfieldcommitted_1842 = b_1833[6]
+    return (lawspecfieldtopics_1837, replacement_1836, lawspecfieldproducers_1838, lawspecfieldtransactionalids_1839, lawspecfieldnextproducerid_1840, lawspecfieldgroups_1841, lawspecfieldcommitted_1842)
 
 
 # lawtwin.kafka::lawtwinKafkaModelPutProducer
-def Def_lawtwinKafkaModelPutProducer_4ef907a5(pid_1502, entry_1503, b_1504):
-    lawspecfieldproducers_1506 = b_1504[2]
-    value_1505 = lawspecfieldproducers_1506
-    replacement_1507 = lsf_put(value_1505, pid_1502, entry_1503)
-    lawspecfieldtopics_1508 = b_1504[0]
-    lawspecfieldlogs_1509 = b_1504[1]
-    lawspecfieldtransactionalids_1510 = b_1504[3]
-    lawspecfieldnextproducerid_1511 = b_1504[4]
-    lawspecfieldgroups_1512 = b_1504[5]
-    lawspecfieldcommitted_1513 = b_1504[6]
-    return (lawspecfieldtopics_1508, lawspecfieldlogs_1509, replacement_1507, lawspecfieldtransactionalids_1510, lawspecfieldnextproducerid_1511, lawspecfieldgroups_1512, lawspecfieldcommitted_1513)
+def Def_lawtwinKafkaModelPutProducer_4ef907a5(pid_1843, entry_1844, b_1845):
+    lawspecfieldproducers_1847 = b_1845[2]
+    value_1846 = lawspecfieldproducers_1847
+    replacement_1848 = lsf_put(value_1846, pid_1843, entry_1844)
+    lawspecfieldtopics_1849 = b_1845[0]
+    lawspecfieldlogs_1850 = b_1845[1]
+    lawspecfieldtransactionalids_1851 = b_1845[3]
+    lawspecfieldnextproducerid_1852 = b_1845[4]
+    lawspecfieldgroups_1853 = b_1845[5]
+    lawspecfieldcommitted_1854 = b_1845[6]
+    return (lawspecfieldtopics_1849, lawspecfieldlogs_1850, replacement_1848, lawspecfieldtransactionalids_1851, lawspecfieldnextproducerid_1852, lawspecfieldgroups_1853, lawspecfieldcommitted_1854)
 
 
 # lawtwin.kafka::lawtwinKafkaModelReadable
-def Def_lawtwinKafkaModelReadable_adec3284(es_1514, from_1515, limit_1516, committedonly_1517, aborted_1518, acc_1519):
+def Def_lawtwinKafkaModelReadable_adec3284(es_1855, from_1856, limit_1857, committedonly_1858, aborted_1859, acc_1860):
     while True:
-        if es_1514 is None:
-            return acc_1519
+        it_1861 = es_1855
+        if it_1861 is None:
+            return acc_1860
         else:
-            e_1520 = es_1514[0]
-            rest_1521 = es_1514[1]
-            tag_1522 = e_1520[0]
-            if tag_1522 == 0:
-                o_1523 = e_1520[1]
-                if (o_1523 < from_1515):
-                    return acc_1519
+            v_lawspecselection0x0_1862 = it_1861[0]
+            v_lawspecselection0x1_1863 = it_1861[1]
+            it_1864 = v_lawspecselection0x0_1862
+            tag_1865 = it_1864[0]
+            if tag_1865 == 0:
+                v_match__lawspecselection0x0_0_1866 = it_1864[1]
+                lawspecfieldmarkeroffset_1868 = v_match__lawspecselection0x0_0_1866[1]
+                value_1867 = lawspecfieldmarkeroffset_1868
+                v_lawspecselection1x0_1869 = value_1867
+                lawspecfieldmarkerwriter_1871 = v_match__lawspecselection0x0_0_1866[2]
+                value_1870 = lawspecfieldmarkerwriter_1871
+                v_lawspecselection1x1_1872 = value_1870
+                lawspecfieldcommits_1874 = v_match__lawspecselection0x0_0_1866[0]
+                value_1873 = lawspecfieldcommits_1874
+                v_lawspecselection1x2_1875 = value_1873
+                if (v_lawspecselection1x0_1869 < from_1856):
+                    return acc_1860
                 else:
-                    next_1524 = rest_1521
-                    es_1514 = next_1524
+                    next_1876 = v_lawspecselection0x1_1863
+                    es_1855 = next_1876
                     continue
             else:
-                o_1525 = e_1520[1]
-                r_1526 = e_1520[2]
-                w_1527 = e_1520[3]
-                tx_1528 = e_1520[4]
-                if (o_1525 < from_1515):
-                    return acc_1519
+                v_match__lawspecselection0x0_0_1877 = it_1864[1]
+                lawspecfieldentryoffset_1879 = v_match__lawspecselection0x0_0_1877[0]
+                value_1878 = lawspecfieldentryoffset_1879
+                v_lawspecselection1x0_1880 = value_1878
+                lawspecfieldentryrecord_1882 = v_match__lawspecselection0x0_0_1877[1]
+                value_1881 = lawspecfieldentryrecord_1882
+                v_lawspecselection1x1_1883 = value_1881
+                lawspecfieldwriter_1885 = v_match__lawspecselection0x0_0_1877[3]
+                value_1884 = lawspecfieldwriter_1885
+                v_lawspecselection1x2_1886 = value_1884
+                lawspecfieldtransactional_1888 = v_match__lawspecselection0x0_0_1877[2]
+                value_1887 = lawspecfieldtransactional_1888
+                v_lawspecselection1x3_1889 = value_1887
+                if (v_lawspecselection1x0_1880 < from_1856):
+                    return acc_1860
                 else:
-                    if (o_1525 >= limit_1516):
-                        next_1529 = rest_1521
-                        es_1514 = next_1529
+                    if (v_lawspecselection1x0_1880 >= limit_1857):
+                        next_1890 = v_lawspecselection0x1_1863
+                        es_1855 = next_1890
                         continue
                     else:
-                        if ((committedonly_1517 and tx_1528) and Def_lawtwinKafkaModelIsAborted_b12645e5(w_1527, o_1525, aborted_1518)):
-                            next_1530 = rest_1521
-                            es_1514 = next_1530
+                        if ((committedonly_1858 and v_lawspecselection1x3_1889) and Def_lawtwinKafkaModelIsAborted_b12645e5(v_lawspecselection1x2_1886, v_lawspecselection1x0_1880, aborted_1859)):
+                            next_1891 = v_lawspecselection0x1_1863
+                            es_1855 = next_1891
                             continue
                         else:
-                            next_1531 = rest_1521
-                            next_1532 = lsf_cons((o_1525, r_1526), acc_1519)
-                            es_1514 = next_1531
-                            acc_1519 = next_1532
+                            next_1892 = v_lawspecselection0x1_1863
+                            v_lawspecrecordfield0_1894 = v_lawspecselection1x0_1880
+                            v_lawspecrecordfield1_1895 = v_lawspecselection1x1_1883
+                            value_1893 = (v_lawspecrecordfield0_1894, v_lawspecrecordfield1_1895)
+                            next_1896 = lsf_cons(value_1893, acc_1860)
+                            es_1855 = next_1892
+                            acc_1860 = next_1896
                             continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelRebalance
-def Def_lawtwinKafkaModelRebalance_c9984d55(group_1533, b_1534):
-    lawspecfieldsubscriptions_1536 = group_1533[1]
-    value_1535 = lawspecfieldsubscriptions_1536
-    replacement_1537 = Def_lawtwinKafkaModelComputeAssignment_07bd1943(value_1535, b_1534)
-    lawspecfieldgroupgeneration_1540 = group_1533[0]
-    value_1539 = lawspecfieldgroupgeneration_1540
-    replacement_1541 = Def_saturatingInt32_9e8d3b43((value_1539 + 1))
-    lawspecfieldsubscriptions_1542 = group_1533[1]
-    lawspecfieldassignment_1543 = group_1533[2]
-    value_1538 = (replacement_1541, lawspecfieldsubscriptions_1542, lawspecfieldassignment_1543)
-    matched_1544 = value_1538
-    lawspecfieldgroupgeneration_1545 = matched_1544[0]
-    lawspecfieldsubscriptions_1546 = matched_1544[1]
-    return (lawspecfieldgroupgeneration_1545, lawspecfieldsubscriptions_1546, replacement_1537)
+def Def_lawtwinKafkaModelRebalance_c9984d55(group_1897, b_1898):
+    lawspecfieldsubscriptions_1900 = group_1897[1]
+    value_1899 = lawspecfieldsubscriptions_1900
+    replacement_1901 = Def_lawtwinKafkaModelComputeAssignment_07bd1943(value_1899, b_1898)
+    lawspecfieldgroupgeneration_1904 = group_1897[0]
+    value_1903 = lawspecfieldgroupgeneration_1904
+    replacement_1905 = Def_saturatingInt32_9e8d3b43((value_1903 + 1))
+    lawspecfieldsubscriptions_1906 = group_1897[1]
+    lawspecfieldassignment_1907 = group_1897[2]
+    value_1902 = (replacement_1905, lawspecfieldsubscriptions_1906, lawspecfieldassignment_1907)
+    matched_1908 = value_1902
+    lawspecfieldgroupgeneration_1909 = matched_1908[0]
+    lawspecfieldsubscriptions_1910 = matched_1908[1]
+    return (lawspecfieldgroupgeneration_1909, lawspecfieldsubscriptions_1910, replacement_1901)
 
 
 # lawtwin.kafka::lawtwinKafkaModelRebalanceGroups
-def Def_lawtwinKafkaModelRebalanceGroups_ad90673b(topic_1547, gs_1548, b_1549, acc_1550):
+def Def_lawtwinKafkaModelRebalanceGroups_ad90673b(topic_1911, gs_1912, b_1913, acc_1914):
     while True:
-        if gs_1548 is None:
-            return acc_1550
+        it_1915 = gs_1912
+        if it_1915 is None:
+            return acc_1914
         else:
-            e_1551 = gs_1548[0]
-            rest_1552 = gs_1548[1]
-            next_1553 = rest_1552
-            lawspecfieldkey_1555 = e_1551[0]
-            value_1554 = lawspecfieldkey_1555
-            lawspecfieldvalue_1558 = e_1551[1]
-            value_1557 = lawspecfieldvalue_1558
-            if Def_lawtwinKafkaModelSubscribesTo_c3c674c3(topic_1547, value_1557):
-                lawspecfieldvalue_1560 = e_1551[1]
-                value_1559 = lawspecfieldvalue_1560
-                value_1556 = Def_lawtwinKafkaModelRebalance_c9984d55(value_1559, b_1549)
+            v_lawspecselection0x0_1916 = it_1915[0]
+            v_lawspecselection0x1_1917 = it_1915[1]
+            next_1918 = v_lawspecselection0x1_1917
+            lawspecfieldkey_1920 = v_lawspecselection0x0_1916[0]
+            value_1919 = lawspecfieldkey_1920
+            lawspecfieldvalue_1923 = v_lawspecselection0x0_1916[1]
+            value_1922 = lawspecfieldvalue_1923
+            if Def_lawtwinKafkaModelSubscribesTo_c3c674c3(topic_1911, value_1922):
+                lawspecfieldvalue_1925 = v_lawspecselection0x0_1916[1]
+                value_1924 = lawspecfieldvalue_1925
+                value_1921 = Def_lawtwinKafkaModelRebalance_c9984d55(value_1924, b_1913)
             else:
-                lawspecfieldvalue_1561 = e_1551[1]
-                value_1556 = lawspecfieldvalue_1561
-            next_1562 = lsf_put(acc_1550, value_1554, value_1556)
-            gs_1548 = next_1553
-            acc_1550 = next_1562
+                lawspecfieldvalue_1926 = v_lawspecselection0x0_1916[1]
+                value_1921 = lawspecfieldvalue_1926
+            next_1927 = lsf_put(acc_1914, value_1919, value_1921)
+            gs_1912 = next_1918
+            acc_1914 = next_1927
             continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelRebalanceTopic
-def Def_lawtwinKafkaModelRebalanceTopic_823cd68b(topic_1563, b_1564):
-    lawspecfieldgroups_1566 = b_1564[5]
-    value_1565 = lawspecfieldgroups_1566
-    lawspecfieldgroups_1568 = b_1564[5]
-    value_1567 = lawspecfieldgroups_1568
-    replacement_1569 = Def_lawtwinKafkaModelRebalanceGroups_ad90673b(topic_1563, lsf_entries_list(value_1565), b_1564, value_1567)
-    lawspecfieldtopics_1570 = b_1564[0]
-    lawspecfieldlogs_1571 = b_1564[1]
-    lawspecfieldproducers_1572 = b_1564[2]
-    lawspecfieldtransactionalids_1573 = b_1564[3]
-    lawspecfieldnextproducerid_1574 = b_1564[4]
-    lawspecfieldcommitted_1575 = b_1564[6]
-    return (lawspecfieldtopics_1570, lawspecfieldlogs_1571, lawspecfieldproducers_1572, lawspecfieldtransactionalids_1573, lawspecfieldnextproducerid_1574, replacement_1569, lawspecfieldcommitted_1575)
+def Def_lawtwinKafkaModelRebalanceTopic_823cd68b(topic_1928, b_1929):
+    lawspecfieldgroups_1931 = b_1929[5]
+    value_1930 = lawspecfieldgroups_1931
+    lawspecfieldgroups_1933 = b_1929[5]
+    value_1932 = lawspecfieldgroups_1933
+    replacement_1934 = Def_lawtwinKafkaModelRebalanceGroups_ad90673b(topic_1928, lsf_entries_list(value_1930), b_1929, value_1932)
+    lawspecfieldtopics_1935 = b_1929[0]
+    lawspecfieldlogs_1936 = b_1929[1]
+    lawspecfieldproducers_1937 = b_1929[2]
+    lawspecfieldtransactionalids_1938 = b_1929[3]
+    lawspecfieldnextproducerid_1939 = b_1929[4]
+    lawspecfieldcommitted_1940 = b_1929[6]
+    return (lawspecfieldtopics_1935, lawspecfieldlogs_1936, lawspecfieldproducers_1937, lawspecfieldtransactionalids_1938, lawspecfieldnextproducerid_1939, replacement_1934, lawspecfieldcommitted_1940)
 
 
 # lawtwin.kafka::lawtwinKafkaModelRememberBatch
-def Def_lawtwinKafkaModelRememberBatch_33fa600f(writer_1576, meta_1577, l_1578):
-    lawspecfieldbatches_1581 = l_1578[4]
-    value_1580 = lawspecfieldbatches_1581
-    matched_1582 = lsf_lookup(value_1580, writer_1576)
-    if matched_1582:
-        ms_1583 = matched_1582[0]
-        value_1579 = ms_1583
+def Def_lawtwinKafkaModelRememberBatch_33fa600f(writer_1941, meta_1942, l_1943):
+    lawspecfieldbatches_1946 = l_1943[4]
+    value_1945 = lawspecfieldbatches_1946
+    it_1947 = lsf_lookup(value_1945, writer_1941)
+    if it_1947:
+        v_lawspecselection0x0_1948 = it_1947[0]
+        value_1944 = v_lawspecselection0x0_1948
     else:
-        value_1579 = None
-    previous_1584 = value_1579
-    lawspecfieldbatches_1586 = l_1578[4]
-    value_1585 = lawspecfieldbatches_1586
-    replacement_1587 = lsf_put(value_1585, writer_1576, lsf_slice_list(lsf_cons(meta_1577, previous_1584), 0, 5))
-    lawspecfieldentries_1588 = l_1578[0]
-    lawspecfieldlogendoffset_1589 = l_1578[1]
-    lawspecfieldopentxns_1590 = l_1578[2]
-    lawspecfieldabortedtxns_1591 = l_1578[3]
-    return (lawspecfieldentries_1588, lawspecfieldlogendoffset_1589, lawspecfieldopentxns_1590, lawspecfieldabortedtxns_1591, replacement_1587)
+        value_1944 = None
+    previous_1949 = value_1944
+    lawspecfieldbatches_1951 = l_1943[4]
+    value_1950 = lawspecfieldbatches_1951
+    replacement_1952 = lsf_put(value_1950, writer_1941, lsf_slice_list(lsf_cons(meta_1942, previous_1949), 0, 5))
+    lawspecfieldentries_1953 = l_1943[0]
+    lawspecfieldlogendoffset_1954 = l_1943[1]
+    lawspecfieldopentxns_1955 = l_1943[2]
+    lawspecfieldabortedtxns_1956 = l_1943[3]
+    return (lawspecfieldentries_1953, lawspecfieldlogendoffset_1954, lawspecfieldopentxns_1955, lawspecfieldabortedtxns_1956, replacement_1952)
 
 
 # lawtwin.kafka::lawtwinKafkaModelReversePending
-def Def_lawtwinKafkaModelReversePending_51ca5898(os_1592, acc_1593):
+def Def_lawtwinKafkaModelReversePending_51ca5898(os_1957, acc_1958):
     while True:
-        if os_1592 is None:
-            return acc_1593
+        it_1959 = os_1957
+        if it_1959 is None:
+            return acc_1958
         else:
-            h_1594 = os_1592[0]
-            t_1595 = os_1592[1]
-            next_1596 = t_1595
-            next_1597 = lsf_cons(h_1594, acc_1593)
-            os_1592 = next_1596
-            acc_1593 = next_1597
+            v_lawspecselection0x0_1960 = it_1959[0]
+            v_lawspecselection0x1_1961 = it_1959[1]
+            next_1962 = v_lawspecselection0x1_1961
+            next_1963 = lsf_cons(v_lawspecselection0x0_1960, acc_1958)
+            os_1957 = next_1962
+            acc_1958 = next_1963
             continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelSubscribedTopics
-def Def_lawtwinKafkaModelSubscribedTopics_c1d720b5(subs_1598, acc_1599):
+def Def_lawtwinKafkaModelSubscribedTopics_c1d720b5(subs_1964, acc_1965):
     while True:
-        if subs_1598 is None:
-            return acc_1599
+        it_1966 = subs_1964
+        if it_1966 is None:
+            return acc_1965
         else:
-            e_1600 = subs_1598[0]
-            rest_1601 = subs_1598[1]
-            next_1602 = rest_1601
-            lawspecfieldvalue_1604 = e_1600[1]
-            value_1603 = lawspecfieldvalue_1604
-            next_1605 = lsf_set_union(acc_1599, lsf_set_of(value_1603))
-            subs_1598 = next_1602
-            acc_1599 = next_1605
+            v_lawspecselection0x0_1967 = it_1966[0]
+            v_lawspecselection0x1_1968 = it_1966[1]
+            next_1969 = v_lawspecselection0x1_1968
+            lawspecfieldvalue_1971 = v_lawspecselection0x0_1967[1]
+            value_1970 = lawspecfieldvalue_1971
+            next_1972 = lsf_set_union(acc_1965, lsf_set_of(value_1970))
+            subs_1964 = next_1969
+            acc_1965 = next_1972
             continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelSubscribersOf
-def Def_lawtwinKafkaModelSubscribersOf_e9347318(topic_1606, subs_1607):
+def Def_lawtwinKafkaModelSubscribersOf_e9347318(topic_1973, subs_1974):
     while True:
-        if subs_1607 is None:
+        it_1975 = subs_1974
+        if it_1975 is None:
             return None
         else:
-            e_1608 = subs_1607[0]
-            rest_1609 = subs_1607[1]
-            lawspecfieldvalue_1611 = e_1608[1]
-            value_1610 = lawspecfieldvalue_1611
-            all_1612 = True
-            cell_1613 = value_1610
-            while cell_1613 is not None:
-                item_1614 = cell_1613[0]
-                if not ((item_1614 != topic_1606)):
-                    all_1612 = False
+            v_lawspecselection0x0_1976 = it_1975[0]
+            v_lawspecselection0x1_1977 = it_1975[1]
+            lawspecfieldvalue_1979 = v_lawspecselection0x0_1976[1]
+            value_1978 = lawspecfieldvalue_1979
+            all_1980 = True
+            cell_1981 = value_1978
+            while cell_1981 is not None:
+                item_1982 = cell_1981[0]
+                if not ((item_1982 != topic_1973)):
+                    all_1980 = False
                     break
-                cell_1613 = cell_1613[1]
-            if (not all_1612):
-                lawspecfieldkey_1616 = e_1608[0]
-                value_1615 = lawspecfieldkey_1616
-                return lsf_cons(value_1615, Def_lawtwinKafkaModelSubscribersOf_e9347318(topic_1606, rest_1609))
+                cell_1981 = cell_1981[1]
+            if (not all_1980):
+                lawspecfieldkey_1984 = v_lawspecselection0x0_1976[0]
+                value_1983 = lawspecfieldkey_1984
+                return lsf_cons(value_1983, Def_lawtwinKafkaModelSubscribersOf_e9347318(topic_1973, v_lawspecselection0x1_1977))
             else:
-                next_1617 = rest_1609
-                subs_1607 = next_1617
+                next_1985 = v_lawspecselection0x1_1977
+                subs_1974 = next_1985
                 continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelSubscribesTo
-def Def_lawtwinKafkaModelSubscribesTo_c3c674c3(topic_1618, group_1619):
-    lawspecfieldsubscriptions_1622 = group_1619[1]
-    value_1621 = lawspecfieldsubscriptions_1622
-    matched_1623 = Def_lawtwinKafkaModelSubscribersOf_e9347318(topic_1618, lsf_entries_list(value_1621))
-    if matched_1623 is None:
-        value_1620 = True
+def Def_lawtwinKafkaModelSubscribesTo_c3c674c3(topic_1986, group_1987):
+    lawspecfieldsubscriptions_1990 = group_1987[1]
+    value_1989 = lawspecfieldsubscriptions_1990
+    matched_1991 = Def_lawtwinKafkaModelSubscribersOf_e9347318(topic_1986, lsf_entries_list(value_1989))
+    if matched_1991 is None:
+        value_1988 = True
     else:
-        value_1620 = False
-    return (not value_1620)
+        value_1988 = False
+    return (not value_1988)
 
 
 # lawtwin.kafka::lawtwinKafkaModelSyncGroup
-def Def_lawtwinKafkaModelSyncGroup_b3d01c80(g_1624, member_1625, generation_1626, b_1627):
-    group_1628 = Def_lawtwinKafkaModelCheckMember_f218b850(g_1624, member_1625, generation_1626, b_1627)
-    lawspecfieldassignment_1630 = group_1628[2]
-    value_1629 = lawspecfieldassignment_1630
-    matched_1631 = lsf_lookup(value_1629, member_1625)
-    if matched_1631:
-        tps_1632 = matched_1631[0]
-        return (tps_1632, b_1627)
+def Def_lawtwinKafkaModelSyncGroup_b3d01c80(g_1992, member_1993, generation_1994, b_1995):
+    group_1996 = Def_lawtwinKafkaModelCheckMember_f218b850(g_1992, member_1993, generation_1994, b_1995)
+    lawspecfieldassignment_1998 = group_1996[2]
+    value_1997 = lawspecfieldassignment_1998
+    it_1999 = lsf_lookup(value_1997, member_1993)
+    if it_1999:
+        v_lawspecselection0x0_2000 = it_1999[0]
+        return (v_lawspecselection0x0_2000, b_1995)
     else:
-        return (None, b_1627)
+        return (None, b_1995)
 
 
 # lawtwin.kafka::lawtwinKafkaModelTxnHasPartition
-def Def_lawtwinKafkaModelTxnHasPartition_8fa1cfc0(tp_1633, txn_1634):
-    tag_1635 = txn_1634[0]
-    if tag_1635 == 0:
+def Def_lawtwinKafkaModelTxnHasPartition_8fa1cfc0(tp_2001, txn_2002):
+    it_2003 = txn_2002
+    tag_2004 = it_2003[0]
+    if tag_2004 == 0:
         return False
     else:
-        ps_1636 = txn_1634[1]
-        all_1637 = True
-        cell_1638 = ps_1636
-        while cell_1638 is not None:
-            item_1639 = cell_1638[0]
-            if not ((item_1639 != tp_1633)):
-                all_1637 = False
+        v_lawspecselection0x0_2005 = it_2003[1]
+        lawspecfieldtxnpartitions_2007 = v_lawspecselection0x0_2005[1]
+        value_2006 = lawspecfieldtxnpartitions_2007
+        v_lawspecselection1x0_2008 = value_2006
+        lawspecfieldtxnoffsets_2010 = v_lawspecselection0x0_2005[0]
+        value_2009 = lawspecfieldtxnoffsets_2010
+        v_lawspecselection1x1_2011 = value_2009
+        all_2012 = True
+        cell_2013 = v_lawspecselection1x0_2008
+        while cell_2013 is not None:
+            item_2014 = cell_2013[0]
+            if not ((item_2014 != tp_2001)):
+                all_2012 = False
                 break
-            cell_1638 = cell_1638[1]
-        return (not all_1637)
+            cell_2013 = cell_2013[1]
+        return (not all_2012)
 
 
 # lawtwin.kafka::lawtwinKafkaModelTxnOffsetCommit
-def Def_lawtwinKafkaModelTxnOffsetCommit_84c6b2bb(txid_1640, pid_1641, epoch_1642, group_1643, offsets_1644, b_1645):
-    if (group_1643 == ''):
+def Def_lawtwinKafkaModelTxnOffsetCommit_84c6b2bb(txid_2015, pid_2016, epoch_2017, group_2018, offsets_2019, b_2020):
+    if (group_2018 == ''):
         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', to_26c7dcf285c5(2))
     else:
-        entry_1646 = Def_lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_1640, pid_1641, epoch_1642, b_1645)
-        lawspecfieldtxn_1649 = entry_1646[2]
-        value_1648 = lawspecfieldtxn_1649
-        matched_1650 = value_1648
-        tag_1651 = matched_1650[0]
-        if tag_1651 == 0:
-            value_1647 = (1, None, Def_lawtwinKafkaModelPendingFor_50512591(group_1643, offsets_1644, None))
+        entry_2021 = Def_lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_2015, pid_2016, epoch_2017, b_2020)
+        lawspecfieldtxn_2024 = entry_2021[2]
+        value_2023 = lawspecfieldtxn_2024
+        it_2025 = value_2023
+        tag_2026 = it_2025[0]
+        if tag_2026 == 0:
+            txnpartitions_2028 = None
+            txnoffsets_2029 = Def_lawtwinKafkaModelPendingFor_50512591(group_2018, offsets_2019, None)
+            value_2027 = (txnoffsets_2029, txnpartitions_2028)
+            value_2022 = (1, value_2027)
         else:
-            ps_1652 = matched_1650[1]
-            os_1653 = matched_1650[2]
-            value_1647 = (1, ps_1652, Def_lawtwinKafkaModelPendingFor_50512591(group_1643, offsets_1644, os_1653))
-        next_1654 = value_1647
-        replacement_1656 = next_1654
-        lawspecfieldepoch_1657 = entry_1646[0]
-        lawspecfieldtransactionalid_1658 = entry_1646[1]
-        value_1655 = (lawspecfieldepoch_1657, lawspecfieldtransactionalid_1658, replacement_1656)
-        return (None, Def_lawtwinKafkaModelPutProducer_4ef907a5(pid_1641, value_1655, b_1645))
+            v_lawspecselection0x0_2030 = it_2025[1]
+            lawspecfieldtxnpartitions_2032 = v_lawspecselection0x0_2030[1]
+            value_2031 = lawspecfieldtxnpartitions_2032
+            v_lawspecselection1x0_2033 = value_2031
+            lawspecfieldtxnoffsets_2035 = v_lawspecselection0x0_2030[0]
+            value_2034 = lawspecfieldtxnoffsets_2035
+            v_lawspecselection1x1_2036 = value_2034
+            txnpartitions_2038 = v_lawspecselection1x0_2033
+            txnoffsets_2039 = Def_lawtwinKafkaModelPendingFor_50512591(group_2018, offsets_2019, v_lawspecselection1x1_2036)
+            value_2037 = (txnoffsets_2039, txnpartitions_2038)
+            value_2022 = (1, value_2037)
+        next_2040 = value_2022
+        replacement_2042 = next_2040
+        lawspecfieldepoch_2043 = entry_2021[0]
+        lawspecfieldtransactionalid_2044 = entry_2021[1]
+        value_2041 = (lawspecfieldepoch_2043, lawspecfieldtransactionalid_2044, replacement_2042)
+        return (None, Def_lawtwinKafkaModelPutProducer_4ef907a5(pid_2016, value_2041, b_2020))
 
 
 # lawtwin.kafka::lawtwinKafkaModelUnionPartitions
-def Def_lawtwinKafkaModelUnionPartitions_c791d224(xs_1659, ys_1660):
+def Def_lawtwinKafkaModelUnionPartitions_c791d224(xs_2045, ys_2046):
     while True:
-        if xs_1659 is None:
-            return ys_1660
+        it_2047 = xs_2045
+        if it_2047 is None:
+            return ys_2046
         else:
-            h_1661 = xs_1659[0]
-            t_1662 = xs_1659[1]
-            all_1663 = True
-            cell_1664 = ys_1660
-            while cell_1664 is not None:
-                item_1665 = cell_1664[0]
-                if not ((item_1665 != h_1661)):
-                    all_1663 = False
+            v_lawspecselection0x0_2048 = it_2047[0]
+            v_lawspecselection0x1_2049 = it_2047[1]
+            all_2050 = True
+            cell_2051 = ys_2046
+            while cell_2051 is not None:
+                item_2052 = cell_2051[0]
+                if not ((item_2052 != v_lawspecselection0x0_2048)):
+                    all_2050 = False
                     break
-                cell_1664 = cell_1664[1]
-            if (not all_1663):
-                next_1666 = t_1662
-                xs_1659 = next_1666
+                cell_2051 = cell_2051[1]
+            if (not all_2050):
+                next_2053 = v_lawspecselection0x1_2049
+                xs_2045 = next_2053
                 continue
             else:
-                next_1667 = t_1662
-                next_1668 = lsf_cons(h_1661, ys_1660)
-                xs_1659 = next_1667
-                ys_1660 = next_1668
+                next_2054 = v_lawspecselection0x1_2049
+                next_2055 = lsf_cons(v_lawspecselection0x0_2048, ys_2046)
+                xs_2045 = next_2054
+                ys_2046 = next_2055
                 continue
 
 
 # lawtwin.kafka::lawtwinKafkaModelValidTopicName
-def Def_lawtwinKafkaModelValidTopicName_39dd4596(name_1669):
-    n_1670 = len(name_1669)
-    return (((((n_1670 >= 1) and (n_1670 <= 249)) and (name_1669 != '.')) and (name_1669 != '..')) and lsf_regex_matches('[a-zA-Z0-9._-]+', name_1669))
+def Def_lawtwinKafkaModelValidTopicName_39dd4596(name_2056):
+    n_2057 = len(name_2056)
+    return (((((n_2057 >= 1) and (n_2057 <= 249)) and (name_2056 != '.')) and (name_2056 != '..')) and lsf_regex_matches('[a-zA-Z0-9._-]+', name_2056))
 
 
 # lawtwin.kafka::lawtwinKafkaModelWriteMarker
-def Def_lawtwinKafkaModelWriteMarker_8dc995f8(pid_1671, commit_1672, l_1673):
-    if commit_1672:
-        lawspecfieldabortedtxns_1675 = l_1673[3]
-        value_1674 = lawspecfieldabortedtxns_1675
+def Def_lawtwinKafkaModelWriteMarker_8dc995f8(pid_2058, commit_2059, l_2060):
+    if commit_2059:
+        lawspecfieldabortedtxns_2062 = l_2060[3]
+        value_2061 = lawspecfieldabortedtxns_2062
     else:
-        lawspecfieldopentxns_1677 = l_1673[2]
-        value_1676 = lawspecfieldopentxns_1677
-        matched_1678 = lsf_lookup(value_1676, pid_1671)
-        if matched_1678:
-            first_1679 = matched_1678[0]
-            lawspecfieldlogendoffset_1681 = l_1673[1]
-            value_1680 = lawspecfieldlogendoffset_1681
-            lawspecfieldabortedtxns_1683 = l_1673[3]
-            value_1682 = lawspecfieldabortedtxns_1683
-            value_1674 = lsf_cons((pid_1671, first_1679, value_1680), value_1682)
+        lawspecfieldopentxns_2064 = l_2060[2]
+        value_2063 = lawspecfieldopentxns_2064
+        it_2065 = lsf_lookup(value_2063, pid_2058)
+        if it_2065:
+            v_lawspecselection0x0_2066 = it_2065[0]
+            v_lawspecrecordfield0_2068 = pid_2058
+            v_lawspecrecordfield1_2069 = v_lawspecselection0x0_2066
+            lawspecfieldlogendoffset_2071 = l_2060[1]
+            value_2070 = lawspecfieldlogendoffset_2071
+            v_lawspecrecordfield2_2072 = value_2070
+            value_2067 = (v_lawspecrecordfield0_2068, v_lawspecrecordfield1_2069, v_lawspecrecordfield2_2072)
+            lawspecfieldabortedtxns_2074 = l_2060[3]
+            value_2073 = lawspecfieldabortedtxns_2074
+            value_2061 = lsf_cons(value_2067, value_2073)
         else:
-            lawspecfieldabortedtxns_1684 = l_1673[3]
-            value_1674 = lawspecfieldabortedtxns_1684
-    aborted_1685 = value_1674
-    replacement_1686 = aborted_1685
-    lawspecfieldopentxns_1689 = l_1673[2]
-    value_1688 = lawspecfieldopentxns_1689
-    replacement_1690 = lsf_delete(value_1688, pid_1671)
-    lawspecfieldlogendoffset_1693 = l_1673[1]
-    value_1692 = lawspecfieldlogendoffset_1693
-    replacement_1694 = Def_saturatingInt64_5bce4ed8((value_1692 + 1))
-    lawspecfieldlogendoffset_1697 = l_1673[1]
-    value_1696 = lawspecfieldlogendoffset_1697
-    lawspecfieldentries_1699 = l_1673[0]
-    value_1698 = lawspecfieldentries_1699
-    replacement_1700 = lsf_cons((0, value_1696, pid_1671, commit_1672), value_1698)
-    lawspecfieldlogendoffset_1701 = l_1673[1]
-    lawspecfieldopentxns_1702 = l_1673[2]
-    lawspecfieldabortedtxns_1703 = l_1673[3]
-    lawspecfieldbatches_1704 = l_1673[4]
-    value_1695 = (replacement_1700, lawspecfieldlogendoffset_1701, lawspecfieldopentxns_1702, lawspecfieldabortedtxns_1703, lawspecfieldbatches_1704)
-    matched_1705 = value_1695
-    lawspecfieldentries_1706 = matched_1705[0]
-    lawspecfieldopentxns_1707 = matched_1705[2]
-    lawspecfieldabortedtxns_1708 = matched_1705[3]
-    lawspecfieldbatches_1709 = matched_1705[4]
-    value_1691 = (lawspecfieldentries_1706, replacement_1694, lawspecfieldopentxns_1707, lawspecfieldabortedtxns_1708, lawspecfieldbatches_1709)
-    matched_1710 = value_1691
-    lawspecfieldentries_1711 = matched_1710[0]
-    lawspecfieldlogendoffset_1712 = matched_1710[1]
-    lawspecfieldabortedtxns_1713 = matched_1710[3]
-    lawspecfieldbatches_1714 = matched_1710[4]
-    value_1687 = (lawspecfieldentries_1711, lawspecfieldlogendoffset_1712, replacement_1690, lawspecfieldabortedtxns_1713, lawspecfieldbatches_1714)
-    matched_1715 = value_1687
-    lawspecfieldentries_1716 = matched_1715[0]
-    lawspecfieldlogendoffset_1717 = matched_1715[1]
-    lawspecfieldopentxns_1718 = matched_1715[2]
-    lawspecfieldbatches_1719 = matched_1715[4]
-    return (lawspecfieldentries_1716, lawspecfieldlogendoffset_1717, lawspecfieldopentxns_1718, replacement_1686, lawspecfieldbatches_1719)
+            lawspecfieldabortedtxns_2075 = l_2060[3]
+            value_2061 = lawspecfieldabortedtxns_2075
+    aborted_2076 = value_2061
+    replacement_2077 = aborted_2076
+    lawspecfieldopentxns_2080 = l_2060[2]
+    value_2079 = lawspecfieldopentxns_2080
+    replacement_2081 = lsf_delete(value_2079, pid_2058)
+    lawspecfieldlogendoffset_2084 = l_2060[1]
+    value_2083 = lawspecfieldlogendoffset_2084
+    replacement_2085 = Def_saturatingInt64_5bce4ed8((value_2083 + 1))
+    lawspecfieldlogendoffset_2089 = l_2060[1]
+    value_2088 = lawspecfieldlogendoffset_2089
+    markeroffset_2090 = value_2088
+    markerwriter_2091 = pid_2058
+    commits_2092 = commit_2059
+    value_2087 = (commits_2092, markeroffset_2090, markerwriter_2091)
+    lawspecfieldentries_2094 = l_2060[0]
+    value_2093 = lawspecfieldentries_2094
+    replacement_2095 = lsf_cons((0, value_2087), value_2093)
+    lawspecfieldlogendoffset_2096 = l_2060[1]
+    lawspecfieldopentxns_2097 = l_2060[2]
+    lawspecfieldabortedtxns_2098 = l_2060[3]
+    lawspecfieldbatches_2099 = l_2060[4]
+    value_2086 = (replacement_2095, lawspecfieldlogendoffset_2096, lawspecfieldopentxns_2097, lawspecfieldabortedtxns_2098, lawspecfieldbatches_2099)
+    matched_2100 = value_2086
+    lawspecfieldentries_2101 = matched_2100[0]
+    lawspecfieldopentxns_2102 = matched_2100[2]
+    lawspecfieldabortedtxns_2103 = matched_2100[3]
+    lawspecfieldbatches_2104 = matched_2100[4]
+    value_2082 = (lawspecfieldentries_2101, replacement_2085, lawspecfieldopentxns_2102, lawspecfieldabortedtxns_2103, lawspecfieldbatches_2104)
+    matched_2105 = value_2082
+    lawspecfieldentries_2106 = matched_2105[0]
+    lawspecfieldlogendoffset_2107 = matched_2105[1]
+    lawspecfieldabortedtxns_2108 = matched_2105[3]
+    lawspecfieldbatches_2109 = matched_2105[4]
+    value_2078 = (lawspecfieldentries_2106, lawspecfieldlogendoffset_2107, replacement_2081, lawspecfieldabortedtxns_2108, lawspecfieldbatches_2109)
+    matched_2110 = value_2078
+    lawspecfieldentries_2111 = matched_2110[0]
+    lawspecfieldlogendoffset_2112 = matched_2110[1]
+    lawspecfieldopentxns_2113 = matched_2110[2]
+    lawspecfieldbatches_2114 = matched_2110[4]
+    return (lawspecfieldentries_2111, lawspecfieldlogendoffset_2112, lawspecfieldopentxns_2113, replacement_2077, lawspecfieldbatches_2114)
 
 
 # lawtwin.kafka::lawtwinKafkaModelWriteMarkers
-def Def_lawtwinKafkaModelWriteMarkers_c507f08e(pid_1720, commit_1721, tps_1722, b_1723):
+def Def_lawtwinKafkaModelWriteMarkers_c507f08e(pid_2115, commit_2116, tps_2117, b_2118):
     while True:
-        if tps_1722 is None:
-            return b_1723
+        it_2119 = tps_2117
+        if it_2119 is None:
+            return b_2118
         else:
-            tp_1724 = tps_1722[0]
-            rest_1725 = tps_1722[1]
-            next_1726 = rest_1725
-            next_1727 = Def_lawtwinKafkaModelPutLog_cb3cbf5e(tp_1724, Def_lawtwinKafkaModelWriteMarker_8dc995f8(pid_1720, commit_1721, Def_lawtwinKafkaModelLogOf_b86b131a(tp_1724, b_1723)), b_1723)
-            tps_1722 = next_1726
-            b_1723 = next_1727
+            v_lawspecselection0x0_2120 = it_2119[0]
+            v_lawspecselection0x1_2121 = it_2119[1]
+            next_2122 = v_lawspecselection0x1_2121
+            next_2123 = Def_lawtwinKafkaModelPutLog_cb3cbf5e(v_lawspecselection0x0_2120, Def_lawtwinKafkaModelWriteMarker_8dc995f8(pid_2115, commit_2116, Def_lawtwinKafkaModelLogOf_b86b131a(v_lawspecselection0x0_2120, b_2118)), b_2118)
+            tps_2117 = next_2122
+            b_2118 = next_2123
             continue
 
 
 # lawtwin.kafka::memberIds
-def Def_memberIds_1e3fa12d(ms_1728):
-    matched_1729 = lsf_delete(lsf_set_of(ms_1728), '')
-    items_1730 = lsf_keys_list(matched_1729)
-    return items_1730
+def Def_memberIds_1e3fa12d(ms_2124):
+    matched_2125 = lsf_delete(lsf_set_of(ms_2124), '')
+    items_2126 = lsf_keys_list(matched_2125)
+    return items_2126
 
 
 # lawtwin.kafka::missingFrom
-def Def_missingFrom_37856ee4(tps_1731, have_1732):
+def Def_missingFrom_37856ee4(tps_2127, have_2128):
     while True:
-        if tps_1731 is None:
+        it_2129 = tps_2127
+        if it_2129 is None:
             return None
         else:
-            tp_1733 = tps_1731[0]
-            rest_1734 = tps_1731[1]
-            all_1735 = True
-            cell_1736 = have_1732
-            while cell_1736 is not None:
-                item_1737 = cell_1736[0]
-                if not ((item_1737 != tp_1733)):
-                    all_1735 = False
+            v_lawspecselection0x0_2130 = it_2129[0]
+            v_lawspecselection0x1_2131 = it_2129[1]
+            all_2132 = True
+            cell_2133 = have_2128
+            while cell_2133 is not None:
+                item_2134 = cell_2133[0]
+                if not ((item_2134 != v_lawspecselection0x0_2130)):
+                    all_2132 = False
                     break
-                cell_1736 = cell_1736[1]
-            if (not all_1735):
-                next_1738 = rest_1734
-                tps_1731 = next_1738
+                cell_2133 = cell_2133[1]
+            if (not all_2132):
+                next_2135 = v_lawspecselection0x1_2131
+                tps_2127 = next_2135
                 continue
             else:
-                return lsf_cons(tp_1733, Def_missingFrom_37856ee4(rest_1734, have_1732))
+                return lsf_cons(v_lawspecselection0x0_2130, Def_missingFrom_37856ee4(v_lawspecselection0x1_2131, have_2128))
 
 
 # lawtwin.kafka::mul32
-def Def_mul32_b8774c72(a_1739, b_1740):
-    return Def_wrappingUInt32_1ef3ce20((a_1739 * b_1740))
+def Def_mul32_b8774c72(a_2136, b_2137):
+    return Def_wrappingUInt32_1ef3ce20((a_2136 * b_2137))
 
 
 # lawtwin.kafka::murmur2
-def Def_murmur2_d0ccf769(key_1741):
-    h_1742 = Def_murmurChunks_9898bba5(lsf_octets(key_1741), Def_xor32_0ea970f5(2538058380, Def_wrappingUInt32_1ef3ce20(len(key_1741))))
-    h1_1743 = Def_mul32_b8774c72(Def_xor32_0ea970f5(h_1742, Def_wrappingUInt32_1ef3ce20(lsf_quot(h_1742, 8192))), Def_murmurM_48968914(None))
-    return Def_xor32_0ea970f5(h1_1743, Def_wrappingUInt32_1ef3ce20(lsf_quot(h1_1743, 32768)))
+def Def_murmur2_d0ccf769(key_2138):
+    h_2139 = Def_murmurChunks_9898bba5(lsf_octets(key_2138), Def_xor32_0ea970f5(2538058380, Def_wrappingUInt32_1ef3ce20(len(key_2138))))
+    h1_2140 = Def_mul32_b8774c72(Def_xor32_0ea970f5(h_2139, Def_wrappingUInt32_1ef3ce20(lsf_quot(h_2139, 8192))), Def_murmurM_48968914(None))
+    return Def_xor32_0ea970f5(h1_2140, Def_wrappingUInt32_1ef3ce20(lsf_quot(h1_2140, 32768)))
 
 
 # lawtwin.kafka::murmurChunks
-def Def_murmurChunks_9898bba5(octets_1744, h_1745):
+def Def_murmurChunks_9898bba5(octets_2141, h_2142):
     while True:
-        if octets_1744 is None:
-            return h_1745
+        it_2143 = octets_2141
+        if it_2143 is None:
+            return h_2142
         else:
-            b0_1746 = octets_1744[0]
-            rest1_1747 = octets_1744[1]
-            if rest1_1747 is None:
-                return Def_mul32_b8774c72(Def_xor32_0ea970f5(h_1745, b0_1746), Def_murmurM_48968914(None))
+            v_lawspecselection0x0_2144 = it_2143[0]
+            v_lawspecselection0x1_2145 = it_2143[1]
+            it_2146 = v_lawspecselection0x1_2145
+            if it_2146 is None:
+                return Def_mul32_b8774c72(Def_xor32_0ea970f5(h_2142, v_lawspecselection0x0_2144), Def_murmurM_48968914(None))
             else:
-                b1_1748 = rest1_1747[0]
-                rest2_1749 = rest1_1747[1]
-                if rest2_1749 is None:
-                    return Def_mul32_b8774c72(Def_xor32_0ea970f5(Def_xor32_0ea970f5(h_1745, Def_wrappingUInt32_1ef3ce20((b1_1748 * 256))), b0_1746), Def_murmurM_48968914(None))
+                v_match__lawspecselection0x0_0_2147 = it_2146[0]
+                v_match__lawspecselection0x1_0_2148 = it_2146[1]
+                it_2149 = v_match__lawspecselection0x1_0_2148
+                if it_2149 is None:
+                    return Def_mul32_b8774c72(Def_xor32_0ea970f5(Def_xor32_0ea970f5(h_2142, Def_wrappingUInt32_1ef3ce20((v_match__lawspecselection0x0_0_2147 * 256))), v_lawspecselection0x0_2144), Def_murmurM_48968914(None))
                 else:
-                    b2_1750 = rest2_1749[0]
-                    rest3_1751 = rest2_1749[1]
-                    if rest3_1751 is None:
-                        return Def_mul32_b8774c72(Def_xor32_0ea970f5(Def_xor32_0ea970f5(Def_xor32_0ea970f5(h_1745, Def_wrappingUInt32_1ef3ce20((b2_1750 * 65536))), Def_wrappingUInt32_1ef3ce20((b1_1748 * 256))), b0_1746), Def_murmurM_48968914(None))
+                    v_match__match__lawspecselection0x0_0_0_2150 = it_2149[0]
+                    v_match__match__lawspecselection0x1_0_0_2151 = it_2149[1]
+                    it_2152 = v_match__match__lawspecselection0x1_0_0_2151
+                    if it_2152 is None:
+                        return Def_mul32_b8774c72(Def_xor32_0ea970f5(Def_xor32_0ea970f5(Def_xor32_0ea970f5(h_2142, Def_wrappingUInt32_1ef3ce20((v_match__match__lawspecselection0x0_0_0_2150 * 65536))), Def_wrappingUInt32_1ef3ce20((v_match__lawspecselection0x0_0_2147 * 256))), v_lawspecselection0x0_2144), Def_murmurM_48968914(None))
                     else:
-                        b3_1752 = rest3_1751[0]
-                        rest4_1753 = rest3_1751[1]
-                        k0_1754 = Def_mul32_b8774c72(Def_wrappingUInt32_1ef3ce20((((b0_1746 + (b1_1748 * 256)) + (b2_1750 * 65536)) + (b3_1752 * 16777216))), Def_murmurM_48968914(None))
-                        k1_1755 = Def_mul32_b8774c72(Def_xor32_0ea970f5(k0_1754, Def_wrappingUInt32_1ef3ce20(lsf_quot(k0_1754, 16777216))), Def_murmurM_48968914(None))
-                        next_1756 = rest4_1753
-                        next_1757 = Def_xor32_0ea970f5(Def_mul32_b8774c72(h_1745, Def_murmurM_48968914(None)), k1_1755)
-                        octets_1744 = next_1756
-                        h_1745 = next_1757
+                        v_match__match__match__lawspecselection0x0_0_0_0_2153 = it_2152[0]
+                        v_match__match__match__lawspecselection0x1_0_0_0_2154 = it_2152[1]
+                        k0_2155 = Def_mul32_b8774c72(Def_wrappingUInt32_1ef3ce20((((v_lawspecselection0x0_2144 + (v_match__lawspecselection0x0_0_2147 * 256)) + (v_match__match__lawspecselection0x0_0_0_2150 * 65536)) + (v_match__match__match__lawspecselection0x0_0_0_0_2153 * 16777216))), Def_murmurM_48968914(None))
+                        k1_2156 = Def_mul32_b8774c72(Def_xor32_0ea970f5(k0_2155, Def_wrappingUInt32_1ef3ce20(lsf_quot(k0_2155, 16777216))), Def_murmurM_48968914(None))
+                        next_2157 = v_match__match__match__lawspecselection0x1_0_0_0_2154
+                        next_2158 = Def_xor32_0ea970f5(Def_mul32_b8774c72(h_2142, Def_murmurM_48968914(None)), k1_2156)
+                        octets_2141 = next_2157
+                        h_2142 = next_2158
                         continue
 
 
 # lawtwin.kafka::murmurM
-def Def_murmurM_48968914(u_1758):
+def Def_murmurM_48968914(u_2159):
     return 1540483477
 
 
 # lawtwin.kafka::murmurPartitionerChoosePartition
-def Def_murmurPartitionerChoosePartition_5048c35d(key_1759, n_1760):
-    if key_1759:
-        k_1761 = key_1759[0]
-        if (n_1760 >= 1):
-            narrowed_1762 = lsf_rem(Def_toPositive_fc7029c7(Def_murmur2_d0ccf769(k_1761)), n_1760)
-            if narrowed_1762 < (-2147483648) or narrowed_1762 > 2147483647:
+def Def_murmurPartitionerChoosePartition_5048c35d(key_2160, n_2161):
+    it_2162 = key_2160
+    if it_2162:
+        v_lawspecselection0x0_2163 = it_2162[0]
+        if (n_2161 >= 1):
+            narrowed_2164 = lsf_rem(Def_toPositive_fc7029c7(Def_murmur2_d0ccf769(v_lawspecselection0x0_2163)), n_2161)
+            if narrowed_2164 < (-2147483648) or narrowed_2164 > 2147483647:
                 lsf_outside('Int32')
-            return narrowed_1762
+            return narrowed_2164
         else:
             return 0
     else:
@@ -3750,33 +4152,41 @@ def Def_murmurPartitionerChoosePartition_5048c35d(key_1759, n_1760):
 
 
 # lawtwin.kafka::ownedOf
-def Def_ownedOf_0d7fb3ae(t_1763, ms_1764):
-    if ms_1764 is None:
+def Def_ownedOf_0d7fb3ae(t_2165, ms_2166):
+    it_2167 = ms_2166
+    if it_2167 is None:
         return None
     else:
-        m_1765 = ms_1764[0]
-        rest_1766 = ms_1764[1]
-        lawspecfieldassigned_1768 = m_1765[1]
-        value_1767 = lawspecfieldassigned_1768
-        return lsf_append(Def_partitionsOfTopic_194a4a6c(t_1763, value_1767), Def_ownedOf_0d7fb3ae(t_1763, rest_1766))
+        v_lawspecselection0x0_2168 = it_2167[0]
+        v_lawspecselection0x1_2169 = it_2167[1]
+        lawspecfieldassigned_2171 = v_lawspecselection0x0_2168[1]
+        value_2170 = lawspecfieldassigned_2171
+        return lsf_append(Def_partitionsOfTopic_194a4a6c(t_2165, value_2170), Def_ownedOf_0d7fb3ae(t_2165, v_lawspecselection0x1_2169))
 
 
 # lawtwin.kafka::partitionOf
-def Def_partitionOf_343af5ef(symbols, topic_1769, choice_1770, r_1771):
-    performed_1772 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').metadataRequest(nout_437d0abf423f(topic_1769, symbols))
-    matched_1773 = nin_e0f8ce0ed062(performed_1772, symbols)
-    if matched_1773:
-        n_1774 = matched_1773[0]
-        tag_1775 = choice_1770[0]
-        if tag_1775 == 0:
-            lawspecfieldkey_1777 = r_1771[0]
-            value_1776 = lawspecfieldkey_1777
-            performed_1778 = ls.handler(symbols, 'lawtwin.kafka::ability::Partitioner').choosePartition(nout_b276e66efd09(value_1776, symbols), nout_b862204e9be7(n_1774, symbols))
-            return (1, (topic_1769, nin_b862204e9be7(performed_1778, symbols)))
+def Def_partitionOf_343af5ef(symbols, topic_2172, choice_2173, r_2174):
+    performed_2175 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').metadataRequest(nout_437d0abf423f(topic_2172, symbols))
+    it_2176 = nin_e0f8ce0ed062(performed_2175, symbols)
+    if it_2176:
+        v_lawspecselection0x0_2177 = it_2176[0]
+        it_2178 = choice_2173
+        tag_2179 = it_2178[0]
+        if tag_2179 == 0:
+            v_lawspecrecordfield0_2181 = topic_2172
+            lawspecfieldkey_2183 = r_2174[0]
+            value_2182 = lawspecfieldkey_2183
+            performed_2184 = ls.handler(symbols, 'lawtwin.kafka::ability::Partitioner').choosePartition(nout_b276e66efd09(value_2182, symbols), nout_b862204e9be7(v_lawspecselection0x0_2177, symbols))
+            v_lawspecrecordfield1_2185 = nin_b862204e9be7(performed_2184, symbols)
+            value_2180 = (v_lawspecrecordfield0_2181, v_lawspecrecordfield1_2185)
+            return (1, value_2180)
         else:
-            p_1779 = choice_1770[1]
-            if ((p_1779 >= 0) and (p_1779 < n_1774)):
-                return (1, (topic_1769, p_1779))
+            v_match__lawspecselection0x0_0_2186 = it_2178[1]
+            if ((v_match__lawspecselection0x0_0_2186 >= 0) and (v_match__lawspecselection0x0_0_2186 < v_lawspecselection0x0_2177)):
+                v_lawspecrecordfield0_2188 = topic_2172
+                v_lawspecrecordfield1_2189 = v_match__lawspecselection0x0_0_2186
+                value_2187 = (v_lawspecrecordfield0_2188, v_lawspecrecordfield1_2189)
+                return (1, value_2187)
             else:
                 return (0, 16)
     else:
@@ -3784,322 +4194,344 @@ def Def_partitionOf_343af5ef(symbols, topic_1769, choice_1770, r_1771):
 
 
 # lawtwin.kafka::partitionsOfTopic
-def Def_partitionsOfTopic_194a4a6c(t_1780, tps_1781):
+def Def_partitionsOfTopic_194a4a6c(t_2190, tps_2191):
     while True:
-        if tps_1781 is None:
+        it_2192 = tps_2191
+        if it_2192 is None:
             return None
         else:
-            tp_1782 = tps_1781[0]
-            rest_1783 = tps_1781[1]
-            lawspecfieldtopic_1785 = tp_1782[0]
-            value_1784 = lawspecfieldtopic_1785
-            if (value_1784 == t_1780):
-                lawspecfieldpartition_1787 = tp_1782[1]
-                value_1786 = lawspecfieldpartition_1787
-                return lsf_cons(value_1786, Def_partitionsOfTopic_194a4a6c(t_1780, rest_1783))
+            v_lawspecselection0x0_2193 = it_2192[0]
+            v_lawspecselection0x1_2194 = it_2192[1]
+            lawspecfieldtopic_2196 = v_lawspecselection0x0_2193[0]
+            value_2195 = lawspecfieldtopic_2196
+            if (value_2195 == t_2190):
+                lawspecfieldpartition_2198 = v_lawspecselection0x0_2193[1]
+                value_2197 = lawspecfieldpartition_2198
+                return lsf_cons(value_2197, Def_partitionsOfTopic_194a4a6c(t_2190, v_lawspecselection0x1_2194))
             else:
-                next_1788 = rest_1783
-                tps_1781 = next_1788
+                next_2199 = v_lawspecselection0x1_2194
+                tps_2191 = next_2199
                 continue
 
 
 # lawtwin.kafka::pollPartitions
-def Def_pollPartitions_9d6feda1(symbols, tps_1789, n_1790, c_1791, acc_1792):
+def Def_pollPartitions_9d6feda1(symbols, tps_2200, n_2201, c_2202, acc_2203):
     while True:
-        if tps_1789 is None:
-            return ((1, acc_1792), c_1791)
+        it_2204 = tps_2200
+        if it_2204 is None:
+            return ((1, acc_2203), c_2202)
         else:
-            tp_1793 = tps_1789[0]
-            rest_1794 = tps_1789[1]
-            p_1795 = Def_consumerPosition_4da411a3(symbols, tp_1793, c_1791)
+            v_lawspecselection0x0_2205 = it_2204[0]
+            v_lawspecselection0x1_2206 = it_2204[1]
+            p_2207 = Def_consumerPosition_4da411a3(symbols, v_lawspecselection0x0_2205, c_2202)
             try:
-                lawspecfieldfirst_1799 = p_1795[0]
-                value_1798 = lawspecfieldfirst_1799
-                lawspecfieldisolation_1801 = c_1791[6]
-                value_1800 = lawspecfieldisolation_1801
+                lawspecfieldfirst_2211 = p_2207[0]
+                value_2210 = lawspecfieldfirst_2211
+                lawspecfieldisolation_2213 = c_2202[6]
+                value_2212 = lawspecfieldisolation_2213
                 try:
-                    performed_1802 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').fetchRequest(nout_57a515e0e489(tp_1793, symbols), nout_44a08172da10(value_1798, symbols), nout_b862204e9be7(n_1790, symbols), nout_a519f593a6ed(value_1800, symbols))
+                    performed_2214 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').fetchRequest(nout_57a515e0e489(v_lawspecselection0x0_2205, symbols), nout_44a08172da10(value_2210, symbols), nout_b862204e9be7(n_2201, symbols), nout_a519f593a6ed(value_2212, symbols))
                 except ls.Fail as error:
                     raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                         "lawtwin.kafka.model::type::KafkaError",
                     ), error.value, 64, symbols)) from error
-                attempted_1797 = (1, nin_d2a1db54643f(performed_1802, symbols))
+                attempted_2209 = (1, nin_d2a1db54643f(performed_2214, symbols))
             except ls.Failure as failure:
                 if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                     raise
-                attempted_1797 = (0, from_26c7dcf285c5(failure.value))
-            matched_1803 = attempted_1797
-            if matched_1803[0]:
-                lawspecvalue_1804 = matched_1803[1]
-                value_1796 = (1, lawspecvalue_1804)
+                attempted_2209 = (0, from_26c7dcf285c5(failure.value))
+            matched_2215 = attempted_2209
+            if matched_2215[0]:
+                lawspecvalue_2216 = matched_2215[1]
+                value_2208 = (1, lawspecvalue_2216)
             else:
-                lawspecfailure_1805 = matched_1803[1]
-                value_1796 = (0, lawspecfailure_1805)
-            matched_1806 = value_1796
-            if matched_1806[0]:
-                fr_1807 = matched_1806[1]
-                next_1808 = rest_1794
-                lawspecfieldnextoffset_1810 = fr_1807[1]
-                value_1809 = lawspecfieldnextoffset_1810
-                lawspecfieldsecond_1812 = p_1795[1]
-                value_1811 = lawspecfieldsecond_1812
-                next_1813 = Def_withPosition_867e6b19(tp_1793, value_1809, value_1811)
-                lawspecfieldrecords_1815 = fr_1807[0]
-                value_1814 = lawspecfieldrecords_1815
-                next_1816 = lsf_append(acc_1792, Def_consumerRecords_9d810f29(tp_1793, value_1814))
-                tps_1789 = next_1808
-                c_1791 = next_1813
-                acc_1792 = next_1816
+                lawspecfailure_2217 = matched_2215[1]
+                value_2208 = (0, lawspecfailure_2217)
+            it_2218 = value_2208
+            if it_2218[0]:
+                v_match__lawspecselection0x0_0_2219 = it_2218[1]
+                next_2220 = v_lawspecselection0x1_2206
+                lawspecfieldnextoffset_2222 = v_match__lawspecselection0x0_0_2219[1]
+                value_2221 = lawspecfieldnextoffset_2222
+                lawspecfieldsecond_2224 = p_2207[1]
+                value_2223 = lawspecfieldsecond_2224
+                next_2225 = Def_withPosition_867e6b19(v_lawspecselection0x0_2205, value_2221, value_2223)
+                lawspecfieldrecords_2227 = v_match__lawspecselection0x0_0_2219[0]
+                value_2226 = lawspecfieldrecords_2227
+                next_2228 = lsf_append(acc_2203, Def_consumerRecords_9d810f29(v_lawspecselection0x0_2205, value_2226))
+                tps_2200 = next_2220
+                c_2202 = next_2225
+                acc_2203 = next_2228
                 continue
             else:
-                e_1817 = matched_1806[1]
-                lawspecfieldsecond_1819 = p_1795[1]
-                value_1818 = lawspecfieldsecond_1819
-                return ((0, e_1817), value_1818)
+                v_match__lawspecselection0x0_0_2229 = it_2218[1]
+                lawspecfieldsecond_2231 = p_2207[1]
+                value_2230 = lawspecfieldsecond_2231
+                return ((0, v_match__lawspecselection0x0_0_2229), value_2230)
 
 
 # lawtwin.kafka::positionsToCommit
-def Def_positionsToCommit_67969440(tps_1820, positions_1821):
+def Def_positionsToCommit_67969440(tps_2232, positions_2233):
     while True:
-        if tps_1820 is None:
+        it_2234 = tps_2232
+        if it_2234 is None:
             return None
         else:
-            tp_1822 = tps_1820[0]
-            rest_1823 = tps_1820[1]
-            matched_1824 = lsf_lookup(positions_1821, tp_1822)
-            if matched_1824:
-                o_1825 = matched_1824[0]
-                return lsf_cons((tp_1822, o_1825), Def_positionsToCommit_67969440(rest_1823, positions_1821))
+            v_lawspecselection0x0_2235 = it_2234[0]
+            v_lawspecselection0x1_2236 = it_2234[1]
+            it_2237 = lsf_lookup(positions_2233, v_lawspecselection0x0_2235)
+            if it_2237:
+                v_match__lawspecselection0x0_0_2238 = it_2237[0]
+                v_lawspecrecordfield0_2240 = v_lawspecselection0x0_2235
+                v_lawspecrecordfield1_2241 = v_match__lawspecselection0x0_0_2238
+                value_2239 = (v_lawspecrecordfield0_2240, v_lawspecrecordfield1_2241)
+                return lsf_cons(value_2239, Def_positionsToCommit_67969440(v_lawspecselection0x1_2236, positions_2233))
             else:
-                next_1826 = rest_1823
-                tps_1820 = next_1826
+                next_2242 = v_lawspecselection0x1_2236
+                tps_2232 = next_2242
                 continue
 
 
 # lawtwin.kafka::producerFlush
-def Def_producerFlush_f30611db(st_1827):
-    return (None, st_1827)
+def Def_producerFlush_f30611db(st_2243):
+    return (None, st_2243)
 
 
 # lawtwin.kafka::producerIdempotent
-def Def_producerIdempotent_c8ab8a13(symbols, st_1828):
+def Def_producerIdempotent_c8ab8a13(symbols, st_2244):
     try:
         try:
-            performed_1831 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').initProducerIdRequest(nout_01d86fc44f8c((), symbols))
+            performed_2247 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').initProducerIdRequest(nout_01d86fc44f8c((), symbols))
         except ls.Fail as error:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                 "lawtwin.kafka.model::type::KafkaError",
             ), error.value, 64, symbols)) from error
-        attempted_1830 = (1, nin_6a5ea41697b3(performed_1831, symbols))
+        attempted_2246 = (1, nin_6a5ea41697b3(performed_2247, symbols))
     except ls.Failure as failure:
         if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
             raise
-        attempted_1830 = (0, from_26c7dcf285c5(failure.value))
-    matched_1832 = attempted_1830
-    if matched_1832[0]:
-        lawspecvalue_1833 = matched_1832[1]
-        value_1829 = (1, lawspecvalue_1833)
+        attempted_2246 = (0, from_26c7dcf285c5(failure.value))
+    matched_2248 = attempted_2246
+    if matched_2248[0]:
+        lawspecvalue_2249 = matched_2248[1]
+        value_2245 = (1, lawspecvalue_2249)
     else:
-        lawspecfailure_1834 = matched_1832[1]
-        value_1829 = (0, lawspecfailure_1834)
-    matched_1835 = value_1829
-    if matched_1835[0]:
-        pe_1836 = matched_1835[1]
-        return ((1, pe_1836), ((pe_1836,), lsf_key_val_of(None), ()))
+        lawspecfailure_2250 = matched_2248[1]
+        value_2245 = (0, lawspecfailure_2250)
+    it_2251 = value_2245
+    if it_2251[0]:
+        v_lawspecselection0x0_2252 = it_2251[1]
+        v_lawspecrecordfield0_2254 = (v_lawspecselection0x0_2252,)
+        v_lawspecrecordfield1_2255 = lsf_key_val_of(None)
+        v_lawspecrecordfield2_2256 = ()
+        value_2253 = (v_lawspecrecordfield0_2254, v_lawspecrecordfield1_2255, v_lawspecrecordfield2_2256)
+        return ((1, v_lawspecselection0x0_2252), value_2253)
     else:
-        e_1837 = matched_1835[1]
-        return ((0, e_1837), st_1828)
+        v_lawspecselection0x0_2257 = it_2251[1]
+        return ((0, v_lawspecselection0x0_2257), st_2244)
 
 
 # lawtwin.kafka::producerRetry
-def Def_producerRetry_aaf3a88a(symbols, st_1838):
-    lawspecfieldlastsend_1840 = st_1838[2]
-    value_1839 = lawspecfieldlastsend_1840
-    matched_1841 = value_1839
-    if matched_1841:
-        l_1842 = matched_1841[0]
+def Def_producerRetry_aaf3a88a(symbols, st_2258):
+    lawspecfieldlastsend_2260 = st_2258[2]
+    value_2259 = lawspecfieldlastsend_2260
+    it_2261 = value_2259
+    if it_2261:
+        v_lawspecselection0x0_2262 = it_2261[0]
         try:
-            lawspecfieldlastpartition_1846 = l_1842[0]
-            value_1845 = lawspecfieldlastpartition_1846
-            lawspecfieldlasttag_1848 = l_1842[1]
-            value_1847 = lawspecfieldlasttag_1848
-            lawspecfieldlastrecords_1850 = l_1842[2]
-            value_1849 = lawspecfieldlastrecords_1850
+            lawspecfieldlastpartition_2266 = v_lawspecselection0x0_2262[0]
+            value_2265 = lawspecfieldlastpartition_2266
+            lawspecfieldlasttag_2268 = v_lawspecselection0x0_2262[1]
+            value_2267 = lawspecfieldlasttag_2268
+            lawspecfieldlastrecords_2270 = v_lawspecselection0x0_2262[2]
+            value_2269 = lawspecfieldlastrecords_2270
             try:
-                performed_1851 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').produceRequest(nout_57a515e0e489(value_1845, symbols), nout_c818bd20f406(value_1847, symbols), nout_e3583a5b5bdc(value_1849, symbols))
+                performed_2271 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').produceRequest(nout_57a515e0e489(value_2265, symbols), nout_c818bd20f406(value_2267, symbols), nout_e3583a5b5bdc(value_2269, symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_1844 = (1, nin_44a08172da10(performed_1851, symbols))
+            attempted_2264 = (1, nin_44a08172da10(performed_2271, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_1844 = (0, from_26c7dcf285c5(failure.value))
-        matched_1852 = attempted_1844
-        if matched_1852[0]:
-            lawspecvalue_1853 = matched_1852[1]
-            value_1843 = (1, lawspecvalue_1853)
+            attempted_2264 = (0, from_26c7dcf285c5(failure.value))
+        matched_2272 = attempted_2264
+        if matched_2272[0]:
+            lawspecvalue_2273 = matched_2272[1]
+            value_2263 = (1, lawspecvalue_2273)
         else:
-            lawspecfailure_1854 = matched_1852[1]
-            value_1843 = (0, lawspecfailure_1854)
-        matched_1855 = value_1843
-        if matched_1855[0]:
-            offset_1856 = matched_1855[1]
-            lawspecfieldlastpartition_1858 = l_1842[0]
-            value_1857 = lawspecfieldlastpartition_1858
-            return ((1, (value_1857, offset_1856)), st_1838)
+            lawspecfailure_2274 = matched_2272[1]
+            value_2263 = (0, lawspecfailure_2274)
+        it_2275 = value_2263
+        if it_2275[0]:
+            v_match__lawspecselection0x0_0_2276 = it_2275[1]
+            lawspecfieldlastpartition_2279 = v_lawspecselection0x0_2262[0]
+            value_2278 = lawspecfieldlastpartition_2279
+            v_lawspecrecordfield0_2280 = value_2278
+            v_lawspecrecordfield1_2281 = v_match__lawspecselection0x0_0_2276
+            value_2277 = (v_lawspecrecordfield0_2280, v_lawspecrecordfield1_2281)
+            return ((1, value_2277), st_2258)
         else:
-            e_1859 = matched_1855[1]
-            return ((0, e_1859), st_1838)
+            v_match__lawspecselection0x0_0_2282 = it_2275[1]
+            return ((0, v_match__lawspecselection0x0_0_2282), st_2258)
     else:
-        return ((0, 1), st_1838)
+        return ((0, 1), st_2258)
 
 
 # lawtwin.kafka::producerSend
-def Def_producerSend_9064c6b5(symbols, pr_1860, st_1861):
-    lawspecfielddestination_1863 = pr_1860[0]
-    value_1862 = lawspecfielddestination_1863
-    lawspecfieldchoice_1865 = pr_1860[1]
-    value_1864 = lawspecfieldchoice_1865
-    lawspecfieldpayload_1867 = pr_1860[2]
-    value_1866 = lawspecfieldpayload_1867
-    matched_1868 = Def_partitionOf_343af5ef(symbols, value_1862, value_1864, value_1866)
-    if matched_1868[0]:
-        tp_1869 = matched_1868[1]
-        lawspecfieldsequences_1871 = st_1861[1]
-        value_1870 = lawspecfieldsequences_1871
-        sequence_1872 = Def_sequenceFor_9d79724c(tp_1869, value_1870)
-        lawspecfieldidentity_1874 = st_1861[0]
-        value_1873 = lawspecfieldidentity_1874
-        tag_1875 = Def_tagFor_a88d3846(value_1873, sequence_1872)
+def Def_producerSend_9064c6b5(symbols, pr_2283, st_2284):
+    lawspecfielddestination_2286 = pr_2283[0]
+    value_2285 = lawspecfielddestination_2286
+    lawspecfieldchoice_2288 = pr_2283[1]
+    value_2287 = lawspecfieldchoice_2288
+    lawspecfieldpayload_2290 = pr_2283[2]
+    value_2289 = lawspecfieldpayload_2290
+    it_2291 = Def_partitionOf_343af5ef(symbols, value_2285, value_2287, value_2289)
+    if it_2291[0]:
+        v_lawspecselection0x0_2292 = it_2291[1]
+        lawspecfieldsequences_2294 = st_2284[1]
+        value_2293 = lawspecfieldsequences_2294
+        sequence_2295 = Def_sequenceFor_9d79724c(v_lawspecselection0x0_2292, value_2293)
+        lawspecfieldidentity_2297 = st_2284[0]
+        value_2296 = lawspecfieldidentity_2297
+        tag_2298 = Def_tagFor_a88d3846(value_2296, sequence_2295)
         try:
-            lawspecfieldpayload_1879 = pr_1860[2]
-            value_1878 = lawspecfieldpayload_1879
+            lawspecfieldpayload_2302 = pr_2283[2]
+            value_2301 = lawspecfieldpayload_2302
             try:
-                performed_1880 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').produceRequest(nout_57a515e0e489(tp_1869, symbols), nout_c818bd20f406(tag_1875, symbols), nout_e3583a5b5bdc(lsf_cons(value_1878, None), symbols))
+                performed_2303 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').produceRequest(nout_57a515e0e489(v_lawspecselection0x0_2292, symbols), nout_c818bd20f406(tag_2298, symbols), nout_e3583a5b5bdc(lsf_cons(value_2301, None), symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_1877 = (1, nin_44a08172da10(performed_1880, symbols))
+            attempted_2300 = (1, nin_44a08172da10(performed_2303, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_1877 = (0, from_26c7dcf285c5(failure.value))
-        matched_1881 = attempted_1877
-        if matched_1881[0]:
-            lawspecvalue_1882 = matched_1881[1]
-            value_1876 = (1, lawspecvalue_1882)
+            attempted_2300 = (0, from_26c7dcf285c5(failure.value))
+        matched_2304 = attempted_2300
+        if matched_2304[0]:
+            lawspecvalue_2305 = matched_2304[1]
+            value_2299 = (1, lawspecvalue_2305)
         else:
-            lawspecfailure_1883 = matched_1881[1]
-            value_1876 = (0, lawspecfailure_1883)
-        matched_1884 = value_1876
-        if matched_1884[0]:
-            offset_1885 = matched_1884[1]
-            lawspecfieldpayload_1888 = pr_1860[2]
-            value_1887 = lawspecfieldpayload_1888
-            replacement_1889 = ((tp_1869, tag_1875, lsf_cons(value_1887, None)),)
-            lawspecfieldsequences_1892 = st_1861[1]
-            value_1891 = lawspecfieldsequences_1892
-            replacement_1893 = lsf_put(value_1891, tp_1869, Def_saturatingInt32_9e8d3b43((sequence_1872 + 1)))
-            lawspecfieldidentity_1894 = st_1861[0]
-            lawspecfieldlastsend_1895 = st_1861[2]
-            value_1890 = (lawspecfieldidentity_1894, replacement_1893, lawspecfieldlastsend_1895)
-            matched_1896 = value_1890
-            lawspecfieldidentity_1897 = matched_1896[0]
-            lawspecfieldsequences_1898 = matched_1896[1]
-            value_1886 = (lawspecfieldidentity_1897, lawspecfieldsequences_1898, replacement_1889)
-            return ((1, (tp_1869, offset_1885)), value_1886)
+            lawspecfailure_2306 = matched_2304[1]
+            value_2299 = (0, lawspecfailure_2306)
+        it_2307 = value_2299
+        if it_2307[0]:
+            v_match__lawspecselection0x0_0_2308 = it_2307[1]
+            v_lawspecrecordfield0_2310 = v_lawspecselection0x0_2292
+            v_lawspecrecordfield1_2311 = v_match__lawspecselection0x0_0_2308
+            value_2309 = (v_lawspecrecordfield0_2310, v_lawspecrecordfield1_2311)
+            v_lawspecrecordfield0_2314 = v_lawspecselection0x0_2292
+            v_lawspecrecordfield1_2315 = tag_2298
+            lawspecfieldpayload_2317 = pr_2283[2]
+            value_2316 = lawspecfieldpayload_2317
+            v_lawspecrecordfield2_2318 = lsf_cons(value_2316, None)
+            value_2313 = (v_lawspecrecordfield0_2314, v_lawspecrecordfield1_2315, v_lawspecrecordfield2_2318)
+            replacement_2319 = (value_2313,)
+            lawspecfieldsequences_2322 = st_2284[1]
+            value_2321 = lawspecfieldsequences_2322
+            replacement_2323 = lsf_put(value_2321, v_lawspecselection0x0_2292, Def_saturatingInt32_9e8d3b43((sequence_2295 + 1)))
+            lawspecfieldidentity_2324 = st_2284[0]
+            lawspecfieldlastsend_2325 = st_2284[2]
+            value_2320 = (lawspecfieldidentity_2324, replacement_2323, lawspecfieldlastsend_2325)
+            matched_2326 = value_2320
+            lawspecfieldidentity_2327 = matched_2326[0]
+            lawspecfieldsequences_2328 = matched_2326[1]
+            value_2312 = (lawspecfieldidentity_2327, lawspecfieldsequences_2328, replacement_2319)
+            return ((1, value_2309), value_2312)
         else:
-            e_1899 = matched_1884[1]
-            return ((0, e_1899), st_1861)
+            v_match__lawspecselection0x0_0_2329 = it_2307[1]
+            return ((0, v_match__lawspecselection0x0_0_2329), st_2284)
     else:
-        e_1900 = matched_1868[1]
-        return ((0, e_1900), st_1861)
+        v_lawspecselection0x0_2330 = it_2291[1]
+        return ((0, v_lawspecselection0x0_2330), st_2284)
 
 
 # lawtwin.kafka::readFrom
-def Def_readFrom_f028a48d(symbols, tp_1901, offset_1902, isolation_1903):
+def Def_readFrom_f028a48d(symbols, tp_2331, offset_2332, isolation_2333):
     try:
         try:
-            performed_1906 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').fetchRequest(nout_57a515e0e489(tp_1901, symbols), nout_44a08172da10(offset_1902, symbols), nout_b862204e9be7(1000, symbols), nout_a519f593a6ed(isolation_1903, symbols))
+            performed_2336 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').fetchRequest(nout_57a515e0e489(tp_2331, symbols), nout_44a08172da10(offset_2332, symbols), nout_b862204e9be7(1000, symbols), nout_a519f593a6ed(isolation_2333, symbols))
         except ls.Fail as error:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                 "lawtwin.kafka.model::type::KafkaError",
             ), error.value, 64, symbols)) from error
-        attempted_1905 = (1, nin_d2a1db54643f(performed_1906, symbols))
+        attempted_2335 = (1, nin_d2a1db54643f(performed_2336, symbols))
     except ls.Failure as failure:
         if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
             raise
-        attempted_1905 = (0, from_26c7dcf285c5(failure.value))
-    matched_1907 = attempted_1905
-    if matched_1907[0]:
-        lawspecvalue_1908 = matched_1907[1]
-        value_1904 = (1, lawspecvalue_1908)
+        attempted_2335 = (0, from_26c7dcf285c5(failure.value))
+    matched_2337 = attempted_2335
+    if matched_2337[0]:
+        lawspecvalue_2338 = matched_2337[1]
+        value_2334 = (1, lawspecvalue_2338)
     else:
-        lawspecfailure_1909 = matched_1907[1]
-        value_1904 = (0, lawspecfailure_1909)
-    matched_1910 = value_1904
-    if matched_1910[0]:
-        fr_1911 = matched_1910[1]
-        lawspecfieldrecords_1913 = fr_1911[0]
-        value_1912 = lawspecfieldrecords_1913
-        return Def_recordsOf_a7b339ef(value_1912)
+        lawspecfailure_2339 = matched_2337[1]
+        value_2334 = (0, lawspecfailure_2339)
+    it_2340 = value_2334
+    if it_2340[0]:
+        v_lawspecselection0x0_2341 = it_2340[1]
+        lawspecfieldrecords_2343 = v_lawspecselection0x0_2341[0]
+        value_2342 = lawspecfieldrecords_2343
+        return Def_recordsOf_a7b339ef(value_2342)
     else:
         return None
 
 
 # lawtwin.kafka::readInOrder
-def Def_readInOrder_ba595483(symbols, a_1914, b_1915, first_1916, second_1917):
-    if a_1914[0]:
-        x_1918 = a_1914[1]
-        if b_1915[0]:
-            y_1919 = b_1915[1]
-            lawspecfieldsentto_1921 = x_1918[0]
-            value_1920 = lawspecfieldsentto_1921
-            tp_1922 = value_1920
-            lawspecfieldsentto_1924 = y_1919[0]
-            value_1923 = lawspecfieldsentto_1924
-            logic_1929 = (value_1923 == tp_1922)
-            if logic_1929:
-                lawspecfieldsentat_1926 = y_1919[1]
-                value_1925 = lawspecfieldsentat_1926
-                lawspecfieldsentat_1928 = x_1918[1]
-                value_1927 = lawspecfieldsentat_1928
-                logic_1929 = (value_1925 == (value_1927 + 1))
-            logic_1948 = logic_1929
-            if logic_1948:
-                performed_1931 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').assign(nout_3250492fe9ac(lsf_cons(tp_1922, None), symbols))
-                lawspecignored_1932 = nin_b120ceed78cb(performed_1931, symbols)
-                lawspecfieldsentat_1935 = x_1918[1]
-                value_1934 = lawspecfieldsentat_1935
-                performed_1936 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').seek(nout_57a515e0e489(tp_1922, symbols), nout_44a08172da10(value_1934, symbols))
-                matched_1937 = nin_6c1d71d067da(performed_1936, symbols)
-                if matched_1937[0]:
-                    value_1933 = True
+def Def_readInOrder_ba595483(symbols, a_2344, b_2345, first_2346, second_2347):
+    it_2348 = a_2344
+    if it_2348[0]:
+        v_lawspecselection0x0_2349 = it_2348[1]
+        it_2350 = b_2345
+        if it_2350[0]:
+            v_match__lawspecselection0x0_0_2351 = it_2350[1]
+            lawspecfieldsentto_2353 = v_lawspecselection0x0_2349[0]
+            value_2352 = lawspecfieldsentto_2353
+            tp_2354 = value_2352
+            lawspecfieldsentto_2356 = v_match__lawspecselection0x0_0_2351[0]
+            value_2355 = lawspecfieldsentto_2356
+            logic_2361 = (value_2355 == tp_2354)
+            if logic_2361:
+                lawspecfieldsentat_2358 = v_match__lawspecselection0x0_0_2351[1]
+                value_2357 = lawspecfieldsentat_2358
+                lawspecfieldsentat_2360 = v_lawspecselection0x0_2349[1]
+                value_2359 = lawspecfieldsentat_2360
+                logic_2361 = (value_2357 == (value_2359 + 1))
+            logic_2380 = logic_2361
+            if logic_2380:
+                performed_2363 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').assign(nout_3250492fe9ac(lsf_cons(tp_2354, None), symbols))
+                lawspecignored_2364 = nin_b120ceed78cb(performed_2363, symbols)
+                lawspecfieldsentat_2367 = v_lawspecselection0x0_2349[1]
+                value_2366 = lawspecfieldsentat_2367
+                performed_2368 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').seek(nout_57a515e0e489(tp_2354, symbols), nout_44a08172da10(value_2366, symbols))
+                matched_2369 = nin_6c1d71d067da(performed_2368, symbols)
+                if matched_2369[0]:
+                    value_2365 = True
                 else:
-                    value_1933 = False
-                logic_1947 = value_1933
-                if logic_1947:
-                    performed_1939 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').poll(nout_b862204e9be7(2, symbols))
-                    matched_1940 = nin_88281415992f(performed_1939, symbols)
-                    if matched_1940[0]:
-                        rs_1941 = matched_1940[1]
-                        logic_1946 = eq_e3583a5b5bdc(Def_receivedRecords_c3c84323(rs_1941), lsf_cons(first_1916, lsf_cons(second_1917, None)))
-                        if logic_1946:
-                            lawspecfieldsentat_1943 = x_1918[1]
-                            value_1942 = lawspecfieldsentat_1943
-                            lawspecfieldsentat_1945 = y_1919[1]
-                            value_1944 = lawspecfieldsentat_1945
-                            logic_1946 = eq_75994955e886(Def_receivedOffsets_6c3a7a20(rs_1941), lsf_cons(value_1942, lsf_cons(value_1944, None)))
-                        value_1938 = logic_1946
+                    value_2365 = False
+                logic_2379 = value_2365
+                if logic_2379:
+                    performed_2371 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').poll(nout_b862204e9be7(2, symbols))
+                    it_2372 = nin_88281415992f(performed_2371, symbols)
+                    if it_2372[0]:
+                        v_match__match__lawspecselection0x0_0_0_2373 = it_2372[1]
+                        logic_2378 = eq_e3583a5b5bdc(Def_receivedRecords_c3c84323(v_match__match__lawspecselection0x0_0_0_2373), lsf_cons(first_2346, lsf_cons(second_2347, None)))
+                        if logic_2378:
+                            lawspecfieldsentat_2375 = v_lawspecselection0x0_2349[1]
+                            value_2374 = lawspecfieldsentat_2375
+                            lawspecfieldsentat_2377 = v_match__lawspecselection0x0_0_2351[1]
+                            value_2376 = lawspecfieldsentat_2377
+                            logic_2378 = eq_75994955e886(Def_receivedOffsets_6c3a7a20(v_match__match__lawspecselection0x0_0_0_2373), lsf_cons(value_2374, lsf_cons(value_2376, None)))
+                        value_2370 = logic_2378
                     else:
-                        value_1938 = False
-                    logic_1947 = value_1938
-                value_1930 = logic_1947
-                logic_1948 = value_1930
-            return logic_1948
+                        value_2370 = False
+                    logic_2379 = value_2370
+                value_2362 = logic_2379
+                logic_2380 = value_2362
+            return logic_2380
         else:
             return False
     else:
@@ -4107,115 +4539,125 @@ def Def_readInOrder_ba595483(symbols, a_1914, b_1915, first_1916, second_1917):
 
 
 # lawtwin.kafka::receivedOffsets
-def Def_receivedOffsets_6c3a7a20(rs_1949):
-    if rs_1949 is None:
+def Def_receivedOffsets_6c3a7a20(rs_2381):
+    it_2382 = rs_2381
+    if it_2382 is None:
         return None
     else:
-        r_1950 = rs_1949[0]
-        rest_1951 = rs_1949[1]
-        lawspecfieldreceivedat_1953 = r_1950[1]
-        value_1952 = lawspecfieldreceivedat_1953
-        return lsf_cons(value_1952, Def_receivedOffsets_6c3a7a20(rest_1951))
+        v_lawspecselection0x0_2383 = it_2382[0]
+        v_lawspecselection0x1_2384 = it_2382[1]
+        lawspecfieldreceivedat_2386 = v_lawspecselection0x0_2383[1]
+        value_2385 = lawspecfieldreceivedat_2386
+        return lsf_cons(value_2385, Def_receivedOffsets_6c3a7a20(v_lawspecselection0x1_2384))
 
 
 # lawtwin.kafka::receivedRecords
-def Def_receivedRecords_c3c84323(rs_1954):
-    if rs_1954 is None:
+def Def_receivedRecords_c3c84323(rs_2387):
+    it_2388 = rs_2387
+    if it_2388 is None:
         return None
     else:
-        r_1955 = rs_1954[0]
-        rest_1956 = rs_1954[1]
-        lawspecfieldreceived_1958 = r_1955[2]
-        value_1957 = lawspecfieldreceived_1958
-        return lsf_cons(value_1957, Def_receivedRecords_c3c84323(rest_1956))
+        v_lawspecselection0x0_2389 = it_2388[0]
+        v_lawspecselection0x1_2390 = it_2388[1]
+        lawspecfieldreceived_2392 = v_lawspecselection0x0_2389[2]
+        value_2391 = lawspecfieldreceived_2392
+        return lsf_cons(value_2391, Def_receivedRecords_c3c84323(v_lawspecselection0x1_2390))
 
 
 # lawtwin.kafka::recordsOf
-def Def_recordsOf_a7b339ef(rs_1959):
-    if rs_1959 is None:
+def Def_recordsOf_a7b339ef(rs_2393):
+    it_2394 = rs_2393
+    if it_2394 is None:
         return None
     else:
-        r_1960 = rs_1959[0]
-        rest_1961 = rs_1959[1]
-        lawspecfieldentry_1963 = r_1960[1]
-        value_1962 = lawspecfieldentry_1963
-        return lsf_cons(value_1962, Def_recordsOf_a7b339ef(rest_1961))
+        v_lawspecselection0x0_2395 = it_2394[0]
+        v_lawspecselection0x1_2396 = it_2394[1]
+        lawspecfieldentry_2398 = v_lawspecselection0x0_2395[1]
+        value_2397 = lawspecfieldentry_2398
+        return lsf_cons(value_2397, Def_recordsOf_a7b339ef(v_lawspecselection0x1_2396))
 
 
 # lawtwin.kafka::resumesAtCommitted
-def Def_resumesAtCommitted_13d41b73(symbols, t_1964, g_1965, m_1966, n_1967):
-    tp_1968 = (t_1964, 0)
-    performed_1969 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').subscribe(nout_437d0abf423f(g_1965, symbols), nout_437d0abf423f(m_1966, symbols), nout_8ec0351dc657(lsf_cons(t_1964, None), symbols))
-    joined_1970 = nin_479a8e1cd590(performed_1969, symbols)
-    performed_1971 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').poll(nout_b862204e9be7(n_1967, symbols))
-    polled_1972 = nin_88281415992f(performed_1971, symbols)
-    performed_1973 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').commitSync()
-    committed_1974 = nin_6c1d71d067da(performed_1973, symbols)
-    performed_1975 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').close()
-    lawspecignored_1976 = nin_b120ceed78cb(performed_1975, symbols)
-    performed_1977 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').subscribe(nout_437d0abf423f(g_1965, symbols), nout_437d0abf423f(m_1966, symbols), nout_8ec0351dc657(lsf_cons(t_1964, None), symbols))
-    rejoined_1978 = nin_479a8e1cd590(performed_1977, symbols)
-    performed_1979 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').position(nout_57a515e0e489(tp_1968, symbols))
-    resumed_1980 = nin_aff9cc782806(performed_1979, symbols)
-    performed_1981 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').committedOffset(nout_57a515e0e489(tp_1968, symbols))
-    after_1982 = nin_c09136e29464(performed_1981, symbols)
-    performed_1983 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').poll(nout_b862204e9be7(100, symbols))
-    again_1984 = nin_88281415992f(performed_1983, symbols)
-    if joined_1970[0]:
-        value_1985 = True
+def Def_resumesAtCommitted_13d41b73(symbols, t_2399, g_2400, m_2401, n_2402):
+    v_lawspecrecordfield0_2404 = t_2399
+    v_lawspecrecordfield1_2405 = 0
+    value_2403 = (v_lawspecrecordfield0_2404, v_lawspecrecordfield1_2405)
+    tp_2406 = value_2403
+    performed_2407 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').subscribe(nout_437d0abf423f(g_2400, symbols), nout_437d0abf423f(m_2401, symbols), nout_8ec0351dc657(lsf_cons(t_2399, None), symbols))
+    joined_2408 = nin_479a8e1cd590(performed_2407, symbols)
+    performed_2409 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').poll(nout_b862204e9be7(n_2402, symbols))
+    polled_2410 = nin_88281415992f(performed_2409, symbols)
+    performed_2411 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').commitSync()
+    committed_2412 = nin_6c1d71d067da(performed_2411, symbols)
+    performed_2413 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').close()
+    lawspecignored_2414 = nin_b120ceed78cb(performed_2413, symbols)
+    performed_2415 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').subscribe(nout_437d0abf423f(g_2400, symbols), nout_437d0abf423f(m_2401, symbols), nout_8ec0351dc657(lsf_cons(t_2399, None), symbols))
+    rejoined_2416 = nin_479a8e1cd590(performed_2415, symbols)
+    performed_2417 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').position(nout_57a515e0e489(tp_2406, symbols))
+    resumed_2418 = nin_aff9cc782806(performed_2417, symbols)
+    performed_2419 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').committedOffset(nout_57a515e0e489(tp_2406, symbols))
+    after_2420 = nin_c09136e29464(performed_2419, symbols)
+    performed_2421 = ls.handler(symbols, 'lawtwin.kafka::ability::Consumer').poll(nout_b862204e9be7(100, symbols))
+    again_2422 = nin_88281415992f(performed_2421, symbols)
+    if joined_2408[0]:
+        value_2423 = True
     else:
-        value_1985 = False
-    logic_1987 = value_1985
-    if logic_1987:
-        if polled_1972[0]:
-            value_1986 = True
+        value_2423 = False
+    logic_2425 = value_2423
+    if logic_2425:
+        if polled_2410[0]:
+            value_2424 = True
         else:
-            value_1986 = False
-        logic_1987 = value_1986
-    logic_1989 = logic_1987
-    if logic_1989:
-        if committed_1974[0]:
-            value_1988 = True
+            value_2424 = False
+        logic_2425 = value_2424
+    logic_2427 = logic_2425
+    if logic_2427:
+        if committed_2412[0]:
+            value_2426 = True
         else:
-            value_1988 = False
-        logic_1989 = value_1988
-    logic_1991 = logic_1989
-    if logic_1991:
-        if rejoined_1978[0]:
-            value_1990 = True
+            value_2426 = False
+        logic_2427 = value_2426
+    logic_2429 = logic_2427
+    if logic_2429:
+        if rejoined_2416[0]:
+            value_2428 = True
         else:
-            value_1990 = False
-        logic_1991 = value_1990
-    logic_1997 = logic_1991
-    if logic_1997:
-        if after_1982:
-            c_1993 = after_1982[0]
-            logic_1996 = (resumed_1980 == (1, c_1993))
-            if logic_1996:
-                if again_1984[0]:
-                    rs_1995 = again_1984[1]
-                    value_1994 = Def_allAtLeast_3df55027(c_1993, Def_receivedOffsets_6c3a7a20(rs_1995))
+            value_2428 = False
+        logic_2429 = value_2428
+    logic_2437 = logic_2429
+    if logic_2437:
+        it_2431 = after_2420
+        if it_2431:
+            v_lawspecselection0x0_2432 = it_2431[0]
+            logic_2436 = (resumed_2418 == (1, v_lawspecselection0x0_2432))
+            if logic_2436:
+                it_2434 = again_2422
+                if it_2434[0]:
+                    v_match__lawspecselection0x0_0_2435 = it_2434[1]
+                    value_2433 = Def_allAtLeast_3df55027(v_lawspecselection0x0_2432, Def_receivedOffsets_6c3a7a20(v_match__lawspecselection0x0_0_2435))
                 else:
-                    value_1994 = False
-                logic_1996 = value_1994
-            value_1992 = logic_1996
+                    value_2433 = False
+                logic_2436 = value_2433
+            value_2430 = logic_2436
         else:
-            value_1992 = False
-        logic_1997 = value_1992
-    return logic_1997
+            value_2430 = False
+        logic_2437 = value_2430
+    return logic_2437
 
 
 # lawtwin.kafka::samePartition
-def Def_samePartition_cee4f2dc(a_1998, b_1999):
-    if a_1998[0]:
-        x_2000 = a_1998[1]
-        if b_1999[0]:
-            y_2001 = b_1999[1]
-            lawspecfieldsentto_2003 = x_2000[0]
-            value_2002 = lawspecfieldsentto_2003
-            lawspecfieldsentto_2005 = y_2001[0]
-            value_2004 = lawspecfieldsentto_2005
-            return (value_2002 == value_2004)
+def Def_samePartition_cee4f2dc(a_2438, b_2439):
+    it_2440 = a_2438
+    if it_2440[0]:
+        v_lawspecselection0x0_2441 = it_2440[1]
+        it_2442 = b_2439
+        if it_2442[0]:
+            v_match__lawspecselection0x0_0_2443 = it_2442[1]
+            lawspecfieldsentto_2445 = v_lawspecselection0x0_2441[0]
+            value_2444 = lawspecfieldsentto_2445
+            lawspecfieldsentto_2447 = v_match__lawspecselection0x0_0_2443[0]
+            value_2446 = lawspecfieldsentto_2447
+            return (value_2444 == value_2446)
         else:
             return False
     else:
@@ -4223,140 +4665,144 @@ def Def_samePartition_cee4f2dc(a_1998, b_1999):
 
 
 # lawtwin.kafka::sequenceFor
-def Def_sequenceFor_9d79724c(tp_2006, sequences_2007):
-    matched_2008 = lsf_lookup(sequences_2007, tp_2006)
-    if matched_2008:
-        n_2009 = matched_2008[0]
-        return n_2009
+def Def_sequenceFor_9d79724c(tp_2448, sequences_2449):
+    it_2450 = lsf_lookup(sequences_2449, tp_2448)
+    if it_2450:
+        v_lawspecselection0x0_2451 = it_2450[0]
+        return v_lawspecselection0x0_2451
     else:
         return 0
 
 
 # lawtwin.kafka::smallBatch
-def Def_smallBatch_dc4ae7bb(batch_2010):
-    return ((lsf_length(batch_2010) >= 1) and (lsf_length(batch_2010) <= 100))
+def Def_smallBatch_dc4ae7bb(batch_2452):
+    return ((lsf_length(batch_2452) >= 1) and (lsf_length(batch_2452) <= 100))
 
 
 # lawtwin.kafka::stableBelowHigh
-def Def_stableBelowHigh_60981bc4(symbols, t_2011, txid_2012, batch_2013):
-    tp_2014 = (t_2011, 0)
+def Def_stableBelowHigh_60981bc4(symbols, t_2453, txid_2454, batch_2455):
+    v_lawspecrecordfield0_2457 = t_2453
+    v_lawspecrecordfield1_2458 = 0
+    value_2456 = (v_lawspecrecordfield0_2457, v_lawspecrecordfield1_2458)
+    tp_2459 = value_2456
     try:
         try:
-            performed_2017 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').initProducerIdRequest(nout_01d86fc44f8c((txid_2012,), symbols))
+            performed_2462 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').initProducerIdRequest(nout_01d86fc44f8c((txid_2454,), symbols))
         except ls.Fail as error:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                 "lawtwin.kafka.model::type::KafkaError",
             ), error.value, 64, symbols)) from error
-        attempted_2016 = (1, nin_6a5ea41697b3(performed_2017, symbols))
+        attempted_2461 = (1, nin_6a5ea41697b3(performed_2462, symbols))
     except ls.Failure as failure:
         if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
             raise
-        attempted_2016 = (0, from_26c7dcf285c5(failure.value))
-    matched_2018 = attempted_2016
-    if matched_2018[0]:
-        lawspecvalue_2019 = matched_2018[1]
-        value_2015 = (1, lawspecvalue_2019)
+        attempted_2461 = (0, from_26c7dcf285c5(failure.value))
+    matched_2463 = attempted_2461
+    if matched_2463[0]:
+        lawspecvalue_2464 = matched_2463[1]
+        value_2460 = (1, lawspecvalue_2464)
     else:
-        lawspecfailure_2020 = matched_2018[1]
-        value_2015 = (0, lawspecfailure_2020)
-    matched_2021 = value_2015
-    if matched_2021[0]:
-        pe_2022 = matched_2021[1]
+        lawspecfailure_2465 = matched_2463[1]
+        value_2460 = (0, lawspecfailure_2465)
+    it_2466 = value_2460
+    if it_2466[0]:
+        v_lawspecselection0x0_2467 = it_2466[1]
         try:
-            lawspecfieldproducerid_2026 = pe_2022[0]
-            value_2025 = lawspecfieldproducerid_2026
-            lawspecfieldproducerepoch_2028 = pe_2022[1]
-            value_2027 = lawspecfieldproducerepoch_2028
+            lawspecfieldproducerid_2471 = v_lawspecselection0x0_2467[0]
+            value_2470 = lawspecfieldproducerid_2471
+            lawspecfieldproducerepoch_2473 = v_lawspecselection0x0_2467[1]
+            value_2472 = lawspecfieldproducerepoch_2473
             try:
-                performed_2029 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').addPartitionsToTxnRequest(nout_437d0abf423f(txid_2012, symbols), nout_44a08172da10(value_2025, symbols), nout_07dabd732290(value_2027, symbols), nout_3250492fe9ac(lsf_cons(tp_2014, None), symbols))
+                performed_2474 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').addPartitionsToTxnRequest(nout_437d0abf423f(txid_2454, symbols), nout_44a08172da10(value_2470, symbols), nout_07dabd732290(value_2472, symbols), nout_3250492fe9ac(lsf_cons(tp_2459, None), symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_2024 = (1, nin_b120ceed78cb(performed_2029, symbols))
+            attempted_2469 = (1, nin_b120ceed78cb(performed_2474, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_2024 = (0, from_26c7dcf285c5(failure.value))
-        matched_2030 = attempted_2024
-        if matched_2030[0]:
-            lawspecvalue_2031 = matched_2030[1]
-            value_2023 = (1, lawspecvalue_2031)
+            attempted_2469 = (0, from_26c7dcf285c5(failure.value))
+        matched_2475 = attempted_2469
+        if matched_2475[0]:
+            lawspecvalue_2476 = matched_2475[1]
+            value_2468 = (1, lawspecvalue_2476)
         else:
-            lawspecfailure_2032 = matched_2030[1]
-            value_2023 = (0, lawspecfailure_2032)
-        added_2033 = value_2023
+            lawspecfailure_2477 = matched_2475[1]
+            value_2468 = (0, lawspecfailure_2477)
+        added_2478 = value_2468
         try:
             try:
-                performed_2036 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').produceRequest(nout_57a515e0e489(tp_2014, symbols), nout_c818bd20f406((Def_tagOf_39235de7(pe_2022, 0),), symbols), nout_e3583a5b5bdc(batch_2013, symbols))
+                performed_2481 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').produceRequest(nout_57a515e0e489(tp_2459, symbols), nout_c818bd20f406((Def_tagOf_39235de7(v_lawspecselection0x0_2467, 0),), symbols), nout_e3583a5b5bdc(batch_2455, symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_2035 = (1, nin_44a08172da10(performed_2036, symbols))
+            attempted_2480 = (1, nin_44a08172da10(performed_2481, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_2035 = (0, from_26c7dcf285c5(failure.value))
-        matched_2037 = attempted_2035
-        if matched_2037[0]:
-            lawspecvalue_2038 = matched_2037[1]
-            value_2034 = (1, lawspecvalue_2038)
+            attempted_2480 = (0, from_26c7dcf285c5(failure.value))
+        matched_2482 = attempted_2480
+        if matched_2482[0]:
+            lawspecvalue_2483 = matched_2482[1]
+            value_2479 = (1, lawspecvalue_2483)
         else:
-            lawspecfailure_2039 = matched_2037[1]
-            value_2034 = (0, lawspecfailure_2039)
-        written_2040 = value_2034
+            lawspecfailure_2484 = matched_2482[1]
+            value_2479 = (0, lawspecfailure_2484)
+        written_2485 = value_2479
         try:
             try:
-                performed_2043 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').fetchRequest(nout_57a515e0e489(tp_2014, symbols), nout_44a08172da10(0, symbols), nout_b862204e9be7(1000, symbols), nout_a519f593a6ed(1, symbols))
+                performed_2488 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').fetchRequest(nout_57a515e0e489(tp_2459, symbols), nout_44a08172da10(0, symbols), nout_b862204e9be7(1000, symbols), nout_a519f593a6ed(1, symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_2042 = (1, nin_d2a1db54643f(performed_2043, symbols))
+            attempted_2487 = (1, nin_d2a1db54643f(performed_2488, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_2042 = (0, from_26c7dcf285c5(failure.value))
-        matched_2044 = attempted_2042
-        if matched_2044[0]:
-            lawspecvalue_2045 = matched_2044[1]
-            value_2041 = (1, lawspecvalue_2045)
+            attempted_2487 = (0, from_26c7dcf285c5(failure.value))
+        matched_2489 = attempted_2487
+        if matched_2489[0]:
+            lawspecvalue_2490 = matched_2489[1]
+            value_2486 = (1, lawspecvalue_2490)
         else:
-            lawspecfailure_2046 = matched_2044[1]
-            value_2041 = (0, lawspecfailure_2046)
-        matched_2047 = value_2041
-        if matched_2047[0]:
-            fr_2048 = matched_2047[1]
-            if added_2033[0]:
-                value_2049 = True
+            lawspecfailure_2491 = matched_2489[1]
+            value_2486 = (0, lawspecfailure_2491)
+        it_2492 = value_2486
+        if it_2492[0]:
+            v_match__lawspecselection0x0_0_2493 = it_2492[1]
+            if added_2478[0]:
+                value_2494 = True
             else:
-                value_2049 = False
-            logic_2051 = value_2049
-            if logic_2051:
-                if written_2040[0]:
-                    value_2050 = True
+                value_2494 = False
+            logic_2496 = value_2494
+            if logic_2496:
+                if written_2485[0]:
+                    value_2495 = True
                 else:
-                    value_2050 = False
-                logic_2051 = value_2050
-            logic_2056 = logic_2051
-            if logic_2056:
-                lawspecfieldlaststableoffset_2053 = fr_2048[3]
-                value_2052 = lawspecfieldlaststableoffset_2053
-                lawspecfieldhighwatermark_2055 = fr_2048[2]
-                value_2054 = lawspecfieldhighwatermark_2055
-                logic_2056 = (value_2052 <= value_2054)
-            logic_2061 = logic_2056
-            if logic_2061:
-                if written_2040[0]:
-                    base_2058 = written_2040[1]
-                    lawspecfieldlaststableoffset_2060 = fr_2048[3]
-                    value_2059 = lawspecfieldlaststableoffset_2060
-                    value_2057 = (value_2059 <= base_2058)
+                    value_2495 = False
+                logic_2496 = value_2495
+            logic_2501 = logic_2496
+            if logic_2501:
+                lawspecfieldlaststableoffset_2498 = v_match__lawspecselection0x0_0_2493[3]
+                value_2497 = lawspecfieldlaststableoffset_2498
+                lawspecfieldhighwatermark_2500 = v_match__lawspecselection0x0_0_2493[2]
+                value_2499 = lawspecfieldhighwatermark_2500
+                logic_2501 = (value_2497 <= value_2499)
+            logic_2507 = logic_2501
+            if logic_2507:
+                it_2503 = written_2485
+                if it_2503[0]:
+                    v_match__match__lawspecselection0x0_0_0_2504 = it_2503[1]
+                    lawspecfieldlaststableoffset_2506 = v_match__lawspecselection0x0_0_2493[3]
+                    value_2505 = lawspecfieldlaststableoffset_2506
+                    value_2502 = (value_2505 <= v_match__match__lawspecselection0x0_0_0_2504)
                 else:
-                    value_2057 = False
-                logic_2061 = value_2057
-            return logic_2061
+                    value_2502 = False
+                logic_2507 = value_2502
+            return logic_2507
         else:
             return False
     else:
@@ -4364,135 +4810,142 @@ def Def_stableBelowHigh_60981bc4(symbols, t_2011, txid_2012, batch_2013):
 
 
 # lawtwin.kafka::tagFor
-def Def_tagFor_a88d3846(identity_2062, sequence_2063):
-    if identity_2062:
-        pe_2064 = identity_2062[0]
-        return (Def_tagOf_39235de7(pe_2064, sequence_2063),)
+def Def_tagFor_a88d3846(identity_2508, sequence_2509):
+    it_2510 = identity_2508
+    if it_2510:
+        v_lawspecselection0x0_2511 = it_2510[0]
+        return (Def_tagOf_39235de7(v_lawspecselection0x0_2511, sequence_2509),)
     else:
         return ()
 
 
 # lawtwin.kafka::tagOf
-def Def_tagOf_39235de7(pe_2065, sequence_2066):
-    lawspecfieldproducerid_2068 = pe_2065[0]
-    value_2067 = lawspecfieldproducerid_2068
-    lawspecfieldproducerepoch_2070 = pe_2065[1]
-    value_2069 = lawspecfieldproducerepoch_2070
-    return (value_2067, value_2069, sequence_2066)
+def Def_tagOf_39235de7(pe_2512, sequence_2513):
+    lawspecfieldproducerid_2515 = pe_2512[0]
+    value_2514 = lawspecfieldproducerid_2515
+    v_lawspecrecordfield0_2516 = value_2514
+    lawspecfieldproducerepoch_2518 = pe_2512[1]
+    value_2517 = lawspecfieldproducerepoch_2518
+    v_lawspecrecordfield1_2519 = value_2517
+    v_lawspecrecordfield2_2520 = sequence_2513
+    return (v_lawspecrecordfield0_2516, v_lawspecrecordfield1_2519, v_lawspecrecordfield2_2520)
 
 
 # lawtwin.kafka::toPositive
-def Def_toPositive_fc7029c7(h_2071):
-    return Def_wrappingUInt32_1ef3ce20(lsf_rem(h_2071, 2147483648))
+def Def_toPositive_fc7029c7(h_2521):
+    return Def_wrappingUInt32_1ef3ce20(lsf_rem(h_2521, 2147483648))
 
 
 # lawtwin.kafka::transactionThenRead
-def Def_transactionThenRead_81bf7b1b(symbols, t_2072, txid_2073, batch_2074, commit_2075):
-    tp_2076 = (t_2072, 0)
+def Def_transactionThenRead_81bf7b1b(symbols, t_2522, txid_2523, batch_2524, commit_2525):
+    v_lawspecrecordfield0_2527 = t_2522
+    v_lawspecrecordfield1_2528 = 0
+    value_2526 = (v_lawspecrecordfield0_2527, v_lawspecrecordfield1_2528)
+    tp_2529 = value_2526
     try:
         try:
-            performed_2079 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').initProducerIdRequest(nout_01d86fc44f8c((txid_2073,), symbols))
+            performed_2532 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').initProducerIdRequest(nout_01d86fc44f8c((txid_2523,), symbols))
         except ls.Fail as error:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                 "lawtwin.kafka.model::type::KafkaError",
             ), error.value, 64, symbols)) from error
-        attempted_2078 = (1, nin_6a5ea41697b3(performed_2079, symbols))
+        attempted_2531 = (1, nin_6a5ea41697b3(performed_2532, symbols))
     except ls.Failure as failure:
         if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
             raise
-        attempted_2078 = (0, from_26c7dcf285c5(failure.value))
-    matched_2080 = attempted_2078
-    if matched_2080[0]:
-        lawspecvalue_2081 = matched_2080[1]
-        value_2077 = (1, lawspecvalue_2081)
+        attempted_2531 = (0, from_26c7dcf285c5(failure.value))
+    matched_2533 = attempted_2531
+    if matched_2533[0]:
+        lawspecvalue_2534 = matched_2533[1]
+        value_2530 = (1, lawspecvalue_2534)
     else:
-        lawspecfailure_2082 = matched_2080[1]
-        value_2077 = (0, lawspecfailure_2082)
-    matched_2083 = value_2077
-    if matched_2083[0]:
-        pe_2084 = matched_2083[1]
+        lawspecfailure_2535 = matched_2533[1]
+        value_2530 = (0, lawspecfailure_2535)
+    it_2536 = value_2530
+    if it_2536[0]:
+        v_lawspecselection0x0_2537 = it_2536[1]
         try:
-            lawspecfieldproducerid_2088 = pe_2084[0]
-            value_2087 = lawspecfieldproducerid_2088
-            lawspecfieldproducerepoch_2090 = pe_2084[1]
-            value_2089 = lawspecfieldproducerepoch_2090
+            lawspecfieldproducerid_2541 = v_lawspecselection0x0_2537[0]
+            value_2540 = lawspecfieldproducerid_2541
+            lawspecfieldproducerepoch_2543 = v_lawspecselection0x0_2537[1]
+            value_2542 = lawspecfieldproducerepoch_2543
             try:
-                performed_2091 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').addPartitionsToTxnRequest(nout_437d0abf423f(txid_2073, symbols), nout_44a08172da10(value_2087, symbols), nout_07dabd732290(value_2089, symbols), nout_3250492fe9ac(lsf_cons(tp_2076, None), symbols))
+                performed_2544 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').addPartitionsToTxnRequest(nout_437d0abf423f(txid_2523, symbols), nout_44a08172da10(value_2540, symbols), nout_07dabd732290(value_2542, symbols), nout_3250492fe9ac(lsf_cons(tp_2529, None), symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_2086 = (1, nin_b120ceed78cb(performed_2091, symbols))
+            attempted_2539 = (1, nin_b120ceed78cb(performed_2544, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_2086 = (0, from_26c7dcf285c5(failure.value))
-        matched_2092 = attempted_2086
-        if matched_2092[0]:
-            lawspecvalue_2093 = matched_2092[1]
-            value_2085 = (1, lawspecvalue_2093)
+            attempted_2539 = (0, from_26c7dcf285c5(failure.value))
+        matched_2545 = attempted_2539
+        if matched_2545[0]:
+            lawspecvalue_2546 = matched_2545[1]
+            value_2538 = (1, lawspecvalue_2546)
         else:
-            lawspecfailure_2094 = matched_2092[1]
-            value_2085 = (0, lawspecfailure_2094)
-        matched_2095 = value_2085
-        if matched_2095[0]:
+            lawspecfailure_2547 = matched_2545[1]
+            value_2538 = (0, lawspecfailure_2547)
+        it_2548 = value_2538
+        if it_2548[0]:
             try:
                 try:
-                    performed_2098 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').produceRequest(nout_57a515e0e489(tp_2076, symbols), nout_c818bd20f406((Def_tagOf_39235de7(pe_2084, 0),), symbols), nout_e3583a5b5bdc(batch_2074, symbols))
+                    performed_2551 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').produceRequest(nout_57a515e0e489(tp_2529, symbols), nout_c818bd20f406((Def_tagOf_39235de7(v_lawspecselection0x0_2537, 0),), symbols), nout_e3583a5b5bdc(batch_2524, symbols))
                 except ls.Fail as error:
                     raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                         "lawtwin.kafka.model::type::KafkaError",
                     ), error.value, 64, symbols)) from error
-                attempted_2097 = (1, nin_44a08172da10(performed_2098, symbols))
+                attempted_2550 = (1, nin_44a08172da10(performed_2551, symbols))
             except ls.Failure as failure:
                 if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                     raise
-                attempted_2097 = (0, from_26c7dcf285c5(failure.value))
-            matched_2099 = attempted_2097
-            if matched_2099[0]:
-                lawspecvalue_2100 = matched_2099[1]
-                value_2096 = (1, lawspecvalue_2100)
+                attempted_2550 = (0, from_26c7dcf285c5(failure.value))
+            matched_2552 = attempted_2550
+            if matched_2552[0]:
+                lawspecvalue_2553 = matched_2552[1]
+                value_2549 = (1, lawspecvalue_2553)
             else:
-                lawspecfailure_2101 = matched_2099[1]
-                value_2096 = (0, lawspecfailure_2101)
-            matched_2102 = value_2096
-            if matched_2102[0]:
-                base_2103 = matched_2102[1]
-                hiddenwhileopen_2104 = eq_e3583a5b5bdc(Def_committedFrom_a524f37d(symbols, tp_2076, base_2103), None)
-                seenuncommitted_2105 = eq_e3583a5b5bdc(Def_uncommittedFrom_8a57847d(symbols, tp_2076, base_2103), batch_2074)
+                lawspecfailure_2554 = matched_2552[1]
+                value_2549 = (0, lawspecfailure_2554)
+            it_2555 = value_2549
+            if it_2555[0]:
+                v_match__match__lawspecselection0x0_0_0_2556 = it_2555[1]
+                hiddenwhileopen_2557 = eq_e3583a5b5bdc(Def_committedFrom_a524f37d(symbols, tp_2529, v_match__match__lawspecselection0x0_0_0_2556), None)
+                seenuncommitted_2558 = eq_e3583a5b5bdc(Def_uncommittedFrom_8a57847d(symbols, tp_2529, v_match__match__lawspecselection0x0_0_0_2556), batch_2524)
                 try:
-                    lawspecfieldproducerid_2109 = pe_2084[0]
-                    value_2108 = lawspecfieldproducerid_2109
-                    lawspecfieldproducerepoch_2111 = pe_2084[1]
-                    value_2110 = lawspecfieldproducerepoch_2111
+                    lawspecfieldproducerid_2562 = v_lawspecselection0x0_2537[0]
+                    value_2561 = lawspecfieldproducerid_2562
+                    lawspecfieldproducerepoch_2564 = v_lawspecselection0x0_2537[1]
+                    value_2563 = lawspecfieldproducerepoch_2564
                     try:
-                        performed_2112 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').endTxnRequest(nout_437d0abf423f(txid_2073, symbols), nout_44a08172da10(value_2108, symbols), nout_07dabd732290(value_2110, symbols), nout_d267428fb2ca(commit_2075, symbols))
+                        performed_2565 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').endTxnRequest(nout_437d0abf423f(txid_2523, symbols), nout_44a08172da10(value_2561, symbols), nout_07dabd732290(value_2563, symbols), nout_d267428fb2ca(commit_2525, symbols))
                     except ls.Fail as error:
                         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                             "lawtwin.kafka.model::type::KafkaError",
                         ), error.value, 64, symbols)) from error
-                    attempted_2107 = (1, nin_b120ceed78cb(performed_2112, symbols))
+                    attempted_2560 = (1, nin_b120ceed78cb(performed_2565, symbols))
                 except ls.Failure as failure:
                     if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                         raise
-                    attempted_2107 = (0, from_26c7dcf285c5(failure.value))
-                matched_2113 = attempted_2107
-                if matched_2113[0]:
-                    lawspecvalue_2114 = matched_2113[1]
-                    value_2106 = (1, lawspecvalue_2114)
+                    attempted_2560 = (0, from_26c7dcf285c5(failure.value))
+                matched_2566 = attempted_2560
+                if matched_2566[0]:
+                    lawspecvalue_2567 = matched_2566[1]
+                    value_2559 = (1, lawspecvalue_2567)
                 else:
-                    lawspecfailure_2115 = matched_2113[1]
-                    value_2106 = (0, lawspecfailure_2115)
-                matched_2116 = value_2106
-                if matched_2116[0]:
-                    logic_2118 = ((hiddenwhileopen_2104 and seenuncommitted_2105) and eq_e3583a5b5bdc(Def_uncommittedFrom_8a57847d(symbols, tp_2076, base_2103), batch_2074))
-                    if logic_2118:
-                        if commit_2075:
-                            value_2117 = eq_e3583a5b5bdc(Def_committedFrom_a524f37d(symbols, tp_2076, base_2103), batch_2074)
+                    lawspecfailure_2568 = matched_2566[1]
+                    value_2559 = (0, lawspecfailure_2568)
+                it_2569 = value_2559
+                if it_2569[0]:
+                    logic_2571 = ((hiddenwhileopen_2557 and seenuncommitted_2558) and eq_e3583a5b5bdc(Def_uncommittedFrom_8a57847d(symbols, tp_2529, v_match__match__lawspecselection0x0_0_0_2556), batch_2524))
+                    if logic_2571:
+                        if commit_2525:
+                            value_2570 = eq_e3583a5b5bdc(Def_committedFrom_a524f37d(symbols, tp_2529, v_match__match__lawspecselection0x0_0_0_2556), batch_2524)
                         else:
-                            value_2117 = eq_e3583a5b5bdc(Def_committedFrom_a524f37d(symbols, tp_2076, base_2103), None)
-                        logic_2118 = value_2117
-                    return logic_2118
+                            value_2570 = eq_e3583a5b5bdc(Def_committedFrom_a524f37d(symbols, tp_2529, v_match__match__lawspecselection0x0_0_0_2556), None)
+                        logic_2571 = value_2570
+                    return logic_2571
                 else:
                     return False
             else:
@@ -4504,734 +4957,753 @@ def Def_transactionThenRead_81bf7b1b(symbols, t_2072, txid_2073, batch_2074, com
 
 
 # lawtwin.kafka::transactionalOffsets
-def Def_transactionalOffsets_80320406(symbols, t_2119, txid_2120, g_2121, offset_2122):
-    tp_2123 = (t_2119, 0)
-    performed_2124 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').offsetFetchRequest(nout_437d0abf423f(g_2121, symbols), nout_57a515e0e489(tp_2123, symbols))
-    before_2125 = nin_c09136e29464(performed_2124, symbols)
+def Def_transactionalOffsets_80320406(symbols, t_2572, txid_2573, g_2574, offset_2575):
+    v_lawspecrecordfield0_2577 = t_2572
+    v_lawspecrecordfield1_2578 = 0
+    value_2576 = (v_lawspecrecordfield0_2577, v_lawspecrecordfield1_2578)
+    tp_2579 = value_2576
+    performed_2580 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').offsetFetchRequest(nout_437d0abf423f(g_2574, symbols), nout_57a515e0e489(tp_2579, symbols))
+    before_2581 = nin_c09136e29464(performed_2580, symbols)
     try:
         try:
-            performed_2128 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').initProducerIdRequest(nout_01d86fc44f8c((txid_2120,), symbols))
+            performed_2584 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').initProducerIdRequest(nout_01d86fc44f8c((txid_2573,), symbols))
         except ls.Fail as error:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                 "lawtwin.kafka.model::type::KafkaError",
             ), error.value, 64, symbols)) from error
-        attempted_2127 = (1, nin_6a5ea41697b3(performed_2128, symbols))
+        attempted_2583 = (1, nin_6a5ea41697b3(performed_2584, symbols))
     except ls.Failure as failure:
         if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
             raise
-        attempted_2127 = (0, from_26c7dcf285c5(failure.value))
-    matched_2129 = attempted_2127
-    if matched_2129[0]:
-        lawspecvalue_2130 = matched_2129[1]
-        value_2126 = (1, lawspecvalue_2130)
+        attempted_2583 = (0, from_26c7dcf285c5(failure.value))
+    matched_2585 = attempted_2583
+    if matched_2585[0]:
+        lawspecvalue_2586 = matched_2585[1]
+        value_2582 = (1, lawspecvalue_2586)
     else:
-        lawspecfailure_2131 = matched_2129[1]
-        value_2126 = (0, lawspecfailure_2131)
-    matched_2132 = value_2126
-    if matched_2132[0]:
-        pe_2133 = matched_2132[1]
+        lawspecfailure_2587 = matched_2585[1]
+        value_2582 = (0, lawspecfailure_2587)
+    it_2588 = value_2582
+    if it_2588[0]:
+        v_lawspecselection0x0_2589 = it_2588[1]
         try:
-            lawspecfieldproducerid_2137 = pe_2133[0]
-            value_2136 = lawspecfieldproducerid_2137
-            lawspecfieldproducerepoch_2139 = pe_2133[1]
-            value_2138 = lawspecfieldproducerepoch_2139
+            lawspecfieldproducerid_2593 = v_lawspecselection0x0_2589[0]
+            value_2592 = lawspecfieldproducerid_2593
+            lawspecfieldproducerepoch_2595 = v_lawspecselection0x0_2589[1]
+            value_2594 = lawspecfieldproducerepoch_2595
+            v_lawspecrecordfield0_2597 = tp_2579
+            v_lawspecrecordfield1_2598 = offset_2575
+            value_2596 = (v_lawspecrecordfield0_2597, v_lawspecrecordfield1_2598)
             try:
-                performed_2140 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').txnOffsetCommitRequest(nout_437d0abf423f(txid_2120, symbols), nout_44a08172da10(value_2136, symbols), nout_07dabd732290(value_2138, symbols), nout_437d0abf423f(g_2121, symbols), nout_582052f40a9c(lsf_cons((tp_2123, offset_2122), None), symbols))
+                performed_2599 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').txnOffsetCommitRequest(nout_437d0abf423f(txid_2573, symbols), nout_44a08172da10(value_2592, symbols), nout_07dabd732290(value_2594, symbols), nout_437d0abf423f(g_2574, symbols), nout_582052f40a9c(lsf_cons(value_2596, None), symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_2135 = (1, nin_b120ceed78cb(performed_2140, symbols))
+            attempted_2591 = (1, nin_b120ceed78cb(performed_2599, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_2135 = (0, from_26c7dcf285c5(failure.value))
-        matched_2141 = attempted_2135
-        if matched_2141[0]:
-            lawspecvalue_2142 = matched_2141[1]
-            value_2134 = (1, lawspecvalue_2142)
+            attempted_2591 = (0, from_26c7dcf285c5(failure.value))
+        matched_2600 = attempted_2591
+        if matched_2600[0]:
+            lawspecvalue_2601 = matched_2600[1]
+            value_2590 = (1, lawspecvalue_2601)
         else:
-            lawspecfailure_2143 = matched_2141[1]
-            value_2134 = (0, lawspecfailure_2143)
-        sent_2144 = value_2134
+            lawspecfailure_2602 = matched_2600[1]
+            value_2590 = (0, lawspecfailure_2602)
+        sent_2603 = value_2590
         try:
-            lawspecfieldproducerid_2148 = pe_2133[0]
-            value_2147 = lawspecfieldproducerid_2148
-            lawspecfieldproducerepoch_2150 = pe_2133[1]
-            value_2149 = lawspecfieldproducerepoch_2150
+            lawspecfieldproducerid_2607 = v_lawspecselection0x0_2589[0]
+            value_2606 = lawspecfieldproducerid_2607
+            lawspecfieldproducerepoch_2609 = v_lawspecselection0x0_2589[1]
+            value_2608 = lawspecfieldproducerepoch_2609
             try:
-                performed_2151 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').endTxnRequest(nout_437d0abf423f(txid_2120, symbols), nout_44a08172da10(value_2147, symbols), nout_07dabd732290(value_2149, symbols), nout_d267428fb2ca(False, symbols))
+                performed_2610 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').endTxnRequest(nout_437d0abf423f(txid_2573, symbols), nout_44a08172da10(value_2606, symbols), nout_07dabd732290(value_2608, symbols), nout_d267428fb2ca(False, symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_2146 = (1, nin_b120ceed78cb(performed_2151, symbols))
+            attempted_2605 = (1, nin_b120ceed78cb(performed_2610, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_2146 = (0, from_26c7dcf285c5(failure.value))
-        matched_2152 = attempted_2146
-        if matched_2152[0]:
-            lawspecvalue_2153 = matched_2152[1]
-            value_2145 = (1, lawspecvalue_2153)
+            attempted_2605 = (0, from_26c7dcf285c5(failure.value))
+        matched_2611 = attempted_2605
+        if matched_2611[0]:
+            lawspecvalue_2612 = matched_2611[1]
+            value_2604 = (1, lawspecvalue_2612)
         else:
-            lawspecfailure_2154 = matched_2152[1]
-            value_2145 = (0, lawspecfailure_2154)
-        aborted_2155 = value_2145
-        performed_2156 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').offsetFetchRequest(nout_437d0abf423f(g_2121, symbols), nout_57a515e0e489(tp_2123, symbols))
-        afterabort_2157 = nin_c09136e29464(performed_2156, symbols)
+            lawspecfailure_2613 = matched_2611[1]
+            value_2604 = (0, lawspecfailure_2613)
+        aborted_2614 = value_2604
+        performed_2615 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').offsetFetchRequest(nout_437d0abf423f(g_2574, symbols), nout_57a515e0e489(tp_2579, symbols))
+        afterabort_2616 = nin_c09136e29464(performed_2615, symbols)
         try:
-            lawspecfieldproducerid_2161 = pe_2133[0]
-            value_2160 = lawspecfieldproducerid_2161
-            lawspecfieldproducerepoch_2163 = pe_2133[1]
-            value_2162 = lawspecfieldproducerepoch_2163
+            lawspecfieldproducerid_2620 = v_lawspecselection0x0_2589[0]
+            value_2619 = lawspecfieldproducerid_2620
+            lawspecfieldproducerepoch_2622 = v_lawspecselection0x0_2589[1]
+            value_2621 = lawspecfieldproducerepoch_2622
+            v_lawspecrecordfield0_2624 = tp_2579
+            v_lawspecrecordfield1_2625 = offset_2575
+            value_2623 = (v_lawspecrecordfield0_2624, v_lawspecrecordfield1_2625)
             try:
-                performed_2164 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').txnOffsetCommitRequest(nout_437d0abf423f(txid_2120, symbols), nout_44a08172da10(value_2160, symbols), nout_07dabd732290(value_2162, symbols), nout_437d0abf423f(g_2121, symbols), nout_582052f40a9c(lsf_cons((tp_2123, offset_2122), None), symbols))
+                performed_2626 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').txnOffsetCommitRequest(nout_437d0abf423f(txid_2573, symbols), nout_44a08172da10(value_2619, symbols), nout_07dabd732290(value_2621, symbols), nout_437d0abf423f(g_2574, symbols), nout_582052f40a9c(lsf_cons(value_2623, None), symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_2159 = (1, nin_b120ceed78cb(performed_2164, symbols))
+            attempted_2618 = (1, nin_b120ceed78cb(performed_2626, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_2159 = (0, from_26c7dcf285c5(failure.value))
-        matched_2165 = attempted_2159
-        if matched_2165[0]:
-            lawspecvalue_2166 = matched_2165[1]
-            value_2158 = (1, lawspecvalue_2166)
+            attempted_2618 = (0, from_26c7dcf285c5(failure.value))
+        matched_2627 = attempted_2618
+        if matched_2627[0]:
+            lawspecvalue_2628 = matched_2627[1]
+            value_2617 = (1, lawspecvalue_2628)
         else:
-            lawspecfailure_2167 = matched_2165[1]
-            value_2158 = (0, lawspecfailure_2167)
-        resent_2168 = value_2158
+            lawspecfailure_2629 = matched_2627[1]
+            value_2617 = (0, lawspecfailure_2629)
+        resent_2630 = value_2617
         try:
-            lawspecfieldproducerid_2172 = pe_2133[0]
-            value_2171 = lawspecfieldproducerid_2172
-            lawspecfieldproducerepoch_2174 = pe_2133[1]
-            value_2173 = lawspecfieldproducerepoch_2174
+            lawspecfieldproducerid_2634 = v_lawspecselection0x0_2589[0]
+            value_2633 = lawspecfieldproducerid_2634
+            lawspecfieldproducerepoch_2636 = v_lawspecselection0x0_2589[1]
+            value_2635 = lawspecfieldproducerepoch_2636
             try:
-                performed_2175 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').endTxnRequest(nout_437d0abf423f(txid_2120, symbols), nout_44a08172da10(value_2171, symbols), nout_07dabd732290(value_2173, symbols), nout_d267428fb2ca(True, symbols))
+                performed_2637 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').endTxnRequest(nout_437d0abf423f(txid_2573, symbols), nout_44a08172da10(value_2633, symbols), nout_07dabd732290(value_2635, symbols), nout_d267428fb2ca(True, symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_2170 = (1, nin_b120ceed78cb(performed_2175, symbols))
+            attempted_2632 = (1, nin_b120ceed78cb(performed_2637, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_2170 = (0, from_26c7dcf285c5(failure.value))
-        matched_2176 = attempted_2170
-        if matched_2176[0]:
-            lawspecvalue_2177 = matched_2176[1]
-            value_2169 = (1, lawspecvalue_2177)
+            attempted_2632 = (0, from_26c7dcf285c5(failure.value))
+        matched_2638 = attempted_2632
+        if matched_2638[0]:
+            lawspecvalue_2639 = matched_2638[1]
+            value_2631 = (1, lawspecvalue_2639)
         else:
-            lawspecfailure_2178 = matched_2176[1]
-            value_2169 = (0, lawspecfailure_2178)
-        committed_2179 = value_2169
-        if sent_2144[0]:
-            value_2180 = True
+            lawspecfailure_2640 = matched_2638[1]
+            value_2631 = (0, lawspecfailure_2640)
+        committed_2641 = value_2631
+        if sent_2603[0]:
+            value_2642 = True
         else:
-            value_2180 = False
-        logic_2182 = value_2180
-        if logic_2182:
-            if aborted_2155[0]:
-                value_2181 = True
+            value_2642 = False
+        logic_2644 = value_2642
+        if logic_2644:
+            if aborted_2614[0]:
+                value_2643 = True
             else:
-                value_2181 = False
-            logic_2182 = value_2181
-        logic_2184 = (logic_2182 and (afterabort_2157 == before_2125))
-        if logic_2184:
-            if resent_2168[0]:
-                value_2183 = True
+                value_2643 = False
+            logic_2644 = value_2643
+        logic_2646 = (logic_2644 and (afterabort_2616 == before_2581))
+        if logic_2646:
+            if resent_2630[0]:
+                value_2645 = True
             else:
-                value_2183 = False
-            logic_2184 = value_2183
-        logic_2186 = logic_2184
-        if logic_2186:
-            if committed_2179[0]:
-                value_2185 = True
+                value_2645 = False
+            logic_2646 = value_2645
+        logic_2648 = logic_2646
+        if logic_2648:
+            if committed_2641[0]:
+                value_2647 = True
             else:
-                value_2185 = False
-            logic_2186 = value_2185
-        logic_2188 = logic_2186
-        if logic_2188:
-            performed_2187 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').offsetFetchRequest(nout_437d0abf423f(g_2121, symbols), nout_57a515e0e489(tp_2123, symbols))
-            logic_2188 = (nin_c09136e29464(performed_2187, symbols) == (offset_2122,))
-        return logic_2188
+                value_2647 = False
+            logic_2648 = value_2647
+        logic_2650 = logic_2648
+        if logic_2650:
+            performed_2649 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').offsetFetchRequest(nout_437d0abf423f(g_2574, symbols), nout_57a515e0e489(tp_2579, symbols))
+            logic_2650 = (nin_c09136e29464(performed_2649, symbols) == (offset_2575,))
+        return logic_2650
     else:
         return False
 
 
 # lawtwin.kafka::transactionsAbort
-def Def_transactionsAbort_256496fb(symbols, st_2189):
-    return Def_transactionsEnd_fe18afb7(symbols, False, st_2189)
+def Def_transactionsAbort_256496fb(symbols, st_2651):
+    return Def_transactionsEnd_fe18afb7(symbols, False, st_2651)
 
 
 # lawtwin.kafka::transactionsAdd
-def Def_transactionsAdd_1f41c92e(symbols, tps_2190, st_2191):
-    lawspecfieldproducer_2193 = st_2191[1]
-    value_2192 = lawspecfieldproducer_2193
-    matched_2194 = value_2192
-    if matched_2194:
-        id_2195 = matched_2194[0]
-        lawspecfieldintransaction_2197 = st_2191[3]
-        value_2196 = lawspecfieldintransaction_2197
-        if (not value_2196):
-            return ((0, 1), st_2191)
+def Def_transactionsAdd_1f41c92e(symbols, tps_2652, st_2653):
+    lawspecfieldproducer_2655 = st_2653[1]
+    value_2654 = lawspecfieldproducer_2655
+    it_2656 = value_2654
+    if it_2656:
+        v_lawspecselection0x0_2657 = it_2656[0]
+        lawspecfieldintransaction_2659 = st_2653[3]
+        value_2658 = lawspecfieldintransaction_2659
+        if (not value_2658):
+            return ((0, 1), st_2653)
         else:
-            lawspecfieldadded_2199 = st_2191[4]
-            value_2198 = lawspecfieldadded_2199
-            missing_2200 = Def_missingFrom_37856ee4(tps_2190, value_2198)
-            if missing_2200 is None:
-                value_2201 = True
+            lawspecfieldadded_2661 = st_2653[4]
+            value_2660 = lawspecfieldadded_2661
+            missing_2662 = Def_missingFrom_37856ee4(tps_2652, value_2660)
+            if missing_2662 is None:
+                value_2663 = True
             else:
-                value_2201 = False
-            if value_2201:
-                return ((1, None), st_2191)
+                value_2663 = False
+            if value_2663:
+                return ((1, None), st_2653)
             else:
                 try:
-                    lawspecfieldtransactionalid_2205 = st_2191[0]
-                    value_2204 = lawspecfieldtransactionalid_2205
-                    lawspecfieldproducerid_2207 = id_2195[0]
-                    value_2206 = lawspecfieldproducerid_2207
-                    lawspecfieldproducerepoch_2209 = id_2195[1]
-                    value_2208 = lawspecfieldproducerepoch_2209
+                    lawspecfieldtransactionalid_2667 = st_2653[0]
+                    value_2666 = lawspecfieldtransactionalid_2667
+                    lawspecfieldproducerid_2669 = v_lawspecselection0x0_2657[0]
+                    value_2668 = lawspecfieldproducerid_2669
+                    lawspecfieldproducerepoch_2671 = v_lawspecselection0x0_2657[1]
+                    value_2670 = lawspecfieldproducerepoch_2671
                     try:
-                        performed_2210 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').addPartitionsToTxnRequest(nout_437d0abf423f(value_2204, symbols), nout_44a08172da10(value_2206, symbols), nout_07dabd732290(value_2208, symbols), nout_3250492fe9ac(missing_2200, symbols))
+                        performed_2672 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').addPartitionsToTxnRequest(nout_437d0abf423f(value_2666, symbols), nout_44a08172da10(value_2668, symbols), nout_07dabd732290(value_2670, symbols), nout_3250492fe9ac(missing_2662, symbols))
                     except ls.Fail as error:
                         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                             "lawtwin.kafka.model::type::KafkaError",
                         ), error.value, 64, symbols)) from error
-                    attempted_2203 = (1, nin_b120ceed78cb(performed_2210, symbols))
+                    attempted_2665 = (1, nin_b120ceed78cb(performed_2672, symbols))
                 except ls.Failure as failure:
                     if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                         raise
-                    attempted_2203 = (0, from_26c7dcf285c5(failure.value))
-                matched_2211 = attempted_2203
-                if matched_2211[0]:
-                    lawspecvalue_2212 = matched_2211[1]
-                    value_2202 = (1, lawspecvalue_2212)
+                    attempted_2665 = (0, from_26c7dcf285c5(failure.value))
+                matched_2673 = attempted_2665
+                if matched_2673[0]:
+                    lawspecvalue_2674 = matched_2673[1]
+                    value_2664 = (1, lawspecvalue_2674)
                 else:
-                    lawspecfailure_2213 = matched_2211[1]
-                    value_2202 = (0, lawspecfailure_2213)
-                matched_2214 = value_2202
-                if matched_2214[0]:
-                    lawspecfieldadded_2217 = st_2191[4]
-                    value_2216 = lawspecfieldadded_2217
-                    replacement_2218 = lsf_append(missing_2200, value_2216)
-                    lawspecfieldtransactionalid_2219 = st_2191[0]
-                    lawspecfieldproducer_2220 = st_2191[1]
-                    lawspecfieldtxnsequences_2221 = st_2191[2]
-                    lawspecfieldintransaction_2222 = st_2191[3]
-                    lawspecfieldoffsetssent_2223 = st_2191[5]
-                    value_2215 = (lawspecfieldtransactionalid_2219, lawspecfieldproducer_2220, lawspecfieldtxnsequences_2221, lawspecfieldintransaction_2222, replacement_2218, lawspecfieldoffsetssent_2223)
-                    return ((1, None), value_2215)
+                    lawspecfailure_2675 = matched_2673[1]
+                    value_2664 = (0, lawspecfailure_2675)
+                it_2676 = value_2664
+                if it_2676[0]:
+                    lawspecfieldadded_2679 = st_2653[4]
+                    value_2678 = lawspecfieldadded_2679
+                    replacement_2680 = lsf_append(missing_2662, value_2678)
+                    lawspecfieldtransactionalid_2681 = st_2653[0]
+                    lawspecfieldproducer_2682 = st_2653[1]
+                    lawspecfieldtxnsequences_2683 = st_2653[2]
+                    lawspecfieldintransaction_2684 = st_2653[3]
+                    lawspecfieldoffsetssent_2685 = st_2653[5]
+                    value_2677 = (lawspecfieldtransactionalid_2681, lawspecfieldproducer_2682, lawspecfieldtxnsequences_2683, lawspecfieldintransaction_2684, replacement_2680, lawspecfieldoffsetssent_2685)
+                    return ((1, None), value_2677)
                 else:
-                    e_2224 = matched_2214[1]
-                    return ((0, e_2224), st_2191)
+                    v_match__lawspecselection0x0_0_2686 = it_2676[1]
+                    return ((0, v_match__lawspecselection0x0_0_2686), st_2653)
     else:
-        return ((0, 1), st_2191)
+        return ((0, 1), st_2653)
 
 
 # lawtwin.kafka::transactionsBegin
-def Def_transactionsBegin_5d267b99(st_2225):
-    lawspecfieldproducer_2227 = st_2225[1]
-    value_2226 = lawspecfieldproducer_2227
-    matched_2228 = value_2226
-    if matched_2228:
-        lawspecfieldintransaction_2230 = st_2225[3]
-        value_2229 = lawspecfieldintransaction_2230
-        if value_2229:
-            return ((0, 1), st_2225)
+def Def_transactionsBegin_5d267b99(st_2687):
+    lawspecfieldproducer_2689 = st_2687[1]
+    value_2688 = lawspecfieldproducer_2689
+    it_2690 = value_2688
+    if it_2690:
+        lawspecfieldintransaction_2692 = st_2687[3]
+        value_2691 = lawspecfieldintransaction_2692
+        if value_2691:
+            return ((0, 1), st_2687)
         else:
-            replacement_2232 = False
-            replacement_2234 = None
-            replacement_2236 = True
-            lawspecfieldtransactionalid_2237 = st_2225[0]
-            lawspecfieldproducer_2238 = st_2225[1]
-            lawspecfieldtxnsequences_2239 = st_2225[2]
-            lawspecfieldadded_2240 = st_2225[4]
-            lawspecfieldoffsetssent_2241 = st_2225[5]
-            value_2235 = (lawspecfieldtransactionalid_2237, lawspecfieldproducer_2238, lawspecfieldtxnsequences_2239, replacement_2236, lawspecfieldadded_2240, lawspecfieldoffsetssent_2241)
-            matched_2242 = value_2235
-            lawspecfieldtransactionalid_2243 = matched_2242[0]
-            lawspecfieldproducer_2244 = matched_2242[1]
-            lawspecfieldtxnsequences_2245 = matched_2242[2]
-            lawspecfieldintransaction_2246 = matched_2242[3]
-            lawspecfieldoffsetssent_2247 = matched_2242[5]
-            value_2233 = (lawspecfieldtransactionalid_2243, lawspecfieldproducer_2244, lawspecfieldtxnsequences_2245, lawspecfieldintransaction_2246, replacement_2234, lawspecfieldoffsetssent_2247)
-            matched_2248 = value_2233
-            lawspecfieldtransactionalid_2249 = matched_2248[0]
-            lawspecfieldproducer_2250 = matched_2248[1]
-            lawspecfieldtxnsequences_2251 = matched_2248[2]
-            lawspecfieldintransaction_2252 = matched_2248[3]
-            lawspecfieldadded_2253 = matched_2248[4]
-            value_2231 = (lawspecfieldtransactionalid_2249, lawspecfieldproducer_2250, lawspecfieldtxnsequences_2251, lawspecfieldintransaction_2252, lawspecfieldadded_2253, replacement_2232)
-            return ((1, None), value_2231)
+            replacement_2694 = False
+            replacement_2696 = None
+            replacement_2698 = True
+            lawspecfieldtransactionalid_2699 = st_2687[0]
+            lawspecfieldproducer_2700 = st_2687[1]
+            lawspecfieldtxnsequences_2701 = st_2687[2]
+            lawspecfieldadded_2702 = st_2687[4]
+            lawspecfieldoffsetssent_2703 = st_2687[5]
+            value_2697 = (lawspecfieldtransactionalid_2699, lawspecfieldproducer_2700, lawspecfieldtxnsequences_2701, replacement_2698, lawspecfieldadded_2702, lawspecfieldoffsetssent_2703)
+            matched_2704 = value_2697
+            lawspecfieldtransactionalid_2705 = matched_2704[0]
+            lawspecfieldproducer_2706 = matched_2704[1]
+            lawspecfieldtxnsequences_2707 = matched_2704[2]
+            lawspecfieldintransaction_2708 = matched_2704[3]
+            lawspecfieldoffsetssent_2709 = matched_2704[5]
+            value_2695 = (lawspecfieldtransactionalid_2705, lawspecfieldproducer_2706, lawspecfieldtxnsequences_2707, lawspecfieldintransaction_2708, replacement_2696, lawspecfieldoffsetssent_2709)
+            matched_2710 = value_2695
+            lawspecfieldtransactionalid_2711 = matched_2710[0]
+            lawspecfieldproducer_2712 = matched_2710[1]
+            lawspecfieldtxnsequences_2713 = matched_2710[2]
+            lawspecfieldintransaction_2714 = matched_2710[3]
+            lawspecfieldadded_2715 = matched_2710[4]
+            value_2693 = (lawspecfieldtransactionalid_2711, lawspecfieldproducer_2712, lawspecfieldtxnsequences_2713, lawspecfieldintransaction_2714, lawspecfieldadded_2715, replacement_2694)
+            return ((1, None), value_2693)
     else:
-        return ((0, 1), st_2225)
+        return ((0, 1), st_2687)
 
 
 # lawtwin.kafka::transactionsCommit
-def Def_transactionsCommit_afadd0fa(symbols, st_2254):
-    return Def_transactionsEnd_fe18afb7(symbols, True, st_2254)
+def Def_transactionsCommit_afadd0fa(symbols, st_2716):
+    return Def_transactionsEnd_fe18afb7(symbols, True, st_2716)
 
 
 # lawtwin.kafka::transactionsEnd
-def Def_transactionsEnd_fe18afb7(symbols, commit_2255, st_2256):
-    lawspecfieldproducer_2258 = st_2256[1]
-    value_2257 = lawspecfieldproducer_2258
-    matched_2259 = value_2257
-    if matched_2259:
-        id_2260 = matched_2259[0]
-        lawspecfieldintransaction_2262 = st_2256[3]
-        value_2261 = lawspecfieldintransaction_2262
-        if (not value_2261):
-            return ((0, 1), st_2256)
+def Def_transactionsEnd_fe18afb7(symbols, commit_2717, st_2718):
+    lawspecfieldproducer_2720 = st_2718[1]
+    value_2719 = lawspecfieldproducer_2720
+    it_2721 = value_2719
+    if it_2721:
+        v_lawspecselection0x0_2722 = it_2721[0]
+        lawspecfieldintransaction_2724 = st_2718[3]
+        value_2723 = lawspecfieldintransaction_2724
+        if (not value_2723):
+            return ((0, 1), st_2718)
         else:
-            lawspecfieldadded_2265 = st_2256[4]
-            value_2264 = lawspecfieldadded_2265
-            matched_2266 = value_2264
-            if matched_2266 is None:
-                value_2263 = True
+            lawspecfieldadded_2727 = st_2718[4]
+            value_2726 = lawspecfieldadded_2727
+            matched_2728 = value_2726
+            if matched_2728 is None:
+                value_2725 = True
             else:
-                value_2263 = False
-            logic_2269 = value_2263
-            if logic_2269:
-                lawspecfieldoffsetssent_2268 = st_2256[5]
-                value_2267 = lawspecfieldoffsetssent_2268
-                logic_2269 = (not value_2267)
-            if logic_2269:
-                replacement_2271 = False
-                replacement_2273 = None
-                replacement_2275 = False
-                lawspecfieldtransactionalid_2276 = st_2256[0]
-                lawspecfieldproducer_2277 = st_2256[1]
-                lawspecfieldtxnsequences_2278 = st_2256[2]
-                lawspecfieldadded_2279 = st_2256[4]
-                lawspecfieldoffsetssent_2280 = st_2256[5]
-                value_2274 = (lawspecfieldtransactionalid_2276, lawspecfieldproducer_2277, lawspecfieldtxnsequences_2278, replacement_2275, lawspecfieldadded_2279, lawspecfieldoffsetssent_2280)
-                matched_2281 = value_2274
-                lawspecfieldtransactionalid_2282 = matched_2281[0]
-                lawspecfieldproducer_2283 = matched_2281[1]
-                lawspecfieldtxnsequences_2284 = matched_2281[2]
-                lawspecfieldintransaction_2285 = matched_2281[3]
-                lawspecfieldoffsetssent_2286 = matched_2281[5]
-                value_2272 = (lawspecfieldtransactionalid_2282, lawspecfieldproducer_2283, lawspecfieldtxnsequences_2284, lawspecfieldintransaction_2285, replacement_2273, lawspecfieldoffsetssent_2286)
-                matched_2287 = value_2272
-                lawspecfieldtransactionalid_2288 = matched_2287[0]
-                lawspecfieldproducer_2289 = matched_2287[1]
-                lawspecfieldtxnsequences_2290 = matched_2287[2]
-                lawspecfieldintransaction_2291 = matched_2287[3]
-                lawspecfieldadded_2292 = matched_2287[4]
-                value_2270 = (lawspecfieldtransactionalid_2288, lawspecfieldproducer_2289, lawspecfieldtxnsequences_2290, lawspecfieldintransaction_2291, lawspecfieldadded_2292, replacement_2271)
-                return ((1, None), value_2270)
+                value_2725 = False
+            logic_2731 = value_2725
+            if logic_2731:
+                lawspecfieldoffsetssent_2730 = st_2718[5]
+                value_2729 = lawspecfieldoffsetssent_2730
+                logic_2731 = (not value_2729)
+            if logic_2731:
+                replacement_2733 = False
+                replacement_2735 = None
+                replacement_2737 = False
+                lawspecfieldtransactionalid_2738 = st_2718[0]
+                lawspecfieldproducer_2739 = st_2718[1]
+                lawspecfieldtxnsequences_2740 = st_2718[2]
+                lawspecfieldadded_2741 = st_2718[4]
+                lawspecfieldoffsetssent_2742 = st_2718[5]
+                value_2736 = (lawspecfieldtransactionalid_2738, lawspecfieldproducer_2739, lawspecfieldtxnsequences_2740, replacement_2737, lawspecfieldadded_2741, lawspecfieldoffsetssent_2742)
+                matched_2743 = value_2736
+                lawspecfieldtransactionalid_2744 = matched_2743[0]
+                lawspecfieldproducer_2745 = matched_2743[1]
+                lawspecfieldtxnsequences_2746 = matched_2743[2]
+                lawspecfieldintransaction_2747 = matched_2743[3]
+                lawspecfieldoffsetssent_2748 = matched_2743[5]
+                value_2734 = (lawspecfieldtransactionalid_2744, lawspecfieldproducer_2745, lawspecfieldtxnsequences_2746, lawspecfieldintransaction_2747, replacement_2735, lawspecfieldoffsetssent_2748)
+                matched_2749 = value_2734
+                lawspecfieldtransactionalid_2750 = matched_2749[0]
+                lawspecfieldproducer_2751 = matched_2749[1]
+                lawspecfieldtxnsequences_2752 = matched_2749[2]
+                lawspecfieldintransaction_2753 = matched_2749[3]
+                lawspecfieldadded_2754 = matched_2749[4]
+                value_2732 = (lawspecfieldtransactionalid_2750, lawspecfieldproducer_2751, lawspecfieldtxnsequences_2752, lawspecfieldintransaction_2753, lawspecfieldadded_2754, replacement_2733)
+                return ((1, None), value_2732)
             else:
                 try:
-                    lawspecfieldtransactionalid_2296 = st_2256[0]
-                    value_2295 = lawspecfieldtransactionalid_2296
-                    lawspecfieldproducerid_2298 = id_2260[0]
-                    value_2297 = lawspecfieldproducerid_2298
-                    lawspecfieldproducerepoch_2300 = id_2260[1]
-                    value_2299 = lawspecfieldproducerepoch_2300
+                    lawspecfieldtransactionalid_2758 = st_2718[0]
+                    value_2757 = lawspecfieldtransactionalid_2758
+                    lawspecfieldproducerid_2760 = v_lawspecselection0x0_2722[0]
+                    value_2759 = lawspecfieldproducerid_2760
+                    lawspecfieldproducerepoch_2762 = v_lawspecselection0x0_2722[1]
+                    value_2761 = lawspecfieldproducerepoch_2762
                     try:
-                        performed_2301 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').endTxnRequest(nout_437d0abf423f(value_2295, symbols), nout_44a08172da10(value_2297, symbols), nout_07dabd732290(value_2299, symbols), nout_d267428fb2ca(commit_2255, symbols))
+                        performed_2763 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').endTxnRequest(nout_437d0abf423f(value_2757, symbols), nout_44a08172da10(value_2759, symbols), nout_07dabd732290(value_2761, symbols), nout_d267428fb2ca(commit_2717, symbols))
                     except ls.Fail as error:
                         raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                             "lawtwin.kafka.model::type::KafkaError",
                         ), error.value, 64, symbols)) from error
-                    attempted_2294 = (1, nin_b120ceed78cb(performed_2301, symbols))
+                    attempted_2756 = (1, nin_b120ceed78cb(performed_2763, symbols))
                 except ls.Failure as failure:
                     if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                         raise
-                    attempted_2294 = (0, from_26c7dcf285c5(failure.value))
-                matched_2302 = attempted_2294
-                if matched_2302[0]:
-                    lawspecvalue_2303 = matched_2302[1]
-                    value_2293 = (1, lawspecvalue_2303)
+                    attempted_2756 = (0, from_26c7dcf285c5(failure.value))
+                matched_2764 = attempted_2756
+                if matched_2764[0]:
+                    lawspecvalue_2765 = matched_2764[1]
+                    value_2755 = (1, lawspecvalue_2765)
                 else:
-                    lawspecfailure_2304 = matched_2302[1]
-                    value_2293 = (0, lawspecfailure_2304)
-                matched_2305 = value_2293
-                if matched_2305[0]:
-                    replacement_2307 = False
-                    replacement_2309 = None
-                    replacement_2311 = False
-                    lawspecfieldtransactionalid_2312 = st_2256[0]
-                    lawspecfieldproducer_2313 = st_2256[1]
-                    lawspecfieldtxnsequences_2314 = st_2256[2]
-                    lawspecfieldadded_2315 = st_2256[4]
-                    lawspecfieldoffsetssent_2316 = st_2256[5]
-                    value_2310 = (lawspecfieldtransactionalid_2312, lawspecfieldproducer_2313, lawspecfieldtxnsequences_2314, replacement_2311, lawspecfieldadded_2315, lawspecfieldoffsetssent_2316)
-                    matched_2317 = value_2310
-                    lawspecfieldtransactionalid_2318 = matched_2317[0]
-                    lawspecfieldproducer_2319 = matched_2317[1]
-                    lawspecfieldtxnsequences_2320 = matched_2317[2]
-                    lawspecfieldintransaction_2321 = matched_2317[3]
-                    lawspecfieldoffsetssent_2322 = matched_2317[5]
-                    value_2308 = (lawspecfieldtransactionalid_2318, lawspecfieldproducer_2319, lawspecfieldtxnsequences_2320, lawspecfieldintransaction_2321, replacement_2309, lawspecfieldoffsetssent_2322)
-                    matched_2323 = value_2308
-                    lawspecfieldtransactionalid_2324 = matched_2323[0]
-                    lawspecfieldproducer_2325 = matched_2323[1]
-                    lawspecfieldtxnsequences_2326 = matched_2323[2]
-                    lawspecfieldintransaction_2327 = matched_2323[3]
-                    lawspecfieldadded_2328 = matched_2323[4]
-                    value_2306 = (lawspecfieldtransactionalid_2324, lawspecfieldproducer_2325, lawspecfieldtxnsequences_2326, lawspecfieldintransaction_2327, lawspecfieldadded_2328, replacement_2307)
-                    return ((1, None), value_2306)
+                    lawspecfailure_2766 = matched_2764[1]
+                    value_2755 = (0, lawspecfailure_2766)
+                it_2767 = value_2755
+                if it_2767[0]:
+                    replacement_2769 = False
+                    replacement_2771 = None
+                    replacement_2773 = False
+                    lawspecfieldtransactionalid_2774 = st_2718[0]
+                    lawspecfieldproducer_2775 = st_2718[1]
+                    lawspecfieldtxnsequences_2776 = st_2718[2]
+                    lawspecfieldadded_2777 = st_2718[4]
+                    lawspecfieldoffsetssent_2778 = st_2718[5]
+                    value_2772 = (lawspecfieldtransactionalid_2774, lawspecfieldproducer_2775, lawspecfieldtxnsequences_2776, replacement_2773, lawspecfieldadded_2777, lawspecfieldoffsetssent_2778)
+                    matched_2779 = value_2772
+                    lawspecfieldtransactionalid_2780 = matched_2779[0]
+                    lawspecfieldproducer_2781 = matched_2779[1]
+                    lawspecfieldtxnsequences_2782 = matched_2779[2]
+                    lawspecfieldintransaction_2783 = matched_2779[3]
+                    lawspecfieldoffsetssent_2784 = matched_2779[5]
+                    value_2770 = (lawspecfieldtransactionalid_2780, lawspecfieldproducer_2781, lawspecfieldtxnsequences_2782, lawspecfieldintransaction_2783, replacement_2771, lawspecfieldoffsetssent_2784)
+                    matched_2785 = value_2770
+                    lawspecfieldtransactionalid_2786 = matched_2785[0]
+                    lawspecfieldproducer_2787 = matched_2785[1]
+                    lawspecfieldtxnsequences_2788 = matched_2785[2]
+                    lawspecfieldintransaction_2789 = matched_2785[3]
+                    lawspecfieldadded_2790 = matched_2785[4]
+                    value_2768 = (lawspecfieldtransactionalid_2786, lawspecfieldproducer_2787, lawspecfieldtxnsequences_2788, lawspecfieldintransaction_2789, lawspecfieldadded_2790, replacement_2769)
+                    return ((1, None), value_2768)
                 else:
-                    e_2329 = matched_2305[1]
-                    return ((0, e_2329), st_2256)
+                    v_match__lawspecselection0x0_0_2791 = it_2767[1]
+                    return ((0, v_match__lawspecselection0x0_0_2791), st_2718)
     else:
-        return ((0, 1), st_2256)
+        return ((0, 1), st_2718)
 
 
 # lawtwin.kafka::transactionsInit
-def Def_transactionsInit_d69a08bc(symbols, txid_2330, st_2331):
+def Def_transactionsInit_d69a08bc(symbols, txid_2792, st_2793):
     try:
         try:
-            performed_2334 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').initProducerIdRequest(nout_01d86fc44f8c((txid_2330,), symbols))
+            performed_2796 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').initProducerIdRequest(nout_01d86fc44f8c((txid_2792,), symbols))
         except ls.Fail as error:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                 "lawtwin.kafka.model::type::KafkaError",
             ), error.value, 64, symbols)) from error
-        attempted_2333 = (1, nin_6a5ea41697b3(performed_2334, symbols))
+        attempted_2795 = (1, nin_6a5ea41697b3(performed_2796, symbols))
     except ls.Failure as failure:
         if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
             raise
-        attempted_2333 = (0, from_26c7dcf285c5(failure.value))
-    matched_2335 = attempted_2333
-    if matched_2335[0]:
-        lawspecvalue_2336 = matched_2335[1]
-        value_2332 = (1, lawspecvalue_2336)
+        attempted_2795 = (0, from_26c7dcf285c5(failure.value))
+    matched_2797 = attempted_2795
+    if matched_2797[0]:
+        lawspecvalue_2798 = matched_2797[1]
+        value_2794 = (1, lawspecvalue_2798)
     else:
-        lawspecfailure_2337 = matched_2335[1]
-        value_2332 = (0, lawspecfailure_2337)
-    matched_2338 = value_2332
-    if matched_2338[0]:
-        pe_2339 = matched_2338[1]
-        return ((1, pe_2339), (txid_2330, (pe_2339,), lsf_key_val_of(None), False, None, False))
+        lawspecfailure_2799 = matched_2797[1]
+        value_2794 = (0, lawspecfailure_2799)
+    it_2800 = value_2794
+    if it_2800[0]:
+        v_lawspecselection0x0_2801 = it_2800[1]
+        v_lawspecrecordfield0_2803 = txid_2792
+        v_lawspecrecordfield1_2804 = (v_lawspecselection0x0_2801,)
+        v_lawspecrecordfield2_2805 = lsf_key_val_of(None)
+        v_lawspecrecordfield3_2806 = False
+        v_lawspecrecordfield4_2807 = None
+        v_lawspecrecordfield5_2808 = False
+        value_2802 = (v_lawspecrecordfield0_2803, v_lawspecrecordfield1_2804, v_lawspecrecordfield2_2805, v_lawspecrecordfield3_2806, v_lawspecrecordfield4_2807, v_lawspecrecordfield5_2808)
+        return ((1, v_lawspecselection0x0_2801), value_2802)
     else:
-        e_2340 = matched_2338[1]
-        return ((0, e_2340), st_2331)
+        v_lawspecselection0x0_2809 = it_2800[1]
+        return ((0, v_lawspecselection0x0_2809), st_2793)
 
 
 # lawtwin.kafka::transactionsOffsets
-def Def_transactionsOffsets_b33ea106(symbols, g_2341, offsets_2342, st_2343):
-    lawspecfieldproducer_2345 = st_2343[1]
-    value_2344 = lawspecfieldproducer_2345
-    matched_2346 = value_2344
-    if matched_2346:
-        id_2347 = matched_2346[0]
-        lawspecfieldintransaction_2349 = st_2343[3]
-        value_2348 = lawspecfieldintransaction_2349
-        if (not value_2348):
-            return ((0, 1), st_2343)
+def Def_transactionsOffsets_b33ea106(symbols, g_2810, offsets_2811, st_2812):
+    lawspecfieldproducer_2814 = st_2812[1]
+    value_2813 = lawspecfieldproducer_2814
+    it_2815 = value_2813
+    if it_2815:
+        v_lawspecselection0x0_2816 = it_2815[0]
+        lawspecfieldintransaction_2818 = st_2812[3]
+        value_2817 = lawspecfieldintransaction_2818
+        if (not value_2817):
+            return ((0, 1), st_2812)
         else:
             try:
-                lawspecfieldtransactionalid_2353 = st_2343[0]
-                value_2352 = lawspecfieldtransactionalid_2353
-                lawspecfieldproducerid_2355 = id_2347[0]
-                value_2354 = lawspecfieldproducerid_2355
-                lawspecfieldproducerepoch_2357 = id_2347[1]
-                value_2356 = lawspecfieldproducerepoch_2357
+                lawspecfieldtransactionalid_2822 = st_2812[0]
+                value_2821 = lawspecfieldtransactionalid_2822
+                lawspecfieldproducerid_2824 = v_lawspecselection0x0_2816[0]
+                value_2823 = lawspecfieldproducerid_2824
+                lawspecfieldproducerepoch_2826 = v_lawspecselection0x0_2816[1]
+                value_2825 = lawspecfieldproducerepoch_2826
                 try:
-                    performed_2358 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').txnOffsetCommitRequest(nout_437d0abf423f(value_2352, symbols), nout_44a08172da10(value_2354, symbols), nout_07dabd732290(value_2356, symbols), nout_437d0abf423f(g_2341, symbols), nout_582052f40a9c(offsets_2342, symbols))
+                    performed_2827 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').txnOffsetCommitRequest(nout_437d0abf423f(value_2821, symbols), nout_44a08172da10(value_2823, symbols), nout_07dabd732290(value_2825, symbols), nout_437d0abf423f(g_2810, symbols), nout_582052f40a9c(offsets_2811, symbols))
                 except ls.Fail as error:
                     raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                         "lawtwin.kafka.model::type::KafkaError",
                     ), error.value, 64, symbols)) from error
-                attempted_2351 = (1, nin_b120ceed78cb(performed_2358, symbols))
+                attempted_2820 = (1, nin_b120ceed78cb(performed_2827, symbols))
             except ls.Failure as failure:
                 if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                     raise
-                attempted_2351 = (0, from_26c7dcf285c5(failure.value))
-            matched_2359 = attempted_2351
-            if matched_2359[0]:
-                lawspecvalue_2360 = matched_2359[1]
-                value_2350 = (1, lawspecvalue_2360)
+                attempted_2820 = (0, from_26c7dcf285c5(failure.value))
+            matched_2828 = attempted_2820
+            if matched_2828[0]:
+                lawspecvalue_2829 = matched_2828[1]
+                value_2819 = (1, lawspecvalue_2829)
             else:
-                lawspecfailure_2361 = matched_2359[1]
-                value_2350 = (0, lawspecfailure_2361)
-            matched_2362 = value_2350
-            if matched_2362[0]:
-                replacement_2364 = True
-                lawspecfieldtransactionalid_2365 = st_2343[0]
-                lawspecfieldproducer_2366 = st_2343[1]
-                lawspecfieldtxnsequences_2367 = st_2343[2]
-                lawspecfieldintransaction_2368 = st_2343[3]
-                lawspecfieldadded_2369 = st_2343[4]
-                value_2363 = (lawspecfieldtransactionalid_2365, lawspecfieldproducer_2366, lawspecfieldtxnsequences_2367, lawspecfieldintransaction_2368, lawspecfieldadded_2369, replacement_2364)
-                return ((1, None), value_2363)
+                lawspecfailure_2830 = matched_2828[1]
+                value_2819 = (0, lawspecfailure_2830)
+            it_2831 = value_2819
+            if it_2831[0]:
+                replacement_2833 = True
+                lawspecfieldtransactionalid_2834 = st_2812[0]
+                lawspecfieldproducer_2835 = st_2812[1]
+                lawspecfieldtxnsequences_2836 = st_2812[2]
+                lawspecfieldintransaction_2837 = st_2812[3]
+                lawspecfieldadded_2838 = st_2812[4]
+                value_2832 = (lawspecfieldtransactionalid_2834, lawspecfieldproducer_2835, lawspecfieldtxnsequences_2836, lawspecfieldintransaction_2837, lawspecfieldadded_2838, replacement_2833)
+                return ((1, None), value_2832)
             else:
-                e_2370 = matched_2362[1]
-                return ((0, e_2370), st_2343)
+                v_match__lawspecselection0x0_0_2839 = it_2831[1]
+                return ((0, v_match__lawspecselection0x0_0_2839), st_2812)
     else:
-        return ((0, 1), st_2343)
+        return ((0, 1), st_2812)
 
 
 # lawtwin.kafka::transactionsSend
-def Def_transactionsSend_558d813c(symbols, pr_2371, st_2372):
-    lawspecfielddestination_2374 = pr_2371[0]
-    value_2373 = lawspecfielddestination_2374
-    lawspecfieldchoice_2376 = pr_2371[1]
-    value_2375 = lawspecfieldchoice_2376
-    lawspecfieldpayload_2378 = pr_2371[2]
-    value_2377 = lawspecfieldpayload_2378
-    matched_2379 = Def_partitionOf_343af5ef(symbols, value_2373, value_2375, value_2377)
-    if matched_2379[0]:
-        tp_2380 = matched_2379[1]
-        a_2381 = Def_transactionsAdd_1f41c92e(symbols, lsf_cons(tp_2380, None), st_2372)
-        lawspecfieldfirst_2383 = a_2381[0]
-        value_2382 = lawspecfieldfirst_2383
-        matched_2384 = value_2382
-        if matched_2384[0]:
-            lawspecfieldsecond_2387 = a_2381[1]
-            value_2386 = lawspecfieldsecond_2387
-            matched_2388 = value_2386
-            lawspecfieldtxnsequences_2389 = matched_2388[2]
-            value_2385 = lawspecfieldtxnsequences_2389
-            sequence_2390 = Def_sequenceFor_9d79724c(tp_2380, value_2385)
+def Def_transactionsSend_558d813c(symbols, pr_2840, st_2841):
+    lawspecfielddestination_2843 = pr_2840[0]
+    value_2842 = lawspecfielddestination_2843
+    lawspecfieldchoice_2845 = pr_2840[1]
+    value_2844 = lawspecfieldchoice_2845
+    lawspecfieldpayload_2847 = pr_2840[2]
+    value_2846 = lawspecfieldpayload_2847
+    it_2848 = Def_partitionOf_343af5ef(symbols, value_2842, value_2844, value_2846)
+    if it_2848[0]:
+        v_lawspecselection0x0_2849 = it_2848[1]
+        a_2850 = Def_transactionsAdd_1f41c92e(symbols, lsf_cons(v_lawspecselection0x0_2849, None), st_2841)
+        lawspecfieldfirst_2852 = a_2850[0]
+        value_2851 = lawspecfieldfirst_2852
+        it_2853 = value_2851
+        if it_2853[0]:
+            lawspecfieldsecond_2856 = a_2850[1]
+            value_2855 = lawspecfieldsecond_2856
+            matched_2857 = value_2855
+            lawspecfieldtxnsequences_2858 = matched_2857[2]
+            value_2854 = lawspecfieldtxnsequences_2858
+            sequence_2859 = Def_sequenceFor_9d79724c(v_lawspecselection0x0_2849, value_2854)
             try:
-                lawspecfieldsecond_2395 = a_2381[1]
-                value_2394 = lawspecfieldsecond_2395
-                matched_2396 = value_2394
-                lawspecfieldproducer_2397 = matched_2396[1]
-                value_2393 = lawspecfieldproducer_2397
-                lawspecfieldpayload_2399 = pr_2371[2]
-                value_2398 = lawspecfieldpayload_2399
+                lawspecfieldsecond_2864 = a_2850[1]
+                value_2863 = lawspecfieldsecond_2864
+                matched_2865 = value_2863
+                lawspecfieldproducer_2866 = matched_2865[1]
+                value_2862 = lawspecfieldproducer_2866
+                lawspecfieldpayload_2868 = pr_2840[2]
+                value_2867 = lawspecfieldpayload_2868
                 try:
-                    performed_2400 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').produceRequest(nout_57a515e0e489(tp_2380, symbols), nout_c818bd20f406(Def_tagFor_a88d3846(value_2393, sequence_2390), symbols), nout_e3583a5b5bdc(lsf_cons(value_2398, None), symbols))
+                    performed_2869 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').produceRequest(nout_57a515e0e489(v_lawspecselection0x0_2849, symbols), nout_c818bd20f406(Def_tagFor_a88d3846(value_2862, sequence_2859), symbols), nout_e3583a5b5bdc(lsf_cons(value_2867, None), symbols))
                 except ls.Fail as error:
                     raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                         "lawtwin.kafka.model::type::KafkaError",
                     ), error.value, 64, symbols)) from error
-                attempted_2392 = (1, nin_44a08172da10(performed_2400, symbols))
+                attempted_2861 = (1, nin_44a08172da10(performed_2869, symbols))
             except ls.Failure as failure:
                 if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                     raise
-                attempted_2392 = (0, from_26c7dcf285c5(failure.value))
-            matched_2401 = attempted_2392
-            if matched_2401[0]:
-                lawspecvalue_2402 = matched_2401[1]
-                value_2391 = (1, lawspecvalue_2402)
+                attempted_2861 = (0, from_26c7dcf285c5(failure.value))
+            matched_2870 = attempted_2861
+            if matched_2870[0]:
+                lawspecvalue_2871 = matched_2870[1]
+                value_2860 = (1, lawspecvalue_2871)
             else:
-                lawspecfailure_2403 = matched_2401[1]
-                value_2391 = (0, lawspecfailure_2403)
-            matched_2404 = value_2391
-            if matched_2404[0]:
-                offset_2405 = matched_2404[1]
-                lawspecfieldsecond_2409 = a_2381[1]
-                value_2408 = lawspecfieldsecond_2409
-                matched_2410 = value_2408
-                lawspecfieldtxnsequences_2411 = matched_2410[2]
-                value_2407 = lawspecfieldtxnsequences_2411
-                replacement_2412 = lsf_put(value_2407, tp_2380, Def_saturatingInt32_9e8d3b43((sequence_2390 + 1)))
-                lawspecfieldsecond_2414 = a_2381[1]
-                value_2413 = lawspecfieldsecond_2414
-                matched_2415 = value_2413
-                lawspecfieldtransactionalid_2416 = matched_2415[0]
-                lawspecfieldproducer_2417 = matched_2415[1]
-                lawspecfieldintransaction_2418 = matched_2415[3]
-                lawspecfieldadded_2419 = matched_2415[4]
-                lawspecfieldoffsetssent_2420 = matched_2415[5]
-                value_2406 = (lawspecfieldtransactionalid_2416, lawspecfieldproducer_2417, replacement_2412, lawspecfieldintransaction_2418, lawspecfieldadded_2419, lawspecfieldoffsetssent_2420)
-                return ((1, (tp_2380, offset_2405)), value_2406)
+                lawspecfailure_2872 = matched_2870[1]
+                value_2860 = (0, lawspecfailure_2872)
+            it_2873 = value_2860
+            if it_2873[0]:
+                v_match__match__lawspecselection0x0_0_0_2874 = it_2873[1]
+                v_lawspecrecordfield0_2876 = v_lawspecselection0x0_2849
+                v_lawspecrecordfield1_2877 = v_match__match__lawspecselection0x0_0_0_2874
+                value_2875 = (v_lawspecrecordfield0_2876, v_lawspecrecordfield1_2877)
+                lawspecfieldsecond_2881 = a_2850[1]
+                value_2880 = lawspecfieldsecond_2881
+                matched_2882 = value_2880
+                lawspecfieldtxnsequences_2883 = matched_2882[2]
+                value_2879 = lawspecfieldtxnsequences_2883
+                replacement_2884 = lsf_put(value_2879, v_lawspecselection0x0_2849, Def_saturatingInt32_9e8d3b43((sequence_2859 + 1)))
+                lawspecfieldsecond_2886 = a_2850[1]
+                value_2885 = lawspecfieldsecond_2886
+                matched_2887 = value_2885
+                lawspecfieldtransactionalid_2888 = matched_2887[0]
+                lawspecfieldproducer_2889 = matched_2887[1]
+                lawspecfieldintransaction_2890 = matched_2887[3]
+                lawspecfieldadded_2891 = matched_2887[4]
+                lawspecfieldoffsetssent_2892 = matched_2887[5]
+                value_2878 = (lawspecfieldtransactionalid_2888, lawspecfieldproducer_2889, replacement_2884, lawspecfieldintransaction_2890, lawspecfieldadded_2891, lawspecfieldoffsetssent_2892)
+                return ((1, value_2875), value_2878)
             else:
-                e_2421 = matched_2404[1]
-                lawspecfieldsecond_2423 = a_2381[1]
-                value_2422 = lawspecfieldsecond_2423
-                return ((0, e_2421), value_2422)
+                v_match__match__lawspecselection0x0_0_0_2893 = it_2873[1]
+                lawspecfieldsecond_2895 = a_2850[1]
+                value_2894 = lawspecfieldsecond_2895
+                return ((0, v_match__match__lawspecselection0x0_0_0_2893), value_2894)
         else:
-            e_2424 = matched_2384[1]
-            lawspecfieldsecond_2426 = a_2381[1]
-            value_2425 = lawspecfieldsecond_2426
-            return ((0, e_2424), value_2425)
+            v_match__lawspecselection0x0_0_2896 = it_2853[1]
+            lawspecfieldsecond_2898 = a_2850[1]
+            value_2897 = lawspecfieldsecond_2898
+            return ((0, v_match__lawspecselection0x0_0_2896), value_2897)
     else:
-        e_2427 = matched_2379[1]
-        return ((0, e_2427), st_2372)
+        v_lawspecselection0x0_2899 = it_2848[1]
+        return ((0, v_lawspecselection0x0_2899), st_2841)
 
 
 # lawtwin.kafka::uncommittedFrom
-def Def_uncommittedFrom_8a57847d(symbols, tp_2428, offset_2429):
-    return Def_readFrom_f028a48d(symbols, tp_2428, offset_2429, 1)
+def Def_uncommittedFrom_8a57847d(symbols, tp_2900, offset_2901):
+    return Def_readFrom_f028a48d(symbols, tp_2900, offset_2901, 1)
 
 
 # lawtwin.kafka::viewOf
-def Def_viewOf_6e11c6f7(m_2430, view_2431):
-    lawspecfieldmembers_2433 = view_2431[1]
-    value_2432 = lawspecfieldmembers_2433
-    return Def_assignmentIn_4b795225(m_2430, value_2432)
+def Def_viewOf_6e11c6f7(m_2902, view_2903):
+    lawspecfieldmembers_2905 = view_2903[1]
+    value_2904 = lawspecfieldmembers_2905
+    return Def_assignmentIn_4b795225(m_2902, value_2904)
 
 
 # lawtwin.kafka::withAssignment
-def Def_withAssignment_7d6291b1(g_2434, m_2435, gen_2436, topics_2437, tps_2438, c_2439):
-    lawspecfieldpositions_2441 = c_2439[5]
-    value_2440 = lawspecfieldpositions_2441
-    replacement_2442 = Def_keepPositions_f10bd26f(tps_2438, value_2440, lsf_key_val_of(None))
-    replacement_2444 = tps_2438
-    replacement_2446 = topics_2437
-    replacement_2448 = gen_2436
-    replacement_2450 = m_2435
-    replacement_2452 = g_2434
-    lawspecfieldmember_2453 = c_2439[1]
-    lawspecfieldgeneration_2454 = c_2439[2]
-    lawspecfieldsubscription_2455 = c_2439[3]
-    lawspecfieldassigned_2456 = c_2439[4]
-    lawspecfieldpositions_2457 = c_2439[5]
-    lawspecfieldisolation_2458 = c_2439[6]
-    value_2451 = (replacement_2452, lawspecfieldmember_2453, lawspecfieldgeneration_2454, lawspecfieldsubscription_2455, lawspecfieldassigned_2456, lawspecfieldpositions_2457, lawspecfieldisolation_2458)
-    matched_2459 = value_2451
-    lawspecfieldgroup_2460 = matched_2459[0]
-    lawspecfieldgeneration_2461 = matched_2459[2]
-    lawspecfieldsubscription_2462 = matched_2459[3]
-    lawspecfieldassigned_2463 = matched_2459[4]
-    lawspecfieldpositions_2464 = matched_2459[5]
-    lawspecfieldisolation_2465 = matched_2459[6]
-    value_2449 = (lawspecfieldgroup_2460, replacement_2450, lawspecfieldgeneration_2461, lawspecfieldsubscription_2462, lawspecfieldassigned_2463, lawspecfieldpositions_2464, lawspecfieldisolation_2465)
-    matched_2466 = value_2449
-    lawspecfieldgroup_2467 = matched_2466[0]
-    lawspecfieldmember_2468 = matched_2466[1]
-    lawspecfieldsubscription_2469 = matched_2466[3]
-    lawspecfieldassigned_2470 = matched_2466[4]
-    lawspecfieldpositions_2471 = matched_2466[5]
-    lawspecfieldisolation_2472 = matched_2466[6]
-    value_2447 = (lawspecfieldgroup_2467, lawspecfieldmember_2468, replacement_2448, lawspecfieldsubscription_2469, lawspecfieldassigned_2470, lawspecfieldpositions_2471, lawspecfieldisolation_2472)
-    matched_2473 = value_2447
-    lawspecfieldgroup_2474 = matched_2473[0]
-    lawspecfieldmember_2475 = matched_2473[1]
-    lawspecfieldgeneration_2476 = matched_2473[2]
-    lawspecfieldassigned_2477 = matched_2473[4]
-    lawspecfieldpositions_2478 = matched_2473[5]
-    lawspecfieldisolation_2479 = matched_2473[6]
-    value_2445 = (lawspecfieldgroup_2474, lawspecfieldmember_2475, lawspecfieldgeneration_2476, replacement_2446, lawspecfieldassigned_2477, lawspecfieldpositions_2478, lawspecfieldisolation_2479)
-    matched_2480 = value_2445
-    lawspecfieldgroup_2481 = matched_2480[0]
-    lawspecfieldmember_2482 = matched_2480[1]
-    lawspecfieldgeneration_2483 = matched_2480[2]
-    lawspecfieldsubscription_2484 = matched_2480[3]
-    lawspecfieldpositions_2485 = matched_2480[5]
-    lawspecfieldisolation_2486 = matched_2480[6]
-    value_2443 = (lawspecfieldgroup_2481, lawspecfieldmember_2482, lawspecfieldgeneration_2483, lawspecfieldsubscription_2484, replacement_2444, lawspecfieldpositions_2485, lawspecfieldisolation_2486)
-    matched_2487 = value_2443
-    lawspecfieldgroup_2488 = matched_2487[0]
-    lawspecfieldmember_2489 = matched_2487[1]
-    lawspecfieldgeneration_2490 = matched_2487[2]
-    lawspecfieldsubscription_2491 = matched_2487[3]
-    lawspecfieldassigned_2492 = matched_2487[4]
-    lawspecfieldisolation_2493 = matched_2487[6]
-    return (lawspecfieldgroup_2488, lawspecfieldmember_2489, lawspecfieldgeneration_2490, lawspecfieldsubscription_2491, lawspecfieldassigned_2492, replacement_2442, lawspecfieldisolation_2493)
+def Def_withAssignment_7d6291b1(g_2906, m_2907, gen_2908, topics_2909, tps_2910, c_2911):
+    lawspecfieldpositions_2913 = c_2911[5]
+    value_2912 = lawspecfieldpositions_2913
+    replacement_2914 = Def_keepPositions_f10bd26f(tps_2910, value_2912, lsf_key_val_of(None))
+    replacement_2916 = tps_2910
+    replacement_2918 = topics_2909
+    replacement_2920 = gen_2908
+    replacement_2922 = m_2907
+    replacement_2924 = g_2906
+    lawspecfieldmember_2925 = c_2911[1]
+    lawspecfieldgeneration_2926 = c_2911[2]
+    lawspecfieldsubscription_2927 = c_2911[3]
+    lawspecfieldassigned_2928 = c_2911[4]
+    lawspecfieldpositions_2929 = c_2911[5]
+    lawspecfieldisolation_2930 = c_2911[6]
+    value_2923 = (replacement_2924, lawspecfieldmember_2925, lawspecfieldgeneration_2926, lawspecfieldsubscription_2927, lawspecfieldassigned_2928, lawspecfieldpositions_2929, lawspecfieldisolation_2930)
+    matched_2931 = value_2923
+    lawspecfieldgroup_2932 = matched_2931[0]
+    lawspecfieldgeneration_2933 = matched_2931[2]
+    lawspecfieldsubscription_2934 = matched_2931[3]
+    lawspecfieldassigned_2935 = matched_2931[4]
+    lawspecfieldpositions_2936 = matched_2931[5]
+    lawspecfieldisolation_2937 = matched_2931[6]
+    value_2921 = (lawspecfieldgroup_2932, replacement_2922, lawspecfieldgeneration_2933, lawspecfieldsubscription_2934, lawspecfieldassigned_2935, lawspecfieldpositions_2936, lawspecfieldisolation_2937)
+    matched_2938 = value_2921
+    lawspecfieldgroup_2939 = matched_2938[0]
+    lawspecfieldmember_2940 = matched_2938[1]
+    lawspecfieldsubscription_2941 = matched_2938[3]
+    lawspecfieldassigned_2942 = matched_2938[4]
+    lawspecfieldpositions_2943 = matched_2938[5]
+    lawspecfieldisolation_2944 = matched_2938[6]
+    value_2919 = (lawspecfieldgroup_2939, lawspecfieldmember_2940, replacement_2920, lawspecfieldsubscription_2941, lawspecfieldassigned_2942, lawspecfieldpositions_2943, lawspecfieldisolation_2944)
+    matched_2945 = value_2919
+    lawspecfieldgroup_2946 = matched_2945[0]
+    lawspecfieldmember_2947 = matched_2945[1]
+    lawspecfieldgeneration_2948 = matched_2945[2]
+    lawspecfieldassigned_2949 = matched_2945[4]
+    lawspecfieldpositions_2950 = matched_2945[5]
+    lawspecfieldisolation_2951 = matched_2945[6]
+    value_2917 = (lawspecfieldgroup_2946, lawspecfieldmember_2947, lawspecfieldgeneration_2948, replacement_2918, lawspecfieldassigned_2949, lawspecfieldpositions_2950, lawspecfieldisolation_2951)
+    matched_2952 = value_2917
+    lawspecfieldgroup_2953 = matched_2952[0]
+    lawspecfieldmember_2954 = matched_2952[1]
+    lawspecfieldgeneration_2955 = matched_2952[2]
+    lawspecfieldsubscription_2956 = matched_2952[3]
+    lawspecfieldpositions_2957 = matched_2952[5]
+    lawspecfieldisolation_2958 = matched_2952[6]
+    value_2915 = (lawspecfieldgroup_2953, lawspecfieldmember_2954, lawspecfieldgeneration_2955, lawspecfieldsubscription_2956, replacement_2916, lawspecfieldpositions_2957, lawspecfieldisolation_2958)
+    matched_2959 = value_2915
+    lawspecfieldgroup_2960 = matched_2959[0]
+    lawspecfieldmember_2961 = matched_2959[1]
+    lawspecfieldgeneration_2962 = matched_2959[2]
+    lawspecfieldsubscription_2963 = matched_2959[3]
+    lawspecfieldassigned_2964 = matched_2959[4]
+    lawspecfieldisolation_2965 = matched_2959[6]
+    return (lawspecfieldgroup_2960, lawspecfieldmember_2961, lawspecfieldgeneration_2962, lawspecfieldsubscription_2963, lawspecfieldassigned_2964, replacement_2914, lawspecfieldisolation_2965)
 
 
 # lawtwin.kafka::withPosition
-def Def_withPosition_867e6b19(tp_2494, offset_2495, c_2496):
-    lawspecfieldpositions_2498 = c_2496[5]
-    value_2497 = lawspecfieldpositions_2498
-    replacement_2499 = lsf_put(value_2497, tp_2494, offset_2495)
-    lawspecfieldgroup_2500 = c_2496[0]
-    lawspecfieldmember_2501 = c_2496[1]
-    lawspecfieldgeneration_2502 = c_2496[2]
-    lawspecfieldsubscription_2503 = c_2496[3]
-    lawspecfieldassigned_2504 = c_2496[4]
-    lawspecfieldisolation_2505 = c_2496[6]
-    return (lawspecfieldgroup_2500, lawspecfieldmember_2501, lawspecfieldgeneration_2502, lawspecfieldsubscription_2503, lawspecfieldassigned_2504, replacement_2499, lawspecfieldisolation_2505)
+def Def_withPosition_867e6b19(tp_2966, offset_2967, c_2968):
+    lawspecfieldpositions_2970 = c_2968[5]
+    value_2969 = lawspecfieldpositions_2970
+    replacement_2971 = lsf_put(value_2969, tp_2966, offset_2967)
+    lawspecfieldgroup_2972 = c_2968[0]
+    lawspecfieldmember_2973 = c_2968[1]
+    lawspecfieldgeneration_2974 = c_2968[2]
+    lawspecfieldsubscription_2975 = c_2968[3]
+    lawspecfieldassigned_2976 = c_2968[4]
+    lawspecfieldisolation_2977 = c_2968[6]
+    return (lawspecfieldgroup_2972, lawspecfieldmember_2973, lawspecfieldgeneration_2974, lawspecfieldsubscription_2975, lawspecfieldassigned_2976, replacement_2971, lawspecfieldisolation_2977)
 
 
 # lawtwin.kafka::writeAborted
-def Def_writeAborted_8e3a61e4(symbols, tp_2506, txid_2507, r_2508):
+def Def_writeAborted_8e3a61e4(symbols, tp_2978, txid_2979, r_2980):
     try:
         try:
-            performed_2511 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').initProducerIdRequest(nout_01d86fc44f8c((txid_2507,), symbols))
+            performed_2983 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').initProducerIdRequest(nout_01d86fc44f8c((txid_2979,), symbols))
         except ls.Fail as error:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                 "lawtwin.kafka.model::type::KafkaError",
             ), error.value, 64, symbols)) from error
-        attempted_2510 = (1, nin_6a5ea41697b3(performed_2511, symbols))
+        attempted_2982 = (1, nin_6a5ea41697b3(performed_2983, symbols))
     except ls.Failure as failure:
         if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
             raise
-        attempted_2510 = (0, from_26c7dcf285c5(failure.value))
-    matched_2512 = attempted_2510
-    if matched_2512[0]:
-        lawspecvalue_2513 = matched_2512[1]
-        value_2509 = (1, lawspecvalue_2513)
+        attempted_2982 = (0, from_26c7dcf285c5(failure.value))
+    matched_2984 = attempted_2982
+    if matched_2984[0]:
+        lawspecvalue_2985 = matched_2984[1]
+        value_2981 = (1, lawspecvalue_2985)
     else:
-        lawspecfailure_2514 = matched_2512[1]
-        value_2509 = (0, lawspecfailure_2514)
-    matched_2515 = value_2509
-    if matched_2515[0]:
-        pe_2516 = matched_2515[1]
+        lawspecfailure_2986 = matched_2984[1]
+        value_2981 = (0, lawspecfailure_2986)
+    it_2987 = value_2981
+    if it_2987[0]:
+        v_lawspecselection0x0_2988 = it_2987[1]
         try:
-            lawspecfieldproducerid_2520 = pe_2516[0]
-            value_2519 = lawspecfieldproducerid_2520
-            lawspecfieldproducerepoch_2522 = pe_2516[1]
-            value_2521 = lawspecfieldproducerepoch_2522
+            lawspecfieldproducerid_2992 = v_lawspecselection0x0_2988[0]
+            value_2991 = lawspecfieldproducerid_2992
+            lawspecfieldproducerepoch_2994 = v_lawspecselection0x0_2988[1]
+            value_2993 = lawspecfieldproducerepoch_2994
             try:
-                performed_2523 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').addPartitionsToTxnRequest(nout_437d0abf423f(txid_2507, symbols), nout_44a08172da10(value_2519, symbols), nout_07dabd732290(value_2521, symbols), nout_3250492fe9ac(lsf_cons(tp_2506, None), symbols))
+                performed_2995 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').addPartitionsToTxnRequest(nout_437d0abf423f(txid_2979, symbols), nout_44a08172da10(value_2991, symbols), nout_07dabd732290(value_2993, symbols), nout_3250492fe9ac(lsf_cons(tp_2978, None), symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_2518 = (1, nin_b120ceed78cb(performed_2523, symbols))
+            attempted_2990 = (1, nin_b120ceed78cb(performed_2995, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_2518 = (0, from_26c7dcf285c5(failure.value))
-        matched_2524 = attempted_2518
-        if matched_2524[0]:
-            lawspecvalue_2525 = matched_2524[1]
-            value_2517 = (1, lawspecvalue_2525)
+            attempted_2990 = (0, from_26c7dcf285c5(failure.value))
+        matched_2996 = attempted_2990
+        if matched_2996[0]:
+            lawspecvalue_2997 = matched_2996[1]
+            value_2989 = (1, lawspecvalue_2997)
         else:
-            lawspecfailure_2526 = matched_2524[1]
-            value_2517 = (0, lawspecfailure_2526)
-        added_2527 = value_2517
+            lawspecfailure_2998 = matched_2996[1]
+            value_2989 = (0, lawspecfailure_2998)
+        added_2999 = value_2989
         try:
             try:
-                performed_2530 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').produceRequest(nout_57a515e0e489(tp_2506, symbols), nout_c818bd20f406((Def_tagOf_39235de7(pe_2516, 0),), symbols), nout_e3583a5b5bdc(lsf_cons(r_2508, None), symbols))
+                performed_3002 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').produceRequest(nout_57a515e0e489(tp_2978, symbols), nout_c818bd20f406((Def_tagOf_39235de7(v_lawspecselection0x0_2988, 0),), symbols), nout_e3583a5b5bdc(lsf_cons(r_2980, None), symbols))
             except ls.Fail as error:
                 raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                     "lawtwin.kafka.model::type::KafkaError",
                 ), error.value, 64, symbols)) from error
-            attempted_2529 = (1, nin_44a08172da10(performed_2530, symbols))
+            attempted_3001 = (1, nin_44a08172da10(performed_3002, symbols))
         except ls.Failure as failure:
             if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                 raise
-            attempted_2529 = (0, from_26c7dcf285c5(failure.value))
-        matched_2531 = attempted_2529
-        if matched_2531[0]:
-            lawspecvalue_2532 = matched_2531[1]
-            value_2528 = (1, lawspecvalue_2532)
+            attempted_3001 = (0, from_26c7dcf285c5(failure.value))
+        matched_3003 = attempted_3001
+        if matched_3003[0]:
+            lawspecvalue_3004 = matched_3003[1]
+            value_3000 = (1, lawspecvalue_3004)
         else:
-            lawspecfailure_2533 = matched_2531[1]
-            value_2528 = (0, lawspecfailure_2533)
-        matched_2534 = value_2528
-        if matched_2534[0]:
-            o_2535 = matched_2534[1]
+            lawspecfailure_3005 = matched_3003[1]
+            value_3000 = (0, lawspecfailure_3005)
+        it_3006 = value_3000
+        if it_3006[0]:
+            v_match__lawspecselection0x0_0_3007 = it_3006[1]
             try:
-                lawspecfieldproducerid_2539 = pe_2516[0]
-                value_2538 = lawspecfieldproducerid_2539
-                lawspecfieldproducerepoch_2541 = pe_2516[1]
-                value_2540 = lawspecfieldproducerepoch_2541
+                lawspecfieldproducerid_3011 = v_lawspecselection0x0_2988[0]
+                value_3010 = lawspecfieldproducerid_3011
+                lawspecfieldproducerepoch_3013 = v_lawspecselection0x0_2988[1]
+                value_3012 = lawspecfieldproducerepoch_3013
                 try:
-                    performed_2542 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').endTxnRequest(nout_437d0abf423f(txid_2507, symbols), nout_44a08172da10(value_2538, symbols), nout_07dabd732290(value_2540, symbols), nout_d267428fb2ca(False, symbols))
+                    performed_3014 = ls.handler(symbols, 'lawtwin.kafka::ability::Broker').endTxnRequest(nout_437d0abf423f(txid_2979, symbols), nout_44a08172da10(value_3010, symbols), nout_07dabd732290(value_3012, symbols), nout_d267428fb2ca(False, symbols))
                 except ls.Fail as error:
                     raise ls.Failure('lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)', ls.handler_schema(_lawspec_schema).from_native(_schema.Named(
                         "lawtwin.kafka.model::type::KafkaError",
                     ), error.value, 64, symbols)) from error
-                attempted_2537 = (1, nin_b120ceed78cb(performed_2542, symbols))
+                attempted_3009 = (1, nin_b120ceed78cb(performed_3014, symbols))
             except ls.Failure as failure:
                 if failure.ability != 'lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)':
                     raise
-                attempted_2537 = (0, from_26c7dcf285c5(failure.value))
-            matched_2543 = attempted_2537
-            if matched_2543[0]:
-                lawspecvalue_2544 = matched_2543[1]
-                value_2536 = (1, lawspecvalue_2544)
+                attempted_3009 = (0, from_26c7dcf285c5(failure.value))
+            matched_3015 = attempted_3009
+            if matched_3015[0]:
+                lawspecvalue_3016 = matched_3015[1]
+                value_3008 = (1, lawspecvalue_3016)
             else:
-                lawspecfailure_2545 = matched_2543[1]
-                value_2536 = (0, lawspecfailure_2545)
-            matched_2546 = value_2536
-            if matched_2546[0]:
-                return (o_2535,)
+                lawspecfailure_3017 = matched_3015[1]
+                value_3008 = (0, lawspecfailure_3017)
+            it_3018 = value_3008
+            if it_3018[0]:
+                return (v_match__lawspecselection0x0_0_3007,)
             else:
                 return ()
         else:
@@ -5241,35 +5713,39 @@ def Def_writeAborted_8e3a61e4(symbols, tp_2506, txid_2507, r_2508):
 
 
 # lawtwin.kafka::xor32
-def Def_xor32_0ea970f5(a_2547, b_2548):
-    return Def_wrappingUInt32_1ef3ce20(Def_xorBits_ea1fb8e2(a_2547, b_2548, 2147483648))
+def Def_xor32_0ea970f5(a_3019, b_3020):
+    return Def_wrappingUInt32_1ef3ce20(Def_xorBits_ea1fb8e2(a_3019, b_3020, 2147483648))
 
 
 # lawtwin.kafka::xorBits
-def Def_xorBits_ea1fb8e2(a_2549, b_2550, bit_2551):
-    if (((bit_2551 <= 0) or (a_2549 < 0)) or (b_2550 < 0)):
+def Def_xorBits_ea1fb8e2(a_3021, b_3022, bit_3023):
+    if (((bit_3023 <= 0) or (a_3021 < 0)) or (b_3022 < 0)):
         return 0
     else:
-        if (lsf_quot(a_2549, bit_2551) != lsf_quot(b_2550, bit_2551)):
-            value_2552 = bit_2551
+        if (lsf_quot(a_3021, bit_3023) != lsf_quot(b_3022, bit_3023)):
+            value_3024 = bit_3023
         else:
-            value_2552 = 0
-        return (value_2552 + Def_xorBits_ea1fb8e2(lsf_rem(a_2549, bit_2551), lsf_rem(b_2550, bit_2551), lsf_quot(bit_2551, 2)))
+            value_3024 = 0
+        return (value_3024 + Def_xorBits_ea1fb8e2(lsf_rem(a_3021, bit_3023), lsf_rem(b_3022, bit_3023), lsf_quot(bit_3023, 2)))
 
 
 # lawtwin.kafka.model::topicPartitions
-def Def_topicPartitions_a717cef5(topic_2553, ps_2554):
-    if ps_2554 is None:
+def Def_topicPartitions_a717cef5(topic_3025, ps_3026):
+    it_3027 = ps_3026
+    if it_3027 is None:
         return None
     else:
-        p_2555 = ps_2554[0]
-        rest_2556 = ps_2554[1]
-        return lsf_cons((topic_2553, p_2555), Def_topicPartitions_a717cef5(topic_2553, rest_2556))
+        v_lawspecselection0x0_3028 = it_3027[0]
+        v_lawspecselection0x1_3029 = it_3027[1]
+        v_lawspecrecordfield0_3031 = topic_3025
+        v_lawspecrecordfield1_3032 = v_lawspecselection0x0_3028
+        value_3030 = (v_lawspecrecordfield0_3031, v_lawspecrecordfield1_3032)
+        return lsf_cons(value_3030, Def_topicPartitions_a717cef5(topic_3025, v_lawspecselection0x1_3029))
 
 
-# contracttest.kafka::keepBoundedArithmetic
-def Def_keepBoundedArithmetic_3e45e1f6(n_2557):
-    return Def_saturatingInt64_5bce4ed8((n_2557 + 1))
+# contracttest.kafka::suiteNamesThePackage
+def Def_suiteNamesThePackage_55f330a5(u_3033):
+    return None
 
 
 def Start_216e2324(symbols):
@@ -6058,7 +6534,7 @@ def from_a198a150c390(v):
     if v.tag == 'lawtwin.kafka.model::type::TxnState::NoTxn':
         return (0,)
     if v.tag == 'lawtwin.kafka.model::type::TxnState::Ongoing':
-        return (1, from_3250492fe9ac(v.fields[0]), from_8af9a375600a(v.fields[1]))
+        return (1, from_3b0803058a4f(v.fields[0]))
     raise ValueError('expected TxnState, found ' + v.tag)
 
 
@@ -7330,7 +7806,7 @@ def to_a198a150c390(x):
     if x[0] == 0:
         return ls.DataValue('lawtwin.kafka.model::type::TxnState::NoTxn', ())
     if x[0] == 1:
-        return ls.DataValue('lawtwin.kafka.model::type::TxnState::Ongoing', (to_3250492fe9ac(x[1]), to_8af9a375600a(x[2]), ))
+        return ls.DataValue('lawtwin.kafka.model::type::TxnState::Ongoing', (to_3b0803058a4f(x[1]), ))
     lsf_unreachable()
 
 
@@ -7484,6 +7960,13 @@ def from_8fe65ca887f7(v):
     raise ValueError('expected Entry, found ' + v.tag)
 
 
+# from Constructor "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee" []
+def from_3b0803058a4f(v):
+    if v.tag == 'lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record':
+        return (from_8af9a375600a(v.fields[0]), from_3250492fe9ac(v.fields[1]))
+    raise ValueError('expected Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee, found ' + v.tag)
+
+
 # from Constructor "lawtwin.kafka.model::type::AbortedTxn" []
 def from_d4424de384bf(v):
     if v.tag == 'lawtwin.kafka.model::type::AbortedTxn::AbortedTxn':
@@ -7508,9 +7991,9 @@ def from_4aa5635bf6b1(v):
 # from Constructor "lawtwin.kafka.model::type::LogEntry" []
 def from_0bdc036bd39a(v):
     if v.tag == 'lawtwin.kafka.model::type::LogEntry::DataEntry':
-        return (1, v.fields[0], from_be206fb00188(v.fields[1]), v.fields[2], v.fields[3])
+        return (1, from_6939fbd43730(v.fields[0]))
     if v.tag == 'lawtwin.kafka.model::type::LogEntry::ControlEntry':
-        return (0, v.fields[0], v.fields[1], v.fields[2])
+        return (0, from_b124993f5ff3(v.fields[0]))
     raise ValueError('expected LogEntry, found ' + v.tag)
 
 
@@ -7844,6 +8327,11 @@ def to_8fe65ca887f7(x):
     return ls.DataValue('lawspec.collections::type::Entry::Entry', (to_57a515e0e489(x[0]), to_17b5cd6f2c74(x[1]), ))
 
 
+# to Constructor "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee" []
+def to_3b0803058a4f(x):
+    return ls.DataValue('lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record', (to_8af9a375600a(x[0]), to_3250492fe9ac(x[1]), ))
+
+
 # to Constructor "lawtwin.kafka.model::type::AbortedTxn" []
 def to_d4424de384bf(x):
     return ls.DataValue('lawtwin.kafka.model::type::AbortedTxn::AbortedTxn', (x[0], x[1], x[2], ))
@@ -7862,9 +8350,9 @@ def to_4aa5635bf6b1(x):
 # to Constructor "lawtwin.kafka.model::type::LogEntry" []
 def to_0bdc036bd39a(x):
     if x[0] == 1:
-        return ls.DataValue('lawtwin.kafka.model::type::LogEntry::DataEntry', (x[1], to_be206fb00188(x[2]), x[3], x[4], ))
+        return ls.DataValue('lawtwin.kafka.model::type::LogEntry::DataEntry', (to_6939fbd43730(x[1]), ))
     if x[0] == 0:
-        return ls.DataValue('lawtwin.kafka.model::type::LogEntry::ControlEntry', (x[1], x[2], x[3], ))
+        return ls.DataValue('lawtwin.kafka.model::type::LogEntry::ControlEntry', (to_b124993f5ff3(x[1]), ))
     lsf_unreachable()
 
 
@@ -8058,6 +8546,20 @@ def eq_0ccaa6764e43(a, b):
     return lsf_eq_list_plain(a, b)
 
 
+# from Constructor "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3" []
+def from_b124993f5ff3(v):
+    if v.tag == 'lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record':
+        return (v.fields[0], v.fields[1], v.fields[2])
+    raise ValueError('expected Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3, found ' + v.tag)
+
+
+# from Constructor "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be" []
+def from_6939fbd43730(v):
+    if v.tag == 'lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record':
+        return (v.fields[0], from_be206fb00188(v.fields[1]), v.fields[2], v.fields[3])
+    raise ValueError('expected Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be, found ' + v.tag)
+
+
 # from Constructor "lawtwin.kafka.model::type::Header" []
 def from_272a99a01eca(v):
     if v.tag == 'lawtwin.kafka.model::type::Header::Header':
@@ -8175,7 +8677,7 @@ def fromnative_be206fb00188(n):
 def fromnative_3c79f555f54b(n):
     kind = type(n)
     if kind is data.PartitionChoiceToPartition:
-        return (1, n.chosen)
+        return (1, n.value)
     if kind is data.PartitionChoiceByKey:
         return (0,)
     raise TypeError('expected PartitionChoice')
@@ -8184,6 +8686,16 @@ def fromnative_3c79f555f54b(n):
 # fromnative Constructor "lawtwin.kafka::type::RecordMetadata" []
 def fromnative_374b72e4cd48(n):
     return (fromnative_57a515e0e489(n.sentTo), n.sentAt)
+
+
+# to Constructor "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3" []
+def to_b124993f5ff3(x):
+    return ls.DataValue('lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record', (x[0], x[1], x[2], ))
+
+
+# to Constructor "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be" []
+def to_6939fbd43730(x):
+    return ls.DataValue('lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record', (x[0], to_be206fb00188(x[1]), x[2], x[3], ))
 
 
 # to Constructor "lawtwin.kafka.model::type::Header" []
@@ -8428,7 +8940,7 @@ def fromnative_a198a150c390(n):
     if kind is data.TxnStateNoTxn:
         return (0,)
     if kind is data.TxnStateOngoing:
-        return (1, fromnative_3250492fe9ac(n.txnPartitions), fromnative_8af9a375600a(n.txnOffsets))
+        return (1, fromnative_3b0803058a4f(n.value))
     raise TypeError('expected TxnState')
 
 
@@ -8472,7 +8984,7 @@ def tonative_a198a150c390(x):
     if x[0] == 0:
         return data.TxnStateNoTxn()
     if x[0] == 1:
-        return data.TxnStateOngoing(tonative_3250492fe9ac(x[1]), tonative_8af9a375600a(x[2]))
+        return data.TxnStateOngoing(tonative_3b0803058a4f(x[1]))
     lsf_unreachable()
 
 
@@ -8481,9 +8993,9 @@ def fromnative_789f82e1207e(n):
     return lsf_from_list(n, fromnative_a358ea2021fe)
 
 
-# fromnative Constructor "List" [TypeArgument (Constructor "lawtwin.kafka.model::type::PendingOffset" [])]
-def fromnative_8af9a375600a(n):
-    return lsf_from_list(n, fromnative_ace9168272ce)
+# fromnative Constructor "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee" []
+def fromnative_3b0803058a4f(n):
+    return (fromnative_8af9a375600a(n.txnOffsets), fromnative_3250492fe9ac(n.txnPartitions))
 
 
 # fromnative Constructor "lawtwin.kafka.model::type::AbortedTxn" []
@@ -8495,9 +9007,9 @@ def fromnative_d4424de384bf(n):
 def fromnative_0bdc036bd39a(n):
     kind = type(n)
     if kind is data.LogEntryDataEntry:
-        return (1, n.entryOffset, fromnative_be206fb00188(n.entryRecord), n.writer, n.transactional)
+        return (1, fromnative_6939fbd43730(n.value))
     if kind is data.LogEntryControlEntry:
-        return (0, n.markerOffset, n.markerWriter, n.commits)
+        return (0, fromnative_b124993f5ff3(n.value))
     raise TypeError('expected LogEntry')
 
 
@@ -8506,9 +9018,9 @@ def tonative_789f82e1207e(x):
     return lsf_to_list(x, tonative_a358ea2021fe)
 
 
-# tonative Constructor "List" [TypeArgument (Constructor "lawtwin.kafka.model::type::PendingOffset" [])]
-def tonative_8af9a375600a(x):
-    return lsf_to_list(x, tonative_ace9168272ce)
+# tonative Constructor "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee" []
+def tonative_3b0803058a4f(x):
+    return data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(tonative_8af9a375600a(x[0]), tonative_3250492fe9ac(x[1]))
 
 
 # tonative Constructor "lawtwin.kafka.model::type::AbortedTxn" []
@@ -8519,10 +9031,25 @@ def tonative_d4424de384bf(x):
 # tonative Constructor "lawtwin.kafka.model::type::LogEntry" []
 def tonative_0bdc036bd39a(x):
     if x[0] == 1:
-        return data.LogEntryDataEntry(x[1], tonative_be206fb00188(x[2]), x[3], x[4])
+        return data.LogEntryDataEntry(tonative_6939fbd43730(x[1]))
     if x[0] == 0:
-        return data.LogEntryControlEntry(x[1], x[2], x[3])
+        return data.LogEntryControlEntry(tonative_b124993f5ff3(x[1]))
     lsf_unreachable()
+
+
+# fromnative Constructor "List" [TypeArgument (Constructor "lawtwin.kafka.model::type::PendingOffset" [])]
+def fromnative_8af9a375600a(n):
+    return lsf_from_list(n, fromnative_ace9168272ce)
+
+
+# fromnative Constructor "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3" []
+def fromnative_b124993f5ff3(n):
+    return (n.commits, n.markerOffset, n.markerWriter)
+
+
+# fromnative Constructor "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be" []
+def fromnative_6939fbd43730(n):
+    return (n.entryOffset, fromnative_be206fb00188(n.entryRecord), n.transactional, n.writer)
 
 
 # fromnative Constructor "lawtwin.kafka.model::type::BatchMeta" []
@@ -8530,14 +9057,29 @@ def fromnative_a358ea2021fe(n):
     return (n.batchEpoch, n.firstSequence, n.lastSequence, n.batchOffset)
 
 
-# fromnative Constructor "lawtwin.kafka.model::type::PendingOffset" []
-def fromnative_ace9168272ce(n):
-    return (n.pendingGroup, fromnative_05bc2b61d601(n.pendingEntry))
+# tonative Constructor "List" [TypeArgument (Constructor "lawtwin.kafka.model::type::PendingOffset" [])]
+def tonative_8af9a375600a(x):
+    return lsf_to_list(x, tonative_ace9168272ce)
+
+
+# tonative Constructor "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3" []
+def tonative_b124993f5ff3(x):
+    return data.Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3(x[0], x[1], x[2])
+
+
+# tonative Constructor "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be" []
+def tonative_6939fbd43730(x):
+    return data.Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be(x[0], tonative_be206fb00188(x[1]), x[2], x[3])
 
 
 # tonative Constructor "lawtwin.kafka.model::type::BatchMeta" []
 def tonative_a358ea2021fe(x):
     return data.BatchMeta(x[0], x[1], x[2], x[3])
+
+
+# fromnative Constructor "lawtwin.kafka.model::type::PendingOffset" []
+def fromnative_ace9168272ce(n):
+    return (n.pendingGroup, fromnative_05bc2b61d601(n.pendingEntry))
 
 
 # tonative Constructor "lawtwin.kafka.model::type::PendingOffset" []

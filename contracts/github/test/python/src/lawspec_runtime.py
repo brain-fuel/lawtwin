@@ -376,6 +376,18 @@ def handle_label(value):
     return _handles[id(value)][1]
 
 
+def same_members(left, right, equal):
+    return (all(any(equal(value, candidate) for candidate in right)
+                for value in left)
+            and all(any(equal(value, candidate) for candidate in left)
+                    for value in right))
+
+
+def distinct_members(items, equal):
+    return all(not any(equal(value, candidate) for candidate in items[:index])
+               for index, value in enumerate(items))
+
+
 def equal(a, b, ta, tb):
     """Equality defined once for all targets instead of borrowed from each
     language's: NaN differs from itself, signed zeros are equal, handles and
@@ -475,6 +487,8 @@ def compare_values(a, b):
 
 
 def helper(n, args, types, bits=64):
+    if n == 'incompleteSearch':
+        raise ValueError(args[0])
     x = args[0] if args else None
     if n in _SEQUENCE_HELPERS:
         return _SEQUENCE_HELPERS[n](*args)
@@ -4746,7 +4760,7 @@ class Node:
                 if key in self._seen:
                     answer = self._seen[key]
                     if answer is not None:
-                        threading.Thread(target=self._send, args=(source + '/', 'reply', answer, ident), daemon=True).start()
+                        threading.Thread(target=self._send_reply, args=(source, ident, answer), daemon=True).start()
                     return
                 self._seen[key] = None
                 if len(self._seen) > 10000:
@@ -4761,6 +4775,11 @@ class Node:
         with self._lock:
             if (source, ident) in self._seen:
                 self._seen[(source, ident)] = payload
+        self._send_reply(source, ident, payload)
+
+    def _send_reply(self, source, ident, payload):
+        # A retried request can reach us after its caller received the first
+        # reply and closed. Original and cached replies have the same lifetime.
         try:
             self._send(source + '/', 'reply', payload, ident)
         except Unreachable:

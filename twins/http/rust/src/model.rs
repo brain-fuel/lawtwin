@@ -1,8 +1,8 @@
 //! The reference model a contract's generated code gives the twin, behind
 //! one interface for every compiled contract.
 //!
-//! `build.rs` writes, for each contract, a `Model` whose `call` runs the
-//! contract's typed definition of an operation over a state the twin owns,
+//! The importer emits a `Model` adapter calling each contract's public
+//! generated handler through its failure-returning embedding interface,
 //! and gives a raised `ApiError` back as its constructor's name.
 //! ref:DEC-embed-generated-model
 

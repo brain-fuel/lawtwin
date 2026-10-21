@@ -10,7 +10,7 @@
 # compiler is the one `stack build` made from that checkout's sources. The
 # checkout itself is not changed.
 #
-#   LAWSPEC_VERSION=0.23.0 tools/stage-lawspec.sh
+#   LAWSPEC_VERSION=0.26.0 tools/stage-lawspec.sh
 #   LAWSPEC_HOME=/path/to/lawspec tools/stage-lawspec.sh
 #   node .lawspec-cli/bin/lawspec.mjs check --config ...
 set -euo pipefail
@@ -26,16 +26,22 @@ if [ -z "${LAWSPEC_HOME:-}" ]; then
   echo "staged LawSpec $(node .lawspec-cli/bin/lawspec.mjs --version 2>/dev/null || echo "$LAWSPEC_VERSION") from npm in .lawspec-cli"
   exit 0
 fi
+actual_version="$(node -p 'require(process.argv[1]).version' "$(cd "$LAWSPEC_HOME" && pwd)/npm/package.json")"
+if [ -n "${LAWSPEC_VERSION:-}" ] && [ "$actual_version" != "$LAWSPEC_VERSION" ]; then
+  echo "LawSpec checkout is $actual_version; contracts require $LAWSPEC_VERSION" >&2
+  exit 1
+fi
 core="$(cd "$LAWSPEC_HOME" && stack --no-terminal path --local-install-root)/bin/lawspec-core"
 test -x "$core" || { echo "no $core; run stack build in $LAWSPEC_HOME" >&2; exit 1; }
 rm -rf .lawspec-cli
 cp -R "$LAWSPEC_HOME/npm" .lawspec-cli
 # The CLI fingerprints core.wasm for its cache; the native core stands in.
 shasum -a 256 "$core" > .lawspec-cli/core.wasm
+core_json="$(node -p 'JSON.stringify(process.argv[1])' "$core")"
 cat > .lawspec-cli/launcher.mjs <<JS
 // Written by tools/stage-lawspec.sh: each request runs the native compiler.
 import { spawnSync } from "node:child_process";
-const core = "${core}";
+const core = ${core_json};
 export async function loadCore() {
   return async (input) => {
     const run = spawnSync(core, { input: JSON.stringify(input), maxBuffer: 1 << 30 });

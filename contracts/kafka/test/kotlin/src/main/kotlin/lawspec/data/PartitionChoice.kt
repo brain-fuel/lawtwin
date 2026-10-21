@@ -2,7 +2,7 @@
 package lawspec.data
 
 sealed interface PartitionChoice {
-    data class ToPartition(val chosen: kotlin.Int) : lawspec.data.PartitionChoice
+    data class ToPartition(val value: kotlin.Int) : lawspec.data.PartitionChoice
 
     data object ByKey : lawspec.data.PartitionChoice
 }

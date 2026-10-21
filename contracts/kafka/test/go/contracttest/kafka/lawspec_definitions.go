@@ -643,13 +643,6 @@ func (lawSpecDefinitions) KafkaTransactionsStart(
 	return lsfTonative_74b3f2831172(lsfKafkaTransactionsStart_68a77cf3(lsfFromnative_b120ceed78cb(value0)))
 }
 
-func (lawSpecDefinitions) KeepBoundedArithmetic(
-	symbols map[string]*LawSpecSymbol,
-	value0 int64,
-) int64 {
-	return lsfTonative_44a08172da10(lsfKeepBoundedArithmetic_3e45e1f6(lsfFromnative_44a08172da10(value0)))
-}
-
 func (lawSpecDefinitions) LawspecCollectionsBoundedInt16(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
@@ -688,7 +681,7 @@ func (lawSpecDefinitions) LawspecCollectionsBoundedIntSize(
 		codec0 := lsScalarCodec[*LawSpecBigInt](schema, bits, "Integer")
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int](schema, bits, "IntSize"), symbols)
-		result := lawSpecEvaluate600(symbols, argument0)
+		result := lawSpecEvaluate599(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -731,7 +724,7 @@ func (lawSpecDefinitions) LawspecCollectionsBoundedUIntPtr(
 		codec0 := lsScalarCodec[*LawSpecBigInt](schema, bits, "Integer")
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[uintptr](schema, bits, "UIntPtr"), symbols)
-		result := lawSpecEvaluate605(symbols, argument0)
+		result := lawSpecEvaluate604(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -746,7 +739,7 @@ func (lawSpecDefinitions) LawspecCollectionsBoundedUIntSize(
 		codec0 := lsScalarCodec[*LawSpecBigInt](schema, bits, "Integer")
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[uint](schema, bits, "UIntSize"), symbols)
-		result := lawSpecEvaluate606(symbols, argument0)
+		result := lawSpecEvaluate605(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -789,7 +782,7 @@ func (lawSpecDefinitions) LawspecCollectionsSaturatingIntSize(
 		codec0 := lsScalarCodec[*LawSpecBigInt](schema, bits, "Integer")
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lsScalarCodec[int](schema, bits, "IntSize")
-		result := lawSpecEvaluate611(symbols, argument0)
+		result := lawSpecEvaluate610(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -832,7 +825,7 @@ func (lawSpecDefinitions) LawspecCollectionsSaturatingUIntPtr(
 		codec0 := lsScalarCodec[*LawSpecBigInt](schema, bits, "Integer")
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lsScalarCodec[uintptr](schema, bits, "UIntPtr")
-		result := lawSpecEvaluate616(symbols, argument0)
+		result := lawSpecEvaluate615(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -847,7 +840,7 @@ func (lawSpecDefinitions) LawspecCollectionsSaturatingUIntSize(
 		codec0 := lsScalarCodec[*LawSpecBigInt](schema, bits, "Integer")
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lsScalarCodec[uint](schema, bits, "UIntSize")
-		result := lawSpecEvaluate617(symbols, argument0)
+		result := lawSpecEvaluate616(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -890,7 +883,7 @@ func (lawSpecDefinitions) LawspecCollectionsWrappingIntSize(
 		codec0 := lsScalarCodec[*LawSpecBigInt](schema, bits, "Integer")
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lsScalarCodec[int](schema, bits, "IntSize")
-		result := lawSpecEvaluate622(symbols, argument0)
+		result := lawSpecEvaluate621(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -933,7 +926,7 @@ func (lawSpecDefinitions) LawspecCollectionsWrappingUIntPtr(
 		codec0 := lsScalarCodec[*LawSpecBigInt](schema, bits, "Integer")
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lsScalarCodec[uintptr](schema, bits, "UIntPtr")
-		result := lawSpecEvaluate627(symbols, argument0)
+		result := lawSpecEvaluate626(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -948,7 +941,7 @@ func (lawSpecDefinitions) LawspecCollectionsWrappingUIntSize(
 		codec0 := lsScalarCodec[*LawSpecBigInt](schema, bits, "Integer")
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lsScalarCodec[uint](schema, bits, "UIntSize")
-		result := lawSpecEvaluate628(symbols, argument0)
+		result := lawSpecEvaluate627(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -1723,7 +1716,7 @@ func (lawSpecDefinitions) LawtwinKafkaCommittedFrom(
 		codec1 := lsScalarCodec[int64](schema, bits, "Int64")
 		argument1 := codec1.fromNative(value1)
 		resultCodec := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate723(symbols, argument0, argument1)
+		result := lawSpecEvaluate722(symbols, argument0, argument1)
 		return resultCodec.toNative(result)
 	})
 }
@@ -1748,7 +1741,7 @@ func (lawSpecDefinitions) LawtwinKafkaConsumerClose(
 		codec0 := lawSpecConsumerStateCodec(schema, bits, symbols)
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lawSpecPairCodec(schema, bits, lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), lawSpecConsumerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate725(symbols, argument0)
+		result := lawSpecEvaluate724(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -1765,7 +1758,7 @@ func (lawSpecDefinitions) LawtwinKafkaConsumerCommit(
 		codec0 := lawSpecConsumerStateCodec(schema, bits, symbols)
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols), lawSpecConsumerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate726(symbols, argument0)
+		result := lawSpecEvaluate725(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -1785,7 +1778,7 @@ func (lawSpecDefinitions) LawtwinKafkaConsumerCommitted(
 		codec1 := lawSpecConsumerStateCodec(schema, bits, symbols)
 		argument1 := codec1.fromNative(value1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols), lawSpecConsumerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate727(symbols, argument0, argument1)
+		result := lawSpecEvaluate726(symbols, argument0, argument1)
 		return resultCodec.toNative(result)
 	})
 }
@@ -1819,7 +1812,7 @@ func (lawSpecDefinitions) LawtwinKafkaConsumerJoin(
 		codec3 := lawSpecConsumerStateCodec(schema, bits, symbols)
 		argument3 := codec3.fromNative(value3)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols), symbols), lawSpecConsumerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate729(symbols, argument0, argument1, argument2, argument3)
+		result := lawSpecEvaluate728(symbols, argument0, argument1, argument2, argument3)
 		return resultCodec.toNative(result)
 	})
 }
@@ -1839,7 +1832,7 @@ func (lawSpecDefinitions) LawtwinKafkaConsumerPoll(
 		codec1 := lawSpecConsumerStateCodec(schema, bits, symbols)
 		argument1 := codec1.fromNative(value1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols), symbols), lawSpecConsumerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate730(symbols, argument0, argument1)
+		result := lawSpecEvaluate729(symbols, argument0, argument1)
 		return resultCodec.toNative(result)
 	})
 }
@@ -1859,7 +1852,7 @@ func (lawSpecDefinitions) LawtwinKafkaConsumerPosition(
 		codec1 := lawSpecConsumerStateCodec(schema, bits, symbols)
 		argument1 := codec1.fromNative(value1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), lawSpecConsumerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate731(symbols, argument0, argument1)
+		result := lawSpecEvaluate730(symbols, argument0, argument1)
 		return resultCodec.toNative(result)
 	})
 }
@@ -1879,7 +1872,7 @@ func (lawSpecDefinitions) LawtwinKafkaConsumerPositionOf(
 		codec1 := lawSpecConsumerStateCodec(schema, bits, symbols)
 		argument1 := codec1.fromNative(value1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[int64](schema, bits, "Int64"), symbols), lawSpecConsumerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate732(symbols, argument0, argument1)
+		result := lawSpecEvaluate731(symbols, argument0, argument1)
 		return resultCodec.toNative(result)
 	})
 }
@@ -1904,7 +1897,7 @@ func (lawSpecDefinitions) LawtwinKafkaConsumerRefresh(
 		codec0 := lawSpecConsumerStateCodec(schema, bits, symbols)
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols), lawSpecConsumerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate734(symbols, argument0)
+		result := lawSpecEvaluate733(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -1942,7 +1935,7 @@ func (lawSpecDefinitions) LawtwinKafkaCreated(
 		codec1 := lsScalarCodec[int32](schema, bits, "Int32")
 		argument1 := codec1.fromNative(value1)
 		resultCodec := lsScalarCodec[bool](schema, bits, "Bool")
-		result := lawSpecEvaluate737(symbols, argument0, argument1)
+		result := lawSpecEvaluate736(symbols, argument0, argument1)
 		return resultCodec.toNative(result)
 	})
 }
@@ -2025,7 +2018,7 @@ func (lawSpecDefinitions) LawtwinKafkaJoinAll(
 		codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 		argument2 := codec2.fromNative(value2)
 		resultCodec := lsScalarCodec[bool](schema, bits, "Bool")
-		result := lawSpecEvaluate746(symbols, argument0, argument1, argument2)
+		result := lawSpecEvaluate745(symbols, argument0, argument1, argument2)
 		return resultCodec.toNative(result)
 	})
 }
@@ -2048,7 +2041,7 @@ func (lawSpecDefinitions) LawtwinKafkaJoinEach(
 		codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 		argument2 := codec2.fromNative(value2)
 		resultCodec := lsScalarCodec[bool](schema, bits, "Bool")
-		result := lawSpecEvaluate747(symbols, argument0, argument1, argument2)
+		result := lawSpecEvaluate746(symbols, argument0, argument1, argument2)
 		return resultCodec.toNative(result)
 	})
 }
@@ -2762,7 +2755,7 @@ func (lawSpecDefinitions) LawtwinKafkaPartitionOf(
 		codec2 := lawSpecRecordCodec(schema, bits, symbols)
 		argument2 := codec2.fromNative(value2)
 		resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate827(symbols, argument0, argument1, argument2)
+		result := lawSpecEvaluate826(symbols, argument0, argument1, argument2)
 		return resultCodec.toNative(result)
 	})
 }
@@ -2796,7 +2789,7 @@ func (lawSpecDefinitions) LawtwinKafkaPollPartitions(
 		codec3 := lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols)
 		argument3 := codec3.fromNative(value3)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols), symbols), lawSpecConsumerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate829(symbols, argument0, argument1, argument2, argument3)
+		result := lawSpecEvaluate828(symbols, argument0, argument1, argument2, argument3)
 		return resultCodec.toNative(result)
 	})
 }
@@ -2828,7 +2821,7 @@ func (lawSpecDefinitions) LawtwinKafkaProducerIdempotent(
 		codec0 := lawSpecProducerStateCodec(schema, bits, symbols)
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecProducerIdAndEpochCodec(schema, bits, symbols), symbols), lawSpecProducerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate832(symbols, argument0)
+		result := lawSpecEvaluate831(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -2845,7 +2838,7 @@ func (lawSpecDefinitions) LawtwinKafkaProducerRetry(
 		codec0 := lawSpecProducerStateCodec(schema, bits, symbols)
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecRecordMetadataCodec(schema, bits, symbols), symbols), lawSpecProducerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate833(symbols, argument0)
+		result := lawSpecEvaluate832(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -2866,7 +2859,7 @@ func (lawSpecDefinitions) LawtwinKafkaProducerSend(
 		codec1 := lawSpecProducerStateCodec(schema, bits, symbols)
 		argument1 := codec1.fromNative(value1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecRecordMetadataCodec(schema, bits, symbols), symbols), lawSpecProducerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate834(symbols, argument0, argument1)
+		result := lawSpecEvaluate833(symbols, argument0, argument1)
 		return resultCodec.toNative(result)
 	})
 }
@@ -2889,7 +2882,7 @@ func (lawSpecDefinitions) LawtwinKafkaReadFrom(
 		codec2 := lawSpecIsolationLevelCodec(schema, bits, symbols)
 		argument2 := codec2.fromNative(value2)
 		resultCodec := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate835(symbols, argument0, argument1, argument2)
+		result := lawSpecEvaluate834(symbols, argument0, argument1, argument2)
 		return resultCodec.toNative(result)
 	})
 }
@@ -2915,7 +2908,7 @@ func (lawSpecDefinitions) LawtwinKafkaReadInOrder(
 		codec3 := lawSpecRecordCodec(schema, bits, symbols)
 		argument3 := codec3.fromNative(value3)
 		resultCodec := lsScalarCodec[bool](schema, bits, "Bool")
-		result := lawSpecEvaluate836(symbols, argument0, argument1, argument2, argument3)
+		result := lawSpecEvaluate835(symbols, argument0, argument1, argument2, argument3)
 		return resultCodec.toNative(result)
 	})
 }
@@ -2962,7 +2955,7 @@ func (lawSpecDefinitions) LawtwinKafkaResumesAtCommitted(
 		codec3 := lsScalarCodec[int32](schema, bits, "Int32")
 		argument3 := codec3.fromNative(value3)
 		resultCodec := lsScalarCodec[bool](schema, bits, "Bool")
-		result := lawSpecEvaluate840(symbols, argument0, argument1, argument2, argument3)
+		result := lawSpecEvaluate839(symbols, argument0, argument1, argument2, argument3)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3008,7 +3001,7 @@ func (lawSpecDefinitions) LawtwinKafkaStableBelowHigh(
 		codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
 		argument2 := codec2.fromNative(value2)
 		resultCodec := lsScalarCodec[bool](schema, bits, "Bool")
-		result := lawSpecEvaluate844(symbols, argument0, argument1, argument2)
+		result := lawSpecEvaluate843(symbols, argument0, argument1, argument2)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3057,7 +3050,7 @@ func (lawSpecDefinitions) LawtwinKafkaTransactionThenRead(
 		codec3 := lsScalarCodec[bool](schema, bits, "Bool")
 		argument3 := codec3.fromNative(value3)
 		resultCodec := lsScalarCodec[bool](schema, bits, "Bool")
-		result := lawSpecEvaluate848(symbols, argument0, argument1, argument2, argument3)
+		result := lawSpecEvaluate847(symbols, argument0, argument1, argument2, argument3)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3083,7 +3076,7 @@ func (lawSpecDefinitions) LawtwinKafkaTransactionalOffsets(
 		codec3 := lsScalarCodec[int64](schema, bits, "Int64")
 		argument3 := codec3.fromNative(value3)
 		resultCodec := lsScalarCodec[bool](schema, bits, "Bool")
-		result := lawSpecEvaluate849(symbols, argument0, argument1, argument2, argument3)
+		result := lawSpecEvaluate848(symbols, argument0, argument1, argument2, argument3)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3100,7 +3093,7 @@ func (lawSpecDefinitions) LawtwinKafkaTransactionsAbort(
 		codec0 := lawSpecTransactionStateCodec(schema, bits, symbols)
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols), lawSpecTransactionStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate850(symbols, argument0)
+		result := lawSpecEvaluate849(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3120,7 +3113,7 @@ func (lawSpecDefinitions) LawtwinKafkaTransactionsAdd(
 		codec1 := lawSpecTransactionStateCodec(schema, bits, symbols)
 		argument1 := codec1.fromNative(value1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols), lawSpecTransactionStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate851(symbols, argument0, argument1)
+		result := lawSpecEvaluate850(symbols, argument0, argument1)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3144,7 +3137,7 @@ func (lawSpecDefinitions) LawtwinKafkaTransactionsCommit(
 		codec0 := lawSpecTransactionStateCodec(schema, bits, symbols)
 		argument0 := codec0.fromNative(value0)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols), lawSpecTransactionStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate853(symbols, argument0)
+		result := lawSpecEvaluate852(symbols, argument0)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3164,7 +3157,7 @@ func (lawSpecDefinitions) LawtwinKafkaTransactionsEnd(
 		codec1 := lawSpecTransactionStateCodec(schema, bits, symbols)
 		argument1 := codec1.fromNative(value1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols), lawSpecTransactionStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate854(symbols, argument0, argument1)
+		result := lawSpecEvaluate853(symbols, argument0, argument1)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3184,7 +3177,7 @@ func (lawSpecDefinitions) LawtwinKafkaTransactionsInit(
 		codec1 := lawSpecTransactionStateCodec(schema, bits, symbols)
 		argument1 := codec1.fromNative(value1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecProducerIdAndEpochCodec(schema, bits, symbols), symbols), lawSpecTransactionStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate855(symbols, argument0, argument1)
+		result := lawSpecEvaluate854(symbols, argument0, argument1)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3207,7 +3200,7 @@ func (lawSpecDefinitions) LawtwinKafkaTransactionsOffsets(
 		codec2 := lawSpecTransactionStateCodec(schema, bits, symbols)
 		argument2 := codec2.fromNative(value2)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols), lawSpecTransactionStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate856(symbols, argument0, argument1, argument2)
+		result := lawSpecEvaluate855(symbols, argument0, argument1, argument2)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3228,7 +3221,7 @@ func (lawSpecDefinitions) LawtwinKafkaTransactionsSend(
 		codec1 := lawSpecTransactionStateCodec(schema, bits, symbols)
 		argument1 := codec1.fromNative(value1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecRecordMetadataCodec(schema, bits, symbols), symbols), lawSpecTransactionStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate857(symbols, argument0, argument1)
+		result := lawSpecEvaluate856(symbols, argument0, argument1)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3248,7 +3241,7 @@ func (lawSpecDefinitions) LawtwinKafkaUncommittedFrom(
 		codec1 := lsScalarCodec[int64](schema, bits, "Int64")
 		argument1 := codec1.fromNative(value1)
 		resultCodec := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluate858(symbols, argument0, argument1)
+		result := lawSpecEvaluate857(symbols, argument0, argument1)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3300,7 +3293,7 @@ func (lawSpecDefinitions) LawtwinKafkaWriteAborted(
 		codec2 := lawSpecRecordCodec(schema, bits, symbols)
 		argument2 := codec2.fromNative(value2)
 		resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-		result := lawSpecEvaluate862(symbols, argument0, argument1, argument2)
+		result := lawSpecEvaluate861(symbols, argument0, argument1, argument2)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3328,6 +3321,13 @@ func (lawSpecDefinitions) MurmurPartitionerChoosePartition(
 	value1 int32,
 ) int32 {
 	return lsfTonative_b862204e9be7(lsfMurmurPartitionerChoosePartition_5048c35d(lsfFromnative_b276e66efd09(value0), lsfFromnative_b862204e9be7(value1)))
+}
+
+func (lawSpecDefinitions) SuiteNamesThePackage(
+	symbols map[string]*LawSpecSymbol,
+	value0 LawSpecUnit,
+) LawSpecUnit {
+	return lsfTonative_b120ceed78cb(lsfSuiteNamesThePackage_55f330a5(lsfFromnative_b120ceed78cb(value0)))
 }
 
 func lawSpecEvaluate542(
@@ -3752,181 +3752,177 @@ func lawSpecEvaluate594(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 }
 
 func lawSpecEvaluate595(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_44a08172da10(lsfKeepBoundedArithmetic_3e45e1f6(lsfFrom_44a08172da10(value0)))
-}
-
-func lawSpecEvaluate596(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_8458421ef461(lsfBoundedInt16_cdb4a79e(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate597(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate596(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_e0f8ce0ed062(lsfBoundedInt32_b3381d93(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate598(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate597(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_c09136e29464(lsfBoundedInt64_13153a18(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate599(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate598(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_322842b70901(lsfBoundedInt8_9822648b(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate600(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate599(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("contracttest.kafka::lawspecCollectionsBoundedIntSize", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Just", []LawSpecValue{lsHelper("IntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Just", []LawSpecValue{lsHelper("IntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) })
 		return result
 	})
 }
 
-func lawSpecEvaluate601(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate600(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_a765ca1ff0da(lsfBoundedUInt16_fab24aa3(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate602(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate601(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_770fd683e40e(lsfBoundedUInt32_f7521c17(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate603(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate602(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_a2258feb4d57(lsfBoundedUInt64_ca410424(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate604(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate603(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_2a3b378408f8(lsfBoundedUInt8_8ce0c76e(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate605(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate604(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("contracttest.kafka::lawspecCollectionsBoundedUIntPtr", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Just", []LawSpecValue{lsHelper("UIntPtr", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Just", []LawSpecValue{lsHelper("UIntPtr", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) })
+		return result
+	})
+}
+
+func lawSpecEvaluate605(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+	return lsNativeContext("contracttest.kafka::lawspecCollectionsBoundedUIntSize", func() LawSpecValue {
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Just", []LawSpecValue{lsHelper("UIntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) })
 		return result
 	})
 }
 
 func lawSpecEvaluate606(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawspecCollectionsBoundedUIntSize", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Just", []LawSpecValue{lsHelper("UIntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) }()
-		return result
-	})
-}
-
-func lawSpecEvaluate607(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_07dabd732290(lsfSaturatingInt16_770015a8(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate608(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate607(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_b862204e9be7(lsfSaturatingInt32_9e8d3b43(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate609(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate608(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_44a08172da10(lsfSaturatingInt64_5bce4ed8(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate610(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate609(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_9d2bd68f647a(lsfSaturatingInt8_54855fd8(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate611(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate610(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("contracttest.kafka::lawspecCollectionsSaturatingIntSize", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))) { return lsConvert("IntSize", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), 64) }; return func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) { return lsConvert("IntSize", lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64), 64) }; return lsHelper("IntSize", []LawSpecValue{value0}, 64) }() }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))) { return lsConvert("IntSize", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), 64) }; return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) { return lsConvert("IntSize", lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64), 64) }; return lsHelper("IntSize", []LawSpecValue{value0}, 64) }) })
 		return result
 	})
 }
 
-func lawSpecEvaluate612(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate611(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_7c7a5790413b(lsfSaturatingUInt16_c4c11e3b(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate613(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate612(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_bd9653153f3b(lsfSaturatingUInt32_6d025357(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate614(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate613(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_65439cc7c2ff(lsfSaturatingUInt64_dce984c8(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate615(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate614(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_d048b68cd5b1(lsfSaturatingUInt8_cf40d611(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate616(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate615(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("contracttest.kafka::lawspecCollectionsSaturatingUIntPtr", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))) { return lsConvert("UIntPtr", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), 64) }; return func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsConvert("UIntPtr", lsConvert("Integer", lsInteger("Integer", "0"), 64), 64) }; return lsHelper("UIntPtr", []LawSpecValue{value0}, 64) }() }()
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))) { return lsConvert("UIntPtr", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), 64) }; return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsConvert("UIntPtr", lsConvert("Integer", lsInteger("Integer", "0"), 64), 64) }; return lsHelper("UIntPtr", []LawSpecValue{value0}, 64) }) })
+		return result
+	})
+}
+
+func lawSpecEvaluate616(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+	return lsNativeContext("contracttest.kafka::lawspecCollectionsSaturatingUIntSize", func() LawSpecValue {
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))) { return lsConvert("UIntSize", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), 64) }; return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsConvert("UIntSize", lsConvert("Integer", lsInteger("Integer", "0"), 64), 64) }; return lsHelper("UIntSize", []LawSpecValue{value0}, 64) }) })
 		return result
 	})
 }
 
 func lawSpecEvaluate617(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawspecCollectionsSaturatingUIntSize", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBinary(">", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))) { return lsConvert("UIntSize", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), 64) }; return func() LawSpecValue { if lsTruth(lsBinary("<", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsConvert("UIntSize", lsConvert("Integer", lsInteger("Integer", "0"), 64), 64) }; return lsHelper("UIntSize", []LawSpecValue{value0}, 64) }() }()
-		return result
-	})
-}
-
-func lawSpecEvaluate618(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_07dabd732290(lsfWrappingInt16_989a4ce2(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate619(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate618(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_b862204e9be7(lsfWrappingInt32_e1b5a7b2(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate620(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate619(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_44a08172da10(lsfWrappingInt64_698b955a(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate621(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate620(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_9d2bd68f647a(lsfWrappingInt8_728a92af(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate622(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate621(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("contracttest.kafka::lawspecCollectionsWrappingIntSize", func() LawSpecValue {
-		result := func() LawSpecValue {
+		result := lsEvaluate(func() LawSpecValue {
 			value1 := lsBinary("rem", lsBinary("-", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64)), lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64)))
 			_ = value1
-			return func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("IntSize", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))}, 64) }; return lsHelper("IntSize", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))}, 64) }()
-		}()
+			return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("IntSize", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))}, 64) }; return lsHelper("IntSize", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))}, 64) })
+		})
 		return result
 	})
 }
 
-func lawSpecEvaluate623(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate622(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_7c7a5790413b(lsfWrappingUInt16_e5742dd2(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate624(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate623(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_bd9653153f3b(lsfWrappingUInt32_1ef3ce20(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate625(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate624(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_65439cc7c2ff(lsfWrappingUInt64_362f8288(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate626(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate625(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_d048b68cd5b1(lsfWrappingUInt8_6ce2e7d2(lsfFrom_7b619c124b0c(value0)))
 }
 
-func lawSpecEvaluate627(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate626(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("contracttest.kafka::lawspecCollectionsWrappingUIntPtr", func() LawSpecValue {
-		result := func() LawSpecValue {
+		result := lsEvaluate(func() LawSpecValue {
 			value1 := lsBinary("rem", lsBinary("-", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64)))
 			_ = value1
-			return func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("UIntPtr", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }; return lsHelper("UIntPtr", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }()
-		}()
+			return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("UIntPtr", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }; return lsHelper("UIntPtr", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) })
+		})
 		return result
 	})
 }
 
-func lawSpecEvaluate628(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate627(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("contracttest.kafka::lawspecCollectionsWrappingUIntSize", func() LawSpecValue {
-		result := func() LawSpecValue {
+		result := lsEvaluate(func() LawSpecValue {
 			value1 := lsBinary("rem", lsBinary("-", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64)))
 			_ = value1
-			return func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("UIntSize", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }; return lsHelper("UIntSize", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }()
-		}()
+			return lsEvaluate(func() LawSpecValue { if lsTruth(lsBinary("<", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))) { return lsHelper("UIntSize", []LawSpecValue{lsBinary("+", lsBinary("+", value1, lsBinary("+", lsBinary("-", lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64), lsConvert("Integer", lsInteger("Integer", "0"), 64)), lsConvert("Integer", lsInteger("Integer", "1"), 64))), lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) }; return lsHelper("UIntSize", []LawSpecValue{lsBinary("+", value1, lsConvert("Integer", lsInteger("Integer", "0"), 64))}, 64) })
+		})
 		return result
 	})
 }
 
-func lawSpecEvaluate629(
+func lawSpecEvaluate628(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -3934,7 +3930,7 @@ func lawSpecEvaluate629(
 	return lsfTo_ef13ae4d9e38(lsfLawspecCollectionsKeyValDeleteItems_5df79bd1(lsfFrom_437d0abf423f(value0), lsfFrom_ef13ae4d9e38(value1)))
 }
 
-func lawSpecEvaluate630(
+func lawSpecEvaluate629(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -3942,7 +3938,7 @@ func lawSpecEvaluate630(
 	return lsfTo_651fa9ab9d5d(lsfLawspecCollectionsKeyValDeleteItems_6394b670(lsfFrom_44a08172da10(value0), lsfFrom_651fa9ab9d5d(value1)))
 }
 
-func lawSpecEvaluate631(
+func lawSpecEvaluate630(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -3950,7 +3946,7 @@ func lawSpecEvaluate631(
 	return lsfTo_a5ff70cdb58a(lsfLawspecCollectionsKeyValDelete_daac10f4(lsfFrom_44a08172da10(value0), lsfFrom_a5ff70cdb58a(value1)))
 }
 
-func lawSpecEvaluate632(
+func lawSpecEvaluate631(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -3958,19 +3954,19 @@ func lawSpecEvaluate632(
 	return lsfTo_573c5ecbb13e(lsfLawspecCollectionsKeyValDelete_9159aa73(lsfFrom_437d0abf423f(value0), lsfFrom_573c5ecbb13e(value1)))
 }
 
-func lawSpecEvaluate633(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate632(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_c95dd21cde1e(lsfLawspecCollectionsKeyValEntries_a865cc3f(lsfFrom_76ca967c9ea5(value0)))
 }
 
-func lawSpecEvaluate634(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate633(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_b3fb2926095a(lsfLawspecCollectionsKeyValEntries_d490695f(lsfFrom_ead2bdf5b1de(value0)))
 }
 
-func lawSpecEvaluate635(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate634(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_ef13ae4d9e38(lsfLawspecCollectionsKeyValEntries_90fdb0cf(lsfFrom_573c5ecbb13e(value0)))
 }
 
-func lawSpecEvaluate636(
+func lawSpecEvaluate635(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -3978,7 +3974,7 @@ func lawSpecEvaluate636(
 	return lsfTo_651fa9ab9d5d(lsfLawspecCollectionsKeyValFromItems_b1d7a6fe(lsfFrom_651fa9ab9d5d(value0), lsfFrom_651fa9ab9d5d(value1)))
 }
 
-func lawSpecEvaluate637(
+func lawSpecEvaluate636(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -3986,7 +3982,7 @@ func lawSpecEvaluate637(
 	return lsfTo_cbf1e2cd3904(lsfLawspecCollectionsKeyValFromItems_06f4d2c6(lsfFrom_cbf1e2cd3904(value0), lsfFrom_cbf1e2cd3904(value1)))
 }
 
-func lawSpecEvaluate638(
+func lawSpecEvaluate637(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -3994,7 +3990,7 @@ func lawSpecEvaluate638(
 	return lsfTo_d6220414446c(lsfLawspecCollectionsKeyValFromItems_a82586cc(lsfFrom_d6220414446c(value0), lsfFrom_d6220414446c(value1)))
 }
 
-func lawSpecEvaluate639(
+func lawSpecEvaluate638(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4002,7 +3998,7 @@ func lawSpecEvaluate639(
 	return lsfTo_ce1429c06596(lsfLawspecCollectionsKeyValFromItems_cbeefea2(lsfFrom_ce1429c06596(value0), lsfFrom_ce1429c06596(value1)))
 }
 
-func lawSpecEvaluate640(
+func lawSpecEvaluate639(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4010,7 +4006,7 @@ func lawSpecEvaluate640(
 	return lsfTo_c95dd21cde1e(lsfLawspecCollectionsKeyValFromItems_32478a30(lsfFrom_c95dd21cde1e(value0), lsfFrom_c95dd21cde1e(value1)))
 }
 
-func lawSpecEvaluate641(
+func lawSpecEvaluate640(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4018,7 +4014,7 @@ func lawSpecEvaluate641(
 	return lsfTo_9dcdbe0431a1(lsfLawspecCollectionsKeyValFromItems_3a24ccf2(lsfFrom_9dcdbe0431a1(value0), lsfFrom_9dcdbe0431a1(value1)))
 }
 
-func lawSpecEvaluate642(
+func lawSpecEvaluate641(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4026,7 +4022,7 @@ func lawSpecEvaluate642(
 	return lsfTo_287be4ef437a(lsfLawspecCollectionsKeyValFromItems_1e161219(lsfFrom_287be4ef437a(value0), lsfFrom_287be4ef437a(value1)))
 }
 
-func lawSpecEvaluate643(
+func lawSpecEvaluate642(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4034,7 +4030,7 @@ func lawSpecEvaluate643(
 	return lsfTo_ef13ae4d9e38(lsfLawspecCollectionsKeyValFromItems_92b072e4(lsfFrom_ef13ae4d9e38(value0), lsfFrom_ef13ae4d9e38(value1)))
 }
 
-func lawSpecEvaluate644(
+func lawSpecEvaluate643(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4042,7 +4038,7 @@ func lawSpecEvaluate644(
 	return lsfTo_b79b4546a6ee(lsfLawspecCollectionsKeyValFromItems_d863ec47(lsfFrom_b79b4546a6ee(value0), lsfFrom_b79b4546a6ee(value1)))
 }
 
-func lawSpecEvaluate645(
+func lawSpecEvaluate644(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4050,7 +4046,7 @@ func lawSpecEvaluate645(
 	return lsfTo_59c4d82f6c9d(lsfLawspecCollectionsKeyValFromItems_4e4ef1c4(lsfFrom_59c4d82f6c9d(value0), lsfFrom_59c4d82f6c9d(value1)))
 }
 
-func lawSpecEvaluate646(
+func lawSpecEvaluate645(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4058,7 +4054,7 @@ func lawSpecEvaluate646(
 	return lsfTo_b3fb2926095a(lsfLawspecCollectionsKeyValFromItems_6be3ca15(lsfFrom_b3fb2926095a(value0), lsfFrom_b3fb2926095a(value1)))
 }
 
-func lawSpecEvaluate647(
+func lawSpecEvaluate646(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4066,15 +4062,15 @@ func lawSpecEvaluate647(
 	return lsfTo_7f12735183c0(lsfLawspecCollectionsKeyValFromItems_c033ba9e(lsfFrom_7f12735183c0(value0), lsfFrom_7f12735183c0(value1)))
 }
 
-func lawSpecEvaluate648(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate647(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_8ec0351dc657(lsfLawspecCollectionsKeyValKeysItems_e033276a(lsfFrom_ef13ae4d9e38(value0)))
 }
 
-func lawSpecEvaluate649(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate648(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_8ec0351dc657(lsfLawspecCollectionsKeyValKeys_34e9a8ae(lsfFrom_573c5ecbb13e(value0)))
 }
 
-func lawSpecEvaluate650(
+func lawSpecEvaluate649(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4082,7 +4078,7 @@ func lawSpecEvaluate650(
 	return lsfTo_c38be08c05a1(lsfLawspecCollectionsKeyValLookupItems_b9936fbc(lsfFrom_44a08172da10(value0), lsfFrom_59c4d82f6c9d(value1)))
 }
 
-func lawSpecEvaluate651(
+func lawSpecEvaluate650(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4090,7 +4086,7 @@ func lawSpecEvaluate651(
 	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_154c41d9(lsfFrom_57a515e0e489(value0), lsfFrom_287be4ef437a(value1)))
 }
 
-func lawSpecEvaluate652(
+func lawSpecEvaluate651(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4098,7 +4094,7 @@ func lawSpecEvaluate652(
 	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_ebcd945a(lsfFrom_437d0abf423f(value0), lsfFrom_cbf1e2cd3904(value1)))
 }
 
-func lawSpecEvaluate653(
+func lawSpecEvaluate652(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4106,7 +4102,7 @@ func lawSpecEvaluate653(
 	return lsfTo_3d64fc085f92(lsfLawspecCollectionsKeyValLookupItems_71a2ad87(lsfFrom_437d0abf423f(value0), lsfFrom_ef13ae4d9e38(value1)))
 }
 
-func lawSpecEvaluate654(
+func lawSpecEvaluate653(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4114,7 +4110,7 @@ func lawSpecEvaluate654(
 	return lsfTo_50708784f072(lsfLawspecCollectionsKeyValLookupItems_a13d293f(lsfFrom_437d0abf423f(value0), lsfFrom_b3fb2926095a(value1)))
 }
 
-func lawSpecEvaluate655(
+func lawSpecEvaluate654(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4122,7 +4118,7 @@ func lawSpecEvaluate655(
 	return lsfTo_bf624bc7affb(lsfLawspecCollectionsKeyValLookupItems_9c1371ef(lsfFrom_44a08172da10(value0), lsfFrom_ce1429c06596(value1)))
 }
 
-func lawSpecEvaluate656(
+func lawSpecEvaluate655(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4130,7 +4126,7 @@ func lawSpecEvaluate656(
 	return lsfTo_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookupItems_4e6d941b(lsfFrom_437d0abf423f(value0), lsfFrom_d6220414446c(value1)))
 }
 
-func lawSpecEvaluate657(
+func lawSpecEvaluate656(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4138,7 +4134,7 @@ func lawSpecEvaluate657(
 	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_634e3159(lsfFrom_213d3554d90b(value0), lsfFrom_9dcdbe0431a1(value1)))
 }
 
-func lawSpecEvaluate658(
+func lawSpecEvaluate657(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4146,7 +4142,7 @@ func lawSpecEvaluate658(
 	return lsfTo_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookupItems_eaf6916f(lsfFrom_57a515e0e489(value0), lsfFrom_7f12735183c0(value1)))
 }
 
-func lawSpecEvaluate659(
+func lawSpecEvaluate658(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4154,7 +4150,7 @@ func lawSpecEvaluate659(
 	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_ae57d2cd(lsfFrom_44a08172da10(value0), lsfFrom_651fa9ab9d5d(value1)))
 }
 
-func lawSpecEvaluate660(
+func lawSpecEvaluate659(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4162,7 +4158,7 @@ func lawSpecEvaluate660(
 	return lsfTo_96af144ed884(lsfLawspecCollectionsKeyValLookupItems_3c718024(lsfFrom_437d0abf423f(value0), lsfFrom_c95dd21cde1e(value1)))
 }
 
-func lawSpecEvaluate661(
+func lawSpecEvaluate660(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4170,7 +4166,7 @@ func lawSpecEvaluate661(
 	return lsfTo_aba61dc13579(lsfLawspecCollectionsKeyValLookupItems_8d0d5317(lsfFrom_57a515e0e489(value0), lsfFrom_b79b4546a6ee(value1)))
 }
 
-func lawSpecEvaluate662(
+func lawSpecEvaluate661(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4178,7 +4174,7 @@ func lawSpecEvaluate662(
 	return lsfTo_3d64fc085f92(lsfLawspecCollectionsKeyValLookup_a9059595(lsfFrom_437d0abf423f(value0), lsfFrom_573c5ecbb13e(value1)))
 }
 
-func lawSpecEvaluate663(
+func lawSpecEvaluate662(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4186,7 +4182,7 @@ func lawSpecEvaluate663(
 	return lsfTo_c38be08c05a1(lsfLawspecCollectionsKeyValLookup_b2bbd077(lsfFrom_44a08172da10(value0), lsfFrom_12e472f38b58(value1)))
 }
 
-func lawSpecEvaluate664(
+func lawSpecEvaluate663(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4194,7 +4190,7 @@ func lawSpecEvaluate664(
 	return lsfTo_aba61dc13579(lsfLawspecCollectionsKeyValLookup_8a481efc(lsfFrom_57a515e0e489(value0), lsfFrom_fc454f30e5b2(value1)))
 }
 
-func lawSpecEvaluate665(
+func lawSpecEvaluate664(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4202,7 +4198,7 @@ func lawSpecEvaluate665(
 	return lsfTo_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookup_8e671f4d(lsfFrom_57a515e0e489(value0), lsfFrom_0f394bf4652c(value1)))
 }
 
-func lawSpecEvaluate666(
+func lawSpecEvaluate665(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4210,7 +4206,7 @@ func lawSpecEvaluate666(
 	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookup_65e9c66c(lsfFrom_44a08172da10(value0), lsfFrom_a5ff70cdb58a(value1)))
 }
 
-func lawSpecEvaluate667(
+func lawSpecEvaluate666(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4218,7 +4214,7 @@ func lawSpecEvaluate667(
 	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookup_a6e9da81(lsfFrom_57a515e0e489(value0), lsfFrom_d1208e18a243(value1)))
 }
 
-func lawSpecEvaluate668(
+func lawSpecEvaluate667(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4226,7 +4222,7 @@ func lawSpecEvaluate668(
 	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookup_24612a0e(lsfFrom_437d0abf423f(value0), lsfFrom_291d2550e97c(value1)))
 }
 
-func lawSpecEvaluate669(
+func lawSpecEvaluate668(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4234,7 +4230,7 @@ func lawSpecEvaluate669(
 	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookup_cd13c56f(lsfFrom_213d3554d90b(value0), lsfFrom_316bf0786e9b(value1)))
 }
 
-func lawSpecEvaluate670(
+func lawSpecEvaluate669(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4242,7 +4238,7 @@ func lawSpecEvaluate670(
 	return lsfTo_bf624bc7affb(lsfLawspecCollectionsKeyValLookup_6946d404(lsfFrom_44a08172da10(value0), lsfFrom_5fff5f48ddb1(value1)))
 }
 
-func lawSpecEvaluate671(
+func lawSpecEvaluate670(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4250,7 +4246,7 @@ func lawSpecEvaluate671(
 	return lsfTo_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookup_7f47bbb6(lsfFrom_437d0abf423f(value0), lsfFrom_bb40e13b6158(value1)))
 }
 
-func lawSpecEvaluate672(
+func lawSpecEvaluate671(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4258,7 +4254,7 @@ func lawSpecEvaluate672(
 	return lsfTo_50708784f072(lsfLawspecCollectionsKeyValLookup_ce7e98b5(lsfFrom_437d0abf423f(value0), lsfFrom_ead2bdf5b1de(value1)))
 }
 
-func lawSpecEvaluate673(
+func lawSpecEvaluate672(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4266,55 +4262,55 @@ func lawSpecEvaluate673(
 	return lsfTo_96af144ed884(lsfLawspecCollectionsKeyValLookup_0bbb87c8(lsfFrom_437d0abf423f(value0), lsfFrom_76ca967c9ea5(value1)))
 }
 
-func lawSpecEvaluate674(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate673(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_ead2bdf5b1de(lsfLawspecCollectionsKeyValOf_b3b63ee9(lsfFrom_b3fb2926095a(value0)))
 }
 
-func lawSpecEvaluate675(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate674(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_76ca967c9ea5(lsfLawspecCollectionsKeyValOf_315c22fb(lsfFrom_c95dd21cde1e(value0)))
 }
 
-func lawSpecEvaluate676(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate675(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_0f394bf4652c(lsfLawspecCollectionsKeyValOf_8d386a7a(lsfFrom_7f12735183c0(value0)))
 }
 
-func lawSpecEvaluate677(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate676(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_fc454f30e5b2(lsfLawspecCollectionsKeyValOf_66dd9a82(lsfFrom_b79b4546a6ee(value0)))
 }
 
-func lawSpecEvaluate678(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate677(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_12e472f38b58(lsfLawspecCollectionsKeyValOf_3adee7cf(lsfFrom_59c4d82f6c9d(value0)))
 }
 
-func lawSpecEvaluate679(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate678(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_d1208e18a243(lsfLawspecCollectionsKeyValOf_a1009097(lsfFrom_287be4ef437a(value0)))
 }
 
-func lawSpecEvaluate680(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate679(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_291d2550e97c(lsfLawspecCollectionsKeyValOf_eeff9798(lsfFrom_cbf1e2cd3904(value0)))
 }
 
-func lawSpecEvaluate681(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate680(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_573c5ecbb13e(lsfLawspecCollectionsKeyValOf_afdc1c77(lsfFrom_ef13ae4d9e38(value0)))
 }
 
-func lawSpecEvaluate682(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate681(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_bb40e13b6158(lsfLawspecCollectionsKeyValOf_924ce6dd(lsfFrom_d6220414446c(value0)))
 }
 
-func lawSpecEvaluate683(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate682(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_5fff5f48ddb1(lsfLawspecCollectionsKeyValOf_66da004b(lsfFrom_ce1429c06596(value0)))
 }
 
-func lawSpecEvaluate684(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate683(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_a5ff70cdb58a(lsfLawspecCollectionsKeyValOf_b2ceee25(lsfFrom_651fa9ab9d5d(value0)))
 }
 
-func lawSpecEvaluate685(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate684(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_316bf0786e9b(lsfLawspecCollectionsKeyValOf_14405d63(lsfFrom_9dcdbe0431a1(value0)))
 }
 
-func lawSpecEvaluate686(
+func lawSpecEvaluate685(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4323,7 +4319,7 @@ func lawSpecEvaluate686(
 	return lsfTo_651fa9ab9d5d(lsfLawspecCollectionsKeyValPutItems_fb1bb5ca(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1), lsfFrom_651fa9ab9d5d(value2)))
 }
 
-func lawSpecEvaluate687(
+func lawSpecEvaluate686(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4332,7 +4328,7 @@ func lawSpecEvaluate687(
 	return lsfTo_ce1429c06596(lsfLawspecCollectionsKeyValPutItems_97a64264(lsfFrom_44a08172da10(value0), lsfFrom_b74501b1952d(value1), lsfFrom_ce1429c06596(value2)))
 }
 
-func lawSpecEvaluate688(
+func lawSpecEvaluate687(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4341,7 +4337,7 @@ func lawSpecEvaluate688(
 	return lsfTo_59c4d82f6c9d(lsfLawspecCollectionsKeyValPutItems_054f1ef1(lsfFrom_44a08172da10(value0), lsfFrom_789f82e1207e(value1), lsfFrom_59c4d82f6c9d(value2)))
 }
 
-func lawSpecEvaluate689(
+func lawSpecEvaluate688(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4350,7 +4346,7 @@ func lawSpecEvaluate689(
 	return lsfTo_d6220414446c(lsfLawspecCollectionsKeyValPutItems_8d4f5385(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_d6220414446c(value2)))
 }
 
-func lawSpecEvaluate690(
+func lawSpecEvaluate689(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4359,7 +4355,7 @@ func lawSpecEvaluate690(
 	return lsfTo_cbf1e2cd3904(lsfLawspecCollectionsKeyValPutItems_5d998955(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_cbf1e2cd3904(value2)))
 }
 
-func lawSpecEvaluate691(
+func lawSpecEvaluate690(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4368,7 +4364,7 @@ func lawSpecEvaluate691(
 	return lsfTo_b3fb2926095a(lsfLawspecCollectionsKeyValPutItems_80dc1939(lsfFrom_437d0abf423f(value0), lsfFrom_3250492fe9ac(value1), lsfFrom_b3fb2926095a(value2)))
 }
 
-func lawSpecEvaluate692(
+func lawSpecEvaluate691(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4377,7 +4373,7 @@ func lawSpecEvaluate692(
 	return lsfTo_9dcdbe0431a1(lsfLawspecCollectionsKeyValPutItems_28cf0caf(lsfFrom_213d3554d90b(value0), lsfFrom_44a08172da10(value1), lsfFrom_9dcdbe0431a1(value2)))
 }
 
-func lawSpecEvaluate693(
+func lawSpecEvaluate692(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4386,7 +4382,7 @@ func lawSpecEvaluate693(
 	return lsfTo_c95dd21cde1e(lsfLawspecCollectionsKeyValPutItems_883fe52d(lsfFrom_437d0abf423f(value0), lsfFrom_121c32c2e75a(value1), lsfFrom_c95dd21cde1e(value2)))
 }
 
-func lawSpecEvaluate694(
+func lawSpecEvaluate693(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4395,7 +4391,7 @@ func lawSpecEvaluate694(
 	return lsfTo_7f12735183c0(lsfLawspecCollectionsKeyValPutItems_3f0139cf(lsfFrom_57a515e0e489(value0), lsfFrom_b862204e9be7(value1), lsfFrom_7f12735183c0(value2)))
 }
 
-func lawSpecEvaluate695(
+func lawSpecEvaluate694(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4404,7 +4400,7 @@ func lawSpecEvaluate695(
 	return lsfTo_ef13ae4d9e38(lsfLawspecCollectionsKeyValPutItems_c4168a80(lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1), lsfFrom_ef13ae4d9e38(value2)))
 }
 
-func lawSpecEvaluate696(
+func lawSpecEvaluate695(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4413,7 +4409,7 @@ func lawSpecEvaluate696(
 	return lsfTo_287be4ef437a(lsfLawspecCollectionsKeyValPutItems_4266176b(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_287be4ef437a(value2)))
 }
 
-func lawSpecEvaluate697(
+func lawSpecEvaluate696(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4422,7 +4418,7 @@ func lawSpecEvaluate697(
 	return lsfTo_b79b4546a6ee(lsfLawspecCollectionsKeyValPutItems_523d104d(lsfFrom_57a515e0e489(value0), lsfFrom_17b5cd6f2c74(value1), lsfFrom_b79b4546a6ee(value2)))
 }
 
-func lawSpecEvaluate698(
+func lawSpecEvaluate697(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4431,7 +4427,7 @@ func lawSpecEvaluate698(
 	return lsfTo_0f394bf4652c(lsfLawspecCollectionsKeyValPut_cabf14cc(lsfFrom_57a515e0e489(value0), lsfFrom_b862204e9be7(value1), lsfFrom_0f394bf4652c(value2)))
 }
 
-func lawSpecEvaluate699(
+func lawSpecEvaluate698(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4440,7 +4436,7 @@ func lawSpecEvaluate699(
 	return lsfTo_76ca967c9ea5(lsfLawspecCollectionsKeyValPut_ce8624cf(lsfFrom_437d0abf423f(value0), lsfFrom_121c32c2e75a(value1), lsfFrom_76ca967c9ea5(value2)))
 }
 
-func lawSpecEvaluate700(
+func lawSpecEvaluate699(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4449,7 +4445,7 @@ func lawSpecEvaluate700(
 	return lsfTo_fc454f30e5b2(lsfLawspecCollectionsKeyValPut_5ab157dd(lsfFrom_57a515e0e489(value0), lsfFrom_17b5cd6f2c74(value1), lsfFrom_fc454f30e5b2(value2)))
 }
 
-func lawSpecEvaluate701(
+func lawSpecEvaluate700(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4458,7 +4454,7 @@ func lawSpecEvaluate701(
 	return lsfTo_12e472f38b58(lsfLawspecCollectionsKeyValPut_c59d14e0(lsfFrom_44a08172da10(value0), lsfFrom_789f82e1207e(value1), lsfFrom_12e472f38b58(value2)))
 }
 
-func lawSpecEvaluate702(
+func lawSpecEvaluate701(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4467,7 +4463,7 @@ func lawSpecEvaluate702(
 	return lsfTo_d1208e18a243(lsfLawspecCollectionsKeyValPut_01a600ed(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_d1208e18a243(value2)))
 }
 
-func lawSpecEvaluate703(
+func lawSpecEvaluate702(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4476,7 +4472,7 @@ func lawSpecEvaluate703(
 	return lsfTo_291d2550e97c(lsfLawspecCollectionsKeyValPut_3034b895(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_291d2550e97c(value2)))
 }
 
-func lawSpecEvaluate704(
+func lawSpecEvaluate703(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4485,7 +4481,7 @@ func lawSpecEvaluate704(
 	return lsfTo_bb40e13b6158(lsfLawspecCollectionsKeyValPut_a8f49e3e(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_bb40e13b6158(value2)))
 }
 
-func lawSpecEvaluate705(
+func lawSpecEvaluate704(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4494,7 +4490,7 @@ func lawSpecEvaluate705(
 	return lsfTo_316bf0786e9b(lsfLawspecCollectionsKeyValPut_9fc3570a(lsfFrom_213d3554d90b(value0), lsfFrom_44a08172da10(value1), lsfFrom_316bf0786e9b(value2)))
 }
 
-func lawSpecEvaluate706(
+func lawSpecEvaluate705(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4503,7 +4499,7 @@ func lawSpecEvaluate706(
 	return lsfTo_5fff5f48ddb1(lsfLawspecCollectionsKeyValPut_87e622e8(lsfFrom_44a08172da10(value0), lsfFrom_b74501b1952d(value1), lsfFrom_5fff5f48ddb1(value2)))
 }
 
-func lawSpecEvaluate707(
+func lawSpecEvaluate706(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4512,7 +4508,7 @@ func lawSpecEvaluate707(
 	return lsfTo_573c5ecbb13e(lsfLawspecCollectionsKeyValPut_3b439cbe(lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1), lsfFrom_573c5ecbb13e(value2)))
 }
 
-func lawSpecEvaluate708(
+func lawSpecEvaluate707(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4521,7 +4517,7 @@ func lawSpecEvaluate708(
 	return lsfTo_a5ff70cdb58a(lsfLawspecCollectionsKeyValPut_5cd34b74(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1), lsfFrom_a5ff70cdb58a(value2)))
 }
 
-func lawSpecEvaluate709(
+func lawSpecEvaluate708(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4530,15 +4526,15 @@ func lawSpecEvaluate709(
 	return lsfTo_ead2bdf5b1de(lsfLawspecCollectionsKeyValPut_efc6b866(lsfFrom_437d0abf423f(value0), lsfFrom_3250492fe9ac(value1), lsfFrom_ead2bdf5b1de(value2)))
 }
 
-func lawSpecEvaluate710(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate709(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_75994955e886(lsfLawspecCollectionsKeyValValuesItems_40ef8eee(lsfFrom_651fa9ab9d5d(value0)))
 }
 
-func lawSpecEvaluate711(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate710(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_75994955e886(lsfLawspecCollectionsKeyValValues_33bc036c(lsfFrom_a5ff70cdb58a(value0)))
 }
 
-func lawSpecEvaluate712(
+func lawSpecEvaluate711(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4546,7 +4542,7 @@ func lawSpecEvaluate712(
 	return lsfTo_8ec0351dc657(lsfLawspecCollectionsSetFromItems_b46ce3bb(lsfFrom_8ec0351dc657(value0), lsfFrom_8ec0351dc657(value1)))
 }
 
-func lawSpecEvaluate713(
+func lawSpecEvaluate712(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4554,7 +4550,7 @@ func lawSpecEvaluate713(
 	return lsfTo_508e8cda1c80(lsfLawspecCollectionsSetFromItems_357dd072(lsfFrom_508e8cda1c80(value0), lsfFrom_508e8cda1c80(value1)))
 }
 
-func lawSpecEvaluate714(
+func lawSpecEvaluate713(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4562,7 +4558,7 @@ func lawSpecEvaluate714(
 	return lsfTo_8ec0351dc657(lsfLawspecCollectionsSetInsertItems_fd8b28ec(lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1)))
 }
 
-func lawSpecEvaluate715(
+func lawSpecEvaluate714(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4570,15 +4566,15 @@ func lawSpecEvaluate715(
 	return lsfTo_508e8cda1c80(lsfLawspecCollectionsSetInsertItems_708d991b(lsfFrom_b862204e9be7(value0), lsfFrom_508e8cda1c80(value1)))
 }
 
-func lawSpecEvaluate716(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate715(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_0ee125dab044(lsfLawspecCollectionsSetOf_381c9692(lsfFrom_8ec0351dc657(value0)))
 }
 
-func lawSpecEvaluate717(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate716(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_cd87ee93b56a(lsfLawspecCollectionsSetOf_04775bf4(lsfFrom_508e8cda1c80(value0)))
 }
 
-func lawSpecEvaluate718(
+func lawSpecEvaluate717(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4586,7 +4582,7 @@ func lawSpecEvaluate718(
 	return lsfTo_8ec0351dc657(lsfLawspecCollectionsSetRemoveItems_64279e04(lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1)))
 }
 
-func lawSpecEvaluate719(
+func lawSpecEvaluate718(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4594,7 +4590,7 @@ func lawSpecEvaluate719(
 	return lsfTo_0ee125dab044(lsfLawspecCollectionsSetRemove_7ffea813(lsfFrom_437d0abf423f(value0), lsfFrom_0ee125dab044(value1)))
 }
 
-func lawSpecEvaluate720(
+func lawSpecEvaluate719(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4602,7 +4598,7 @@ func lawSpecEvaluate720(
 	return lsfTo_0ee125dab044(lsfLawspecCollectionsSetUnion_604ff278(lsfFrom_0ee125dab044(value0), lsfFrom_0ee125dab044(value1)))
 }
 
-func lawSpecEvaluate721(
+func lawSpecEvaluate720(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4610,7 +4606,7 @@ func lawSpecEvaluate721(
 	return lsfTo_d267428fb2ca(lsfAllAtLeast_3df55027(lsfFrom_44a08172da10(value0), lsfFrom_75994955e886(value1)))
 }
 
-func lawSpecEvaluate722(
+func lawSpecEvaluate721(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4618,7 +4614,7 @@ func lawSpecEvaluate722(
 	return lsfTo_3250492fe9ac(lsfAssignmentIn_4b795225(lsfFrom_437d0abf423f(value0), lsfFrom_4d7586f102e6(value1)))
 }
 
-func lawSpecEvaluate723(
+func lawSpecEvaluate722(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4626,7 +4622,7 @@ func lawSpecEvaluate723(
 	return lsfTo_e3583a5b5bdc(lsfCommittedFrom_a524f37d(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1)))
 }
 
-func lawSpecEvaluate724(
+func lawSpecEvaluate723(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4634,15 +4630,15 @@ func lawSpecEvaluate724(
 	return lsfTo_170f42653652(lsfConsumerAssign_793a07ba(lsfFrom_3250492fe9ac(value0), lsfFrom_7de2ae0da384(value1)))
 }
 
-func lawSpecEvaluate725(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate724(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_170f42653652(lsfConsumerClose_00c5e7f3(symbols, lsfFrom_7de2ae0da384(value0)))
 }
 
-func lawSpecEvaluate726(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate725(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_34d15aaae84b(lsfConsumerCommit_787f4c15(symbols, lsfFrom_7de2ae0da384(value0)))
 }
 
-func lawSpecEvaluate727(
+func lawSpecEvaluate726(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4650,7 +4646,7 @@ func lawSpecEvaluate727(
 	return lsfTo_172cc75a9602(lsfConsumerCommitted_06365ac2(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_7de2ae0da384(value1)))
 }
 
-func lawSpecEvaluate728(
+func lawSpecEvaluate727(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4658,7 +4654,7 @@ func lawSpecEvaluate728(
 	return lsfTo_170f42653652(lsfConsumerIsolation_2aacd289(lsfFrom_a519f593a6ed(value0), lsfFrom_7de2ae0da384(value1)))
 }
 
-func lawSpecEvaluate729(
+func lawSpecEvaluate728(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4668,7 +4664,7 @@ func lawSpecEvaluate729(
 	return lsfTo_aec30ebe57ba(lsfConsumerJoin_198e034e(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_8ec0351dc657(value2), lsfFrom_7de2ae0da384(value3)))
 }
 
-func lawSpecEvaluate730(
+func lawSpecEvaluate729(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4676,7 +4672,7 @@ func lawSpecEvaluate730(
 	return lsfTo_8ac5ed3c86fa(lsfConsumerPoll_d12c6262(symbols, lsfFrom_b862204e9be7(value0), lsfFrom_7de2ae0da384(value1)))
 }
 
-func lawSpecEvaluate731(
+func lawSpecEvaluate730(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4684,7 +4680,7 @@ func lawSpecEvaluate731(
 	return lsfTo_3bb39d28b6fe(lsfConsumerPosition_4da411a3(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_7de2ae0da384(value1)))
 }
 
-func lawSpecEvaluate732(
+func lawSpecEvaluate731(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4692,7 +4688,7 @@ func lawSpecEvaluate732(
 	return lsfTo_af15eded3eac(lsfConsumerPositionOf_71a8a523(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_7de2ae0da384(value1)))
 }
 
-func lawSpecEvaluate733(
+func lawSpecEvaluate732(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4700,11 +4696,11 @@ func lawSpecEvaluate733(
 	return lsfTo_9aa0842592c4(lsfConsumerRecords_9d810f29(lsfFrom_57a515e0e489(value0), lsfFrom_ed14fca60ee3(value1)))
 }
 
-func lawSpecEvaluate734(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate733(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_34d15aaae84b(lsfConsumerRefresh_99e956fa(symbols, lsfFrom_7de2ae0da384(value0)))
 }
 
-func lawSpecEvaluate735(
+func lawSpecEvaluate734(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4713,7 +4709,7 @@ func lawSpecEvaluate735(
 	return lsfTo_34d15aaae84b(lsfConsumerSeek_975a7017(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_7de2ae0da384(value2)))
 }
 
-func lawSpecEvaluate736(
+func lawSpecEvaluate735(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4722,7 +4718,7 @@ func lawSpecEvaluate736(
 	return lsfTo_d267428fb2ca(lsfCoversOnce_231e9ee6(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_9b6e0477a826(value2)))
 }
 
-func lawSpecEvaluate737(
+func lawSpecEvaluate736(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4730,7 +4726,7 @@ func lawSpecEvaluate737(
 	return lsfTo_d267428fb2ca(lsfCreated_5201db31(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1)))
 }
 
-func lawSpecEvaluate738(
+func lawSpecEvaluate737(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4738,7 +4734,7 @@ func lawSpecEvaluate738(
 	return lsfTo_d267428fb2ca(lsfFencedBy_c383bb89(lsfFrom_6a5ea41697b3(value0), lsfFrom_6a5ea41697b3(value1)))
 }
 
-func lawSpecEvaluate739(
+func lawSpecEvaluate738(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4747,7 +4743,7 @@ func lawSpecEvaluate739(
 	return lsfTo_d267428fb2ca(lsfFollowsBatch_00cf360a(lsfFrom_aff9cc782806(value0), lsfFrom_e3583a5b5bdc(value1), lsfFrom_aff9cc782806(value2)))
 }
 
-func lawSpecEvaluate740(
+func lawSpecEvaluate739(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4755,27 +4751,27 @@ func lawSpecEvaluate740(
 	return lsfTo_d267428fb2ca(lsfFollowsOne_4f3a93e2(lsfFrom_f9a3e61df1f3(value0), lsfFrom_aff9cc782806(value1)))
 }
 
-func lawSpecEvaluate741(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate740(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_7de2ae0da384(lsfFreshConsumer_c2da4184(lsfFrom_b120ceed78cb(value0)))
 }
 
-func lawSpecEvaluate742(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate741(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_5e5d2c3fa1a7(lsfFreshProducer_deea7b00(lsfFrom_b120ceed78cb(value0)))
 }
 
-func lawSpecEvaluate743(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate742(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_74b3f2831172(lsfFreshTransactions_533fb432(lsfFrom_b120ceed78cb(value0)))
 }
 
-func lawSpecEvaluate744(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate743(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_5d20fb53d3a6(lsfIdentityOf_96976095(lsfFrom_5e5d2c3fa1a7(value0)))
 }
 
-func lawSpecEvaluate745(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate744(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_d267428fb2ca(lsfIncreasing_d02ccce0(lsfFrom_75994955e886(value0)))
 }
 
-func lawSpecEvaluate746(
+func lawSpecEvaluate745(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4784,7 +4780,7 @@ func lawSpecEvaluate746(
 	return lsfTo_d267428fb2ca(lsfJoinAll_67d573a5(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1), lsfFrom_8ec0351dc657(value2)))
 }
 
-func lawSpecEvaluate747(
+func lawSpecEvaluate746(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4793,7 +4789,7 @@ func lawSpecEvaluate747(
 	return lsfTo_d267428fb2ca(lsfJoinEach_78c50afb(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1), lsfFrom_8ec0351dc657(value2)))
 }
 
-func lawSpecEvaluate748(
+func lawSpecEvaluate747(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4802,11 +4798,11 @@ func lawSpecEvaluate748(
 	return lsfTo_d1208e18a243(lsfKeepPositions_f10bd26f(lsfFrom_3250492fe9ac(value0), lsfFrom_d1208e18a243(value1), lsfFrom_d1208e18a243(value2)))
 }
 
-func lawSpecEvaluate749(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate748(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_8ec0351dc657(lsfMemberIds_1e3fa12d(lsfFrom_8ec0351dc657(value0)))
 }
 
-func lawSpecEvaluate750(
+func lawSpecEvaluate749(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4814,7 +4810,7 @@ func lawSpecEvaluate750(
 	return lsfTo_3250492fe9ac(lsfMissingFrom_37856ee4(lsfFrom_3250492fe9ac(value0), lsfFrom_3250492fe9ac(value1)))
 }
 
-func lawSpecEvaluate751(
+func lawSpecEvaluate750(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4825,7 +4821,7 @@ func lawSpecEvaluate751(
 	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelAddPartitionsToTxn_8d367d82(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_07dabd732290(value2), lsfFrom_3250492fe9ac(value3), lsfFrom_49de88d0a810(value4)))
 }
 
-func lawSpecEvaluate752(
+func lawSpecEvaluate751(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4833,7 +4829,7 @@ func lawSpecEvaluate752(
 	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelAllKnown_12a378f8(lsfFrom_3250492fe9ac(value0), lsfFrom_49de88d0a810(value1)))
 }
 
-func lawSpecEvaluate753(
+func lawSpecEvaluate752(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4843,7 +4839,7 @@ func lawSpecEvaluate753(
 	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelAppendBatch_8797ae9f(lsfFrom_e3583a5b5bdc(value0), lsfFrom_44a08172da10(value1), lsfFrom_d267428fb2ca(value2), lsfFrom_17b5cd6f2c74(value3)))
 }
 
-func lawSpecEvaluate754(
+func lawSpecEvaluate753(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4854,7 +4850,7 @@ func lawSpecEvaluate754(
 	return lsfTo_686946ac9a54(lsfLawtwinKafkaModelAppendRecords_f5613738(lsfFrom_e3583a5b5bdc(value0), lsfFrom_44a08172da10(value1), lsfFrom_44a08172da10(value2), lsfFrom_d267428fb2ca(value3), lsfFrom_09a45efed198(value4)))
 }
 
-func lawSpecEvaluate755(
+func lawSpecEvaluate754(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4862,7 +4858,7 @@ func lawSpecEvaluate755(
 	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelApplyOffsets_c0f73b56(lsfFrom_8af9a375600a(value0), lsfFrom_49de88d0a810(value1)))
 }
 
-func lawSpecEvaluate756(
+func lawSpecEvaluate755(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4873,7 +4869,7 @@ func lawSpecEvaluate756(
 	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelAssignPartitions_598afda2(lsfFrom_437d0abf423f(value0), lsfFrom_508e8cda1c80(value1), lsfFrom_8ec0351dc657(value2), lsfFrom_8ec0351dc657(value3), lsfFrom_ead2bdf5b1de(value4)))
 }
 
-func lawSpecEvaluate757(
+func lawSpecEvaluate756(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4882,7 +4878,7 @@ func lawSpecEvaluate757(
 	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelAssignTo_98dab4ee(lsfFrom_437d0abf423f(value0), lsfFrom_57a515e0e489(value1), lsfFrom_ead2bdf5b1de(value2)))
 }
 
-func lawSpecEvaluate758(
+func lawSpecEvaluate757(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4892,7 +4888,7 @@ func lawSpecEvaluate758(
 	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelAssignTopics_0d94256d(lsfFrom_8ec0351dc657(value0), lsfFrom_ef13ae4d9e38(value1), lsfFrom_49de88d0a810(value2), lsfFrom_ead2bdf5b1de(value3)))
 }
 
-func lawSpecEvaluate759(
+func lawSpecEvaluate758(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4902,7 +4898,7 @@ func lawSpecEvaluate759(
 	return lsfTo_121c32c2e75a(lsfLawtwinKafkaModelCheckMember_f218b850(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_49de88d0a810(value3)))
 }
 
-func lawSpecEvaluate760(
+func lawSpecEvaluate759(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4912,7 +4908,7 @@ func lawSpecEvaluate760(
 	return lsfTo_b74501b1952d(lsfLawtwinKafkaModelCheckTxnProducer_2936d9ae(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_07dabd732290(value2), lsfFrom_49de88d0a810(value3)))
 }
 
-func lawSpecEvaluate761(
+func lawSpecEvaluate760(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4921,7 +4917,7 @@ func lawSpecEvaluate761(
 	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelCommitAll_4ae78738(lsfFrom_437d0abf423f(value0), lsfFrom_582052f40a9c(value1), lsfFrom_49de88d0a810(value2)))
 }
 
-func lawSpecEvaluate762(
+func lawSpecEvaluate761(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4929,7 +4925,7 @@ func lawSpecEvaluate762(
 	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelComputeAssignment_07bd1943(lsfFrom_573c5ecbb13e(value0), lsfFrom_49de88d0a810(value1)))
 }
 
-func lawSpecEvaluate763(
+func lawSpecEvaluate762(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4938,7 +4934,7 @@ func lawSpecEvaluate763(
 	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelCreatePartitions_8c9ce76b(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_49de88d0a810(value2)))
 }
 
-func lawSpecEvaluate764(
+func lawSpecEvaluate763(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4947,7 +4943,7 @@ func lawSpecEvaluate764(
 	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelCreateTopic_0d831a39(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_49de88d0a810(value2)))
 }
 
-func lawSpecEvaluate765(
+func lawSpecEvaluate764(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4955,7 +4951,7 @@ func lawSpecEvaluate765(
 	return lsfTo_63f9a172d3e8(lsfLawtwinKafkaModelDescribeGroup_bf8df8f8(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
 }
 
-func lawSpecEvaluate766(
+func lawSpecEvaluate765(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4963,19 +4959,19 @@ func lawSpecEvaluate766(
 	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelEmptyAssignments_91b44e0d(lsfFrom_8ec0351dc657(value0), lsfFrom_ead2bdf5b1de(value1)))
 }
 
-func lawSpecEvaluate767(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate766(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelEmptyBroker_d5fd8237(lsfFrom_b120ceed78cb(value0)))
 }
 
-func lawSpecEvaluate768(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate767(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_121c32c2e75a(lsfLawtwinKafkaModelEmptyGroup_2fc4809b(lsfFrom_b120ceed78cb(value0)))
 }
 
-func lawSpecEvaluate769(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate768(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelEmptyLog_a7825ed0(lsfFrom_b120ceed78cb(value0)))
 }
 
-func lawSpecEvaluate770(
+func lawSpecEvaluate769(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4986,7 +4982,7 @@ func lawSpecEvaluate770(
 	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelEndTxn_b2637a52(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_07dabd732290(value2), lsfFrom_d267428fb2ca(value3), lsfFrom_49de88d0a810(value4)))
 }
 
-func lawSpecEvaluate771(
+func lawSpecEvaluate770(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -4994,7 +4990,7 @@ func lawSpecEvaluate771(
 	return lsfTo_b862204e9be7(lsfLawtwinKafkaModelExpectedSequence_83e363c8(lsfFrom_07dabd732290(value0), lsfFrom_789f82e1207e(value1)))
 }
 
-func lawSpecEvaluate772(
+func lawSpecEvaluate771(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5005,7 +5001,7 @@ func lawSpecEvaluate772(
 	return lsfTo_41f56b34d22a(lsfLawtwinKafkaModelFetch_29936450(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_b862204e9be7(value2), lsfFrom_a519f593a6ed(value3), lsfFrom_49de88d0a810(value4)))
 }
 
-func lawSpecEvaluate773(
+func lawSpecEvaluate772(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5015,7 +5011,7 @@ func lawSpecEvaluate773(
 	return lsfTo_c09136e29464(lsfLawtwinKafkaModelFindDuplicate_3335aea4(lsfFrom_07dabd732290(value0), lsfFrom_b862204e9be7(value1), lsfFrom_b862204e9be7(value2), lsfFrom_789f82e1207e(value3)))
 }
 
-func lawSpecEvaluate774(
+func lawSpecEvaluate773(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5025,7 +5021,7 @@ func lawSpecEvaluate774(
 	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelFinishTxn_7545803e(lsfFrom_44a08172da10(value0), lsfFrom_d267428fb2ca(value1), lsfFrom_a198a150c390(value2), lsfFrom_49de88d0a810(value3)))
 }
 
-func lawSpecEvaluate775(
+func lawSpecEvaluate774(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5033,7 +5029,7 @@ func lawSpecEvaluate775(
 	return lsfTo_121c32c2e75a(lsfLawtwinKafkaModelGroupOf_abe7cb22(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
 }
 
-func lawSpecEvaluate776(
+func lawSpecEvaluate775(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5043,11 +5039,11 @@ func lawSpecEvaluate776(
 	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelHeartbeat_0f08a54d(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_49de88d0a810(value3)))
 }
 
-func lawSpecEvaluate777(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate776(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_44a08172da10(lsfLawtwinKafkaModelHighWatermark_da6ed677(lsfFrom_17b5cd6f2c74(value0)))
 }
 
-func lawSpecEvaluate778(
+func lawSpecEvaluate777(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5055,7 +5051,7 @@ func lawSpecEvaluate778(
 	return lsfTo_95d3f4123329(lsfLawtwinKafkaModelInitProducerId_cedb7e1b(lsfFrom_01d86fc44f8c(value0), lsfFrom_49de88d0a810(value1)))
 }
 
-func lawSpecEvaluate779(
+func lawSpecEvaluate778(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5064,7 +5060,7 @@ func lawSpecEvaluate779(
 	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelIsAborted_b12645e5(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1), lsfFrom_06583b2ebf3b(value2)))
 }
 
-func lawSpecEvaluate780(
+func lawSpecEvaluate779(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5074,7 +5070,7 @@ func lawSpecEvaluate780(
 	return lsfTo_ab8cd6a31aaf(lsfLawtwinKafkaModelJoinGroup_9a1e92f5(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_8ec0351dc657(value2), lsfFrom_49de88d0a810(value3)))
 }
 
-func lawSpecEvaluate781(
+func lawSpecEvaluate780(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5082,7 +5078,7 @@ func lawSpecEvaluate781(
 	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelKnownPartition_71d3099f(lsfFrom_57a515e0e489(value0), lsfFrom_49de88d0a810(value1)))
 }
 
-func lawSpecEvaluate782(
+func lawSpecEvaluate781(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5090,11 +5086,11 @@ func lawSpecEvaluate782(
 	return lsfTo_44a08172da10(lsfLawtwinKafkaModelLastOffsetOf_544a605b(lsfFrom_ed14fca60ee3(value0), lsfFrom_44a08172da10(value1)))
 }
 
-func lawSpecEvaluate783(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate782(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_44a08172da10(lsfLawtwinKafkaModelLastStableOffset_e8497029(lsfFrom_17b5cd6f2c74(value0)))
 }
 
-func lawSpecEvaluate784(
+func lawSpecEvaluate783(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5103,7 +5099,7 @@ func lawSpecEvaluate784(
 	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelLeaveGroup_5e5a3f69(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_49de88d0a810(value2)))
 }
 
-func lawSpecEvaluate785(
+func lawSpecEvaluate784(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5113,7 +5109,7 @@ func lawSpecEvaluate785(
 	return lsfTo_3dd22eccd85c(lsfLawtwinKafkaModelListOffsets_9c6c9426(lsfFrom_57a515e0e489(value0), lsfFrom_c55be5a8a1f1(value1), lsfFrom_a519f593a6ed(value2), lsfFrom_49de88d0a810(value3)))
 }
 
-func lawSpecEvaluate786(
+func lawSpecEvaluate785(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5121,7 +5117,7 @@ func lawSpecEvaluate786(
 	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelLogOf_b86b131a(lsfFrom_57a515e0e489(value0), lsfFrom_49de88d0a810(value1)))
 }
 
-func lawSpecEvaluate787(
+func lawSpecEvaluate786(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5129,15 +5125,15 @@ func lawSpecEvaluate787(
 	return lsfTo_44a08172da10(lsfLawtwinKafkaModelMax64_98542b8b(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1)))
 }
 
-func lawSpecEvaluate788(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate787(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_b862204e9be7(lsfLawtwinKafkaModelMaxPartitions_6be37992(lsfFrom_b120ceed78cb(value0)))
 }
 
-func lawSpecEvaluate789(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate788(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_4d7586f102e6(lsfLawtwinKafkaModelMemberViews_a87b1b1a(lsfFrom_b3fb2926095a(value0)))
 }
 
-func lawSpecEvaluate790(
+func lawSpecEvaluate789(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5145,7 +5141,7 @@ func lawSpecEvaluate790(
 	return lsfTo_9fa363f31106(lsfLawtwinKafkaModelMetadata_97bb5c4c(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
 }
 
-func lawSpecEvaluate791(
+func lawSpecEvaluate790(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5153,7 +5149,7 @@ func lawSpecEvaluate791(
 	return lsfTo_44a08172da10(lsfLawtwinKafkaModelMin64_b47ce987(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1)))
 }
 
-func lawSpecEvaluate792(
+func lawSpecEvaluate791(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5161,7 +5157,7 @@ func lawSpecEvaluate792(
 	return lsfTo_44a08172da10(lsfLawtwinKafkaModelMinOf_c4e891de(lsfFrom_75994955e886(value0), lsfFrom_44a08172da10(value1)))
 }
 
-func lawSpecEvaluate793(
+func lawSpecEvaluate792(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5169,7 +5165,7 @@ func lawSpecEvaluate793(
 	return lsfTo_95d3f4123329(lsfLawtwinKafkaModelNewProducer_89b0852d(lsfFrom_01d86fc44f8c(value0), lsfFrom_49de88d0a810(value1)))
 }
 
-func lawSpecEvaluate794(
+func lawSpecEvaluate793(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5179,7 +5175,7 @@ func lawSpecEvaluate794(
 	return lsfTo_44a08172da10(lsfLawtwinKafkaModelNextFetchOffset_28fd5a97(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1), lsfFrom_ed14fca60ee3(value2), lsfFrom_ed14fca60ee3(value3)))
 }
 
-func lawSpecEvaluate795(
+func lawSpecEvaluate794(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5190,7 +5186,7 @@ func lawSpecEvaluate795(
 	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelOffsetCommit_01d91ef0(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_582052f40a9c(value3), lsfFrom_49de88d0a810(value4)))
 }
 
-func lawSpecEvaluate796(
+func lawSpecEvaluate795(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5199,11 +5195,11 @@ func lawSpecEvaluate796(
 	return lsfTo_38ff65c06c92(lsfLawtwinKafkaModelOffsetFetch_f56dbfcd(lsfFrom_437d0abf423f(value0), lsfFrom_57a515e0e489(value1), lsfFrom_49de88d0a810(value2)))
 }
 
-func lawSpecEvaluate797(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate796(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_3250492fe9ac(lsfLawtwinKafkaModelOffsetPartitions_ffb8aecd(lsfFrom_582052f40a9c(value0)))
 }
 
-func lawSpecEvaluate798(
+func lawSpecEvaluate797(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5211,11 +5207,11 @@ func lawSpecEvaluate798(
 	return lsfTo_e0f8ce0ed062(lsfLawtwinKafkaModelPartitionCountOf_ff180c35(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
 }
 
-func lawSpecEvaluate799(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate798(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_508e8cda1c80(lsfLawtwinKafkaModelPartitionsBelow_19525eca(lsfFrom_b862204e9be7(value0)))
 }
 
-func lawSpecEvaluate800(
+func lawSpecEvaluate799(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5224,7 +5220,7 @@ func lawSpecEvaluate800(
 	return lsfTo_8af9a375600a(lsfLawtwinKafkaModelPendingFor_50512591(lsfFrom_437d0abf423f(value0), lsfFrom_582052f40a9c(value1), lsfFrom_8af9a375600a(value2)))
 }
 
-func lawSpecEvaluate801(
+func lawSpecEvaluate800(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5234,7 +5230,7 @@ func lawSpecEvaluate801(
 	return lsfTo_3dd22eccd85c(lsfLawtwinKafkaModelProduce_834568df(lsfFrom_57a515e0e489(value0), lsfFrom_c818bd20f406(value1), lsfFrom_e3583a5b5bdc(value2), lsfFrom_49de88d0a810(value3)))
 }
 
-func lawSpecEvaluate802(
+func lawSpecEvaluate801(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5245,7 +5241,7 @@ func lawSpecEvaluate802(
 	return lsfTo_3dd22eccd85c(lsfLawtwinKafkaModelProduceTagged_86f854e7(lsfFrom_57a515e0e489(value0), lsfFrom_fcd7b841fa1b(value1), lsfFrom_e3583a5b5bdc(value2), lsfFrom_17b5cd6f2c74(value3), lsfFrom_49de88d0a810(value4)))
 }
 
-func lawSpecEvaluate803(
+func lawSpecEvaluate802(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5254,7 +5250,7 @@ func lawSpecEvaluate803(
 	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelPutGroup_f45eaad0(lsfFrom_437d0abf423f(value0), lsfFrom_121c32c2e75a(value1), lsfFrom_49de88d0a810(value2)))
 }
 
-func lawSpecEvaluate804(
+func lawSpecEvaluate803(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5263,7 +5259,7 @@ func lawSpecEvaluate804(
 	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelPutLog_cb3cbf5e(lsfFrom_57a515e0e489(value0), lsfFrom_17b5cd6f2c74(value1), lsfFrom_49de88d0a810(value2)))
 }
 
-func lawSpecEvaluate805(
+func lawSpecEvaluate804(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5272,7 +5268,7 @@ func lawSpecEvaluate805(
 	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelPutProducer_4ef907a5(lsfFrom_44a08172da10(value0), lsfFrom_b74501b1952d(value1), lsfFrom_49de88d0a810(value2)))
 }
 
-func lawSpecEvaluate806(
+func lawSpecEvaluate805(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5284,7 +5280,7 @@ func lawSpecEvaluate806(
 	return lsfTo_ed14fca60ee3(lsfLawtwinKafkaModelReadable_adec3284(lsfFrom_09a45efed198(value0), lsfFrom_44a08172da10(value1), lsfFrom_44a08172da10(value2), lsfFrom_d267428fb2ca(value3), lsfFrom_06583b2ebf3b(value4), lsfFrom_ed14fca60ee3(value5)))
 }
 
-func lawSpecEvaluate807(
+func lawSpecEvaluate806(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5292,7 +5288,7 @@ func lawSpecEvaluate807(
 	return lsfTo_121c32c2e75a(lsfLawtwinKafkaModelRebalance_c9984d55(lsfFrom_121c32c2e75a(value0), lsfFrom_49de88d0a810(value1)))
 }
 
-func lawSpecEvaluate808(
+func lawSpecEvaluate807(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5302,7 +5298,7 @@ func lawSpecEvaluate808(
 	return lsfTo_76ca967c9ea5(lsfLawtwinKafkaModelRebalanceGroups_ad90673b(lsfFrom_437d0abf423f(value0), lsfFrom_c95dd21cde1e(value1), lsfFrom_49de88d0a810(value2), lsfFrom_76ca967c9ea5(value3)))
 }
 
-func lawSpecEvaluate809(
+func lawSpecEvaluate808(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5310,7 +5306,7 @@ func lawSpecEvaluate809(
 	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelRebalanceTopic_823cd68b(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
 }
 
-func lawSpecEvaluate810(
+func lawSpecEvaluate809(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5319,7 +5315,7 @@ func lawSpecEvaluate810(
 	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelRememberBatch_33fa600f(lsfFrom_44a08172da10(value0), lsfFrom_a358ea2021fe(value1), lsfFrom_17b5cd6f2c74(value2)))
 }
 
-func lawSpecEvaluate811(
+func lawSpecEvaluate810(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5327,7 +5323,7 @@ func lawSpecEvaluate811(
 	return lsfTo_8af9a375600a(lsfLawtwinKafkaModelReversePending_51ca5898(lsfFrom_8af9a375600a(value0), lsfFrom_8af9a375600a(value1)))
 }
 
-func lawSpecEvaluate812(
+func lawSpecEvaluate811(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5335,7 +5331,7 @@ func lawSpecEvaluate812(
 	return lsfTo_0ee125dab044(lsfLawtwinKafkaModelSubscribedTopics_c1d720b5(lsfFrom_ef13ae4d9e38(value0), lsfFrom_0ee125dab044(value1)))
 }
 
-func lawSpecEvaluate813(
+func lawSpecEvaluate812(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5343,7 +5339,7 @@ func lawSpecEvaluate813(
 	return lsfTo_8ec0351dc657(lsfLawtwinKafkaModelSubscribersOf_e9347318(lsfFrom_437d0abf423f(value0), lsfFrom_ef13ae4d9e38(value1)))
 }
 
-func lawSpecEvaluate814(
+func lawSpecEvaluate813(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5351,7 +5347,7 @@ func lawSpecEvaluate814(
 	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelSubscribesTo_c3c674c3(lsfFrom_437d0abf423f(value0), lsfFrom_121c32c2e75a(value1)))
 }
 
-func lawSpecEvaluate815(
+func lawSpecEvaluate814(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5361,7 +5357,7 @@ func lawSpecEvaluate815(
 	return lsfTo_23e94f6e1895(lsfLawtwinKafkaModelSyncGroup_b3d01c80(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_49de88d0a810(value3)))
 }
 
-func lawSpecEvaluate816(
+func lawSpecEvaluate815(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5369,7 +5365,7 @@ func lawSpecEvaluate816(
 	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelTxnHasPartition_8fa1cfc0(lsfFrom_57a515e0e489(value0), lsfFrom_a198a150c390(value1)))
 }
 
-func lawSpecEvaluate817(
+func lawSpecEvaluate816(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5381,7 +5377,7 @@ func lawSpecEvaluate817(
 	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelTxnOffsetCommit_84c6b2bb(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_07dabd732290(value2), lsfFrom_437d0abf423f(value3), lsfFrom_582052f40a9c(value4), lsfFrom_49de88d0a810(value5)))
 }
 
-func lawSpecEvaluate818(
+func lawSpecEvaluate817(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5389,11 +5385,11 @@ func lawSpecEvaluate818(
 	return lsfTo_3250492fe9ac(lsfLawtwinKafkaModelUnionPartitions_c791d224(lsfFrom_3250492fe9ac(value0), lsfFrom_3250492fe9ac(value1)))
 }
 
-func lawSpecEvaluate819(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate818(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelValidTopicName_39dd4596(lsfFrom_437d0abf423f(value0)))
 }
 
-func lawSpecEvaluate820(
+func lawSpecEvaluate819(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5402,7 +5398,7 @@ func lawSpecEvaluate820(
 	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelWriteMarker_8dc995f8(lsfFrom_44a08172da10(value0), lsfFrom_d267428fb2ca(value1), lsfFrom_17b5cd6f2c74(value2)))
 }
 
-func lawSpecEvaluate821(
+func lawSpecEvaluate820(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5412,7 +5408,7 @@ func lawSpecEvaluate821(
 	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelWriteMarkers_c507f08e(lsfFrom_44a08172da10(value0), lsfFrom_d267428fb2ca(value1), lsfFrom_3250492fe9ac(value2), lsfFrom_49de88d0a810(value3)))
 }
 
-func lawSpecEvaluate822(
+func lawSpecEvaluate821(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5420,11 +5416,11 @@ func lawSpecEvaluate822(
 	return lsfTo_bd9653153f3b(lsfMul32_b8774c72(lsfFrom_bd9653153f3b(value0), lsfFrom_bd9653153f3b(value1)))
 }
 
-func lawSpecEvaluate823(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate822(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_bd9653153f3b(lsfMurmur2_d0ccf769(lsfFrom_9e68ae7ce0b7(value0)))
 }
 
-func lawSpecEvaluate824(
+func lawSpecEvaluate823(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5432,11 +5428,11 @@ func lawSpecEvaluate824(
 	return lsfTo_bd9653153f3b(lsfMurmurChunks_9898bba5(lsfFrom_652994edeaff(value0), lsfFrom_bd9653153f3b(value1)))
 }
 
-func lawSpecEvaluate825(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate824(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_bd9653153f3b(lsfMurmurM_48968914(lsfFrom_b120ceed78cb(value0)))
 }
 
-func lawSpecEvaluate826(
+func lawSpecEvaluate825(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5444,7 +5440,7 @@ func lawSpecEvaluate826(
 	return lsfTo_508e8cda1c80(lsfOwnedOf_0d7fb3ae(lsfFrom_437d0abf423f(value0), lsfFrom_4d7586f102e6(value1)))
 }
 
-func lawSpecEvaluate827(
+func lawSpecEvaluate826(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5453,7 +5449,7 @@ func lawSpecEvaluate827(
 	return lsfTo_dc76e14987c2(lsfPartitionOf_343af5ef(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_3c79f555f54b(value1), lsfFrom_be206fb00188(value2)))
 }
 
-func lawSpecEvaluate828(
+func lawSpecEvaluate827(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5461,7 +5457,7 @@ func lawSpecEvaluate828(
 	return lsfTo_508e8cda1c80(lsfPartitionsOfTopic_194a4a6c(lsfFrom_437d0abf423f(value0), lsfFrom_3250492fe9ac(value1)))
 }
 
-func lawSpecEvaluate829(
+func lawSpecEvaluate828(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5471,7 +5467,7 @@ func lawSpecEvaluate829(
 	return lsfTo_8ac5ed3c86fa(lsfPollPartitions_9d6feda1(symbols, lsfFrom_3250492fe9ac(value0), lsfFrom_b862204e9be7(value1), lsfFrom_7de2ae0da384(value2), lsfFrom_9aa0842592c4(value3)))
 }
 
-func lawSpecEvaluate830(
+func lawSpecEvaluate829(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5479,19 +5475,19 @@ func lawSpecEvaluate830(
 	return lsfTo_582052f40a9c(lsfPositionsToCommit_67969440(lsfFrom_3250492fe9ac(value0), lsfFrom_d1208e18a243(value1)))
 }
 
-func lawSpecEvaluate831(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate830(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_9a576143471f(lsfProducerFlush_f30611db(lsfFrom_5e5d2c3fa1a7(value0)))
 }
 
-func lawSpecEvaluate832(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate831(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_53df4ee1a893(lsfProducerIdempotent_c8ab8a13(symbols, lsfFrom_5e5d2c3fa1a7(value0)))
 }
 
-func lawSpecEvaluate833(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate832(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_dc41353054a0(lsfProducerRetry_aaf3a88a(symbols, lsfFrom_5e5d2c3fa1a7(value0)))
 }
 
-func lawSpecEvaluate834(
+func lawSpecEvaluate833(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5499,7 +5495,7 @@ func lawSpecEvaluate834(
 	return lsfTo_dc41353054a0(lsfProducerSend_9064c6b5(symbols, lsfFrom_b2152710dfac(value0), lsfFrom_5e5d2c3fa1a7(value1)))
 }
 
-func lawSpecEvaluate835(
+func lawSpecEvaluate834(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5508,7 +5504,7 @@ func lawSpecEvaluate835(
 	return lsfTo_e3583a5b5bdc(lsfReadFrom_f028a48d(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_a519f593a6ed(value2)))
 }
 
-func lawSpecEvaluate836(
+func lawSpecEvaluate835(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5518,19 +5514,19 @@ func lawSpecEvaluate836(
 	return lsfTo_d267428fb2ca(lsfReadInOrder_ba595483(symbols, lsfFrom_f9a3e61df1f3(value0), lsfFrom_f9a3e61df1f3(value1), lsfFrom_be206fb00188(value2), lsfFrom_be206fb00188(value3)))
 }
 
-func lawSpecEvaluate837(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate836(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_75994955e886(lsfReceivedOffsets_6c3a7a20(lsfFrom_9aa0842592c4(value0)))
 }
 
-func lawSpecEvaluate838(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate837(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_e3583a5b5bdc(lsfReceivedRecords_c3c84323(lsfFrom_9aa0842592c4(value0)))
 }
 
-func lawSpecEvaluate839(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate838(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_e3583a5b5bdc(lsfRecordsOf_a7b339ef(lsfFrom_ed14fca60ee3(value0)))
 }
 
-func lawSpecEvaluate840(
+func lawSpecEvaluate839(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5540,7 +5536,7 @@ func lawSpecEvaluate840(
 	return lsfTo_d267428fb2ca(lsfResumesAtCommitted_13d41b73(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3)))
 }
 
-func lawSpecEvaluate841(
+func lawSpecEvaluate840(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5548,7 +5544,7 @@ func lawSpecEvaluate841(
 	return lsfTo_d267428fb2ca(lsfSamePartition_cee4f2dc(lsfFrom_f9a3e61df1f3(value0), lsfFrom_f9a3e61df1f3(value1)))
 }
 
-func lawSpecEvaluate842(
+func lawSpecEvaluate841(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5556,11 +5552,11 @@ func lawSpecEvaluate842(
 	return lsfTo_b862204e9be7(lsfSequenceFor_9d79724c(lsfFrom_57a515e0e489(value0), lsfFrom_0f394bf4652c(value1)))
 }
 
-func lawSpecEvaluate843(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate842(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_d267428fb2ca(lsfSmallBatch_dc4ae7bb(lsfFrom_e3583a5b5bdc(value0)))
 }
 
-func lawSpecEvaluate844(
+func lawSpecEvaluate843(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5569,7 +5565,7 @@ func lawSpecEvaluate844(
 	return lsfTo_d267428fb2ca(lsfStableBelowHigh_60981bc4(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_e3583a5b5bdc(value2)))
 }
 
-func lawSpecEvaluate845(
+func lawSpecEvaluate844(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5577,7 +5573,7 @@ func lawSpecEvaluate845(
 	return lsfTo_c818bd20f406(lsfTagFor_a88d3846(lsfFrom_99552686984c(value0), lsfFrom_b862204e9be7(value1)))
 }
 
-func lawSpecEvaluate846(
+func lawSpecEvaluate845(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5585,11 +5581,11 @@ func lawSpecEvaluate846(
 	return lsfTo_fcd7b841fa1b(lsfTagOf_39235de7(lsfFrom_6a5ea41697b3(value0), lsfFrom_b862204e9be7(value1)))
 }
 
-func lawSpecEvaluate847(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate846(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_bd9653153f3b(lsfToPositive_fc7029c7(lsfFrom_bd9653153f3b(value0)))
 }
 
-func lawSpecEvaluate848(
+func lawSpecEvaluate847(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5599,7 +5595,7 @@ func lawSpecEvaluate848(
 	return lsfTo_d267428fb2ca(lsfTransactionThenRead_81bf7b1b(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_e3583a5b5bdc(value2), lsfFrom_d267428fb2ca(value3)))
 }
 
-func lawSpecEvaluate849(
+func lawSpecEvaluate848(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5609,11 +5605,11 @@ func lawSpecEvaluate849(
 	return lsfTo_d267428fb2ca(lsfTransactionalOffsets_80320406(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_44a08172da10(value3)))
 }
 
-func lawSpecEvaluate850(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate849(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_b92c1d290bc6(lsfTransactionsAbort_256496fb(symbols, lsfFrom_74b3f2831172(value0)))
 }
 
-func lawSpecEvaluate851(
+func lawSpecEvaluate850(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5621,15 +5617,15 @@ func lawSpecEvaluate851(
 	return lsfTo_b92c1d290bc6(lsfTransactionsAdd_1f41c92e(symbols, lsfFrom_3250492fe9ac(value0), lsfFrom_74b3f2831172(value1)))
 }
 
-func lawSpecEvaluate852(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate851(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_b92c1d290bc6(lsfTransactionsBegin_5d267b99(lsfFrom_74b3f2831172(value0)))
 }
 
-func lawSpecEvaluate853(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawSpecEvaluate852(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsfTo_b92c1d290bc6(lsfTransactionsCommit_afadd0fa(symbols, lsfFrom_74b3f2831172(value0)))
 }
 
-func lawSpecEvaluate854(
+func lawSpecEvaluate853(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5637,7 +5633,7 @@ func lawSpecEvaluate854(
 	return lsfTo_b92c1d290bc6(lsfTransactionsEnd_fe18afb7(symbols, lsfFrom_d267428fb2ca(value0), lsfFrom_74b3f2831172(value1)))
 }
 
-func lawSpecEvaluate855(
+func lawSpecEvaluate854(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5645,7 +5641,7 @@ func lawSpecEvaluate855(
 	return lsfTo_b49ec6c68859(lsfTransactionsInit_d69a08bc(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_74b3f2831172(value1)))
 }
 
-func lawSpecEvaluate856(
+func lawSpecEvaluate855(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5654,7 +5650,7 @@ func lawSpecEvaluate856(
 	return lsfTo_b92c1d290bc6(lsfTransactionsOffsets_b33ea106(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_582052f40a9c(value1), lsfFrom_74b3f2831172(value2)))
 }
 
-func lawSpecEvaluate857(
+func lawSpecEvaluate856(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5662,7 +5658,7 @@ func lawSpecEvaluate857(
 	return lsfTo_d87cfe1fbff5(lsfTransactionsSend_558d813c(symbols, lsfFrom_b2152710dfac(value0), lsfFrom_74b3f2831172(value1)))
 }
 
-func lawSpecEvaluate858(
+func lawSpecEvaluate857(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5670,7 +5666,7 @@ func lawSpecEvaluate858(
 	return lsfTo_e3583a5b5bdc(lsfUncommittedFrom_8a57847d(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1)))
 }
 
-func lawSpecEvaluate859(
+func lawSpecEvaluate858(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5678,7 +5674,7 @@ func lawSpecEvaluate859(
 	return lsfTo_3250492fe9ac(lsfViewOf_6e11c6f7(lsfFrom_437d0abf423f(value0), lsfFrom_9b6e0477a826(value1)))
 }
 
-func lawSpecEvaluate860(
+func lawSpecEvaluate859(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5690,7 +5686,7 @@ func lawSpecEvaluate860(
 	return lsfTo_7de2ae0da384(lsfWithAssignment_7d6291b1(lsfFrom_01d86fc44f8c(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_8ec0351dc657(value3), lsfFrom_3250492fe9ac(value4), lsfFrom_7de2ae0da384(value5)))
 }
 
-func lawSpecEvaluate861(
+func lawSpecEvaluate860(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5699,7 +5695,7 @@ func lawSpecEvaluate861(
 	return lsfTo_7de2ae0da384(lsfWithPosition_867e6b19(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_7de2ae0da384(value2)))
 }
 
-func lawSpecEvaluate862(
+func lawSpecEvaluate861(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5708,7 +5704,7 @@ func lawSpecEvaluate862(
 	return lsfTo_c09136e29464(lsfWriteAborted_8e3a61e4(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_437d0abf423f(value1), lsfFrom_be206fb00188(value2)))
 }
 
-func lawSpecEvaluate863(
+func lawSpecEvaluate862(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5716,7 +5712,7 @@ func lawSpecEvaluate863(
 	return lsfTo_bd9653153f3b(lsfXor32_0ea970f5(lsfFrom_bd9653153f3b(value0), lsfFrom_bd9653153f3b(value1)))
 }
 
-func lawSpecEvaluate864(
+func lawSpecEvaluate863(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
@@ -5725,10 +5721,14 @@ func lawSpecEvaluate864(
 	return lsfTo_7b619c124b0c(lsfXorBits_ea1fb8e2(lsfFrom_7b619c124b0c(value0), lsfFrom_7b619c124b0c(value1), lsfFrom_7b619c124b0c(value2)))
 }
 
-func lawSpecEvaluate865(
+func lawSpecEvaluate864(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
 	return lsfTo_b862204e9be7(lsfMurmurPartitionerChoosePartition_5048c35d(lsfFrom_b276e66efd09(value0), lsfFrom_b862204e9be7(value1)))
+}
+
+func lawSpecEvaluate865(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+	return lsfTo_b120ceed78cb(lsfSuiteNamesThePackage_55f330a5(lsfFrom_b120ceed78cb(value0)))
 }

@@ -95,15 +95,15 @@ pub fn inspect_state(twin: &Twin, with_records: bool) -> Value {
                                     .iter()
                                     .rev()
                                     .map(|e| match e {
-                                        data::LogEntry::DataEntry { entryOffset, entryRecord, writer, transactional } => {
-                                            let mut r = record_json(entryRecord);
-                                            r["offset"] = json!(entryOffset);
-                                            r["producerId"] = json!(writer);
-                                            r["transactional"] = json!(transactional);
+                                        data::LogEntry::DataEntry { value } => {
+                                            let mut r = record_json(&value.entryRecord);
+                                            r["offset"] = json!(value.entryOffset);
+                                            r["producerId"] = json!(value.writer);
+                                            r["transactional"] = json!(value.transactional);
                                             r
                                         }
-                                        data::LogEntry::ControlEntry { markerOffset, markerWriter, commits } => json!({
-                                            "offset": markerOffset, "marker": if *commits { "commit" } else { "abort" }, "producerId": markerWriter,
+                                        data::LogEntry::ControlEntry { value } => json!({
+                                            "offset": value.markerOffset, "marker": if value.commits { "commit" } else { "abort" }, "producerId": value.markerWriter,
                                         }),
                                     })
                                     .collect()
@@ -123,9 +123,9 @@ pub fn inspect_state(twin: &Twin, with_records: bool) -> Value {
         .map(|(pid, p)| {
             let txn = match &p.txn {
                 data::TxnState::NoTxn => Value::Null,
-                data::TxnState::Ongoing { txnPartitions, txnOffsets } => json!({
-                    "partitions": txnPartitions.iter().map(tp_json).collect::<Vec<_>>(),
-                    "offsets": txnOffsets.iter().map(|o| json!({ "group": o.pendingGroup, "topic": o.pendingEntry.topicPartition.topic, "partition": o.pendingEntry.topicPartition.partition, "offset": o.pendingEntry.offset })).collect::<Vec<_>>(),
+                data::TxnState::Ongoing { value } => json!({
+                    "partitions": value.txnPartitions.iter().map(tp_json).collect::<Vec<_>>(),
+                    "offsets": value.txnOffsets.iter().map(|o| json!({ "group": o.pendingGroup, "topic": o.pendingEntry.topicPartition.topic, "partition": o.pendingEntry.topicPartition.partition, "offset": o.pendingEntry.offset })).collect::<Vec<_>>(),
                 }),
             };
             json!({ "producerId": pid, "epoch": p.epoch, "transactionalId": p.transactionalId, "transaction": txn })
@@ -178,14 +178,21 @@ struct InspectQuery {
 
 async fn inspect(State(twin): Shared, Query(q): Query<InspectQuery>) -> Json<Value> {
     let twin2 = twin.clone();
-    let v = tokio::task::spawn_blocking(move || inspect_state(&twin2, q.records)).await.unwrap_or_default();
+    let v = tokio::task::spawn_blocking(move || inspect_state(&twin2, q.records))
+        .await
+        .unwrap_or_default();
     Json(v)
 }
 
 async fn force_state(State(twin): Shared, body: String) -> Response {
     let doc: ForceDoc = match serde_json::from_str(&body) {
         Ok(d) => d,
-        Err(e) => return problem(StatusCode::BAD_REQUEST, json!({ "error": format!("not a forced state: {e}") })),
+        Err(e) => {
+            return problem(
+                StatusCode::BAD_REQUEST,
+                json!({ "error": format!("not a forced state: {e}") }),
+            );
+        }
     };
     let result = {
         let mut core = twin.lock();
@@ -193,8 +200,14 @@ async fn force_state(State(twin): Shared, body: String) -> Response {
     };
     twin.data.notify_waiters();
     match result {
-        Ok(f) => problem(StatusCode::OK, json!({ "forced": true, "operations": f.operations })),
-        Err(r) => problem(StatusCode::UNPROCESSABLE_ENTITY, json!({ "forced": false, "law": r.law, "reason": r.reason })),
+        Ok(f) => problem(
+            StatusCode::OK,
+            json!({ "forced": true, "operations": f.operations }),
+        ),
+        Err(r) => problem(
+            StatusCode::UNPROCESSABLE_ENTITY,
+            json!({ "forced": false, "law": r.law, "reason": r.reason }),
+        ),
     }
 }
 
@@ -210,21 +223,32 @@ async fn raise(State(twin): Shared, Path(name): Path<String>, body: String) -> R
     } else {
         match serde_json::from_str(&body) {
             Ok(Value::Object(m)) => m,
-            _ => return problem(StatusCode::BAD_REQUEST, json!({ "error": "the parameters are a JSON object" })),
+            _ => {
+                return problem(
+                    StatusCode::BAD_REQUEST,
+                    json!({ "error": "the parameters are a JSON object" }),
+                );
+            }
         }
     };
     match faults::parse(&name, &params) {
         Err(e) => problem(StatusCode::BAD_REQUEST, json!({ "error": e })),
         Ok((fault, lasting)) => {
             let active = twin.lock().raise(fault, lasting);
-            problem(StatusCode::CREATED, serde_json::to_value(active).unwrap_or_default())
+            problem(
+                StatusCode::CREATED,
+                serde_json::to_value(active).unwrap_or_default(),
+            )
         }
     }
 }
 
 async fn clear_one(State(twin): Shared, Path(name): Path<String>) -> Response {
     if !faults::declared().faults.iter().any(|f| f.name == name) {
-        return problem(StatusCode::NOT_FOUND, json!({ "error": format!("{name} is not a declared fault") }));
+        return problem(
+            StatusCode::NOT_FOUND,
+            json!({ "error": format!("{name} is not a declared fault") }),
+        );
     }
     let n = twin.lock().clear(Some(&name));
     problem(StatusCode::OK, json!({ "cleared": n }))
@@ -248,7 +272,10 @@ struct Advance {
 async fn advance(State(twin): Shared, Json(a): Json<Advance>) -> Response {
     let ms = match &a.by {
         Value::String(s) => parse_duration(s),
-        Value::Number(n) => n.as_i64().filter(|n| *n >= 0).ok_or_else(|| "by must be a duration".to_string()),
+        Value::Number(n) => n
+            .as_i64()
+            .filter(|n| *n >= 0)
+            .ok_or_else(|| "by must be a duration".to_string()),
         _ => Err("by must be a duration such as 5s".to_string()),
     };
     let ms = match ms {
@@ -259,7 +286,11 @@ async fn advance(State(twin): Shared, Json(a): Json<Advance>) -> Response {
         let mut core = twin.lock();
         core.clock.advance(ms);
         let now = core.clock.now_ms();
-        core.control(crate::history::Source::Coordinator, "clock advanced", json!({ "byMs": ms, "nowMs": now }));
+        core.control(
+            crate::history::Source::Coordinator,
+            "clock advanced",
+            json!({ "byMs": ms, "nowMs": now }),
+        );
         core.expire_faults();
         crate::group::expire_sessions(&mut core);
         now
@@ -277,8 +308,12 @@ struct HistoryQuery {
 async fn history(State(twin): Shared, Query(q): Query<HistoryQuery>) -> Response {
     let core = twin.lock();
     let since = q.since.unwrap_or(0);
-    let entries: Vec<&Entry> =
-        core.history.iter().filter(|e| e.seq > since).take(q.limit.unwrap_or(usize::MAX)).collect();
+    let entries: Vec<&Entry> = core
+        .history
+        .iter()
+        .filter(|e| e.seq > since)
+        .take(q.limit.unwrap_or(usize::MAX))
+        .collect();
     if q.format.as_deref() == Some("jsonl") {
         let mut text = String::new();
         for e in entries {
@@ -310,7 +345,12 @@ async fn replay_history(State(twin): Shared, body: String) -> Response {
     } else {
         match parse_history(&body) {
             Ok(e) => e,
-            Err(e) => return problem(StatusCode::BAD_REQUEST, json!({ "error": format!("not a history: {e}") })),
+            Err(e) => {
+                return problem(
+                    StatusCode::BAD_REQUEST,
+                    json!({ "error": format!("not a history: {e}") }),
+                );
+            }
         }
     };
     let result = tokio::task::spawn_blocking(move || {
@@ -362,5 +402,9 @@ async fn reset(State(twin): Shared) -> Json<Value> {
 
 /// The active faults' names, for logs.
 pub fn active_names(twin: &Twin) -> Vec<&'static str> {
-    twin.lock().faults.iter().map(|a| fault_name(&a.fault)).collect()
+    twin.lock()
+        .faults
+        .iter()
+        .map(|a| fault_name(&a.fault))
+        .collect()
 }

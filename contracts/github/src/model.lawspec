@@ -10,12 +10,12 @@ unit lawtwin.github.model
 -- document names, and BadRequest, NotFound and Unmodelled, which the
 -- model needs. Unmodelled is an operation's answer until its behaviour is
 -- written in handwritten.lawspec.
-type ApiError is
+type ApiError is one of
   | BadRequest -- HTTP 400
   | NotFound -- HTTP 404
   | UnprocessableEntity -- HTTP 422
   | Unmodelled -- the model does not answer this operation yet
-end
+end type
 
 -- ---------------------------------------------------------------------------
 -- Schemas
@@ -23,8 +23,7 @@ end
 
 -- Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
 -- Schema `label`.
-type Label is
-  Label
+type Label is a record{
     id :: Int64 -- Unique identifier for the label.
     nodeId :: Text -- `node_id`
     url :: Text -- URL for the label
@@ -34,12 +33,12 @@ type Label is
     default_ :: Bool -- `default`: Whether this label comes by default in a new repository.
     archivedAt :: Maybe Text -- `archived_at`: Timestamp indicating when the label was archived, or `null` if it has not been archived.
     archivedBy :: Maybe SimpleUser -- `archived_by`: The user who archived the label, or `null` if it has not been archived.
-end
+}
+end type
 
 -- A GitHub user.
 -- Schema `simple-user`.
-type SimpleUser is
-  SimpleUser
+type SimpleUser is a record{
     name :: Maybe Text
     email :: Maybe Text
     login :: Text
@@ -62,48 +61,48 @@ type SimpleUser is
     siteAdmin :: Bool -- `site_admin`
     starredAt :: Maybe Text -- `starred_at`
     userViewType :: Maybe Text -- `user_view_type`
-end
+}
+end type
 
 -- Schema `IssuesCreateLabelBody`.
-type IssuesCreateLabelBody is
-  IssuesCreateLabelBody
+type IssuesCreateLabelBody is a record{
     name :: Text -- The name of the label.
     color :: Maybe Text -- The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.
     description_ :: Maybe Text -- `description`: A short description of the label.
-end
+}
+end type
 
 -- Schema `IssuesUpdateLabelBody`.
-type IssuesUpdateLabelBody is
-  IssuesUpdateLabelBody
+type IssuesUpdateLabelBody is a record{
     newName :: Maybe Text -- `new_name`: The new name of the label.
     color :: Maybe Text -- The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.
     description_ :: Maybe Text -- `description`: A short description of the label.
     archived :: Maybe Bool -- Whether to archive or unarchive the label.
-end
+}
+end type
 
 -- Schema `IssuesListMilestonesState`.
-type IssuesListMilestonesState is
+type IssuesListMilestonesState is one of
   | Open -- "open"
   | Closed -- "closed"
   | All -- "all"
-end
+end type
 
 -- Schema `IssuesListMilestonesSort`.
-type IssuesListMilestonesSort is
+type IssuesListMilestonesSort is one of
   | DueOn -- "due_on"
   | Completeness -- "completeness"
-end
+end type
 
 -- Schema `IssuesListMilestonesDirection`.
-type IssuesListMilestonesDirection is
+type IssuesListMilestonesDirection is one of
   | Asc -- "asc"
   | Desc -- "desc"
-end
+end type
 
 -- A collection of related issues and pull requests.
 -- Schema `milestone`.
-type Milestone is
-  Milestone
+type Milestone is a record{
     url :: Text
     htmlUrl :: Text -- `html_url`
     labelsUrl :: Text -- `labels_url`
@@ -120,19 +119,19 @@ type Milestone is
     updatedAt :: Text -- `updated_at`
     closedAt :: Maybe Text -- `closed_at`
     dueOn :: Maybe Text -- `due_on`
-end
+}
+end type
 
 -- The state of the milestone.
 -- Schema `MilestoneState`.
-type MilestoneState is
+type MilestoneState is one of
   | MilestoneStateOpen -- "open"
   | MilestoneStateClosed -- "closed"
-end
+end type
 
 -- A GitHub user.
 -- Schema `nullable-simple-user`.
-type NullableSimpleUser is
-  NullableSimpleUser
+type NullableSimpleUser is a record{
     name :: Maybe Text
     email :: Maybe Text
     login :: Text
@@ -155,41 +154,42 @@ type NullableSimpleUser is
     siteAdmin :: Bool -- `site_admin`
     starredAt :: Maybe Text -- `starred_at`
     userViewType :: Maybe Text -- `user_view_type`
-end
+}
+end type
 
 -- Schema `IssuesCreateMilestoneBody`.
-type IssuesCreateMilestoneBody is
-  IssuesCreateMilestoneBody
+type IssuesCreateMilestoneBody is a record{
     title :: Text -- The title of the milestone.
     state_ :: Maybe MilestoneState -- `state`: The state of the milestone.
     description_ :: Maybe Text -- `description`: A description of the milestone.
     dueOn :: Maybe Text -- `due_on`: The milestone due date.
-end
+}
+end type
 
 -- Schema `IssuesUpdateMilestoneBody`.
-type IssuesUpdateMilestoneBody is
-  IssuesUpdateMilestoneBody
+type IssuesUpdateMilestoneBody is a record{
     title :: Maybe Text -- The title of the milestone.
     state_ :: Maybe MilestoneState -- `state`: The state of the milestone.
     description_ :: Maybe Text -- `description`: A description of the milestone.
     dueOn :: Maybe Text -- `due_on`: The milestone due date.
-end
+}
+end type
 
 -- Where a Label is kept: /repos/{owner}/{repo}/labels/{name}.
-type LabelKey is
-  LabelKey
+type LabelKey is a record{
     owner :: Text
     repo :: Text
     name :: Text
-end
+}
+end type
 
 -- Where a Milestone is kept: /repos/{owner}/{repo}/milestones/{milestone_number}.
-type MilestoneKey is
-  MilestoneKey
+type MilestoneKey is a record{
     owner :: Text
     repo :: Text
     milestoneNumber :: Int64
-end
+}
+end type
 
 -- ---------------------------------------------------------------------------
 -- The service's state
@@ -197,153 +197,163 @@ end
 
 -- What the service holds: each resource the importer recognised, by key,
 -- and the next key for those whose keys the service assigns.
-type State is
-  State
+type State is a record{
     labels :: KeyVal LabelKey Label -- /repos/{owner}/{repo}/labels/{name}
     milestones :: KeyVal MilestoneKey Milestone -- /repos/{owner}/{repo}/milestones/{milestone_number}
     nextMilestoneKey :: Int64
-end
+}
+end type
 
 -- The state of a new service: nothing held.
-definition emptyState (u :: Unit) :: State is State (prelude.keyValOf []) (prelude.keyValOf []) 1 end
+function emptyState (u :: Unit) -> State is State record{labels = (prelude.keyValOf []), milestones = (prelude.keyValOf []), nextMilestoneKey = 1} end function
 
 -- ---------------------------------------------------------------------------
 -- Constraints
 -- ---------------------------------------------------------------------------
 
 -- Named refinements of constrained values, for laws to draw valid inputs.
-refinement IssuesCreateMilestoneBodyDueOn is (v :: Text where v matches regex "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})") end
+refinement IssuesCreateMilestoneBodyDueOn is (v :: Text where v matches regex "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})") end refinement
 
 -- The Labels under one parent, in key order.
-definition modelLabelsUnder (owner :: Text) (repo :: Text) (entries :: List (Entry LabelKey Label)) :: List Label is
-  match entries with
-  | Nil -> []
-  | Cons entry rest -> if entry.key.owner == owner && entry.key.repo == repo then Cons entry.value (modelLabelsUnder owner repo rest) else modelLabelsUnder owner repo rest
-  end
-end
+function modelLabelsUnder (owner :: Text) (repo :: Text) (entries :: List (Entry LabelKey Label)) -> List Label is
+  first matching case of entries :
+  when Nil then []
+  when Cons entry rest then if entry.key.owner = owner && entry.key.repo = repo then Cons entry.value (modelLabelsUnder owner repo rest) else modelLabelsUnder owner repo rest end if
+  end case
+end function
 
 -- The Milestones under one parent, in key order.
-definition modelMilestonesUnder (owner :: Text) (repo :: Text) (entries :: List (Entry MilestoneKey Milestone)) :: List Milestone is
-  match entries with
-  | Nil -> []
-  | Cons entry rest -> if entry.key.owner == owner && entry.key.repo == repo then Cons entry.value (modelMilestonesUnder owner repo rest) else modelMilestonesUnder owner repo rest
-  end
-end
+function modelMilestonesUnder (owner :: Text) (repo :: Text) (entries :: List (Entry MilestoneKey Milestone)) -> List Milestone is
+  first matching case of entries :
+  when Nil then []
+  when Cons entry rest then if entry.key.owner = owner && entry.key.repo = repo then Cons entry.value (modelMilestonesUnder owner repo rest) else modelMilestonesUnder owner repo rest end if
+  end case
+end function
 
 -- Whether a IssuesCreateMilestoneBody keeps its schema's constraints.
-definition validIssuesCreateMilestoneBody (value :: IssuesCreateMilestoneBody) :: Bool is
-  (match value.dueOn with | Nothing -> true | Just present0 -> present0 matches regex "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})" end)
-end
+function validIssuesCreateMilestoneBody (value :: IssuesCreateMilestoneBody) -> Bool is
+  (first matching case of value.dueOn : when Nothing then true when Just present0 then present0 matches regex "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})" end case)
+end function
 
 -- The key after k, or k at the end of its type.
-definition after64 (k :: Int64) :: Int64 is if k < 9223372036854775807 then k + 1 else k end
+function after64 (k :: Int64) -> Int64 is if k < 9223372036854775807 then k + 1 else k end if
+end function
 
 -- Whether a IssuesUpdateMilestoneBody keeps its schema's constraints.
-definition validIssuesUpdateMilestoneBody (value :: IssuesUpdateMilestoneBody) :: Bool is
-  (match value.dueOn with | Nothing -> true | Just present0 -> present0 matches regex "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})" end)
-end
+function validIssuesUpdateMilestoneBody (value :: IssuesUpdateMilestoneBody) -> Bool is
+  (first matching case of value.dueOn : when Nothing then true when Just present0 then present0 matches regex "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})" end case)
+end function
 
 -- Whether a list holds a Label.
-definition containsLabel (wanted :: Label) (items :: List Label) :: Bool is
-  match items with
-  | Nil -> false
-  | Cons item rest -> item == wanted || containsLabel wanted rest
-  end
-end
+function containsLabel (wanted :: Label) (items :: List Label) -> Bool is
+  first matching case of items :
+  when Nil then false
+  when Cons item rest then item = wanted || containsLabel wanted rest
+  end case
+end function
 
 -- Whether a list holds a Milestone.
-definition containsMilestone (wanted :: Milestone) (items :: List Milestone) :: Bool is
-  match items with
-  | Nil -> false
-  | Cons item rest -> item == wanted || containsMilestone wanted rest
-  end
-end
+function containsMilestone (wanted :: Milestone) (items :: List Milestone) -> Bool is
+  first matching case of items :
+  when Nil then false
+  when Cons item rest then item = wanted || containsMilestone wanted rest
+  end case
+end function
 
 -- ---------------------------------------------------------------------------
 -- What each recognised operation does
 -- ---------------------------------------------------------------------------
 
 -- GET /repos/{owner}/{repo}/labels: list
-definition modelIssuesListLabelsForRepo (owner :: Text) (repo :: Text) (perPage :: Maybe Int64) (page :: Maybe Int64) (current_ :: State) :: Pair (List Label) State is
+function modelIssuesListLabelsForRepo (owner :: Text) (repo :: Text) (perPage :: Maybe Int64) (page :: Maybe Int64) (current_ :: State) -> Pair (List Label) State is
   Pair (modelLabelsUnder owner repo (prelude.entries current_.labels)) current_
-end
+end function
 
 -- POST /repos/{owner}/{repo}/labels: create
-definition modelIssuesCreateLabel (owner :: Text) (repo :: Text) (body :: IssuesCreateLabelBody) (current_ :: State) :: Pair Label State fails with ApiError is
+procedure modelIssuesCreateLabel (owner :: Text) (repo :: Text) (body :: IssuesCreateLabelBody) (current_ :: State) -> Pair Label State fails with ApiError is
   let key = body.name in
-  let stored = (Label 0 "" "" key body.description_ (match body.color with | Nothing -> "" | Just given -> given end) false Nothing Nothing) in
-  match prelude.lookup (LabelKey owner repo key) current_.labels with
-  | Just existing -> raise UnprocessableEntity
-  | Nothing -> Pair stored (current_ with labels = prelude.put (LabelKey owner repo key) stored current_.labels)
-  end
-end
+  let stored = (Label record{id = 0, nodeId = "", url = "", name = key, description_ = body.description_, color = (first matching case of body.color : when Nothing then "" when Just given then given end case), default_ = false, archivedAt = Nothing, archivedBy = Nothing}) in
+  first matching case of prelude.lookup (LabelKey record{owner = owner, repo = repo, name = key}) current_.labels :
+  when Just existing then raise UnprocessableEntity
+  when Nothing then Pair stored (current_ with labels = prelude.put (LabelKey record{owner = owner, repo = repo, name = key}) stored current_.labels)
+  end case
+  end let
+  end let
+end procedure
 
 -- GET /repos/{owner}/{repo}/labels/{name}: read
-definition modelIssuesGetLabel (owner :: Text) (repo :: Text) (name :: Text) (current_ :: State) :: Pair Label State fails with ApiError is
-  match prelude.lookup (LabelKey owner repo name) current_.labels with
-  | Nothing -> raise NotFound
-  | Just found -> Pair found current_
-  end
-end
+procedure modelIssuesGetLabel (owner :: Text) (repo :: Text) (name :: Text) (current_ :: State) -> Pair Label State fails with ApiError is
+  first matching case of prelude.lookup (LabelKey record{owner = owner, repo = repo, name = name}) current_.labels :
+  when Nothing then raise NotFound
+  when Just found then Pair found current_
+  end case
+end procedure
 
 -- DELETE /repos/{owner}/{repo}/labels/{name}: delete
-definition modelIssuesDeleteLabel (owner :: Text) (repo :: Text) (name :: Text) (current_ :: State) :: Pair Unit State fails with ApiError is
-  match prelude.lookup (LabelKey owner repo name) current_.labels with
-  | Nothing -> raise NotFound
-  | Just found -> Pair unitValue (current_ with labels = prelude.delete (LabelKey owner repo name) current_.labels)
-  end
-end
+procedure modelIssuesDeleteLabel (owner :: Text) (repo :: Text) (name :: Text) (current_ :: State) -> Pair Unit State fails with ApiError is
+  first matching case of prelude.lookup (LabelKey record{owner = owner, repo = repo, name = name}) current_.labels :
+  when Nothing then raise NotFound
+  when Just found then Pair unitValue (current_ with labels = prelude.delete (LabelKey record{owner = owner, repo = repo, name = name}) current_.labels)
+  end case
+end procedure
 
 -- PATCH /repos/{owner}/{repo}/labels/{name}: patch
-definition modelIssuesUpdateLabel (owner :: Text) (repo :: Text) (name :: Text) (body :: Maybe IssuesUpdateLabelBody) (current_ :: State) :: Pair Label State fails with ApiError is
-  match prelude.lookup (LabelKey owner repo name) current_.labels with
-  | Nothing -> raise NotFound
-  | Just old ->
-      let stored = (match body with | Nothing -> old | Just change -> (old with description_ = (match change.description_ with | Nothing -> old.description_ | Just given -> Just given end), color = (match change.color with | Nothing -> old.color | Just given -> given end)) end) in
-      Pair stored (current_ with labels = prelude.put (LabelKey owner repo name) stored current_.labels)
-  end
-end
+procedure modelIssuesUpdateLabel (owner :: Text) (repo :: Text) (name :: Text) (body :: Maybe IssuesUpdateLabelBody) (current_ :: State) -> Pair Label State fails with ApiError is
+  first matching case of prelude.lookup (LabelKey record{owner = owner, repo = repo, name = name}) current_.labels :
+  when Nothing then raise NotFound
+  when Just old then
+      let stored = (first matching case of body : when Nothing then old when Just change then (old with description_ = (first matching case of change.description_ : when Nothing then old.description_ when Just given then Just given end case), color = (first matching case of change.color : when Nothing then old.color when Just given then given end case)) end case) in
+      Pair stored (current_ with labels = prelude.put (LabelKey record{owner = owner, repo = repo, name = name}) stored current_.labels)
+      end let
+  end case
+end procedure
 
 -- GET /repos/{owner}/{repo}/milestones: list
-definition modelIssuesListMilestones (owner :: Text) (repo :: Text) (state_ :: Maybe IssuesListMilestonesState) (sort :: Maybe IssuesListMilestonesSort) (direction :: Maybe IssuesListMilestonesDirection) (perPage :: Maybe Int64) (page :: Maybe Int64) (current_ :: State) :: Pair (List Milestone) State is
+function modelIssuesListMilestones (owner :: Text) (repo :: Text) (state_ :: Maybe IssuesListMilestonesState) (sort :: Maybe IssuesListMilestonesSort) (direction :: Maybe IssuesListMilestonesDirection) (perPage :: Maybe Int64) (page :: Maybe Int64) (current_ :: State) -> Pair (List Milestone) State is
   Pair (modelMilestonesUnder owner repo (prelude.entries current_.milestones)) current_
-end
+end function
 
 -- POST /repos/{owner}/{repo}/milestones: create
-definition modelIssuesCreateMilestone (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (current_ :: State) :: Pair Milestone State fails with ApiError is
+procedure modelIssuesCreateMilestone (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (current_ :: State) -> Pair Milestone State fails with ApiError is
   if !(validIssuesCreateMilestoneBody body) then raise UnprocessableEntity else
   let key = current_.nextMilestoneKey in
-  let stored = (Milestone "" "" "" 0 "" key (match body.state_ with | Nothing -> MilestoneStateOpen | Just given -> given end) body.title body.description_ Nothing 0 0 "" "" Nothing body.dueOn) in
-  match prelude.lookup (MilestoneKey owner repo key) current_.milestones with
-  | Just existing -> raise UnprocessableEntity
-  | Nothing -> Pair stored (current_ with milestones = prelude.put (MilestoneKey owner repo key) stored current_.milestones, nextMilestoneKey = (if key >= current_.nextMilestoneKey then after64 key else current_.nextMilestoneKey))
-  end
-end
+  let stored = (Milestone record{url = "", htmlUrl = "", labelsUrl = "", id = 0, nodeId = "", number = key, state_ = (first matching case of body.state_ : when Nothing then MilestoneStateOpen when Just given then given end case), title = body.title, description_ = body.description_, creator = Nothing, openIssues = 0, closedIssues = 0, createdAt = "", updatedAt = "", closedAt = Nothing, dueOn = body.dueOn}) in
+  first matching case of prelude.lookup (MilestoneKey record{owner = owner, repo = repo, milestoneNumber = key}) current_.milestones :
+  when Just existing then raise UnprocessableEntity
+  when Nothing then Pair stored (current_ with milestones = prelude.put (MilestoneKey record{owner = owner, repo = repo, milestoneNumber = key}) stored current_.milestones, nextMilestoneKey = (if key >= current_.nextMilestoneKey then after64 key else current_.nextMilestoneKey end if))
+  end case
+  end let
+  end let
+end if
+end procedure
 
 -- GET /repos/{owner}/{repo}/milestones/{milestone_number}: read
-definition modelIssuesGetMilestone (owner :: Text) (repo :: Text) (milestoneNumber :: Int64) (current_ :: State) :: Pair Milestone State fails with ApiError is
-  match prelude.lookup (MilestoneKey owner repo milestoneNumber) current_.milestones with
-  | Nothing -> raise NotFound
-  | Just found -> Pair found current_
-  end
-end
+procedure modelIssuesGetMilestone (owner :: Text) (repo :: Text) (milestoneNumber :: Int64) (current_ :: State) -> Pair Milestone State fails with ApiError is
+  first matching case of prelude.lookup (MilestoneKey record{owner = owner, repo = repo, milestoneNumber = milestoneNumber}) current_.milestones :
+  when Nothing then raise NotFound
+  when Just found then Pair found current_
+  end case
+end procedure
 
 -- DELETE /repos/{owner}/{repo}/milestones/{milestone_number}: delete
-definition modelIssuesDeleteMilestone (owner :: Text) (repo :: Text) (milestoneNumber :: Int64) (current_ :: State) :: Pair Unit State fails with ApiError is
-  match prelude.lookup (MilestoneKey owner repo milestoneNumber) current_.milestones with
-  | Nothing -> raise NotFound
-  | Just found -> Pair unitValue (current_ with milestones = prelude.delete (MilestoneKey owner repo milestoneNumber) current_.milestones)
-  end
-end
+procedure modelIssuesDeleteMilestone (owner :: Text) (repo :: Text) (milestoneNumber :: Int64) (current_ :: State) -> Pair Unit State fails with ApiError is
+  first matching case of prelude.lookup (MilestoneKey record{owner = owner, repo = repo, milestoneNumber = milestoneNumber}) current_.milestones :
+  when Nothing then raise NotFound
+  when Just found then Pair unitValue (current_ with milestones = prelude.delete (MilestoneKey record{owner = owner, repo = repo, milestoneNumber = milestoneNumber}) current_.milestones)
+  end case
+end procedure
 
 -- PATCH /repos/{owner}/{repo}/milestones/{milestone_number}: patch
-definition modelIssuesUpdateMilestone (owner :: Text) (repo :: Text) (milestoneNumber :: Int64) (body :: Maybe IssuesUpdateMilestoneBody) (current_ :: State) :: Pair Milestone State fails with ApiError is
-  if !((match body with | Nothing -> true | Just present0 -> validIssuesUpdateMilestoneBody present0 end)) then raise BadRequest else
-  match prelude.lookup (MilestoneKey owner repo milestoneNumber) current_.milestones with
-  | Nothing -> raise NotFound
-  | Just old ->
-      let stored = (match body with | Nothing -> old | Just change -> (old with state_ = (match change.state_ with | Nothing -> old.state_ | Just given -> given end), title = (match change.title with | Nothing -> old.title | Just given -> given end), description_ = (match change.description_ with | Nothing -> old.description_ | Just given -> Just given end), dueOn = (match change.dueOn with | Nothing -> old.dueOn | Just given -> Just given end)) end) in
-      Pair stored (current_ with milestones = prelude.put (MilestoneKey owner repo milestoneNumber) stored current_.milestones)
-  end
-end
+procedure modelIssuesUpdateMilestone (owner :: Text) (repo :: Text) (milestoneNumber :: Int64) (body :: Maybe IssuesUpdateMilestoneBody) (current_ :: State) -> Pair Milestone State fails with ApiError is
+  if !((first matching case of body : when Nothing then true when Just present0 then validIssuesUpdateMilestoneBody present0 end case)) then raise BadRequest else
+  first matching case of prelude.lookup (MilestoneKey record{owner = owner, repo = repo, milestoneNumber = milestoneNumber}) current_.milestones :
+  when Nothing then raise NotFound
+  when Just old then
+      let stored = (first matching case of body : when Nothing then old when Just change then (old with state_ = (first matching case of change.state_ : when Nothing then old.state_ when Just given then given end case), title = (first matching case of change.title : when Nothing then old.title when Just given then given end case), description_ = (first matching case of change.description_ : when Nothing then old.description_ when Just given then Just given end case), dueOn = (first matching case of change.dueOn : when Nothing then old.dueOn when Just given then Just given end case)) end case) in
+      Pair stored (current_ with milestones = prelude.put (MilestoneKey record{owner = owner, repo = repo, milestoneNumber = milestoneNumber}) stored current_.milestones)
+      end let
+  end case
+end if
+end procedure
 
+end unit

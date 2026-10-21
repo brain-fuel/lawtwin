@@ -239,31 +239,31 @@ private static LawSpecFast.Codec<Regex> codec() {
     }
 
     public static final class ToPartition extends PartitionChoice {
-      public final long chosen;
+      public final long value;
 
-      public ToPartition(long chosen) {
+      public ToPartition(long value) {
         super(0);
-        this.chosen = chosen;
+        this.value = value;
       }
 
       @Override
       public boolean equals(Object other) {
         if (!(other instanceof ToPartition o)) return false;
-        return true && chosen == o.chosen;
+        return true && value == o.value;
       }
 
       @Override
       public int hashCode() {
-        return java.util.Objects.hash(1, chosen);
+        return java.util.Objects.hash(1, value);
       }
 
       int compareFields(Object other) {
         var o = (ToPartition) other;
-        int c0 = Long.compare(chosen, o.chosen); if (c0 != 0) return c0;
+        int c0 = Long.compare(value, o.value); if (c0 != 0) return c0;
         return 0;
       }
 
-      @Override public String toString() { return "ToPartition" + java.util.List.of(chosen); }
+      @Override public String toString() { return "ToPartition" + java.util.List.of(value); }
     }
 
     public static final class ByKey extends PartitionChoice {
@@ -300,7 +300,7 @@ private static LawSpecFast.Codec<PartitionChoice> codec() {
           switch (value.tag) {
             case 0 -> {
               var m = (PartitionChoice.ToPartition) value;
-              return LawSpecFast.value(key, "lawtwin.kafka::type::PartitionChoice::To" + "Partition", LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(m.chosen));
+              return LawSpecFast.value(key, "lawtwin.kafka::type::PartitionChoice::To" + "Partition", LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(m.value));
             }
             case 1 -> {
               return LawSpecFast.value(key, "lawtwin.kafka::type::PartitionChoice::ByKey");
@@ -1592,74 +1592,59 @@ private static LawSpecFast.Codec<GroupView> codec() {
     }
 
     public static final class DataEntry extends LogEntry {
-      public final long entryOffset;
-      public final Record entryRecord;
-      public final long writer;
-      public final boolean transactional;
+      public final Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be value;
 
-      public DataEntry(long entryOffset, Record entryRecord, long writer, boolean transactional) {
+      public DataEntry(Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be value) {
         super(0);
-        this.entryOffset = entryOffset;
-        this.entryRecord = entryRecord;
-        this.writer = writer;
-        this.transactional = transactional;
+        this.value = value;
       }
 
       @Override
       public boolean equals(Object other) {
         if (!(other instanceof DataEntry o)) return false;
-        return true && entryOffset == o.entryOffset && java.util.Objects.equals(entryRecord, o.entryRecord) && writer == o.writer && transactional == o.transactional;
+        return true && java.util.Objects.equals(value, o.value);
       }
 
       @Override
       public int hashCode() {
-        return java.util.Objects.hash(1, entryOffset, entryRecord, writer, transactional);
+        return java.util.Objects.hash(1, value);
       }
 
       int compareFields(Object other) {
         var o = (DataEntry) other;
-        int c0 = Long.compare(entryOffset, o.entryOffset); if (c0 != 0) return c0;
-        int c1 = LawSpecFast.compare(entryRecord, o.entryRecord); if (c1 != 0) return c1;
-        int c2 = Long.compare(writer, o.writer); if (c2 != 0) return c2;
-        int c3 = Boolean.compare(transactional, o.transactional); if (c3 != 0) return c3;
+        int c0 = LawSpecFast.compare(value, o.value); if (c0 != 0) return c0;
         return 0;
       }
 
-      @Override public String toString() { return "DataEntry" + java.util.List.of(entryOffset, entryRecord, writer, transactional); }
+      @Override public String toString() { return "DataEntry" + java.util.List.of(value); }
     }
 
     public static final class ControlEntry extends LogEntry {
-      public final long markerOffset;
-      public final long markerWriter;
-      public final boolean commits;
+      public final Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 value;
 
-      public ControlEntry(long markerOffset, long markerWriter, boolean commits) {
+      public ControlEntry(Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 value) {
         super(1);
-        this.markerOffset = markerOffset;
-        this.markerWriter = markerWriter;
-        this.commits = commits;
+        this.value = value;
       }
 
       @Override
       public boolean equals(Object other) {
         if (!(other instanceof ControlEntry o)) return false;
-        return true && markerOffset == o.markerOffset && markerWriter == o.markerWriter && commits == o.commits;
+        return true && java.util.Objects.equals(value, o.value);
       }
 
       @Override
       public int hashCode() {
-        return java.util.Objects.hash(0, markerOffset, markerWriter, commits);
+        return java.util.Objects.hash(0, value);
       }
 
       int compareFields(Object other) {
         var o = (ControlEntry) other;
-        int c0 = Long.compare(markerOffset, o.markerOffset); if (c0 != 0) return c0;
-        int c1 = Long.compare(markerWriter, o.markerWriter); if (c1 != 0) return c1;
-        int c2 = Boolean.compare(commits, o.commits); if (c2 != 0) return c2;
+        int c0 = LawSpecFast.compare(value, o.value); if (c0 != 0) return c0;
         return 0;
       }
 
-      @Override public String toString() { return "ControlEntry" + java.util.List.of(markerOffset, markerWriter, commits); }
+      @Override public String toString() { return "ControlEntry" + java.util.List.of(value); }
     }
 
     public static final LawSpecFast.Codec<LogEntry> CODEC = codec();
@@ -1673,11 +1658,11 @@ private static LawSpecFast.Codec<LogEntry> codec() {
           switch (value.tag) {
             case 0 -> {
               var m = (LogEntry.DataEntry) value;
-              return LawSpecFast.value(key, "lawtwin.kafka.model::type::LogEntry::DataEntry", LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(m.entryOffset), Record.CODEC.encode(m.entryRecord), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(m.writer), LawSpecFast.BOOL.encode(m.transactional));
+              return LawSpecFast.value(key, "lawtwin.kafka.model::type::LogEntry::DataEntry", Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be.CODEC.encode(m.value));
             }
             case 1 -> {
               var m = (LogEntry.ControlEntry) value;
-              return LawSpecFast.value(key, "lawtwin.kafka.model::type::LogEntry::Con" + "trolEntry", LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(m.markerOffset), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(m.markerWriter), LawSpecFast.BOOL.encode(m.commits));
+              return LawSpecFast.value(key, "lawtwin.kafka.model::type::LogEntry::Con" + "trolEntry", Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3.CODEC.encode(m.value));
             }
             default -> throw LawSpecFast.unreachable();
           }
@@ -1687,10 +1672,10 @@ private static LawSpecFast.Codec<LogEntry> codec() {
           var d = LawSpecFast.fields(value);
           switch (d.tag()) {
             case "lawtwin.kafka.model::type::LogEntry::DataEntry" -> {
-              return new LogEntry.DataEntry(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(d.fields().get(0)), Record.CODEC.decode(d.fields().get(1)), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(d.fields().get(2)), LawSpecFast.BOOL.decode(d.fields().get(3)));
+              return new LogEntry.DataEntry(Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be.CODEC.decode(d.fields().get(0)));
             }
             case "lawtwin.kafka.model::type::LogEntry::Con" + "trolEntry" -> {
-              return new LogEntry.ControlEntry(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(d.fields().get(0)), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(d.fields().get(1)), LawSpecFast.BOOL.decode(d.fields().get(2)));
+              return new LogEntry.ControlEntry(Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3.CODEC.decode(d.fields().get(0)));
             }
             default -> throw new IllegalArgumentException("expected LogEntry, found " + d.tag());
           }
@@ -2006,34 +1991,31 @@ private static LawSpecFast.Codec<PendingOffset> codec() {
     }
 
     public static final class Ongoing extends TxnState {
-      public final LawSpecFast.List<TopicPartition> txnPartitions;
-      public final LawSpecFast.List<PendingOffset> txnOffsets;
+      public final Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee value;
 
-      public Ongoing(LawSpecFast.List<TopicPartition> txnPartitions, LawSpecFast.List<PendingOffset> txnOffsets) {
+      public Ongoing(Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee value) {
         super(1);
-        this.txnPartitions = txnPartitions;
-        this.txnOffsets = txnOffsets;
+        this.value = value;
       }
 
       @Override
       public boolean equals(Object other) {
         if (!(other instanceof Ongoing o)) return false;
-        return true && java.util.Objects.equals(txnPartitions, o.txnPartitions) && java.util.Objects.equals(txnOffsets, o.txnOffsets);
+        return true && java.util.Objects.equals(value, o.value);
       }
 
       @Override
       public int hashCode() {
-        return java.util.Objects.hash(1, txnPartitions, txnOffsets);
+        return java.util.Objects.hash(1, value);
       }
 
       int compareFields(Object other) {
         var o = (Ongoing) other;
-        int c0 = LawSpecFast.compare(txnPartitions, o.txnPartitions); if (c0 != 0) return c0;
-        int c1 = LawSpecFast.compare(txnOffsets, o.txnOffsets); if (c1 != 0) return c1;
+        int c0 = LawSpecFast.compare(value, o.value); if (c0 != 0) return c0;
         return 0;
       }
 
-      @Override public String toString() { return "Ongoing" + java.util.List.of(txnPartitions, txnOffsets); }
+      @Override public String toString() { return "Ongoing" + java.util.List.of(value); }
     }
 
     public static final LawSpecFast.Codec<TxnState> CODEC = codec();
@@ -2050,7 +2032,7 @@ private static LawSpecFast.Codec<TxnState> codec() {
             }
             case 1 -> {
               var m = (TxnState.Ongoing) value;
-              return LawSpecFast.value(key, "lawtwin.kafka.model::type::TxnState::Ongoing", LawSpecFast.list(TopicPartition.CODEC).encode(m.txnPartitions), LawSpecFast.list(PendingOffset.CODEC).encode(m.txnOffsets));
+              return LawSpecFast.value(key, "lawtwin.kafka.model::type::TxnState::Ongoing", Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee.CODEC.encode(m.value));
             }
             default -> throw LawSpecFast.unreachable();
           }
@@ -2063,7 +2045,7 @@ private static LawSpecFast.Codec<TxnState> codec() {
               return new TxnState.NoTxn();
             }
             case "lawtwin.kafka.model::type::TxnState::Ongoing" -> {
-              return new TxnState.Ongoing(LawSpecFast.list(TopicPartition.CODEC).decode(d.fields().get(0)), LawSpecFast.list(PendingOffset.CODEC).decode(d.fields().get(1)));
+              return new TxnState.Ongoing(Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee.CODEC.decode(d.fields().get(0)));
             }
             default -> throw new IllegalArgumentException("expected TxnState, found " + d.tag());
           }
@@ -2335,6 +2317,201 @@ private static LawSpecFast.Codec<BrokerState> codec() {
               return new BrokerState(LawSpecFast.keyVal(LawSpecFast.TEXT, LawSpecFast.integer("Int32", -2147483648L, 2147483647L)).decode(d.fields().get(0)), LawSpecFast.keyVal(TopicPartition.CODEC, PartitionLog.CODEC).decode(d.fields().get(1)), LawSpecFast.keyVal(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L), ProducerEntry.CODEC).decode(d.fields().get(2)), LawSpecFast.keyVal(LawSpecFast.TEXT, LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(d.fields().get(3)), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(d.fields().get(4)), LawSpecFast.keyVal(LawSpecFast.TEXT, Group.CODEC).decode(d.fields().get(5)), LawSpecFast.keyVal(GroupPartition.CODEC, LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(d.fields().get(6)));
             }
             default -> throw new IllegalArgumentException("expected BrokerState, found " + d.tag());
+          }
+        }
+      };
+    }
+  }
+
+  /** Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be (lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be). */
+  public static final class Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be implements LawSpecFast.Ordered {
+    public final long entryOffset;
+    public final Record entryRecord;
+    public final boolean transactional;
+    public final long writer;
+
+    public Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be(long entryOffset, Record entryRecord, boolean transactional, long writer) {
+      this.entryOffset = entryOffset;
+      this.entryRecord = entryRecord;
+      this.transactional = transactional;
+      this.writer = writer;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+      if (!(other instanceof Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be o)) return false;
+      return true && entryOffset == o.entryOffset && java.util.Objects.equals(entryRecord, o.entryRecord) && transactional == o.transactional && writer == o.writer;
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(0, entryOffset, entryRecord, transactional, writer);
+    }
+
+    int compareFields(Object other) {
+      var o = (Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be) other;
+      int c0 = Long.compare(entryOffset, o.entryOffset); if (c0 != 0) return c0;
+      int c1 = LawSpecFast.compare(entryRecord, o.entryRecord); if (c1 != 0) return c1;
+      int c2 = Boolean.compare(transactional, o.transactional); if (c2 != 0) return c2;
+      int c3 = Long.compare(writer, o.writer); if (c3 != 0) return c3;
+      return 0;
+    }
+
+    public int compareWith(Object other) { return this == other ? 0 : compareFields(other); }
+
+    @Override public String toString() { return "Record" + java.util.List.of(entryOffset, entryRecord, transactional, writer); }
+
+    public static final LawSpecFast.Codec<Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be> CODEC = codec();
+
+private static LawSpecFast.Codec<Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be> codec() {
+      String key = "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be";
+      return new LawSpecFast.Codec<Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be>() {
+        public String key() { return key; }
+
+        public LawSpecRuntime.Value encode(Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be value) {
+          switch (0) {
+            case 0 -> {
+              var m = (Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be) value;
+              return LawSpecFast.value(key, "lawspec::structural::record::71ddc692ac9" + "521d9d1f5404c57337ef3fb4c795693ec774d544" + "3d945ea34e0be::Record", LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(m.entryOffset), Record.CODEC.encode(m.entryRecord), LawSpecFast.BOOL.encode(m.transactional), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(m.writer));
+            }
+            default -> throw LawSpecFast.unreachable();
+          }
+        }
+
+        public Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be decode(LawSpecRuntime.Value value) {
+          var d = LawSpecFast.fields(value);
+          switch (d.tag()) {
+            case "lawspec::structural::record::71ddc692ac9" + "521d9d1f5404c57337ef3fb4c795693ec774d544" + "3d945ea34e0be::Record" -> {
+              return new Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(d.fields().get(0)), Record.CODEC.decode(d.fields().get(1)), LawSpecFast.BOOL.decode(d.fields().get(2)), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(d.fields().get(3)));
+            }
+            default -> throw new IllegalArgumentException("expected Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be, found " + d.tag());
+          }
+        }
+      };
+    }
+  }
+
+  /** Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 (lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3). */
+  public static final class Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 implements LawSpecFast.Ordered {
+    public final boolean commits;
+    public final long markerOffset;
+    public final long markerWriter;
+
+    public Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3(boolean commits, long markerOffset, long markerWriter) {
+      this.commits = commits;
+      this.markerOffset = markerOffset;
+      this.markerWriter = markerWriter;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+      if (!(other instanceof Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 o)) return false;
+      return true && commits == o.commits && markerOffset == o.markerOffset && markerWriter == o.markerWriter;
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(0, commits, markerOffset, markerWriter);
+    }
+
+    int compareFields(Object other) {
+      var o = (Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3) other;
+      int c0 = Boolean.compare(commits, o.commits); if (c0 != 0) return c0;
+      int c1 = Long.compare(markerOffset, o.markerOffset); if (c1 != 0) return c1;
+      int c2 = Long.compare(markerWriter, o.markerWriter); if (c2 != 0) return c2;
+      return 0;
+    }
+
+    public int compareWith(Object other) { return this == other ? 0 : compareFields(other); }
+
+    @Override public String toString() { return "Record" + java.util.List.of(commits, markerOffset, markerWriter); }
+
+    public static final LawSpecFast.Codec<Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3> CODEC = codec();
+
+private static LawSpecFast.Codec<Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3> codec() {
+      String key = "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3";
+      return new LawSpecFast.Codec<Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3>() {
+        public String key() { return key; }
+
+        public LawSpecRuntime.Value encode(Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 value) {
+          switch (0) {
+            case 0 -> {
+              var m = (Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3) value;
+              return LawSpecFast.value(key, "lawspec::structural::record::25c3f950e34" + "31c91ceedb89b1adb06da7d2d7d20322b03e1f64" + "f63418e45d7e3::Record", LawSpecFast.BOOL.encode(m.commits), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(m.markerOffset), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(m.markerWriter));
+            }
+            default -> throw LawSpecFast.unreachable();
+          }
+        }
+
+        public Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 decode(LawSpecRuntime.Value value) {
+          var d = LawSpecFast.fields(value);
+          switch (d.tag()) {
+            case "lawspec::structural::record::25c3f950e34" + "31c91ceedb89b1adb06da7d2d7d20322b03e1f64" + "f63418e45d7e3::Record" -> {
+              return new Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3(LawSpecFast.BOOL.decode(d.fields().get(0)), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(d.fields().get(1)), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(d.fields().get(2)));
+            }
+            default -> throw new IllegalArgumentException("expected Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3, found " + d.tag());
+          }
+        }
+      };
+    }
+  }
+
+  /** Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee (lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee). */
+  public static final class Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee implements LawSpecFast.Ordered {
+    public final LawSpecFast.List<PendingOffset> txnOffsets;
+    public final LawSpecFast.List<TopicPartition> txnPartitions;
+
+    public Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(LawSpecFast.List<PendingOffset> txnOffsets, LawSpecFast.List<TopicPartition> txnPartitions) {
+      this.txnOffsets = txnOffsets;
+      this.txnPartitions = txnPartitions;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+      if (!(other instanceof Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee o)) return false;
+      return true && java.util.Objects.equals(txnOffsets, o.txnOffsets) && java.util.Objects.equals(txnPartitions, o.txnPartitions);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(0, txnOffsets, txnPartitions);
+    }
+
+    int compareFields(Object other) {
+      var o = (Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee) other;
+      int c0 = LawSpecFast.compare(txnOffsets, o.txnOffsets); if (c0 != 0) return c0;
+      int c1 = LawSpecFast.compare(txnPartitions, o.txnPartitions); if (c1 != 0) return c1;
+      return 0;
+    }
+
+    public int compareWith(Object other) { return this == other ? 0 : compareFields(other); }
+
+    @Override public String toString() { return "Record" + java.util.List.of(txnOffsets, txnPartitions); }
+
+    public static final LawSpecFast.Codec<Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee> CODEC = codec();
+
+private static LawSpecFast.Codec<Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee> codec() {
+      String key = "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee";
+      return new LawSpecFast.Codec<Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee>() {
+        public String key() { return key; }
+
+        public LawSpecRuntime.Value encode(Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee value) {
+          switch (0) {
+            case 0 -> {
+              var m = (Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee) value;
+              return LawSpecFast.value(key, "lawspec::structural::record::d325eb28450" + "b9e09a627168741fb2db9ff08256d9154032ca57" + "f8e97660258ee::Record", LawSpecFast.list(PendingOffset.CODEC).encode(m.txnOffsets), LawSpecFast.list(TopicPartition.CODEC).encode(m.txnPartitions));
+            }
+            default -> throw LawSpecFast.unreachable();
+          }
+        }
+
+        public Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee decode(LawSpecRuntime.Value value) {
+          var d = LawSpecFast.fields(value);
+          switch (d.tag()) {
+            case "lawspec::structural::record::d325eb28450" + "b9e09a627168741fb2db9ff08256d9154032ca57" + "f8e97660258ee::Record" -> {
+              return new Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(LawSpecFast.list(PendingOffset.CODEC).decode(d.fields().get(0)), LawSpecFast.list(TopicPartition.CODEC).decode(d.fields().get(1)));
+            }
+            default -> throw new IllegalArgumentException("expected Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee, found " + d.tag());
           }
         }
       };
@@ -2979,38 +3156,41 @@ private static LawSpecFast.Codec<BrokerState> codec() {
 
   /** lawspec.matchers::matchersMatchesRegex */
   public static boolean matchersMatchesRegex_52d1c22e(String t_28, Regex r_29) {
-    final String p_30 = r_29.pattern;
-    return LawSpecRuntime.regexMatches(p_30, t_28.codePoints().toArray());
+    final Regex it_30 = r_29;
+    final String v_lawspecselection0x0_31 = it_30.pattern;
+    return LawSpecRuntime.regexMatches(v_lawspecselection0x0_31, t_28.codePoints().toArray());
   }
 
   /** lawtwin.kafka::allAtLeast */
-  public static boolean allAtLeast_3df55027(long floor_31, LawSpecFast.List<Long> xs_32) {
-    if (xs_32.isEmpty()) {
+  public static boolean allAtLeast_3df55027(long floor_32, LawSpecFast.List<Long> xs_33) {
+    final LawSpecFast.List<Long> it_34 = xs_33;
+    if (it_34.isEmpty()) {
       return true;
     } else {
-      final long h_33 = xs_32.head();
-      final LawSpecFast.List<Long> t_34 = xs_32.tail();
-      return (((h_33) >= (floor_31)) && allAtLeast_3df55027(floor_31, t_34));
+      final long v_lawspecselection0x0_35 = it_34.head();
+      final LawSpecFast.List<Long> v_lawspecselection0x1_36 = it_34.tail();
+      return (((v_lawspecselection0x0_35) >= (floor_32)) && allAtLeast_3df55027(floor_32, v_lawspecselection0x1_36));
     }
   }
 
   /** lawtwin.kafka::assignmentIn */
-  public static LawSpecFast.List<TopicPartition> assignmentIn_4b795225(String m_35, LawSpecFast.List<MemberAssignment> ms_36) {
+  public static LawSpecFast.List<TopicPartition> assignmentIn_4b795225(String m_37, LawSpecFast.List<MemberAssignment> ms_38) {
     while (true) {
-      if (ms_36.isEmpty()) {
+      final LawSpecFast.List<MemberAssignment> it_39 = ms_38;
+      if (it_39.isEmpty()) {
         return LawSpecFast.List.<TopicPartition>nil();
       } else {
-        final MemberAssignment a_37 = ms_36.head();
-        final LawSpecFast.List<MemberAssignment> rest_38 = ms_36.tail();
-        String value_39;
-        final String lawspecfieldmemberid_40 = a_37.memberId;
-        value_39 = lawspecfieldmemberid_40;
-        if ((java.util.Objects.equals(value_39, m_35))) {
-          final LawSpecFast.List<TopicPartition> lawspecfieldassigned_41 = a_37.assigned;
-          return lawspecfieldassigned_41;
+        final MemberAssignment v_lawspecselection0x0_40 = it_39.head();
+        final LawSpecFast.List<MemberAssignment> v_lawspecselection0x1_41 = it_39.tail();
+        String value_42;
+        final String lawspecfieldmemberid_43 = v_lawspecselection0x0_40.memberId;
+        value_42 = lawspecfieldmemberid_43;
+        if ((java.util.Objects.equals(value_42, m_37))) {
+          final LawSpecFast.List<TopicPartition> lawspecfieldassigned_44 = v_lawspecselection0x0_40.assigned;
+          return lawspecfieldassigned_44;
         } else {
-          final LawSpecFast.List<MemberAssignment> next_42 = rest_38;
-          ms_36 = next_42;
+          final LawSpecFast.List<MemberAssignment> next_45 = v_lawspecselection0x1_41;
+          ms_38 = next_45;
           continue;
         }
       }
@@ -3018,133 +3198,133 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::clusterAddPartitionsToTxnRequest */
-  public static Pair<LawSpecFast.Unit, BrokerState> clusterAddPartitionsToTxnRequest_026ba83d(BrokerState state_43, String value0_44, long value1_45, long value2_46, LawSpecFast.List<TopicPartition> value3_47) {
-    return lawtwinKafkaModelAddPartitionsToTxn_8d367d82(value0_44, value1_45, value2_46, value3_47, state_43);
+  public static Pair<LawSpecFast.Unit, BrokerState> clusterAddPartitionsToTxnRequest_026ba83d(BrokerState state_46, String value0_47, long value1_48, long value2_49, LawSpecFast.List<TopicPartition> value3_50) {
+    return lawtwinKafkaModelAddPartitionsToTxn_8d367d82(value0_47, value1_48, value2_49, value3_50, state_46);
   }
 
   /** lawtwin.kafka::clusterCommitOffsets */
-  public static Pair<LawSpecFast.Unit, BrokerState> clusterCommitOffsets_d3b39e4c(BrokerState state_48, String value0_49, String value1_50, long value2_51, LawSpecFast.List<OffsetEntry> value3_52) {
-    return lawtwinKafkaModelOffsetCommit_01d91ef0(value0_49, value1_50, value2_51, value3_52, state_48);
+  public static Pair<LawSpecFast.Unit, BrokerState> clusterCommitOffsets_d3b39e4c(BrokerState state_51, String value0_52, String value1_53, long value2_54, LawSpecFast.List<OffsetEntry> value3_55) {
+    return lawtwinKafkaModelOffsetCommit_01d91ef0(value0_52, value1_53, value2_54, value3_55, state_51);
   }
 
   /** lawtwin.kafka::clusterCreatePartitions */
-  public static Pair<LawSpecFast.Unit, BrokerState> clusterCreatePartitions_0f2bdce3(BrokerState state_53, String value0_54, long value1_55) {
-    return lawtwinKafkaModelCreatePartitions_8c9ce76b(value0_54, value1_55, state_53);
+  public static Pair<LawSpecFast.Unit, BrokerState> clusterCreatePartitions_0f2bdce3(BrokerState state_56, String value0_57, long value1_58) {
+    return lawtwinKafkaModelCreatePartitions_8c9ce76b(value0_57, value1_58, state_56);
   }
 
   /** lawtwin.kafka::clusterCreateTopic */
-  public static Pair<LawSpecFast.Unit, BrokerState> clusterCreateTopic_25a8c8e9(BrokerState state_56, String value0_57, long value1_58) {
-    return lawtwinKafkaModelCreateTopic_0d831a39(value0_57, value1_58, state_56);
+  public static Pair<LawSpecFast.Unit, BrokerState> clusterCreateTopic_25a8c8e9(BrokerState state_59, String value0_60, long value1_61) {
+    return lawtwinKafkaModelCreateTopic_0d831a39(value0_60, value1_61, state_59);
   }
 
   /** lawtwin.kafka::clusterDescribeGroup */
-  public static Pair<GroupView, BrokerState> clusterDescribeGroup_c1f8efd4(BrokerState state_59, String value0_60) {
-    return lawtwinKafkaModelDescribeGroup_bf8df8f8(value0_60, state_59);
+  public static Pair<GroupView, BrokerState> clusterDescribeGroup_c1f8efd4(BrokerState state_62, String value0_63) {
+    return lawtwinKafkaModelDescribeGroup_bf8df8f8(value0_63, state_62);
   }
 
   /** lawtwin.kafka::clusterEndTxnRequest */
-  public static Pair<LawSpecFast.Unit, BrokerState> clusterEndTxnRequest_e8879acb(BrokerState state_61, String value0_62, long value1_63, long value2_64, boolean value3_65) {
-    return lawtwinKafkaModelEndTxn_b2637a52(value0_62, value1_63, value2_64, value3_65, state_61);
+  public static Pair<LawSpecFast.Unit, BrokerState> clusterEndTxnRequest_e8879acb(BrokerState state_64, String value0_65, long value1_66, long value2_67, boolean value3_68) {
+    return lawtwinKafkaModelEndTxn_b2637a52(value0_65, value1_66, value2_67, value3_68, state_64);
   }
 
   /** lawtwin.kafka::clusterFetchOffset */
-  public static Pair<LawSpecFast.Maybe<Long>, BrokerState> clusterFetchOffset_53ffef89(BrokerState state_66, String value0_67, TopicPartition value1_68) {
-    return lawtwinKafkaModelOffsetFetch_f56dbfcd(value0_67, value1_68, state_66);
+  public static Pair<LawSpecFast.Maybe<Long>, BrokerState> clusterFetchOffset_53ffef89(BrokerState state_69, String value0_70, TopicPartition value1_71) {
+    return lawtwinKafkaModelOffsetFetch_f56dbfcd(value0_70, value1_71, state_69);
   }
 
   /** lawtwin.kafka::clusterFetchRequest */
-  public static Pair<FetchResult, BrokerState> clusterFetchRequest_53f6507d(BrokerState state_69, TopicPartition value0_70, long value1_71, long value2_72, IsolationLevel value3_73) {
-    return lawtwinKafkaModelFetch_29936450(value0_70, value1_71, value2_72, value3_73, state_69);
+  public static Pair<FetchResult, BrokerState> clusterFetchRequest_53f6507d(BrokerState state_72, TopicPartition value0_73, long value1_74, long value2_75, IsolationLevel value3_76) {
+    return lawtwinKafkaModelFetch_29936450(value0_73, value1_74, value2_75, value3_76, state_72);
   }
 
   /** lawtwin.kafka::clusterHeartbeat */
-  public static Pair<LawSpecFast.Unit, BrokerState> clusterHeartbeat_3af82cc2(BrokerState state_74, String value0_75, String value1_76, long value2_77) {
-    return lawtwinKafkaModelHeartbeat_0f08a54d(value0_75, value1_76, value2_77, state_74);
+  public static Pair<LawSpecFast.Unit, BrokerState> clusterHeartbeat_3af82cc2(BrokerState state_77, String value0_78, String value1_79, long value2_80) {
+    return lawtwinKafkaModelHeartbeat_0f08a54d(value0_78, value1_79, value2_80, state_77);
   }
 
   /** lawtwin.kafka::clusterInitProducerIdRequest */
-  public static Pair<ProducerIdAndEpoch, BrokerState> clusterInitProducerIdRequest_f11b7e7d(BrokerState state_78, LawSpecFast.Maybe<String> value0_79) {
-    return lawtwinKafkaModelInitProducerId_cedb7e1b(value0_79, state_78);
+  public static Pair<ProducerIdAndEpoch, BrokerState> clusterInitProducerIdRequest_f11b7e7d(BrokerState state_81, LawSpecFast.Maybe<String> value0_82) {
+    return lawtwinKafkaModelInitProducerId_cedb7e1b(value0_82, state_81);
   }
 
   /** lawtwin.kafka::clusterJoinGroup */
-  public static Pair<Long, BrokerState> clusterJoinGroup_2f7f09cb(BrokerState state_80, String value0_81, String value1_82, LawSpecFast.List<String> value2_83) {
-    return lawtwinKafkaModelJoinGroup_9a1e92f5(value0_81, value1_82, value2_83, state_80);
+  public static Pair<Long, BrokerState> clusterJoinGroup_2f7f09cb(BrokerState state_83, String value0_84, String value1_85, LawSpecFast.List<String> value2_86) {
+    return lawtwinKafkaModelJoinGroup_9a1e92f5(value0_84, value1_85, value2_86, state_83);
   }
 
   /** lawtwin.kafka::clusterLeaveGroup */
-  public static Pair<LawSpecFast.Unit, BrokerState> clusterLeaveGroup_cd94c353(BrokerState state_84, String value0_85, String value1_86) {
-    return lawtwinKafkaModelLeaveGroup_5e5a3f69(value0_85, value1_86, state_84);
+  public static Pair<LawSpecFast.Unit, BrokerState> clusterLeaveGroup_cd94c353(BrokerState state_87, String value0_88, String value1_89) {
+    return lawtwinKafkaModelLeaveGroup_5e5a3f69(value0_88, value1_89, state_87);
   }
 
   /** lawtwin.kafka::clusterListOffsets */
-  public static Pair<Long, BrokerState> clusterListOffsets_1dede442(BrokerState state_87, TopicPartition value0_88, OffsetSpec value1_89, IsolationLevel value2_90) {
-    return lawtwinKafkaModelListOffsets_9c6c9426(value0_88, value1_89, value2_90, state_87);
+  public static Pair<Long, BrokerState> clusterListOffsets_1dede442(BrokerState state_90, TopicPartition value0_91, OffsetSpec value1_92, IsolationLevel value2_93) {
+    return lawtwinKafkaModelListOffsets_9c6c9426(value0_91, value1_92, value2_93, state_90);
   }
 
   /** lawtwin.kafka::clusterMetadataRequest */
-  public static Pair<LawSpecFast.Maybe<Long>, BrokerState> clusterMetadataRequest_3507727c(BrokerState state_91, String value0_92) {
-    return lawtwinKafkaModelMetadata_97bb5c4c(value0_92, state_91);
+  public static Pair<LawSpecFast.Maybe<Long>, BrokerState> clusterMetadataRequest_3507727c(BrokerState state_94, String value0_95) {
+    return lawtwinKafkaModelMetadata_97bb5c4c(value0_95, state_94);
   }
 
   /** lawtwin.kafka::clusterProduceRequest */
-  public static Pair<Long, BrokerState> clusterProduceRequest_619c7f1f(BrokerState state_93, TopicPartition value0_94, LawSpecFast.Maybe<ProducerTag> value1_95, LawSpecFast.List<Record> value2_96) {
-    return lawtwinKafkaModelProduce_834568df(value0_94, value1_95, value2_96, state_93);
+  public static Pair<Long, BrokerState> clusterProduceRequest_619c7f1f(BrokerState state_96, TopicPartition value0_97, LawSpecFast.Maybe<ProducerTag> value1_98, LawSpecFast.List<Record> value2_99) {
+    return lawtwinKafkaModelProduce_834568df(value0_97, value1_98, value2_99, state_96);
   }
 
   /** lawtwin.kafka::clusterStart */
-  public static BrokerState clusterStart_659e952a(LawSpecFast.Unit lawspecunit_97) {
+  public static BrokerState clusterStart_659e952a(LawSpecFast.Unit lawspecunit_100) {
     return lawtwinKafkaModelEmptyBroker_d5fd8237(LawSpecFast.Unit.UNIT);
   }
 
   /** lawtwin.kafka::clusterSyncGroup */
-  public static Pair<LawSpecFast.List<TopicPartition>, BrokerState> clusterSyncGroup_fa44a945(BrokerState state_98, String value0_99, String value1_100, long value2_101) {
-    return lawtwinKafkaModelSyncGroup_b3d01c80(value0_99, value1_100, value2_101, state_98);
+  public static Pair<LawSpecFast.List<TopicPartition>, BrokerState> clusterSyncGroup_fa44a945(BrokerState state_101, String value0_102, String value1_103, long value2_104) {
+    return lawtwinKafkaModelSyncGroup_b3d01c80(value0_102, value1_103, value2_104, state_101);
   }
 
   /** lawtwin.kafka::clusterTxnOffsetCommitRequest */
-  public static Pair<LawSpecFast.Unit, BrokerState> clusterTxnOffsetCommitRequest_08ba35de(BrokerState state_102, String value0_103, long value1_104, long value2_105, String value3_106, LawSpecFast.List<OffsetEntry> value4_107) {
-    return lawtwinKafkaModelTxnOffsetCommit_84c6b2bb(value0_103, value1_104, value2_105, value3_106, value4_107, state_102);
+  public static Pair<LawSpecFast.Unit, BrokerState> clusterTxnOffsetCommitRequest_08ba35de(BrokerState state_105, String value0_106, long value1_107, long value2_108, String value3_109, LawSpecFast.List<OffsetEntry> value4_110) {
+    return lawtwinKafkaModelTxnOffsetCommit_84c6b2bb(value0_106, value1_107, value2_108, value3_109, value4_110, state_105);
   }
 
   /** lawtwin.kafka::committedFrom */
-  public static LawSpecFast.List<Record> committedFrom_a524f37d(java.util.Map<String, Object> symbols, TopicPartition tp_108, long offset_109) {
-    return readFrom_f028a48d(symbols, tp_108, offset_109, IsolationLevel.ReadCommitted);
+  public static LawSpecFast.List<Record> committedFrom_a524f37d(java.util.Map<String, Object> symbols, TopicPartition tp_111, long offset_112) {
+    return readFrom_f028a48d(symbols, tp_111, offset_112, IsolationLevel.ReadCommitted);
   }
 
   /** lawtwin.kafka::consumerAssign */
-  public static Pair<LawSpecFast.Unit, ConsumerState> consumerAssign_793a07ba(LawSpecFast.List<TopicPartition> tps_110, ConsumerState c_111) {
-    return new Pair<LawSpecFast.Unit, ConsumerState>(LawSpecFast.Unit.UNIT, withAssignment_7d6291b1(LawSpecFast.Maybe.<String>nothing(), "", -1L, LawSpecFast.List.<String>nil(), tps_110, c_111));
+  public static Pair<LawSpecFast.Unit, ConsumerState> consumerAssign_793a07ba(LawSpecFast.List<TopicPartition> tps_113, ConsumerState c_114) {
+    return new Pair<LawSpecFast.Unit, ConsumerState>(LawSpecFast.Unit.UNIT, withAssignment_7d6291b1(LawSpecFast.Maybe.<String>nothing(), "", -1L, LawSpecFast.List.<String>nil(), tps_113, c_114));
   }
 
   /** lawtwin.kafka::consumerClose */
-  public static Pair<LawSpecFast.Unit, ConsumerState> consumerClose_00c5e7f3(java.util.Map<String, Object> symbols, ConsumerState c_112) {
-    LawSpecFast.Maybe<String> value_113;
-    final LawSpecFast.Maybe<String> lawspecfieldgroup_114 = c_112.group;
-    value_113 = lawspecfieldgroup_114;
-    final LawSpecFast.Maybe<String> matched_115 = value_113;
-    if (matched_115.isJust()) {
-      final String group_116 = matched_115.get();
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_117;
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_118;
+  public static Pair<LawSpecFast.Unit, ConsumerState> consumerClose_00c5e7f3(java.util.Map<String, Object> symbols, ConsumerState c_115) {
+    LawSpecFast.Maybe<String> value_116;
+    final LawSpecFast.Maybe<String> lawspecfieldgroup_117 = c_115.group;
+    value_116 = lawspecfieldgroup_117;
+    final LawSpecFast.Maybe<String> it_118 = value_116;
+    if (it_118.isJust()) {
+      final String v_lawspecselection0x0_119 = it_118.get();
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_120;
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_121;
       try {
-        String value_119;
-        final String lawspecfieldmember_120 = c_112.member;
-        value_119 = lawspecfieldmember_120;
-        attempted_118 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__leaveGroupRequest(symbols, LawSpecFast.TEXT.encode(group_116), LawSpecFast.TEXT.encode(value_119))));
+        String value_122;
+        final String lawspecfieldmember_123 = c_115.member;
+        value_122 = lawspecfieldmember_123;
+        attempted_121 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__leaveGroupRequest(symbols, LawSpecFast.TEXT.encode(v_lawspecselection0x0_119), LawSpecFast.TEXT.encode(value_122))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_118 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+        attempted_121 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_121 = attempted_118;
-      if (matched_121.isLeft()) {
-        final KafkaError lawspecfailure_122 = matched_121.left();
-        value_117 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_122);
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_124 = attempted_121;
+      if (matched_124.isLeft()) {
+        final KafkaError lawspecfailure_125 = matched_124.left();
+        value_120 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_125);
       } else {
-        final LawSpecFast.Unit lawspecvalue_123 = matched_121.right();
-        value_117 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_123);
+        final LawSpecFast.Unit lawspecvalue_126 = matched_124.right();
+        value_120 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_126);
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> left_124 = value_117;
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> left_127 = value_120;
       return new Pair<LawSpecFast.Unit, ConsumerState>(LawSpecFast.Unit.UNIT, freshConsumer_c2da4184(LawSpecFast.Unit.UNIT));
     } else {
       return new Pair<LawSpecFast.Unit, ConsumerState>(LawSpecFast.Unit.UNIT, freshConsumer_c2da4184(LawSpecFast.Unit.UNIT));
@@ -3152,339 +3332,345 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::consumerCommit */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState> consumerCommit_787f4c15(java.util.Map<String, Object> symbols, ConsumerState c_125) {
-    LawSpecFast.Maybe<String> value_126;
-    final LawSpecFast.Maybe<String> lawspecfieldgroup_127 = c_125.group;
-    value_126 = lawspecfieldgroup_127;
-    final LawSpecFast.Maybe<String> matched_128 = value_126;
-    if (matched_128.isJust()) {
-      final String group_129 = matched_128.get();
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_130;
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_131;
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState> consumerCommit_787f4c15(java.util.Map<String, Object> symbols, ConsumerState c_128) {
+    LawSpecFast.Maybe<String> value_129;
+    final LawSpecFast.Maybe<String> lawspecfieldgroup_130 = c_128.group;
+    value_129 = lawspecfieldgroup_130;
+    final LawSpecFast.Maybe<String> it_131 = value_129;
+    if (it_131.isJust()) {
+      final String v_lawspecselection0x0_132 = it_131.get();
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_133;
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_134;
       try {
-        String value_132;
-        final String lawspecfieldmember_133 = c_125.member;
-        value_132 = lawspecfieldmember_133;
-        long value_134;
-        final long lawspecfieldgeneration_135 = c_125.generation;
-        value_134 = lawspecfieldgeneration_135;
-        LawSpecFast.List<TopicPartition> value_136;
-        final LawSpecFast.List<TopicPartition> lawspecfieldassigned_137 = c_125.assigned;
-        value_136 = lawspecfieldassigned_137;
-        LawSpecFast.Map<TopicPartition, Long> value_138;
-        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_139 = c_125.positions;
-        value_138 = lawspecfieldpositions_139;
-        attempted_131 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__offsetCommitRequest(symbols, LawSpecFast.TEXT.encode(group_129), LawSpecFast.TEXT.encode(value_132), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(value_134), LawSpecFast.list(OffsetEntry.CODEC).encode(positionsToCommit_67969440(value_136, value_138)))));
+        String value_135;
+        final String lawspecfieldmember_136 = c_128.member;
+        value_135 = lawspecfieldmember_136;
+        long value_137;
+        final long lawspecfieldgeneration_138 = c_128.generation;
+        value_137 = lawspecfieldgeneration_138;
+        LawSpecFast.List<TopicPartition> value_139;
+        final LawSpecFast.List<TopicPartition> lawspecfieldassigned_140 = c_128.assigned;
+        value_139 = lawspecfieldassigned_140;
+        LawSpecFast.Map<TopicPartition, Long> value_141;
+        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_142 = c_128.positions;
+        value_141 = lawspecfieldpositions_142;
+        attempted_134 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__offsetCommitRequest(symbols, LawSpecFast.TEXT.encode(v_lawspecselection0x0_132), LawSpecFast.TEXT.encode(value_135), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(value_137), LawSpecFast.list(OffsetEntry.CODEC).encode(positionsToCommit_67969440(value_139, value_141)))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_131 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+        attempted_134 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_140 = attempted_131;
-      if (matched_140.isLeft()) {
-        final KafkaError lawspecfailure_141 = matched_140.left();
-        value_130 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_141);
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_143 = attempted_134;
+      if (matched_143.isLeft()) {
+        final KafkaError lawspecfailure_144 = matched_143.left();
+        value_133 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_144);
       } else {
-        final LawSpecFast.Unit lawspecvalue_142 = matched_140.right();
-        value_130 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_142);
+        final LawSpecFast.Unit lawspecvalue_145 = matched_143.right();
+        value_133 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_145);
       }
-      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(value_130, c_125);
+      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(value_133, c_128);
     } else {
-      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.InvalidGroupId), c_125);
+      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.InvalidGroupId), c_128);
     }
   }
 
   /** lawtwin.kafka::consumerCommitted */
-  public static Pair<LawSpecFast.Maybe<Long>, ConsumerState> consumerCommitted_06365ac2(java.util.Map<String, Object> symbols, TopicPartition tp_143, ConsumerState c_144) {
-    LawSpecFast.Maybe<String> value_145;
-    final LawSpecFast.Maybe<String> lawspecfieldgroup_146 = c_144.group;
-    value_145 = lawspecfieldgroup_146;
-    final LawSpecFast.Maybe<String> matched_147 = value_145;
-    if (matched_147.isJust()) {
-      final String group_148 = matched_147.get();
-      return new Pair<LawSpecFast.Maybe<Long>, ConsumerState>(LawSpecFast.maybe(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__offsetFetchRequest(symbols, LawSpecFast.TEXT.encode(group_148), TopicPartition.CODEC.encode(tp_143))), c_144);
+  public static Pair<LawSpecFast.Maybe<Long>, ConsumerState> consumerCommitted_06365ac2(java.util.Map<String, Object> symbols, TopicPartition tp_146, ConsumerState c_147) {
+    LawSpecFast.Maybe<String> value_148;
+    final LawSpecFast.Maybe<String> lawspecfieldgroup_149 = c_147.group;
+    value_148 = lawspecfieldgroup_149;
+    final LawSpecFast.Maybe<String> it_150 = value_148;
+    if (it_150.isJust()) {
+      final String v_lawspecselection0x0_151 = it_150.get();
+      return new Pair<LawSpecFast.Maybe<Long>, ConsumerState>(LawSpecFast.maybe(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__offsetFetchRequest(symbols, LawSpecFast.TEXT.encode(v_lawspecselection0x0_151), TopicPartition.CODEC.encode(tp_146))), c_147);
     } else {
-      return new Pair<LawSpecFast.Maybe<Long>, ConsumerState>(LawSpecFast.Maybe.<Long>nothing(), c_144);
+      return new Pair<LawSpecFast.Maybe<Long>, ConsumerState>(LawSpecFast.Maybe.<Long>nothing(), c_147);
     }
   }
 
   /** lawtwin.kafka::consumerIsolation */
-  public static Pair<LawSpecFast.Unit, ConsumerState> consumerIsolation_2aacd289(IsolationLevel level_149, ConsumerState c_150) {
-    ConsumerState value_151;
-    final IsolationLevel replacement_152 = level_149;
-    final LawSpecFast.Maybe<String> lawspecfieldgroup_153 = c_150.group;
-    final String lawspecfieldmember_154 = c_150.member;
-    final long lawspecfieldgeneration_155 = c_150.generation;
-    final LawSpecFast.List<String> lawspecfieldsubscription_156 = c_150.subscription;
-    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_157 = c_150.assigned;
-    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_158 = c_150.positions;
-    value_151 = new ConsumerState(lawspecfieldgroup_153, lawspecfieldmember_154, lawspecfieldgeneration_155, lawspecfieldsubscription_156, lawspecfieldassigned_157, lawspecfieldpositions_158, replacement_152);
-    return new Pair<LawSpecFast.Unit, ConsumerState>(LawSpecFast.Unit.UNIT, value_151);
+  public static Pair<LawSpecFast.Unit, ConsumerState> consumerIsolation_2aacd289(IsolationLevel level_152, ConsumerState c_153) {
+    ConsumerState value_154;
+    final IsolationLevel replacement_155 = level_152;
+    final LawSpecFast.Maybe<String> lawspecfieldgroup_156 = c_153.group;
+    final String lawspecfieldmember_157 = c_153.member;
+    final long lawspecfieldgeneration_158 = c_153.generation;
+    final LawSpecFast.List<String> lawspecfieldsubscription_159 = c_153.subscription;
+    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_160 = c_153.assigned;
+    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_161 = c_153.positions;
+    value_154 = new ConsumerState(lawspecfieldgroup_156, lawspecfieldmember_157, lawspecfieldgeneration_158, lawspecfieldsubscription_159, lawspecfieldassigned_160, lawspecfieldpositions_161, replacement_155);
+    return new Pair<LawSpecFast.Unit, ConsumerState>(LawSpecFast.Unit.UNIT, value_154);
   }
 
   /** lawtwin.kafka::consumerJoin */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>>, ConsumerState> consumerJoin_198e034e(java.util.Map<String, Object> symbols, String g_159, String m_160, LawSpecFast.List<String> topics_161, ConsumerState c_162) {
-    LawSpecFast.Either<KafkaError, Long> value_163;
-    LawSpecFast.Either<KafkaError, Long> attempted_164;
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>>, ConsumerState> consumerJoin_198e034e(java.util.Map<String, Object> symbols, String g_162, String m_163, LawSpecFast.List<String> topics_164, ConsumerState c_165) {
+    LawSpecFast.Either<KafkaError, Long> value_166;
+    LawSpecFast.Either<KafkaError, Long> attempted_167;
     try {
-      attempted_164 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int32", -2147483648L, 2147483647L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__joinGroupRequest(symbols, LawSpecFast.TEXT.encode(g_159), LawSpecFast.TEXT.encode(m_160), LawSpecFast.list(LawSpecFast.TEXT).encode(topics_161))));
+      attempted_167 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int32", -2147483648L, 2147483647L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__joinGroupRequest(symbols, LawSpecFast.TEXT.encode(g_162), LawSpecFast.TEXT.encode(m_163), LawSpecFast.list(LawSpecFast.TEXT).encode(topics_164))));
     } catch (LawSpecRuntime.Failure failure) {
       if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-      attempted_164 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
+      attempted_167 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
     }
-    final LawSpecFast.Either<KafkaError, Long> matched_165 = attempted_164;
-    if (matched_165.isLeft()) {
-      final KafkaError lawspecfailure_166 = matched_165.left();
-      value_163 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_166);
-    } else {
-      final long lawspecvalue_167 = matched_165.right();
-      value_163 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_167);
-    }
-    final LawSpecFast.Either<KafkaError, Long> matched_168 = value_163;
+    final LawSpecFast.Either<KafkaError, Long> matched_168 = attempted_167;
     if (matched_168.isLeft()) {
-      final KafkaError e_169 = matched_168.left();
-      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>left(e_169), c_162);
+      final KafkaError lawspecfailure_169 = matched_168.left();
+      value_166 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_169);
     } else {
-      final long gen_170 = matched_168.right();
-      LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> value_171;
-      LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> attempted_172;
+      final long lawspecvalue_170 = matched_168.right();
+      value_166 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_170);
+    }
+    final LawSpecFast.Either<KafkaError, Long> it_171 = value_166;
+    if (it_171.isLeft()) {
+      final KafkaError v_lawspecselection0x0_172 = it_171.left();
+      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>left(v_lawspecselection0x0_172), c_165);
+    } else {
+      final long v_lawspecselection0x0_173 = it_171.right();
+      LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> value_174;
+      LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> attempted_175;
       try {
-        attempted_172 = LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>right(LawSpecFast.list(TopicPartition.CODEC).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__syncGroupRequest(symbols, LawSpecFast.TEXT.encode(g_159), LawSpecFast.TEXT.encode(m_160), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(gen_170))));
+        attempted_175 = LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>right(LawSpecFast.list(TopicPartition.CODEC).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__syncGroupRequest(symbols, LawSpecFast.TEXT.encode(g_162), LawSpecFast.TEXT.encode(m_163), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(v_lawspecselection0x0_173))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_172 = LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>left(KafkaError.CODEC.decode(failure.value));
+        attempted_175 = LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> matched_173 = attempted_172;
-      if (matched_173.isLeft()) {
-        final KafkaError lawspecfailure_174 = matched_173.left();
-        value_171 = LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>left(lawspecfailure_174);
-      } else {
-        final LawSpecFast.List<TopicPartition> lawspecvalue_175 = matched_173.right();
-        value_171 = LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>right(lawspecvalue_175);
-      }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> matched_176 = value_171;
+      final LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> matched_176 = attempted_175;
       if (matched_176.isLeft()) {
-        final KafkaError e_177 = matched_176.left();
-        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>left(e_177), c_162);
+        final KafkaError lawspecfailure_177 = matched_176.left();
+        value_174 = LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>left(lawspecfailure_177);
       } else {
-        final LawSpecFast.List<TopicPartition> tps_178 = matched_176.right();
-        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>right(tps_178), withAssignment_7d6291b1(LawSpecFast.Maybe.<String>just(g_159), m_160, gen_170, topics_161, tps_178, c_162));
+        final LawSpecFast.List<TopicPartition> lawspecvalue_178 = matched_176.right();
+        value_174 = LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>right(lawspecvalue_178);
+      }
+      final LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> it_179 = value_174;
+      if (it_179.isLeft()) {
+        final KafkaError v_match__lawspecselection0x0_0_180 = it_179.left();
+        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>left(v_match__lawspecselection0x0_0_180), c_165);
+      } else {
+        final LawSpecFast.List<TopicPartition> v_match__lawspecselection0x0_0_181 = it_179.right();
+        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.List<TopicPartition>>right(v_match__lawspecselection0x0_0_181), withAssignment_7d6291b1(LawSpecFast.Maybe.<String>just(g_162), m_163, v_lawspecselection0x0_173, topics_164, v_match__lawspecselection0x0_0_181, c_165));
       }
     }
   }
 
   /** lawtwin.kafka::consumerPoll */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>>, ConsumerState> consumerPoll_d12c6262(java.util.Map<String, Object> symbols, long n_179, ConsumerState c_180) {
-    final Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState> refreshed_181 = consumerRefresh_99e956fa(symbols, c_180);
-    LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_182;
-    final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> lawspecfieldfirst_183 = refreshed_181.first;
-    value_182 = lawspecfieldfirst_183;
-    final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_184 = value_182;
-    if (matched_184.isLeft()) {
-      final KafkaError e_185 = matched_184.left();
-      ConsumerState value_186;
-      final ConsumerState lawspecfieldsecond_187 = refreshed_181.second;
-      value_186 = lawspecfieldsecond_187;
-      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.List<ConsumerRecord>>left(e_185), value_186);
-    } else {
-      LawSpecFast.List<TopicPartition> value_188;
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>>, ConsumerState> consumerPoll_d12c6262(java.util.Map<String, Object> symbols, long n_182, ConsumerState c_183) {
+    final Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState> refreshed_184 = consumerRefresh_99e956fa(symbols, c_183);
+    LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_185;
+    final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> lawspecfieldfirst_186 = refreshed_184.first;
+    value_185 = lawspecfieldfirst_186;
+    final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> it_187 = value_185;
+    if (it_187.isLeft()) {
+      final KafkaError v_lawspecselection0x0_188 = it_187.left();
       ConsumerState value_189;
-      final ConsumerState lawspecfieldsecond_190 = refreshed_181.second;
+      final ConsumerState lawspecfieldsecond_190 = refreshed_184.second;
       value_189 = lawspecfieldsecond_190;
-      final ConsumerState matched_191 = value_189;
-      final LawSpecFast.List<TopicPartition> lawspecfieldassigned_192 = matched_191.assigned;
-      value_188 = lawspecfieldassigned_192;
-      ConsumerState value_193;
-      final ConsumerState lawspecfieldsecond_194 = refreshed_181.second;
-      value_193 = lawspecfieldsecond_194;
-      return pollPartitions_9d6feda1(symbols, value_188, n_179, value_193, LawSpecFast.List.<ConsumerRecord>nil());
+      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.List<ConsumerRecord>>left(v_lawspecselection0x0_188), value_189);
+    } else {
+      LawSpecFast.List<TopicPartition> value_191;
+      ConsumerState value_192;
+      final ConsumerState lawspecfieldsecond_193 = refreshed_184.second;
+      value_192 = lawspecfieldsecond_193;
+      final ConsumerState matched_194 = value_192;
+      final LawSpecFast.List<TopicPartition> lawspecfieldassigned_195 = matched_194.assigned;
+      value_191 = lawspecfieldassigned_195;
+      ConsumerState value_196;
+      final ConsumerState lawspecfieldsecond_197 = refreshed_184.second;
+      value_196 = lawspecfieldsecond_197;
+      return pollPartitions_9d6feda1(symbols, value_191, n_182, value_196, LawSpecFast.List.<ConsumerRecord>nil());
     }
   }
 
   /** lawtwin.kafka::consumerPosition */
-  public static Pair<Long, ConsumerState> consumerPosition_4da411a3(java.util.Map<String, Object> symbols, TopicPartition tp_195, ConsumerState c_196) {
-    LawSpecFast.Map<TopicPartition, Long> value_197;
-    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_198 = c_196.positions;
-    value_197 = lawspecfieldpositions_198;
-    final LawSpecFast.Maybe<Long> matched_199 = value_197.get(tp_195);
-    if (matched_199.isJust()) {
-      final long o_200 = matched_199.get();
-      return new Pair<Long, ConsumerState>(o_200, c_196);
+  public static Pair<Long, ConsumerState> consumerPosition_4da411a3(java.util.Map<String, Object> symbols, TopicPartition tp_198, ConsumerState c_199) {
+    LawSpecFast.Map<TopicPartition, Long> value_200;
+    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_201 = c_199.positions;
+    value_200 = lawspecfieldpositions_201;
+    final LawSpecFast.Maybe<Long> it_202 = value_200.get(tp_198);
+    if (it_202.isJust()) {
+      final long v_lawspecselection0x0_203 = it_202.get();
+      return new Pair<Long, ConsumerState>(v_lawspecselection0x0_203, c_199);
     } else {
-      long value_201;
-      LawSpecFast.Maybe<String> value_202;
-      final LawSpecFast.Maybe<String> lawspecfieldgroup_203 = c_196.group;
-      value_202 = lawspecfieldgroup_203;
-      final LawSpecFast.Maybe<String> matched_204 = value_202;
-      if (matched_204.isJust()) {
-        final String group_205 = matched_204.get();
-        final LawSpecFast.Maybe<Long> matched_206 = LawSpecFast.maybe(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__offsetFetchRequest(symbols, LawSpecFast.TEXT.encode(group_205), TopicPartition.CODEC.encode(tp_195)));
-        if (matched_206.isJust()) {
-          final long o_207 = matched_206.get();
-          value_201 = o_207;
+      long value_204;
+      LawSpecFast.Maybe<String> value_205;
+      final LawSpecFast.Maybe<String> lawspecfieldgroup_206 = c_199.group;
+      value_205 = lawspecfieldgroup_206;
+      final LawSpecFast.Maybe<String> it_207 = value_205;
+      if (it_207.isJust()) {
+        final String v_lawspecselection0x0_208 = it_207.get();
+        final LawSpecFast.Maybe<Long> it_209 = LawSpecFast.maybe(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__offsetFetchRequest(symbols, LawSpecFast.TEXT.encode(v_lawspecselection0x0_208), TopicPartition.CODEC.encode(tp_198)));
+        if (it_209.isJust()) {
+          final long v_match__lawspecselection0x0_0_210 = it_209.get();
+          value_204 = v_match__lawspecselection0x0_0_210;
         } else {
-          value_201 = 0L;
+          value_204 = 0L;
         }
       } else {
-        value_201 = 0L;
+        value_204 = 0L;
       }
-      final long from_208 = value_201;
-      return new Pair<Long, ConsumerState>(from_208, withPosition_867e6b19(tp_195, from_208, c_196));
+      final long from_211 = value_204;
+      return new Pair<Long, ConsumerState>(from_211, withPosition_867e6b19(tp_198, from_211, c_199));
     }
   }
 
   /** lawtwin.kafka::consumerPositionOf */
-  public static Pair<LawSpecFast.Either<KafkaError, Long>, ConsumerState> consumerPositionOf_71a8a523(java.util.Map<String, Object> symbols, TopicPartition tp_209, ConsumerState c_210) {
-    LawSpecFast.List<TopicPartition> value_211;
-    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_212 = c_210.assigned;
-    value_211 = lawspecfieldassigned_212;
-    boolean all_213 = true;
-    for (final TopicPartition item_214 : value_211) {
-      if (!(!(java.util.Objects.equals(item_214, tp_209)))) { all_213 = false; break; }
+  public static Pair<LawSpecFast.Either<KafkaError, Long>, ConsumerState> consumerPositionOf_71a8a523(java.util.Map<String, Object> symbols, TopicPartition tp_212, ConsumerState c_213) {
+    LawSpecFast.List<TopicPartition> value_214;
+    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_215 = c_213.assigned;
+    value_214 = lawspecfieldassigned_215;
+    boolean all_216 = true;
+    for (final TopicPartition item_217 : value_214) {
+      if (!(!(java.util.Objects.equals(item_217, tp_212)))) { all_216 = false; break; }
     }
-    if (!(all_213)) {
-      final Pair<Long, ConsumerState> p_215 = consumerPosition_4da411a3(symbols, tp_209, c_210);
-      long value_216;
-      final long lawspecfieldfirst_217 = p_215.first;
-      value_216 = lawspecfieldfirst_217;
-      ConsumerState value_218;
-      final ConsumerState lawspecfieldsecond_219 = p_215.second;
-      value_218 = lawspecfieldsecond_219;
-      return new Pair<LawSpecFast.Either<KafkaError, Long>, ConsumerState>(LawSpecFast.Either.<KafkaError, Long>right(value_216), value_218);
+    if (!(all_216)) {
+      final Pair<Long, ConsumerState> p_218 = consumerPosition_4da411a3(symbols, tp_212, c_213);
+      long value_219;
+      final long lawspecfieldfirst_220 = p_218.first;
+      value_219 = lawspecfieldfirst_220;
+      ConsumerState value_221;
+      final ConsumerState lawspecfieldsecond_222 = p_218.second;
+      value_221 = lawspecfieldsecond_222;
+      return new Pair<LawSpecFast.Either<KafkaError, Long>, ConsumerState>(LawSpecFast.Either.<KafkaError, Long>right(value_219), value_221);
     } else {
-      return new Pair<LawSpecFast.Either<KafkaError, Long>, ConsumerState>(LawSpecFast.Either.<KafkaError, Long>left(KafkaError.IllegalState), c_210);
+      return new Pair<LawSpecFast.Either<KafkaError, Long>, ConsumerState>(LawSpecFast.Either.<KafkaError, Long>left(KafkaError.IllegalState), c_213);
     }
   }
 
   /** lawtwin.kafka::consumerRecords */
-  public static LawSpecFast.List<ConsumerRecord> consumerRecords_9d810f29(TopicPartition tp_220, LawSpecFast.List<FetchedRecord> rs_221) {
-    if (rs_221.isEmpty()) {
+  public static LawSpecFast.List<ConsumerRecord> consumerRecords_9d810f29(TopicPartition tp_223, LawSpecFast.List<FetchedRecord> rs_224) {
+    final LawSpecFast.List<FetchedRecord> it_225 = rs_224;
+    if (it_225.isEmpty()) {
       return LawSpecFast.List.<ConsumerRecord>nil();
     } else {
-      final FetchedRecord r_222 = rs_221.head();
-      final LawSpecFast.List<FetchedRecord> rest_223 = rs_221.tail();
-      long value_224;
-      final long lawspecfieldoffset_225 = r_222.offset;
-      value_224 = lawspecfieldoffset_225;
-      Record value_226;
-      final Record lawspecfieldentry_227 = r_222.entry;
-      value_226 = lawspecfieldentry_227;
-      return LawSpecFast.List.<ConsumerRecord>cons(new ConsumerRecord(tp_220, value_224, value_226), consumerRecords_9d810f29(tp_220, rest_223));
+      final FetchedRecord v_lawspecselection0x0_226 = it_225.head();
+      final LawSpecFast.List<FetchedRecord> v_lawspecselection0x1_227 = it_225.tail();
+      ConsumerRecord value_228;
+      final TopicPartition v_lawspecrecordfield0_229 = tp_223;
+      long value_230;
+      final long lawspecfieldoffset_231 = v_lawspecselection0x0_226.offset;
+      value_230 = lawspecfieldoffset_231;
+      final long v_lawspecrecordfield1_232 = value_230;
+      Record value_233;
+      final Record lawspecfieldentry_234 = v_lawspecselection0x0_226.entry;
+      value_233 = lawspecfieldentry_234;
+      final Record v_lawspecrecordfield2_235 = value_233;
+      value_228 = new ConsumerRecord(v_lawspecrecordfield0_229, v_lawspecrecordfield1_232, v_lawspecrecordfield2_235);
+      return LawSpecFast.List.<ConsumerRecord>cons(value_228, consumerRecords_9d810f29(tp_223, v_lawspecselection0x1_227));
     }
   }
 
   /** lawtwin.kafka::consumerRefresh */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState> consumerRefresh_99e956fa(java.util.Map<String, Object> symbols, ConsumerState c_228) {
-    LawSpecFast.Maybe<String> value_229;
-    final LawSpecFast.Maybe<String> lawspecfieldgroup_230 = c_228.group;
-    value_229 = lawspecfieldgroup_230;
-    final LawSpecFast.Maybe<String> matched_231 = value_229;
-    if (matched_231.isJust()) {
-      final String group_232 = matched_231.get();
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_233;
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_234;
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState> consumerRefresh_99e956fa(java.util.Map<String, Object> symbols, ConsumerState c_236) {
+    LawSpecFast.Maybe<String> value_237;
+    final LawSpecFast.Maybe<String> lawspecfieldgroup_238 = c_236.group;
+    value_237 = lawspecfieldgroup_238;
+    final LawSpecFast.Maybe<String> it_239 = value_237;
+    if (it_239.isJust()) {
+      final String v_lawspecselection0x0_240 = it_239.get();
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_241;
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_242;
       try {
-        String value_235;
-        final String lawspecfieldmember_236 = c_228.member;
-        value_235 = lawspecfieldmember_236;
-        long value_237;
-        final long lawspecfieldgeneration_238 = c_228.generation;
-        value_237 = lawspecfieldgeneration_238;
-        attempted_234 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__heartbeatRequest(symbols, LawSpecFast.TEXT.encode(group_232), LawSpecFast.TEXT.encode(value_235), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(value_237))));
+        String value_243;
+        final String lawspecfieldmember_244 = c_236.member;
+        value_243 = lawspecfieldmember_244;
+        long value_245;
+        final long lawspecfieldgeneration_246 = c_236.generation;
+        value_245 = lawspecfieldgeneration_246;
+        attempted_242 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__heartbeatRequest(symbols, LawSpecFast.TEXT.encode(v_lawspecselection0x0_240), LawSpecFast.TEXT.encode(value_243), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(value_245))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_234 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+        attempted_242 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_239 = attempted_234;
-      if (matched_239.isLeft()) {
-        final KafkaError lawspecfailure_240 = matched_239.left();
-        value_233 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_240);
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_247 = attempted_242;
+      if (matched_247.isLeft()) {
+        final KafkaError lawspecfailure_248 = matched_247.left();
+        value_241 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_248);
       } else {
-        final LawSpecFast.Unit lawspecvalue_241 = matched_239.right();
-        value_233 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_241);
+        final LawSpecFast.Unit lawspecvalue_249 = matched_247.right();
+        value_241 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_249);
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_242 = value_233;
-      if (matched_242.isLeft()) {
-        final KafkaError e_243 = matched_242.left();
-        if (((java.util.Objects.equals(e_243, KafkaError.IllegalGeneration)) || (java.util.Objects.equals(e_243, KafkaError.UnknownMemberId)))) {
-          String value_244;
-          final String lawspecfieldmember_245 = c_228.member;
-          value_244 = lawspecfieldmember_245;
-          LawSpecFast.List<String> value_246;
-          final LawSpecFast.List<String> lawspecfieldsubscription_247 = c_228.subscription;
-          value_246 = lawspecfieldsubscription_247;
-          final Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>>, ConsumerState> s_248 = consumerJoin_198e034e(symbols, group_232, value_244, value_246, c_228);
-          LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> value_249;
-          final LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> lawspecfieldfirst_250 = s_248.first;
-          value_249 = lawspecfieldfirst_250;
-          final LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> matched_251 = value_249;
-          if (matched_251.isLeft()) {
-            final KafkaError e2_252 = matched_251.left();
-            ConsumerState value_253;
-            final ConsumerState lawspecfieldsecond_254 = s_248.second;
-            value_253 = lawspecfieldsecond_254;
-            return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(e2_252), value_253);
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> it_250 = value_241;
+      if (it_250.isLeft()) {
+        final KafkaError v_match__lawspecselection0x0_0_251 = it_250.left();
+        if (((java.util.Objects.equals(v_match__lawspecselection0x0_0_251, KafkaError.IllegalGeneration)) || (java.util.Objects.equals(v_match__lawspecselection0x0_0_251, KafkaError.UnknownMemberId)))) {
+          String value_252;
+          final String lawspecfieldmember_253 = c_236.member;
+          value_252 = lawspecfieldmember_253;
+          LawSpecFast.List<String> value_254;
+          final LawSpecFast.List<String> lawspecfieldsubscription_255 = c_236.subscription;
+          value_254 = lawspecfieldsubscription_255;
+          final Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>>, ConsumerState> s_256 = consumerJoin_198e034e(symbols, v_lawspecselection0x0_240, value_252, value_254, c_236);
+          LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> value_257;
+          final LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> lawspecfieldfirst_258 = s_256.first;
+          value_257 = lawspecfieldfirst_258;
+          final LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> it_259 = value_257;
+          if (it_259.isLeft()) {
+            final KafkaError v_match__match__lawspecselection0x0_0_0_260 = it_259.left();
+            ConsumerState value_261;
+            final ConsumerState lawspecfieldsecond_262 = s_256.second;
+            value_261 = lawspecfieldsecond_262;
+            return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(v_match__match__lawspecselection0x0_0_0_260), value_261);
           } else {
-            ConsumerState value_255;
-            final ConsumerState lawspecfieldsecond_256 = s_248.second;
-            value_255 = lawspecfieldsecond_256;
-            return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), value_255);
+            ConsumerState value_263;
+            final ConsumerState lawspecfieldsecond_264 = s_256.second;
+            value_263 = lawspecfieldsecond_264;
+            return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), value_263);
           }
         } else {
-          return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(e_243), c_228);
+          return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(v_match__lawspecselection0x0_0_251), c_236);
         }
       } else {
-        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), c_228);
+        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), c_236);
       }
     } else {
-      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), c_228);
+      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), c_236);
     }
   }
 
   /** lawtwin.kafka::consumerSeek */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState> consumerSeek_975a7017(TopicPartition tp_257, long offset_258, ConsumerState c_259) {
-    LawSpecFast.List<TopicPartition> value_260;
-    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_261 = c_259.assigned;
-    value_260 = lawspecfieldassigned_261;
-    boolean all_262 = true;
-    for (final TopicPartition item_263 : value_260) {
-      if (!(!(java.util.Objects.equals(item_263, tp_257)))) { all_262 = false; break; }
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState> consumerSeek_975a7017(TopicPartition tp_265, long offset_266, ConsumerState c_267) {
+    LawSpecFast.List<TopicPartition> value_268;
+    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_269 = c_267.assigned;
+    value_268 = lawspecfieldassigned_269;
+    boolean all_270 = true;
+    for (final TopicPartition item_271 : value_268) {
+      if (!(!(java.util.Objects.equals(item_271, tp_265)))) { all_270 = false; break; }
     }
-    if ((!(all_262) && ((offset_258) >= (0L)))) {
-      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), withPosition_867e6b19(tp_257, offset_258, c_259));
+    if ((!(all_270) && ((offset_266) >= (0L)))) {
+      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), withPosition_867e6b19(tp_265, offset_266, c_267));
     } else {
-      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), c_259);
+      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), c_267);
     }
   }
 
   /** lawtwin.kafka::coversOnce */
-  public static boolean coversOnce_231e9ee6(String t_264, long n_265, GroupView view_266) {
-    LawSpecFast.List<MemberAssignment> value_267;
-    final LawSpecFast.List<MemberAssignment> lawspecfieldmembers_268 = view_266.members;
-    value_267 = lawspecfieldmembers_268;
-    final LawSpecFast.List<Long> owned_269 = ownedOf_0d7fb3ae(t_264, value_267);
-    return ((((long) owned_269.size()) == (n_265)) && (java.util.Objects.equals(LawSpecFast.Set.of(owned_269), LawSpecFast.Set.of(LawSpecFast.range(0L, n_265)))));
+  public static boolean coversOnce_231e9ee6(String t_272, long n_273, GroupView view_274) {
+    LawSpecFast.List<MemberAssignment> value_275;
+    final LawSpecFast.List<MemberAssignment> lawspecfieldmembers_276 = view_274.members;
+    value_275 = lawspecfieldmembers_276;
+    final LawSpecFast.List<Long> owned_277 = ownedOf_0d7fb3ae(t_272, value_275);
+    return ((((long) owned_277.size()) == (n_273)) && (java.util.Objects.equals(LawSpecFast.Set.of(owned_277), LawSpecFast.Set.of(LawSpecFast.range(0L, n_273)))));
   }
 
   /** lawtwin.kafka::created */
-  public static boolean created_5201db31(java.util.Map<String, Object> symbols, String t_270, long n_271) {
-    LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_272;
-    LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_273;
+  public static boolean created_5201db31(java.util.Map<String, Object> symbols, String t_278, long n_279) {
+    LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_280;
+    LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_281;
     try {
-      attempted_273 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__createTopicsRequest(symbols, LawSpecFast.TEXT.encode(t_270), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(n_271))));
+      attempted_281 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__createTopicsRequest(symbols, LawSpecFast.TEXT.encode(t_278), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(n_279))));
     } catch (LawSpecRuntime.Failure failure) {
       if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-      attempted_273 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+      attempted_281 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
     }
-    final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_274 = attempted_273;
-    if (matched_274.isLeft()) {
-      final KafkaError lawspecfailure_275 = matched_274.left();
-      value_272 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_275);
+    final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_282 = attempted_281;
+    if (matched_282.isLeft()) {
+      final KafkaError lawspecfailure_283 = matched_282.left();
+      value_280 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_283);
     } else {
-      final LawSpecFast.Unit lawspecvalue_276 = matched_274.right();
-      value_272 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_276);
+      final LawSpecFast.Unit lawspecvalue_284 = matched_282.right();
+      value_280 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_284);
     }
-    final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_277 = value_272;
-    if (matched_277.isLeft()) {
+    final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_285 = value_280;
+    if (matched_285.isLeft()) {
       return false;
     } else {
       return true;
@@ -3492,315 +3678,340 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::fencedBy */
-  public static boolean fencedBy_c383bb89(ProducerIdAndEpoch old_278, ProducerIdAndEpoch new_279) {
-    long value_280;
-    final long lawspecfieldproducerid_281 = new_279.producerId;
-    value_280 = lawspecfieldproducerid_281;
-    long value_282;
-    final long lawspecfieldproducerid_283 = old_278.producerId;
-    value_282 = lawspecfieldproducerid_283;
-    boolean logic_288;
-    if (((value_280) == (value_282))) {
-      long value_284;
-      final long lawspecfieldproducerepoch_285 = new_279.producerEpoch;
-      value_284 = lawspecfieldproducerepoch_285;
-      long value_286;
-      final long lawspecfieldproducerepoch_287 = old_278.producerEpoch;
-      value_286 = lawspecfieldproducerepoch_287;
-      logic_288 = ((value_284) > (value_286));
-    } else { logic_288 = false; }
-    boolean logic_293;
-    if (!(logic_288)) {
-      long value_289;
-      final long lawspecfieldproducerid_290 = new_279.producerId;
-      value_289 = lawspecfieldproducerid_290;
-      long value_291;
-      final long lawspecfieldproducerid_292 = old_278.producerId;
-      value_291 = lawspecfieldproducerid_292;
-      logic_293 = ((value_289) != (value_291));
-    } else { logic_293 = true; }
-    return logic_293;
+  public static boolean fencedBy_c383bb89(ProducerIdAndEpoch old_286, ProducerIdAndEpoch new_287) {
+    long value_288;
+    final long lawspecfieldproducerid_289 = new_287.producerId;
+    value_288 = lawspecfieldproducerid_289;
+    long value_290;
+    final long lawspecfieldproducerid_291 = old_286.producerId;
+    value_290 = lawspecfieldproducerid_291;
+    boolean logic_296;
+    if (((value_288) == (value_290))) {
+      long value_292;
+      final long lawspecfieldproducerepoch_293 = new_287.producerEpoch;
+      value_292 = lawspecfieldproducerepoch_293;
+      long value_294;
+      final long lawspecfieldproducerepoch_295 = old_286.producerEpoch;
+      value_294 = lawspecfieldproducerepoch_295;
+      logic_296 = ((value_292) > (value_294));
+    } else { logic_296 = false; }
+    boolean logic_301;
+    if (!(logic_296)) {
+      long value_297;
+      final long lawspecfieldproducerid_298 = new_287.producerId;
+      value_297 = lawspecfieldproducerid_298;
+      long value_299;
+      final long lawspecfieldproducerid_300 = old_286.producerId;
+      value_299 = lawspecfieldproducerid_300;
+      logic_301 = ((value_297) != (value_299));
+    } else { logic_301 = true; }
+    return logic_301;
   }
 
   /** lawtwin.kafka::followsBatch */
-  public static boolean followsBatch_00cf360a(LawSpecFast.Either<KafkaError, Long> a_294, LawSpecFast.List<Record> batch_295, LawSpecFast.Either<KafkaError, Long> b_296) {
-    if (a_294.isLeft()) {
+  public static boolean followsBatch_00cf360a(LawSpecFast.Either<KafkaError, Long> a_302, LawSpecFast.List<Record> batch_303, LawSpecFast.Either<KafkaError, Long> b_304) {
+    final LawSpecFast.Either<KafkaError, Long> it_305 = a_302;
+    if (it_305.isLeft()) {
       return false;
     } else {
-      final long x_297 = a_294.right();
-      if (b_296.isLeft()) {
+      final long v_lawspecselection0x0_306 = it_305.right();
+      final LawSpecFast.Either<KafkaError, Long> it_307 = b_304;
+      if (it_307.isLeft()) {
         return false;
       } else {
-        final long y_298 = b_296.right();
-        return (java.math.BigInteger.valueOf(y_298).compareTo(java.math.BigInteger.valueOf(x_297).add(java.math.BigInteger.valueOf((long) batch_295.size()))) == 0);
+        final long v_match__lawspecselection0x0_0_308 = it_307.right();
+        return (java.math.BigInteger.valueOf(v_match__lawspecselection0x0_0_308).compareTo(java.math.BigInteger.valueOf(v_lawspecselection0x0_306).add(java.math.BigInteger.valueOf((long) batch_303.size()))) == 0);
       }
     }
   }
 
   /** lawtwin.kafka::followsOne */
-  public static boolean followsOne_4f3a93e2(LawSpecFast.Either<KafkaError, RecordMetadata> a_299, LawSpecFast.Either<KafkaError, Long> latest_300) {
-    if (a_299.isLeft()) {
+  public static boolean followsOne_4f3a93e2(LawSpecFast.Either<KafkaError, RecordMetadata> a_309, LawSpecFast.Either<KafkaError, Long> latest_310) {
+    final LawSpecFast.Either<KafkaError, RecordMetadata> it_311 = a_309;
+    if (it_311.isLeft()) {
       return false;
     } else {
-      final RecordMetadata md_301 = a_299.right();
-      if (latest_300.isLeft()) {
+      final RecordMetadata v_lawspecselection0x0_312 = it_311.right();
+      final LawSpecFast.Either<KafkaError, Long> it_313 = latest_310;
+      if (it_313.isLeft()) {
         return false;
       } else {
-        final long l_302 = latest_300.right();
-        long value_303;
-        final long lawspecfieldsentat_304 = md_301.sentAt;
-        value_303 = lawspecfieldsentat_304;
-        return (java.math.BigInteger.valueOf(l_302).compareTo(java.math.BigInteger.valueOf(value_303).add(java.math.BigInteger.valueOf(1L))) == 0);
+        final long v_match__lawspecselection0x0_0_314 = it_313.right();
+        long value_315;
+        final long lawspecfieldsentat_316 = v_lawspecselection0x0_312.sentAt;
+        value_315 = lawspecfieldsentat_316;
+        return (java.math.BigInteger.valueOf(v_match__lawspecselection0x0_0_314).compareTo(java.math.BigInteger.valueOf(value_315).add(java.math.BigInteger.valueOf(1L))) == 0);
       }
     }
   }
 
   /** lawtwin.kafka::freshConsumer */
-  public static ConsumerState freshConsumer_c2da4184(LawSpecFast.Unit u_305) {
-    return new ConsumerState(LawSpecFast.Maybe.<String>nothing(), "", -1L, LawSpecFast.List.<String>nil(), LawSpecFast.List.<TopicPartition>nil(), keyValOf(LawSpecFast.List.<Entry<TopicPartition, Long>>nil()), IsolationLevel.ReadUncommitted);
+  public static ConsumerState freshConsumer_c2da4184(LawSpecFast.Unit u_317) {
+    final LawSpecFast.Maybe<String> v_lawspecrecordfield0_318 = LawSpecFast.Maybe.<String>nothing();
+    final String v_lawspecrecordfield1_319 = "";
+    final long v_lawspecrecordfield2_320 = -1L;
+    final LawSpecFast.List<String> v_lawspecrecordfield3_321 = LawSpecFast.List.<String>nil();
+    final LawSpecFast.List<TopicPartition> v_lawspecrecordfield4_322 = LawSpecFast.List.<TopicPartition>nil();
+    final LawSpecFast.Map<TopicPartition, Long> v_lawspecrecordfield5_323 = keyValOf(LawSpecFast.List.<Entry<TopicPartition, Long>>nil());
+    final IsolationLevel v_lawspecrecordfield6_324 = IsolationLevel.ReadUncommitted;
+    return new ConsumerState(v_lawspecrecordfield0_318, v_lawspecrecordfield1_319, v_lawspecrecordfield2_320, v_lawspecrecordfield3_321, v_lawspecrecordfield4_322, v_lawspecrecordfield5_323, v_lawspecrecordfield6_324);
   }
 
   /** lawtwin.kafka::freshProducer */
-  public static ProducerState freshProducer_deea7b00(LawSpecFast.Unit u_306) {
-    return new ProducerState(LawSpecFast.Maybe.<ProducerIdAndEpoch>nothing(), keyValOf(LawSpecFast.List.<Entry<TopicPartition, Long>>nil()), LawSpecFast.Maybe.<LastSend>nothing());
+  public static ProducerState freshProducer_deea7b00(LawSpecFast.Unit u_325) {
+    final LawSpecFast.Maybe<ProducerIdAndEpoch> v_lawspecrecordfield0_326 = LawSpecFast.Maybe.<ProducerIdAndEpoch>nothing();
+    final LawSpecFast.Map<TopicPartition, Long> v_lawspecrecordfield1_327 = keyValOf(LawSpecFast.List.<Entry<TopicPartition, Long>>nil());
+    final LawSpecFast.Maybe<LastSend> v_lawspecrecordfield2_328 = LawSpecFast.Maybe.<LastSend>nothing();
+    return new ProducerState(v_lawspecrecordfield0_326, v_lawspecrecordfield1_327, v_lawspecrecordfield2_328);
   }
 
   /** lawtwin.kafka::freshTransactions */
-  public static TransactionState freshTransactions_533fb432(LawSpecFast.Unit u_307) {
-    return new TransactionState("", LawSpecFast.Maybe.<ProducerIdAndEpoch>nothing(), keyValOf(LawSpecFast.List.<Entry<TopicPartition, Long>>nil()), false, LawSpecFast.List.<TopicPartition>nil(), false);
+  public static TransactionState freshTransactions_533fb432(LawSpecFast.Unit u_329) {
+    final String v_lawspecrecordfield0_330 = "";
+    final LawSpecFast.Maybe<ProducerIdAndEpoch> v_lawspecrecordfield1_331 = LawSpecFast.Maybe.<ProducerIdAndEpoch>nothing();
+    final LawSpecFast.Map<TopicPartition, Long> v_lawspecrecordfield2_332 = keyValOf(LawSpecFast.List.<Entry<TopicPartition, Long>>nil());
+    final boolean v_lawspecrecordfield3_333 = false;
+    final LawSpecFast.List<TopicPartition> v_lawspecrecordfield4_334 = LawSpecFast.List.<TopicPartition>nil();
+    final boolean v_lawspecrecordfield5_335 = false;
+    return new TransactionState(v_lawspecrecordfield0_330, v_lawspecrecordfield1_331, v_lawspecrecordfield2_332, v_lawspecrecordfield3_333, v_lawspecrecordfield4_334, v_lawspecrecordfield5_335);
   }
 
   /** lawtwin.kafka::identityOf */
-  public static Pair<LawSpecFast.Maybe<ProducerIdAndEpoch>, ProducerState> identityOf_96976095(ProducerState st_308) {
-    LawSpecFast.Maybe<ProducerIdAndEpoch> value_309;
-    final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldidentity_310 = st_308.identity;
-    value_309 = lawspecfieldidentity_310;
-    return new Pair<LawSpecFast.Maybe<ProducerIdAndEpoch>, ProducerState>(value_309, st_308);
+  public static Pair<LawSpecFast.Maybe<ProducerIdAndEpoch>, ProducerState> identityOf_96976095(ProducerState st_336) {
+    LawSpecFast.Maybe<ProducerIdAndEpoch> value_337;
+    final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldidentity_338 = st_336.identity;
+    value_337 = lawspecfieldidentity_338;
+    return new Pair<LawSpecFast.Maybe<ProducerIdAndEpoch>, ProducerState>(value_337, st_336);
   }
 
   /** lawtwin.kafka::increasing */
-  public static boolean increasing_d02ccce0(LawSpecFast.List<Long> xs_311) {
-    if (xs_311.isEmpty()) {
+  public static boolean increasing_d02ccce0(LawSpecFast.List<Long> xs_339) {
+    final LawSpecFast.List<Long> it_340 = xs_339;
+    if (it_340.isEmpty()) {
       return true;
     } else {
-      final long h_312 = xs_311.head();
-      final LawSpecFast.List<Long> t_313 = xs_311.tail();
-      if (t_313.isEmpty()) {
+      final long v_lawspecselection0x0_341 = it_340.head();
+      final LawSpecFast.List<Long> v_lawspecselection0x1_342 = it_340.tail();
+      final LawSpecFast.List<Long> it_343 = v_lawspecselection0x1_342;
+      if (it_343.isEmpty()) {
         return true;
       } else {
-        final long h2_314 = t_313.head();
-        return (((h_312) < (h2_314)) && increasing_d02ccce0(t_313));
+        final long v_match__lawspecselection0x0_0_344 = it_343.head();
+        return (((v_lawspecselection0x0_341) < (v_match__lawspecselection0x0_0_344)) && increasing_d02ccce0(v_lawspecselection0x1_342));
       }
     }
   }
 
   /** lawtwin.kafka::joinAll */
-  public static boolean joinAll_67d573a5(java.util.Map<String, Object> symbols, String g_315, LawSpecFast.List<String> ms_316, LawSpecFast.List<String> topics_317) {
-    if (ms_316.isEmpty()) {
+  public static boolean joinAll_67d573a5(java.util.Map<String, Object> symbols, String g_345, LawSpecFast.List<String> ms_346, LawSpecFast.List<String> topics_347) {
+    final LawSpecFast.List<String> it_348 = ms_346;
+    if (it_348.isEmpty()) {
       return true;
     } else {
-      final String m_318 = ms_316.head();
-      final LawSpecFast.List<String> rest_319 = ms_316.tail();
-      boolean value_320;
-      LawSpecFast.Either<KafkaError, Long> value_321;
-      LawSpecFast.Either<KafkaError, Long> attempted_322;
+      final String v_lawspecselection0x0_349 = it_348.head();
+      final LawSpecFast.List<String> v_lawspecselection0x1_350 = it_348.tail();
+      boolean value_351;
+      LawSpecFast.Either<KafkaError, Long> value_352;
+      LawSpecFast.Either<KafkaError, Long> attempted_353;
       try {
-        attempted_322 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int32", -2147483648L, 2147483647L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__joinGroupRequest(symbols, LawSpecFast.TEXT.encode(g_315), LawSpecFast.TEXT.encode(m_318), LawSpecFast.list(LawSpecFast.TEXT).encode(topics_317))));
+        attempted_353 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int32", -2147483648L, 2147483647L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__joinGroupRequest(symbols, LawSpecFast.TEXT.encode(g_345), LawSpecFast.TEXT.encode(v_lawspecselection0x0_349), LawSpecFast.list(LawSpecFast.TEXT).encode(topics_347))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_322 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
+        attempted_353 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, Long> matched_323 = attempted_322;
-      if (matched_323.isLeft()) {
-        final KafkaError lawspecfailure_324 = matched_323.left();
-        value_321 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_324);
+      final LawSpecFast.Either<KafkaError, Long> matched_354 = attempted_353;
+      if (matched_354.isLeft()) {
+        final KafkaError lawspecfailure_355 = matched_354.left();
+        value_352 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_355);
       } else {
-        final long lawspecvalue_325 = matched_323.right();
-        value_321 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_325);
+        final long lawspecvalue_356 = matched_354.right();
+        value_352 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_356);
       }
-      final LawSpecFast.Either<KafkaError, Long> matched_326 = value_321;
-      if (matched_326.isLeft()) {
-        value_320 = false;
+      final LawSpecFast.Either<KafkaError, Long> matched_357 = value_352;
+      if (matched_357.isLeft()) {
+        value_351 = false;
       } else {
-        value_320 = true;
+        value_351 = true;
       }
-      return (value_320 && joinAll_67d573a5(symbols, g_315, rest_319, topics_317));
+      return (value_351 && joinAll_67d573a5(symbols, g_345, v_lawspecselection0x1_350, topics_347));
     }
   }
 
   /** lawtwin.kafka::joinEach */
-  public static boolean joinEach_78c50afb(java.util.Map<String, Object> symbols, String g_327, LawSpecFast.List<String> ms_328, LawSpecFast.List<String> topics_329) {
-    if (ms_328.isEmpty()) {
+  public static boolean joinEach_78c50afb(java.util.Map<String, Object> symbols, String g_358, LawSpecFast.List<String> ms_359, LawSpecFast.List<String> topics_360) {
+    final LawSpecFast.List<String> it_361 = ms_359;
+    if (it_361.isEmpty()) {
       return true;
     } else {
-      final String m_330 = ms_328.head();
-      final LawSpecFast.List<String> rest_331 = ms_328.tail();
-      boolean value_332;
-      LawSpecFast.Either<KafkaError, Long> value_333;
-      LawSpecFast.Either<KafkaError, Long> attempted_334;
+      final String v_lawspecselection0x0_362 = it_361.head();
+      final LawSpecFast.List<String> v_lawspecselection0x1_363 = it_361.tail();
+      boolean value_364;
+      LawSpecFast.Either<KafkaError, Long> value_365;
+      LawSpecFast.Either<KafkaError, Long> attempted_366;
       try {
-        attempted_334 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int32", -2147483648L, 2147483647L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__GroupCoordinator__joinGroup(symbols, LawSpecFast.TEXT.encode(g_327), LawSpecFast.TEXT.encode(m_330), LawSpecFast.list(LawSpecFast.TEXT).encode(topics_329))));
+        attempted_366 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int32", -2147483648L, 2147483647L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__GroupCoordinator__joinGroup(symbols, LawSpecFast.TEXT.encode(g_358), LawSpecFast.TEXT.encode(v_lawspecselection0x0_362), LawSpecFast.list(LawSpecFast.TEXT).encode(topics_360))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_334 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
+        attempted_366 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, Long> matched_335 = attempted_334;
-      if (matched_335.isLeft()) {
-        final KafkaError lawspecfailure_336 = matched_335.left();
-        value_333 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_336);
+      final LawSpecFast.Either<KafkaError, Long> matched_367 = attempted_366;
+      if (matched_367.isLeft()) {
+        final KafkaError lawspecfailure_368 = matched_367.left();
+        value_365 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_368);
       } else {
-        final long lawspecvalue_337 = matched_335.right();
-        value_333 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_337);
+        final long lawspecvalue_369 = matched_367.right();
+        value_365 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_369);
       }
-      final LawSpecFast.Either<KafkaError, Long> matched_338 = value_333;
-      if (matched_338.isLeft()) {
-        value_332 = false;
+      final LawSpecFast.Either<KafkaError, Long> matched_370 = value_365;
+      if (matched_370.isLeft()) {
+        value_364 = false;
       } else {
-        value_332 = true;
+        value_364 = true;
       }
-      return (value_332 && joinEach_78c50afb(symbols, g_327, rest_331, topics_329));
+      return (value_364 && joinEach_78c50afb(symbols, g_358, v_lawspecselection0x1_363, topics_360));
     }
   }
 
   /** lawtwin.kafka::kafkaConsumerAssign */
-  public static Pair<LawSpecFast.Unit, ConsumerState> kafkaConsumerAssign_6414ad54(ConsumerState consumerstate_339, LawSpecFast.List<TopicPartition> value0_340) {
-    return consumerAssign_793a07ba(value0_340, consumerstate_339);
+  public static Pair<LawSpecFast.Unit, ConsumerState> kafkaConsumerAssign_6414ad54(ConsumerState consumerstate_371, LawSpecFast.List<TopicPartition> value0_372) {
+    return consumerAssign_793a07ba(value0_372, consumerstate_371);
   }
 
   /** lawtwin.kafka::kafkaConsumerClose */
-  public static Pair<LawSpecFast.Unit, ConsumerState> kafkaConsumerClose_ece19793(java.util.Map<String, Object> symbols, ConsumerState consumerstate_341) {
-    return consumerClose_00c5e7f3(symbols, consumerstate_341);
+  public static Pair<LawSpecFast.Unit, ConsumerState> kafkaConsumerClose_ece19793(java.util.Map<String, Object> symbols, ConsumerState consumerstate_373) {
+    return consumerClose_00c5e7f3(symbols, consumerstate_373);
   }
 
   /** lawtwin.kafka::kafkaConsumerCommitSync */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState> kafkaConsumerCommitSync_d47684fe(java.util.Map<String, Object> symbols, ConsumerState consumerstate_342) {
-    return consumerCommit_787f4c15(symbols, consumerstate_342);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState> kafkaConsumerCommitSync_d47684fe(java.util.Map<String, Object> symbols, ConsumerState consumerstate_374) {
+    return consumerCommit_787f4c15(symbols, consumerstate_374);
   }
 
   /** lawtwin.kafka::kafkaConsumerCommittedOffset */
-  public static Pair<LawSpecFast.Maybe<Long>, ConsumerState> kafkaConsumerCommittedOffset_c045e1a8(java.util.Map<String, Object> symbols, ConsumerState consumerstate_343, TopicPartition value0_344) {
-    return consumerCommitted_06365ac2(symbols, value0_344, consumerstate_343);
+  public static Pair<LawSpecFast.Maybe<Long>, ConsumerState> kafkaConsumerCommittedOffset_c045e1a8(java.util.Map<String, Object> symbols, ConsumerState consumerstate_375, TopicPartition value0_376) {
+    return consumerCommitted_06365ac2(symbols, value0_376, consumerstate_375);
   }
 
   /** lawtwin.kafka::kafkaConsumerPoll */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>>, ConsumerState> kafkaConsumerPoll_591504e0(java.util.Map<String, Object> symbols, ConsumerState consumerstate_345, long value0_346) {
-    return consumerPoll_d12c6262(symbols, value0_346, consumerstate_345);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>>, ConsumerState> kafkaConsumerPoll_591504e0(java.util.Map<String, Object> symbols, ConsumerState consumerstate_377, long value0_378) {
+    return consumerPoll_d12c6262(symbols, value0_378, consumerstate_377);
   }
 
   /** lawtwin.kafka::kafkaConsumerPosition */
-  public static Pair<LawSpecFast.Either<KafkaError, Long>, ConsumerState> kafkaConsumerPosition_7784665f(java.util.Map<String, Object> symbols, ConsumerState consumerstate_347, TopicPartition value0_348) {
-    return consumerPositionOf_71a8a523(symbols, value0_348, consumerstate_347);
+  public static Pair<LawSpecFast.Either<KafkaError, Long>, ConsumerState> kafkaConsumerPosition_7784665f(java.util.Map<String, Object> symbols, ConsumerState consumerstate_379, TopicPartition value0_380) {
+    return consumerPositionOf_71a8a523(symbols, value0_380, consumerstate_379);
   }
 
   /** lawtwin.kafka::kafkaConsumerSeek */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState> kafkaConsumerSeek_5fe046a7(ConsumerState consumerstate_349, TopicPartition value0_350, long value1_351) {
-    return consumerSeek_975a7017(value0_350, value1_351, consumerstate_349);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState> kafkaConsumerSeek_5fe046a7(ConsumerState consumerstate_381, TopicPartition value0_382, long value1_383) {
+    return consumerSeek_975a7017(value0_382, value1_383, consumerstate_381);
   }
 
   /** lawtwin.kafka::kafkaConsumerSetIsolationLevel */
-  public static Pair<LawSpecFast.Unit, ConsumerState> kafkaConsumerSetIsolationLevel_bc2459d3(ConsumerState consumerstate_352, IsolationLevel value0_353) {
-    return consumerIsolation_2aacd289(value0_353, consumerstate_352);
+  public static Pair<LawSpecFast.Unit, ConsumerState> kafkaConsumerSetIsolationLevel_bc2459d3(ConsumerState consumerstate_384, IsolationLevel value0_385) {
+    return consumerIsolation_2aacd289(value0_385, consumerstate_384);
   }
 
   /** lawtwin.kafka::kafkaConsumerStart */
-  public static ConsumerState kafkaConsumerStart_9e580acc(LawSpecFast.Unit lawspecunit_354) {
+  public static ConsumerState kafkaConsumerStart_9e580acc(LawSpecFast.Unit lawspecunit_386) {
     return freshConsumer_c2da4184(LawSpecFast.Unit.UNIT);
   }
 
   /** lawtwin.kafka::kafkaConsumerSubscribe */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>>, ConsumerState> kafkaConsumerSubscribe_ce34eaf5(java.util.Map<String, Object> symbols, ConsumerState consumerstate_355, String value0_356, String value1_357, LawSpecFast.List<String> value2_358) {
-    return consumerJoin_198e034e(symbols, value0_356, value1_357, value2_358, consumerstate_355);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>>, ConsumerState> kafkaConsumerSubscribe_ce34eaf5(java.util.Map<String, Object> symbols, ConsumerState consumerstate_387, String value0_388, String value1_389, LawSpecFast.List<String> value2_390) {
+    return consumerJoin_198e034e(symbols, value0_388, value1_389, value2_390, consumerstate_387);
   }
 
   /** lawtwin.kafka::kafkaProducerEnableIdempotence */
-  public static Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, ProducerState> kafkaProducerEnableIdempotence_a79d2db8(java.util.Map<String, Object> symbols, ProducerState producerstate_359) {
-    return producerIdempotent_c8ab8a13(symbols, producerstate_359);
+  public static Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, ProducerState> kafkaProducerEnableIdempotence_a79d2db8(java.util.Map<String, Object> symbols, ProducerState producerstate_391) {
+    return producerIdempotent_c8ab8a13(symbols, producerstate_391);
   }
 
   /** lawtwin.kafka::kafkaProducerFlush */
-  public static Pair<LawSpecFast.Unit, ProducerState> kafkaProducerFlush_584e906f(ProducerState producerstate_360) {
-    return producerFlush_f30611db(producerstate_360);
+  public static Pair<LawSpecFast.Unit, ProducerState> kafkaProducerFlush_584e906f(ProducerState producerstate_392) {
+    return producerFlush_f30611db(producerstate_392);
   }
 
   /** lawtwin.kafka::kafkaProducerProducerIdentity */
-  public static Pair<LawSpecFast.Maybe<ProducerIdAndEpoch>, ProducerState> kafkaProducerProducerIdentity_a0ee547d(ProducerState producerstate_361) {
-    return identityOf_96976095(producerstate_361);
+  public static Pair<LawSpecFast.Maybe<ProducerIdAndEpoch>, ProducerState> kafkaProducerProducerIdentity_a0ee547d(ProducerState producerstate_393) {
+    return identityOf_96976095(producerstate_393);
   }
 
   /** lawtwin.kafka::kafkaProducerRetryLastSend */
-  public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState> kafkaProducerRetryLastSend_9cbd6c72(java.util.Map<String, Object> symbols, ProducerState producerstate_362) {
-    return producerRetry_aaf3a88a(symbols, producerstate_362);
+  public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState> kafkaProducerRetryLastSend_9cbd6c72(java.util.Map<String, Object> symbols, ProducerState producerstate_394) {
+    return producerRetry_aaf3a88a(symbols, producerstate_394);
   }
 
   /** lawtwin.kafka::kafkaProducerSend */
-  public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState> kafkaProducerSend_a4612365(java.util.Map<String, Object> symbols, ProducerState producerstate_363, ProducerRecord value0_364) {
-    return producerSend_9064c6b5(symbols, value0_364, producerstate_363);
+  public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState> kafkaProducerSend_a4612365(java.util.Map<String, Object> symbols, ProducerState producerstate_395, ProducerRecord value0_396) {
+    return producerSend_9064c6b5(symbols, value0_396, producerstate_395);
   }
 
   /** lawtwin.kafka::kafkaProducerStart */
-  public static ProducerState kafkaProducerStart_58ddcfc8(LawSpecFast.Unit lawspecunit_365) {
+  public static ProducerState kafkaProducerStart_58ddcfc8(LawSpecFast.Unit lawspecunit_397) {
     return freshProducer_deea7b00(LawSpecFast.Unit.UNIT);
   }
 
   /** lawtwin.kafka::kafkaTransactionsAbortTransaction */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> kafkaTransactionsAbortTransaction_a2a1e35e(java.util.Map<String, Object> symbols, TransactionState txnstate_366) {
-    return transactionsAbort_256496fb(symbols, txnstate_366);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> kafkaTransactionsAbortTransaction_a2a1e35e(java.util.Map<String, Object> symbols, TransactionState txnstate_398) {
+    return transactionsAbort_256496fb(symbols, txnstate_398);
   }
 
   /** lawtwin.kafka::kafkaTransactionsAddPartitionsToTransaction */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> kafkaTransactionsAddPartitionsToTransaction_3d7d0621(java.util.Map<String, Object> symbols, TransactionState txnstate_367, LawSpecFast.List<TopicPartition> value0_368) {
-    return transactionsAdd_1f41c92e(symbols, value0_368, txnstate_367);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> kafkaTransactionsAddPartitionsToTransaction_3d7d0621(java.util.Map<String, Object> symbols, TransactionState txnstate_399, LawSpecFast.List<TopicPartition> value0_400) {
+    return transactionsAdd_1f41c92e(symbols, value0_400, txnstate_399);
   }
 
   /** lawtwin.kafka::kafkaTransactionsBeginTransaction */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> kafkaTransactionsBeginTransaction_3c1e648e(TransactionState txnstate_369) {
-    return transactionsBegin_5d267b99(txnstate_369);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> kafkaTransactionsBeginTransaction_3c1e648e(TransactionState txnstate_401) {
+    return transactionsBegin_5d267b99(txnstate_401);
   }
 
   /** lawtwin.kafka::kafkaTransactionsCommitTransaction */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> kafkaTransactionsCommitTransaction_e0a5e067(java.util.Map<String, Object> symbols, TransactionState txnstate_370) {
-    return transactionsCommit_afadd0fa(symbols, txnstate_370);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> kafkaTransactionsCommitTransaction_e0a5e067(java.util.Map<String, Object> symbols, TransactionState txnstate_402) {
+    return transactionsCommit_afadd0fa(symbols, txnstate_402);
   }
 
   /** lawtwin.kafka::kafkaTransactionsInitTransactions */
-  public static Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, TransactionState> kafkaTransactionsInitTransactions_96f85461(java.util.Map<String, Object> symbols, TransactionState txnstate_371, String value0_372) {
-    return transactionsInit_d69a08bc(symbols, value0_372, txnstate_371);
+  public static Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, TransactionState> kafkaTransactionsInitTransactions_96f85461(java.util.Map<String, Object> symbols, TransactionState txnstate_403, String value0_404) {
+    return transactionsInit_d69a08bc(symbols, value0_404, txnstate_403);
   }
 
   /** lawtwin.kafka::kafkaTransactionsSendInTransaction */
-  public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, TransactionState> kafkaTransactionsSendInTransaction_09c804c7(java.util.Map<String, Object> symbols, TransactionState txnstate_373, ProducerRecord value0_374) {
-    return transactionsSend_558d813c(symbols, value0_374, txnstate_373);
+  public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, TransactionState> kafkaTransactionsSendInTransaction_09c804c7(java.util.Map<String, Object> symbols, TransactionState txnstate_405, ProducerRecord value0_406) {
+    return transactionsSend_558d813c(symbols, value0_406, txnstate_405);
   }
 
   /** lawtwin.kafka::kafkaTransactionsSendOffsetsToTransaction */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> kafkaTransactionsSendOffsetsToTransaction_d24938fc(java.util.Map<String, Object> symbols, TransactionState txnstate_375, String value0_376, LawSpecFast.List<OffsetEntry> value1_377) {
-    return transactionsOffsets_b33ea106(symbols, value0_376, value1_377, txnstate_375);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> kafkaTransactionsSendOffsetsToTransaction_d24938fc(java.util.Map<String, Object> symbols, TransactionState txnstate_407, String value0_408, LawSpecFast.List<OffsetEntry> value1_409) {
+    return transactionsOffsets_b33ea106(symbols, value0_408, value1_409, txnstate_407);
   }
 
   /** lawtwin.kafka::kafkaTransactionsStart */
-  public static TransactionState kafkaTransactionsStart_68a77cf3(LawSpecFast.Unit lawspecunit_378) {
+  public static TransactionState kafkaTransactionsStart_68a77cf3(LawSpecFast.Unit lawspecunit_410) {
     return freshTransactions_533fb432(LawSpecFast.Unit.UNIT);
   }
 
   /** lawtwin.kafka::keepPositions */
-  public static LawSpecFast.Map<TopicPartition, Long> keepPositions_f10bd26f(LawSpecFast.List<TopicPartition> tps_379, LawSpecFast.Map<TopicPartition, Long> positions_380, LawSpecFast.Map<TopicPartition, Long> acc_381) {
+  public static LawSpecFast.Map<TopicPartition, Long> keepPositions_f10bd26f(LawSpecFast.List<TopicPartition> tps_411, LawSpecFast.Map<TopicPartition, Long> positions_412, LawSpecFast.Map<TopicPartition, Long> acc_413) {
     while (true) {
-      if (tps_379.isEmpty()) {
-        return acc_381;
+      final LawSpecFast.List<TopicPartition> it_414 = tps_411;
+      if (it_414.isEmpty()) {
+        return acc_413;
       } else {
-        final TopicPartition tp_382 = tps_379.head();
-        final LawSpecFast.List<TopicPartition> rest_383 = tps_379.tail();
-        final LawSpecFast.Maybe<Long> matched_384 = positions_380.get(tp_382);
-        if (matched_384.isJust()) {
-          final long o_385 = matched_384.get();
-          final LawSpecFast.List<TopicPartition> next_386 = rest_383;
-          final LawSpecFast.Map<TopicPartition, Long> next_387 = acc_381.put(tp_382, o_385);
-          tps_379 = next_386;
-          acc_381 = next_387;
+        final TopicPartition v_lawspecselection0x0_415 = it_414.head();
+        final LawSpecFast.List<TopicPartition> v_lawspecselection0x1_416 = it_414.tail();
+        final LawSpecFast.Maybe<Long> it_417 = positions_412.get(v_lawspecselection0x0_415);
+        if (it_417.isJust()) {
+          final long v_match__lawspecselection0x0_0_418 = it_417.get();
+          final LawSpecFast.List<TopicPartition> next_419 = v_lawspecselection0x1_416;
+          final LawSpecFast.Map<TopicPartition, Long> next_420 = acc_413.put(v_lawspecselection0x0_415, v_match__lawspecselection0x0_0_418);
+          tps_411 = next_419;
+          acc_413 = next_420;
           continue;
         } else {
-          final LawSpecFast.List<TopicPartition> next_388 = rest_383;
-          tps_379 = next_388;
+          final LawSpecFast.List<TopicPartition> next_421 = v_lawspecselection0x1_416;
+          tps_411 = next_421;
           continue;
         }
       }
@@ -3808,23 +4019,25 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValDeleteItems_62318b0a9a214051 */
-  public static LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> lawspecCollectionsKeyValDeleteItems_5df79bd1(String k_389, LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> es_390) {
-    if (es_390.isEmpty()) {
-      return es_390;
+  public static LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> lawspecCollectionsKeyValDeleteItems_5df79bd1(String k_422, LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> es_423) {
+    final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> it_424 = es_423;
+    if (it_424.isEmpty()) {
+      return es_423;
     } else {
-      final Entry<String, LawSpecFast.List<String>> e_391 = es_390.head();
-      final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> t_392 = es_390.tail();
-      final String key_393 = e_391.key;
-      final Ordering matched_394 = ordering(LawSpecFast.compare(k_389, key_393));
-      switch (matched_394) {
+      final Entry<String, LawSpecFast.List<String>> v_lawspecselection0x0_425 = it_424.head();
+      final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> v_lawspecselection0x1_426 = it_424.tail();
+      final Entry<String, LawSpecFast.List<String>> it_427 = v_lawspecselection0x0_425;
+      final String v_match__lawspecselection0x0_0_428 = it_427.key;
+      final Ordering it_429 = ordering(LawSpecFast.compare(k_422, v_match__lawspecselection0x0_0_428));
+      switch (it_429) {
         case Less -> {
-          return es_390;
+          return es_423;
         }
         case Equal -> {
-          return t_392;
+          return v_lawspecselection0x1_426;
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>cons(e_391, lawspecCollectionsKeyValDeleteItems_5df79bd1(k_389, t_392));
+          return LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>cons(v_lawspecselection0x0_425, lawspecCollectionsKeyValDeleteItems_5df79bd1(k_422, v_lawspecselection0x1_426));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -3832,23 +4045,25 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5 */
-  public static LawSpecFast.List<Entry<Long, Long>> lawspecCollectionsKeyValDeleteItems_6394b670(long k_395, LawSpecFast.List<Entry<Long, Long>> es_396) {
-    if (es_396.isEmpty()) {
-      return es_396;
+  public static LawSpecFast.List<Entry<Long, Long>> lawspecCollectionsKeyValDeleteItems_6394b670(long k_430, LawSpecFast.List<Entry<Long, Long>> es_431) {
+    final LawSpecFast.List<Entry<Long, Long>> it_432 = es_431;
+    if (it_432.isEmpty()) {
+      return es_431;
     } else {
-      final Entry<Long, Long> e_397 = es_396.head();
-      final LawSpecFast.List<Entry<Long, Long>> t_398 = es_396.tail();
-      final long key_399 = e_397.key;
-      final Ordering matched_400 = ordering(LawSpecFast.compare(k_395, key_399));
-      switch (matched_400) {
+      final Entry<Long, Long> v_lawspecselection0x0_433 = it_432.head();
+      final LawSpecFast.List<Entry<Long, Long>> v_lawspecselection0x1_434 = it_432.tail();
+      final Entry<Long, Long> it_435 = v_lawspecselection0x0_433;
+      final long v_match__lawspecselection0x0_0_436 = it_435.key;
+      final Ordering it_437 = ordering(LawSpecFast.compare(k_430, v_match__lawspecselection0x0_0_436));
+      switch (it_437) {
         case Less -> {
-          return es_396;
+          return es_431;
         }
         case Equal -> {
-          return t_398;
+          return v_lawspecselection0x1_434;
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<Long, Long>>cons(e_397, lawspecCollectionsKeyValDeleteItems_6394b670(k_395, t_398));
+          return LawSpecFast.List.<Entry<Long, Long>>cons(v_lawspecselection0x0_433, lawspecCollectionsKeyValDeleteItems_6394b670(k_430, v_lawspecselection0x1_434));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -3856,296 +4071,324 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValDelete_95f14dd183eea025 */
-  public static LawSpecFast.Map<Long, Long> lawspecCollectionsKeyValDelete_daac10f4(long k_401, LawSpecFast.Map<Long, Long> m_402) {
-    return m_402.remove(k_401);
+  public static LawSpecFast.Map<Long, Long> lawspecCollectionsKeyValDelete_daac10f4(long k_438, LawSpecFast.Map<Long, Long> m_439) {
+    return m_439.remove(k_438);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValDelete_d7a338e61b94bc91 */
-  public static LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecCollectionsKeyValDelete_9159aa73(String k_403, LawSpecFast.Map<String, LawSpecFast.List<String>> m_404) {
-    return m_404.remove(k_403);
+  public static LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecCollectionsKeyValDelete_9159aa73(String k_440, LawSpecFast.Map<String, LawSpecFast.List<String>> m_441) {
+    return m_441.remove(k_440);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4 */
-  public static LawSpecFast.List<Entry<String, Group>> lawspecCollectionsKeyValEntries_a865cc3f(LawSpecFast.Map<String, Group> m_405) {
-    return entriesOf(m_405);
+  public static LawSpecFast.List<Entry<String, Group>> lawspecCollectionsKeyValEntries_a865cc3f(LawSpecFast.Map<String, Group> m_442) {
+    return entriesOf(m_442);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c */
-  public static LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> lawspecCollectionsKeyValEntries_d490695f(LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> m_406) {
-    return entriesOf(m_406);
+  public static LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> lawspecCollectionsKeyValEntries_d490695f(LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> m_443) {
+    return entriesOf(m_443);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_df543c4156f9821a */
-  public static LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> lawspecCollectionsKeyValEntries_90fdb0cf(LawSpecFast.Map<String, LawSpecFast.List<String>> m_407) {
-    return entriesOf(m_407);
+  public static LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> lawspecCollectionsKeyValEntries_90fdb0cf(LawSpecFast.Map<String, LawSpecFast.List<String>> m_444) {
+    return entriesOf(m_444);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_18760777c36ef587 */
-  public static LawSpecFast.List<Entry<Long, Long>> lawspecCollectionsKeyValFromItems_b1d7a6fe(LawSpecFast.List<Entry<Long, Long>> es_408, LawSpecFast.List<Entry<Long, Long>> acc_409) {
+  public static LawSpecFast.List<Entry<Long, Long>> lawspecCollectionsKeyValFromItems_b1d7a6fe(LawSpecFast.List<Entry<Long, Long>> es_445, LawSpecFast.List<Entry<Long, Long>> acc_446) {
     while (true) {
-      if (es_408.isEmpty()) {
-        return acc_409;
+      final LawSpecFast.List<Entry<Long, Long>> it_447 = es_445;
+      if (it_447.isEmpty()) {
+        return acc_446;
       } else {
-        final Entry<Long, Long> e_410 = es_408.head();
-        final LawSpecFast.List<Entry<Long, Long>> t_411 = es_408.tail();
-        final long key_412 = e_410.key;
-        final long value_413 = e_410.value;
-        final LawSpecFast.List<Entry<Long, Long>> next_414 = t_411;
-        final LawSpecFast.List<Entry<Long, Long>> next_415 = lawspecCollectionsKeyValPutItems_fb1bb5ca(key_412, value_413, acc_409);
-        es_408 = next_414;
-        acc_409 = next_415;
+        final Entry<Long, Long> v_lawspecselection0x0_448 = it_447.head();
+        final LawSpecFast.List<Entry<Long, Long>> v_lawspecselection0x1_449 = it_447.tail();
+        final Entry<Long, Long> it_450 = v_lawspecselection0x0_448;
+        final long v_match__lawspecselection0x0_0_451 = it_450.key;
+        final long v_match__lawspecselection0x1_0_452 = it_450.value;
+        final LawSpecFast.List<Entry<Long, Long>> next_453 = v_lawspecselection0x1_449;
+        final LawSpecFast.List<Entry<Long, Long>> next_454 = lawspecCollectionsKeyValPutItems_fb1bb5ca(v_match__lawspecselection0x0_0_451, v_match__lawspecselection0x1_0_452, acc_446);
+        es_445 = next_453;
+        acc_446 = next_454;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f */
-  public static LawSpecFast.List<Entry<String, Long>> lawspecCollectionsKeyValFromItems_06f4d2c6(LawSpecFast.List<Entry<String, Long>> es_416, LawSpecFast.List<Entry<String, Long>> acc_417) {
+  public static LawSpecFast.List<Entry<String, Long>> lawspecCollectionsKeyValFromItems_06f4d2c6(LawSpecFast.List<Entry<String, Long>> es_455, LawSpecFast.List<Entry<String, Long>> acc_456) {
     while (true) {
-      if (es_416.isEmpty()) {
-        return acc_417;
+      final LawSpecFast.List<Entry<String, Long>> it_457 = es_455;
+      if (it_457.isEmpty()) {
+        return acc_456;
       } else {
-        final Entry<String, Long> e_418 = es_416.head();
-        final LawSpecFast.List<Entry<String, Long>> t_419 = es_416.tail();
-        final String key_420 = e_418.key;
-        final long value_421 = e_418.value;
-        final LawSpecFast.List<Entry<String, Long>> next_422 = t_419;
-        final LawSpecFast.List<Entry<String, Long>> next_423 = lawspecCollectionsKeyValPutItems_5d998955(key_420, value_421, acc_417);
-        es_416 = next_422;
-        acc_417 = next_423;
+        final Entry<String, Long> v_lawspecselection0x0_458 = it_457.head();
+        final LawSpecFast.List<Entry<String, Long>> v_lawspecselection0x1_459 = it_457.tail();
+        final Entry<String, Long> it_460 = v_lawspecselection0x0_458;
+        final String v_match__lawspecselection0x0_0_461 = it_460.key;
+        final long v_match__lawspecselection0x1_0_462 = it_460.value;
+        final LawSpecFast.List<Entry<String, Long>> next_463 = v_lawspecselection0x1_459;
+        final LawSpecFast.List<Entry<String, Long>> next_464 = lawspecCollectionsKeyValPutItems_5d998955(v_match__lawspecselection0x0_0_461, v_match__lawspecselection0x1_0_462, acc_456);
+        es_455 = next_463;
+        acc_456 = next_464;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_224702891e6ebfba */
-  public static LawSpecFast.List<Entry<String, Long>> lawspecCollectionsKeyValFromItems_a82586cc(LawSpecFast.List<Entry<String, Long>> es_424, LawSpecFast.List<Entry<String, Long>> acc_425) {
+  public static LawSpecFast.List<Entry<String, Long>> lawspecCollectionsKeyValFromItems_a82586cc(LawSpecFast.List<Entry<String, Long>> es_465, LawSpecFast.List<Entry<String, Long>> acc_466) {
     while (true) {
-      if (es_424.isEmpty()) {
-        return acc_425;
+      final LawSpecFast.List<Entry<String, Long>> it_467 = es_465;
+      if (it_467.isEmpty()) {
+        return acc_466;
       } else {
-        final Entry<String, Long> e_426 = es_424.head();
-        final LawSpecFast.List<Entry<String, Long>> t_427 = es_424.tail();
-        final String key_428 = e_426.key;
-        final long value_429 = e_426.value;
-        final LawSpecFast.List<Entry<String, Long>> next_430 = t_427;
-        final LawSpecFast.List<Entry<String, Long>> next_431 = lawspecCollectionsKeyValPutItems_8d4f5385(key_428, value_429, acc_425);
-        es_424 = next_430;
-        acc_425 = next_431;
+        final Entry<String, Long> v_lawspecselection0x0_468 = it_467.head();
+        final LawSpecFast.List<Entry<String, Long>> v_lawspecselection0x1_469 = it_467.tail();
+        final Entry<String, Long> it_470 = v_lawspecselection0x0_468;
+        final String v_match__lawspecselection0x0_0_471 = it_470.key;
+        final long v_match__lawspecselection0x1_0_472 = it_470.value;
+        final LawSpecFast.List<Entry<String, Long>> next_473 = v_lawspecselection0x1_469;
+        final LawSpecFast.List<Entry<String, Long>> next_474 = lawspecCollectionsKeyValPutItems_8d4f5385(v_match__lawspecselection0x0_0_471, v_match__lawspecselection0x1_0_472, acc_466);
+        es_465 = next_473;
+        acc_466 = next_474;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_28070fe12955af99 */
-  public static LawSpecFast.List<Entry<Long, ProducerEntry>> lawspecCollectionsKeyValFromItems_cbeefea2(LawSpecFast.List<Entry<Long, ProducerEntry>> es_432, LawSpecFast.List<Entry<Long, ProducerEntry>> acc_433) {
+  public static LawSpecFast.List<Entry<Long, ProducerEntry>> lawspecCollectionsKeyValFromItems_cbeefea2(LawSpecFast.List<Entry<Long, ProducerEntry>> es_475, LawSpecFast.List<Entry<Long, ProducerEntry>> acc_476) {
     while (true) {
-      if (es_432.isEmpty()) {
-        return acc_433;
+      final LawSpecFast.List<Entry<Long, ProducerEntry>> it_477 = es_475;
+      if (it_477.isEmpty()) {
+        return acc_476;
       } else {
-        final Entry<Long, ProducerEntry> e_434 = es_432.head();
-        final LawSpecFast.List<Entry<Long, ProducerEntry>> t_435 = es_432.tail();
-        final long key_436 = e_434.key;
-        final ProducerEntry value_437 = e_434.value;
-        final LawSpecFast.List<Entry<Long, ProducerEntry>> next_438 = t_435;
-        final LawSpecFast.List<Entry<Long, ProducerEntry>> next_439 = lawspecCollectionsKeyValPutItems_97a64264(key_436, value_437, acc_433);
-        es_432 = next_438;
-        acc_433 = next_439;
+        final Entry<Long, ProducerEntry> v_lawspecselection0x0_478 = it_477.head();
+        final LawSpecFast.List<Entry<Long, ProducerEntry>> v_lawspecselection0x1_479 = it_477.tail();
+        final Entry<Long, ProducerEntry> it_480 = v_lawspecselection0x0_478;
+        final long v_match__lawspecselection0x0_0_481 = it_480.key;
+        final ProducerEntry v_match__lawspecselection0x1_0_482 = it_480.value;
+        final LawSpecFast.List<Entry<Long, ProducerEntry>> next_483 = v_lawspecselection0x1_479;
+        final LawSpecFast.List<Entry<Long, ProducerEntry>> next_484 = lawspecCollectionsKeyValPutItems_97a64264(v_match__lawspecselection0x0_0_481, v_match__lawspecselection0x1_0_482, acc_476);
+        es_475 = next_483;
+        acc_476 = next_484;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_30e2507dcc3ef9ac */
-  public static LawSpecFast.List<Entry<String, Group>> lawspecCollectionsKeyValFromItems_32478a30(LawSpecFast.List<Entry<String, Group>> es_440, LawSpecFast.List<Entry<String, Group>> acc_441) {
+  public static LawSpecFast.List<Entry<String, Group>> lawspecCollectionsKeyValFromItems_32478a30(LawSpecFast.List<Entry<String, Group>> es_485, LawSpecFast.List<Entry<String, Group>> acc_486) {
     while (true) {
-      if (es_440.isEmpty()) {
-        return acc_441;
+      final LawSpecFast.List<Entry<String, Group>> it_487 = es_485;
+      if (it_487.isEmpty()) {
+        return acc_486;
       } else {
-        final Entry<String, Group> e_442 = es_440.head();
-        final LawSpecFast.List<Entry<String, Group>> t_443 = es_440.tail();
-        final String key_444 = e_442.key;
-        final Group value_445 = e_442.value;
-        final LawSpecFast.List<Entry<String, Group>> next_446 = t_443;
-        final LawSpecFast.List<Entry<String, Group>> next_447 = lawspecCollectionsKeyValPutItems_883fe52d(key_444, value_445, acc_441);
-        es_440 = next_446;
-        acc_441 = next_447;
+        final Entry<String, Group> v_lawspecselection0x0_488 = it_487.head();
+        final LawSpecFast.List<Entry<String, Group>> v_lawspecselection0x1_489 = it_487.tail();
+        final Entry<String, Group> it_490 = v_lawspecselection0x0_488;
+        final String v_match__lawspecselection0x0_0_491 = it_490.key;
+        final Group v_match__lawspecselection0x1_0_492 = it_490.value;
+        final LawSpecFast.List<Entry<String, Group>> next_493 = v_lawspecselection0x1_489;
+        final LawSpecFast.List<Entry<String, Group>> next_494 = lawspecCollectionsKeyValPutItems_883fe52d(v_match__lawspecselection0x0_0_491, v_match__lawspecselection0x1_0_492, acc_486);
+        es_485 = next_493;
+        acc_486 = next_494;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a2b9e */
-  public static LawSpecFast.List<Entry<GroupPartition, Long>> lawspecCollectionsKeyValFromItems_3a24ccf2(LawSpecFast.List<Entry<GroupPartition, Long>> es_448, LawSpecFast.List<Entry<GroupPartition, Long>> acc_449) {
+  public static LawSpecFast.List<Entry<GroupPartition, Long>> lawspecCollectionsKeyValFromItems_3a24ccf2(LawSpecFast.List<Entry<GroupPartition, Long>> es_495, LawSpecFast.List<Entry<GroupPartition, Long>> acc_496) {
     while (true) {
-      if (es_448.isEmpty()) {
-        return acc_449;
+      final LawSpecFast.List<Entry<GroupPartition, Long>> it_497 = es_495;
+      if (it_497.isEmpty()) {
+        return acc_496;
       } else {
-        final Entry<GroupPartition, Long> e_450 = es_448.head();
-        final LawSpecFast.List<Entry<GroupPartition, Long>> t_451 = es_448.tail();
-        final GroupPartition key_452 = e_450.key;
-        final long value_453 = e_450.value;
-        final LawSpecFast.List<Entry<GroupPartition, Long>> next_454 = t_451;
-        final LawSpecFast.List<Entry<GroupPartition, Long>> next_455 = lawspecCollectionsKeyValPutItems_28cf0caf(key_452, value_453, acc_449);
-        es_448 = next_454;
-        acc_449 = next_455;
+        final Entry<GroupPartition, Long> v_lawspecselection0x0_498 = it_497.head();
+        final LawSpecFast.List<Entry<GroupPartition, Long>> v_lawspecselection0x1_499 = it_497.tail();
+        final Entry<GroupPartition, Long> it_500 = v_lawspecselection0x0_498;
+        final GroupPartition v_match__lawspecselection0x0_0_501 = it_500.key;
+        final long v_match__lawspecselection0x1_0_502 = it_500.value;
+        final LawSpecFast.List<Entry<GroupPartition, Long>> next_503 = v_lawspecselection0x1_499;
+        final LawSpecFast.List<Entry<GroupPartition, Long>> next_504 = lawspecCollectionsKeyValPutItems_28cf0caf(v_match__lawspecselection0x0_0_501, v_match__lawspecselection0x1_0_502, acc_496);
+        es_495 = next_503;
+        acc_496 = next_504;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_656b3e1b81a0457e */
-  public static LawSpecFast.List<Entry<TopicPartition, Long>> lawspecCollectionsKeyValFromItems_1e161219(LawSpecFast.List<Entry<TopicPartition, Long>> es_456, LawSpecFast.List<Entry<TopicPartition, Long>> acc_457) {
+  public static LawSpecFast.List<Entry<TopicPartition, Long>> lawspecCollectionsKeyValFromItems_1e161219(LawSpecFast.List<Entry<TopicPartition, Long>> es_505, LawSpecFast.List<Entry<TopicPartition, Long>> acc_506) {
     while (true) {
-      if (es_456.isEmpty()) {
-        return acc_457;
+      final LawSpecFast.List<Entry<TopicPartition, Long>> it_507 = es_505;
+      if (it_507.isEmpty()) {
+        return acc_506;
       } else {
-        final Entry<TopicPartition, Long> e_458 = es_456.head();
-        final LawSpecFast.List<Entry<TopicPartition, Long>> t_459 = es_456.tail();
-        final TopicPartition key_460 = e_458.key;
-        final long value_461 = e_458.value;
-        final LawSpecFast.List<Entry<TopicPartition, Long>> next_462 = t_459;
-        final LawSpecFast.List<Entry<TopicPartition, Long>> next_463 = lawspecCollectionsKeyValPutItems_4266176b(key_460, value_461, acc_457);
-        es_456 = next_462;
-        acc_457 = next_463;
+        final Entry<TopicPartition, Long> v_lawspecselection0x0_508 = it_507.head();
+        final LawSpecFast.List<Entry<TopicPartition, Long>> v_lawspecselection0x1_509 = it_507.tail();
+        final Entry<TopicPartition, Long> it_510 = v_lawspecselection0x0_508;
+        final TopicPartition v_match__lawspecselection0x0_0_511 = it_510.key;
+        final long v_match__lawspecselection0x1_0_512 = it_510.value;
+        final LawSpecFast.List<Entry<TopicPartition, Long>> next_513 = v_lawspecselection0x1_509;
+        final LawSpecFast.List<Entry<TopicPartition, Long>> next_514 = lawspecCollectionsKeyValPutItems_4266176b(v_match__lawspecselection0x0_0_511, v_match__lawspecselection0x1_0_512, acc_506);
+        es_505 = next_513;
+        acc_506 = next_514;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_85bb2eea042e5fe3 */
-  public static LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> lawspecCollectionsKeyValFromItems_92b072e4(LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> es_464, LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> acc_465) {
+  public static LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> lawspecCollectionsKeyValFromItems_92b072e4(LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> es_515, LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> acc_516) {
     while (true) {
-      if (es_464.isEmpty()) {
-        return acc_465;
+      final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> it_517 = es_515;
+      if (it_517.isEmpty()) {
+        return acc_516;
       } else {
-        final Entry<String, LawSpecFast.List<String>> e_466 = es_464.head();
-        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> t_467 = es_464.tail();
-        final String key_468 = e_466.key;
-        final LawSpecFast.List<String> value_469 = e_466.value;
-        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> next_470 = t_467;
-        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> next_471 = lawspecCollectionsKeyValPutItems_c4168a80(key_468, value_469, acc_465);
-        es_464 = next_470;
-        acc_465 = next_471;
+        final Entry<String, LawSpecFast.List<String>> v_lawspecselection0x0_518 = it_517.head();
+        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> v_lawspecselection0x1_519 = it_517.tail();
+        final Entry<String, LawSpecFast.List<String>> it_520 = v_lawspecselection0x0_518;
+        final String v_match__lawspecselection0x0_0_521 = it_520.key;
+        final LawSpecFast.List<String> v_match__lawspecselection0x1_0_522 = it_520.value;
+        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> next_523 = v_lawspecselection0x1_519;
+        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> next_524 = lawspecCollectionsKeyValPutItems_c4168a80(v_match__lawspecselection0x0_0_521, v_match__lawspecselection0x1_0_522, acc_516);
+        es_515 = next_523;
+        acc_516 = next_524;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1eb10 */
-  public static LawSpecFast.List<Entry<TopicPartition, PartitionLog>> lawspecCollectionsKeyValFromItems_d863ec47(LawSpecFast.List<Entry<TopicPartition, PartitionLog>> es_472, LawSpecFast.List<Entry<TopicPartition, PartitionLog>> acc_473) {
+  public static LawSpecFast.List<Entry<TopicPartition, PartitionLog>> lawspecCollectionsKeyValFromItems_d863ec47(LawSpecFast.List<Entry<TopicPartition, PartitionLog>> es_525, LawSpecFast.List<Entry<TopicPartition, PartitionLog>> acc_526) {
     while (true) {
-      if (es_472.isEmpty()) {
-        return acc_473;
+      final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> it_527 = es_525;
+      if (it_527.isEmpty()) {
+        return acc_526;
       } else {
-        final Entry<TopicPartition, PartitionLog> e_474 = es_472.head();
-        final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> t_475 = es_472.tail();
-        final TopicPartition key_476 = e_474.key;
-        final PartitionLog value_477 = e_474.value;
-        final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> next_478 = t_475;
-        final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> next_479 = lawspecCollectionsKeyValPutItems_523d104d(key_476, value_477, acc_473);
-        es_472 = next_478;
-        acc_473 = next_479;
+        final Entry<TopicPartition, PartitionLog> v_lawspecselection0x0_528 = it_527.head();
+        final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> v_lawspecselection0x1_529 = it_527.tail();
+        final Entry<TopicPartition, PartitionLog> it_530 = v_lawspecselection0x0_528;
+        final TopicPartition v_match__lawspecselection0x0_0_531 = it_530.key;
+        final PartitionLog v_match__lawspecselection0x1_0_532 = it_530.value;
+        final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> next_533 = v_lawspecselection0x1_529;
+        final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> next_534 = lawspecCollectionsKeyValPutItems_523d104d(v_match__lawspecselection0x0_0_531, v_match__lawspecselection0x1_0_532, acc_526);
+        es_525 = next_533;
+        acc_526 = next_534;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_dd3ea08b63484ff8 */
-  public static LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> lawspecCollectionsKeyValFromItems_4e4ef1c4(LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> es_480, LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> acc_481) {
+  public static LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> lawspecCollectionsKeyValFromItems_4e4ef1c4(LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> es_535, LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> acc_536) {
     while (true) {
-      if (es_480.isEmpty()) {
-        return acc_481;
+      final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> it_537 = es_535;
+      if (it_537.isEmpty()) {
+        return acc_536;
       } else {
-        final Entry<Long, LawSpecFast.List<BatchMeta>> e_482 = es_480.head();
-        final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> t_483 = es_480.tail();
-        final long key_484 = e_482.key;
-        final LawSpecFast.List<BatchMeta> value_485 = e_482.value;
-        final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> next_486 = t_483;
-        final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> next_487 = lawspecCollectionsKeyValPutItems_054f1ef1(key_484, value_485, acc_481);
-        es_480 = next_486;
-        acc_481 = next_487;
+        final Entry<Long, LawSpecFast.List<BatchMeta>> v_lawspecselection0x0_538 = it_537.head();
+        final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> v_lawspecselection0x1_539 = it_537.tail();
+        final Entry<Long, LawSpecFast.List<BatchMeta>> it_540 = v_lawspecselection0x0_538;
+        final long v_match__lawspecselection0x0_0_541 = it_540.key;
+        final LawSpecFast.List<BatchMeta> v_match__lawspecselection0x1_0_542 = it_540.value;
+        final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> next_543 = v_lawspecselection0x1_539;
+        final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> next_544 = lawspecCollectionsKeyValPutItems_054f1ef1(v_match__lawspecselection0x0_0_541, v_match__lawspecselection0x1_0_542, acc_536);
+        es_535 = next_543;
+        acc_536 = next_544;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_ead6d6bde1a20a26 */
-  public static LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> lawspecCollectionsKeyValFromItems_6be3ca15(LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> es_488, LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> acc_489) {
+  public static LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> lawspecCollectionsKeyValFromItems_6be3ca15(LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> es_545, LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> acc_546) {
     while (true) {
-      if (es_488.isEmpty()) {
-        return acc_489;
+      final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> it_547 = es_545;
+      if (it_547.isEmpty()) {
+        return acc_546;
       } else {
-        final Entry<String, LawSpecFast.List<TopicPartition>> e_490 = es_488.head();
-        final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> t_491 = es_488.tail();
-        final String key_492 = e_490.key;
-        final LawSpecFast.List<TopicPartition> value_493 = e_490.value;
-        final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> next_494 = t_491;
-        final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> next_495 = lawspecCollectionsKeyValPutItems_80dc1939(key_492, value_493, acc_489);
-        es_488 = next_494;
-        acc_489 = next_495;
+        final Entry<String, LawSpecFast.List<TopicPartition>> v_lawspecselection0x0_548 = it_547.head();
+        final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> v_lawspecselection0x1_549 = it_547.tail();
+        final Entry<String, LawSpecFast.List<TopicPartition>> it_550 = v_lawspecselection0x0_548;
+        final String v_match__lawspecselection0x0_0_551 = it_550.key;
+        final LawSpecFast.List<TopicPartition> v_match__lawspecselection0x1_0_552 = it_550.value;
+        final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> next_553 = v_lawspecselection0x1_549;
+        final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> next_554 = lawspecCollectionsKeyValPutItems_80dc1939(v_match__lawspecselection0x0_0_551, v_match__lawspecselection0x1_0_552, acc_546);
+        es_545 = next_553;
+        acc_546 = next_554;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_faa46e63cbcd14e9 */
-  public static LawSpecFast.List<Entry<TopicPartition, Long>> lawspecCollectionsKeyValFromItems_c033ba9e(LawSpecFast.List<Entry<TopicPartition, Long>> es_496, LawSpecFast.List<Entry<TopicPartition, Long>> acc_497) {
+  public static LawSpecFast.List<Entry<TopicPartition, Long>> lawspecCollectionsKeyValFromItems_c033ba9e(LawSpecFast.List<Entry<TopicPartition, Long>> es_555, LawSpecFast.List<Entry<TopicPartition, Long>> acc_556) {
     while (true) {
-      if (es_496.isEmpty()) {
-        return acc_497;
+      final LawSpecFast.List<Entry<TopicPartition, Long>> it_557 = es_555;
+      if (it_557.isEmpty()) {
+        return acc_556;
       } else {
-        final Entry<TopicPartition, Long> e_498 = es_496.head();
-        final LawSpecFast.List<Entry<TopicPartition, Long>> t_499 = es_496.tail();
-        final TopicPartition key_500 = e_498.key;
-        final long value_501 = e_498.value;
-        final LawSpecFast.List<Entry<TopicPartition, Long>> next_502 = t_499;
-        final LawSpecFast.List<Entry<TopicPartition, Long>> next_503 = lawspecCollectionsKeyValPutItems_3f0139cf(key_500, value_501, acc_497);
-        es_496 = next_502;
-        acc_497 = next_503;
+        final Entry<TopicPartition, Long> v_lawspecselection0x0_558 = it_557.head();
+        final LawSpecFast.List<Entry<TopicPartition, Long>> v_lawspecselection0x1_559 = it_557.tail();
+        final Entry<TopicPartition, Long> it_560 = v_lawspecselection0x0_558;
+        final TopicPartition v_match__lawspecselection0x0_0_561 = it_560.key;
+        final long v_match__lawspecselection0x1_0_562 = it_560.value;
+        final LawSpecFast.List<Entry<TopicPartition, Long>> next_563 = v_lawspecselection0x1_559;
+        final LawSpecFast.List<Entry<TopicPartition, Long>> next_564 = lawspecCollectionsKeyValPutItems_3f0139cf(v_match__lawspecselection0x0_0_561, v_match__lawspecselection0x1_0_562, acc_556);
+        es_555 = next_563;
+        acc_556 = next_564;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValKeysItems_e233e49033adca72 */
-  public static LawSpecFast.List<String> lawspecCollectionsKeyValKeysItems_e033276a(LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> es_504) {
-    if (es_504.isEmpty()) {
+  public static LawSpecFast.List<String> lawspecCollectionsKeyValKeysItems_e033276a(LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> es_565) {
+    final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> it_566 = es_565;
+    if (it_566.isEmpty()) {
       return LawSpecFast.List.<String>nil();
     } else {
-      final Entry<String, LawSpecFast.List<String>> e_505 = es_504.head();
-      final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> t_506 = es_504.tail();
-      final String key_507 = e_505.key;
-      return LawSpecFast.List.<String>cons(key_507, lawspecCollectionsKeyValKeysItems_e033276a(t_506));
+      final Entry<String, LawSpecFast.List<String>> v_lawspecselection0x0_567 = it_566.head();
+      final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> v_lawspecselection0x1_568 = it_566.tail();
+      final Entry<String, LawSpecFast.List<String>> it_569 = v_lawspecselection0x0_567;
+      final String v_match__lawspecselection0x0_0_570 = it_569.key;
+      return LawSpecFast.List.<String>cons(v_match__lawspecselection0x0_0_570, lawspecCollectionsKeyValKeysItems_e033276a(v_lawspecselection0x1_568));
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValKeys_c7c332043746df98 */
-  public static LawSpecFast.List<String> lawspecCollectionsKeyValKeys_34e9a8ae(LawSpecFast.Map<String, LawSpecFast.List<String>> m_508) {
-    return m_508.toList((k, v) -> k);
+  public static LawSpecFast.List<String> lawspecCollectionsKeyValKeys_34e9a8ae(LawSpecFast.Map<String, LawSpecFast.List<String>> m_571) {
+    return m_571.toList((k, v) -> k);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_136cc6772b4e992f */
-  public static LawSpecFast.Maybe<LawSpecFast.List<BatchMeta>> lawspecCollectionsKeyValLookupItems_b9936fbc(long k_509, LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> es_510) {
+  public static LawSpecFast.Maybe<LawSpecFast.List<BatchMeta>> lawspecCollectionsKeyValLookupItems_b9936fbc(long k_572, LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> es_573) {
     while (true) {
-      if (es_510.isEmpty()) {
+      final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> it_574 = es_573;
+      if (it_574.isEmpty()) {
         return LawSpecFast.Maybe.<LawSpecFast.List<BatchMeta>>nothing();
       } else {
-        final Entry<Long, LawSpecFast.List<BatchMeta>> e_511 = es_510.head();
-        final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> t_512 = es_510.tail();
-        final long key_513 = e_511.key;
-        final LawSpecFast.List<BatchMeta> value_514 = e_511.value;
-        final Ordering matched_515 = ordering(LawSpecFast.compare(k_509, key_513));
-        switch (matched_515) {
+        final Entry<Long, LawSpecFast.List<BatchMeta>> v_lawspecselection0x0_575 = it_574.head();
+        final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> v_lawspecselection0x1_576 = it_574.tail();
+        final Entry<Long, LawSpecFast.List<BatchMeta>> it_577 = v_lawspecselection0x0_575;
+        final long v_match__lawspecselection0x0_0_578 = it_577.key;
+        final LawSpecFast.List<BatchMeta> v_match__lawspecselection0x1_0_579 = it_577.value;
+        final Ordering it_580 = ordering(LawSpecFast.compare(k_572, v_match__lawspecselection0x0_0_578));
+        switch (it_580) {
           case Less -> {
             return LawSpecFast.Maybe.<LawSpecFast.List<BatchMeta>>nothing();
           }
           case Equal -> {
-            return LawSpecFast.Maybe.<LawSpecFast.List<BatchMeta>>just(value_514);
+            return LawSpecFast.Maybe.<LawSpecFast.List<BatchMeta>>just(v_match__lawspecselection0x1_0_579);
           }
           case Greater -> {
-            final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> next_516 = t_512;
-            es_510 = next_516;
+            final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> next_581 = v_lawspecselection0x1_576;
+            es_573 = next_581;
             continue;
           }
           default -> throw LawSpecFast.unreachable();
@@ -4155,26 +4398,28 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_1eb69f0fdf3c8f0b */
-  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookupItems_154c41d9(TopicPartition k_517, LawSpecFast.List<Entry<TopicPartition, Long>> es_518) {
+  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookupItems_154c41d9(TopicPartition k_582, LawSpecFast.List<Entry<TopicPartition, Long>> es_583) {
     while (true) {
-      if (es_518.isEmpty()) {
+      final LawSpecFast.List<Entry<TopicPartition, Long>> it_584 = es_583;
+      if (it_584.isEmpty()) {
         return LawSpecFast.Maybe.<Long>nothing();
       } else {
-        final Entry<TopicPartition, Long> e_519 = es_518.head();
-        final LawSpecFast.List<Entry<TopicPartition, Long>> t_520 = es_518.tail();
-        final TopicPartition key_521 = e_519.key;
-        final long value_522 = e_519.value;
-        final Ordering matched_523 = ordering(LawSpecFast.compare(k_517, key_521));
-        switch (matched_523) {
+        final Entry<TopicPartition, Long> v_lawspecselection0x0_585 = it_584.head();
+        final LawSpecFast.List<Entry<TopicPartition, Long>> v_lawspecselection0x1_586 = it_584.tail();
+        final Entry<TopicPartition, Long> it_587 = v_lawspecselection0x0_585;
+        final TopicPartition v_match__lawspecselection0x0_0_588 = it_587.key;
+        final long v_match__lawspecselection0x1_0_589 = it_587.value;
+        final Ordering it_590 = ordering(LawSpecFast.compare(k_582, v_match__lawspecselection0x0_0_588));
+        switch (it_590) {
           case Less -> {
             return LawSpecFast.Maybe.<Long>nothing();
           }
           case Equal -> {
-            return LawSpecFast.Maybe.<Long>just(value_522);
+            return LawSpecFast.Maybe.<Long>just(v_match__lawspecselection0x1_0_589);
           }
           case Greater -> {
-            final LawSpecFast.List<Entry<TopicPartition, Long>> next_524 = t_520;
-            es_518 = next_524;
+            final LawSpecFast.List<Entry<TopicPartition, Long>> next_591 = v_lawspecselection0x1_586;
+            es_583 = next_591;
             continue;
           }
           default -> throw LawSpecFast.unreachable();
@@ -4184,26 +4429,28 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_5756b26180726581 */
-  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookupItems_ebcd945a(String k_525, LawSpecFast.List<Entry<String, Long>> es_526) {
+  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookupItems_ebcd945a(String k_592, LawSpecFast.List<Entry<String, Long>> es_593) {
     while (true) {
-      if (es_526.isEmpty()) {
+      final LawSpecFast.List<Entry<String, Long>> it_594 = es_593;
+      if (it_594.isEmpty()) {
         return LawSpecFast.Maybe.<Long>nothing();
       } else {
-        final Entry<String, Long> e_527 = es_526.head();
-        final LawSpecFast.List<Entry<String, Long>> t_528 = es_526.tail();
-        final String key_529 = e_527.key;
-        final long value_530 = e_527.value;
-        final Ordering matched_531 = ordering(LawSpecFast.compare(k_525, key_529));
-        switch (matched_531) {
+        final Entry<String, Long> v_lawspecselection0x0_595 = it_594.head();
+        final LawSpecFast.List<Entry<String, Long>> v_lawspecselection0x1_596 = it_594.tail();
+        final Entry<String, Long> it_597 = v_lawspecselection0x0_595;
+        final String v_match__lawspecselection0x0_0_598 = it_597.key;
+        final long v_match__lawspecselection0x1_0_599 = it_597.value;
+        final Ordering it_600 = ordering(LawSpecFast.compare(k_592, v_match__lawspecselection0x0_0_598));
+        switch (it_600) {
           case Less -> {
             return LawSpecFast.Maybe.<Long>nothing();
           }
           case Equal -> {
-            return LawSpecFast.Maybe.<Long>just(value_530);
+            return LawSpecFast.Maybe.<Long>just(v_match__lawspecselection0x1_0_599);
           }
           case Greater -> {
-            final LawSpecFast.List<Entry<String, Long>> next_532 = t_528;
-            es_526 = next_532;
+            final LawSpecFast.List<Entry<String, Long>> next_601 = v_lawspecselection0x1_596;
+            es_593 = next_601;
             continue;
           }
           default -> throw LawSpecFast.unreachable();
@@ -4213,26 +4460,28 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_69280184901ea585 */
-  public static LawSpecFast.Maybe<LawSpecFast.List<String>> lawspecCollectionsKeyValLookupItems_71a2ad87(String k_533, LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> es_534) {
+  public static LawSpecFast.Maybe<LawSpecFast.List<String>> lawspecCollectionsKeyValLookupItems_71a2ad87(String k_602, LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> es_603) {
     while (true) {
-      if (es_534.isEmpty()) {
+      final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> it_604 = es_603;
+      if (it_604.isEmpty()) {
         return LawSpecFast.Maybe.<LawSpecFast.List<String>>nothing();
       } else {
-        final Entry<String, LawSpecFast.List<String>> e_535 = es_534.head();
-        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> t_536 = es_534.tail();
-        final String key_537 = e_535.key;
-        final LawSpecFast.List<String> value_538 = e_535.value;
-        final Ordering matched_539 = ordering(LawSpecFast.compare(k_533, key_537));
-        switch (matched_539) {
+        final Entry<String, LawSpecFast.List<String>> v_lawspecselection0x0_605 = it_604.head();
+        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> v_lawspecselection0x1_606 = it_604.tail();
+        final Entry<String, LawSpecFast.List<String>> it_607 = v_lawspecselection0x0_605;
+        final String v_match__lawspecselection0x0_0_608 = it_607.key;
+        final LawSpecFast.List<String> v_match__lawspecselection0x1_0_609 = it_607.value;
+        final Ordering it_610 = ordering(LawSpecFast.compare(k_602, v_match__lawspecselection0x0_0_608));
+        switch (it_610) {
           case Less -> {
             return LawSpecFast.Maybe.<LawSpecFast.List<String>>nothing();
           }
           case Equal -> {
-            return LawSpecFast.Maybe.<LawSpecFast.List<String>>just(value_538);
+            return LawSpecFast.Maybe.<LawSpecFast.List<String>>just(v_match__lawspecselection0x1_0_609);
           }
           case Greater -> {
-            final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> next_540 = t_536;
-            es_534 = next_540;
+            final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> next_611 = v_lawspecselection0x1_606;
+            es_603 = next_611;
             continue;
           }
           default -> throw LawSpecFast.unreachable();
@@ -4242,26 +4491,28 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_82603a5935440f75 */
-  public static LawSpecFast.Maybe<LawSpecFast.List<TopicPartition>> lawspecCollectionsKeyValLookupItems_a13d293f(String k_541, LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> es_542) {
+  public static LawSpecFast.Maybe<LawSpecFast.List<TopicPartition>> lawspecCollectionsKeyValLookupItems_a13d293f(String k_612, LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> es_613) {
     while (true) {
-      if (es_542.isEmpty()) {
+      final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> it_614 = es_613;
+      if (it_614.isEmpty()) {
         return LawSpecFast.Maybe.<LawSpecFast.List<TopicPartition>>nothing();
       } else {
-        final Entry<String, LawSpecFast.List<TopicPartition>> e_543 = es_542.head();
-        final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> t_544 = es_542.tail();
-        final String key_545 = e_543.key;
-        final LawSpecFast.List<TopicPartition> value_546 = e_543.value;
-        final Ordering matched_547 = ordering(LawSpecFast.compare(k_541, key_545));
-        switch (matched_547) {
+        final Entry<String, LawSpecFast.List<TopicPartition>> v_lawspecselection0x0_615 = it_614.head();
+        final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> v_lawspecselection0x1_616 = it_614.tail();
+        final Entry<String, LawSpecFast.List<TopicPartition>> it_617 = v_lawspecselection0x0_615;
+        final String v_match__lawspecselection0x0_0_618 = it_617.key;
+        final LawSpecFast.List<TopicPartition> v_match__lawspecselection0x1_0_619 = it_617.value;
+        final Ordering it_620 = ordering(LawSpecFast.compare(k_612, v_match__lawspecselection0x0_0_618));
+        switch (it_620) {
           case Less -> {
             return LawSpecFast.Maybe.<LawSpecFast.List<TopicPartition>>nothing();
           }
           case Equal -> {
-            return LawSpecFast.Maybe.<LawSpecFast.List<TopicPartition>>just(value_546);
+            return LawSpecFast.Maybe.<LawSpecFast.List<TopicPartition>>just(v_match__lawspecselection0x1_0_619);
           }
           case Greater -> {
-            final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> next_548 = t_544;
-            es_542 = next_548;
+            final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> next_621 = v_lawspecselection0x1_616;
+            es_613 = next_621;
             continue;
           }
           default -> throw LawSpecFast.unreachable();
@@ -4271,26 +4522,28 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_8c8e1453bfc42ee5 */
-  public static LawSpecFast.Maybe<ProducerEntry> lawspecCollectionsKeyValLookupItems_9c1371ef(long k_549, LawSpecFast.List<Entry<Long, ProducerEntry>> es_550) {
+  public static LawSpecFast.Maybe<ProducerEntry> lawspecCollectionsKeyValLookupItems_9c1371ef(long k_622, LawSpecFast.List<Entry<Long, ProducerEntry>> es_623) {
     while (true) {
-      if (es_550.isEmpty()) {
+      final LawSpecFast.List<Entry<Long, ProducerEntry>> it_624 = es_623;
+      if (it_624.isEmpty()) {
         return LawSpecFast.Maybe.<ProducerEntry>nothing();
       } else {
-        final Entry<Long, ProducerEntry> e_551 = es_550.head();
-        final LawSpecFast.List<Entry<Long, ProducerEntry>> t_552 = es_550.tail();
-        final long key_553 = e_551.key;
-        final ProducerEntry value_554 = e_551.value;
-        final Ordering matched_555 = ordering(LawSpecFast.compare(k_549, key_553));
-        switch (matched_555) {
+        final Entry<Long, ProducerEntry> v_lawspecselection0x0_625 = it_624.head();
+        final LawSpecFast.List<Entry<Long, ProducerEntry>> v_lawspecselection0x1_626 = it_624.tail();
+        final Entry<Long, ProducerEntry> it_627 = v_lawspecselection0x0_625;
+        final long v_match__lawspecselection0x0_0_628 = it_627.key;
+        final ProducerEntry v_match__lawspecselection0x1_0_629 = it_627.value;
+        final Ordering it_630 = ordering(LawSpecFast.compare(k_622, v_match__lawspecselection0x0_0_628));
+        switch (it_630) {
           case Less -> {
             return LawSpecFast.Maybe.<ProducerEntry>nothing();
           }
           case Equal -> {
-            return LawSpecFast.Maybe.<ProducerEntry>just(value_554);
+            return LawSpecFast.Maybe.<ProducerEntry>just(v_match__lawspecselection0x1_0_629);
           }
           case Greater -> {
-            final LawSpecFast.List<Entry<Long, ProducerEntry>> next_556 = t_552;
-            es_550 = next_556;
+            final LawSpecFast.List<Entry<Long, ProducerEntry>> next_631 = v_lawspecselection0x1_626;
+            es_623 = next_631;
             continue;
           }
           default -> throw LawSpecFast.unreachable();
@@ -4300,26 +4553,28 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_9428a088248757a3 */
-  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookupItems_4e6d941b(String k_557, LawSpecFast.List<Entry<String, Long>> es_558) {
+  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookupItems_4e6d941b(String k_632, LawSpecFast.List<Entry<String, Long>> es_633) {
     while (true) {
-      if (es_558.isEmpty()) {
+      final LawSpecFast.List<Entry<String, Long>> it_634 = es_633;
+      if (it_634.isEmpty()) {
         return LawSpecFast.Maybe.<Long>nothing();
       } else {
-        final Entry<String, Long> e_559 = es_558.head();
-        final LawSpecFast.List<Entry<String, Long>> t_560 = es_558.tail();
-        final String key_561 = e_559.key;
-        final long value_562 = e_559.value;
-        final Ordering matched_563 = ordering(LawSpecFast.compare(k_557, key_561));
-        switch (matched_563) {
+        final Entry<String, Long> v_lawspecselection0x0_635 = it_634.head();
+        final LawSpecFast.List<Entry<String, Long>> v_lawspecselection0x1_636 = it_634.tail();
+        final Entry<String, Long> it_637 = v_lawspecselection0x0_635;
+        final String v_match__lawspecselection0x0_0_638 = it_637.key;
+        final long v_match__lawspecselection0x1_0_639 = it_637.value;
+        final Ordering it_640 = ordering(LawSpecFast.compare(k_632, v_match__lawspecselection0x0_0_638));
+        switch (it_640) {
           case Less -> {
             return LawSpecFast.Maybe.<Long>nothing();
           }
           case Equal -> {
-            return LawSpecFast.Maybe.<Long>just(value_562);
+            return LawSpecFast.Maybe.<Long>just(v_match__lawspecselection0x1_0_639);
           }
           case Greater -> {
-            final LawSpecFast.List<Entry<String, Long>> next_564 = t_560;
-            es_558 = next_564;
+            final LawSpecFast.List<Entry<String, Long>> next_641 = v_lawspecselection0x1_636;
+            es_633 = next_641;
             continue;
           }
           default -> throw LawSpecFast.unreachable();
@@ -4329,26 +4584,28 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_b5b730fd09d3f4b3 */
-  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookupItems_634e3159(GroupPartition k_565, LawSpecFast.List<Entry<GroupPartition, Long>> es_566) {
+  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookupItems_634e3159(GroupPartition k_642, LawSpecFast.List<Entry<GroupPartition, Long>> es_643) {
     while (true) {
-      if (es_566.isEmpty()) {
+      final LawSpecFast.List<Entry<GroupPartition, Long>> it_644 = es_643;
+      if (it_644.isEmpty()) {
         return LawSpecFast.Maybe.<Long>nothing();
       } else {
-        final Entry<GroupPartition, Long> e_567 = es_566.head();
-        final LawSpecFast.List<Entry<GroupPartition, Long>> t_568 = es_566.tail();
-        final GroupPartition key_569 = e_567.key;
-        final long value_570 = e_567.value;
-        final Ordering matched_571 = ordering(LawSpecFast.compare(k_565, key_569));
-        switch (matched_571) {
+        final Entry<GroupPartition, Long> v_lawspecselection0x0_645 = it_644.head();
+        final LawSpecFast.List<Entry<GroupPartition, Long>> v_lawspecselection0x1_646 = it_644.tail();
+        final Entry<GroupPartition, Long> it_647 = v_lawspecselection0x0_645;
+        final GroupPartition v_match__lawspecselection0x0_0_648 = it_647.key;
+        final long v_match__lawspecselection0x1_0_649 = it_647.value;
+        final Ordering it_650 = ordering(LawSpecFast.compare(k_642, v_match__lawspecselection0x0_0_648));
+        switch (it_650) {
           case Less -> {
             return LawSpecFast.Maybe.<Long>nothing();
           }
           case Equal -> {
-            return LawSpecFast.Maybe.<Long>just(value_570);
+            return LawSpecFast.Maybe.<Long>just(v_match__lawspecselection0x1_0_649);
           }
           case Greater -> {
-            final LawSpecFast.List<Entry<GroupPartition, Long>> next_572 = t_568;
-            es_566 = next_572;
+            final LawSpecFast.List<Entry<GroupPartition, Long>> next_651 = v_lawspecselection0x1_646;
+            es_643 = next_651;
             continue;
           }
           default -> throw LawSpecFast.unreachable();
@@ -4358,26 +4615,28 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_d4fb9ceeaac376dd */
-  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookupItems_eaf6916f(TopicPartition k_573, LawSpecFast.List<Entry<TopicPartition, Long>> es_574) {
+  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookupItems_eaf6916f(TopicPartition k_652, LawSpecFast.List<Entry<TopicPartition, Long>> es_653) {
     while (true) {
-      if (es_574.isEmpty()) {
+      final LawSpecFast.List<Entry<TopicPartition, Long>> it_654 = es_653;
+      if (it_654.isEmpty()) {
         return LawSpecFast.Maybe.<Long>nothing();
       } else {
-        final Entry<TopicPartition, Long> e_575 = es_574.head();
-        final LawSpecFast.List<Entry<TopicPartition, Long>> t_576 = es_574.tail();
-        final TopicPartition key_577 = e_575.key;
-        final long value_578 = e_575.value;
-        final Ordering matched_579 = ordering(LawSpecFast.compare(k_573, key_577));
-        switch (matched_579) {
+        final Entry<TopicPartition, Long> v_lawspecselection0x0_655 = it_654.head();
+        final LawSpecFast.List<Entry<TopicPartition, Long>> v_lawspecselection0x1_656 = it_654.tail();
+        final Entry<TopicPartition, Long> it_657 = v_lawspecselection0x0_655;
+        final TopicPartition v_match__lawspecselection0x0_0_658 = it_657.key;
+        final long v_match__lawspecselection0x1_0_659 = it_657.value;
+        final Ordering it_660 = ordering(LawSpecFast.compare(k_652, v_match__lawspecselection0x0_0_658));
+        switch (it_660) {
           case Less -> {
             return LawSpecFast.Maybe.<Long>nothing();
           }
           case Equal -> {
-            return LawSpecFast.Maybe.<Long>just(value_578);
+            return LawSpecFast.Maybe.<Long>just(v_match__lawspecselection0x1_0_659);
           }
           case Greater -> {
-            final LawSpecFast.List<Entry<TopicPartition, Long>> next_580 = t_576;
-            es_574 = next_580;
+            final LawSpecFast.List<Entry<TopicPartition, Long>> next_661 = v_lawspecselection0x1_656;
+            es_653 = next_661;
             continue;
           }
           default -> throw LawSpecFast.unreachable();
@@ -4387,26 +4646,28 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f41725375 */
-  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookupItems_ae57d2cd(long k_581, LawSpecFast.List<Entry<Long, Long>> es_582) {
+  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookupItems_ae57d2cd(long k_662, LawSpecFast.List<Entry<Long, Long>> es_663) {
     while (true) {
-      if (es_582.isEmpty()) {
+      final LawSpecFast.List<Entry<Long, Long>> it_664 = es_663;
+      if (it_664.isEmpty()) {
         return LawSpecFast.Maybe.<Long>nothing();
       } else {
-        final Entry<Long, Long> e_583 = es_582.head();
-        final LawSpecFast.List<Entry<Long, Long>> t_584 = es_582.tail();
-        final long key_585 = e_583.key;
-        final long value_586 = e_583.value;
-        final Ordering matched_587 = ordering(LawSpecFast.compare(k_581, key_585));
-        switch (matched_587) {
+        final Entry<Long, Long> v_lawspecselection0x0_665 = it_664.head();
+        final LawSpecFast.List<Entry<Long, Long>> v_lawspecselection0x1_666 = it_664.tail();
+        final Entry<Long, Long> it_667 = v_lawspecselection0x0_665;
+        final long v_match__lawspecselection0x0_0_668 = it_667.key;
+        final long v_match__lawspecselection0x1_0_669 = it_667.value;
+        final Ordering it_670 = ordering(LawSpecFast.compare(k_662, v_match__lawspecselection0x0_0_668));
+        switch (it_670) {
           case Less -> {
             return LawSpecFast.Maybe.<Long>nothing();
           }
           case Equal -> {
-            return LawSpecFast.Maybe.<Long>just(value_586);
+            return LawSpecFast.Maybe.<Long>just(v_match__lawspecselection0x1_0_669);
           }
           case Greater -> {
-            final LawSpecFast.List<Entry<Long, Long>> next_588 = t_584;
-            es_582 = next_588;
+            final LawSpecFast.List<Entry<Long, Long>> next_671 = v_lawspecselection0x1_666;
+            es_663 = next_671;
             continue;
           }
           default -> throw LawSpecFast.unreachable();
@@ -4416,26 +4677,28 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96abfdf11 */
-  public static LawSpecFast.Maybe<Group> lawspecCollectionsKeyValLookupItems_3c718024(String k_589, LawSpecFast.List<Entry<String, Group>> es_590) {
+  public static LawSpecFast.Maybe<Group> lawspecCollectionsKeyValLookupItems_3c718024(String k_672, LawSpecFast.List<Entry<String, Group>> es_673) {
     while (true) {
-      if (es_590.isEmpty()) {
+      final LawSpecFast.List<Entry<String, Group>> it_674 = es_673;
+      if (it_674.isEmpty()) {
         return LawSpecFast.Maybe.<Group>nothing();
       } else {
-        final Entry<String, Group> e_591 = es_590.head();
-        final LawSpecFast.List<Entry<String, Group>> t_592 = es_590.tail();
-        final String key_593 = e_591.key;
-        final Group value_594 = e_591.value;
-        final Ordering matched_595 = ordering(LawSpecFast.compare(k_589, key_593));
-        switch (matched_595) {
+        final Entry<String, Group> v_lawspecselection0x0_675 = it_674.head();
+        final LawSpecFast.List<Entry<String, Group>> v_lawspecselection0x1_676 = it_674.tail();
+        final Entry<String, Group> it_677 = v_lawspecselection0x0_675;
+        final String v_match__lawspecselection0x0_0_678 = it_677.key;
+        final Group v_match__lawspecselection0x1_0_679 = it_677.value;
+        final Ordering it_680 = ordering(LawSpecFast.compare(k_672, v_match__lawspecselection0x0_0_678));
+        switch (it_680) {
           case Less -> {
             return LawSpecFast.Maybe.<Group>nothing();
           }
           case Equal -> {
-            return LawSpecFast.Maybe.<Group>just(value_594);
+            return LawSpecFast.Maybe.<Group>just(v_match__lawspecselection0x1_0_679);
           }
           case Greater -> {
-            final LawSpecFast.List<Entry<String, Group>> next_596 = t_592;
-            es_590 = next_596;
+            final LawSpecFast.List<Entry<String, Group>> next_681 = v_lawspecselection0x1_676;
+            es_673 = next_681;
             continue;
           }
           default -> throw LawSpecFast.unreachable();
@@ -4445,26 +4708,28 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_f23b5066cffbd6eb */
-  public static LawSpecFast.Maybe<PartitionLog> lawspecCollectionsKeyValLookupItems_8d0d5317(TopicPartition k_597, LawSpecFast.List<Entry<TopicPartition, PartitionLog>> es_598) {
+  public static LawSpecFast.Maybe<PartitionLog> lawspecCollectionsKeyValLookupItems_8d0d5317(TopicPartition k_682, LawSpecFast.List<Entry<TopicPartition, PartitionLog>> es_683) {
     while (true) {
-      if (es_598.isEmpty()) {
+      final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> it_684 = es_683;
+      if (it_684.isEmpty()) {
         return LawSpecFast.Maybe.<PartitionLog>nothing();
       } else {
-        final Entry<TopicPartition, PartitionLog> e_599 = es_598.head();
-        final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> t_600 = es_598.tail();
-        final TopicPartition key_601 = e_599.key;
-        final PartitionLog value_602 = e_599.value;
-        final Ordering matched_603 = ordering(LawSpecFast.compare(k_597, key_601));
-        switch (matched_603) {
+        final Entry<TopicPartition, PartitionLog> v_lawspecselection0x0_685 = it_684.head();
+        final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> v_lawspecselection0x1_686 = it_684.tail();
+        final Entry<TopicPartition, PartitionLog> it_687 = v_lawspecselection0x0_685;
+        final TopicPartition v_match__lawspecselection0x0_0_688 = it_687.key;
+        final PartitionLog v_match__lawspecselection0x1_0_689 = it_687.value;
+        final Ordering it_690 = ordering(LawSpecFast.compare(k_682, v_match__lawspecselection0x0_0_688));
+        switch (it_690) {
           case Less -> {
             return LawSpecFast.Maybe.<PartitionLog>nothing();
           }
           case Equal -> {
-            return LawSpecFast.Maybe.<PartitionLog>just(value_602);
+            return LawSpecFast.Maybe.<PartitionLog>just(v_match__lawspecselection0x1_0_689);
           }
           case Greater -> {
-            final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> next_604 = t_600;
-            es_598 = next_604;
+            final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> next_691 = v_lawspecselection0x1_686;
+            es_683 = next_691;
             continue;
           }
           default -> throw LawSpecFast.unreachable();
@@ -4474,143 +4739,157 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_61e51068439aa457 */
-  public static LawSpecFast.Maybe<LawSpecFast.List<String>> lawspecCollectionsKeyValLookup_a9059595(String k_605, LawSpecFast.Map<String, LawSpecFast.List<String>> m_606) {
-    return m_606.get(k_605);
+  public static LawSpecFast.Maybe<LawSpecFast.List<String>> lawspecCollectionsKeyValLookup_a9059595(String k_692, LawSpecFast.Map<String, LawSpecFast.List<String>> m_693) {
+    return m_693.get(k_692);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_65f44f3855baf0a5 */
-  public static LawSpecFast.Maybe<LawSpecFast.List<BatchMeta>> lawspecCollectionsKeyValLookup_b2bbd077(long k_607, LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> m_608) {
-    return m_608.get(k_607);
+  public static LawSpecFast.Maybe<LawSpecFast.List<BatchMeta>> lawspecCollectionsKeyValLookup_b2bbd077(long k_694, LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> m_695) {
+    return m_695.get(k_694);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_7acdaa8dcd255941 */
-  public static LawSpecFast.Maybe<PartitionLog> lawspecCollectionsKeyValLookup_8a481efc(TopicPartition k_609, LawSpecFast.Map<TopicPartition, PartitionLog> m_610) {
-    return m_610.get(k_609);
+  public static LawSpecFast.Maybe<PartitionLog> lawspecCollectionsKeyValLookup_8a481efc(TopicPartition k_696, LawSpecFast.Map<TopicPartition, PartitionLog> m_697) {
+    return m_697.get(k_696);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_7e86ea7b8af5f7e9 */
-  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookup_8e671f4d(TopicPartition k_611, LawSpecFast.Map<TopicPartition, Long> m_612) {
-    return m_612.get(k_611);
+  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookup_8e671f4d(TopicPartition k_698, LawSpecFast.Map<TopicPartition, Long> m_699) {
+    return m_699.get(k_698);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_a6a374938d1c1ef1 */
-  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookup_65e9c66c(long k_613, LawSpecFast.Map<Long, Long> m_614) {
-    return m_614.get(k_613);
+  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookup_65e9c66c(long k_700, LawSpecFast.Map<Long, Long> m_701) {
+    return m_701.get(k_700);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_be6dfdcf4e9ae9f5 */
-  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookup_a6e9da81(TopicPartition k_615, LawSpecFast.Map<TopicPartition, Long> m_616) {
-    return m_616.get(k_615);
+  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookup_a6e9da81(TopicPartition k_702, LawSpecFast.Map<TopicPartition, Long> m_703) {
+    return m_703.get(k_702);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_d32eccc04e0ce84b */
-  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookup_24612a0e(String k_617, LawSpecFast.Map<String, Long> m_618) {
-    return m_618.get(k_617);
+  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookup_24612a0e(String k_704, LawSpecFast.Map<String, Long> m_705) {
+    return m_705.get(k_704);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_d45d335232ddb9f5 */
-  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookup_cd13c56f(GroupPartition k_619, LawSpecFast.Map<GroupPartition, Long> m_620) {
-    return m_620.get(k_619);
+  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookup_cd13c56f(GroupPartition k_706, LawSpecFast.Map<GroupPartition, Long> m_707) {
+    return m_707.get(k_706);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_e75784f293b348fb */
-  public static LawSpecFast.Maybe<ProducerEntry> lawspecCollectionsKeyValLookup_6946d404(long k_621, LawSpecFast.Map<Long, ProducerEntry> m_622) {
-    return m_622.get(k_621);
+  public static LawSpecFast.Maybe<ProducerEntry> lawspecCollectionsKeyValLookup_6946d404(long k_708, LawSpecFast.Map<Long, ProducerEntry> m_709) {
+    return m_709.get(k_708);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_ed82ee3bc3ed7c07 */
-  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookup_7f47bbb6(String k_623, LawSpecFast.Map<String, Long> m_624) {
-    return m_624.get(k_623);
+  public static LawSpecFast.Maybe<Long> lawspecCollectionsKeyValLookup_7f47bbb6(String k_710, LawSpecFast.Map<String, Long> m_711) {
+    return m_711.get(k_710);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_f0a5427404f6c2eb */
-  public static LawSpecFast.Maybe<LawSpecFast.List<TopicPartition>> lawspecCollectionsKeyValLookup_ce7e98b5(String k_625, LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> m_626) {
-    return m_626.get(k_625);
+  public static LawSpecFast.Maybe<LawSpecFast.List<TopicPartition>> lawspecCollectionsKeyValLookup_ce7e98b5(String k_712, LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> m_713) {
+    return m_713.get(k_712);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594f */
-  public static LawSpecFast.Maybe<Group> lawspecCollectionsKeyValLookup_0bbb87c8(String k_627, LawSpecFast.Map<String, Group> m_628) {
-    return m_628.get(k_627);
+  public static LawSpecFast.Maybe<Group> lawspecCollectionsKeyValLookup_0bbb87c8(String k_714, LawSpecFast.Map<String, Group> m_715) {
+    return m_715.get(k_714);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc */
-  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecCollectionsKeyValOf_b3b63ee9(LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> es_629) {
-    return keyValOf(es_629);
+  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecCollectionsKeyValOf_b3b63ee9(LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> es_716) {
+    return keyValOf(es_716);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54 */
-  public static LawSpecFast.Map<String, Group> lawspecCollectionsKeyValOf_315c22fb(LawSpecFast.List<Entry<String, Group>> es_630) {
-    return keyValOf(es_630);
+  public static LawSpecFast.Map<String, Group> lawspecCollectionsKeyValOf_315c22fb(LawSpecFast.List<Entry<String, Group>> es_717) {
+    return keyValOf(es_717);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_610caa8fbb581a02 */
-  public static LawSpecFast.Map<TopicPartition, Long> lawspecCollectionsKeyValOf_8d386a7a(LawSpecFast.List<Entry<TopicPartition, Long>> es_631) {
-    return keyValOf(es_631);
+  public static LawSpecFast.Map<TopicPartition, Long> lawspecCollectionsKeyValOf_8d386a7a(LawSpecFast.List<Entry<TopicPartition, Long>> es_718) {
+    return keyValOf(es_718);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_a0c1d9feb5051d04 */
-  public static LawSpecFast.Map<TopicPartition, PartitionLog> lawspecCollectionsKeyValOf_66dd9a82(LawSpecFast.List<Entry<TopicPartition, PartitionLog>> es_632) {
-    return keyValOf(es_632);
+  public static LawSpecFast.Map<TopicPartition, PartitionLog> lawspecCollectionsKeyValOf_66dd9a82(LawSpecFast.List<Entry<TopicPartition, PartitionLog>> es_719) {
+    return keyValOf(es_719);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_a4eebf20bfcd02b4 */
-  public static LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecCollectionsKeyValOf_3adee7cf(LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> es_633) {
-    return keyValOf(es_633);
+  public static LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecCollectionsKeyValOf_3adee7cf(LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> es_720) {
+    return keyValOf(es_720);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_bd30e4f0b318724c */
-  public static LawSpecFast.Map<TopicPartition, Long> lawspecCollectionsKeyValOf_a1009097(LawSpecFast.List<Entry<TopicPartition, Long>> es_634) {
-    return keyValOf(es_634);
+  public static LawSpecFast.Map<TopicPartition, Long> lawspecCollectionsKeyValOf_a1009097(LawSpecFast.List<Entry<TopicPartition, Long>> es_721) {
+    return keyValOf(es_721);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_c9f1a347a852b1c2 */
-  public static LawSpecFast.Map<String, Long> lawspecCollectionsKeyValOf_eeff9798(LawSpecFast.List<Entry<String, Long>> es_635) {
-    return keyValOf(es_635);
+  public static LawSpecFast.Map<String, Long> lawspecCollectionsKeyValOf_eeff9798(LawSpecFast.List<Entry<String, Long>> es_722) {
+    return keyValOf(es_722);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_ca750953e04bcf02 */
-  public static LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecCollectionsKeyValOf_afdc1c77(LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> es_636) {
-    return keyValOf(es_636);
+  public static LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecCollectionsKeyValOf_afdc1c77(LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> es_723) {
+    return keyValOf(es_723);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e */
-  public static LawSpecFast.Map<String, Long> lawspecCollectionsKeyValOf_924ce6dd(LawSpecFast.List<Entry<String, Long>> es_637) {
-    return keyValOf(es_637);
+  public static LawSpecFast.Map<String, Long> lawspecCollectionsKeyValOf_924ce6dd(LawSpecFast.List<Entry<String, Long>> es_724) {
+    return keyValOf(es_724);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a */
-  public static LawSpecFast.Map<Long, ProducerEntry> lawspecCollectionsKeyValOf_66da004b(LawSpecFast.List<Entry<Long, ProducerEntry>> es_638) {
-    return keyValOf(es_638);
+  public static LawSpecFast.Map<Long, ProducerEntry> lawspecCollectionsKeyValOf_66da004b(LawSpecFast.List<Entry<Long, ProducerEntry>> es_725) {
+    return keyValOf(es_725);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_e41901007f8d5eea */
-  public static LawSpecFast.Map<Long, Long> lawspecCollectionsKeyValOf_b2ceee25(LawSpecFast.List<Entry<Long, Long>> es_639) {
-    return keyValOf(es_639);
+  public static LawSpecFast.Map<Long, Long> lawspecCollectionsKeyValOf_b2ceee25(LawSpecFast.List<Entry<Long, Long>> es_726) {
+    return keyValOf(es_726);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48 */
-  public static LawSpecFast.Map<GroupPartition, Long> lawspecCollectionsKeyValOf_14405d63(LawSpecFast.List<Entry<GroupPartition, Long>> es_640) {
-    return keyValOf(es_640);
+  public static LawSpecFast.Map<GroupPartition, Long> lawspecCollectionsKeyValOf_14405d63(LawSpecFast.List<Entry<GroupPartition, Long>> es_727) {
+    return keyValOf(es_727);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_1a60d73f2ea7655c */
-  public static LawSpecFast.List<Entry<Long, Long>> lawspecCollectionsKeyValPutItems_fb1bb5ca(long k_641, long v_642, LawSpecFast.List<Entry<Long, Long>> es_643) {
-    if (es_643.isEmpty()) {
-      return LawSpecFast.List.<Entry<Long, Long>>cons(new Entry<Long, Long>(k_641, v_642), LawSpecFast.List.<Entry<Long, Long>>nil());
+  public static LawSpecFast.List<Entry<Long, Long>> lawspecCollectionsKeyValPutItems_fb1bb5ca(long k_728, long v_729, LawSpecFast.List<Entry<Long, Long>> es_730) {
+    final LawSpecFast.List<Entry<Long, Long>> it_731 = es_730;
+    if (it_731.isEmpty()) {
+      Entry<Long, Long> value_732;
+      final long v_lawspecrecordfield0_733 = k_728;
+      final long v_lawspecrecordfield1_734 = v_729;
+      value_732 = new Entry<Long, Long>(v_lawspecrecordfield0_733, v_lawspecrecordfield1_734);
+      return LawSpecFast.List.<Entry<Long, Long>>cons(value_732, LawSpecFast.List.<Entry<Long, Long>>nil());
     } else {
-      final Entry<Long, Long> e_644 = es_643.head();
-      final LawSpecFast.List<Entry<Long, Long>> t_645 = es_643.tail();
-      final long key_646 = e_644.key;
-      final Ordering matched_647 = ordering(LawSpecFast.compare(k_641, key_646));
-      switch (matched_647) {
+      final Entry<Long, Long> v_lawspecselection0x0_735 = it_731.head();
+      final LawSpecFast.List<Entry<Long, Long>> v_lawspecselection0x1_736 = it_731.tail();
+      final Entry<Long, Long> it_737 = v_lawspecselection0x0_735;
+      final long v_match__lawspecselection0x0_0_738 = it_737.key;
+      final Ordering it_739 = ordering(LawSpecFast.compare(k_728, v_match__lawspecselection0x0_0_738));
+      switch (it_739) {
         case Less -> {
-          return LawSpecFast.List.<Entry<Long, Long>>cons(new Entry<Long, Long>(k_641, v_642), es_643);
+          Entry<Long, Long> value_740;
+          final long v_lawspecrecordfield0_741 = k_728;
+          final long v_lawspecrecordfield1_742 = v_729;
+          value_740 = new Entry<Long, Long>(v_lawspecrecordfield0_741, v_lawspecrecordfield1_742);
+          return LawSpecFast.List.<Entry<Long, Long>>cons(value_740, es_730);
         }
         case Equal -> {
-          return LawSpecFast.List.<Entry<Long, Long>>cons(new Entry<Long, Long>(k_641, v_642), t_645);
+          Entry<Long, Long> value_743;
+          final long v_lawspecrecordfield0_744 = k_728;
+          final long v_lawspecrecordfield1_745 = v_729;
+          value_743 = new Entry<Long, Long>(v_lawspecrecordfield0_744, v_lawspecrecordfield1_745);
+          return LawSpecFast.List.<Entry<Long, Long>>cons(value_743, v_lawspecselection0x1_736);
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<Long, Long>>cons(e_644, lawspecCollectionsKeyValPutItems_fb1bb5ca(k_641, v_642, t_645));
+          return LawSpecFast.List.<Entry<Long, Long>>cons(v_lawspecselection0x0_735, lawspecCollectionsKeyValPutItems_fb1bb5ca(k_728, v_729, v_lawspecselection0x1_736));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -4618,23 +4897,37 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_1d4fcedc9b0136e2 */
-  public static LawSpecFast.List<Entry<Long, ProducerEntry>> lawspecCollectionsKeyValPutItems_97a64264(long k_648, ProducerEntry v_649, LawSpecFast.List<Entry<Long, ProducerEntry>> es_650) {
-    if (es_650.isEmpty()) {
-      return LawSpecFast.List.<Entry<Long, ProducerEntry>>cons(new Entry<Long, ProducerEntry>(k_648, v_649), LawSpecFast.List.<Entry<Long, ProducerEntry>>nil());
+  public static LawSpecFast.List<Entry<Long, ProducerEntry>> lawspecCollectionsKeyValPutItems_97a64264(long k_746, ProducerEntry v_747, LawSpecFast.List<Entry<Long, ProducerEntry>> es_748) {
+    final LawSpecFast.List<Entry<Long, ProducerEntry>> it_749 = es_748;
+    if (it_749.isEmpty()) {
+      Entry<Long, ProducerEntry> value_750;
+      final long v_lawspecrecordfield0_751 = k_746;
+      final ProducerEntry v_lawspecrecordfield1_752 = v_747;
+      value_750 = new Entry<Long, ProducerEntry>(v_lawspecrecordfield0_751, v_lawspecrecordfield1_752);
+      return LawSpecFast.List.<Entry<Long, ProducerEntry>>cons(value_750, LawSpecFast.List.<Entry<Long, ProducerEntry>>nil());
     } else {
-      final Entry<Long, ProducerEntry> e_651 = es_650.head();
-      final LawSpecFast.List<Entry<Long, ProducerEntry>> t_652 = es_650.tail();
-      final long key_653 = e_651.key;
-      final Ordering matched_654 = ordering(LawSpecFast.compare(k_648, key_653));
-      switch (matched_654) {
+      final Entry<Long, ProducerEntry> v_lawspecselection0x0_753 = it_749.head();
+      final LawSpecFast.List<Entry<Long, ProducerEntry>> v_lawspecselection0x1_754 = it_749.tail();
+      final Entry<Long, ProducerEntry> it_755 = v_lawspecselection0x0_753;
+      final long v_match__lawspecselection0x0_0_756 = it_755.key;
+      final Ordering it_757 = ordering(LawSpecFast.compare(k_746, v_match__lawspecselection0x0_0_756));
+      switch (it_757) {
         case Less -> {
-          return LawSpecFast.List.<Entry<Long, ProducerEntry>>cons(new Entry<Long, ProducerEntry>(k_648, v_649), es_650);
+          Entry<Long, ProducerEntry> value_758;
+          final long v_lawspecrecordfield0_759 = k_746;
+          final ProducerEntry v_lawspecrecordfield1_760 = v_747;
+          value_758 = new Entry<Long, ProducerEntry>(v_lawspecrecordfield0_759, v_lawspecrecordfield1_760);
+          return LawSpecFast.List.<Entry<Long, ProducerEntry>>cons(value_758, es_748);
         }
         case Equal -> {
-          return LawSpecFast.List.<Entry<Long, ProducerEntry>>cons(new Entry<Long, ProducerEntry>(k_648, v_649), t_652);
+          Entry<Long, ProducerEntry> value_761;
+          final long v_lawspecrecordfield0_762 = k_746;
+          final ProducerEntry v_lawspecrecordfield1_763 = v_747;
+          value_761 = new Entry<Long, ProducerEntry>(v_lawspecrecordfield0_762, v_lawspecrecordfield1_763);
+          return LawSpecFast.List.<Entry<Long, ProducerEntry>>cons(value_761, v_lawspecselection0x1_754);
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<Long, ProducerEntry>>cons(e_651, lawspecCollectionsKeyValPutItems_97a64264(k_648, v_649, t_652));
+          return LawSpecFast.List.<Entry<Long, ProducerEntry>>cons(v_lawspecselection0x0_753, lawspecCollectionsKeyValPutItems_97a64264(k_746, v_747, v_lawspecselection0x1_754));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -4642,23 +4935,37 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_2a3018cf45ad1ad9 */
-  public static LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> lawspecCollectionsKeyValPutItems_054f1ef1(long k_655, LawSpecFast.List<BatchMeta> v_656, LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> es_657) {
-    if (es_657.isEmpty()) {
-      return LawSpecFast.List.<Entry<Long, LawSpecFast.List<BatchMeta>>>cons(new Entry<Long, LawSpecFast.List<BatchMeta>>(k_655, v_656), LawSpecFast.List.<Entry<Long, LawSpecFast.List<BatchMeta>>>nil());
+  public static LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> lawspecCollectionsKeyValPutItems_054f1ef1(long k_764, LawSpecFast.List<BatchMeta> v_765, LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> es_766) {
+    final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> it_767 = es_766;
+    if (it_767.isEmpty()) {
+      Entry<Long, LawSpecFast.List<BatchMeta>> value_768;
+      final long v_lawspecrecordfield0_769 = k_764;
+      final LawSpecFast.List<BatchMeta> v_lawspecrecordfield1_770 = v_765;
+      value_768 = new Entry<Long, LawSpecFast.List<BatchMeta>>(v_lawspecrecordfield0_769, v_lawspecrecordfield1_770);
+      return LawSpecFast.List.<Entry<Long, LawSpecFast.List<BatchMeta>>>cons(value_768, LawSpecFast.List.<Entry<Long, LawSpecFast.List<BatchMeta>>>nil());
     } else {
-      final Entry<Long, LawSpecFast.List<BatchMeta>> e_658 = es_657.head();
-      final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> t_659 = es_657.tail();
-      final long key_660 = e_658.key;
-      final Ordering matched_661 = ordering(LawSpecFast.compare(k_655, key_660));
-      switch (matched_661) {
+      final Entry<Long, LawSpecFast.List<BatchMeta>> v_lawspecselection0x0_771 = it_767.head();
+      final LawSpecFast.List<Entry<Long, LawSpecFast.List<BatchMeta>>> v_lawspecselection0x1_772 = it_767.tail();
+      final Entry<Long, LawSpecFast.List<BatchMeta>> it_773 = v_lawspecselection0x0_771;
+      final long v_match__lawspecselection0x0_0_774 = it_773.key;
+      final Ordering it_775 = ordering(LawSpecFast.compare(k_764, v_match__lawspecselection0x0_0_774));
+      switch (it_775) {
         case Less -> {
-          return LawSpecFast.List.<Entry<Long, LawSpecFast.List<BatchMeta>>>cons(new Entry<Long, LawSpecFast.List<BatchMeta>>(k_655, v_656), es_657);
+          Entry<Long, LawSpecFast.List<BatchMeta>> value_776;
+          final long v_lawspecrecordfield0_777 = k_764;
+          final LawSpecFast.List<BatchMeta> v_lawspecrecordfield1_778 = v_765;
+          value_776 = new Entry<Long, LawSpecFast.List<BatchMeta>>(v_lawspecrecordfield0_777, v_lawspecrecordfield1_778);
+          return LawSpecFast.List.<Entry<Long, LawSpecFast.List<BatchMeta>>>cons(value_776, es_766);
         }
         case Equal -> {
-          return LawSpecFast.List.<Entry<Long, LawSpecFast.List<BatchMeta>>>cons(new Entry<Long, LawSpecFast.List<BatchMeta>>(k_655, v_656), t_659);
+          Entry<Long, LawSpecFast.List<BatchMeta>> value_779;
+          final long v_lawspecrecordfield0_780 = k_764;
+          final LawSpecFast.List<BatchMeta> v_lawspecrecordfield1_781 = v_765;
+          value_779 = new Entry<Long, LawSpecFast.List<BatchMeta>>(v_lawspecrecordfield0_780, v_lawspecrecordfield1_781);
+          return LawSpecFast.List.<Entry<Long, LawSpecFast.List<BatchMeta>>>cons(value_779, v_lawspecselection0x1_772);
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<Long, LawSpecFast.List<BatchMeta>>>cons(e_658, lawspecCollectionsKeyValPutItems_054f1ef1(k_655, v_656, t_659));
+          return LawSpecFast.List.<Entry<Long, LawSpecFast.List<BatchMeta>>>cons(v_lawspecselection0x0_771, lawspecCollectionsKeyValPutItems_054f1ef1(k_764, v_765, v_lawspecselection0x1_772));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -4666,23 +4973,37 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_4b9848f70e8b7f53 */
-  public static LawSpecFast.List<Entry<String, Long>> lawspecCollectionsKeyValPutItems_8d4f5385(String k_662, long v_663, LawSpecFast.List<Entry<String, Long>> es_664) {
-    if (es_664.isEmpty()) {
-      return LawSpecFast.List.<Entry<String, Long>>cons(new Entry<String, Long>(k_662, v_663), LawSpecFast.List.<Entry<String, Long>>nil());
+  public static LawSpecFast.List<Entry<String, Long>> lawspecCollectionsKeyValPutItems_8d4f5385(String k_782, long v_783, LawSpecFast.List<Entry<String, Long>> es_784) {
+    final LawSpecFast.List<Entry<String, Long>> it_785 = es_784;
+    if (it_785.isEmpty()) {
+      Entry<String, Long> value_786;
+      final String v_lawspecrecordfield0_787 = k_782;
+      final long v_lawspecrecordfield1_788 = v_783;
+      value_786 = new Entry<String, Long>(v_lawspecrecordfield0_787, v_lawspecrecordfield1_788);
+      return LawSpecFast.List.<Entry<String, Long>>cons(value_786, LawSpecFast.List.<Entry<String, Long>>nil());
     } else {
-      final Entry<String, Long> e_665 = es_664.head();
-      final LawSpecFast.List<Entry<String, Long>> t_666 = es_664.tail();
-      final String key_667 = e_665.key;
-      final Ordering matched_668 = ordering(LawSpecFast.compare(k_662, key_667));
-      switch (matched_668) {
+      final Entry<String, Long> v_lawspecselection0x0_789 = it_785.head();
+      final LawSpecFast.List<Entry<String, Long>> v_lawspecselection0x1_790 = it_785.tail();
+      final Entry<String, Long> it_791 = v_lawspecselection0x0_789;
+      final String v_match__lawspecselection0x0_0_792 = it_791.key;
+      final Ordering it_793 = ordering(LawSpecFast.compare(k_782, v_match__lawspecselection0x0_0_792));
+      switch (it_793) {
         case Less -> {
-          return LawSpecFast.List.<Entry<String, Long>>cons(new Entry<String, Long>(k_662, v_663), es_664);
+          Entry<String, Long> value_794;
+          final String v_lawspecrecordfield0_795 = k_782;
+          final long v_lawspecrecordfield1_796 = v_783;
+          value_794 = new Entry<String, Long>(v_lawspecrecordfield0_795, v_lawspecrecordfield1_796);
+          return LawSpecFast.List.<Entry<String, Long>>cons(value_794, es_784);
         }
         case Equal -> {
-          return LawSpecFast.List.<Entry<String, Long>>cons(new Entry<String, Long>(k_662, v_663), t_666);
+          Entry<String, Long> value_797;
+          final String v_lawspecrecordfield0_798 = k_782;
+          final long v_lawspecrecordfield1_799 = v_783;
+          value_797 = new Entry<String, Long>(v_lawspecrecordfield0_798, v_lawspecrecordfield1_799);
+          return LawSpecFast.List.<Entry<String, Long>>cons(value_797, v_lawspecselection0x1_790);
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<String, Long>>cons(e_665, lawspecCollectionsKeyValPutItems_8d4f5385(k_662, v_663, t_666));
+          return LawSpecFast.List.<Entry<String, Long>>cons(v_lawspecselection0x0_789, lawspecCollectionsKeyValPutItems_8d4f5385(k_782, v_783, v_lawspecselection0x1_790));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -4690,23 +5011,37 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_4c71dc98d5546e58 */
-  public static LawSpecFast.List<Entry<String, Long>> lawspecCollectionsKeyValPutItems_5d998955(String k_669, long v_670, LawSpecFast.List<Entry<String, Long>> es_671) {
-    if (es_671.isEmpty()) {
-      return LawSpecFast.List.<Entry<String, Long>>cons(new Entry<String, Long>(k_669, v_670), LawSpecFast.List.<Entry<String, Long>>nil());
+  public static LawSpecFast.List<Entry<String, Long>> lawspecCollectionsKeyValPutItems_5d998955(String k_800, long v_801, LawSpecFast.List<Entry<String, Long>> es_802) {
+    final LawSpecFast.List<Entry<String, Long>> it_803 = es_802;
+    if (it_803.isEmpty()) {
+      Entry<String, Long> value_804;
+      final String v_lawspecrecordfield0_805 = k_800;
+      final long v_lawspecrecordfield1_806 = v_801;
+      value_804 = new Entry<String, Long>(v_lawspecrecordfield0_805, v_lawspecrecordfield1_806);
+      return LawSpecFast.List.<Entry<String, Long>>cons(value_804, LawSpecFast.List.<Entry<String, Long>>nil());
     } else {
-      final Entry<String, Long> e_672 = es_671.head();
-      final LawSpecFast.List<Entry<String, Long>> t_673 = es_671.tail();
-      final String key_674 = e_672.key;
-      final Ordering matched_675 = ordering(LawSpecFast.compare(k_669, key_674));
-      switch (matched_675) {
+      final Entry<String, Long> v_lawspecselection0x0_807 = it_803.head();
+      final LawSpecFast.List<Entry<String, Long>> v_lawspecselection0x1_808 = it_803.tail();
+      final Entry<String, Long> it_809 = v_lawspecselection0x0_807;
+      final String v_match__lawspecselection0x0_0_810 = it_809.key;
+      final Ordering it_811 = ordering(LawSpecFast.compare(k_800, v_match__lawspecselection0x0_0_810));
+      switch (it_811) {
         case Less -> {
-          return LawSpecFast.List.<Entry<String, Long>>cons(new Entry<String, Long>(k_669, v_670), es_671);
+          Entry<String, Long> value_812;
+          final String v_lawspecrecordfield0_813 = k_800;
+          final long v_lawspecrecordfield1_814 = v_801;
+          value_812 = new Entry<String, Long>(v_lawspecrecordfield0_813, v_lawspecrecordfield1_814);
+          return LawSpecFast.List.<Entry<String, Long>>cons(value_812, es_802);
         }
         case Equal -> {
-          return LawSpecFast.List.<Entry<String, Long>>cons(new Entry<String, Long>(k_669, v_670), t_673);
+          Entry<String, Long> value_815;
+          final String v_lawspecrecordfield0_816 = k_800;
+          final long v_lawspecrecordfield1_817 = v_801;
+          value_815 = new Entry<String, Long>(v_lawspecrecordfield0_816, v_lawspecrecordfield1_817);
+          return LawSpecFast.List.<Entry<String, Long>>cons(value_815, v_lawspecselection0x1_808);
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<String, Long>>cons(e_672, lawspecCollectionsKeyValPutItems_5d998955(k_669, v_670, t_673));
+          return LawSpecFast.List.<Entry<String, Long>>cons(v_lawspecselection0x0_807, lawspecCollectionsKeyValPutItems_5d998955(k_800, v_801, v_lawspecselection0x1_808));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -4714,23 +5049,37 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_565019ca06de701f */
-  public static LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> lawspecCollectionsKeyValPutItems_80dc1939(String k_676, LawSpecFast.List<TopicPartition> v_677, LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> es_678) {
-    if (es_678.isEmpty()) {
-      return LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>cons(new Entry<String, LawSpecFast.List<TopicPartition>>(k_676, v_677), LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>nil());
+  public static LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> lawspecCollectionsKeyValPutItems_80dc1939(String k_818, LawSpecFast.List<TopicPartition> v_819, LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> es_820) {
+    final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> it_821 = es_820;
+    if (it_821.isEmpty()) {
+      Entry<String, LawSpecFast.List<TopicPartition>> value_822;
+      final String v_lawspecrecordfield0_823 = k_818;
+      final LawSpecFast.List<TopicPartition> v_lawspecrecordfield1_824 = v_819;
+      value_822 = new Entry<String, LawSpecFast.List<TopicPartition>>(v_lawspecrecordfield0_823, v_lawspecrecordfield1_824);
+      return LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>cons(value_822, LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>nil());
     } else {
-      final Entry<String, LawSpecFast.List<TopicPartition>> e_679 = es_678.head();
-      final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> t_680 = es_678.tail();
-      final String key_681 = e_679.key;
-      final Ordering matched_682 = ordering(LawSpecFast.compare(k_676, key_681));
-      switch (matched_682) {
+      final Entry<String, LawSpecFast.List<TopicPartition>> v_lawspecselection0x0_825 = it_821.head();
+      final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> v_lawspecselection0x1_826 = it_821.tail();
+      final Entry<String, LawSpecFast.List<TopicPartition>> it_827 = v_lawspecselection0x0_825;
+      final String v_match__lawspecselection0x0_0_828 = it_827.key;
+      final Ordering it_829 = ordering(LawSpecFast.compare(k_818, v_match__lawspecselection0x0_0_828));
+      switch (it_829) {
         case Less -> {
-          return LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>cons(new Entry<String, LawSpecFast.List<TopicPartition>>(k_676, v_677), es_678);
+          Entry<String, LawSpecFast.List<TopicPartition>> value_830;
+          final String v_lawspecrecordfield0_831 = k_818;
+          final LawSpecFast.List<TopicPartition> v_lawspecrecordfield1_832 = v_819;
+          value_830 = new Entry<String, LawSpecFast.List<TopicPartition>>(v_lawspecrecordfield0_831, v_lawspecrecordfield1_832);
+          return LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>cons(value_830, es_820);
         }
         case Equal -> {
-          return LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>cons(new Entry<String, LawSpecFast.List<TopicPartition>>(k_676, v_677), t_680);
+          Entry<String, LawSpecFast.List<TopicPartition>> value_833;
+          final String v_lawspecrecordfield0_834 = k_818;
+          final LawSpecFast.List<TopicPartition> v_lawspecrecordfield1_835 = v_819;
+          value_833 = new Entry<String, LawSpecFast.List<TopicPartition>>(v_lawspecrecordfield0_834, v_lawspecrecordfield1_835);
+          return LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>cons(value_833, v_lawspecselection0x1_826);
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>cons(e_679, lawspecCollectionsKeyValPutItems_80dc1939(k_676, v_677, t_680));
+          return LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>cons(v_lawspecselection0x0_825, lawspecCollectionsKeyValPutItems_80dc1939(k_818, v_819, v_lawspecselection0x1_826));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -4738,23 +5087,37 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_854f1183117f06f5 */
-  public static LawSpecFast.List<Entry<GroupPartition, Long>> lawspecCollectionsKeyValPutItems_28cf0caf(GroupPartition k_683, long v_684, LawSpecFast.List<Entry<GroupPartition, Long>> es_685) {
-    if (es_685.isEmpty()) {
-      return LawSpecFast.List.<Entry<GroupPartition, Long>>cons(new Entry<GroupPartition, Long>(k_683, v_684), LawSpecFast.List.<Entry<GroupPartition, Long>>nil());
+  public static LawSpecFast.List<Entry<GroupPartition, Long>> lawspecCollectionsKeyValPutItems_28cf0caf(GroupPartition k_836, long v_837, LawSpecFast.List<Entry<GroupPartition, Long>> es_838) {
+    final LawSpecFast.List<Entry<GroupPartition, Long>> it_839 = es_838;
+    if (it_839.isEmpty()) {
+      Entry<GroupPartition, Long> value_840;
+      final GroupPartition v_lawspecrecordfield0_841 = k_836;
+      final long v_lawspecrecordfield1_842 = v_837;
+      value_840 = new Entry<GroupPartition, Long>(v_lawspecrecordfield0_841, v_lawspecrecordfield1_842);
+      return LawSpecFast.List.<Entry<GroupPartition, Long>>cons(value_840, LawSpecFast.List.<Entry<GroupPartition, Long>>nil());
     } else {
-      final Entry<GroupPartition, Long> e_686 = es_685.head();
-      final LawSpecFast.List<Entry<GroupPartition, Long>> t_687 = es_685.tail();
-      final GroupPartition key_688 = e_686.key;
-      final Ordering matched_689 = ordering(LawSpecFast.compare(k_683, key_688));
-      switch (matched_689) {
+      final Entry<GroupPartition, Long> v_lawspecselection0x0_843 = it_839.head();
+      final LawSpecFast.List<Entry<GroupPartition, Long>> v_lawspecselection0x1_844 = it_839.tail();
+      final Entry<GroupPartition, Long> it_845 = v_lawspecselection0x0_843;
+      final GroupPartition v_match__lawspecselection0x0_0_846 = it_845.key;
+      final Ordering it_847 = ordering(LawSpecFast.compare(k_836, v_match__lawspecselection0x0_0_846));
+      switch (it_847) {
         case Less -> {
-          return LawSpecFast.List.<Entry<GroupPartition, Long>>cons(new Entry<GroupPartition, Long>(k_683, v_684), es_685);
+          Entry<GroupPartition, Long> value_848;
+          final GroupPartition v_lawspecrecordfield0_849 = k_836;
+          final long v_lawspecrecordfield1_850 = v_837;
+          value_848 = new Entry<GroupPartition, Long>(v_lawspecrecordfield0_849, v_lawspecrecordfield1_850);
+          return LawSpecFast.List.<Entry<GroupPartition, Long>>cons(value_848, es_838);
         }
         case Equal -> {
-          return LawSpecFast.List.<Entry<GroupPartition, Long>>cons(new Entry<GroupPartition, Long>(k_683, v_684), t_687);
+          Entry<GroupPartition, Long> value_851;
+          final GroupPartition v_lawspecrecordfield0_852 = k_836;
+          final long v_lawspecrecordfield1_853 = v_837;
+          value_851 = new Entry<GroupPartition, Long>(v_lawspecrecordfield0_852, v_lawspecrecordfield1_853);
+          return LawSpecFast.List.<Entry<GroupPartition, Long>>cons(value_851, v_lawspecselection0x1_844);
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<GroupPartition, Long>>cons(e_686, lawspecCollectionsKeyValPutItems_28cf0caf(k_683, v_684, t_687));
+          return LawSpecFast.List.<Entry<GroupPartition, Long>>cons(v_lawspecselection0x0_843, lawspecCollectionsKeyValPutItems_28cf0caf(k_836, v_837, v_lawspecselection0x1_844));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -4762,23 +5125,37 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_9bdf97a44332ea1 */
-  public static LawSpecFast.List<Entry<String, Group>> lawspecCollectionsKeyValPutItems_883fe52d(String k_690, Group v_691, LawSpecFast.List<Entry<String, Group>> es_692) {
-    if (es_692.isEmpty()) {
-      return LawSpecFast.List.<Entry<String, Group>>cons(new Entry<String, Group>(k_690, v_691), LawSpecFast.List.<Entry<String, Group>>nil());
+  public static LawSpecFast.List<Entry<String, Group>> lawspecCollectionsKeyValPutItems_883fe52d(String k_854, Group v_855, LawSpecFast.List<Entry<String, Group>> es_856) {
+    final LawSpecFast.List<Entry<String, Group>> it_857 = es_856;
+    if (it_857.isEmpty()) {
+      Entry<String, Group> value_858;
+      final String v_lawspecrecordfield0_859 = k_854;
+      final Group v_lawspecrecordfield1_860 = v_855;
+      value_858 = new Entry<String, Group>(v_lawspecrecordfield0_859, v_lawspecrecordfield1_860);
+      return LawSpecFast.List.<Entry<String, Group>>cons(value_858, LawSpecFast.List.<Entry<String, Group>>nil());
     } else {
-      final Entry<String, Group> e_693 = es_692.head();
-      final LawSpecFast.List<Entry<String, Group>> t_694 = es_692.tail();
-      final String key_695 = e_693.key;
-      final Ordering matched_696 = ordering(LawSpecFast.compare(k_690, key_695));
-      switch (matched_696) {
+      final Entry<String, Group> v_lawspecselection0x0_861 = it_857.head();
+      final LawSpecFast.List<Entry<String, Group>> v_lawspecselection0x1_862 = it_857.tail();
+      final Entry<String, Group> it_863 = v_lawspecselection0x0_861;
+      final String v_match__lawspecselection0x0_0_864 = it_863.key;
+      final Ordering it_865 = ordering(LawSpecFast.compare(k_854, v_match__lawspecselection0x0_0_864));
+      switch (it_865) {
         case Less -> {
-          return LawSpecFast.List.<Entry<String, Group>>cons(new Entry<String, Group>(k_690, v_691), es_692);
+          Entry<String, Group> value_866;
+          final String v_lawspecrecordfield0_867 = k_854;
+          final Group v_lawspecrecordfield1_868 = v_855;
+          value_866 = new Entry<String, Group>(v_lawspecrecordfield0_867, v_lawspecrecordfield1_868);
+          return LawSpecFast.List.<Entry<String, Group>>cons(value_866, es_856);
         }
         case Equal -> {
-          return LawSpecFast.List.<Entry<String, Group>>cons(new Entry<String, Group>(k_690, v_691), t_694);
+          Entry<String, Group> value_869;
+          final String v_lawspecrecordfield0_870 = k_854;
+          final Group v_lawspecrecordfield1_871 = v_855;
+          value_869 = new Entry<String, Group>(v_lawspecrecordfield0_870, v_lawspecrecordfield1_871);
+          return LawSpecFast.List.<Entry<String, Group>>cons(value_869, v_lawspecselection0x1_862);
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<String, Group>>cons(e_693, lawspecCollectionsKeyValPutItems_883fe52d(k_690, v_691, t_694));
+          return LawSpecFast.List.<Entry<String, Group>>cons(v_lawspecselection0x0_861, lawspecCollectionsKeyValPutItems_883fe52d(k_854, v_855, v_lawspecselection0x1_862));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -4786,23 +5163,37 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_a229945e8cb36750 */
-  public static LawSpecFast.List<Entry<TopicPartition, Long>> lawspecCollectionsKeyValPutItems_3f0139cf(TopicPartition k_697, long v_698, LawSpecFast.List<Entry<TopicPartition, Long>> es_699) {
-    if (es_699.isEmpty()) {
-      return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(new Entry<TopicPartition, Long>(k_697, v_698), LawSpecFast.List.<Entry<TopicPartition, Long>>nil());
+  public static LawSpecFast.List<Entry<TopicPartition, Long>> lawspecCollectionsKeyValPutItems_3f0139cf(TopicPartition k_872, long v_873, LawSpecFast.List<Entry<TopicPartition, Long>> es_874) {
+    final LawSpecFast.List<Entry<TopicPartition, Long>> it_875 = es_874;
+    if (it_875.isEmpty()) {
+      Entry<TopicPartition, Long> value_876;
+      final TopicPartition v_lawspecrecordfield0_877 = k_872;
+      final long v_lawspecrecordfield1_878 = v_873;
+      value_876 = new Entry<TopicPartition, Long>(v_lawspecrecordfield0_877, v_lawspecrecordfield1_878);
+      return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(value_876, LawSpecFast.List.<Entry<TopicPartition, Long>>nil());
     } else {
-      final Entry<TopicPartition, Long> e_700 = es_699.head();
-      final LawSpecFast.List<Entry<TopicPartition, Long>> t_701 = es_699.tail();
-      final TopicPartition key_702 = e_700.key;
-      final Ordering matched_703 = ordering(LawSpecFast.compare(k_697, key_702));
-      switch (matched_703) {
+      final Entry<TopicPartition, Long> v_lawspecselection0x0_879 = it_875.head();
+      final LawSpecFast.List<Entry<TopicPartition, Long>> v_lawspecselection0x1_880 = it_875.tail();
+      final Entry<TopicPartition, Long> it_881 = v_lawspecselection0x0_879;
+      final TopicPartition v_match__lawspecselection0x0_0_882 = it_881.key;
+      final Ordering it_883 = ordering(LawSpecFast.compare(k_872, v_match__lawspecselection0x0_0_882));
+      switch (it_883) {
         case Less -> {
-          return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(new Entry<TopicPartition, Long>(k_697, v_698), es_699);
+          Entry<TopicPartition, Long> value_884;
+          final TopicPartition v_lawspecrecordfield0_885 = k_872;
+          final long v_lawspecrecordfield1_886 = v_873;
+          value_884 = new Entry<TopicPartition, Long>(v_lawspecrecordfield0_885, v_lawspecrecordfield1_886);
+          return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(value_884, es_874);
         }
         case Equal -> {
-          return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(new Entry<TopicPartition, Long>(k_697, v_698), t_701);
+          Entry<TopicPartition, Long> value_887;
+          final TopicPartition v_lawspecrecordfield0_888 = k_872;
+          final long v_lawspecrecordfield1_889 = v_873;
+          value_887 = new Entry<TopicPartition, Long>(v_lawspecrecordfield0_888, v_lawspecrecordfield1_889);
+          return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(value_887, v_lawspecselection0x1_880);
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(e_700, lawspecCollectionsKeyValPutItems_3f0139cf(k_697, v_698, t_701));
+          return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(v_lawspecselection0x0_879, lawspecCollectionsKeyValPutItems_3f0139cf(k_872, v_873, v_lawspecselection0x1_880));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -4810,23 +5201,37 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214c4 */
-  public static LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> lawspecCollectionsKeyValPutItems_c4168a80(String k_704, LawSpecFast.List<String> v_705, LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> es_706) {
-    if (es_706.isEmpty()) {
-      return LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>cons(new Entry<String, LawSpecFast.List<String>>(k_704, v_705), LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>nil());
+  public static LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> lawspecCollectionsKeyValPutItems_c4168a80(String k_890, LawSpecFast.List<String> v_891, LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> es_892) {
+    final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> it_893 = es_892;
+    if (it_893.isEmpty()) {
+      Entry<String, LawSpecFast.List<String>> value_894;
+      final String v_lawspecrecordfield0_895 = k_890;
+      final LawSpecFast.List<String> v_lawspecrecordfield1_896 = v_891;
+      value_894 = new Entry<String, LawSpecFast.List<String>>(v_lawspecrecordfield0_895, v_lawspecrecordfield1_896);
+      return LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>cons(value_894, LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>nil());
     } else {
-      final Entry<String, LawSpecFast.List<String>> e_707 = es_706.head();
-      final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> t_708 = es_706.tail();
-      final String key_709 = e_707.key;
-      final Ordering matched_710 = ordering(LawSpecFast.compare(k_704, key_709));
-      switch (matched_710) {
+      final Entry<String, LawSpecFast.List<String>> v_lawspecselection0x0_897 = it_893.head();
+      final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> v_lawspecselection0x1_898 = it_893.tail();
+      final Entry<String, LawSpecFast.List<String>> it_899 = v_lawspecselection0x0_897;
+      final String v_match__lawspecselection0x0_0_900 = it_899.key;
+      final Ordering it_901 = ordering(LawSpecFast.compare(k_890, v_match__lawspecselection0x0_0_900));
+      switch (it_901) {
         case Less -> {
-          return LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>cons(new Entry<String, LawSpecFast.List<String>>(k_704, v_705), es_706);
+          Entry<String, LawSpecFast.List<String>> value_902;
+          final String v_lawspecrecordfield0_903 = k_890;
+          final LawSpecFast.List<String> v_lawspecrecordfield1_904 = v_891;
+          value_902 = new Entry<String, LawSpecFast.List<String>>(v_lawspecrecordfield0_903, v_lawspecrecordfield1_904);
+          return LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>cons(value_902, es_892);
         }
         case Equal -> {
-          return LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>cons(new Entry<String, LawSpecFast.List<String>>(k_704, v_705), t_708);
+          Entry<String, LawSpecFast.List<String>> value_905;
+          final String v_lawspecrecordfield0_906 = k_890;
+          final LawSpecFast.List<String> v_lawspecrecordfield1_907 = v_891;
+          value_905 = new Entry<String, LawSpecFast.List<String>>(v_lawspecrecordfield0_906, v_lawspecrecordfield1_907);
+          return LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>cons(value_905, v_lawspecselection0x1_898);
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>cons(e_707, lawspecCollectionsKeyValPutItems_c4168a80(k_704, v_705, t_708));
+          return LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>cons(v_lawspecselection0x0_897, lawspecCollectionsKeyValPutItems_c4168a80(k_890, v_891, v_lawspecselection0x1_898));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -4834,23 +5239,37 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_b8b82d61b25bb98d */
-  public static LawSpecFast.List<Entry<TopicPartition, Long>> lawspecCollectionsKeyValPutItems_4266176b(TopicPartition k_711, long v_712, LawSpecFast.List<Entry<TopicPartition, Long>> es_713) {
-    if (es_713.isEmpty()) {
-      return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(new Entry<TopicPartition, Long>(k_711, v_712), LawSpecFast.List.<Entry<TopicPartition, Long>>nil());
+  public static LawSpecFast.List<Entry<TopicPartition, Long>> lawspecCollectionsKeyValPutItems_4266176b(TopicPartition k_908, long v_909, LawSpecFast.List<Entry<TopicPartition, Long>> es_910) {
+    final LawSpecFast.List<Entry<TopicPartition, Long>> it_911 = es_910;
+    if (it_911.isEmpty()) {
+      Entry<TopicPartition, Long> value_912;
+      final TopicPartition v_lawspecrecordfield0_913 = k_908;
+      final long v_lawspecrecordfield1_914 = v_909;
+      value_912 = new Entry<TopicPartition, Long>(v_lawspecrecordfield0_913, v_lawspecrecordfield1_914);
+      return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(value_912, LawSpecFast.List.<Entry<TopicPartition, Long>>nil());
     } else {
-      final Entry<TopicPartition, Long> e_714 = es_713.head();
-      final LawSpecFast.List<Entry<TopicPartition, Long>> t_715 = es_713.tail();
-      final TopicPartition key_716 = e_714.key;
-      final Ordering matched_717 = ordering(LawSpecFast.compare(k_711, key_716));
-      switch (matched_717) {
+      final Entry<TopicPartition, Long> v_lawspecselection0x0_915 = it_911.head();
+      final LawSpecFast.List<Entry<TopicPartition, Long>> v_lawspecselection0x1_916 = it_911.tail();
+      final Entry<TopicPartition, Long> it_917 = v_lawspecselection0x0_915;
+      final TopicPartition v_match__lawspecselection0x0_0_918 = it_917.key;
+      final Ordering it_919 = ordering(LawSpecFast.compare(k_908, v_match__lawspecselection0x0_0_918));
+      switch (it_919) {
         case Less -> {
-          return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(new Entry<TopicPartition, Long>(k_711, v_712), es_713);
+          Entry<TopicPartition, Long> value_920;
+          final TopicPartition v_lawspecrecordfield0_921 = k_908;
+          final long v_lawspecrecordfield1_922 = v_909;
+          value_920 = new Entry<TopicPartition, Long>(v_lawspecrecordfield0_921, v_lawspecrecordfield1_922);
+          return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(value_920, es_910);
         }
         case Equal -> {
-          return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(new Entry<TopicPartition, Long>(k_711, v_712), t_715);
+          Entry<TopicPartition, Long> value_923;
+          final TopicPartition v_lawspecrecordfield0_924 = k_908;
+          final long v_lawspecrecordfield1_925 = v_909;
+          value_923 = new Entry<TopicPartition, Long>(v_lawspecrecordfield0_924, v_lawspecrecordfield1_925);
+          return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(value_923, v_lawspecselection0x1_916);
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(e_714, lawspecCollectionsKeyValPutItems_4266176b(k_711, v_712, t_715));
+          return LawSpecFast.List.<Entry<TopicPartition, Long>>cons(v_lawspecselection0x0_915, lawspecCollectionsKeyValPutItems_4266176b(k_908, v_909, v_lawspecselection0x1_916));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -4858,23 +5277,37 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88cae9b */
-  public static LawSpecFast.List<Entry<TopicPartition, PartitionLog>> lawspecCollectionsKeyValPutItems_523d104d(TopicPartition k_718, PartitionLog v_719, LawSpecFast.List<Entry<TopicPartition, PartitionLog>> es_720) {
-    if (es_720.isEmpty()) {
-      return LawSpecFast.List.<Entry<TopicPartition, PartitionLog>>cons(new Entry<TopicPartition, PartitionLog>(k_718, v_719), LawSpecFast.List.<Entry<TopicPartition, PartitionLog>>nil());
+  public static LawSpecFast.List<Entry<TopicPartition, PartitionLog>> lawspecCollectionsKeyValPutItems_523d104d(TopicPartition k_926, PartitionLog v_927, LawSpecFast.List<Entry<TopicPartition, PartitionLog>> es_928) {
+    final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> it_929 = es_928;
+    if (it_929.isEmpty()) {
+      Entry<TopicPartition, PartitionLog> value_930;
+      final TopicPartition v_lawspecrecordfield0_931 = k_926;
+      final PartitionLog v_lawspecrecordfield1_932 = v_927;
+      value_930 = new Entry<TopicPartition, PartitionLog>(v_lawspecrecordfield0_931, v_lawspecrecordfield1_932);
+      return LawSpecFast.List.<Entry<TopicPartition, PartitionLog>>cons(value_930, LawSpecFast.List.<Entry<TopicPartition, PartitionLog>>nil());
     } else {
-      final Entry<TopicPartition, PartitionLog> e_721 = es_720.head();
-      final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> t_722 = es_720.tail();
-      final TopicPartition key_723 = e_721.key;
-      final Ordering matched_724 = ordering(LawSpecFast.compare(k_718, key_723));
-      switch (matched_724) {
+      final Entry<TopicPartition, PartitionLog> v_lawspecselection0x0_933 = it_929.head();
+      final LawSpecFast.List<Entry<TopicPartition, PartitionLog>> v_lawspecselection0x1_934 = it_929.tail();
+      final Entry<TopicPartition, PartitionLog> it_935 = v_lawspecselection0x0_933;
+      final TopicPartition v_match__lawspecselection0x0_0_936 = it_935.key;
+      final Ordering it_937 = ordering(LawSpecFast.compare(k_926, v_match__lawspecselection0x0_0_936));
+      switch (it_937) {
         case Less -> {
-          return LawSpecFast.List.<Entry<TopicPartition, PartitionLog>>cons(new Entry<TopicPartition, PartitionLog>(k_718, v_719), es_720);
+          Entry<TopicPartition, PartitionLog> value_938;
+          final TopicPartition v_lawspecrecordfield0_939 = k_926;
+          final PartitionLog v_lawspecrecordfield1_940 = v_927;
+          value_938 = new Entry<TopicPartition, PartitionLog>(v_lawspecrecordfield0_939, v_lawspecrecordfield1_940);
+          return LawSpecFast.List.<Entry<TopicPartition, PartitionLog>>cons(value_938, es_928);
         }
         case Equal -> {
-          return LawSpecFast.List.<Entry<TopicPartition, PartitionLog>>cons(new Entry<TopicPartition, PartitionLog>(k_718, v_719), t_722);
+          Entry<TopicPartition, PartitionLog> value_941;
+          final TopicPartition v_lawspecrecordfield0_942 = k_926;
+          final PartitionLog v_lawspecrecordfield1_943 = v_927;
+          value_941 = new Entry<TopicPartition, PartitionLog>(v_lawspecrecordfield0_942, v_lawspecrecordfield1_943);
+          return LawSpecFast.List.<Entry<TopicPartition, PartitionLog>>cons(value_941, v_lawspecselection0x1_934);
         }
         case Greater -> {
-          return LawSpecFast.List.<Entry<TopicPartition, PartitionLog>>cons(e_721, lawspecCollectionsKeyValPutItems_523d104d(k_718, v_719, t_722));
+          return LawSpecFast.List.<Entry<TopicPartition, PartitionLog>>cons(v_lawspecselection0x0_933, lawspecCollectionsKeyValPutItems_523d104d(k_926, v_927, v_lawspecselection0x1_934));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -4882,150 +5315,156 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_1e5631cf1010f058 */
-  public static LawSpecFast.Map<TopicPartition, Long> lawspecCollectionsKeyValPut_cabf14cc(TopicPartition k_725, long v_726, LawSpecFast.Map<TopicPartition, Long> m_727) {
-    return m_727.put(k_725, v_726);
+  public static LawSpecFast.Map<TopicPartition, Long> lawspecCollectionsKeyValPut_cabf14cc(TopicPartition k_944, long v_945, LawSpecFast.Map<TopicPartition, Long> m_946) {
+    return m_946.put(k_944, v_945);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_64ef6963a054fec9 */
-  public static LawSpecFast.Map<String, Group> lawspecCollectionsKeyValPut_ce8624cf(String k_728, Group v_729, LawSpecFast.Map<String, Group> m_730) {
-    return m_730.put(k_728, v_729);
+  public static LawSpecFast.Map<String, Group> lawspecCollectionsKeyValPut_ce8624cf(String k_947, Group v_948, LawSpecFast.Map<String, Group> m_949) {
+    return m_949.put(k_947, v_948);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_6a32d437b06cf1fb */
-  public static LawSpecFast.Map<TopicPartition, PartitionLog> lawspecCollectionsKeyValPut_5ab157dd(TopicPartition k_731, PartitionLog v_732, LawSpecFast.Map<TopicPartition, PartitionLog> m_733) {
-    return m_733.put(k_731, v_732);
+  public static LawSpecFast.Map<TopicPartition, PartitionLog> lawspecCollectionsKeyValPut_5ab157dd(TopicPartition k_950, PartitionLog v_951, LawSpecFast.Map<TopicPartition, PartitionLog> m_952) {
+    return m_952.put(k_950, v_951);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_84321765782615b9 */
-  public static LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecCollectionsKeyValPut_c59d14e0(long k_734, LawSpecFast.List<BatchMeta> v_735, LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> m_736) {
-    return m_736.put(k_734, v_735);
+  public static LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecCollectionsKeyValPut_c59d14e0(long k_953, LawSpecFast.List<BatchMeta> v_954, LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> m_955) {
+    return m_955.put(k_953, v_954);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_9e5f815c293ac9e1 */
-  public static LawSpecFast.Map<TopicPartition, Long> lawspecCollectionsKeyValPut_01a600ed(TopicPartition k_737, long v_738, LawSpecFast.Map<TopicPartition, Long> m_739) {
-    return m_739.put(k_737, v_738);
+  public static LawSpecFast.Map<TopicPartition, Long> lawspecCollectionsKeyValPut_01a600ed(TopicPartition k_956, long v_957, LawSpecFast.Map<TopicPartition, Long> m_958) {
+    return m_958.put(k_956, v_957);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_a0581d6dd36c2e58 */
-  public static LawSpecFast.Map<String, Long> lawspecCollectionsKeyValPut_3034b895(String k_740, long v_741, LawSpecFast.Map<String, Long> m_742) {
-    return m_742.put(k_740, v_741);
+  public static LawSpecFast.Map<String, Long> lawspecCollectionsKeyValPut_3034b895(String k_959, long v_960, LawSpecFast.Map<String, Long> m_961) {
+    return m_961.put(k_959, v_960);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_a2a3515700f0a6f */
-  public static LawSpecFast.Map<String, Long> lawspecCollectionsKeyValPut_a8f49e3e(String k_743, long v_744, LawSpecFast.Map<String, Long> m_745) {
-    return m_745.put(k_743, v_744);
+  public static LawSpecFast.Map<String, Long> lawspecCollectionsKeyValPut_a8f49e3e(String k_962, long v_963, LawSpecFast.Map<String, Long> m_964) {
+    return m_964.put(k_962, v_963);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_cab6769a52b0163d */
-  public static LawSpecFast.Map<GroupPartition, Long> lawspecCollectionsKeyValPut_9fc3570a(GroupPartition k_746, long v_747, LawSpecFast.Map<GroupPartition, Long> m_748) {
-    return m_748.put(k_746, v_747);
+  public static LawSpecFast.Map<GroupPartition, Long> lawspecCollectionsKeyValPut_9fc3570a(GroupPartition k_965, long v_966, LawSpecFast.Map<GroupPartition, Long> m_967) {
+    return m_967.put(k_965, v_966);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d00f0719b7ec97ee */
-  public static LawSpecFast.Map<Long, ProducerEntry> lawspecCollectionsKeyValPut_87e622e8(long k_749, ProducerEntry v_750, LawSpecFast.Map<Long, ProducerEntry> m_751) {
-    return m_751.put(k_749, v_750);
+  public static LawSpecFast.Map<Long, ProducerEntry> lawspecCollectionsKeyValPut_87e622e8(long k_968, ProducerEntry v_969, LawSpecFast.Map<Long, ProducerEntry> m_970) {
+    return m_970.put(k_968, v_969);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d378e301aa895004 */
-  public static LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecCollectionsKeyValPut_3b439cbe(String k_752, LawSpecFast.List<String> v_753, LawSpecFast.Map<String, LawSpecFast.List<String>> m_754) {
-    return m_754.put(k_752, v_753);
+  public static LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecCollectionsKeyValPut_3b439cbe(String k_971, LawSpecFast.List<String> v_972, LawSpecFast.Map<String, LawSpecFast.List<String>> m_973) {
+    return m_973.put(k_971, v_972);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d4f4392b8878a23c */
-  public static LawSpecFast.Map<Long, Long> lawspecCollectionsKeyValPut_5cd34b74(long k_755, long v_756, LawSpecFast.Map<Long, Long> m_757) {
-    return m_757.put(k_755, v_756);
+  public static LawSpecFast.Map<Long, Long> lawspecCollectionsKeyValPut_5cd34b74(long k_974, long v_975, LawSpecFast.Map<Long, Long> m_976) {
+    return m_976.put(k_974, v_975);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_ee3ccd7601ddf107 */
-  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecCollectionsKeyValPut_efc6b866(String k_758, LawSpecFast.List<TopicPartition> v_759, LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> m_760) {
-    return m_760.put(k_758, v_759);
+  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecCollectionsKeyValPut_efc6b866(String k_977, LawSpecFast.List<TopicPartition> v_978, LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> m_979) {
+    return m_979.put(k_977, v_978);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae */
-  public static LawSpecFast.List<Long> lawspecCollectionsKeyValValuesItems_40ef8eee(LawSpecFast.List<Entry<Long, Long>> es_761) {
-    if (es_761.isEmpty()) {
+  public static LawSpecFast.List<Long> lawspecCollectionsKeyValValuesItems_40ef8eee(LawSpecFast.List<Entry<Long, Long>> es_980) {
+    final LawSpecFast.List<Entry<Long, Long>> it_981 = es_980;
+    if (it_981.isEmpty()) {
       return LawSpecFast.List.<Long>nil();
     } else {
-      final Entry<Long, Long> e_762 = es_761.head();
-      final LawSpecFast.List<Entry<Long, Long>> t_763 = es_761.tail();
-      final long value_764 = e_762.value;
-      return LawSpecFast.List.<Long>cons(value_764, lawspecCollectionsKeyValValuesItems_40ef8eee(t_763));
+      final Entry<Long, Long> v_lawspecselection0x0_982 = it_981.head();
+      final LawSpecFast.List<Entry<Long, Long>> v_lawspecselection0x1_983 = it_981.tail();
+      final Entry<Long, Long> it_984 = v_lawspecselection0x0_982;
+      final long v_match__lawspecselection0x1_0_985 = it_984.value;
+      return LawSpecFast.List.<Long>cons(v_match__lawspecselection0x1_0_985, lawspecCollectionsKeyValValuesItems_40ef8eee(v_lawspecselection0x1_983));
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsKeyValValues_152cb3cfa5a69daa */
-  public static LawSpecFast.List<Long> lawspecCollectionsKeyValValues_33bc036c(LawSpecFast.Map<Long, Long> m_765) {
-    return m_765.toList((k, v) -> v);
+  public static LawSpecFast.List<Long> lawspecCollectionsKeyValValues_33bc036c(LawSpecFast.Map<Long, Long> m_986) {
+    return m_986.toList((k, v) -> v);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetFromItems_1d74c254059339d3 */
-  public static LawSpecFast.List<Long> lawspecCollectionsSetFromItems_8d83ec32(LawSpecFast.List<Long> xs_766, LawSpecFast.List<Long> acc_767) {
+  public static LawSpecFast.List<Long> lawspecCollectionsSetFromItems_8d83ec32(LawSpecFast.List<Long> xs_987, LawSpecFast.List<Long> acc_988) {
     while (true) {
-      if (xs_766.isEmpty()) {
-        return acc_767;
+      final LawSpecFast.List<Long> it_989 = xs_987;
+      if (it_989.isEmpty()) {
+        return acc_988;
       } else {
-        final long h_768 = xs_766.head();
-        final LawSpecFast.List<Long> t_769 = xs_766.tail();
-        final LawSpecFast.List<Long> next_770 = t_769;
-        final LawSpecFast.List<Long> next_771 = lawspecCollectionsSetInsertItems_fbbb1c47(h_768, acc_767);
-        xs_766 = next_770;
-        acc_767 = next_771;
+        final long v_lawspecselection0x0_990 = it_989.head();
+        final LawSpecFast.List<Long> v_lawspecselection0x1_991 = it_989.tail();
+        final LawSpecFast.List<Long> next_992 = v_lawspecselection0x1_991;
+        final LawSpecFast.List<Long> next_993 = lawspecCollectionsSetInsertItems_fbbb1c47(v_lawspecselection0x0_990, acc_988);
+        xs_987 = next_992;
+        acc_988 = next_993;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetFromItems_25b2070f526ff089 */
-  public static LawSpecFast.List<String> lawspecCollectionsSetFromItems_b46ce3bb(LawSpecFast.List<String> xs_772, LawSpecFast.List<String> acc_773) {
+  public static LawSpecFast.List<String> lawspecCollectionsSetFromItems_b46ce3bb(LawSpecFast.List<String> xs_994, LawSpecFast.List<String> acc_995) {
     while (true) {
-      if (xs_772.isEmpty()) {
-        return acc_773;
+      final LawSpecFast.List<String> it_996 = xs_994;
+      if (it_996.isEmpty()) {
+        return acc_995;
       } else {
-        final String h_774 = xs_772.head();
-        final LawSpecFast.List<String> t_775 = xs_772.tail();
-        final LawSpecFast.List<String> next_776 = t_775;
-        final LawSpecFast.List<String> next_777 = lawspecCollectionsSetInsertItems_fd8b28ec(h_774, acc_773);
-        xs_772 = next_776;
-        acc_773 = next_777;
+        final String v_lawspecselection0x0_997 = it_996.head();
+        final LawSpecFast.List<String> v_lawspecselection0x1_998 = it_996.tail();
+        final LawSpecFast.List<String> next_999 = v_lawspecselection0x1_998;
+        final LawSpecFast.List<String> next_1000 = lawspecCollectionsSetInsertItems_fd8b28ec(v_lawspecselection0x0_997, acc_995);
+        xs_994 = next_999;
+        acc_995 = next_1000;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetFromItems_ffc9b33e7d19d87c */
-  public static LawSpecFast.List<Long> lawspecCollectionsSetFromItems_357dd072(LawSpecFast.List<Long> xs_778, LawSpecFast.List<Long> acc_779) {
+  public static LawSpecFast.List<Long> lawspecCollectionsSetFromItems_357dd072(LawSpecFast.List<Long> xs_1001, LawSpecFast.List<Long> acc_1002) {
     while (true) {
-      if (xs_778.isEmpty()) {
-        return acc_779;
+      final LawSpecFast.List<Long> it_1003 = xs_1001;
+      if (it_1003.isEmpty()) {
+        return acc_1002;
       } else {
-        final long h_780 = xs_778.head();
-        final LawSpecFast.List<Long> t_781 = xs_778.tail();
-        final LawSpecFast.List<Long> next_782 = t_781;
-        final LawSpecFast.List<Long> next_783 = lawspecCollectionsSetInsertItems_708d991b(h_780, acc_779);
-        xs_778 = next_782;
-        acc_779 = next_783;
+        final long v_lawspecselection0x0_1004 = it_1003.head();
+        final LawSpecFast.List<Long> v_lawspecselection0x1_1005 = it_1003.tail();
+        final LawSpecFast.List<Long> next_1006 = v_lawspecselection0x1_1005;
+        final LawSpecFast.List<Long> next_1007 = lawspecCollectionsSetInsertItems_708d991b(v_lawspecselection0x0_1004, acc_1002);
+        xs_1001 = next_1006;
+        acc_1002 = next_1007;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_a3dc35e775ac9977 */
-  public static LawSpecFast.List<String> lawspecCollectionsSetInsertItems_fd8b28ec(String x_784, LawSpecFast.List<String> xs_785) {
-    if (xs_785.isEmpty()) {
-      return LawSpecFast.List.<String>cons(x_784, LawSpecFast.List.<String>nil());
+  public static LawSpecFast.List<String> lawspecCollectionsSetInsertItems_fd8b28ec(String x_1008, LawSpecFast.List<String> xs_1009) {
+    final LawSpecFast.List<String> it_1010 = xs_1009;
+    if (it_1010.isEmpty()) {
+      return LawSpecFast.List.<String>cons(x_1008, LawSpecFast.List.<String>nil());
     } else {
-      final String h_786 = xs_785.head();
-      final LawSpecFast.List<String> t_787 = xs_785.tail();
-      final Ordering matched_788 = ordering(LawSpecFast.compare(x_784, h_786));
-      switch (matched_788) {
+      final String v_lawspecselection0x0_1011 = it_1010.head();
+      final LawSpecFast.List<String> v_lawspecselection0x1_1012 = it_1010.tail();
+      final Ordering it_1013 = ordering(LawSpecFast.compare(x_1008, v_lawspecselection0x0_1011));
+      switch (it_1013) {
         case Less -> {
-          return LawSpecFast.List.<String>cons(x_784, xs_785);
+          return LawSpecFast.List.<String>cons(x_1008, xs_1009);
         }
         case Equal -> {
-          return xs_785;
+          return xs_1009;
         }
         case Greater -> {
-          return LawSpecFast.List.<String>cons(h_786, lawspecCollectionsSetInsertItems_fd8b28ec(x_784, t_787));
+          return LawSpecFast.List.<String>cons(v_lawspecselection0x0_1011, lawspecCollectionsSetInsertItems_fd8b28ec(x_1008, v_lawspecselection0x1_1012));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -5033,22 +5472,23 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_f40de20825416c4f */
-  public static LawSpecFast.List<Long> lawspecCollectionsSetInsertItems_fbbb1c47(long x_789, LawSpecFast.List<Long> xs_790) {
-    if (xs_790.isEmpty()) {
-      return LawSpecFast.List.<Long>cons(x_789, LawSpecFast.List.<Long>nil());
+  public static LawSpecFast.List<Long> lawspecCollectionsSetInsertItems_fbbb1c47(long x_1014, LawSpecFast.List<Long> xs_1015) {
+    final LawSpecFast.List<Long> it_1016 = xs_1015;
+    if (it_1016.isEmpty()) {
+      return LawSpecFast.List.<Long>cons(x_1014, LawSpecFast.List.<Long>nil());
     } else {
-      final long h_791 = xs_790.head();
-      final LawSpecFast.List<Long> t_792 = xs_790.tail();
-      final Ordering matched_793 = ordering(LawSpecFast.compare(x_789, h_791));
-      switch (matched_793) {
+      final long v_lawspecselection0x0_1017 = it_1016.head();
+      final LawSpecFast.List<Long> v_lawspecselection0x1_1018 = it_1016.tail();
+      final Ordering it_1019 = ordering(LawSpecFast.compare(x_1014, v_lawspecselection0x0_1017));
+      switch (it_1019) {
         case Less -> {
-          return LawSpecFast.List.<Long>cons(x_789, xs_790);
+          return LawSpecFast.List.<Long>cons(x_1014, xs_1015);
         }
         case Equal -> {
-          return xs_790;
+          return xs_1015;
         }
         case Greater -> {
-          return LawSpecFast.List.<Long>cons(h_791, lawspecCollectionsSetInsertItems_fbbb1c47(x_789, t_792));
+          return LawSpecFast.List.<Long>cons(v_lawspecselection0x0_1017, lawspecCollectionsSetInsertItems_fbbb1c47(x_1014, v_lawspecselection0x1_1018));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -5056,22 +5496,23 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_fee347ca5af6d966 */
-  public static LawSpecFast.List<Long> lawspecCollectionsSetInsertItems_708d991b(long x_794, LawSpecFast.List<Long> xs_795) {
-    if (xs_795.isEmpty()) {
-      return LawSpecFast.List.<Long>cons(x_794, LawSpecFast.List.<Long>nil());
+  public static LawSpecFast.List<Long> lawspecCollectionsSetInsertItems_708d991b(long x_1020, LawSpecFast.List<Long> xs_1021) {
+    final LawSpecFast.List<Long> it_1022 = xs_1021;
+    if (it_1022.isEmpty()) {
+      return LawSpecFast.List.<Long>cons(x_1020, LawSpecFast.List.<Long>nil());
     } else {
-      final long h_796 = xs_795.head();
-      final LawSpecFast.List<Long> t_797 = xs_795.tail();
-      final Ordering matched_798 = ordering(LawSpecFast.compare(x_794, h_796));
-      switch (matched_798) {
+      final long v_lawspecselection0x0_1023 = it_1022.head();
+      final LawSpecFast.List<Long> v_lawspecselection0x1_1024 = it_1022.tail();
+      final Ordering it_1025 = ordering(LawSpecFast.compare(x_1020, v_lawspecselection0x0_1023));
+      switch (it_1025) {
         case Less -> {
-          return LawSpecFast.List.<Long>cons(x_794, xs_795);
+          return LawSpecFast.List.<Long>cons(x_1020, xs_1021);
         }
         case Equal -> {
-          return xs_795;
+          return xs_1021;
         }
         case Greater -> {
-          return LawSpecFast.List.<Long>cons(h_796, lawspecCollectionsSetInsertItems_708d991b(x_794, t_797));
+          return LawSpecFast.List.<Long>cons(v_lawspecselection0x0_1023, lawspecCollectionsSetInsertItems_708d991b(x_1020, v_lawspecselection0x1_1024));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -5079,15 +5520,16 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetMemberItems_1cf181337c0427e8 */
-  public static boolean lawspecCollectionsSetMemberItems_1ed23db8(long x_799, LawSpecFast.List<Long> xs_800) {
+  public static boolean lawspecCollectionsSetMemberItems_1ed23db8(long x_1026, LawSpecFast.List<Long> xs_1027) {
     while (true) {
-      if (xs_800.isEmpty()) {
+      final LawSpecFast.List<Long> it_1028 = xs_1027;
+      if (it_1028.isEmpty()) {
         return false;
       } else {
-        final long h_801 = xs_800.head();
-        final LawSpecFast.List<Long> t_802 = xs_800.tail();
-        final Ordering matched_803 = ordering(LawSpecFast.compare(x_799, h_801));
-        switch (matched_803) {
+        final long v_lawspecselection0x0_1029 = it_1028.head();
+        final LawSpecFast.List<Long> v_lawspecselection0x1_1030 = it_1028.tail();
+        final Ordering it_1031 = ordering(LawSpecFast.compare(x_1026, v_lawspecselection0x0_1029));
+        switch (it_1031) {
           case Less -> {
             return false;
           }
@@ -5095,8 +5537,8 @@ private static LawSpecFast.Codec<BrokerState> codec() {
             return true;
           }
           case Greater -> {
-            final LawSpecFast.List<Long> next_804 = t_802;
-            xs_800 = next_804;
+            final LawSpecFast.List<Long> next_1032 = v_lawspecselection0x1_1030;
+            xs_1027 = next_1032;
             continue;
           }
           default -> throw LawSpecFast.unreachable();
@@ -5106,42 +5548,43 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetMember_ad24e518e9752b84 */
-  public static boolean lawspecCollectionsSetMember_b54a7773(long x_805, LawSpecFast.Set<Long> s_806) {
-    return s_806.contains(x_805);
+  public static boolean lawspecCollectionsSetMember_b54a7773(long x_1033, LawSpecFast.Set<Long> s_1034) {
+    return s_1034.contains(x_1033);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetOf_83f32212ffd7f646 */
-  public static LawSpecFast.Set<String> lawspecCollectionsSetOf_381c9692(LawSpecFast.List<String> xs_807) {
-    return LawSpecFast.Set.of(xs_807);
+  public static LawSpecFast.Set<String> lawspecCollectionsSetOf_381c9692(LawSpecFast.List<String> xs_1035) {
+    return LawSpecFast.Set.of(xs_1035);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetOf_9446af497e0eb47e */
-  public static LawSpecFast.Set<Long> lawspecCollectionsSetOf_04775bf4(LawSpecFast.List<Long> xs_808) {
-    return LawSpecFast.Set.of(xs_808);
+  public static LawSpecFast.Set<Long> lawspecCollectionsSetOf_04775bf4(LawSpecFast.List<Long> xs_1036) {
+    return LawSpecFast.Set.of(xs_1036);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetOf_b2e15487e0114c0 */
-  public static LawSpecFast.Set<Long> lawspecCollectionsSetOf_9f2ef842(LawSpecFast.List<Long> xs_809) {
-    return LawSpecFast.Set.of(xs_809);
+  public static LawSpecFast.Set<Long> lawspecCollectionsSetOf_9f2ef842(LawSpecFast.List<Long> xs_1037) {
+    return LawSpecFast.Set.of(xs_1037);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetRemoveItems_a3dc35e775ac9977 */
-  public static LawSpecFast.List<String> lawspecCollectionsSetRemoveItems_64279e04(String x_810, LawSpecFast.List<String> xs_811) {
-    if (xs_811.isEmpty()) {
-      return xs_811;
+  public static LawSpecFast.List<String> lawspecCollectionsSetRemoveItems_64279e04(String x_1038, LawSpecFast.List<String> xs_1039) {
+    final LawSpecFast.List<String> it_1040 = xs_1039;
+    if (it_1040.isEmpty()) {
+      return xs_1039;
     } else {
-      final String h_812 = xs_811.head();
-      final LawSpecFast.List<String> t_813 = xs_811.tail();
-      final Ordering matched_814 = ordering(LawSpecFast.compare(x_810, h_812));
-      switch (matched_814) {
+      final String v_lawspecselection0x0_1041 = it_1040.head();
+      final LawSpecFast.List<String> v_lawspecselection0x1_1042 = it_1040.tail();
+      final Ordering it_1043 = ordering(LawSpecFast.compare(x_1038, v_lawspecselection0x0_1041));
+      switch (it_1043) {
         case Less -> {
-          return xs_811;
+          return xs_1039;
         }
         case Equal -> {
-          return t_813;
+          return v_lawspecselection0x1_1042;
         }
         case Greater -> {
-          return LawSpecFast.List.<String>cons(h_812, lawspecCollectionsSetRemoveItems_64279e04(x_810, t_813));
+          return LawSpecFast.List.<String>cons(v_lawspecselection0x0_1041, lawspecCollectionsSetRemoveItems_64279e04(x_1038, v_lawspecselection0x1_1042));
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -5149,217 +5592,256 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetRemove_1fda0e8e73969c67 */
-  public static LawSpecFast.Set<String> lawspecCollectionsSetRemove_7ffea813(String x_815, LawSpecFast.Set<String> s_816) {
-    return s_816.remove(x_815);
+  public static LawSpecFast.Set<String> lawspecCollectionsSetRemove_7ffea813(String x_1044, LawSpecFast.Set<String> s_1045) {
+    return s_1045.remove(x_1044);
   }
 
   /** lawtwin.kafka::lawspec_lawspecCollectionsSetUnion_f2139edefc699bed */
-  public static LawSpecFast.Set<String> lawspecCollectionsSetUnion_604ff278(LawSpecFast.Set<String> s_817, LawSpecFast.Set<String> t_818) {
-    return s_817.union(t_818);
+  public static LawSpecFast.Set<String> lawspecCollectionsSetUnion_604ff278(LawSpecFast.Set<String> s_1046, LawSpecFast.Set<String> t_1047) {
+    return s_1046.union(t_1047);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelAddPartitionsToTxn */
-  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelAddPartitionsToTxn_8d367d82(String txid_819, long pid_820, long epoch_821, LawSpecFast.List<TopicPartition> tps_822, BrokerState b_823) {
-    final ProducerEntry entry_824 = lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_819, pid_820, epoch_821, b_823);
-    if (!(lawtwinKafkaModelAllKnown_12a378f8(tps_822, b_823))) {
+  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelAddPartitionsToTxn_8d367d82(String txid_1048, long pid_1049, long epoch_1050, LawSpecFast.List<TopicPartition> tps_1051, BrokerState b_1052) {
+    final ProducerEntry entry_1053 = lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_1048, pid_1049, epoch_1050, b_1052);
+    if (!(lawtwinKafkaModelAllKnown_12a378f8(tps_1051, b_1052))) {
       throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.UnknownTopicOrPartition));
     } else {
-      TxnState value_825;
-      TxnState value_826;
-      final TxnState lawspecfieldtxn_827 = entry_824.txn;
-      value_826 = lawspecfieldtxn_827;
-      final TxnState matched_828 = value_826;
-      switch (matched_828.tag) {
+      TxnState value_1054;
+      TxnState value_1055;
+      final TxnState lawspecfieldtxn_1056 = entry_1053.txn;
+      value_1055 = lawspecfieldtxn_1056;
+      final TxnState it_1057 = value_1055;
+      switch (it_1057.tag) {
         case 0 -> {
-          value_825 = new TxnState.Ongoing(lawtwinKafkaModelUnionPartitions_c791d224(tps_822, LawSpecFast.List.<TopicPartition>nil()), LawSpecFast.List.<PendingOffset>nil());
+          Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee value_1059;
+          final LawSpecFast.List<TopicPartition> txnpartitions_1060 = lawtwinKafkaModelUnionPartitions_c791d224(tps_1051, LawSpecFast.List.<TopicPartition>nil());
+          final LawSpecFast.List<PendingOffset> txnoffsets_1061 = LawSpecFast.List.<PendingOffset>nil();
+          value_1059 = new Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(txnoffsets_1061, txnpartitions_1060);
+          value_1054 = new TxnState.Ongoing(value_1059);
         }
         case 1 -> {
-          final TxnState.Ongoing case_830 = (TxnState.Ongoing) matched_828;
-          final LawSpecFast.List<TopicPartition> ps_831 = case_830.txnPartitions;
-          final LawSpecFast.List<PendingOffset> os_832 = case_830.txnOffsets;
-          value_825 = new TxnState.Ongoing(lawtwinKafkaModelUnionPartitions_c791d224(tps_822, ps_831), os_832);
+          final TxnState.Ongoing case_1062 = (TxnState.Ongoing) it_1057;
+          final Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee v_lawspecselection0x0_1063 = case_1062.value;
+          LawSpecFast.List<TopicPartition> value_1064;
+          final LawSpecFast.List<TopicPartition> lawspecfieldtxnpartitions_1065 = v_lawspecselection0x0_1063.txnPartitions;
+          value_1064 = lawspecfieldtxnpartitions_1065;
+          final LawSpecFast.List<TopicPartition> v_lawspecselection1x0_1066 = value_1064;
+          LawSpecFast.List<PendingOffset> value_1067;
+          final LawSpecFast.List<PendingOffset> lawspecfieldtxnoffsets_1068 = v_lawspecselection0x0_1063.txnOffsets;
+          value_1067 = lawspecfieldtxnoffsets_1068;
+          final LawSpecFast.List<PendingOffset> v_lawspecselection1x1_1069 = value_1067;
+          Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee value_1070;
+          final LawSpecFast.List<TopicPartition> txnpartitions_1071 = lawtwinKafkaModelUnionPartitions_c791d224(tps_1051, v_lawspecselection1x0_1066);
+          final LawSpecFast.List<PendingOffset> txnoffsets_1072 = v_lawspecselection1x1_1069;
+          value_1070 = new Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(txnoffsets_1072, txnpartitions_1071);
+          value_1054 = new TxnState.Ongoing(value_1070);
         }
         default -> throw LawSpecFast.unreachable();
       }
-      final TxnState next_833 = value_825;
-      ProducerEntry value_834;
-      final TxnState replacement_835 = next_833;
-      final long lawspecfieldepoch_836 = entry_824.epoch;
-      final LawSpecFast.Maybe<String> lawspecfieldtransactionalid_837 = entry_824.transactionalId;
-      value_834 = new ProducerEntry(lawspecfieldepoch_836, lawspecfieldtransactionalid_837, replacement_835);
-      return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelPutProducer_4ef907a5(pid_820, value_834, b_823));
+      final TxnState next_1073 = value_1054;
+      ProducerEntry value_1074;
+      final TxnState replacement_1075 = next_1073;
+      final long lawspecfieldepoch_1076 = entry_1053.epoch;
+      final LawSpecFast.Maybe<String> lawspecfieldtransactionalid_1077 = entry_1053.transactionalId;
+      value_1074 = new ProducerEntry(lawspecfieldepoch_1076, lawspecfieldtransactionalid_1077, replacement_1075);
+      return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelPutProducer_4ef907a5(pid_1049, value_1074, b_1052));
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelAllKnown */
-  public static boolean lawtwinKafkaModelAllKnown_12a378f8(LawSpecFast.List<TopicPartition> tps_838, BrokerState b_839) {
-    if (tps_838.isEmpty()) {
+  public static boolean lawtwinKafkaModelAllKnown_12a378f8(LawSpecFast.List<TopicPartition> tps_1078, BrokerState b_1079) {
+    final LawSpecFast.List<TopicPartition> it_1080 = tps_1078;
+    if (it_1080.isEmpty()) {
       return true;
     } else {
-      final TopicPartition h_840 = tps_838.head();
-      final LawSpecFast.List<TopicPartition> t_841 = tps_838.tail();
-      return (lawtwinKafkaModelKnownPartition_71d3099f(h_840, b_839) && lawtwinKafkaModelAllKnown_12a378f8(t_841, b_839));
+      final TopicPartition v_lawspecselection0x0_1081 = it_1080.head();
+      final LawSpecFast.List<TopicPartition> v_lawspecselection0x1_1082 = it_1080.tail();
+      return (lawtwinKafkaModelKnownPartition_71d3099f(v_lawspecselection0x0_1081, b_1079) && lawtwinKafkaModelAllKnown_12a378f8(v_lawspecselection0x1_1082, b_1079));
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelAppendBatch */
-  public static PartitionLog lawtwinKafkaModelAppendBatch_8797ae9f(LawSpecFast.List<Record> rs_842, long writer_843, boolean transactional_844, PartitionLog l_845) {
-    long value_846;
-    final long lawspecfieldlogendoffset_847 = l_845.logEndOffset;
-    value_846 = lawspecfieldlogendoffset_847;
-    LawSpecFast.List<LogEntry> value_848;
-    final LawSpecFast.List<LogEntry> lawspecfieldentries_849 = l_845.entries;
-    value_848 = lawspecfieldentries_849;
-    final Pair<Long, LawSpecFast.List<LogEntry>> appended_850 = lawtwinKafkaModelAppendRecords_f5613738(rs_842, value_846, writer_843, transactional_844, value_848);
-    LawSpecFast.Map<Long, Long> value_851;
-    if (transactional_844) {
-      LawSpecFast.Map<Long, Long> value_852;
-      final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_853 = l_845.openTxns;
-      value_852 = lawspecfieldopentxns_853;
-      final LawSpecFast.Maybe<Long> matched_854 = value_852.get(writer_843);
-      if (matched_854.isJust()) {
-        final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_855 = l_845.openTxns;
-        value_851 = lawspecfieldopentxns_855;
+  public static PartitionLog lawtwinKafkaModelAppendBatch_8797ae9f(LawSpecFast.List<Record> rs_1083, long writer_1084, boolean transactional_1085, PartitionLog l_1086) {
+    long value_1087;
+    final long lawspecfieldlogendoffset_1088 = l_1086.logEndOffset;
+    value_1087 = lawspecfieldlogendoffset_1088;
+    LawSpecFast.List<LogEntry> value_1089;
+    final LawSpecFast.List<LogEntry> lawspecfieldentries_1090 = l_1086.entries;
+    value_1089 = lawspecfieldentries_1090;
+    final Pair<Long, LawSpecFast.List<LogEntry>> appended_1091 = lawtwinKafkaModelAppendRecords_f5613738(rs_1083, value_1087, writer_1084, transactional_1085, value_1089);
+    LawSpecFast.Map<Long, Long> value_1092;
+    if (transactional_1085) {
+      LawSpecFast.Map<Long, Long> value_1093;
+      final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1094 = l_1086.openTxns;
+      value_1093 = lawspecfieldopentxns_1094;
+      final LawSpecFast.Maybe<Long> it_1095 = value_1093.get(writer_1084);
+      if (it_1095.isJust()) {
+        final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1096 = l_1086.openTxns;
+        value_1092 = lawspecfieldopentxns_1096;
       } else {
-        long value_856;
-        final long lawspecfieldlogendoffset_857 = l_845.logEndOffset;
-        value_856 = lawspecfieldlogendoffset_857;
-        LawSpecFast.Map<Long, Long> value_858;
-        final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_859 = l_845.openTxns;
-        value_858 = lawspecfieldopentxns_859;
-        value_851 = value_858.put(writer_843, value_856);
+        long value_1097;
+        final long lawspecfieldlogendoffset_1098 = l_1086.logEndOffset;
+        value_1097 = lawspecfieldlogendoffset_1098;
+        LawSpecFast.Map<Long, Long> value_1099;
+        final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1100 = l_1086.openTxns;
+        value_1099 = lawspecfieldopentxns_1100;
+        value_1092 = value_1099.put(writer_1084, value_1097);
       }
     } else {
-      final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_860 = l_845.openTxns;
-      value_851 = lawspecfieldopentxns_860;
+      final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1101 = l_1086.openTxns;
+      value_1092 = lawspecfieldopentxns_1101;
     }
-    final LawSpecFast.Map<Long, Long> open_861 = value_851;
-    final LawSpecFast.Map<Long, Long> replacement_862 = open_861;
-    PartitionLog value_863;
-    long value_864;
-    final long lawspecfieldfirst_865 = appended_850.first;
-    value_864 = lawspecfieldfirst_865;
-    final long replacement_866 = value_864;
-    PartitionLog value_867;
-    LawSpecFast.List<LogEntry> value_868;
-    final LawSpecFast.List<LogEntry> lawspecfieldsecond_869 = appended_850.second;
-    value_868 = lawspecfieldsecond_869;
-    final LawSpecFast.List<LogEntry> replacement_870 = value_868;
-    final long lawspecfieldlogendoffset_871 = l_845.logEndOffset;
-    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_872 = l_845.openTxns;
-    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_873 = l_845.abortedTxns;
-    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_874 = l_845.batches;
-    value_867 = new PartitionLog(replacement_870, lawspecfieldlogendoffset_871, lawspecfieldopentxns_872, lawspecfieldabortedtxns_873, lawspecfieldbatches_874);
-    final PartitionLog matched_875 = value_867;
-    final LawSpecFast.List<LogEntry> lawspecfieldentries_876 = matched_875.entries;
-    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_877 = matched_875.openTxns;
-    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_878 = matched_875.abortedTxns;
-    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_879 = matched_875.batches;
-    value_863 = new PartitionLog(lawspecfieldentries_876, replacement_866, lawspecfieldopentxns_877, lawspecfieldabortedtxns_878, lawspecfieldbatches_879);
-    final PartitionLog matched_880 = value_863;
-    final LawSpecFast.List<LogEntry> lawspecfieldentries_881 = matched_880.entries;
-    final long lawspecfieldlogendoffset_882 = matched_880.logEndOffset;
-    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_883 = matched_880.abortedTxns;
-    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_884 = matched_880.batches;
-    return new PartitionLog(lawspecfieldentries_881, lawspecfieldlogendoffset_882, replacement_862, lawspecfieldabortedtxns_883, lawspecfieldbatches_884);
+    final LawSpecFast.Map<Long, Long> open_1102 = value_1092;
+    final LawSpecFast.Map<Long, Long> replacement_1103 = open_1102;
+    PartitionLog value_1104;
+    long value_1105;
+    final long lawspecfieldfirst_1106 = appended_1091.first;
+    value_1105 = lawspecfieldfirst_1106;
+    final long replacement_1107 = value_1105;
+    PartitionLog value_1108;
+    LawSpecFast.List<LogEntry> value_1109;
+    final LawSpecFast.List<LogEntry> lawspecfieldsecond_1110 = appended_1091.second;
+    value_1109 = lawspecfieldsecond_1110;
+    final LawSpecFast.List<LogEntry> replacement_1111 = value_1109;
+    final long lawspecfieldlogendoffset_1112 = l_1086.logEndOffset;
+    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1113 = l_1086.openTxns;
+    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_1114 = l_1086.abortedTxns;
+    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_1115 = l_1086.batches;
+    value_1108 = new PartitionLog(replacement_1111, lawspecfieldlogendoffset_1112, lawspecfieldopentxns_1113, lawspecfieldabortedtxns_1114, lawspecfieldbatches_1115);
+    final PartitionLog matched_1116 = value_1108;
+    final LawSpecFast.List<LogEntry> lawspecfieldentries_1117 = matched_1116.entries;
+    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1118 = matched_1116.openTxns;
+    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_1119 = matched_1116.abortedTxns;
+    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_1120 = matched_1116.batches;
+    value_1104 = new PartitionLog(lawspecfieldentries_1117, replacement_1107, lawspecfieldopentxns_1118, lawspecfieldabortedtxns_1119, lawspecfieldbatches_1120);
+    final PartitionLog matched_1121 = value_1104;
+    final LawSpecFast.List<LogEntry> lawspecfieldentries_1122 = matched_1121.entries;
+    final long lawspecfieldlogendoffset_1123 = matched_1121.logEndOffset;
+    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_1124 = matched_1121.abortedTxns;
+    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_1125 = matched_1121.batches;
+    return new PartitionLog(lawspecfieldentries_1122, lawspecfieldlogendoffset_1123, replacement_1103, lawspecfieldabortedtxns_1124, lawspecfieldbatches_1125);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelAppendRecords */
-  public static Pair<Long, LawSpecFast.List<LogEntry>> lawtwinKafkaModelAppendRecords_f5613738(LawSpecFast.List<Record> rs_885, long offset_886, long writer_887, boolean transactional_888, LawSpecFast.List<LogEntry> es_889) {
+  public static Pair<Long, LawSpecFast.List<LogEntry>> lawtwinKafkaModelAppendRecords_f5613738(LawSpecFast.List<Record> rs_1126, long offset_1127, long writer_1128, boolean transactional_1129, LawSpecFast.List<LogEntry> es_1130) {
     while (true) {
-      if (rs_885.isEmpty()) {
-        return new Pair<Long, LawSpecFast.List<LogEntry>>(offset_886, es_889);
+      final LawSpecFast.List<Record> it_1131 = rs_1126;
+      if (it_1131.isEmpty()) {
+        return new Pair<Long, LawSpecFast.List<LogEntry>>(offset_1127, es_1130);
       } else {
-        final Record r_890 = rs_885.head();
-        final LawSpecFast.List<Record> rest_891 = rs_885.tail();
-        final LawSpecFast.List<Record> next_892 = rest_891;
-        final long next_893 = saturatingInt64_5bce4ed8(java.math.BigInteger.valueOf(offset_886).add(java.math.BigInteger.valueOf(1L)));
-        final LawSpecFast.List<LogEntry> next_894 = LawSpecFast.List.<LogEntry>cons(new LogEntry.DataEntry(offset_886, r_890, writer_887, transactional_888), es_889);
-        rs_885 = next_892;
-        offset_886 = next_893;
-        es_889 = next_894;
+        final Record v_lawspecselection0x0_1132 = it_1131.head();
+        final LawSpecFast.List<Record> v_lawspecselection0x1_1133 = it_1131.tail();
+        final LawSpecFast.List<Record> next_1134 = v_lawspecselection0x1_1133;
+        final long next_1135 = saturatingInt64_5bce4ed8(java.math.BigInteger.valueOf(offset_1127).add(java.math.BigInteger.valueOf(1L)));
+        Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be value_1136;
+        final long entryoffset_1137 = offset_1127;
+        final Record entryrecord_1138 = v_lawspecselection0x0_1132;
+        final long writer_1139 = writer_1128;
+        final boolean transactional_1140 = transactional_1129;
+        value_1136 = new Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be(entryoffset_1137, entryrecord_1138, transactional_1140, writer_1139);
+        final LawSpecFast.List<LogEntry> next_1141 = LawSpecFast.List.<LogEntry>cons(new LogEntry.DataEntry(value_1136), es_1130);
+        rs_1126 = next_1134;
+        offset_1127 = next_1135;
+        es_1130 = next_1141;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelApplyOffsets */
-  public static BrokerState lawtwinKafkaModelApplyOffsets_c0f73b56(LawSpecFast.List<PendingOffset> os_895, BrokerState b_896) {
+  public static BrokerState lawtwinKafkaModelApplyOffsets_c0f73b56(LawSpecFast.List<PendingOffset> os_1142, BrokerState b_1143) {
     while (true) {
-      if (os_895.isEmpty()) {
-        return b_896;
+      final LawSpecFast.List<PendingOffset> it_1144 = os_1142;
+      if (it_1144.isEmpty()) {
+        return b_1143;
       } else {
-        final PendingOffset o_897 = os_895.head();
-        final LawSpecFast.List<PendingOffset> rest_898 = os_895.tail();
-        final LawSpecFast.List<PendingOffset> next_899 = rest_898;
-        BrokerState value_900;
-        String value_901;
-        final String lawspecfieldpendinggroup_902 = o_897.pendingGroup;
-        value_901 = lawspecfieldpendinggroup_902;
-        TopicPartition value_903;
-        OffsetEntry value_904;
-        final OffsetEntry lawspecfieldpendingentry_905 = o_897.pendingEntry;
-        value_904 = lawspecfieldpendingentry_905;
-        final OffsetEntry matched_906 = value_904;
-        final TopicPartition lawspecfieldtopicpartition_907 = matched_906.topicPartition;
-        value_903 = lawspecfieldtopicpartition_907;
-        long value_908;
-        OffsetEntry value_909;
-        final OffsetEntry lawspecfieldpendingentry_910 = o_897.pendingEntry;
-        value_909 = lawspecfieldpendingentry_910;
-        final OffsetEntry matched_911 = value_909;
-        final long lawspecfieldoffset_912 = matched_911.offset;
-        value_908 = lawspecfieldoffset_912;
-        LawSpecFast.Map<GroupPartition, Long> value_913;
-        final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_914 = b_896.committed;
-        value_913 = lawspecfieldcommitted_914;
-        final LawSpecFast.Map<GroupPartition, Long> replacement_915 = value_913.put(new GroupPartition(value_901, value_903), value_908);
-        final LawSpecFast.Map<String, Long> lawspecfieldtopics_916 = b_896.topics;
-        final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_917 = b_896.logs;
-        final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_918 = b_896.producers;
-        final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_919 = b_896.transactionalIds;
-        final long lawspecfieldnextproducerid_920 = b_896.nextProducerId;
-        final LawSpecFast.Map<String, Group> lawspecfieldgroups_921 = b_896.groups;
-        value_900 = new BrokerState(lawspecfieldtopics_916, lawspecfieldlogs_917, lawspecfieldproducers_918, lawspecfieldtransactionalids_919, lawspecfieldnextproducerid_920, lawspecfieldgroups_921, replacement_915);
-        final BrokerState next_922 = value_900;
-        os_895 = next_899;
-        b_896 = next_922;
+        final PendingOffset v_lawspecselection0x0_1145 = it_1144.head();
+        final LawSpecFast.List<PendingOffset> v_lawspecselection0x1_1146 = it_1144.tail();
+        final LawSpecFast.List<PendingOffset> next_1147 = v_lawspecselection0x1_1146;
+        BrokerState value_1148;
+        GroupPartition value_1149;
+        String value_1150;
+        final String lawspecfieldpendinggroup_1151 = v_lawspecselection0x0_1145.pendingGroup;
+        value_1150 = lawspecfieldpendinggroup_1151;
+        final String v_lawspecrecordfield0_1152 = value_1150;
+        TopicPartition value_1153;
+        OffsetEntry value_1154;
+        final OffsetEntry lawspecfieldpendingentry_1155 = v_lawspecselection0x0_1145.pendingEntry;
+        value_1154 = lawspecfieldpendingentry_1155;
+        final OffsetEntry matched_1156 = value_1154;
+        final TopicPartition lawspecfieldtopicpartition_1157 = matched_1156.topicPartition;
+        value_1153 = lawspecfieldtopicpartition_1157;
+        final TopicPartition v_lawspecrecordfield1_1158 = value_1153;
+        value_1149 = new GroupPartition(v_lawspecrecordfield0_1152, v_lawspecrecordfield1_1158);
+        long value_1159;
+        OffsetEntry value_1160;
+        final OffsetEntry lawspecfieldpendingentry_1161 = v_lawspecselection0x0_1145.pendingEntry;
+        value_1160 = lawspecfieldpendingentry_1161;
+        final OffsetEntry matched_1162 = value_1160;
+        final long lawspecfieldoffset_1163 = matched_1162.offset;
+        value_1159 = lawspecfieldoffset_1163;
+        LawSpecFast.Map<GroupPartition, Long> value_1164;
+        final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1165 = b_1143.committed;
+        value_1164 = lawspecfieldcommitted_1165;
+        final LawSpecFast.Map<GroupPartition, Long> replacement_1166 = value_1164.put(value_1149, value_1159);
+        final LawSpecFast.Map<String, Long> lawspecfieldtopics_1167 = b_1143.topics;
+        final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1168 = b_1143.logs;
+        final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1169 = b_1143.producers;
+        final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1170 = b_1143.transactionalIds;
+        final long lawspecfieldnextproducerid_1171 = b_1143.nextProducerId;
+        final LawSpecFast.Map<String, Group> lawspecfieldgroups_1172 = b_1143.groups;
+        value_1148 = new BrokerState(lawspecfieldtopics_1167, lawspecfieldlogs_1168, lawspecfieldproducers_1169, lawspecfieldtransactionalids_1170, lawspecfieldnextproducerid_1171, lawspecfieldgroups_1172, replacement_1166);
+        final BrokerState next_1173 = value_1148;
+        os_1142 = next_1147;
+        b_1143 = next_1173;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelAssignPartitions */
-  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawtwinKafkaModelAssignPartitions_598afda2(String topic_923, LawSpecFast.List<Long> ps_924, LawSpecFast.List<String> owners_925, LawSpecFast.List<String> waiting_926, LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> a_927) {
+  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawtwinKafkaModelAssignPartitions_598afda2(String topic_1174, LawSpecFast.List<Long> ps_1175, LawSpecFast.List<String> owners_1176, LawSpecFast.List<String> waiting_1177, LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> a_1178) {
     while (true) {
-      if (ps_924.isEmpty()) {
-        return a_927;
+      final LawSpecFast.List<Long> it_1179 = ps_1175;
+      if (it_1179.isEmpty()) {
+        return a_1178;
       } else {
-        final long p_928 = ps_924.head();
-        final LawSpecFast.List<Long> rest_929 = ps_924.tail();
-        if (waiting_926.isEmpty()) {
-          if (owners_925.isEmpty()) {
-            return a_927;
+        final long v_lawspecselection0x0_1180 = it_1179.head();
+        final LawSpecFast.List<Long> v_lawspecselection0x1_1181 = it_1179.tail();
+        final LawSpecFast.List<String> it_1182 = waiting_1177;
+        if (it_1182.isEmpty()) {
+          final LawSpecFast.List<String> it_1183 = owners_1176;
+          if (it_1183.isEmpty()) {
+            return a_1178;
           } else {
-            final String owner_930 = owners_925.head();
-            final LawSpecFast.List<String> later_931 = owners_925.tail();
-            final LawSpecFast.List<Long> next_932 = rest_929;
-            final LawSpecFast.List<String> next_933 = later_931;
-            final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> next_934 = lawtwinKafkaModelAssignTo_98dab4ee(owner_930, new TopicPartition(topic_923, p_928), a_927);
-            ps_924 = next_932;
-            waiting_926 = next_933;
-            a_927 = next_934;
+            final String v_match__lawspecselection0x0_0_1184 = it_1183.head();
+            final LawSpecFast.List<String> v_match__lawspecselection0x1_0_1185 = it_1183.tail();
+            final LawSpecFast.List<Long> next_1186 = v_lawspecselection0x1_1181;
+            final LawSpecFast.List<String> next_1187 = v_match__lawspecselection0x1_0_1185;
+            TopicPartition value_1188;
+            final String v_lawspecrecordfield0_1189 = topic_1174;
+            final long v_lawspecrecordfield1_1190 = v_lawspecselection0x0_1180;
+            value_1188 = new TopicPartition(v_lawspecrecordfield0_1189, v_lawspecrecordfield1_1190);
+            final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> next_1191 = lawtwinKafkaModelAssignTo_98dab4ee(v_match__lawspecselection0x0_0_1184, value_1188, a_1178);
+            ps_1175 = next_1186;
+            waiting_1177 = next_1187;
+            a_1178 = next_1191;
             continue;
           }
         } else {
-          final String owner_935 = waiting_926.head();
-          final LawSpecFast.List<String> later_936 = waiting_926.tail();
-          final LawSpecFast.List<Long> next_937 = rest_929;
-          final LawSpecFast.List<String> next_938 = later_936;
-          final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> next_939 = lawtwinKafkaModelAssignTo_98dab4ee(owner_935, new TopicPartition(topic_923, p_928), a_927);
-          ps_924 = next_937;
-          waiting_926 = next_938;
-          a_927 = next_939;
+          final String v_match__lawspecselection0x0_0_1192 = it_1182.head();
+          final LawSpecFast.List<String> v_match__lawspecselection0x1_0_1193 = it_1182.tail();
+          final LawSpecFast.List<Long> next_1194 = v_lawspecselection0x1_1181;
+          final LawSpecFast.List<String> next_1195 = v_match__lawspecselection0x1_0_1193;
+          TopicPartition value_1196;
+          final String v_lawspecrecordfield0_1197 = topic_1174;
+          final long v_lawspecrecordfield1_1198 = v_lawspecselection0x0_1180;
+          value_1196 = new TopicPartition(v_lawspecrecordfield0_1197, v_lawspecrecordfield1_1198);
+          final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> next_1199 = lawtwinKafkaModelAssignTo_98dab4ee(v_match__lawspecselection0x0_0_1192, value_1196, a_1178);
+          ps_1175 = next_1194;
+          waiting_1177 = next_1195;
+          a_1178 = next_1199;
           continue;
         }
       }
@@ -5367,38 +5849,39 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelAssignTo */
-  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawtwinKafkaModelAssignTo_98dab4ee(String member_940, TopicPartition tp_941, LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> a_942) {
-    final LawSpecFast.Maybe<LawSpecFast.List<TopicPartition>> matched_943 = a_942.get(member_940);
-    if (matched_943.isJust()) {
-      final LawSpecFast.List<TopicPartition> tps_944 = matched_943.get();
-      return a_942.put(member_940, LawSpecFast.append(tps_944, LawSpecFast.List.<TopicPartition>cons(tp_941, LawSpecFast.List.<TopicPartition>nil())));
+  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawtwinKafkaModelAssignTo_98dab4ee(String member_1200, TopicPartition tp_1201, LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> a_1202) {
+    final LawSpecFast.Maybe<LawSpecFast.List<TopicPartition>> it_1203 = a_1202.get(member_1200);
+    if (it_1203.isJust()) {
+      final LawSpecFast.List<TopicPartition> v_lawspecselection0x0_1204 = it_1203.get();
+      return a_1202.put(member_1200, LawSpecFast.append(v_lawspecselection0x0_1204, LawSpecFast.List.<TopicPartition>cons(tp_1201, LawSpecFast.List.<TopicPartition>nil())));
     } else {
-      return a_942.put(member_940, LawSpecFast.List.<TopicPartition>cons(tp_941, LawSpecFast.List.<TopicPartition>nil()));
+      return a_1202.put(member_1200, LawSpecFast.List.<TopicPartition>cons(tp_1201, LawSpecFast.List.<TopicPartition>nil()));
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelAssignTopics */
-  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawtwinKafkaModelAssignTopics_0d94256d(LawSpecFast.List<String> topics_945, LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> subs_946, BrokerState b_947, LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> a_948) {
+  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawtwinKafkaModelAssignTopics_0d94256d(LawSpecFast.List<String> topics_1205, LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> subs_1206, BrokerState b_1207, LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> a_1208) {
     while (true) {
-      if (topics_945.isEmpty()) {
-        return a_948;
+      final LawSpecFast.List<String> it_1209 = topics_1205;
+      if (it_1209.isEmpty()) {
+        return a_1208;
       } else {
-        final String topic_949 = topics_945.head();
-        final LawSpecFast.List<String> rest_950 = topics_945.tail();
-        final LawSpecFast.Maybe<Long> matched_951 = lawtwinKafkaModelPartitionCountOf_ff180c35(topic_949, b_947);
-        if (matched_951.isJust()) {
-          final long n_952 = matched_951.get();
-          final LawSpecFast.List<String> next_953 = rest_950;
-          LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> value_954;
-          final LawSpecFast.List<String> owners_955 = lawtwinKafkaModelSubscribersOf_e9347318(topic_949, subs_946);
-          value_954 = lawtwinKafkaModelAssignPartitions_598afda2(topic_949, lawtwinKafkaModelPartitionsBelow_19525eca(n_952), owners_955, owners_955, a_948);
-          final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> next_956 = value_954;
-          topics_945 = next_953;
-          a_948 = next_956;
+        final String v_lawspecselection0x0_1210 = it_1209.head();
+        final LawSpecFast.List<String> v_lawspecselection0x1_1211 = it_1209.tail();
+        final LawSpecFast.Maybe<Long> it_1212 = lawtwinKafkaModelPartitionCountOf_ff180c35(v_lawspecselection0x0_1210, b_1207);
+        if (it_1212.isJust()) {
+          final long v_match__lawspecselection0x0_0_1213 = it_1212.get();
+          final LawSpecFast.List<String> next_1214 = v_lawspecselection0x1_1211;
+          LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> value_1215;
+          final LawSpecFast.List<String> owners_1216 = lawtwinKafkaModelSubscribersOf_e9347318(v_lawspecselection0x0_1210, subs_1206);
+          value_1215 = lawtwinKafkaModelAssignPartitions_598afda2(v_lawspecselection0x0_1210, lawtwinKafkaModelPartitionsBelow_19525eca(v_match__lawspecselection0x0_0_1213), owners_1216, owners_1216, a_1208);
+          final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> next_1217 = value_1215;
+          topics_1205 = next_1214;
+          a_1208 = next_1217;
           continue;
         } else {
-          final LawSpecFast.List<String> next_957 = rest_950;
-          topics_945 = next_957;
+          final LawSpecFast.List<String> next_1218 = v_lawspecselection0x1_1211;
+          topics_1205 = next_1218;
           continue;
         }
       }
@@ -5406,23 +5889,23 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelCheckMember */
-  public static Group lawtwinKafkaModelCheckMember_f218b850(String g_958, String member_959, long generation_960, BrokerState b_961) {
-    if ((java.util.Objects.equals(g_958, ""))) {
+  public static Group lawtwinKafkaModelCheckMember_f218b850(String g_1219, String member_1220, long generation_1221, BrokerState b_1222) {
+    if ((java.util.Objects.equals(g_1219, ""))) {
       throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidGroupId));
     } else {
-      final Group group_962 = lawtwinKafkaModelGroupOf_abe7cb22(g_958, b_961);
-      LawSpecFast.Map<String, LawSpecFast.List<String>> value_963;
-      final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_964 = group_962.subscriptions;
-      value_963 = lawspecfieldsubscriptions_964;
-      final LawSpecFast.Maybe<LawSpecFast.List<String>> matched_965 = value_963.get(member_959);
-      if (matched_965.isJust()) {
-        long value_966;
-        final long lawspecfieldgroupgeneration_967 = group_962.groupGeneration;
-        value_966 = lawspecfieldgroupgeneration_967;
-        if (((generation_960) != (value_966))) {
+      final Group group_1223 = lawtwinKafkaModelGroupOf_abe7cb22(g_1219, b_1222);
+      LawSpecFast.Map<String, LawSpecFast.List<String>> value_1224;
+      final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1225 = group_1223.subscriptions;
+      value_1224 = lawspecfieldsubscriptions_1225;
+      final LawSpecFast.Maybe<LawSpecFast.List<String>> it_1226 = value_1224.get(member_1220);
+      if (it_1226.isJust()) {
+        long value_1227;
+        final long lawspecfieldgroupgeneration_1228 = group_1223.groupGeneration;
+        value_1227 = lawspecfieldgroupgeneration_1228;
+        if (((generation_1221) != (value_1227))) {
           throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.IllegalGeneration));
         } else {
-          return group_962;
+          return group_1223;
         }
       } else {
         throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.UnknownMemberId));
@@ -5431,35 +5914,35 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelCheckTxnProducer */
-  public static ProducerEntry lawtwinKafkaModelCheckTxnProducer_2936d9ae(String txid_968, long pid_969, long epoch_970, BrokerState b_971) {
-    LawSpecFast.Map<String, Long> value_972;
-    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_973 = b_971.transactionalIds;
-    value_972 = lawspecfieldtransactionalids_973;
-    final LawSpecFast.Maybe<Long> matched_974 = value_972.get(txid_968);
-    if (matched_974.isJust()) {
-      final long mapped_975 = matched_974.get();
-      if (((mapped_975) != (pid_969))) {
+  public static ProducerEntry lawtwinKafkaModelCheckTxnProducer_2936d9ae(String txid_1229, long pid_1230, long epoch_1231, BrokerState b_1232) {
+    LawSpecFast.Map<String, Long> value_1233;
+    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1234 = b_1232.transactionalIds;
+    value_1233 = lawspecfieldtransactionalids_1234;
+    final LawSpecFast.Maybe<Long> it_1235 = value_1233.get(txid_1229);
+    if (it_1235.isJust()) {
+      final long v_lawspecselection0x0_1236 = it_1235.get();
+      if (((v_lawspecselection0x0_1236) != (pid_1230))) {
         throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidProducerIdMapping));
       } else {
-        LawSpecFast.Map<Long, ProducerEntry> value_976;
-        final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_977 = b_971.producers;
-        value_976 = lawspecfieldproducers_977;
-        final LawSpecFast.Maybe<ProducerEntry> matched_978 = value_976.get(pid_969);
-        if (matched_978.isJust()) {
-          final ProducerEntry entry_979 = matched_978.get();
-          long value_980;
-          final long lawspecfieldepoch_981 = entry_979.epoch;
-          value_980 = lawspecfieldepoch_981;
-          if (((epoch_970) < (value_980))) {
+        LawSpecFast.Map<Long, ProducerEntry> value_1237;
+        final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1238 = b_1232.producers;
+        value_1237 = lawspecfieldproducers_1238;
+        final LawSpecFast.Maybe<ProducerEntry> it_1239 = value_1237.get(pid_1230);
+        if (it_1239.isJust()) {
+          final ProducerEntry v_match__lawspecselection0x0_0_1240 = it_1239.get();
+          long value_1241;
+          final long lawspecfieldepoch_1242 = v_match__lawspecselection0x0_0_1240.epoch;
+          value_1241 = lawspecfieldepoch_1242;
+          if (((epoch_1231) < (value_1241))) {
             throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.ProducerFenced));
           } else {
-            long value_982;
-            final long lawspecfieldepoch_983 = entry_979.epoch;
-            value_982 = lawspecfieldepoch_983;
-            if (((epoch_970) > (value_982))) {
+            long value_1243;
+            final long lawspecfieldepoch_1244 = v_match__lawspecselection0x0_0_1240.epoch;
+            value_1243 = lawspecfieldepoch_1244;
+            if (((epoch_1231) > (value_1243))) {
               throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidProducerEpoch));
             } else {
-              return entry_979;
+              return v_match__lawspecselection0x0_0_1240;
             }
           }
         } else {
@@ -5472,71 +5955,76 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelCommitAll */
-  public static BrokerState lawtwinKafkaModelCommitAll_4ae78738(String g_984, LawSpecFast.List<OffsetEntry> offsets_985, BrokerState b_986) {
+  public static BrokerState lawtwinKafkaModelCommitAll_4ae78738(String g_1245, LawSpecFast.List<OffsetEntry> offsets_1246, BrokerState b_1247) {
     while (true) {
-      if (offsets_985.isEmpty()) {
-        return b_986;
+      final LawSpecFast.List<OffsetEntry> it_1248 = offsets_1246;
+      if (it_1248.isEmpty()) {
+        return b_1247;
       } else {
-        final OffsetEntry o_987 = offsets_985.head();
-        final LawSpecFast.List<OffsetEntry> rest_988 = offsets_985.tail();
-        final LawSpecFast.List<OffsetEntry> next_989 = rest_988;
-        BrokerState value_990;
-        TopicPartition value_991;
-        final TopicPartition lawspecfieldtopicpartition_992 = o_987.topicPartition;
-        value_991 = lawspecfieldtopicpartition_992;
-        long value_993;
-        final long lawspecfieldoffset_994 = o_987.offset;
-        value_993 = lawspecfieldoffset_994;
-        LawSpecFast.Map<GroupPartition, Long> value_995;
-        final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_996 = b_986.committed;
-        value_995 = lawspecfieldcommitted_996;
-        final LawSpecFast.Map<GroupPartition, Long> replacement_997 = value_995.put(new GroupPartition(g_984, value_991), value_993);
-        final LawSpecFast.Map<String, Long> lawspecfieldtopics_998 = b_986.topics;
-        final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_999 = b_986.logs;
-        final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1000 = b_986.producers;
-        final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1001 = b_986.transactionalIds;
-        final long lawspecfieldnextproducerid_1002 = b_986.nextProducerId;
-        final LawSpecFast.Map<String, Group> lawspecfieldgroups_1003 = b_986.groups;
-        value_990 = new BrokerState(lawspecfieldtopics_998, lawspecfieldlogs_999, lawspecfieldproducers_1000, lawspecfieldtransactionalids_1001, lawspecfieldnextproducerid_1002, lawspecfieldgroups_1003, replacement_997);
-        final BrokerState next_1004 = value_990;
-        offsets_985 = next_989;
-        b_986 = next_1004;
+        final OffsetEntry v_lawspecselection0x0_1249 = it_1248.head();
+        final LawSpecFast.List<OffsetEntry> v_lawspecselection0x1_1250 = it_1248.tail();
+        final LawSpecFast.List<OffsetEntry> next_1251 = v_lawspecselection0x1_1250;
+        BrokerState value_1252;
+        GroupPartition value_1253;
+        final String v_lawspecrecordfield0_1254 = g_1245;
+        TopicPartition value_1255;
+        final TopicPartition lawspecfieldtopicpartition_1256 = v_lawspecselection0x0_1249.topicPartition;
+        value_1255 = lawspecfieldtopicpartition_1256;
+        final TopicPartition v_lawspecrecordfield1_1257 = value_1255;
+        value_1253 = new GroupPartition(v_lawspecrecordfield0_1254, v_lawspecrecordfield1_1257);
+        long value_1258;
+        final long lawspecfieldoffset_1259 = v_lawspecselection0x0_1249.offset;
+        value_1258 = lawspecfieldoffset_1259;
+        LawSpecFast.Map<GroupPartition, Long> value_1260;
+        final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1261 = b_1247.committed;
+        value_1260 = lawspecfieldcommitted_1261;
+        final LawSpecFast.Map<GroupPartition, Long> replacement_1262 = value_1260.put(value_1253, value_1258);
+        final LawSpecFast.Map<String, Long> lawspecfieldtopics_1263 = b_1247.topics;
+        final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1264 = b_1247.logs;
+        final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1265 = b_1247.producers;
+        final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1266 = b_1247.transactionalIds;
+        final long lawspecfieldnextproducerid_1267 = b_1247.nextProducerId;
+        final LawSpecFast.Map<String, Group> lawspecfieldgroups_1268 = b_1247.groups;
+        value_1252 = new BrokerState(lawspecfieldtopics_1263, lawspecfieldlogs_1264, lawspecfieldproducers_1265, lawspecfieldtransactionalids_1266, lawspecfieldnextproducerid_1267, lawspecfieldgroups_1268, replacement_1262);
+        final BrokerState next_1269 = value_1252;
+        offsets_1246 = next_1251;
+        b_1247 = next_1269;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelComputeAssignment */
-  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawtwinKafkaModelComputeAssignment_07bd1943(LawSpecFast.Map<String, LawSpecFast.List<String>> subscriptions_1005, BrokerState b_1006) {
-    final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> subs_1007 = entriesOf(subscriptions_1005);
-    LawSpecFast.List<String> value_1008;
-    final LawSpecFast.Set<String> matched_1009 = lawtwinKafkaModelSubscribedTopics_c1d720b5(subs_1007, LawSpecFast.Set.of(LawSpecFast.List.<String>nil()));
-    final LawSpecFast.List<String> items_1010 = matched_1009.toList();
-    value_1008 = items_1010;
-    return lawtwinKafkaModelAssignTopics_0d94256d(value_1008, subs_1007, b_1006, lawtwinKafkaModelEmptyAssignments_91b44e0d(subscriptions_1005.toList((k, v) -> k), keyValOf(LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>nil())));
+  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawtwinKafkaModelComputeAssignment_07bd1943(LawSpecFast.Map<String, LawSpecFast.List<String>> subscriptions_1270, BrokerState b_1271) {
+    final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> subs_1272 = entriesOf(subscriptions_1270);
+    LawSpecFast.List<String> value_1273;
+    final LawSpecFast.Set<String> matched_1274 = lawtwinKafkaModelSubscribedTopics_c1d720b5(subs_1272, LawSpecFast.Set.of(LawSpecFast.List.<String>nil()));
+    final LawSpecFast.List<String> items_1275 = matched_1274.toList();
+    value_1273 = items_1275;
+    return lawtwinKafkaModelAssignTopics_0d94256d(value_1273, subs_1272, b_1271, lawtwinKafkaModelEmptyAssignments_91b44e0d(subscriptions_1270.toList((k, v) -> k), keyValOf(LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>nil())));
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelCreatePartitions */
-  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelCreatePartitions_8c9ce76b(String name_1011, long total_1012, BrokerState b_1013) {
-    final LawSpecFast.Maybe<Long> matched_1014 = lawtwinKafkaModelPartitionCountOf_ff180c35(name_1011, b_1013);
-    if (matched_1014.isJust()) {
-      final long n_1015 = matched_1014.get();
-      if ((((total_1012) <= (n_1015)) || ((total_1012) > (lawtwinKafkaModelMaxPartitions_6be37992(LawSpecFast.Unit.UNIT))))) {
+  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelCreatePartitions_8c9ce76b(String name_1276, long total_1277, BrokerState b_1278) {
+    final LawSpecFast.Maybe<Long> it_1279 = lawtwinKafkaModelPartitionCountOf_ff180c35(name_1276, b_1278);
+    if (it_1279.isJust()) {
+      final long v_lawspecselection0x0_1280 = it_1279.get();
+      if ((((total_1277) <= (v_lawspecselection0x0_1280)) || ((total_1277) > (lawtwinKafkaModelMaxPartitions_6be37992(LawSpecFast.Unit.UNIT))))) {
         throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidPartitions));
       } else {
-        BrokerState value_1016;
-        LawSpecFast.Map<String, Long> value_1017;
-        final LawSpecFast.Map<String, Long> lawspecfieldtopics_1018 = b_1013.topics;
-        value_1017 = lawspecfieldtopics_1018;
-        final LawSpecFast.Map<String, Long> replacement_1019 = value_1017.put(name_1011, total_1012);
-        final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1020 = b_1013.logs;
-        final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1021 = b_1013.producers;
-        final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1022 = b_1013.transactionalIds;
-        final long lawspecfieldnextproducerid_1023 = b_1013.nextProducerId;
-        final LawSpecFast.Map<String, Group> lawspecfieldgroups_1024 = b_1013.groups;
-        final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1025 = b_1013.committed;
-        value_1016 = new BrokerState(replacement_1019, lawspecfieldlogs_1020, lawspecfieldproducers_1021, lawspecfieldtransactionalids_1022, lawspecfieldnextproducerid_1023, lawspecfieldgroups_1024, lawspecfieldcommitted_1025);
-        return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelRebalanceTopic_823cd68b(name_1011, value_1016));
+        BrokerState value_1281;
+        LawSpecFast.Map<String, Long> value_1282;
+        final LawSpecFast.Map<String, Long> lawspecfieldtopics_1283 = b_1278.topics;
+        value_1282 = lawspecfieldtopics_1283;
+        final LawSpecFast.Map<String, Long> replacement_1284 = value_1282.put(name_1276, total_1277);
+        final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1285 = b_1278.logs;
+        final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1286 = b_1278.producers;
+        final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1287 = b_1278.transactionalIds;
+        final long lawspecfieldnextproducerid_1288 = b_1278.nextProducerId;
+        final LawSpecFast.Map<String, Group> lawspecfieldgroups_1289 = b_1278.groups;
+        final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1290 = b_1278.committed;
+        value_1281 = new BrokerState(replacement_1284, lawspecfieldlogs_1285, lawspecfieldproducers_1286, lawspecfieldtransactionalids_1287, lawspecfieldnextproducerid_1288, lawspecfieldgroups_1289, lawspecfieldcommitted_1290);
+        return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelRebalanceTopic_823cd68b(name_1276, value_1281));
       }
     } else {
       throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.UnknownTopicOrPartition));
@@ -5544,120 +6032,150 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelCreateTopic */
-  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelCreateTopic_0d831a39(String name_1026, long n_1027, BrokerState b_1028) {
-    if (!(lawtwinKafkaModelValidTopicName_39dd4596(name_1026))) {
+  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelCreateTopic_0d831a39(String name_1291, long n_1292, BrokerState b_1293) {
+    if (!(lawtwinKafkaModelValidTopicName_39dd4596(name_1291))) {
       throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidTopic));
     } else {
-      if ((((n_1027) < (1L)) || ((n_1027) > (lawtwinKafkaModelMaxPartitions_6be37992(LawSpecFast.Unit.UNIT))))) {
+      if ((((n_1292) < (1L)) || ((n_1292) > (lawtwinKafkaModelMaxPartitions_6be37992(LawSpecFast.Unit.UNIT))))) {
         throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidPartitions));
       } else {
-        final LawSpecFast.Maybe<Long> matched_1029 = lawtwinKafkaModelPartitionCountOf_ff180c35(name_1026, b_1028);
-        if (matched_1029.isJust()) {
+        final LawSpecFast.Maybe<Long> it_1294 = lawtwinKafkaModelPartitionCountOf_ff180c35(name_1291, b_1293);
+        if (it_1294.isJust()) {
           throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.TopicAlreadyExists));
         } else {
-          BrokerState value_1030;
-          LawSpecFast.Map<String, Long> value_1031;
-          final LawSpecFast.Map<String, Long> lawspecfieldtopics_1032 = b_1028.topics;
-          value_1031 = lawspecfieldtopics_1032;
-          final LawSpecFast.Map<String, Long> replacement_1033 = value_1031.put(name_1026, n_1027);
-          final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1034 = b_1028.logs;
-          final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1035 = b_1028.producers;
-          final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1036 = b_1028.transactionalIds;
-          final long lawspecfieldnextproducerid_1037 = b_1028.nextProducerId;
-          final LawSpecFast.Map<String, Group> lawspecfieldgroups_1038 = b_1028.groups;
-          final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1039 = b_1028.committed;
-          value_1030 = new BrokerState(replacement_1033, lawspecfieldlogs_1034, lawspecfieldproducers_1035, lawspecfieldtransactionalids_1036, lawspecfieldnextproducerid_1037, lawspecfieldgroups_1038, lawspecfieldcommitted_1039);
-          return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelRebalanceTopic_823cd68b(name_1026, value_1030));
+          BrokerState value_1295;
+          LawSpecFast.Map<String, Long> value_1296;
+          final LawSpecFast.Map<String, Long> lawspecfieldtopics_1297 = b_1293.topics;
+          value_1296 = lawspecfieldtopics_1297;
+          final LawSpecFast.Map<String, Long> replacement_1298 = value_1296.put(name_1291, n_1292);
+          final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1299 = b_1293.logs;
+          final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1300 = b_1293.producers;
+          final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1301 = b_1293.transactionalIds;
+          final long lawspecfieldnextproducerid_1302 = b_1293.nextProducerId;
+          final LawSpecFast.Map<String, Group> lawspecfieldgroups_1303 = b_1293.groups;
+          final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1304 = b_1293.committed;
+          value_1295 = new BrokerState(replacement_1298, lawspecfieldlogs_1299, lawspecfieldproducers_1300, lawspecfieldtransactionalids_1301, lawspecfieldnextproducerid_1302, lawspecfieldgroups_1303, lawspecfieldcommitted_1304);
+          return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelRebalanceTopic_823cd68b(name_1291, value_1295));
         }
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelDescribeGroup */
-  public static Pair<GroupView, BrokerState> lawtwinKafkaModelDescribeGroup_bf8df8f8(String g_1040, BrokerState b_1041) {
-    final Group group_1042 = lawtwinKafkaModelGroupOf_abe7cb22(g_1040, b_1041);
-    long value_1043;
-    final long lawspecfieldgroupgeneration_1044 = group_1042.groupGeneration;
-    value_1043 = lawspecfieldgroupgeneration_1044;
-    LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> value_1045;
-    final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecfieldassignment_1046 = group_1042.assignment;
-    value_1045 = lawspecfieldassignment_1046;
-    return new Pair<GroupView, BrokerState>(new GroupView(value_1043, lawtwinKafkaModelMemberViews_a87b1b1a(entriesOf(value_1045))), b_1041);
+  public static Pair<GroupView, BrokerState> lawtwinKafkaModelDescribeGroup_bf8df8f8(String g_1305, BrokerState b_1306) {
+    final Group group_1307 = lawtwinKafkaModelGroupOf_abe7cb22(g_1305, b_1306);
+    GroupView value_1308;
+    long value_1309;
+    final long lawspecfieldgroupgeneration_1310 = group_1307.groupGeneration;
+    value_1309 = lawspecfieldgroupgeneration_1310;
+    final long v_lawspecrecordfield0_1311 = value_1309;
+    LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> value_1312;
+    final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecfieldassignment_1313 = group_1307.assignment;
+    value_1312 = lawspecfieldassignment_1313;
+    final LawSpecFast.List<MemberAssignment> v_lawspecrecordfield1_1314 = lawtwinKafkaModelMemberViews_a87b1b1a(entriesOf(value_1312));
+    value_1308 = new GroupView(v_lawspecrecordfield0_1311, v_lawspecrecordfield1_1314);
+    return new Pair<GroupView, BrokerState>(value_1308, b_1306);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelEmptyAssignments */
-  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawtwinKafkaModelEmptyAssignments_91b44e0d(LawSpecFast.List<String> members_1047, LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> a_1048) {
+  public static LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawtwinKafkaModelEmptyAssignments_91b44e0d(LawSpecFast.List<String> members_1315, LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> a_1316) {
     while (true) {
-      if (members_1047.isEmpty()) {
-        return a_1048;
+      final LawSpecFast.List<String> it_1317 = members_1315;
+      if (it_1317.isEmpty()) {
+        return a_1316;
       } else {
-        final String m_1049 = members_1047.head();
-        final LawSpecFast.List<String> rest_1050 = members_1047.tail();
-        final LawSpecFast.List<String> next_1051 = rest_1050;
-        final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> next_1052 = a_1048.put(m_1049, LawSpecFast.List.<TopicPartition>nil());
-        members_1047 = next_1051;
-        a_1048 = next_1052;
+        final String v_lawspecselection0x0_1318 = it_1317.head();
+        final LawSpecFast.List<String> v_lawspecselection0x1_1319 = it_1317.tail();
+        final LawSpecFast.List<String> next_1320 = v_lawspecselection0x1_1319;
+        final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> next_1321 = a_1316.put(v_lawspecselection0x0_1318, LawSpecFast.List.<TopicPartition>nil());
+        members_1315 = next_1320;
+        a_1316 = next_1321;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelEmptyBroker */
-  public static BrokerState lawtwinKafkaModelEmptyBroker_d5fd8237(LawSpecFast.Unit u_1053) {
-    return new BrokerState(keyValOf(LawSpecFast.List.<Entry<String, Long>>nil()), keyValOf(LawSpecFast.List.<Entry<TopicPartition, PartitionLog>>nil()), keyValOf(LawSpecFast.List.<Entry<Long, ProducerEntry>>nil()), keyValOf(LawSpecFast.List.<Entry<String, Long>>nil()), 0L, keyValOf(LawSpecFast.List.<Entry<String, Group>>nil()), keyValOf(LawSpecFast.List.<Entry<GroupPartition, Long>>nil()));
+  public static BrokerState lawtwinKafkaModelEmptyBroker_d5fd8237(LawSpecFast.Unit u_1322) {
+    final LawSpecFast.Map<String, Long> v_lawspecrecordfield0_1323 = keyValOf(LawSpecFast.List.<Entry<String, Long>>nil());
+    final LawSpecFast.Map<TopicPartition, PartitionLog> v_lawspecrecordfield1_1324 = keyValOf(LawSpecFast.List.<Entry<TopicPartition, PartitionLog>>nil());
+    final LawSpecFast.Map<Long, ProducerEntry> v_lawspecrecordfield2_1325 = keyValOf(LawSpecFast.List.<Entry<Long, ProducerEntry>>nil());
+    final LawSpecFast.Map<String, Long> v_lawspecrecordfield3_1326 = keyValOf(LawSpecFast.List.<Entry<String, Long>>nil());
+    final long v_lawspecrecordfield4_1327 = 0L;
+    final LawSpecFast.Map<String, Group> v_lawspecrecordfield5_1328 = keyValOf(LawSpecFast.List.<Entry<String, Group>>nil());
+    final LawSpecFast.Map<GroupPartition, Long> v_lawspecrecordfield6_1329 = keyValOf(LawSpecFast.List.<Entry<GroupPartition, Long>>nil());
+    return new BrokerState(v_lawspecrecordfield0_1323, v_lawspecrecordfield1_1324, v_lawspecrecordfield2_1325, v_lawspecrecordfield3_1326, v_lawspecrecordfield4_1327, v_lawspecrecordfield5_1328, v_lawspecrecordfield6_1329);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelEmptyGroup */
-  public static Group lawtwinKafkaModelEmptyGroup_2fc4809b(LawSpecFast.Unit u_1054) {
-    return new Group(0L, keyValOf(LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>nil()), keyValOf(LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>nil()));
+  public static Group lawtwinKafkaModelEmptyGroup_2fc4809b(LawSpecFast.Unit u_1330) {
+    final long v_lawspecrecordfield0_1331 = 0L;
+    final LawSpecFast.Map<String, LawSpecFast.List<String>> v_lawspecrecordfield1_1332 = keyValOf(LawSpecFast.List.<Entry<String, LawSpecFast.List<String>>>nil());
+    final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> v_lawspecrecordfield2_1333 = keyValOf(LawSpecFast.List.<Entry<String, LawSpecFast.List<TopicPartition>>>nil());
+    return new Group(v_lawspecrecordfield0_1331, v_lawspecrecordfield1_1332, v_lawspecrecordfield2_1333);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelEmptyLog */
-  public static PartitionLog lawtwinKafkaModelEmptyLog_a7825ed0(LawSpecFast.Unit u_1055) {
-    return new PartitionLog(LawSpecFast.List.<LogEntry>nil(), 0L, keyValOf(LawSpecFast.List.<Entry<Long, Long>>nil()), LawSpecFast.List.<AbortedTxn>nil(), keyValOf(LawSpecFast.List.<Entry<Long, LawSpecFast.List<BatchMeta>>>nil()));
+  public static PartitionLog lawtwinKafkaModelEmptyLog_a7825ed0(LawSpecFast.Unit u_1334) {
+    final LawSpecFast.List<LogEntry> v_lawspecrecordfield0_1335 = LawSpecFast.List.<LogEntry>nil();
+    final long v_lawspecrecordfield1_1336 = 0L;
+    final LawSpecFast.Map<Long, Long> v_lawspecrecordfield2_1337 = keyValOf(LawSpecFast.List.<Entry<Long, Long>>nil());
+    final LawSpecFast.List<AbortedTxn> v_lawspecrecordfield3_1338 = LawSpecFast.List.<AbortedTxn>nil();
+    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> v_lawspecrecordfield4_1339 = keyValOf(LawSpecFast.List.<Entry<Long, LawSpecFast.List<BatchMeta>>>nil());
+    return new PartitionLog(v_lawspecrecordfield0_1335, v_lawspecrecordfield1_1336, v_lawspecrecordfield2_1337, v_lawspecrecordfield3_1338, v_lawspecrecordfield4_1339);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelEndTxn */
-  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelEndTxn_b2637a52(String txid_1056, long pid_1057, long epoch_1058, boolean commit_1059, BrokerState b_1060) {
-    final ProducerEntry entry_1061 = lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_1056, pid_1057, epoch_1058, b_1060);
-    TxnState value_1062;
-    final TxnState lawspecfieldtxn_1063 = entry_1061.txn;
-    value_1062 = lawspecfieldtxn_1063;
-    final TxnState matched_1064 = value_1062;
-    switch (matched_1064.tag) {
+  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelEndTxn_b2637a52(String txid_1340, long pid_1341, long epoch_1342, boolean commit_1343, BrokerState b_1344) {
+    final ProducerEntry entry_1345 = lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_1340, pid_1341, epoch_1342, b_1344);
+    TxnState value_1346;
+    final TxnState lawspecfieldtxn_1347 = entry_1345.txn;
+    value_1346 = lawspecfieldtxn_1347;
+    final TxnState it_1348 = value_1346;
+    switch (it_1348.tag) {
       case 0 -> {
         throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidTxnState));
       }
       case 1 -> {
-        final TxnState.Ongoing case_1066 = (TxnState.Ongoing) matched_1064;
-        ProducerEntry value_1067;
-        final TxnState replacement_1068 = new TxnState.NoTxn();
-        final long lawspecfieldepoch_1069 = entry_1061.epoch;
-        final LawSpecFast.Maybe<String> lawspecfieldtransactionalid_1070 = entry_1061.transactionalId;
-        value_1067 = new ProducerEntry(lawspecfieldepoch_1069, lawspecfieldtransactionalid_1070, replacement_1068);
-        TxnState value_1071;
-        final TxnState lawspecfieldtxn_1072 = entry_1061.txn;
-        value_1071 = lawspecfieldtxn_1072;
-        return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelPutProducer_4ef907a5(pid_1057, value_1067, lawtwinKafkaModelFinishTxn_7545803e(pid_1057, commit_1059, value_1071, b_1060)));
+        final TxnState.Ongoing case_1350 = (TxnState.Ongoing) it_1348;
+        final Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee v_lawspecselection0x0_1351 = case_1350.value;
+        LawSpecFast.List<TopicPartition> value_1352;
+        final LawSpecFast.List<TopicPartition> lawspecfieldtxnpartitions_1353 = v_lawspecselection0x0_1351.txnPartitions;
+        value_1352 = lawspecfieldtxnpartitions_1353;
+        final LawSpecFast.List<TopicPartition> v_lawspecselection1x0_1354 = value_1352;
+        LawSpecFast.List<PendingOffset> value_1355;
+        final LawSpecFast.List<PendingOffset> lawspecfieldtxnoffsets_1356 = v_lawspecselection0x0_1351.txnOffsets;
+        value_1355 = lawspecfieldtxnoffsets_1356;
+        final LawSpecFast.List<PendingOffset> v_lawspecselection1x1_1357 = value_1355;
+        ProducerEntry value_1358;
+        final TxnState replacement_1359 = new TxnState.NoTxn();
+        final long lawspecfieldepoch_1360 = entry_1345.epoch;
+        final LawSpecFast.Maybe<String> lawspecfieldtransactionalid_1361 = entry_1345.transactionalId;
+        value_1358 = new ProducerEntry(lawspecfieldepoch_1360, lawspecfieldtransactionalid_1361, replacement_1359);
+        TxnState value_1362;
+        final TxnState lawspecfieldtxn_1363 = entry_1345.txn;
+        value_1362 = lawspecfieldtxn_1363;
+        return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelPutProducer_4ef907a5(pid_1341, value_1358, lawtwinKafkaModelFinishTxn_7545803e(pid_1341, commit_1343, value_1362, b_1344)));
       }
       default -> throw LawSpecFast.unreachable();
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelExpectedSequence */
-  public static long lawtwinKafkaModelExpectedSequence_83e363c8(long epoch_1073, LawSpecFast.List<BatchMeta> ms_1074) {
-    if (ms_1074.isEmpty()) {
+  public static long lawtwinKafkaModelExpectedSequence_83e363c8(long epoch_1364, LawSpecFast.List<BatchMeta> ms_1365) {
+    final LawSpecFast.List<BatchMeta> it_1366 = ms_1365;
+    if (it_1366.isEmpty()) {
       return 0L;
     } else {
-      final BatchMeta m_1075 = ms_1074.head();
-      long value_1076;
-      final long lawspecfieldbatchepoch_1077 = m_1075.batchEpoch;
-      value_1076 = lawspecfieldbatchepoch_1077;
-      if (((value_1076) == (epoch_1073))) {
-        long value_1078;
-        final long lawspecfieldlastsequence_1079 = m_1075.lastSequence;
-        value_1078 = lawspecfieldlastsequence_1079;
-        return saturatingInt32_9e8d3b43(java.math.BigInteger.valueOf(value_1078).add(java.math.BigInteger.valueOf(1L)));
+      final BatchMeta v_lawspecselection0x0_1367 = it_1366.head();
+      long value_1368;
+      final long lawspecfieldbatchepoch_1369 = v_lawspecselection0x0_1367.batchEpoch;
+      value_1368 = lawspecfieldbatchepoch_1369;
+      if (((value_1368) == (epoch_1364))) {
+        long value_1370;
+        final long lawspecfieldlastsequence_1371 = v_lawspecselection0x0_1367.lastSequence;
+        value_1370 = lawspecfieldlastsequence_1371;
+        return saturatingInt32_9e8d3b43(java.math.BigInteger.valueOf(value_1370).add(java.math.BigInteger.valueOf(1L)));
       } else {
         return 0L;
       }
@@ -5665,80 +6183,88 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelFetch */
-  public static Pair<FetchResult, BrokerState> lawtwinKafkaModelFetch_29936450(TopicPartition tp_1080, long from_1081, long maxrecords_1082, IsolationLevel isolation_1083, BrokerState b_1084) {
-    if (!(lawtwinKafkaModelKnownPartition_71d3099f(tp_1080, b_1084))) {
+  public static Pair<FetchResult, BrokerState> lawtwinKafkaModelFetch_29936450(TopicPartition tp_1372, long from_1373, long maxrecords_1374, IsolationLevel isolation_1375, BrokerState b_1376) {
+    if (!(lawtwinKafkaModelKnownPartition_71d3099f(tp_1372, b_1376))) {
       throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.UnknownTopicOrPartition));
     } else {
-      final PartitionLog l_1085 = lawtwinKafkaModelLogOf_b86b131a(tp_1080, b_1084);
-      final long hw_1086 = lawtwinKafkaModelHighWatermark_da6ed677(l_1085);
-      final long lso_1087 = lawtwinKafkaModelLastStableOffset_e8497029(l_1085);
-      if ((((from_1081) < (0L)) || ((from_1081) > (hw_1086)))) {
+      final PartitionLog l_1377 = lawtwinKafkaModelLogOf_b86b131a(tp_1372, b_1376);
+      final long hw_1378 = lawtwinKafkaModelHighWatermark_da6ed677(l_1377);
+      final long lso_1379 = lawtwinKafkaModelLastStableOffset_e8497029(l_1377);
+      if ((((from_1373) < (0L)) || ((from_1373) > (hw_1378)))) {
         throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.OffsetOutOfRange));
       } else {
-        boolean value_1088;
-        switch (isolation_1083) {
+        boolean value_1380;
+        final IsolationLevel it_1381 = isolation_1375;
+        switch (it_1381) {
           case ReadUncommitted -> {
-            value_1088 = false;
+            value_1380 = false;
           }
           case ReadCommitted -> {
-            value_1088 = true;
+            value_1380 = true;
           }
           default -> throw LawSpecFast.unreachable();
         }
-        final boolean committedonly_1089 = value_1088;
-        long value_1090;
-        if (committedonly_1089) {
-          value_1090 = lso_1087;
+        final boolean committedonly_1382 = value_1380;
+        long value_1383;
+        if (committedonly_1382) {
+          value_1383 = lso_1379;
         } else {
-          value_1090 = hw_1086;
+          value_1383 = hw_1378;
         }
-        final long limit_1091 = value_1090;
-        LawSpecFast.List<LogEntry> value_1092;
-        final LawSpecFast.List<LogEntry> lawspecfieldentries_1093 = l_1085.entries;
-        value_1092 = lawspecfieldentries_1093;
-        LawSpecFast.List<AbortedTxn> value_1094;
-        final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_1095 = l_1085.abortedTxns;
-        value_1094 = lawspecfieldabortedtxns_1095;
-        final LawSpecFast.List<FetchedRecord> all_1096 = lawtwinKafkaModelReadable_adec3284(value_1092, from_1081, limit_1091, committedonly_1089, value_1094, LawSpecFast.List.<FetchedRecord>nil());
-        final LawSpecFast.List<FetchedRecord> taken_1097 = LawSpecFast.slice(all_1096, 0L, maxrecords_1082);
-        return new Pair<FetchResult, BrokerState>(new FetchResult(taken_1097, lawtwinKafkaModelNextFetchOffset_28fd5a97(from_1081, limit_1091, taken_1097, all_1096), hw_1086, lso_1087), b_1084);
+        final long limit_1384 = value_1383;
+        LawSpecFast.List<LogEntry> value_1385;
+        final LawSpecFast.List<LogEntry> lawspecfieldentries_1386 = l_1377.entries;
+        value_1385 = lawspecfieldentries_1386;
+        LawSpecFast.List<AbortedTxn> value_1387;
+        final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_1388 = l_1377.abortedTxns;
+        value_1387 = lawspecfieldabortedtxns_1388;
+        final LawSpecFast.List<FetchedRecord> all_1389 = lawtwinKafkaModelReadable_adec3284(value_1385, from_1373, limit_1384, committedonly_1382, value_1387, LawSpecFast.List.<FetchedRecord>nil());
+        final LawSpecFast.List<FetchedRecord> taken_1390 = LawSpecFast.slice(all_1389, 0L, maxrecords_1374);
+        FetchResult value_1391;
+        final LawSpecFast.List<FetchedRecord> v_lawspecrecordfield0_1392 = taken_1390;
+        final long v_lawspecrecordfield1_1393 = lawtwinKafkaModelNextFetchOffset_28fd5a97(from_1373, limit_1384, taken_1390, all_1389);
+        final long v_lawspecrecordfield2_1394 = hw_1378;
+        final long v_lawspecrecordfield3_1395 = lso_1379;
+        value_1391 = new FetchResult(v_lawspecrecordfield0_1392, v_lawspecrecordfield1_1393, v_lawspecrecordfield2_1394, v_lawspecrecordfield3_1395);
+        return new Pair<FetchResult, BrokerState>(value_1391, b_1376);
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelFindDuplicate */
-  public static LawSpecFast.Maybe<Long> lawtwinKafkaModelFindDuplicate_3335aea4(long epoch_1098, long first_1099, long last_1100, LawSpecFast.List<BatchMeta> ms_1101) {
+  public static LawSpecFast.Maybe<Long> lawtwinKafkaModelFindDuplicate_3335aea4(long epoch_1396, long first_1397, long last_1398, LawSpecFast.List<BatchMeta> ms_1399) {
     while (true) {
-      if (ms_1101.isEmpty()) {
+      final LawSpecFast.List<BatchMeta> it_1400 = ms_1399;
+      if (it_1400.isEmpty()) {
         return LawSpecFast.Maybe.<Long>nothing();
       } else {
-        final BatchMeta m_1102 = ms_1101.head();
-        final LawSpecFast.List<BatchMeta> rest_1103 = ms_1101.tail();
-        long value_1104;
-        final long lawspecfieldbatchepoch_1105 = m_1102.batchEpoch;
-        value_1104 = lawspecfieldbatchepoch_1105;
-        boolean logic_1108;
-        if (((value_1104) == (epoch_1098))) {
-          long value_1106;
-          final long lawspecfieldfirstsequence_1107 = m_1102.firstSequence;
-          value_1106 = lawspecfieldfirstsequence_1107;
-          logic_1108 = ((value_1106) == (first_1099));
-        } else { logic_1108 = false; }
-        boolean logic_1111;
-        if (logic_1108) {
-          long value_1109;
-          final long lawspecfieldlastsequence_1110 = m_1102.lastSequence;
-          value_1109 = lawspecfieldlastsequence_1110;
-          logic_1111 = ((value_1109) == (last_1100));
-        } else { logic_1111 = false; }
-        if (logic_1111) {
-          long value_1112;
-          final long lawspecfieldbatchoffset_1113 = m_1102.batchOffset;
-          value_1112 = lawspecfieldbatchoffset_1113;
-          return LawSpecFast.Maybe.<Long>just(value_1112);
+        final BatchMeta v_lawspecselection0x0_1401 = it_1400.head();
+        final LawSpecFast.List<BatchMeta> v_lawspecselection0x1_1402 = it_1400.tail();
+        long value_1403;
+        final long lawspecfieldbatchepoch_1404 = v_lawspecselection0x0_1401.batchEpoch;
+        value_1403 = lawspecfieldbatchepoch_1404;
+        boolean logic_1407;
+        if (((value_1403) == (epoch_1396))) {
+          long value_1405;
+          final long lawspecfieldfirstsequence_1406 = v_lawspecselection0x0_1401.firstSequence;
+          value_1405 = lawspecfieldfirstsequence_1406;
+          logic_1407 = ((value_1405) == (first_1397));
+        } else { logic_1407 = false; }
+        boolean logic_1410;
+        if (logic_1407) {
+          long value_1408;
+          final long lawspecfieldlastsequence_1409 = v_lawspecselection0x0_1401.lastSequence;
+          value_1408 = lawspecfieldlastsequence_1409;
+          logic_1410 = ((value_1408) == (last_1398));
+        } else { logic_1410 = false; }
+        if (logic_1410) {
+          long value_1411;
+          final long lawspecfieldbatchoffset_1412 = v_lawspecselection0x0_1401.batchOffset;
+          value_1411 = lawspecfieldbatchoffset_1412;
+          return LawSpecFast.Maybe.<Long>just(value_1411);
         } else {
-          final LawSpecFast.List<BatchMeta> next_1114 = rest_1103;
-          ms_1101 = next_1114;
+          final LawSpecFast.List<BatchMeta> next_1413 = v_lawspecselection0x1_1402;
+          ms_1399 = next_1413;
           continue;
         }
       }
@@ -5746,20 +6272,28 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelFinishTxn */
-  public static BrokerState lawtwinKafkaModelFinishTxn_7545803e(long pid_1115, boolean commit_1116, TxnState txn_1117, BrokerState b_1118) {
-    switch (txn_1117.tag) {
+  public static BrokerState lawtwinKafkaModelFinishTxn_7545803e(long pid_1414, boolean commit_1415, TxnState txn_1416, BrokerState b_1417) {
+    final TxnState it_1418 = txn_1416;
+    switch (it_1418.tag) {
       case 0 -> {
-        return b_1118;
+        return b_1417;
       }
       case 1 -> {
-        final TxnState.Ongoing case_1120 = (TxnState.Ongoing) txn_1117;
-        final LawSpecFast.List<TopicPartition> ps_1121 = case_1120.txnPartitions;
-        final LawSpecFast.List<PendingOffset> os_1122 = case_1120.txnOffsets;
-        final BrokerState marked_1123 = lawtwinKafkaModelWriteMarkers_c507f08e(pid_1115, commit_1116, ps_1121, b_1118);
-        if (commit_1116) {
-          return lawtwinKafkaModelApplyOffsets_c0f73b56(lawtwinKafkaModelReversePending_51ca5898(os_1122, LawSpecFast.List.<PendingOffset>nil()), marked_1123);
+        final TxnState.Ongoing case_1420 = (TxnState.Ongoing) it_1418;
+        final Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee v_lawspecselection0x0_1421 = case_1420.value;
+        LawSpecFast.List<TopicPartition> value_1422;
+        final LawSpecFast.List<TopicPartition> lawspecfieldtxnpartitions_1423 = v_lawspecselection0x0_1421.txnPartitions;
+        value_1422 = lawspecfieldtxnpartitions_1423;
+        final LawSpecFast.List<TopicPartition> v_lawspecselection1x0_1424 = value_1422;
+        LawSpecFast.List<PendingOffset> value_1425;
+        final LawSpecFast.List<PendingOffset> lawspecfieldtxnoffsets_1426 = v_lawspecselection0x0_1421.txnOffsets;
+        value_1425 = lawspecfieldtxnoffsets_1426;
+        final LawSpecFast.List<PendingOffset> v_lawspecselection1x1_1427 = value_1425;
+        final BrokerState marked_1428 = lawtwinKafkaModelWriteMarkers_c507f08e(pid_1414, commit_1415, v_lawspecselection1x0_1424, b_1417);
+        if (commit_1415) {
+          return lawtwinKafkaModelApplyOffsets_c0f73b56(lawtwinKafkaModelReversePending_51ca5898(v_lawspecselection1x1_1427, LawSpecFast.List.<PendingOffset>nil()), marked_1428);
         } else {
-          return marked_1123;
+          return marked_1428;
         }
       }
       default -> throw LawSpecFast.unreachable();
@@ -5767,270 +6301,279 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelGroupOf */
-  public static Group lawtwinKafkaModelGroupOf_abe7cb22(String g_1124, BrokerState b_1125) {
-    LawSpecFast.Map<String, Group> value_1126;
-    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1127 = b_1125.groups;
-    value_1126 = lawspecfieldgroups_1127;
-    final LawSpecFast.Maybe<Group> matched_1128 = value_1126.get(g_1124);
-    if (matched_1128.isJust()) {
-      final Group group_1129 = matched_1128.get();
-      return group_1129;
+  public static Group lawtwinKafkaModelGroupOf_abe7cb22(String g_1429, BrokerState b_1430) {
+    LawSpecFast.Map<String, Group> value_1431;
+    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1432 = b_1430.groups;
+    value_1431 = lawspecfieldgroups_1432;
+    final LawSpecFast.Maybe<Group> it_1433 = value_1431.get(g_1429);
+    if (it_1433.isJust()) {
+      final Group v_lawspecselection0x0_1434 = it_1433.get();
+      return v_lawspecselection0x0_1434;
     } else {
       return lawtwinKafkaModelEmptyGroup_2fc4809b(LawSpecFast.Unit.UNIT);
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelHeartbeat */
-  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelHeartbeat_0f08a54d(String g_1130, String member_1131, long generation_1132, BrokerState b_1133) {
-    final Group group_1134 = lawtwinKafkaModelCheckMember_f218b850(g_1130, member_1131, generation_1132, b_1133);
-    return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, b_1133);
+  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelHeartbeat_0f08a54d(String g_1435, String member_1436, long generation_1437, BrokerState b_1438) {
+    final Group group_1439 = lawtwinKafkaModelCheckMember_f218b850(g_1435, member_1436, generation_1437, b_1438);
+    return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, b_1438);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelHighWatermark */
-  public static long lawtwinKafkaModelHighWatermark_da6ed677(PartitionLog l_1135) {
-    final long lawspecfieldlogendoffset_1136 = l_1135.logEndOffset;
-    return lawspecfieldlogendoffset_1136;
+  public static long lawtwinKafkaModelHighWatermark_da6ed677(PartitionLog l_1440) {
+    final long lawspecfieldlogendoffset_1441 = l_1440.logEndOffset;
+    return lawspecfieldlogendoffset_1441;
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelInitProducerId */
-  public static Pair<ProducerIdAndEpoch, BrokerState> lawtwinKafkaModelInitProducerId_cedb7e1b(LawSpecFast.Maybe<String> txid_1137, BrokerState b_1138) {
-    if (txid_1137.isJust()) {
-      final String id_1139 = txid_1137.get();
-      if ((java.util.Objects.equals(id_1139, ""))) {
+  public static Pair<ProducerIdAndEpoch, BrokerState> lawtwinKafkaModelInitProducerId_cedb7e1b(LawSpecFast.Maybe<String> txid_1442, BrokerState b_1443) {
+    final LawSpecFast.Maybe<String> it_1444 = txid_1442;
+    if (it_1444.isJust()) {
+      final String v_lawspecselection0x0_1445 = it_1444.get();
+      if ((java.util.Objects.equals(v_lawspecselection0x0_1445, ""))) {
         throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidRequest));
       } else {
-        LawSpecFast.Map<String, Long> value_1140;
-        final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1141 = b_1138.transactionalIds;
-        value_1140 = lawspecfieldtransactionalids_1141;
-        final LawSpecFast.Maybe<Long> matched_1142 = value_1140.get(id_1139);
-        if (matched_1142.isJust()) {
-          final long pid_1143 = matched_1142.get();
-          LawSpecFast.Map<Long, ProducerEntry> value_1144;
-          final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1145 = b_1138.producers;
-          value_1144 = lawspecfieldproducers_1145;
-          final LawSpecFast.Maybe<ProducerEntry> matched_1146 = value_1144.get(pid_1143);
-          if (matched_1146.isJust()) {
-            final ProducerEntry entry_1147 = matched_1146.get();
-            TxnState value_1148;
-            final TxnState lawspecfieldtxn_1149 = entry_1147.txn;
-            value_1148 = lawspecfieldtxn_1149;
-            final BrokerState cleared_1150 = lawtwinKafkaModelFinishTxn_7545803e(pid_1143, false, value_1148, b_1138);
-            long value_1151;
-            final long lawspecfieldepoch_1152 = entry_1147.epoch;
-            value_1151 = lawspecfieldepoch_1152;
-            if (((value_1151) < (32767L))) {
-              long value_1153;
-              final long lawspecfieldepoch_1154 = entry_1147.epoch;
-              value_1153 = lawspecfieldepoch_1154;
-              final long bumped_1155 = saturatingInt16_770015a8(java.math.BigInteger.valueOf(value_1153).add(java.math.BigInteger.valueOf(1L)));
-              ProducerEntry value_1156;
-              final TxnState replacement_1157 = new TxnState.NoTxn();
-              ProducerEntry value_1158;
-              final long replacement_1159 = bumped_1155;
-              final LawSpecFast.Maybe<String> lawspecfieldtransactionalid_1160 = entry_1147.transactionalId;
-              final TxnState lawspecfieldtxn_1161 = entry_1147.txn;
-              value_1158 = new ProducerEntry(replacement_1159, lawspecfieldtransactionalid_1160, lawspecfieldtxn_1161);
-              final ProducerEntry matched_1162 = value_1158;
-              final long lawspecfieldepoch_1163 = matched_1162.epoch;
-              final LawSpecFast.Maybe<String> lawspecfieldtransactionalid_1164 = matched_1162.transactionalId;
-              value_1156 = new ProducerEntry(lawspecfieldepoch_1163, lawspecfieldtransactionalid_1164, replacement_1157);
-              return new Pair<ProducerIdAndEpoch, BrokerState>(new ProducerIdAndEpoch(pid_1143, bumped_1155), lawtwinKafkaModelPutProducer_4ef907a5(pid_1143, value_1156, cleared_1150));
+        LawSpecFast.Map<String, Long> value_1446;
+        final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1447 = b_1443.transactionalIds;
+        value_1446 = lawspecfieldtransactionalids_1447;
+        final LawSpecFast.Maybe<Long> it_1448 = value_1446.get(v_lawspecselection0x0_1445);
+        if (it_1448.isJust()) {
+          final long v_match__lawspecselection0x0_0_1449 = it_1448.get();
+          LawSpecFast.Map<Long, ProducerEntry> value_1450;
+          final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1451 = b_1443.producers;
+          value_1450 = lawspecfieldproducers_1451;
+          final LawSpecFast.Maybe<ProducerEntry> it_1452 = value_1450.get(v_match__lawspecselection0x0_0_1449);
+          if (it_1452.isJust()) {
+            final ProducerEntry v_match__match__lawspecselection0x0_0_0_1453 = it_1452.get();
+            TxnState value_1454;
+            final TxnState lawspecfieldtxn_1455 = v_match__match__lawspecselection0x0_0_0_1453.txn;
+            value_1454 = lawspecfieldtxn_1455;
+            final BrokerState cleared_1456 = lawtwinKafkaModelFinishTxn_7545803e(v_match__lawspecselection0x0_0_1449, false, value_1454, b_1443);
+            long value_1457;
+            final long lawspecfieldepoch_1458 = v_match__match__lawspecselection0x0_0_0_1453.epoch;
+            value_1457 = lawspecfieldepoch_1458;
+            if (((value_1457) < (32767L))) {
+              long value_1459;
+              final long lawspecfieldepoch_1460 = v_match__match__lawspecselection0x0_0_0_1453.epoch;
+              value_1459 = lawspecfieldepoch_1460;
+              final long bumped_1461 = saturatingInt16_770015a8(java.math.BigInteger.valueOf(value_1459).add(java.math.BigInteger.valueOf(1L)));
+              ProducerIdAndEpoch value_1462;
+              final long v_lawspecrecordfield0_1463 = v_match__lawspecselection0x0_0_1449;
+              final long v_lawspecrecordfield1_1464 = bumped_1461;
+              value_1462 = new ProducerIdAndEpoch(v_lawspecrecordfield0_1463, v_lawspecrecordfield1_1464);
+              ProducerEntry value_1465;
+              final TxnState replacement_1466 = new TxnState.NoTxn();
+              ProducerEntry value_1467;
+              final long replacement_1468 = bumped_1461;
+              final LawSpecFast.Maybe<String> lawspecfieldtransactionalid_1469 = v_match__match__lawspecselection0x0_0_0_1453.transactionalId;
+              final TxnState lawspecfieldtxn_1470 = v_match__match__lawspecselection0x0_0_0_1453.txn;
+              value_1467 = new ProducerEntry(replacement_1468, lawspecfieldtransactionalid_1469, lawspecfieldtxn_1470);
+              final ProducerEntry matched_1471 = value_1467;
+              final long lawspecfieldepoch_1472 = matched_1471.epoch;
+              final LawSpecFast.Maybe<String> lawspecfieldtransactionalid_1473 = matched_1471.transactionalId;
+              value_1465 = new ProducerEntry(lawspecfieldepoch_1472, lawspecfieldtransactionalid_1473, replacement_1466);
+              return new Pair<ProducerIdAndEpoch, BrokerState>(value_1462, lawtwinKafkaModelPutProducer_4ef907a5(v_match__lawspecselection0x0_0_1449, value_1465, cleared_1456));
             } else {
-              return lawtwinKafkaModelNewProducer_89b0852d(txid_1137, cleared_1150);
+              return lawtwinKafkaModelNewProducer_89b0852d(txid_1442, cleared_1456);
             }
           } else {
-            return lawtwinKafkaModelNewProducer_89b0852d(txid_1137, b_1138);
+            return lawtwinKafkaModelNewProducer_89b0852d(txid_1442, b_1443);
           }
         } else {
-          return lawtwinKafkaModelNewProducer_89b0852d(txid_1137, b_1138);
+          return lawtwinKafkaModelNewProducer_89b0852d(txid_1442, b_1443);
         }
       }
     } else {
-      return lawtwinKafkaModelNewProducer_89b0852d(LawSpecFast.Maybe.<String>nothing(), b_1138);
+      return lawtwinKafkaModelNewProducer_89b0852d(LawSpecFast.Maybe.<String>nothing(), b_1443);
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelIsAborted */
-  public static boolean lawtwinKafkaModelIsAborted_b12645e5(long writer_1165, long offset_1166, LawSpecFast.List<AbortedTxn> aborted_1167) {
-    if (aborted_1167.isEmpty()) {
+  public static boolean lawtwinKafkaModelIsAborted_b12645e5(long writer_1474, long offset_1475, LawSpecFast.List<AbortedTxn> aborted_1476) {
+    final LawSpecFast.List<AbortedTxn> it_1477 = aborted_1476;
+    if (it_1477.isEmpty()) {
       return false;
     } else {
-      final AbortedTxn a_1168 = aborted_1167.head();
-      final LawSpecFast.List<AbortedTxn> rest_1169 = aborted_1167.tail();
-      long value_1170;
-      final long lawspecfieldabortedwriter_1171 = a_1168.abortedWriter;
-      value_1170 = lawspecfieldabortedwriter_1171;
-      boolean logic_1174;
-      if (((value_1170) == (writer_1165))) {
-        long value_1172;
-        final long lawspecfieldfirstoffset_1173 = a_1168.firstOffset;
-        value_1172 = lawspecfieldfirstoffset_1173;
-        logic_1174 = ((offset_1166) >= (value_1172));
-      } else { logic_1174 = false; }
-      boolean logic_1177;
-      if (logic_1174) {
-        long value_1175;
-        final long lawspecfieldlastoffset_1176 = a_1168.lastOffset;
-        value_1175 = lawspecfieldlastoffset_1176;
-        logic_1177 = ((offset_1166) <= (value_1175));
-      } else { logic_1177 = false; }
-      return (logic_1177 || lawtwinKafkaModelIsAborted_b12645e5(writer_1165, offset_1166, rest_1169));
+      final AbortedTxn v_lawspecselection0x0_1478 = it_1477.head();
+      final LawSpecFast.List<AbortedTxn> v_lawspecselection0x1_1479 = it_1477.tail();
+      long value_1480;
+      final long lawspecfieldabortedwriter_1481 = v_lawspecselection0x0_1478.abortedWriter;
+      value_1480 = lawspecfieldabortedwriter_1481;
+      boolean logic_1484;
+      if (((value_1480) == (writer_1474))) {
+        long value_1482;
+        final long lawspecfieldfirstoffset_1483 = v_lawspecselection0x0_1478.firstOffset;
+        value_1482 = lawspecfieldfirstoffset_1483;
+        logic_1484 = ((offset_1475) >= (value_1482));
+      } else { logic_1484 = false; }
+      boolean logic_1487;
+      if (logic_1484) {
+        long value_1485;
+        final long lawspecfieldlastoffset_1486 = v_lawspecselection0x0_1478.lastOffset;
+        value_1485 = lawspecfieldlastoffset_1486;
+        logic_1487 = ((offset_1475) <= (value_1485));
+      } else { logic_1487 = false; }
+      return (logic_1487 || lawtwinKafkaModelIsAborted_b12645e5(writer_1474, offset_1475, v_lawspecselection0x1_1479));
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelJoinGroup */
-  public static Pair<Long, BrokerState> lawtwinKafkaModelJoinGroup_9a1e92f5(String g_1178, String member_1179, LawSpecFast.List<String> topics_1180, BrokerState b_1181) {
-    if ((java.util.Objects.equals(g_1178, ""))) {
+  public static Pair<Long, BrokerState> lawtwinKafkaModelJoinGroup_9a1e92f5(String g_1488, String member_1489, LawSpecFast.List<String> topics_1490, BrokerState b_1491) {
+    if ((java.util.Objects.equals(g_1488, ""))) {
       throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidGroupId));
     } else {
-      if ((java.util.Objects.equals(member_1179, ""))) {
+      if ((java.util.Objects.equals(member_1489, ""))) {
         throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.UnknownMemberId));
       } else {
-        final Group group_1182 = lawtwinKafkaModelGroupOf_abe7cb22(g_1178, b_1181);
-        LawSpecFast.List<String> value_1183;
-        final LawSpecFast.Set<String> matched_1184 = LawSpecFast.Set.of(topics_1180);
-        final LawSpecFast.List<String> items_1185 = matched_1184.toList();
-        value_1183 = items_1185;
-        final LawSpecFast.List<String> wanted_1186 = value_1183;
-        LawSpecFast.Map<String, LawSpecFast.List<String>> value_1187;
-        final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1188 = group_1182.subscriptions;
-        value_1187 = lawspecfieldsubscriptions_1188;
-        final LawSpecFast.Maybe<LawSpecFast.List<String>> matched_1189 = value_1187.get(member_1179);
-        if (matched_1189.isJust()) {
-          final LawSpecFast.List<String> existing_1190 = matched_1189.get();
-          if ((java.util.Objects.equals(existing_1190, wanted_1186))) {
-            long value_1191;
-            final long lawspecfieldgroupgeneration_1192 = group_1182.groupGeneration;
-            value_1191 = lawspecfieldgroupgeneration_1192;
-            return new Pair<Long, BrokerState>(value_1191, b_1181);
+        final Group group_1492 = lawtwinKafkaModelGroupOf_abe7cb22(g_1488, b_1491);
+        LawSpecFast.List<String> value_1493;
+        final LawSpecFast.Set<String> matched_1494 = LawSpecFast.Set.of(topics_1490);
+        final LawSpecFast.List<String> items_1495 = matched_1494.toList();
+        value_1493 = items_1495;
+        final LawSpecFast.List<String> wanted_1496 = value_1493;
+        LawSpecFast.Map<String, LawSpecFast.List<String>> value_1497;
+        final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1498 = group_1492.subscriptions;
+        value_1497 = lawspecfieldsubscriptions_1498;
+        final LawSpecFast.Maybe<LawSpecFast.List<String>> it_1499 = value_1497.get(member_1489);
+        if (it_1499.isJust()) {
+          final LawSpecFast.List<String> v_lawspecselection0x0_1500 = it_1499.get();
+          if ((java.util.Objects.equals(v_lawspecselection0x0_1500, wanted_1496))) {
+            long value_1501;
+            final long lawspecfieldgroupgeneration_1502 = group_1492.groupGeneration;
+            value_1501 = lawspecfieldgroupgeneration_1502;
+            return new Pair<Long, BrokerState>(value_1501, b_1491);
           } else {
-            Group value_1193;
-            LawSpecFast.Map<String, LawSpecFast.List<String>> value_1194;
-            final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1195 = group_1182.subscriptions;
-            value_1194 = lawspecfieldsubscriptions_1195;
-            final LawSpecFast.Map<String, LawSpecFast.List<String>> replacement_1196 = value_1194.put(member_1179, wanted_1186);
-            final long lawspecfieldgroupgeneration_1197 = group_1182.groupGeneration;
-            final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecfieldassignment_1198 = group_1182.assignment;
-            value_1193 = new Group(lawspecfieldgroupgeneration_1197, replacement_1196, lawspecfieldassignment_1198);
-            final Group next_1199 = lawtwinKafkaModelRebalance_c9984d55(value_1193, b_1181);
-            long value_1200;
-            final long lawspecfieldgroupgeneration_1201 = next_1199.groupGeneration;
-            value_1200 = lawspecfieldgroupgeneration_1201;
-            return new Pair<Long, BrokerState>(value_1200, lawtwinKafkaModelPutGroup_f45eaad0(g_1178, next_1199, b_1181));
+            Group value_1503;
+            LawSpecFast.Map<String, LawSpecFast.List<String>> value_1504;
+            final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1505 = group_1492.subscriptions;
+            value_1504 = lawspecfieldsubscriptions_1505;
+            final LawSpecFast.Map<String, LawSpecFast.List<String>> replacement_1506 = value_1504.put(member_1489, wanted_1496);
+            final long lawspecfieldgroupgeneration_1507 = group_1492.groupGeneration;
+            final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecfieldassignment_1508 = group_1492.assignment;
+            value_1503 = new Group(lawspecfieldgroupgeneration_1507, replacement_1506, lawspecfieldassignment_1508);
+            final Group next_1509 = lawtwinKafkaModelRebalance_c9984d55(value_1503, b_1491);
+            long value_1510;
+            final long lawspecfieldgroupgeneration_1511 = next_1509.groupGeneration;
+            value_1510 = lawspecfieldgroupgeneration_1511;
+            return new Pair<Long, BrokerState>(value_1510, lawtwinKafkaModelPutGroup_f45eaad0(g_1488, next_1509, b_1491));
           }
         } else {
-          Group value_1202;
-          LawSpecFast.Map<String, LawSpecFast.List<String>> value_1203;
-          final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1204 = group_1182.subscriptions;
-          value_1203 = lawspecfieldsubscriptions_1204;
-          final LawSpecFast.Map<String, LawSpecFast.List<String>> replacement_1205 = value_1203.put(member_1179, wanted_1186);
-          final long lawspecfieldgroupgeneration_1206 = group_1182.groupGeneration;
-          final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecfieldassignment_1207 = group_1182.assignment;
-          value_1202 = new Group(lawspecfieldgroupgeneration_1206, replacement_1205, lawspecfieldassignment_1207);
-          final Group next_1208 = lawtwinKafkaModelRebalance_c9984d55(value_1202, b_1181);
-          long value_1209;
-          final long lawspecfieldgroupgeneration_1210 = next_1208.groupGeneration;
-          value_1209 = lawspecfieldgroupgeneration_1210;
-          return new Pair<Long, BrokerState>(value_1209, lawtwinKafkaModelPutGroup_f45eaad0(g_1178, next_1208, b_1181));
+          Group value_1512;
+          LawSpecFast.Map<String, LawSpecFast.List<String>> value_1513;
+          final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1514 = group_1492.subscriptions;
+          value_1513 = lawspecfieldsubscriptions_1514;
+          final LawSpecFast.Map<String, LawSpecFast.List<String>> replacement_1515 = value_1513.put(member_1489, wanted_1496);
+          final long lawspecfieldgroupgeneration_1516 = group_1492.groupGeneration;
+          final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecfieldassignment_1517 = group_1492.assignment;
+          value_1512 = new Group(lawspecfieldgroupgeneration_1516, replacement_1515, lawspecfieldassignment_1517);
+          final Group next_1518 = lawtwinKafkaModelRebalance_c9984d55(value_1512, b_1491);
+          long value_1519;
+          final long lawspecfieldgroupgeneration_1520 = next_1518.groupGeneration;
+          value_1519 = lawspecfieldgroupgeneration_1520;
+          return new Pair<Long, BrokerState>(value_1519, lawtwinKafkaModelPutGroup_f45eaad0(g_1488, next_1518, b_1491));
         }
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelKnownPartition */
-  public static boolean lawtwinKafkaModelKnownPartition_71d3099f(TopicPartition tp_1211, BrokerState b_1212) {
-    String value_1213;
-    final String lawspecfieldtopic_1214 = tp_1211.topic;
-    value_1213 = lawspecfieldtopic_1214;
-    final LawSpecFast.Maybe<Long> matched_1215 = lawtwinKafkaModelPartitionCountOf_ff180c35(value_1213, b_1212);
-    if (matched_1215.isJust()) {
-      final long n_1216 = matched_1215.get();
-      long value_1217;
-      final long lawspecfieldpartition_1218 = tp_1211.partition;
-      value_1217 = lawspecfieldpartition_1218;
-      boolean logic_1221;
-      if (((value_1217) >= (0L))) {
-        long value_1219;
-        final long lawspecfieldpartition_1220 = tp_1211.partition;
-        value_1219 = lawspecfieldpartition_1220;
-        logic_1221 = ((value_1219) < (n_1216));
-      } else { logic_1221 = false; }
-      return logic_1221;
+  public static boolean lawtwinKafkaModelKnownPartition_71d3099f(TopicPartition tp_1521, BrokerState b_1522) {
+    String value_1523;
+    final String lawspecfieldtopic_1524 = tp_1521.topic;
+    value_1523 = lawspecfieldtopic_1524;
+    final LawSpecFast.Maybe<Long> it_1525 = lawtwinKafkaModelPartitionCountOf_ff180c35(value_1523, b_1522);
+    if (it_1525.isJust()) {
+      final long v_lawspecselection0x0_1526 = it_1525.get();
+      long value_1527;
+      final long lawspecfieldpartition_1528 = tp_1521.partition;
+      value_1527 = lawspecfieldpartition_1528;
+      boolean logic_1531;
+      if (((value_1527) >= (0L))) {
+        long value_1529;
+        final long lawspecfieldpartition_1530 = tp_1521.partition;
+        value_1529 = lawspecfieldpartition_1530;
+        logic_1531 = ((value_1529) < (v_lawspecselection0x0_1526));
+      } else { logic_1531 = false; }
+      return logic_1531;
     } else {
       return false;
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelLastOffsetOf */
-  public static long lawtwinKafkaModelLastOffsetOf_544a605b(LawSpecFast.List<FetchedRecord> rs_1222, long otherwise_1223) {
+  public static long lawtwinKafkaModelLastOffsetOf_544a605b(LawSpecFast.List<FetchedRecord> rs_1532, long fallbackoffset_1533) {
     while (true) {
-      if (rs_1222.isEmpty()) {
-        return otherwise_1223;
+      final LawSpecFast.List<FetchedRecord> it_1534 = rs_1532;
+      if (it_1534.isEmpty()) {
+        return fallbackoffset_1533;
       } else {
-        final FetchedRecord h_1224 = rs_1222.head();
-        final LawSpecFast.List<FetchedRecord> t_1225 = rs_1222.tail();
-        final LawSpecFast.List<FetchedRecord> next_1226 = t_1225;
-        long value_1227;
-        final long lawspecfieldoffset_1228 = h_1224.offset;
-        value_1227 = lawspecfieldoffset_1228;
-        final long next_1229 = value_1227;
-        rs_1222 = next_1226;
-        otherwise_1223 = next_1229;
+        final FetchedRecord v_lawspecselection0x0_1535 = it_1534.head();
+        final LawSpecFast.List<FetchedRecord> v_lawspecselection0x1_1536 = it_1534.tail();
+        final LawSpecFast.List<FetchedRecord> next_1537 = v_lawspecselection0x1_1536;
+        long value_1538;
+        final long lawspecfieldoffset_1539 = v_lawspecselection0x0_1535.offset;
+        value_1538 = lawspecfieldoffset_1539;
+        final long next_1540 = value_1538;
+        rs_1532 = next_1537;
+        fallbackoffset_1533 = next_1540;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelLastStableOffset */
-  public static long lawtwinKafkaModelLastStableOffset_e8497029(PartitionLog l_1230) {
-    LawSpecFast.Map<Long, Long> value_1231;
-    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1232 = l_1230.openTxns;
-    value_1231 = lawspecfieldopentxns_1232;
-    long value_1233;
-    final long lawspecfieldlogendoffset_1234 = l_1230.logEndOffset;
-    value_1233 = lawspecfieldlogendoffset_1234;
-    return lawtwinKafkaModelMinOf_c4e891de(value_1231.toList((k, v) -> v), value_1233);
+  public static long lawtwinKafkaModelLastStableOffset_e8497029(PartitionLog l_1541) {
+    LawSpecFast.Map<Long, Long> value_1542;
+    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1543 = l_1541.openTxns;
+    value_1542 = lawspecfieldopentxns_1543;
+    long value_1544;
+    final long lawspecfieldlogendoffset_1545 = l_1541.logEndOffset;
+    value_1544 = lawspecfieldlogendoffset_1545;
+    return lawtwinKafkaModelMinOf_c4e891de(value_1542.toList((k, v) -> v), value_1544);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelLeaveGroup */
-  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelLeaveGroup_5e5a3f69(String g_1235, String member_1236, BrokerState b_1237) {
-    final Group group_1238 = lawtwinKafkaModelGroupOf_abe7cb22(g_1235, b_1237);
-    LawSpecFast.Map<String, LawSpecFast.List<String>> value_1239;
-    final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1240 = group_1238.subscriptions;
-    value_1239 = lawspecfieldsubscriptions_1240;
-    final LawSpecFast.Maybe<LawSpecFast.List<String>> matched_1241 = value_1239.get(member_1236);
-    if (matched_1241.isJust()) {
-      Group value_1242;
-      LawSpecFast.Map<String, LawSpecFast.List<String>> value_1243;
-      final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1244 = group_1238.subscriptions;
-      value_1243 = lawspecfieldsubscriptions_1244;
-      final LawSpecFast.Map<String, LawSpecFast.List<String>> replacement_1245 = value_1243.remove(member_1236);
-      final long lawspecfieldgroupgeneration_1246 = group_1238.groupGeneration;
-      final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecfieldassignment_1247 = group_1238.assignment;
-      value_1242 = new Group(lawspecfieldgroupgeneration_1246, replacement_1245, lawspecfieldassignment_1247);
-      return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelPutGroup_f45eaad0(g_1235, lawtwinKafkaModelRebalance_c9984d55(value_1242, b_1237), b_1237));
+  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelLeaveGroup_5e5a3f69(String g_1546, String member_1547, BrokerState b_1548) {
+    final Group group_1549 = lawtwinKafkaModelGroupOf_abe7cb22(g_1546, b_1548);
+    LawSpecFast.Map<String, LawSpecFast.List<String>> value_1550;
+    final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1551 = group_1549.subscriptions;
+    value_1550 = lawspecfieldsubscriptions_1551;
+    final LawSpecFast.Maybe<LawSpecFast.List<String>> it_1552 = value_1550.get(member_1547);
+    if (it_1552.isJust()) {
+      Group value_1553;
+      LawSpecFast.Map<String, LawSpecFast.List<String>> value_1554;
+      final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1555 = group_1549.subscriptions;
+      value_1554 = lawspecfieldsubscriptions_1555;
+      final LawSpecFast.Map<String, LawSpecFast.List<String>> replacement_1556 = value_1554.remove(member_1547);
+      final long lawspecfieldgroupgeneration_1557 = group_1549.groupGeneration;
+      final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecfieldassignment_1558 = group_1549.assignment;
+      value_1553 = new Group(lawspecfieldgroupgeneration_1557, replacement_1556, lawspecfieldassignment_1558);
+      return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelPutGroup_f45eaad0(g_1546, lawtwinKafkaModelRebalance_c9984d55(value_1553, b_1548), b_1548));
     } else {
       throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.UnknownMemberId));
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelListOffsets */
-  public static Pair<Long, BrokerState> lawtwinKafkaModelListOffsets_9c6c9426(TopicPartition tp_1248, OffsetSpec spec_1249, IsolationLevel isolation_1250, BrokerState b_1251) {
-    if (!(lawtwinKafkaModelKnownPartition_71d3099f(tp_1248, b_1251))) {
+  public static Pair<Long, BrokerState> lawtwinKafkaModelListOffsets_9c6c9426(TopicPartition tp_1559, OffsetSpec spec_1560, IsolationLevel isolation_1561, BrokerState b_1562) {
+    if (!(lawtwinKafkaModelKnownPartition_71d3099f(tp_1559, b_1562))) {
       throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.UnknownTopicOrPartition));
     } else {
-      final PartitionLog l_1252 = lawtwinKafkaModelLogOf_b86b131a(tp_1248, b_1251);
-      switch (spec_1249) {
+      final PartitionLog l_1563 = lawtwinKafkaModelLogOf_b86b131a(tp_1559, b_1562);
+      final OffsetSpec it_1564 = spec_1560;
+      switch (it_1564) {
         case Earliest -> {
-          return new Pair<Long, BrokerState>(0L, b_1251);
+          return new Pair<Long, BrokerState>(0L, b_1562);
         }
         case Latest -> {
-          switch (isolation_1250) {
+          final IsolationLevel it_1565 = isolation_1561;
+          switch (it_1565) {
             case ReadUncommitted -> {
-              return new Pair<Long, BrokerState>(lawtwinKafkaModelHighWatermark_da6ed677(l_1252), b_1251);
+              return new Pair<Long, BrokerState>(lawtwinKafkaModelHighWatermark_da6ed677(l_1563), b_1562);
             }
             case ReadCommitted -> {
-              return new Pair<Long, BrokerState>(lawtwinKafkaModelLastStableOffset_e8497029(l_1252), b_1251);
+              return new Pair<Long, BrokerState>(lawtwinKafkaModelLastStableOffset_e8497029(l_1563), b_1562);
             }
             default -> throw LawSpecFast.unreachable();
           }
@@ -6041,353 +6584,387 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelLogOf */
-  public static PartitionLog lawtwinKafkaModelLogOf_b86b131a(TopicPartition tp_1253, BrokerState b_1254) {
-    LawSpecFast.Map<TopicPartition, PartitionLog> value_1255;
-    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1256 = b_1254.logs;
-    value_1255 = lawspecfieldlogs_1256;
-    final LawSpecFast.Maybe<PartitionLog> matched_1257 = value_1255.get(tp_1253);
-    if (matched_1257.isJust()) {
-      final PartitionLog l_1258 = matched_1257.get();
-      return l_1258;
+  public static PartitionLog lawtwinKafkaModelLogOf_b86b131a(TopicPartition tp_1566, BrokerState b_1567) {
+    LawSpecFast.Map<TopicPartition, PartitionLog> value_1568;
+    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1569 = b_1567.logs;
+    value_1568 = lawspecfieldlogs_1569;
+    final LawSpecFast.Maybe<PartitionLog> it_1570 = value_1568.get(tp_1566);
+    if (it_1570.isJust()) {
+      final PartitionLog v_lawspecselection0x0_1571 = it_1570.get();
+      return v_lawspecselection0x0_1571;
     } else {
       return lawtwinKafkaModelEmptyLog_a7825ed0(LawSpecFast.Unit.UNIT);
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelMax64 */
-  public static long lawtwinKafkaModelMax64_98542b8b(long a_1259, long b_1260) {
-    if (((a_1259) >= (b_1260))) {
-      return a_1259;
+  public static long lawtwinKafkaModelMax64_98542b8b(long a_1572, long b_1573) {
+    if (((a_1572) >= (b_1573))) {
+      return a_1572;
     } else {
-      return b_1260;
+      return b_1573;
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelMaxPartitions */
-  public static long lawtwinKafkaModelMaxPartitions_6be37992(LawSpecFast.Unit u_1261) {
+  public static long lawtwinKafkaModelMaxPartitions_6be37992(LawSpecFast.Unit u_1574) {
     return 1024L;
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelMemberViews */
-  public static LawSpecFast.List<MemberAssignment> lawtwinKafkaModelMemberViews_a87b1b1a(LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> a_1262) {
-    if (a_1262.isEmpty()) {
+  public static LawSpecFast.List<MemberAssignment> lawtwinKafkaModelMemberViews_a87b1b1a(LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> a_1575) {
+    final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> it_1576 = a_1575;
+    if (it_1576.isEmpty()) {
       return LawSpecFast.List.<MemberAssignment>nil();
     } else {
-      final Entry<String, LawSpecFast.List<TopicPartition>> e_1263 = a_1262.head();
-      final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> rest_1264 = a_1262.tail();
-      String value_1265;
-      final String lawspecfieldkey_1266 = e_1263.key;
-      value_1265 = lawspecfieldkey_1266;
-      LawSpecFast.List<TopicPartition> value_1267;
-      final LawSpecFast.List<TopicPartition> lawspecfieldvalue_1268 = e_1263.value;
-      value_1267 = lawspecfieldvalue_1268;
-      return LawSpecFast.List.<MemberAssignment>cons(new MemberAssignment(value_1265, value_1267), lawtwinKafkaModelMemberViews_a87b1b1a(rest_1264));
+      final Entry<String, LawSpecFast.List<TopicPartition>> v_lawspecselection0x0_1577 = it_1576.head();
+      final LawSpecFast.List<Entry<String, LawSpecFast.List<TopicPartition>>> v_lawspecselection0x1_1578 = it_1576.tail();
+      MemberAssignment value_1579;
+      String value_1580;
+      final String lawspecfieldkey_1581 = v_lawspecselection0x0_1577.key;
+      value_1580 = lawspecfieldkey_1581;
+      final String v_lawspecrecordfield0_1582 = value_1580;
+      LawSpecFast.List<TopicPartition> value_1583;
+      final LawSpecFast.List<TopicPartition> lawspecfieldvalue_1584 = v_lawspecselection0x0_1577.value;
+      value_1583 = lawspecfieldvalue_1584;
+      final LawSpecFast.List<TopicPartition> v_lawspecrecordfield1_1585 = value_1583;
+      value_1579 = new MemberAssignment(v_lawspecrecordfield0_1582, v_lawspecrecordfield1_1585);
+      return LawSpecFast.List.<MemberAssignment>cons(value_1579, lawtwinKafkaModelMemberViews_a87b1b1a(v_lawspecselection0x1_1578));
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelMetadata */
-  public static Pair<LawSpecFast.Maybe<Long>, BrokerState> lawtwinKafkaModelMetadata_97bb5c4c(String name_1269, BrokerState b_1270) {
-    return new Pair<LawSpecFast.Maybe<Long>, BrokerState>(lawtwinKafkaModelPartitionCountOf_ff180c35(name_1269, b_1270), b_1270);
+  public static Pair<LawSpecFast.Maybe<Long>, BrokerState> lawtwinKafkaModelMetadata_97bb5c4c(String name_1586, BrokerState b_1587) {
+    return new Pair<LawSpecFast.Maybe<Long>, BrokerState>(lawtwinKafkaModelPartitionCountOf_ff180c35(name_1586, b_1587), b_1587);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelMin64 */
-  public static long lawtwinKafkaModelMin64_b47ce987(long a_1271, long b_1272) {
-    if (((a_1271) <= (b_1272))) {
-      return a_1271;
+  public static long lawtwinKafkaModelMin64_b47ce987(long a_1588, long b_1589) {
+    if (((a_1588) <= (b_1589))) {
+      return a_1588;
     } else {
-      return b_1272;
+      return b_1589;
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelMinOf */
-  public static long lawtwinKafkaModelMinOf_c4e891de(LawSpecFast.List<Long> xs_1273, long m_1274) {
+  public static long lawtwinKafkaModelMinOf_c4e891de(LawSpecFast.List<Long> xs_1590, long m_1591) {
     while (true) {
-      if (xs_1273.isEmpty()) {
-        return m_1274;
+      final LawSpecFast.List<Long> it_1592 = xs_1590;
+      if (it_1592.isEmpty()) {
+        return m_1591;
       } else {
-        final long h_1275 = xs_1273.head();
-        final LawSpecFast.List<Long> t_1276 = xs_1273.tail();
-        final LawSpecFast.List<Long> next_1277 = t_1276;
-        final long next_1278 = lawtwinKafkaModelMin64_b47ce987(h_1275, m_1274);
-        xs_1273 = next_1277;
-        m_1274 = next_1278;
+        final long v_lawspecselection0x0_1593 = it_1592.head();
+        final LawSpecFast.List<Long> v_lawspecselection0x1_1594 = it_1592.tail();
+        final LawSpecFast.List<Long> next_1595 = v_lawspecselection0x1_1594;
+        final long next_1596 = lawtwinKafkaModelMin64_b47ce987(v_lawspecselection0x0_1593, m_1591);
+        xs_1590 = next_1595;
+        m_1591 = next_1596;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelNewProducer */
-  public static Pair<ProducerIdAndEpoch, BrokerState> lawtwinKafkaModelNewProducer_89b0852d(LawSpecFast.Maybe<String> txid_1279, BrokerState b_1280) {
-    long value_1281;
-    final long lawspecfieldnextproducerid_1282 = b_1280.nextProducerId;
-    value_1281 = lawspecfieldnextproducerid_1282;
-    final long pid_1283 = value_1281;
-    BrokerState value_1284;
-    final long replacement_1285 = saturatingInt64_5bce4ed8(java.math.BigInteger.valueOf(pid_1283).add(java.math.BigInteger.valueOf(1L)));
-    BrokerState value_1286;
-    LawSpecFast.Map<Long, ProducerEntry> value_1287;
-    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1288 = b_1280.producers;
-    value_1287 = lawspecfieldproducers_1288;
-    final LawSpecFast.Map<Long, ProducerEntry> replacement_1289 = value_1287.put(pid_1283, new ProducerEntry(0L, txid_1279, new TxnState.NoTxn()));
-    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1290 = b_1280.topics;
-    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1291 = b_1280.logs;
-    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1292 = b_1280.transactionalIds;
-    final long lawspecfieldnextproducerid_1293 = b_1280.nextProducerId;
-    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1294 = b_1280.groups;
-    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1295 = b_1280.committed;
-    value_1286 = new BrokerState(lawspecfieldtopics_1290, lawspecfieldlogs_1291, replacement_1289, lawspecfieldtransactionalids_1292, lawspecfieldnextproducerid_1293, lawspecfieldgroups_1294, lawspecfieldcommitted_1295);
-    final BrokerState matched_1296 = value_1286;
-    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1297 = matched_1296.topics;
-    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1298 = matched_1296.logs;
-    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1299 = matched_1296.producers;
-    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1300 = matched_1296.transactionalIds;
-    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1301 = matched_1296.groups;
-    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1302 = matched_1296.committed;
-    value_1284 = new BrokerState(lawspecfieldtopics_1297, lawspecfieldlogs_1298, lawspecfieldproducers_1299, lawspecfieldtransactionalids_1300, replacement_1285, lawspecfieldgroups_1301, lawspecfieldcommitted_1302);
-    final BrokerState withentry_1303 = value_1284;
-    BrokerState value_1304;
-    if (txid_1279.isJust()) {
-      final String id_1305 = txid_1279.get();
-      LawSpecFast.Map<String, Long> value_1306;
-      final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1307 = withentry_1303.transactionalIds;
-      value_1306 = lawspecfieldtransactionalids_1307;
-      final LawSpecFast.Map<String, Long> replacement_1308 = value_1306.put(id_1305, pid_1283);
-      final LawSpecFast.Map<String, Long> lawspecfieldtopics_1309 = withentry_1303.topics;
-      final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1310 = withentry_1303.logs;
-      final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1311 = withentry_1303.producers;
-      final long lawspecfieldnextproducerid_1312 = withentry_1303.nextProducerId;
-      final LawSpecFast.Map<String, Group> lawspecfieldgroups_1313 = withentry_1303.groups;
-      final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1314 = withentry_1303.committed;
-      value_1304 = new BrokerState(lawspecfieldtopics_1309, lawspecfieldlogs_1310, lawspecfieldproducers_1311, replacement_1308, lawspecfieldnextproducerid_1312, lawspecfieldgroups_1313, lawspecfieldcommitted_1314);
+  public static Pair<ProducerIdAndEpoch, BrokerState> lawtwinKafkaModelNewProducer_89b0852d(LawSpecFast.Maybe<String> txid_1597, BrokerState b_1598) {
+    long value_1599;
+    final long lawspecfieldnextproducerid_1600 = b_1598.nextProducerId;
+    value_1599 = lawspecfieldnextproducerid_1600;
+    final long pid_1601 = value_1599;
+    BrokerState value_1602;
+    final long replacement_1603 = saturatingInt64_5bce4ed8(java.math.BigInteger.valueOf(pid_1601).add(java.math.BigInteger.valueOf(1L)));
+    BrokerState value_1604;
+    ProducerEntry value_1605;
+    final long v_lawspecrecordfield0_1606 = 0L;
+    final LawSpecFast.Maybe<String> v_lawspecrecordfield1_1607 = txid_1597;
+    final TxnState v_lawspecrecordfield2_1608 = new TxnState.NoTxn();
+    value_1605 = new ProducerEntry(v_lawspecrecordfield0_1606, v_lawspecrecordfield1_1607, v_lawspecrecordfield2_1608);
+    LawSpecFast.Map<Long, ProducerEntry> value_1609;
+    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1610 = b_1598.producers;
+    value_1609 = lawspecfieldproducers_1610;
+    final LawSpecFast.Map<Long, ProducerEntry> replacement_1611 = value_1609.put(pid_1601, value_1605);
+    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1612 = b_1598.topics;
+    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1613 = b_1598.logs;
+    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1614 = b_1598.transactionalIds;
+    final long lawspecfieldnextproducerid_1615 = b_1598.nextProducerId;
+    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1616 = b_1598.groups;
+    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1617 = b_1598.committed;
+    value_1604 = new BrokerState(lawspecfieldtopics_1612, lawspecfieldlogs_1613, replacement_1611, lawspecfieldtransactionalids_1614, lawspecfieldnextproducerid_1615, lawspecfieldgroups_1616, lawspecfieldcommitted_1617);
+    final BrokerState matched_1618 = value_1604;
+    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1619 = matched_1618.topics;
+    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1620 = matched_1618.logs;
+    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1621 = matched_1618.producers;
+    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1622 = matched_1618.transactionalIds;
+    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1623 = matched_1618.groups;
+    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1624 = matched_1618.committed;
+    value_1602 = new BrokerState(lawspecfieldtopics_1619, lawspecfieldlogs_1620, lawspecfieldproducers_1621, lawspecfieldtransactionalids_1622, replacement_1603, lawspecfieldgroups_1623, lawspecfieldcommitted_1624);
+    final BrokerState withentry_1625 = value_1602;
+    BrokerState value_1626;
+    final LawSpecFast.Maybe<String> it_1627 = txid_1597;
+    if (it_1627.isJust()) {
+      final String v_lawspecselection0x0_1628 = it_1627.get();
+      LawSpecFast.Map<String, Long> value_1629;
+      final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1630 = withentry_1625.transactionalIds;
+      value_1629 = lawspecfieldtransactionalids_1630;
+      final LawSpecFast.Map<String, Long> replacement_1631 = value_1629.put(v_lawspecselection0x0_1628, pid_1601);
+      final LawSpecFast.Map<String, Long> lawspecfieldtopics_1632 = withentry_1625.topics;
+      final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1633 = withentry_1625.logs;
+      final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1634 = withentry_1625.producers;
+      final long lawspecfieldnextproducerid_1635 = withentry_1625.nextProducerId;
+      final LawSpecFast.Map<String, Group> lawspecfieldgroups_1636 = withentry_1625.groups;
+      final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1637 = withentry_1625.committed;
+      value_1626 = new BrokerState(lawspecfieldtopics_1632, lawspecfieldlogs_1633, lawspecfieldproducers_1634, replacement_1631, lawspecfieldnextproducerid_1635, lawspecfieldgroups_1636, lawspecfieldcommitted_1637);
     } else {
-      value_1304 = withentry_1303;
+      value_1626 = withentry_1625;
     }
-    final BrokerState mapped_1315 = value_1304;
-    return new Pair<ProducerIdAndEpoch, BrokerState>(new ProducerIdAndEpoch(pid_1283, 0L), mapped_1315);
+    final BrokerState mapped_1638 = value_1626;
+    ProducerIdAndEpoch value_1639;
+    final long v_lawspecrecordfield0_1640 = pid_1601;
+    final long v_lawspecrecordfield1_1641 = 0L;
+    value_1639 = new ProducerIdAndEpoch(v_lawspecrecordfield0_1640, v_lawspecrecordfield1_1641);
+    return new Pair<ProducerIdAndEpoch, BrokerState>(value_1639, mapped_1638);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelNextFetchOffset */
-  public static long lawtwinKafkaModelNextFetchOffset_28fd5a97(long from_1316, long limit_1317, LawSpecFast.List<FetchedRecord> taken_1318, LawSpecFast.List<FetchedRecord> all_1319) {
-    if ((((long) taken_1318.size()) < ((long) all_1319.size()))) {
-      if (taken_1318.isEmpty()) {
-        return from_1316;
+  public static long lawtwinKafkaModelNextFetchOffset_28fd5a97(long from_1642, long limit_1643, LawSpecFast.List<FetchedRecord> taken_1644, LawSpecFast.List<FetchedRecord> all_1645) {
+    if ((((long) taken_1644.size()) < ((long) all_1645.size()))) {
+      final LawSpecFast.List<FetchedRecord> it_1646 = taken_1644;
+      if (it_1646.isEmpty()) {
+        return from_1642;
       } else {
-        return saturatingInt64_5bce4ed8(java.math.BigInteger.valueOf(lawtwinKafkaModelLastOffsetOf_544a605b(taken_1318, from_1316)).add(java.math.BigInteger.valueOf(1L)));
+        return saturatingInt64_5bce4ed8(java.math.BigInteger.valueOf(lawtwinKafkaModelLastOffsetOf_544a605b(taken_1644, from_1642)).add(java.math.BigInteger.valueOf(1L)));
       }
     } else {
-      return lawtwinKafkaModelMax64_98542b8b(from_1316, limit_1317);
+      return lawtwinKafkaModelMax64_98542b8b(from_1642, limit_1643);
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelOffsetCommit */
-  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelOffsetCommit_01d91ef0(String g_1320, String member_1321, long generation_1322, LawSpecFast.List<OffsetEntry> offsets_1323, BrokerState b_1324) {
-    if ((java.util.Objects.equals(g_1320, ""))) {
+  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelOffsetCommit_01d91ef0(String g_1647, String member_1648, long generation_1649, LawSpecFast.List<OffsetEntry> offsets_1650, BrokerState b_1651) {
+    if ((java.util.Objects.equals(g_1647, ""))) {
       throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidGroupId));
     } else {
-      if (!(lawtwinKafkaModelAllKnown_12a378f8(lawtwinKafkaModelOffsetPartitions_ffb8aecd(offsets_1323), b_1324))) {
+      if (!(lawtwinKafkaModelAllKnown_12a378f8(lawtwinKafkaModelOffsetPartitions_ffb8aecd(offsets_1650), b_1651))) {
         throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.UnknownTopicOrPartition));
       } else {
-        final Group group_1325 = lawtwinKafkaModelGroupOf_abe7cb22(g_1320, b_1324);
-        if (((java.util.Objects.equals(member_1321, "")) && ((generation_1322) == (-1L)))) {
-          boolean value_1326;
-          LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> value_1327;
-          LawSpecFast.Map<String, LawSpecFast.List<String>> value_1328;
-          final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1329 = group_1325.subscriptions;
-          value_1328 = lawspecfieldsubscriptions_1329;
-          final LawSpecFast.Map<String, LawSpecFast.List<String>> matched_1330 = value_1328;
-          final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> items_1331 = entriesOf(matched_1330);
-          value_1327 = items_1331;
-          final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> matched_1332 = value_1327;
-          if (matched_1332.isEmpty()) {
-            value_1326 = true;
+        final Group group_1652 = lawtwinKafkaModelGroupOf_abe7cb22(g_1647, b_1651);
+        if (((java.util.Objects.equals(member_1648, "")) && ((generation_1649) == (-1L)))) {
+          boolean value_1653;
+          LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> value_1654;
+          LawSpecFast.Map<String, LawSpecFast.List<String>> value_1655;
+          final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1656 = group_1652.subscriptions;
+          value_1655 = lawspecfieldsubscriptions_1656;
+          final LawSpecFast.Map<String, LawSpecFast.List<String>> matched_1657 = value_1655;
+          final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> items_1658 = entriesOf(matched_1657);
+          value_1654 = items_1658;
+          final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> matched_1659 = value_1654;
+          if (matched_1659.isEmpty()) {
+            value_1653 = true;
           } else {
-            value_1326 = false;
+            value_1653 = false;
           }
-          if (value_1326) {
-            return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelCommitAll_4ae78738(g_1320, offsets_1323, b_1324));
+          if (value_1653) {
+            return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelCommitAll_4ae78738(g_1647, offsets_1650, b_1651));
           } else {
             throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.IllegalGeneration));
           }
         } else {
-          final Group checked_1333 = lawtwinKafkaModelCheckMember_f218b850(g_1320, member_1321, generation_1322, b_1324);
-          return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelCommitAll_4ae78738(g_1320, offsets_1323, b_1324));
+          final Group checked_1660 = lawtwinKafkaModelCheckMember_f218b850(g_1647, member_1648, generation_1649, b_1651);
+          return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelCommitAll_4ae78738(g_1647, offsets_1650, b_1651));
         }
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelOffsetFetch */
-  public static Pair<LawSpecFast.Maybe<Long>, BrokerState> lawtwinKafkaModelOffsetFetch_f56dbfcd(String g_1334, TopicPartition tp_1335, BrokerState b_1336) {
-    LawSpecFast.Map<GroupPartition, Long> value_1337;
-    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1338 = b_1336.committed;
-    value_1337 = lawspecfieldcommitted_1338;
-    return new Pair<LawSpecFast.Maybe<Long>, BrokerState>(value_1337.get(new GroupPartition(g_1334, tp_1335)), b_1336);
+  public static Pair<LawSpecFast.Maybe<Long>, BrokerState> lawtwinKafkaModelOffsetFetch_f56dbfcd(String g_1661, TopicPartition tp_1662, BrokerState b_1663) {
+    GroupPartition value_1664;
+    final String v_lawspecrecordfield0_1665 = g_1661;
+    final TopicPartition v_lawspecrecordfield1_1666 = tp_1662;
+    value_1664 = new GroupPartition(v_lawspecrecordfield0_1665, v_lawspecrecordfield1_1666);
+    LawSpecFast.Map<GroupPartition, Long> value_1667;
+    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1668 = b_1663.committed;
+    value_1667 = lawspecfieldcommitted_1668;
+    return new Pair<LawSpecFast.Maybe<Long>, BrokerState>(value_1667.get(value_1664), b_1663);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelOffsetPartitions */
-  public static LawSpecFast.List<TopicPartition> lawtwinKafkaModelOffsetPartitions_ffb8aecd(LawSpecFast.List<OffsetEntry> offsets_1339) {
-    if (offsets_1339.isEmpty()) {
+  public static LawSpecFast.List<TopicPartition> lawtwinKafkaModelOffsetPartitions_ffb8aecd(LawSpecFast.List<OffsetEntry> offsets_1669) {
+    final LawSpecFast.List<OffsetEntry> it_1670 = offsets_1669;
+    if (it_1670.isEmpty()) {
       return LawSpecFast.List.<TopicPartition>nil();
     } else {
-      final OffsetEntry o_1340 = offsets_1339.head();
-      final LawSpecFast.List<OffsetEntry> rest_1341 = offsets_1339.tail();
-      TopicPartition value_1342;
-      final TopicPartition lawspecfieldtopicpartition_1343 = o_1340.topicPartition;
-      value_1342 = lawspecfieldtopicpartition_1343;
-      return LawSpecFast.List.<TopicPartition>cons(value_1342, lawtwinKafkaModelOffsetPartitions_ffb8aecd(rest_1341));
+      final OffsetEntry v_lawspecselection0x0_1671 = it_1670.head();
+      final LawSpecFast.List<OffsetEntry> v_lawspecselection0x1_1672 = it_1670.tail();
+      TopicPartition value_1673;
+      final TopicPartition lawspecfieldtopicpartition_1674 = v_lawspecselection0x0_1671.topicPartition;
+      value_1673 = lawspecfieldtopicpartition_1674;
+      return LawSpecFast.List.<TopicPartition>cons(value_1673, lawtwinKafkaModelOffsetPartitions_ffb8aecd(v_lawspecselection0x1_1672));
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelPartitionCountOf */
-  public static LawSpecFast.Maybe<Long> lawtwinKafkaModelPartitionCountOf_ff180c35(String topic_1344, BrokerState b_1345) {
-    LawSpecFast.Map<String, Long> value_1346;
-    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1347 = b_1345.topics;
-    value_1346 = lawspecfieldtopics_1347;
-    return value_1346.get(topic_1344);
+  public static LawSpecFast.Maybe<Long> lawtwinKafkaModelPartitionCountOf_ff180c35(String topic_1675, BrokerState b_1676) {
+    LawSpecFast.Map<String, Long> value_1677;
+    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1678 = b_1676.topics;
+    value_1677 = lawspecfieldtopics_1678;
+    return value_1677.get(topic_1675);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelPartitionsBelow */
-  public static LawSpecFast.List<Long> lawtwinKafkaModelPartitionsBelow_19525eca(long n_1348) {
-    return LawSpecFast.range(0L, n_1348);
+  public static LawSpecFast.List<Long> lawtwinKafkaModelPartitionsBelow_19525eca(long n_1679) {
+    return LawSpecFast.range(0L, n_1679);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelPendingFor */
-  public static LawSpecFast.List<PendingOffset> lawtwinKafkaModelPendingFor_50512591(String group_1349, LawSpecFast.List<OffsetEntry> offsets_1350, LawSpecFast.List<PendingOffset> acc_1351) {
+  public static LawSpecFast.List<PendingOffset> lawtwinKafkaModelPendingFor_50512591(String group_1680, LawSpecFast.List<OffsetEntry> offsets_1681, LawSpecFast.List<PendingOffset> acc_1682) {
     while (true) {
-      if (offsets_1350.isEmpty()) {
-        return acc_1351;
+      final LawSpecFast.List<OffsetEntry> it_1683 = offsets_1681;
+      if (it_1683.isEmpty()) {
+        return acc_1682;
       } else {
-        final OffsetEntry o_1352 = offsets_1350.head();
-        final LawSpecFast.List<OffsetEntry> rest_1353 = offsets_1350.tail();
-        final LawSpecFast.List<OffsetEntry> next_1354 = rest_1353;
-        final LawSpecFast.List<PendingOffset> next_1355 = LawSpecFast.List.<PendingOffset>cons(new PendingOffset(group_1349, o_1352), acc_1351);
-        offsets_1350 = next_1354;
-        acc_1351 = next_1355;
+        final OffsetEntry v_lawspecselection0x0_1684 = it_1683.head();
+        final LawSpecFast.List<OffsetEntry> v_lawspecselection0x1_1685 = it_1683.tail();
+        final LawSpecFast.List<OffsetEntry> next_1686 = v_lawspecselection0x1_1685;
+        PendingOffset value_1687;
+        final String v_lawspecrecordfield0_1688 = group_1680;
+        final OffsetEntry v_lawspecrecordfield1_1689 = v_lawspecselection0x0_1684;
+        value_1687 = new PendingOffset(v_lawspecrecordfield0_1688, v_lawspecrecordfield1_1689);
+        final LawSpecFast.List<PendingOffset> next_1690 = LawSpecFast.List.<PendingOffset>cons(value_1687, acc_1682);
+        offsets_1681 = next_1686;
+        acc_1682 = next_1690;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelProduce */
-  public static Pair<Long, BrokerState> lawtwinKafkaModelProduce_834568df(TopicPartition tp_1356, LawSpecFast.Maybe<ProducerTag> tag_1357, LawSpecFast.List<Record> rs_1358, BrokerState b_1359) {
-    if (!(lawtwinKafkaModelKnownPartition_71d3099f(tp_1356, b_1359))) {
+  public static Pair<Long, BrokerState> lawtwinKafkaModelProduce_834568df(TopicPartition tp_1691, LawSpecFast.Maybe<ProducerTag> tag_1692, LawSpecFast.List<Record> rs_1693, BrokerState b_1694) {
+    if (!(lawtwinKafkaModelKnownPartition_71d3099f(tp_1691, b_1694))) {
       throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.UnknownTopicOrPartition));
     } else {
-      boolean value_1360;
-      if (rs_1358.isEmpty()) {
-        value_1360 = true;
+      boolean value_1695;
+      if (rs_1693.isEmpty()) {
+        value_1695 = true;
       } else {
-        value_1360 = false;
+        value_1695 = false;
       }
-      if ((value_1360 || (((long) rs_1358.size()) > (100000L)))) {
+      if ((value_1695 || (((long) rs_1693.size()) > (100000L)))) {
         throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidRecord));
       } else {
-        final PartitionLog l_1361 = lawtwinKafkaModelLogOf_b86b131a(tp_1356, b_1359);
-        if (tag_1357.isJust()) {
-          final ProducerTag t_1362 = tag_1357.get();
-          return lawtwinKafkaModelProduceTagged_86f854e7(tp_1356, t_1362, rs_1358, l_1361, b_1359);
+        final PartitionLog l_1696 = lawtwinKafkaModelLogOf_b86b131a(tp_1691, b_1694);
+        final LawSpecFast.Maybe<ProducerTag> it_1697 = tag_1692;
+        if (it_1697.isJust()) {
+          final ProducerTag v_lawspecselection0x0_1698 = it_1697.get();
+          return lawtwinKafkaModelProduceTagged_86f854e7(tp_1691, v_lawspecselection0x0_1698, rs_1693, l_1696, b_1694);
         } else {
-          return new Pair<Long, BrokerState>(lawtwinKafkaModelHighWatermark_da6ed677(l_1361), lawtwinKafkaModelPutLog_cb3cbf5e(tp_1356, lawtwinKafkaModelAppendBatch_8797ae9f(rs_1358, -1L, false, l_1361), b_1359));
+          return new Pair<Long, BrokerState>(lawtwinKafkaModelHighWatermark_da6ed677(l_1696), lawtwinKafkaModelPutLog_cb3cbf5e(tp_1691, lawtwinKafkaModelAppendBatch_8797ae9f(rs_1693, -1L, false, l_1696), b_1694));
         }
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelProduceTagged */
-  public static Pair<Long, BrokerState> lawtwinKafkaModelProduceTagged_86f854e7(TopicPartition tp_1363, ProducerTag t_1364, LawSpecFast.List<Record> rs_1365, PartitionLog l_1366, BrokerState b_1367) {
-    long value_1368;
-    final long lawspecfieldproducerid_1369 = t_1364.producerId;
-    value_1368 = lawspecfieldproducerid_1369;
-    LawSpecFast.Map<Long, ProducerEntry> value_1370;
-    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1371 = b_1367.producers;
-    value_1370 = lawspecfieldproducers_1371;
-    final LawSpecFast.Maybe<ProducerEntry> matched_1372 = value_1370.get(value_1368);
-    if (matched_1372.isJust()) {
-      final ProducerEntry entry_1373 = matched_1372.get();
-      long value_1374;
-      final long lawspecfieldproducerepoch_1375 = t_1364.producerEpoch;
-      value_1374 = lawspecfieldproducerepoch_1375;
-      long value_1376;
-      final long lawspecfieldepoch_1377 = entry_1373.epoch;
-      value_1376 = lawspecfieldepoch_1377;
-      if (((value_1374) != (value_1376))) {
+  public static Pair<Long, BrokerState> lawtwinKafkaModelProduceTagged_86f854e7(TopicPartition tp_1699, ProducerTag t_1700, LawSpecFast.List<Record> rs_1701, PartitionLog l_1702, BrokerState b_1703) {
+    long value_1704;
+    final long lawspecfieldproducerid_1705 = t_1700.producerId;
+    value_1704 = lawspecfieldproducerid_1705;
+    LawSpecFast.Map<Long, ProducerEntry> value_1706;
+    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1707 = b_1703.producers;
+    value_1706 = lawspecfieldproducers_1707;
+    final LawSpecFast.Maybe<ProducerEntry> it_1708 = value_1706.get(value_1704);
+    if (it_1708.isJust()) {
+      final ProducerEntry v_lawspecselection0x0_1709 = it_1708.get();
+      long value_1710;
+      final long lawspecfieldproducerepoch_1711 = t_1700.producerEpoch;
+      value_1710 = lawspecfieldproducerepoch_1711;
+      long value_1712;
+      final long lawspecfieldepoch_1713 = v_lawspecselection0x0_1709.epoch;
+      value_1712 = lawspecfieldepoch_1713;
+      if (((value_1710) != (value_1712))) {
         throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidProducerEpoch));
       } else {
-        boolean value_1378;
-        LawSpecFast.Maybe<String> value_1379;
-        final LawSpecFast.Maybe<String> lawspecfieldtransactionalid_1380 = entry_1373.transactionalId;
-        value_1379 = lawspecfieldtransactionalid_1380;
-        final LawSpecFast.Maybe<String> matched_1381 = value_1379;
-        if (matched_1381.isJust()) {
-          value_1378 = true;
+        boolean value_1714;
+        LawSpecFast.Maybe<String> value_1715;
+        final LawSpecFast.Maybe<String> lawspecfieldtransactionalid_1716 = v_lawspecselection0x0_1709.transactionalId;
+        value_1715 = lawspecfieldtransactionalid_1716;
+        final LawSpecFast.Maybe<String> it_1717 = value_1715;
+        if (it_1717.isJust()) {
+          value_1714 = true;
         } else {
-          value_1378 = false;
+          value_1714 = false;
         }
-        final boolean transactional_1382 = value_1378;
-        boolean logic_1385;
-        if (transactional_1382) {
-          TxnState value_1383;
-          final TxnState lawspecfieldtxn_1384 = entry_1373.txn;
-          value_1383 = lawspecfieldtxn_1384;
-          logic_1385 = !(lawtwinKafkaModelTxnHasPartition_8fa1cfc0(tp_1363, value_1383));
-        } else { logic_1385 = false; }
-        if (logic_1385) {
+        final boolean transactional_1718 = value_1714;
+        boolean logic_1721;
+        if (transactional_1718) {
+          TxnState value_1719;
+          final TxnState lawspecfieldtxn_1720 = v_lawspecselection0x0_1709.txn;
+          value_1719 = lawspecfieldtxn_1720;
+          logic_1721 = !(lawtwinKafkaModelTxnHasPartition_8fa1cfc0(tp_1699, value_1719));
+        } else { logic_1721 = false; }
+        if (logic_1721) {
           throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidTxnState));
         } else {
-          long value_1386;
-          final long lawspecfieldbasesequence_1387 = t_1364.baseSequence;
-          value_1386 = lawspecfieldbasesequence_1387;
-          final long last_1388 = saturatingInt32_9e8d3b43(java.math.BigInteger.valueOf(value_1386).add(java.math.BigInteger.valueOf((long) rs_1365.size())).subtract(java.math.BigInteger.valueOf(1L)));
-          LawSpecFast.List<BatchMeta> value_1389;
-          long value_1390;
-          final long lawspecfieldproducerid_1391 = t_1364.producerId;
-          value_1390 = lawspecfieldproducerid_1391;
-          LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> value_1392;
-          final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_1393 = l_1366.batches;
-          value_1392 = lawspecfieldbatches_1393;
-          final LawSpecFast.Maybe<LawSpecFast.List<BatchMeta>> matched_1394 = value_1392.get(value_1390);
-          if (matched_1394.isJust()) {
-            final LawSpecFast.List<BatchMeta> ms_1395 = matched_1394.get();
-            value_1389 = ms_1395;
+          long value_1722;
+          final long lawspecfieldbasesequence_1723 = t_1700.baseSequence;
+          value_1722 = lawspecfieldbasesequence_1723;
+          final long last_1724 = saturatingInt32_9e8d3b43(java.math.BigInteger.valueOf(value_1722).add(java.math.BigInteger.valueOf((long) rs_1701.size())).subtract(java.math.BigInteger.valueOf(1L)));
+          LawSpecFast.List<BatchMeta> value_1725;
+          long value_1726;
+          final long lawspecfieldproducerid_1727 = t_1700.producerId;
+          value_1726 = lawspecfieldproducerid_1727;
+          LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> value_1728;
+          final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_1729 = l_1702.batches;
+          value_1728 = lawspecfieldbatches_1729;
+          final LawSpecFast.Maybe<LawSpecFast.List<BatchMeta>> it_1730 = value_1728.get(value_1726);
+          if (it_1730.isJust()) {
+            final LawSpecFast.List<BatchMeta> v_match__lawspecselection0x0_0_1731 = it_1730.get();
+            value_1725 = v_match__lawspecselection0x0_0_1731;
           } else {
-            value_1389 = LawSpecFast.List.<BatchMeta>nil();
+            value_1725 = LawSpecFast.List.<BatchMeta>nil();
           }
-          final LawSpecFast.List<BatchMeta> recent_1396 = value_1389;
-          long value_1397;
-          final long lawspecfieldproducerepoch_1398 = t_1364.producerEpoch;
-          value_1397 = lawspecfieldproducerepoch_1398;
-          long value_1399;
-          final long lawspecfieldbasesequence_1400 = t_1364.baseSequence;
-          value_1399 = lawspecfieldbasesequence_1400;
-          final LawSpecFast.Maybe<Long> matched_1401 = lawtwinKafkaModelFindDuplicate_3335aea4(value_1397, value_1399, last_1388, recent_1396);
-          if (matched_1401.isJust()) {
-            final long offset_1402 = matched_1401.get();
-            return new Pair<Long, BrokerState>(offset_1402, b_1367);
+          final LawSpecFast.List<BatchMeta> recent_1732 = value_1725;
+          long value_1733;
+          final long lawspecfieldproducerepoch_1734 = t_1700.producerEpoch;
+          value_1733 = lawspecfieldproducerepoch_1734;
+          long value_1735;
+          final long lawspecfieldbasesequence_1736 = t_1700.baseSequence;
+          value_1735 = lawspecfieldbasesequence_1736;
+          final LawSpecFast.Maybe<Long> it_1737 = lawtwinKafkaModelFindDuplicate_3335aea4(value_1733, value_1735, last_1724, recent_1732);
+          if (it_1737.isJust()) {
+            final long v_match__lawspecselection0x0_0_1738 = it_1737.get();
+            return new Pair<Long, BrokerState>(v_match__lawspecselection0x0_0_1738, b_1703);
           } else {
-            long value_1403;
-            final long lawspecfieldbasesequence_1404 = t_1364.baseSequence;
-            value_1403 = lawspecfieldbasesequence_1404;
-            long value_1405;
-            final long lawspecfieldproducerepoch_1406 = t_1364.producerEpoch;
-            value_1405 = lawspecfieldproducerepoch_1406;
-            if (((value_1403) != (lawtwinKafkaModelExpectedSequence_83e363c8(value_1405, recent_1396)))) {
+            long value_1739;
+            final long lawspecfieldbasesequence_1740 = t_1700.baseSequence;
+            value_1739 = lawspecfieldbasesequence_1740;
+            long value_1741;
+            final long lawspecfieldproducerepoch_1742 = t_1700.producerEpoch;
+            value_1741 = lawspecfieldproducerepoch_1742;
+            if (((value_1739) != (lawtwinKafkaModelExpectedSequence_83e363c8(value_1741, recent_1732)))) {
               throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.OutOfOrderSequenceNumber));
             } else {
-              final long base_1407 = lawtwinKafkaModelHighWatermark_da6ed677(l_1366);
-              long value_1408;
-              final long lawspecfieldproducerid_1409 = t_1364.producerId;
-              value_1408 = lawspecfieldproducerid_1409;
-              long value_1410;
-              final long lawspecfieldproducerepoch_1411 = t_1364.producerEpoch;
-              value_1410 = lawspecfieldproducerepoch_1411;
-              long value_1412;
-              final long lawspecfieldbasesequence_1413 = t_1364.baseSequence;
-              value_1412 = lawspecfieldbasesequence_1413;
-              long value_1414;
-              final long lawspecfieldproducerid_1415 = t_1364.producerId;
-              value_1414 = lawspecfieldproducerid_1415;
-              final PartitionLog l2_1416 = lawtwinKafkaModelRememberBatch_33fa600f(value_1408, new BatchMeta(value_1410, value_1412, last_1388, base_1407), lawtwinKafkaModelAppendBatch_8797ae9f(rs_1365, value_1414, transactional_1382, l_1366));
-              return new Pair<Long, BrokerState>(base_1407, lawtwinKafkaModelPutLog_cb3cbf5e(tp_1363, l2_1416, b_1367));
+              final long base_1743 = lawtwinKafkaModelHighWatermark_da6ed677(l_1702);
+              long value_1744;
+              final long lawspecfieldproducerid_1745 = t_1700.producerId;
+              value_1744 = lawspecfieldproducerid_1745;
+              BatchMeta value_1746;
+              long value_1747;
+              final long lawspecfieldproducerepoch_1748 = t_1700.producerEpoch;
+              value_1747 = lawspecfieldproducerepoch_1748;
+              final long v_lawspecrecordfield0_1749 = value_1747;
+              long value_1750;
+              final long lawspecfieldbasesequence_1751 = t_1700.baseSequence;
+              value_1750 = lawspecfieldbasesequence_1751;
+              final long v_lawspecrecordfield1_1752 = value_1750;
+              final long v_lawspecrecordfield2_1753 = last_1724;
+              final long v_lawspecrecordfield3_1754 = base_1743;
+              value_1746 = new BatchMeta(v_lawspecrecordfield0_1749, v_lawspecrecordfield1_1752, v_lawspecrecordfield2_1753, v_lawspecrecordfield3_1754);
+              long value_1755;
+              final long lawspecfieldproducerid_1756 = t_1700.producerId;
+              value_1755 = lawspecfieldproducerid_1756;
+              final PartitionLog l2_1757 = lawtwinKafkaModelRememberBatch_33fa600f(value_1744, value_1746, lawtwinKafkaModelAppendBatch_8797ae9f(rs_1701, value_1755, transactional_1718, l_1702));
+              return new Pair<Long, BrokerState>(base_1743, lawtwinKafkaModelPutLog_cb3cbf5e(tp_1699, l2_1757, b_1703));
             }
           }
         }
@@ -6398,95 +6975,126 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelPutGroup */
-  public static BrokerState lawtwinKafkaModelPutGroup_f45eaad0(String g_1417, Group group_1418, BrokerState b_1419) {
-    LawSpecFast.Map<String, Group> value_1420;
-    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1421 = b_1419.groups;
-    value_1420 = lawspecfieldgroups_1421;
-    final LawSpecFast.Map<String, Group> replacement_1422 = value_1420.put(g_1417, group_1418);
-    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1423 = b_1419.topics;
-    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1424 = b_1419.logs;
-    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1425 = b_1419.producers;
-    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1426 = b_1419.transactionalIds;
-    final long lawspecfieldnextproducerid_1427 = b_1419.nextProducerId;
-    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1428 = b_1419.committed;
-    return new BrokerState(lawspecfieldtopics_1423, lawspecfieldlogs_1424, lawspecfieldproducers_1425, lawspecfieldtransactionalids_1426, lawspecfieldnextproducerid_1427, replacement_1422, lawspecfieldcommitted_1428);
+  public static BrokerState lawtwinKafkaModelPutGroup_f45eaad0(String g_1758, Group group_1759, BrokerState b_1760) {
+    LawSpecFast.Map<String, Group> value_1761;
+    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1762 = b_1760.groups;
+    value_1761 = lawspecfieldgroups_1762;
+    final LawSpecFast.Map<String, Group> replacement_1763 = value_1761.put(g_1758, group_1759);
+    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1764 = b_1760.topics;
+    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1765 = b_1760.logs;
+    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1766 = b_1760.producers;
+    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1767 = b_1760.transactionalIds;
+    final long lawspecfieldnextproducerid_1768 = b_1760.nextProducerId;
+    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1769 = b_1760.committed;
+    return new BrokerState(lawspecfieldtopics_1764, lawspecfieldlogs_1765, lawspecfieldproducers_1766, lawspecfieldtransactionalids_1767, lawspecfieldnextproducerid_1768, replacement_1763, lawspecfieldcommitted_1769);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelPutLog */
-  public static BrokerState lawtwinKafkaModelPutLog_cb3cbf5e(TopicPartition tp_1429, PartitionLog l_1430, BrokerState b_1431) {
-    LawSpecFast.Map<TopicPartition, PartitionLog> value_1432;
-    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1433 = b_1431.logs;
-    value_1432 = lawspecfieldlogs_1433;
-    final LawSpecFast.Map<TopicPartition, PartitionLog> replacement_1434 = value_1432.put(tp_1429, l_1430);
-    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1435 = b_1431.topics;
-    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1436 = b_1431.producers;
-    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1437 = b_1431.transactionalIds;
-    final long lawspecfieldnextproducerid_1438 = b_1431.nextProducerId;
-    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1439 = b_1431.groups;
-    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1440 = b_1431.committed;
-    return new BrokerState(lawspecfieldtopics_1435, replacement_1434, lawspecfieldproducers_1436, lawspecfieldtransactionalids_1437, lawspecfieldnextproducerid_1438, lawspecfieldgroups_1439, lawspecfieldcommitted_1440);
+  public static BrokerState lawtwinKafkaModelPutLog_cb3cbf5e(TopicPartition tp_1770, PartitionLog l_1771, BrokerState b_1772) {
+    LawSpecFast.Map<TopicPartition, PartitionLog> value_1773;
+    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1774 = b_1772.logs;
+    value_1773 = lawspecfieldlogs_1774;
+    final LawSpecFast.Map<TopicPartition, PartitionLog> replacement_1775 = value_1773.put(tp_1770, l_1771);
+    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1776 = b_1772.topics;
+    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1777 = b_1772.producers;
+    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1778 = b_1772.transactionalIds;
+    final long lawspecfieldnextproducerid_1779 = b_1772.nextProducerId;
+    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1780 = b_1772.groups;
+    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1781 = b_1772.committed;
+    return new BrokerState(lawspecfieldtopics_1776, replacement_1775, lawspecfieldproducers_1777, lawspecfieldtransactionalids_1778, lawspecfieldnextproducerid_1779, lawspecfieldgroups_1780, lawspecfieldcommitted_1781);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelPutProducer */
-  public static BrokerState lawtwinKafkaModelPutProducer_4ef907a5(long pid_1441, ProducerEntry entry_1442, BrokerState b_1443) {
-    LawSpecFast.Map<Long, ProducerEntry> value_1444;
-    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1445 = b_1443.producers;
-    value_1444 = lawspecfieldproducers_1445;
-    final LawSpecFast.Map<Long, ProducerEntry> replacement_1446 = value_1444.put(pid_1441, entry_1442);
-    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1447 = b_1443.topics;
-    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1448 = b_1443.logs;
-    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1449 = b_1443.transactionalIds;
-    final long lawspecfieldnextproducerid_1450 = b_1443.nextProducerId;
-    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1451 = b_1443.groups;
-    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1452 = b_1443.committed;
-    return new BrokerState(lawspecfieldtopics_1447, lawspecfieldlogs_1448, replacement_1446, lawspecfieldtransactionalids_1449, lawspecfieldnextproducerid_1450, lawspecfieldgroups_1451, lawspecfieldcommitted_1452);
+  public static BrokerState lawtwinKafkaModelPutProducer_4ef907a5(long pid_1782, ProducerEntry entry_1783, BrokerState b_1784) {
+    LawSpecFast.Map<Long, ProducerEntry> value_1785;
+    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1786 = b_1784.producers;
+    value_1785 = lawspecfieldproducers_1786;
+    final LawSpecFast.Map<Long, ProducerEntry> replacement_1787 = value_1785.put(pid_1782, entry_1783);
+    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1788 = b_1784.topics;
+    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1789 = b_1784.logs;
+    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1790 = b_1784.transactionalIds;
+    final long lawspecfieldnextproducerid_1791 = b_1784.nextProducerId;
+    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1792 = b_1784.groups;
+    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1793 = b_1784.committed;
+    return new BrokerState(lawspecfieldtopics_1788, lawspecfieldlogs_1789, replacement_1787, lawspecfieldtransactionalids_1790, lawspecfieldnextproducerid_1791, lawspecfieldgroups_1792, lawspecfieldcommitted_1793);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelReadable */
-  public static LawSpecFast.List<FetchedRecord> lawtwinKafkaModelReadable_adec3284(LawSpecFast.List<LogEntry> es_1453, long from_1454, long limit_1455, boolean committedonly_1456, LawSpecFast.List<AbortedTxn> aborted_1457, LawSpecFast.List<FetchedRecord> acc_1458) {
+  public static LawSpecFast.List<FetchedRecord> lawtwinKafkaModelReadable_adec3284(LawSpecFast.List<LogEntry> es_1794, long from_1795, long limit_1796, boolean committedonly_1797, LawSpecFast.List<AbortedTxn> aborted_1798, LawSpecFast.List<FetchedRecord> acc_1799) {
     while (true) {
-      if (es_1453.isEmpty()) {
-        return acc_1458;
+      final LawSpecFast.List<LogEntry> it_1800 = es_1794;
+      if (it_1800.isEmpty()) {
+        return acc_1799;
       } else {
-        final LogEntry e_1459 = es_1453.head();
-        final LawSpecFast.List<LogEntry> rest_1460 = es_1453.tail();
-        switch (e_1459.tag) {
+        final LogEntry v_lawspecselection0x0_1801 = it_1800.head();
+        final LawSpecFast.List<LogEntry> v_lawspecselection0x1_1802 = it_1800.tail();
+        final LogEntry it_1803 = v_lawspecselection0x0_1801;
+        switch (it_1803.tag) {
           case 0 -> {
-            final LogEntry.DataEntry case_1461 = (LogEntry.DataEntry) e_1459;
-            final long o_1462 = case_1461.entryOffset;
-            final Record r_1463 = case_1461.entryRecord;
-            final long w_1464 = case_1461.writer;
-            final boolean tx_1465 = case_1461.transactional;
-            if (((o_1462) < (from_1454))) {
-              return acc_1458;
+            final LogEntry.DataEntry case_1804 = (LogEntry.DataEntry) it_1803;
+            final Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be v_match__lawspecselection0x0_0_1805 = case_1804.value;
+            long value_1806;
+            final long lawspecfieldentryoffset_1807 = v_match__lawspecselection0x0_0_1805.entryOffset;
+            value_1806 = lawspecfieldentryoffset_1807;
+            final long v_lawspecselection1x0_1808 = value_1806;
+            Record value_1809;
+            final Record lawspecfieldentryrecord_1810 = v_match__lawspecselection0x0_0_1805.entryRecord;
+            value_1809 = lawspecfieldentryrecord_1810;
+            final Record v_lawspecselection1x1_1811 = value_1809;
+            long value_1812;
+            final long lawspecfieldwriter_1813 = v_match__lawspecselection0x0_0_1805.writer;
+            value_1812 = lawspecfieldwriter_1813;
+            final long v_lawspecselection1x2_1814 = value_1812;
+            boolean value_1815;
+            final boolean lawspecfieldtransactional_1816 = v_match__lawspecselection0x0_0_1805.transactional;
+            value_1815 = lawspecfieldtransactional_1816;
+            final boolean v_lawspecselection1x3_1817 = value_1815;
+            if (((v_lawspecselection1x0_1808) < (from_1795))) {
+              return acc_1799;
             } else {
-              if (((o_1462) >= (limit_1455))) {
-                final LawSpecFast.List<LogEntry> next_1466 = rest_1460;
-                es_1453 = next_1466;
+              if (((v_lawspecselection1x0_1808) >= (limit_1796))) {
+                final LawSpecFast.List<LogEntry> next_1818 = v_lawspecselection0x1_1802;
+                es_1794 = next_1818;
                 continue;
               } else {
-                if (((committedonly_1456 && tx_1465) && lawtwinKafkaModelIsAborted_b12645e5(w_1464, o_1462, aborted_1457))) {
-                  final LawSpecFast.List<LogEntry> next_1467 = rest_1460;
-                  es_1453 = next_1467;
+                if (((committedonly_1797 && v_lawspecselection1x3_1817) && lawtwinKafkaModelIsAborted_b12645e5(v_lawspecselection1x2_1814, v_lawspecselection1x0_1808, aborted_1798))) {
+                  final LawSpecFast.List<LogEntry> next_1819 = v_lawspecselection0x1_1802;
+                  es_1794 = next_1819;
                   continue;
                 } else {
-                  final LawSpecFast.List<LogEntry> next_1468 = rest_1460;
-                  final LawSpecFast.List<FetchedRecord> next_1469 = LawSpecFast.List.<FetchedRecord>cons(new FetchedRecord(o_1462, r_1463), acc_1458);
-                  es_1453 = next_1468;
-                  acc_1458 = next_1469;
+                  final LawSpecFast.List<LogEntry> next_1820 = v_lawspecselection0x1_1802;
+                  FetchedRecord value_1821;
+                  final long v_lawspecrecordfield0_1822 = v_lawspecselection1x0_1808;
+                  final Record v_lawspecrecordfield1_1823 = v_lawspecselection1x1_1811;
+                  value_1821 = new FetchedRecord(v_lawspecrecordfield0_1822, v_lawspecrecordfield1_1823);
+                  final LawSpecFast.List<FetchedRecord> next_1824 = LawSpecFast.List.<FetchedRecord>cons(value_1821, acc_1799);
+                  es_1794 = next_1820;
+                  acc_1799 = next_1824;
                   continue;
                 }
               }
             }
           }
           case 1 -> {
-            final LogEntry.ControlEntry case_1470 = (LogEntry.ControlEntry) e_1459;
-            final long o_1471 = case_1470.markerOffset;
-            if (((o_1471) < (from_1454))) {
-              return acc_1458;
+            final LogEntry.ControlEntry case_1825 = (LogEntry.ControlEntry) it_1803;
+            final Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 v_match__lawspecselection0x0_0_1826 = case_1825.value;
+            long value_1827;
+            final long lawspecfieldmarkeroffset_1828 = v_match__lawspecselection0x0_0_1826.markerOffset;
+            value_1827 = lawspecfieldmarkeroffset_1828;
+            final long v_lawspecselection1x0_1829 = value_1827;
+            long value_1830;
+            final long lawspecfieldmarkerwriter_1831 = v_match__lawspecselection0x0_0_1826.markerWriter;
+            value_1830 = lawspecfieldmarkerwriter_1831;
+            final long v_lawspecselection1x1_1832 = value_1830;
+            boolean value_1833;
+            final boolean lawspecfieldcommits_1834 = v_match__lawspecselection0x0_0_1826.commits;
+            value_1833 = lawspecfieldcommits_1834;
+            final boolean v_lawspecselection1x2_1835 = value_1833;
+            if (((v_lawspecselection1x0_1829) < (from_1795))) {
+              return acc_1799;
             } else {
-              final LawSpecFast.List<LogEntry> next_1472 = rest_1460;
-              es_1453 = next_1472;
+              final LawSpecFast.List<LogEntry> next_1836 = v_lawspecselection0x1_1802;
+              es_1794 = next_1836;
               continue;
             }
           }
@@ -6497,161 +7105,165 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelRebalance */
-  public static Group lawtwinKafkaModelRebalance_c9984d55(Group group_1473, BrokerState b_1474) {
-    LawSpecFast.Map<String, LawSpecFast.List<String>> value_1475;
-    final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1476 = group_1473.subscriptions;
-    value_1475 = lawspecfieldsubscriptions_1476;
-    final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> replacement_1477 = lawtwinKafkaModelComputeAssignment_07bd1943(value_1475, b_1474);
-    Group value_1478;
-    long value_1479;
-    final long lawspecfieldgroupgeneration_1480 = group_1473.groupGeneration;
-    value_1479 = lawspecfieldgroupgeneration_1480;
-    final long replacement_1481 = saturatingInt32_9e8d3b43(java.math.BigInteger.valueOf(value_1479).add(java.math.BigInteger.valueOf(1L)));
-    final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1482 = group_1473.subscriptions;
-    final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecfieldassignment_1483 = group_1473.assignment;
-    value_1478 = new Group(replacement_1481, lawspecfieldsubscriptions_1482, lawspecfieldassignment_1483);
-    final Group matched_1484 = value_1478;
-    final long lawspecfieldgroupgeneration_1485 = matched_1484.groupGeneration;
-    final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1486 = matched_1484.subscriptions;
-    return new Group(lawspecfieldgroupgeneration_1485, lawspecfieldsubscriptions_1486, replacement_1477);
+  public static Group lawtwinKafkaModelRebalance_c9984d55(Group group_1837, BrokerState b_1838) {
+    LawSpecFast.Map<String, LawSpecFast.List<String>> value_1839;
+    final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1840 = group_1837.subscriptions;
+    value_1839 = lawspecfieldsubscriptions_1840;
+    final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> replacement_1841 = lawtwinKafkaModelComputeAssignment_07bd1943(value_1839, b_1838);
+    Group value_1842;
+    long value_1843;
+    final long lawspecfieldgroupgeneration_1844 = group_1837.groupGeneration;
+    value_1843 = lawspecfieldgroupgeneration_1844;
+    final long replacement_1845 = saturatingInt32_9e8d3b43(java.math.BigInteger.valueOf(value_1843).add(java.math.BigInteger.valueOf(1L)));
+    final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1846 = group_1837.subscriptions;
+    final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecfieldassignment_1847 = group_1837.assignment;
+    value_1842 = new Group(replacement_1845, lawspecfieldsubscriptions_1846, lawspecfieldassignment_1847);
+    final Group matched_1848 = value_1842;
+    final long lawspecfieldgroupgeneration_1849 = matched_1848.groupGeneration;
+    final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1850 = matched_1848.subscriptions;
+    return new Group(lawspecfieldgroupgeneration_1849, lawspecfieldsubscriptions_1850, replacement_1841);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelRebalanceGroups */
-  public static LawSpecFast.Map<String, Group> lawtwinKafkaModelRebalanceGroups_ad90673b(String topic_1487, LawSpecFast.List<Entry<String, Group>> gs_1488, BrokerState b_1489, LawSpecFast.Map<String, Group> acc_1490) {
+  public static LawSpecFast.Map<String, Group> lawtwinKafkaModelRebalanceGroups_ad90673b(String topic_1851, LawSpecFast.List<Entry<String, Group>> gs_1852, BrokerState b_1853, LawSpecFast.Map<String, Group> acc_1854) {
     while (true) {
-      if (gs_1488.isEmpty()) {
-        return acc_1490;
+      final LawSpecFast.List<Entry<String, Group>> it_1855 = gs_1852;
+      if (it_1855.isEmpty()) {
+        return acc_1854;
       } else {
-        final Entry<String, Group> e_1491 = gs_1488.head();
-        final LawSpecFast.List<Entry<String, Group>> rest_1492 = gs_1488.tail();
-        final LawSpecFast.List<Entry<String, Group>> next_1493 = rest_1492;
-        String value_1494;
-        final String lawspecfieldkey_1495 = e_1491.key;
-        value_1494 = lawspecfieldkey_1495;
-        Group value_1496;
-        Group value_1497;
-        final Group lawspecfieldvalue_1498 = e_1491.value;
-        value_1497 = lawspecfieldvalue_1498;
-        if (lawtwinKafkaModelSubscribesTo_c3c674c3(topic_1487, value_1497)) {
-          Group value_1499;
-          final Group lawspecfieldvalue_1500 = e_1491.value;
-          value_1499 = lawspecfieldvalue_1500;
-          value_1496 = lawtwinKafkaModelRebalance_c9984d55(value_1499, b_1489);
+        final Entry<String, Group> v_lawspecselection0x0_1856 = it_1855.head();
+        final LawSpecFast.List<Entry<String, Group>> v_lawspecselection0x1_1857 = it_1855.tail();
+        final LawSpecFast.List<Entry<String, Group>> next_1858 = v_lawspecselection0x1_1857;
+        String value_1859;
+        final String lawspecfieldkey_1860 = v_lawspecselection0x0_1856.key;
+        value_1859 = lawspecfieldkey_1860;
+        Group value_1861;
+        Group value_1862;
+        final Group lawspecfieldvalue_1863 = v_lawspecselection0x0_1856.value;
+        value_1862 = lawspecfieldvalue_1863;
+        if (lawtwinKafkaModelSubscribesTo_c3c674c3(topic_1851, value_1862)) {
+          Group value_1864;
+          final Group lawspecfieldvalue_1865 = v_lawspecselection0x0_1856.value;
+          value_1864 = lawspecfieldvalue_1865;
+          value_1861 = lawtwinKafkaModelRebalance_c9984d55(value_1864, b_1853);
         } else {
-          final Group lawspecfieldvalue_1501 = e_1491.value;
-          value_1496 = lawspecfieldvalue_1501;
+          final Group lawspecfieldvalue_1866 = v_lawspecselection0x0_1856.value;
+          value_1861 = lawspecfieldvalue_1866;
         }
-        final LawSpecFast.Map<String, Group> next_1502 = acc_1490.put(value_1494, value_1496);
-        gs_1488 = next_1493;
-        acc_1490 = next_1502;
+        final LawSpecFast.Map<String, Group> next_1867 = acc_1854.put(value_1859, value_1861);
+        gs_1852 = next_1858;
+        acc_1854 = next_1867;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelRebalanceTopic */
-  public static BrokerState lawtwinKafkaModelRebalanceTopic_823cd68b(String topic_1503, BrokerState b_1504) {
-    LawSpecFast.Map<String, Group> value_1505;
-    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1506 = b_1504.groups;
-    value_1505 = lawspecfieldgroups_1506;
-    LawSpecFast.Map<String, Group> value_1507;
-    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1508 = b_1504.groups;
-    value_1507 = lawspecfieldgroups_1508;
-    final LawSpecFast.Map<String, Group> replacement_1509 = lawtwinKafkaModelRebalanceGroups_ad90673b(topic_1503, entriesOf(value_1505), b_1504, value_1507);
-    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1510 = b_1504.topics;
-    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1511 = b_1504.logs;
-    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1512 = b_1504.producers;
-    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1513 = b_1504.transactionalIds;
-    final long lawspecfieldnextproducerid_1514 = b_1504.nextProducerId;
-    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1515 = b_1504.committed;
-    return new BrokerState(lawspecfieldtopics_1510, lawspecfieldlogs_1511, lawspecfieldproducers_1512, lawspecfieldtransactionalids_1513, lawspecfieldnextproducerid_1514, replacement_1509, lawspecfieldcommitted_1515);
+  public static BrokerState lawtwinKafkaModelRebalanceTopic_823cd68b(String topic_1868, BrokerState b_1869) {
+    LawSpecFast.Map<String, Group> value_1870;
+    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1871 = b_1869.groups;
+    value_1870 = lawspecfieldgroups_1871;
+    LawSpecFast.Map<String, Group> value_1872;
+    final LawSpecFast.Map<String, Group> lawspecfieldgroups_1873 = b_1869.groups;
+    value_1872 = lawspecfieldgroups_1873;
+    final LawSpecFast.Map<String, Group> replacement_1874 = lawtwinKafkaModelRebalanceGroups_ad90673b(topic_1868, entriesOf(value_1870), b_1869, value_1872);
+    final LawSpecFast.Map<String, Long> lawspecfieldtopics_1875 = b_1869.topics;
+    final LawSpecFast.Map<TopicPartition, PartitionLog> lawspecfieldlogs_1876 = b_1869.logs;
+    final LawSpecFast.Map<Long, ProducerEntry> lawspecfieldproducers_1877 = b_1869.producers;
+    final LawSpecFast.Map<String, Long> lawspecfieldtransactionalids_1878 = b_1869.transactionalIds;
+    final long lawspecfieldnextproducerid_1879 = b_1869.nextProducerId;
+    final LawSpecFast.Map<GroupPartition, Long> lawspecfieldcommitted_1880 = b_1869.committed;
+    return new BrokerState(lawspecfieldtopics_1875, lawspecfieldlogs_1876, lawspecfieldproducers_1877, lawspecfieldtransactionalids_1878, lawspecfieldnextproducerid_1879, replacement_1874, lawspecfieldcommitted_1880);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelRememberBatch */
-  public static PartitionLog lawtwinKafkaModelRememberBatch_33fa600f(long writer_1516, BatchMeta meta_1517, PartitionLog l_1518) {
-    LawSpecFast.List<BatchMeta> value_1519;
-    LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> value_1520;
-    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_1521 = l_1518.batches;
-    value_1520 = lawspecfieldbatches_1521;
-    final LawSpecFast.Maybe<LawSpecFast.List<BatchMeta>> matched_1522 = value_1520.get(writer_1516);
-    if (matched_1522.isJust()) {
-      final LawSpecFast.List<BatchMeta> ms_1523 = matched_1522.get();
-      value_1519 = ms_1523;
+  public static PartitionLog lawtwinKafkaModelRememberBatch_33fa600f(long writer_1881, BatchMeta meta_1882, PartitionLog l_1883) {
+    LawSpecFast.List<BatchMeta> value_1884;
+    LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> value_1885;
+    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_1886 = l_1883.batches;
+    value_1885 = lawspecfieldbatches_1886;
+    final LawSpecFast.Maybe<LawSpecFast.List<BatchMeta>> it_1887 = value_1885.get(writer_1881);
+    if (it_1887.isJust()) {
+      final LawSpecFast.List<BatchMeta> v_lawspecselection0x0_1888 = it_1887.get();
+      value_1884 = v_lawspecselection0x0_1888;
     } else {
-      value_1519 = LawSpecFast.List.<BatchMeta>nil();
+      value_1884 = LawSpecFast.List.<BatchMeta>nil();
     }
-    final LawSpecFast.List<BatchMeta> previous_1524 = value_1519;
-    LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> value_1525;
-    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_1526 = l_1518.batches;
-    value_1525 = lawspecfieldbatches_1526;
-    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> replacement_1527 = value_1525.put(writer_1516, LawSpecFast.slice(LawSpecFast.List.<BatchMeta>cons(meta_1517, previous_1524), 0L, 5L));
-    final LawSpecFast.List<LogEntry> lawspecfieldentries_1528 = l_1518.entries;
-    final long lawspecfieldlogendoffset_1529 = l_1518.logEndOffset;
-    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1530 = l_1518.openTxns;
-    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_1531 = l_1518.abortedTxns;
-    return new PartitionLog(lawspecfieldentries_1528, lawspecfieldlogendoffset_1529, lawspecfieldopentxns_1530, lawspecfieldabortedtxns_1531, replacement_1527);
+    final LawSpecFast.List<BatchMeta> previous_1889 = value_1884;
+    LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> value_1890;
+    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_1891 = l_1883.batches;
+    value_1890 = lawspecfieldbatches_1891;
+    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> replacement_1892 = value_1890.put(writer_1881, LawSpecFast.slice(LawSpecFast.List.<BatchMeta>cons(meta_1882, previous_1889), 0L, 5L));
+    final LawSpecFast.List<LogEntry> lawspecfieldentries_1893 = l_1883.entries;
+    final long lawspecfieldlogendoffset_1894 = l_1883.logEndOffset;
+    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1895 = l_1883.openTxns;
+    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_1896 = l_1883.abortedTxns;
+    return new PartitionLog(lawspecfieldentries_1893, lawspecfieldlogendoffset_1894, lawspecfieldopentxns_1895, lawspecfieldabortedtxns_1896, replacement_1892);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelReversePending */
-  public static LawSpecFast.List<PendingOffset> lawtwinKafkaModelReversePending_51ca5898(LawSpecFast.List<PendingOffset> os_1532, LawSpecFast.List<PendingOffset> acc_1533) {
+  public static LawSpecFast.List<PendingOffset> lawtwinKafkaModelReversePending_51ca5898(LawSpecFast.List<PendingOffset> os_1897, LawSpecFast.List<PendingOffset> acc_1898) {
     while (true) {
-      if (os_1532.isEmpty()) {
-        return acc_1533;
+      final LawSpecFast.List<PendingOffset> it_1899 = os_1897;
+      if (it_1899.isEmpty()) {
+        return acc_1898;
       } else {
-        final PendingOffset h_1534 = os_1532.head();
-        final LawSpecFast.List<PendingOffset> t_1535 = os_1532.tail();
-        final LawSpecFast.List<PendingOffset> next_1536 = t_1535;
-        final LawSpecFast.List<PendingOffset> next_1537 = LawSpecFast.List.<PendingOffset>cons(h_1534, acc_1533);
-        os_1532 = next_1536;
-        acc_1533 = next_1537;
+        final PendingOffset v_lawspecselection0x0_1900 = it_1899.head();
+        final LawSpecFast.List<PendingOffset> v_lawspecselection0x1_1901 = it_1899.tail();
+        final LawSpecFast.List<PendingOffset> next_1902 = v_lawspecselection0x1_1901;
+        final LawSpecFast.List<PendingOffset> next_1903 = LawSpecFast.List.<PendingOffset>cons(v_lawspecselection0x0_1900, acc_1898);
+        os_1897 = next_1902;
+        acc_1898 = next_1903;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelSubscribedTopics */
-  public static LawSpecFast.Set<String> lawtwinKafkaModelSubscribedTopics_c1d720b5(LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> subs_1538, LawSpecFast.Set<String> acc_1539) {
+  public static LawSpecFast.Set<String> lawtwinKafkaModelSubscribedTopics_c1d720b5(LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> subs_1904, LawSpecFast.Set<String> acc_1905) {
     while (true) {
-      if (subs_1538.isEmpty()) {
-        return acc_1539;
+      final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> it_1906 = subs_1904;
+      if (it_1906.isEmpty()) {
+        return acc_1905;
       } else {
-        final Entry<String, LawSpecFast.List<String>> e_1540 = subs_1538.head();
-        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> rest_1541 = subs_1538.tail();
-        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> next_1542 = rest_1541;
-        LawSpecFast.List<String> value_1543;
-        final LawSpecFast.List<String> lawspecfieldvalue_1544 = e_1540.value;
-        value_1543 = lawspecfieldvalue_1544;
-        final LawSpecFast.Set<String> next_1545 = acc_1539.union(LawSpecFast.Set.of(value_1543));
-        subs_1538 = next_1542;
-        acc_1539 = next_1545;
+        final Entry<String, LawSpecFast.List<String>> v_lawspecselection0x0_1907 = it_1906.head();
+        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> v_lawspecselection0x1_1908 = it_1906.tail();
+        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> next_1909 = v_lawspecselection0x1_1908;
+        LawSpecFast.List<String> value_1910;
+        final LawSpecFast.List<String> lawspecfieldvalue_1911 = v_lawspecselection0x0_1907.value;
+        value_1910 = lawspecfieldvalue_1911;
+        final LawSpecFast.Set<String> next_1912 = acc_1905.union(LawSpecFast.Set.of(value_1910));
+        subs_1904 = next_1909;
+        acc_1905 = next_1912;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelSubscribersOf */
-  public static LawSpecFast.List<String> lawtwinKafkaModelSubscribersOf_e9347318(String topic_1546, LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> subs_1547) {
+  public static LawSpecFast.List<String> lawtwinKafkaModelSubscribersOf_e9347318(String topic_1913, LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> subs_1914) {
     while (true) {
-      if (subs_1547.isEmpty()) {
+      final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> it_1915 = subs_1914;
+      if (it_1915.isEmpty()) {
         return LawSpecFast.List.<String>nil();
       } else {
-        final Entry<String, LawSpecFast.List<String>> e_1548 = subs_1547.head();
-        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> rest_1549 = subs_1547.tail();
-        LawSpecFast.List<String> value_1550;
-        final LawSpecFast.List<String> lawspecfieldvalue_1551 = e_1548.value;
-        value_1550 = lawspecfieldvalue_1551;
-        boolean all_1552 = true;
-        for (final String item_1553 : value_1550) {
-          if (!(!(java.util.Objects.equals(item_1553, topic_1546)))) { all_1552 = false; break; }
+        final Entry<String, LawSpecFast.List<String>> v_lawspecselection0x0_1916 = it_1915.head();
+        final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> v_lawspecselection0x1_1917 = it_1915.tail();
+        LawSpecFast.List<String> value_1918;
+        final LawSpecFast.List<String> lawspecfieldvalue_1919 = v_lawspecselection0x0_1916.value;
+        value_1918 = lawspecfieldvalue_1919;
+        boolean all_1920 = true;
+        for (final String item_1921 : value_1918) {
+          if (!(!(java.util.Objects.equals(item_1921, topic_1913)))) { all_1920 = false; break; }
         }
-        if (!(all_1552)) {
-          String value_1554;
-          final String lawspecfieldkey_1555 = e_1548.key;
-          value_1554 = lawspecfieldkey_1555;
-          return LawSpecFast.List.<String>cons(value_1554, lawtwinKafkaModelSubscribersOf_e9347318(topic_1546, rest_1549));
+        if (!(all_1920)) {
+          String value_1922;
+          final String lawspecfieldkey_1923 = v_lawspecselection0x0_1916.key;
+          value_1922 = lawspecfieldkey_1923;
+          return LawSpecFast.List.<String>cons(value_1922, lawtwinKafkaModelSubscribersOf_e9347318(topic_1913, v_lawspecselection0x1_1917));
         } else {
-          final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> next_1556 = rest_1549;
-          subs_1547 = next_1556;
+          final LawSpecFast.List<Entry<String, LawSpecFast.List<String>>> next_1924 = v_lawspecselection0x1_1917;
+          subs_1914 = next_1924;
           continue;
         }
       }
@@ -6659,108 +7271,133 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelSubscribesTo */
-  public static boolean lawtwinKafkaModelSubscribesTo_c3c674c3(String topic_1557, Group group_1558) {
-    boolean value_1559;
-    LawSpecFast.Map<String, LawSpecFast.List<String>> value_1560;
-    final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1561 = group_1558.subscriptions;
-    value_1560 = lawspecfieldsubscriptions_1561;
-    final LawSpecFast.List<String> matched_1562 = lawtwinKafkaModelSubscribersOf_e9347318(topic_1557, entriesOf(value_1560));
-    if (matched_1562.isEmpty()) {
-      value_1559 = true;
+  public static boolean lawtwinKafkaModelSubscribesTo_c3c674c3(String topic_1925, Group group_1926) {
+    boolean value_1927;
+    LawSpecFast.Map<String, LawSpecFast.List<String>> value_1928;
+    final LawSpecFast.Map<String, LawSpecFast.List<String>> lawspecfieldsubscriptions_1929 = group_1926.subscriptions;
+    value_1928 = lawspecfieldsubscriptions_1929;
+    final LawSpecFast.List<String> matched_1930 = lawtwinKafkaModelSubscribersOf_e9347318(topic_1925, entriesOf(value_1928));
+    if (matched_1930.isEmpty()) {
+      value_1927 = true;
     } else {
-      value_1559 = false;
+      value_1927 = false;
     }
-    return !(value_1559);
+    return !(value_1927);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelSyncGroup */
-  public static Pair<LawSpecFast.List<TopicPartition>, BrokerState> lawtwinKafkaModelSyncGroup_b3d01c80(String g_1563, String member_1564, long generation_1565, BrokerState b_1566) {
-    final Group group_1567 = lawtwinKafkaModelCheckMember_f218b850(g_1563, member_1564, generation_1565, b_1566);
-    LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> value_1568;
-    final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecfieldassignment_1569 = group_1567.assignment;
-    value_1568 = lawspecfieldassignment_1569;
-    final LawSpecFast.Maybe<LawSpecFast.List<TopicPartition>> matched_1570 = value_1568.get(member_1564);
-    if (matched_1570.isJust()) {
-      final LawSpecFast.List<TopicPartition> tps_1571 = matched_1570.get();
-      return new Pair<LawSpecFast.List<TopicPartition>, BrokerState>(tps_1571, b_1566);
+  public static Pair<LawSpecFast.List<TopicPartition>, BrokerState> lawtwinKafkaModelSyncGroup_b3d01c80(String g_1931, String member_1932, long generation_1933, BrokerState b_1934) {
+    final Group group_1935 = lawtwinKafkaModelCheckMember_f218b850(g_1931, member_1932, generation_1933, b_1934);
+    LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> value_1936;
+    final LawSpecFast.Map<String, LawSpecFast.List<TopicPartition>> lawspecfieldassignment_1937 = group_1935.assignment;
+    value_1936 = lawspecfieldassignment_1937;
+    final LawSpecFast.Maybe<LawSpecFast.List<TopicPartition>> it_1938 = value_1936.get(member_1932);
+    if (it_1938.isJust()) {
+      final LawSpecFast.List<TopicPartition> v_lawspecselection0x0_1939 = it_1938.get();
+      return new Pair<LawSpecFast.List<TopicPartition>, BrokerState>(v_lawspecselection0x0_1939, b_1934);
     } else {
-      return new Pair<LawSpecFast.List<TopicPartition>, BrokerState>(LawSpecFast.List.<TopicPartition>nil(), b_1566);
+      return new Pair<LawSpecFast.List<TopicPartition>, BrokerState>(LawSpecFast.List.<TopicPartition>nil(), b_1934);
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelTxnHasPartition */
-  public static boolean lawtwinKafkaModelTxnHasPartition_8fa1cfc0(TopicPartition tp_1572, TxnState txn_1573) {
-    switch (txn_1573.tag) {
+  public static boolean lawtwinKafkaModelTxnHasPartition_8fa1cfc0(TopicPartition tp_1940, TxnState txn_1941) {
+    final TxnState it_1942 = txn_1941;
+    switch (it_1942.tag) {
       case 0 -> {
         return false;
       }
       case 1 -> {
-        final TxnState.Ongoing case_1575 = (TxnState.Ongoing) txn_1573;
-        final LawSpecFast.List<TopicPartition> ps_1576 = case_1575.txnPartitions;
-        boolean all_1577 = true;
-        for (final TopicPartition item_1578 : ps_1576) {
-          if (!(!(java.util.Objects.equals(item_1578, tp_1572)))) { all_1577 = false; break; }
+        final TxnState.Ongoing case_1944 = (TxnState.Ongoing) it_1942;
+        final Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee v_lawspecselection0x0_1945 = case_1944.value;
+        LawSpecFast.List<TopicPartition> value_1946;
+        final LawSpecFast.List<TopicPartition> lawspecfieldtxnpartitions_1947 = v_lawspecselection0x0_1945.txnPartitions;
+        value_1946 = lawspecfieldtxnpartitions_1947;
+        final LawSpecFast.List<TopicPartition> v_lawspecselection1x0_1948 = value_1946;
+        LawSpecFast.List<PendingOffset> value_1949;
+        final LawSpecFast.List<PendingOffset> lawspecfieldtxnoffsets_1950 = v_lawspecselection0x0_1945.txnOffsets;
+        value_1949 = lawspecfieldtxnoffsets_1950;
+        final LawSpecFast.List<PendingOffset> v_lawspecselection1x1_1951 = value_1949;
+        boolean all_1952 = true;
+        for (final TopicPartition item_1953 : v_lawspecselection1x0_1948) {
+          if (!(!(java.util.Objects.equals(item_1953, tp_1940)))) { all_1952 = false; break; }
         }
-        return !(all_1577);
+        return !(all_1952);
       }
       default -> throw LawSpecFast.unreachable();
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelTxnOffsetCommit */
-  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelTxnOffsetCommit_84c6b2bb(String txid_1579, long pid_1580, long epoch_1581, String group_1582, LawSpecFast.List<OffsetEntry> offsets_1583, BrokerState b_1584) {
-    if ((java.util.Objects.equals(group_1582, ""))) {
+  public static Pair<LawSpecFast.Unit, BrokerState> lawtwinKafkaModelTxnOffsetCommit_84c6b2bb(String txid_1954, long pid_1955, long epoch_1956, String group_1957, LawSpecFast.List<OffsetEntry> offsets_1958, BrokerState b_1959) {
+    if ((java.util.Objects.equals(group_1957, ""))) {
       throw new LawSpecRuntime.Failure("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)", KafkaError.CODEC.encode(KafkaError.InvalidGroupId));
     } else {
-      final ProducerEntry entry_1585 = lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_1579, pid_1580, epoch_1581, b_1584);
-      TxnState value_1586;
-      TxnState value_1587;
-      final TxnState lawspecfieldtxn_1588 = entry_1585.txn;
-      value_1587 = lawspecfieldtxn_1588;
-      final TxnState matched_1589 = value_1587;
-      switch (matched_1589.tag) {
+      final ProducerEntry entry_1960 = lawtwinKafkaModelCheckTxnProducer_2936d9ae(txid_1954, pid_1955, epoch_1956, b_1959);
+      TxnState value_1961;
+      TxnState value_1962;
+      final TxnState lawspecfieldtxn_1963 = entry_1960.txn;
+      value_1962 = lawspecfieldtxn_1963;
+      final TxnState it_1964 = value_1962;
+      switch (it_1964.tag) {
         case 0 -> {
-          value_1586 = new TxnState.Ongoing(LawSpecFast.List.<TopicPartition>nil(), lawtwinKafkaModelPendingFor_50512591(group_1582, offsets_1583, LawSpecFast.List.<PendingOffset>nil()));
+          Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee value_1966;
+          final LawSpecFast.List<TopicPartition> txnpartitions_1967 = LawSpecFast.List.<TopicPartition>nil();
+          final LawSpecFast.List<PendingOffset> txnoffsets_1968 = lawtwinKafkaModelPendingFor_50512591(group_1957, offsets_1958, LawSpecFast.List.<PendingOffset>nil());
+          value_1966 = new Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(txnoffsets_1968, txnpartitions_1967);
+          value_1961 = new TxnState.Ongoing(value_1966);
         }
         case 1 -> {
-          final TxnState.Ongoing case_1591 = (TxnState.Ongoing) matched_1589;
-          final LawSpecFast.List<TopicPartition> ps_1592 = case_1591.txnPartitions;
-          final LawSpecFast.List<PendingOffset> os_1593 = case_1591.txnOffsets;
-          value_1586 = new TxnState.Ongoing(ps_1592, lawtwinKafkaModelPendingFor_50512591(group_1582, offsets_1583, os_1593));
+          final TxnState.Ongoing case_1969 = (TxnState.Ongoing) it_1964;
+          final Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee v_lawspecselection0x0_1970 = case_1969.value;
+          LawSpecFast.List<TopicPartition> value_1971;
+          final LawSpecFast.List<TopicPartition> lawspecfieldtxnpartitions_1972 = v_lawspecselection0x0_1970.txnPartitions;
+          value_1971 = lawspecfieldtxnpartitions_1972;
+          final LawSpecFast.List<TopicPartition> v_lawspecselection1x0_1973 = value_1971;
+          LawSpecFast.List<PendingOffset> value_1974;
+          final LawSpecFast.List<PendingOffset> lawspecfieldtxnoffsets_1975 = v_lawspecselection0x0_1970.txnOffsets;
+          value_1974 = lawspecfieldtxnoffsets_1975;
+          final LawSpecFast.List<PendingOffset> v_lawspecselection1x1_1976 = value_1974;
+          Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee value_1977;
+          final LawSpecFast.List<TopicPartition> txnpartitions_1978 = v_lawspecselection1x0_1973;
+          final LawSpecFast.List<PendingOffset> txnoffsets_1979 = lawtwinKafkaModelPendingFor_50512591(group_1957, offsets_1958, v_lawspecselection1x1_1976);
+          value_1977 = new Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(txnoffsets_1979, txnpartitions_1978);
+          value_1961 = new TxnState.Ongoing(value_1977);
         }
         default -> throw LawSpecFast.unreachable();
       }
-      final TxnState next_1594 = value_1586;
-      ProducerEntry value_1595;
-      final TxnState replacement_1596 = next_1594;
-      final long lawspecfieldepoch_1597 = entry_1585.epoch;
-      final LawSpecFast.Maybe<String> lawspecfieldtransactionalid_1598 = entry_1585.transactionalId;
-      value_1595 = new ProducerEntry(lawspecfieldepoch_1597, lawspecfieldtransactionalid_1598, replacement_1596);
-      return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelPutProducer_4ef907a5(pid_1580, value_1595, b_1584));
+      final TxnState next_1980 = value_1961;
+      ProducerEntry value_1981;
+      final TxnState replacement_1982 = next_1980;
+      final long lawspecfieldepoch_1983 = entry_1960.epoch;
+      final LawSpecFast.Maybe<String> lawspecfieldtransactionalid_1984 = entry_1960.transactionalId;
+      value_1981 = new ProducerEntry(lawspecfieldepoch_1983, lawspecfieldtransactionalid_1984, replacement_1982);
+      return new Pair<LawSpecFast.Unit, BrokerState>(LawSpecFast.Unit.UNIT, lawtwinKafkaModelPutProducer_4ef907a5(pid_1955, value_1981, b_1959));
     }
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelUnionPartitions */
-  public static LawSpecFast.List<TopicPartition> lawtwinKafkaModelUnionPartitions_c791d224(LawSpecFast.List<TopicPartition> xs_1599, LawSpecFast.List<TopicPartition> ys_1600) {
+  public static LawSpecFast.List<TopicPartition> lawtwinKafkaModelUnionPartitions_c791d224(LawSpecFast.List<TopicPartition> xs_1985, LawSpecFast.List<TopicPartition> ys_1986) {
     while (true) {
-      if (xs_1599.isEmpty()) {
-        return ys_1600;
+      final LawSpecFast.List<TopicPartition> it_1987 = xs_1985;
+      if (it_1987.isEmpty()) {
+        return ys_1986;
       } else {
-        final TopicPartition h_1601 = xs_1599.head();
-        final LawSpecFast.List<TopicPartition> t_1602 = xs_1599.tail();
-        boolean all_1603 = true;
-        for (final TopicPartition item_1604 : ys_1600) {
-          if (!(!(java.util.Objects.equals(item_1604, h_1601)))) { all_1603 = false; break; }
+        final TopicPartition v_lawspecselection0x0_1988 = it_1987.head();
+        final LawSpecFast.List<TopicPartition> v_lawspecselection0x1_1989 = it_1987.tail();
+        boolean all_1990 = true;
+        for (final TopicPartition item_1991 : ys_1986) {
+          if (!(!(java.util.Objects.equals(item_1991, v_lawspecselection0x0_1988)))) { all_1990 = false; break; }
         }
-        if (!(all_1603)) {
-          final LawSpecFast.List<TopicPartition> next_1605 = t_1602;
-          xs_1599 = next_1605;
+        if (!(all_1990)) {
+          final LawSpecFast.List<TopicPartition> next_1992 = v_lawspecselection0x1_1989;
+          xs_1985 = next_1992;
           continue;
         } else {
-          final LawSpecFast.List<TopicPartition> next_1606 = t_1602;
-          final LawSpecFast.List<TopicPartition> next_1607 = LawSpecFast.List.<TopicPartition>cons(h_1601, ys_1600);
-          xs_1599 = next_1606;
-          ys_1600 = next_1607;
+          final LawSpecFast.List<TopicPartition> next_1993 = v_lawspecselection0x1_1989;
+          final LawSpecFast.List<TopicPartition> next_1994 = LawSpecFast.List.<TopicPartition>cons(v_lawspecselection0x0_1988, ys_1986);
+          xs_1985 = next_1993;
+          ys_1986 = next_1994;
           continue;
         }
       }
@@ -6768,169 +7405,185 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelValidTopicName */
-  public static boolean lawtwinKafkaModelValidTopicName_39dd4596(String name_1608) {
-    final java.math.BigInteger n_1609 = java.math.BigInteger.valueOf((long) LawSpecFast.textLength(name_1608));
-    return (((((n_1609.compareTo(java.math.BigInteger.valueOf(1L)) >= 0) && (n_1609.compareTo(java.math.BigInteger.valueOf(249L)) <= 0)) && !(java.util.Objects.equals(name_1608, "."))) && !(java.util.Objects.equals(name_1608, ".."))) && LawSpecRuntime.regexMatches("[a-zA-Z0-9._-]+", name_1608.codePoints().toArray()));
+  public static boolean lawtwinKafkaModelValidTopicName_39dd4596(String name_1995) {
+    final java.math.BigInteger n_1996 = java.math.BigInteger.valueOf((long) LawSpecFast.textLength(name_1995));
+    return (((((n_1996.compareTo(java.math.BigInteger.valueOf(1L)) >= 0) && (n_1996.compareTo(java.math.BigInteger.valueOf(249L)) <= 0)) && !(java.util.Objects.equals(name_1995, "."))) && !(java.util.Objects.equals(name_1995, ".."))) && LawSpecRuntime.regexMatches("[a-zA-Z0-9._-]+", name_1995.codePoints().toArray()));
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelWriteMarker */
-  public static PartitionLog lawtwinKafkaModelWriteMarker_8dc995f8(long pid_1610, boolean commit_1611, PartitionLog l_1612) {
-    LawSpecFast.List<AbortedTxn> value_1613;
-    if (commit_1611) {
-      final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_1614 = l_1612.abortedTxns;
-      value_1613 = lawspecfieldabortedtxns_1614;
+  public static PartitionLog lawtwinKafkaModelWriteMarker_8dc995f8(long pid_1997, boolean commit_1998, PartitionLog l_1999) {
+    LawSpecFast.List<AbortedTxn> value_2000;
+    if (commit_1998) {
+      final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_2001 = l_1999.abortedTxns;
+      value_2000 = lawspecfieldabortedtxns_2001;
     } else {
-      LawSpecFast.Map<Long, Long> value_1615;
-      final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1616 = l_1612.openTxns;
-      value_1615 = lawspecfieldopentxns_1616;
-      final LawSpecFast.Maybe<Long> matched_1617 = value_1615.get(pid_1610);
-      if (matched_1617.isJust()) {
-        final long first_1618 = matched_1617.get();
-        long value_1619;
-        final long lawspecfieldlogendoffset_1620 = l_1612.logEndOffset;
-        value_1619 = lawspecfieldlogendoffset_1620;
-        LawSpecFast.List<AbortedTxn> value_1621;
-        final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_1622 = l_1612.abortedTxns;
-        value_1621 = lawspecfieldabortedtxns_1622;
-        value_1613 = LawSpecFast.List.<AbortedTxn>cons(new AbortedTxn(pid_1610, first_1618, value_1619), value_1621);
+      LawSpecFast.Map<Long, Long> value_2002;
+      final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_2003 = l_1999.openTxns;
+      value_2002 = lawspecfieldopentxns_2003;
+      final LawSpecFast.Maybe<Long> it_2004 = value_2002.get(pid_1997);
+      if (it_2004.isJust()) {
+        final long v_lawspecselection0x0_2005 = it_2004.get();
+        AbortedTxn value_2006;
+        final long v_lawspecrecordfield0_2007 = pid_1997;
+        final long v_lawspecrecordfield1_2008 = v_lawspecselection0x0_2005;
+        long value_2009;
+        final long lawspecfieldlogendoffset_2010 = l_1999.logEndOffset;
+        value_2009 = lawspecfieldlogendoffset_2010;
+        final long v_lawspecrecordfield2_2011 = value_2009;
+        value_2006 = new AbortedTxn(v_lawspecrecordfield0_2007, v_lawspecrecordfield1_2008, v_lawspecrecordfield2_2011);
+        LawSpecFast.List<AbortedTxn> value_2012;
+        final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_2013 = l_1999.abortedTxns;
+        value_2012 = lawspecfieldabortedtxns_2013;
+        value_2000 = LawSpecFast.List.<AbortedTxn>cons(value_2006, value_2012);
       } else {
-        final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_1623 = l_1612.abortedTxns;
-        value_1613 = lawspecfieldabortedtxns_1623;
+        final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_2014 = l_1999.abortedTxns;
+        value_2000 = lawspecfieldabortedtxns_2014;
       }
     }
-    final LawSpecFast.List<AbortedTxn> aborted_1624 = value_1613;
-    final LawSpecFast.List<AbortedTxn> replacement_1625 = aborted_1624;
-    PartitionLog value_1626;
-    LawSpecFast.Map<Long, Long> value_1627;
-    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1628 = l_1612.openTxns;
-    value_1627 = lawspecfieldopentxns_1628;
-    final LawSpecFast.Map<Long, Long> replacement_1629 = value_1627.remove(pid_1610);
-    PartitionLog value_1630;
-    long value_1631;
-    final long lawspecfieldlogendoffset_1632 = l_1612.logEndOffset;
-    value_1631 = lawspecfieldlogendoffset_1632;
-    final long replacement_1633 = saturatingInt64_5bce4ed8(java.math.BigInteger.valueOf(value_1631).add(java.math.BigInteger.valueOf(1L)));
-    PartitionLog value_1634;
-    long value_1635;
-    final long lawspecfieldlogendoffset_1636 = l_1612.logEndOffset;
-    value_1635 = lawspecfieldlogendoffset_1636;
-    LawSpecFast.List<LogEntry> value_1637;
-    final LawSpecFast.List<LogEntry> lawspecfieldentries_1638 = l_1612.entries;
-    value_1637 = lawspecfieldentries_1638;
-    final LawSpecFast.List<LogEntry> replacement_1639 = LawSpecFast.List.<LogEntry>cons(new LogEntry.ControlEntry(value_1635, pid_1610, commit_1611), value_1637);
-    final long lawspecfieldlogendoffset_1640 = l_1612.logEndOffset;
-    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1641 = l_1612.openTxns;
-    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_1642 = l_1612.abortedTxns;
-    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_1643 = l_1612.batches;
-    value_1634 = new PartitionLog(replacement_1639, lawspecfieldlogendoffset_1640, lawspecfieldopentxns_1641, lawspecfieldabortedtxns_1642, lawspecfieldbatches_1643);
-    final PartitionLog matched_1644 = value_1634;
-    final LawSpecFast.List<LogEntry> lawspecfieldentries_1645 = matched_1644.entries;
-    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1646 = matched_1644.openTxns;
-    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_1647 = matched_1644.abortedTxns;
-    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_1648 = matched_1644.batches;
-    value_1630 = new PartitionLog(lawspecfieldentries_1645, replacement_1633, lawspecfieldopentxns_1646, lawspecfieldabortedtxns_1647, lawspecfieldbatches_1648);
-    final PartitionLog matched_1649 = value_1630;
-    final LawSpecFast.List<LogEntry> lawspecfieldentries_1650 = matched_1649.entries;
-    final long lawspecfieldlogendoffset_1651 = matched_1649.logEndOffset;
-    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_1652 = matched_1649.abortedTxns;
-    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_1653 = matched_1649.batches;
-    value_1626 = new PartitionLog(lawspecfieldentries_1650, lawspecfieldlogendoffset_1651, replacement_1629, lawspecfieldabortedtxns_1652, lawspecfieldbatches_1653);
-    final PartitionLog matched_1654 = value_1626;
-    final LawSpecFast.List<LogEntry> lawspecfieldentries_1655 = matched_1654.entries;
-    final long lawspecfieldlogendoffset_1656 = matched_1654.logEndOffset;
-    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_1657 = matched_1654.openTxns;
-    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_1658 = matched_1654.batches;
-    return new PartitionLog(lawspecfieldentries_1655, lawspecfieldlogendoffset_1656, lawspecfieldopentxns_1657, replacement_1625, lawspecfieldbatches_1658);
+    final LawSpecFast.List<AbortedTxn> aborted_2015 = value_2000;
+    final LawSpecFast.List<AbortedTxn> replacement_2016 = aborted_2015;
+    PartitionLog value_2017;
+    LawSpecFast.Map<Long, Long> value_2018;
+    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_2019 = l_1999.openTxns;
+    value_2018 = lawspecfieldopentxns_2019;
+    final LawSpecFast.Map<Long, Long> replacement_2020 = value_2018.remove(pid_1997);
+    PartitionLog value_2021;
+    long value_2022;
+    final long lawspecfieldlogendoffset_2023 = l_1999.logEndOffset;
+    value_2022 = lawspecfieldlogendoffset_2023;
+    final long replacement_2024 = saturatingInt64_5bce4ed8(java.math.BigInteger.valueOf(value_2022).add(java.math.BigInteger.valueOf(1L)));
+    PartitionLog value_2025;
+    Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 value_2026;
+    long value_2027;
+    final long lawspecfieldlogendoffset_2028 = l_1999.logEndOffset;
+    value_2027 = lawspecfieldlogendoffset_2028;
+    final long markeroffset_2029 = value_2027;
+    final long markerwriter_2030 = pid_1997;
+    final boolean commits_2031 = commit_1998;
+    value_2026 = new Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3(commits_2031, markeroffset_2029, markerwriter_2030);
+    LawSpecFast.List<LogEntry> value_2032;
+    final LawSpecFast.List<LogEntry> lawspecfieldentries_2033 = l_1999.entries;
+    value_2032 = lawspecfieldentries_2033;
+    final LawSpecFast.List<LogEntry> replacement_2034 = LawSpecFast.List.<LogEntry>cons(new LogEntry.ControlEntry(value_2026), value_2032);
+    final long lawspecfieldlogendoffset_2035 = l_1999.logEndOffset;
+    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_2036 = l_1999.openTxns;
+    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_2037 = l_1999.abortedTxns;
+    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_2038 = l_1999.batches;
+    value_2025 = new PartitionLog(replacement_2034, lawspecfieldlogendoffset_2035, lawspecfieldopentxns_2036, lawspecfieldabortedtxns_2037, lawspecfieldbatches_2038);
+    final PartitionLog matched_2039 = value_2025;
+    final LawSpecFast.List<LogEntry> lawspecfieldentries_2040 = matched_2039.entries;
+    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_2041 = matched_2039.openTxns;
+    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_2042 = matched_2039.abortedTxns;
+    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_2043 = matched_2039.batches;
+    value_2021 = new PartitionLog(lawspecfieldentries_2040, replacement_2024, lawspecfieldopentxns_2041, lawspecfieldabortedtxns_2042, lawspecfieldbatches_2043);
+    final PartitionLog matched_2044 = value_2021;
+    final LawSpecFast.List<LogEntry> lawspecfieldentries_2045 = matched_2044.entries;
+    final long lawspecfieldlogendoffset_2046 = matched_2044.logEndOffset;
+    final LawSpecFast.List<AbortedTxn> lawspecfieldabortedtxns_2047 = matched_2044.abortedTxns;
+    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_2048 = matched_2044.batches;
+    value_2017 = new PartitionLog(lawspecfieldentries_2045, lawspecfieldlogendoffset_2046, replacement_2020, lawspecfieldabortedtxns_2047, lawspecfieldbatches_2048);
+    final PartitionLog matched_2049 = value_2017;
+    final LawSpecFast.List<LogEntry> lawspecfieldentries_2050 = matched_2049.entries;
+    final long lawspecfieldlogendoffset_2051 = matched_2049.logEndOffset;
+    final LawSpecFast.Map<Long, Long> lawspecfieldopentxns_2052 = matched_2049.openTxns;
+    final LawSpecFast.Map<Long, LawSpecFast.List<BatchMeta>> lawspecfieldbatches_2053 = matched_2049.batches;
+    return new PartitionLog(lawspecfieldentries_2050, lawspecfieldlogendoffset_2051, lawspecfieldopentxns_2052, replacement_2016, lawspecfieldbatches_2053);
   }
 
   /** lawtwin.kafka::lawtwinKafkaModelWriteMarkers */
-  public static BrokerState lawtwinKafkaModelWriteMarkers_c507f08e(long pid_1659, boolean commit_1660, LawSpecFast.List<TopicPartition> tps_1661, BrokerState b_1662) {
+  public static BrokerState lawtwinKafkaModelWriteMarkers_c507f08e(long pid_2054, boolean commit_2055, LawSpecFast.List<TopicPartition> tps_2056, BrokerState b_2057) {
     while (true) {
-      if (tps_1661.isEmpty()) {
-        return b_1662;
+      final LawSpecFast.List<TopicPartition> it_2058 = tps_2056;
+      if (it_2058.isEmpty()) {
+        return b_2057;
       } else {
-        final TopicPartition tp_1663 = tps_1661.head();
-        final LawSpecFast.List<TopicPartition> rest_1664 = tps_1661.tail();
-        final LawSpecFast.List<TopicPartition> next_1665 = rest_1664;
-        final BrokerState next_1666 = lawtwinKafkaModelPutLog_cb3cbf5e(tp_1663, lawtwinKafkaModelWriteMarker_8dc995f8(pid_1659, commit_1660, lawtwinKafkaModelLogOf_b86b131a(tp_1663, b_1662)), b_1662);
-        tps_1661 = next_1665;
-        b_1662 = next_1666;
+        final TopicPartition v_lawspecselection0x0_2059 = it_2058.head();
+        final LawSpecFast.List<TopicPartition> v_lawspecselection0x1_2060 = it_2058.tail();
+        final LawSpecFast.List<TopicPartition> next_2061 = v_lawspecselection0x1_2060;
+        final BrokerState next_2062 = lawtwinKafkaModelPutLog_cb3cbf5e(v_lawspecselection0x0_2059, lawtwinKafkaModelWriteMarker_8dc995f8(pid_2054, commit_2055, lawtwinKafkaModelLogOf_b86b131a(v_lawspecselection0x0_2059, b_2057)), b_2057);
+        tps_2056 = next_2061;
+        b_2057 = next_2062;
         continue;
       }
     }
   }
 
   /** lawtwin.kafka::memberIds */
-  public static LawSpecFast.List<String> memberIds_1e3fa12d(LawSpecFast.List<String> ms_1667) {
-    final LawSpecFast.Set<String> matched_1668 = LawSpecFast.Set.of(ms_1667).remove("");
-    final LawSpecFast.List<String> items_1669 = matched_1668.toList();
-    return items_1669;
+  public static LawSpecFast.List<String> memberIds_1e3fa12d(LawSpecFast.List<String> ms_2063) {
+    final LawSpecFast.Set<String> matched_2064 = LawSpecFast.Set.of(ms_2063).remove("");
+    final LawSpecFast.List<String> items_2065 = matched_2064.toList();
+    return items_2065;
   }
 
   /** lawtwin.kafka::missingFrom */
-  public static LawSpecFast.List<TopicPartition> missingFrom_37856ee4(LawSpecFast.List<TopicPartition> tps_1670, LawSpecFast.List<TopicPartition> have_1671) {
+  public static LawSpecFast.List<TopicPartition> missingFrom_37856ee4(LawSpecFast.List<TopicPartition> tps_2066, LawSpecFast.List<TopicPartition> have_2067) {
     while (true) {
-      if (tps_1670.isEmpty()) {
+      final LawSpecFast.List<TopicPartition> it_2068 = tps_2066;
+      if (it_2068.isEmpty()) {
         return LawSpecFast.List.<TopicPartition>nil();
       } else {
-        final TopicPartition tp_1672 = tps_1670.head();
-        final LawSpecFast.List<TopicPartition> rest_1673 = tps_1670.tail();
-        boolean all_1674 = true;
-        for (final TopicPartition item_1675 : have_1671) {
-          if (!(!(java.util.Objects.equals(item_1675, tp_1672)))) { all_1674 = false; break; }
+        final TopicPartition v_lawspecselection0x0_2069 = it_2068.head();
+        final LawSpecFast.List<TopicPartition> v_lawspecselection0x1_2070 = it_2068.tail();
+        boolean all_2071 = true;
+        for (final TopicPartition item_2072 : have_2067) {
+          if (!(!(java.util.Objects.equals(item_2072, v_lawspecselection0x0_2069)))) { all_2071 = false; break; }
         }
-        if (!(all_1674)) {
-          final LawSpecFast.List<TopicPartition> next_1676 = rest_1673;
-          tps_1670 = next_1676;
+        if (!(all_2071)) {
+          final LawSpecFast.List<TopicPartition> next_2073 = v_lawspecselection0x1_2070;
+          tps_2066 = next_2073;
           continue;
         } else {
-          return LawSpecFast.List.<TopicPartition>cons(tp_1672, missingFrom_37856ee4(rest_1673, have_1671));
+          return LawSpecFast.List.<TopicPartition>cons(v_lawspecselection0x0_2069, missingFrom_37856ee4(v_lawspecselection0x1_2070, have_2067));
         }
       }
     }
   }
 
   /** lawtwin.kafka::mul32 */
-  public static long mul32_b8774c72(long a_1677, long b_1678) {
-    return wrappingUInt32_1ef3ce20(java.math.BigInteger.valueOf(a_1677).multiply(java.math.BigInteger.valueOf(b_1678)));
+  public static long mul32_b8774c72(long a_2074, long b_2075) {
+    return wrappingUInt32_1ef3ce20(java.math.BigInteger.valueOf(a_2074).multiply(java.math.BigInteger.valueOf(b_2075)));
   }
 
   /** lawtwin.kafka::murmur2 */
-  public static long murmur2_d0ccf769(LawSpecFast.Bytes key_1679) {
-    final long h_1680 = murmurChunks_9898bba5(LawSpecFast.octets(key_1679), xor32_0ea970f5(2538058380L, wrappingUInt32_1ef3ce20(java.math.BigInteger.valueOf((long) key_1679.length()))));
-    final long h1_1681 = mul32_b8774c72(xor32_0ea970f5(h_1680, wrappingUInt32_1ef3ce20(LawSpecFast.quot(java.math.BigInteger.valueOf(h_1680), java.math.BigInteger.valueOf(8192L)))), murmurM_48968914(LawSpecFast.Unit.UNIT));
-    return xor32_0ea970f5(h1_1681, wrappingUInt32_1ef3ce20(LawSpecFast.quot(java.math.BigInteger.valueOf(h1_1681), java.math.BigInteger.valueOf(32768L))));
+  public static long murmur2_d0ccf769(LawSpecFast.Bytes key_2076) {
+    final long h_2077 = murmurChunks_9898bba5(LawSpecFast.octets(key_2076), xor32_0ea970f5(2538058380L, wrappingUInt32_1ef3ce20(java.math.BigInteger.valueOf((long) key_2076.length()))));
+    final long h1_2078 = mul32_b8774c72(xor32_0ea970f5(h_2077, wrappingUInt32_1ef3ce20(LawSpecFast.quot(java.math.BigInteger.valueOf(h_2077), java.math.BigInteger.valueOf(8192L)))), murmurM_48968914(LawSpecFast.Unit.UNIT));
+    return xor32_0ea970f5(h1_2078, wrappingUInt32_1ef3ce20(LawSpecFast.quot(java.math.BigInteger.valueOf(h1_2078), java.math.BigInteger.valueOf(32768L))));
   }
 
   /** lawtwin.kafka::murmurChunks */
-  public static long murmurChunks_9898bba5(LawSpecFast.List<Long> octets_1682, long h_1683) {
+  public static long murmurChunks_9898bba5(LawSpecFast.List<Long> octets_2079, long h_2080) {
     while (true) {
-      if (octets_1682.isEmpty()) {
-        return h_1683;
+      final LawSpecFast.List<Long> it_2081 = octets_2079;
+      if (it_2081.isEmpty()) {
+        return h_2080;
       } else {
-        final long b0_1684 = octets_1682.head();
-        final LawSpecFast.List<Long> rest1_1685 = octets_1682.tail();
-        if (rest1_1685.isEmpty()) {
-          return mul32_b8774c72(xor32_0ea970f5(h_1683, b0_1684), murmurM_48968914(LawSpecFast.Unit.UNIT));
+        final long v_lawspecselection0x0_2082 = it_2081.head();
+        final LawSpecFast.List<Long> v_lawspecselection0x1_2083 = it_2081.tail();
+        final LawSpecFast.List<Long> it_2084 = v_lawspecselection0x1_2083;
+        if (it_2084.isEmpty()) {
+          return mul32_b8774c72(xor32_0ea970f5(h_2080, v_lawspecselection0x0_2082), murmurM_48968914(LawSpecFast.Unit.UNIT));
         } else {
-          final long b1_1686 = rest1_1685.head();
-          final LawSpecFast.List<Long> rest2_1687 = rest1_1685.tail();
-          if (rest2_1687.isEmpty()) {
-            return mul32_b8774c72(xor32_0ea970f5(xor32_0ea970f5(h_1683, wrappingUInt32_1ef3ce20(java.math.BigInteger.valueOf(b1_1686).multiply(java.math.BigInteger.valueOf(256L)))), b0_1684), murmurM_48968914(LawSpecFast.Unit.UNIT));
+          final long v_match__lawspecselection0x0_0_2085 = it_2084.head();
+          final LawSpecFast.List<Long> v_match__lawspecselection0x1_0_2086 = it_2084.tail();
+          final LawSpecFast.List<Long> it_2087 = v_match__lawspecselection0x1_0_2086;
+          if (it_2087.isEmpty()) {
+            return mul32_b8774c72(xor32_0ea970f5(xor32_0ea970f5(h_2080, wrappingUInt32_1ef3ce20(java.math.BigInteger.valueOf(v_match__lawspecselection0x0_0_2085).multiply(java.math.BigInteger.valueOf(256L)))), v_lawspecselection0x0_2082), murmurM_48968914(LawSpecFast.Unit.UNIT));
           } else {
-            final long b2_1688 = rest2_1687.head();
-            final LawSpecFast.List<Long> rest3_1689 = rest2_1687.tail();
-            if (rest3_1689.isEmpty()) {
-              return mul32_b8774c72(xor32_0ea970f5(xor32_0ea970f5(xor32_0ea970f5(h_1683, wrappingUInt32_1ef3ce20(java.math.BigInteger.valueOf(b2_1688).multiply(java.math.BigInteger.valueOf(65536L)))), wrappingUInt32_1ef3ce20(java.math.BigInteger.valueOf(b1_1686).multiply(java.math.BigInteger.valueOf(256L)))), b0_1684), murmurM_48968914(LawSpecFast.Unit.UNIT));
+            final long v_match__match__lawspecselection0x0_0_0_2088 = it_2087.head();
+            final LawSpecFast.List<Long> v_match__match__lawspecselection0x1_0_0_2089 = it_2087.tail();
+            final LawSpecFast.List<Long> it_2090 = v_match__match__lawspecselection0x1_0_0_2089;
+            if (it_2090.isEmpty()) {
+              return mul32_b8774c72(xor32_0ea970f5(xor32_0ea970f5(xor32_0ea970f5(h_2080, wrappingUInt32_1ef3ce20(java.math.BigInteger.valueOf(v_match__match__lawspecselection0x0_0_0_2088).multiply(java.math.BigInteger.valueOf(65536L)))), wrappingUInt32_1ef3ce20(java.math.BigInteger.valueOf(v_match__lawspecselection0x0_0_2085).multiply(java.math.BigInteger.valueOf(256L)))), v_lawspecselection0x0_2082), murmurM_48968914(LawSpecFast.Unit.UNIT));
             } else {
-              final long b3_1690 = rest3_1689.head();
-              final LawSpecFast.List<Long> rest4_1691 = rest3_1689.tail();
-              final long k0_1692 = mul32_b8774c72(wrappingUInt32_1ef3ce20(java.math.BigInteger.valueOf(b0_1684).add(java.math.BigInteger.valueOf(b1_1686).multiply(java.math.BigInteger.valueOf(256L))).add(java.math.BigInteger.valueOf(b2_1688).multiply(java.math.BigInteger.valueOf(65536L))).add(java.math.BigInteger.valueOf(b3_1690).multiply(java.math.BigInteger.valueOf(16777216L)))), murmurM_48968914(LawSpecFast.Unit.UNIT));
-              final long k1_1693 = mul32_b8774c72(xor32_0ea970f5(k0_1692, wrappingUInt32_1ef3ce20(LawSpecFast.quot(java.math.BigInteger.valueOf(k0_1692), java.math.BigInteger.valueOf(16777216L)))), murmurM_48968914(LawSpecFast.Unit.UNIT));
-              final LawSpecFast.List<Long> next_1694 = rest4_1691;
-              final long next_1695 = xor32_0ea970f5(mul32_b8774c72(h_1683, murmurM_48968914(LawSpecFast.Unit.UNIT)), k1_1693);
-              octets_1682 = next_1694;
-              h_1683 = next_1695;
+              final long v_match__match__match__lawspecselection0x0_0_0_0_2091 = it_2090.head();
+              final LawSpecFast.List<Long> v_match__match__match__lawspecselection0x1_0_0_0_2092 = it_2090.tail();
+              final long k0_2093 = mul32_b8774c72(wrappingUInt32_1ef3ce20(java.math.BigInteger.valueOf(v_lawspecselection0x0_2082).add(java.math.BigInteger.valueOf(v_match__lawspecselection0x0_0_2085).multiply(java.math.BigInteger.valueOf(256L))).add(java.math.BigInteger.valueOf(v_match__match__lawspecselection0x0_0_0_2088).multiply(java.math.BigInteger.valueOf(65536L))).add(java.math.BigInteger.valueOf(v_match__match__match__lawspecselection0x0_0_0_0_2091).multiply(java.math.BigInteger.valueOf(16777216L)))), murmurM_48968914(LawSpecFast.Unit.UNIT));
+              final long k1_2094 = mul32_b8774c72(xor32_0ea970f5(k0_2093, wrappingUInt32_1ef3ce20(LawSpecFast.quot(java.math.BigInteger.valueOf(k0_2093), java.math.BigInteger.valueOf(16777216L)))), murmurM_48968914(LawSpecFast.Unit.UNIT));
+              final LawSpecFast.List<Long> next_2095 = v_match__match__match__lawspecselection0x1_0_0_0_2092;
+              final long next_2096 = xor32_0ea970f5(mul32_b8774c72(h_2080, murmurM_48968914(LawSpecFast.Unit.UNIT)), k1_2094);
+              octets_2079 = next_2095;
+              h_2080 = next_2096;
               continue;
             }
           }
@@ -6940,16 +7593,17 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::murmurM */
-  public static long murmurM_48968914(LawSpecFast.Unit u_1696) {
+  public static long murmurM_48968914(LawSpecFast.Unit u_2097) {
     return 1540483477L;
   }
 
   /** lawtwin.kafka::murmurPartitionerChoosePartition */
-  public static long murmurPartitionerChoosePartition_5048c35d(LawSpecFast.Maybe<LawSpecFast.Bytes> key_1697, long n_1698) {
-    if (key_1697.isJust()) {
-      final LawSpecFast.Bytes k_1699 = key_1697.get();
-      if (((n_1698) >= (1L))) {
-        return LawSpecFast.narrow(LawSpecFast.rem(java.math.BigInteger.valueOf(toPositive_fc7029c7(murmur2_d0ccf769(k_1699))), java.math.BigInteger.valueOf(n_1698)), -2147483648L, 2147483647L, "Int32");
+  public static long murmurPartitionerChoosePartition_5048c35d(LawSpecFast.Maybe<LawSpecFast.Bytes> key_2098, long n_2099) {
+    final LawSpecFast.Maybe<LawSpecFast.Bytes> it_2100 = key_2098;
+    if (it_2100.isJust()) {
+      final LawSpecFast.Bytes v_lawspecselection0x0_2101 = it_2100.get();
+      if (((n_2099) >= (1L))) {
+        return LawSpecFast.narrow(LawSpecFast.rem(java.math.BigInteger.valueOf(toPositive_fc7029c7(murmur2_d0ccf769(v_lawspecselection0x0_2101))), java.math.BigInteger.valueOf(n_2099)), -2147483648L, 2147483647L, "Int32");
       } else {
         return 0L;
       }
@@ -6959,39 +7613,49 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::ownedOf */
-  public static LawSpecFast.List<Long> ownedOf_0d7fb3ae(String t_1700, LawSpecFast.List<MemberAssignment> ms_1701) {
-    if (ms_1701.isEmpty()) {
+  public static LawSpecFast.List<Long> ownedOf_0d7fb3ae(String t_2102, LawSpecFast.List<MemberAssignment> ms_2103) {
+    final LawSpecFast.List<MemberAssignment> it_2104 = ms_2103;
+    if (it_2104.isEmpty()) {
       return LawSpecFast.List.<Long>nil();
     } else {
-      final MemberAssignment m_1702 = ms_1701.head();
-      final LawSpecFast.List<MemberAssignment> rest_1703 = ms_1701.tail();
-      LawSpecFast.List<TopicPartition> value_1704;
-      final LawSpecFast.List<TopicPartition> lawspecfieldassigned_1705 = m_1702.assigned;
-      value_1704 = lawspecfieldassigned_1705;
-      return LawSpecFast.append(partitionsOfTopic_194a4a6c(t_1700, value_1704), ownedOf_0d7fb3ae(t_1700, rest_1703));
+      final MemberAssignment v_lawspecselection0x0_2105 = it_2104.head();
+      final LawSpecFast.List<MemberAssignment> v_lawspecselection0x1_2106 = it_2104.tail();
+      LawSpecFast.List<TopicPartition> value_2107;
+      final LawSpecFast.List<TopicPartition> lawspecfieldassigned_2108 = v_lawspecselection0x0_2105.assigned;
+      value_2107 = lawspecfieldassigned_2108;
+      return LawSpecFast.append(partitionsOfTopic_194a4a6c(t_2102, value_2107), ownedOf_0d7fb3ae(t_2102, v_lawspecselection0x1_2106));
     }
   }
 
   /** lawtwin.kafka::partitionOf */
-  public static LawSpecFast.Either<KafkaError, TopicPartition> partitionOf_343af5ef(java.util.Map<String, Object> symbols, String topic_1706, PartitionChoice choice_1707, Record r_1708) {
-    final LawSpecFast.Maybe<Long> matched_1709 = LawSpecFast.maybe(LawSpecFast.integer("Int32", -2147483648L, 2147483647L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__metadataRequest(symbols, LawSpecFast.TEXT.encode(topic_1706)));
-    if (matched_1709.isJust()) {
-      final long n_1710 = matched_1709.get();
-      switch (choice_1707.tag) {
+  public static LawSpecFast.Either<KafkaError, TopicPartition> partitionOf_343af5ef(java.util.Map<String, Object> symbols, String topic_2109, PartitionChoice choice_2110, Record r_2111) {
+    final LawSpecFast.Maybe<Long> it_2112 = LawSpecFast.maybe(LawSpecFast.integer("Int32", -2147483648L, 2147483647L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__metadataRequest(symbols, LawSpecFast.TEXT.encode(topic_2109)));
+    if (it_2112.isJust()) {
+      final long v_lawspecselection0x0_2113 = it_2112.get();
+      final PartitionChoice it_2114 = choice_2110;
+      switch (it_2114.tag) {
         case 0 -> {
-          final PartitionChoice.ToPartition case_1711 = (PartitionChoice.ToPartition) choice_1707;
-          final long p_1712 = case_1711.chosen;
-          if ((((p_1712) >= (0L)) && ((p_1712) < (n_1710)))) {
-            return LawSpecFast.Either.<KafkaError, TopicPartition>right(new TopicPartition(topic_1706, p_1712));
+          final PartitionChoice.ToPartition case_2115 = (PartitionChoice.ToPartition) it_2114;
+          final long v_match__lawspecselection0x0_0_2116 = case_2115.value;
+          if ((((v_match__lawspecselection0x0_0_2116) >= (0L)) && ((v_match__lawspecselection0x0_0_2116) < (v_lawspecselection0x0_2113)))) {
+            TopicPartition value_2117;
+            final String v_lawspecrecordfield0_2118 = topic_2109;
+            final long v_lawspecrecordfield1_2119 = v_match__lawspecselection0x0_0_2116;
+            value_2117 = new TopicPartition(v_lawspecrecordfield0_2118, v_lawspecrecordfield1_2119);
+            return LawSpecFast.Either.<KafkaError, TopicPartition>right(value_2117);
           } else {
             return LawSpecFast.Either.<KafkaError, TopicPartition>left(KafkaError.UnknownTopicOrPartition);
           }
         }
         case 1 -> {
-          LawSpecFast.Maybe<LawSpecFast.Bytes> value_1714;
-          final LawSpecFast.Maybe<LawSpecFast.Bytes> lawspecfieldkey_1715 = r_1708.key;
-          value_1714 = lawspecfieldkey_1715;
-          return LawSpecFast.Either.<KafkaError, TopicPartition>right(new TopicPartition(topic_1706, LawSpecFast.integer("Int32", -2147483648L, 2147483647L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Partitioner__choosePartition(symbols, LawSpecFast.maybe(LawSpecFast.BYTES).encode(value_1714), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(n_1710)))));
+          TopicPartition value_2121;
+          final String v_lawspecrecordfield0_2122 = topic_2109;
+          LawSpecFast.Maybe<LawSpecFast.Bytes> value_2123;
+          final LawSpecFast.Maybe<LawSpecFast.Bytes> lawspecfieldkey_2124 = r_2111.key;
+          value_2123 = lawspecfieldkey_2124;
+          final long v_lawspecrecordfield1_2125 = LawSpecFast.integer("Int32", -2147483648L, 2147483647L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Partitioner__choosePartition(symbols, LawSpecFast.maybe(LawSpecFast.BYTES).encode(value_2123), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(v_lawspecselection0x0_2113)));
+          value_2121 = new TopicPartition(v_lawspecrecordfield0_2122, v_lawspecrecordfield1_2125);
+          return LawSpecFast.Either.<KafkaError, TopicPartition>right(value_2121);
         }
         default -> throw LawSpecFast.unreachable();
       }
@@ -7001,24 +7665,25 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::partitionsOfTopic */
-  public static LawSpecFast.List<Long> partitionsOfTopic_194a4a6c(String t_1716, LawSpecFast.List<TopicPartition> tps_1717) {
+  public static LawSpecFast.List<Long> partitionsOfTopic_194a4a6c(String t_2126, LawSpecFast.List<TopicPartition> tps_2127) {
     while (true) {
-      if (tps_1717.isEmpty()) {
+      final LawSpecFast.List<TopicPartition> it_2128 = tps_2127;
+      if (it_2128.isEmpty()) {
         return LawSpecFast.List.<Long>nil();
       } else {
-        final TopicPartition tp_1718 = tps_1717.head();
-        final LawSpecFast.List<TopicPartition> rest_1719 = tps_1717.tail();
-        String value_1720;
-        final String lawspecfieldtopic_1721 = tp_1718.topic;
-        value_1720 = lawspecfieldtopic_1721;
-        if ((java.util.Objects.equals(value_1720, t_1716))) {
-          long value_1722;
-          final long lawspecfieldpartition_1723 = tp_1718.partition;
-          value_1722 = lawspecfieldpartition_1723;
-          return LawSpecFast.List.<Long>cons(value_1722, partitionsOfTopic_194a4a6c(t_1716, rest_1719));
+        final TopicPartition v_lawspecselection0x0_2129 = it_2128.head();
+        final LawSpecFast.List<TopicPartition> v_lawspecselection0x1_2130 = it_2128.tail();
+        String value_2131;
+        final String lawspecfieldtopic_2132 = v_lawspecselection0x0_2129.topic;
+        value_2131 = lawspecfieldtopic_2132;
+        if ((java.util.Objects.equals(value_2131, t_2126))) {
+          long value_2133;
+          final long lawspecfieldpartition_2134 = v_lawspecselection0x0_2129.partition;
+          value_2133 = lawspecfieldpartition_2134;
+          return LawSpecFast.List.<Long>cons(value_2133, partitionsOfTopic_194a4a6c(t_2126, v_lawspecselection0x1_2130));
         } else {
-          final LawSpecFast.List<TopicPartition> next_1724 = rest_1719;
-          tps_1717 = next_1724;
+          final LawSpecFast.List<TopicPartition> next_2135 = v_lawspecselection0x1_2130;
+          tps_2127 = next_2135;
           continue;
         }
       }
@@ -7026,60 +7691,61 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::pollPartitions */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>>, ConsumerState> pollPartitions_9d6feda1(java.util.Map<String, Object> symbols, LawSpecFast.List<TopicPartition> tps_1725, long n_1726, ConsumerState c_1727, LawSpecFast.List<ConsumerRecord> acc_1728) {
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>>, ConsumerState> pollPartitions_9d6feda1(java.util.Map<String, Object> symbols, LawSpecFast.List<TopicPartition> tps_2136, long n_2137, ConsumerState c_2138, LawSpecFast.List<ConsumerRecord> acc_2139) {
     while (true) {
-      if (tps_1725.isEmpty()) {
-        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.List<ConsumerRecord>>right(acc_1728), c_1727);
+      final LawSpecFast.List<TopicPartition> it_2140 = tps_2136;
+      if (it_2140.isEmpty()) {
+        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.List<ConsumerRecord>>right(acc_2139), c_2138);
       } else {
-        final TopicPartition tp_1729 = tps_1725.head();
-        final LawSpecFast.List<TopicPartition> rest_1730 = tps_1725.tail();
-        final Pair<Long, ConsumerState> p_1731 = consumerPosition_4da411a3(symbols, tp_1729, c_1727);
-        LawSpecFast.Either<KafkaError, FetchResult> value_1732;
-        LawSpecFast.Either<KafkaError, FetchResult> attempted_1733;
+        final TopicPartition v_lawspecselection0x0_2141 = it_2140.head();
+        final LawSpecFast.List<TopicPartition> v_lawspecselection0x1_2142 = it_2140.tail();
+        final Pair<Long, ConsumerState> p_2143 = consumerPosition_4da411a3(symbols, v_lawspecselection0x0_2141, c_2138);
+        LawSpecFast.Either<KafkaError, FetchResult> value_2144;
+        LawSpecFast.Either<KafkaError, FetchResult> attempted_2145;
         try {
-          long value_1734;
-          final long lawspecfieldfirst_1735 = p_1731.first;
-          value_1734 = lawspecfieldfirst_1735;
-          IsolationLevel value_1736;
-          final IsolationLevel lawspecfieldisolation_1737 = c_1727.isolation;
-          value_1736 = lawspecfieldisolation_1737;
-          attempted_1733 = LawSpecFast.Either.<KafkaError, FetchResult>right(FetchResult.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__fetchRequest(symbols, TopicPartition.CODEC.encode(tp_1729), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_1734), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(n_1726), IsolationLevel.CODEC.encode(value_1736))));
+          long value_2146;
+          final long lawspecfieldfirst_2147 = p_2143.first;
+          value_2146 = lawspecfieldfirst_2147;
+          IsolationLevel value_2148;
+          final IsolationLevel lawspecfieldisolation_2149 = c_2138.isolation;
+          value_2148 = lawspecfieldisolation_2149;
+          attempted_2145 = LawSpecFast.Either.<KafkaError, FetchResult>right(FetchResult.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__fetchRequest(symbols, TopicPartition.CODEC.encode(v_lawspecselection0x0_2141), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2146), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(n_2137), IsolationLevel.CODEC.encode(value_2148))));
         } catch (LawSpecRuntime.Failure failure) {
           if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-          attempted_1733 = LawSpecFast.Either.<KafkaError, FetchResult>left(KafkaError.CODEC.decode(failure.value));
+          attempted_2145 = LawSpecFast.Either.<KafkaError, FetchResult>left(KafkaError.CODEC.decode(failure.value));
         }
-        final LawSpecFast.Either<KafkaError, FetchResult> matched_1738 = attempted_1733;
-        if (matched_1738.isLeft()) {
-          final KafkaError lawspecfailure_1739 = matched_1738.left();
-          value_1732 = LawSpecFast.Either.<KafkaError, FetchResult>left(lawspecfailure_1739);
+        final LawSpecFast.Either<KafkaError, FetchResult> matched_2150 = attempted_2145;
+        if (matched_2150.isLeft()) {
+          final KafkaError lawspecfailure_2151 = matched_2150.left();
+          value_2144 = LawSpecFast.Either.<KafkaError, FetchResult>left(lawspecfailure_2151);
         } else {
-          final FetchResult lawspecvalue_1740 = matched_1738.right();
-          value_1732 = LawSpecFast.Either.<KafkaError, FetchResult>right(lawspecvalue_1740);
+          final FetchResult lawspecvalue_2152 = matched_2150.right();
+          value_2144 = LawSpecFast.Either.<KafkaError, FetchResult>right(lawspecvalue_2152);
         }
-        final LawSpecFast.Either<KafkaError, FetchResult> matched_1741 = value_1732;
-        if (matched_1741.isLeft()) {
-          final KafkaError e_1742 = matched_1741.left();
-          ConsumerState value_1743;
-          final ConsumerState lawspecfieldsecond_1744 = p_1731.second;
-          value_1743 = lawspecfieldsecond_1744;
-          return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.List<ConsumerRecord>>left(e_1742), value_1743);
+        final LawSpecFast.Either<KafkaError, FetchResult> it_2153 = value_2144;
+        if (it_2153.isLeft()) {
+          final KafkaError v_match__lawspecselection0x0_0_2154 = it_2153.left();
+          ConsumerState value_2155;
+          final ConsumerState lawspecfieldsecond_2156 = p_2143.second;
+          value_2155 = lawspecfieldsecond_2156;
+          return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>>, ConsumerState>(LawSpecFast.Either.<KafkaError, LawSpecFast.List<ConsumerRecord>>left(v_match__lawspecselection0x0_0_2154), value_2155);
         } else {
-          final FetchResult fr_1745 = matched_1741.right();
-          final LawSpecFast.List<TopicPartition> next_1746 = rest_1730;
-          long value_1747;
-          final long lawspecfieldnextoffset_1748 = fr_1745.nextOffset;
-          value_1747 = lawspecfieldnextoffset_1748;
-          ConsumerState value_1749;
-          final ConsumerState lawspecfieldsecond_1750 = p_1731.second;
-          value_1749 = lawspecfieldsecond_1750;
-          final ConsumerState next_1751 = withPosition_867e6b19(tp_1729, value_1747, value_1749);
-          LawSpecFast.List<FetchedRecord> value_1752;
-          final LawSpecFast.List<FetchedRecord> lawspecfieldrecords_1753 = fr_1745.records;
-          value_1752 = lawspecfieldrecords_1753;
-          final LawSpecFast.List<ConsumerRecord> next_1754 = LawSpecFast.append(acc_1728, consumerRecords_9d810f29(tp_1729, value_1752));
-          tps_1725 = next_1746;
-          c_1727 = next_1751;
-          acc_1728 = next_1754;
+          final FetchResult v_match__lawspecselection0x0_0_2157 = it_2153.right();
+          final LawSpecFast.List<TopicPartition> next_2158 = v_lawspecselection0x1_2142;
+          long value_2159;
+          final long lawspecfieldnextoffset_2160 = v_match__lawspecselection0x0_0_2157.nextOffset;
+          value_2159 = lawspecfieldnextoffset_2160;
+          ConsumerState value_2161;
+          final ConsumerState lawspecfieldsecond_2162 = p_2143.second;
+          value_2161 = lawspecfieldsecond_2162;
+          final ConsumerState next_2163 = withPosition_867e6b19(v_lawspecselection0x0_2141, value_2159, value_2161);
+          LawSpecFast.List<FetchedRecord> value_2164;
+          final LawSpecFast.List<FetchedRecord> lawspecfieldrecords_2165 = v_match__lawspecselection0x0_0_2157.records;
+          value_2164 = lawspecfieldrecords_2165;
+          final LawSpecFast.List<ConsumerRecord> next_2166 = LawSpecFast.append(acc_2139, consumerRecords_9d810f29(v_lawspecselection0x0_2141, value_2164));
+          tps_2136 = next_2158;
+          c_2138 = next_2163;
+          acc_2139 = next_2166;
           continue;
         }
       }
@@ -7087,20 +7753,25 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::positionsToCommit */
-  public static LawSpecFast.List<OffsetEntry> positionsToCommit_67969440(LawSpecFast.List<TopicPartition> tps_1755, LawSpecFast.Map<TopicPartition, Long> positions_1756) {
+  public static LawSpecFast.List<OffsetEntry> positionsToCommit_67969440(LawSpecFast.List<TopicPartition> tps_2167, LawSpecFast.Map<TopicPartition, Long> positions_2168) {
     while (true) {
-      if (tps_1755.isEmpty()) {
+      final LawSpecFast.List<TopicPartition> it_2169 = tps_2167;
+      if (it_2169.isEmpty()) {
         return LawSpecFast.List.<OffsetEntry>nil();
       } else {
-        final TopicPartition tp_1757 = tps_1755.head();
-        final LawSpecFast.List<TopicPartition> rest_1758 = tps_1755.tail();
-        final LawSpecFast.Maybe<Long> matched_1759 = positions_1756.get(tp_1757);
-        if (matched_1759.isJust()) {
-          final long o_1760 = matched_1759.get();
-          return LawSpecFast.List.<OffsetEntry>cons(new OffsetEntry(tp_1757, o_1760), positionsToCommit_67969440(rest_1758, positions_1756));
+        final TopicPartition v_lawspecselection0x0_2170 = it_2169.head();
+        final LawSpecFast.List<TopicPartition> v_lawspecselection0x1_2171 = it_2169.tail();
+        final LawSpecFast.Maybe<Long> it_2172 = positions_2168.get(v_lawspecselection0x0_2170);
+        if (it_2172.isJust()) {
+          final long v_match__lawspecselection0x0_0_2173 = it_2172.get();
+          OffsetEntry value_2174;
+          final TopicPartition v_lawspecrecordfield0_2175 = v_lawspecselection0x0_2170;
+          final long v_lawspecrecordfield1_2176 = v_match__lawspecselection0x0_0_2173;
+          value_2174 = new OffsetEntry(v_lawspecrecordfield0_2175, v_lawspecrecordfield1_2176);
+          return LawSpecFast.List.<OffsetEntry>cons(value_2174, positionsToCommit_67969440(v_lawspecselection0x1_2171, positions_2168));
         } else {
-          final LawSpecFast.List<TopicPartition> next_1761 = rest_1758;
-          tps_1755 = next_1761;
+          final LawSpecFast.List<TopicPartition> next_2177 = v_lawspecselection0x1_2171;
+          tps_2167 = next_2177;
           continue;
         }
       }
@@ -7108,677 +7779,721 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::producerFlush */
-  public static Pair<LawSpecFast.Unit, ProducerState> producerFlush_f30611db(ProducerState st_1762) {
-    return new Pair<LawSpecFast.Unit, ProducerState>(LawSpecFast.Unit.UNIT, st_1762);
+  public static Pair<LawSpecFast.Unit, ProducerState> producerFlush_f30611db(ProducerState st_2178) {
+    return new Pair<LawSpecFast.Unit, ProducerState>(LawSpecFast.Unit.UNIT, st_2178);
   }
 
   /** lawtwin.kafka::producerIdempotent */
-  public static Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, ProducerState> producerIdempotent_c8ab8a13(java.util.Map<String, Object> symbols, ProducerState st_1763) {
-    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> value_1764;
-    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> attempted_1765;
+  public static Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, ProducerState> producerIdempotent_c8ab8a13(java.util.Map<String, Object> symbols, ProducerState st_2179) {
+    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> value_2180;
+    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> attempted_2181;
     try {
-      attempted_1765 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(ProducerIdAndEpoch.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__initProducerIdRequest(symbols, LawSpecFast.maybe(LawSpecFast.TEXT).encode(LawSpecFast.Maybe.<String>nothing()))));
+      attempted_2181 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(ProducerIdAndEpoch.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__initProducerIdRequest(symbols, LawSpecFast.maybe(LawSpecFast.TEXT).encode(LawSpecFast.Maybe.<String>nothing()))));
     } catch (LawSpecRuntime.Failure failure) {
       if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-      attempted_1765 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(KafkaError.CODEC.decode(failure.value));
+      attempted_2181 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(KafkaError.CODEC.decode(failure.value));
     }
-    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_1766 = attempted_1765;
-    if (matched_1766.isLeft()) {
-      final KafkaError lawspecfailure_1767 = matched_1766.left();
-      value_1764 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(lawspecfailure_1767);
+    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_2182 = attempted_2181;
+    if (matched_2182.isLeft()) {
+      final KafkaError lawspecfailure_2183 = matched_2182.left();
+      value_2180 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(lawspecfailure_2183);
     } else {
-      final ProducerIdAndEpoch lawspecvalue_1768 = matched_1766.right();
-      value_1764 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(lawspecvalue_1768);
+      final ProducerIdAndEpoch lawspecvalue_2184 = matched_2182.right();
+      value_2180 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(lawspecvalue_2184);
     }
-    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_1769 = value_1764;
-    if (matched_1769.isLeft()) {
-      final KafkaError e_1770 = matched_1769.left();
-      return new Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, ProducerState>(LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(e_1770), st_1763);
+    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> it_2185 = value_2180;
+    if (it_2185.isLeft()) {
+      final KafkaError v_lawspecselection0x0_2186 = it_2185.left();
+      return new Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, ProducerState>(LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(v_lawspecselection0x0_2186), st_2179);
     } else {
-      final ProducerIdAndEpoch pe_1771 = matched_1769.right();
-      return new Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, ProducerState>(LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(pe_1771), new ProducerState(LawSpecFast.Maybe.<ProducerIdAndEpoch>just(pe_1771), keyValOf(LawSpecFast.List.<Entry<TopicPartition, Long>>nil()), LawSpecFast.Maybe.<LastSend>nothing()));
+      final ProducerIdAndEpoch v_lawspecselection0x0_2187 = it_2185.right();
+      ProducerState value_2188;
+      final LawSpecFast.Maybe<ProducerIdAndEpoch> v_lawspecrecordfield0_2189 = LawSpecFast.Maybe.<ProducerIdAndEpoch>just(v_lawspecselection0x0_2187);
+      final LawSpecFast.Map<TopicPartition, Long> v_lawspecrecordfield1_2190 = keyValOf(LawSpecFast.List.<Entry<TopicPartition, Long>>nil());
+      final LawSpecFast.Maybe<LastSend> v_lawspecrecordfield2_2191 = LawSpecFast.Maybe.<LastSend>nothing();
+      value_2188 = new ProducerState(v_lawspecrecordfield0_2189, v_lawspecrecordfield1_2190, v_lawspecrecordfield2_2191);
+      return new Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, ProducerState>(LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(v_lawspecselection0x0_2187), value_2188);
     }
   }
 
   /** lawtwin.kafka::producerRetry */
-  public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState> producerRetry_aaf3a88a(java.util.Map<String, Object> symbols, ProducerState st_1772) {
-    LawSpecFast.Maybe<LastSend> value_1773;
-    final LawSpecFast.Maybe<LastSend> lawspecfieldlastsend_1774 = st_1772.lastSend;
-    value_1773 = lawspecfieldlastsend_1774;
-    final LawSpecFast.Maybe<LastSend> matched_1775 = value_1773;
-    if (matched_1775.isJust()) {
-      final LastSend l_1776 = matched_1775.get();
-      LawSpecFast.Either<KafkaError, Long> value_1777;
-      LawSpecFast.Either<KafkaError, Long> attempted_1778;
+  public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState> producerRetry_aaf3a88a(java.util.Map<String, Object> symbols, ProducerState st_2192) {
+    LawSpecFast.Maybe<LastSend> value_2193;
+    final LawSpecFast.Maybe<LastSend> lawspecfieldlastsend_2194 = st_2192.lastSend;
+    value_2193 = lawspecfieldlastsend_2194;
+    final LawSpecFast.Maybe<LastSend> it_2195 = value_2193;
+    if (it_2195.isJust()) {
+      final LastSend v_lawspecselection0x0_2196 = it_2195.get();
+      LawSpecFast.Either<KafkaError, Long> value_2197;
+      LawSpecFast.Either<KafkaError, Long> attempted_2198;
       try {
-        TopicPartition value_1779;
-        final TopicPartition lawspecfieldlastpartition_1780 = l_1776.lastPartition;
-        value_1779 = lawspecfieldlastpartition_1780;
-        LawSpecFast.Maybe<ProducerTag> value_1781;
-        final LawSpecFast.Maybe<ProducerTag> lawspecfieldlasttag_1782 = l_1776.lastTag;
-        value_1781 = lawspecfieldlasttag_1782;
-        LawSpecFast.List<Record> value_1783;
-        final LawSpecFast.List<Record> lawspecfieldlastrecords_1784 = l_1776.lastRecords;
-        value_1783 = lawspecfieldlastrecords_1784;
-        attempted_1778 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__produceRequest(symbols, TopicPartition.CODEC.encode(value_1779), LawSpecFast.maybe(ProducerTag.CODEC).encode(value_1781), LawSpecFast.list(Record.CODEC).encode(value_1783))));
+        TopicPartition value_2199;
+        final TopicPartition lawspecfieldlastpartition_2200 = v_lawspecselection0x0_2196.lastPartition;
+        value_2199 = lawspecfieldlastpartition_2200;
+        LawSpecFast.Maybe<ProducerTag> value_2201;
+        final LawSpecFast.Maybe<ProducerTag> lawspecfieldlasttag_2202 = v_lawspecselection0x0_2196.lastTag;
+        value_2201 = lawspecfieldlasttag_2202;
+        LawSpecFast.List<Record> value_2203;
+        final LawSpecFast.List<Record> lawspecfieldlastrecords_2204 = v_lawspecselection0x0_2196.lastRecords;
+        value_2203 = lawspecfieldlastrecords_2204;
+        attempted_2198 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__produceRequest(symbols, TopicPartition.CODEC.encode(value_2199), LawSpecFast.maybe(ProducerTag.CODEC).encode(value_2201), LawSpecFast.list(Record.CODEC).encode(value_2203))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_1778 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
+        attempted_2198 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, Long> matched_1785 = attempted_1778;
-      if (matched_1785.isLeft()) {
-        final KafkaError lawspecfailure_1786 = matched_1785.left();
-        value_1777 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_1786);
+      final LawSpecFast.Either<KafkaError, Long> matched_2205 = attempted_2198;
+      if (matched_2205.isLeft()) {
+        final KafkaError lawspecfailure_2206 = matched_2205.left();
+        value_2197 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_2206);
       } else {
-        final long lawspecvalue_1787 = matched_1785.right();
-        value_1777 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_1787);
+        final long lawspecvalue_2207 = matched_2205.right();
+        value_2197 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_2207);
       }
-      final LawSpecFast.Either<KafkaError, Long> matched_1788 = value_1777;
-      if (matched_1788.isLeft()) {
-        final KafkaError e_1789 = matched_1788.left();
-        return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(e_1789), st_1772);
+      final LawSpecFast.Either<KafkaError, Long> it_2208 = value_2197;
+      if (it_2208.isLeft()) {
+        final KafkaError v_match__lawspecselection0x0_0_2209 = it_2208.left();
+        return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(v_match__lawspecselection0x0_0_2209), st_2192);
       } else {
-        final long offset_1790 = matched_1788.right();
-        TopicPartition value_1791;
-        final TopicPartition lawspecfieldlastpartition_1792 = l_1776.lastPartition;
-        value_1791 = lawspecfieldlastpartition_1792;
-        return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState>(LawSpecFast.Either.<KafkaError, RecordMetadata>right(new RecordMetadata(value_1791, offset_1790)), st_1772);
+        final long v_match__lawspecselection0x0_0_2210 = it_2208.right();
+        RecordMetadata value_2211;
+        TopicPartition value_2212;
+        final TopicPartition lawspecfieldlastpartition_2213 = v_lawspecselection0x0_2196.lastPartition;
+        value_2212 = lawspecfieldlastpartition_2213;
+        final TopicPartition v_lawspecrecordfield0_2214 = value_2212;
+        final long v_lawspecrecordfield1_2215 = v_match__lawspecselection0x0_0_2210;
+        value_2211 = new RecordMetadata(v_lawspecrecordfield0_2214, v_lawspecrecordfield1_2215);
+        return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState>(LawSpecFast.Either.<KafkaError, RecordMetadata>right(value_2211), st_2192);
       }
     } else {
-      return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(KafkaError.IllegalState), st_1772);
+      return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(KafkaError.IllegalState), st_2192);
     }
   }
 
   /** lawtwin.kafka::producerSend */
-  public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState> producerSend_9064c6b5(java.util.Map<String, Object> symbols, ProducerRecord pr_1793, ProducerState st_1794) {
-    String value_1795;
-    final String lawspecfielddestination_1796 = pr_1793.destination;
-    value_1795 = lawspecfielddestination_1796;
-    PartitionChoice value_1797;
-    final PartitionChoice lawspecfieldchoice_1798 = pr_1793.choice;
-    value_1797 = lawspecfieldchoice_1798;
-    Record value_1799;
-    final Record lawspecfieldpayload_1800 = pr_1793.payload;
-    value_1799 = lawspecfieldpayload_1800;
-    final LawSpecFast.Either<KafkaError, TopicPartition> matched_1801 = partitionOf_343af5ef(symbols, value_1795, value_1797, value_1799);
-    if (matched_1801.isLeft()) {
-      final KafkaError e_1802 = matched_1801.left();
-      return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(e_1802), st_1794);
+  public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState> producerSend_9064c6b5(java.util.Map<String, Object> symbols, ProducerRecord pr_2216, ProducerState st_2217) {
+    String value_2218;
+    final String lawspecfielddestination_2219 = pr_2216.destination;
+    value_2218 = lawspecfielddestination_2219;
+    PartitionChoice value_2220;
+    final PartitionChoice lawspecfieldchoice_2221 = pr_2216.choice;
+    value_2220 = lawspecfieldchoice_2221;
+    Record value_2222;
+    final Record lawspecfieldpayload_2223 = pr_2216.payload;
+    value_2222 = lawspecfieldpayload_2223;
+    final LawSpecFast.Either<KafkaError, TopicPartition> it_2224 = partitionOf_343af5ef(symbols, value_2218, value_2220, value_2222);
+    if (it_2224.isLeft()) {
+      final KafkaError v_lawspecselection0x0_2225 = it_2224.left();
+      return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(v_lawspecselection0x0_2225), st_2217);
     } else {
-      final TopicPartition tp_1803 = matched_1801.right();
-      LawSpecFast.Map<TopicPartition, Long> value_1804;
-      final LawSpecFast.Map<TopicPartition, Long> lawspecfieldsequences_1805 = st_1794.sequences;
-      value_1804 = lawspecfieldsequences_1805;
-      final long sequence_1806 = sequenceFor_9d79724c(tp_1803, value_1804);
-      LawSpecFast.Maybe<ProducerIdAndEpoch> value_1807;
-      final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldidentity_1808 = st_1794.identity;
-      value_1807 = lawspecfieldidentity_1808;
-      final LawSpecFast.Maybe<ProducerTag> tag_1809 = tagFor_a88d3846(value_1807, sequence_1806);
-      LawSpecFast.Either<KafkaError, Long> value_1810;
-      LawSpecFast.Either<KafkaError, Long> attempted_1811;
+      final TopicPartition v_lawspecselection0x0_2226 = it_2224.right();
+      LawSpecFast.Map<TopicPartition, Long> value_2227;
+      final LawSpecFast.Map<TopicPartition, Long> lawspecfieldsequences_2228 = st_2217.sequences;
+      value_2227 = lawspecfieldsequences_2228;
+      final long sequence_2229 = sequenceFor_9d79724c(v_lawspecselection0x0_2226, value_2227);
+      LawSpecFast.Maybe<ProducerIdAndEpoch> value_2230;
+      final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldidentity_2231 = st_2217.identity;
+      value_2230 = lawspecfieldidentity_2231;
+      final LawSpecFast.Maybe<ProducerTag> tag_2232 = tagFor_a88d3846(value_2230, sequence_2229);
+      LawSpecFast.Either<KafkaError, Long> value_2233;
+      LawSpecFast.Either<KafkaError, Long> attempted_2234;
       try {
-        Record value_1812;
-        final Record lawspecfieldpayload_1813 = pr_1793.payload;
-        value_1812 = lawspecfieldpayload_1813;
-        attempted_1811 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__produceRequest(symbols, TopicPartition.CODEC.encode(tp_1803), LawSpecFast.maybe(ProducerTag.CODEC).encode(tag_1809), LawSpecFast.list(Record.CODEC).encode(LawSpecFast.List.<Record>cons(value_1812, LawSpecFast.List.<Record>nil())))));
+        Record value_2235;
+        final Record lawspecfieldpayload_2236 = pr_2216.payload;
+        value_2235 = lawspecfieldpayload_2236;
+        attempted_2234 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__produceRequest(symbols, TopicPartition.CODEC.encode(v_lawspecselection0x0_2226), LawSpecFast.maybe(ProducerTag.CODEC).encode(tag_2232), LawSpecFast.list(Record.CODEC).encode(LawSpecFast.List.<Record>cons(value_2235, LawSpecFast.List.<Record>nil())))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_1811 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
+        attempted_2234 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, Long> matched_1814 = attempted_1811;
-      if (matched_1814.isLeft()) {
-        final KafkaError lawspecfailure_1815 = matched_1814.left();
-        value_1810 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_1815);
+      final LawSpecFast.Either<KafkaError, Long> matched_2237 = attempted_2234;
+      if (matched_2237.isLeft()) {
+        final KafkaError lawspecfailure_2238 = matched_2237.left();
+        value_2233 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_2238);
       } else {
-        final long lawspecvalue_1816 = matched_1814.right();
-        value_1810 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_1816);
+        final long lawspecvalue_2239 = matched_2237.right();
+        value_2233 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_2239);
       }
-      final LawSpecFast.Either<KafkaError, Long> matched_1817 = value_1810;
-      if (matched_1817.isLeft()) {
-        final KafkaError e_1818 = matched_1817.left();
-        return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(e_1818), st_1794);
+      final LawSpecFast.Either<KafkaError, Long> it_2240 = value_2233;
+      if (it_2240.isLeft()) {
+        final KafkaError v_match__lawspecselection0x0_0_2241 = it_2240.left();
+        return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(v_match__lawspecselection0x0_0_2241), st_2217);
       } else {
-        final long offset_1819 = matched_1817.right();
-        ProducerState value_1820;
-        Record value_1821;
-        final Record lawspecfieldpayload_1822 = pr_1793.payload;
-        value_1821 = lawspecfieldpayload_1822;
-        final LawSpecFast.Maybe<LastSend> replacement_1823 = LawSpecFast.Maybe.<LastSend>just(new LastSend(tp_1803, tag_1809, LawSpecFast.List.<Record>cons(value_1821, LawSpecFast.List.<Record>nil())));
-        ProducerState value_1824;
-        LawSpecFast.Map<TopicPartition, Long> value_1825;
-        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldsequences_1826 = st_1794.sequences;
-        value_1825 = lawspecfieldsequences_1826;
-        final LawSpecFast.Map<TopicPartition, Long> replacement_1827 = value_1825.put(tp_1803, saturatingInt32_9e8d3b43(java.math.BigInteger.valueOf(sequence_1806).add(java.math.BigInteger.valueOf(1L))));
-        final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldidentity_1828 = st_1794.identity;
-        final LawSpecFast.Maybe<LastSend> lawspecfieldlastsend_1829 = st_1794.lastSend;
-        value_1824 = new ProducerState(lawspecfieldidentity_1828, replacement_1827, lawspecfieldlastsend_1829);
-        final ProducerState matched_1830 = value_1824;
-        final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldidentity_1831 = matched_1830.identity;
-        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldsequences_1832 = matched_1830.sequences;
-        value_1820 = new ProducerState(lawspecfieldidentity_1831, lawspecfieldsequences_1832, replacement_1823);
-        return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState>(LawSpecFast.Either.<KafkaError, RecordMetadata>right(new RecordMetadata(tp_1803, offset_1819)), value_1820);
+        final long v_match__lawspecselection0x0_0_2242 = it_2240.right();
+        RecordMetadata value_2243;
+        final TopicPartition v_lawspecrecordfield0_2244 = v_lawspecselection0x0_2226;
+        final long v_lawspecrecordfield1_2245 = v_match__lawspecselection0x0_0_2242;
+        value_2243 = new RecordMetadata(v_lawspecrecordfield0_2244, v_lawspecrecordfield1_2245);
+        ProducerState value_2246;
+        LastSend value_2247;
+        final TopicPartition v_lawspecrecordfield0_2248 = v_lawspecselection0x0_2226;
+        final LawSpecFast.Maybe<ProducerTag> v_lawspecrecordfield1_2249 = tag_2232;
+        Record value_2250;
+        final Record lawspecfieldpayload_2251 = pr_2216.payload;
+        value_2250 = lawspecfieldpayload_2251;
+        final LawSpecFast.List<Record> v_lawspecrecordfield2_2252 = LawSpecFast.List.<Record>cons(value_2250, LawSpecFast.List.<Record>nil());
+        value_2247 = new LastSend(v_lawspecrecordfield0_2248, v_lawspecrecordfield1_2249, v_lawspecrecordfield2_2252);
+        final LawSpecFast.Maybe<LastSend> replacement_2253 = LawSpecFast.Maybe.<LastSend>just(value_2247);
+        ProducerState value_2254;
+        LawSpecFast.Map<TopicPartition, Long> value_2255;
+        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldsequences_2256 = st_2217.sequences;
+        value_2255 = lawspecfieldsequences_2256;
+        final LawSpecFast.Map<TopicPartition, Long> replacement_2257 = value_2255.put(v_lawspecselection0x0_2226, saturatingInt32_9e8d3b43(java.math.BigInteger.valueOf(sequence_2229).add(java.math.BigInteger.valueOf(1L))));
+        final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldidentity_2258 = st_2217.identity;
+        final LawSpecFast.Maybe<LastSend> lawspecfieldlastsend_2259 = st_2217.lastSend;
+        value_2254 = new ProducerState(lawspecfieldidentity_2258, replacement_2257, lawspecfieldlastsend_2259);
+        final ProducerState matched_2260 = value_2254;
+        final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldidentity_2261 = matched_2260.identity;
+        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldsequences_2262 = matched_2260.sequences;
+        value_2246 = new ProducerState(lawspecfieldidentity_2261, lawspecfieldsequences_2262, replacement_2253);
+        return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState>(LawSpecFast.Either.<KafkaError, RecordMetadata>right(value_2243), value_2246);
       }
     }
   }
 
   /** lawtwin.kafka::readFrom */
-  public static LawSpecFast.List<Record> readFrom_f028a48d(java.util.Map<String, Object> symbols, TopicPartition tp_1833, long offset_1834, IsolationLevel isolation_1835) {
-    LawSpecFast.Either<KafkaError, FetchResult> value_1836;
-    LawSpecFast.Either<KafkaError, FetchResult> attempted_1837;
+  public static LawSpecFast.List<Record> readFrom_f028a48d(java.util.Map<String, Object> symbols, TopicPartition tp_2263, long offset_2264, IsolationLevel isolation_2265) {
+    LawSpecFast.Either<KafkaError, FetchResult> value_2266;
+    LawSpecFast.Either<KafkaError, FetchResult> attempted_2267;
     try {
-      attempted_1837 = LawSpecFast.Either.<KafkaError, FetchResult>right(FetchResult.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__fetchRequest(symbols, TopicPartition.CODEC.encode(tp_1833), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(offset_1834), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(1000L), IsolationLevel.CODEC.encode(isolation_1835))));
+      attempted_2267 = LawSpecFast.Either.<KafkaError, FetchResult>right(FetchResult.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__fetchRequest(symbols, TopicPartition.CODEC.encode(tp_2263), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(offset_2264), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(1000L), IsolationLevel.CODEC.encode(isolation_2265))));
     } catch (LawSpecRuntime.Failure failure) {
       if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-      attempted_1837 = LawSpecFast.Either.<KafkaError, FetchResult>left(KafkaError.CODEC.decode(failure.value));
+      attempted_2267 = LawSpecFast.Either.<KafkaError, FetchResult>left(KafkaError.CODEC.decode(failure.value));
     }
-    final LawSpecFast.Either<KafkaError, FetchResult> matched_1838 = attempted_1837;
-    if (matched_1838.isLeft()) {
-      final KafkaError lawspecfailure_1839 = matched_1838.left();
-      value_1836 = LawSpecFast.Either.<KafkaError, FetchResult>left(lawspecfailure_1839);
+    final LawSpecFast.Either<KafkaError, FetchResult> matched_2268 = attempted_2267;
+    if (matched_2268.isLeft()) {
+      final KafkaError lawspecfailure_2269 = matched_2268.left();
+      value_2266 = LawSpecFast.Either.<KafkaError, FetchResult>left(lawspecfailure_2269);
     } else {
-      final FetchResult lawspecvalue_1840 = matched_1838.right();
-      value_1836 = LawSpecFast.Either.<KafkaError, FetchResult>right(lawspecvalue_1840);
+      final FetchResult lawspecvalue_2270 = matched_2268.right();
+      value_2266 = LawSpecFast.Either.<KafkaError, FetchResult>right(lawspecvalue_2270);
     }
-    final LawSpecFast.Either<KafkaError, FetchResult> matched_1841 = value_1836;
-    if (matched_1841.isLeft()) {
+    final LawSpecFast.Either<KafkaError, FetchResult> it_2271 = value_2266;
+    if (it_2271.isLeft()) {
       return LawSpecFast.List.<Record>nil();
     } else {
-      final FetchResult fr_1842 = matched_1841.right();
-      LawSpecFast.List<FetchedRecord> value_1843;
-      final LawSpecFast.List<FetchedRecord> lawspecfieldrecords_1844 = fr_1842.records;
-      value_1843 = lawspecfieldrecords_1844;
-      return recordsOf_a7b339ef(value_1843);
+      final FetchResult v_lawspecselection0x0_2272 = it_2271.right();
+      LawSpecFast.List<FetchedRecord> value_2273;
+      final LawSpecFast.List<FetchedRecord> lawspecfieldrecords_2274 = v_lawspecselection0x0_2272.records;
+      value_2273 = lawspecfieldrecords_2274;
+      return recordsOf_a7b339ef(value_2273);
     }
   }
 
   /** lawtwin.kafka::readInOrder */
-  public static boolean readInOrder_ba595483(java.util.Map<String, Object> symbols, LawSpecFast.Either<KafkaError, RecordMetadata> a_1845, LawSpecFast.Either<KafkaError, RecordMetadata> b_1846, Record first_1847, Record second_1848) {
-    if (a_1845.isLeft()) {
+  public static boolean readInOrder_ba595483(java.util.Map<String, Object> symbols, LawSpecFast.Either<KafkaError, RecordMetadata> a_2275, LawSpecFast.Either<KafkaError, RecordMetadata> b_2276, Record first_2277, Record second_2278) {
+    final LawSpecFast.Either<KafkaError, RecordMetadata> it_2279 = a_2275;
+    if (it_2279.isLeft()) {
       return false;
     } else {
-      final RecordMetadata x_1849 = a_1845.right();
-      if (b_1846.isLeft()) {
+      final RecordMetadata v_lawspecselection0x0_2280 = it_2279.right();
+      final LawSpecFast.Either<KafkaError, RecordMetadata> it_2281 = b_2276;
+      if (it_2281.isLeft()) {
         return false;
       } else {
-        final RecordMetadata y_1850 = b_1846.right();
-        TopicPartition value_1851;
-        final TopicPartition lawspecfieldsentto_1852 = x_1849.sentTo;
-        value_1851 = lawspecfieldsentto_1852;
-        final TopicPartition tp_1853 = value_1851;
-        TopicPartition value_1854;
-        final TopicPartition lawspecfieldsentto_1855 = y_1850.sentTo;
-        value_1854 = lawspecfieldsentto_1855;
-        boolean logic_1862;
-        if ((java.util.Objects.equals(value_1854, tp_1853))) {
-          long value_1858;
-          final long lawspecfieldsentat_1859 = y_1850.sentAt;
-          value_1858 = lawspecfieldsentat_1859;
-          long value_1860;
-          final long lawspecfieldsentat_1861 = x_1849.sentAt;
-          value_1860 = lawspecfieldsentat_1861;
-          logic_1862 = (java.math.BigInteger.valueOf(value_1858).compareTo(java.math.BigInteger.valueOf(value_1860).add(java.math.BigInteger.valueOf(1L))) == 0);
-        } else { logic_1862 = false; }
-        boolean logic_1878;
-        if (logic_1862) {
-          boolean value_1863;
-          final LawSpecFast.Unit lawspecignored_1864 = LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__assign(symbols, LawSpecFast.list(TopicPartition.CODEC).encode(LawSpecFast.List.<TopicPartition>cons(tp_1853, LawSpecFast.List.<TopicPartition>nil()))));
-          boolean value_1865;
-          long value_1866;
-          final long lawspecfieldsentat_1867 = x_1849.sentAt;
-          value_1866 = lawspecfieldsentat_1867;
-          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_1868 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.UNIT).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__seek(symbols, TopicPartition.CODEC.encode(tp_1853), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_1866)));
-          if (matched_1868.isLeft()) {
-            value_1865 = false;
+        final RecordMetadata v_match__lawspecselection0x0_0_2282 = it_2281.right();
+        TopicPartition value_2283;
+        final TopicPartition lawspecfieldsentto_2284 = v_lawspecselection0x0_2280.sentTo;
+        value_2283 = lawspecfieldsentto_2284;
+        final TopicPartition tp_2285 = value_2283;
+        TopicPartition value_2286;
+        final TopicPartition lawspecfieldsentto_2287 = v_match__lawspecselection0x0_0_2282.sentTo;
+        value_2286 = lawspecfieldsentto_2287;
+        boolean logic_2294;
+        if ((java.util.Objects.equals(value_2286, tp_2285))) {
+          long value_2290;
+          final long lawspecfieldsentat_2291 = v_match__lawspecselection0x0_0_2282.sentAt;
+          value_2290 = lawspecfieldsentat_2291;
+          long value_2292;
+          final long lawspecfieldsentat_2293 = v_lawspecselection0x0_2280.sentAt;
+          value_2292 = lawspecfieldsentat_2293;
+          logic_2294 = (java.math.BigInteger.valueOf(value_2290).compareTo(java.math.BigInteger.valueOf(value_2292).add(java.math.BigInteger.valueOf(1L))) == 0);
+        } else { logic_2294 = false; }
+        boolean logic_2310;
+        if (logic_2294) {
+          boolean value_2295;
+          final LawSpecFast.Unit lawspecignored_2296 = LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__assign(symbols, LawSpecFast.list(TopicPartition.CODEC).encode(LawSpecFast.List.<TopicPartition>cons(tp_2285, LawSpecFast.List.<TopicPartition>nil()))));
+          boolean value_2297;
+          long value_2298;
+          final long lawspecfieldsentat_2299 = v_lawspecselection0x0_2280.sentAt;
+          value_2298 = lawspecfieldsentat_2299;
+          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2300 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.UNIT).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__seek(symbols, TopicPartition.CODEC.encode(tp_2285), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2298)));
+          if (matched_2300.isLeft()) {
+            value_2297 = false;
           } else {
-            value_1865 = true;
+            value_2297 = true;
           }
-          boolean logic_1877;
-          if (value_1865) {
-            boolean value_1869;
-            final LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>> matched_1870 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.list(ConsumerRecord.CODEC)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__poll(symbols, LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(2L)));
-            if (matched_1870.isLeft()) {
-              value_1869 = false;
+          boolean logic_2309;
+          if (value_2297) {
+            boolean value_2301;
+            final LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>> it_2302 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.list(ConsumerRecord.CODEC)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__poll(symbols, LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(2L)));
+            if (it_2302.isLeft()) {
+              value_2301 = false;
             } else {
-              final LawSpecFast.List<ConsumerRecord> rs_1871 = matched_1870.right();
-              boolean logic_1876;
-              if ((java.util.Objects.equals(receivedRecords_c3c84323(rs_1871), LawSpecFast.List.<Record>cons(first_1847, LawSpecFast.List.<Record>cons(second_1848, LawSpecFast.List.<Record>nil()))))) {
-                long value_1872;
-                final long lawspecfieldsentat_1873 = x_1849.sentAt;
-                value_1872 = lawspecfieldsentat_1873;
-                long value_1874;
-                final long lawspecfieldsentat_1875 = y_1850.sentAt;
-                value_1874 = lawspecfieldsentat_1875;
-                logic_1876 = (java.util.Objects.equals(receivedOffsets_6c3a7a20(rs_1871), LawSpecFast.List.<Long>cons(value_1872, LawSpecFast.List.<Long>cons(value_1874, LawSpecFast.List.<Long>nil()))));
-              } else { logic_1876 = false; }
-              value_1869 = logic_1876;
+              final LawSpecFast.List<ConsumerRecord> v_match__match__lawspecselection0x0_0_0_2303 = it_2302.right();
+              boolean logic_2308;
+              if ((java.util.Objects.equals(receivedRecords_c3c84323(v_match__match__lawspecselection0x0_0_0_2303), LawSpecFast.List.<Record>cons(first_2277, LawSpecFast.List.<Record>cons(second_2278, LawSpecFast.List.<Record>nil()))))) {
+                long value_2304;
+                final long lawspecfieldsentat_2305 = v_lawspecselection0x0_2280.sentAt;
+                value_2304 = lawspecfieldsentat_2305;
+                long value_2306;
+                final long lawspecfieldsentat_2307 = v_match__lawspecselection0x0_0_2282.sentAt;
+                value_2306 = lawspecfieldsentat_2307;
+                logic_2308 = (java.util.Objects.equals(receivedOffsets_6c3a7a20(v_match__match__lawspecselection0x0_0_0_2303), LawSpecFast.List.<Long>cons(value_2304, LawSpecFast.List.<Long>cons(value_2306, LawSpecFast.List.<Long>nil()))));
+              } else { logic_2308 = false; }
+              value_2301 = logic_2308;
             }
-            logic_1877 = value_1869;
-          } else { logic_1877 = false; }
-          value_1863 = logic_1877;
-          logic_1878 = value_1863;
-        } else { logic_1878 = false; }
-        return logic_1878;
+            logic_2309 = value_2301;
+          } else { logic_2309 = false; }
+          value_2295 = logic_2309;
+          logic_2310 = value_2295;
+        } else { logic_2310 = false; }
+        return logic_2310;
       }
     }
   }
 
   /** lawtwin.kafka::receivedOffsets */
-  public static LawSpecFast.List<Long> receivedOffsets_6c3a7a20(LawSpecFast.List<ConsumerRecord> rs_1879) {
-    if (rs_1879.isEmpty()) {
+  public static LawSpecFast.List<Long> receivedOffsets_6c3a7a20(LawSpecFast.List<ConsumerRecord> rs_2311) {
+    final LawSpecFast.List<ConsumerRecord> it_2312 = rs_2311;
+    if (it_2312.isEmpty()) {
       return LawSpecFast.List.<Long>nil();
     } else {
-      final ConsumerRecord r_1880 = rs_1879.head();
-      final LawSpecFast.List<ConsumerRecord> rest_1881 = rs_1879.tail();
-      long value_1882;
-      final long lawspecfieldreceivedat_1883 = r_1880.receivedAt;
-      value_1882 = lawspecfieldreceivedat_1883;
-      return LawSpecFast.List.<Long>cons(value_1882, receivedOffsets_6c3a7a20(rest_1881));
+      final ConsumerRecord v_lawspecselection0x0_2313 = it_2312.head();
+      final LawSpecFast.List<ConsumerRecord> v_lawspecselection0x1_2314 = it_2312.tail();
+      long value_2315;
+      final long lawspecfieldreceivedat_2316 = v_lawspecselection0x0_2313.receivedAt;
+      value_2315 = lawspecfieldreceivedat_2316;
+      return LawSpecFast.List.<Long>cons(value_2315, receivedOffsets_6c3a7a20(v_lawspecselection0x1_2314));
     }
   }
 
   /** lawtwin.kafka::receivedRecords */
-  public static LawSpecFast.List<Record> receivedRecords_c3c84323(LawSpecFast.List<ConsumerRecord> rs_1884) {
-    if (rs_1884.isEmpty()) {
+  public static LawSpecFast.List<Record> receivedRecords_c3c84323(LawSpecFast.List<ConsumerRecord> rs_2317) {
+    final LawSpecFast.List<ConsumerRecord> it_2318 = rs_2317;
+    if (it_2318.isEmpty()) {
       return LawSpecFast.List.<Record>nil();
     } else {
-      final ConsumerRecord r_1885 = rs_1884.head();
-      final LawSpecFast.List<ConsumerRecord> rest_1886 = rs_1884.tail();
-      Record value_1887;
-      final Record lawspecfieldreceived_1888 = r_1885.received;
-      value_1887 = lawspecfieldreceived_1888;
-      return LawSpecFast.List.<Record>cons(value_1887, receivedRecords_c3c84323(rest_1886));
+      final ConsumerRecord v_lawspecselection0x0_2319 = it_2318.head();
+      final LawSpecFast.List<ConsumerRecord> v_lawspecselection0x1_2320 = it_2318.tail();
+      Record value_2321;
+      final Record lawspecfieldreceived_2322 = v_lawspecselection0x0_2319.received;
+      value_2321 = lawspecfieldreceived_2322;
+      return LawSpecFast.List.<Record>cons(value_2321, receivedRecords_c3c84323(v_lawspecselection0x1_2320));
     }
   }
 
   /** lawtwin.kafka::recordsOf */
-  public static LawSpecFast.List<Record> recordsOf_a7b339ef(LawSpecFast.List<FetchedRecord> rs_1889) {
-    if (rs_1889.isEmpty()) {
+  public static LawSpecFast.List<Record> recordsOf_a7b339ef(LawSpecFast.List<FetchedRecord> rs_2323) {
+    final LawSpecFast.List<FetchedRecord> it_2324 = rs_2323;
+    if (it_2324.isEmpty()) {
       return LawSpecFast.List.<Record>nil();
     } else {
-      final FetchedRecord r_1890 = rs_1889.head();
-      final LawSpecFast.List<FetchedRecord> rest_1891 = rs_1889.tail();
-      Record value_1892;
-      final Record lawspecfieldentry_1893 = r_1890.entry;
-      value_1892 = lawspecfieldentry_1893;
-      return LawSpecFast.List.<Record>cons(value_1892, recordsOf_a7b339ef(rest_1891));
+      final FetchedRecord v_lawspecselection0x0_2325 = it_2324.head();
+      final LawSpecFast.List<FetchedRecord> v_lawspecselection0x1_2326 = it_2324.tail();
+      Record value_2327;
+      final Record lawspecfieldentry_2328 = v_lawspecselection0x0_2325.entry;
+      value_2327 = lawspecfieldentry_2328;
+      return LawSpecFast.List.<Record>cons(value_2327, recordsOf_a7b339ef(v_lawspecselection0x1_2326));
     }
   }
 
   /** lawtwin.kafka::resumesAtCommitted */
-  public static boolean resumesAtCommitted_13d41b73(java.util.Map<String, Object> symbols, String t_1894, String g_1895, String m_1896, long n_1897) {
-    final TopicPartition tp_1898 = new TopicPartition(t_1894, 0L);
-    final LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> joined_1899 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.list(TopicPartition.CODEC)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__subscribe(symbols, LawSpecFast.TEXT.encode(g_1895), LawSpecFast.TEXT.encode(m_1896), LawSpecFast.list(LawSpecFast.TEXT).encode(LawSpecFast.List.<String>cons(t_1894, LawSpecFast.List.<String>nil()))));
-    final LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>> polled_1900 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.list(ConsumerRecord.CODEC)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__poll(symbols, LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(n_1897)));
-    final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> committed_1901 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.UNIT).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__commitSync(symbols));
-    final LawSpecFast.Unit lawspecignored_1902 = LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__close(symbols));
-    final LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> rejoined_1903 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.list(TopicPartition.CODEC)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__subscribe(symbols, LawSpecFast.TEXT.encode(g_1895), LawSpecFast.TEXT.encode(m_1896), LawSpecFast.list(LawSpecFast.TEXT).encode(LawSpecFast.List.<String>cons(t_1894, LawSpecFast.List.<String>nil()))));
-    final LawSpecFast.Either<KafkaError, Long> resumed_1904 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__position(symbols, TopicPartition.CODEC.encode(tp_1898)));
-    final LawSpecFast.Maybe<Long> after_1905 = LawSpecFast.maybe(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__committedOffset(symbols, TopicPartition.CODEC.encode(tp_1898)));
-    final LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>> again_1906 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.list(ConsumerRecord.CODEC)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__poll(symbols, LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(100L)));
-    boolean value_1907;
-    if (joined_1899.isLeft()) {
-      value_1907 = false;
+  public static boolean resumesAtCommitted_13d41b73(java.util.Map<String, Object> symbols, String t_2329, String g_2330, String m_2331, long n_2332) {
+    TopicPartition value_2333;
+    final String v_lawspecrecordfield0_2334 = t_2329;
+    final long v_lawspecrecordfield1_2335 = 0L;
+    value_2333 = new TopicPartition(v_lawspecrecordfield0_2334, v_lawspecrecordfield1_2335);
+    final TopicPartition tp_2336 = value_2333;
+    final LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> joined_2337 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.list(TopicPartition.CODEC)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__subscribe(symbols, LawSpecFast.TEXT.encode(g_2330), LawSpecFast.TEXT.encode(m_2331), LawSpecFast.list(LawSpecFast.TEXT).encode(LawSpecFast.List.<String>cons(t_2329, LawSpecFast.List.<String>nil()))));
+    final LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>> polled_2338 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.list(ConsumerRecord.CODEC)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__poll(symbols, LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(n_2332)));
+    final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> committed_2339 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.UNIT).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__commitSync(symbols));
+    final LawSpecFast.Unit lawspecignored_2340 = LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__close(symbols));
+    final LawSpecFast.Either<KafkaError, LawSpecFast.List<TopicPartition>> rejoined_2341 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.list(TopicPartition.CODEC)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__subscribe(symbols, LawSpecFast.TEXT.encode(g_2330), LawSpecFast.TEXT.encode(m_2331), LawSpecFast.list(LawSpecFast.TEXT).encode(LawSpecFast.List.<String>cons(t_2329, LawSpecFast.List.<String>nil()))));
+    final LawSpecFast.Either<KafkaError, Long> resumed_2342 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__position(symbols, TopicPartition.CODEC.encode(tp_2336)));
+    final LawSpecFast.Maybe<Long> after_2343 = LawSpecFast.maybe(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__committedOffset(symbols, TopicPartition.CODEC.encode(tp_2336)));
+    final LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>> again_2344 = LawSpecFast.either(KafkaError.CODEC, LawSpecFast.list(ConsumerRecord.CODEC)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Consumer__poll(symbols, LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(100L)));
+    boolean value_2345;
+    if (joined_2337.isLeft()) {
+      value_2345 = false;
     } else {
-      value_1907 = true;
+      value_2345 = true;
     }
-    boolean logic_1909;
-    if (value_1907) {
-      boolean value_1908;
-      if (polled_1900.isLeft()) {
-        value_1908 = false;
+    boolean logic_2347;
+    if (value_2345) {
+      boolean value_2346;
+      if (polled_2338.isLeft()) {
+        value_2346 = false;
       } else {
-        value_1908 = true;
+        value_2346 = true;
       }
-      logic_1909 = value_1908;
-    } else { logic_1909 = false; }
-    boolean logic_1911;
-    if (logic_1909) {
-      boolean value_1910;
-      if (committed_1901.isLeft()) {
-        value_1910 = false;
+      logic_2347 = value_2346;
+    } else { logic_2347 = false; }
+    boolean logic_2349;
+    if (logic_2347) {
+      boolean value_2348;
+      if (committed_2339.isLeft()) {
+        value_2348 = false;
       } else {
-        value_1910 = true;
+        value_2348 = true;
       }
-      logic_1911 = value_1910;
-    } else { logic_1911 = false; }
-    boolean logic_1913;
-    if (logic_1911) {
-      boolean value_1912;
-      if (rejoined_1903.isLeft()) {
-        value_1912 = false;
+      logic_2349 = value_2348;
+    } else { logic_2349 = false; }
+    boolean logic_2351;
+    if (logic_2349) {
+      boolean value_2350;
+      if (rejoined_2341.isLeft()) {
+        value_2350 = false;
       } else {
-        value_1912 = true;
+        value_2350 = true;
       }
-      logic_1913 = value_1912;
-    } else { logic_1913 = false; }
-    boolean logic_1919;
-    if (logic_1913) {
-      boolean value_1914;
-      if (after_1905.isJust()) {
-        final long c_1915 = after_1905.get();
-        boolean logic_1918;
-        if ((java.util.Objects.equals(resumed_1904, LawSpecFast.Either.<KafkaError, Long>right(c_1915)))) {
-          boolean value_1916;
-          if (again_1906.isLeft()) {
-            value_1916 = false;
+      logic_2351 = value_2350;
+    } else { logic_2351 = false; }
+    boolean logic_2359;
+    if (logic_2351) {
+      boolean value_2352;
+      final LawSpecFast.Maybe<Long> it_2353 = after_2343;
+      if (it_2353.isJust()) {
+        final long v_lawspecselection0x0_2354 = it_2353.get();
+        boolean logic_2358;
+        if ((java.util.Objects.equals(resumed_2342, LawSpecFast.Either.<KafkaError, Long>right(v_lawspecselection0x0_2354)))) {
+          boolean value_2355;
+          final LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>> it_2356 = again_2344;
+          if (it_2356.isLeft()) {
+            value_2355 = false;
           } else {
-            final LawSpecFast.List<ConsumerRecord> rs_1917 = again_1906.right();
-            value_1916 = allAtLeast_3df55027(c_1915, receivedOffsets_6c3a7a20(rs_1917));
+            final LawSpecFast.List<ConsumerRecord> v_match__lawspecselection0x0_0_2357 = it_2356.right();
+            value_2355 = allAtLeast_3df55027(v_lawspecselection0x0_2354, receivedOffsets_6c3a7a20(v_match__lawspecselection0x0_0_2357));
           }
-          logic_1918 = value_1916;
-        } else { logic_1918 = false; }
-        value_1914 = logic_1918;
+          logic_2358 = value_2355;
+        } else { logic_2358 = false; }
+        value_2352 = logic_2358;
       } else {
-        value_1914 = false;
+        value_2352 = false;
       }
-      logic_1919 = value_1914;
-    } else { logic_1919 = false; }
-    return logic_1919;
+      logic_2359 = value_2352;
+    } else { logic_2359 = false; }
+    return logic_2359;
   }
 
   /** lawtwin.kafka::samePartition */
-  public static boolean samePartition_cee4f2dc(LawSpecFast.Either<KafkaError, RecordMetadata> a_1920, LawSpecFast.Either<KafkaError, RecordMetadata> b_1921) {
-    if (a_1920.isLeft()) {
+  public static boolean samePartition_cee4f2dc(LawSpecFast.Either<KafkaError, RecordMetadata> a_2360, LawSpecFast.Either<KafkaError, RecordMetadata> b_2361) {
+    final LawSpecFast.Either<KafkaError, RecordMetadata> it_2362 = a_2360;
+    if (it_2362.isLeft()) {
       return false;
     } else {
-      final RecordMetadata x_1922 = a_1920.right();
-      if (b_1921.isLeft()) {
+      final RecordMetadata v_lawspecselection0x0_2363 = it_2362.right();
+      final LawSpecFast.Either<KafkaError, RecordMetadata> it_2364 = b_2361;
+      if (it_2364.isLeft()) {
         return false;
       } else {
-        final RecordMetadata y_1923 = b_1921.right();
-        TopicPartition value_1924;
-        final TopicPartition lawspecfieldsentto_1925 = x_1922.sentTo;
-        value_1924 = lawspecfieldsentto_1925;
-        TopicPartition value_1926;
-        final TopicPartition lawspecfieldsentto_1927 = y_1923.sentTo;
-        value_1926 = lawspecfieldsentto_1927;
-        return (java.util.Objects.equals(value_1924, value_1926));
+        final RecordMetadata v_match__lawspecselection0x0_0_2365 = it_2364.right();
+        TopicPartition value_2366;
+        final TopicPartition lawspecfieldsentto_2367 = v_lawspecselection0x0_2363.sentTo;
+        value_2366 = lawspecfieldsentto_2367;
+        TopicPartition value_2368;
+        final TopicPartition lawspecfieldsentto_2369 = v_match__lawspecselection0x0_0_2365.sentTo;
+        value_2368 = lawspecfieldsentto_2369;
+        return (java.util.Objects.equals(value_2366, value_2368));
       }
     }
   }
 
   /** lawtwin.kafka::sequenceFor */
-  public static long sequenceFor_9d79724c(TopicPartition tp_1928, LawSpecFast.Map<TopicPartition, Long> sequences_1929) {
-    final LawSpecFast.Maybe<Long> matched_1930 = sequences_1929.get(tp_1928);
-    if (matched_1930.isJust()) {
-      final long n_1931 = matched_1930.get();
-      return n_1931;
+  public static long sequenceFor_9d79724c(TopicPartition tp_2370, LawSpecFast.Map<TopicPartition, Long> sequences_2371) {
+    final LawSpecFast.Maybe<Long> it_2372 = sequences_2371.get(tp_2370);
+    if (it_2372.isJust()) {
+      final long v_lawspecselection0x0_2373 = it_2372.get();
+      return v_lawspecselection0x0_2373;
     } else {
       return 0L;
     }
   }
 
   /** lawtwin.kafka::smallBatch */
-  public static boolean smallBatch_dc4ae7bb(LawSpecFast.List<Record> batch_1932) {
-    return ((((long) batch_1932.size()) >= (1L)) && (((long) batch_1932.size()) <= (100L)));
+  public static boolean smallBatch_dc4ae7bb(LawSpecFast.List<Record> batch_2374) {
+    return ((((long) batch_2374.size()) >= (1L)) && (((long) batch_2374.size()) <= (100L)));
   }
 
   /** lawtwin.kafka::stableBelowHigh */
-  public static boolean stableBelowHigh_60981bc4(java.util.Map<String, Object> symbols, String t_1933, String txid_1934, LawSpecFast.List<Record> batch_1935) {
-    final TopicPartition tp_1936 = new TopicPartition(t_1933, 0L);
-    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> value_1937;
-    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> attempted_1938;
+  public static boolean stableBelowHigh_60981bc4(java.util.Map<String, Object> symbols, String t_2375, String txid_2376, LawSpecFast.List<Record> batch_2377) {
+    TopicPartition value_2378;
+    final String v_lawspecrecordfield0_2379 = t_2375;
+    final long v_lawspecrecordfield1_2380 = 0L;
+    value_2378 = new TopicPartition(v_lawspecrecordfield0_2379, v_lawspecrecordfield1_2380);
+    final TopicPartition tp_2381 = value_2378;
+    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> value_2382;
+    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> attempted_2383;
     try {
-      attempted_1938 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(ProducerIdAndEpoch.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__initProducerIdRequest(symbols, LawSpecFast.maybe(LawSpecFast.TEXT).encode(LawSpecFast.Maybe.<String>just(txid_1934)))));
+      attempted_2383 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(ProducerIdAndEpoch.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__initProducerIdRequest(symbols, LawSpecFast.maybe(LawSpecFast.TEXT).encode(LawSpecFast.Maybe.<String>just(txid_2376)))));
     } catch (LawSpecRuntime.Failure failure) {
       if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-      attempted_1938 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(KafkaError.CODEC.decode(failure.value));
+      attempted_2383 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(KafkaError.CODEC.decode(failure.value));
     }
-    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_1939 = attempted_1938;
-    if (matched_1939.isLeft()) {
-      final KafkaError lawspecfailure_1940 = matched_1939.left();
-      value_1937 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(lawspecfailure_1940);
+    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_2384 = attempted_2383;
+    if (matched_2384.isLeft()) {
+      final KafkaError lawspecfailure_2385 = matched_2384.left();
+      value_2382 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(lawspecfailure_2385);
     } else {
-      final ProducerIdAndEpoch lawspecvalue_1941 = matched_1939.right();
-      value_1937 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(lawspecvalue_1941);
+      final ProducerIdAndEpoch lawspecvalue_2386 = matched_2384.right();
+      value_2382 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(lawspecvalue_2386);
     }
-    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_1942 = value_1937;
-    if (matched_1942.isLeft()) {
+    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> it_2387 = value_2382;
+    if (it_2387.isLeft()) {
       return false;
     } else {
-      final ProducerIdAndEpoch pe_1943 = matched_1942.right();
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_1944;
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_1945;
+      final ProducerIdAndEpoch v_lawspecselection0x0_2388 = it_2387.right();
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2389;
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2390;
       try {
-        long value_1946;
-        final long lawspecfieldproducerid_1947 = pe_1943.producerId;
-        value_1946 = lawspecfieldproducerid_1947;
-        long value_1948;
-        final long lawspecfieldproducerepoch_1949 = pe_1943.producerEpoch;
-        value_1948 = lawspecfieldproducerepoch_1949;
-        attempted_1945 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_1934), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_1946), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_1948), LawSpecFast.list(TopicPartition.CODEC).encode(LawSpecFast.List.<TopicPartition>cons(tp_1936, LawSpecFast.List.<TopicPartition>nil())))));
+        long value_2391;
+        final long lawspecfieldproducerid_2392 = v_lawspecselection0x0_2388.producerId;
+        value_2391 = lawspecfieldproducerid_2392;
+        long value_2393;
+        final long lawspecfieldproducerepoch_2394 = v_lawspecselection0x0_2388.producerEpoch;
+        value_2393 = lawspecfieldproducerepoch_2394;
+        attempted_2390 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_2376), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2391), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2393), LawSpecFast.list(TopicPartition.CODEC).encode(LawSpecFast.List.<TopicPartition>cons(tp_2381, LawSpecFast.List.<TopicPartition>nil())))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_1945 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+        attempted_2390 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_1950 = attempted_1945;
-      if (matched_1950.isLeft()) {
-        final KafkaError lawspecfailure_1951 = matched_1950.left();
-        value_1944 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_1951);
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2395 = attempted_2390;
+      if (matched_2395.isLeft()) {
+        final KafkaError lawspecfailure_2396 = matched_2395.left();
+        value_2389 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2396);
       } else {
-        final LawSpecFast.Unit lawspecvalue_1952 = matched_1950.right();
-        value_1944 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_1952);
+        final LawSpecFast.Unit lawspecvalue_2397 = matched_2395.right();
+        value_2389 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2397);
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> added_1953 = value_1944;
-      LawSpecFast.Either<KafkaError, Long> value_1954;
-      LawSpecFast.Either<KafkaError, Long> attempted_1955;
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> added_2398 = value_2389;
+      LawSpecFast.Either<KafkaError, Long> value_2399;
+      LawSpecFast.Either<KafkaError, Long> attempted_2400;
       try {
-        attempted_1955 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__produceRequest(symbols, TopicPartition.CODEC.encode(tp_1936), LawSpecFast.maybe(ProducerTag.CODEC).encode(LawSpecFast.Maybe.<ProducerTag>just(tagOf_39235de7(pe_1943, 0L))), LawSpecFast.list(Record.CODEC).encode(batch_1935))));
+        attempted_2400 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__produceRequest(symbols, TopicPartition.CODEC.encode(tp_2381), LawSpecFast.maybe(ProducerTag.CODEC).encode(LawSpecFast.Maybe.<ProducerTag>just(tagOf_39235de7(v_lawspecselection0x0_2388, 0L))), LawSpecFast.list(Record.CODEC).encode(batch_2377))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_1955 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
+        attempted_2400 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, Long> matched_1956 = attempted_1955;
-      if (matched_1956.isLeft()) {
-        final KafkaError lawspecfailure_1957 = matched_1956.left();
-        value_1954 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_1957);
+      final LawSpecFast.Either<KafkaError, Long> matched_2401 = attempted_2400;
+      if (matched_2401.isLeft()) {
+        final KafkaError lawspecfailure_2402 = matched_2401.left();
+        value_2399 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_2402);
       } else {
-        final long lawspecvalue_1958 = matched_1956.right();
-        value_1954 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_1958);
+        final long lawspecvalue_2403 = matched_2401.right();
+        value_2399 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_2403);
       }
-      final LawSpecFast.Either<KafkaError, Long> written_1959 = value_1954;
-      LawSpecFast.Either<KafkaError, FetchResult> value_1960;
-      LawSpecFast.Either<KafkaError, FetchResult> attempted_1961;
+      final LawSpecFast.Either<KafkaError, Long> written_2404 = value_2399;
+      LawSpecFast.Either<KafkaError, FetchResult> value_2405;
+      LawSpecFast.Either<KafkaError, FetchResult> attempted_2406;
       try {
-        attempted_1961 = LawSpecFast.Either.<KafkaError, FetchResult>right(FetchResult.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__fetchRequest(symbols, TopicPartition.CODEC.encode(tp_1936), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(0L), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(1000L), IsolationLevel.CODEC.encode(IsolationLevel.ReadUncommitted))));
+        attempted_2406 = LawSpecFast.Either.<KafkaError, FetchResult>right(FetchResult.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__fetchRequest(symbols, TopicPartition.CODEC.encode(tp_2381), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(0L), LawSpecFast.integer("Int32", -2147483648L, 2147483647L).encode(1000L), IsolationLevel.CODEC.encode(IsolationLevel.ReadUncommitted))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_1961 = LawSpecFast.Either.<KafkaError, FetchResult>left(KafkaError.CODEC.decode(failure.value));
+        attempted_2406 = LawSpecFast.Either.<KafkaError, FetchResult>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, FetchResult> matched_1962 = attempted_1961;
-      if (matched_1962.isLeft()) {
-        final KafkaError lawspecfailure_1963 = matched_1962.left();
-        value_1960 = LawSpecFast.Either.<KafkaError, FetchResult>left(lawspecfailure_1963);
+      final LawSpecFast.Either<KafkaError, FetchResult> matched_2407 = attempted_2406;
+      if (matched_2407.isLeft()) {
+        final KafkaError lawspecfailure_2408 = matched_2407.left();
+        value_2405 = LawSpecFast.Either.<KafkaError, FetchResult>left(lawspecfailure_2408);
       } else {
-        final FetchResult lawspecvalue_1964 = matched_1962.right();
-        value_1960 = LawSpecFast.Either.<KafkaError, FetchResult>right(lawspecvalue_1964);
+        final FetchResult lawspecvalue_2409 = matched_2407.right();
+        value_2405 = LawSpecFast.Either.<KafkaError, FetchResult>right(lawspecvalue_2409);
       }
-      final LawSpecFast.Either<KafkaError, FetchResult> matched_1965 = value_1960;
-      if (matched_1965.isLeft()) {
+      final LawSpecFast.Either<KafkaError, FetchResult> it_2410 = value_2405;
+      if (it_2410.isLeft()) {
         return false;
       } else {
-        final FetchResult fr_1966 = matched_1965.right();
-        boolean value_1967;
-        if (added_1953.isLeft()) {
-          value_1967 = false;
+        final FetchResult v_match__lawspecselection0x0_0_2411 = it_2410.right();
+        boolean value_2412;
+        if (added_2398.isLeft()) {
+          value_2412 = false;
         } else {
-          value_1967 = true;
+          value_2412 = true;
         }
-        boolean logic_1969;
-        if (value_1967) {
-          boolean value_1968;
-          if (written_1959.isLeft()) {
-            value_1968 = false;
+        boolean logic_2414;
+        if (value_2412) {
+          boolean value_2413;
+          if (written_2404.isLeft()) {
+            value_2413 = false;
           } else {
-            value_1968 = true;
+            value_2413 = true;
           }
-          logic_1969 = value_1968;
-        } else { logic_1969 = false; }
-        boolean logic_1974;
-        if (logic_1969) {
-          long value_1970;
-          final long lawspecfieldlaststableoffset_1971 = fr_1966.lastStableOffset;
-          value_1970 = lawspecfieldlaststableoffset_1971;
-          long value_1972;
-          final long lawspecfieldhighwatermark_1973 = fr_1966.highWatermark;
-          value_1972 = lawspecfieldhighwatermark_1973;
-          logic_1974 = ((value_1970) <= (value_1972));
-        } else { logic_1974 = false; }
-        boolean logic_1979;
-        if (logic_1974) {
-          boolean value_1975;
-          if (written_1959.isLeft()) {
-            value_1975 = false;
+          logic_2414 = value_2413;
+        } else { logic_2414 = false; }
+        boolean logic_2419;
+        if (logic_2414) {
+          long value_2415;
+          final long lawspecfieldlaststableoffset_2416 = v_match__lawspecselection0x0_0_2411.lastStableOffset;
+          value_2415 = lawspecfieldlaststableoffset_2416;
+          long value_2417;
+          final long lawspecfieldhighwatermark_2418 = v_match__lawspecselection0x0_0_2411.highWatermark;
+          value_2417 = lawspecfieldhighwatermark_2418;
+          logic_2419 = ((value_2415) <= (value_2417));
+        } else { logic_2419 = false; }
+        boolean logic_2425;
+        if (logic_2419) {
+          boolean value_2420;
+          final LawSpecFast.Either<KafkaError, Long> it_2421 = written_2404;
+          if (it_2421.isLeft()) {
+            value_2420 = false;
           } else {
-            final long base_1976 = written_1959.right();
-            long value_1977;
-            final long lawspecfieldlaststableoffset_1978 = fr_1966.lastStableOffset;
-            value_1977 = lawspecfieldlaststableoffset_1978;
-            value_1975 = ((value_1977) <= (base_1976));
+            final long v_match__match__lawspecselection0x0_0_0_2422 = it_2421.right();
+            long value_2423;
+            final long lawspecfieldlaststableoffset_2424 = v_match__lawspecselection0x0_0_2411.lastStableOffset;
+            value_2423 = lawspecfieldlaststableoffset_2424;
+            value_2420 = ((value_2423) <= (v_match__match__lawspecselection0x0_0_0_2422));
           }
-          logic_1979 = value_1975;
-        } else { logic_1979 = false; }
-        return logic_1979;
+          logic_2425 = value_2420;
+        } else { logic_2425 = false; }
+        return logic_2425;
       }
     }
   }
 
   /** lawtwin.kafka::tagFor */
-  public static LawSpecFast.Maybe<ProducerTag> tagFor_a88d3846(LawSpecFast.Maybe<ProducerIdAndEpoch> identity_1980, long sequence_1981) {
-    if (identity_1980.isJust()) {
-      final ProducerIdAndEpoch pe_1982 = identity_1980.get();
-      return LawSpecFast.Maybe.<ProducerTag>just(tagOf_39235de7(pe_1982, sequence_1981));
+  public static LawSpecFast.Maybe<ProducerTag> tagFor_a88d3846(LawSpecFast.Maybe<ProducerIdAndEpoch> identity_2426, long sequence_2427) {
+    final LawSpecFast.Maybe<ProducerIdAndEpoch> it_2428 = identity_2426;
+    if (it_2428.isJust()) {
+      final ProducerIdAndEpoch v_lawspecselection0x0_2429 = it_2428.get();
+      return LawSpecFast.Maybe.<ProducerTag>just(tagOf_39235de7(v_lawspecselection0x0_2429, sequence_2427));
     } else {
       return LawSpecFast.Maybe.<ProducerTag>nothing();
     }
   }
 
   /** lawtwin.kafka::tagOf */
-  public static ProducerTag tagOf_39235de7(ProducerIdAndEpoch pe_1983, long sequence_1984) {
-    long value_1985;
-    final long lawspecfieldproducerid_1986 = pe_1983.producerId;
-    value_1985 = lawspecfieldproducerid_1986;
-    long value_1987;
-    final long lawspecfieldproducerepoch_1988 = pe_1983.producerEpoch;
-    value_1987 = lawspecfieldproducerepoch_1988;
-    return new ProducerTag(value_1985, value_1987, sequence_1984);
+  public static ProducerTag tagOf_39235de7(ProducerIdAndEpoch pe_2430, long sequence_2431) {
+    long value_2432;
+    final long lawspecfieldproducerid_2433 = pe_2430.producerId;
+    value_2432 = lawspecfieldproducerid_2433;
+    final long v_lawspecrecordfield0_2434 = value_2432;
+    long value_2435;
+    final long lawspecfieldproducerepoch_2436 = pe_2430.producerEpoch;
+    value_2435 = lawspecfieldproducerepoch_2436;
+    final long v_lawspecrecordfield1_2437 = value_2435;
+    final long v_lawspecrecordfield2_2438 = sequence_2431;
+    return new ProducerTag(v_lawspecrecordfield0_2434, v_lawspecrecordfield1_2437, v_lawspecrecordfield2_2438);
   }
 
   /** lawtwin.kafka::toPositive */
-  public static long toPositive_fc7029c7(long h_1989) {
-    return wrappingUInt32_1ef3ce20(LawSpecFast.rem(java.math.BigInteger.valueOf(h_1989), java.math.BigInteger.valueOf(2147483648L)));
+  public static long toPositive_fc7029c7(long h_2439) {
+    return wrappingUInt32_1ef3ce20(LawSpecFast.rem(java.math.BigInteger.valueOf(h_2439), java.math.BigInteger.valueOf(2147483648L)));
   }
 
   /** lawtwin.kafka::transactionThenRead */
-  public static boolean transactionThenRead_81bf7b1b(java.util.Map<String, Object> symbols, String t_1990, String txid_1991, LawSpecFast.List<Record> batch_1992, boolean commit_1993) {
-    final TopicPartition tp_1994 = new TopicPartition(t_1990, 0L);
-    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> value_1995;
-    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> attempted_1996;
+  public static boolean transactionThenRead_81bf7b1b(java.util.Map<String, Object> symbols, String t_2440, String txid_2441, LawSpecFast.List<Record> batch_2442, boolean commit_2443) {
+    TopicPartition value_2444;
+    final String v_lawspecrecordfield0_2445 = t_2440;
+    final long v_lawspecrecordfield1_2446 = 0L;
+    value_2444 = new TopicPartition(v_lawspecrecordfield0_2445, v_lawspecrecordfield1_2446);
+    final TopicPartition tp_2447 = value_2444;
+    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> value_2448;
+    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> attempted_2449;
     try {
-      attempted_1996 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(ProducerIdAndEpoch.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__initProducerIdRequest(symbols, LawSpecFast.maybe(LawSpecFast.TEXT).encode(LawSpecFast.Maybe.<String>just(txid_1991)))));
+      attempted_2449 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(ProducerIdAndEpoch.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__initProducerIdRequest(symbols, LawSpecFast.maybe(LawSpecFast.TEXT).encode(LawSpecFast.Maybe.<String>just(txid_2441)))));
     } catch (LawSpecRuntime.Failure failure) {
       if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-      attempted_1996 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(KafkaError.CODEC.decode(failure.value));
+      attempted_2449 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(KafkaError.CODEC.decode(failure.value));
     }
-    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_1997 = attempted_1996;
-    if (matched_1997.isLeft()) {
-      final KafkaError lawspecfailure_1998 = matched_1997.left();
-      value_1995 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(lawspecfailure_1998);
+    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_2450 = attempted_2449;
+    if (matched_2450.isLeft()) {
+      final KafkaError lawspecfailure_2451 = matched_2450.left();
+      value_2448 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(lawspecfailure_2451);
     } else {
-      final ProducerIdAndEpoch lawspecvalue_1999 = matched_1997.right();
-      value_1995 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(lawspecvalue_1999);
+      final ProducerIdAndEpoch lawspecvalue_2452 = matched_2450.right();
+      value_2448 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(lawspecvalue_2452);
     }
-    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_2000 = value_1995;
-    if (matched_2000.isLeft()) {
+    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> it_2453 = value_2448;
+    if (it_2453.isLeft()) {
       return false;
     } else {
-      final ProducerIdAndEpoch pe_2001 = matched_2000.right();
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2002;
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2003;
+      final ProducerIdAndEpoch v_lawspecselection0x0_2454 = it_2453.right();
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2455;
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2456;
       try {
-        long value_2004;
-        final long lawspecfieldproducerid_2005 = pe_2001.producerId;
-        value_2004 = lawspecfieldproducerid_2005;
-        long value_2006;
-        final long lawspecfieldproducerepoch_2007 = pe_2001.producerEpoch;
-        value_2006 = lawspecfieldproducerepoch_2007;
-        attempted_2003 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_1991), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2004), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2006), LawSpecFast.list(TopicPartition.CODEC).encode(LawSpecFast.List.<TopicPartition>cons(tp_1994, LawSpecFast.List.<TopicPartition>nil())))));
+        long value_2457;
+        final long lawspecfieldproducerid_2458 = v_lawspecselection0x0_2454.producerId;
+        value_2457 = lawspecfieldproducerid_2458;
+        long value_2459;
+        final long lawspecfieldproducerepoch_2460 = v_lawspecselection0x0_2454.producerEpoch;
+        value_2459 = lawspecfieldproducerepoch_2460;
+        attempted_2456 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_2441), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2457), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2459), LawSpecFast.list(TopicPartition.CODEC).encode(LawSpecFast.List.<TopicPartition>cons(tp_2447, LawSpecFast.List.<TopicPartition>nil())))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_2003 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+        attempted_2456 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2008 = attempted_2003;
-      if (matched_2008.isLeft()) {
-        final KafkaError lawspecfailure_2009 = matched_2008.left();
-        value_2002 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2009);
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2461 = attempted_2456;
+      if (matched_2461.isLeft()) {
+        final KafkaError lawspecfailure_2462 = matched_2461.left();
+        value_2455 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2462);
       } else {
-        final LawSpecFast.Unit lawspecvalue_2010 = matched_2008.right();
-        value_2002 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2010);
+        final LawSpecFast.Unit lawspecvalue_2463 = matched_2461.right();
+        value_2455 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2463);
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2011 = value_2002;
-      if (matched_2011.isLeft()) {
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> it_2464 = value_2455;
+      if (it_2464.isLeft()) {
         return false;
       } else {
-        LawSpecFast.Either<KafkaError, Long> value_2012;
-        LawSpecFast.Either<KafkaError, Long> attempted_2013;
+        LawSpecFast.Either<KafkaError, Long> value_2465;
+        LawSpecFast.Either<KafkaError, Long> attempted_2466;
         try {
-          attempted_2013 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__produceRequest(symbols, TopicPartition.CODEC.encode(tp_1994), LawSpecFast.maybe(ProducerTag.CODEC).encode(LawSpecFast.Maybe.<ProducerTag>just(tagOf_39235de7(pe_2001, 0L))), LawSpecFast.list(Record.CODEC).encode(batch_1992))));
+          attempted_2466 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__produceRequest(symbols, TopicPartition.CODEC.encode(tp_2447), LawSpecFast.maybe(ProducerTag.CODEC).encode(LawSpecFast.Maybe.<ProducerTag>just(tagOf_39235de7(v_lawspecselection0x0_2454, 0L))), LawSpecFast.list(Record.CODEC).encode(batch_2442))));
         } catch (LawSpecRuntime.Failure failure) {
           if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-          attempted_2013 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
+          attempted_2466 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
         }
-        final LawSpecFast.Either<KafkaError, Long> matched_2014 = attempted_2013;
-        if (matched_2014.isLeft()) {
-          final KafkaError lawspecfailure_2015 = matched_2014.left();
-          value_2012 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_2015);
+        final LawSpecFast.Either<KafkaError, Long> matched_2467 = attempted_2466;
+        if (matched_2467.isLeft()) {
+          final KafkaError lawspecfailure_2468 = matched_2467.left();
+          value_2465 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_2468);
         } else {
-          final long lawspecvalue_2016 = matched_2014.right();
-          value_2012 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_2016);
+          final long lawspecvalue_2469 = matched_2467.right();
+          value_2465 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_2469);
         }
-        final LawSpecFast.Either<KafkaError, Long> matched_2017 = value_2012;
-        if (matched_2017.isLeft()) {
+        final LawSpecFast.Either<KafkaError, Long> it_2470 = value_2465;
+        if (it_2470.isLeft()) {
           return false;
         } else {
-          final long base_2018 = matched_2017.right();
-          final boolean hiddenwhileopen_2019 = (java.util.Objects.equals(committedFrom_a524f37d(symbols, tp_1994, base_2018), LawSpecFast.List.<Record>nil()));
-          final boolean seenuncommitted_2020 = (java.util.Objects.equals(uncommittedFrom_8a57847d(symbols, tp_1994, base_2018), batch_1992));
-          LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2021;
-          LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2022;
+          final long v_match__match__lawspecselection0x0_0_0_2471 = it_2470.right();
+          final boolean hiddenwhileopen_2472 = (java.util.Objects.equals(committedFrom_a524f37d(symbols, tp_2447, v_match__match__lawspecselection0x0_0_0_2471), LawSpecFast.List.<Record>nil()));
+          final boolean seenuncommitted_2473 = (java.util.Objects.equals(uncommittedFrom_8a57847d(symbols, tp_2447, v_match__match__lawspecselection0x0_0_0_2471), batch_2442));
+          LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2474;
+          LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2475;
           try {
-            long value_2023;
-            final long lawspecfieldproducerid_2024 = pe_2001.producerId;
-            value_2023 = lawspecfieldproducerid_2024;
-            long value_2025;
-            final long lawspecfieldproducerepoch_2026 = pe_2001.producerEpoch;
-            value_2025 = lawspecfieldproducerepoch_2026;
-            attempted_2022 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__endTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_1991), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2023), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2025), LawSpecFast.BOOL.encode(commit_1993))));
+            long value_2476;
+            final long lawspecfieldproducerid_2477 = v_lawspecselection0x0_2454.producerId;
+            value_2476 = lawspecfieldproducerid_2477;
+            long value_2478;
+            final long lawspecfieldproducerepoch_2479 = v_lawspecselection0x0_2454.producerEpoch;
+            value_2478 = lawspecfieldproducerepoch_2479;
+            attempted_2475 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__endTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_2441), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2476), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2478), LawSpecFast.BOOL.encode(commit_2443))));
           } catch (LawSpecRuntime.Failure failure) {
             if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-            attempted_2022 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+            attempted_2475 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
           }
-          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2027 = attempted_2022;
-          if (matched_2027.isLeft()) {
-            final KafkaError lawspecfailure_2028 = matched_2027.left();
-            value_2021 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2028);
+          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2480 = attempted_2475;
+          if (matched_2480.isLeft()) {
+            final KafkaError lawspecfailure_2481 = matched_2480.left();
+            value_2474 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2481);
           } else {
-            final LawSpecFast.Unit lawspecvalue_2029 = matched_2027.right();
-            value_2021 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2029);
+            final LawSpecFast.Unit lawspecvalue_2482 = matched_2480.right();
+            value_2474 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2482);
           }
-          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2030 = value_2021;
-          if (matched_2030.isLeft()) {
+          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> it_2483 = value_2474;
+          if (it_2483.isLeft()) {
             return false;
           } else {
-            boolean logic_2032;
-            if (((hiddenwhileopen_2019 && seenuncommitted_2020) && (java.util.Objects.equals(uncommittedFrom_8a57847d(symbols, tp_1994, base_2018), batch_1992)))) {
-              boolean value_2031;
-              if (commit_1993) {
-                value_2031 = (java.util.Objects.equals(committedFrom_a524f37d(symbols, tp_1994, base_2018), batch_1992));
+            boolean logic_2485;
+            if (((hiddenwhileopen_2472 && seenuncommitted_2473) && (java.util.Objects.equals(uncommittedFrom_8a57847d(symbols, tp_2447, v_match__match__lawspecselection0x0_0_0_2471), batch_2442)))) {
+              boolean value_2484;
+              if (commit_2443) {
+                value_2484 = (java.util.Objects.equals(committedFrom_a524f37d(symbols, tp_2447, v_match__match__lawspecselection0x0_0_0_2471), batch_2442));
               } else {
-                value_2031 = (java.util.Objects.equals(committedFrom_a524f37d(symbols, tp_1994, base_2018), LawSpecFast.List.<Record>nil()));
+                value_2484 = (java.util.Objects.equals(committedFrom_a524f37d(symbols, tp_2447, v_match__match__lawspecselection0x0_0_0_2471), LawSpecFast.List.<Record>nil()));
               }
-              logic_2032 = value_2031;
-            } else { logic_2032 = false; }
-            return logic_2032;
+              logic_2485 = value_2484;
+            } else { logic_2485 = false; }
+            return logic_2485;
           }
         }
       }
@@ -7786,832 +8501,861 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   /** lawtwin.kafka::transactionalOffsets */
-  public static boolean transactionalOffsets_80320406(java.util.Map<String, Object> symbols, String t_2033, String txid_2034, String g_2035, long offset_2036) {
-    final TopicPartition tp_2037 = new TopicPartition(t_2033, 0L);
-    final LawSpecFast.Maybe<Long> before_2038 = LawSpecFast.maybe(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__offsetFetchRequest(symbols, LawSpecFast.TEXT.encode(g_2035), TopicPartition.CODEC.encode(tp_2037)));
-    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> value_2039;
-    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> attempted_2040;
+  public static boolean transactionalOffsets_80320406(java.util.Map<String, Object> symbols, String t_2486, String txid_2487, String g_2488, long offset_2489) {
+    TopicPartition value_2490;
+    final String v_lawspecrecordfield0_2491 = t_2486;
+    final long v_lawspecrecordfield1_2492 = 0L;
+    value_2490 = new TopicPartition(v_lawspecrecordfield0_2491, v_lawspecrecordfield1_2492);
+    final TopicPartition tp_2493 = value_2490;
+    final LawSpecFast.Maybe<Long> before_2494 = LawSpecFast.maybe(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__offsetFetchRequest(symbols, LawSpecFast.TEXT.encode(g_2488), TopicPartition.CODEC.encode(tp_2493)));
+    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> value_2495;
+    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> attempted_2496;
     try {
-      attempted_2040 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(ProducerIdAndEpoch.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__initProducerIdRequest(symbols, LawSpecFast.maybe(LawSpecFast.TEXT).encode(LawSpecFast.Maybe.<String>just(txid_2034)))));
+      attempted_2496 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(ProducerIdAndEpoch.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__initProducerIdRequest(symbols, LawSpecFast.maybe(LawSpecFast.TEXT).encode(LawSpecFast.Maybe.<String>just(txid_2487)))));
     } catch (LawSpecRuntime.Failure failure) {
       if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-      attempted_2040 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(KafkaError.CODEC.decode(failure.value));
+      attempted_2496 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(KafkaError.CODEC.decode(failure.value));
     }
-    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_2041 = attempted_2040;
-    if (matched_2041.isLeft()) {
-      final KafkaError lawspecfailure_2042 = matched_2041.left();
-      value_2039 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(lawspecfailure_2042);
+    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_2497 = attempted_2496;
+    if (matched_2497.isLeft()) {
+      final KafkaError lawspecfailure_2498 = matched_2497.left();
+      value_2495 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(lawspecfailure_2498);
     } else {
-      final ProducerIdAndEpoch lawspecvalue_2043 = matched_2041.right();
-      value_2039 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(lawspecvalue_2043);
+      final ProducerIdAndEpoch lawspecvalue_2499 = matched_2497.right();
+      value_2495 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(lawspecvalue_2499);
     }
-    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_2044 = value_2039;
-    if (matched_2044.isLeft()) {
+    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> it_2500 = value_2495;
+    if (it_2500.isLeft()) {
       return false;
     } else {
-      final ProducerIdAndEpoch pe_2045 = matched_2044.right();
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2046;
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2047;
+      final ProducerIdAndEpoch v_lawspecselection0x0_2501 = it_2500.right();
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2502;
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2503;
       try {
-        long value_2048;
-        final long lawspecfieldproducerid_2049 = pe_2045.producerId;
-        value_2048 = lawspecfieldproducerid_2049;
-        long value_2050;
-        final long lawspecfieldproducerepoch_2051 = pe_2045.producerEpoch;
-        value_2050 = lawspecfieldproducerepoch_2051;
-        attempted_2047 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__txnOffsetCommitRequest(symbols, LawSpecFast.TEXT.encode(txid_2034), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2048), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2050), LawSpecFast.TEXT.encode(g_2035), LawSpecFast.list(OffsetEntry.CODEC).encode(LawSpecFast.List.<OffsetEntry>cons(new OffsetEntry(tp_2037, offset_2036), LawSpecFast.List.<OffsetEntry>nil())))));
+        long value_2504;
+        final long lawspecfieldproducerid_2505 = v_lawspecselection0x0_2501.producerId;
+        value_2504 = lawspecfieldproducerid_2505;
+        long value_2506;
+        final long lawspecfieldproducerepoch_2507 = v_lawspecselection0x0_2501.producerEpoch;
+        value_2506 = lawspecfieldproducerepoch_2507;
+        OffsetEntry value_2508;
+        final TopicPartition v_lawspecrecordfield0_2509 = tp_2493;
+        final long v_lawspecrecordfield1_2510 = offset_2489;
+        value_2508 = new OffsetEntry(v_lawspecrecordfield0_2509, v_lawspecrecordfield1_2510);
+        attempted_2503 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__txnOffsetCommitRequest(symbols, LawSpecFast.TEXT.encode(txid_2487), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2504), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2506), LawSpecFast.TEXT.encode(g_2488), LawSpecFast.list(OffsetEntry.CODEC).encode(LawSpecFast.List.<OffsetEntry>cons(value_2508, LawSpecFast.List.<OffsetEntry>nil())))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_2047 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+        attempted_2503 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2052 = attempted_2047;
-      if (matched_2052.isLeft()) {
-        final KafkaError lawspecfailure_2053 = matched_2052.left();
-        value_2046 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2053);
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2511 = attempted_2503;
+      if (matched_2511.isLeft()) {
+        final KafkaError lawspecfailure_2512 = matched_2511.left();
+        value_2502 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2512);
       } else {
-        final LawSpecFast.Unit lawspecvalue_2054 = matched_2052.right();
-        value_2046 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2054);
+        final LawSpecFast.Unit lawspecvalue_2513 = matched_2511.right();
+        value_2502 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2513);
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> sent_2055 = value_2046;
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2056;
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2057;
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> sent_2514 = value_2502;
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2515;
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2516;
       try {
-        long value_2058;
-        final long lawspecfieldproducerid_2059 = pe_2045.producerId;
-        value_2058 = lawspecfieldproducerid_2059;
-        long value_2060;
-        final long lawspecfieldproducerepoch_2061 = pe_2045.producerEpoch;
-        value_2060 = lawspecfieldproducerepoch_2061;
-        attempted_2057 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__endTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_2034), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2058), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2060), LawSpecFast.BOOL.encode(false))));
+        long value_2517;
+        final long lawspecfieldproducerid_2518 = v_lawspecselection0x0_2501.producerId;
+        value_2517 = lawspecfieldproducerid_2518;
+        long value_2519;
+        final long lawspecfieldproducerepoch_2520 = v_lawspecselection0x0_2501.producerEpoch;
+        value_2519 = lawspecfieldproducerepoch_2520;
+        attempted_2516 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__endTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_2487), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2517), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2519), LawSpecFast.BOOL.encode(false))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_2057 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+        attempted_2516 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2062 = attempted_2057;
-      if (matched_2062.isLeft()) {
-        final KafkaError lawspecfailure_2063 = matched_2062.left();
-        value_2056 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2063);
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2521 = attempted_2516;
+      if (matched_2521.isLeft()) {
+        final KafkaError lawspecfailure_2522 = matched_2521.left();
+        value_2515 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2522);
       } else {
-        final LawSpecFast.Unit lawspecvalue_2064 = matched_2062.right();
-        value_2056 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2064);
+        final LawSpecFast.Unit lawspecvalue_2523 = matched_2521.right();
+        value_2515 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2523);
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> aborted_2065 = value_2056;
-      final LawSpecFast.Maybe<Long> afterabort_2066 = LawSpecFast.maybe(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__offsetFetchRequest(symbols, LawSpecFast.TEXT.encode(g_2035), TopicPartition.CODEC.encode(tp_2037)));
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2067;
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2068;
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> aborted_2524 = value_2515;
+      final LawSpecFast.Maybe<Long> afterabort_2525 = LawSpecFast.maybe(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__offsetFetchRequest(symbols, LawSpecFast.TEXT.encode(g_2488), TopicPartition.CODEC.encode(tp_2493)));
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2526;
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2527;
       try {
-        long value_2069;
-        final long lawspecfieldproducerid_2070 = pe_2045.producerId;
-        value_2069 = lawspecfieldproducerid_2070;
-        long value_2071;
-        final long lawspecfieldproducerepoch_2072 = pe_2045.producerEpoch;
-        value_2071 = lawspecfieldproducerepoch_2072;
-        attempted_2068 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__txnOffsetCommitRequest(symbols, LawSpecFast.TEXT.encode(txid_2034), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2069), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2071), LawSpecFast.TEXT.encode(g_2035), LawSpecFast.list(OffsetEntry.CODEC).encode(LawSpecFast.List.<OffsetEntry>cons(new OffsetEntry(tp_2037, offset_2036), LawSpecFast.List.<OffsetEntry>nil())))));
+        long value_2528;
+        final long lawspecfieldproducerid_2529 = v_lawspecselection0x0_2501.producerId;
+        value_2528 = lawspecfieldproducerid_2529;
+        long value_2530;
+        final long lawspecfieldproducerepoch_2531 = v_lawspecselection0x0_2501.producerEpoch;
+        value_2530 = lawspecfieldproducerepoch_2531;
+        OffsetEntry value_2532;
+        final TopicPartition v_lawspecrecordfield0_2533 = tp_2493;
+        final long v_lawspecrecordfield1_2534 = offset_2489;
+        value_2532 = new OffsetEntry(v_lawspecrecordfield0_2533, v_lawspecrecordfield1_2534);
+        attempted_2527 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__txnOffsetCommitRequest(symbols, LawSpecFast.TEXT.encode(txid_2487), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2528), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2530), LawSpecFast.TEXT.encode(g_2488), LawSpecFast.list(OffsetEntry.CODEC).encode(LawSpecFast.List.<OffsetEntry>cons(value_2532, LawSpecFast.List.<OffsetEntry>nil())))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_2068 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+        attempted_2527 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2073 = attempted_2068;
-      if (matched_2073.isLeft()) {
-        final KafkaError lawspecfailure_2074 = matched_2073.left();
-        value_2067 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2074);
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2535 = attempted_2527;
+      if (matched_2535.isLeft()) {
+        final KafkaError lawspecfailure_2536 = matched_2535.left();
+        value_2526 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2536);
       } else {
-        final LawSpecFast.Unit lawspecvalue_2075 = matched_2073.right();
-        value_2067 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2075);
+        final LawSpecFast.Unit lawspecvalue_2537 = matched_2535.right();
+        value_2526 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2537);
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> resent_2076 = value_2067;
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2077;
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2078;
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> resent_2538 = value_2526;
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2539;
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2540;
       try {
-        long value_2079;
-        final long lawspecfieldproducerid_2080 = pe_2045.producerId;
-        value_2079 = lawspecfieldproducerid_2080;
-        long value_2081;
-        final long lawspecfieldproducerepoch_2082 = pe_2045.producerEpoch;
-        value_2081 = lawspecfieldproducerepoch_2082;
-        attempted_2078 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__endTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_2034), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2079), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2081), LawSpecFast.BOOL.encode(true))));
+        long value_2541;
+        final long lawspecfieldproducerid_2542 = v_lawspecselection0x0_2501.producerId;
+        value_2541 = lawspecfieldproducerid_2542;
+        long value_2543;
+        final long lawspecfieldproducerepoch_2544 = v_lawspecselection0x0_2501.producerEpoch;
+        value_2543 = lawspecfieldproducerepoch_2544;
+        attempted_2540 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__endTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_2487), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2541), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2543), LawSpecFast.BOOL.encode(true))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_2078 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+        attempted_2540 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2083 = attempted_2078;
-      if (matched_2083.isLeft()) {
-        final KafkaError lawspecfailure_2084 = matched_2083.left();
-        value_2077 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2084);
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2545 = attempted_2540;
+      if (matched_2545.isLeft()) {
+        final KafkaError lawspecfailure_2546 = matched_2545.left();
+        value_2539 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2546);
       } else {
-        final LawSpecFast.Unit lawspecvalue_2085 = matched_2083.right();
-        value_2077 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2085);
+        final LawSpecFast.Unit lawspecvalue_2547 = matched_2545.right();
+        value_2539 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2547);
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> committed_2086 = value_2077;
-      boolean value_2087;
-      if (sent_2055.isLeft()) {
-        value_2087 = false;
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> committed_2548 = value_2539;
+      boolean value_2549;
+      if (sent_2514.isLeft()) {
+        value_2549 = false;
       } else {
-        value_2087 = true;
+        value_2549 = true;
       }
-      boolean logic_2089;
-      if (value_2087) {
-        boolean value_2088;
-        if (aborted_2065.isLeft()) {
-          value_2088 = false;
+      boolean logic_2551;
+      if (value_2549) {
+        boolean value_2550;
+        if (aborted_2524.isLeft()) {
+          value_2550 = false;
         } else {
-          value_2088 = true;
+          value_2550 = true;
         }
-        logic_2089 = value_2088;
-      } else { logic_2089 = false; }
-      boolean logic_2091;
-      if ((logic_2089 && (java.util.Objects.equals(afterabort_2066, before_2038)))) {
-        boolean value_2090;
-        if (resent_2076.isLeft()) {
-          value_2090 = false;
+        logic_2551 = value_2550;
+      } else { logic_2551 = false; }
+      boolean logic_2553;
+      if ((logic_2551 && (java.util.Objects.equals(afterabort_2525, before_2494)))) {
+        boolean value_2552;
+        if (resent_2538.isLeft()) {
+          value_2552 = false;
         } else {
-          value_2090 = true;
+          value_2552 = true;
         }
-        logic_2091 = value_2090;
-      } else { logic_2091 = false; }
-      boolean logic_2093;
-      if (logic_2091) {
-        boolean value_2092;
-        if (committed_2086.isLeft()) {
-          value_2092 = false;
+        logic_2553 = value_2552;
+      } else { logic_2553 = false; }
+      boolean logic_2555;
+      if (logic_2553) {
+        boolean value_2554;
+        if (committed_2548.isLeft()) {
+          value_2554 = false;
         } else {
-          value_2092 = true;
+          value_2554 = true;
         }
-        logic_2093 = value_2092;
-      } else { logic_2093 = false; }
-      return (logic_2093 && (java.util.Objects.equals(LawSpecFast.maybe(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__offsetFetchRequest(symbols, LawSpecFast.TEXT.encode(g_2035), TopicPartition.CODEC.encode(tp_2037))), LawSpecFast.Maybe.<Long>just(offset_2036))));
+        logic_2555 = value_2554;
+      } else { logic_2555 = false; }
+      return (logic_2555 && (java.util.Objects.equals(LawSpecFast.maybe(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L)).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__offsetFetchRequest(symbols, LawSpecFast.TEXT.encode(g_2488), TopicPartition.CODEC.encode(tp_2493))), LawSpecFast.Maybe.<Long>just(offset_2489))));
     }
   }
 
   /** lawtwin.kafka::transactionsAbort */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> transactionsAbort_256496fb(java.util.Map<String, Object> symbols, TransactionState st_2094) {
-    return transactionsEnd_fe18afb7(symbols, false, st_2094);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> transactionsAbort_256496fb(java.util.Map<String, Object> symbols, TransactionState st_2556) {
+    return transactionsEnd_fe18afb7(symbols, false, st_2556);
   }
 
   /** lawtwin.kafka::transactionsAdd */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> transactionsAdd_1f41c92e(java.util.Map<String, Object> symbols, LawSpecFast.List<TopicPartition> tps_2095, TransactionState st_2096) {
-    LawSpecFast.Maybe<ProducerIdAndEpoch> value_2097;
-    final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2098 = st_2096.producer;
-    value_2097 = lawspecfieldproducer_2098;
-    final LawSpecFast.Maybe<ProducerIdAndEpoch> matched_2099 = value_2097;
-    if (matched_2099.isJust()) {
-      final ProducerIdAndEpoch id_2100 = matched_2099.get();
-      boolean value_2101;
-      final boolean lawspecfieldintransaction_2102 = st_2096.inTransaction;
-      value_2101 = lawspecfieldintransaction_2102;
-      if (!(value_2101)) {
-        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2096);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> transactionsAdd_1f41c92e(java.util.Map<String, Object> symbols, LawSpecFast.List<TopicPartition> tps_2557, TransactionState st_2558) {
+    LawSpecFast.Maybe<ProducerIdAndEpoch> value_2559;
+    final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2560 = st_2558.producer;
+    value_2559 = lawspecfieldproducer_2560;
+    final LawSpecFast.Maybe<ProducerIdAndEpoch> it_2561 = value_2559;
+    if (it_2561.isJust()) {
+      final ProducerIdAndEpoch v_lawspecselection0x0_2562 = it_2561.get();
+      boolean value_2563;
+      final boolean lawspecfieldintransaction_2564 = st_2558.inTransaction;
+      value_2563 = lawspecfieldintransaction_2564;
+      if (!(value_2563)) {
+        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2558);
       } else {
-        LawSpecFast.List<TopicPartition> value_2103;
-        final LawSpecFast.List<TopicPartition> lawspecfieldadded_2104 = st_2096.added;
-        value_2103 = lawspecfieldadded_2104;
-        final LawSpecFast.List<TopicPartition> missing_2105 = missingFrom_37856ee4(tps_2095, value_2103);
-        boolean value_2106;
-        if (missing_2105.isEmpty()) {
-          value_2106 = true;
+        LawSpecFast.List<TopicPartition> value_2565;
+        final LawSpecFast.List<TopicPartition> lawspecfieldadded_2566 = st_2558.added;
+        value_2565 = lawspecfieldadded_2566;
+        final LawSpecFast.List<TopicPartition> missing_2567 = missingFrom_37856ee4(tps_2557, value_2565);
+        boolean value_2568;
+        if (missing_2567.isEmpty()) {
+          value_2568 = true;
         } else {
-          value_2106 = false;
+          value_2568 = false;
         }
-        if (value_2106) {
-          return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), st_2096);
+        if (value_2568) {
+          return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), st_2558);
         } else {
-          LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2107;
-          LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2108;
+          LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2569;
+          LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2570;
           try {
-            String value_2109;
-            final String lawspecfieldtransactionalid_2110 = st_2096.transactionalId;
-            value_2109 = lawspecfieldtransactionalid_2110;
-            long value_2111;
-            final long lawspecfieldproducerid_2112 = id_2100.producerId;
-            value_2111 = lawspecfieldproducerid_2112;
-            long value_2113;
-            final long lawspecfieldproducerepoch_2114 = id_2100.producerEpoch;
-            value_2113 = lawspecfieldproducerepoch_2114;
-            attempted_2108 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(symbols, LawSpecFast.TEXT.encode(value_2109), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2111), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2113), LawSpecFast.list(TopicPartition.CODEC).encode(missing_2105))));
+            String value_2571;
+            final String lawspecfieldtransactionalid_2572 = st_2558.transactionalId;
+            value_2571 = lawspecfieldtransactionalid_2572;
+            long value_2573;
+            final long lawspecfieldproducerid_2574 = v_lawspecselection0x0_2562.producerId;
+            value_2573 = lawspecfieldproducerid_2574;
+            long value_2575;
+            final long lawspecfieldproducerepoch_2576 = v_lawspecselection0x0_2562.producerEpoch;
+            value_2575 = lawspecfieldproducerepoch_2576;
+            attempted_2570 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(symbols, LawSpecFast.TEXT.encode(value_2571), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2573), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2575), LawSpecFast.list(TopicPartition.CODEC).encode(missing_2567))));
           } catch (LawSpecRuntime.Failure failure) {
             if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-            attempted_2108 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+            attempted_2570 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
           }
-          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2115 = attempted_2108;
-          if (matched_2115.isLeft()) {
-            final KafkaError lawspecfailure_2116 = matched_2115.left();
-            value_2107 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2116);
+          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2577 = attempted_2570;
+          if (matched_2577.isLeft()) {
+            final KafkaError lawspecfailure_2578 = matched_2577.left();
+            value_2569 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2578);
           } else {
-            final LawSpecFast.Unit lawspecvalue_2117 = matched_2115.right();
-            value_2107 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2117);
+            final LawSpecFast.Unit lawspecvalue_2579 = matched_2577.right();
+            value_2569 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2579);
           }
-          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2118 = value_2107;
-          if (matched_2118.isLeft()) {
-            final KafkaError e_2119 = matched_2118.left();
-            return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(e_2119), st_2096);
+          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> it_2580 = value_2569;
+          if (it_2580.isLeft()) {
+            final KafkaError v_match__lawspecselection0x0_0_2581 = it_2580.left();
+            return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(v_match__lawspecselection0x0_0_2581), st_2558);
           } else {
-            TransactionState value_2120;
-            LawSpecFast.List<TopicPartition> value_2121;
-            final LawSpecFast.List<TopicPartition> lawspecfieldadded_2122 = st_2096.added;
-            value_2121 = lawspecfieldadded_2122;
-            final LawSpecFast.List<TopicPartition> replacement_2123 = LawSpecFast.append(missing_2105, value_2121);
-            final String lawspecfieldtransactionalid_2124 = st_2096.transactionalId;
-            final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2125 = st_2096.producer;
-            final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2126 = st_2096.txnSequences;
-            final boolean lawspecfieldintransaction_2127 = st_2096.inTransaction;
-            final boolean lawspecfieldoffsetssent_2128 = st_2096.offsetsSent;
-            value_2120 = new TransactionState(lawspecfieldtransactionalid_2124, lawspecfieldproducer_2125, lawspecfieldtxnsequences_2126, lawspecfieldintransaction_2127, replacement_2123, lawspecfieldoffsetssent_2128);
-            return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), value_2120);
+            TransactionState value_2582;
+            LawSpecFast.List<TopicPartition> value_2583;
+            final LawSpecFast.List<TopicPartition> lawspecfieldadded_2584 = st_2558.added;
+            value_2583 = lawspecfieldadded_2584;
+            final LawSpecFast.List<TopicPartition> replacement_2585 = LawSpecFast.append(missing_2567, value_2583);
+            final String lawspecfieldtransactionalid_2586 = st_2558.transactionalId;
+            final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2587 = st_2558.producer;
+            final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2588 = st_2558.txnSequences;
+            final boolean lawspecfieldintransaction_2589 = st_2558.inTransaction;
+            final boolean lawspecfieldoffsetssent_2590 = st_2558.offsetsSent;
+            value_2582 = new TransactionState(lawspecfieldtransactionalid_2586, lawspecfieldproducer_2587, lawspecfieldtxnsequences_2588, lawspecfieldintransaction_2589, replacement_2585, lawspecfieldoffsetssent_2590);
+            return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), value_2582);
           }
         }
       }
     } else {
-      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2096);
+      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2558);
     }
   }
 
   /** lawtwin.kafka::transactionsBegin */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> transactionsBegin_5d267b99(TransactionState st_2129) {
-    LawSpecFast.Maybe<ProducerIdAndEpoch> value_2130;
-    final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2131 = st_2129.producer;
-    value_2130 = lawspecfieldproducer_2131;
-    final LawSpecFast.Maybe<ProducerIdAndEpoch> matched_2132 = value_2130;
-    if (matched_2132.isJust()) {
-      boolean value_2133;
-      final boolean lawspecfieldintransaction_2134 = st_2129.inTransaction;
-      value_2133 = lawspecfieldintransaction_2134;
-      if (value_2133) {
-        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2129);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> transactionsBegin_5d267b99(TransactionState st_2591) {
+    LawSpecFast.Maybe<ProducerIdAndEpoch> value_2592;
+    final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2593 = st_2591.producer;
+    value_2592 = lawspecfieldproducer_2593;
+    final LawSpecFast.Maybe<ProducerIdAndEpoch> it_2594 = value_2592;
+    if (it_2594.isJust()) {
+      boolean value_2595;
+      final boolean lawspecfieldintransaction_2596 = st_2591.inTransaction;
+      value_2595 = lawspecfieldintransaction_2596;
+      if (value_2595) {
+        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2591);
       } else {
-        TransactionState value_2135;
-        final boolean replacement_2136 = false;
-        TransactionState value_2137;
-        final LawSpecFast.List<TopicPartition> replacement_2138 = LawSpecFast.List.<TopicPartition>nil();
-        TransactionState value_2139;
-        final boolean replacement_2140 = true;
-        final String lawspecfieldtransactionalid_2141 = st_2129.transactionalId;
-        final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2142 = st_2129.producer;
-        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2143 = st_2129.txnSequences;
-        final LawSpecFast.List<TopicPartition> lawspecfieldadded_2144 = st_2129.added;
-        final boolean lawspecfieldoffsetssent_2145 = st_2129.offsetsSent;
-        value_2139 = new TransactionState(lawspecfieldtransactionalid_2141, lawspecfieldproducer_2142, lawspecfieldtxnsequences_2143, replacement_2140, lawspecfieldadded_2144, lawspecfieldoffsetssent_2145);
-        final TransactionState matched_2146 = value_2139;
-        final String lawspecfieldtransactionalid_2147 = matched_2146.transactionalId;
-        final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2148 = matched_2146.producer;
-        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2149 = matched_2146.txnSequences;
-        final boolean lawspecfieldintransaction_2150 = matched_2146.inTransaction;
-        final boolean lawspecfieldoffsetssent_2151 = matched_2146.offsetsSent;
-        value_2137 = new TransactionState(lawspecfieldtransactionalid_2147, lawspecfieldproducer_2148, lawspecfieldtxnsequences_2149, lawspecfieldintransaction_2150, replacement_2138, lawspecfieldoffsetssent_2151);
-        final TransactionState matched_2152 = value_2137;
-        final String lawspecfieldtransactionalid_2153 = matched_2152.transactionalId;
-        final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2154 = matched_2152.producer;
-        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2155 = matched_2152.txnSequences;
-        final boolean lawspecfieldintransaction_2156 = matched_2152.inTransaction;
-        final LawSpecFast.List<TopicPartition> lawspecfieldadded_2157 = matched_2152.added;
-        value_2135 = new TransactionState(lawspecfieldtransactionalid_2153, lawspecfieldproducer_2154, lawspecfieldtxnsequences_2155, lawspecfieldintransaction_2156, lawspecfieldadded_2157, replacement_2136);
-        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), value_2135);
+        TransactionState value_2597;
+        final boolean replacement_2598 = false;
+        TransactionState value_2599;
+        final LawSpecFast.List<TopicPartition> replacement_2600 = LawSpecFast.List.<TopicPartition>nil();
+        TransactionState value_2601;
+        final boolean replacement_2602 = true;
+        final String lawspecfieldtransactionalid_2603 = st_2591.transactionalId;
+        final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2604 = st_2591.producer;
+        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2605 = st_2591.txnSequences;
+        final LawSpecFast.List<TopicPartition> lawspecfieldadded_2606 = st_2591.added;
+        final boolean lawspecfieldoffsetssent_2607 = st_2591.offsetsSent;
+        value_2601 = new TransactionState(lawspecfieldtransactionalid_2603, lawspecfieldproducer_2604, lawspecfieldtxnsequences_2605, replacement_2602, lawspecfieldadded_2606, lawspecfieldoffsetssent_2607);
+        final TransactionState matched_2608 = value_2601;
+        final String lawspecfieldtransactionalid_2609 = matched_2608.transactionalId;
+        final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2610 = matched_2608.producer;
+        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2611 = matched_2608.txnSequences;
+        final boolean lawspecfieldintransaction_2612 = matched_2608.inTransaction;
+        final boolean lawspecfieldoffsetssent_2613 = matched_2608.offsetsSent;
+        value_2599 = new TransactionState(lawspecfieldtransactionalid_2609, lawspecfieldproducer_2610, lawspecfieldtxnsequences_2611, lawspecfieldintransaction_2612, replacement_2600, lawspecfieldoffsetssent_2613);
+        final TransactionState matched_2614 = value_2599;
+        final String lawspecfieldtransactionalid_2615 = matched_2614.transactionalId;
+        final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2616 = matched_2614.producer;
+        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2617 = matched_2614.txnSequences;
+        final boolean lawspecfieldintransaction_2618 = matched_2614.inTransaction;
+        final LawSpecFast.List<TopicPartition> lawspecfieldadded_2619 = matched_2614.added;
+        value_2597 = new TransactionState(lawspecfieldtransactionalid_2615, lawspecfieldproducer_2616, lawspecfieldtxnsequences_2617, lawspecfieldintransaction_2618, lawspecfieldadded_2619, replacement_2598);
+        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), value_2597);
       }
     } else {
-      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2129);
+      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2591);
     }
   }
 
   /** lawtwin.kafka::transactionsCommit */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> transactionsCommit_afadd0fa(java.util.Map<String, Object> symbols, TransactionState st_2158) {
-    return transactionsEnd_fe18afb7(symbols, true, st_2158);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> transactionsCommit_afadd0fa(java.util.Map<String, Object> symbols, TransactionState st_2620) {
+    return transactionsEnd_fe18afb7(symbols, true, st_2620);
   }
 
   /** lawtwin.kafka::transactionsEnd */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> transactionsEnd_fe18afb7(java.util.Map<String, Object> symbols, boolean commit_2159, TransactionState st_2160) {
-    LawSpecFast.Maybe<ProducerIdAndEpoch> value_2161;
-    final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2162 = st_2160.producer;
-    value_2161 = lawspecfieldproducer_2162;
-    final LawSpecFast.Maybe<ProducerIdAndEpoch> matched_2163 = value_2161;
-    if (matched_2163.isJust()) {
-      final ProducerIdAndEpoch id_2164 = matched_2163.get();
-      boolean value_2165;
-      final boolean lawspecfieldintransaction_2166 = st_2160.inTransaction;
-      value_2165 = lawspecfieldintransaction_2166;
-      if (!(value_2165)) {
-        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2160);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> transactionsEnd_fe18afb7(java.util.Map<String, Object> symbols, boolean commit_2621, TransactionState st_2622) {
+    LawSpecFast.Maybe<ProducerIdAndEpoch> value_2623;
+    final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2624 = st_2622.producer;
+    value_2623 = lawspecfieldproducer_2624;
+    final LawSpecFast.Maybe<ProducerIdAndEpoch> it_2625 = value_2623;
+    if (it_2625.isJust()) {
+      final ProducerIdAndEpoch v_lawspecselection0x0_2626 = it_2625.get();
+      boolean value_2627;
+      final boolean lawspecfieldintransaction_2628 = st_2622.inTransaction;
+      value_2627 = lawspecfieldintransaction_2628;
+      if (!(value_2627)) {
+        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2622);
       } else {
-        boolean value_2167;
-        LawSpecFast.List<TopicPartition> value_2168;
-        final LawSpecFast.List<TopicPartition> lawspecfieldadded_2169 = st_2160.added;
-        value_2168 = lawspecfieldadded_2169;
-        final LawSpecFast.List<TopicPartition> matched_2170 = value_2168;
-        if (matched_2170.isEmpty()) {
-          value_2167 = true;
+        boolean value_2629;
+        LawSpecFast.List<TopicPartition> value_2630;
+        final LawSpecFast.List<TopicPartition> lawspecfieldadded_2631 = st_2622.added;
+        value_2630 = lawspecfieldadded_2631;
+        final LawSpecFast.List<TopicPartition> matched_2632 = value_2630;
+        if (matched_2632.isEmpty()) {
+          value_2629 = true;
         } else {
-          value_2167 = false;
+          value_2629 = false;
         }
-        boolean logic_2173;
-        if (value_2167) {
-          boolean value_2171;
-          final boolean lawspecfieldoffsetssent_2172 = st_2160.offsetsSent;
-          value_2171 = lawspecfieldoffsetssent_2172;
-          logic_2173 = !(value_2171);
-        } else { logic_2173 = false; }
-        if (logic_2173) {
-          TransactionState value_2174;
-          final boolean replacement_2175 = false;
-          TransactionState value_2176;
-          final LawSpecFast.List<TopicPartition> replacement_2177 = LawSpecFast.List.<TopicPartition>nil();
-          TransactionState value_2178;
-          final boolean replacement_2179 = false;
-          final String lawspecfieldtransactionalid_2180 = st_2160.transactionalId;
-          final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2181 = st_2160.producer;
-          final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2182 = st_2160.txnSequences;
-          final LawSpecFast.List<TopicPartition> lawspecfieldadded_2183 = st_2160.added;
-          final boolean lawspecfieldoffsetssent_2184 = st_2160.offsetsSent;
-          value_2178 = new TransactionState(lawspecfieldtransactionalid_2180, lawspecfieldproducer_2181, lawspecfieldtxnsequences_2182, replacement_2179, lawspecfieldadded_2183, lawspecfieldoffsetssent_2184);
-          final TransactionState matched_2185 = value_2178;
-          final String lawspecfieldtransactionalid_2186 = matched_2185.transactionalId;
-          final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2187 = matched_2185.producer;
-          final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2188 = matched_2185.txnSequences;
-          final boolean lawspecfieldintransaction_2189 = matched_2185.inTransaction;
-          final boolean lawspecfieldoffsetssent_2190 = matched_2185.offsetsSent;
-          value_2176 = new TransactionState(lawspecfieldtransactionalid_2186, lawspecfieldproducer_2187, lawspecfieldtxnsequences_2188, lawspecfieldintransaction_2189, replacement_2177, lawspecfieldoffsetssent_2190);
-          final TransactionState matched_2191 = value_2176;
-          final String lawspecfieldtransactionalid_2192 = matched_2191.transactionalId;
-          final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2193 = matched_2191.producer;
-          final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2194 = matched_2191.txnSequences;
-          final boolean lawspecfieldintransaction_2195 = matched_2191.inTransaction;
-          final LawSpecFast.List<TopicPartition> lawspecfieldadded_2196 = matched_2191.added;
-          value_2174 = new TransactionState(lawspecfieldtransactionalid_2192, lawspecfieldproducer_2193, lawspecfieldtxnsequences_2194, lawspecfieldintransaction_2195, lawspecfieldadded_2196, replacement_2175);
-          return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), value_2174);
+        boolean logic_2635;
+        if (value_2629) {
+          boolean value_2633;
+          final boolean lawspecfieldoffsetssent_2634 = st_2622.offsetsSent;
+          value_2633 = lawspecfieldoffsetssent_2634;
+          logic_2635 = !(value_2633);
+        } else { logic_2635 = false; }
+        if (logic_2635) {
+          TransactionState value_2636;
+          final boolean replacement_2637 = false;
+          TransactionState value_2638;
+          final LawSpecFast.List<TopicPartition> replacement_2639 = LawSpecFast.List.<TopicPartition>nil();
+          TransactionState value_2640;
+          final boolean replacement_2641 = false;
+          final String lawspecfieldtransactionalid_2642 = st_2622.transactionalId;
+          final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2643 = st_2622.producer;
+          final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2644 = st_2622.txnSequences;
+          final LawSpecFast.List<TopicPartition> lawspecfieldadded_2645 = st_2622.added;
+          final boolean lawspecfieldoffsetssent_2646 = st_2622.offsetsSent;
+          value_2640 = new TransactionState(lawspecfieldtransactionalid_2642, lawspecfieldproducer_2643, lawspecfieldtxnsequences_2644, replacement_2641, lawspecfieldadded_2645, lawspecfieldoffsetssent_2646);
+          final TransactionState matched_2647 = value_2640;
+          final String lawspecfieldtransactionalid_2648 = matched_2647.transactionalId;
+          final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2649 = matched_2647.producer;
+          final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2650 = matched_2647.txnSequences;
+          final boolean lawspecfieldintransaction_2651 = matched_2647.inTransaction;
+          final boolean lawspecfieldoffsetssent_2652 = matched_2647.offsetsSent;
+          value_2638 = new TransactionState(lawspecfieldtransactionalid_2648, lawspecfieldproducer_2649, lawspecfieldtxnsequences_2650, lawspecfieldintransaction_2651, replacement_2639, lawspecfieldoffsetssent_2652);
+          final TransactionState matched_2653 = value_2638;
+          final String lawspecfieldtransactionalid_2654 = matched_2653.transactionalId;
+          final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2655 = matched_2653.producer;
+          final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2656 = matched_2653.txnSequences;
+          final boolean lawspecfieldintransaction_2657 = matched_2653.inTransaction;
+          final LawSpecFast.List<TopicPartition> lawspecfieldadded_2658 = matched_2653.added;
+          value_2636 = new TransactionState(lawspecfieldtransactionalid_2654, lawspecfieldproducer_2655, lawspecfieldtxnsequences_2656, lawspecfieldintransaction_2657, lawspecfieldadded_2658, replacement_2637);
+          return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), value_2636);
         } else {
-          LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2197;
-          LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2198;
+          LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2659;
+          LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2660;
           try {
-            String value_2199;
-            final String lawspecfieldtransactionalid_2200 = st_2160.transactionalId;
-            value_2199 = lawspecfieldtransactionalid_2200;
-            long value_2201;
-            final long lawspecfieldproducerid_2202 = id_2164.producerId;
-            value_2201 = lawspecfieldproducerid_2202;
-            long value_2203;
-            final long lawspecfieldproducerepoch_2204 = id_2164.producerEpoch;
-            value_2203 = lawspecfieldproducerepoch_2204;
-            attempted_2198 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__endTxnRequest(symbols, LawSpecFast.TEXT.encode(value_2199), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2201), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2203), LawSpecFast.BOOL.encode(commit_2159))));
+            String value_2661;
+            final String lawspecfieldtransactionalid_2662 = st_2622.transactionalId;
+            value_2661 = lawspecfieldtransactionalid_2662;
+            long value_2663;
+            final long lawspecfieldproducerid_2664 = v_lawspecselection0x0_2626.producerId;
+            value_2663 = lawspecfieldproducerid_2664;
+            long value_2665;
+            final long lawspecfieldproducerepoch_2666 = v_lawspecselection0x0_2626.producerEpoch;
+            value_2665 = lawspecfieldproducerepoch_2666;
+            attempted_2660 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__endTxnRequest(symbols, LawSpecFast.TEXT.encode(value_2661), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2663), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2665), LawSpecFast.BOOL.encode(commit_2621))));
           } catch (LawSpecRuntime.Failure failure) {
             if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-            attempted_2198 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+            attempted_2660 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
           }
-          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2205 = attempted_2198;
-          if (matched_2205.isLeft()) {
-            final KafkaError lawspecfailure_2206 = matched_2205.left();
-            value_2197 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2206);
+          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2667 = attempted_2660;
+          if (matched_2667.isLeft()) {
+            final KafkaError lawspecfailure_2668 = matched_2667.left();
+            value_2659 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2668);
           } else {
-            final LawSpecFast.Unit lawspecvalue_2207 = matched_2205.right();
-            value_2197 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2207);
+            final LawSpecFast.Unit lawspecvalue_2669 = matched_2667.right();
+            value_2659 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2669);
           }
-          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2208 = value_2197;
-          if (matched_2208.isLeft()) {
-            final KafkaError e_2209 = matched_2208.left();
-            return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(e_2209), st_2160);
+          final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> it_2670 = value_2659;
+          if (it_2670.isLeft()) {
+            final KafkaError v_match__lawspecselection0x0_0_2671 = it_2670.left();
+            return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(v_match__lawspecselection0x0_0_2671), st_2622);
           } else {
-            TransactionState value_2210;
-            final boolean replacement_2211 = false;
-            TransactionState value_2212;
-            final LawSpecFast.List<TopicPartition> replacement_2213 = LawSpecFast.List.<TopicPartition>nil();
-            TransactionState value_2214;
-            final boolean replacement_2215 = false;
-            final String lawspecfieldtransactionalid_2216 = st_2160.transactionalId;
-            final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2217 = st_2160.producer;
-            final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2218 = st_2160.txnSequences;
-            final LawSpecFast.List<TopicPartition> lawspecfieldadded_2219 = st_2160.added;
-            final boolean lawspecfieldoffsetssent_2220 = st_2160.offsetsSent;
-            value_2214 = new TransactionState(lawspecfieldtransactionalid_2216, lawspecfieldproducer_2217, lawspecfieldtxnsequences_2218, replacement_2215, lawspecfieldadded_2219, lawspecfieldoffsetssent_2220);
-            final TransactionState matched_2221 = value_2214;
-            final String lawspecfieldtransactionalid_2222 = matched_2221.transactionalId;
-            final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2223 = matched_2221.producer;
-            final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2224 = matched_2221.txnSequences;
-            final boolean lawspecfieldintransaction_2225 = matched_2221.inTransaction;
-            final boolean lawspecfieldoffsetssent_2226 = matched_2221.offsetsSent;
-            value_2212 = new TransactionState(lawspecfieldtransactionalid_2222, lawspecfieldproducer_2223, lawspecfieldtxnsequences_2224, lawspecfieldintransaction_2225, replacement_2213, lawspecfieldoffsetssent_2226);
-            final TransactionState matched_2227 = value_2212;
-            final String lawspecfieldtransactionalid_2228 = matched_2227.transactionalId;
-            final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2229 = matched_2227.producer;
-            final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2230 = matched_2227.txnSequences;
-            final boolean lawspecfieldintransaction_2231 = matched_2227.inTransaction;
-            final LawSpecFast.List<TopicPartition> lawspecfieldadded_2232 = matched_2227.added;
-            value_2210 = new TransactionState(lawspecfieldtransactionalid_2228, lawspecfieldproducer_2229, lawspecfieldtxnsequences_2230, lawspecfieldintransaction_2231, lawspecfieldadded_2232, replacement_2211);
-            return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), value_2210);
+            TransactionState value_2672;
+            final boolean replacement_2673 = false;
+            TransactionState value_2674;
+            final LawSpecFast.List<TopicPartition> replacement_2675 = LawSpecFast.List.<TopicPartition>nil();
+            TransactionState value_2676;
+            final boolean replacement_2677 = false;
+            final String lawspecfieldtransactionalid_2678 = st_2622.transactionalId;
+            final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2679 = st_2622.producer;
+            final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2680 = st_2622.txnSequences;
+            final LawSpecFast.List<TopicPartition> lawspecfieldadded_2681 = st_2622.added;
+            final boolean lawspecfieldoffsetssent_2682 = st_2622.offsetsSent;
+            value_2676 = new TransactionState(lawspecfieldtransactionalid_2678, lawspecfieldproducer_2679, lawspecfieldtxnsequences_2680, replacement_2677, lawspecfieldadded_2681, lawspecfieldoffsetssent_2682);
+            final TransactionState matched_2683 = value_2676;
+            final String lawspecfieldtransactionalid_2684 = matched_2683.transactionalId;
+            final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2685 = matched_2683.producer;
+            final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2686 = matched_2683.txnSequences;
+            final boolean lawspecfieldintransaction_2687 = matched_2683.inTransaction;
+            final boolean lawspecfieldoffsetssent_2688 = matched_2683.offsetsSent;
+            value_2674 = new TransactionState(lawspecfieldtransactionalid_2684, lawspecfieldproducer_2685, lawspecfieldtxnsequences_2686, lawspecfieldintransaction_2687, replacement_2675, lawspecfieldoffsetssent_2688);
+            final TransactionState matched_2689 = value_2674;
+            final String lawspecfieldtransactionalid_2690 = matched_2689.transactionalId;
+            final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2691 = matched_2689.producer;
+            final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2692 = matched_2689.txnSequences;
+            final boolean lawspecfieldintransaction_2693 = matched_2689.inTransaction;
+            final LawSpecFast.List<TopicPartition> lawspecfieldadded_2694 = matched_2689.added;
+            value_2672 = new TransactionState(lawspecfieldtransactionalid_2690, lawspecfieldproducer_2691, lawspecfieldtxnsequences_2692, lawspecfieldintransaction_2693, lawspecfieldadded_2694, replacement_2673);
+            return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), value_2672);
           }
         }
       }
     } else {
-      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2160);
+      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2622);
     }
   }
 
   /** lawtwin.kafka::transactionsInit */
-  public static Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, TransactionState> transactionsInit_d69a08bc(java.util.Map<String, Object> symbols, String txid_2233, TransactionState st_2234) {
-    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> value_2235;
-    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> attempted_2236;
+  public static Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, TransactionState> transactionsInit_d69a08bc(java.util.Map<String, Object> symbols, String txid_2695, TransactionState st_2696) {
+    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> value_2697;
+    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> attempted_2698;
     try {
-      attempted_2236 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(ProducerIdAndEpoch.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__initProducerIdRequest(symbols, LawSpecFast.maybe(LawSpecFast.TEXT).encode(LawSpecFast.Maybe.<String>just(txid_2233)))));
+      attempted_2698 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(ProducerIdAndEpoch.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__initProducerIdRequest(symbols, LawSpecFast.maybe(LawSpecFast.TEXT).encode(LawSpecFast.Maybe.<String>just(txid_2695)))));
     } catch (LawSpecRuntime.Failure failure) {
       if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-      attempted_2236 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(KafkaError.CODEC.decode(failure.value));
+      attempted_2698 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(KafkaError.CODEC.decode(failure.value));
     }
-    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_2237 = attempted_2236;
-    if (matched_2237.isLeft()) {
-      final KafkaError lawspecfailure_2238 = matched_2237.left();
-      value_2235 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(lawspecfailure_2238);
+    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_2699 = attempted_2698;
+    if (matched_2699.isLeft()) {
+      final KafkaError lawspecfailure_2700 = matched_2699.left();
+      value_2697 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(lawspecfailure_2700);
     } else {
-      final ProducerIdAndEpoch lawspecvalue_2239 = matched_2237.right();
-      value_2235 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(lawspecvalue_2239);
+      final ProducerIdAndEpoch lawspecvalue_2701 = matched_2699.right();
+      value_2697 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(lawspecvalue_2701);
     }
-    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_2240 = value_2235;
-    if (matched_2240.isLeft()) {
-      final KafkaError e_2241 = matched_2240.left();
-      return new Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, TransactionState>(LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(e_2241), st_2234);
+    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> it_2702 = value_2697;
+    if (it_2702.isLeft()) {
+      final KafkaError v_lawspecselection0x0_2703 = it_2702.left();
+      return new Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, TransactionState>(LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(v_lawspecselection0x0_2703), st_2696);
     } else {
-      final ProducerIdAndEpoch pe_2242 = matched_2240.right();
-      return new Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, TransactionState>(LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(pe_2242), new TransactionState(txid_2233, LawSpecFast.Maybe.<ProducerIdAndEpoch>just(pe_2242), keyValOf(LawSpecFast.List.<Entry<TopicPartition, Long>>nil()), false, LawSpecFast.List.<TopicPartition>nil(), false));
+      final ProducerIdAndEpoch v_lawspecselection0x0_2704 = it_2702.right();
+      TransactionState value_2705;
+      final String v_lawspecrecordfield0_2706 = txid_2695;
+      final LawSpecFast.Maybe<ProducerIdAndEpoch> v_lawspecrecordfield1_2707 = LawSpecFast.Maybe.<ProducerIdAndEpoch>just(v_lawspecselection0x0_2704);
+      final LawSpecFast.Map<TopicPartition, Long> v_lawspecrecordfield2_2708 = keyValOf(LawSpecFast.List.<Entry<TopicPartition, Long>>nil());
+      final boolean v_lawspecrecordfield3_2709 = false;
+      final LawSpecFast.List<TopicPartition> v_lawspecrecordfield4_2710 = LawSpecFast.List.<TopicPartition>nil();
+      final boolean v_lawspecrecordfield5_2711 = false;
+      value_2705 = new TransactionState(v_lawspecrecordfield0_2706, v_lawspecrecordfield1_2707, v_lawspecrecordfield2_2708, v_lawspecrecordfield3_2709, v_lawspecrecordfield4_2710, v_lawspecrecordfield5_2711);
+      return new Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, TransactionState>(LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(v_lawspecselection0x0_2704), value_2705);
     }
   }
 
   /** lawtwin.kafka::transactionsOffsets */
-  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> transactionsOffsets_b33ea106(java.util.Map<String, Object> symbols, String g_2243, LawSpecFast.List<OffsetEntry> offsets_2244, TransactionState st_2245) {
-    LawSpecFast.Maybe<ProducerIdAndEpoch> value_2246;
-    final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2247 = st_2245.producer;
-    value_2246 = lawspecfieldproducer_2247;
-    final LawSpecFast.Maybe<ProducerIdAndEpoch> matched_2248 = value_2246;
-    if (matched_2248.isJust()) {
-      final ProducerIdAndEpoch id_2249 = matched_2248.get();
-      boolean value_2250;
-      final boolean lawspecfieldintransaction_2251 = st_2245.inTransaction;
-      value_2250 = lawspecfieldintransaction_2251;
-      if (!(value_2250)) {
-        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2245);
+  public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> transactionsOffsets_b33ea106(java.util.Map<String, Object> symbols, String g_2712, LawSpecFast.List<OffsetEntry> offsets_2713, TransactionState st_2714) {
+    LawSpecFast.Maybe<ProducerIdAndEpoch> value_2715;
+    final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2716 = st_2714.producer;
+    value_2715 = lawspecfieldproducer_2716;
+    final LawSpecFast.Maybe<ProducerIdAndEpoch> it_2717 = value_2715;
+    if (it_2717.isJust()) {
+      final ProducerIdAndEpoch v_lawspecselection0x0_2718 = it_2717.get();
+      boolean value_2719;
+      final boolean lawspecfieldintransaction_2720 = st_2714.inTransaction;
+      value_2719 = lawspecfieldintransaction_2720;
+      if (!(value_2719)) {
+        return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2714);
       } else {
-        LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2252;
-        LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2253;
+        LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2721;
+        LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2722;
         try {
-          String value_2254;
-          final String lawspecfieldtransactionalid_2255 = st_2245.transactionalId;
-          value_2254 = lawspecfieldtransactionalid_2255;
-          long value_2256;
-          final long lawspecfieldproducerid_2257 = id_2249.producerId;
-          value_2256 = lawspecfieldproducerid_2257;
-          long value_2258;
-          final long lawspecfieldproducerepoch_2259 = id_2249.producerEpoch;
-          value_2258 = lawspecfieldproducerepoch_2259;
-          attempted_2253 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__txnOffsetCommitRequest(symbols, LawSpecFast.TEXT.encode(value_2254), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2256), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2258), LawSpecFast.TEXT.encode(g_2243), LawSpecFast.list(OffsetEntry.CODEC).encode(offsets_2244))));
+          String value_2723;
+          final String lawspecfieldtransactionalid_2724 = st_2714.transactionalId;
+          value_2723 = lawspecfieldtransactionalid_2724;
+          long value_2725;
+          final long lawspecfieldproducerid_2726 = v_lawspecselection0x0_2718.producerId;
+          value_2725 = lawspecfieldproducerid_2726;
+          long value_2727;
+          final long lawspecfieldproducerepoch_2728 = v_lawspecselection0x0_2718.producerEpoch;
+          value_2727 = lawspecfieldproducerepoch_2728;
+          attempted_2722 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__txnOffsetCommitRequest(symbols, LawSpecFast.TEXT.encode(value_2723), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2725), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2727), LawSpecFast.TEXT.encode(g_2712), LawSpecFast.list(OffsetEntry.CODEC).encode(offsets_2713))));
         } catch (LawSpecRuntime.Failure failure) {
           if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-          attempted_2253 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+          attempted_2722 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
         }
-        final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2260 = attempted_2253;
-        if (matched_2260.isLeft()) {
-          final KafkaError lawspecfailure_2261 = matched_2260.left();
-          value_2252 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2261);
+        final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2729 = attempted_2722;
+        if (matched_2729.isLeft()) {
+          final KafkaError lawspecfailure_2730 = matched_2729.left();
+          value_2721 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2730);
         } else {
-          final LawSpecFast.Unit lawspecvalue_2262 = matched_2260.right();
-          value_2252 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2262);
+          final LawSpecFast.Unit lawspecvalue_2731 = matched_2729.right();
+          value_2721 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2731);
         }
-        final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2263 = value_2252;
-        if (matched_2263.isLeft()) {
-          final KafkaError e_2264 = matched_2263.left();
-          return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(e_2264), st_2245);
+        final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> it_2732 = value_2721;
+        if (it_2732.isLeft()) {
+          final KafkaError v_match__lawspecselection0x0_0_2733 = it_2732.left();
+          return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(v_match__lawspecselection0x0_0_2733), st_2714);
         } else {
-          TransactionState value_2265;
-          final boolean replacement_2266 = true;
-          final String lawspecfieldtransactionalid_2267 = st_2245.transactionalId;
-          final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2268 = st_2245.producer;
-          final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2269 = st_2245.txnSequences;
-          final boolean lawspecfieldintransaction_2270 = st_2245.inTransaction;
-          final LawSpecFast.List<TopicPartition> lawspecfieldadded_2271 = st_2245.added;
-          value_2265 = new TransactionState(lawspecfieldtransactionalid_2267, lawspecfieldproducer_2268, lawspecfieldtxnsequences_2269, lawspecfieldintransaction_2270, lawspecfieldadded_2271, replacement_2266);
-          return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), value_2265);
+          TransactionState value_2734;
+          final boolean replacement_2735 = true;
+          final String lawspecfieldtransactionalid_2736 = st_2714.transactionalId;
+          final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2737 = st_2714.producer;
+          final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2738 = st_2714.txnSequences;
+          final boolean lawspecfieldintransaction_2739 = st_2714.inTransaction;
+          final LawSpecFast.List<TopicPartition> lawspecfieldadded_2740 = st_2714.added;
+          value_2734 = new TransactionState(lawspecfieldtransactionalid_2736, lawspecfieldproducer_2737, lawspecfieldtxnsequences_2738, lawspecfieldintransaction_2739, lawspecfieldadded_2740, replacement_2735);
+          return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.Unit.UNIT), value_2734);
         }
       }
     } else {
-      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2245);
+      return new Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState>(LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.IllegalState), st_2714);
     }
   }
 
   /** lawtwin.kafka::transactionsSend */
-  public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, TransactionState> transactionsSend_558d813c(java.util.Map<String, Object> symbols, ProducerRecord pr_2272, TransactionState st_2273) {
-    String value_2274;
-    final String lawspecfielddestination_2275 = pr_2272.destination;
-    value_2274 = lawspecfielddestination_2275;
-    PartitionChoice value_2276;
-    final PartitionChoice lawspecfieldchoice_2277 = pr_2272.choice;
-    value_2276 = lawspecfieldchoice_2277;
-    Record value_2278;
-    final Record lawspecfieldpayload_2279 = pr_2272.payload;
-    value_2278 = lawspecfieldpayload_2279;
-    final LawSpecFast.Either<KafkaError, TopicPartition> matched_2280 = partitionOf_343af5ef(symbols, value_2274, value_2276, value_2278);
-    if (matched_2280.isLeft()) {
-      final KafkaError e_2281 = matched_2280.left();
-      return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, TransactionState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(e_2281), st_2273);
+  public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, TransactionState> transactionsSend_558d813c(java.util.Map<String, Object> symbols, ProducerRecord pr_2741, TransactionState st_2742) {
+    String value_2743;
+    final String lawspecfielddestination_2744 = pr_2741.destination;
+    value_2743 = lawspecfielddestination_2744;
+    PartitionChoice value_2745;
+    final PartitionChoice lawspecfieldchoice_2746 = pr_2741.choice;
+    value_2745 = lawspecfieldchoice_2746;
+    Record value_2747;
+    final Record lawspecfieldpayload_2748 = pr_2741.payload;
+    value_2747 = lawspecfieldpayload_2748;
+    final LawSpecFast.Either<KafkaError, TopicPartition> it_2749 = partitionOf_343af5ef(symbols, value_2743, value_2745, value_2747);
+    if (it_2749.isLeft()) {
+      final KafkaError v_lawspecselection0x0_2750 = it_2749.left();
+      return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, TransactionState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(v_lawspecselection0x0_2750), st_2742);
     } else {
-      final TopicPartition tp_2282 = matched_2280.right();
-      final Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> a_2283 = transactionsAdd_1f41c92e(symbols, LawSpecFast.List.<TopicPartition>cons(tp_2282, LawSpecFast.List.<TopicPartition>nil()), st_2273);
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2284;
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> lawspecfieldfirst_2285 = a_2283.first;
-      value_2284 = lawspecfieldfirst_2285;
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2286 = value_2284;
-      if (matched_2286.isLeft()) {
-        final KafkaError e_2287 = matched_2286.left();
-        TransactionState value_2288;
-        final TransactionState lawspecfieldsecond_2289 = a_2283.second;
-        value_2288 = lawspecfieldsecond_2289;
-        return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, TransactionState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(e_2287), value_2288);
+      final TopicPartition v_lawspecselection0x0_2751 = it_2749.right();
+      final Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, TransactionState> a_2752 = transactionsAdd_1f41c92e(symbols, LawSpecFast.List.<TopicPartition>cons(v_lawspecselection0x0_2751, LawSpecFast.List.<TopicPartition>nil()), st_2742);
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2753;
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> lawspecfieldfirst_2754 = a_2752.first;
+      value_2753 = lawspecfieldfirst_2754;
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> it_2755 = value_2753;
+      if (it_2755.isLeft()) {
+        final KafkaError v_match__lawspecselection0x0_0_2756 = it_2755.left();
+        TransactionState value_2757;
+        final TransactionState lawspecfieldsecond_2758 = a_2752.second;
+        value_2757 = lawspecfieldsecond_2758;
+        return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, TransactionState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(v_match__lawspecselection0x0_0_2756), value_2757);
       } else {
-        LawSpecFast.Map<TopicPartition, Long> value_2290;
-        TransactionState value_2291;
-        final TransactionState lawspecfieldsecond_2292 = a_2283.second;
-        value_2291 = lawspecfieldsecond_2292;
-        final TransactionState matched_2293 = value_2291;
-        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2294 = matched_2293.txnSequences;
-        value_2290 = lawspecfieldtxnsequences_2294;
-        final long sequence_2295 = sequenceFor_9d79724c(tp_2282, value_2290);
-        LawSpecFast.Either<KafkaError, Long> value_2296;
-        LawSpecFast.Either<KafkaError, Long> attempted_2297;
+        LawSpecFast.Map<TopicPartition, Long> value_2759;
+        TransactionState value_2760;
+        final TransactionState lawspecfieldsecond_2761 = a_2752.second;
+        value_2760 = lawspecfieldsecond_2761;
+        final TransactionState matched_2762 = value_2760;
+        final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2763 = matched_2762.txnSequences;
+        value_2759 = lawspecfieldtxnsequences_2763;
+        final long sequence_2764 = sequenceFor_9d79724c(v_lawspecselection0x0_2751, value_2759);
+        LawSpecFast.Either<KafkaError, Long> value_2765;
+        LawSpecFast.Either<KafkaError, Long> attempted_2766;
         try {
-          LawSpecFast.Maybe<ProducerIdAndEpoch> value_2298;
-          TransactionState value_2299;
-          final TransactionState lawspecfieldsecond_2300 = a_2283.second;
-          value_2299 = lawspecfieldsecond_2300;
-          final TransactionState matched_2301 = value_2299;
-          final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2302 = matched_2301.producer;
-          value_2298 = lawspecfieldproducer_2302;
-          Record value_2303;
-          final Record lawspecfieldpayload_2304 = pr_2272.payload;
-          value_2303 = lawspecfieldpayload_2304;
-          attempted_2297 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__produceRequest(symbols, TopicPartition.CODEC.encode(tp_2282), LawSpecFast.maybe(ProducerTag.CODEC).encode(tagFor_a88d3846(value_2298, sequence_2295)), LawSpecFast.list(Record.CODEC).encode(LawSpecFast.List.<Record>cons(value_2303, LawSpecFast.List.<Record>nil())))));
+          LawSpecFast.Maybe<ProducerIdAndEpoch> value_2767;
+          TransactionState value_2768;
+          final TransactionState lawspecfieldsecond_2769 = a_2752.second;
+          value_2768 = lawspecfieldsecond_2769;
+          final TransactionState matched_2770 = value_2768;
+          final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2771 = matched_2770.producer;
+          value_2767 = lawspecfieldproducer_2771;
+          Record value_2772;
+          final Record lawspecfieldpayload_2773 = pr_2741.payload;
+          value_2772 = lawspecfieldpayload_2773;
+          attempted_2766 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__produceRequest(symbols, TopicPartition.CODEC.encode(v_lawspecselection0x0_2751), LawSpecFast.maybe(ProducerTag.CODEC).encode(tagFor_a88d3846(value_2767, sequence_2764)), LawSpecFast.list(Record.CODEC).encode(LawSpecFast.List.<Record>cons(value_2772, LawSpecFast.List.<Record>nil())))));
         } catch (LawSpecRuntime.Failure failure) {
           if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-          attempted_2297 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
+          attempted_2766 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
         }
-        final LawSpecFast.Either<KafkaError, Long> matched_2305 = attempted_2297;
-        if (matched_2305.isLeft()) {
-          final KafkaError lawspecfailure_2306 = matched_2305.left();
-          value_2296 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_2306);
+        final LawSpecFast.Either<KafkaError, Long> matched_2774 = attempted_2766;
+        if (matched_2774.isLeft()) {
+          final KafkaError lawspecfailure_2775 = matched_2774.left();
+          value_2765 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_2775);
         } else {
-          final long lawspecvalue_2307 = matched_2305.right();
-          value_2296 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_2307);
+          final long lawspecvalue_2776 = matched_2774.right();
+          value_2765 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_2776);
         }
-        final LawSpecFast.Either<KafkaError, Long> matched_2308 = value_2296;
-        if (matched_2308.isLeft()) {
-          final KafkaError e_2309 = matched_2308.left();
-          TransactionState value_2310;
-          final TransactionState lawspecfieldsecond_2311 = a_2283.second;
-          value_2310 = lawspecfieldsecond_2311;
-          return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, TransactionState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(e_2309), value_2310);
+        final LawSpecFast.Either<KafkaError, Long> it_2777 = value_2765;
+        if (it_2777.isLeft()) {
+          final KafkaError v_match__match__lawspecselection0x0_0_0_2778 = it_2777.left();
+          TransactionState value_2779;
+          final TransactionState lawspecfieldsecond_2780 = a_2752.second;
+          value_2779 = lawspecfieldsecond_2780;
+          return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, TransactionState>(LawSpecFast.Either.<KafkaError, RecordMetadata>left(v_match__match__lawspecselection0x0_0_0_2778), value_2779);
         } else {
-          final long offset_2312 = matched_2308.right();
-          TransactionState value_2313;
-          LawSpecFast.Map<TopicPartition, Long> value_2314;
-          TransactionState value_2315;
-          final TransactionState lawspecfieldsecond_2316 = a_2283.second;
-          value_2315 = lawspecfieldsecond_2316;
-          final TransactionState matched_2317 = value_2315;
-          final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2318 = matched_2317.txnSequences;
-          value_2314 = lawspecfieldtxnsequences_2318;
-          final LawSpecFast.Map<TopicPartition, Long> replacement_2319 = value_2314.put(tp_2282, saturatingInt32_9e8d3b43(java.math.BigInteger.valueOf(sequence_2295).add(java.math.BigInteger.valueOf(1L))));
-          TransactionState value_2320;
-          final TransactionState lawspecfieldsecond_2321 = a_2283.second;
-          value_2320 = lawspecfieldsecond_2321;
-          final TransactionState matched_2322 = value_2320;
-          final String lawspecfieldtransactionalid_2323 = matched_2322.transactionalId;
-          final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2324 = matched_2322.producer;
-          final boolean lawspecfieldintransaction_2325 = matched_2322.inTransaction;
-          final LawSpecFast.List<TopicPartition> lawspecfieldadded_2326 = matched_2322.added;
-          final boolean lawspecfieldoffsetssent_2327 = matched_2322.offsetsSent;
-          value_2313 = new TransactionState(lawspecfieldtransactionalid_2323, lawspecfieldproducer_2324, replacement_2319, lawspecfieldintransaction_2325, lawspecfieldadded_2326, lawspecfieldoffsetssent_2327);
-          return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, TransactionState>(LawSpecFast.Either.<KafkaError, RecordMetadata>right(new RecordMetadata(tp_2282, offset_2312)), value_2313);
+          final long v_match__match__lawspecselection0x0_0_0_2781 = it_2777.right();
+          RecordMetadata value_2782;
+          final TopicPartition v_lawspecrecordfield0_2783 = v_lawspecselection0x0_2751;
+          final long v_lawspecrecordfield1_2784 = v_match__match__lawspecselection0x0_0_0_2781;
+          value_2782 = new RecordMetadata(v_lawspecrecordfield0_2783, v_lawspecrecordfield1_2784);
+          TransactionState value_2785;
+          LawSpecFast.Map<TopicPartition, Long> value_2786;
+          TransactionState value_2787;
+          final TransactionState lawspecfieldsecond_2788 = a_2752.second;
+          value_2787 = lawspecfieldsecond_2788;
+          final TransactionState matched_2789 = value_2787;
+          final LawSpecFast.Map<TopicPartition, Long> lawspecfieldtxnsequences_2790 = matched_2789.txnSequences;
+          value_2786 = lawspecfieldtxnsequences_2790;
+          final LawSpecFast.Map<TopicPartition, Long> replacement_2791 = value_2786.put(v_lawspecselection0x0_2751, saturatingInt32_9e8d3b43(java.math.BigInteger.valueOf(sequence_2764).add(java.math.BigInteger.valueOf(1L))));
+          TransactionState value_2792;
+          final TransactionState lawspecfieldsecond_2793 = a_2752.second;
+          value_2792 = lawspecfieldsecond_2793;
+          final TransactionState matched_2794 = value_2792;
+          final String lawspecfieldtransactionalid_2795 = matched_2794.transactionalId;
+          final LawSpecFast.Maybe<ProducerIdAndEpoch> lawspecfieldproducer_2796 = matched_2794.producer;
+          final boolean lawspecfieldintransaction_2797 = matched_2794.inTransaction;
+          final LawSpecFast.List<TopicPartition> lawspecfieldadded_2798 = matched_2794.added;
+          final boolean lawspecfieldoffsetssent_2799 = matched_2794.offsetsSent;
+          value_2785 = new TransactionState(lawspecfieldtransactionalid_2795, lawspecfieldproducer_2796, replacement_2791, lawspecfieldintransaction_2797, lawspecfieldadded_2798, lawspecfieldoffsetssent_2799);
+          return new Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, TransactionState>(LawSpecFast.Either.<KafkaError, RecordMetadata>right(value_2782), value_2785);
         }
       }
     }
   }
 
   /** lawtwin.kafka::uncommittedFrom */
-  public static LawSpecFast.List<Record> uncommittedFrom_8a57847d(java.util.Map<String, Object> symbols, TopicPartition tp_2328, long offset_2329) {
-    return readFrom_f028a48d(symbols, tp_2328, offset_2329, IsolationLevel.ReadUncommitted);
+  public static LawSpecFast.List<Record> uncommittedFrom_8a57847d(java.util.Map<String, Object> symbols, TopicPartition tp_2800, long offset_2801) {
+    return readFrom_f028a48d(symbols, tp_2800, offset_2801, IsolationLevel.ReadUncommitted);
   }
 
   /** lawtwin.kafka::viewOf */
-  public static LawSpecFast.List<TopicPartition> viewOf_6e11c6f7(String m_2330, GroupView view_2331) {
-    LawSpecFast.List<MemberAssignment> value_2332;
-    final LawSpecFast.List<MemberAssignment> lawspecfieldmembers_2333 = view_2331.members;
-    value_2332 = lawspecfieldmembers_2333;
-    return assignmentIn_4b795225(m_2330, value_2332);
+  public static LawSpecFast.List<TopicPartition> viewOf_6e11c6f7(String m_2802, GroupView view_2803) {
+    LawSpecFast.List<MemberAssignment> value_2804;
+    final LawSpecFast.List<MemberAssignment> lawspecfieldmembers_2805 = view_2803.members;
+    value_2804 = lawspecfieldmembers_2805;
+    return assignmentIn_4b795225(m_2802, value_2804);
   }
 
   /** lawtwin.kafka::withAssignment */
-  public static ConsumerState withAssignment_7d6291b1(LawSpecFast.Maybe<String> g_2334, String m_2335, long gen_2336, LawSpecFast.List<String> topics_2337, LawSpecFast.List<TopicPartition> tps_2338, ConsumerState c_2339) {
-    LawSpecFast.Map<TopicPartition, Long> value_2340;
-    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2341 = c_2339.positions;
-    value_2340 = lawspecfieldpositions_2341;
-    final LawSpecFast.Map<TopicPartition, Long> replacement_2342 = keepPositions_f10bd26f(tps_2338, value_2340, keyValOf(LawSpecFast.List.<Entry<TopicPartition, Long>>nil()));
-    ConsumerState value_2343;
-    final LawSpecFast.List<TopicPartition> replacement_2344 = tps_2338;
-    ConsumerState value_2345;
-    final LawSpecFast.List<String> replacement_2346 = topics_2337;
-    ConsumerState value_2347;
-    final long replacement_2348 = gen_2336;
-    ConsumerState value_2349;
-    final String replacement_2350 = m_2335;
-    ConsumerState value_2351;
-    final LawSpecFast.Maybe<String> replacement_2352 = g_2334;
-    final String lawspecfieldmember_2353 = c_2339.member;
-    final long lawspecfieldgeneration_2354 = c_2339.generation;
-    final LawSpecFast.List<String> lawspecfieldsubscription_2355 = c_2339.subscription;
-    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_2356 = c_2339.assigned;
-    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2357 = c_2339.positions;
-    final IsolationLevel lawspecfieldisolation_2358 = c_2339.isolation;
-    value_2351 = new ConsumerState(replacement_2352, lawspecfieldmember_2353, lawspecfieldgeneration_2354, lawspecfieldsubscription_2355, lawspecfieldassigned_2356, lawspecfieldpositions_2357, lawspecfieldisolation_2358);
-    final ConsumerState matched_2359 = value_2351;
-    final LawSpecFast.Maybe<String> lawspecfieldgroup_2360 = matched_2359.group;
-    final long lawspecfieldgeneration_2361 = matched_2359.generation;
-    final LawSpecFast.List<String> lawspecfieldsubscription_2362 = matched_2359.subscription;
-    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_2363 = matched_2359.assigned;
-    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2364 = matched_2359.positions;
-    final IsolationLevel lawspecfieldisolation_2365 = matched_2359.isolation;
-    value_2349 = new ConsumerState(lawspecfieldgroup_2360, replacement_2350, lawspecfieldgeneration_2361, lawspecfieldsubscription_2362, lawspecfieldassigned_2363, lawspecfieldpositions_2364, lawspecfieldisolation_2365);
-    final ConsumerState matched_2366 = value_2349;
-    final LawSpecFast.Maybe<String> lawspecfieldgroup_2367 = matched_2366.group;
-    final String lawspecfieldmember_2368 = matched_2366.member;
-    final LawSpecFast.List<String> lawspecfieldsubscription_2369 = matched_2366.subscription;
-    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_2370 = matched_2366.assigned;
-    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2371 = matched_2366.positions;
-    final IsolationLevel lawspecfieldisolation_2372 = matched_2366.isolation;
-    value_2347 = new ConsumerState(lawspecfieldgroup_2367, lawspecfieldmember_2368, replacement_2348, lawspecfieldsubscription_2369, lawspecfieldassigned_2370, lawspecfieldpositions_2371, lawspecfieldisolation_2372);
-    final ConsumerState matched_2373 = value_2347;
-    final LawSpecFast.Maybe<String> lawspecfieldgroup_2374 = matched_2373.group;
-    final String lawspecfieldmember_2375 = matched_2373.member;
-    final long lawspecfieldgeneration_2376 = matched_2373.generation;
-    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_2377 = matched_2373.assigned;
-    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2378 = matched_2373.positions;
-    final IsolationLevel lawspecfieldisolation_2379 = matched_2373.isolation;
-    value_2345 = new ConsumerState(lawspecfieldgroup_2374, lawspecfieldmember_2375, lawspecfieldgeneration_2376, replacement_2346, lawspecfieldassigned_2377, lawspecfieldpositions_2378, lawspecfieldisolation_2379);
-    final ConsumerState matched_2380 = value_2345;
-    final LawSpecFast.Maybe<String> lawspecfieldgroup_2381 = matched_2380.group;
-    final String lawspecfieldmember_2382 = matched_2380.member;
-    final long lawspecfieldgeneration_2383 = matched_2380.generation;
-    final LawSpecFast.List<String> lawspecfieldsubscription_2384 = matched_2380.subscription;
-    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2385 = matched_2380.positions;
-    final IsolationLevel lawspecfieldisolation_2386 = matched_2380.isolation;
-    value_2343 = new ConsumerState(lawspecfieldgroup_2381, lawspecfieldmember_2382, lawspecfieldgeneration_2383, lawspecfieldsubscription_2384, replacement_2344, lawspecfieldpositions_2385, lawspecfieldisolation_2386);
-    final ConsumerState matched_2387 = value_2343;
-    final LawSpecFast.Maybe<String> lawspecfieldgroup_2388 = matched_2387.group;
-    final String lawspecfieldmember_2389 = matched_2387.member;
-    final long lawspecfieldgeneration_2390 = matched_2387.generation;
-    final LawSpecFast.List<String> lawspecfieldsubscription_2391 = matched_2387.subscription;
-    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_2392 = matched_2387.assigned;
-    final IsolationLevel lawspecfieldisolation_2393 = matched_2387.isolation;
-    return new ConsumerState(lawspecfieldgroup_2388, lawspecfieldmember_2389, lawspecfieldgeneration_2390, lawspecfieldsubscription_2391, lawspecfieldassigned_2392, replacement_2342, lawspecfieldisolation_2393);
+  public static ConsumerState withAssignment_7d6291b1(LawSpecFast.Maybe<String> g_2806, String m_2807, long gen_2808, LawSpecFast.List<String> topics_2809, LawSpecFast.List<TopicPartition> tps_2810, ConsumerState c_2811) {
+    LawSpecFast.Map<TopicPartition, Long> value_2812;
+    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2813 = c_2811.positions;
+    value_2812 = lawspecfieldpositions_2813;
+    final LawSpecFast.Map<TopicPartition, Long> replacement_2814 = keepPositions_f10bd26f(tps_2810, value_2812, keyValOf(LawSpecFast.List.<Entry<TopicPartition, Long>>nil()));
+    ConsumerState value_2815;
+    final LawSpecFast.List<TopicPartition> replacement_2816 = tps_2810;
+    ConsumerState value_2817;
+    final LawSpecFast.List<String> replacement_2818 = topics_2809;
+    ConsumerState value_2819;
+    final long replacement_2820 = gen_2808;
+    ConsumerState value_2821;
+    final String replacement_2822 = m_2807;
+    ConsumerState value_2823;
+    final LawSpecFast.Maybe<String> replacement_2824 = g_2806;
+    final String lawspecfieldmember_2825 = c_2811.member;
+    final long lawspecfieldgeneration_2826 = c_2811.generation;
+    final LawSpecFast.List<String> lawspecfieldsubscription_2827 = c_2811.subscription;
+    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_2828 = c_2811.assigned;
+    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2829 = c_2811.positions;
+    final IsolationLevel lawspecfieldisolation_2830 = c_2811.isolation;
+    value_2823 = new ConsumerState(replacement_2824, lawspecfieldmember_2825, lawspecfieldgeneration_2826, lawspecfieldsubscription_2827, lawspecfieldassigned_2828, lawspecfieldpositions_2829, lawspecfieldisolation_2830);
+    final ConsumerState matched_2831 = value_2823;
+    final LawSpecFast.Maybe<String> lawspecfieldgroup_2832 = matched_2831.group;
+    final long lawspecfieldgeneration_2833 = matched_2831.generation;
+    final LawSpecFast.List<String> lawspecfieldsubscription_2834 = matched_2831.subscription;
+    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_2835 = matched_2831.assigned;
+    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2836 = matched_2831.positions;
+    final IsolationLevel lawspecfieldisolation_2837 = matched_2831.isolation;
+    value_2821 = new ConsumerState(lawspecfieldgroup_2832, replacement_2822, lawspecfieldgeneration_2833, lawspecfieldsubscription_2834, lawspecfieldassigned_2835, lawspecfieldpositions_2836, lawspecfieldisolation_2837);
+    final ConsumerState matched_2838 = value_2821;
+    final LawSpecFast.Maybe<String> lawspecfieldgroup_2839 = matched_2838.group;
+    final String lawspecfieldmember_2840 = matched_2838.member;
+    final LawSpecFast.List<String> lawspecfieldsubscription_2841 = matched_2838.subscription;
+    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_2842 = matched_2838.assigned;
+    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2843 = matched_2838.positions;
+    final IsolationLevel lawspecfieldisolation_2844 = matched_2838.isolation;
+    value_2819 = new ConsumerState(lawspecfieldgroup_2839, lawspecfieldmember_2840, replacement_2820, lawspecfieldsubscription_2841, lawspecfieldassigned_2842, lawspecfieldpositions_2843, lawspecfieldisolation_2844);
+    final ConsumerState matched_2845 = value_2819;
+    final LawSpecFast.Maybe<String> lawspecfieldgroup_2846 = matched_2845.group;
+    final String lawspecfieldmember_2847 = matched_2845.member;
+    final long lawspecfieldgeneration_2848 = matched_2845.generation;
+    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_2849 = matched_2845.assigned;
+    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2850 = matched_2845.positions;
+    final IsolationLevel lawspecfieldisolation_2851 = matched_2845.isolation;
+    value_2817 = new ConsumerState(lawspecfieldgroup_2846, lawspecfieldmember_2847, lawspecfieldgeneration_2848, replacement_2818, lawspecfieldassigned_2849, lawspecfieldpositions_2850, lawspecfieldisolation_2851);
+    final ConsumerState matched_2852 = value_2817;
+    final LawSpecFast.Maybe<String> lawspecfieldgroup_2853 = matched_2852.group;
+    final String lawspecfieldmember_2854 = matched_2852.member;
+    final long lawspecfieldgeneration_2855 = matched_2852.generation;
+    final LawSpecFast.List<String> lawspecfieldsubscription_2856 = matched_2852.subscription;
+    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2857 = matched_2852.positions;
+    final IsolationLevel lawspecfieldisolation_2858 = matched_2852.isolation;
+    value_2815 = new ConsumerState(lawspecfieldgroup_2853, lawspecfieldmember_2854, lawspecfieldgeneration_2855, lawspecfieldsubscription_2856, replacement_2816, lawspecfieldpositions_2857, lawspecfieldisolation_2858);
+    final ConsumerState matched_2859 = value_2815;
+    final LawSpecFast.Maybe<String> lawspecfieldgroup_2860 = matched_2859.group;
+    final String lawspecfieldmember_2861 = matched_2859.member;
+    final long lawspecfieldgeneration_2862 = matched_2859.generation;
+    final LawSpecFast.List<String> lawspecfieldsubscription_2863 = matched_2859.subscription;
+    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_2864 = matched_2859.assigned;
+    final IsolationLevel lawspecfieldisolation_2865 = matched_2859.isolation;
+    return new ConsumerState(lawspecfieldgroup_2860, lawspecfieldmember_2861, lawspecfieldgeneration_2862, lawspecfieldsubscription_2863, lawspecfieldassigned_2864, replacement_2814, lawspecfieldisolation_2865);
   }
 
   /** lawtwin.kafka::withPosition */
-  public static ConsumerState withPosition_867e6b19(TopicPartition tp_2394, long offset_2395, ConsumerState c_2396) {
-    LawSpecFast.Map<TopicPartition, Long> value_2397;
-    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2398 = c_2396.positions;
-    value_2397 = lawspecfieldpositions_2398;
-    final LawSpecFast.Map<TopicPartition, Long> replacement_2399 = value_2397.put(tp_2394, offset_2395);
-    final LawSpecFast.Maybe<String> lawspecfieldgroup_2400 = c_2396.group;
-    final String lawspecfieldmember_2401 = c_2396.member;
-    final long lawspecfieldgeneration_2402 = c_2396.generation;
-    final LawSpecFast.List<String> lawspecfieldsubscription_2403 = c_2396.subscription;
-    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_2404 = c_2396.assigned;
-    final IsolationLevel lawspecfieldisolation_2405 = c_2396.isolation;
-    return new ConsumerState(lawspecfieldgroup_2400, lawspecfieldmember_2401, lawspecfieldgeneration_2402, lawspecfieldsubscription_2403, lawspecfieldassigned_2404, replacement_2399, lawspecfieldisolation_2405);
+  public static ConsumerState withPosition_867e6b19(TopicPartition tp_2866, long offset_2867, ConsumerState c_2868) {
+    LawSpecFast.Map<TopicPartition, Long> value_2869;
+    final LawSpecFast.Map<TopicPartition, Long> lawspecfieldpositions_2870 = c_2868.positions;
+    value_2869 = lawspecfieldpositions_2870;
+    final LawSpecFast.Map<TopicPartition, Long> replacement_2871 = value_2869.put(tp_2866, offset_2867);
+    final LawSpecFast.Maybe<String> lawspecfieldgroup_2872 = c_2868.group;
+    final String lawspecfieldmember_2873 = c_2868.member;
+    final long lawspecfieldgeneration_2874 = c_2868.generation;
+    final LawSpecFast.List<String> lawspecfieldsubscription_2875 = c_2868.subscription;
+    final LawSpecFast.List<TopicPartition> lawspecfieldassigned_2876 = c_2868.assigned;
+    final IsolationLevel lawspecfieldisolation_2877 = c_2868.isolation;
+    return new ConsumerState(lawspecfieldgroup_2872, lawspecfieldmember_2873, lawspecfieldgeneration_2874, lawspecfieldsubscription_2875, lawspecfieldassigned_2876, replacement_2871, lawspecfieldisolation_2877);
   }
 
   /** lawtwin.kafka::writeAborted */
-  public static LawSpecFast.Maybe<Long> writeAborted_8e3a61e4(java.util.Map<String, Object> symbols, TopicPartition tp_2406, String txid_2407, Record r_2408) {
-    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> value_2409;
-    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> attempted_2410;
+  public static LawSpecFast.Maybe<Long> writeAborted_8e3a61e4(java.util.Map<String, Object> symbols, TopicPartition tp_2878, String txid_2879, Record r_2880) {
+    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> value_2881;
+    LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> attempted_2882;
     try {
-      attempted_2410 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(ProducerIdAndEpoch.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__initProducerIdRequest(symbols, LawSpecFast.maybe(LawSpecFast.TEXT).encode(LawSpecFast.Maybe.<String>just(txid_2407)))));
+      attempted_2882 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(ProducerIdAndEpoch.CODEC.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__initProducerIdRequest(symbols, LawSpecFast.maybe(LawSpecFast.TEXT).encode(LawSpecFast.Maybe.<String>just(txid_2879)))));
     } catch (LawSpecRuntime.Failure failure) {
       if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-      attempted_2410 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(KafkaError.CODEC.decode(failure.value));
+      attempted_2882 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(KafkaError.CODEC.decode(failure.value));
     }
-    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_2411 = attempted_2410;
-    if (matched_2411.isLeft()) {
-      final KafkaError lawspecfailure_2412 = matched_2411.left();
-      value_2409 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(lawspecfailure_2412);
+    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_2883 = attempted_2882;
+    if (matched_2883.isLeft()) {
+      final KafkaError lawspecfailure_2884 = matched_2883.left();
+      value_2881 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>left(lawspecfailure_2884);
     } else {
-      final ProducerIdAndEpoch lawspecvalue_2413 = matched_2411.right();
-      value_2409 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(lawspecvalue_2413);
+      final ProducerIdAndEpoch lawspecvalue_2885 = matched_2883.right();
+      value_2881 = LawSpecFast.Either.<KafkaError, ProducerIdAndEpoch>right(lawspecvalue_2885);
     }
-    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> matched_2414 = value_2409;
-    if (matched_2414.isLeft()) {
+    final LawSpecFast.Either<KafkaError, ProducerIdAndEpoch> it_2886 = value_2881;
+    if (it_2886.isLeft()) {
       return LawSpecFast.Maybe.<Long>nothing();
     } else {
-      final ProducerIdAndEpoch pe_2415 = matched_2414.right();
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2416;
-      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2417;
+      final ProducerIdAndEpoch v_lawspecselection0x0_2887 = it_2886.right();
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2888;
+      LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2889;
       try {
-        long value_2418;
-        final long lawspecfieldproducerid_2419 = pe_2415.producerId;
-        value_2418 = lawspecfieldproducerid_2419;
-        long value_2420;
-        final long lawspecfieldproducerepoch_2421 = pe_2415.producerEpoch;
-        value_2420 = lawspecfieldproducerepoch_2421;
-        attempted_2417 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_2407), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2418), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2420), LawSpecFast.list(TopicPartition.CODEC).encode(LawSpecFast.List.<TopicPartition>cons(tp_2406, LawSpecFast.List.<TopicPartition>nil())))));
+        long value_2890;
+        final long lawspecfieldproducerid_2891 = v_lawspecselection0x0_2887.producerId;
+        value_2890 = lawspecfieldproducerid_2891;
+        long value_2892;
+        final long lawspecfieldproducerepoch_2893 = v_lawspecselection0x0_2887.producerEpoch;
+        value_2892 = lawspecfieldproducerepoch_2893;
+        attempted_2889 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_2879), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2890), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2892), LawSpecFast.list(TopicPartition.CODEC).encode(LawSpecFast.List.<TopicPartition>cons(tp_2878, LawSpecFast.List.<TopicPartition>nil())))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_2417 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+        attempted_2889 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2422 = attempted_2417;
-      if (matched_2422.isLeft()) {
-        final KafkaError lawspecfailure_2423 = matched_2422.left();
-        value_2416 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2423);
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2894 = attempted_2889;
+      if (matched_2894.isLeft()) {
+        final KafkaError lawspecfailure_2895 = matched_2894.left();
+        value_2888 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2895);
       } else {
-        final LawSpecFast.Unit lawspecvalue_2424 = matched_2422.right();
-        value_2416 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2424);
+        final LawSpecFast.Unit lawspecvalue_2896 = matched_2894.right();
+        value_2888 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2896);
       }
-      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> added_2425 = value_2416;
-      LawSpecFast.Either<KafkaError, Long> value_2426;
-      LawSpecFast.Either<KafkaError, Long> attempted_2427;
+      final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> added_2897 = value_2888;
+      LawSpecFast.Either<KafkaError, Long> value_2898;
+      LawSpecFast.Either<KafkaError, Long> attempted_2899;
       try {
-        attempted_2427 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__produceRequest(symbols, TopicPartition.CODEC.encode(tp_2406), LawSpecFast.maybe(ProducerTag.CODEC).encode(LawSpecFast.Maybe.<ProducerTag>just(tagOf_39235de7(pe_2415, 0L))), LawSpecFast.list(Record.CODEC).encode(LawSpecFast.List.<Record>cons(r_2408, LawSpecFast.List.<Record>nil())))));
+        attempted_2899 = LawSpecFast.Either.<KafkaError, Long>right(LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__produceRequest(symbols, TopicPartition.CODEC.encode(tp_2878), LawSpecFast.maybe(ProducerTag.CODEC).encode(LawSpecFast.Maybe.<ProducerTag>just(tagOf_39235de7(v_lawspecselection0x0_2887, 0L))), LawSpecFast.list(Record.CODEC).encode(LawSpecFast.List.<Record>cons(r_2880, LawSpecFast.List.<Record>nil())))));
       } catch (LawSpecRuntime.Failure failure) {
         if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-        attempted_2427 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
+        attempted_2899 = LawSpecFast.Either.<KafkaError, Long>left(KafkaError.CODEC.decode(failure.value));
       }
-      final LawSpecFast.Either<KafkaError, Long> matched_2428 = attempted_2427;
-      if (matched_2428.isLeft()) {
-        final KafkaError lawspecfailure_2429 = matched_2428.left();
-        value_2426 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_2429);
+      final LawSpecFast.Either<KafkaError, Long> matched_2900 = attempted_2899;
+      if (matched_2900.isLeft()) {
+        final KafkaError lawspecfailure_2901 = matched_2900.left();
+        value_2898 = LawSpecFast.Either.<KafkaError, Long>left(lawspecfailure_2901);
       } else {
-        final long lawspecvalue_2430 = matched_2428.right();
-        value_2426 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_2430);
+        final long lawspecvalue_2902 = matched_2900.right();
+        value_2898 = LawSpecFast.Either.<KafkaError, Long>right(lawspecvalue_2902);
       }
-      final LawSpecFast.Either<KafkaError, Long> matched_2431 = value_2426;
-      if (matched_2431.isLeft()) {
+      final LawSpecFast.Either<KafkaError, Long> it_2903 = value_2898;
+      if (it_2903.isLeft()) {
         return LawSpecFast.Maybe.<Long>nothing();
       } else {
-        final long o_2432 = matched_2431.right();
-        LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2433;
-        LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2434;
+        final long v_match__lawspecselection0x0_0_2904 = it_2903.right();
+        LawSpecFast.Either<KafkaError, LawSpecFast.Unit> value_2905;
+        LawSpecFast.Either<KafkaError, LawSpecFast.Unit> attempted_2906;
         try {
-          long value_2435;
-          final long lawspecfieldproducerid_2436 = pe_2415.producerId;
-          value_2435 = lawspecfieldproducerid_2436;
-          long value_2437;
-          final long lawspecfieldproducerepoch_2438 = pe_2415.producerEpoch;
-          value_2437 = lawspecfieldproducerepoch_2438;
-          attempted_2434 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__endTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_2407), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2435), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2437), LawSpecFast.BOOL.encode(false))));
+          long value_2907;
+          final long lawspecfieldproducerid_2908 = v_lawspecselection0x0_2887.producerId;
+          value_2907 = lawspecfieldproducerid_2908;
+          long value_2909;
+          final long lawspecfieldproducerepoch_2910 = v_lawspecselection0x0_2887.producerEpoch;
+          value_2909 = lawspecfieldproducerepoch_2910;
+          attempted_2906 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(LawSpecFast.UNIT.decode(lawspec.runtime.LawSpecDefinitionBodies.typedPerform_lawtwin_kafka__ability__Broker__endTxnRequest(symbols, LawSpecFast.TEXT.encode(txid_2879), LawSpecFast.integer("Int64", Long.MIN_VALUE, 9223372036854775807L).encode(value_2907), LawSpecFast.integer("Int16", -32768L, 32767L).encode(value_2909), LawSpecFast.BOOL.encode(false))));
         } catch (LawSpecRuntime.Failure failure) {
           if (!failure.ability.equals("lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)")) throw failure;
-          attempted_2434 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
+          attempted_2906 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(KafkaError.CODEC.decode(failure.value));
         }
-        final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2439 = attempted_2434;
-        if (matched_2439.isLeft()) {
-          final KafkaError lawspecfailure_2440 = matched_2439.left();
-          value_2433 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2440);
+        final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2911 = attempted_2906;
+        if (matched_2911.isLeft()) {
+          final KafkaError lawspecfailure_2912 = matched_2911.left();
+          value_2905 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>left(lawspecfailure_2912);
         } else {
-          final LawSpecFast.Unit lawspecvalue_2441 = matched_2439.right();
-          value_2433 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2441);
+          final LawSpecFast.Unit lawspecvalue_2913 = matched_2911.right();
+          value_2905 = LawSpecFast.Either.<KafkaError, LawSpecFast.Unit>right(lawspecvalue_2913);
         }
-        final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> matched_2442 = value_2433;
-        if (matched_2442.isLeft()) {
+        final LawSpecFast.Either<KafkaError, LawSpecFast.Unit> it_2914 = value_2905;
+        if (it_2914.isLeft()) {
           return LawSpecFast.Maybe.<Long>nothing();
         } else {
-          return LawSpecFast.Maybe.<Long>just(o_2432);
+          return LawSpecFast.Maybe.<Long>just(v_match__lawspecselection0x0_0_2904);
         }
       }
     }
   }
 
   /** lawtwin.kafka::xor32 */
-  public static long xor32_0ea970f5(long a_2443, long b_2444) {
-    return wrappingUInt32_1ef3ce20(xorBits_ea1fb8e2(java.math.BigInteger.valueOf(a_2443), java.math.BigInteger.valueOf(b_2444), java.math.BigInteger.valueOf(2147483648L)));
+  public static long xor32_0ea970f5(long a_2915, long b_2916) {
+    return wrappingUInt32_1ef3ce20(xorBits_ea1fb8e2(java.math.BigInteger.valueOf(a_2915), java.math.BigInteger.valueOf(b_2916), java.math.BigInteger.valueOf(2147483648L)));
   }
 
   /** lawtwin.kafka::xorBits */
-  public static java.math.BigInteger xorBits_ea1fb8e2(java.math.BigInteger a_2445, java.math.BigInteger b_2446, java.math.BigInteger bit_2447) {
-    if ((((bit_2447.compareTo(java.math.BigInteger.valueOf(0L)) <= 0) || (a_2445.compareTo(java.math.BigInteger.valueOf(0L)) < 0)) || (b_2446.compareTo(java.math.BigInteger.valueOf(0L)) < 0))) {
+  public static java.math.BigInteger xorBits_ea1fb8e2(java.math.BigInteger a_2917, java.math.BigInteger b_2918, java.math.BigInteger bit_2919) {
+    if ((((bit_2919.compareTo(java.math.BigInteger.valueOf(0L)) <= 0) || (a_2917.compareTo(java.math.BigInteger.valueOf(0L)) < 0)) || (b_2918.compareTo(java.math.BigInteger.valueOf(0L)) < 0))) {
       return java.math.BigInteger.valueOf(0L);
     } else {
-      java.math.BigInteger value_2448;
-      if ((LawSpecFast.quot(a_2445, bit_2447).compareTo(LawSpecFast.quot(b_2446, bit_2447)) != 0)) {
-        value_2448 = bit_2447;
+      java.math.BigInteger value_2920;
+      if ((LawSpecFast.quot(a_2917, bit_2919).compareTo(LawSpecFast.quot(b_2918, bit_2919)) != 0)) {
+        value_2920 = bit_2919;
       } else {
-        value_2448 = java.math.BigInteger.valueOf(0L);
+        value_2920 = java.math.BigInteger.valueOf(0L);
       }
-      return value_2448.add(xorBits_ea1fb8e2(LawSpecFast.rem(a_2445, bit_2447), LawSpecFast.rem(b_2446, bit_2447), LawSpecFast.quot(bit_2447, java.math.BigInteger.valueOf(2L))));
+      return value_2920.add(xorBits_ea1fb8e2(LawSpecFast.rem(a_2917, bit_2919), LawSpecFast.rem(b_2918, bit_2919), LawSpecFast.quot(bit_2919, java.math.BigInteger.valueOf(2L))));
     }
   }
 
   /** lawtwin.kafka.model::topicPartitions */
-  public static LawSpecFast.List<TopicPartition> topicPartitions_a717cef5(String topic_2449, LawSpecFast.List<Long> ps_2450) {
-    if (ps_2450.isEmpty()) {
+  public static LawSpecFast.List<TopicPartition> topicPartitions_a717cef5(String topic_2921, LawSpecFast.List<Long> ps_2922) {
+    final LawSpecFast.List<Long> it_2923 = ps_2922;
+    if (it_2923.isEmpty()) {
       return LawSpecFast.List.<TopicPartition>nil();
     } else {
-      final long p_2451 = ps_2450.head();
-      final LawSpecFast.List<Long> rest_2452 = ps_2450.tail();
-      return LawSpecFast.List.<TopicPartition>cons(new TopicPartition(topic_2449, p_2451), topicPartitions_a717cef5(topic_2449, rest_2452));
+      final long v_lawspecselection0x0_2924 = it_2923.head();
+      final LawSpecFast.List<Long> v_lawspecselection0x1_2925 = it_2923.tail();
+      TopicPartition value_2926;
+      final String v_lawspecrecordfield0_2927 = topic_2921;
+      final long v_lawspecrecordfield1_2928 = v_lawspecselection0x0_2924;
+      value_2926 = new TopicPartition(v_lawspecrecordfield0_2927, v_lawspecrecordfield1_2928);
+      return LawSpecFast.List.<TopicPartition>cons(value_2926, topicPartitions_a717cef5(topic_2921, v_lawspecselection0x1_2925));
     }
   }
 
-  /** contracttest.kafka::keepBoundedArithmetic */
-  public static long keepBoundedArithmetic_3e45e1f6(long n_2453) {
-    return saturatingInt64_5bce4ed8(java.math.BigInteger.valueOf(n_2453).add(java.math.BigInteger.valueOf(1L)));
+  /** contracttest.kafka::suiteNamesThePackage */
+  public static LawSpecFast.Unit suiteNamesThePackage_55f330a5(LawSpecFast.Unit u_2929) {
+    return LawSpecFast.Unit.UNIT;
   }
 
   public static Boolean fromNative16(Boolean n) {
@@ -9209,7 +9953,7 @@ private static LawSpecFast.Codec<BrokerState> codec() {
     }
     if (n instanceof lawspec.data.TxnState.Ongoing) {
       var y = (lawspec.data.TxnState.Ongoing) n;
-      return new TxnState.Ongoing(fromNative14(y.getTxnPartitions()), fromNative110(y.getTxnOffsets()));
+      return new TxnState.Ongoing(fromNative144(y.getValue()));
     }
     throw LawSpecFast.unreachable();
   }
@@ -9221,7 +9965,7 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   public static PartitionChoice fromNative118(lawspec.data.PartitionChoice n) {
     if (n instanceof lawspec.data.PartitionChoice.ToPartition) {
       var y = (lawspec.data.PartitionChoice.ToPartition) n;
-      return new PartitionChoice.ToPartition(fromNative2(y.getChosen()));
+      return new PartitionChoice.ToPartition(fromNative2(y.getValue()));
     }
     if (n instanceof lawspec.data.PartitionChoice.ByKey) {
       return new PartitionChoice.ByKey();
@@ -9234,7 +9978,7 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   public static ProducerState fromNative47(lawspec.data.ProducerState n) {
-    return new ProducerState(fromNative24(n.getIdentity()), fromNative90(n.getSequences()), fromNative144(n.getLastSend()));
+    return new ProducerState(fromNative24(n.getIdentity()), fromNative90(n.getSequences()), fromNative145(n.getLastSend()));
   }
 
   public static TransactionState fromNative52(lawspec.data.TransactionState n) {
@@ -9826,7 +10570,7 @@ private static LawSpecFast.Codec<BrokerState> codec() {
       }
       case 1 -> {
         var y = (TxnState.Ongoing) x;
-        return new lawspec.data.TxnState.Ongoing(toNative14(y.txnPartitions), toNative110(y.txnOffsets));
+        return new lawspec.data.TxnState.Ongoing(toNative144(y.value));
       }
       default -> throw LawSpecFast.unreachable();
     }
@@ -9840,7 +10584,7 @@ private static LawSpecFast.Codec<BrokerState> codec() {
     switch (x.tag) {
       case 0 -> {
         var y = (PartitionChoice.ToPartition) x;
-        return new lawspec.data.PartitionChoice.ToPartition(toNative2(y.chosen));
+        return new lawspec.data.PartitionChoice.ToPartition(toNative2(y.value));
       }
       case 1 -> {
         return lawspec.data.PartitionChoice.ByKey.INSTANCE;
@@ -9854,7 +10598,7 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   }
 
   public static lawspec.data.ProducerState toNative47(ProducerState x) {
-    return new lawspec.data.ProducerState(toNative24(x.identity), toNative90(x.sequences), toNative144(x.lastSend));
+    return new lawspec.data.ProducerState(toNative24(x.identity), toNative90(x.sequences), toNative145(x.lastSend));
   }
 
   public static lawspec.data.TransactionState toNative52(TransactionState x) {
@@ -9863,12 +10607,12 @@ private static LawSpecFast.Codec<BrokerState> codec() {
 
   public static LawSpecFast.List<Header> fromNative143(java.util.List<lawspec.data.Header> n) {
     LawSpecFast.List<Header> out = LawSpecFast.List.nil();
-    for (int i = n.size() - 1; i >= 0; i--) out = LawSpecFast.List.cons(fromNative145(n.get(i)), out);
+    for (int i = n.size() - 1; i >= 0; i--) out = LawSpecFast.List.cons(fromNative146(n.get(i)), out);
     return out;
   }
 
-  public static LawSpecFast.Maybe<LastSend> fromNative144(lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.LastSend> n) {
-    if (n instanceof LawSpecRuntime.Just<lawspec.data.LastSend> j) return LawSpecFast.Maybe.<LastSend>just(fromNative146(j.value()));
+  public static LawSpecFast.Maybe<LastSend> fromNative145(lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.LastSend> n) {
+    if (n instanceof LawSpecRuntime.Just<lawspec.data.LastSend> j) return LawSpecFast.Maybe.<LastSend>just(fromNative147(j.value()));
     return LawSpecFast.Maybe.<LastSend>nothing();
   }
 
@@ -9918,6 +10662,10 @@ private static LawSpecFast.Codec<BrokerState> codec() {
 
   public static Entry<TopicPartition, PartitionLog> fromNative135(lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog> n) {
     return new Entry<TopicPartition, PartitionLog>(fromNative5(n.getKey()), fromNative99(n.getValue()));
+  }
+
+  public static Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee fromNative144(lawspec.data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee n) {
+    return new Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(fromNative110(n.getTxnOffsets()), fromNative14(n.getTxnPartitions()));
   }
 
   public static AbortedTxn fromNative136(lawspec.data.AbortedTxn n) {
@@ -9986,11 +10734,11 @@ private static LawSpecFast.Codec<BrokerState> codec() {
   public static LogEntry fromNative138(lawspec.data.LogEntry n) {
     if (n instanceof lawspec.data.LogEntry.DataEntry) {
       var y = (lawspec.data.LogEntry.DataEntry) n;
-      return new LogEntry.DataEntry(fromNative4(y.getEntryOffset()), fromNative119(y.getEntryRecord()), fromNative4(y.getWriter()), fromNative16(y.getTransactional()));
+      return new LogEntry.DataEntry(fromNative148(y.getValue()));
     }
     if (n instanceof lawspec.data.LogEntry.ControlEntry) {
       var y = (lawspec.data.LogEntry.ControlEntry) n;
-      return new LogEntry.ControlEntry(fromNative4(y.getMarkerOffset()), fromNative4(y.getMarkerWriter()), fromNative16(y.getCommits()));
+      return new LogEntry.ControlEntry(fromNative149(y.getValue()));
     }
     throw LawSpecFast.unreachable();
   }
@@ -10017,12 +10765,12 @@ private static LawSpecFast.Codec<BrokerState> codec() {
 
   public static java.util.List<lawspec.data.Header> toNative143(LawSpecFast.List<Header> x) {
     var out = new java.util.ArrayList<lawspec.data.Header>(x.size());
-    for (var item : x) out.add(toNative145(item));
+    for (var item : x) out.add(toNative146(item));
     return java.util.Collections.unmodifiableList(out);
   }
 
-  public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.LastSend> toNative144(LawSpecFast.Maybe<LastSend> x) {
-    if (x.isJust()) return new LawSpecRuntime.Just<lawspec.data.LastSend>(toNative146(x.get()));
+  public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.LastSend> toNative145(LawSpecFast.Maybe<LastSend> x) {
+    if (x.isJust()) return new LawSpecRuntime.Just<lawspec.data.LastSend>(toNative147(x.get()));
     return new LawSpecRuntime.Nothing<lawspec.data.LastSend>();
   }
 
@@ -10074,6 +10822,10 @@ private static LawSpecFast.Codec<BrokerState> codec() {
     return new lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>(toNative5(x.key), toNative99(x.value));
   }
 
+  public static lawspec.data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee toNative144(Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee x) {
+    return new lawspec.data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(toNative110(x.txnOffsets), toNative14(x.txnPartitions));
+  }
+
   public static lawspec.data.AbortedTxn toNative136(AbortedTxn x) {
     return new lawspec.data.AbortedTxn(toNative4(x.abortedWriter), toNative4(x.firstOffset), toNative4(x.lastOffset));
   }
@@ -10109,11 +10861,11 @@ private static LawSpecFast.Codec<BrokerState> codec() {
     switch (x.tag) {
       case 0 -> {
         var y = (LogEntry.DataEntry) x;
-        return new lawspec.data.LogEntry.DataEntry(toNative4(y.entryOffset), toNative119(y.entryRecord), toNative4(y.writer), toNative16(y.transactional));
+        return new lawspec.data.LogEntry.DataEntry(toNative148(y.value));
       }
       case 1 -> {
         var y = (LogEntry.ControlEntry) x;
-        return new lawspec.data.LogEntry.ControlEntry(toNative4(y.markerOffset), toNative4(y.markerWriter), toNative16(y.commits));
+        return new lawspec.data.LogEntry.ControlEntry(toNative149(y.value));
       }
       default -> throw LawSpecFast.unreachable();
     }
@@ -10139,19 +10891,35 @@ private static LawSpecFast.Codec<BrokerState> codec() {
     return new lawspec.data.RecordMetadata(toNative5(x.sentTo), toNative4(x.sentAt));
   }
 
-  public static Header fromNative145(lawspec.data.Header n) {
+  public static Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 fromNative149(lawspec.data.Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 n) {
+    return new Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3(fromNative16(n.getCommits()), fromNative4(n.getMarkerOffset()), fromNative4(n.getMarkerWriter()));
+  }
+
+  public static Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be fromNative148(lawspec.data.Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be n) {
+    return new Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be(fromNative4(n.getEntryOffset()), fromNative119(n.getEntryRecord()), fromNative16(n.getTransactional()), fromNative4(n.getWriter()));
+  }
+
+  public static Header fromNative146(lawspec.data.Header n) {
     return new Header(fromNative1(n.getName()), fromNative20(n.getContent()));
   }
 
-  public static LastSend fromNative146(lawspec.data.LastSend n) {
+  public static LastSend fromNative147(lawspec.data.LastSend n) {
     return new LastSend(fromNative5(n.getLastPartition()), fromNative6(n.getLastTag()), fromNative7(n.getLastRecords()));
   }
 
-  public static lawspec.data.Header toNative145(Header x) {
+  public static lawspec.data.Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 toNative149(Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 x) {
+    return new lawspec.data.Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3(toNative16(x.commits), toNative4(x.markerOffset), toNative4(x.markerWriter));
+  }
+
+  public static lawspec.data.Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be toNative148(Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be x) {
+    return new lawspec.data.Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be(toNative4(x.entryOffset), toNative119(x.entryRecord), toNative16(x.transactional), toNative4(x.writer));
+  }
+
+  public static lawspec.data.Header toNative146(Header x) {
     return new lawspec.data.Header(toNative1(x.name), toNative20(x.content));
   }
 
-  public static lawspec.data.LastSend toNative146(LastSend x) {
+  public static lawspec.data.LastSend toNative147(LastSend x) {
     return new lawspec.data.LastSend(toNative5(x.lastPartition), toNative6(x.lastTag), toNative7(x.lastRecords));
   }
 }

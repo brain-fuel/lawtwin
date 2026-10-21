@@ -36,3 +36,6 @@ These pages state what LawTwin's parts are and do.
   states, its history, and where it differs from a real service.
 - [HTTP twin cores](http-core.md): the registry of compiled contracts, the
   core interface, determinism, the conformance kit and golden sessions.
+
+- [LawSpec 0.26 alignment](lawspec-026-upgrade.md): implementation, execution scope,
+  verification results and the remaining cross-project gates.

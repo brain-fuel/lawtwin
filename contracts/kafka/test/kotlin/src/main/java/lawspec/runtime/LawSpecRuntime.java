@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -671,6 +672,14 @@ public final class LawSpecRuntime {
    */
   public static boolean equal(Value a, Value b) {
     if (a.data instanceof Handle || b.data instanceof Handle) return Objects.equals(a.data, b.data);
+    if (a.data instanceof Data left && b.data instanceof Data right) {
+      if (!left.tag().equals(right.tag()) || left.fields().size() != right.fields().size()) return false;
+      if (left.tag().equals(EQ_SET_TAG))
+        return sameMembers(eqSetItems(left), eqSetItems(right), LawSpecRuntime::equal);
+      for (int index = 0; index < left.fields().size(); index++)
+        if (!equal(left.fields().get(index), right.fields().get(index))) return false;
+      return true;
+    }
     if (sumType(a.type) || sumType(b.type)) {
       if (!sumType(a.type) || !sumType(b.type)) return false;
       var left = dataValue(a);
@@ -708,6 +717,25 @@ public final class LawSpecRuntime {
 
   public static boolean truth(Value v) {
     return (boolean) validate("Bool", v, 64).data;
+  }
+
+  public static final String EQ_SET_TAG = "lawspec.collections::type::EqSet::EqSetItems";
+
+  public static List<Value> eqSetItems(Data data) {
+    if (data.fields().size() != 1) throw new IllegalArgumentException("Eq-only set requires one List field");
+    return listElements(data.fields().get(0));
+  }
+
+  public static boolean sameMembers(List<Value> left, List<Value> right, BiPredicate<Value, Value> equal) {
+    return left.stream().allMatch(value -> right.stream().anyMatch(candidate -> equal.test(value, candidate)))
+        && right.stream().allMatch(value -> left.stream().anyMatch(candidate -> equal.test(value, candidate)));
+  }
+
+  public static boolean distinctMembers(List<Value> items, BiPredicate<Value, Value> equal) {
+    for (int index = 0; index < items.size(); index++)
+      for (int earlier = 0; earlier < index; earlier++)
+        if (equal.test(items.get(index), items.get(earlier))) return false;
+    return true;
   }
 
   private static final String ORDERING = "lawspec.collections::type::Ordering";
@@ -757,6 +785,7 @@ public final class LawSpecRuntime {
   }
 
   public static Value helper(String n, Value[] args, int bits) {
+    if (n.equals("incompleteSearch")) throw new IllegalStateException(codePointsText(args[0]));
     Value sequenceResult = sequenceHelper(n, args);
     if (sequenceResult != null) return sequenceResult;
     switch (n) {

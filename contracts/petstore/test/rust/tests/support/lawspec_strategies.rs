@@ -431,10 +431,20 @@ pub fn checked_schema_strategy_with_generators(
     }
     let strategy =
         shape_strategy_with_generators(schema, ty, bits, budget, seeds, context, native)?;
+    Ok(check_strategy(schema, ty, bits, context, strategy))
+}
+
+fn check_strategy(
+    schema: &ls::Schema,
+    ty: &ls::TypeRef,
+    bits: u32,
+    context: &ls::Context,
+    strategy: BoxedStrategy<Value>,
+) -> BoxedStrategy<ls::Result<Value>> {
     let schema = schema.clone();
     let ty = ty.clone();
     let context = context.clone();
-    Ok(strategy
+    strategy
         .prop_filter_map("constructor field refinement", move |value| {
             match schema.check_with_context(value, &ty, bits, &mut context.clone()) {
                 Ok(ls::ValueCheck::Accepted(value)) => Some(Ok(value)),
@@ -442,7 +452,7 @@ pub fn checked_schema_strategy_with_generators(
                 Err(error) => Some(Err(error)),
             }
         })
-        .boxed())
+        .boxed()
 }
 
 fn shape_strategy(
@@ -633,6 +643,22 @@ fn shape_strategy_with_generators(
                 let union = proptest::strategy::Union::new(alternatives).boxed();
                 // Generated collections are canonicalised rather than filtered.
                 match ty {
+                    ls::TypeRef::Named(name, _) if *name == "lawspec.collections::type::EqSet" =>
+                        union.prop_map(|value| match value {
+                            Value::Data(tag, mut fields) if fields.len() == 1 => match fields.pop().unwrap() {
+                                Value::List(items) => {
+                                    let mut distinct = Vec::new();
+                                    for item in items {
+                                        if !distinct.iter().any(|prior| ls::equal(&item, prior).expect("generated set members share their checked type")) {
+                                            distinct.push(item);
+                                        }
+                                    }
+                                    Value::Data(tag, vec![Value::List(distinct)])
+                                }
+                                other => Value::Data(tag, vec![other]),
+                            },
+                            other => other,
+                        }).boxed(),
                     ls::TypeRef::Named(name, _)
                         if name.starts_with(ls::COLLECTIONS) && (name.ends_with("::Set") || name.ends_with("::KeyVal")) =>
                     {
@@ -941,11 +967,26 @@ impl Strategy for IndexedValue {
     }
 }
 
+/// Index-guided draws retain constructor predicates, context and checked error reporting.
+pub fn checked_indexed_strategy(
+    schema: &ls::Schema,
+    ty: &ls::TypeRef,
+    bits: u32,
+    budget: usize,
+    context: &ls::Context,
+    target: &Value,
+    equations: &[(&str, &[&str])],
+) -> ls::Result<BoxedStrategy<ls::Result<Value>>> {
+    let strategy = indexed_strategy(schema, ty, bits, budget, target, equations)?;
+    Ok(check_strategy(schema, ty, bits, context, strategy))
+}
+
 /// Values whose structural index equals `target`. Each constructor carries its
 /// index term then its guards, in prefix notation over field indices.
 /// Reachability is a forward fixpoint over levels 0..target+slack, so a child
 /// may exceed its parent's index; the target is then solved backwards, and
 /// generation never filters. Assignments shrink toward the first.
+/// Structural index guidance; checked draws also validate all constructor predicates.
 pub fn indexed_strategy(
     schema: &ls::Schema,
     ty: &ls::TypeRef,

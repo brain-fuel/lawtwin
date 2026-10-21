@@ -71,19 +71,21 @@ fn call_1(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value> 
     Ok(result)
 }
 
-// Law: lawtwin.petstore::PetApi: a created pet reads back [native]
+// Law: lawtwin.petstore::PetApi: "|a created pet reads back| [native]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// PetApi: a created pet reads back [native]
-// for all (body :: lawtwin.petstore.model::type::Pet) . let _let0__sent = _input0 in match (attempt
-// (addPet (_let0__sent))) { Either::Left _match1__0__failure -> true; Either::Right
-// _match1__1__created -> match (match (_match1__1__created) {
-// lawtwin.petstore.model::type::Pet::Pet _matchfield0__id _matchfield1__name _matchfield2__category
-// _matchfield3__photoUrls _matchfield4__tags _matchfield5__status -> _matchfield0__id }) {
-// Maybe::Nothing -> false; Maybe::Just _match2__1__key -> (attempt (getPetById (_match2__1__key))
-// == Either::Right(_match1__1__created)) } } = true
+// PetApi: "|a created pet reads back| [native]
+// for all (body :: lawtwin.petstore.model::type::Pet) => let _let0__sent = _input0 in let _let1__it
+// = attempt (addPet (_let0__sent)) in match (_let1__it) { Either::Left
+// _match2__0___lawspecSelection0x0 -> true; Either::Right _match2__1___lawspecSelection0x0 -> let
+// _let3__it = match (_match2__1___lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet
+// _matchfield0__id _matchfield1__name _matchfield2__category _matchfield3__photoUrls
+// _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match (_let3__it) {
+// Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> (attempt
+// (getPetById (_match4__1___match__lawspecSelection0x0_0)) ==
+// Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for all
 fn law_0(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
     let input_0 = lawspec_schema::schema()?.validate_with_context(
         input_0,
@@ -107,93 +109,102 @@ fn law_0(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
             let left = {
                 let let_2 = input_0.clone();
                 let _ = &let_2;
-                match ls::attempt(
-                    ctx,
-                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                        let value = {
-                            let perform_argument_0 = let_2.clone();
-                            let arguments = vec![perform_argument_0];
-                            let result = lawspec_abilities::lawtwin_petstore::perform_addPet(
-                                ctx,
-                                arguments,
-                            );
-                            let context = "addPet";
-                            result.map_err(|error| format!("{context}: {error}"))?
-                        };
-                        Ok(value)
-                    },
-                    |value| ls::construct("Either::Right", vec![value]),
-                    |value| ls::construct("Either::Left", vec![value]),
-                )? {
-                    ls::Value::Left(payload) => {
-                        let match_local_3_0 = *payload;
-                        let result = ls::Value::Bool(true);
-                        result
-                    }
-                    ls::Value::Right(payload) => {
-                        let match_local_3_0 = *payload;
-                        let result = match match match_local_3_0.clone() {
-                            ls::Value::Data(tag, fields)
-                                if tag == "lawtwin.petstore.model::type::Pet::Pet"
-                                    && fields.len() == 6 =>
-                            {
-                                let mut fields = fields.into_iter();
-                                let match_local_4_0 = fields.next().unwrap();
-                                let match_local_4_1 = fields.next().unwrap();
-                                let match_local_4_2 = fields.next().unwrap();
-                                let match_local_4_3 = fields.next().unwrap();
-                                let match_local_4_4 = fields.next().unwrap();
-                                let match_local_4_5 = fields.next().unwrap();
-                                let result = match_local_4_0.clone();
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        } {
-                            ls::Value::Maybe(None) => {
-                                let result = ls::Value::Bool(false);
-                                result
-                            }
-                            ls::Value::Maybe(Some(payload)) => {
-                                let match_local_4_0 = *payload;
-                                let result = {
-                                    let left = ls::attempt(
-                                        ctx,
-                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                            let value = {
-                                                let perform_argument_0 = match_local_4_0.clone();
-                                                let arguments = vec![perform_argument_0];
-                                                let result = lawspec_abilities::lawtwin_petstore::perform_getPetById(
-                                                    ctx,
-                                                    arguments,
-                                                );
-                                                let context = "getPetById";
-                                                result.map_err(|error| format!("{context}: {error}"))?
-                                            };
-                                            Ok(value)
-                                        },
-                                        |value| ls::construct("Either::Right", vec![value]),
-                                        |value| ls::construct("Either::Left", vec![value]),
-                                    )?;
-                                    let right = ls::construct(
-                                        "Either::Right",
-                                        vec![match_local_3_0.clone()],
-                                    )?;
-                                    ls::binary(
-                                        "==",
-                                        "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Pet",
-                                        left,
-                                        right,
-                                    )?
+                {
+                    let let_3 = ls::attempt(
+                        ctx,
+                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                            let value = {
+                                let perform_argument_0 = let_2.clone();
+                                let arguments = vec![perform_argument_0];
+                                let result = lawspec_abilities::lawtwin_petstore::perform_addPet(
+                                    ctx,
+                                    arguments,
+                                );
+                                let context = "addPet";
+                                result.map_err(|error| format!("{context}: {error}"))?
+                            };
+                            Ok(value)
+                        },
+                        |value| ls::construct("Either::Right", vec![value]),
+                        |value| ls::construct("Either::Left", vec![value]),
+                    )?;
+                    let _ = &let_3;
+                    match let_3.clone() {
+                        ls::Value::Left(payload) => {
+                            let match_local_4_0 = *payload;
+                            let result = ls::Value::Bool(true);
+                            result
+                        }
+                        ls::Value::Right(payload) => {
+                            let match_local_4_0 = *payload;
+                            let result = {
+                                let let_5 = match match_local_4_0.clone() {
+                                    ls::Value::Data(tag, fields)
+                                        if tag == "lawtwin.petstore.model::type::Pet::Pet"
+                                            && fields.len() == 6 =>
+                                    {
+                                        let mut fields = fields.into_iter();
+                                        let match_local_5_0 = fields.next().unwrap();
+                                        let match_local_5_1 = fields.next().unwrap();
+                                        let match_local_5_2 = fields.next().unwrap();
+                                        let match_local_5_3 = fields.next().unwrap();
+                                        let match_local_5_4 = fields.next().unwrap();
+                                        let match_local_5_5 = fields.next().unwrap();
+                                        let result = match_local_5_0.clone();
+                                        result
+                                    }
+                                    _ => return Err("invalid match value".into()),
                                 };
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        };
-                        result
+                                let _ = &let_5;
+                                match let_5.clone() {
+                                    ls::Value::Maybe(None) => {
+                                        let result = ls::Value::Bool(false);
+                                        result
+                                    }
+                                    ls::Value::Maybe(Some(payload)) => {
+                                        let match_local_6_0 = *payload;
+                                        let result = {
+                                            let left = ls::attempt(
+                                                ctx,
+                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                    let value = {
+                                                        let perform_argument_0 =
+                                                            match_local_6_0.clone();
+                                                        let arguments = vec![perform_argument_0];
+                                                        let result = lawspec_abilities::lawtwin_petstore::perform_getPetById(
+                                                            ctx,
+                                                            arguments,
+                                                        );
+                                                        let context = "getPetById";
+                                                        result.map_err(|error| format!("{context}: {error}"))?
+                                                    };
+                                                    Ok(value)
+                                                },
+                                                |value| ls::construct("Either::Right", vec![value]),
+                                                |value| ls::construct("Either::Left", vec![value]),
+                                            )?;
+                                            let right = ls::construct(
+                                                "Either::Right",
+                                                vec![match_local_4_0.clone()],
+                                            )?;
+                                            ls::binary(
+                                                "==",
+                                                "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Pet",
+                                                left,
+                                                right,
+                                            )?
+                                        };
+                                        result
+                                    }
+                                    _ => return Err("invalid match value".into()),
+                                }
+                            };
+                            result
+                        }
+                        _ => return Err("invalid match value".into()),
                     }
-                    _ => return Err("invalid match value".into()),
                 }
             };
             let right = ls::Value::Bool(true);
@@ -201,19 +212,22 @@ fn law_0(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
                 return Err(format!(
                     "{}: {:?} != {:?}{}",
                     concat!(
-                        "PetApi: a created pet reads back [native] | ex",
-                        "pect let _let0__sent = _input0 in match (attem",
-                        "pt (addPet (_let0__sent))) { Either::Left _mat",
-                        "ch1__0__failure -> true; Either::Right _match1",
-                        "__1__created -> match (match (_match1__1__crea",
-                        "ted) { lawtwin.petstore.model::type::Pet::Pet ",
-                        "_matchfield0__id _matchfield1__name _matchfiel",
-                        "d2__category _matchfield3__photoUrls _matchfie",
-                        "ld4__tags _matchfield5__status -> _matchfield0",
-                        "__id }) { Maybe::Nothing  -> false; Maybe::Jus",
-                        "t _match2__1__key -> (attempt (getPetById (_ma",
-                        "tch2__1__key)) == Either::Right(_match1__1__cr",
-                        "eated)) } } = true",
+                        "PetApi: \"|a created pet reads back| [native] ",
+                        "| expect let _let0__sent = _input0 in let _let",
+                        "1__it = attempt (addPet (_let0__sent)) in matc",
+                        "h (_let1__it) { Either::Left _match2__0___laws",
+                        "pecSelection0x0 -> true; Either::Right _match2",
+                        "__1___lawspecSelection0x0 -> let _let3__it = m",
+                        "atch (_match2__1___lawspecSelection0x0) { lawt",
+                        "win.petstore.model::type::Pet::Pet _matchfield",
+                        "0__id _matchfield1__name _matchfield2__categor",
+                        "y _matchfield3__photoUrls _matchfield4__tags _",
+                        "matchfield5__status -> _matchfield0__id } in m",
+                        "atch (_let3__it) { Maybe::Nothing  -> false; M",
+                        "aybe::Just _match4__1___match__lawspecSelectio",
+                        "n0x0_0 -> (attempt (getPetById (_match4__1___m",
+                        "atch__lawspecSelection0x0_0)) == Either::Right",
+                        "(_match2__1___lawspecSelection0x0)) } } = true",
                     ),
                     left,
                     right,
@@ -251,7 +265,10 @@ fn law_petapi_a_created_pet_reads_back_native() -> ls::Result<()> {
 fn run_0() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
-        "lawtwin.petstore::PetApi: a created pet reads back [native]",
+        concat!(
+            "lawtwin.petstore::PetApi: \"|a created pet rea",
+            "ds back| [native]",
+        ),
         SEARCH_INPUTS_0,
         search_case_0,
     )?;
@@ -1095,7 +1112,7 @@ fn run_0() -> ls::Result<()> {
         result.unwrap_or_else(|e| panic!("{e}"))
     };
     let strategy = strategy.prop_filter(
-        "PetApi: a created pet reads back [native] refinement",
+        "PetApi: \"|a created pet reads back| [native] refinement",
         refinement,
     );
     let config = proptest::test_runner::Config {
@@ -1110,7 +1127,10 @@ fn run_0() -> ls::Result<()> {
         let result = law_0(&mut case.context, case.values[0].clone());
         if result.is_err() {
             ls::search_remember(
-                "lawtwin.petstore::PetApi: a created pet reads back [native]",
+                concat!(
+                    "lawtwin.petstore::PetApi: \"|a created pet rea",
+                    "ds back| [native]",
+                ),
                 SEARCH_INPUTS_0,
                 &case.values,
             );
@@ -1156,19 +1176,21 @@ fn search_case_0(values: &[ls::Value]) -> ls::Result<Option<f64>> {
     Ok(Some(0.0))
 }
 
-// Law: lawtwin.petstore::PetApi: a created pet reads back [reference]
+// Law: lawtwin.petstore::PetApi: "|a created pet reads back| [reference]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// PetApi: a created pet reads back [reference]
-// for all (body :: lawtwin.petstore.model::type::Pet) . let _let0__sent = _input0 in match (attempt
-// (addPet (_let0__sent))) { Either::Left _match1__0__failure -> true; Either::Right
-// _match1__1__created -> match (match (_match1__1__created) {
-// lawtwin.petstore.model::type::Pet::Pet _matchfield0__id _matchfield1__name _matchfield2__category
-// _matchfield3__photoUrls _matchfield4__tags _matchfield5__status -> _matchfield0__id }) {
-// Maybe::Nothing -> false; Maybe::Just _match2__1__key -> (attempt (getPetById (_match2__1__key))
-// == Either::Right(_match1__1__created)) } } = true
+// PetApi: "|a created pet reads back| [reference]
+// for all (body :: lawtwin.petstore.model::type::Pet) => let _let0__sent = _input0 in let _let1__it
+// = attempt (addPet (_let0__sent)) in match (_let1__it) { Either::Left
+// _match2__0___lawspecSelection0x0 -> true; Either::Right _match2__1___lawspecSelection0x0 -> let
+// _let3__it = match (_match2__1___lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet
+// _matchfield0__id _matchfield1__name _matchfield2__category _matchfield3__photoUrls
+// _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match (_let3__it) {
+// Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> (attempt
+// (getPetById (_match4__1___match__lawspecSelection0x0_0)) ==
+// Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for all
 fn law_1(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
     let shared_reference = std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
     let installing = vec![
@@ -1185,93 +1207,102 @@ fn law_1(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
         let left = {
             let let_1 = input_0.clone();
             let _ = &let_1;
-            match ls::attempt(
-                ctx,
-                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                    let value = {
-                        let perform_argument_0 = let_1.clone();
-                        let arguments = vec![perform_argument_0];
-                        let result = lawspec_abilities::lawtwin_petstore::perform_addPet(
-                            ctx,
-                            arguments,
-                        );
-                        let context = "addPet";
-                        result.map_err(|error| format!("{context}: {error}"))?
-                    };
-                    Ok(value)
-                },
-                |value| ls::construct("Either::Right", vec![value]),
-                |value| ls::construct("Either::Left", vec![value]),
-            )? {
-                ls::Value::Left(payload) => {
-                    let match_local_2_0 = *payload;
-                    let result = ls::Value::Bool(true);
-                    result
-                }
-                ls::Value::Right(payload) => {
-                    let match_local_2_0 = *payload;
-                    let result = match match match_local_2_0.clone() {
-                        ls::Value::Data(tag, fields)
-                            if tag == "lawtwin.petstore.model::type::Pet::Pet"
-                                && fields.len() == 6 =>
-                        {
-                            let mut fields = fields.into_iter();
-                            let match_local_3_0 = fields.next().unwrap();
-                            let match_local_3_1 = fields.next().unwrap();
-                            let match_local_3_2 = fields.next().unwrap();
-                            let match_local_3_3 = fields.next().unwrap();
-                            let match_local_3_4 = fields.next().unwrap();
-                            let match_local_3_5 = fields.next().unwrap();
-                            let result = match_local_3_0.clone();
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    } {
-                        ls::Value::Maybe(None) => {
-                            let result = ls::Value::Bool(false);
-                            result
-                        }
-                        ls::Value::Maybe(Some(payload)) => {
-                            let match_local_3_0 = *payload;
-                            let result = {
-                                let left = ls::attempt(
-                                    ctx,
-                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                        let value = {
-                                            let perform_argument_0 = match_local_3_0.clone();
-                                            let arguments = vec![perform_argument_0];
-                                            let result = lawspec_abilities::lawtwin_petstore::perform_getPetById(
-                                                ctx,
-                                                arguments,
-                                            );
-                                            let context = "getPetById";
-                                            result.map_err(|error| format!("{context}: {error}"))?
-                                        };
-                                        Ok(value)
-                                    },
-                                    |value| ls::construct("Either::Right", vec![value]),
-                                    |value| ls::construct("Either::Left", vec![value]),
-                                )?;
-                                let right = ls::construct(
-                                    "Either::Right",
-                                    vec![match_local_2_0.clone()],
-                                )?;
-                                ls::binary(
-                                    "==",
-                                    "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Pet",
-                                    left,
-                                    right,
-                                )?
+            {
+                let let_2 = ls::attempt(
+                    ctx,
+                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                        let value = {
+                            let perform_argument_0 = let_1.clone();
+                            let arguments = vec![perform_argument_0];
+                            let result = lawspec_abilities::lawtwin_petstore::perform_addPet(
+                                ctx,
+                                arguments,
+                            );
+                            let context = "addPet";
+                            result.map_err(|error| format!("{context}: {error}"))?
+                        };
+                        Ok(value)
+                    },
+                    |value| ls::construct("Either::Right", vec![value]),
+                    |value| ls::construct("Either::Left", vec![value]),
+                )?;
+                let _ = &let_2;
+                match let_2.clone() {
+                    ls::Value::Left(payload) => {
+                        let match_local_3_0 = *payload;
+                        let result = ls::Value::Bool(true);
+                        result
+                    }
+                    ls::Value::Right(payload) => {
+                        let match_local_3_0 = *payload;
+                        let result = {
+                            let let_4 = match match_local_3_0.clone() {
+                                ls::Value::Data(tag, fields)
+                                    if tag == "lawtwin.petstore.model::type::Pet::Pet"
+                                        && fields.len() == 6 =>
+                                {
+                                    let mut fields = fields.into_iter();
+                                    let match_local_4_0 = fields.next().unwrap();
+                                    let match_local_4_1 = fields.next().unwrap();
+                                    let match_local_4_2 = fields.next().unwrap();
+                                    let match_local_4_3 = fields.next().unwrap();
+                                    let match_local_4_4 = fields.next().unwrap();
+                                    let match_local_4_5 = fields.next().unwrap();
+                                    let result = match_local_4_0.clone();
+                                    result
+                                }
+                                _ => return Err("invalid match value".into()),
                             };
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    };
-                    result
+                            let _ = &let_4;
+                            match let_4.clone() {
+                                ls::Value::Maybe(None) => {
+                                    let result = ls::Value::Bool(false);
+                                    result
+                                }
+                                ls::Value::Maybe(Some(payload)) => {
+                                    let match_local_5_0 = *payload;
+                                    let result = {
+                                        let left = ls::attempt(
+                                            ctx,
+                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                            |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                let value = {
+                                                    let perform_argument_0 =
+                                                        match_local_5_0.clone();
+                                                    let arguments = vec![perform_argument_0];
+                                                    let result = lawspec_abilities::lawtwin_petstore::perform_getPetById(
+                                                        ctx,
+                                                        arguments,
+                                                    );
+                                                    let context = "getPetById";
+                                                    result.map_err(|error| format!("{context}: {error}"))?
+                                                };
+                                                Ok(value)
+                                            },
+                                            |value| ls::construct("Either::Right", vec![value]),
+                                            |value| ls::construct("Either::Left", vec![value]),
+                                        )?;
+                                        let right = ls::construct(
+                                            "Either::Right",
+                                            vec![match_local_3_0.clone()],
+                                        )?;
+                                        ls::binary(
+                                            "==",
+                                            "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Pet",
+                                            left,
+                                            right,
+                                        )?
+                                    };
+                                    result
+                                }
+                                _ => return Err("invalid match value".into()),
+                            }
+                        };
+                        result
+                    }
+                    _ => return Err("invalid match value".into()),
                 }
-                _ => return Err("invalid match value".into()),
             }
         };
         let right = ls::Value::Bool(true);
@@ -1279,19 +1310,23 @@ fn law_1(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
             return Err(format!(
                 "{}: {:?} != {:?}{}",
                 concat!(
-                    "PetApi: a created pet reads back [reference] |",
-                    " expect let _let0__sent = _input0 in match (at",
-                    "tempt (addPet (_let0__sent))) { Either::Left _",
-                    "match1__0__failure -> true; Either::Right _mat",
-                    "ch1__1__created -> match (match (_match1__1__c",
-                    "reated) { lawtwin.petstore.model::type::Pet::P",
-                    "et _matchfield0__id _matchfield1__name _matchf",
-                    "ield2__category _matchfield3__photoUrls _match",
-                    "field4__tags _matchfield5__status -> _matchfie",
-                    "ld0__id }) { Maybe::Nothing  -> false; Maybe::",
-                    "Just _match2__1__key -> (attempt (getPetById (",
-                    "_match2__1__key)) == Either::Right(_match1__1_",
-                    "_created)) } } = true",
+                    "PetApi: \"|a created pet reads back| [referenc",
+                    "e] | expect let _let0__sent = _input0 in let _",
+                    "let1__it = attempt (addPet (_let0__sent)) in m",
+                    "atch (_let1__it) { Either::Left _match2__0___l",
+                    "awspecSelection0x0 -> true; Either::Right _mat",
+                    "ch2__1___lawspecSelection0x0 -> let _let3__it ",
+                    "= match (_match2__1___lawspecSelection0x0) { l",
+                    "awtwin.petstore.model::type::Pet::Pet _matchfi",
+                    "eld0__id _matchfield1__name _matchfield2__cate",
+                    "gory _matchfield3__photoUrls _matchfield4__tag",
+                    "s _matchfield5__status -> _matchfield0__id } i",
+                    "n match (_let3__it) { Maybe::Nothing  -> false",
+                    "; Maybe::Just _match4__1___match__lawspecSelec",
+                    "tion0x0_0 -> (attempt (getPetById (_match4__1_",
+                    "__match__lawspecSelection0x0_0)) == Either::Ri",
+                    "ght(_match2__1___lawspecSelection0x0)) } } = t",
+                    "rue",
                 ),
                 left,
                 right,
@@ -1314,7 +1349,10 @@ fn law_petapi_a_created_pet_reads_back_reference() -> ls::Result<()> {
 fn run_1() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
-        "lawtwin.petstore::PetApi: a created pet reads back [reference]",
+        concat!(
+            "lawtwin.petstore::PetApi: \"|a created pet rea",
+            "ds back| [reference]",
+        ),
         SEARCH_INPUTS_1,
         search_case_1,
     )?;
@@ -2158,7 +2196,7 @@ fn run_1() -> ls::Result<()> {
         result.unwrap_or_else(|e| panic!("{e}"))
     };
     let strategy = strategy.prop_filter(
-        "PetApi: a created pet reads back [reference] refinement",
+        "PetApi: \"|a created pet reads back| [reference] refinement",
         refinement,
     );
     let config = proptest::test_runner::Config {
@@ -2173,7 +2211,10 @@ fn run_1() -> ls::Result<()> {
         let result = law_1(&mut case.context, case.values[0].clone());
         if result.is_err() {
             ls::search_remember(
-                "lawtwin.petstore::PetApi: a created pet reads back [reference]",
+                concat!(
+                    "lawtwin.petstore::PetApi: \"|a created pet rea",
+                    "ds back| [reference]",
+                ),
                 SEARCH_INPUTS_1,
                 &case.values,
             );
@@ -2219,20 +2260,22 @@ fn search_case_1(values: &[ls::Value]) -> ls::Result<Option<f64>> {
     Ok(Some(0.0))
 }
 
-// Law: lawtwin.petstore::PetApi: a deleted pet is not found [native]
+// Law: lawtwin.petstore::PetApi: "|a deleted pet is not found| [native]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// PetApi: a deleted pet is not found [native]
-// for all (body :: lawtwin.petstore.model::type::Pet) . let _let0__sent = _input0 in match (attempt
-// (addPet (_let0__sent))) { Either::Left _match1__0__failure -> true; Either::Right
-// _match1__1__created -> match (match (_match1__1__created) {
-// lawtwin.petstore.model::type::Pet::Pet _matchfield0__id _matchfield1__name _matchfield2__category
-// _matchfield3__photoUrls _matchfield4__tags _matchfield5__status -> _matchfield0__id }) {
-// Maybe::Nothing -> false; Maybe::Just _match2__1__key -> let _let3__gone = attempt (deletePet
-// (_match2__1__key) (Maybe::Nothing())) in (attempt (getPetById (_match2__1__key)) ==
-// Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
+// PetApi: "|a deleted pet is not found| [native]
+// for all (body :: lawtwin.petstore.model::type::Pet) => let _let0__sent = _input0 in let _let1__it
+// = attempt (addPet (_let0__sent)) in match (_let1__it) { Either::Left
+// _match2__0___lawspecSelection0x0 -> true; Either::Right _match2__1___lawspecSelection0x0 -> let
+// _let3__it = match (_match2__1___lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet
+// _matchfield0__id _matchfield1__name _matchfield2__category _matchfield3__photoUrls
+// _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match (_let3__it) {
+// Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone
+// = attempt (deletePet (_match4__1___match__lawspecSelection0x0_0) (Maybe::Nothing())) in (attempt
+// (getPetById (_match4__1___match__lawspecSelection0x0_0)) ==
+// Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
 fn law_2(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
     let input_0 = lawspec_schema::schema()?.validate_with_context(
         input_0,
@@ -2256,127 +2299,138 @@ fn law_2(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
             let left = {
                 let let_2 = input_0.clone();
                 let _ = &let_2;
-                match ls::attempt(
-                    ctx,
-                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                        let value = {
-                            let perform_argument_0 = let_2.clone();
-                            let arguments = vec![perform_argument_0];
-                            let result = lawspec_abilities::lawtwin_petstore::perform_addPet(
-                                ctx,
-                                arguments,
-                            );
-                            let context = "addPet";
-                            result.map_err(|error| format!("{context}: {error}"))?
-                        };
-                        Ok(value)
-                    },
-                    |value| ls::construct("Either::Right", vec![value]),
-                    |value| ls::construct("Either::Left", vec![value]),
-                )? {
-                    ls::Value::Left(payload) => {
-                        let match_local_3_0 = *payload;
-                        let result = ls::Value::Bool(true);
-                        result
-                    }
-                    ls::Value::Right(payload) => {
-                        let match_local_3_0 = *payload;
-                        let result = match match match_local_3_0.clone() {
-                            ls::Value::Data(tag, fields)
-                                if tag == "lawtwin.petstore.model::type::Pet::Pet"
-                                    && fields.len() == 6 =>
-                            {
-                                let mut fields = fields.into_iter();
-                                let match_local_4_0 = fields.next().unwrap();
-                                let match_local_4_1 = fields.next().unwrap();
-                                let match_local_4_2 = fields.next().unwrap();
-                                let match_local_4_3 = fields.next().unwrap();
-                                let match_local_4_4 = fields.next().unwrap();
-                                let match_local_4_5 = fields.next().unwrap();
-                                let result = match_local_4_0.clone();
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        } {
-                            ls::Value::Maybe(None) => {
-                                let result = ls::Value::Bool(false);
-                                result
-                            }
-                            ls::Value::Maybe(Some(payload)) => {
-                                let match_local_4_0 = *payload;
-                                let result = {
-                                    let let_5 = ls::attempt(
-                                        ctx,
-                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                            let value = {
-                                                let perform_argument_0 = match_local_4_0.clone();
-                                                let perform_argument_1 =
-                                                    ls::construct("Maybe::Nothing", vec![])?;
-                                                let arguments = vec![
-                                                    perform_argument_0,
-                                                    perform_argument_1,
-                                                ];
-                                                let result = lawspec_abilities::lawtwin_petstore::perform_deletePet(
-                                                    ctx,
-                                                    arguments,
-                                                );
-                                                let context = "deletePet";
-                                                result.map_err(|error| format!("{context}: {error}"))?
-                                            };
-                                            Ok(value)
-                                        },
-                                        |value| ls::construct("Either::Right", vec![value]),
-                                        |value| ls::construct("Either::Left", vec![value]),
-                                    )?;
-                                    let _ = &let_5;
+                {
+                    let let_3 = ls::attempt(
+                        ctx,
+                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                            let value = {
+                                let perform_argument_0 = let_2.clone();
+                                let arguments = vec![perform_argument_0];
+                                let result = lawspec_abilities::lawtwin_petstore::perform_addPet(
+                                    ctx,
+                                    arguments,
+                                );
+                                let context = "addPet";
+                                result.map_err(|error| format!("{context}: {error}"))?
+                            };
+                            Ok(value)
+                        },
+                        |value| ls::construct("Either::Right", vec![value]),
+                        |value| ls::construct("Either::Left", vec![value]),
+                    )?;
+                    let _ = &let_3;
+                    match let_3.clone() {
+                        ls::Value::Left(payload) => {
+                            let match_local_4_0 = *payload;
+                            let result = ls::Value::Bool(true);
+                            result
+                        }
+                        ls::Value::Right(payload) => {
+                            let match_local_4_0 = *payload;
+                            let result = {
+                                let let_5 = match match_local_4_0.clone() {
+                                    ls::Value::Data(tag, fields)
+                                        if tag == "lawtwin.petstore.model::type::Pet::Pet"
+                                            && fields.len() == 6 =>
                                     {
-                                        let left = ls::attempt(
-                                            ctx,
-                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                            |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                                let value = {
-                                                    let perform_argument_0 =
-                                                        match_local_4_0.clone();
-                                                    let arguments = vec![perform_argument_0];
-                                                    let result = lawspec_abilities::lawtwin_petstore::perform_getPetById(
-                                                        ctx,
-                                                        arguments,
-                                                    );
-                                                    let context = "getPetById";
-                                                    result.map_err(|error| format!("{context}: {error}"))?
-                                                };
-                                                Ok(value)
-                                            },
-                                            |value| ls::construct("Either::Right", vec![value]),
-                                            |value| ls::construct("Either::Left", vec![value]),
-                                        )?;
-                                        let right = {
-                                            let constructor_field_0 = ls::construct_data(
-                                                "lawtwin.petstore.model::type::ApiError::NotFound",
-                                                vec![],
-                                            );
-                                            ls::construct(
-                                                "Either::Left",
-                                                vec![constructor_field_0],
-                                            )?
-                                        };
-                                        ls::binary(
-                                            "==",
-                                            "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Pet",
-                                            left,
-                                            right,
-                                        )?
+                                        let mut fields = fields.into_iter();
+                                        let match_local_5_0 = fields.next().unwrap();
+                                        let match_local_5_1 = fields.next().unwrap();
+                                        let match_local_5_2 = fields.next().unwrap();
+                                        let match_local_5_3 = fields.next().unwrap();
+                                        let match_local_5_4 = fields.next().unwrap();
+                                        let match_local_5_5 = fields.next().unwrap();
+                                        let result = match_local_5_0.clone();
+                                        result
                                     }
+                                    _ => return Err("invalid match value".into()),
                                 };
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        };
-                        result
+                                let _ = &let_5;
+                                match let_5.clone() {
+                                    ls::Value::Maybe(None) => {
+                                        let result = ls::Value::Bool(false);
+                                        result
+                                    }
+                                    ls::Value::Maybe(Some(payload)) => {
+                                        let match_local_6_0 = *payload;
+                                        let result = {
+                                            let let_7 = ls::attempt(
+                                                ctx,
+                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                    let value = {
+                                                        let perform_argument_0 =
+                                                            match_local_6_0.clone();
+                                                        let perform_argument_1 = ls::construct(
+                                                            "Maybe::Nothing",
+                                                            vec![],
+                                                        )?;
+                                                        let arguments = vec![
+                                                            perform_argument_0,
+                                                            perform_argument_1,
+                                                        ];
+                                                        let result = lawspec_abilities::lawtwin_petstore::perform_deletePet(
+                                                            ctx,
+                                                            arguments,
+                                                        );
+                                                        let context = "deletePet";
+                                                        result.map_err(|error| format!("{context}: {error}"))?
+                                                    };
+                                                    Ok(value)
+                                                },
+                                                |value| ls::construct("Either::Right", vec![value]),
+                                                |value| ls::construct("Either::Left", vec![value]),
+                                            )?;
+                                            let _ = &let_7;
+                                            {
+                                                let left = ls::attempt(
+                                                    ctx,
+                                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                        let value = {
+                                                            let perform_argument_0 =
+                                                                match_local_6_0.clone();
+                                                            let arguments = vec![perform_argument_0];
+                                                            let result = lawspec_abilities::lawtwin_petstore::perform_getPetById(
+                                                                ctx,
+                                                                arguments,
+                                                            );
+                                                            let context = "getPetById";
+                                                            result.map_err(|error| format!("{context}: {error}"))?
+                                                        };
+                                                        Ok(value)
+                                                    },
+                                                    |value| ls::construct("Either::Right", vec![value]),
+                                                    |value| ls::construct("Either::Left", vec![value]),
+                                                )?;
+                                                let right = {
+                                                    let constructor_field_0 = ls::construct_data(
+                                                        "lawtwin.petstore.model::type::ApiError::NotFound",
+                                                        vec![],
+                                                    );
+                                                    ls::construct(
+                                                        "Either::Left",
+                                                        vec![constructor_field_0],
+                                                    )?
+                                                };
+                                                ls::binary(
+                                                    "==",
+                                                    "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Pet",
+                                                    left,
+                                                    right,
+                                                )?
+                                            }
+                                        };
+                                        result
+                                    }
+                                    _ => return Err("invalid match value".into()),
+                                }
+                            };
+                            result
+                        }
+                        _ => return Err("invalid match value".into()),
                     }
-                    _ => return Err("invalid match value".into()),
                 }
             };
             let right = ls::Value::Bool(true);
@@ -2384,21 +2438,25 @@ fn law_2(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
                 return Err(format!(
                     "{}: {:?} != {:?}{}",
                     concat!(
-                        "PetApi: a deleted pet is not found [native] | ",
-                        "expect let _let0__sent = _input0 in match (att",
-                        "empt (addPet (_let0__sent))) { Either::Left _m",
-                        "atch1__0__failure -> true; Either::Right _matc",
-                        "h1__1__created -> match (match (_match1__1__cr",
-                        "eated) { lawtwin.petstore.model::type::Pet::Pe",
-                        "t _matchfield0__id _matchfield1__name _matchfi",
-                        "eld2__category _matchfield3__photoUrls _matchf",
-                        "ield4__tags _matchfield5__status -> _matchfiel",
-                        "d0__id }) { Maybe::Nothing  -> false; Maybe::J",
-                        "ust _match2__1__key -> let _let3__gone = attem",
-                        "pt (deletePet (_match2__1__key) (Maybe::Nothin",
-                        "g())) in (attempt (getPetById (_match2__1__key",
-                        ")) == Either::Left(lawtwin.petstore.model::typ",
-                        "e::ApiError::NotFound())) } } = true",
+                        "PetApi: \"|a deleted pet is not found| [native",
+                        "] | expect let _let0__sent = _input0 in let _l",
+                        "et1__it = attempt (addPet (_let0__sent)) in ma",
+                        "tch (_let1__it) { Either::Left _match2__0___la",
+                        "wspecSelection0x0 -> true; Either::Right _matc",
+                        "h2__1___lawspecSelection0x0 -> let _let3__it =",
+                        " match (_match2__1___lawspecSelection0x0) { la",
+                        "wtwin.petstore.model::type::Pet::Pet _matchfie",
+                        "ld0__id _matchfield1__name _matchfield2__categ",
+                        "ory _matchfield3__photoUrls _matchfield4__tags",
+                        " _matchfield5__status -> _matchfield0__id } in",
+                        " match (_let3__it) { Maybe::Nothing  -> false;",
+                        " Maybe::Just _match4__1___match__lawspecSelect",
+                        "ion0x0_0 -> let _let5__gone = attempt (deleteP",
+                        "et (_match4__1___match__lawspecSelection0x0_0)",
+                        " (Maybe::Nothing())) in (attempt (getPetById (",
+                        "_match4__1___match__lawspecSelection0x0_0)) ==",
+                        " Either::Left(lawtwin.petstore.model::type::Ap",
+                        "iError::NotFound())) } } = true",
                     ),
                     left,
                     right,
@@ -2436,7 +2494,10 @@ fn law_petapi_a_deleted_pet_is_not_found_native() -> ls::Result<()> {
 fn run_2() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
-        "lawtwin.petstore::PetApi: a deleted pet is not found [native]",
+        concat!(
+            "lawtwin.petstore::PetApi: \"|a deleted pet is ",
+            "not found| [native]",
+        ),
         SEARCH_INPUTS_2,
         search_case_2,
     )?;
@@ -3280,7 +3341,7 @@ fn run_2() -> ls::Result<()> {
         result.unwrap_or_else(|e| panic!("{e}"))
     };
     let strategy = strategy.prop_filter(
-        "PetApi: a deleted pet is not found [native] refinement",
+        "PetApi: \"|a deleted pet is not found| [native] refinement",
         refinement,
     );
     let config = proptest::test_runner::Config {
@@ -3295,7 +3356,10 @@ fn run_2() -> ls::Result<()> {
         let result = law_2(&mut case.context, case.values[0].clone());
         if result.is_err() {
             ls::search_remember(
-                "lawtwin.petstore::PetApi: a deleted pet is not found [native]",
+                concat!(
+                    "lawtwin.petstore::PetApi: \"|a deleted pet is ",
+                    "not found| [native]",
+                ),
                 SEARCH_INPUTS_2,
                 &case.values,
             );
@@ -3341,20 +3405,22 @@ fn search_case_2(values: &[ls::Value]) -> ls::Result<Option<f64>> {
     Ok(Some(0.0))
 }
 
-// Law: lawtwin.petstore::PetApi: a deleted pet is not found [reference]
+// Law: lawtwin.petstore::PetApi: "|a deleted pet is not found| [reference]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// PetApi: a deleted pet is not found [reference]
-// for all (body :: lawtwin.petstore.model::type::Pet) . let _let0__sent = _input0 in match (attempt
-// (addPet (_let0__sent))) { Either::Left _match1__0__failure -> true; Either::Right
-// _match1__1__created -> match (match (_match1__1__created) {
-// lawtwin.petstore.model::type::Pet::Pet _matchfield0__id _matchfield1__name _matchfield2__category
-// _matchfield3__photoUrls _matchfield4__tags _matchfield5__status -> _matchfield0__id }) {
-// Maybe::Nothing -> false; Maybe::Just _match2__1__key -> let _let3__gone = attempt (deletePet
-// (_match2__1__key) (Maybe::Nothing())) in (attempt (getPetById (_match2__1__key)) ==
-// Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
+// PetApi: "|a deleted pet is not found| [reference]
+// for all (body :: lawtwin.petstore.model::type::Pet) => let _let0__sent = _input0 in let _let1__it
+// = attempt (addPet (_let0__sent)) in match (_let1__it) { Either::Left
+// _match2__0___lawspecSelection0x0 -> true; Either::Right _match2__1___lawspecSelection0x0 -> let
+// _let3__it = match (_match2__1___lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet
+// _matchfield0__id _matchfield1__name _matchfield2__category _matchfield3__photoUrls
+// _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match (_let3__it) {
+// Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone
+// = attempt (deletePet (_match4__1___match__lawspecSelection0x0_0) (Maybe::Nothing())) in (attempt
+// (getPetById (_match4__1___match__lawspecSelection0x0_0)) ==
+// Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
 fn law_3(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
     let shared_reference = std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
     let installing = vec![
@@ -3371,123 +3437,136 @@ fn law_3(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
         let left = {
             let let_1 = input_0.clone();
             let _ = &let_1;
-            match ls::attempt(
-                ctx,
-                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                    let value = {
-                        let perform_argument_0 = let_1.clone();
-                        let arguments = vec![perform_argument_0];
-                        let result = lawspec_abilities::lawtwin_petstore::perform_addPet(
-                            ctx,
-                            arguments,
-                        );
-                        let context = "addPet";
-                        result.map_err(|error| format!("{context}: {error}"))?
-                    };
-                    Ok(value)
-                },
-                |value| ls::construct("Either::Right", vec![value]),
-                |value| ls::construct("Either::Left", vec![value]),
-            )? {
-                ls::Value::Left(payload) => {
-                    let match_local_2_0 = *payload;
-                    let result = ls::Value::Bool(true);
-                    result
-                }
-                ls::Value::Right(payload) => {
-                    let match_local_2_0 = *payload;
-                    let result = match match match_local_2_0.clone() {
-                        ls::Value::Data(tag, fields)
-                            if tag == "lawtwin.petstore.model::type::Pet::Pet"
-                                && fields.len() == 6 =>
-                        {
-                            let mut fields = fields.into_iter();
-                            let match_local_3_0 = fields.next().unwrap();
-                            let match_local_3_1 = fields.next().unwrap();
-                            let match_local_3_2 = fields.next().unwrap();
-                            let match_local_3_3 = fields.next().unwrap();
-                            let match_local_3_4 = fields.next().unwrap();
-                            let match_local_3_5 = fields.next().unwrap();
-                            let result = match_local_3_0.clone();
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    } {
-                        ls::Value::Maybe(None) => {
-                            let result = ls::Value::Bool(false);
-                            result
-                        }
-                        ls::Value::Maybe(Some(payload)) => {
-                            let match_local_3_0 = *payload;
-                            let result = {
-                                let let_4 = ls::attempt(
-                                    ctx,
-                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                        let value = {
-                                            let perform_argument_0 = match_local_3_0.clone();
-                                            let perform_argument_1 =
-                                                ls::construct("Maybe::Nothing", vec![])?;
-                                            let arguments = vec![
-                                                perform_argument_0,
-                                                perform_argument_1,
-                                            ];
-                                            let result = lawspec_abilities::lawtwin_petstore::perform_deletePet(
-                                                ctx,
-                                                arguments,
-                                            );
-                                            let context = "deletePet";
-                                            result.map_err(|error| format!("{context}: {error}"))?
-                                        };
-                                        Ok(value)
-                                    },
-                                    |value| ls::construct("Either::Right", vec![value]),
-                                    |value| ls::construct("Either::Left", vec![value]),
-                                )?;
-                                let _ = &let_4;
+            {
+                let let_2 = ls::attempt(
+                    ctx,
+                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                        let value = {
+                            let perform_argument_0 = let_1.clone();
+                            let arguments = vec![perform_argument_0];
+                            let result = lawspec_abilities::lawtwin_petstore::perform_addPet(
+                                ctx,
+                                arguments,
+                            );
+                            let context = "addPet";
+                            result.map_err(|error| format!("{context}: {error}"))?
+                        };
+                        Ok(value)
+                    },
+                    |value| ls::construct("Either::Right", vec![value]),
+                    |value| ls::construct("Either::Left", vec![value]),
+                )?;
+                let _ = &let_2;
+                match let_2.clone() {
+                    ls::Value::Left(payload) => {
+                        let match_local_3_0 = *payload;
+                        let result = ls::Value::Bool(true);
+                        result
+                    }
+                    ls::Value::Right(payload) => {
+                        let match_local_3_0 = *payload;
+                        let result = {
+                            let let_4 = match match_local_3_0.clone() {
+                                ls::Value::Data(tag, fields)
+                                    if tag == "lawtwin.petstore.model::type::Pet::Pet"
+                                        && fields.len() == 6 =>
                                 {
-                                    let left = ls::attempt(
-                                        ctx,
-                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                            let value = {
-                                                let perform_argument_0 = match_local_3_0.clone();
-                                                let arguments = vec![perform_argument_0];
-                                                let result = lawspec_abilities::lawtwin_petstore::perform_getPetById(
-                                                    ctx,
-                                                    arguments,
-                                                );
-                                                let context = "getPetById";
-                                                result.map_err(|error| format!("{context}: {error}"))?
-                                            };
-                                            Ok(value)
-                                        },
-                                        |value| ls::construct("Either::Right", vec![value]),
-                                        |value| ls::construct("Either::Left", vec![value]),
-                                    )?;
-                                    let right = {
-                                        let constructor_field_0 = ls::construct_data(
-                                            "lawtwin.petstore.model::type::ApiError::NotFound",
-                                            vec![],
-                                        );
-                                        ls::construct("Either::Left", vec![constructor_field_0])?
-                                    };
-                                    ls::binary(
-                                        "==",
-                                        "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Pet",
-                                        left,
-                                        right,
-                                    )?
+                                    let mut fields = fields.into_iter();
+                                    let match_local_4_0 = fields.next().unwrap();
+                                    let match_local_4_1 = fields.next().unwrap();
+                                    let match_local_4_2 = fields.next().unwrap();
+                                    let match_local_4_3 = fields.next().unwrap();
+                                    let match_local_4_4 = fields.next().unwrap();
+                                    let match_local_4_5 = fields.next().unwrap();
+                                    let result = match_local_4_0.clone();
+                                    result
                                 }
+                                _ => return Err("invalid match value".into()),
                             };
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    };
-                    result
+                            let _ = &let_4;
+                            match let_4.clone() {
+                                ls::Value::Maybe(None) => {
+                                    let result = ls::Value::Bool(false);
+                                    result
+                                }
+                                ls::Value::Maybe(Some(payload)) => {
+                                    let match_local_5_0 = *payload;
+                                    let result = {
+                                        let let_6 = ls::attempt(
+                                            ctx,
+                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                            |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                let value = {
+                                                    let perform_argument_0 =
+                                                        match_local_5_0.clone();
+                                                    let perform_argument_1 =
+                                                        ls::construct("Maybe::Nothing", vec![])?;
+                                                    let arguments = vec![
+                                                        perform_argument_0,
+                                                        perform_argument_1,
+                                                    ];
+                                                    let result = lawspec_abilities::lawtwin_petstore::perform_deletePet(
+                                                        ctx,
+                                                        arguments,
+                                                    );
+                                                    let context = "deletePet";
+                                                    result.map_err(|error| format!("{context}: {error}"))?
+                                                };
+                                                Ok(value)
+                                            },
+                                            |value| ls::construct("Either::Right", vec![value]),
+                                            |value| ls::construct("Either::Left", vec![value]),
+                                        )?;
+                                        let _ = &let_6;
+                                        {
+                                            let left = ls::attempt(
+                                                ctx,
+                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                    let value = {
+                                                        let perform_argument_0 =
+                                                            match_local_5_0.clone();
+                                                        let arguments = vec![perform_argument_0];
+                                                        let result = lawspec_abilities::lawtwin_petstore::perform_getPetById(
+                                                            ctx,
+                                                            arguments,
+                                                        );
+                                                        let context = "getPetById";
+                                                        result.map_err(|error| format!("{context}: {error}"))?
+                                                    };
+                                                    Ok(value)
+                                                },
+                                                |value| ls::construct("Either::Right", vec![value]),
+                                                |value| ls::construct("Either::Left", vec![value]),
+                                            )?;
+                                            let right = {
+                                                let constructor_field_0 = ls::construct_data(
+                                                    "lawtwin.petstore.model::type::ApiError::NotFound",
+                                                    vec![],
+                                                );
+                                                ls::construct(
+                                                    "Either::Left",
+                                                    vec![constructor_field_0],
+                                                )?
+                                            };
+                                            ls::binary(
+                                                "==",
+                                                "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Pet",
+                                                left,
+                                                right,
+                                            )?
+                                        }
+                                    };
+                                    result
+                                }
+                                _ => return Err("invalid match value".into()),
+                            }
+                        };
+                        result
+                    }
+                    _ => return Err("invalid match value".into()),
                 }
-                _ => return Err("invalid match value".into()),
             }
         };
         let right = ls::Value::Bool(true);
@@ -3495,21 +3574,25 @@ fn law_3(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
             return Err(format!(
                 "{}: {:?} != {:?}{}",
                 concat!(
-                    "PetApi: a deleted pet is not found [reference]",
-                    " | expect let _let0__sent = _input0 in match (",
-                    "attempt (addPet (_let0__sent))) { Either::Left",
-                    " _match1__0__failure -> true; Either::Right _m",
-                    "atch1__1__created -> match (match (_match1__1_",
-                    "_created) { lawtwin.petstore.model::type::Pet:",
-                    ":Pet _matchfield0__id _matchfield1__name _matc",
-                    "hfield2__category _matchfield3__photoUrls _mat",
-                    "chfield4__tags _matchfield5__status -> _matchf",
-                    "ield0__id }) { Maybe::Nothing  -> false; Maybe",
-                    "::Just _match2__1__key -> let _let3__gone = at",
-                    "tempt (deletePet (_match2__1__key) (Maybe::Not",
-                    "hing())) in (attempt (getPetById (_match2__1__",
-                    "key)) == Either::Left(lawtwin.petstore.model::",
-                    "type::ApiError::NotFound())) } } = true",
+                    "PetApi: \"|a deleted pet is not found| [refere",
+                    "nce] | expect let _let0__sent = _input0 in let",
+                    " _let1__it = attempt (addPet (_let0__sent)) in",
+                    " match (_let1__it) { Either::Left _match2__0__",
+                    "_lawspecSelection0x0 -> true; Either::Right _m",
+                    "atch2__1___lawspecSelection0x0 -> let _let3__i",
+                    "t = match (_match2__1___lawspecSelection0x0) {",
+                    " lawtwin.petstore.model::type::Pet::Pet _match",
+                    "field0__id _matchfield1__name _matchfield2__ca",
+                    "tegory _matchfield3__photoUrls _matchfield4__t",
+                    "ags _matchfield5__status -> _matchfield0__id }",
+                    " in match (_let3__it) { Maybe::Nothing  -> fal",
+                    "se; Maybe::Just _match4__1___match__lawspecSel",
+                    "ection0x0_0 -> let _let5__gone = attempt (dele",
+                    "tePet (_match4__1___match__lawspecSelection0x0",
+                    "_0) (Maybe::Nothing())) in (attempt (getPetByI",
+                    "d (_match4__1___match__lawspecSelection0x0_0))",
+                    " == Either::Left(lawtwin.petstore.model::type:",
+                    ":ApiError::NotFound())) } } = true",
                 ),
                 left,
                 right,
@@ -3533,8 +3616,8 @@ fn run_3() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
         concat!(
-            "lawtwin.petstore::PetApi: a deleted pet is not",
-            " found [reference]",
+            "lawtwin.petstore::PetApi: \"|a deleted pet is ",
+            "not found| [reference]",
         ),
         SEARCH_INPUTS_3,
         search_case_3,
@@ -4379,7 +4462,7 @@ fn run_3() -> ls::Result<()> {
         result.unwrap_or_else(|e| panic!("{e}"))
     };
     let strategy = strategy.prop_filter(
-        "PetApi: a deleted pet is not found [reference] refinement",
+        "PetApi: \"|a deleted pet is not found| [reference] refinement",
         refinement,
     );
     let config = proptest::test_runner::Config {
@@ -4395,8 +4478,8 @@ fn run_3() -> ls::Result<()> {
         if result.is_err() {
             ls::search_remember(
                 concat!(
-                    "lawtwin.petstore::PetApi: a deleted pet is not",
-                    " found [reference]",
+                    "lawtwin.petstore::PetApi: \"|a deleted pet is ",
+                    "not found| [reference]",
                 ),
                 SEARCH_INPUTS_3,
                 &case.values,
@@ -4443,26 +4526,29 @@ fn search_case_3(values: &[ls::Value]) -> ls::Result<Option<f64>> {
     Ok(Some(0.0))
 }
 
-// Law: lawtwin.petstore::PetApi: a replaced pet reads back as replaced [native]
+// Law: lawtwin.petstore::PetApi: "|a replaced pet reads back as replaced| [native]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// PetApi: a replaced pet reads back as replaced [native]
+// PetApi: "|a replaced pet reads back as replaced| [native]
 // for all (body :: lawtwin.petstore.model::type::Pet) (replacement ::
-// lawtwin.petstore.model::type::Pet) . let _let0__sent = _input0 in match (attempt (addPet
-// (_let0__sent))) { Either::Left _match1__0__failure -> true; Either::Right _match1__1__created ->
-// match (match (_match1__1__created) { lawtwin.petstore.model::type::Pet::Pet _matchfield0__id
+// lawtwin.petstore.model::type::Pet) => let _let0__sent = _input0 in let _let1__it = attempt
+// (addPet (_let0__sent)) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
+// true; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = match
+// (_match2__1___lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet _matchfield0__id
 // _matchfield1__name _matchfield2__category _matchfield3__photoUrls _matchfield4__tags
-// _matchfield5__status -> _matchfield0__id }) { Maybe::Nothing -> false; Maybe::Just
-// _match2__1__key -> match (attempt (updatePet (let _letfield12__replacement =
-// Maybe::Just(_match2__1__key) in match (_input1) { lawtwin.petstore.model::type::Pet::Pet
-// _matchfield6__id _matchfield7__name _matchfield8__category _matchfield9__photoUrls
-// _matchfield10__tags _matchfield11__status ->
+// _matchfield5__status -> _matchfield0__id } in match (_let3__it) { Maybe::Nothing -> false;
+// Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let _let5__it = attempt (updatePet (let
+// _letfield12__replacement = Maybe::Just(_match4__1___match__lawspecSelection0x0_0) in match
+// (_input1) { lawtwin.petstore.model::type::Pet::Pet _matchfield6__id _matchfield7__name
+// _matchfield8__category _matchfield9__photoUrls _matchfield10__tags _matchfield11__status ->
 // lawtwin.petstore.model::type::Pet::Pet(_letfield12__replacement, _matchfield7__name,
-// _matchfield8__category, _matchfield9__photoUrls, _matchfield10__tags, _matchfield11__status) })))
-// { Either::Left _match3__0__failure -> true; Either::Right _match3__1__replaced -> (attempt
-// (getPetById (_match2__1__key)) == Either::Right(_match3__1__replaced)) } } } = true
+// _matchfield8__category, _matchfield9__photoUrls, _matchfield10__tags, _matchfield11__status) }))
+// in match (_let5__it) { Either::Left _match6__0___match__match__lawspecSelection0x0_0_0 -> true;
+// Either::Right _match6__1___match__match__lawspecSelection0x0_0_0 -> (attempt (getPetById
+// (_match4__1___match__lawspecSelection0x0_0)) ==
+// Either::Right(_match6__1___match__match__lawspecSelection0x0_0_0)) } } } = true end for all
 fn law_4(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let input_0 = lawspec_schema::schema()?.validate_with_context(
         input_0,
@@ -4492,128 +4578,107 @@ fn law_4(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
             let left = {
                 let let_3 = input_0.clone();
                 let _ = &let_3;
-                match ls::attempt(
-                    ctx,
-                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                        let value = {
-                            let perform_argument_0 = let_3.clone();
-                            let arguments = vec![perform_argument_0];
-                            let result = lawspec_abilities::lawtwin_petstore::perform_addPet(
-                                ctx,
-                                arguments,
-                            );
-                            let context = "addPet";
-                            result.map_err(|error| format!("{context}: {error}"))?
-                        };
-                        Ok(value)
-                    },
-                    |value| ls::construct("Either::Right", vec![value]),
-                    |value| ls::construct("Either::Left", vec![value]),
-                )? {
-                    ls::Value::Left(payload) => {
-                        let match_local_4_0 = *payload;
-                        let result = ls::Value::Bool(true);
-                        result
-                    }
-                    ls::Value::Right(payload) => {
-                        let match_local_4_0 = *payload;
-                        let result = match match match_local_4_0.clone() {
-                            ls::Value::Data(tag, fields)
-                                if tag == "lawtwin.petstore.model::type::Pet::Pet"
-                                    && fields.len() == 6 =>
-                            {
-                                let mut fields = fields.into_iter();
-                                let match_local_5_0 = fields.next().unwrap();
-                                let match_local_5_1 = fields.next().unwrap();
-                                let match_local_5_2 = fields.next().unwrap();
-                                let match_local_5_3 = fields.next().unwrap();
-                                let match_local_5_4 = fields.next().unwrap();
-                                let match_local_5_5 = fields.next().unwrap();
-                                let result = match_local_5_0.clone();
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        } {
-                            ls::Value::Maybe(None) => {
-                                let result = ls::Value::Bool(false);
-                                result
-                            }
-                            ls::Value::Maybe(Some(payload)) => {
-                                let match_local_5_0 = *payload;
-                                let result = match ls::attempt(
+                {
+                    let let_4 = ls::attempt(
+                        ctx,
+                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                            let value = {
+                                let perform_argument_0 = let_3.clone();
+                                let arguments = vec![perform_argument_0];
+                                let result = lawspec_abilities::lawtwin_petstore::perform_addPet(
                                     ctx,
-                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                        let value = {
-                                            let perform_argument_0 = {
-                                                let let_6 = ls::construct(
-                                                    "Maybe::Just",
-                                                    vec![match_local_5_0.clone()],
-                                                )?;
-                                                let _ = &let_6;
-                                                match input_1.clone() {
-                                                    ls::Value::Data(tag, fields)
-                                                        if tag == "lawtwin.petstore.model::type::Pet::Pet"
-                                                            && fields.len() == 6 =>
-                                                    {
-                                                        let mut fields = fields.into_iter();
-                                                        let match_local_7_0 = fields.next().unwrap();
-                                                        let match_local_7_1 = fields.next().unwrap();
-                                                        let match_local_7_2 = fields.next().unwrap();
-                                                        let match_local_7_3 = fields.next().unwrap();
-                                                        let match_local_7_4 = fields.next().unwrap();
-                                                        let match_local_7_5 = fields.next().unwrap();
-                                                        let result = ls::construct_data(
-                                                            "lawtwin.petstore.model::type::Pet::Pet",
-                                                            vec![
-                                                                let_6.clone(),
-                                                                match_local_7_1.clone(),
-                                                                match_local_7_2.clone(),
-                                                                match_local_7_3.clone(),
-                                                                match_local_7_4.clone(),
-                                                                match_local_7_5.clone(),
-                                                            ],
-                                                        );
-                                                        result
-                                                    }
-                                                    _ => return Err("invalid match value".into()),
-                                                }
-                                            };
-                                            let arguments = vec![perform_argument_0];
-                                            let result = lawspec_abilities::lawtwin_petstore::perform_updatePet(
-                                                ctx,
-                                                arguments,
-                                            );
-                                            let context = "updatePet";
-                                            result.map_err(|error| format!("{context}: {error}"))?
-                                        };
-                                        Ok(value)
-                                    },
-                                    |value| ls::construct("Either::Right", vec![value]),
-                                    |value| ls::construct("Either::Left", vec![value]),
-                                )? {
-                                    ls::Value::Left(payload) => {
-                                        let match_local_6_0 = *payload;
-                                        let result = ls::Value::Bool(true);
+                                    arguments,
+                                );
+                                let context = "addPet";
+                                result.map_err(|error| format!("{context}: {error}"))?
+                            };
+                            Ok(value)
+                        },
+                        |value| ls::construct("Either::Right", vec![value]),
+                        |value| ls::construct("Either::Left", vec![value]),
+                    )?;
+                    let _ = &let_4;
+                    match let_4.clone() {
+                        ls::Value::Left(payload) => {
+                            let match_local_5_0 = *payload;
+                            let result = ls::Value::Bool(true);
+                            result
+                        }
+                        ls::Value::Right(payload) => {
+                            let match_local_5_0 = *payload;
+                            let result = {
+                                let let_6 = match match_local_5_0.clone() {
+                                    ls::Value::Data(tag, fields)
+                                        if tag == "lawtwin.petstore.model::type::Pet::Pet"
+                                            && fields.len() == 6 =>
+                                    {
+                                        let mut fields = fields.into_iter();
+                                        let match_local_6_0 = fields.next().unwrap();
+                                        let match_local_6_1 = fields.next().unwrap();
+                                        let match_local_6_2 = fields.next().unwrap();
+                                        let match_local_6_3 = fields.next().unwrap();
+                                        let match_local_6_4 = fields.next().unwrap();
+                                        let match_local_6_5 = fields.next().unwrap();
+                                        let result = match_local_6_0.clone();
                                         result
                                     }
-                                    ls::Value::Right(payload) => {
-                                        let match_local_6_0 = *payload;
+                                    _ => return Err("invalid match value".into()),
+                                };
+                                let _ = &let_6;
+                                match let_6.clone() {
+                                    ls::Value::Maybe(None) => {
+                                        let result = ls::Value::Bool(false);
+                                        result
+                                    }
+                                    ls::Value::Maybe(Some(payload)) => {
+                                        let match_local_7_0 = *payload;
                                         let result = {
-                                            let left = ls::attempt(
+                                            let let_8 = ls::attempt(
                                                 ctx,
                                                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                                                 |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
                                                     let value = {
-                                                        let perform_argument_0 =
-                                                            match_local_5_0.clone();
+                                                        let perform_argument_0 = {
+                                                            let let_8 = ls::construct(
+                                                                "Maybe::Just",
+                                                                vec![match_local_7_0.clone()],
+                                                            )?;
+                                                            let _ = &let_8;
+                                                            match input_1.clone() {
+                                                                ls::Value::Data(tag, fields)
+                                                                    if tag == "lawtwin.petstore.model::type::Pet::Pet"
+                                                                        && fields.len() == 6 =>
+                                                                {
+                                                                    let mut fields = fields.into_iter();
+                                                                    let match_local_9_0 = fields.next().unwrap();
+                                                                    let match_local_9_1 = fields.next().unwrap();
+                                                                    let match_local_9_2 = fields.next().unwrap();
+                                                                    let match_local_9_3 = fields.next().unwrap();
+                                                                    let match_local_9_4 = fields.next().unwrap();
+                                                                    let match_local_9_5 = fields.next().unwrap();
+                                                                    let result = ls::construct_data(
+                                                                        "lawtwin.petstore.model::type::Pet::Pet",
+                                                                        vec![
+                                                                            let_8.clone(),
+                                                                            match_local_9_1.clone(),
+                                                                            match_local_9_2.clone(),
+                                                                            match_local_9_3.clone(),
+                                                                            match_local_9_4.clone(),
+                                                                            match_local_9_5.clone(),
+                                                                        ],
+                                                                    );
+                                                                    result
+                                                                }
+                                                                _ => return Err("invalid match value".into()),
+                                                            }
+                                                        };
                                                         let arguments = vec![perform_argument_0];
-                                                        let result = lawspec_abilities::lawtwin_petstore::perform_getPetById(
+                                                        let result = lawspec_abilities::lawtwin_petstore::perform_updatePet(
                                                             ctx,
                                                             arguments,
                                                         );
-                                                        let context = "getPetById";
+                                                        let context = "updatePet";
                                                         result.map_err(|error| format!("{context}: {error}"))?
                                                     };
                                                     Ok(value)
@@ -4621,28 +4686,61 @@ fn law_4(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                                                 |value| ls::construct("Either::Right", vec![value]),
                                                 |value| ls::construct("Either::Left", vec![value]),
                                             )?;
-                                            let right = ls::construct(
-                                                "Either::Right",
-                                                vec![match_local_6_0.clone()],
-                                            )?;
-                                            ls::binary(
-                                                "==",
-                                                "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Pet",
-                                                left,
-                                                right,
-                                            )?
+                                            let _ = &let_8;
+                                            match let_8.clone() {
+                                                ls::Value::Left(payload) => {
+                                                    let match_local_9_0 = *payload;
+                                                    let result = ls::Value::Bool(true);
+                                                    result
+                                                }
+                                                ls::Value::Right(payload) => {
+                                                    let match_local_9_0 = *payload;
+                                                    let result = {
+                                                        let left = ls::attempt(
+                                                            ctx,
+                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                            |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                                let value = {
+                                                                    let perform_argument_0 =
+                                                                        match_local_7_0.clone();
+                                                                    let arguments = vec![perform_argument_0];
+                                                                    let result = lawspec_abilities::lawtwin_petstore::perform_getPetById(
+                                                                        ctx,
+                                                                        arguments,
+                                                                    );
+                                                                    let context = "getPetById";
+                                                                    result.map_err(|error| format!("{context}: {error}"))?
+                                                                };
+                                                                Ok(value)
+                                                            },
+                                                            |value| ls::construct("Either::Right", vec![value]),
+                                                            |value| ls::construct("Either::Left", vec![value]),
+                                                        )?;
+                                                        let right = ls::construct(
+                                                            "Either::Right",
+                                                            vec![match_local_9_0.clone()],
+                                                        )?;
+                                                        ls::binary(
+                                                            "==",
+                                                            "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Pet",
+                                                            left,
+                                                            right,
+                                                        )?
+                                                    };
+                                                    result
+                                                }
+                                                _ => return Err("invalid match value".into()),
+                                            }
                                         };
                                         result
                                     }
                                     _ => return Err("invalid match value".into()),
-                                };
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        };
-                        result
+                                }
+                            };
+                            result
+                        }
+                        _ => return Err("invalid match value".into()),
                     }
-                    _ => return Err("invalid match value".into()),
                 }
             };
             let right = ls::Value::Bool(true);
@@ -4650,31 +4748,37 @@ fn law_4(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                 return Err(format!(
                     "{}: {:?} != {:?}{}",
                     concat!(
-                        "PetApi: a replaced pet reads back as replaced ",
-                        "[native] | expect let _let0__sent = _input0 in",
-                        " match (attempt (addPet (_let0__sent))) { Eith",
-                        "er::Left _match1__0__failure -> true; Either::",
-                        "Right _match1__1__created -> match (match (_ma",
-                        "tch1__1__created) { lawtwin.petstore.model::ty",
-                        "pe::Pet::Pet _matchfield0__id _matchfield1__na",
-                        "me _matchfield2__category _matchfield3__photoU",
-                        "rls _matchfield4__tags _matchfield5__status ->",
-                        " _matchfield0__id }) { Maybe::Nothing  -> fals",
-                        "e; Maybe::Just _match2__1__key -> match (attem",
-                        "pt (updatePet (let _letfield12__replacement = ",
-                        "Maybe::Just(_match2__1__key) in match (_input1",
-                        ") { lawtwin.petstore.model::type::Pet::Pet _ma",
-                        "tchfield6__id _matchfield7__name _matchfield8_",
-                        "_category _matchfield9__photoUrls _matchfield1",
-                        "0__tags _matchfield11__status -> lawtwin.petst",
-                        "ore.model::type::Pet::Pet(_letfield12__replace",
-                        "ment, _matchfield7__name, _matchfield8__catego",
-                        "ry, _matchfield9__photoUrls, _matchfield10__ta",
-                        "gs, _matchfield11__status) }))) { Either::Left",
-                        " _match3__0__failure -> true; Either::Right _m",
-                        "atch3__1__replaced -> (attempt (getPetById (_m",
-                        "atch2__1__key)) == Either::Right(_match3__1__r",
-                        "eplaced)) } } } = true",
+                        "PetApi: \"|a replaced pet reads back as replac",
+                        "ed| [native] | expect let _let0__sent = _input",
+                        "0 in let _let1__it = attempt (addPet (_let0__s",
+                        "ent)) in match (_let1__it) { Either::Left _mat",
+                        "ch2__0___lawspecSelection0x0 -> true; Either::",
+                        "Right _match2__1___lawspecSelection0x0 -> let ",
+                        "_let3__it = match (_match2__1___lawspecSelecti",
+                        "on0x0) { lawtwin.petstore.model::type::Pet::Pe",
+                        "t _matchfield0__id _matchfield1__name _matchfi",
+                        "eld2__category _matchfield3__photoUrls _matchf",
+                        "ield4__tags _matchfield5__status -> _matchfiel",
+                        "d0__id } in match (_let3__it) { Maybe::Nothing",
+                        "  -> false; Maybe::Just _match4__1___match__la",
+                        "wspecSelection0x0_0 -> let _let5__it = attempt",
+                        " (updatePet (let _letfield12__replacement = Ma",
+                        "ybe::Just(_match4__1___match__lawspecSelection",
+                        "0x0_0) in match (_input1) { lawtwin.petstore.m",
+                        "odel::type::Pet::Pet _matchfield6__id _matchfi",
+                        "eld7__name _matchfield8__category _matchfield9",
+                        "__photoUrls _matchfield10__tags _matchfield11_",
+                        "_status -> lawtwin.petstore.model::type::Pet::",
+                        "Pet(_letfield12__replacement, _matchfield7__na",
+                        "me, _matchfield8__category, _matchfield9__phot",
+                        "oUrls, _matchfield10__tags, _matchfield11__sta",
+                        "tus) })) in match (_let5__it) { Either::Left _",
+                        "match6__0___match__match__lawspecSelection0x0_",
+                        "0_0 -> true; Either::Right _match6__1___match_",
+                        "_match__lawspecSelection0x0_0_0 -> (attempt (g",
+                        "etPetById (_match4__1___match__lawspecSelectio",
+                        "n0x0_0)) == Either::Right(_match6__1___match__",
+                        "match__lawspecSelection0x0_0_0)) } } } = true",
                     ),
                     left,
                     right,
@@ -4713,8 +4817,8 @@ fn run_4() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
         concat!(
-            "lawtwin.petstore::PetApi: a replaced pet reads",
-            " back as replaced [native]",
+            "lawtwin.petstore::PetApi: \"|a replaced pet re",
+            "ads back as replaced| [native]",
         ),
         SEARCH_INPUTS_4,
         search_case_4,
@@ -6364,8 +6468,8 @@ fn run_4() -> ls::Result<()> {
     };
     let strategy = strategy.prop_filter(
         concat!(
-            "PetApi: a replaced pet reads back as replaced ",
-            "[native] refinement",
+            "PetApi: \"|a replaced pet reads back as replac",
+            "ed| [native] refinement",
         ),
         refinement,
     );
@@ -6386,8 +6490,8 @@ fn run_4() -> ls::Result<()> {
         if result.is_err() {
             ls::search_remember(
                 concat!(
-                    "lawtwin.petstore::PetApi: a replaced pet reads",
-                    " back as replaced [native]",
+                    "lawtwin.petstore::PetApi: \"|a replaced pet re",
+                    "ads back as replaced| [native]",
                 ),
                 SEARCH_INPUTS_4,
                 &case.values,
@@ -6456,26 +6560,29 @@ fn search_case_4(values: &[ls::Value]) -> ls::Result<Option<f64>> {
     Ok(Some(0.0))
 }
 
-// Law: lawtwin.petstore::PetApi: a replaced pet reads back as replaced [reference]
+// Law: lawtwin.petstore::PetApi: "|a replaced pet reads back as replaced| [reference]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// PetApi: a replaced pet reads back as replaced [reference]
+// PetApi: "|a replaced pet reads back as replaced| [reference]
 // for all (body :: lawtwin.petstore.model::type::Pet) (replacement ::
-// lawtwin.petstore.model::type::Pet) . let _let0__sent = _input0 in match (attempt (addPet
-// (_let0__sent))) { Either::Left _match1__0__failure -> true; Either::Right _match1__1__created ->
-// match (match (_match1__1__created) { lawtwin.petstore.model::type::Pet::Pet _matchfield0__id
+// lawtwin.petstore.model::type::Pet) => let _let0__sent = _input0 in let _let1__it = attempt
+// (addPet (_let0__sent)) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
+// true; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = match
+// (_match2__1___lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet _matchfield0__id
 // _matchfield1__name _matchfield2__category _matchfield3__photoUrls _matchfield4__tags
-// _matchfield5__status -> _matchfield0__id }) { Maybe::Nothing -> false; Maybe::Just
-// _match2__1__key -> match (attempt (updatePet (let _letfield12__replacement =
-// Maybe::Just(_match2__1__key) in match (_input1) { lawtwin.petstore.model::type::Pet::Pet
-// _matchfield6__id _matchfield7__name _matchfield8__category _matchfield9__photoUrls
-// _matchfield10__tags _matchfield11__status ->
+// _matchfield5__status -> _matchfield0__id } in match (_let3__it) { Maybe::Nothing -> false;
+// Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let _let5__it = attempt (updatePet (let
+// _letfield12__replacement = Maybe::Just(_match4__1___match__lawspecSelection0x0_0) in match
+// (_input1) { lawtwin.petstore.model::type::Pet::Pet _matchfield6__id _matchfield7__name
+// _matchfield8__category _matchfield9__photoUrls _matchfield10__tags _matchfield11__status ->
 // lawtwin.petstore.model::type::Pet::Pet(_letfield12__replacement, _matchfield7__name,
-// _matchfield8__category, _matchfield9__photoUrls, _matchfield10__tags, _matchfield11__status) })))
-// { Either::Left _match3__0__failure -> true; Either::Right _match3__1__replaced -> (attempt
-// (getPetById (_match2__1__key)) == Either::Right(_match3__1__replaced)) } } } = true
+// _matchfield8__category, _matchfield9__photoUrls, _matchfield10__tags, _matchfield11__status) }))
+// in match (_let5__it) { Either::Left _match6__0___match__match__lawspecSelection0x0_0_0 -> true;
+// Either::Right _match6__1___match__match__lawspecSelection0x0_0_0 -> (attempt (getPetById
+// (_match4__1___match__lawspecSelection0x0_0)) ==
+// Either::Right(_match6__1___match__match__lawspecSelection0x0_0_0)) } } } = true end for all
 fn law_5(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let shared_reference = std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
     let installing = vec![
@@ -6498,128 +6605,107 @@ fn law_5(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
         let left = {
             let let_2 = input_0.clone();
             let _ = &let_2;
-            match ls::attempt(
-                ctx,
-                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                    let value = {
-                        let perform_argument_0 = let_2.clone();
-                        let arguments = vec![perform_argument_0];
-                        let result = lawspec_abilities::lawtwin_petstore::perform_addPet(
-                            ctx,
-                            arguments,
-                        );
-                        let context = "addPet";
-                        result.map_err(|error| format!("{context}: {error}"))?
-                    };
-                    Ok(value)
-                },
-                |value| ls::construct("Either::Right", vec![value]),
-                |value| ls::construct("Either::Left", vec![value]),
-            )? {
-                ls::Value::Left(payload) => {
-                    let match_local_3_0 = *payload;
-                    let result = ls::Value::Bool(true);
-                    result
-                }
-                ls::Value::Right(payload) => {
-                    let match_local_3_0 = *payload;
-                    let result = match match match_local_3_0.clone() {
-                        ls::Value::Data(tag, fields)
-                            if tag == "lawtwin.petstore.model::type::Pet::Pet"
-                                && fields.len() == 6 =>
-                        {
-                            let mut fields = fields.into_iter();
-                            let match_local_4_0 = fields.next().unwrap();
-                            let match_local_4_1 = fields.next().unwrap();
-                            let match_local_4_2 = fields.next().unwrap();
-                            let match_local_4_3 = fields.next().unwrap();
-                            let match_local_4_4 = fields.next().unwrap();
-                            let match_local_4_5 = fields.next().unwrap();
-                            let result = match_local_4_0.clone();
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    } {
-                        ls::Value::Maybe(None) => {
-                            let result = ls::Value::Bool(false);
-                            result
-                        }
-                        ls::Value::Maybe(Some(payload)) => {
-                            let match_local_4_0 = *payload;
-                            let result = match ls::attempt(
+            {
+                let let_3 = ls::attempt(
+                    ctx,
+                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                        let value = {
+                            let perform_argument_0 = let_2.clone();
+                            let arguments = vec![perform_argument_0];
+                            let result = lawspec_abilities::lawtwin_petstore::perform_addPet(
                                 ctx,
-                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                    let value = {
-                                        let perform_argument_0 = {
-                                            let let_5 = ls::construct(
-                                                "Maybe::Just",
-                                                vec![match_local_4_0.clone()],
-                                            )?;
-                                            let _ = &let_5;
-                                            match input_1.clone() {
-                                                ls::Value::Data(tag, fields)
-                                                    if tag == "lawtwin.petstore.model::type::Pet::Pet"
-                                                        && fields.len() == 6 =>
-                                                {
-                                                    let mut fields = fields.into_iter();
-                                                    let match_local_6_0 = fields.next().unwrap();
-                                                    let match_local_6_1 = fields.next().unwrap();
-                                                    let match_local_6_2 = fields.next().unwrap();
-                                                    let match_local_6_3 = fields.next().unwrap();
-                                                    let match_local_6_4 = fields.next().unwrap();
-                                                    let match_local_6_5 = fields.next().unwrap();
-                                                    let result = ls::construct_data(
-                                                        "lawtwin.petstore.model::type::Pet::Pet",
-                                                        vec![
-                                                            let_5.clone(),
-                                                            match_local_6_1.clone(),
-                                                            match_local_6_2.clone(),
-                                                            match_local_6_3.clone(),
-                                                            match_local_6_4.clone(),
-                                                            match_local_6_5.clone(),
-                                                        ],
-                                                    );
-                                                    result
-                                                }
-                                                _ => return Err("invalid match value".into()),
-                                            }
-                                        };
-                                        let arguments = vec![perform_argument_0];
-                                        let result = lawspec_abilities::lawtwin_petstore::perform_updatePet(
-                                            ctx,
-                                            arguments,
-                                        );
-                                        let context = "updatePet";
-                                        result.map_err(|error| format!("{context}: {error}"))?
-                                    };
-                                    Ok(value)
-                                },
-                                |value| ls::construct("Either::Right", vec![value]),
-                                |value| ls::construct("Either::Left", vec![value]),
-                            )? {
-                                ls::Value::Left(payload) => {
-                                    let match_local_5_0 = *payload;
-                                    let result = ls::Value::Bool(true);
+                                arguments,
+                            );
+                            let context = "addPet";
+                            result.map_err(|error| format!("{context}: {error}"))?
+                        };
+                        Ok(value)
+                    },
+                    |value| ls::construct("Either::Right", vec![value]),
+                    |value| ls::construct("Either::Left", vec![value]),
+                )?;
+                let _ = &let_3;
+                match let_3.clone() {
+                    ls::Value::Left(payload) => {
+                        let match_local_4_0 = *payload;
+                        let result = ls::Value::Bool(true);
+                        result
+                    }
+                    ls::Value::Right(payload) => {
+                        let match_local_4_0 = *payload;
+                        let result = {
+                            let let_5 = match match_local_4_0.clone() {
+                                ls::Value::Data(tag, fields)
+                                    if tag == "lawtwin.petstore.model::type::Pet::Pet"
+                                        && fields.len() == 6 =>
+                                {
+                                    let mut fields = fields.into_iter();
+                                    let match_local_5_0 = fields.next().unwrap();
+                                    let match_local_5_1 = fields.next().unwrap();
+                                    let match_local_5_2 = fields.next().unwrap();
+                                    let match_local_5_3 = fields.next().unwrap();
+                                    let match_local_5_4 = fields.next().unwrap();
+                                    let match_local_5_5 = fields.next().unwrap();
+                                    let result = match_local_5_0.clone();
                                     result
                                 }
-                                ls::Value::Right(payload) => {
-                                    let match_local_5_0 = *payload;
+                                _ => return Err("invalid match value".into()),
+                            };
+                            let _ = &let_5;
+                            match let_5.clone() {
+                                ls::Value::Maybe(None) => {
+                                    let result = ls::Value::Bool(false);
+                                    result
+                                }
+                                ls::Value::Maybe(Some(payload)) => {
+                                    let match_local_6_0 = *payload;
                                     let result = {
-                                        let left = ls::attempt(
+                                        let let_7 = ls::attempt(
                                             ctx,
                                             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                                             |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
                                                 let value = {
-                                                    let perform_argument_0 =
-                                                        match_local_4_0.clone();
+                                                    let perform_argument_0 = {
+                                                        let let_7 = ls::construct(
+                                                            "Maybe::Just",
+                                                            vec![match_local_6_0.clone()],
+                                                        )?;
+                                                        let _ = &let_7;
+                                                        match input_1.clone() {
+                                                            ls::Value::Data(tag, fields)
+                                                                if tag == "lawtwin.petstore.model::type::Pet::Pet"
+                                                                    && fields.len() == 6 =>
+                                                            {
+                                                                let mut fields = fields.into_iter();
+                                                                let match_local_8_0 = fields.next().unwrap();
+                                                                let match_local_8_1 = fields.next().unwrap();
+                                                                let match_local_8_2 = fields.next().unwrap();
+                                                                let match_local_8_3 = fields.next().unwrap();
+                                                                let match_local_8_4 = fields.next().unwrap();
+                                                                let match_local_8_5 = fields.next().unwrap();
+                                                                let result = ls::construct_data(
+                                                                    "lawtwin.petstore.model::type::Pet::Pet",
+                                                                    vec![
+                                                                        let_7.clone(),
+                                                                        match_local_8_1.clone(),
+                                                                        match_local_8_2.clone(),
+                                                                        match_local_8_3.clone(),
+                                                                        match_local_8_4.clone(),
+                                                                        match_local_8_5.clone(),
+                                                                    ],
+                                                                );
+                                                                result
+                                                            }
+                                                            _ => return Err("invalid match value".into()),
+                                                        }
+                                                    };
                                                     let arguments = vec![perform_argument_0];
-                                                    let result = lawspec_abilities::lawtwin_petstore::perform_getPetById(
+                                                    let result = lawspec_abilities::lawtwin_petstore::perform_updatePet(
                                                         ctx,
                                                         arguments,
                                                     );
-                                                    let context = "getPetById";
+                                                    let context = "updatePet";
                                                     result.map_err(|error| format!("{context}: {error}"))?
                                                 };
                                                 Ok(value)
@@ -6627,28 +6713,61 @@ fn law_5(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                                             |value| ls::construct("Either::Right", vec![value]),
                                             |value| ls::construct("Either::Left", vec![value]),
                                         )?;
-                                        let right = ls::construct(
-                                            "Either::Right",
-                                            vec![match_local_5_0.clone()],
-                                        )?;
-                                        ls::binary(
-                                            "==",
-                                            "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Pet",
-                                            left,
-                                            right,
-                                        )?
+                                        let _ = &let_7;
+                                        match let_7.clone() {
+                                            ls::Value::Left(payload) => {
+                                                let match_local_8_0 = *payload;
+                                                let result = ls::Value::Bool(true);
+                                                result
+                                            }
+                                            ls::Value::Right(payload) => {
+                                                let match_local_8_0 = *payload;
+                                                let result = {
+                                                    let left = ls::attempt(
+                                                        ctx,
+                                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                            let value = {
+                                                                let perform_argument_0 =
+                                                                    match_local_6_0.clone();
+                                                                let arguments = vec![perform_argument_0];
+                                                                let result = lawspec_abilities::lawtwin_petstore::perform_getPetById(
+                                                                    ctx,
+                                                                    arguments,
+                                                                );
+                                                                let context = "getPetById";
+                                                                result.map_err(|error| format!("{context}: {error}"))?
+                                                            };
+                                                            Ok(value)
+                                                        },
+                                                        |value| ls::construct("Either::Right", vec![value]),
+                                                        |value| ls::construct("Either::Left", vec![value]),
+                                                    )?;
+                                                    let right = ls::construct(
+                                                        "Either::Right",
+                                                        vec![match_local_8_0.clone()],
+                                                    )?;
+                                                    ls::binary(
+                                                        "==",
+                                                        "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Pet",
+                                                        left,
+                                                        right,
+                                                    )?
+                                                };
+                                                result
+                                            }
+                                            _ => return Err("invalid match value".into()),
+                                        }
                                     };
                                     result
                                 }
                                 _ => return Err("invalid match value".into()),
-                            };
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    };
-                    result
+                            }
+                        };
+                        result
+                    }
+                    _ => return Err("invalid match value".into()),
                 }
-                _ => return Err("invalid match value".into()),
             }
         };
         let right = ls::Value::Bool(true);
@@ -6656,31 +6775,38 @@ fn law_5(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
             return Err(format!(
                 "{}: {:?} != {:?}{}",
                 concat!(
-                    "PetApi: a replaced pet reads back as replaced ",
-                    "[reference] | expect let _let0__sent = _input0",
-                    " in match (attempt (addPet (_let0__sent))) { E",
-                    "ither::Left _match1__0__failure -> true; Eithe",
-                    "r::Right _match1__1__created -> match (match (",
-                    "_match1__1__created) { lawtwin.petstore.model:",
-                    ":type::Pet::Pet _matchfield0__id _matchfield1_",
-                    "_name _matchfield2__category _matchfield3__pho",
-                    "toUrls _matchfield4__tags _matchfield5__status",
-                    " -> _matchfield0__id }) { Maybe::Nothing  -> f",
-                    "alse; Maybe::Just _match2__1__key -> match (at",
-                    "tempt (updatePet (let _letfield12__replacement",
-                    " = Maybe::Just(_match2__1__key) in match (_inp",
-                    "ut1) { lawtwin.petstore.model::type::Pet::Pet ",
-                    "_matchfield6__id _matchfield7__name _matchfiel",
-                    "d8__category _matchfield9__photoUrls _matchfie",
-                    "ld10__tags _matchfield11__status -> lawtwin.pe",
-                    "tstore.model::type::Pet::Pet(_letfield12__repl",
-                    "acement, _matchfield7__name, _matchfield8__cat",
-                    "egory, _matchfield9__photoUrls, _matchfield10_",
-                    "_tags, _matchfield11__status) }))) { Either::L",
-                    "eft _match3__0__failure -> true; Either::Right",
-                    " _match3__1__replaced -> (attempt (getPetById ",
-                    "(_match2__1__key)) == Either::Right(_match3__1",
-                    "__replaced)) } } } = true",
+                    "PetApi: \"|a replaced pet reads back as replac",
+                    "ed| [reference] | expect let _let0__sent = _in",
+                    "put0 in let _let1__it = attempt (addPet (_let0",
+                    "__sent)) in match (_let1__it) { Either::Left _",
+                    "match2__0___lawspecSelection0x0 -> true; Eithe",
+                    "r::Right _match2__1___lawspecSelection0x0 -> l",
+                    "et _let3__it = match (_match2__1___lawspecSele",
+                    "ction0x0) { lawtwin.petstore.model::type::Pet:",
+                    ":Pet _matchfield0__id _matchfield1__name _matc",
+                    "hfield2__category _matchfield3__photoUrls _mat",
+                    "chfield4__tags _matchfield5__status -> _matchf",
+                    "ield0__id } in match (_let3__it) { Maybe::Noth",
+                    "ing  -> false; Maybe::Just _match4__1___match_",
+                    "_lawspecSelection0x0_0 -> let _let5__it = atte",
+                    "mpt (updatePet (let _letfield12__replacement =",
+                    " Maybe::Just(_match4__1___match__lawspecSelect",
+                    "ion0x0_0) in match (_input1) { lawtwin.petstor",
+                    "e.model::type::Pet::Pet _matchfield6__id _matc",
+                    "hfield7__name _matchfield8__category _matchfie",
+                    "ld9__photoUrls _matchfield10__tags _matchfield",
+                    "11__status -> lawtwin.petstore.model::type::Pe",
+                    "t::Pet(_letfield12__replacement, _matchfield7_",
+                    "_name, _matchfield8__category, _matchfield9__p",
+                    "hotoUrls, _matchfield10__tags, _matchfield11__",
+                    "status) })) in match (_let5__it) { Either::Lef",
+                    "t _match6__0___match__match__lawspecSelection0",
+                    "x0_0_0 -> true; Either::Right _match6__1___mat",
+                    "ch__match__lawspecSelection0x0_0_0 -> (attempt",
+                    " (getPetById (_match4__1___match__lawspecSelec",
+                    "tion0x0_0)) == Either::Right(_match6__1___matc",
+                    "h__match__lawspecSelection0x0_0_0)) } } } = tr",
+                    "ue",
                 ),
                 left,
                 right,
@@ -6704,8 +6830,8 @@ fn run_5() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
         concat!(
-            "lawtwin.petstore::PetApi: a replaced pet reads",
-            " back as replaced [reference]",
+            "lawtwin.petstore::PetApi: \"|a replaced pet re",
+            "ads back as replaced| [reference]",
         ),
         SEARCH_INPUTS_5,
         search_case_5,
@@ -8355,8 +8481,8 @@ fn run_5() -> ls::Result<()> {
     };
     let strategy = strategy.prop_filter(
         concat!(
-            "PetApi: a replaced pet reads back as replaced ",
-            "[reference] refinement",
+            "PetApi: \"|a replaced pet reads back as replac",
+            "ed| [reference] refinement",
         ),
         refinement,
     );
@@ -8377,8 +8503,8 @@ fn run_5() -> ls::Result<()> {
         if result.is_err() {
             ls::search_remember(
                 concat!(
-                    "lawtwin.petstore::PetApi: a replaced pet reads",
-                    " back as replaced [reference]",
+                    "lawtwin.petstore::PetApi: \"|a replaced pet re",
+                    "ads back as replaced| [reference]",
                 ),
                 SEARCH_INPUTS_5,
                 &case.values,
@@ -8447,24 +8573,27 @@ fn search_case_5(values: &[ls::Value]) -> ls::Result<Option<f64>> {
     Ok(Some(0.0))
 }
 
-// Law: lawtwin.petstore::StoreApi: a created order reads back [native]
+// Law: lawtwin.petstore::StoreApi: "|a created order reads back| [native]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// StoreApi: a created order reads back [native]
-// for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) . let _let0__sent =
-// let _letfield6__replacement = Maybe::Just(_input1) in match (_input0) {
+// StoreApi: "|a created order reads back| [native]
+// for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) => let _let0__sent
+// = let _letfield6__replacement = Maybe::Just(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield0__id _matchfield1__petId
 // _matchfield2__quantity _matchfield3__shipDate _matchfield4__status _matchfield5__complete ->
 // lawtwin.petstore.model::type::Order::Order(_matchfield0__id, _matchfield1__petId,
 // _matchfield2__quantity, _letfield6__replacement, _matchfield4__status, _matchfield5__complete) }
-// in match (attempt (placeOrder (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure ->
-// true; Either::Right _match1__1__created -> match (match (_match1__1__created) {
+// in let _let1__it = attempt (placeOrder (Maybe::Just(_let0__sent))) in match (_let1__it) {
+// Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
+// _match2__1___lawspecSelection0x0 -> let _let3__it = match (_match2__1___lawspecSelection0x0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield7__id _matchfield8__petId
 // _matchfield9__quantity _matchfield10__shipDate _matchfield11__status _matchfield12__complete ->
-// _matchfield7__id }) { Maybe::Nothing -> false; Maybe::Just _match2__1__key -> (attempt
-// (getOrderById (_match2__1__key)) == Either::Right(_match1__1__created)) } } = true
+// _matchfield7__id } in match (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+// _match4__1___match__lawspecSelection0x0_0 -> (attempt (getOrderById
+// (_match4__1___match__lawspecSelection0x0_0)) == Either::Right(_match2__1___lawspecSelection0x0))
+// } } = true end for all
 fn law_6(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let input_0 = lawspec_schema::schema()?.validate_with_context(
         input_0,
@@ -8524,94 +8653,103 @@ fn law_6(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                     }
                 };
                 let _ = &let_3;
-                match ls::attempt(
-                    ctx,
-                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                        let value = {
-                            let perform_argument_0 =
-                                ls::construct("Maybe::Just", vec![let_3.clone()])?;
-                            let arguments = vec![perform_argument_0];
-                            let result = lawspec_abilities::lawtwin_petstore::perform_placeOrder(
-                                ctx,
-                                arguments,
-                            );
-                            let context = "placeOrder";
-                            result.map_err(|error| format!("{context}: {error}"))?
-                        };
-                        Ok(value)
-                    },
-                    |value| ls::construct("Either::Right", vec![value]),
-                    |value| ls::construct("Either::Left", vec![value]),
-                )? {
-                    ls::Value::Left(payload) => {
-                        let match_local_4_0 = *payload;
-                        let result = ls::Value::Bool(true);
-                        result
-                    }
-                    ls::Value::Right(payload) => {
-                        let match_local_4_0 = *payload;
-                        let result = match match match_local_4_0.clone() {
-                            ls::Value::Data(tag, fields)
-                                if tag == "lawtwin.petstore.model::type::Order::Order"
-                                    && fields.len() == 6 =>
-                            {
-                                let mut fields = fields.into_iter();
-                                let match_local_5_0 = fields.next().unwrap();
-                                let match_local_5_1 = fields.next().unwrap();
-                                let match_local_5_2 = fields.next().unwrap();
-                                let match_local_5_3 = fields.next().unwrap();
-                                let match_local_5_4 = fields.next().unwrap();
-                                let match_local_5_5 = fields.next().unwrap();
-                                let result = match_local_5_0.clone();
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        } {
-                            ls::Value::Maybe(None) => {
-                                let result = ls::Value::Bool(false);
-                                result
-                            }
-                            ls::Value::Maybe(Some(payload)) => {
-                                let match_local_5_0 = *payload;
-                                let result = {
-                                    let left = ls::attempt(
-                                        ctx,
-                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                            let value = {
-                                                let perform_argument_0 = match_local_5_0.clone();
-                                                let arguments = vec![perform_argument_0];
-                                                let result = lawspec_abilities::lawtwin_petstore::perform_getOrderById(
-                                                    ctx,
-                                                    arguments,
-                                                );
-                                                let context = "getOrderById";
-                                                result.map_err(|error| format!("{context}: {error}"))?
-                                            };
-                                            Ok(value)
-                                        },
-                                        |value| ls::construct("Either::Right", vec![value]),
-                                        |value| ls::construct("Either::Left", vec![value]),
-                                    )?;
-                                    let right = ls::construct(
-                                        "Either::Right",
-                                        vec![match_local_4_0.clone()],
-                                    )?;
-                                    ls::binary(
-                                        "==",
-                                        "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Order",
-                                        left,
-                                        right,
-                                    )?
+                {
+                    let let_4 = ls::attempt(
+                        ctx,
+                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                            let value = {
+                                let perform_argument_0 =
+                                    ls::construct("Maybe::Just", vec![let_3.clone()])?;
+                                let arguments = vec![perform_argument_0];
+                                let result = lawspec_abilities::lawtwin_petstore::perform_placeOrder(
+                                    ctx,
+                                    arguments,
+                                );
+                                let context = "placeOrder";
+                                result.map_err(|error| format!("{context}: {error}"))?
+                            };
+                            Ok(value)
+                        },
+                        |value| ls::construct("Either::Right", vec![value]),
+                        |value| ls::construct("Either::Left", vec![value]),
+                    )?;
+                    let _ = &let_4;
+                    match let_4.clone() {
+                        ls::Value::Left(payload) => {
+                            let match_local_5_0 = *payload;
+                            let result = ls::Value::Bool(true);
+                            result
+                        }
+                        ls::Value::Right(payload) => {
+                            let match_local_5_0 = *payload;
+                            let result = {
+                                let let_6 = match match_local_5_0.clone() {
+                                    ls::Value::Data(tag, fields)
+                                        if tag == "lawtwin.petstore.model::type::Order::Order"
+                                            && fields.len() == 6 =>
+                                    {
+                                        let mut fields = fields.into_iter();
+                                        let match_local_6_0 = fields.next().unwrap();
+                                        let match_local_6_1 = fields.next().unwrap();
+                                        let match_local_6_2 = fields.next().unwrap();
+                                        let match_local_6_3 = fields.next().unwrap();
+                                        let match_local_6_4 = fields.next().unwrap();
+                                        let match_local_6_5 = fields.next().unwrap();
+                                        let result = match_local_6_0.clone();
+                                        result
+                                    }
+                                    _ => return Err("invalid match value".into()),
                                 };
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        };
-                        result
+                                let _ = &let_6;
+                                match let_6.clone() {
+                                    ls::Value::Maybe(None) => {
+                                        let result = ls::Value::Bool(false);
+                                        result
+                                    }
+                                    ls::Value::Maybe(Some(payload)) => {
+                                        let match_local_7_0 = *payload;
+                                        let result = {
+                                            let left = ls::attempt(
+                                                ctx,
+                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                    let value = {
+                                                        let perform_argument_0 =
+                                                            match_local_7_0.clone();
+                                                        let arguments = vec![perform_argument_0];
+                                                        let result = lawspec_abilities::lawtwin_petstore::perform_getOrderById(
+                                                            ctx,
+                                                            arguments,
+                                                        );
+                                                        let context = "getOrderById";
+                                                        result.map_err(|error| format!("{context}: {error}"))?
+                                                    };
+                                                    Ok(value)
+                                                },
+                                                |value| ls::construct("Either::Right", vec![value]),
+                                                |value| ls::construct("Either::Left", vec![value]),
+                                            )?;
+                                            let right = ls::construct(
+                                                "Either::Right",
+                                                vec![match_local_5_0.clone()],
+                                            )?;
+                                            ls::binary(
+                                                "==",
+                                                "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Order",
+                                                left,
+                                                right,
+                                            )?
+                                        };
+                                        result
+                                    }
+                                    _ => return Err("invalid match value".into()),
+                                }
+                            };
+                            result
+                        }
+                        _ => return Err("invalid match value".into()),
                     }
-                    _ => return Err("invalid match value".into()),
                 }
             };
             let right = ls::Value::Bool(true);
@@ -8619,29 +8757,32 @@ fn law_6(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                 return Err(format!(
                     "{}: {:?} != {:?}{}",
                     concat!(
-                        "StoreApi: a created order reads back [native] ",
-                        "| expect let _let0__sent = let _letfield6__rep",
-                        "lacement = Maybe::Just(_input1) in match (_inp",
-                        "ut0) { lawtwin.petstore.model::type::Order::Or",
-                        "der _matchfield0__id _matchfield1__petId _matc",
-                        "hfield2__quantity _matchfield3__shipDate _matc",
-                        "hfield4__status _matchfield5__complete -> lawt",
-                        "win.petstore.model::type::Order::Order(_matchf",
-                        "ield0__id, _matchfield1__petId, _matchfield2__",
-                        "quantity, _letfield6__replacement, _matchfield",
-                        "4__status, _matchfield5__complete) } in match ",
-                        "(attempt (placeOrder (Maybe::Just(_let0__sent)",
-                        "))) { Either::Left _match1__0__failure -> true",
-                        "; Either::Right _match1__1__created -> match (",
-                        "match (_match1__1__created) { lawtwin.petstore",
-                        ".model::type::Order::Order _matchfield7__id _m",
-                        "atchfield8__petId _matchfield9__quantity _matc",
-                        "hfield10__shipDate _matchfield11__status _matc",
-                        "hfield12__complete -> _matchfield7__id }) { Ma",
-                        "ybe::Nothing  -> false; Maybe::Just _match2__1",
-                        "__key -> (attempt (getOrderById (_match2__1__k",
-                        "ey)) == Either::Right(_match1__1__created)) } ",
-                        "} = true",
+                        "StoreApi: \"|a created order reads back| [nati",
+                        "ve] | expect let _let0__sent = let _letfield6_",
+                        "_replacement = Maybe::Just(_input1) in match (",
+                        "_input0) { lawtwin.petstore.model::type::Order",
+                        "::Order _matchfield0__id _matchfield1__petId _",
+                        "matchfield2__quantity _matchfield3__shipDate _",
+                        "matchfield4__status _matchfield5__complete -> ",
+                        "lawtwin.petstore.model::type::Order::Order(_ma",
+                        "tchfield0__id, _matchfield1__petId, _matchfiel",
+                        "d2__quantity, _letfield6__replacement, _matchf",
+                        "ield4__status, _matchfield5__complete) } in le",
+                        "t _let1__it = attempt (placeOrder (Maybe::Just",
+                        "(_let0__sent))) in match (_let1__it) { Either:",
+                        ":Left _match2__0___lawspecSelection0x0 -> true",
+                        "; Either::Right _match2__1___lawspecSelection0",
+                        "x0 -> let _let3__it = match (_match2__1___laws",
+                        "pecSelection0x0) { lawtwin.petstore.model::typ",
+                        "e::Order::Order _matchfield7__id _matchfield8_",
+                        "_petId _matchfield9__quantity _matchfield10__s",
+                        "hipDate _matchfield11__status _matchfield12__c",
+                        "omplete -> _matchfield7__id } in match (_let3_",
+                        "_it) { Maybe::Nothing  -> false; Maybe::Just _",
+                        "match4__1___match__lawspecSelection0x0_0 -> (a",
+                        "ttempt (getOrderById (_match4__1___match__laws",
+                        "pecSelection0x0_0)) == Either::Right(_match2__",
+                        "1___lawspecSelection0x0)) } } = true",
                     ),
                     left,
                     right,
@@ -8697,8 +8838,8 @@ fn run_6() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
         concat!(
-            "lawtwin.petstore::StoreApi: a created order re",
-            "ads back [native]",
+            "lawtwin.petstore::StoreApi: \"|a created order",
+            " reads back| [native]",
         ),
         SEARCH_INPUTS_6,
         search_case_6,
@@ -9138,7 +9279,7 @@ fn run_6() -> ls::Result<()> {
         result.unwrap_or_else(|e| panic!("{e}"))
     };
     let strategy = strategy.prop_filter(
-        "StoreApi: a created order reads back [native] refinement",
+        "StoreApi: \"|a created order reads back| [native] refinement",
         refinement,
     );
     let config = proptest::test_runner::Config {
@@ -9158,8 +9299,8 @@ fn run_6() -> ls::Result<()> {
         if result.is_err() {
             ls::search_remember(
                 concat!(
-                    "lawtwin.petstore::StoreApi: a created order re",
-                    "ads back [native]",
+                    "lawtwin.petstore::StoreApi: \"|a created order",
+                    " reads back| [native]",
                 ),
                 SEARCH_INPUTS_6,
                 &case.values,
@@ -9199,24 +9340,27 @@ fn search_case_6(values: &[ls::Value]) -> ls::Result<Option<f64>> {
     Ok(Some(0.0))
 }
 
-// Law: lawtwin.petstore::StoreApi: a created order reads back [reference]
+// Law: lawtwin.petstore::StoreApi: "|a created order reads back| [reference]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// StoreApi: a created order reads back [reference]
-// for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) . let _let0__sent =
-// let _letfield6__replacement = Maybe::Just(_input1) in match (_input0) {
+// StoreApi: "|a created order reads back| [reference]
+// for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) => let _let0__sent
+// = let _letfield6__replacement = Maybe::Just(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield0__id _matchfield1__petId
 // _matchfield2__quantity _matchfield3__shipDate _matchfield4__status _matchfield5__complete ->
 // lawtwin.petstore.model::type::Order::Order(_matchfield0__id, _matchfield1__petId,
 // _matchfield2__quantity, _letfield6__replacement, _matchfield4__status, _matchfield5__complete) }
-// in match (attempt (placeOrder (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure ->
-// true; Either::Right _match1__1__created -> match (match (_match1__1__created) {
+// in let _let1__it = attempt (placeOrder (Maybe::Just(_let0__sent))) in match (_let1__it) {
+// Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
+// _match2__1___lawspecSelection0x0 -> let _let3__it = match (_match2__1___lawspecSelection0x0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield7__id _matchfield8__petId
 // _matchfield9__quantity _matchfield10__shipDate _matchfield11__status _matchfield12__complete ->
-// _matchfield7__id }) { Maybe::Nothing -> false; Maybe::Just _match2__1__key -> (attempt
-// (getOrderById (_match2__1__key)) == Either::Right(_match1__1__created)) } } = true
+// _matchfield7__id } in match (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+// _match4__1___match__lawspecSelection0x0_0 -> (attempt (getOrderById
+// (_match4__1___match__lawspecSelection0x0_0)) == Either::Right(_match2__1___lawspecSelection0x0))
+// } } = true end for all
 fn law_7(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let shared_reference = std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
     let installing = vec![
@@ -9269,93 +9413,103 @@ fn law_7(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                 }
             };
             let _ = &let_2;
-            match ls::attempt(
-                ctx,
-                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                    let value = {
-                        let perform_argument_0 = ls::construct("Maybe::Just", vec![let_2.clone()])?;
-                        let arguments = vec![perform_argument_0];
-                        let result = lawspec_abilities::lawtwin_petstore::perform_placeOrder(
-                            ctx,
-                            arguments,
-                        );
-                        let context = "placeOrder";
-                        result.map_err(|error| format!("{context}: {error}"))?
-                    };
-                    Ok(value)
-                },
-                |value| ls::construct("Either::Right", vec![value]),
-                |value| ls::construct("Either::Left", vec![value]),
-            )? {
-                ls::Value::Left(payload) => {
-                    let match_local_3_0 = *payload;
-                    let result = ls::Value::Bool(true);
-                    result
-                }
-                ls::Value::Right(payload) => {
-                    let match_local_3_0 = *payload;
-                    let result = match match match_local_3_0.clone() {
-                        ls::Value::Data(tag, fields)
-                            if tag == "lawtwin.petstore.model::type::Order::Order"
-                                && fields.len() == 6 =>
-                        {
-                            let mut fields = fields.into_iter();
-                            let match_local_4_0 = fields.next().unwrap();
-                            let match_local_4_1 = fields.next().unwrap();
-                            let match_local_4_2 = fields.next().unwrap();
-                            let match_local_4_3 = fields.next().unwrap();
-                            let match_local_4_4 = fields.next().unwrap();
-                            let match_local_4_5 = fields.next().unwrap();
-                            let result = match_local_4_0.clone();
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    } {
-                        ls::Value::Maybe(None) => {
-                            let result = ls::Value::Bool(false);
-                            result
-                        }
-                        ls::Value::Maybe(Some(payload)) => {
-                            let match_local_4_0 = *payload;
-                            let result = {
-                                let left = ls::attempt(
-                                    ctx,
-                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                        let value = {
-                                            let perform_argument_0 = match_local_4_0.clone();
-                                            let arguments = vec![perform_argument_0];
-                                            let result = lawspec_abilities::lawtwin_petstore::perform_getOrderById(
-                                                ctx,
-                                                arguments,
-                                            );
-                                            let context = "getOrderById";
-                                            result.map_err(|error| format!("{context}: {error}"))?
-                                        };
-                                        Ok(value)
-                                    },
-                                    |value| ls::construct("Either::Right", vec![value]),
-                                    |value| ls::construct("Either::Left", vec![value]),
-                                )?;
-                                let right = ls::construct(
-                                    "Either::Right",
-                                    vec![match_local_3_0.clone()],
-                                )?;
-                                ls::binary(
-                                    "==",
-                                    "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Order",
-                                    left,
-                                    right,
-                                )?
+            {
+                let let_3 = ls::attempt(
+                    ctx,
+                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                        let value = {
+                            let perform_argument_0 =
+                                ls::construct("Maybe::Just", vec![let_2.clone()])?;
+                            let arguments = vec![perform_argument_0];
+                            let result = lawspec_abilities::lawtwin_petstore::perform_placeOrder(
+                                ctx,
+                                arguments,
+                            );
+                            let context = "placeOrder";
+                            result.map_err(|error| format!("{context}: {error}"))?
+                        };
+                        Ok(value)
+                    },
+                    |value| ls::construct("Either::Right", vec![value]),
+                    |value| ls::construct("Either::Left", vec![value]),
+                )?;
+                let _ = &let_3;
+                match let_3.clone() {
+                    ls::Value::Left(payload) => {
+                        let match_local_4_0 = *payload;
+                        let result = ls::Value::Bool(true);
+                        result
+                    }
+                    ls::Value::Right(payload) => {
+                        let match_local_4_0 = *payload;
+                        let result = {
+                            let let_5 = match match_local_4_0.clone() {
+                                ls::Value::Data(tag, fields)
+                                    if tag == "lawtwin.petstore.model::type::Order::Order"
+                                        && fields.len() == 6 =>
+                                {
+                                    let mut fields = fields.into_iter();
+                                    let match_local_5_0 = fields.next().unwrap();
+                                    let match_local_5_1 = fields.next().unwrap();
+                                    let match_local_5_2 = fields.next().unwrap();
+                                    let match_local_5_3 = fields.next().unwrap();
+                                    let match_local_5_4 = fields.next().unwrap();
+                                    let match_local_5_5 = fields.next().unwrap();
+                                    let result = match_local_5_0.clone();
+                                    result
+                                }
+                                _ => return Err("invalid match value".into()),
                             };
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    };
-                    result
+                            let _ = &let_5;
+                            match let_5.clone() {
+                                ls::Value::Maybe(None) => {
+                                    let result = ls::Value::Bool(false);
+                                    result
+                                }
+                                ls::Value::Maybe(Some(payload)) => {
+                                    let match_local_6_0 = *payload;
+                                    let result = {
+                                        let left = ls::attempt(
+                                            ctx,
+                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                            |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                let value = {
+                                                    let perform_argument_0 =
+                                                        match_local_6_0.clone();
+                                                    let arguments = vec![perform_argument_0];
+                                                    let result = lawspec_abilities::lawtwin_petstore::perform_getOrderById(
+                                                        ctx,
+                                                        arguments,
+                                                    );
+                                                    let context = "getOrderById";
+                                                    result.map_err(|error| format!("{context}: {error}"))?
+                                                };
+                                                Ok(value)
+                                            },
+                                            |value| ls::construct("Either::Right", vec![value]),
+                                            |value| ls::construct("Either::Left", vec![value]),
+                                        )?;
+                                        let right = ls::construct(
+                                            "Either::Right",
+                                            vec![match_local_4_0.clone()],
+                                        )?;
+                                        ls::binary(
+                                            "==",
+                                            "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Order",
+                                            left,
+                                            right,
+                                        )?
+                                    };
+                                    result
+                                }
+                                _ => return Err("invalid match value".into()),
+                            }
+                        };
+                        result
+                    }
+                    _ => return Err("invalid match value".into()),
                 }
-                _ => return Err("invalid match value".into()),
             }
         };
         let right = ls::Value::Bool(true);
@@ -9363,29 +9517,32 @@ fn law_7(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
             return Err(format!(
                 "{}: {:?} != {:?}{}",
                 concat!(
-                    "StoreApi: a created order reads back [referenc",
-                    "e] | expect let _let0__sent = let _letfield6__",
-                    "replacement = Maybe::Just(_input1) in match (_",
-                    "input0) { lawtwin.petstore.model::type::Order:",
-                    ":Order _matchfield0__id _matchfield1__petId _m",
-                    "atchfield2__quantity _matchfield3__shipDate _m",
-                    "atchfield4__status _matchfield5__complete -> l",
-                    "awtwin.petstore.model::type::Order::Order(_mat",
-                    "chfield0__id, _matchfield1__petId, _matchfield",
-                    "2__quantity, _letfield6__replacement, _matchfi",
-                    "eld4__status, _matchfield5__complete) } in mat",
-                    "ch (attempt (placeOrder (Maybe::Just(_let0__se",
-                    "nt)))) { Either::Left _match1__0__failure -> t",
-                    "rue; Either::Right _match1__1__created -> matc",
-                    "h (match (_match1__1__created) { lawtwin.petst",
-                    "ore.model::type::Order::Order _matchfield7__id",
-                    " _matchfield8__petId _matchfield9__quantity _m",
-                    "atchfield10__shipDate _matchfield11__status _m",
-                    "atchfield12__complete -> _matchfield7__id }) {",
-                    " Maybe::Nothing  -> false; Maybe::Just _match2",
-                    "__1__key -> (attempt (getOrderById (_match2__1",
-                    "__key)) == Either::Right(_match1__1__created))",
-                    " } } = true",
+                    "StoreApi: \"|a created order reads back| [refe",
+                    "rence] | expect let _let0__sent = let _letfiel",
+                    "d6__replacement = Maybe::Just(_input1) in matc",
+                    "h (_input0) { lawtwin.petstore.model::type::Or",
+                    "der::Order _matchfield0__id _matchfield1__petI",
+                    "d _matchfield2__quantity _matchfield3__shipDat",
+                    "e _matchfield4__status _matchfield5__complete ",
+                    "-> lawtwin.petstore.model::type::Order::Order(",
+                    "_matchfield0__id, _matchfield1__petId, _matchf",
+                    "ield2__quantity, _letfield6__replacement, _mat",
+                    "chfield4__status, _matchfield5__complete) } in",
+                    " let _let1__it = attempt (placeOrder (Maybe::J",
+                    "ust(_let0__sent))) in match (_let1__it) { Eith",
+                    "er::Left _match2__0___lawspecSelection0x0 -> t",
+                    "rue; Either::Right _match2__1___lawspecSelecti",
+                    "on0x0 -> let _let3__it = match (_match2__1___l",
+                    "awspecSelection0x0) { lawtwin.petstore.model::",
+                    "type::Order::Order _matchfield7__id _matchfiel",
+                    "d8__petId _matchfield9__quantity _matchfield10",
+                    "__shipDate _matchfield11__status _matchfield12",
+                    "__complete -> _matchfield7__id } in match (_le",
+                    "t3__it) { Maybe::Nothing  -> false; Maybe::Jus",
+                    "t _match4__1___match__lawspecSelection0x0_0 ->",
+                    " (attempt (getOrderById (_match4__1___match__l",
+                    "awspecSelection0x0_0)) == Either::Right(_match",
+                    "2__1___lawspecSelection0x0)) } } = true",
                 ),
                 left,
                 right,
@@ -9426,8 +9583,8 @@ fn run_7() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
         concat!(
-            "lawtwin.petstore::StoreApi: a created order re",
-            "ads back [reference]",
+            "lawtwin.petstore::StoreApi: \"|a created order",
+            " reads back| [reference]",
         ),
         SEARCH_INPUTS_7,
         search_case_7,
@@ -9867,7 +10024,10 @@ fn run_7() -> ls::Result<()> {
         result.unwrap_or_else(|e| panic!("{e}"))
     };
     let strategy = strategy.prop_filter(
-        "StoreApi: a created order reads back [reference] refinement",
+        concat!(
+            "StoreApi: \"|a created order reads back| [refe",
+            "rence] refinement",
+        ),
         refinement,
     );
     let config = proptest::test_runner::Config {
@@ -9887,8 +10047,8 @@ fn run_7() -> ls::Result<()> {
         if result.is_err() {
             ls::search_remember(
                 concat!(
-                    "lawtwin.petstore::StoreApi: a created order re",
-                    "ads back [reference]",
+                    "lawtwin.petstore::StoreApi: \"|a created order",
+                    " reads back| [reference]",
                 ),
                 SEARCH_INPUTS_7,
                 &case.values,
@@ -9928,25 +10088,28 @@ fn search_case_7(values: &[ls::Value]) -> ls::Result<Option<f64>> {
     Ok(Some(0.0))
 }
 
-// Law: lawtwin.petstore::StoreApi: a deleted order is not found [native]
+// Law: lawtwin.petstore::StoreApi: "|a deleted order is not found| [native]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// StoreApi: a deleted order is not found [native]
-// for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) . let _let0__sent =
-// let _letfield6__replacement = Maybe::Just(_input1) in match (_input0) {
+// StoreApi: "|a deleted order is not found| [native]
+// for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) => let _let0__sent
+// = let _letfield6__replacement = Maybe::Just(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield0__id _matchfield1__petId
 // _matchfield2__quantity _matchfield3__shipDate _matchfield4__status _matchfield5__complete ->
 // lawtwin.petstore.model::type::Order::Order(_matchfield0__id, _matchfield1__petId,
 // _matchfield2__quantity, _letfield6__replacement, _matchfield4__status, _matchfield5__complete) }
-// in match (attempt (placeOrder (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure ->
-// true; Either::Right _match1__1__created -> match (match (_match1__1__created) {
+// in let _let1__it = attempt (placeOrder (Maybe::Just(_let0__sent))) in match (_let1__it) {
+// Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
+// _match2__1___lawspecSelection0x0 -> let _let3__it = match (_match2__1___lawspecSelection0x0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield7__id _matchfield8__petId
 // _matchfield9__quantity _matchfield10__shipDate _matchfield11__status _matchfield12__complete ->
-// _matchfield7__id }) { Maybe::Nothing -> false; Maybe::Just _match2__1__key -> let _let3__gone =
-// attempt (deleteOrder (_match2__1__key)) in (attempt (getOrderById (_match2__1__key)) ==
-// Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
+// _matchfield7__id } in match (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+// _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone = attempt (deleteOrder
+// (_match4__1___match__lawspecSelection0x0_0)) in (attempt (getOrderById
+// (_match4__1___match__lawspecSelection0x0_0)) ==
+// Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
 fn law_8(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let input_0 = lawspec_schema::schema()?.validate_with_context(
         input_0,
@@ -10006,123 +10169,132 @@ fn law_8(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                     }
                 };
                 let _ = &let_3;
-                match ls::attempt(
-                    ctx,
-                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                        let value = {
-                            let perform_argument_0 =
-                                ls::construct("Maybe::Just", vec![let_3.clone()])?;
-                            let arguments = vec![perform_argument_0];
-                            let result = lawspec_abilities::lawtwin_petstore::perform_placeOrder(
-                                ctx,
-                                arguments,
-                            );
-                            let context = "placeOrder";
-                            result.map_err(|error| format!("{context}: {error}"))?
-                        };
-                        Ok(value)
-                    },
-                    |value| ls::construct("Either::Right", vec![value]),
-                    |value| ls::construct("Either::Left", vec![value]),
-                )? {
-                    ls::Value::Left(payload) => {
-                        let match_local_4_0 = *payload;
-                        let result = ls::Value::Bool(true);
-                        result
-                    }
-                    ls::Value::Right(payload) => {
-                        let match_local_4_0 = *payload;
-                        let result = match match match_local_4_0.clone() {
-                            ls::Value::Data(tag, fields)
-                                if tag == "lawtwin.petstore.model::type::Order::Order"
-                                    && fields.len() == 6 =>
-                            {
-                                let mut fields = fields.into_iter();
-                                let match_local_5_0 = fields.next().unwrap();
-                                let match_local_5_1 = fields.next().unwrap();
-                                let match_local_5_2 = fields.next().unwrap();
-                                let match_local_5_3 = fields.next().unwrap();
-                                let match_local_5_4 = fields.next().unwrap();
-                                let match_local_5_5 = fields.next().unwrap();
-                                let result = match_local_5_0.clone();
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        } {
-                            ls::Value::Maybe(None) => {
-                                let result = ls::Value::Bool(false);
-                                result
-                            }
-                            ls::Value::Maybe(Some(payload)) => {
-                                let match_local_5_0 = *payload;
-                                let result = {
-                                    let let_6 = ls::attempt(
-                                        ctx,
-                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                            let value = {
-                                                let perform_argument_0 = match_local_5_0.clone();
-                                                let arguments = vec![perform_argument_0];
-                                                let result = lawspec_abilities::lawtwin_petstore::perform_deleteOrder(
-                                                    ctx,
-                                                    arguments,
-                                                );
-                                                let context = "deleteOrder";
-                                                result.map_err(|error| format!("{context}: {error}"))?
-                                            };
-                                            Ok(value)
-                                        },
-                                        |value| ls::construct("Either::Right", vec![value]),
-                                        |value| ls::construct("Either::Left", vec![value]),
-                                    )?;
-                                    let _ = &let_6;
+                {
+                    let let_4 = ls::attempt(
+                        ctx,
+                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                            let value = {
+                                let perform_argument_0 =
+                                    ls::construct("Maybe::Just", vec![let_3.clone()])?;
+                                let arguments = vec![perform_argument_0];
+                                let result = lawspec_abilities::lawtwin_petstore::perform_placeOrder(
+                                    ctx,
+                                    arguments,
+                                );
+                                let context = "placeOrder";
+                                result.map_err(|error| format!("{context}: {error}"))?
+                            };
+                            Ok(value)
+                        },
+                        |value| ls::construct("Either::Right", vec![value]),
+                        |value| ls::construct("Either::Left", vec![value]),
+                    )?;
+                    let _ = &let_4;
+                    match let_4.clone() {
+                        ls::Value::Left(payload) => {
+                            let match_local_5_0 = *payload;
+                            let result = ls::Value::Bool(true);
+                            result
+                        }
+                        ls::Value::Right(payload) => {
+                            let match_local_5_0 = *payload;
+                            let result = {
+                                let let_6 = match match_local_5_0.clone() {
+                                    ls::Value::Data(tag, fields)
+                                        if tag == "lawtwin.petstore.model::type::Order::Order"
+                                            && fields.len() == 6 =>
                                     {
-                                        let left = ls::attempt(
-                                            ctx,
-                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                            |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                                let value = {
-                                                    let perform_argument_0 =
-                                                        match_local_5_0.clone();
-                                                    let arguments = vec![perform_argument_0];
-                                                    let result = lawspec_abilities::lawtwin_petstore::perform_getOrderById(
-                                                        ctx,
-                                                        arguments,
-                                                    );
-                                                    let context = "getOrderById";
-                                                    result.map_err(|error| format!("{context}: {error}"))?
-                                                };
-                                                Ok(value)
-                                            },
-                                            |value| ls::construct("Either::Right", vec![value]),
-                                            |value| ls::construct("Either::Left", vec![value]),
-                                        )?;
-                                        let right = {
-                                            let constructor_field_0 = ls::construct_data(
-                                                "lawtwin.petstore.model::type::ApiError::NotFound",
-                                                vec![],
-                                            );
-                                            ls::construct(
-                                                "Either::Left",
-                                                vec![constructor_field_0],
-                                            )?
-                                        };
-                                        ls::binary(
-                                            "==",
-                                            "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Order",
-                                            left,
-                                            right,
-                                        )?
+                                        let mut fields = fields.into_iter();
+                                        let match_local_6_0 = fields.next().unwrap();
+                                        let match_local_6_1 = fields.next().unwrap();
+                                        let match_local_6_2 = fields.next().unwrap();
+                                        let match_local_6_3 = fields.next().unwrap();
+                                        let match_local_6_4 = fields.next().unwrap();
+                                        let match_local_6_5 = fields.next().unwrap();
+                                        let result = match_local_6_0.clone();
+                                        result
                                     }
+                                    _ => return Err("invalid match value".into()),
                                 };
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        };
-                        result
+                                let _ = &let_6;
+                                match let_6.clone() {
+                                    ls::Value::Maybe(None) => {
+                                        let result = ls::Value::Bool(false);
+                                        result
+                                    }
+                                    ls::Value::Maybe(Some(payload)) => {
+                                        let match_local_7_0 = *payload;
+                                        let result = {
+                                            let let_8 = ls::attempt(
+                                                ctx,
+                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                    let value = {
+                                                        let perform_argument_0 =
+                                                            match_local_7_0.clone();
+                                                        let arguments = vec![perform_argument_0];
+                                                        let result = lawspec_abilities::lawtwin_petstore::perform_deleteOrder(
+                                                            ctx,
+                                                            arguments,
+                                                        );
+                                                        let context = "deleteOrder";
+                                                        result.map_err(|error| format!("{context}: {error}"))?
+                                                    };
+                                                    Ok(value)
+                                                },
+                                                |value| ls::construct("Either::Right", vec![value]),
+                                                |value| ls::construct("Either::Left", vec![value]),
+                                            )?;
+                                            let _ = &let_8;
+                                            {
+                                                let left = ls::attempt(
+                                                    ctx,
+                                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                        let value = {
+                                                            let perform_argument_0 =
+                                                                match_local_7_0.clone();
+                                                            let arguments = vec![perform_argument_0];
+                                                            let result = lawspec_abilities::lawtwin_petstore::perform_getOrderById(
+                                                                ctx,
+                                                                arguments,
+                                                            );
+                                                            let context = "getOrderById";
+                                                            result.map_err(|error| format!("{context}: {error}"))?
+                                                        };
+                                                        Ok(value)
+                                                    },
+                                                    |value| ls::construct("Either::Right", vec![value]),
+                                                    |value| ls::construct("Either::Left", vec![value]),
+                                                )?;
+                                                let right = {
+                                                    let constructor_field_0 = ls::construct_data(
+                                                        "lawtwin.petstore.model::type::ApiError::NotFound",
+                                                        vec![],
+                                                    );
+                                                    ls::construct(
+                                                        "Either::Left",
+                                                        vec![constructor_field_0],
+                                                    )?
+                                                };
+                                                ls::binary(
+                                                    "==",
+                                                    "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Order",
+                                                    left,
+                                                    right,
+                                                )?
+                                            }
+                                        };
+                                        result
+                                    }
+                                    _ => return Err("invalid match value".into()),
+                                }
+                            };
+                            result
+                        }
+                        _ => return Err("invalid match value".into()),
                     }
-                    _ => return Err("invalid match value".into()),
                 }
             };
             let right = ls::Value::Bool(true);
@@ -10130,31 +10302,35 @@ fn law_8(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                 return Err(format!(
                     "{}: {:?} != {:?}{}",
                     concat!(
-                        "StoreApi: a deleted order is not found [native",
-                        "] | expect let _let0__sent = let _letfield6__r",
-                        "eplacement = Maybe::Just(_input1) in match (_i",
-                        "nput0) { lawtwin.petstore.model::type::Order::",
-                        "Order _matchfield0__id _matchfield1__petId _ma",
-                        "tchfield2__quantity _matchfield3__shipDate _ma",
-                        "tchfield4__status _matchfield5__complete -> la",
-                        "wtwin.petstore.model::type::Order::Order(_matc",
-                        "hfield0__id, _matchfield1__petId, _matchfield2",
-                        "__quantity, _letfield6__replacement, _matchfie",
-                        "ld4__status, _matchfield5__complete) } in matc",
-                        "h (attempt (placeOrder (Maybe::Just(_let0__sen",
-                        "t)))) { Either::Left _match1__0__failure -> tr",
-                        "ue; Either::Right _match1__1__created -> match",
-                        " (match (_match1__1__created) { lawtwin.petsto",
-                        "re.model::type::Order::Order _matchfield7__id ",
-                        "_matchfield8__petId _matchfield9__quantity _ma",
-                        "tchfield10__shipDate _matchfield11__status _ma",
-                        "tchfield12__complete -> _matchfield7__id }) { ",
-                        "Maybe::Nothing  -> false; Maybe::Just _match2_",
-                        "_1__key -> let _let3__gone = attempt (deleteOr",
-                        "der (_match2__1__key)) in (attempt (getOrderBy",
-                        "Id (_match2__1__key)) == Either::Left(lawtwin.",
-                        "petstore.model::type::ApiError::NotFound())) }",
-                        " } = true",
+                        "StoreApi: \"|a deleted order is not found| [na",
+                        "tive] | expect let _let0__sent = let _letfield",
+                        "6__replacement = Maybe::Just(_input1) in match",
+                        " (_input0) { lawtwin.petstore.model::type::Ord",
+                        "er::Order _matchfield0__id _matchfield1__petId",
+                        " _matchfield2__quantity _matchfield3__shipDate",
+                        " _matchfield4__status _matchfield5__complete -",
+                        "> lawtwin.petstore.model::type::Order::Order(_",
+                        "matchfield0__id, _matchfield1__petId, _matchfi",
+                        "eld2__quantity, _letfield6__replacement, _matc",
+                        "hfield4__status, _matchfield5__complete) } in ",
+                        "let _let1__it = attempt (placeOrder (Maybe::Ju",
+                        "st(_let0__sent))) in match (_let1__it) { Eithe",
+                        "r::Left _match2__0___lawspecSelection0x0 -> tr",
+                        "ue; Either::Right _match2__1___lawspecSelectio",
+                        "n0x0 -> let _let3__it = match (_match2__1___la",
+                        "wspecSelection0x0) { lawtwin.petstore.model::t",
+                        "ype::Order::Order _matchfield7__id _matchfield",
+                        "8__petId _matchfield9__quantity _matchfield10_",
+                        "_shipDate _matchfield11__status _matchfield12_",
+                        "_complete -> _matchfield7__id } in match (_let",
+                        "3__it) { Maybe::Nothing  -> false; Maybe::Just",
+                        " _match4__1___match__lawspecSelection0x0_0 -> ",
+                        "let _let5__gone = attempt (deleteOrder (_match",
+                        "4__1___match__lawspecSelection0x0_0)) in (atte",
+                        "mpt (getOrderById (_match4__1___match__lawspec",
+                        "Selection0x0_0)) == Either::Left(lawtwin.petst",
+                        "ore.model::type::ApiError::NotFound())) } } = ",
+                        "true",
                     ),
                     left,
                     right,
@@ -10210,8 +10386,8 @@ fn run_8() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
         concat!(
-            "lawtwin.petstore::StoreApi: a deleted order is",
-            " not found [native]",
+            "lawtwin.petstore::StoreApi: \"|a deleted order",
+            " is not found| [native]",
         ),
         SEARCH_INPUTS_8,
         search_case_8,
@@ -10651,7 +10827,7 @@ fn run_8() -> ls::Result<()> {
         result.unwrap_or_else(|e| panic!("{e}"))
     };
     let strategy = strategy.prop_filter(
-        "StoreApi: a deleted order is not found [native] refinement",
+        "StoreApi: \"|a deleted order is not found| [native] refinement",
         refinement,
     );
     let config = proptest::test_runner::Config {
@@ -10671,8 +10847,8 @@ fn run_8() -> ls::Result<()> {
         if result.is_err() {
             ls::search_remember(
                 concat!(
-                    "lawtwin.petstore::StoreApi: a deleted order is",
-                    " not found [native]",
+                    "lawtwin.petstore::StoreApi: \"|a deleted order",
+                    " is not found| [native]",
                 ),
                 SEARCH_INPUTS_8,
                 &case.values,
@@ -10712,25 +10888,28 @@ fn search_case_8(values: &[ls::Value]) -> ls::Result<Option<f64>> {
     Ok(Some(0.0))
 }
 
-// Law: lawtwin.petstore::StoreApi: a deleted order is not found [reference]
+// Law: lawtwin.petstore::StoreApi: "|a deleted order is not found| [reference]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// StoreApi: a deleted order is not found [reference]
-// for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) . let _let0__sent =
-// let _letfield6__replacement = Maybe::Just(_input1) in match (_input0) {
+// StoreApi: "|a deleted order is not found| [reference]
+// for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) => let _let0__sent
+// = let _letfield6__replacement = Maybe::Just(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield0__id _matchfield1__petId
 // _matchfield2__quantity _matchfield3__shipDate _matchfield4__status _matchfield5__complete ->
 // lawtwin.petstore.model::type::Order::Order(_matchfield0__id, _matchfield1__petId,
 // _matchfield2__quantity, _letfield6__replacement, _matchfield4__status, _matchfield5__complete) }
-// in match (attempt (placeOrder (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure ->
-// true; Either::Right _match1__1__created -> match (match (_match1__1__created) {
+// in let _let1__it = attempt (placeOrder (Maybe::Just(_let0__sent))) in match (_let1__it) {
+// Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
+// _match2__1___lawspecSelection0x0 -> let _let3__it = match (_match2__1___lawspecSelection0x0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield7__id _matchfield8__petId
 // _matchfield9__quantity _matchfield10__shipDate _matchfield11__status _matchfield12__complete ->
-// _matchfield7__id }) { Maybe::Nothing -> false; Maybe::Just _match2__1__key -> let _let3__gone =
-// attempt (deleteOrder (_match2__1__key)) in (attempt (getOrderById (_match2__1__key)) ==
-// Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
+// _matchfield7__id } in match (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+// _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone = attempt (deleteOrder
+// (_match4__1___match__lawspecSelection0x0_0)) in (attempt (getOrderById
+// (_match4__1___match__lawspecSelection0x0_0)) ==
+// Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
 fn law_9(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let shared_reference = std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
     let installing = vec![
@@ -10783,118 +10962,132 @@ fn law_9(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                 }
             };
             let _ = &let_2;
-            match ls::attempt(
-                ctx,
-                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                    let value = {
-                        let perform_argument_0 = ls::construct("Maybe::Just", vec![let_2.clone()])?;
-                        let arguments = vec![perform_argument_0];
-                        let result = lawspec_abilities::lawtwin_petstore::perform_placeOrder(
-                            ctx,
-                            arguments,
-                        );
-                        let context = "placeOrder";
-                        result.map_err(|error| format!("{context}: {error}"))?
-                    };
-                    Ok(value)
-                },
-                |value| ls::construct("Either::Right", vec![value]),
-                |value| ls::construct("Either::Left", vec![value]),
-            )? {
-                ls::Value::Left(payload) => {
-                    let match_local_3_0 = *payload;
-                    let result = ls::Value::Bool(true);
-                    result
-                }
-                ls::Value::Right(payload) => {
-                    let match_local_3_0 = *payload;
-                    let result = match match match_local_3_0.clone() {
-                        ls::Value::Data(tag, fields)
-                            if tag == "lawtwin.petstore.model::type::Order::Order"
-                                && fields.len() == 6 =>
-                        {
-                            let mut fields = fields.into_iter();
-                            let match_local_4_0 = fields.next().unwrap();
-                            let match_local_4_1 = fields.next().unwrap();
-                            let match_local_4_2 = fields.next().unwrap();
-                            let match_local_4_3 = fields.next().unwrap();
-                            let match_local_4_4 = fields.next().unwrap();
-                            let match_local_4_5 = fields.next().unwrap();
-                            let result = match_local_4_0.clone();
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    } {
-                        ls::Value::Maybe(None) => {
-                            let result = ls::Value::Bool(false);
-                            result
-                        }
-                        ls::Value::Maybe(Some(payload)) => {
-                            let match_local_4_0 = *payload;
-                            let result = {
-                                let let_5 = ls::attempt(
-                                    ctx,
-                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                        let value = {
-                                            let perform_argument_0 = match_local_4_0.clone();
-                                            let arguments = vec![perform_argument_0];
-                                            let result = lawspec_abilities::lawtwin_petstore::perform_deleteOrder(
-                                                ctx,
-                                                arguments,
-                                            );
-                                            let context = "deleteOrder";
-                                            result.map_err(|error| format!("{context}: {error}"))?
-                                        };
-                                        Ok(value)
-                                    },
-                                    |value| ls::construct("Either::Right", vec![value]),
-                                    |value| ls::construct("Either::Left", vec![value]),
-                                )?;
-                                let _ = &let_5;
+            {
+                let let_3 = ls::attempt(
+                    ctx,
+                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                        let value = {
+                            let perform_argument_0 =
+                                ls::construct("Maybe::Just", vec![let_2.clone()])?;
+                            let arguments = vec![perform_argument_0];
+                            let result = lawspec_abilities::lawtwin_petstore::perform_placeOrder(
+                                ctx,
+                                arguments,
+                            );
+                            let context = "placeOrder";
+                            result.map_err(|error| format!("{context}: {error}"))?
+                        };
+                        Ok(value)
+                    },
+                    |value| ls::construct("Either::Right", vec![value]),
+                    |value| ls::construct("Either::Left", vec![value]),
+                )?;
+                let _ = &let_3;
+                match let_3.clone() {
+                    ls::Value::Left(payload) => {
+                        let match_local_4_0 = *payload;
+                        let result = ls::Value::Bool(true);
+                        result
+                    }
+                    ls::Value::Right(payload) => {
+                        let match_local_4_0 = *payload;
+                        let result = {
+                            let let_5 = match match_local_4_0.clone() {
+                                ls::Value::Data(tag, fields)
+                                    if tag == "lawtwin.petstore.model::type::Order::Order"
+                                        && fields.len() == 6 =>
                                 {
-                                    let left = ls::attempt(
-                                        ctx,
-                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                            let value = {
-                                                let perform_argument_0 = match_local_4_0.clone();
-                                                let arguments = vec![perform_argument_0];
-                                                let result = lawspec_abilities::lawtwin_petstore::perform_getOrderById(
-                                                    ctx,
-                                                    arguments,
-                                                );
-                                                let context = "getOrderById";
-                                                result.map_err(|error| format!("{context}: {error}"))?
-                                            };
-                                            Ok(value)
-                                        },
-                                        |value| ls::construct("Either::Right", vec![value]),
-                                        |value| ls::construct("Either::Left", vec![value]),
-                                    )?;
-                                    let right = {
-                                        let constructor_field_0 = ls::construct_data(
-                                            "lawtwin.petstore.model::type::ApiError::NotFound",
-                                            vec![],
-                                        );
-                                        ls::construct("Either::Left", vec![constructor_field_0])?
-                                    };
-                                    ls::binary(
-                                        "==",
-                                        "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Order",
-                                        left,
-                                        right,
-                                    )?
+                                    let mut fields = fields.into_iter();
+                                    let match_local_5_0 = fields.next().unwrap();
+                                    let match_local_5_1 = fields.next().unwrap();
+                                    let match_local_5_2 = fields.next().unwrap();
+                                    let match_local_5_3 = fields.next().unwrap();
+                                    let match_local_5_4 = fields.next().unwrap();
+                                    let match_local_5_5 = fields.next().unwrap();
+                                    let result = match_local_5_0.clone();
+                                    result
                                 }
+                                _ => return Err("invalid match value".into()),
                             };
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    };
-                    result
+                            let _ = &let_5;
+                            match let_5.clone() {
+                                ls::Value::Maybe(None) => {
+                                    let result = ls::Value::Bool(false);
+                                    result
+                                }
+                                ls::Value::Maybe(Some(payload)) => {
+                                    let match_local_6_0 = *payload;
+                                    let result = {
+                                        let let_7 = ls::attempt(
+                                            ctx,
+                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                            |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                let value = {
+                                                    let perform_argument_0 =
+                                                        match_local_6_0.clone();
+                                                    let arguments = vec![perform_argument_0];
+                                                    let result = lawspec_abilities::lawtwin_petstore::perform_deleteOrder(
+                                                        ctx,
+                                                        arguments,
+                                                    );
+                                                    let context = "deleteOrder";
+                                                    result.map_err(|error| format!("{context}: {error}"))?
+                                                };
+                                                Ok(value)
+                                            },
+                                            |value| ls::construct("Either::Right", vec![value]),
+                                            |value| ls::construct("Either::Left", vec![value]),
+                                        )?;
+                                        let _ = &let_7;
+                                        {
+                                            let left = ls::attempt(
+                                                ctx,
+                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                    let value = {
+                                                        let perform_argument_0 =
+                                                            match_local_6_0.clone();
+                                                        let arguments = vec![perform_argument_0];
+                                                        let result = lawspec_abilities::lawtwin_petstore::perform_getOrderById(
+                                                            ctx,
+                                                            arguments,
+                                                        );
+                                                        let context = "getOrderById";
+                                                        result.map_err(|error| format!("{context}: {error}"))?
+                                                    };
+                                                    Ok(value)
+                                                },
+                                                |value| ls::construct("Either::Right", vec![value]),
+                                                |value| ls::construct("Either::Left", vec![value]),
+                                            )?;
+                                            let right = {
+                                                let constructor_field_0 = ls::construct_data(
+                                                    "lawtwin.petstore.model::type::ApiError::NotFound",
+                                                    vec![],
+                                                );
+                                                ls::construct(
+                                                    "Either::Left",
+                                                    vec![constructor_field_0],
+                                                )?
+                                            };
+                                            ls::binary(
+                                                "==",
+                                                "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::Order",
+                                                left,
+                                                right,
+                                            )?
+                                        }
+                                    };
+                                    result
+                                }
+                                _ => return Err("invalid match value".into()),
+                            }
+                        };
+                        result
+                    }
+                    _ => return Err("invalid match value".into()),
                 }
-                _ => return Err("invalid match value".into()),
             }
         };
         let right = ls::Value::Bool(true);
@@ -10902,31 +11095,35 @@ fn law_9(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
             return Err(format!(
                 "{}: {:?} != {:?}{}",
                 concat!(
-                    "StoreApi: a deleted order is not found [refere",
-                    "nce] | expect let _let0__sent = let _letfield6",
-                    "__replacement = Maybe::Just(_input1) in match ",
-                    "(_input0) { lawtwin.petstore.model::type::Orde",
-                    "r::Order _matchfield0__id _matchfield1__petId ",
-                    "_matchfield2__quantity _matchfield3__shipDate ",
-                    "_matchfield4__status _matchfield5__complete ->",
-                    " lawtwin.petstore.model::type::Order::Order(_m",
-                    "atchfield0__id, _matchfield1__petId, _matchfie",
-                    "ld2__quantity, _letfield6__replacement, _match",
-                    "field4__status, _matchfield5__complete) } in m",
-                    "atch (attempt (placeOrder (Maybe::Just(_let0__",
-                    "sent)))) { Either::Left _match1__0__failure ->",
-                    " true; Either::Right _match1__1__created -> ma",
-                    "tch (match (_match1__1__created) { lawtwin.pet",
-                    "store.model::type::Order::Order _matchfield7__",
-                    "id _matchfield8__petId _matchfield9__quantity ",
-                    "_matchfield10__shipDate _matchfield11__status ",
-                    "_matchfield12__complete -> _matchfield7__id })",
-                    " { Maybe::Nothing  -> false; Maybe::Just _matc",
-                    "h2__1__key -> let _let3__gone = attempt (delet",
-                    "eOrder (_match2__1__key)) in (attempt (getOrde",
-                    "rById (_match2__1__key)) == Either::Left(lawtw",
-                    "in.petstore.model::type::ApiError::NotFound())",
-                    ") } } = true",
+                    "StoreApi: \"|a deleted order is not found| [re",
+                    "ference] | expect let _let0__sent = let _letfi",
+                    "eld6__replacement = Maybe::Just(_input1) in ma",
+                    "tch (_input0) { lawtwin.petstore.model::type::",
+                    "Order::Order _matchfield0__id _matchfield1__pe",
+                    "tId _matchfield2__quantity _matchfield3__shipD",
+                    "ate _matchfield4__status _matchfield5__complet",
+                    "e -> lawtwin.petstore.model::type::Order::Orde",
+                    "r(_matchfield0__id, _matchfield1__petId, _matc",
+                    "hfield2__quantity, _letfield6__replacement, _m",
+                    "atchfield4__status, _matchfield5__complete) } ",
+                    "in let _let1__it = attempt (placeOrder (Maybe:",
+                    ":Just(_let0__sent))) in match (_let1__it) { Ei",
+                    "ther::Left _match2__0___lawspecSelection0x0 ->",
+                    " true; Either::Right _match2__1___lawspecSelec",
+                    "tion0x0 -> let _let3__it = match (_match2__1__",
+                    "_lawspecSelection0x0) { lawtwin.petstore.model",
+                    "::type::Order::Order _matchfield7__id _matchfi",
+                    "eld8__petId _matchfield9__quantity _matchfield",
+                    "10__shipDate _matchfield11__status _matchfield",
+                    "12__complete -> _matchfield7__id } in match (_",
+                    "let3__it) { Maybe::Nothing  -> false; Maybe::J",
+                    "ust _match4__1___match__lawspecSelection0x0_0 ",
+                    "-> let _let5__gone = attempt (deleteOrder (_ma",
+                    "tch4__1___match__lawspecSelection0x0_0)) in (a",
+                    "ttempt (getOrderById (_match4__1___match__laws",
+                    "pecSelection0x0_0)) == Either::Left(lawtwin.pe",
+                    "tstore.model::type::ApiError::NotFound())) } }",
+                    " = true",
                 ),
                 left,
                 right,
@@ -10967,8 +11164,8 @@ fn run_9() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
         concat!(
-            "lawtwin.petstore::StoreApi: a deleted order is",
-            " not found [reference]",
+            "lawtwin.petstore::StoreApi: \"|a deleted order",
+            " is not found| [reference]",
         ),
         SEARCH_INPUTS_9,
         search_case_9,
@@ -11408,7 +11605,10 @@ fn run_9() -> ls::Result<()> {
         result.unwrap_or_else(|e| panic!("{e}"))
     };
     let strategy = strategy.prop_filter(
-        "StoreApi: a deleted order is not found [reference] refinement",
+        concat!(
+            "StoreApi: \"|a deleted order is not found| [re",
+            "ference] refinement",
+        ),
         refinement,
     );
     let config = proptest::test_runner::Config {
@@ -11428,8 +11628,8 @@ fn run_9() -> ls::Result<()> {
         if result.is_err() {
             ls::search_remember(
                 concat!(
-                    "lawtwin.petstore::StoreApi: a deleted order is",
-                    " not found [reference]",
+                    "lawtwin.petstore::StoreApi: \"|a deleted order",
+                    " is not found| [reference]",
                 ),
                 SEARCH_INPUTS_9,
                 &case.values,
@@ -11469,26 +11669,28 @@ fn search_case_9(values: &[ls::Value]) -> ls::Result<Option<f64>> {
     Ok(Some(0.0))
 }
 
-// Law: lawtwin.petstore::UserApi: a created user reads back [native]
+// Law: lawtwin.petstore::UserApi: "|a created user reads back| [native]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// UserApi: a created user reads back [native]
-// for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) . let _let0__sent = let
+// UserApi: "|a created user reads back| [native]
+// for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let _let0__sent = let
 // _letfield8__replacement = Maybe::Just(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::User::User _matchfield0__id _matchfield1__username
 // _matchfield2__firstName _matchfield3__lastName _matchfield4__email _matchfield5__password
 // _matchfield6__phone _matchfield7__userStatus ->
 // lawtwin.petstore.model::type::User::User(_matchfield0__id, _letfield8__replacement,
 // _matchfield2__firstName, _matchfield3__lastName, _matchfield4__email, _matchfield5__password,
-// _matchfield6__phone, _matchfield7__userStatus) } in match (attempt (createUser
-// (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure -> true; Either::Right
-// _match1__1__created -> match (match (_let0__sent) { lawtwin.petstore.model::type::User::User
-// _matchfield9__id _matchfield10__username _matchfield11__firstName _matchfield12__lastName
-// _matchfield13__email _matchfield14__password _matchfield15__phone _matchfield16__userStatus ->
-// _matchfield10__username }) { Maybe::Nothing -> false; Maybe::Just _match2__1__key -> (attempt
-// (getUserByName (_match2__1__key)) == Either::Right(_match1__1__created)) } } = true
+// _matchfield6__phone, _matchfield7__userStatus) } in let _let1__it = attempt (createUser
+// (Maybe::Just(_let0__sent))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0
+// -> true; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = match (_let0__sent) {
+// lawtwin.petstore.model::type::User::User _matchfield9__id _matchfield10__username
+// _matchfield11__firstName _matchfield12__lastName _matchfield13__email _matchfield14__password
+// _matchfield15__phone _matchfield16__userStatus -> _matchfield10__username } in match (_let3__it)
+// { Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> (attempt
+// (getUserByName (_match4__1___match__lawspecSelection0x0_0)) ==
+// Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for all
 fn law_10(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let input_0 = lawspec_schema::schema()?.validate_with_context(
         input_0,
@@ -11552,96 +11754,105 @@ fn law_10(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                     }
                 };
                 let _ = &let_3;
-                match ls::attempt(
-                    ctx,
-                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                        let value = {
-                            let perform_argument_0 =
-                                ls::construct("Maybe::Just", vec![let_3.clone()])?;
-                            let arguments = vec![perform_argument_0];
-                            let result = lawspec_abilities::lawtwin_petstore::perform_createUser(
-                                ctx,
-                                arguments,
-                            );
-                            let context = "createUser";
-                            result.map_err(|error| format!("{context}: {error}"))?
-                        };
-                        Ok(value)
-                    },
-                    |value| ls::construct("Either::Right", vec![value]),
-                    |value| ls::construct("Either::Left", vec![value]),
-                )? {
-                    ls::Value::Left(payload) => {
-                        let match_local_4_0 = *payload;
-                        let result = ls::Value::Bool(true);
-                        result
-                    }
-                    ls::Value::Right(payload) => {
-                        let match_local_4_0 = *payload;
-                        let result = match match let_3.clone() {
-                            ls::Value::Data(tag, fields)
-                                if tag == "lawtwin.petstore.model::type::User::User"
-                                    && fields.len() == 8 =>
-                            {
-                                let mut fields = fields.into_iter();
-                                let match_local_5_0 = fields.next().unwrap();
-                                let match_local_5_1 = fields.next().unwrap();
-                                let match_local_5_2 = fields.next().unwrap();
-                                let match_local_5_3 = fields.next().unwrap();
-                                let match_local_5_4 = fields.next().unwrap();
-                                let match_local_5_5 = fields.next().unwrap();
-                                let match_local_5_6 = fields.next().unwrap();
-                                let match_local_5_7 = fields.next().unwrap();
-                                let result = match_local_5_1.clone();
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        } {
-                            ls::Value::Maybe(None) => {
-                                let result = ls::Value::Bool(false);
-                                result
-                            }
-                            ls::Value::Maybe(Some(payload)) => {
-                                let match_local_5_0 = *payload;
-                                let result = {
-                                    let left = ls::attempt(
-                                        ctx,
-                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                            let value = {
-                                                let perform_argument_0 = match_local_5_0.clone();
-                                                let arguments = vec![perform_argument_0];
-                                                let result = lawspec_abilities::lawtwin_petstore::perform_getUserByName(
-                                                    ctx,
-                                                    arguments,
-                                                );
-                                                let context = "getUserByName";
-                                                result.map_err(|error| format!("{context}: {error}"))?
-                                            };
-                                            Ok(value)
-                                        },
-                                        |value| ls::construct("Either::Right", vec![value]),
-                                        |value| ls::construct("Either::Left", vec![value]),
-                                    )?;
-                                    let right = ls::construct(
-                                        "Either::Right",
-                                        vec![match_local_4_0.clone()],
-                                    )?;
-                                    ls::binary(
-                                        "==",
-                                        "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::User",
-                                        left,
-                                        right,
-                                    )?
+                {
+                    let let_4 = ls::attempt(
+                        ctx,
+                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                            let value = {
+                                let perform_argument_0 =
+                                    ls::construct("Maybe::Just", vec![let_3.clone()])?;
+                                let arguments = vec![perform_argument_0];
+                                let result = lawspec_abilities::lawtwin_petstore::perform_createUser(
+                                    ctx,
+                                    arguments,
+                                );
+                                let context = "createUser";
+                                result.map_err(|error| format!("{context}: {error}"))?
+                            };
+                            Ok(value)
+                        },
+                        |value| ls::construct("Either::Right", vec![value]),
+                        |value| ls::construct("Either::Left", vec![value]),
+                    )?;
+                    let _ = &let_4;
+                    match let_4.clone() {
+                        ls::Value::Left(payload) => {
+                            let match_local_5_0 = *payload;
+                            let result = ls::Value::Bool(true);
+                            result
+                        }
+                        ls::Value::Right(payload) => {
+                            let match_local_5_0 = *payload;
+                            let result = {
+                                let let_6 = match let_3.clone() {
+                                    ls::Value::Data(tag, fields)
+                                        if tag == "lawtwin.petstore.model::type::User::User"
+                                            && fields.len() == 8 =>
+                                    {
+                                        let mut fields = fields.into_iter();
+                                        let match_local_6_0 = fields.next().unwrap();
+                                        let match_local_6_1 = fields.next().unwrap();
+                                        let match_local_6_2 = fields.next().unwrap();
+                                        let match_local_6_3 = fields.next().unwrap();
+                                        let match_local_6_4 = fields.next().unwrap();
+                                        let match_local_6_5 = fields.next().unwrap();
+                                        let match_local_6_6 = fields.next().unwrap();
+                                        let match_local_6_7 = fields.next().unwrap();
+                                        let result = match_local_6_1.clone();
+                                        result
+                                    }
+                                    _ => return Err("invalid match value".into()),
                                 };
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        };
-                        result
+                                let _ = &let_6;
+                                match let_6.clone() {
+                                    ls::Value::Maybe(None) => {
+                                        let result = ls::Value::Bool(false);
+                                        result
+                                    }
+                                    ls::Value::Maybe(Some(payload)) => {
+                                        let match_local_7_0 = *payload;
+                                        let result = {
+                                            let left = ls::attempt(
+                                                ctx,
+                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                    let value = {
+                                                        let perform_argument_0 =
+                                                            match_local_7_0.clone();
+                                                        let arguments = vec![perform_argument_0];
+                                                        let result = lawspec_abilities::lawtwin_petstore::perform_getUserByName(
+                                                            ctx,
+                                                            arguments,
+                                                        );
+                                                        let context = "getUserByName";
+                                                        result.map_err(|error| format!("{context}: {error}"))?
+                                                    };
+                                                    Ok(value)
+                                                },
+                                                |value| ls::construct("Either::Right", vec![value]),
+                                                |value| ls::construct("Either::Left", vec![value]),
+                                            )?;
+                                            let right = ls::construct(
+                                                "Either::Right",
+                                                vec![match_local_5_0.clone()],
+                                            )?;
+                                            ls::binary(
+                                                "==",
+                                                "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::User",
+                                                left,
+                                                right,
+                                            )?
+                                        };
+                                        result
+                                    }
+                                    _ => return Err("invalid match value".into()),
+                                }
+                            };
+                            result
+                        }
+                        _ => return Err("invalid match value".into()),
                     }
-                    _ => return Err("invalid match value".into()),
                 }
             };
             let right = ls::Value::Bool(true);
@@ -11649,32 +11860,35 @@ fn law_10(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                 return Err(format!(
                     "{}: {:?} != {:?}{}",
                     concat!(
-                        "UserApi: a created user reads back [native] | ",
-                        "expect let _let0__sent = let _letfield8__repla",
-                        "cement = Maybe::Just(_input1) in match (_input",
-                        "0) { lawtwin.petstore.model::type::User::User ",
-                        "_matchfield0__id _matchfield1__username _match",
-                        "field2__firstName _matchfield3__lastName _matc",
-                        "hfield4__email _matchfield5__password _matchfi",
-                        "eld6__phone _matchfield7__userStatus -> lawtwi",
-                        "n.petstore.model::type::User::User(_matchfield",
-                        "0__id, _letfield8__replacement, _matchfield2__",
-                        "firstName, _matchfield3__lastName, _matchfield",
-                        "4__email, _matchfield5__password, _matchfield6",
-                        "__phone, _matchfield7__userStatus) } in match ",
-                        "(attempt (createUser (Maybe::Just(_let0__sent)",
-                        "))) { Either::Left _match1__0__failure -> true",
-                        "; Either::Right _match1__1__created -> match (",
-                        "match (_let0__sent) { lawtwin.petstore.model::",
-                        "type::User::User _matchfield9__id _matchfield1",
-                        "0__username _matchfield11__firstName _matchfie",
-                        "ld12__lastName _matchfield13__email _matchfiel",
-                        "d14__password _matchfield15__phone _matchfield",
-                        "16__userStatus -> _matchfield10__username }) {",
-                        " Maybe::Nothing  -> false; Maybe::Just _match2",
-                        "__1__key -> (attempt (getUserByName (_match2__",
-                        "1__key)) == Either::Right(_match1__1__created)",
-                        ") } } = true",
+                        "UserApi: \"|a created user reads back| [native",
+                        "] | expect let _let0__sent = let _letfield8__r",
+                        "eplacement = Maybe::Just(_input1) in match (_i",
+                        "nput0) { lawtwin.petstore.model::type::User::U",
+                        "ser _matchfield0__id _matchfield1__username _m",
+                        "atchfield2__firstName _matchfield3__lastName _",
+                        "matchfield4__email _matchfield5__password _mat",
+                        "chfield6__phone _matchfield7__userStatus -> la",
+                        "wtwin.petstore.model::type::User::User(_matchf",
+                        "ield0__id, _letfield8__replacement, _matchfiel",
+                        "d2__firstName, _matchfield3__lastName, _matchf",
+                        "ield4__email, _matchfield5__password, _matchfi",
+                        "eld6__phone, _matchfield7__userStatus) } in le",
+                        "t _let1__it = attempt (createUser (Maybe::Just",
+                        "(_let0__sent))) in match (_let1__it) { Either:",
+                        ":Left _match2__0___lawspecSelection0x0 -> true",
+                        "; Either::Right _match2__1___lawspecSelection0",
+                        "x0 -> let _let3__it = match (_let0__sent) { la",
+                        "wtwin.petstore.model::type::User::User _matchf",
+                        "ield9__id _matchfield10__username _matchfield1",
+                        "1__firstName _matchfield12__lastName _matchfie",
+                        "ld13__email _matchfield14__password _matchfiel",
+                        "d15__phone _matchfield16__userStatus -> _match",
+                        "field10__username } in match (_let3__it) { May",
+                        "be::Nothing  -> false; Maybe::Just _match4__1_",
+                        "__match__lawspecSelection0x0_0 -> (attempt (ge",
+                        "tUserByName (_match4__1___match__lawspecSelect",
+                        "ion0x0_0)) == Either::Right(_match2__1___lawsp",
+                        "ecSelection0x0)) } } = true",
                     ),
                     left,
                     right,
@@ -11712,7 +11926,10 @@ fn law_userapi_a_created_user_reads_back_native() -> ls::Result<()> {
 fn run_10() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
-        "lawtwin.petstore::UserApi: a created user reads back [native]",
+        concat!(
+            "lawtwin.petstore::UserApi: \"|a created user r",
+            "eads back| [native]",
+        ),
         SEARCH_INPUTS_10,
         search_case_10,
     )?;
@@ -12286,7 +12503,7 @@ fn run_10() -> ls::Result<()> {
         result.unwrap_or_else(|e| panic!("{e}"))
     };
     let strategy = strategy.prop_filter(
-        "UserApi: a created user reads back [native] refinement",
+        "UserApi: \"|a created user reads back| [native] refinement",
         refinement,
     );
     let config = proptest::test_runner::Config {
@@ -12305,7 +12522,10 @@ fn run_10() -> ls::Result<()> {
         );
         if result.is_err() {
             ls::search_remember(
-                "lawtwin.petstore::UserApi: a created user reads back [native]",
+                concat!(
+                    "lawtwin.petstore::UserApi: \"|a created user r",
+                    "eads back| [native]",
+                ),
                 SEARCH_INPUTS_10,
                 &case.values,
             );
@@ -12338,26 +12558,28 @@ fn search_case_10(values: &[ls::Value]) -> ls::Result<Option<f64>> {
     Ok(Some(0.0))
 }
 
-// Law: lawtwin.petstore::UserApi: a created user reads back [reference]
+// Law: lawtwin.petstore::UserApi: "|a created user reads back| [reference]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// UserApi: a created user reads back [reference]
-// for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) . let _let0__sent = let
+// UserApi: "|a created user reads back| [reference]
+// for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let _let0__sent = let
 // _letfield8__replacement = Maybe::Just(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::User::User _matchfield0__id _matchfield1__username
 // _matchfield2__firstName _matchfield3__lastName _matchfield4__email _matchfield5__password
 // _matchfield6__phone _matchfield7__userStatus ->
 // lawtwin.petstore.model::type::User::User(_matchfield0__id, _letfield8__replacement,
 // _matchfield2__firstName, _matchfield3__lastName, _matchfield4__email, _matchfield5__password,
-// _matchfield6__phone, _matchfield7__userStatus) } in match (attempt (createUser
-// (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure -> true; Either::Right
-// _match1__1__created -> match (match (_let0__sent) { lawtwin.petstore.model::type::User::User
-// _matchfield9__id _matchfield10__username _matchfield11__firstName _matchfield12__lastName
-// _matchfield13__email _matchfield14__password _matchfield15__phone _matchfield16__userStatus ->
-// _matchfield10__username }) { Maybe::Nothing -> false; Maybe::Just _match2__1__key -> (attempt
-// (getUserByName (_match2__1__key)) == Either::Right(_match1__1__created)) } } = true
+// _matchfield6__phone, _matchfield7__userStatus) } in let _let1__it = attempt (createUser
+// (Maybe::Just(_let0__sent))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0
+// -> true; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = match (_let0__sent) {
+// lawtwin.petstore.model::type::User::User _matchfield9__id _matchfield10__username
+// _matchfield11__firstName _matchfield12__lastName _matchfield13__email _matchfield14__password
+// _matchfield15__phone _matchfield16__userStatus -> _matchfield10__username } in match (_let3__it)
+// { Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> (attempt
+// (getUserByName (_match4__1___match__lawspecSelection0x0_0)) ==
+// Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for all
 fn law_11(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let shared_reference = std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
     let installing = vec![
@@ -12414,95 +12636,105 @@ fn law_11(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                 }
             };
             let _ = &let_2;
-            match ls::attempt(
-                ctx,
-                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                    let value = {
-                        let perform_argument_0 = ls::construct("Maybe::Just", vec![let_2.clone()])?;
-                        let arguments = vec![perform_argument_0];
-                        let result = lawspec_abilities::lawtwin_petstore::perform_createUser(
-                            ctx,
-                            arguments,
-                        );
-                        let context = "createUser";
-                        result.map_err(|error| format!("{context}: {error}"))?
-                    };
-                    Ok(value)
-                },
-                |value| ls::construct("Either::Right", vec![value]),
-                |value| ls::construct("Either::Left", vec![value]),
-            )? {
-                ls::Value::Left(payload) => {
-                    let match_local_3_0 = *payload;
-                    let result = ls::Value::Bool(true);
-                    result
-                }
-                ls::Value::Right(payload) => {
-                    let match_local_3_0 = *payload;
-                    let result = match match let_2.clone() {
-                        ls::Value::Data(tag, fields)
-                            if tag == "lawtwin.petstore.model::type::User::User"
-                                && fields.len() == 8 =>
-                        {
-                            let mut fields = fields.into_iter();
-                            let match_local_4_0 = fields.next().unwrap();
-                            let match_local_4_1 = fields.next().unwrap();
-                            let match_local_4_2 = fields.next().unwrap();
-                            let match_local_4_3 = fields.next().unwrap();
-                            let match_local_4_4 = fields.next().unwrap();
-                            let match_local_4_5 = fields.next().unwrap();
-                            let match_local_4_6 = fields.next().unwrap();
-                            let match_local_4_7 = fields.next().unwrap();
-                            let result = match_local_4_1.clone();
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    } {
-                        ls::Value::Maybe(None) => {
-                            let result = ls::Value::Bool(false);
-                            result
-                        }
-                        ls::Value::Maybe(Some(payload)) => {
-                            let match_local_4_0 = *payload;
-                            let result = {
-                                let left = ls::attempt(
-                                    ctx,
-                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                        let value = {
-                                            let perform_argument_0 = match_local_4_0.clone();
-                                            let arguments = vec![perform_argument_0];
-                                            let result = lawspec_abilities::lawtwin_petstore::perform_getUserByName(
-                                                ctx,
-                                                arguments,
-                                            );
-                                            let context = "getUserByName";
-                                            result.map_err(|error| format!("{context}: {error}"))?
-                                        };
-                                        Ok(value)
-                                    },
-                                    |value| ls::construct("Either::Right", vec![value]),
-                                    |value| ls::construct("Either::Left", vec![value]),
-                                )?;
-                                let right = ls::construct(
-                                    "Either::Right",
-                                    vec![match_local_3_0.clone()],
-                                )?;
-                                ls::binary(
-                                    "==",
-                                    "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::User",
-                                    left,
-                                    right,
-                                )?
+            {
+                let let_3 = ls::attempt(
+                    ctx,
+                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                        let value = {
+                            let perform_argument_0 =
+                                ls::construct("Maybe::Just", vec![let_2.clone()])?;
+                            let arguments = vec![perform_argument_0];
+                            let result = lawspec_abilities::lawtwin_petstore::perform_createUser(
+                                ctx,
+                                arguments,
+                            );
+                            let context = "createUser";
+                            result.map_err(|error| format!("{context}: {error}"))?
+                        };
+                        Ok(value)
+                    },
+                    |value| ls::construct("Either::Right", vec![value]),
+                    |value| ls::construct("Either::Left", vec![value]),
+                )?;
+                let _ = &let_3;
+                match let_3.clone() {
+                    ls::Value::Left(payload) => {
+                        let match_local_4_0 = *payload;
+                        let result = ls::Value::Bool(true);
+                        result
+                    }
+                    ls::Value::Right(payload) => {
+                        let match_local_4_0 = *payload;
+                        let result = {
+                            let let_5 = match let_2.clone() {
+                                ls::Value::Data(tag, fields)
+                                    if tag == "lawtwin.petstore.model::type::User::User"
+                                        && fields.len() == 8 =>
+                                {
+                                    let mut fields = fields.into_iter();
+                                    let match_local_5_0 = fields.next().unwrap();
+                                    let match_local_5_1 = fields.next().unwrap();
+                                    let match_local_5_2 = fields.next().unwrap();
+                                    let match_local_5_3 = fields.next().unwrap();
+                                    let match_local_5_4 = fields.next().unwrap();
+                                    let match_local_5_5 = fields.next().unwrap();
+                                    let match_local_5_6 = fields.next().unwrap();
+                                    let match_local_5_7 = fields.next().unwrap();
+                                    let result = match_local_5_1.clone();
+                                    result
+                                }
+                                _ => return Err("invalid match value".into()),
                             };
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    };
-                    result
+                            let _ = &let_5;
+                            match let_5.clone() {
+                                ls::Value::Maybe(None) => {
+                                    let result = ls::Value::Bool(false);
+                                    result
+                                }
+                                ls::Value::Maybe(Some(payload)) => {
+                                    let match_local_6_0 = *payload;
+                                    let result = {
+                                        let left = ls::attempt(
+                                            ctx,
+                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                            |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                let value = {
+                                                    let perform_argument_0 =
+                                                        match_local_6_0.clone();
+                                                    let arguments = vec![perform_argument_0];
+                                                    let result = lawspec_abilities::lawtwin_petstore::perform_getUserByName(
+                                                        ctx,
+                                                        arguments,
+                                                    );
+                                                    let context = "getUserByName";
+                                                    result.map_err(|error| format!("{context}: {error}"))?
+                                                };
+                                                Ok(value)
+                                            },
+                                            |value| ls::construct("Either::Right", vec![value]),
+                                            |value| ls::construct("Either::Left", vec![value]),
+                                        )?;
+                                        let right = ls::construct(
+                                            "Either::Right",
+                                            vec![match_local_4_0.clone()],
+                                        )?;
+                                        ls::binary(
+                                            "==",
+                                            "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::User",
+                                            left,
+                                            right,
+                                        )?
+                                    };
+                                    result
+                                }
+                                _ => return Err("invalid match value".into()),
+                            }
+                        };
+                        result
+                    }
+                    _ => return Err("invalid match value".into()),
                 }
-                _ => return Err("invalid match value".into()),
             }
         };
         let right = ls::Value::Bool(true);
@@ -12510,32 +12742,35 @@ fn law_11(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
             return Err(format!(
                 "{}: {:?} != {:?}{}",
                 concat!(
-                    "UserApi: a created user reads back [reference]",
-                    " | expect let _let0__sent = let _letfield8__re",
-                    "placement = Maybe::Just(_input1) in match (_in",
-                    "put0) { lawtwin.petstore.model::type::User::Us",
-                    "er _matchfield0__id _matchfield1__username _ma",
-                    "tchfield2__firstName _matchfield3__lastName _m",
-                    "atchfield4__email _matchfield5__password _matc",
-                    "hfield6__phone _matchfield7__userStatus -> law",
-                    "twin.petstore.model::type::User::User(_matchfi",
-                    "eld0__id, _letfield8__replacement, _matchfield",
-                    "2__firstName, _matchfield3__lastName, _matchfi",
-                    "eld4__email, _matchfield5__password, _matchfie",
-                    "ld6__phone, _matchfield7__userStatus) } in mat",
-                    "ch (attempt (createUser (Maybe::Just(_let0__se",
-                    "nt)))) { Either::Left _match1__0__failure -> t",
-                    "rue; Either::Right _match1__1__created -> matc",
-                    "h (match (_let0__sent) { lawtwin.petstore.mode",
-                    "l::type::User::User _matchfield9__id _matchfie",
-                    "ld10__username _matchfield11__firstName _match",
-                    "field12__lastName _matchfield13__email _matchf",
-                    "ield14__password _matchfield15__phone _matchfi",
-                    "eld16__userStatus -> _matchfield10__username }",
-                    ") { Maybe::Nothing  -> false; Maybe::Just _mat",
-                    "ch2__1__key -> (attempt (getUserByName (_match",
-                    "2__1__key)) == Either::Right(_match1__1__creat",
-                    "ed)) } } = true",
+                    "UserApi: \"|a created user reads back| [refere",
+                    "nce] | expect let _let0__sent = let _letfield8",
+                    "__replacement = Maybe::Just(_input1) in match ",
+                    "(_input0) { lawtwin.petstore.model::type::User",
+                    "::User _matchfield0__id _matchfield1__username",
+                    " _matchfield2__firstName _matchfield3__lastNam",
+                    "e _matchfield4__email _matchfield5__password _",
+                    "matchfield6__phone _matchfield7__userStatus ->",
+                    " lawtwin.petstore.model::type::User::User(_mat",
+                    "chfield0__id, _letfield8__replacement, _matchf",
+                    "ield2__firstName, _matchfield3__lastName, _mat",
+                    "chfield4__email, _matchfield5__password, _matc",
+                    "hfield6__phone, _matchfield7__userStatus) } in",
+                    " let _let1__it = attempt (createUser (Maybe::J",
+                    "ust(_let0__sent))) in match (_let1__it) { Eith",
+                    "er::Left _match2__0___lawspecSelection0x0 -> t",
+                    "rue; Either::Right _match2__1___lawspecSelecti",
+                    "on0x0 -> let _let3__it = match (_let0__sent) {",
+                    " lawtwin.petstore.model::type::User::User _mat",
+                    "chfield9__id _matchfield10__username _matchfie",
+                    "ld11__firstName _matchfield12__lastName _match",
+                    "field13__email _matchfield14__password _matchf",
+                    "ield15__phone _matchfield16__userStatus -> _ma",
+                    "tchfield10__username } in match (_let3__it) { ",
+                    "Maybe::Nothing  -> false; Maybe::Just _match4_",
+                    "_1___match__lawspecSelection0x0_0 -> (attempt ",
+                    "(getUserByName (_match4__1___match__lawspecSel",
+                    "ection0x0_0)) == Either::Right(_match2__1___la",
+                    "wspecSelection0x0)) } } = true",
                 ),
                 left,
                 right,
@@ -12559,8 +12794,8 @@ fn run_11() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
         concat!(
-            "lawtwin.petstore::UserApi: a created user read",
-            "s back [reference]",
+            "lawtwin.petstore::UserApi: \"|a created user r",
+            "eads back| [reference]",
         ),
         SEARCH_INPUTS_11,
         search_case_11,
@@ -13135,7 +13370,7 @@ fn run_11() -> ls::Result<()> {
         result.unwrap_or_else(|e| panic!("{e}"))
     };
     let strategy = strategy.prop_filter(
-        "UserApi: a created user reads back [reference] refinement",
+        "UserApi: \"|a created user reads back| [reference] refinement",
         refinement,
     );
     let config = proptest::test_runner::Config {
@@ -13155,8 +13390,8 @@ fn run_11() -> ls::Result<()> {
         if result.is_err() {
             ls::search_remember(
                 concat!(
-                    "lawtwin.petstore::UserApi: a created user read",
-                    "s back [reference]",
+                    "lawtwin.petstore::UserApi: \"|a created user r",
+                    "eads back| [reference]",
                 ),
                 SEARCH_INPUTS_11,
                 &case.values,
@@ -13190,28 +13425,29 @@ fn search_case_11(values: &[ls::Value]) -> ls::Result<Option<f64>> {
     Ok(Some(0.0))
 }
 
-// Law: lawtwin.petstore::UserApi: a deleted user is not found [native]
+// Law: lawtwin.petstore::UserApi: "|a deleted user is not found| [native]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// UserApi: a deleted user is not found [native]
-// for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) . let _let0__sent = let
+// UserApi: "|a deleted user is not found| [native]
+// for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let _let0__sent = let
 // _letfield8__replacement = Maybe::Just(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::User::User _matchfield0__id _matchfield1__username
 // _matchfield2__firstName _matchfield3__lastName _matchfield4__email _matchfield5__password
 // _matchfield6__phone _matchfield7__userStatus ->
 // lawtwin.petstore.model::type::User::User(_matchfield0__id, _letfield8__replacement,
 // _matchfield2__firstName, _matchfield3__lastName, _matchfield4__email, _matchfield5__password,
-// _matchfield6__phone, _matchfield7__userStatus) } in match (attempt (createUser
-// (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure -> true; Either::Right
-// _match1__1__created -> match (match (_let0__sent) { lawtwin.petstore.model::type::User::User
-// _matchfield9__id _matchfield10__username _matchfield11__firstName _matchfield12__lastName
-// _matchfield13__email _matchfield14__password _matchfield15__phone _matchfield16__userStatus ->
-// _matchfield10__username }) { Maybe::Nothing -> false; Maybe::Just _match2__1__key -> let
-// _let3__gone = attempt (deleteUser (_match2__1__key)) in (attempt (getUserByName
-// (_match2__1__key)) == Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } =
-// true
+// _matchfield6__phone, _matchfield7__userStatus) } in let _let1__it = attempt (createUser
+// (Maybe::Just(_let0__sent))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0
+// -> true; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = match (_let0__sent) {
+// lawtwin.petstore.model::type::User::User _matchfield9__id _matchfield10__username
+// _matchfield11__firstName _matchfield12__lastName _matchfield13__email _matchfield14__password
+// _matchfield15__phone _matchfield16__userStatus -> _matchfield10__username } in match (_let3__it)
+// { Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let
+// _let5__gone = attempt (deleteUser (_match4__1___match__lawspecSelection0x0_0)) in (attempt
+// (getUserByName (_match4__1___match__lawspecSelection0x0_0)) ==
+// Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
 fn law_12(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let input_0 = lawspec_schema::schema()?.validate_with_context(
         input_0,
@@ -13275,125 +13511,134 @@ fn law_12(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                     }
                 };
                 let _ = &let_3;
-                match ls::attempt(
-                    ctx,
-                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                        let value = {
-                            let perform_argument_0 =
-                                ls::construct("Maybe::Just", vec![let_3.clone()])?;
-                            let arguments = vec![perform_argument_0];
-                            let result = lawspec_abilities::lawtwin_petstore::perform_createUser(
-                                ctx,
-                                arguments,
-                            );
-                            let context = "createUser";
-                            result.map_err(|error| format!("{context}: {error}"))?
-                        };
-                        Ok(value)
-                    },
-                    |value| ls::construct("Either::Right", vec![value]),
-                    |value| ls::construct("Either::Left", vec![value]),
-                )? {
-                    ls::Value::Left(payload) => {
-                        let match_local_4_0 = *payload;
-                        let result = ls::Value::Bool(true);
-                        result
-                    }
-                    ls::Value::Right(payload) => {
-                        let match_local_4_0 = *payload;
-                        let result = match match let_3.clone() {
-                            ls::Value::Data(tag, fields)
-                                if tag == "lawtwin.petstore.model::type::User::User"
-                                    && fields.len() == 8 =>
-                            {
-                                let mut fields = fields.into_iter();
-                                let match_local_5_0 = fields.next().unwrap();
-                                let match_local_5_1 = fields.next().unwrap();
-                                let match_local_5_2 = fields.next().unwrap();
-                                let match_local_5_3 = fields.next().unwrap();
-                                let match_local_5_4 = fields.next().unwrap();
-                                let match_local_5_5 = fields.next().unwrap();
-                                let match_local_5_6 = fields.next().unwrap();
-                                let match_local_5_7 = fields.next().unwrap();
-                                let result = match_local_5_1.clone();
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        } {
-                            ls::Value::Maybe(None) => {
-                                let result = ls::Value::Bool(false);
-                                result
-                            }
-                            ls::Value::Maybe(Some(payload)) => {
-                                let match_local_5_0 = *payload;
-                                let result = {
-                                    let let_6 = ls::attempt(
-                                        ctx,
-                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                            let value = {
-                                                let perform_argument_0 = match_local_5_0.clone();
-                                                let arguments = vec![perform_argument_0];
-                                                let result = lawspec_abilities::lawtwin_petstore::perform_deleteUser(
-                                                    ctx,
-                                                    arguments,
-                                                );
-                                                let context = "deleteUser";
-                                                result.map_err(|error| format!("{context}: {error}"))?
-                                            };
-                                            Ok(value)
-                                        },
-                                        |value| ls::construct("Either::Right", vec![value]),
-                                        |value| ls::construct("Either::Left", vec![value]),
-                                    )?;
-                                    let _ = &let_6;
+                {
+                    let let_4 = ls::attempt(
+                        ctx,
+                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                            let value = {
+                                let perform_argument_0 =
+                                    ls::construct("Maybe::Just", vec![let_3.clone()])?;
+                                let arguments = vec![perform_argument_0];
+                                let result = lawspec_abilities::lawtwin_petstore::perform_createUser(
+                                    ctx,
+                                    arguments,
+                                );
+                                let context = "createUser";
+                                result.map_err(|error| format!("{context}: {error}"))?
+                            };
+                            Ok(value)
+                        },
+                        |value| ls::construct("Either::Right", vec![value]),
+                        |value| ls::construct("Either::Left", vec![value]),
+                    )?;
+                    let _ = &let_4;
+                    match let_4.clone() {
+                        ls::Value::Left(payload) => {
+                            let match_local_5_0 = *payload;
+                            let result = ls::Value::Bool(true);
+                            result
+                        }
+                        ls::Value::Right(payload) => {
+                            let match_local_5_0 = *payload;
+                            let result = {
+                                let let_6 = match let_3.clone() {
+                                    ls::Value::Data(tag, fields)
+                                        if tag == "lawtwin.petstore.model::type::User::User"
+                                            && fields.len() == 8 =>
                                     {
-                                        let left = ls::attempt(
-                                            ctx,
-                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                            |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                                let value = {
-                                                    let perform_argument_0 =
-                                                        match_local_5_0.clone();
-                                                    let arguments = vec![perform_argument_0];
-                                                    let result = lawspec_abilities::lawtwin_petstore::perform_getUserByName(
-                                                        ctx,
-                                                        arguments,
-                                                    );
-                                                    let context = "getUserByName";
-                                                    result.map_err(|error| format!("{context}: {error}"))?
-                                                };
-                                                Ok(value)
-                                            },
-                                            |value| ls::construct("Either::Right", vec![value]),
-                                            |value| ls::construct("Either::Left", vec![value]),
-                                        )?;
-                                        let right = {
-                                            let constructor_field_0 = ls::construct_data(
-                                                "lawtwin.petstore.model::type::ApiError::NotFound",
-                                                vec![],
-                                            );
-                                            ls::construct(
-                                                "Either::Left",
-                                                vec![constructor_field_0],
-                                            )?
-                                        };
-                                        ls::binary(
-                                            "==",
-                                            "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::User",
-                                            left,
-                                            right,
-                                        )?
+                                        let mut fields = fields.into_iter();
+                                        let match_local_6_0 = fields.next().unwrap();
+                                        let match_local_6_1 = fields.next().unwrap();
+                                        let match_local_6_2 = fields.next().unwrap();
+                                        let match_local_6_3 = fields.next().unwrap();
+                                        let match_local_6_4 = fields.next().unwrap();
+                                        let match_local_6_5 = fields.next().unwrap();
+                                        let match_local_6_6 = fields.next().unwrap();
+                                        let match_local_6_7 = fields.next().unwrap();
+                                        let result = match_local_6_1.clone();
+                                        result
                                     }
+                                    _ => return Err("invalid match value".into()),
                                 };
-                                result
-                            }
-                            _ => return Err("invalid match value".into()),
-                        };
-                        result
+                                let _ = &let_6;
+                                match let_6.clone() {
+                                    ls::Value::Maybe(None) => {
+                                        let result = ls::Value::Bool(false);
+                                        result
+                                    }
+                                    ls::Value::Maybe(Some(payload)) => {
+                                        let match_local_7_0 = *payload;
+                                        let result = {
+                                            let let_8 = ls::attempt(
+                                                ctx,
+                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                    let value = {
+                                                        let perform_argument_0 =
+                                                            match_local_7_0.clone();
+                                                        let arguments = vec![perform_argument_0];
+                                                        let result = lawspec_abilities::lawtwin_petstore::perform_deleteUser(
+                                                            ctx,
+                                                            arguments,
+                                                        );
+                                                        let context = "deleteUser";
+                                                        result.map_err(|error| format!("{context}: {error}"))?
+                                                    };
+                                                    Ok(value)
+                                                },
+                                                |value| ls::construct("Either::Right", vec![value]),
+                                                |value| ls::construct("Either::Left", vec![value]),
+                                            )?;
+                                            let _ = &let_8;
+                                            {
+                                                let left = ls::attempt(
+                                                    ctx,
+                                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                        let value = {
+                                                            let perform_argument_0 =
+                                                                match_local_7_0.clone();
+                                                            let arguments = vec![perform_argument_0];
+                                                            let result = lawspec_abilities::lawtwin_petstore::perform_getUserByName(
+                                                                ctx,
+                                                                arguments,
+                                                            );
+                                                            let context = "getUserByName";
+                                                            result.map_err(|error| format!("{context}: {error}"))?
+                                                        };
+                                                        Ok(value)
+                                                    },
+                                                    |value| ls::construct("Either::Right", vec![value]),
+                                                    |value| ls::construct("Either::Left", vec![value]),
+                                                )?;
+                                                let right = {
+                                                    let constructor_field_0 = ls::construct_data(
+                                                        "lawtwin.petstore.model::type::ApiError::NotFound",
+                                                        vec![],
+                                                    );
+                                                    ls::construct(
+                                                        "Either::Left",
+                                                        vec![constructor_field_0],
+                                                    )?
+                                                };
+                                                ls::binary(
+                                                    "==",
+                                                    "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::User",
+                                                    left,
+                                                    right,
+                                                )?
+                                            }
+                                        };
+                                        result
+                                    }
+                                    _ => return Err("invalid match value".into()),
+                                }
+                            };
+                            result
+                        }
+                        _ => return Err("invalid match value".into()),
                     }
-                    _ => return Err("invalid match value".into()),
                 }
             };
             let right = ls::Value::Bool(true);
@@ -13401,34 +13646,37 @@ fn law_12(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                 return Err(format!(
                     "{}: {:?} != {:?}{}",
                     concat!(
-                        "UserApi: a deleted user is not found [native] ",
-                        "| expect let _let0__sent = let _letfield8__rep",
-                        "lacement = Maybe::Just(_input1) in match (_inp",
-                        "ut0) { lawtwin.petstore.model::type::User::Use",
-                        "r _matchfield0__id _matchfield1__username _mat",
-                        "chfield2__firstName _matchfield3__lastName _ma",
-                        "tchfield4__email _matchfield5__password _match",
-                        "field6__phone _matchfield7__userStatus -> lawt",
-                        "win.petstore.model::type::User::User(_matchfie",
-                        "ld0__id, _letfield8__replacement, _matchfield2",
-                        "__firstName, _matchfield3__lastName, _matchfie",
-                        "ld4__email, _matchfield5__password, _matchfiel",
-                        "d6__phone, _matchfield7__userStatus) } in matc",
-                        "h (attempt (createUser (Maybe::Just(_let0__sen",
-                        "t)))) { Either::Left _match1__0__failure -> tr",
-                        "ue; Either::Right _match1__1__created -> match",
-                        " (match (_let0__sent) { lawtwin.petstore.model",
-                        "::type::User::User _matchfield9__id _matchfiel",
-                        "d10__username _matchfield11__firstName _matchf",
-                        "ield12__lastName _matchfield13__email _matchfi",
-                        "eld14__password _matchfield15__phone _matchfie",
-                        "ld16__userStatus -> _matchfield10__username })",
-                        " { Maybe::Nothing  -> false; Maybe::Just _matc",
-                        "h2__1__key -> let _let3__gone = attempt (delet",
-                        "eUser (_match2__1__key)) in (attempt (getUserB",
-                        "yName (_match2__1__key)) == Either::Left(lawtw",
-                        "in.petstore.model::type::ApiError::NotFound())",
-                        ") } } = true",
+                        "UserApi: \"|a deleted user is not found| [nati",
+                        "ve] | expect let _let0__sent = let _letfield8_",
+                        "_replacement = Maybe::Just(_input1) in match (",
+                        "_input0) { lawtwin.petstore.model::type::User:",
+                        ":User _matchfield0__id _matchfield1__username ",
+                        "_matchfield2__firstName _matchfield3__lastName",
+                        " _matchfield4__email _matchfield5__password _m",
+                        "atchfield6__phone _matchfield7__userStatus -> ",
+                        "lawtwin.petstore.model::type::User::User(_matc",
+                        "hfield0__id, _letfield8__replacement, _matchfi",
+                        "eld2__firstName, _matchfield3__lastName, _matc",
+                        "hfield4__email, _matchfield5__password, _match",
+                        "field6__phone, _matchfield7__userStatus) } in ",
+                        "let _let1__it = attempt (createUser (Maybe::Ju",
+                        "st(_let0__sent))) in match (_let1__it) { Eithe",
+                        "r::Left _match2__0___lawspecSelection0x0 -> tr",
+                        "ue; Either::Right _match2__1___lawspecSelectio",
+                        "n0x0 -> let _let3__it = match (_let0__sent) { ",
+                        "lawtwin.petstore.model::type::User::User _matc",
+                        "hfield9__id _matchfield10__username _matchfiel",
+                        "d11__firstName _matchfield12__lastName _matchf",
+                        "ield13__email _matchfield14__password _matchfi",
+                        "eld15__phone _matchfield16__userStatus -> _mat",
+                        "chfield10__username } in match (_let3__it) { M",
+                        "aybe::Nothing  -> false; Maybe::Just _match4__",
+                        "1___match__lawspecSelection0x0_0 -> let _let5_",
+                        "_gone = attempt (deleteUser (_match4__1___matc",
+                        "h__lawspecSelection0x0_0)) in (attempt (getUse",
+                        "rByName (_match4__1___match__lawspecSelection0",
+                        "x0_0)) == Either::Left(lawtwin.petstore.model:",
+                        ":type::ApiError::NotFound())) } } = true",
                     ),
                     left,
                     right,
@@ -13467,8 +13715,8 @@ fn run_12() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
         concat!(
-            "lawtwin.petstore::UserApi: a deleted user is n",
-            "ot found [native]",
+            "lawtwin.petstore::UserApi: \"|a deleted user i",
+            "s not found| [native]",
         ),
         SEARCH_INPUTS_12,
         search_case_12,
@@ -14043,7 +14291,7 @@ fn run_12() -> ls::Result<()> {
         result.unwrap_or_else(|e| panic!("{e}"))
     };
     let strategy = strategy.prop_filter(
-        "UserApi: a deleted user is not found [native] refinement",
+        "UserApi: \"|a deleted user is not found| [native] refinement",
         refinement,
     );
     let config = proptest::test_runner::Config {
@@ -14063,8 +14311,8 @@ fn run_12() -> ls::Result<()> {
         if result.is_err() {
             ls::search_remember(
                 concat!(
-                    "lawtwin.petstore::UserApi: a deleted user is n",
-                    "ot found [native]",
+                    "lawtwin.petstore::UserApi: \"|a deleted user i",
+                    "s not found| [native]",
                 ),
                 SEARCH_INPUTS_12,
                 &case.values,
@@ -14098,28 +14346,29 @@ fn search_case_12(values: &[ls::Value]) -> ls::Result<Option<f64>> {
     Ok(Some(0.0))
 }
 
-// Law: lawtwin.petstore::UserApi: a deleted user is not found [reference]
+// Law: lawtwin.petstore::UserApi: "|a deleted user is not found| [reference]
 // Description:
 // Rationale:
 // References:
 // Expansion:
-// UserApi: a deleted user is not found [reference]
-// for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) . let _let0__sent = let
+// UserApi: "|a deleted user is not found| [reference]
+// for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let _let0__sent = let
 // _letfield8__replacement = Maybe::Just(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::User::User _matchfield0__id _matchfield1__username
 // _matchfield2__firstName _matchfield3__lastName _matchfield4__email _matchfield5__password
 // _matchfield6__phone _matchfield7__userStatus ->
 // lawtwin.petstore.model::type::User::User(_matchfield0__id, _letfield8__replacement,
 // _matchfield2__firstName, _matchfield3__lastName, _matchfield4__email, _matchfield5__password,
-// _matchfield6__phone, _matchfield7__userStatus) } in match (attempt (createUser
-// (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure -> true; Either::Right
-// _match1__1__created -> match (match (_let0__sent) { lawtwin.petstore.model::type::User::User
-// _matchfield9__id _matchfield10__username _matchfield11__firstName _matchfield12__lastName
-// _matchfield13__email _matchfield14__password _matchfield15__phone _matchfield16__userStatus ->
-// _matchfield10__username }) { Maybe::Nothing -> false; Maybe::Just _match2__1__key -> let
-// _let3__gone = attempt (deleteUser (_match2__1__key)) in (attempt (getUserByName
-// (_match2__1__key)) == Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } =
-// true
+// _matchfield6__phone, _matchfield7__userStatus) } in let _let1__it = attempt (createUser
+// (Maybe::Just(_let0__sent))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0
+// -> true; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = match (_let0__sent) {
+// lawtwin.petstore.model::type::User::User _matchfield9__id _matchfield10__username
+// _matchfield11__firstName _matchfield12__lastName _matchfield13__email _matchfield14__password
+// _matchfield15__phone _matchfield16__userStatus -> _matchfield10__username } in match (_let3__it)
+// { Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let
+// _let5__gone = attempt (deleteUser (_match4__1___match__lawspecSelection0x0_0)) in (attempt
+// (getUserByName (_match4__1___match__lawspecSelection0x0_0)) ==
+// Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
 fn law_13(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let shared_reference = std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
     let installing = vec![
@@ -14176,120 +14425,134 @@ fn law_13(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                 }
             };
             let _ = &let_2;
-            match ls::attempt(
-                ctx,
-                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                    let value = {
-                        let perform_argument_0 = ls::construct("Maybe::Just", vec![let_2.clone()])?;
-                        let arguments = vec![perform_argument_0];
-                        let result = lawspec_abilities::lawtwin_petstore::perform_createUser(
-                            ctx,
-                            arguments,
-                        );
-                        let context = "createUser";
-                        result.map_err(|error| format!("{context}: {error}"))?
-                    };
-                    Ok(value)
-                },
-                |value| ls::construct("Either::Right", vec![value]),
-                |value| ls::construct("Either::Left", vec![value]),
-            )? {
-                ls::Value::Left(payload) => {
-                    let match_local_3_0 = *payload;
-                    let result = ls::Value::Bool(true);
-                    result
-                }
-                ls::Value::Right(payload) => {
-                    let match_local_3_0 = *payload;
-                    let result = match match let_2.clone() {
-                        ls::Value::Data(tag, fields)
-                            if tag == "lawtwin.petstore.model::type::User::User"
-                                && fields.len() == 8 =>
-                        {
-                            let mut fields = fields.into_iter();
-                            let match_local_4_0 = fields.next().unwrap();
-                            let match_local_4_1 = fields.next().unwrap();
-                            let match_local_4_2 = fields.next().unwrap();
-                            let match_local_4_3 = fields.next().unwrap();
-                            let match_local_4_4 = fields.next().unwrap();
-                            let match_local_4_5 = fields.next().unwrap();
-                            let match_local_4_6 = fields.next().unwrap();
-                            let match_local_4_7 = fields.next().unwrap();
-                            let result = match_local_4_1.clone();
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    } {
-                        ls::Value::Maybe(None) => {
-                            let result = ls::Value::Bool(false);
-                            result
-                        }
-                        ls::Value::Maybe(Some(payload)) => {
-                            let match_local_4_0 = *payload;
-                            let result = {
-                                let let_5 = ls::attempt(
-                                    ctx,
-                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                        let value = {
-                                            let perform_argument_0 = match_local_4_0.clone();
-                                            let arguments = vec![perform_argument_0];
-                                            let result = lawspec_abilities::lawtwin_petstore::perform_deleteUser(
-                                                ctx,
-                                                arguments,
-                                            );
-                                            let context = "deleteUser";
-                                            result.map_err(|error| format!("{context}: {error}"))?
-                                        };
-                                        Ok(value)
-                                    },
-                                    |value| ls::construct("Either::Right", vec![value]),
-                                    |value| ls::construct("Either::Left", vec![value]),
-                                )?;
-                                let _ = &let_5;
+            {
+                let let_3 = ls::attempt(
+                    ctx,
+                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                    |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                        let value = {
+                            let perform_argument_0 =
+                                ls::construct("Maybe::Just", vec![let_2.clone()])?;
+                            let arguments = vec![perform_argument_0];
+                            let result = lawspec_abilities::lawtwin_petstore::perform_createUser(
+                                ctx,
+                                arguments,
+                            );
+                            let context = "createUser";
+                            result.map_err(|error| format!("{context}: {error}"))?
+                        };
+                        Ok(value)
+                    },
+                    |value| ls::construct("Either::Right", vec![value]),
+                    |value| ls::construct("Either::Left", vec![value]),
+                )?;
+                let _ = &let_3;
+                match let_3.clone() {
+                    ls::Value::Left(payload) => {
+                        let match_local_4_0 = *payload;
+                        let result = ls::Value::Bool(true);
+                        result
+                    }
+                    ls::Value::Right(payload) => {
+                        let match_local_4_0 = *payload;
+                        let result = {
+                            let let_5 = match let_2.clone() {
+                                ls::Value::Data(tag, fields)
+                                    if tag == "lawtwin.petstore.model::type::User::User"
+                                        && fields.len() == 8 =>
                                 {
-                                    let left = ls::attempt(
-                                        ctx,
-                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                        |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
-                                            let value = {
-                                                let perform_argument_0 = match_local_4_0.clone();
-                                                let arguments = vec![perform_argument_0];
-                                                let result = lawspec_abilities::lawtwin_petstore::perform_getUserByName(
-                                                    ctx,
-                                                    arguments,
-                                                );
-                                                let context = "getUserByName";
-                                                result.map_err(|error| format!("{context}: {error}"))?
-                                            };
-                                            Ok(value)
-                                        },
-                                        |value| ls::construct("Either::Right", vec![value]),
-                                        |value| ls::construct("Either::Left", vec![value]),
-                                    )?;
-                                    let right = {
-                                        let constructor_field_0 = ls::construct_data(
-                                            "lawtwin.petstore.model::type::ApiError::NotFound",
-                                            vec![],
-                                        );
-                                        ls::construct("Either::Left", vec![constructor_field_0])?
-                                    };
-                                    ls::binary(
-                                        "==",
-                                        "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::User",
-                                        left,
-                                        right,
-                                    )?
+                                    let mut fields = fields.into_iter();
+                                    let match_local_5_0 = fields.next().unwrap();
+                                    let match_local_5_1 = fields.next().unwrap();
+                                    let match_local_5_2 = fields.next().unwrap();
+                                    let match_local_5_3 = fields.next().unwrap();
+                                    let match_local_5_4 = fields.next().unwrap();
+                                    let match_local_5_5 = fields.next().unwrap();
+                                    let match_local_5_6 = fields.next().unwrap();
+                                    let match_local_5_7 = fields.next().unwrap();
+                                    let result = match_local_5_1.clone();
+                                    result
                                 }
+                                _ => return Err("invalid match value".into()),
                             };
-                            result
-                        }
-                        _ => return Err("invalid match value".into()),
-                    };
-                    result
+                            let _ = &let_5;
+                            match let_5.clone() {
+                                ls::Value::Maybe(None) => {
+                                    let result = ls::Value::Bool(false);
+                                    result
+                                }
+                                ls::Value::Maybe(Some(payload)) => {
+                                    let match_local_6_0 = *payload;
+                                    let result = {
+                                        let let_7 = ls::attempt(
+                                            ctx,
+                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                            |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                let value = {
+                                                    let perform_argument_0 =
+                                                        match_local_6_0.clone();
+                                                    let arguments = vec![perform_argument_0];
+                                                    let result = lawspec_abilities::lawtwin_petstore::perform_deleteUser(
+                                                        ctx,
+                                                        arguments,
+                                                    );
+                                                    let context = "deleteUser";
+                                                    result.map_err(|error| format!("{context}: {error}"))?
+                                                };
+                                                Ok(value)
+                                            },
+                                            |value| ls::construct("Either::Right", vec![value]),
+                                            |value| ls::construct("Either::Left", vec![value]),
+                                        )?;
+                                        let _ = &let_7;
+                                        {
+                                            let left = ls::attempt(
+                                                ctx,
+                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
+                                                    let value = {
+                                                        let perform_argument_0 =
+                                                            match_local_6_0.clone();
+                                                        let arguments = vec![perform_argument_0];
+                                                        let result = lawspec_abilities::lawtwin_petstore::perform_getUserByName(
+                                                            ctx,
+                                                            arguments,
+                                                        );
+                                                        let context = "getUserByName";
+                                                        result.map_err(|error| format!("{context}: {error}"))?
+                                                    };
+                                                    Ok(value)
+                                                },
+                                                |value| ls::construct("Either::Right", vec![value]),
+                                                |value| ls::construct("Either::Left", vec![value]),
+                                            )?;
+                                            let right = {
+                                                let constructor_field_0 = ls::construct_data(
+                                                    "lawtwin.petstore.model::type::ApiError::NotFound",
+                                                    vec![],
+                                                );
+                                                ls::construct(
+                                                    "Either::Left",
+                                                    vec![constructor_field_0],
+                                                )?
+                                            };
+                                            ls::binary(
+                                                "==",
+                                                "Either lawtwin.petstore.model::type::ApiError lawtwin.petstore.model::type::User",
+                                                left,
+                                                right,
+                                            )?
+                                        }
+                                    };
+                                    result
+                                }
+                                _ => return Err("invalid match value".into()),
+                            }
+                        };
+                        result
+                    }
+                    _ => return Err("invalid match value".into()),
                 }
-                _ => return Err("invalid match value".into()),
             }
         };
         let right = ls::Value::Bool(true);
@@ -14297,34 +14560,37 @@ fn law_13(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
             return Err(format!(
                 "{}: {:?} != {:?}{}",
                 concat!(
-                    "UserApi: a deleted user is not found [referenc",
-                    "e] | expect let _let0__sent = let _letfield8__",
-                    "replacement = Maybe::Just(_input1) in match (_",
-                    "input0) { lawtwin.petstore.model::type::User::",
-                    "User _matchfield0__id _matchfield1__username _",
-                    "matchfield2__firstName _matchfield3__lastName ",
-                    "_matchfield4__email _matchfield5__password _ma",
-                    "tchfield6__phone _matchfield7__userStatus -> l",
-                    "awtwin.petstore.model::type::User::User(_match",
-                    "field0__id, _letfield8__replacement, _matchfie",
-                    "ld2__firstName, _matchfield3__lastName, _match",
-                    "field4__email, _matchfield5__password, _matchf",
-                    "ield6__phone, _matchfield7__userStatus) } in m",
-                    "atch (attempt (createUser (Maybe::Just(_let0__",
-                    "sent)))) { Either::Left _match1__0__failure ->",
-                    " true; Either::Right _match1__1__created -> ma",
-                    "tch (match (_let0__sent) { lawtwin.petstore.mo",
-                    "del::type::User::User _matchfield9__id _matchf",
-                    "ield10__username _matchfield11__firstName _mat",
-                    "chfield12__lastName _matchfield13__email _matc",
-                    "hfield14__password _matchfield15__phone _match",
-                    "field16__userStatus -> _matchfield10__username",
-                    " }) { Maybe::Nothing  -> false; Maybe::Just _m",
-                    "atch2__1__key -> let _let3__gone = attempt (de",
-                    "leteUser (_match2__1__key)) in (attempt (getUs",
-                    "erByName (_match2__1__key)) == Either::Left(la",
-                    "wtwin.petstore.model::type::ApiError::NotFound",
-                    "())) } } = true",
+                    "UserApi: \"|a deleted user is not found| [refe",
+                    "rence] | expect let _let0__sent = let _letfiel",
+                    "d8__replacement = Maybe::Just(_input1) in matc",
+                    "h (_input0) { lawtwin.petstore.model::type::Us",
+                    "er::User _matchfield0__id _matchfield1__userna",
+                    "me _matchfield2__firstName _matchfield3__lastN",
+                    "ame _matchfield4__email _matchfield5__password",
+                    " _matchfield6__phone _matchfield7__userStatus ",
+                    "-> lawtwin.petstore.model::type::User::User(_m",
+                    "atchfield0__id, _letfield8__replacement, _matc",
+                    "hfield2__firstName, _matchfield3__lastName, _m",
+                    "atchfield4__email, _matchfield5__password, _ma",
+                    "tchfield6__phone, _matchfield7__userStatus) } ",
+                    "in let _let1__it = attempt (createUser (Maybe:",
+                    ":Just(_let0__sent))) in match (_let1__it) { Ei",
+                    "ther::Left _match2__0___lawspecSelection0x0 ->",
+                    " true; Either::Right _match2__1___lawspecSelec",
+                    "tion0x0 -> let _let3__it = match (_let0__sent)",
+                    " { lawtwin.petstore.model::type::User::User _m",
+                    "atchfield9__id _matchfield10__username _matchf",
+                    "ield11__firstName _matchfield12__lastName _mat",
+                    "chfield13__email _matchfield14__password _matc",
+                    "hfield15__phone _matchfield16__userStatus -> _",
+                    "matchfield10__username } in match (_let3__it) ",
+                    "{ Maybe::Nothing  -> false; Maybe::Just _match",
+                    "4__1___match__lawspecSelection0x0_0 -> let _le",
+                    "t5__gone = attempt (deleteUser (_match4__1___m",
+                    "atch__lawspecSelection0x0_0)) in (attempt (get",
+                    "UserByName (_match4__1___match__lawspecSelecti",
+                    "on0x0_0)) == Either::Left(lawtwin.petstore.mod",
+                    "el::type::ApiError::NotFound())) } } = true",
                 ),
                 left,
                 right,
@@ -14348,8 +14614,8 @@ fn run_13() -> ls::Result<()> {
     let ctx = &mut ls::Context::testing();
     ls::search_replay(
         concat!(
-            "lawtwin.petstore::UserApi: a deleted user is n",
-            "ot found [reference]",
+            "lawtwin.petstore::UserApi: \"|a deleted user i",
+            "s not found| [reference]",
         ),
         SEARCH_INPUTS_13,
         search_case_13,
@@ -14924,7 +15190,10 @@ fn run_13() -> ls::Result<()> {
         result.unwrap_or_else(|e| panic!("{e}"))
     };
     let strategy = strategy.prop_filter(
-        "UserApi: a deleted user is not found [reference] refinement",
+        concat!(
+            "UserApi: \"|a deleted user is not found| [refe",
+            "rence] refinement",
+        ),
         refinement,
     );
     let config = proptest::test_runner::Config {
@@ -14944,8 +15213,8 @@ fn run_13() -> ls::Result<()> {
         if result.is_err() {
             ls::search_remember(
                 concat!(
-                    "lawtwin.petstore::UserApi: a deleted user is n",
-                    "ot found [reference]",
+                    "lawtwin.petstore::UserApi: \"|a deleted user i",
+                    "s not found| [reference]",
                 ),
                 SEARCH_INPUTS_13,
                 &case.values,

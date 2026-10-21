@@ -599,17 +599,6 @@ public static class ContracttestKafka
         return Runtime.Contextual("contracttest.kafka::kafkaTransactionsStart", ls0);
     }
 
-    /// <summary>contracttest.kafka::keepBoundedArithmetic</summary>
-    public static Value KeepBoundedArithmetic(Schema.Schema schema, Scalar.SymbolContext symbols, Value argument0)
-    {
-        var ls0 = Fn.F0(() =>
-        {
-            var result = Codecs.Int64.FromNative.Invoke(LawSpec.TypedProgram.KeepBoundedArithmetic_3e45e1f6(Codecs.Int64.ToNative.Invoke(argument0)));
-            return result;
-        });
-        return Runtime.Contextual("contracttest.kafka::keepBoundedArithmetic", ls0);
-    }
-
     /// <summary>contracttest.kafka::lawspecCollectionsBoundedInt16</summary>
     public static Value LawspecCollectionsBoundedInt16(Schema.Schema schema, Scalar.SymbolContext symbols, Value argument0)
     {
@@ -834,14 +823,14 @@ public static class ContracttestKafka
             Value result;
             if (Runtime.Truth(Scalar.Binary(">", argument0, Schema.Validate(V.Int(BigInteger.Parse("9223372036854775807")), Scalar.TypeOf("Integer"), schema), "Integer", "Integer")))
             {
-                result = Schema.Validate(Schema.Validate(V.Int(BigInteger.Parse("9223372036854775807")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("IntSize"), schema);
+                result = Schema.Validate(Scalar.Convert(Schema.Validate(V.Int(BigInteger.Parse("9223372036854775807")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("IntSize"), 64), Scalar.TypeOf("IntSize"), schema);
             }
             else
             {
                 Value ls1;
                 if (Runtime.Truth(Scalar.Binary("<", argument0, Schema.Validate(V.Int(BigInteger.Parse("-9223372036854775808")), Scalar.TypeOf("Integer"), schema), "Integer", "Integer")))
                 {
-                    ls1 = Schema.Validate(Schema.Validate(V.Int(BigInteger.Parse("-9223372036854775808")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("IntSize"), schema);
+                    ls1 = Schema.Validate(Scalar.Convert(Schema.Validate(V.Int(BigInteger.Parse("-9223372036854775808")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("IntSize"), 64), Scalar.TypeOf("IntSize"), schema);
                 }
                 else
                 {
@@ -906,14 +895,14 @@ public static class ContracttestKafka
             Value result;
             if (Runtime.Truth(Scalar.Binary(">", argument0, Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema), "Integer", "Integer")))
             {
-                result = Schema.Validate(Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntPtr"), schema);
+                result = Schema.Validate(Scalar.Convert(Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntPtr"), 64), Scalar.TypeOf("UIntPtr"), schema);
             }
             else
             {
                 Value ls1;
                 if (Runtime.Truth(Scalar.Binary("<", argument0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema), "Integer", "Integer")))
                 {
-                    ls1 = Schema.Validate(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntPtr"), schema);
+                    ls1 = Schema.Validate(Scalar.Convert(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntPtr"), 64), Scalar.TypeOf("UIntPtr"), schema);
                 }
                 else
                 {
@@ -934,14 +923,14 @@ public static class ContracttestKafka
             Value result;
             if (Runtime.Truth(Scalar.Binary(">", argument0, Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema), "Integer", "Integer")))
             {
-                result = Schema.Validate(Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntSize"), schema);
+                result = Schema.Validate(Scalar.Convert(Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntSize"), 64), Scalar.TypeOf("UIntSize"), schema);
             }
             else
             {
                 Value ls1;
                 if (Runtime.Truth(Scalar.Binary("<", argument0, Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema), "Integer", "Integer")))
                 {
-                    ls1 = Schema.Validate(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntSize"), schema);
+                    ls1 = Schema.Validate(Scalar.Convert(Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema), Scalar.TypeOf("UIntSize"), 64), Scalar.TypeOf("UIntSize"), schema);
                 }
                 else
                 {
@@ -3710,6 +3699,18 @@ public static class ContracttestKafka
             return result;
         });
         return Runtime.Contextual("contracttest.kafka::murmurPartitionerChoosePartition", ls0);
+    }
+
+    /// <summary>contracttest.kafka::suiteNamesThePackage</summary>
+    public static Value SuiteNamesThePackage(Schema.Schema schema, Scalar.SymbolContext symbols, Value argument0)
+    {
+        var ls0 = Fn.F0(() =>
+        {
+            LawSpec.TypedProgram.SuiteNamesThePackage_55f330a5(Codecs.Unit.ToNative.Invoke(argument0));
+            var result = V.Unit;
+            return result;
+        });
+        return Runtime.Contextual("contracttest.kafka::suiteNamesThePackage", ls0);
     }
 
     /// <summary>The spec handler cluster.</summary>

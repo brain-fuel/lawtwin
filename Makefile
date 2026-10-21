@@ -1,12 +1,12 @@
 # LawTwin development tasks. `make` lists them. Every check runs locally;
 # there is no hosted CI.
 
-# The contracts and the Kafka twin's Rust core need LawSpec 0.23.0: the
-# lawspec-gaps fixes, typed native code on every target, and the F# and C#
-# targets. `make lawspec-stage` stages the CLI from npm; set LAWSPEC_HOME to
+# The contracts and twin model consumers use LawSpec 0.26.0, configuration
+# version 2 and profile 1.0-rc.2, with explicit verification layers.
+# `make lawspec-stage` stages the CLI from npm; set LAWSPEC_HOME to
 # stage it from a LawSpec checkout instead (for builds not yet on npm), or set
 # LAWSPEC to another way of running it.
-LAWSPEC_VERSION  := 0.23.0
+LAWSPEC_VERSION  := 0.26.0
 LAWSPEC_REQUIRED := LawSpec $(LAWSPEC_VERSION)
 LAWSPEC_HOME ?=
 LAWSPEC   ?= node .lawspec-cli/bin/lawspec.mjs
@@ -35,7 +35,7 @@ RELEASE     ?= 0.1.0
 comma := ,
 
 # Kotlin test projects run `gradle`; GRADLE_HOME puts one on the path.
-export PATH := $(if $(GRADLE_HOME),$(GRADLE_HOME)/bin:,)$(PATH)
+export PATH := $(if $(GRADLE_HOME),$(abspath $(GRADLE_HOME))/bin:,)$(PATH)
 
 # The OpenAPI documents the importer is tested on, and the contracts made
 # from them: document, package, directory.
@@ -44,7 +44,7 @@ OPENAPI_IMPORTS := \
   openapi/github-labels-milestones.json,lawtwin.github,contracts/github
 
 .DEFAULT_GOAL := help
-.PHONY: help lawspec-version lawspec-stage build test openapi-import openapi-import-check contract-check contract-generate contract-generate-check python-env contract-test core-conformance golden image compose-up compose-down core-conformance-http openapi-client-http golden-http image-http compose-up-http compose-down-http kafka-up kafka-down conform-kafka fidelity-test canon ci
+.PHONY: help lawspec-version lawspec-stage build test openapi-import openapi-import-check openapi-compile-check contract-check contract-generate contract-generate-check python-env contract-test core-conformance golden image compose-up compose-down core-conformance-http openapi-client-http golden-http image-http compose-up-http compose-down-http kafka-up kafka-down conform-kafka fidelity-test canon ci
 
 help: ## List the tasks
 	@awk -F':.*## ' '/^[a-z-]+:.*## / {printf "  %-24s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -67,9 +67,11 @@ openapi-import: build ## Import each vendored OpenAPI document into its contract
 	  $(LAWTWIN) import openapi $$1 --package $$2 --out $$3 || exit 1; \
 	done
 
-openapi-import-check: openapi-import ## Fail if an imported contract differs from what the importer writes
-	@git diff --exit-code -- $(foreach i,$(OPENAPI_IMPORTS),$(word 3,$(subst $(comma), ,$(i)))) || \
-	  { echo "an imported contract is stale: run make openapi-import"; exit 1; }
+openapi-import-check: build ## Check importer outputs without changing maintained files
+	python3 tools/check-openapi.py reproducible --lawtwin $(LAWTWIN)
+
+openapi-compile-check: build ## Compile fresh OpenAPI 3.0/3.1 imports and their public Rust adapters
+	python3 tools/check-openapi.py compile --lawtwin $(LAWTWIN)
 
 contract-check: ## Compile each contract package and its laws
 	@for c in $(CONTRACTS); do \
@@ -155,4 +157,4 @@ canon: ## Check the canonical format with canon 0.2.2 (needs CANON_HOME)
 	@ln -sfn "$(CANON_HOME)" .canon
 	$(CANON) check
 
-ci: test openapi-import-check contract-check contract-generate-check contract-test core-conformance core-conformance-http fidelity-test canon ## Every check
+ci: test openapi-import-check openapi-compile-check contract-check contract-generate-check contract-test core-conformance core-conformance-http fidelity-test canon ## Every check

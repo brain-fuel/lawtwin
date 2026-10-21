@@ -15,736 +15,864 @@ def Ordering_of(c):
 
 # lawspec.matchers::matchersMatchesRegex
 def Def_matchersMatchesRegex_52d1c22e(t_0, r_1):
-    p_2 = r_1[0]
-    return lsf_regex_matches(p_2, t_0)
+    it_2 = r_1
+    v_lawspecselection0x0_3 = it_2[0]
+    return lsf_regex_matches(v_lawspecselection0x0_3, t_0)
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValDeleteItems_9e051807ce8b6631
-def Def_lawspecCollectionsKeyValDeleteItems_d5ca929b(k_3, es_4):
-    if es_4 is None:
-        return es_4
+def Def_lawspecCollectionsKeyValDeleteItems_d5ca929b(k_4, es_5):
+    it_6 = es_5
+    if it_6 is None:
+        return es_5
     else:
-        e_5 = es_4[0]
-        t_6 = es_4[1]
-        key_7 = e_5[0]
-        matched_8 = Ordering_of(lsf_cmp_plain(k_3, key_7))
-        if matched_8 == 0:
-            return t_6
-        elif matched_8 == 1:
-            return lsf_cons(e_5, Def_lawspecCollectionsKeyValDeleteItems_d5ca929b(k_3, t_6))
+        v_lawspecselection0x0_7 = it_6[0]
+        v_lawspecselection0x1_8 = it_6[1]
+        it_9 = v_lawspecselection0x0_7
+        v_match__lawspecselection0x0_0_10 = it_9[0]
+        it_11 = Ordering_of(lsf_cmp_plain(k_4, v_match__lawspecselection0x0_0_10))
+        if it_11 == 0:
+            return v_lawspecselection0x1_8
+        elif it_11 == 1:
+            return lsf_cons(v_lawspecselection0x0_7, Def_lawspecCollectionsKeyValDeleteItems_d5ca929b(k_4, v_lawspecselection0x1_8))
         else:
-            return es_4
+            return es_5
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValDeleteItems_f3f338a80ea4a7a1
-def Def_lawspecCollectionsKeyValDeleteItems_521d9c1e(k_9, es_10):
-    if es_10 is None:
-        return es_10
+def Def_lawspecCollectionsKeyValDeleteItems_521d9c1e(k_12, es_13):
+    it_14 = es_13
+    if it_14 is None:
+        return es_13
     else:
-        e_11 = es_10[0]
-        t_12 = es_10[1]
-        key_13 = e_11[0]
-        matched_14 = Ordering_of(lsf_cmp_plain(k_9, key_13))
-        if matched_14 == 0:
-            return t_12
-        elif matched_14 == 1:
-            return lsf_cons(e_11, Def_lawspecCollectionsKeyValDeleteItems_521d9c1e(k_9, t_12))
+        v_lawspecselection0x0_15 = it_14[0]
+        v_lawspecselection0x1_16 = it_14[1]
+        it_17 = v_lawspecselection0x0_15
+        v_match__lawspecselection0x0_0_18 = it_17[0]
+        it_19 = Ordering_of(lsf_cmp_plain(k_12, v_match__lawspecselection0x0_0_18))
+        if it_19 == 0:
+            return v_lawspecselection0x1_16
+        elif it_19 == 1:
+            return lsf_cons(v_lawspecselection0x0_15, Def_lawspecCollectionsKeyValDeleteItems_521d9c1e(k_12, v_lawspecselection0x1_16))
         else:
-            return es_10
+            return es_13
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValDelete_bdf93b1d3cac349
-def Def_lawspecCollectionsKeyValDelete_3d0c071d(k_15, m_16):
-    return lsf_delete(m_16, k_15)
+def Def_lawspecCollectionsKeyValDelete_3d0c071d(k_20, m_21):
+    return lsf_delete(m_21, k_20)
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValDelete_e3162f68473102d9
-def Def_lawspecCollectionsKeyValDelete_e194c4ee(k_17, m_18):
-    return lsf_delete(m_18, k_17)
+def Def_lawspecCollectionsKeyValDelete_e194c4ee(k_22, m_23):
+    return lsf_delete(m_23, k_22)
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValEntries_9115306fd1dc099a
-def Def_lawspecCollectionsKeyValEntries_e26035bf(m_19):
-    return lsf_entries_list(m_19)
+def Def_lawspecCollectionsKeyValEntries_e26035bf(m_24):
+    return lsf_entries_list(m_24)
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValEntries_c1a7185a15b768aa
-def Def_lawspecCollectionsKeyValEntries_e829e46d(m_20):
-    return lsf_entries_list(m_20)
+def Def_lawspecCollectionsKeyValEntries_e829e46d(m_25):
+    return lsf_entries_list(m_25)
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValFromItems_1ea5c5da129708a6
-def Def_lawspecCollectionsKeyValFromItems_9e277637(es_21, acc_22):
+def Def_lawspecCollectionsKeyValFromItems_9e277637(es_26, acc_27):
     while True:
-        if es_21 is None:
-            return acc_22
+        it_28 = es_26
+        if it_28 is None:
+            return acc_27
         else:
-            e_23 = es_21[0]
-            t_24 = es_21[1]
-            key_25 = e_23[0]
-            value_26 = e_23[1]
-            next_27 = t_24
-            next_28 = Def_lawspecCollectionsKeyValPutItems_009ae3af(key_25, value_26, acc_22)
-            es_21 = next_27
-            acc_22 = next_28
+            v_lawspecselection0x0_29 = it_28[0]
+            v_lawspecselection0x1_30 = it_28[1]
+            it_31 = v_lawspecselection0x0_29
+            v_match__lawspecselection0x0_0_32 = it_31[0]
+            v_match__lawspecselection0x1_0_33 = it_31[1]
+            next_34 = v_lawspecselection0x1_30
+            next_35 = Def_lawspecCollectionsKeyValPutItems_009ae3af(v_match__lawspecselection0x0_0_32, v_match__lawspecselection0x1_0_33, acc_27)
+            es_26 = next_34
+            acc_27 = next_35
             continue
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValFromItems_93acf9edfd00f4b6
-def Def_lawspecCollectionsKeyValFromItems_90be56aa(es_29, acc_30):
+def Def_lawspecCollectionsKeyValFromItems_90be56aa(es_36, acc_37):
     while True:
-        if es_29 is None:
-            return acc_30
+        it_38 = es_36
+        if it_38 is None:
+            return acc_37
         else:
-            e_31 = es_29[0]
-            t_32 = es_29[1]
-            key_33 = e_31[0]
-            value_34 = e_31[1]
-            next_35 = t_32
-            next_36 = Def_lawspecCollectionsKeyValPutItems_190448ce(key_33, value_34, acc_30)
-            es_29 = next_35
-            acc_30 = next_36
+            v_lawspecselection0x0_39 = it_38[0]
+            v_lawspecselection0x1_40 = it_38[1]
+            it_41 = v_lawspecselection0x0_39
+            v_match__lawspecselection0x0_0_42 = it_41[0]
+            v_match__lawspecselection0x1_0_43 = it_41[1]
+            next_44 = v_lawspecselection0x1_40
+            next_45 = Def_lawspecCollectionsKeyValPutItems_190448ce(v_match__lawspecselection0x0_0_42, v_match__lawspecselection0x1_0_43, acc_37)
+            es_36 = next_44
+            acc_37 = next_45
             continue
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValLookupItems_2bd53328f2fa920b
-def Def_lawspecCollectionsKeyValLookupItems_90dab4a9(k_37, es_38):
+def Def_lawspecCollectionsKeyValLookupItems_90dab4a9(k_46, es_47):
     while True:
-        if es_38 is None:
+        it_48 = es_47
+        if it_48 is None:
             return ()
         else:
-            e_39 = es_38[0]
-            t_40 = es_38[1]
-            key_41 = e_39[0]
-            value_42 = e_39[1]
-            matched_43 = Ordering_of(lsf_cmp_plain(k_37, key_41))
-            if matched_43 == 0:
-                return (value_42,)
-            elif matched_43 == 1:
-                next_44 = t_40
-                es_38 = next_44
+            v_lawspecselection0x0_49 = it_48[0]
+            v_lawspecselection0x1_50 = it_48[1]
+            it_51 = v_lawspecselection0x0_49
+            v_match__lawspecselection0x0_0_52 = it_51[0]
+            v_match__lawspecselection0x1_0_53 = it_51[1]
+            it_54 = Ordering_of(lsf_cmp_plain(k_46, v_match__lawspecselection0x0_0_52))
+            if it_54 == 0:
+                return (v_match__lawspecselection0x1_0_53,)
+            elif it_54 == 1:
+                next_55 = v_lawspecselection0x1_50
+                es_47 = next_55
                 continue
             else:
                 return ()
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValLookupItems_6840b2348dfadaef
-def Def_lawspecCollectionsKeyValLookupItems_801c71f4(k_45, es_46):
+def Def_lawspecCollectionsKeyValLookupItems_801c71f4(k_56, es_57):
     while True:
-        if es_46 is None:
+        it_58 = es_57
+        if it_58 is None:
             return ()
         else:
-            e_47 = es_46[0]
-            t_48 = es_46[1]
-            key_49 = e_47[0]
-            value_50 = e_47[1]
-            matched_51 = Ordering_of(lsf_cmp_plain(k_45, key_49))
-            if matched_51 == 0:
-                return (value_50,)
-            elif matched_51 == 1:
-                next_52 = t_48
-                es_46 = next_52
+            v_lawspecselection0x0_59 = it_58[0]
+            v_lawspecselection0x1_60 = it_58[1]
+            it_61 = v_lawspecselection0x0_59
+            v_match__lawspecselection0x0_0_62 = it_61[0]
+            v_match__lawspecselection0x1_0_63 = it_61[1]
+            it_64 = Ordering_of(lsf_cmp_plain(k_56, v_match__lawspecselection0x0_0_62))
+            if it_64 == 0:
+                return (v_match__lawspecselection0x1_0_63,)
+            elif it_64 == 1:
+                next_65 = v_lawspecselection0x1_60
+                es_57 = next_65
                 continue
             else:
                 return ()
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValLookup_82e5ed48cd41692f
-def Def_lawspecCollectionsKeyValLookup_a7ef6313(k_53, m_54):
-    return lsf_lookup(m_54, k_53)
+def Def_lawspecCollectionsKeyValLookup_a7ef6313(k_66, m_67):
+    return lsf_lookup(m_67, k_66)
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValLookup_9ebe5d8a23eff7e3
-def Def_lawspecCollectionsKeyValLookup_bb954c82(k_55, m_56):
-    return lsf_lookup(m_56, k_55)
+def Def_lawspecCollectionsKeyValLookup_bb954c82(k_68, m_69):
+    return lsf_lookup(m_69, k_68)
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValOf_32834b690fa17862
-def Def_lawspecCollectionsKeyValOf_e4af0442(es_57):
-    return lsf_key_val_of(es_57)
+def Def_lawspecCollectionsKeyValOf_e4af0442(es_70):
+    return lsf_key_val_of(es_70)
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValOf_4c6f5dd9200a2e32
-def Def_lawspecCollectionsKeyValOf_57c642d1(es_58):
-    return lsf_key_val_of(es_58)
+def Def_lawspecCollectionsKeyValOf_57c642d1(es_71):
+    return lsf_key_val_of(es_71)
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValPutItems_82457d19a83cfb5b
-def Def_lawspecCollectionsKeyValPutItems_009ae3af(k_59, v_60, es_61):
-    if es_61 is None:
-        return lsf_cons((k_59, v_60), None)
+def Def_lawspecCollectionsKeyValPutItems_009ae3af(k_72, v_73, es_74):
+    it_75 = es_74
+    if it_75 is None:
+        v_lawspecrecordfield0_77 = k_72
+        v_lawspecrecordfield1_78 = v_73
+        value_76 = (v_lawspecrecordfield0_77, v_lawspecrecordfield1_78)
+        return lsf_cons(value_76, None)
     else:
-        e_62 = es_61[0]
-        t_63 = es_61[1]
-        key_64 = e_62[0]
-        matched_65 = Ordering_of(lsf_cmp_plain(k_59, key_64))
-        if matched_65 == 0:
-            return lsf_cons((k_59, v_60), t_63)
-        elif matched_65 == 1:
-            return lsf_cons(e_62, Def_lawspecCollectionsKeyValPutItems_009ae3af(k_59, v_60, t_63))
+        v_lawspecselection0x0_79 = it_75[0]
+        v_lawspecselection0x1_80 = it_75[1]
+        it_81 = v_lawspecselection0x0_79
+        v_match__lawspecselection0x0_0_82 = it_81[0]
+        it_83 = Ordering_of(lsf_cmp_plain(k_72, v_match__lawspecselection0x0_0_82))
+        if it_83 == 0:
+            v_lawspecrecordfield0_85 = k_72
+            v_lawspecrecordfield1_86 = v_73
+            value_84 = (v_lawspecrecordfield0_85, v_lawspecrecordfield1_86)
+            return lsf_cons(value_84, v_lawspecselection0x1_80)
+        elif it_83 == 1:
+            return lsf_cons(v_lawspecselection0x0_79, Def_lawspecCollectionsKeyValPutItems_009ae3af(k_72, v_73, v_lawspecselection0x1_80))
         else:
-            return lsf_cons((k_59, v_60), es_61)
+            v_lawspecrecordfield0_88 = k_72
+            v_lawspecrecordfield1_89 = v_73
+            value_87 = (v_lawspecrecordfield0_88, v_lawspecrecordfield1_89)
+            return lsf_cons(value_87, es_74)
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValPutItems_fa544d6fcf98e50b
-def Def_lawspecCollectionsKeyValPutItems_190448ce(k_66, v_67, es_68):
-    if es_68 is None:
-        return lsf_cons((k_66, v_67), None)
+def Def_lawspecCollectionsKeyValPutItems_190448ce(k_90, v_91, es_92):
+    it_93 = es_92
+    if it_93 is None:
+        v_lawspecrecordfield0_95 = k_90
+        v_lawspecrecordfield1_96 = v_91
+        value_94 = (v_lawspecrecordfield0_95, v_lawspecrecordfield1_96)
+        return lsf_cons(value_94, None)
     else:
-        e_69 = es_68[0]
-        t_70 = es_68[1]
-        key_71 = e_69[0]
-        matched_72 = Ordering_of(lsf_cmp_plain(k_66, key_71))
-        if matched_72 == 0:
-            return lsf_cons((k_66, v_67), t_70)
-        elif matched_72 == 1:
-            return lsf_cons(e_69, Def_lawspecCollectionsKeyValPutItems_190448ce(k_66, v_67, t_70))
+        v_lawspecselection0x0_97 = it_93[0]
+        v_lawspecselection0x1_98 = it_93[1]
+        it_99 = v_lawspecselection0x0_97
+        v_match__lawspecselection0x0_0_100 = it_99[0]
+        it_101 = Ordering_of(lsf_cmp_plain(k_90, v_match__lawspecselection0x0_0_100))
+        if it_101 == 0:
+            v_lawspecrecordfield0_103 = k_90
+            v_lawspecrecordfield1_104 = v_91
+            value_102 = (v_lawspecrecordfield0_103, v_lawspecrecordfield1_104)
+            return lsf_cons(value_102, v_lawspecselection0x1_98)
+        elif it_101 == 1:
+            return lsf_cons(v_lawspecselection0x0_97, Def_lawspecCollectionsKeyValPutItems_190448ce(k_90, v_91, v_lawspecselection0x1_98))
         else:
-            return lsf_cons((k_66, v_67), es_68)
+            v_lawspecrecordfield0_106 = k_90
+            v_lawspecrecordfield1_107 = v_91
+            value_105 = (v_lawspecrecordfield0_106, v_lawspecrecordfield1_107)
+            return lsf_cons(value_105, es_92)
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValPut_85f9039dbce1297f
-def Def_lawspecCollectionsKeyValPut_d49491c0(k_73, v_74, m_75):
-    return lsf_put(m_75, k_73, v_74)
+def Def_lawspecCollectionsKeyValPut_d49491c0(k_108, v_109, m_110):
+    return lsf_put(m_110, k_108, v_109)
 
 
 # lawtwin.github::lawspec_lawspecCollectionsKeyValPut_a37565d6d8f481df
-def Def_lawspecCollectionsKeyValPut_21afa008(k_76, v_77, m_78):
-    return lsf_put(m_78, k_76, v_77)
+def Def_lawspecCollectionsKeyValPut_21afa008(k_111, v_112, m_113):
+    return lsf_put(m_113, k_111, v_112)
 
 
 # lawtwin.github::lawtwinGithubModelAfter64
-def Def_lawtwinGithubModelAfter64_6da0e3cc(k_79):
-    if (k_79 < 9223372036854775807):
-        narrowed_80 = (k_79 + 1)
-        if narrowed_80 < (-9223372036854775808) or narrowed_80 > 9223372036854775807:
+def Def_lawtwinGithubModelAfter64_6da0e3cc(k_114):
+    if (k_114 < 9223372036854775807):
+        narrowed_115 = (k_114 + 1)
+        if narrowed_115 < (-9223372036854775808) or narrowed_115 > 9223372036854775807:
             lsf_outside('Int64')
-        return narrowed_80
+        return narrowed_115
     else:
-        return k_79
+        return k_114
 
 
 # lawtwin.github::lawtwinGithubModelContainsLabel
-def Def_lawtwinGithubModelContainsLabel_309ab147(wanted_81, items_82):
-    if items_82 is None:
+def Def_lawtwinGithubModelContainsLabel_309ab147(wanted_116, items_117):
+    it_118 = items_117
+    if it_118 is None:
         return False
     else:
-        item_83 = items_82[0]
-        rest_84 = items_82[1]
-        return ((item_83 == wanted_81) or Def_lawtwinGithubModelContainsLabel_309ab147(wanted_81, rest_84))
+        v_lawspecselection0x0_119 = it_118[0]
+        v_lawspecselection0x1_120 = it_118[1]
+        return ((v_lawspecselection0x0_119 == wanted_116) or Def_lawtwinGithubModelContainsLabel_309ab147(wanted_116, v_lawspecselection0x1_120))
 
 
 # lawtwin.github::lawtwinGithubModelContainsMilestone
-def Def_lawtwinGithubModelContainsMilestone_cd6cafbf(wanted_85, items_86):
-    if items_86 is None:
+def Def_lawtwinGithubModelContainsMilestone_cd6cafbf(wanted_121, items_122):
+    it_123 = items_122
+    if it_123 is None:
         return False
     else:
-        item_87 = items_86[0]
-        rest_88 = items_86[1]
-        return ((item_87 == wanted_85) or Def_lawtwinGithubModelContainsMilestone_cd6cafbf(wanted_85, rest_88))
+        v_lawspecselection0x0_124 = it_123[0]
+        v_lawspecselection0x1_125 = it_123[1]
+        return ((v_lawspecselection0x0_124 == wanted_121) or Def_lawtwinGithubModelContainsMilestone_cd6cafbf(wanted_121, v_lawspecselection0x1_125))
 
 
 # lawtwin.github::lawtwinGithubModelEmptyState
-def Def_lawtwinGithubModelEmptyState_88944bb0(u_89):
-    return (lsf_key_val_of(None), lsf_key_val_of(None), 1)
+def Def_lawtwinGithubModelEmptyState_88944bb0(u_126):
+    v_lawspecrecordfield0_127 = lsf_key_val_of(None)
+    v_lawspecrecordfield1_128 = lsf_key_val_of(None)
+    v_lawspecrecordfield2_129 = 1
+    return (v_lawspecrecordfield0_127, v_lawspecrecordfield1_128, v_lawspecrecordfield2_129)
 
 
 # lawtwin.github::lawtwinGithubModelModelIssuesCreateLabel
-def Def_lawtwinGithubModelModelIssuesCreateLabel_9a20de66(owner_90, repo_91, body_92, current__93):
-    lawspecfieldname_95 = body_92[0]
-    value_94 = lawspecfieldname_95
-    key_96 = value_94
-    lawspecfielddescription__98 = body_92[2]
-    value_97 = lawspecfielddescription__98
-    lawspecfieldcolor_101 = body_92[1]
-    value_100 = lawspecfieldcolor_101
-    matched_102 = value_100
-    if matched_102:
-        given_103 = matched_102[0]
-        value_99 = given_103
+def Def_lawtwinGithubModelModelIssuesCreateLabel_9a20de66(owner_130, repo_131, body_132, current__133):
+    lawspecfieldname_135 = body_132[0]
+    value_134 = lawspecfieldname_135
+    key_136 = value_134
+    v_lawspecrecordfield0_138 = 0
+    v_lawspecrecordfield1_139 = ''
+    v_lawspecrecordfield2_140 = ''
+    v_lawspecrecordfield3_141 = key_136
+    lawspecfielddescription__143 = body_132[2]
+    value_142 = lawspecfielddescription__143
+    v_lawspecrecordfield4_144 = value_142
+    lawspecfieldcolor_147 = body_132[1]
+    value_146 = lawspecfieldcolor_147
+    it_148 = value_146
+    if it_148:
+        v_lawspecselection0x0_149 = it_148[0]
+        value_145 = v_lawspecselection0x0_149
     else:
-        value_99 = ''
-    stored_104 = (0, '', '', key_96, value_97, value_99, False, (), ())
-    lawspecfieldlabels_106 = current__93[0]
-    value_105 = lawspecfieldlabels_106
-    matched_107 = lsf_lookup(value_105, (owner_90, repo_91, key_96))
-    if matched_107:
+        value_145 = ''
+    v_lawspecrecordfield5_150 = value_145
+    v_lawspecrecordfield6_151 = False
+    v_lawspecrecordfield7_152 = ()
+    v_lawspecrecordfield8_153 = ()
+    value_137 = (v_lawspecrecordfield0_138, v_lawspecrecordfield1_139, v_lawspecrecordfield2_140, v_lawspecrecordfield3_141, v_lawspecrecordfield4_144, v_lawspecrecordfield5_150, v_lawspecrecordfield6_151, v_lawspecrecordfield7_152, v_lawspecrecordfield8_153)
+    stored_154 = value_137
+    v_lawspecrecordfield0_156 = owner_130
+    v_lawspecrecordfield1_157 = repo_131
+    v_lawspecrecordfield2_158 = key_136
+    value_155 = (v_lawspecrecordfield0_156, v_lawspecrecordfield1_157, v_lawspecrecordfield2_158)
+    lawspecfieldlabels_160 = current__133[0]
+    value_159 = lawspecfieldlabels_160
+    it_161 = lsf_lookup(value_159, value_155)
+    if it_161:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.github.model::type::ApiError)', to_25f3c65eb512(3))
     else:
-        lawspecfieldlabels_110 = current__93[0]
-        value_109 = lawspecfieldlabels_110
-        replacement_111 = lsf_put(value_109, (owner_90, repo_91, key_96), stored_104)
-        lawspecfieldmilestones_112 = current__93[1]
-        lawspecfieldnextmilestonekey_113 = current__93[2]
-        value_108 = (replacement_111, lawspecfieldmilestones_112, lawspecfieldnextmilestonekey_113)
-        return (stored_104, value_108)
+        v_lawspecrecordfield0_164 = owner_130
+        v_lawspecrecordfield1_165 = repo_131
+        v_lawspecrecordfield2_166 = key_136
+        value_163 = (v_lawspecrecordfield0_164, v_lawspecrecordfield1_165, v_lawspecrecordfield2_166)
+        lawspecfieldlabels_168 = current__133[0]
+        value_167 = lawspecfieldlabels_168
+        replacement_169 = lsf_put(value_167, value_163, stored_154)
+        lawspecfieldmilestones_170 = current__133[1]
+        lawspecfieldnextmilestonekey_171 = current__133[2]
+        value_162 = (replacement_169, lawspecfieldmilestones_170, lawspecfieldnextmilestonekey_171)
+        return (stored_154, value_162)
 
 
 # lawtwin.github::lawtwinGithubModelModelIssuesCreateMilestone
-def Def_lawtwinGithubModelModelIssuesCreateMilestone_a9dfef0f(owner_114, repo_115, body_116, current__117):
-    if (not Def_lawtwinGithubModelValidIssuesCreateMilestoneBody_b6751680(body_116)):
+def Def_lawtwinGithubModelModelIssuesCreateMilestone_a9dfef0f(owner_172, repo_173, body_174, current__175):
+    if (not Def_lawtwinGithubModelValidIssuesCreateMilestoneBody_b6751680(body_174)):
         raise ls.Failure('lawspec::ability::Fail(lawtwin.github.model::type::ApiError)', to_25f3c65eb512(3))
     else:
-        lawspecfieldnextmilestonekey_119 = current__117[2]
-        value_118 = lawspecfieldnextmilestonekey_119
-        key_120 = value_118
-        lawspecfieldstate__123 = body_116[1]
-        value_122 = lawspecfieldstate__123
-        matched_124 = value_122
-        if matched_124:
-            given_125 = matched_124[0]
-            value_121 = given_125
+        lawspecfieldnextmilestonekey_177 = current__175[2]
+        value_176 = lawspecfieldnextmilestonekey_177
+        key_178 = value_176
+        v_lawspecrecordfield0_180 = ''
+        v_lawspecrecordfield1_181 = ''
+        v_lawspecrecordfield2_182 = ''
+        v_lawspecrecordfield3_183 = 0
+        v_lawspecrecordfield4_184 = ''
+        v_lawspecrecordfield5_185 = key_178
+        lawspecfieldstate__188 = body_174[1]
+        value_187 = lawspecfieldstate__188
+        it_189 = value_187
+        if it_189:
+            v_lawspecselection0x0_190 = it_189[0]
+            value_186 = v_lawspecselection0x0_190
         else:
-            value_121 = 1
-        lawspecfieldtitle_127 = body_116[0]
-        value_126 = lawspecfieldtitle_127
-        lawspecfielddescription__129 = body_116[2]
-        value_128 = lawspecfielddescription__129
-        lawspecfielddueon_131 = body_116[3]
-        value_130 = lawspecfielddueon_131
-        stored_132 = ('', '', '', 0, '', key_120, value_121, value_126, value_128, (), 0, 0, '', '', (), value_130)
-        lawspecfieldmilestones_134 = current__117[1]
-        value_133 = lawspecfieldmilestones_134
-        matched_135 = lsf_lookup(value_133, (owner_114, repo_115, key_120))
-        if matched_135:
+            value_186 = 1
+        v_lawspecrecordfield6_191 = value_186
+        lawspecfieldtitle_193 = body_174[0]
+        value_192 = lawspecfieldtitle_193
+        v_lawspecrecordfield7_194 = value_192
+        lawspecfielddescription__196 = body_174[2]
+        value_195 = lawspecfielddescription__196
+        v_lawspecrecordfield8_197 = value_195
+        v_lawspecrecordfield9_198 = ()
+        v_lawspecrecordfield10_199 = 0
+        v_lawspecrecordfield11_200 = 0
+        v_lawspecrecordfield12_201 = ''
+        v_lawspecrecordfield13_202 = ''
+        v_lawspecrecordfield14_203 = ()
+        lawspecfielddueon_205 = body_174[3]
+        value_204 = lawspecfielddueon_205
+        v_lawspecrecordfield15_206 = value_204
+        value_179 = (v_lawspecrecordfield0_180, v_lawspecrecordfield1_181, v_lawspecrecordfield2_182, v_lawspecrecordfield3_183, v_lawspecrecordfield4_184, v_lawspecrecordfield5_185, v_lawspecrecordfield6_191, v_lawspecrecordfield7_194, v_lawspecrecordfield8_197, v_lawspecrecordfield9_198, v_lawspecrecordfield10_199, v_lawspecrecordfield11_200, v_lawspecrecordfield12_201, v_lawspecrecordfield13_202, v_lawspecrecordfield14_203, v_lawspecrecordfield15_206)
+        stored_207 = value_179
+        v_lawspecrecordfield0_209 = owner_172
+        v_lawspecrecordfield1_210 = repo_173
+        v_lawspecrecordfield2_211 = key_178
+        value_208 = (v_lawspecrecordfield0_209, v_lawspecrecordfield1_210, v_lawspecrecordfield2_211)
+        lawspecfieldmilestones_213 = current__175[1]
+        value_212 = lawspecfieldmilestones_213
+        it_214 = lsf_lookup(value_212, value_208)
+        if it_214:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.github.model::type::ApiError)', to_25f3c65eb512(3))
         else:
-            lawspecfieldnextmilestonekey_139 = current__117[2]
-            value_138 = lawspecfieldnextmilestonekey_139
-            if (key_120 >= value_138):
-                value_137 = Def_lawtwinGithubModelAfter64_6da0e3cc(key_120)
+            lawspecfieldnextmilestonekey_218 = current__175[2]
+            value_217 = lawspecfieldnextmilestonekey_218
+            if (key_178 >= value_217):
+                value_216 = Def_lawtwinGithubModelAfter64_6da0e3cc(key_178)
             else:
-                lawspecfieldnextmilestonekey_140 = current__117[2]
-                value_137 = lawspecfieldnextmilestonekey_140
-            replacement_141 = value_137
-            lawspecfieldmilestones_144 = current__117[1]
-            value_143 = lawspecfieldmilestones_144
-            replacement_145 = lsf_put(value_143, (owner_114, repo_115, key_120), stored_132)
-            lawspecfieldlabels_146 = current__117[0]
-            lawspecfieldnextmilestonekey_147 = current__117[2]
-            value_142 = (lawspecfieldlabels_146, replacement_145, lawspecfieldnextmilestonekey_147)
-            matched_148 = value_142
-            lawspecfieldlabels_149 = matched_148[0]
-            lawspecfieldmilestones_150 = matched_148[1]
-            value_136 = (lawspecfieldlabels_149, lawspecfieldmilestones_150, replacement_141)
-            return (stored_132, value_136)
+                lawspecfieldnextmilestonekey_219 = current__175[2]
+                value_216 = lawspecfieldnextmilestonekey_219
+            replacement_220 = value_216
+            v_lawspecrecordfield0_223 = owner_172
+            v_lawspecrecordfield1_224 = repo_173
+            v_lawspecrecordfield2_225 = key_178
+            value_222 = (v_lawspecrecordfield0_223, v_lawspecrecordfield1_224, v_lawspecrecordfield2_225)
+            lawspecfieldmilestones_227 = current__175[1]
+            value_226 = lawspecfieldmilestones_227
+            replacement_228 = lsf_put(value_226, value_222, stored_207)
+            lawspecfieldlabels_229 = current__175[0]
+            lawspecfieldnextmilestonekey_230 = current__175[2]
+            value_221 = (lawspecfieldlabels_229, replacement_228, lawspecfieldnextmilestonekey_230)
+            matched_231 = value_221
+            lawspecfieldlabels_232 = matched_231[0]
+            lawspecfieldmilestones_233 = matched_231[1]
+            value_215 = (lawspecfieldlabels_232, lawspecfieldmilestones_233, replacement_220)
+            return (stored_207, value_215)
 
 
 # lawtwin.github::lawtwinGithubModelModelIssuesDeleteLabel
-def Def_lawtwinGithubModelModelIssuesDeleteLabel_a3cb064c(owner_151, repo_152, name_153, current__154):
-    lawspecfieldlabels_156 = current__154[0]
-    value_155 = lawspecfieldlabels_156
-    matched_157 = lsf_lookup(value_155, (owner_151, repo_152, name_153))
-    if matched_157:
-        lawspecfieldlabels_160 = current__154[0]
-        value_159 = lawspecfieldlabels_160
-        replacement_161 = lsf_delete(value_159, (owner_151, repo_152, name_153))
-        lawspecfieldmilestones_162 = current__154[1]
-        lawspecfieldnextmilestonekey_163 = current__154[2]
-        value_158 = (replacement_161, lawspecfieldmilestones_162, lawspecfieldnextmilestonekey_163)
-        return (None, value_158)
+def Def_lawtwinGithubModelModelIssuesDeleteLabel_a3cb064c(owner_234, repo_235, name_236, current__237):
+    v_lawspecrecordfield0_239 = owner_234
+    v_lawspecrecordfield1_240 = repo_235
+    v_lawspecrecordfield2_241 = name_236
+    value_238 = (v_lawspecrecordfield0_239, v_lawspecrecordfield1_240, v_lawspecrecordfield2_241)
+    lawspecfieldlabels_243 = current__237[0]
+    value_242 = lawspecfieldlabels_243
+    it_244 = lsf_lookup(value_242, value_238)
+    if it_244:
+        v_lawspecrecordfield0_247 = owner_234
+        v_lawspecrecordfield1_248 = repo_235
+        v_lawspecrecordfield2_249 = name_236
+        value_246 = (v_lawspecrecordfield0_247, v_lawspecrecordfield1_248, v_lawspecrecordfield2_249)
+        lawspecfieldlabels_251 = current__237[0]
+        value_250 = lawspecfieldlabels_251
+        replacement_252 = lsf_delete(value_250, value_246)
+        lawspecfieldmilestones_253 = current__237[1]
+        lawspecfieldnextmilestonekey_254 = current__237[2]
+        value_245 = (replacement_252, lawspecfieldmilestones_253, lawspecfieldnextmilestonekey_254)
+        return (None, value_245)
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.github.model::type::ApiError)', to_25f3c65eb512(1))
 
 
 # lawtwin.github::lawtwinGithubModelModelIssuesDeleteMilestone
-def Def_lawtwinGithubModelModelIssuesDeleteMilestone_ae89f11e(owner_164, repo_165, milestonenumber_166, current__167):
-    lawspecfieldmilestones_169 = current__167[1]
-    value_168 = lawspecfieldmilestones_169
-    matched_170 = lsf_lookup(value_168, (owner_164, repo_165, milestonenumber_166))
-    if matched_170:
-        lawspecfieldmilestones_173 = current__167[1]
-        value_172 = lawspecfieldmilestones_173
-        replacement_174 = lsf_delete(value_172, (owner_164, repo_165, milestonenumber_166))
-        lawspecfieldlabels_175 = current__167[0]
-        lawspecfieldnextmilestonekey_176 = current__167[2]
-        value_171 = (lawspecfieldlabels_175, replacement_174, lawspecfieldnextmilestonekey_176)
-        return (None, value_171)
+def Def_lawtwinGithubModelModelIssuesDeleteMilestone_ae89f11e(owner_255, repo_256, milestonenumber_257, current__258):
+    v_lawspecrecordfield0_260 = owner_255
+    v_lawspecrecordfield1_261 = repo_256
+    v_lawspecrecordfield2_262 = milestonenumber_257
+    value_259 = (v_lawspecrecordfield0_260, v_lawspecrecordfield1_261, v_lawspecrecordfield2_262)
+    lawspecfieldmilestones_264 = current__258[1]
+    value_263 = lawspecfieldmilestones_264
+    it_265 = lsf_lookup(value_263, value_259)
+    if it_265:
+        v_lawspecrecordfield0_268 = owner_255
+        v_lawspecrecordfield1_269 = repo_256
+        v_lawspecrecordfield2_270 = milestonenumber_257
+        value_267 = (v_lawspecrecordfield0_268, v_lawspecrecordfield1_269, v_lawspecrecordfield2_270)
+        lawspecfieldmilestones_272 = current__258[1]
+        value_271 = lawspecfieldmilestones_272
+        replacement_273 = lsf_delete(value_271, value_267)
+        lawspecfieldlabels_274 = current__258[0]
+        lawspecfieldnextmilestonekey_275 = current__258[2]
+        value_266 = (lawspecfieldlabels_274, replacement_273, lawspecfieldnextmilestonekey_275)
+        return (None, value_266)
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.github.model::type::ApiError)', to_25f3c65eb512(1))
 
 
 # lawtwin.github::lawtwinGithubModelModelIssuesGetLabel
-def Def_lawtwinGithubModelModelIssuesGetLabel_7a98542e(owner_177, repo_178, name_179, current__180):
-    lawspecfieldlabels_182 = current__180[0]
-    value_181 = lawspecfieldlabels_182
-    matched_183 = lsf_lookup(value_181, (owner_177, repo_178, name_179))
-    if matched_183:
-        found_184 = matched_183[0]
-        return (found_184, current__180)
+def Def_lawtwinGithubModelModelIssuesGetLabel_7a98542e(owner_276, repo_277, name_278, current__279):
+    v_lawspecrecordfield0_281 = owner_276
+    v_lawspecrecordfield1_282 = repo_277
+    v_lawspecrecordfield2_283 = name_278
+    value_280 = (v_lawspecrecordfield0_281, v_lawspecrecordfield1_282, v_lawspecrecordfield2_283)
+    lawspecfieldlabels_285 = current__279[0]
+    value_284 = lawspecfieldlabels_285
+    it_286 = lsf_lookup(value_284, value_280)
+    if it_286:
+        v_lawspecselection0x0_287 = it_286[0]
+        return (v_lawspecselection0x0_287, current__279)
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.github.model::type::ApiError)', to_25f3c65eb512(1))
 
 
 # lawtwin.github::lawtwinGithubModelModelIssuesGetMilestone
-def Def_lawtwinGithubModelModelIssuesGetMilestone_9f093a4d(owner_185, repo_186, milestonenumber_187, current__188):
-    lawspecfieldmilestones_190 = current__188[1]
-    value_189 = lawspecfieldmilestones_190
-    matched_191 = lsf_lookup(value_189, (owner_185, repo_186, milestonenumber_187))
-    if matched_191:
-        found_192 = matched_191[0]
-        return (found_192, current__188)
+def Def_lawtwinGithubModelModelIssuesGetMilestone_9f093a4d(owner_288, repo_289, milestonenumber_290, current__291):
+    v_lawspecrecordfield0_293 = owner_288
+    v_lawspecrecordfield1_294 = repo_289
+    v_lawspecrecordfield2_295 = milestonenumber_290
+    value_292 = (v_lawspecrecordfield0_293, v_lawspecrecordfield1_294, v_lawspecrecordfield2_295)
+    lawspecfieldmilestones_297 = current__291[1]
+    value_296 = lawspecfieldmilestones_297
+    it_298 = lsf_lookup(value_296, value_292)
+    if it_298:
+        v_lawspecselection0x0_299 = it_298[0]
+        return (v_lawspecselection0x0_299, current__291)
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.github.model::type::ApiError)', to_25f3c65eb512(1))
 
 
 # lawtwin.github::lawtwinGithubModelModelIssuesListLabelsForRepo
-def Def_lawtwinGithubModelModelIssuesListLabelsForRepo_78c35983(owner_193, repo_194, perpage_195, page_196, current__197):
-    lawspecfieldlabels_199 = current__197[0]
-    value_198 = lawspecfieldlabels_199
-    return (Def_lawtwinGithubModelModelLabelsUnder_e1b9b631(owner_193, repo_194, lsf_entries_list(value_198)), current__197)
+def Def_lawtwinGithubModelModelIssuesListLabelsForRepo_78c35983(owner_300, repo_301, perpage_302, page_303, current__304):
+    lawspecfieldlabels_306 = current__304[0]
+    value_305 = lawspecfieldlabels_306
+    return (Def_lawtwinGithubModelModelLabelsUnder_e1b9b631(owner_300, repo_301, lsf_entries_list(value_305)), current__304)
 
 
 # lawtwin.github::lawtwinGithubModelModelIssuesListMilestones
-def Def_lawtwinGithubModelModelIssuesListMilestones_db0d4fa1(owner_200, repo_201, state__202, sort_203, direction_204, perpage_205, page_206, current__207):
-    lawspecfieldmilestones_209 = current__207[1]
-    value_208 = lawspecfieldmilestones_209
-    return (Def_lawtwinGithubModelModelMilestonesUnder_99abfdf7(owner_200, repo_201, lsf_entries_list(value_208)), current__207)
+def Def_lawtwinGithubModelModelIssuesListMilestones_db0d4fa1(owner_307, repo_308, state__309, sort_310, direction_311, perpage_312, page_313, current__314):
+    lawspecfieldmilestones_316 = current__314[1]
+    value_315 = lawspecfieldmilestones_316
+    return (Def_lawtwinGithubModelModelMilestonesUnder_99abfdf7(owner_307, repo_308, lsf_entries_list(value_315)), current__314)
 
 
 # lawtwin.github::lawtwinGithubModelModelIssuesUpdateLabel
-def Def_lawtwinGithubModelModelIssuesUpdateLabel_910592d4(owner_210, repo_211, name_212, body_213, current__214):
-    lawspecfieldlabels_216 = current__214[0]
-    value_215 = lawspecfieldlabels_216
-    matched_217 = lsf_lookup(value_215, (owner_210, repo_211, name_212))
-    if matched_217:
-        old_218 = matched_217[0]
-        if body_213:
-            change_220 = body_213[0]
-            lawspecfieldcolor_223 = change_220[1]
-            value_222 = lawspecfieldcolor_223
-            matched_224 = value_222
-            if matched_224:
-                given_225 = matched_224[0]
-                value_221 = given_225
+def Def_lawtwinGithubModelModelIssuesUpdateLabel_910592d4(owner_317, repo_318, name_319, body_320, current__321):
+    v_lawspecrecordfield0_323 = owner_317
+    v_lawspecrecordfield1_324 = repo_318
+    v_lawspecrecordfield2_325 = name_319
+    value_322 = (v_lawspecrecordfield0_323, v_lawspecrecordfield1_324, v_lawspecrecordfield2_325)
+    lawspecfieldlabels_327 = current__321[0]
+    value_326 = lawspecfieldlabels_327
+    it_328 = lsf_lookup(value_326, value_322)
+    if it_328:
+        v_lawspecselection0x0_329 = it_328[0]
+        it_331 = body_320
+        if it_331:
+            v_match__lawspecselection0x0_0_332 = it_331[0]
+            lawspecfieldcolor_335 = v_match__lawspecselection0x0_0_332[1]
+            value_334 = lawspecfieldcolor_335
+            it_336 = value_334
+            if it_336:
+                v_match__match__lawspecselection0x0_0_0_337 = it_336[0]
+                value_333 = v_match__match__lawspecselection0x0_0_0_337
             else:
-                lawspecfieldcolor_226 = old_218[5]
-                value_221 = lawspecfieldcolor_226
-            replacement_227 = value_221
-            lawspecfielddescription__231 = change_220[2]
-            value_230 = lawspecfielddescription__231
-            matched_232 = value_230
-            if matched_232:
-                given_233 = matched_232[0]
-                value_229 = (given_233,)
+                lawspecfieldcolor_338 = v_lawspecselection0x0_329[5]
+                value_333 = lawspecfieldcolor_338
+            replacement_339 = value_333
+            lawspecfielddescription__343 = v_match__lawspecselection0x0_0_332[2]
+            value_342 = lawspecfielddescription__343
+            it_344 = value_342
+            if it_344:
+                v_match__match__lawspecselection0x0_0_0_345 = it_344[0]
+                value_341 = (v_match__match__lawspecselection0x0_0_0_345,)
             else:
-                lawspecfielddescription__234 = old_218[4]
-                value_229 = lawspecfielddescription__234
-            replacement_235 = value_229
-            lawspecfieldid_236 = old_218[0]
-            lawspecfieldnodeid_237 = old_218[1]
-            lawspecfieldurl_238 = old_218[2]
-            lawspecfieldname_239 = old_218[3]
-            lawspecfieldcolor_240 = old_218[5]
-            lawspecfielddefault__241 = old_218[6]
-            lawspecfieldarchivedat_242 = old_218[7]
-            lawspecfieldarchivedby_243 = old_218[8]
-            value_228 = (lawspecfieldid_236, lawspecfieldnodeid_237, lawspecfieldurl_238, lawspecfieldname_239, replacement_235, lawspecfieldcolor_240, lawspecfielddefault__241, lawspecfieldarchivedat_242, lawspecfieldarchivedby_243)
-            matched_244 = value_228
-            lawspecfieldid_245 = matched_244[0]
-            lawspecfieldnodeid_246 = matched_244[1]
-            lawspecfieldurl_247 = matched_244[2]
-            lawspecfieldname_248 = matched_244[3]
-            lawspecfielddescription__249 = matched_244[4]
-            lawspecfielddefault__250 = matched_244[6]
-            lawspecfieldarchivedat_251 = matched_244[7]
-            lawspecfieldarchivedby_252 = matched_244[8]
-            value_219 = (lawspecfieldid_245, lawspecfieldnodeid_246, lawspecfieldurl_247, lawspecfieldname_248, lawspecfielddescription__249, replacement_227, lawspecfielddefault__250, lawspecfieldarchivedat_251, lawspecfieldarchivedby_252)
+                lawspecfielddescription__346 = v_lawspecselection0x0_329[4]
+                value_341 = lawspecfielddescription__346
+            replacement_347 = value_341
+            lawspecfieldid_348 = v_lawspecselection0x0_329[0]
+            lawspecfieldnodeid_349 = v_lawspecselection0x0_329[1]
+            lawspecfieldurl_350 = v_lawspecselection0x0_329[2]
+            lawspecfieldname_351 = v_lawspecselection0x0_329[3]
+            lawspecfieldcolor_352 = v_lawspecselection0x0_329[5]
+            lawspecfielddefault__353 = v_lawspecselection0x0_329[6]
+            lawspecfieldarchivedat_354 = v_lawspecselection0x0_329[7]
+            lawspecfieldarchivedby_355 = v_lawspecselection0x0_329[8]
+            value_340 = (lawspecfieldid_348, lawspecfieldnodeid_349, lawspecfieldurl_350, lawspecfieldname_351, replacement_347, lawspecfieldcolor_352, lawspecfielddefault__353, lawspecfieldarchivedat_354, lawspecfieldarchivedby_355)
+            matched_356 = value_340
+            lawspecfieldid_357 = matched_356[0]
+            lawspecfieldnodeid_358 = matched_356[1]
+            lawspecfieldurl_359 = matched_356[2]
+            lawspecfieldname_360 = matched_356[3]
+            lawspecfielddescription__361 = matched_356[4]
+            lawspecfielddefault__362 = matched_356[6]
+            lawspecfieldarchivedat_363 = matched_356[7]
+            lawspecfieldarchivedby_364 = matched_356[8]
+            value_330 = (lawspecfieldid_357, lawspecfieldnodeid_358, lawspecfieldurl_359, lawspecfieldname_360, lawspecfielddescription__361, replacement_339, lawspecfielddefault__362, lawspecfieldarchivedat_363, lawspecfieldarchivedby_364)
         else:
-            value_219 = old_218
-        stored_253 = value_219
-        lawspecfieldlabels_256 = current__214[0]
-        value_255 = lawspecfieldlabels_256
-        replacement_257 = lsf_put(value_255, (owner_210, repo_211, name_212), stored_253)
-        lawspecfieldmilestones_258 = current__214[1]
-        lawspecfieldnextmilestonekey_259 = current__214[2]
-        value_254 = (replacement_257, lawspecfieldmilestones_258, lawspecfieldnextmilestonekey_259)
-        return (stored_253, value_254)
+            value_330 = v_lawspecselection0x0_329
+        stored_365 = value_330
+        v_lawspecrecordfield0_368 = owner_317
+        v_lawspecrecordfield1_369 = repo_318
+        v_lawspecrecordfield2_370 = name_319
+        value_367 = (v_lawspecrecordfield0_368, v_lawspecrecordfield1_369, v_lawspecrecordfield2_370)
+        lawspecfieldlabels_372 = current__321[0]
+        value_371 = lawspecfieldlabels_372
+        replacement_373 = lsf_put(value_371, value_367, stored_365)
+        lawspecfieldmilestones_374 = current__321[1]
+        lawspecfieldnextmilestonekey_375 = current__321[2]
+        value_366 = (replacement_373, lawspecfieldmilestones_374, lawspecfieldnextmilestonekey_375)
+        return (stored_365, value_366)
     else:
         raise ls.Failure('lawspec::ability::Fail(lawtwin.github.model::type::ApiError)', to_25f3c65eb512(1))
 
 
 # lawtwin.github::lawtwinGithubModelModelIssuesUpdateMilestone
-def Def_lawtwinGithubModelModelIssuesUpdateMilestone_86960b9c(owner_260, repo_261, milestonenumber_262, body_263, current__264):
-    if body_263:
-        present0_266 = body_263[0]
-        value_265 = Def_lawtwinGithubModelValidIssuesUpdateMilestoneBody_922d307a(present0_266)
+def Def_lawtwinGithubModelModelIssuesUpdateMilestone_86960b9c(owner_376, repo_377, milestonenumber_378, body_379, current__380):
+    it_382 = body_379
+    if it_382:
+        v_lawspecselection0x0_383 = it_382[0]
+        value_381 = Def_lawtwinGithubModelValidIssuesUpdateMilestoneBody_922d307a(v_lawspecselection0x0_383)
     else:
-        value_265 = True
-    if (not value_265):
+        value_381 = True
+    if (not value_381):
         raise ls.Failure('lawspec::ability::Fail(lawtwin.github.model::type::ApiError)', to_25f3c65eb512(0))
     else:
-        lawspecfieldmilestones_268 = current__264[1]
-        value_267 = lawspecfieldmilestones_268
-        matched_269 = lsf_lookup(value_267, (owner_260, repo_261, milestonenumber_262))
-        if matched_269:
-            old_270 = matched_269[0]
-            if body_263:
-                change_272 = body_263[0]
-                lawspecfielddueon_275 = change_272[3]
-                value_274 = lawspecfielddueon_275
-                matched_276 = value_274
-                if matched_276:
-                    given_277 = matched_276[0]
-                    value_273 = (given_277,)
+        v_lawspecrecordfield0_385 = owner_376
+        v_lawspecrecordfield1_386 = repo_377
+        v_lawspecrecordfield2_387 = milestonenumber_378
+        value_384 = (v_lawspecrecordfield0_385, v_lawspecrecordfield1_386, v_lawspecrecordfield2_387)
+        lawspecfieldmilestones_389 = current__380[1]
+        value_388 = lawspecfieldmilestones_389
+        it_390 = lsf_lookup(value_388, value_384)
+        if it_390:
+            v_lawspecselection0x0_391 = it_390[0]
+            it_393 = body_379
+            if it_393:
+                v_match__lawspecselection0x0_0_394 = it_393[0]
+                lawspecfielddueon_397 = v_match__lawspecselection0x0_0_394[3]
+                value_396 = lawspecfielddueon_397
+                it_398 = value_396
+                if it_398:
+                    v_match__match__lawspecselection0x0_0_0_399 = it_398[0]
+                    value_395 = (v_match__match__lawspecselection0x0_0_0_399,)
                 else:
-                    lawspecfielddueon_278 = old_270[15]
-                    value_273 = lawspecfielddueon_278
-                replacement_279 = value_273
-                lawspecfielddescription__283 = change_272[2]
-                value_282 = lawspecfielddescription__283
-                matched_284 = value_282
-                if matched_284:
-                    given_285 = matched_284[0]
-                    value_281 = (given_285,)
+                    lawspecfielddueon_400 = v_lawspecselection0x0_391[15]
+                    value_395 = lawspecfielddueon_400
+                replacement_401 = value_395
+                lawspecfielddescription__405 = v_match__lawspecselection0x0_0_394[2]
+                value_404 = lawspecfielddescription__405
+                it_406 = value_404
+                if it_406:
+                    v_match__match__lawspecselection0x0_0_0_407 = it_406[0]
+                    value_403 = (v_match__match__lawspecselection0x0_0_0_407,)
                 else:
-                    lawspecfielddescription__286 = old_270[8]
-                    value_281 = lawspecfielddescription__286
-                replacement_287 = value_281
-                lawspecfieldtitle_291 = change_272[0]
-                value_290 = lawspecfieldtitle_291
-                matched_292 = value_290
-                if matched_292:
-                    given_293 = matched_292[0]
-                    value_289 = given_293
+                    lawspecfielddescription__408 = v_lawspecselection0x0_391[8]
+                    value_403 = lawspecfielddescription__408
+                replacement_409 = value_403
+                lawspecfieldtitle_413 = v_match__lawspecselection0x0_0_394[0]
+                value_412 = lawspecfieldtitle_413
+                it_414 = value_412
+                if it_414:
+                    v_match__match__lawspecselection0x0_0_0_415 = it_414[0]
+                    value_411 = v_match__match__lawspecselection0x0_0_0_415
                 else:
-                    lawspecfieldtitle_294 = old_270[7]
-                    value_289 = lawspecfieldtitle_294
-                replacement_295 = value_289
-                lawspecfieldstate__299 = change_272[1]
-                value_298 = lawspecfieldstate__299
-                matched_300 = value_298
-                if matched_300:
-                    given_301 = matched_300[0]
-                    value_297 = given_301
+                    lawspecfieldtitle_416 = v_lawspecselection0x0_391[7]
+                    value_411 = lawspecfieldtitle_416
+                replacement_417 = value_411
+                lawspecfieldstate__421 = v_match__lawspecselection0x0_0_394[1]
+                value_420 = lawspecfieldstate__421
+                it_422 = value_420
+                if it_422:
+                    v_match__match__lawspecselection0x0_0_0_423 = it_422[0]
+                    value_419 = v_match__match__lawspecselection0x0_0_0_423
                 else:
-                    lawspecfieldstate__302 = old_270[6]
-                    value_297 = lawspecfieldstate__302
-                replacement_303 = value_297
-                lawspecfieldurl_304 = old_270[0]
-                lawspecfieldhtmlurl_305 = old_270[1]
-                lawspecfieldlabelsurl_306 = old_270[2]
-                lawspecfieldid_307 = old_270[3]
-                lawspecfieldnodeid_308 = old_270[4]
-                lawspecfieldnumber_309 = old_270[5]
-                lawspecfieldtitle_310 = old_270[7]
-                lawspecfielddescription__311 = old_270[8]
-                lawspecfieldcreator_312 = old_270[9]
-                lawspecfieldopenissues_313 = old_270[10]
-                lawspecfieldclosedissues_314 = old_270[11]
-                lawspecfieldcreatedat_315 = old_270[12]
-                lawspecfieldupdatedat_316 = old_270[13]
-                lawspecfieldclosedat_317 = old_270[14]
-                lawspecfielddueon_318 = old_270[15]
-                value_296 = (lawspecfieldurl_304, lawspecfieldhtmlurl_305, lawspecfieldlabelsurl_306, lawspecfieldid_307, lawspecfieldnodeid_308, lawspecfieldnumber_309, replacement_303, lawspecfieldtitle_310, lawspecfielddescription__311, lawspecfieldcreator_312, lawspecfieldopenissues_313, lawspecfieldclosedissues_314, lawspecfieldcreatedat_315, lawspecfieldupdatedat_316, lawspecfieldclosedat_317, lawspecfielddueon_318)
-                matched_319 = value_296
-                lawspecfieldurl_320 = matched_319[0]
-                lawspecfieldhtmlurl_321 = matched_319[1]
-                lawspecfieldlabelsurl_322 = matched_319[2]
-                lawspecfieldid_323 = matched_319[3]
-                lawspecfieldnodeid_324 = matched_319[4]
-                lawspecfieldnumber_325 = matched_319[5]
-                lawspecfieldstate__326 = matched_319[6]
-                lawspecfielddescription__327 = matched_319[8]
-                lawspecfieldcreator_328 = matched_319[9]
-                lawspecfieldopenissues_329 = matched_319[10]
-                lawspecfieldclosedissues_330 = matched_319[11]
-                lawspecfieldcreatedat_331 = matched_319[12]
-                lawspecfieldupdatedat_332 = matched_319[13]
-                lawspecfieldclosedat_333 = matched_319[14]
-                lawspecfielddueon_334 = matched_319[15]
-                value_288 = (lawspecfieldurl_320, lawspecfieldhtmlurl_321, lawspecfieldlabelsurl_322, lawspecfieldid_323, lawspecfieldnodeid_324, lawspecfieldnumber_325, lawspecfieldstate__326, replacement_295, lawspecfielddescription__327, lawspecfieldcreator_328, lawspecfieldopenissues_329, lawspecfieldclosedissues_330, lawspecfieldcreatedat_331, lawspecfieldupdatedat_332, lawspecfieldclosedat_333, lawspecfielddueon_334)
-                matched_335 = value_288
-                lawspecfieldurl_336 = matched_335[0]
-                lawspecfieldhtmlurl_337 = matched_335[1]
-                lawspecfieldlabelsurl_338 = matched_335[2]
-                lawspecfieldid_339 = matched_335[3]
-                lawspecfieldnodeid_340 = matched_335[4]
-                lawspecfieldnumber_341 = matched_335[5]
-                lawspecfieldstate__342 = matched_335[6]
-                lawspecfieldtitle_343 = matched_335[7]
-                lawspecfieldcreator_344 = matched_335[9]
-                lawspecfieldopenissues_345 = matched_335[10]
-                lawspecfieldclosedissues_346 = matched_335[11]
-                lawspecfieldcreatedat_347 = matched_335[12]
-                lawspecfieldupdatedat_348 = matched_335[13]
-                lawspecfieldclosedat_349 = matched_335[14]
-                lawspecfielddueon_350 = matched_335[15]
-                value_280 = (lawspecfieldurl_336, lawspecfieldhtmlurl_337, lawspecfieldlabelsurl_338, lawspecfieldid_339, lawspecfieldnodeid_340, lawspecfieldnumber_341, lawspecfieldstate__342, lawspecfieldtitle_343, replacement_287, lawspecfieldcreator_344, lawspecfieldopenissues_345, lawspecfieldclosedissues_346, lawspecfieldcreatedat_347, lawspecfieldupdatedat_348, lawspecfieldclosedat_349, lawspecfielddueon_350)
-                matched_351 = value_280
-                lawspecfieldurl_352 = matched_351[0]
-                lawspecfieldhtmlurl_353 = matched_351[1]
-                lawspecfieldlabelsurl_354 = matched_351[2]
-                lawspecfieldid_355 = matched_351[3]
-                lawspecfieldnodeid_356 = matched_351[4]
-                lawspecfieldnumber_357 = matched_351[5]
-                lawspecfieldstate__358 = matched_351[6]
-                lawspecfieldtitle_359 = matched_351[7]
-                lawspecfielddescription__360 = matched_351[8]
-                lawspecfieldcreator_361 = matched_351[9]
-                lawspecfieldopenissues_362 = matched_351[10]
-                lawspecfieldclosedissues_363 = matched_351[11]
-                lawspecfieldcreatedat_364 = matched_351[12]
-                lawspecfieldupdatedat_365 = matched_351[13]
-                lawspecfieldclosedat_366 = matched_351[14]
-                value_271 = (lawspecfieldurl_352, lawspecfieldhtmlurl_353, lawspecfieldlabelsurl_354, lawspecfieldid_355, lawspecfieldnodeid_356, lawspecfieldnumber_357, lawspecfieldstate__358, lawspecfieldtitle_359, lawspecfielddescription__360, lawspecfieldcreator_361, lawspecfieldopenissues_362, lawspecfieldclosedissues_363, lawspecfieldcreatedat_364, lawspecfieldupdatedat_365, lawspecfieldclosedat_366, replacement_279)
+                    lawspecfieldstate__424 = v_lawspecselection0x0_391[6]
+                    value_419 = lawspecfieldstate__424
+                replacement_425 = value_419
+                lawspecfieldurl_426 = v_lawspecselection0x0_391[0]
+                lawspecfieldhtmlurl_427 = v_lawspecselection0x0_391[1]
+                lawspecfieldlabelsurl_428 = v_lawspecselection0x0_391[2]
+                lawspecfieldid_429 = v_lawspecselection0x0_391[3]
+                lawspecfieldnodeid_430 = v_lawspecselection0x0_391[4]
+                lawspecfieldnumber_431 = v_lawspecselection0x0_391[5]
+                lawspecfieldtitle_432 = v_lawspecselection0x0_391[7]
+                lawspecfielddescription__433 = v_lawspecselection0x0_391[8]
+                lawspecfieldcreator_434 = v_lawspecselection0x0_391[9]
+                lawspecfieldopenissues_435 = v_lawspecselection0x0_391[10]
+                lawspecfieldclosedissues_436 = v_lawspecselection0x0_391[11]
+                lawspecfieldcreatedat_437 = v_lawspecselection0x0_391[12]
+                lawspecfieldupdatedat_438 = v_lawspecselection0x0_391[13]
+                lawspecfieldclosedat_439 = v_lawspecselection0x0_391[14]
+                lawspecfielddueon_440 = v_lawspecselection0x0_391[15]
+                value_418 = (lawspecfieldurl_426, lawspecfieldhtmlurl_427, lawspecfieldlabelsurl_428, lawspecfieldid_429, lawspecfieldnodeid_430, lawspecfieldnumber_431, replacement_425, lawspecfieldtitle_432, lawspecfielddescription__433, lawspecfieldcreator_434, lawspecfieldopenissues_435, lawspecfieldclosedissues_436, lawspecfieldcreatedat_437, lawspecfieldupdatedat_438, lawspecfieldclosedat_439, lawspecfielddueon_440)
+                matched_441 = value_418
+                lawspecfieldurl_442 = matched_441[0]
+                lawspecfieldhtmlurl_443 = matched_441[1]
+                lawspecfieldlabelsurl_444 = matched_441[2]
+                lawspecfieldid_445 = matched_441[3]
+                lawspecfieldnodeid_446 = matched_441[4]
+                lawspecfieldnumber_447 = matched_441[5]
+                lawspecfieldstate__448 = matched_441[6]
+                lawspecfielddescription__449 = matched_441[8]
+                lawspecfieldcreator_450 = matched_441[9]
+                lawspecfieldopenissues_451 = matched_441[10]
+                lawspecfieldclosedissues_452 = matched_441[11]
+                lawspecfieldcreatedat_453 = matched_441[12]
+                lawspecfieldupdatedat_454 = matched_441[13]
+                lawspecfieldclosedat_455 = matched_441[14]
+                lawspecfielddueon_456 = matched_441[15]
+                value_410 = (lawspecfieldurl_442, lawspecfieldhtmlurl_443, lawspecfieldlabelsurl_444, lawspecfieldid_445, lawspecfieldnodeid_446, lawspecfieldnumber_447, lawspecfieldstate__448, replacement_417, lawspecfielddescription__449, lawspecfieldcreator_450, lawspecfieldopenissues_451, lawspecfieldclosedissues_452, lawspecfieldcreatedat_453, lawspecfieldupdatedat_454, lawspecfieldclosedat_455, lawspecfielddueon_456)
+                matched_457 = value_410
+                lawspecfieldurl_458 = matched_457[0]
+                lawspecfieldhtmlurl_459 = matched_457[1]
+                lawspecfieldlabelsurl_460 = matched_457[2]
+                lawspecfieldid_461 = matched_457[3]
+                lawspecfieldnodeid_462 = matched_457[4]
+                lawspecfieldnumber_463 = matched_457[5]
+                lawspecfieldstate__464 = matched_457[6]
+                lawspecfieldtitle_465 = matched_457[7]
+                lawspecfieldcreator_466 = matched_457[9]
+                lawspecfieldopenissues_467 = matched_457[10]
+                lawspecfieldclosedissues_468 = matched_457[11]
+                lawspecfieldcreatedat_469 = matched_457[12]
+                lawspecfieldupdatedat_470 = matched_457[13]
+                lawspecfieldclosedat_471 = matched_457[14]
+                lawspecfielddueon_472 = matched_457[15]
+                value_402 = (lawspecfieldurl_458, lawspecfieldhtmlurl_459, lawspecfieldlabelsurl_460, lawspecfieldid_461, lawspecfieldnodeid_462, lawspecfieldnumber_463, lawspecfieldstate__464, lawspecfieldtitle_465, replacement_409, lawspecfieldcreator_466, lawspecfieldopenissues_467, lawspecfieldclosedissues_468, lawspecfieldcreatedat_469, lawspecfieldupdatedat_470, lawspecfieldclosedat_471, lawspecfielddueon_472)
+                matched_473 = value_402
+                lawspecfieldurl_474 = matched_473[0]
+                lawspecfieldhtmlurl_475 = matched_473[1]
+                lawspecfieldlabelsurl_476 = matched_473[2]
+                lawspecfieldid_477 = matched_473[3]
+                lawspecfieldnodeid_478 = matched_473[4]
+                lawspecfieldnumber_479 = matched_473[5]
+                lawspecfieldstate__480 = matched_473[6]
+                lawspecfieldtitle_481 = matched_473[7]
+                lawspecfielddescription__482 = matched_473[8]
+                lawspecfieldcreator_483 = matched_473[9]
+                lawspecfieldopenissues_484 = matched_473[10]
+                lawspecfieldclosedissues_485 = matched_473[11]
+                lawspecfieldcreatedat_486 = matched_473[12]
+                lawspecfieldupdatedat_487 = matched_473[13]
+                lawspecfieldclosedat_488 = matched_473[14]
+                value_392 = (lawspecfieldurl_474, lawspecfieldhtmlurl_475, lawspecfieldlabelsurl_476, lawspecfieldid_477, lawspecfieldnodeid_478, lawspecfieldnumber_479, lawspecfieldstate__480, lawspecfieldtitle_481, lawspecfielddescription__482, lawspecfieldcreator_483, lawspecfieldopenissues_484, lawspecfieldclosedissues_485, lawspecfieldcreatedat_486, lawspecfieldupdatedat_487, lawspecfieldclosedat_488, replacement_401)
             else:
-                value_271 = old_270
-            stored_367 = value_271
-            lawspecfieldmilestones_370 = current__264[1]
-            value_369 = lawspecfieldmilestones_370
-            replacement_371 = lsf_put(value_369, (owner_260, repo_261, milestonenumber_262), stored_367)
-            lawspecfieldlabels_372 = current__264[0]
-            lawspecfieldnextmilestonekey_373 = current__264[2]
-            value_368 = (lawspecfieldlabels_372, replacement_371, lawspecfieldnextmilestonekey_373)
-            return (stored_367, value_368)
+                value_392 = v_lawspecselection0x0_391
+            stored_489 = value_392
+            v_lawspecrecordfield0_492 = owner_376
+            v_lawspecrecordfield1_493 = repo_377
+            v_lawspecrecordfield2_494 = milestonenumber_378
+            value_491 = (v_lawspecrecordfield0_492, v_lawspecrecordfield1_493, v_lawspecrecordfield2_494)
+            lawspecfieldmilestones_496 = current__380[1]
+            value_495 = lawspecfieldmilestones_496
+            replacement_497 = lsf_put(value_495, value_491, stored_489)
+            lawspecfieldlabels_498 = current__380[0]
+            lawspecfieldnextmilestonekey_499 = current__380[2]
+            value_490 = (lawspecfieldlabels_498, replacement_497, lawspecfieldnextmilestonekey_499)
+            return (stored_489, value_490)
         else:
             raise ls.Failure('lawspec::ability::Fail(lawtwin.github.model::type::ApiError)', to_25f3c65eb512(1))
 
 
 # lawtwin.github::lawtwinGithubModelModelLabelsUnder
-def Def_lawtwinGithubModelModelLabelsUnder_e1b9b631(owner_374, repo_375, entries_376):
+def Def_lawtwinGithubModelModelLabelsUnder_e1b9b631(owner_500, repo_501, entries_502):
     while True:
-        if entries_376 is None:
+        it_503 = entries_502
+        if it_503 is None:
             return None
         else:
-            entry_377 = entries_376[0]
-            rest_378 = entries_376[1]
-            lawspecfieldkey_381 = entry_377[0]
-            value_380 = lawspecfieldkey_381
-            matched_382 = value_380
-            lawspecfieldowner_383 = matched_382[0]
-            value_379 = lawspecfieldowner_383
-            logic_389 = (value_379 == owner_374)
-            if logic_389:
-                lawspecfieldkey_386 = entry_377[0]
-                value_385 = lawspecfieldkey_386
-                matched_387 = value_385
-                lawspecfieldrepo_388 = matched_387[1]
-                value_384 = lawspecfieldrepo_388
-                logic_389 = (value_384 == repo_375)
-            if logic_389:
-                lawspecfieldvalue_391 = entry_377[1]
-                value_390 = lawspecfieldvalue_391
-                return lsf_cons(value_390, Def_lawtwinGithubModelModelLabelsUnder_e1b9b631(owner_374, repo_375, rest_378))
+            v_lawspecselection0x0_504 = it_503[0]
+            v_lawspecselection0x1_505 = it_503[1]
+            lawspecfieldkey_508 = v_lawspecselection0x0_504[0]
+            value_507 = lawspecfieldkey_508
+            matched_509 = value_507
+            lawspecfieldowner_510 = matched_509[0]
+            value_506 = lawspecfieldowner_510
+            logic_516 = (value_506 == owner_500)
+            if logic_516:
+                lawspecfieldkey_513 = v_lawspecselection0x0_504[0]
+                value_512 = lawspecfieldkey_513
+                matched_514 = value_512
+                lawspecfieldrepo_515 = matched_514[1]
+                value_511 = lawspecfieldrepo_515
+                logic_516 = (value_511 == repo_501)
+            if logic_516:
+                lawspecfieldvalue_518 = v_lawspecselection0x0_504[1]
+                value_517 = lawspecfieldvalue_518
+                return lsf_cons(value_517, Def_lawtwinGithubModelModelLabelsUnder_e1b9b631(owner_500, repo_501, v_lawspecselection0x1_505))
             else:
-                next_392 = rest_378
-                entries_376 = next_392
+                next_519 = v_lawspecselection0x1_505
+                entries_502 = next_519
                 continue
 
 
 # lawtwin.github::lawtwinGithubModelModelMilestonesUnder
-def Def_lawtwinGithubModelModelMilestonesUnder_99abfdf7(owner_393, repo_394, entries_395):
+def Def_lawtwinGithubModelModelMilestonesUnder_99abfdf7(owner_520, repo_521, entries_522):
     while True:
-        if entries_395 is None:
+        it_523 = entries_522
+        if it_523 is None:
             return None
         else:
-            entry_396 = entries_395[0]
-            rest_397 = entries_395[1]
-            lawspecfieldkey_400 = entry_396[0]
-            value_399 = lawspecfieldkey_400
-            matched_401 = value_399
-            lawspecfieldowner_402 = matched_401[0]
-            value_398 = lawspecfieldowner_402
-            logic_408 = (value_398 == owner_393)
-            if logic_408:
-                lawspecfieldkey_405 = entry_396[0]
-                value_404 = lawspecfieldkey_405
-                matched_406 = value_404
-                lawspecfieldrepo_407 = matched_406[1]
-                value_403 = lawspecfieldrepo_407
-                logic_408 = (value_403 == repo_394)
-            if logic_408:
-                lawspecfieldvalue_410 = entry_396[1]
-                value_409 = lawspecfieldvalue_410
-                return lsf_cons(value_409, Def_lawtwinGithubModelModelMilestonesUnder_99abfdf7(owner_393, repo_394, rest_397))
+            v_lawspecselection0x0_524 = it_523[0]
+            v_lawspecselection0x1_525 = it_523[1]
+            lawspecfieldkey_528 = v_lawspecselection0x0_524[0]
+            value_527 = lawspecfieldkey_528
+            matched_529 = value_527
+            lawspecfieldowner_530 = matched_529[0]
+            value_526 = lawspecfieldowner_530
+            logic_536 = (value_526 == owner_520)
+            if logic_536:
+                lawspecfieldkey_533 = v_lawspecselection0x0_524[0]
+                value_532 = lawspecfieldkey_533
+                matched_534 = value_532
+                lawspecfieldrepo_535 = matched_534[1]
+                value_531 = lawspecfieldrepo_535
+                logic_536 = (value_531 == repo_521)
+            if logic_536:
+                lawspecfieldvalue_538 = v_lawspecselection0x0_524[1]
+                value_537 = lawspecfieldvalue_538
+                return lsf_cons(value_537, Def_lawtwinGithubModelModelMilestonesUnder_99abfdf7(owner_520, repo_521, v_lawspecselection0x1_525))
             else:
-                next_411 = rest_397
-                entries_395 = next_411
+                next_539 = v_lawspecselection0x1_525
+                entries_522 = next_539
                 continue
 
 
 # lawtwin.github::lawtwinGithubModelValidIssuesCreateMilestoneBody
-def Def_lawtwinGithubModelValidIssuesCreateMilestoneBody_b6751680(value_412):
-    lawspecfielddueon_414 = value_412[3]
-    value_413 = lawspecfielddueon_414
-    matched_415 = value_413
-    if matched_415:
-        present0_416 = matched_415[0]
-        return lsf_regex_matches('\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})', present0_416)
+def Def_lawtwinGithubModelValidIssuesCreateMilestoneBody_b6751680(value_540):
+    lawspecfielddueon_542 = value_540[3]
+    value_541 = lawspecfielddueon_542
+    it_543 = value_541
+    if it_543:
+        v_lawspecselection0x0_544 = it_543[0]
+        return lsf_regex_matches('\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})', v_lawspecselection0x0_544)
     else:
         return True
 
 
 # lawtwin.github::lawtwinGithubModelValidIssuesUpdateMilestoneBody
-def Def_lawtwinGithubModelValidIssuesUpdateMilestoneBody_922d307a(value_417):
-    lawspecfielddueon_419 = value_417[3]
-    value_418 = lawspecfielddueon_419
-    matched_420 = value_418
-    if matched_420:
-        present0_421 = matched_420[0]
-        return lsf_regex_matches('\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})', present0_421)
+def Def_lawtwinGithubModelValidIssuesUpdateMilestoneBody_922d307a(value_545):
+    lawspecfielddueon_547 = value_545[3]
+    value_546 = lawspecfielddueon_547
+    it_548 = value_546
+    if it_548:
+        v_lawspecselection0x0_549 = it_548[0]
+        return lsf_regex_matches('\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})', v_lawspecselection0x0_549)
     else:
         return True
 
 
 # lawtwin.github::referenceIssuesCreateLabel
-def Def_referenceIssuesCreateLabel_66a10480(state_422, value0_423, value1_424, value2_425):
-    return Def_lawtwinGithubModelModelIssuesCreateLabel_9a20de66(value0_423, value1_424, value2_425, state_422)
+def Def_referenceIssuesCreateLabel_66a10480(state_550, value0_551, value1_552, value2_553):
+    return Def_lawtwinGithubModelModelIssuesCreateLabel_9a20de66(value0_551, value1_552, value2_553, state_550)
 
 
 # lawtwin.github::referenceIssuesCreateMilestone
-def Def_referenceIssuesCreateMilestone_819e36f6(state_426, value0_427, value1_428, value2_429):
-    return Def_lawtwinGithubModelModelIssuesCreateMilestone_a9dfef0f(value0_427, value1_428, value2_429, state_426)
+def Def_referenceIssuesCreateMilestone_819e36f6(state_554, value0_555, value1_556, value2_557):
+    return Def_lawtwinGithubModelModelIssuesCreateMilestone_a9dfef0f(value0_555, value1_556, value2_557, state_554)
 
 
 # lawtwin.github::referenceIssuesDeleteLabel
-def Def_referenceIssuesDeleteLabel_91dc9b24(state_430, value0_431, value1_432, value2_433):
-    return Def_lawtwinGithubModelModelIssuesDeleteLabel_a3cb064c(value0_431, value1_432, value2_433, state_430)
+def Def_referenceIssuesDeleteLabel_91dc9b24(state_558, value0_559, value1_560, value2_561):
+    return Def_lawtwinGithubModelModelIssuesDeleteLabel_a3cb064c(value0_559, value1_560, value2_561, state_558)
 
 
 # lawtwin.github::referenceIssuesDeleteMilestone
-def Def_referenceIssuesDeleteMilestone_1798b0e2(state_434, value0_435, value1_436, value2_437):
-    return Def_lawtwinGithubModelModelIssuesDeleteMilestone_ae89f11e(value0_435, value1_436, value2_437, state_434)
+def Def_referenceIssuesDeleteMilestone_1798b0e2(state_562, value0_563, value1_564, value2_565):
+    return Def_lawtwinGithubModelModelIssuesDeleteMilestone_ae89f11e(value0_563, value1_564, value2_565, state_562)
 
 
 # lawtwin.github::referenceIssuesGetLabel
-def Def_referenceIssuesGetLabel_caf28965(state_438, value0_439, value1_440, value2_441):
-    return Def_lawtwinGithubModelModelIssuesGetLabel_7a98542e(value0_439, value1_440, value2_441, state_438)
+def Def_referenceIssuesGetLabel_caf28965(state_566, value0_567, value1_568, value2_569):
+    return Def_lawtwinGithubModelModelIssuesGetLabel_7a98542e(value0_567, value1_568, value2_569, state_566)
 
 
 # lawtwin.github::referenceIssuesGetMilestone
-def Def_referenceIssuesGetMilestone_53f7b6bc(state_442, value0_443, value1_444, value2_445):
-    return Def_lawtwinGithubModelModelIssuesGetMilestone_9f093a4d(value0_443, value1_444, value2_445, state_442)
+def Def_referenceIssuesGetMilestone_53f7b6bc(state_570, value0_571, value1_572, value2_573):
+    return Def_lawtwinGithubModelModelIssuesGetMilestone_9f093a4d(value0_571, value1_572, value2_573, state_570)
 
 
 # lawtwin.github::referenceIssuesListLabelsForRepo
-def Def_referenceIssuesListLabelsForRepo_074d2d44(state_446, value0_447, value1_448, value2_449, value3_450):
-    return Def_lawtwinGithubModelModelIssuesListLabelsForRepo_78c35983(value0_447, value1_448, value2_449, value3_450, state_446)
+def Def_referenceIssuesListLabelsForRepo_074d2d44(state_574, value0_575, value1_576, value2_577, value3_578):
+    return Def_lawtwinGithubModelModelIssuesListLabelsForRepo_78c35983(value0_575, value1_576, value2_577, value3_578, state_574)
 
 
 # lawtwin.github::referenceIssuesListMilestones
-def Def_referenceIssuesListMilestones_b04e2ebe(state_451, value0_452, value1_453, value2_454, value3_455, value4_456, value5_457, value6_458):
-    return Def_lawtwinGithubModelModelIssuesListMilestones_db0d4fa1(value0_452, value1_453, value2_454, value3_455, value4_456, value5_457, value6_458, state_451)
+def Def_referenceIssuesListMilestones_b04e2ebe(state_579, value0_580, value1_581, value2_582, value3_583, value4_584, value5_585, value6_586):
+    return Def_lawtwinGithubModelModelIssuesListMilestones_db0d4fa1(value0_580, value1_581, value2_582, value3_583, value4_584, value5_585, value6_586, state_579)
 
 
 # lawtwin.github::referenceIssuesUpdateLabel
-def Def_referenceIssuesUpdateLabel_a2730891(state_459, value0_460, value1_461, value2_462, value3_463):
-    return Def_lawtwinGithubModelModelIssuesUpdateLabel_910592d4(value0_460, value1_461, value2_462, value3_463, state_459)
+def Def_referenceIssuesUpdateLabel_a2730891(state_587, value0_588, value1_589, value2_590, value3_591):
+    return Def_lawtwinGithubModelModelIssuesUpdateLabel_910592d4(value0_588, value1_589, value2_590, value3_591, state_587)
 
 
 # lawtwin.github::referenceIssuesUpdateMilestone
-def Def_referenceIssuesUpdateMilestone_cc0bfe48(state_464, value0_465, value1_466, value2_467, value3_468):
-    return Def_lawtwinGithubModelModelIssuesUpdateMilestone_86960b9c(value0_465, value1_466, value2_467, value3_468, state_464)
+def Def_referenceIssuesUpdateMilestone_cc0bfe48(state_592, value0_593, value1_594, value2_595, value3_596):
+    return Def_lawtwinGithubModelModelIssuesUpdateMilestone_86960b9c(value0_593, value1_594, value2_595, value3_596, state_592)
 
 
 # lawtwin.github::referenceStart
-def Def_referenceStart_6abddcfe(lawspecunit_469):
+def Def_referenceStart_6abddcfe(lawspecunit_597):
     return Def_lawtwinGithubModelEmptyState_88944bb0(None)
 
 
 # lawtwin.github.handwritten::nothingHandWritten
-def Def_nothingHandWritten_abc609a3(u_470):
+def Def_nothingHandWritten_abc609a3(u_598):
     return None
 
 

@@ -11,4 +11,6 @@ unit lawtwin.github.handwritten
 import lawtwin.github.model as model (ApiError, State)
 
 -- Every operation is modelled; this unit has nothing to answer yet.
-definition nothingHandWritten (u :: Unit) :: Unit is unitValue end
+function nothingHandWritten (u :: Unit) -> Unit is unitValue end function
+
+end unit
