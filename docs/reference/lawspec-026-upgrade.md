@@ -5,10 +5,11 @@ title: LawSpec 0.26 alignment
 ---
 # LawSpec 0.26 alignment
 
-This working-tree increment implements the first cross-project milestone.
-The scoped LawTwin acceptance checks pass; broader release acceptance
-remains incomplete, and the larger path to 1.0 remains open. No new
-release, provider certification or 1.0 acceptance is implied.
+This increment implements the first cross-project milestone using the merged
+LawSpec compiler. The maintained upgrade acceptance matrix passes. The final
+landing results and original scoped evidence are recorded separately below;
+the larger path to 1.0 and owner review remain open. No package publication
+or 1.0 acceptance is implied.
 
 The compiler pin is 0.26.0, configuration version 2, language profile
 `1.0-rc.2`. The Kafka, Petstore and GitHub sources use canonical records,
@@ -32,8 +33,8 @@ A fresh constrained OpenAPI 3.1 model uses LawSpec's dynamic Rust path. The
 companion LawSpec changes provide that path with public `start`, `try_`, `state`
 and schema-checked `set_state` methods, sharing the existing failure-catching
 implementation with typed handlers. Dynamic snapshots copy state. These local
-compiler changes must be staged from the companion checkout until a package
-containing them is released; a matching version label alone does not establish
+compiler additions are merged in LawSpec `24e8706c`. Stage a checkout containing
+that commit until a package containing them is released; a matching version label alone does not establish
 matching compiler bytes. The staging script rejects a checkout package-version
 mismatch and fingerprints the native compiler.
 
@@ -42,7 +43,59 @@ validation does not prove a state reachable; LawTwin's force operation still
 constructs states through operations and checks their invariants. Neither native
 conformance nor fixture/model agreement proves provider fidelity.
 
-## Checks
+## Verified landing — 21 October 2026
+
+The compiler is staged from LawSpec main `24e8706c`, whose final documentation
+commit follows the accepted compiler/artifacts at `8d57bd2b`. Checkout staging
+uses the native public JSON interface and records its executable fingerprint;
+it is not a new WASM execution claim. The companion's complete 157-step target
+CI and 6,416-response native/WASM comparison already pass on those compiler
+inputs. The required checkout and staging command are in the README and
+[contract guide](../how-to/run-contract-laws.md).
+
+| Gate | Landing result |
+| --- | --- |
+| Contracts and consumers | All three packages pass mandatory definition admission. Regeneration and a subsequent check preserve application adapters and report zero planned changes. Explicit optional verification layers remain selected. |
+| Native laws | All 613 law instances execute successfully with the new compiler build identity and zero reused passing laws: 79 on each of seven Kafka targets, and 14 Petstore plus 16 GitHub on Rust and Python. This is the maintained default 64-bit readable matrix. |
+| Importer | All six importer tests pass. Both maintained documents reproduce in scratch directories, and four fresh OpenAPI 3.0/3.1 imports compile with their emitted public Rust adapters. |
+| Workspace | The complete workspace test command reports 62 passes. Required real-broker tests also execute separately with `LAWTWIN_REQUIRE_KAFKA=1`; their default no-broker paths are not provider evidence. Release binaries build successfully. |
+| Protocols and images | All 13 Kafka and 17 HTTP checks pass against native cores and against freshly built candidate images, with required clients enforced. Kafka's optional throughput benchmark remains ignored in each form. |
+| Real Kafka | All 24 scenarios pass on both Apache Kafka 4.3.1 and the twin, with all four clients present, 1,115 observed operations and the eight documented group-assignment divergences: level 3. Strict real-broker peer and record/replay checks pass, including rejection of the deduplication mutant. |
+| HTTP providers | Handwritten Petstore application, conformance and mutation/replay tests pass. Swagger Petstore independently reproduces its documented lawful result: 84 requests on each side, 36 divergences, two missing-name findings and no law violations. This is not a claim that Swagger's answers are fully conformant or that a real GitHub provider was checked. |
+| Canonical checks | Automated checks pass under the existing owner-deferred exemptions. No human verdict is signed off. |
+
+The real-Kafka run exposed a recorder defect: a Produce v10
+`NOT_LEADER_OR_FOLLOWER` response advertised the real broker in its KIP-951
+leader hints, allowing a client to reconnect outside the recorder. The recorder
+now rewrites Produce and Fetch leader endpoints after fault application, using
+the existing protocol codec. Node identities, epochs, racks, errors, offsets,
+tagged extensions and raw captured responses are preserved. Three deterministic
+checks fail before the repair; all four checks, including legacy byte identity
+and lost-acknowledgement fault composition, pass afterward.
+ref:kafka-produce-leader-endpoints ref:kafka-fetch-leader-endpoints
+
+A separate replay assertion incorrectly required an answer for a wire-only
+coordinator retry that the engine deliberately excludes. Replay accounting now
+requires every request to be answered or explicitly counted, bounds omissions
+by observed retry notes and retains the deduplication mutation check. The exact
+captured 54-frame trace is a permanent regression: 53 answers, one coordinator
+retry, no stalled requests, divergences or broken laws. Its bytes are retained
+without filtering. ref:DEC-kafka-divergence-coordinator-timing
+
+The first provider run remains failed at level 2, and the subsequent replay
+assertion failure is also preserved. The corrected complete third run has its
+own reports. Evidence is under `.artifacts/upgrade-026/landing-20261021/`,
+including `compiler-stage-receipt.json`, `native-contracts-receipt.json`,
+`provider-kafka-3/receipt.json`, `provider-http-1/receipt.json` and the native,
+image, importer, workspace and canonical logs. The later recorder repair is in
+the host-only Kafka fidelity crate; the images' normal/build dependency graphs
+exclude it, and their compiled core/CLI inputs remain unchanged.
+
+## Original working-tree checks — 20 October 2026
+
+The following table preserves the original upgrade cohort, including its
+interrupted companion compiler sweeps. The completed landing matrix above
+identifies the newer compiler and executed results.
 
 Local logs are under `.artifacts/upgrade-026/`; companion compiler logs are
 under LawSpec's `.artifacts/integration-1/`. The stopped broader sweeps are
@@ -84,8 +137,9 @@ is required for full HTTP client coverage (`make openapi-client-http`);
 
 ## Remaining programme
 
-CALM 1.2 identity resolution and environment decorators, topology-derived exports
-and completed-run evidence remain the next milestone. Cassandra measurement and
+Cross-project acceptance against Ironframe's Haskell/WASM port, including CALM
+bindings, topology-derived exports and completed-run evidence, remains separate.
+Cassandra measurement and
 fixture/cluster conformance, cores for every program target, the retained LawSpec
 target and demonstration portfolio, advanced verification and final compatibility,
 canonical owner review and release checks remain open. No Cassandra performance
