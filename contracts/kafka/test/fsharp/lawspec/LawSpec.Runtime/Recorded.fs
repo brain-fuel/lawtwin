@@ -79,7 +79,7 @@ let rec private render (value: Value) (t: TypeRef) (schema: Schema.Schema option
     | _, Data(tag, fields) ->
         let types =
             match t, tag with
-            | _, "Maybe::Nothing" -> []
+            | _, "Maybe::Absent" -> []
             | Named("Maybe", [ inner ]), _ -> [ inner ]
             | Named("Either", [ l; _ ]), "Either::Left" -> [ l ]
             | Named("Either", [ _; r ]), "Either::Right" -> [ r ]

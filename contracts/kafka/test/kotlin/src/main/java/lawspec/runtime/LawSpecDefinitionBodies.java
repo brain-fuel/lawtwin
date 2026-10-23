@@ -50,9 +50,9 @@ public final class LawSpecDefinitionBodies {
                                       64)))))
               ? LawSpecRuntime.construct(
                   "Maybe IntSize",
-                  "Maybe::Just",
+                  "Maybe::Present",
                   new Value[] {LawSpecRuntime.helper("IntSize", new Value[] {value0}, 64)})
-              : LawSpecRuntime.construct("Maybe IntSize", "Maybe::Nothing", new Value[] {}));
+              : LawSpecRuntime.construct("Maybe IntSize", "Maybe::Absent", new Value[] {}));
       return result;
     } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
       throw failure;
@@ -92,9 +92,9 @@ public final class LawSpecDefinitionBodies {
                                       64)))))
               ? LawSpecRuntime.construct(
                   "Maybe UInt64",
-                  "Maybe::Just",
+                  "Maybe::Present",
                   new Value[] {LawSpecRuntime.helper("UInt64", new Value[] {value0}, 64)})
-              : LawSpecRuntime.construct("Maybe UInt64", "Maybe::Nothing", new Value[] {}));
+              : LawSpecRuntime.construct("Maybe UInt64", "Maybe::Absent", new Value[] {}));
       return result;
     } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
       throw failure;
@@ -130,9 +130,9 @@ public final class LawSpecDefinitionBodies {
                                       64)))))
               ? LawSpecRuntime.construct(
                   "Maybe UIntPtr",
-                  "Maybe::Just",
+                  "Maybe::Present",
                   new Value[] {LawSpecRuntime.helper("UIntPtr", new Value[] {value0}, 64)})
-              : LawSpecRuntime.construct("Maybe UIntPtr", "Maybe::Nothing", new Value[] {}));
+              : LawSpecRuntime.construct("Maybe UIntPtr", "Maybe::Absent", new Value[] {}));
       return result;
     } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
       throw failure;
@@ -164,9 +164,9 @@ public final class LawSpecDefinitionBodies {
                                       64)))))
               ? LawSpecRuntime.construct(
                   "Maybe UIntSize",
-                  "Maybe::Just",
+                  "Maybe::Present",
                   new Value[] {LawSpecRuntime.helper("UIntSize", new Value[] {value0}, 64)})
-              : LawSpecRuntime.construct("Maybe UIntSize", "Maybe::Nothing", new Value[] {}));
+              : LawSpecRuntime.construct("Maybe UIntSize", "Maybe::Absent", new Value[] {}));
       return result;
     } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
       throw failure;

@@ -160,9 +160,9 @@ def validate(x, t, bits=64):
     if t.startswith('Maybe '):
         if not isinstance(x, DataValue):
             raise TypeError('expected Maybe')
-        if x.tag == 'Maybe::Nothing' and (not x.fields):
+        if x.tag == 'Maybe::Absent' and (not x.fields):
             return x
-        if x.tag == 'Maybe::Just' and len(x.fields) == 1:
+        if x.tag == 'Maybe::Present' and len(x.fields) == 1:
             return DataValue(x.tag, (validate(x.fields[0], t[6:], bits),))
         raise ValueError('invalid Maybe constructor or arity')
     if t.startswith('List '):
@@ -403,7 +403,7 @@ def equal(a, b, ta, tb):
                      either_arguments(ta)[index], either_arguments(tb)[index])
     if ta.startswith('Maybe ') and tb.startswith('Maybe '):
         return (a.tag == b.tag and
-                (a.tag == 'Maybe::Nothing' or
+                (a.tag == 'Maybe::Absent' or
                  equal(a.fields[0], b.fields[0], ta[6:], tb[6:])))
     if ta.startswith('List ') and tb.startswith('List '):
         return (len(a) == len(b) and
@@ -448,7 +448,7 @@ def compare_values(a, b):
     """The portable total order: -1, 0 or 1.
 
     Exact numbers by value, text and raw sequences by unit, False before True,
-    absence before presence, lists element by element, Nothing before Just,
+    absence before presence, lists element by element, Absent before Present,
     and other data by constructor identity, then fields left to right.
     Handles have no order: one equals only itself.
     """
@@ -479,8 +479,8 @@ def compare_values(a, b):
         return (len(a) > len(b)) - (len(a) < len(b))
     if isinstance(a, DataValue) and isinstance(b, DataValue):
         if a.tag != b.tag:
-            if {a.tag, b.tag} == {'Maybe::Nothing', 'Maybe::Just'}:
-                return -1 if a.tag == 'Maybe::Nothing' else 1
+            if {a.tag, b.tag} == {'Maybe::Absent', 'Maybe::Present'}:
+                return -1 if a.tag == 'Maybe::Absent' else 1
             return (a.tag > b.tag) - (a.tag < b.tag)
         return compare_values(list(a.fields), list(b.fields))
     raise TypeError('values have no portable order')
@@ -567,8 +567,8 @@ def _slice(x, start, end):
 
 def _at(x, i):
     if 0 <= i < len(x):
-        return construct('Maybe::Just', [x[i]])
-    return construct('Maybe::Nothing', [])
+        return construct('Maybe::Present', [x[i]])
+    return construct('Maybe::Absent', [])
 
 
 _SEQUENCE_HELPERS = {
@@ -1420,8 +1420,8 @@ def complexity(value):
 
 
 def construct(tag, fields):
-    if (tag == 'Maybe::Nothing' and not fields or
-            (tag in ('Maybe::Just', 'Either::Left', 'Either::Right') and
+    if (tag == 'Maybe::Absent' and not fields or
+            (tag in ('Maybe::Present', 'Either::Left', 'Either::Right') and
              len(fields) == 1)):
         return DataValue(tag, fields)
     if tag == 'List::Nil' and (not fields):
@@ -1463,8 +1463,8 @@ def match_value(value, branches):
     if not isinstance(value, DataValue):
         raise TypeError('expected data in match')
     arity = {
-        'Maybe::Nothing': 0,
-        'Maybe::Just': 1,
+        'Maybe::Absent': 0,
+        'Maybe::Present': 1,
         'Either::Left': 1,
         'Either::Right': 1,
     }.get(value.tag, -1)
@@ -2162,8 +2162,8 @@ class Values:
             return [self.generate(d[1], random, size) for _ in range(random.below(size + 1))]
         if kind == 'maybe':
             if random.below(4) == 0:
-                return DataValue('Maybe::Nothing', ())
-            return DataValue('Maybe::Just', (self.generate(d[1], random, size),))
+                return DataValue('Maybe::Absent', ())
+            return DataValue('Maybe::Present', (self.generate(d[1], random, size),))
         if kind == 'either':
             if random.below(2) == 0:
                 return DataValue('Either::Left', (self.generate(d[1], random, size),))
@@ -2189,7 +2189,7 @@ class Values:
         if kind == 'list':
             return []
         if kind == 'maybe':
-            return DataValue('Maybe::Nothing', ())
+            return DataValue('Maybe::Absent', ())
         if kind == 'either':
             return DataValue('Either::Left', (self.minimal(d[1]),))
         ctor = self.base(d)[0]
@@ -2215,8 +2215,8 @@ class Values:
                 for i, item in enumerate(v):
                     out += [v[:i] + [c] + v[i + 1:] for c in self.shrink(d[1], item)]
         elif kind == 'maybe':
-            if v.tag == 'Maybe::Just':
-                out = [DataValue('Maybe::Nothing', ())] + [DataValue('Maybe::Just', (c,)) for c in self.shrink(d[1], v.fields[0])]
+            if v.tag == 'Maybe::Present':
+                out = [DataValue('Maybe::Absent', ())] + [DataValue('Maybe::Present', (c,)) for c in self.shrink(d[1], v.fields[0])]
         elif kind == 'either':
             inner = d[1] if v.tag == 'Either::Left' else d[2]
             out = [DataValue(v.tag, (c,)) for c in self.shrink(inner, v.fields[0])]
@@ -4215,7 +4215,7 @@ def _wire_put(values, d, v, out):
         for item in v:
             _wire_put(values, d[1], item, out)
     elif kind == 'maybe':
-        if v.tag.endswith('Nothing'):
+        if v.tag.endswith('Absent'):
             out.append(0)
         else:
             out.append(1)
@@ -4279,9 +4279,9 @@ def _wire_get(values, d, buf, pos):
         pos += 1
         if kind == 'maybe':
             if which == 0:
-                return DataValue('Maybe::Nothing', ()), pos
+                return DataValue('Maybe::Absent', ()), pos
             v, pos = _wire_get(values, d[1], buf, pos)
-            return DataValue('Maybe::Just', (v,)), pos
+            return DataValue('Maybe::Present', (v,)), pos
         v, pos = _wire_get(values, d[1] if which == 0 else d[2], buf, pos)
         return DataValue('Either::Left' if which == 0 else 'Either::Right', (v,)), pos
     if kind == 'data':

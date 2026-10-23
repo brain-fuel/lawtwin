@@ -91,7 +91,7 @@ type Maybe =
     /// An option of a nullable reference.
     static member OfObj(value: 'T) : 'T option when 'T: null = Option.ofObj value
     static member Of(value: 'T) : 'T option = Some value
-    static member Nothing<'T>() : 'T option = None
+    static member Absent<'T>() : 'T option = None
 
 /// F# results from C#: a typed failure an adapter returns.
 [<AbstractClass; Sealed>]

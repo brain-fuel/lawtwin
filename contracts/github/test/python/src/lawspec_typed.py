@@ -920,42 +920,42 @@ def from_6e0c216c458a(v):
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Int64" [])]
 def from_c09136e29464(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesListMilestonesDirection" [])]
 def from_6c9175189927(v):
-    return (from_924efa3e0053(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_924efa3e0053(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesListMilestonesSort" [])]
 def from_f7593a7d6572(v):
-    return (from_4bcee1ceb120(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_4bcee1ceb120(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesListMilestonesState" [])]
 def from_79d855388cb1(v):
-    return (from_84d358aed726(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_84d358aed726(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesUpdateLabelBody" [])]
 def from_a0758b309515(v):
-    return (from_7162786897c4(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_7162786897c4(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesUpdateMilestoneBody" [])]
 def from_b472b5d77510(v):
-    return (from_b93e2957492a(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_b93e2957492a(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::Label" [])]
 def from_5527b8ff7350(v):
-    return (from_3ee7c77b169f(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_3ee7c77b169f(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::Milestone" [])]
 def from_63f157a347bf(v):
-    return (from_298bd35e8f4d(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_298bd35e8f4d(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Text" []
@@ -1428,42 +1428,42 @@ def to_6e0c216c458a(x):
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Int64" [])]
 def to_c09136e29464(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesListMilestonesDirection" [])]
 def to_6c9175189927(x):
-    return ls.DataValue('Maybe::Just', (to_924efa3e0053(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_924efa3e0053(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesListMilestonesSort" [])]
 def to_f7593a7d6572(x):
-    return ls.DataValue('Maybe::Just', (to_4bcee1ceb120(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_4bcee1ceb120(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesListMilestonesState" [])]
 def to_79d855388cb1(x):
-    return ls.DataValue('Maybe::Just', (to_84d358aed726(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_84d358aed726(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesUpdateLabelBody" [])]
 def to_a0758b309515(x):
-    return ls.DataValue('Maybe::Just', (to_7162786897c4(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_7162786897c4(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesUpdateMilestoneBody" [])]
 def to_b472b5d77510(x):
-    return ls.DataValue('Maybe::Just', (to_b93e2957492a(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_b93e2957492a(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::Label" [])]
 def to_5527b8ff7350(x):
-    return ls.DataValue('Maybe::Just', (to_3ee7c77b169f(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_3ee7c77b169f(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::Milestone" [])]
 def to_63f157a347bf(x):
-    return ls.DataValue('Maybe::Just', (to_298bd35e8f4d(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_298bd35e8f4d(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Text" []
@@ -1563,22 +1563,22 @@ def to_fedfb1aaf0b7(x):
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Text" [])]
 def from_01d86fc44f8c(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::MilestoneState" [])]
 def from_1a998bf27c82(v):
-    return (from_103927ceec70(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_103927ceec70(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::NullableSimpleUser" [])]
 def from_aee9a6216eab(v):
-    return (from_cddbf19cdf92(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_cddbf19cdf92(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::SimpleUser" [])]
 def from_d88cf5968d10(v):
-    return (from_ec6920eca449(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_ec6920eca449(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "lawspec.collections::type::Entry" [TypeArgument (Constructor "lawtwin.github.model::type::LabelKey" []),TypeArgument (Constructor "lawtwin.github.model::type::Label" [])]
@@ -1670,32 +1670,32 @@ def fromnative_6e0c216c458a(n):
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "Int64" [])]
 def fromnative_c09136e29464(n):
-    return (n.value,) if isinstance(n, _schema.Just) else ()
+    return (n.value,) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesListMilestonesDirection" [])]
 def fromnative_6c9175189927(n):
-    return (fromnative_924efa3e0053(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_924efa3e0053(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesListMilestonesSort" [])]
 def fromnative_f7593a7d6572(n):
-    return (fromnative_4bcee1ceb120(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_4bcee1ceb120(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesListMilestonesState" [])]
 def fromnative_79d855388cb1(n):
-    return (fromnative_84d358aed726(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_84d358aed726(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesUpdateLabelBody" [])]
 def fromnative_a0758b309515(n):
-    return (fromnative_7162786897c4(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_7162786897c4(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesUpdateMilestoneBody" [])]
 def fromnative_b472b5d77510(n):
-    return (fromnative_b93e2957492a(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_b93e2957492a(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Text" []
@@ -1744,22 +1744,22 @@ def fromnative_fedfb1aaf0b7(n):
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Text" [])]
 def to_01d86fc44f8c(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::MilestoneState" [])]
 def to_1a998bf27c82(x):
-    return ls.DataValue('Maybe::Just', (to_103927ceec70(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_103927ceec70(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::NullableSimpleUser" [])]
 def to_aee9a6216eab(x):
-    return ls.DataValue('Maybe::Just', (to_cddbf19cdf92(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_cddbf19cdf92(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::SimpleUser" [])]
 def to_d88cf5968d10(x):
-    return ls.DataValue('Maybe::Just', (to_ec6920eca449(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_ec6920eca449(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "lawspec.collections::type::Entry" [TypeArgument (Constructor "lawtwin.github.model::type::LabelKey" []),TypeArgument (Constructor "lawtwin.github.model::type::Label" [])]
@@ -1814,32 +1814,32 @@ def tonative_6e0c216c458a(x):
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "Int64" [])]
 def tonative_c09136e29464(x):
-    return _schema.Just(x[0]) if x else _schema.Nothing()
+    return _schema.Present(x[0]) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesListMilestonesDirection" [])]
 def tonative_6c9175189927(x):
-    return _schema.Just(tonative_924efa3e0053(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_924efa3e0053(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesListMilestonesSort" [])]
 def tonative_f7593a7d6572(x):
-    return _schema.Just(tonative_4bcee1ceb120(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_4bcee1ceb120(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesListMilestonesState" [])]
 def tonative_79d855388cb1(x):
-    return _schema.Just(tonative_84d358aed726(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_84d358aed726(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesUpdateLabelBody" [])]
 def tonative_a0758b309515(x):
-    return _schema.Just(tonative_7162786897c4(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_7162786897c4(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::IssuesUpdateMilestoneBody" [])]
 def tonative_b472b5d77510(x):
-    return _schema.Just(tonative_b93e2957492a(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_b93e2957492a(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Text" []
@@ -1879,7 +1879,7 @@ def tonative_fedfb1aaf0b7(x):
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Bool" [])]
 def from_90e6932e30f0(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "lawtwin.github.model::type::NullableSimpleUser" []
@@ -1898,22 +1898,22 @@ def from_ec6920eca449(v):
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "Text" [])]
 def fromnative_01d86fc44f8c(n):
-    return (n.value,) if isinstance(n, _schema.Just) else ()
+    return (n.value,) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::MilestoneState" [])]
 def fromnative_1a998bf27c82(n):
-    return (fromnative_103927ceec70(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_103927ceec70(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::NullableSimpleUser" [])]
 def fromnative_aee9a6216eab(n):
-    return (fromnative_cddbf19cdf92(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_cddbf19cdf92(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::SimpleUser" [])]
 def fromnative_d88cf5968d10(n):
-    return (fromnative_ec6920eca449(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_ec6920eca449(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "lawspec.collections::type::KeyVal" [TypeArgument (Constructor "lawtwin.github.model::type::LabelKey" []),TypeArgument (Constructor "lawtwin.github.model::type::Label" [])]
@@ -1986,7 +1986,7 @@ def fromnative_103927ceec70(n):
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Bool" [])]
 def to_90e6932e30f0(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "lawtwin.github.model::type::NullableSimpleUser" []
@@ -2001,22 +2001,22 @@ def to_ec6920eca449(x):
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "Text" [])]
 def tonative_01d86fc44f8c(x):
-    return _schema.Just(x[0]) if x else _schema.Nothing()
+    return _schema.Present(x[0]) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::MilestoneState" [])]
 def tonative_1a998bf27c82(x):
-    return _schema.Just(tonative_103927ceec70(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_103927ceec70(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::NullableSimpleUser" [])]
 def tonative_aee9a6216eab(x):
-    return _schema.Just(tonative_cddbf19cdf92(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_cddbf19cdf92(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.github.model::type::SimpleUser" [])]
 def tonative_d88cf5968d10(x):
-    return _schema.Just(tonative_ec6920eca449(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_ec6920eca449(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "lawspec.collections::type::KeyVal" [TypeArgument (Constructor "lawtwin.github.model::type::LabelKey" []),TypeArgument (Constructor "lawtwin.github.model::type::Label" [])]
@@ -2061,7 +2061,7 @@ def tonative_103927ceec70(x):
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "Bool" [])]
 def fromnative_90e6932e30f0(n):
-    return (n.value,) if isinstance(n, _schema.Just) else ()
+    return (n.value,) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "lawtwin.github.model::type::LabelKey" []
@@ -2086,7 +2086,7 @@ def fromnative_ec6920eca449(n):
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "Bool" [])]
 def tonative_90e6932e30f0(x):
-    return _schema.Just(x[0]) if x else _schema.Nothing()
+    return _schema.Present(x[0]) if x else _schema.Absent()
 
 
 # tonative Constructor "lawtwin.github.model::type::LabelKey" []

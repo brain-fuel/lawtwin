@@ -155,14 +155,14 @@ type LawSpecMaybe[T any] struct {
 	value   T
 }
 
-func LawSpecNothing[T any]() LawSpecMaybe[T]     { return LawSpecMaybe[T]{} }
-func LawSpecJust[T any](value T) LawSpecMaybe[T] { return LawSpecMaybe[T]{true, value} }
+func LawSpecAbsent[T any]() LawSpecMaybe[T]     { return LawSpecMaybe[T]{} }
+func LawSpecPresent[T any](value T) LawSpecMaybe[T] { return LawSpecMaybe[T]{true, value} }
 func (m LawSpecMaybe[T]) Value() (T, bool)       { return m.value, m.present }
 func (m LawSpecMaybe[T]) lawSpecTag() string {
 	if m.present {
-		return "Maybe::Just"
+		return "Maybe::Present"
 	}
-	return "Maybe::Nothing"
+	return "Maybe::Absent"
 }
 func (m LawSpecMaybe[T]) lawSpecFields() []any {
 	if m.present {
@@ -260,9 +260,9 @@ func lsEitherArguments(t string) []string {
 func lsSumFields(t, tag string) []string {
 	if strings.HasPrefix(t, "Maybe ") {
 		switch tag {
-		case "Maybe::Nothing":
+		case "Maybe::Absent":
 			return nil
-		case "Maybe::Just":
+		case "Maybe::Present":
 			return []string{strings.TrimPrefix(t, "Maybe ")}
 		}
 	}
@@ -290,10 +290,10 @@ func lsMaybeToNative[T any](t string, value LawSpecValue, bits int, element func
 	}
 	lsCheckNativeProfile(t, bits)
 	data := lsDataValue(lsConvert(t, value, bits))
-	if data.tag == "Maybe::Nothing" {
-		return LawSpecNothing[T]()
+	if data.tag == "Maybe::Absent" {
+		return LawSpecAbsent[T]()
 	}
-	return LawSpecJust(element(data.fields[0]))
+	return LawSpecPresent(element(data.fields[0]))
 }
 func lsEitherToNative[L, R any](t string, value LawSpecValue, bits int, left func(LawSpecValue) L, right func(LawSpecValue) R) LawSpecEither[L, R] {
 	if !strings.HasPrefix(t, "Either ") {
@@ -331,9 +331,9 @@ func lsAllElements(value LawSpecValue, predicate func(LawSpecValue) LawSpecValue
 func lsMatchMaybe(value LawSpecValue, nothing func() LawSpecValue, just func(LawSpecValue) LawSpecValue) LawSpecValue {
 	data := lsDataValue(value)
 	switch data.tag {
-	case "Maybe::Nothing":
+	case "Maybe::Absent":
 		return nothing()
-	case "Maybe::Just":
+	case "Maybe::Present":
 		return just(data.fields[0])
 	default:
 		panic("Maybe value required")
@@ -390,16 +390,16 @@ func lsSequenceHelper(n string, args []LawSpecValue) (LawSpecValue, bool) {
 		index := args[1].Data.(*big.Int)
 		if units, ok := args[0].Data.([]int); ok {
 			if index.Sign() < 0 || !index.IsInt64() || index.Int64() >= int64(len(units)) {
-				return LawSpecValue{"Maybe UInt8", lawSpecData{"Maybe::Nothing", nil}}, true
+				return LawSpecValue{"Maybe UInt8", lawSpecData{"Maybe::Absent", nil}}, true
 			}
-			return LawSpecValue{"Maybe UInt8", lawSpecData{"Maybe::Just", []LawSpecValue{lsInteger("UInt8", strconv.Itoa(units[index.Int64()]))}}}, true
+			return LawSpecValue{"Maybe UInt8", lawSpecData{"Maybe::Present", []LawSpecValue{lsInteger("UInt8", strconv.Itoa(units[index.Int64()]))}}}, true
 		}
 		values := args[0].Data.([]LawSpecValue)
 		maybe := "Maybe " + strings.TrimPrefix(args[0].Type, "List ")
 		if index.Sign() < 0 || !index.IsInt64() || index.Int64() >= int64(len(values)) {
-			return LawSpecValue{maybe, lawSpecData{"Maybe::Nothing", nil}}, true
+			return LawSpecValue{maybe, lawSpecData{"Maybe::Absent", nil}}, true
 		}
-		return LawSpecValue{maybe, lawSpecData{"Maybe::Just", []LawSpecValue{values[index.Int64()]}}}, true
+		return LawSpecValue{maybe, lawSpecData{"Maybe::Present", []LawSpecValue{values[index.Int64()]}}}, true
 	case "range":
 		values := []LawSpecValue{}
 		hi := args[1].Data.(*big.Int)
@@ -1266,7 +1266,7 @@ const lsOrdering = "lawspec.collections::type::Ordering"
 
 // lsCompareValues is the portable total order: -1, 0 or 1. Exact numbers by
 // value, sequences by unit, false before true, absence before presence,
-// lists element by element, Nothing before Just, and other data by
+// lists element by element, Absent before Present, and other data by
 // constructor identity, then fields left to right.
 func lsCompareValues(a, b LawSpecValue) int {
 	switch x := a.Data.(type) {
@@ -1312,10 +1312,10 @@ func lsCompareValues(a, b LawSpecValue) int {
 	case lawSpecData:
 		y := b.Data.(lawSpecData)
 		if x.tag != y.tag {
-			if x.tag == "Maybe::Nothing" && y.tag == "Maybe::Just" {
+			if x.tag == "Maybe::Absent" && y.tag == "Maybe::Present" {
 				return -1
 			}
-			if x.tag == "Maybe::Just" && y.tag == "Maybe::Nothing" {
+			if x.tag == "Maybe::Present" && y.tag == "Maybe::Absent" {
 				return 1
 			}
 			return strings.Compare(x.tag, y.tag)
@@ -2985,9 +2985,9 @@ func (s lawSpecValues) generate(d any, random *LawSpecSplitMix64, size int64) La
 		return LawSpecValue{t, items}
 	case "maybe":
 		if random.Below(4) == 0 {
-			return lsSum(t, "Maybe::Nothing")
+			return lsSum(t, "Maybe::Absent")
 		}
-		return lsSum(t, "Maybe::Just", s.generate(form[1], random, size))
+		return lsSum(t, "Maybe::Present", s.generate(form[1], random, size))
 	case "either":
 		if random.Below(2) == 0 {
 			return lsSum(t, "Either::Left", s.generate(form[1], random, size))
@@ -3024,7 +3024,7 @@ func (s lawSpecValues) minimal(d any) LawSpecValue {
 	case "list":
 		return LawSpecValue{t, []LawSpecValue{}}
 	case "maybe":
-		return lsSum(t, "Maybe::Nothing")
+		return lsSum(t, "Maybe::Absent")
 	case "either":
 		return lsSum(t, "Either::Left", s.minimal(form[1]))
 	}
@@ -3088,10 +3088,10 @@ func (s lawSpecValues) shrink(d any, v LawSpecValue) []LawSpecValue {
 		}
 	case "maybe":
 		data := v.Data.(lawSpecData)
-		if data.tag == "Maybe::Just" {
-			out = []LawSpecValue{lsSum(t, "Maybe::Nothing")}
+		if data.tag == "Maybe::Present" {
+			out = []LawSpecValue{lsSum(t, "Maybe::Absent")}
 			for _, c := range s.shrink(form[1], data.fields[0]) {
-				out = append(out, lsSum(t, "Maybe::Just", c))
+				out = append(out, lsSum(t, "Maybe::Present", c))
 			}
 		}
 	case "either":
@@ -6995,7 +6995,7 @@ func lsWirePut(values lawSpecValues, d any, v LawSpecValue, out []byte) ([]byte,
 			return out, LawSpecWireError{"not a " + lsAtom(form[0])}
 		}
 		if lsAtom(form[0]) == "maybe" {
-			if strings.HasSuffix(data.tag, "Nothing") {
+			if strings.HasSuffix(data.tag, "Absent") {
 				return append(out, 0), nil
 			}
 			return lsWirePut(values, form[1], data.fields[0], append(out, 1))
@@ -7080,10 +7080,10 @@ func lsWireGet(values lawSpecValues, d any, buf []byte, pos int) (LawSpecValue, 
 		t := values.typeOf(form)
 		if lsAtom(form[0]) == "maybe" {
 			if which == 0 {
-				return lsSum(t, "Maybe::Nothing"), pos, nil
+				return lsSum(t, "Maybe::Absent"), pos, nil
 			}
 			v, next, err := lsWireGet(values, form[1], buf, pos)
-			return lsSum(t, "Maybe::Just", v), next, err
+			return lsSum(t, "Maybe::Present", v), next, err
 		}
 		if which == 0 {
 			v, next, err := lsWireGet(values, form[1], buf, pos)

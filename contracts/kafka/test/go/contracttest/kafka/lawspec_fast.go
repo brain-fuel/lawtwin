@@ -217,14 +217,14 @@ func lsfNarrowUint64(x lsfInt) uint64 {
 	return b.Uint64()
 }
 
-// lsfMaybe is Maybe: Nothing before Just.
+// lsfMaybe is Maybe: Absent before Present.
 type lsfMaybe[T any] struct {
 	ok bool
 	v  T
 }
 
-func lsfJust[T any](v T) lsfMaybe[T] { return lsfMaybe[T]{true, v} }
-func lsfNothing[T any]() lsfMaybe[T] { return lsfMaybe[T]{} }
+func lsfPresent[T any](v T) lsfMaybe[T] { return lsfMaybe[T]{true, v} }
+func lsfAbsent[T any]() lsfMaybe[T] { return lsfMaybe[T]{} }
 
 // lsfEither is Either: Left before Right.
 type lsfEither[L any, R any] struct {
@@ -692,7 +692,7 @@ func lsfDataValue(key, tag string, fields ...LawSpecValue) LawSpecValue {
 }
 
 // Sequences: Text (by code point), Bytes and List. A slice is clamped to
-// the sequence; an index outside it is Nothing.
+// the sequence; an index outside it is Absent.
 
 // lsfIndex is an Integer index, clamped to an int64.
 func lsfIndex(x lsfInt) int64 {
@@ -776,20 +776,20 @@ func lsfAppend[T any](a, b *lsfList[T]) *lsfList[T] {
 
 func lsfAtList[T any](xs *lsfList[T], i int64) lsfMaybe[T] {
 	if i < 0 || i >= int64(xs.length()) {
-		return lsfNothing[T]()
+		return lsfAbsent[T]()
 	}
 	c := xs
 	for k := int64(0); k < i; k++ {
 		c = c.tail
 	}
-	return lsfJust(c.head)
+	return lsfPresent(c.head)
 }
 
 func lsfAtBytes(s string, i int64) lsfMaybe[uint8] {
 	if i < 0 || i >= int64(len(s)) {
-		return lsfNothing[uint8]()
+		return lsfAbsent[uint8]()
 	}
-	return lsfJust(s[i])
+	return lsfPresent(s[i])
 }
 
 func lsfRange[T int8 | int16 | int32 | int64 | uint8 | uint16 | uint32 | uint64](lo, hi T) *lsfList[T] {

@@ -439,13 +439,13 @@ func lsBuildDataStrategy(schema *lawSpecSchema, reference lawSpecTypeRef, bits, 
 			case "Maybe", "Nullable", "Optional":
 				absent := lsPresent(typeRef.key(), nil)
 				if typeRef.name == "Maybe" {
-					absent = construct(typeRef, "Maybe::Nothing", nil, bits)
+					absent = construct(typeRef, "Maybe::Absent", nil, bits)
 				}
 				result = rapid.Just(absent)
 				if inhabited(typeRef.arguments[0], available-1) {
 					present := rapid.Map(build(typeRef.arguments[0], available-1), func(value LawSpecValue) LawSpecValue {
 						if typeRef.name == "Maybe" {
-							return construct(typeRef, "Maybe::Just", []LawSpecValue{value}, bits)
+							return construct(typeRef, "Maybe::Present", []LawSpecValue{value}, bits)
 						}
 						return lsPresent(typeRef.key(), &value)
 					})

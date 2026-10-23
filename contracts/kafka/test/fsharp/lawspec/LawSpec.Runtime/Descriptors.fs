@@ -181,10 +181,10 @@ let rec generate (d: Descriptor) (table: Map<string, Descriptor>) (state: Random
         List items, s2
     | Forms [ Atom "maybe"; item ] ->
         let choice, s1 = below (BigInteger 4) state
-        if choice.IsZero then Data("Maybe::Nothing", []), s1
+        if choice.IsZero then Data("Maybe::Absent", []), s1
         else
             let v, s2 = generate item table s1 size
-            Data("Maybe::Just", [ v ]), s2
+            Data("Maybe::Present", [ v ]), s2
     | Forms [ Atom "either"; left; right ] ->
         let choice, s1 = below (BigInteger 2) state
         let tag, inner = if choice.IsZero then "Either::Left", left else "Either::Right", right
@@ -211,7 +211,7 @@ let rec minimal (d: Descriptor) (table: Map<string, Descriptor>) : Value =
     | Forms [ Atom "text" ] -> Text ""
     | Forms [ Atom "unit" ] -> Unit
     | Forms [ Atom "list"; _ ] -> List []
-    | Forms [ Atom "maybe"; _ ] -> Data("Maybe::Nothing", [])
+    | Forms [ Atom "maybe"; _ ] -> Data("Maybe::Absent", [])
     | Forms [ Atom "either"; left; _ ] -> Data("Either::Left", [ minimal left table ])
     | Forms(Atom "data" :: _ :: cs) ->
         match baseConstructors cs with
@@ -258,9 +258,9 @@ and private shrinkResolved d value table =
     | Forms [ Atom "text" ], Text s -> shrinkSequence (Scalar.codePoints s) |> List.map (Scalar.textOfPoints >> Text)
     | Forms [ Atom "list"; item ], List items ->
         (shrinkSequence items |> List.map List) @ (replaceShrinks items (fun v -> shrink item v table) |> List.map List)
-    | Forms [ Atom "maybe"; item ], Data("Maybe::Just", [ v ]) ->
-        Data("Maybe::Nothing", []) :: (shrink item v table |> List.map (fun c -> Data("Maybe::Just", [ c ])))
-    | Forms [ Atom "maybe"; _ ], Data("Maybe::Nothing", []) -> []
+    | Forms [ Atom "maybe"; item ], Data("Maybe::Present", [ v ]) ->
+        Data("Maybe::Absent", []) :: (shrink item v table |> List.map (fun c -> Data("Maybe::Present", [ c ])))
+    | Forms [ Atom "maybe"; _ ], Data("Maybe::Absent", []) -> []
     | Forms [ Atom "either"; left; right ], Data(tag, [ v ]) ->
         let inner = if tag = "Either::Left" then left else right
         shrink inner v table |> List.map (fun c -> Data(tag, [ c ]))
@@ -353,8 +353,8 @@ let rec private put (d: Descriptor) (value: Value) (table: Map<string, Descripto
     | Forms [ Atom "list"; item ], List items ->
         write (varint (BigInteger(List.length items)))
         for v in items do put item v table out
-    | Forms [ Atom "maybe"; _ ], Data("Maybe::Nothing", []) -> out.WriteByte 0uy
-    | Forms [ Atom "maybe"; item ], Data("Maybe::Just", [ v ]) ->
+    | Forms [ Atom "maybe"; _ ], Data("Maybe::Absent", []) -> out.WriteByte 0uy
+    | Forms [ Atom "maybe"; item ], Data("Maybe::Present", [ v ]) ->
         out.WriteByte 1uy
         put item v table out
     | Forms [ Atom "either"; left; _ ], Data("Either::Left", [ v ]) ->
@@ -412,10 +412,10 @@ let rec private get (d: Descriptor) (bytes: byte[]) (i: int) (table: Map<string,
         List items, position
     | Forms [ Atom "maybe"; item ] ->
         require (i < bytes.Length && bytes.[i] < 2uy) "InvalidWireValue"
-        if bytes.[i] = 0uy then Data("Maybe::Nothing", []), i + 1
+        if bytes.[i] = 0uy then Data("Maybe::Absent", []), i + 1
         else
             let v, next = get item bytes (i + 1) table
-            Data("Maybe::Just", [ v ]), next
+            Data("Maybe::Present", [ v ]), next
     | Forms [ Atom "either"; left; right ] ->
         require (i < bytes.Length && bytes.[i] < 2uy) "InvalidWireValue"
         let tag, inner = if bytes.[i] = 0uy then "Either::Left", left else "Either::Right", right

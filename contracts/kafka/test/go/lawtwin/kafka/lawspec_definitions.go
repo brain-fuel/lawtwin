@@ -3983,7 +3983,7 @@ func lawSpecEvaluate118(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 
 func lawSpecEvaluate119(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawtwin.kafka::lawspecCollectionsBoundedIntSize", func() LawSpecValue {
-		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Just", []LawSpecValue{lsHelper("IntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) })
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "-9223372036854775808"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "9223372036854775807"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Present", []LawSpecValue{lsHelper("IntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("IntSize")), "Maybe::Absent", []LawSpecValue{}, 64, symbols) })
 		return result
 	})
 }
@@ -4006,14 +4006,14 @@ func lawSpecEvaluate123(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 
 func lawSpecEvaluate124(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawtwin.kafka::lawspecCollectionsBoundedUIntPtr", func() LawSpecValue {
-		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Just", []LawSpecValue{lsHelper("UIntPtr", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) })
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Present", []LawSpecValue{lsHelper("UIntPtr", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntPtr")), "Maybe::Absent", []LawSpecValue{}, 64, symbols) })
 		return result
 	})
 }
 
 func lawSpecEvaluate125(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
 	return lsNativeContext("lawtwin.kafka::lawspecCollectionsBoundedUIntSize", func() LawSpecValue {
-		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Just", []LawSpecValue{lsHelper("UIntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols) })
+		result := lsEvaluate(func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value0, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<=", value0, lsConvert("Integer", lsInteger("Integer", "18446744073709551615"), 64))))) { return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Present", []LawSpecValue{lsHelper("UIntSize", []LawSpecValue{value0}, 64)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("UIntSize")), "Maybe::Absent", []LawSpecValue{}, 64, symbols) })
 		return result
 	})
 }

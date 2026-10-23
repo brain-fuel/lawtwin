@@ -5982,92 +5982,92 @@ def from_9aa0842592c4(v):
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Bytes" [])]
 def from_b276e66efd09(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Int16" [])]
 def from_8458421ef461(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Int32" [])]
 def from_e0f8ce0ed062(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Int64" [])]
 def from_c09136e29464(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Int8" [])]
 def from_322842b70901(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "Text" [])])]
 def from_3d64fc085f92(v):
-    return (from_8ec0351dc657(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_8ec0351dc657(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "lawtwin.kafka.model::type::BatchMeta" [])])]
 def from_c38be08c05a1(v):
-    return (from_789f82e1207e(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_789f82e1207e(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "lawtwin.kafka.model::type::TopicPartition" [])])]
 def from_50708784f072(v):
-    return (from_3250492fe9ac(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_3250492fe9ac(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Text" [])]
 def from_01d86fc44f8c(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "UInt16" [])]
 def from_a765ca1ff0da(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "UInt32" [])]
 def from_770fd683e40e(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "UInt64" [])]
 def from_a2258feb4d57(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "UInt8" [])]
 def from_2a3b378408f8(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::Group" [])]
 def from_96af144ed884(v):
-    return (from_121c32c2e75a(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_121c32c2e75a(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::PartitionLog" [])]
 def from_aba61dc13579(v):
-    return (from_17b5cd6f2c74(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_17b5cd6f2c74(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::ProducerEntry" [])]
 def from_bf624bc7affb(v):
-    return (from_b74501b1952d(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_b74501b1952d(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::ProducerIdAndEpoch" [])]
 def from_99552686984c(v):
-    return (from_6a5ea41697b3(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_6a5ea41697b3(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::ProducerTag" [])]
 def from_c818bd20f406(v):
-    return (from_fcd7b841fa1b(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_fcd7b841fa1b(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Text" []
@@ -7413,92 +7413,92 @@ def to_9aa0842592c4(x):
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Bytes" [])]
 def to_b276e66efd09(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Int16" [])]
 def to_8458421ef461(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Int32" [])]
 def to_e0f8ce0ed062(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Int64" [])]
 def to_c09136e29464(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Int8" [])]
 def to_322842b70901(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "Text" [])])]
 def to_3d64fc085f92(x):
-    return ls.DataValue('Maybe::Just', (to_8ec0351dc657(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_8ec0351dc657(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "lawtwin.kafka.model::type::BatchMeta" [])])]
 def to_c38be08c05a1(x):
-    return ls.DataValue('Maybe::Just', (to_789f82e1207e(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_789f82e1207e(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "lawtwin.kafka.model::type::TopicPartition" [])])]
 def to_50708784f072(x):
-    return ls.DataValue('Maybe::Just', (to_3250492fe9ac(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_3250492fe9ac(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Text" [])]
 def to_01d86fc44f8c(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "UInt16" [])]
 def to_a765ca1ff0da(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "UInt32" [])]
 def to_770fd683e40e(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "UInt64" [])]
 def to_a2258feb4d57(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "UInt8" [])]
 def to_2a3b378408f8(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::Group" [])]
 def to_96af144ed884(x):
-    return ls.DataValue('Maybe::Just', (to_121c32c2e75a(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_121c32c2e75a(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::PartitionLog" [])]
 def to_aba61dc13579(x):
-    return ls.DataValue('Maybe::Just', (to_17b5cd6f2c74(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_17b5cd6f2c74(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::ProducerEntry" [])]
 def to_bf624bc7affb(x):
-    return ls.DataValue('Maybe::Just', (to_b74501b1952d(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_b74501b1952d(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::ProducerIdAndEpoch" [])]
 def to_99552686984c(x):
-    return ls.DataValue('Maybe::Just', (to_6a5ea41697b3(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_6a5ea41697b3(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::ProducerTag" [])]
 def to_c818bd20f406(x):
-    return ls.DataValue('Maybe::Just', (to_fcd7b841fa1b(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_fcd7b841fa1b(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Text" []
@@ -7873,7 +7873,7 @@ def from_0ccaa6764e43(v):
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka::type::LastSend" [])]
 def from_07ad1a220d10(v):
-    return (from_72b0d17d95d9(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_72b0d17d95d9(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "lawspec.collections::type::Entry" [TypeArgument (Constructor "Int64" []),TypeArgument (Constructor "Int64" [])]
@@ -8099,32 +8099,32 @@ def fromnative_3250492fe9ac(n):
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "Bytes" [])]
 def fromnative_b276e66efd09(n):
-    return (n.value,) if isinstance(n, _schema.Just) else ()
+    return (n.value,) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "Int32" [])]
 def fromnative_e0f8ce0ed062(n):
-    return (n.value,) if isinstance(n, _schema.Just) else ()
+    return (n.value,) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "Int64" [])]
 def fromnative_c09136e29464(n):
-    return (n.value,) if isinstance(n, _schema.Just) else ()
+    return (n.value,) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "Text" [])]
 def fromnative_01d86fc44f8c(n):
-    return (n.value,) if isinstance(n, _schema.Just) else ()
+    return (n.value,) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::ProducerIdAndEpoch" [])]
 def fromnative_99552686984c(n):
-    return (fromnative_6a5ea41697b3(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_6a5ea41697b3(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::ProducerTag" [])]
 def fromnative_c818bd20f406(n):
-    return (fromnative_fcd7b841fa1b(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_fcd7b841fa1b(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Text" []
@@ -8264,7 +8264,7 @@ def to_0ccaa6764e43(x):
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka::type::LastSend" [])]
 def to_07ad1a220d10(x):
-    return ls.DataValue('Maybe::Just', (to_72b0d17d95d9(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_72b0d17d95d9(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "lawspec.collections::type::Entry" [TypeArgument (Constructor "Int64" []),TypeArgument (Constructor "Int64" [])]
@@ -8448,32 +8448,32 @@ def tonative_3250492fe9ac(x):
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "Bytes" [])]
 def tonative_b276e66efd09(x):
-    return _schema.Just(x[0]) if x else _schema.Nothing()
+    return _schema.Present(x[0]) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "Int32" [])]
 def tonative_e0f8ce0ed062(x):
-    return _schema.Just(x[0]) if x else _schema.Nothing()
+    return _schema.Present(x[0]) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "Int64" [])]
 def tonative_c09136e29464(x):
-    return _schema.Just(x[0]) if x else _schema.Nothing()
+    return _schema.Present(x[0]) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "Text" [])]
 def tonative_01d86fc44f8c(x):
-    return _schema.Just(x[0]) if x else _schema.Nothing()
+    return _schema.Present(x[0]) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::ProducerIdAndEpoch" [])]
 def tonative_99552686984c(x):
-    return _schema.Just(tonative_6a5ea41697b3(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_6a5ea41697b3(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka.model::type::ProducerTag" [])]
 def tonative_c818bd20f406(x):
-    return _schema.Just(tonative_fcd7b841fa1b(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_fcd7b841fa1b(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Text" []
@@ -8591,7 +8591,7 @@ def fromnative_9aa0842592c4(n):
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka::type::LastSend" [])]
 def fromnative_07ad1a220d10(n):
-    return (fromnative_72b0d17d95d9(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_72b0d17d95d9(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "lawspec.collections::type::KeyVal" [TypeArgument (Constructor "Int64" []),TypeArgument (Constructor "lawtwin.kafka.model::type::ProducerEntry" [])]
@@ -8725,7 +8725,7 @@ def tonative_9aa0842592c4(x):
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.kafka::type::LastSend" [])]
 def tonative_07ad1a220d10(x):
-    return _schema.Just(tonative_72b0d17d95d9(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_72b0d17d95d9(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "lawspec.collections::type::KeyVal" [TypeArgument (Constructor "Int64" []),TypeArgument (Constructor "lawtwin.kafka.model::type::ProducerEntry" [])]

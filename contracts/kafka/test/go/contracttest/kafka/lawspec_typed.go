@@ -355,72 +355,72 @@ func lsfOrderingOf(c int) lsfOrdering {
 // lsfBoundedInt16_cdb4a79e is lawspec.collections::boundedInt16.
 func lsfBoundedInt16_cdb4a79e(lValue0 lsfInt) lsfMaybe[int16] {
 	if ((lsfCmpInt(lValue0, lsfSmall(int64(-32768))) >= 0) && (lsfCmpInt(lValue0, lsfSmall(int64(32767))) <= 0)) {
-		return lsfJust[int16](int16(lsfNarrowInt(lValue0, -32768, 32767, "Int16")))
+		return lsfPresent[int16](int16(lsfNarrowInt(lValue0, -32768, 32767, "Int16")))
 	} else {
-		return lsfNothing[int16]()
+		return lsfAbsent[int16]()
 	}
 }
 
 // lsfBoundedInt32_b3381d93 is lawspec.collections::boundedInt32.
 func lsfBoundedInt32_b3381d93(lValue1 lsfInt) lsfMaybe[int32] {
 	if ((lsfCmpInt(lValue1, lsfSmall(int64(-2147483648))) >= 0) && (lsfCmpInt(lValue1, lsfSmall(int64(2147483647))) <= 0)) {
-		return lsfJust[int32](int32(lsfNarrowInt(lValue1, -2147483648, 2147483647, "Int32")))
+		return lsfPresent[int32](int32(lsfNarrowInt(lValue1, -2147483648, 2147483647, "Int32")))
 	} else {
-		return lsfNothing[int32]()
+		return lsfAbsent[int32]()
 	}
 }
 
 // lsfBoundedInt64_13153a18 is lawspec.collections::boundedInt64.
 func lsfBoundedInt64_13153a18(lValue2 lsfInt) lsfMaybe[int64] {
 	if ((lsfCmpInt(lValue2, lsfSmall(-9223372036854775808)) >= 0) && (lsfCmpInt(lValue2, lsfSmall(9223372036854775807)) <= 0)) {
-		return lsfJust[int64](int64(lsfNarrowInt(lValue2, -1 << 63, 9223372036854775807, "Int64")))
+		return lsfPresent[int64](int64(lsfNarrowInt(lValue2, -1 << 63, 9223372036854775807, "Int64")))
 	} else {
-		return lsfNothing[int64]()
+		return lsfAbsent[int64]()
 	}
 }
 
 // lsfBoundedInt8_9822648b is lawspec.collections::boundedInt8.
 func lsfBoundedInt8_9822648b(lValue3 lsfInt) lsfMaybe[int8] {
 	if ((lsfCmpInt(lValue3, lsfSmall(int64(-128))) >= 0) && (lsfCmpInt(lValue3, lsfSmall(int64(127))) <= 0)) {
-		return lsfJust[int8](int8(lsfNarrowInt(lValue3, -128, 127, "Int8")))
+		return lsfPresent[int8](int8(lsfNarrowInt(lValue3, -128, 127, "Int8")))
 	} else {
-		return lsfNothing[int8]()
+		return lsfAbsent[int8]()
 	}
 }
 
 // lsfBoundedUInt16_fab24aa3 is lawspec.collections::boundedUInt16.
 func lsfBoundedUInt16_fab24aa3(lValue4 lsfInt) lsfMaybe[uint16] {
 	if ((lsfCmpInt(lValue4, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue4, lsfSmall(int64(65535))) <= 0)) {
-		return lsfJust[uint16](uint16(lsfNarrowInt(lValue4, 0, 65535, "UInt16")))
+		return lsfPresent[uint16](uint16(lsfNarrowInt(lValue4, 0, 65535, "UInt16")))
 	} else {
-		return lsfNothing[uint16]()
+		return lsfAbsent[uint16]()
 	}
 }
 
 // lsfBoundedUInt32_f7521c17 is lawspec.collections::boundedUInt32.
 func lsfBoundedUInt32_f7521c17(lValue5 lsfInt) lsfMaybe[uint32] {
 	if ((lsfCmpInt(lValue5, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue5, lsfSmall(int64(4294967295))) <= 0)) {
-		return lsfJust[uint32](uint32(lsfNarrowInt(lValue5, 0, 4294967295, "UInt32")))
+		return lsfPresent[uint32](uint32(lsfNarrowInt(lValue5, 0, 4294967295, "UInt32")))
 	} else {
-		return lsfNothing[uint32]()
+		return lsfAbsent[uint32]()
 	}
 }
 
 // lsfBoundedUInt64_ca410424 is lawspec.collections::boundedUInt64.
 func lsfBoundedUInt64_ca410424(lValue6 lsfInt) lsfMaybe[uint64] {
 	if ((lsfCmpInt(lValue6, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue6, lsfFromBig(lsInt("18446744073709551615"))) <= 0)) {
-		return lsfJust[uint64](lsfNarrowUint64(lValue6))
+		return lsfPresent[uint64](lsfNarrowUint64(lValue6))
 	} else {
-		return lsfNothing[uint64]()
+		return lsfAbsent[uint64]()
 	}
 }
 
 // lsfBoundedUInt8_8ce0c76e is lawspec.collections::boundedUInt8.
 func lsfBoundedUInt8_8ce0c76e(lValue7 lsfInt) lsfMaybe[uint8] {
 	if ((lsfCmpInt(lValue7, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue7, lsfSmall(int64(255))) <= 0)) {
-		return lsfJust[uint8](uint8(lsfNarrowInt(lValue7, 0, 255, "UInt8")))
+		return lsfPresent[uint8](uint8(lsfNarrowInt(lValue7, 0, 255, "UInt8")))
 	} else {
-		return lsfNothing[uint8]()
+		return lsfAbsent[uint8]()
 	}
 }
 
@@ -741,7 +741,7 @@ func lsfCommittedFrom_a524f37d(symbols map[string]*LawSpecSymbol, lTp111 *lsfTop
 
 // lsfConsumerAssign_793a07ba is lawtwin.kafka::consumerAssign.
 func lsfConsumerAssign_793a07ba(lTps113 *lsfList[*lsfTopicPartition], lC114 *lsfConsumerState) *lsfPair[lsfUnit, *lsfConsumerState] {
-	return &lsfPair[lsfUnit, *lsfConsumerState]{lsfUnit{}, lsfWithAssignment_7d6291b1(lsfNothing[string](), "", int32(-1), (*lsfList[string])(nil), lTps113, lC114)}
+	return &lsfPair[lsfUnit, *lsfConsumerState]{lsfUnit{}, lsfWithAssignment_7d6291b1(lsfAbsent[string](), "", int32(-1), (*lsfList[string])(nil), lTps113, lC114)}
 }
 
 // lsfConsumerClose_00c5e7f3 is lawtwin.kafka::consumerClose.
@@ -891,7 +891,7 @@ func lsfConsumerCommitted_06365ac2(symbols map[string]*LawSpecSymbol, lTp147 *ls
 		}())
 		return &lsfPair[lsfMaybe[int64], *lsfConsumerState]{lPerformed153, lC148}
 	} else {
-		return &lsfPair[lsfMaybe[int64], *lsfConsumerState]{lsfNothing[int64](), lC148}
+		return &lsfPair[lsfMaybe[int64], *lsfConsumerState]{lsfAbsent[int64](), lC148}
 	}
 }
 
@@ -1001,7 +1001,7 @@ func lsfConsumerJoin_198e034e(symbols map[string]*LawSpecSymbol, lG164 string, l
 			return &lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState]{lsfLeft[lsfKafkaError, *lsfList[*lsfTopicPartition]](lv_match__lawspecselection0x0_0184), lC167}
 		} else {
 			lv_match__lawspecselection0x0_0185 := lIt183.r
-			return &lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState]{lsfRight[lsfKafkaError, *lsfList[*lsfTopicPartition]](lv_match__lawspecselection0x0_0185), lsfWithAssignment_7d6291b1(lsfJust[string](lG164), lM165, lv_lawspecselection0x0176, lTopics166, lv_match__lawspecselection0x0_0185, lC167)}
+			return &lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState]{lsfRight[lsfKafkaError, *lsfList[*lsfTopicPartition]](lv_match__lawspecselection0x0_0185), lsfWithAssignment_7d6291b1(lsfPresent[string](lG164), lM165, lv_lawspecselection0x0176, lTopics166, lv_match__lawspecselection0x0_0185, lC167)}
 		}
 	}
 }
@@ -1363,7 +1363,7 @@ func lsfFollowsOne_4f3a93e2(lA318 lsfEither[lsfKafkaError, *lsfRecordMetadata], 
 
 // lsfFreshConsumer_c2da4184 is lawtwin.kafka::freshConsumer.
 func lsfFreshConsumer_c2da4184(lU326 lsfUnit) *lsfConsumerState {
-	lv_lawspecrecordfield0327 := lsfNothing[string]()
+	lv_lawspecrecordfield0327 := lsfAbsent[string]()
 	lv_lawspecrecordfield1328 := ""
 	lv_lawspecrecordfield2329 := int32(-1)
 	lv_lawspecrecordfield3330 := (*lsfList[string])(nil)
@@ -1375,16 +1375,16 @@ func lsfFreshConsumer_c2da4184(lU326 lsfUnit) *lsfConsumerState {
 
 // lsfFreshProducer_deea7b00 is lawtwin.kafka::freshProducer.
 func lsfFreshProducer_deea7b00(lU334 lsfUnit) *lsfProducerState {
-	lv_lawspecrecordfield0335 := lsfNothing[*lsfProducerIdAndEpoch]()
+	lv_lawspecrecordfield0335 := lsfAbsent[*lsfProducerIdAndEpoch]()
 	lv_lawspecrecordfield1336 := lsfKeyValOf((*lsfList[*lsfEntry[*lsfTopicPartition, int32]])(nil), lsfCmp_57a515e0e489)
-	lv_lawspecrecordfield2337 := lsfNothing[*lsfLastSend]()
+	lv_lawspecrecordfield2337 := lsfAbsent[*lsfLastSend]()
 	return &lsfProducerState{lv_lawspecrecordfield0335, lv_lawspecrecordfield1336, lv_lawspecrecordfield2337}
 }
 
 // lsfFreshTransactions_533fb432 is lawtwin.kafka::freshTransactions.
 func lsfFreshTransactions_533fb432(lU338 lsfUnit) *lsfTransactionState {
 	lv_lawspecrecordfield0339 := ""
-	lv_lawspecrecordfield1340 := lsfNothing[*lsfProducerIdAndEpoch]()
+	lv_lawspecrecordfield1340 := lsfAbsent[*lsfProducerIdAndEpoch]()
 	lv_lawspecrecordfield2341 := lsfKeyValOf((*lsfList[*lsfEntry[*lsfTopicPartition, int32]])(nil), lsfCmp_57a515e0e489)
 	lv_lawspecrecordfield3342 := false
 	lv_lawspecrecordfield4343 := (*lsfList[*lsfTopicPartition])(nil)
@@ -2029,7 +2029,7 @@ func lsfLawspecCollectionsKeyValLookupItems_b9936fbc(lK583 int64, lEs584 *lsfLis
 	for {
 		lIt585 := lEs584
 		if lIt585 == nil {
-			return lsfNothing[*lsfList[*lsfBatchMeta]]()
+			return lsfAbsent[*lsfList[*lsfBatchMeta]]()
 		} else {
 			lv_lawspecselection0x0586 := lIt585.head
 			lv_lawspecselection0x1587 := lIt585.tail
@@ -2039,9 +2039,9 @@ func lsfLawspecCollectionsKeyValLookupItems_b9936fbc(lK583 int64, lEs584 *lsfLis
 			lIt591 := lsfOrderingOf(lsfCmp_44a08172da10(lK583, lv_match__lawspecselection0x0_0589))
 			switch lIt591 {
 				case lsfOrdering_Less:
-					return lsfNothing[*lsfList[*lsfBatchMeta]]()
+					return lsfAbsent[*lsfList[*lsfBatchMeta]]()
 				case lsfOrdering_Equal:
-					return lsfJust[*lsfList[*lsfBatchMeta]](lv_match__lawspecselection0x1_0590)
+					return lsfPresent[*lsfList[*lsfBatchMeta]](lv_match__lawspecselection0x1_0590)
 				case lsfOrdering_Greater:
 					lNext592 := lv_lawspecselection0x1587
 					lEs584 = lNext592
@@ -2058,7 +2058,7 @@ func lsfLawspecCollectionsKeyValLookupItems_154c41d9(lK593 *lsfTopicPartition, l
 	for {
 		lIt595 := lEs594
 		if lIt595 == nil {
-			return lsfNothing[int64]()
+			return lsfAbsent[int64]()
 		} else {
 			lv_lawspecselection0x0596 := lIt595.head
 			lv_lawspecselection0x1597 := lIt595.tail
@@ -2068,9 +2068,9 @@ func lsfLawspecCollectionsKeyValLookupItems_154c41d9(lK593 *lsfTopicPartition, l
 			lIt601 := lsfOrderingOf(lsfCmp_57a515e0e489(lK593, lv_match__lawspecselection0x0_0599))
 			switch lIt601 {
 				case lsfOrdering_Less:
-					return lsfNothing[int64]()
+					return lsfAbsent[int64]()
 				case lsfOrdering_Equal:
-					return lsfJust[int64](lv_match__lawspecselection0x1_0600)
+					return lsfPresent[int64](lv_match__lawspecselection0x1_0600)
 				case lsfOrdering_Greater:
 					lNext602 := lv_lawspecselection0x1597
 					lEs594 = lNext602
@@ -2087,7 +2087,7 @@ func lsfLawspecCollectionsKeyValLookupItems_ebcd945a(lK603 string, lEs604 *lsfLi
 	for {
 		lIt605 := lEs604
 		if lIt605 == nil {
-			return lsfNothing[int64]()
+			return lsfAbsent[int64]()
 		} else {
 			lv_lawspecselection0x0606 := lIt605.head
 			lv_lawspecselection0x1607 := lIt605.tail
@@ -2097,9 +2097,9 @@ func lsfLawspecCollectionsKeyValLookupItems_ebcd945a(lK603 string, lEs604 *lsfLi
 			lIt611 := lsfOrderingOf(lsfCmp_437d0abf423f(lK603, lv_match__lawspecselection0x0_0609))
 			switch lIt611 {
 				case lsfOrdering_Less:
-					return lsfNothing[int64]()
+					return lsfAbsent[int64]()
 				case lsfOrdering_Equal:
-					return lsfJust[int64](lv_match__lawspecselection0x1_0610)
+					return lsfPresent[int64](lv_match__lawspecselection0x1_0610)
 				case lsfOrdering_Greater:
 					lNext612 := lv_lawspecselection0x1607
 					lEs604 = lNext612
@@ -2116,7 +2116,7 @@ func lsfLawspecCollectionsKeyValLookupItems_71a2ad87(lK613 string, lEs614 *lsfLi
 	for {
 		lIt615 := lEs614
 		if lIt615 == nil {
-			return lsfNothing[*lsfList[string]]()
+			return lsfAbsent[*lsfList[string]]()
 		} else {
 			lv_lawspecselection0x0616 := lIt615.head
 			lv_lawspecselection0x1617 := lIt615.tail
@@ -2126,9 +2126,9 @@ func lsfLawspecCollectionsKeyValLookupItems_71a2ad87(lK613 string, lEs614 *lsfLi
 			lIt621 := lsfOrderingOf(lsfCmp_437d0abf423f(lK613, lv_match__lawspecselection0x0_0619))
 			switch lIt621 {
 				case lsfOrdering_Less:
-					return lsfNothing[*lsfList[string]]()
+					return lsfAbsent[*lsfList[string]]()
 				case lsfOrdering_Equal:
-					return lsfJust[*lsfList[string]](lv_match__lawspecselection0x1_0620)
+					return lsfPresent[*lsfList[string]](lv_match__lawspecselection0x1_0620)
 				case lsfOrdering_Greater:
 					lNext622 := lv_lawspecselection0x1617
 					lEs614 = lNext622
@@ -2145,7 +2145,7 @@ func lsfLawspecCollectionsKeyValLookupItems_a13d293f(lK623 string, lEs624 *lsfLi
 	for {
 		lIt625 := lEs624
 		if lIt625 == nil {
-			return lsfNothing[*lsfList[*lsfTopicPartition]]()
+			return lsfAbsent[*lsfList[*lsfTopicPartition]]()
 		} else {
 			lv_lawspecselection0x0626 := lIt625.head
 			lv_lawspecselection0x1627 := lIt625.tail
@@ -2155,9 +2155,9 @@ func lsfLawspecCollectionsKeyValLookupItems_a13d293f(lK623 string, lEs624 *lsfLi
 			lIt631 := lsfOrderingOf(lsfCmp_437d0abf423f(lK623, lv_match__lawspecselection0x0_0629))
 			switch lIt631 {
 				case lsfOrdering_Less:
-					return lsfNothing[*lsfList[*lsfTopicPartition]]()
+					return lsfAbsent[*lsfList[*lsfTopicPartition]]()
 				case lsfOrdering_Equal:
-					return lsfJust[*lsfList[*lsfTopicPartition]](lv_match__lawspecselection0x1_0630)
+					return lsfPresent[*lsfList[*lsfTopicPartition]](lv_match__lawspecselection0x1_0630)
 				case lsfOrdering_Greater:
 					lNext632 := lv_lawspecselection0x1627
 					lEs624 = lNext632
@@ -2174,7 +2174,7 @@ func lsfLawspecCollectionsKeyValLookupItems_9c1371ef(lK633 int64, lEs634 *lsfLis
 	for {
 		lIt635 := lEs634
 		if lIt635 == nil {
-			return lsfNothing[*lsfProducerEntry]()
+			return lsfAbsent[*lsfProducerEntry]()
 		} else {
 			lv_lawspecselection0x0636 := lIt635.head
 			lv_lawspecselection0x1637 := lIt635.tail
@@ -2184,9 +2184,9 @@ func lsfLawspecCollectionsKeyValLookupItems_9c1371ef(lK633 int64, lEs634 *lsfLis
 			lIt641 := lsfOrderingOf(lsfCmp_44a08172da10(lK633, lv_match__lawspecselection0x0_0639))
 			switch lIt641 {
 				case lsfOrdering_Less:
-					return lsfNothing[*lsfProducerEntry]()
+					return lsfAbsent[*lsfProducerEntry]()
 				case lsfOrdering_Equal:
-					return lsfJust[*lsfProducerEntry](lv_match__lawspecselection0x1_0640)
+					return lsfPresent[*lsfProducerEntry](lv_match__lawspecselection0x1_0640)
 				case lsfOrdering_Greater:
 					lNext642 := lv_lawspecselection0x1637
 					lEs634 = lNext642
@@ -2203,7 +2203,7 @@ func lsfLawspecCollectionsKeyValLookupItems_4e6d941b(lK643 string, lEs644 *lsfLi
 	for {
 		lIt645 := lEs644
 		if lIt645 == nil {
-			return lsfNothing[int32]()
+			return lsfAbsent[int32]()
 		} else {
 			lv_lawspecselection0x0646 := lIt645.head
 			lv_lawspecselection0x1647 := lIt645.tail
@@ -2213,9 +2213,9 @@ func lsfLawspecCollectionsKeyValLookupItems_4e6d941b(lK643 string, lEs644 *lsfLi
 			lIt651 := lsfOrderingOf(lsfCmp_437d0abf423f(lK643, lv_match__lawspecselection0x0_0649))
 			switch lIt651 {
 				case lsfOrdering_Less:
-					return lsfNothing[int32]()
+					return lsfAbsent[int32]()
 				case lsfOrdering_Equal:
-					return lsfJust[int32](lv_match__lawspecselection0x1_0650)
+					return lsfPresent[int32](lv_match__lawspecselection0x1_0650)
 				case lsfOrdering_Greater:
 					lNext652 := lv_lawspecselection0x1647
 					lEs644 = lNext652
@@ -2232,7 +2232,7 @@ func lsfLawspecCollectionsKeyValLookupItems_634e3159(lK653 *lsfGroupPartition, l
 	for {
 		lIt655 := lEs654
 		if lIt655 == nil {
-			return lsfNothing[int64]()
+			return lsfAbsent[int64]()
 		} else {
 			lv_lawspecselection0x0656 := lIt655.head
 			lv_lawspecselection0x1657 := lIt655.tail
@@ -2242,9 +2242,9 @@ func lsfLawspecCollectionsKeyValLookupItems_634e3159(lK653 *lsfGroupPartition, l
 			lIt661 := lsfOrderingOf(lsfCmp_213d3554d90b(lK653, lv_match__lawspecselection0x0_0659))
 			switch lIt661 {
 				case lsfOrdering_Less:
-					return lsfNothing[int64]()
+					return lsfAbsent[int64]()
 				case lsfOrdering_Equal:
-					return lsfJust[int64](lv_match__lawspecselection0x1_0660)
+					return lsfPresent[int64](lv_match__lawspecselection0x1_0660)
 				case lsfOrdering_Greater:
 					lNext662 := lv_lawspecselection0x1657
 					lEs654 = lNext662
@@ -2261,7 +2261,7 @@ func lsfLawspecCollectionsKeyValLookupItems_eaf6916f(lK663 *lsfTopicPartition, l
 	for {
 		lIt665 := lEs664
 		if lIt665 == nil {
-			return lsfNothing[int32]()
+			return lsfAbsent[int32]()
 		} else {
 			lv_lawspecselection0x0666 := lIt665.head
 			lv_lawspecselection0x1667 := lIt665.tail
@@ -2271,9 +2271,9 @@ func lsfLawspecCollectionsKeyValLookupItems_eaf6916f(lK663 *lsfTopicPartition, l
 			lIt671 := lsfOrderingOf(lsfCmp_57a515e0e489(lK663, lv_match__lawspecselection0x0_0669))
 			switch lIt671 {
 				case lsfOrdering_Less:
-					return lsfNothing[int32]()
+					return lsfAbsent[int32]()
 				case lsfOrdering_Equal:
-					return lsfJust[int32](lv_match__lawspecselection0x1_0670)
+					return lsfPresent[int32](lv_match__lawspecselection0x1_0670)
 				case lsfOrdering_Greater:
 					lNext672 := lv_lawspecselection0x1667
 					lEs664 = lNext672
@@ -2290,7 +2290,7 @@ func lsfLawspecCollectionsKeyValLookupItems_ae57d2cd(lK673 int64, lEs674 *lsfLis
 	for {
 		lIt675 := lEs674
 		if lIt675 == nil {
-			return lsfNothing[int64]()
+			return lsfAbsent[int64]()
 		} else {
 			lv_lawspecselection0x0676 := lIt675.head
 			lv_lawspecselection0x1677 := lIt675.tail
@@ -2300,9 +2300,9 @@ func lsfLawspecCollectionsKeyValLookupItems_ae57d2cd(lK673 int64, lEs674 *lsfLis
 			lIt681 := lsfOrderingOf(lsfCmp_44a08172da10(lK673, lv_match__lawspecselection0x0_0679))
 			switch lIt681 {
 				case lsfOrdering_Less:
-					return lsfNothing[int64]()
+					return lsfAbsent[int64]()
 				case lsfOrdering_Equal:
-					return lsfJust[int64](lv_match__lawspecselection0x1_0680)
+					return lsfPresent[int64](lv_match__lawspecselection0x1_0680)
 				case lsfOrdering_Greater:
 					lNext682 := lv_lawspecselection0x1677
 					lEs674 = lNext682
@@ -2319,7 +2319,7 @@ func lsfLawspecCollectionsKeyValLookupItems_3c718024(lK683 string, lEs684 *lsfLi
 	for {
 		lIt685 := lEs684
 		if lIt685 == nil {
-			return lsfNothing[*lsfGroup]()
+			return lsfAbsent[*lsfGroup]()
 		} else {
 			lv_lawspecselection0x0686 := lIt685.head
 			lv_lawspecselection0x1687 := lIt685.tail
@@ -2329,9 +2329,9 @@ func lsfLawspecCollectionsKeyValLookupItems_3c718024(lK683 string, lEs684 *lsfLi
 			lIt691 := lsfOrderingOf(lsfCmp_437d0abf423f(lK683, lv_match__lawspecselection0x0_0689))
 			switch lIt691 {
 				case lsfOrdering_Less:
-					return lsfNothing[*lsfGroup]()
+					return lsfAbsent[*lsfGroup]()
 				case lsfOrdering_Equal:
-					return lsfJust[*lsfGroup](lv_match__lawspecselection0x1_0690)
+					return lsfPresent[*lsfGroup](lv_match__lawspecselection0x1_0690)
 				case lsfOrdering_Greater:
 					lNext692 := lv_lawspecselection0x1687
 					lEs684 = lNext692
@@ -2348,7 +2348,7 @@ func lsfLawspecCollectionsKeyValLookupItems_8d0d5317(lK693 *lsfTopicPartition, l
 	for {
 		lIt695 := lEs694
 		if lIt695 == nil {
-			return lsfNothing[*lsfPartitionLog]()
+			return lsfAbsent[*lsfPartitionLog]()
 		} else {
 			lv_lawspecselection0x0696 := lIt695.head
 			lv_lawspecselection0x1697 := lIt695.tail
@@ -2358,9 +2358,9 @@ func lsfLawspecCollectionsKeyValLookupItems_8d0d5317(lK693 *lsfTopicPartition, l
 			lIt701 := lsfOrderingOf(lsfCmp_57a515e0e489(lK693, lv_match__lawspecselection0x0_0699))
 			switch lIt701 {
 				case lsfOrdering_Less:
-					return lsfNothing[*lsfPartitionLog]()
+					return lsfAbsent[*lsfPartitionLog]()
 				case lsfOrdering_Equal:
-					return lsfJust[*lsfPartitionLog](lv_match__lawspecselection0x1_0700)
+					return lsfPresent[*lsfPartitionLog](lv_match__lawspecselection0x1_0700)
 				case lsfOrdering_Greater:
 					lNext702 := lv_lawspecselection0x1697
 					lEs694 = lNext702
@@ -3755,7 +3755,7 @@ func lsfLawtwinKafkaModelFindDuplicate_3335aea4(lEpoch1380 int16, lFirst1381 int
 	for {
 		lIt1384 := lMs1383
 		if lIt1384 == nil {
-			return lsfNothing[int64]()
+			return lsfAbsent[int64]()
 		} else {
 			lv_lawspecselection0x01385 := lIt1384.head
 			lv_lawspecselection0x11386 := lIt1384.tail
@@ -3780,7 +3780,7 @@ func lsfLawtwinKafkaModelFindDuplicate_3335aea4(lEpoch1380 int16, lFirst1381 int
 				var lValue1395 int64
 				lLawspecfieldbatchoffset1396 := lv_lawspecselection0x01385.fBatchOffset
 				lValue1395 = lLawspecfieldbatchoffset1396
-				return lsfJust[int64](lValue1395)
+				return lsfPresent[int64](lValue1395)
 			} else {
 				lNext1397 := lv_lawspecselection0x11386
 				lMs1383 = lNext1397
@@ -3902,7 +3902,7 @@ func lsfLawtwinKafkaModelInitProducerId_cedb7e1b(lTxid1424 lsfMaybe[string], lB1
 			}
 		}
 	} else {
-		return lsfLawtwinKafkaModelNewProducer_89b0852d(lsfNothing[string](), lB1425)
+		return lsfLawtwinKafkaModelNewProducer_89b0852d(lsfAbsent[string](), lB1425)
 	}
 }
 
@@ -5360,7 +5360,7 @@ func lsfProducerIdempotent_c8ab8a13(symbols map[string]*LawSpecSymbol, lSt2160 *
 				_, _ = schema, bits
 				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfNothing[string]()))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfAbsent[string]()))))
 			}()
 		}))
 		lAttempted2162 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPerformed2163)
@@ -5380,9 +5380,9 @@ func lsfProducerIdempotent_c8ab8a13(symbols map[string]*LawSpecSymbol, lSt2160 *
 	} else {
 		lv_lawspecselection0x02169 := lIt2167.r
 		var lValue2170 *lsfProducerState
-		lv_lawspecrecordfield02171 := lsfJust[*lsfProducerIdAndEpoch](lv_lawspecselection0x02169)
+		lv_lawspecrecordfield02171 := lsfPresent[*lsfProducerIdAndEpoch](lv_lawspecselection0x02169)
 		lv_lawspecrecordfield12172 := lsfKeyValOf((*lsfList[*lsfEntry[*lsfTopicPartition, int32]])(nil), lsfCmp_57a515e0e489)
-		lv_lawspecrecordfield22173 := lsfNothing[*lsfLastSend]()
+		lv_lawspecrecordfield22173 := lsfAbsent[*lsfLastSend]()
 		lValue2170 = &lsfProducerState{lv_lawspecrecordfield02171, lv_lawspecrecordfield12172, lv_lawspecrecordfield22173}
 		return &lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfProducerState]{lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lv_lawspecselection0x02169), lValue2170}
 	}
@@ -5550,7 +5550,7 @@ func lsfProducerSend_9064c6b5(symbols map[string]*LawSpecSymbol, lPr2199 *lsfPro
 			lValue2234 = lLawspecfieldpayload2235
 			lv_lawspecrecordfield22236 := lsfCons[*lsfRecord](lValue2234, (*lsfList[*lsfRecord])(nil))
 			lValue2231 = &lsfLastSend{lv_lawspecrecordfield02232, lv_lawspecrecordfield12233, lv_lawspecrecordfield22236}
-			lReplacement2237 := lsfJust[*lsfLastSend](lValue2231)
+			lReplacement2237 := lsfPresent[*lsfLastSend](lValue2231)
 			var lValue2238 *lsfProducerState
 			var lValue2239 *lsfMap[*lsfTopicPartition, int32]
 			lLawspecfieldsequences2240 := lSt2200.fSequences
@@ -5985,7 +5985,7 @@ func lsfStableBelowHigh_60981bc4(symbols map[string]*LawSpecSymbol, lT2369 strin
 				_, _ = schema, bits
 				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfJust[string](lTxid2370)))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfPresent[string](lTxid2370)))))
 			}()
 		}))
 		lAttempted2377 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPerformed2378)
@@ -6079,7 +6079,7 @@ func lsfStableBelowHigh_60981bc4(symbols map[string]*LawSpecSymbol, lT2369 strin
 					codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
 					codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
 					resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfTo_57a515e0e489(lTp2375)), codec1.toNative(lsfTo_c818bd20f406(lsfJust[*lsfProducerTag](lsfTagOf_39235de7(lv_lawspecselection0x02383, int32(0))))), codec2.toNative(lsfTo_e3583a5b5bdc(lBatch2371))))
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfTo_57a515e0e489(lTp2375)), codec1.toNative(lsfTo_c818bd20f406(lsfPresent[*lsfProducerTag](lsfTagOf_39235de7(lv_lawspecselection0x02383, int32(0))))), codec2.toNative(lsfTo_e3583a5b5bdc(lBatch2371))))
 				}()
 			}))
 			lAttempted2396 = lsfRight[lsfKafkaError, int64](lPerformed2397)
@@ -6189,9 +6189,9 @@ func lsfTagFor_a88d3846(lIdentity2424 lsfMaybe[*lsfProducerIdAndEpoch], lSequenc
 	lIt2426 := lIdentity2424
 	if lIt2426.ok {
 		lv_lawspecselection0x02427 := lIt2426.v
-		return lsfJust[*lsfProducerTag](lsfTagOf_39235de7(lv_lawspecselection0x02427, lSequence2425))
+		return lsfPresent[*lsfProducerTag](lsfTagOf_39235de7(lv_lawspecselection0x02427, lSequence2425))
 	} else {
-		return lsfNothing[*lsfProducerTag]()
+		return lsfAbsent[*lsfProducerTag]()
 	}
 }
 
@@ -6245,7 +6245,7 @@ func lsfTransactionThenRead_81bf7b1b(symbols map[string]*LawSpecSymbol, lT2438 s
 				_, _ = schema, bits
 				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfJust[string](lTxid2439)))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfPresent[string](lTxid2439)))))
 			}()
 		}))
 		lAttempted2447 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPerformed2448)
@@ -6342,7 +6342,7 @@ func lsfTransactionThenRead_81bf7b1b(symbols map[string]*LawSpecSymbol, lT2438 s
 						codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
 						codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
 						resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfTo_57a515e0e489(lTp2445)), codec1.toNative(lsfTo_c818bd20f406(lsfJust[*lsfProducerTag](lsfTagOf_39235de7(lv_lawspecselection0x02453, int32(0))))), codec2.toNative(lsfTo_e3583a5b5bdc(lBatch2440))))
+						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfTo_57a515e0e489(lTp2445)), codec1.toNative(lsfTo_c818bd20f406(lsfPresent[*lsfProducerTag](lsfTagOf_39235de7(lv_lawspecselection0x02453, int32(0))))), codec2.toNative(lsfTo_e3583a5b5bdc(lBatch2440))))
 					}()
 				}))
 				lAttempted2466 = lsfRight[lsfKafkaError, int64](lPerformed2467)
@@ -6473,7 +6473,7 @@ func lsfTransactionalOffsets_80320406(symbols map[string]*LawSpecSymbol, lT2488 
 				_, _ = schema, bits
 				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfJust[string](lTxid2489)))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfPresent[string](lTxid2489)))))
 			}()
 		}))
 		lAttempted2499 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPerformed2500)
@@ -6758,7 +6758,7 @@ func lsfTransactionalOffsets_80320406(symbols map[string]*LawSpecSymbol, lT2488 
 				resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
 				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(lsfTo_437d0abf423f(lG2490)), codec1.toNative(lsfTo_57a515e0e489(lTp2495))))
 			}())
-			lLogic2566 = (lsfEq_c09136e29464(lPerformed2565, lsfJust[int64](lOffset2491)))
+			lLogic2566 = (lsfEq_c09136e29464(lPerformed2565, lsfPresent[int64](lOffset2491)))
 		} else { lLogic2566 = false }
 		return lLogic2566
 	}
@@ -7102,7 +7102,7 @@ func lsfTransactionsInit_d69a08bc(symbols map[string]*LawSpecSymbol, lTxid2708 s
 				_, _ = schema, bits
 				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfJust[string](lTxid2708)))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfPresent[string](lTxid2708)))))
 			}()
 		}))
 		lAttempted2711 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPerformed2712)
@@ -7123,7 +7123,7 @@ func lsfTransactionsInit_d69a08bc(symbols map[string]*LawSpecSymbol, lTxid2708 s
 		lv_lawspecselection0x02718 := lIt2716.r
 		var lValue2719 *lsfTransactionState
 		lv_lawspecrecordfield02720 := lTxid2708
-		lv_lawspecrecordfield12721 := lsfJust[*lsfProducerIdAndEpoch](lv_lawspecselection0x02718)
+		lv_lawspecrecordfield12721 := lsfPresent[*lsfProducerIdAndEpoch](lv_lawspecselection0x02718)
 		lv_lawspecrecordfield22722 := lsfKeyValOf((*lsfList[*lsfEntry[*lsfTopicPartition, int32]])(nil), lsfCmp_57a515e0e489)
 		lv_lawspecrecordfield32723 := false
 		lv_lawspecrecordfield42724 := (*lsfList[*lsfTopicPartition])(nil)
@@ -7464,7 +7464,7 @@ func lsfWriteAborted_8e3a61e4(symbols map[string]*LawSpecSymbol, lTp2894 *lsfTop
 				_, _ = schema, bits
 				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfJust[string](lTxid2895)))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfPresent[string](lTxid2895)))))
 			}()
 		}))
 		lAttempted2898 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPerformed2899)
@@ -7479,7 +7479,7 @@ func lsfWriteAborted_8e3a61e4(symbols map[string]*LawSpecSymbol, lTp2894 *lsfTop
 	}
 	lIt2903 := lValue2897
 	if !lIt2903.right {
-		return lsfNothing[int64]()
+		return lsfAbsent[int64]()
 	} else {
 		lv_lawspecselection0x02904 := lIt2903.r
 		var lValue2905 lsfEither[lsfKafkaError, lsfUnit]
@@ -7558,7 +7558,7 @@ func lsfWriteAborted_8e3a61e4(symbols map[string]*LawSpecSymbol, lTp2894 *lsfTop
 					codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
 					codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
 					resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfTo_57a515e0e489(lTp2894)), codec1.toNative(lsfTo_c818bd20f406(lsfJust[*lsfProducerTag](lsfTagOf_39235de7(lv_lawspecselection0x02904, int32(0))))), codec2.toNative(lsfTo_e3583a5b5bdc(lsfCons[*lsfRecord](lR2896, (*lsfList[*lsfRecord])(nil))))))
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfTo_57a515e0e489(lTp2894)), codec1.toNative(lsfTo_c818bd20f406(lsfPresent[*lsfProducerTag](lsfTagOf_39235de7(lv_lawspecselection0x02904, int32(0))))), codec2.toNative(lsfTo_e3583a5b5bdc(lsfCons[*lsfRecord](lR2896, (*lsfList[*lsfRecord])(nil))))))
 				}()
 			}))
 			lAttempted2916 = lsfRight[lsfKafkaError, int64](lPerformed2917)
@@ -7573,7 +7573,7 @@ func lsfWriteAborted_8e3a61e4(symbols map[string]*LawSpecSymbol, lTp2894 *lsfTop
 		}
 		lIt2921 := lValue2915
 		if !lIt2921.right {
-			return lsfNothing[int64]()
+			return lsfAbsent[int64]()
 		} else {
 			lv_match__lawspecselection0x0_02922 := lIt2921.r
 			var lValue2923 lsfEither[lsfKafkaError, lsfUnit]
@@ -7627,9 +7627,9 @@ func lsfWriteAborted_8e3a61e4(symbols map[string]*LawSpecSymbol, lTp2894 *lsfTop
 			}
 			lIt2933 := lValue2923
 			if !lIt2933.right {
-				return lsfNothing[int64]()
+				return lsfAbsent[int64]()
 			} else {
-				return lsfJust[int64](lv_match__lawspecselection0x0_02922)
+				return lsfPresent[int64](lv_match__lawspecselection0x0_02922)
 			}
 		}
 	}
@@ -7971,110 +7971,110 @@ func lsfFrom_9aa0842592c4(v LawSpecValue) *lsfList[*lsfConsumerRecord] {
 
 func lsfFrom_b276e66efd09(v LawSpecValue) lsfMaybe[string] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[string](lsfFrom_9e68ae7ce0b7(fields[0])) }
-	return lsfNothing[string]()
+	if tag == "Maybe::Present" { return lsfPresent[string](lsfFrom_9e68ae7ce0b7(fields[0])) }
+	return lsfAbsent[string]()
 }
 
 func lsfFrom_8458421ef461(v LawSpecValue) lsfMaybe[int16] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[int16](lsfFrom_07dabd732290(fields[0])) }
-	return lsfNothing[int16]()
+	if tag == "Maybe::Present" { return lsfPresent[int16](lsfFrom_07dabd732290(fields[0])) }
+	return lsfAbsent[int16]()
 }
 
 func lsfFrom_e0f8ce0ed062(v LawSpecValue) lsfMaybe[int32] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[int32](lsfFrom_b862204e9be7(fields[0])) }
-	return lsfNothing[int32]()
+	if tag == "Maybe::Present" { return lsfPresent[int32](lsfFrom_b862204e9be7(fields[0])) }
+	return lsfAbsent[int32]()
 }
 
 func lsfFrom_c09136e29464(v LawSpecValue) lsfMaybe[int64] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[int64](lsfFrom_44a08172da10(fields[0])) }
-	return lsfNothing[int64]()
+	if tag == "Maybe::Present" { return lsfPresent[int64](lsfFrom_44a08172da10(fields[0])) }
+	return lsfAbsent[int64]()
 }
 
 func lsfFrom_322842b70901(v LawSpecValue) lsfMaybe[int8] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[int8](lsfFrom_9d2bd68f647a(fields[0])) }
-	return lsfNothing[int8]()
+	if tag == "Maybe::Present" { return lsfPresent[int8](lsfFrom_9d2bd68f647a(fields[0])) }
+	return lsfAbsent[int8]()
 }
 
 func lsfFrom_3d64fc085f92(v LawSpecValue) lsfMaybe[*lsfList[string]] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[*lsfList[string]](lsfFrom_8ec0351dc657(fields[0])) }
-	return lsfNothing[*lsfList[string]]()
+	if tag == "Maybe::Present" { return lsfPresent[*lsfList[string]](lsfFrom_8ec0351dc657(fields[0])) }
+	return lsfAbsent[*lsfList[string]]()
 }
 
 func lsfFrom_c38be08c05a1(v LawSpecValue) lsfMaybe[*lsfList[*lsfBatchMeta]] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[*lsfList[*lsfBatchMeta]](lsfFrom_789f82e1207e(fields[0])) }
-	return lsfNothing[*lsfList[*lsfBatchMeta]]()
+	if tag == "Maybe::Present" { return lsfPresent[*lsfList[*lsfBatchMeta]](lsfFrom_789f82e1207e(fields[0])) }
+	return lsfAbsent[*lsfList[*lsfBatchMeta]]()
 }
 
 func lsfFrom_50708784f072(v LawSpecValue) lsfMaybe[*lsfList[*lsfTopicPartition]] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[*lsfList[*lsfTopicPartition]](lsfFrom_3250492fe9ac(fields[0])) }
-	return lsfNothing[*lsfList[*lsfTopicPartition]]()
+	if tag == "Maybe::Present" { return lsfPresent[*lsfList[*lsfTopicPartition]](lsfFrom_3250492fe9ac(fields[0])) }
+	return lsfAbsent[*lsfList[*lsfTopicPartition]]()
 }
 
 func lsfFrom_01d86fc44f8c(v LawSpecValue) lsfMaybe[string] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[string](lsfFrom_437d0abf423f(fields[0])) }
-	return lsfNothing[string]()
+	if tag == "Maybe::Present" { return lsfPresent[string](lsfFrom_437d0abf423f(fields[0])) }
+	return lsfAbsent[string]()
 }
 
 func lsfFrom_a765ca1ff0da(v LawSpecValue) lsfMaybe[uint16] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[uint16](lsfFrom_7c7a5790413b(fields[0])) }
-	return lsfNothing[uint16]()
+	if tag == "Maybe::Present" { return lsfPresent[uint16](lsfFrom_7c7a5790413b(fields[0])) }
+	return lsfAbsent[uint16]()
 }
 
 func lsfFrom_770fd683e40e(v LawSpecValue) lsfMaybe[uint32] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[uint32](lsfFrom_bd9653153f3b(fields[0])) }
-	return lsfNothing[uint32]()
+	if tag == "Maybe::Present" { return lsfPresent[uint32](lsfFrom_bd9653153f3b(fields[0])) }
+	return lsfAbsent[uint32]()
 }
 
 func lsfFrom_a2258feb4d57(v LawSpecValue) lsfMaybe[uint64] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[uint64](lsfFrom_65439cc7c2ff(fields[0])) }
-	return lsfNothing[uint64]()
+	if tag == "Maybe::Present" { return lsfPresent[uint64](lsfFrom_65439cc7c2ff(fields[0])) }
+	return lsfAbsent[uint64]()
 }
 
 func lsfFrom_2a3b378408f8(v LawSpecValue) lsfMaybe[uint8] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[uint8](lsfFrom_d048b68cd5b1(fields[0])) }
-	return lsfNothing[uint8]()
+	if tag == "Maybe::Present" { return lsfPresent[uint8](lsfFrom_d048b68cd5b1(fields[0])) }
+	return lsfAbsent[uint8]()
 }
 
 func lsfFrom_96af144ed884(v LawSpecValue) lsfMaybe[*lsfGroup] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[*lsfGroup](lsfFrom_121c32c2e75a(fields[0])) }
-	return lsfNothing[*lsfGroup]()
+	if tag == "Maybe::Present" { return lsfPresent[*lsfGroup](lsfFrom_121c32c2e75a(fields[0])) }
+	return lsfAbsent[*lsfGroup]()
 }
 
 func lsfFrom_aba61dc13579(v LawSpecValue) lsfMaybe[*lsfPartitionLog] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[*lsfPartitionLog](lsfFrom_17b5cd6f2c74(fields[0])) }
-	return lsfNothing[*lsfPartitionLog]()
+	if tag == "Maybe::Present" { return lsfPresent[*lsfPartitionLog](lsfFrom_17b5cd6f2c74(fields[0])) }
+	return lsfAbsent[*lsfPartitionLog]()
 }
 
 func lsfFrom_bf624bc7affb(v LawSpecValue) lsfMaybe[*lsfProducerEntry] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[*lsfProducerEntry](lsfFrom_b74501b1952d(fields[0])) }
-	return lsfNothing[*lsfProducerEntry]()
+	if tag == "Maybe::Present" { return lsfPresent[*lsfProducerEntry](lsfFrom_b74501b1952d(fields[0])) }
+	return lsfAbsent[*lsfProducerEntry]()
 }
 
 func lsfFrom_99552686984c(v LawSpecValue) lsfMaybe[*lsfProducerIdAndEpoch] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[*lsfProducerIdAndEpoch](lsfFrom_6a5ea41697b3(fields[0])) }
-	return lsfNothing[*lsfProducerIdAndEpoch]()
+	if tag == "Maybe::Present" { return lsfPresent[*lsfProducerIdAndEpoch](lsfFrom_6a5ea41697b3(fields[0])) }
+	return lsfAbsent[*lsfProducerIdAndEpoch]()
 }
 
 func lsfFrom_c818bd20f406(v LawSpecValue) lsfMaybe[*lsfProducerTag] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[*lsfProducerTag](lsfFrom_fcd7b841fa1b(fields[0])) }
-	return lsfNothing[*lsfProducerTag]()
+	if tag == "Maybe::Present" { return lsfPresent[*lsfProducerTag](lsfFrom_fcd7b841fa1b(fields[0])) }
+	return lsfAbsent[*lsfProducerTag]()
 }
 
 func lsfFrom_437d0abf423f(v LawSpecValue) string {
@@ -8792,93 +8792,93 @@ func lsfFromnative_9aa0842592c4(n []ConsumerRecord) *lsfList[*lsfConsumerRecord]
 }
 
 func lsfFromnative_b276e66efd09(n LawSpecMaybe[[]byte]) lsfMaybe[string] {
-	if v, ok := n.Value(); ok { return lsfJust[string](lsfFromnative_9e68ae7ce0b7(v)) }
-	return lsfNothing[string]()
+	if v, ok := n.Value(); ok { return lsfPresent[string](lsfFromnative_9e68ae7ce0b7(v)) }
+	return lsfAbsent[string]()
 }
 
 func lsfFromnative_8458421ef461(n LawSpecMaybe[int16]) lsfMaybe[int16] {
-	if v, ok := n.Value(); ok { return lsfJust[int16](lsfFromnative_07dabd732290(v)) }
-	return lsfNothing[int16]()
+	if v, ok := n.Value(); ok { return lsfPresent[int16](lsfFromnative_07dabd732290(v)) }
+	return lsfAbsent[int16]()
 }
 
 func lsfFromnative_e0f8ce0ed062(n LawSpecMaybe[int32]) lsfMaybe[int32] {
-	if v, ok := n.Value(); ok { return lsfJust[int32](lsfFromnative_b862204e9be7(v)) }
-	return lsfNothing[int32]()
+	if v, ok := n.Value(); ok { return lsfPresent[int32](lsfFromnative_b862204e9be7(v)) }
+	return lsfAbsent[int32]()
 }
 
 func lsfFromnative_c09136e29464(n LawSpecMaybe[int64]) lsfMaybe[int64] {
-	if v, ok := n.Value(); ok { return lsfJust[int64](lsfFromnative_44a08172da10(v)) }
-	return lsfNothing[int64]()
+	if v, ok := n.Value(); ok { return lsfPresent[int64](lsfFromnative_44a08172da10(v)) }
+	return lsfAbsent[int64]()
 }
 
 func lsfFromnative_322842b70901(n LawSpecMaybe[int8]) lsfMaybe[int8] {
-	if v, ok := n.Value(); ok { return lsfJust[int8](lsfFromnative_9d2bd68f647a(v)) }
-	return lsfNothing[int8]()
+	if v, ok := n.Value(); ok { return lsfPresent[int8](lsfFromnative_9d2bd68f647a(v)) }
+	return lsfAbsent[int8]()
 }
 
 func lsfFromnative_3d64fc085f92(n LawSpecMaybe[[]string]) lsfMaybe[*lsfList[string]] {
-	if v, ok := n.Value(); ok { return lsfJust[*lsfList[string]](lsfFromnative_8ec0351dc657(v)) }
-	return lsfNothing[*lsfList[string]]()
+	if v, ok := n.Value(); ok { return lsfPresent[*lsfList[string]](lsfFromnative_8ec0351dc657(v)) }
+	return lsfAbsent[*lsfList[string]]()
 }
 
 func lsfFromnative_c38be08c05a1(n LawSpecMaybe[[]BatchMeta]) lsfMaybe[*lsfList[*lsfBatchMeta]] {
-	if v, ok := n.Value(); ok { return lsfJust[*lsfList[*lsfBatchMeta]](lsfFromnative_789f82e1207e(v)) }
-	return lsfNothing[*lsfList[*lsfBatchMeta]]()
+	if v, ok := n.Value(); ok { return lsfPresent[*lsfList[*lsfBatchMeta]](lsfFromnative_789f82e1207e(v)) }
+	return lsfAbsent[*lsfList[*lsfBatchMeta]]()
 }
 
 func lsfFromnative_50708784f072(n LawSpecMaybe[[]TopicPartition]) lsfMaybe[*lsfList[*lsfTopicPartition]] {
-	if v, ok := n.Value(); ok { return lsfJust[*lsfList[*lsfTopicPartition]](lsfFromnative_3250492fe9ac(v)) }
-	return lsfNothing[*lsfList[*lsfTopicPartition]]()
+	if v, ok := n.Value(); ok { return lsfPresent[*lsfList[*lsfTopicPartition]](lsfFromnative_3250492fe9ac(v)) }
+	return lsfAbsent[*lsfList[*lsfTopicPartition]]()
 }
 
 func lsfFromnative_01d86fc44f8c(n LawSpecMaybe[string]) lsfMaybe[string] {
-	if v, ok := n.Value(); ok { return lsfJust[string](lsfFromnative_437d0abf423f(v)) }
-	return lsfNothing[string]()
+	if v, ok := n.Value(); ok { return lsfPresent[string](lsfFromnative_437d0abf423f(v)) }
+	return lsfAbsent[string]()
 }
 
 func lsfFromnative_a765ca1ff0da(n LawSpecMaybe[uint16]) lsfMaybe[uint16] {
-	if v, ok := n.Value(); ok { return lsfJust[uint16](lsfFromnative_7c7a5790413b(v)) }
-	return lsfNothing[uint16]()
+	if v, ok := n.Value(); ok { return lsfPresent[uint16](lsfFromnative_7c7a5790413b(v)) }
+	return lsfAbsent[uint16]()
 }
 
 func lsfFromnative_770fd683e40e(n LawSpecMaybe[uint32]) lsfMaybe[uint32] {
-	if v, ok := n.Value(); ok { return lsfJust[uint32](lsfFromnative_bd9653153f3b(v)) }
-	return lsfNothing[uint32]()
+	if v, ok := n.Value(); ok { return lsfPresent[uint32](lsfFromnative_bd9653153f3b(v)) }
+	return lsfAbsent[uint32]()
 }
 
 func lsfFromnative_a2258feb4d57(n LawSpecMaybe[uint64]) lsfMaybe[uint64] {
-	if v, ok := n.Value(); ok { return lsfJust[uint64](lsfFromnative_65439cc7c2ff(v)) }
-	return lsfNothing[uint64]()
+	if v, ok := n.Value(); ok { return lsfPresent[uint64](lsfFromnative_65439cc7c2ff(v)) }
+	return lsfAbsent[uint64]()
 }
 
 func lsfFromnative_2a3b378408f8(n LawSpecMaybe[uint8]) lsfMaybe[uint8] {
-	if v, ok := n.Value(); ok { return lsfJust[uint8](lsfFromnative_d048b68cd5b1(v)) }
-	return lsfNothing[uint8]()
+	if v, ok := n.Value(); ok { return lsfPresent[uint8](lsfFromnative_d048b68cd5b1(v)) }
+	return lsfAbsent[uint8]()
 }
 
 func lsfFromnative_96af144ed884(n LawSpecMaybe[Group]) lsfMaybe[*lsfGroup] {
-	if v, ok := n.Value(); ok { return lsfJust[*lsfGroup](lsfFromnative_121c32c2e75a(v)) }
-	return lsfNothing[*lsfGroup]()
+	if v, ok := n.Value(); ok { return lsfPresent[*lsfGroup](lsfFromnative_121c32c2e75a(v)) }
+	return lsfAbsent[*lsfGroup]()
 }
 
 func lsfFromnative_aba61dc13579(n LawSpecMaybe[PartitionLog]) lsfMaybe[*lsfPartitionLog] {
-	if v, ok := n.Value(); ok { return lsfJust[*lsfPartitionLog](lsfFromnative_17b5cd6f2c74(v)) }
-	return lsfNothing[*lsfPartitionLog]()
+	if v, ok := n.Value(); ok { return lsfPresent[*lsfPartitionLog](lsfFromnative_17b5cd6f2c74(v)) }
+	return lsfAbsent[*lsfPartitionLog]()
 }
 
 func lsfFromnative_bf624bc7affb(n LawSpecMaybe[ProducerEntry]) lsfMaybe[*lsfProducerEntry] {
-	if v, ok := n.Value(); ok { return lsfJust[*lsfProducerEntry](lsfFromnative_b74501b1952d(v)) }
-	return lsfNothing[*lsfProducerEntry]()
+	if v, ok := n.Value(); ok { return lsfPresent[*lsfProducerEntry](lsfFromnative_b74501b1952d(v)) }
+	return lsfAbsent[*lsfProducerEntry]()
 }
 
 func lsfFromnative_99552686984c(n LawSpecMaybe[ProducerIdAndEpoch]) lsfMaybe[*lsfProducerIdAndEpoch] {
-	if v, ok := n.Value(); ok { return lsfJust[*lsfProducerIdAndEpoch](lsfFromnative_6a5ea41697b3(v)) }
-	return lsfNothing[*lsfProducerIdAndEpoch]()
+	if v, ok := n.Value(); ok { return lsfPresent[*lsfProducerIdAndEpoch](lsfFromnative_6a5ea41697b3(v)) }
+	return lsfAbsent[*lsfProducerIdAndEpoch]()
 }
 
 func lsfFromnative_c818bd20f406(n LawSpecMaybe[ProducerTag]) lsfMaybe[*lsfProducerTag] {
-	if v, ok := n.Value(); ok { return lsfJust[*lsfProducerTag](lsfFromnative_fcd7b841fa1b(v)) }
-	return lsfNothing[*lsfProducerTag]()
+	if v, ok := n.Value(); ok { return lsfPresent[*lsfProducerTag](lsfFromnative_fcd7b841fa1b(v)) }
+	return lsfAbsent[*lsfProducerTag]()
 }
 
 func lsfFromnative_437d0abf423f(n string) string {
@@ -9401,93 +9401,93 @@ func lsfTo_9aa0842592c4(x *lsfList[*lsfConsumerRecord]) LawSpecValue {
 }
 
 func lsfTo_b276e66efd09(x lsfMaybe[string]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe Bytes", "Maybe::Just", lsfTo_9e68ae7ce0b7(x.v)) }
-	return lsfDataValue("Maybe Bytes", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe Bytes", "Maybe::Present", lsfTo_9e68ae7ce0b7(x.v)) }
+	return lsfDataValue("Maybe Bytes", "Maybe::Absent")
 }
 
 func lsfTo_8458421ef461(x lsfMaybe[int16]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe Int16", "Maybe::Just", lsfTo_07dabd732290(x.v)) }
-	return lsfDataValue("Maybe Int16", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe Int16", "Maybe::Present", lsfTo_07dabd732290(x.v)) }
+	return lsfDataValue("Maybe Int16", "Maybe::Absent")
 }
 
 func lsfTo_e0f8ce0ed062(x lsfMaybe[int32]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe Int32", "Maybe::Just", lsfTo_b862204e9be7(x.v)) }
-	return lsfDataValue("Maybe Int32", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe Int32", "Maybe::Present", lsfTo_b862204e9be7(x.v)) }
+	return lsfDataValue("Maybe Int32", "Maybe::Absent")
 }
 
 func lsfTo_c09136e29464(x lsfMaybe[int64]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe Int64", "Maybe::Just", lsfTo_44a08172da10(x.v)) }
-	return lsfDataValue("Maybe Int64", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe Int64", "Maybe::Present", lsfTo_44a08172da10(x.v)) }
+	return lsfDataValue("Maybe Int64", "Maybe::Absent")
 }
 
 func lsfTo_322842b70901(x lsfMaybe[int8]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe Int8", "Maybe::Just", lsfTo_9d2bd68f647a(x.v)) }
-	return lsfDataValue("Maybe Int8", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe Int8", "Maybe::Present", lsfTo_9d2bd68f647a(x.v)) }
+	return lsfDataValue("Maybe Int8", "Maybe::Absent")
 }
 
 func lsfTo_3d64fc085f92(x lsfMaybe[*lsfList[string]]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe List Text", "Maybe::Just", lsfTo_8ec0351dc657(x.v)) }
-	return lsfDataValue("Maybe List Text", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe List Text", "Maybe::Present", lsfTo_8ec0351dc657(x.v)) }
+	return lsfDataValue("Maybe List Text", "Maybe::Absent")
 }
 
 func lsfTo_c38be08c05a1(x lsfMaybe[*lsfList[*lsfBatchMeta]]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe List lawtwin.kafka.model::type::BatchMeta", "Maybe::Just", lsfTo_789f82e1207e(x.v)) }
-	return lsfDataValue("Maybe List lawtwin.kafka.model::type::BatchMeta", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe List lawtwin.kafka.model::type::BatchMeta", "Maybe::Present", lsfTo_789f82e1207e(x.v)) }
+	return lsfDataValue("Maybe List lawtwin.kafka.model::type::BatchMeta", "Maybe::Absent")
 }
 
 func lsfTo_50708784f072(x lsfMaybe[*lsfList[*lsfTopicPartition]]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe List lawtwin.kafka.model::type::TopicPartition", "Maybe::Just", lsfTo_3250492fe9ac(x.v)) }
-	return lsfDataValue("Maybe List lawtwin.kafka.model::type::TopicPartition", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe List lawtwin.kafka.model::type::TopicPartition", "Maybe::Present", lsfTo_3250492fe9ac(x.v)) }
+	return lsfDataValue("Maybe List lawtwin.kafka.model::type::TopicPartition", "Maybe::Absent")
 }
 
 func lsfTo_01d86fc44f8c(x lsfMaybe[string]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe Text", "Maybe::Just", lsfTo_437d0abf423f(x.v)) }
-	return lsfDataValue("Maybe Text", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe Text", "Maybe::Present", lsfTo_437d0abf423f(x.v)) }
+	return lsfDataValue("Maybe Text", "Maybe::Absent")
 }
 
 func lsfTo_a765ca1ff0da(x lsfMaybe[uint16]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe UInt16", "Maybe::Just", lsfTo_7c7a5790413b(x.v)) }
-	return lsfDataValue("Maybe UInt16", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe UInt16", "Maybe::Present", lsfTo_7c7a5790413b(x.v)) }
+	return lsfDataValue("Maybe UInt16", "Maybe::Absent")
 }
 
 func lsfTo_770fd683e40e(x lsfMaybe[uint32]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe UInt32", "Maybe::Just", lsfTo_bd9653153f3b(x.v)) }
-	return lsfDataValue("Maybe UInt32", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe UInt32", "Maybe::Present", lsfTo_bd9653153f3b(x.v)) }
+	return lsfDataValue("Maybe UInt32", "Maybe::Absent")
 }
 
 func lsfTo_a2258feb4d57(x lsfMaybe[uint64]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe UInt64", "Maybe::Just", lsfTo_65439cc7c2ff(x.v)) }
-	return lsfDataValue("Maybe UInt64", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe UInt64", "Maybe::Present", lsfTo_65439cc7c2ff(x.v)) }
+	return lsfDataValue("Maybe UInt64", "Maybe::Absent")
 }
 
 func lsfTo_2a3b378408f8(x lsfMaybe[uint8]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe UInt8", "Maybe::Just", lsfTo_d048b68cd5b1(x.v)) }
-	return lsfDataValue("Maybe UInt8", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe UInt8", "Maybe::Present", lsfTo_d048b68cd5b1(x.v)) }
+	return lsfDataValue("Maybe UInt8", "Maybe::Absent")
 }
 
 func lsfTo_96af144ed884(x lsfMaybe[*lsfGroup]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe lawtwin.kafka.model::type::Group", "Maybe::Just", lsfTo_121c32c2e75a(x.v)) }
-	return lsfDataValue("Maybe lawtwin.kafka.model::type::Group", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe lawtwin.kafka.model::type::Group", "Maybe::Present", lsfTo_121c32c2e75a(x.v)) }
+	return lsfDataValue("Maybe lawtwin.kafka.model::type::Group", "Maybe::Absent")
 }
 
 func lsfTo_aba61dc13579(x lsfMaybe[*lsfPartitionLog]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe lawtwin.kafka.model::type::PartitionLog", "Maybe::Just", lsfTo_17b5cd6f2c74(x.v)) }
-	return lsfDataValue("Maybe lawtwin.kafka.model::type::PartitionLog", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe lawtwin.kafka.model::type::PartitionLog", "Maybe::Present", lsfTo_17b5cd6f2c74(x.v)) }
+	return lsfDataValue("Maybe lawtwin.kafka.model::type::PartitionLog", "Maybe::Absent")
 }
 
 func lsfTo_bf624bc7affb(x lsfMaybe[*lsfProducerEntry]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe lawtwin.kafka.model::type::ProducerEntry", "Maybe::Just", lsfTo_b74501b1952d(x.v)) }
-	return lsfDataValue("Maybe lawtwin.kafka.model::type::ProducerEntry", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe lawtwin.kafka.model::type::ProducerEntry", "Maybe::Present", lsfTo_b74501b1952d(x.v)) }
+	return lsfDataValue("Maybe lawtwin.kafka.model::type::ProducerEntry", "Maybe::Absent")
 }
 
 func lsfTo_99552686984c(x lsfMaybe[*lsfProducerIdAndEpoch]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe lawtwin.kafka.model::type::ProducerIdAndEpoch", "Maybe::Just", lsfTo_6a5ea41697b3(x.v)) }
-	return lsfDataValue("Maybe lawtwin.kafka.model::type::ProducerIdAndEpoch", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe lawtwin.kafka.model::type::ProducerIdAndEpoch", "Maybe::Present", lsfTo_6a5ea41697b3(x.v)) }
+	return lsfDataValue("Maybe lawtwin.kafka.model::type::ProducerIdAndEpoch", "Maybe::Absent")
 }
 
 func lsfTo_c818bd20f406(x lsfMaybe[*lsfProducerTag]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe lawtwin.kafka.model::type::ProducerTag", "Maybe::Just", lsfTo_fcd7b841fa1b(x.v)) }
-	return lsfDataValue("Maybe lawtwin.kafka.model::type::ProducerTag", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe lawtwin.kafka.model::type::ProducerTag", "Maybe::Present", lsfTo_fcd7b841fa1b(x.v)) }
+	return lsfDataValue("Maybe lawtwin.kafka.model::type::ProducerTag", "Maybe::Absent")
 }
 
 func lsfTo_437d0abf423f(x string) LawSpecValue {
@@ -10033,93 +10033,93 @@ func lsfTonative_9aa0842592c4(x *lsfList[*lsfConsumerRecord]) []ConsumerRecord {
 }
 
 func lsfTonative_b276e66efd09(x lsfMaybe[string]) LawSpecMaybe[[]byte] {
-	if x.ok { return LawSpecJust[[]byte](lsfTonative_9e68ae7ce0b7(x.v)) }
-	return LawSpecNothing[[]byte]()
+	if x.ok { return LawSpecPresent[[]byte](lsfTonative_9e68ae7ce0b7(x.v)) }
+	return LawSpecAbsent[[]byte]()
 }
 
 func lsfTonative_8458421ef461(x lsfMaybe[int16]) LawSpecMaybe[int16] {
-	if x.ok { return LawSpecJust[int16](lsfTonative_07dabd732290(x.v)) }
-	return LawSpecNothing[int16]()
+	if x.ok { return LawSpecPresent[int16](lsfTonative_07dabd732290(x.v)) }
+	return LawSpecAbsent[int16]()
 }
 
 func lsfTonative_e0f8ce0ed062(x lsfMaybe[int32]) LawSpecMaybe[int32] {
-	if x.ok { return LawSpecJust[int32](lsfTonative_b862204e9be7(x.v)) }
-	return LawSpecNothing[int32]()
+	if x.ok { return LawSpecPresent[int32](lsfTonative_b862204e9be7(x.v)) }
+	return LawSpecAbsent[int32]()
 }
 
 func lsfTonative_c09136e29464(x lsfMaybe[int64]) LawSpecMaybe[int64] {
-	if x.ok { return LawSpecJust[int64](lsfTonative_44a08172da10(x.v)) }
-	return LawSpecNothing[int64]()
+	if x.ok { return LawSpecPresent[int64](lsfTonative_44a08172da10(x.v)) }
+	return LawSpecAbsent[int64]()
 }
 
 func lsfTonative_322842b70901(x lsfMaybe[int8]) LawSpecMaybe[int8] {
-	if x.ok { return LawSpecJust[int8](lsfTonative_9d2bd68f647a(x.v)) }
-	return LawSpecNothing[int8]()
+	if x.ok { return LawSpecPresent[int8](lsfTonative_9d2bd68f647a(x.v)) }
+	return LawSpecAbsent[int8]()
 }
 
 func lsfTonative_3d64fc085f92(x lsfMaybe[*lsfList[string]]) LawSpecMaybe[[]string] {
-	if x.ok { return LawSpecJust[[]string](lsfTonative_8ec0351dc657(x.v)) }
-	return LawSpecNothing[[]string]()
+	if x.ok { return LawSpecPresent[[]string](lsfTonative_8ec0351dc657(x.v)) }
+	return LawSpecAbsent[[]string]()
 }
 
 func lsfTonative_c38be08c05a1(x lsfMaybe[*lsfList[*lsfBatchMeta]]) LawSpecMaybe[[]BatchMeta] {
-	if x.ok { return LawSpecJust[[]BatchMeta](lsfTonative_789f82e1207e(x.v)) }
-	return LawSpecNothing[[]BatchMeta]()
+	if x.ok { return LawSpecPresent[[]BatchMeta](lsfTonative_789f82e1207e(x.v)) }
+	return LawSpecAbsent[[]BatchMeta]()
 }
 
 func lsfTonative_50708784f072(x lsfMaybe[*lsfList[*lsfTopicPartition]]) LawSpecMaybe[[]TopicPartition] {
-	if x.ok { return LawSpecJust[[]TopicPartition](lsfTonative_3250492fe9ac(x.v)) }
-	return LawSpecNothing[[]TopicPartition]()
+	if x.ok { return LawSpecPresent[[]TopicPartition](lsfTonative_3250492fe9ac(x.v)) }
+	return LawSpecAbsent[[]TopicPartition]()
 }
 
 func lsfTonative_01d86fc44f8c(x lsfMaybe[string]) LawSpecMaybe[string] {
-	if x.ok { return LawSpecJust[string](lsfTonative_437d0abf423f(x.v)) }
-	return LawSpecNothing[string]()
+	if x.ok { return LawSpecPresent[string](lsfTonative_437d0abf423f(x.v)) }
+	return LawSpecAbsent[string]()
 }
 
 func lsfTonative_a765ca1ff0da(x lsfMaybe[uint16]) LawSpecMaybe[uint16] {
-	if x.ok { return LawSpecJust[uint16](lsfTonative_7c7a5790413b(x.v)) }
-	return LawSpecNothing[uint16]()
+	if x.ok { return LawSpecPresent[uint16](lsfTonative_7c7a5790413b(x.v)) }
+	return LawSpecAbsent[uint16]()
 }
 
 func lsfTonative_770fd683e40e(x lsfMaybe[uint32]) LawSpecMaybe[uint32] {
-	if x.ok { return LawSpecJust[uint32](lsfTonative_bd9653153f3b(x.v)) }
-	return LawSpecNothing[uint32]()
+	if x.ok { return LawSpecPresent[uint32](lsfTonative_bd9653153f3b(x.v)) }
+	return LawSpecAbsent[uint32]()
 }
 
 func lsfTonative_a2258feb4d57(x lsfMaybe[uint64]) LawSpecMaybe[uint64] {
-	if x.ok { return LawSpecJust[uint64](lsfTonative_65439cc7c2ff(x.v)) }
-	return LawSpecNothing[uint64]()
+	if x.ok { return LawSpecPresent[uint64](lsfTonative_65439cc7c2ff(x.v)) }
+	return LawSpecAbsent[uint64]()
 }
 
 func lsfTonative_2a3b378408f8(x lsfMaybe[uint8]) LawSpecMaybe[uint8] {
-	if x.ok { return LawSpecJust[uint8](lsfTonative_d048b68cd5b1(x.v)) }
-	return LawSpecNothing[uint8]()
+	if x.ok { return LawSpecPresent[uint8](lsfTonative_d048b68cd5b1(x.v)) }
+	return LawSpecAbsent[uint8]()
 }
 
 func lsfTonative_96af144ed884(x lsfMaybe[*lsfGroup]) LawSpecMaybe[Group] {
-	if x.ok { return LawSpecJust[Group](lsfTonative_121c32c2e75a(x.v)) }
-	return LawSpecNothing[Group]()
+	if x.ok { return LawSpecPresent[Group](lsfTonative_121c32c2e75a(x.v)) }
+	return LawSpecAbsent[Group]()
 }
 
 func lsfTonative_aba61dc13579(x lsfMaybe[*lsfPartitionLog]) LawSpecMaybe[PartitionLog] {
-	if x.ok { return LawSpecJust[PartitionLog](lsfTonative_17b5cd6f2c74(x.v)) }
-	return LawSpecNothing[PartitionLog]()
+	if x.ok { return LawSpecPresent[PartitionLog](lsfTonative_17b5cd6f2c74(x.v)) }
+	return LawSpecAbsent[PartitionLog]()
 }
 
 func lsfTonative_bf624bc7affb(x lsfMaybe[*lsfProducerEntry]) LawSpecMaybe[ProducerEntry] {
-	if x.ok { return LawSpecJust[ProducerEntry](lsfTonative_b74501b1952d(x.v)) }
-	return LawSpecNothing[ProducerEntry]()
+	if x.ok { return LawSpecPresent[ProducerEntry](lsfTonative_b74501b1952d(x.v)) }
+	return LawSpecAbsent[ProducerEntry]()
 }
 
 func lsfTonative_99552686984c(x lsfMaybe[*lsfProducerIdAndEpoch]) LawSpecMaybe[ProducerIdAndEpoch] {
-	if x.ok { return LawSpecJust[ProducerIdAndEpoch](lsfTonative_6a5ea41697b3(x.v)) }
-	return LawSpecNothing[ProducerIdAndEpoch]()
+	if x.ok { return LawSpecPresent[ProducerIdAndEpoch](lsfTonative_6a5ea41697b3(x.v)) }
+	return LawSpecAbsent[ProducerIdAndEpoch]()
 }
 
 func lsfTonative_c818bd20f406(x lsfMaybe[*lsfProducerTag]) LawSpecMaybe[ProducerTag] {
-	if x.ok { return LawSpecJust[ProducerTag](lsfTonative_fcd7b841fa1b(x.v)) }
-	return LawSpecNothing[ProducerTag]()
+	if x.ok { return LawSpecPresent[ProducerTag](lsfTonative_fcd7b841fa1b(x.v)) }
+	return LawSpecAbsent[ProducerTag]()
 }
 
 func lsfTonative_437d0abf423f(x string) string {
@@ -10448,8 +10448,8 @@ func lsfFrom_0ccaa6764e43(v LawSpecValue) *lsfList[*lsfHeader] {
 
 func lsfFrom_07ad1a220d10(v LawSpecValue) lsfMaybe[*lsfLastSend] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[*lsfLastSend](lsfFrom_72b0d17d95d9(fields[0])) }
-	return lsfNothing[*lsfLastSend]()
+	if tag == "Maybe::Present" { return lsfPresent[*lsfLastSend](lsfFrom_72b0d17d95d9(fields[0])) }
+	return lsfAbsent[*lsfLastSend]()
 }
 
 func lsfFrom_3beb14b26dcb(v LawSpecValue) *lsfEntry[int64, int64] {
@@ -10628,8 +10628,8 @@ func lsfFromnative_0ccaa6764e43(n []Header) *lsfList[*lsfHeader] {
 }
 
 func lsfFromnative_07ad1a220d10(n LawSpecMaybe[LastSend]) lsfMaybe[*lsfLastSend] {
-	if v, ok := n.Value(); ok { return lsfJust[*lsfLastSend](lsfFromnative_72b0d17d95d9(v)) }
-	return lsfNothing[*lsfLastSend]()
+	if v, ok := n.Value(); ok { return lsfPresent[*lsfLastSend](lsfFromnative_72b0d17d95d9(v)) }
+	return lsfAbsent[*lsfLastSend]()
 }
 
 func lsfFromnative_3beb14b26dcb(n Entry[int64, int64]) *lsfEntry[int64, int64] {
@@ -10750,8 +10750,8 @@ func lsfTo_0ccaa6764e43(x *lsfList[*lsfHeader]) LawSpecValue {
 }
 
 func lsfTo_07ad1a220d10(x lsfMaybe[*lsfLastSend]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe lawtwin.kafka::type::LastSend", "Maybe::Just", lsfTo_72b0d17d95d9(x.v)) }
-	return lsfDataValue("Maybe lawtwin.kafka::type::LastSend", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe lawtwin.kafka::type::LastSend", "Maybe::Present", lsfTo_72b0d17d95d9(x.v)) }
+	return lsfDataValue("Maybe lawtwin.kafka::type::LastSend", "Maybe::Absent")
 }
 
 func lsfTo_3beb14b26dcb(x *lsfEntry[int64, int64]) LawSpecValue {
@@ -10849,8 +10849,8 @@ func lsfTonative_0ccaa6764e43(x *lsfList[*lsfHeader]) []Header {
 }
 
 func lsfTonative_07ad1a220d10(x lsfMaybe[*lsfLastSend]) LawSpecMaybe[LastSend] {
-	if x.ok { return LawSpecJust[LastSend](lsfTonative_72b0d17d95d9(x.v)) }
-	return LawSpecNothing[LastSend]()
+	if x.ok { return LawSpecPresent[LastSend](lsfTonative_72b0d17d95d9(x.v)) }
+	return LawSpecAbsent[LastSend]()
 }
 
 func lsfTonative_3beb14b26dcb(x *lsfEntry[int64, int64]) Entry[int64, int64] {

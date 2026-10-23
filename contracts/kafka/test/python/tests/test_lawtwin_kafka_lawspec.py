@@ -503,8 +503,8 @@ def test_murmur2_agrees_with_kafka__boundary0():
 # _let1___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
 # pecRecordField0, _let1___lawspecRecordField1) in let _let1__a =
-# attempt (produceRequest (_let0__tp) (Maybe::Nothing()) (_input1)) in
-# let _let2__b = attempt (produceRequest (_let0__tp) (Maybe::Nothing())
+# attempt (produceRequest (_let0__tp) (Maybe::Absent()) (_input1)) in
+# let _let2__b = attempt (produceRequest (_let0__tp) (Maybe::Absent())
 # (_input2)) in followsBatch (_let1__a) (_input1) (_let2__b) = true end
 # for all
 def test_broker_offsets_in_a_partition_are_dense_and__boundary0():
@@ -517,14 +517,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -540,14 +540,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -565,14 +565,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -588,14 +588,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -662,10 +662,10 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary0():
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__a = attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1)) in let _let2__b = attempt "
                     + "(produceRequest (_let0__tp) "
-                    + "(Maybe::Nothing()) (_input2)) in "
+                    + "(Maybe::Absent()) (_input2)) in "
                     + "followsBatch (_let1__a) (_input1) "
                     + "(_let2__b) = "
                     + "true"
@@ -856,9 +856,9 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary0():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -1174,7 +1174,7 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary0():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -1393,14 +1393,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -1416,14 +1416,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -1441,14 +1441,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -1464,14 +1464,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -1538,10 +1538,10 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary1():
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__a = attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1)) in let _let2__b = attempt "
                     + "(produceRequest (_let0__tp) "
-                    + "(Maybe::Nothing()) (_input2)) in "
+                    + "(Maybe::Absent()) (_input2)) in "
                     + "followsBatch (_let1__a) (_input1) "
                     + "(_let2__b) = "
                     + "true"
@@ -1732,9 +1732,9 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary1():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -2050,7 +2050,7 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary1():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -2272,14 +2272,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -2297,14 +2297,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -2371,10 +2371,10 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary2():
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__a = attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1)) in let _let2__b = attempt "
                     + "(produceRequest (_let0__tp) "
-                    + "(Maybe::Nothing()) (_input2)) in "
+                    + "(Maybe::Absent()) (_input2)) in "
                     + "followsBatch (_let1__a) (_input1) "
                     + "(_let2__b) = "
                     + "true"
@@ -2565,9 +2565,9 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary2():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -2883,7 +2883,7 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary2():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -3105,14 +3105,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -3128,14 +3128,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -3153,14 +3153,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -3176,14 +3176,14 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -3250,10 +3250,10 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary3():
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__a = attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1)) in let _let2__b = attempt "
                     + "(produceRequest (_let0__tp) "
-                    + "(Maybe::Nothing()) (_input2)) in "
+                    + "(Maybe::Absent()) (_input2)) in "
                     + "followsBatch (_let1__a) (_input1) "
                     + "(_let2__b) = "
                     + "true"
@@ -3444,9 +3444,9 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary3():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -3762,7 +3762,7 @@ def test_broker_offsets_in_a_partition_are_dense_and__boundary3():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -4312,10 +4312,10 @@ def test_broker_offsets_in_a_partition_are_dense_and__property(_case):
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__a = attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1)) in let _let2__b = attempt "
                     + "(produceRequest (_let0__tp) "
-                    + "(Maybe::Nothing()) (_input2)) in "
+                    + "(Maybe::Absent()) (_input2)) in "
                     + "followsBatch (_let1__a) (_input1) "
                     + "(_let2__b) = "
                     + "true"
@@ -4506,9 +4506,9 @@ def test_broker_offsets_in_a_partition_are_dense_and__property(_case):
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -4824,7 +4824,7 @@ def test_broker_offsets_in_a_partition_are_dense_and__property(_case):
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -5049,8 +5049,8 @@ def test_broker_offsets_in_a_partition_are_dense_and__property(_case):
 # _let1___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
 # pecRecordField0, _let1___lawspecRecordField1) in let _let1__a =
-# attempt (produceRequest (_let0__tp) (Maybe::Nothing()) (_input1)) in
-# let _let2__b = attempt (produceRequest (_let0__tp) (Maybe::Nothing())
+# attempt (produceRequest (_let0__tp) (Maybe::Absent()) (_input1)) in
+# let _let2__b = attempt (produceRequest (_let0__tp) (Maybe::Absent())
 # (_input2)) in followsBatch (_let1__a) (_input1) (_let2__b) = true end
 # for all
 def test_broker_offsets_in_a_partition_are_dense_and_2__boundary0():
@@ -5068,14 +5068,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -5091,14 +5091,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -5116,14 +5116,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -5139,14 +5139,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -5174,10 +5174,10 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary0():
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__a = attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1)) in let _let2__b = attempt "
                 + "(produceRequest (_let0__tp) "
-                + "(Maybe::Nothing()) (_input2)) in "
+                + "(Maybe::Absent()) (_input2)) in "
                 + "followsBatch (_let1__a) (_input1) "
                 + "(_let2__b) = "
                 + "true"
@@ -5366,7 +5366,7 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary0():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -5672,7 +5672,7 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary0():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -5864,14 +5864,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -5887,14 +5887,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -5912,14 +5912,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -5935,14 +5935,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -5970,10 +5970,10 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary1():
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__a = attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1)) in let _let2__b = attempt "
                 + "(produceRequest (_let0__tp) "
-                + "(Maybe::Nothing()) (_input2)) in "
+                + "(Maybe::Absent()) (_input2)) in "
                 + "followsBatch (_let1__a) (_input1) "
                 + "(_let2__b) = "
                 + "true"
@@ -6162,7 +6162,7 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary1():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -6468,7 +6468,7 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary1():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -6663,14 +6663,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -6688,14 +6688,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -6723,10 +6723,10 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary2():
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__a = attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1)) in let _let2__b = attempt "
                 + "(produceRequest (_let0__tp) "
-                + "(Maybe::Nothing()) (_input2)) in "
+                + "(Maybe::Absent()) (_input2)) in "
                 + "followsBatch (_let1__a) (_input1) "
                 + "(_let2__b) = "
                 + "true"
@@ -6915,7 +6915,7 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary2():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -7221,7 +7221,7 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary2():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -7416,14 +7416,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -7439,14 +7439,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -7464,14 +7464,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -7487,14 +7487,14 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -7522,10 +7522,10 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary3():
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__a = attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1)) in let _let2__b = attempt "
                 + "(produceRequest (_let0__tp) "
-                + "(Maybe::Nothing()) (_input2)) in "
+                + "(Maybe::Absent()) (_input2)) in "
                 + "followsBatch (_let1__a) (_input1) "
                 + "(_let2__b) = "
                 + "true"
@@ -7714,7 +7714,7 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary3():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -8020,7 +8020,7 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__boundary3():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -8504,10 +8504,10 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__property(_case):
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__a = attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1)) in let _let2__b = attempt "
                 + "(produceRequest (_let0__tp) "
-                + "(Maybe::Nothing()) (_input2)) in "
+                + "(Maybe::Absent()) (_input2)) in "
                 + "followsBatch (_let1__a) (_input1) "
                 + "(_let2__b) = "
                 + "true"
@@ -8696,7 +8696,7 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__property(_case):
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -9002,7 +9002,7 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__property(_case):
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -9192,7 +9192,7 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__property(_case):
 # _let1___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
 # pecRecordField0, _let1___lawspecRecordField1) in let _let1__it =
-# attempt (produceRequest (_let0__tp) (Maybe::Nothing()) (_input1)) in
+# attempt (produceRequest (_let0__tp) (Maybe::Absent()) (_input1)) in
 # match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
 # false; Either::Right _match2__1___lawspecSelection0x0 ->
 # (uncommittedFrom (_let0__tp) (_match2__1___lawspecSelection0x0) ==
@@ -9207,14 +9207,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -9230,14 +9230,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -9304,7 +9304,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary0():
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1)) in match (_let1__it) { "
                     + "Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
@@ -9558,7 +9558,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary0():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -9777,14 +9777,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -9800,14 +9800,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -9874,7 +9874,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary1():
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1)) in match (_let1__it) { "
                     + "Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
@@ -10128,7 +10128,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary1():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -10350,14 +10350,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -10424,7 +10424,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary2():
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1)) in match (_let1__it) { "
                     + "Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
@@ -10678,7 +10678,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary2():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -10900,14 +10900,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -10923,14 +10923,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -10997,7 +10997,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary3():
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1)) in match (_let1__it) { "
                     + "Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
@@ -11251,7 +11251,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order__boundary3():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -11792,7 +11792,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order__property(_case):
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1)) in match (_let1__it) { "
                     + "Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
@@ -12046,7 +12046,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order__property(_case):
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -12268,7 +12268,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order__property(_case):
 # _let1___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
 # pecRecordField0, _let1___lawspecRecordField1) in let _let1__it =
-# attempt (produceRequest (_let0__tp) (Maybe::Nothing()) (_input1)) in
+# attempt (produceRequest (_let0__tp) (Maybe::Absent()) (_input1)) in
 # match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
 # false; Either::Right _match2__1___lawspecSelection0x0 ->
 # (uncommittedFrom (_let0__tp) (_match2__1___lawspecSelection0x0) ==
@@ -12288,14 +12288,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -12311,14 +12311,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -12346,7 +12346,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary0():
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1)) in match (_let1__it) { "
                 + "Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
@@ -12591,7 +12591,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary0():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -12783,14 +12783,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -12806,14 +12806,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -12841,7 +12841,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary1():
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1)) in match (_let1__it) { "
                 + "Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
@@ -13086,7 +13086,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary1():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -13281,14 +13281,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -13316,7 +13316,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary2():
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1)) in match (_let1__it) { "
                 + "Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
@@ -13561,7 +13561,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary2():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -13756,14 +13756,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -13779,14 +13779,14 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -13814,7 +13814,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary3():
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1)) in match (_let1__it) { "
                 + "Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
@@ -14059,7 +14059,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__boundary3():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -14534,7 +14534,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__property(_case):
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1)) in match (_let1__it) { "
                 + "Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
@@ -14779,7 +14779,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__property(_case):
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -14972,10 +14972,10 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__property(_case):
 # _let1___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
 # pecRecordField0, _let1___lawspecRecordField1) in let _let1__it =
-# attempt (initProducerIdRequest (Maybe::Nothing())) in match
-# (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> false;
+# attempt (initProducerIdRequest (Maybe::Absent())) in match (_let1__it)
+# { Either::Left _match2__0___lawspecSelection0x0 -> false;
 # Either::Right _match2__1___lawspecSelection0x0 -> let _let3__tag =
-# Maybe::Just(tagOf (_match2__1___lawspecSelection0x0) (0)) in let
+# Maybe::Present(tagOf (_match2__1___lawspecSelection0x0) (0)) in let
 # _let4__first = attempt (produceRequest (_let0__tp) (_let3__tag)
 # (_input1)) in let _let5__retry = attempt (produceRequest (_let0__tp)
 # (_let3__tag) (_input1)) in ((_let4__first == _let5__retry) And
@@ -14993,14 +14993,14 @@ def test_broker_an_idempotent_retry_is_written_once__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -15016,14 +15016,14 @@ def test_broker_an_idempotent_retry_is_written_once__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -15091,12 +15091,12 @@ def test_broker_an_idempotent_retry_is_written_once__boundary0():
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Nothing())) in match "
+                    + "(Maybe::Absent())) in match "
                     + "(_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
-                    + "let _let3__tag = Maybe::Just(tagOf "
+                    + "let _let3__tag = Maybe::Present(tagOf "
                     + "(_match2__1___lawspecSelection0x0) "
                     + "(0)) in let _let4__first = attempt "
                     + "(produceRequest (_let0__tp) "
@@ -16250,7 +16250,7 @@ def test_broker_an_idempotent_retry_is_written_once__boundary0():
                                                         ),
                                                     ],
                                                 ),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 [
                                                     _definitions.evaluate_343(
                                                         symbols,
@@ -16389,7 +16389,7 @@ def test_broker_an_idempotent_retry_is_written_once__boundary0():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -16615,14 +16615,14 @@ def test_broker_an_idempotent_retry_is_written_once__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -16638,14 +16638,14 @@ def test_broker_an_idempotent_retry_is_written_once__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -16713,12 +16713,12 @@ def test_broker_an_idempotent_retry_is_written_once__boundary1():
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Nothing())) in match "
+                    + "(Maybe::Absent())) in match "
                     + "(_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
-                    + "let _let3__tag = Maybe::Just(tagOf "
+                    + "let _let3__tag = Maybe::Present(tagOf "
                     + "(_match2__1___lawspecSelection0x0) "
                     + "(0)) in let _let4__first = attempt "
                     + "(produceRequest (_let0__tp) "
@@ -17872,7 +17872,7 @@ def test_broker_an_idempotent_retry_is_written_once__boundary1():
                                                         ),
                                                     ],
                                                 ),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 [
                                                     _definitions.evaluate_343(
                                                         symbols,
@@ -18011,7 +18011,7 @@ def test_broker_an_idempotent_retry_is_written_once__boundary1():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -18240,14 +18240,14 @@ def test_broker_an_idempotent_retry_is_written_once__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -18315,12 +18315,12 @@ def test_broker_an_idempotent_retry_is_written_once__boundary2():
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Nothing())) in match "
+                    + "(Maybe::Absent())) in match "
                     + "(_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
-                    + "let _let3__tag = Maybe::Just(tagOf "
+                    + "let _let3__tag = Maybe::Present(tagOf "
                     + "(_match2__1___lawspecSelection0x0) "
                     + "(0)) in let _let4__first = attempt "
                     + "(produceRequest (_let0__tp) "
@@ -19474,7 +19474,7 @@ def test_broker_an_idempotent_retry_is_written_once__boundary2():
                                                         ),
                                                     ],
                                                 ),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 [
                                                     _definitions.evaluate_343(
                                                         symbols,
@@ -19613,7 +19613,7 @@ def test_broker_an_idempotent_retry_is_written_once__boundary2():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -19842,14 +19842,14 @@ def test_broker_an_idempotent_retry_is_written_once__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -19865,14 +19865,14 @@ def test_broker_an_idempotent_retry_is_written_once__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -19940,12 +19940,12 @@ def test_broker_an_idempotent_retry_is_written_once__boundary3():
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Nothing())) in match "
+                    + "(Maybe::Absent())) in match "
                     + "(_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
-                    + "let _let3__tag = Maybe::Just(tagOf "
+                    + "let _let3__tag = Maybe::Present(tagOf "
                     + "(_match2__1___lawspecSelection0x0) "
                     + "(0)) in let _let4__first = attempt "
                     + "(produceRequest (_let0__tp) "
@@ -21099,7 +21099,7 @@ def test_broker_an_idempotent_retry_is_written_once__boundary3():
                                                         ),
                                                     ],
                                                 ),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 [
                                                     _definitions.evaluate_343(
                                                         symbols,
@@ -21238,7 +21238,7 @@ def test_broker_an_idempotent_retry_is_written_once__boundary3():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -21787,12 +21787,12 @@ def test_broker_an_idempotent_retry_is_written_once__property(_case):
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Nothing())) in match "
+                    + "(Maybe::Absent())) in match "
                     + "(_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
-                    + "let _let3__tag = Maybe::Just(tagOf "
+                    + "let _let3__tag = Maybe::Present(tagOf "
                     + "(_match2__1___lawspecSelection0x0) "
                     + "(0)) in let _let4__first = attempt "
                     + "(produceRequest (_let0__tp) "
@@ -22946,7 +22946,7 @@ def test_broker_an_idempotent_retry_is_written_once__property(_case):
                                                         ),
                                                     ],
                                                 ),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 [
                                                     _definitions.evaluate_343(
                                                         symbols,
@@ -23085,7 +23085,7 @@ def test_broker_an_idempotent_retry_is_written_once__property(_case):
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -23317,10 +23317,10 @@ def test_broker_an_idempotent_retry_is_written_once__property(_case):
 # _let1___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
 # pecRecordField0, _let1___lawspecRecordField1) in let _let1__it =
-# attempt (initProducerIdRequest (Maybe::Nothing())) in match
-# (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> false;
+# attempt (initProducerIdRequest (Maybe::Absent())) in match (_let1__it)
+# { Either::Left _match2__0___lawspecSelection0x0 -> false;
 # Either::Right _match2__1___lawspecSelection0x0 -> let _let3__tag =
-# Maybe::Just(tagOf (_match2__1___lawspecSelection0x0) (0)) in let
+# Maybe::Present(tagOf (_match2__1___lawspecSelection0x0) (0)) in let
 # _let4__first = attempt (produceRequest (_let0__tp) (_let3__tag)
 # (_input1)) in let _let5__retry = attempt (produceRequest (_let0__tp)
 # (_let3__tag) (_input1)) in ((_let4__first == _let5__retry) And
@@ -23343,14 +23343,14 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -23366,14 +23366,14 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -23402,12 +23402,12 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary0():
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Nothing())) in match "
+                + "(Maybe::Absent())) in match "
                 + "(_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
-                + "let _let3__tag = Maybe::Just(tagOf "
+                + "let _let3__tag = Maybe::Present(tagOf "
                 + "(_match2__1___lawspecSelection0x0) "
                 + "(0)) in let _let4__first = attempt "
                 + "(produceRequest (_let0__tp) "
@@ -24544,7 +24544,7 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary0():
                                                     ),
                                                 ],
                                             ),
-                                            "Maybe::Just",
+                                            "Maybe::Present",
                                             [
                                                 _definitions.evaluate_343(
                                                     symbols,
@@ -24666,7 +24666,7 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary0():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -24865,14 +24865,14 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -24888,14 +24888,14 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -24924,12 +24924,12 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary1():
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Nothing())) in match "
+                + "(Maybe::Absent())) in match "
                 + "(_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
-                + "let _let3__tag = Maybe::Just(tagOf "
+                + "let _let3__tag = Maybe::Present(tagOf "
                 + "(_match2__1___lawspecSelection0x0) "
                 + "(0)) in let _let4__first = attempt "
                 + "(produceRequest (_let0__tp) "
@@ -26066,7 +26066,7 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary1():
                                                     ),
                                                 ],
                                             ),
-                                            "Maybe::Just",
+                                            "Maybe::Present",
                                             [
                                                 _definitions.evaluate_343(
                                                     symbols,
@@ -26188,7 +26188,7 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary1():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -26390,14 +26390,14 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -26426,12 +26426,12 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary2():
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Nothing())) in match "
+                + "(Maybe::Absent())) in match "
                 + "(_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
-                + "let _let3__tag = Maybe::Just(tagOf "
+                + "let _let3__tag = Maybe::Present(tagOf "
                 + "(_match2__1___lawspecSelection0x0) "
                 + "(0)) in let _let4__first = attempt "
                 + "(produceRequest (_let0__tp) "
@@ -27568,7 +27568,7 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary2():
                                                     ),
                                                 ],
                                             ),
-                                            "Maybe::Just",
+                                            "Maybe::Present",
                                             [
                                                 _definitions.evaluate_343(
                                                     symbols,
@@ -27690,7 +27690,7 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary2():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -27892,14 +27892,14 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -27915,14 +27915,14 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -27951,12 +27951,12 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary3():
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Nothing())) in match "
+                + "(Maybe::Absent())) in match "
                 + "(_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
-                + "let _let3__tag = Maybe::Just(tagOf "
+                + "let _let3__tag = Maybe::Present(tagOf "
                 + "(_match2__1___lawspecSelection0x0) "
                 + "(0)) in let _let4__first = attempt "
                 + "(produceRequest (_let0__tp) "
@@ -29093,7 +29093,7 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary3():
                                                     ),
                                                 ],
                                             ),
-                                            "Maybe::Just",
+                                            "Maybe::Present",
                                             [
                                                 _definitions.evaluate_343(
                                                     symbols,
@@ -29215,7 +29215,7 @@ def test_broker_an_idempotent_retry_is_written_once_2__boundary3():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -29698,12 +29698,12 @@ def test_broker_an_idempotent_retry_is_written_once_2__property(_case):
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Nothing())) in match "
+                + "(Maybe::Absent())) in match "
                 + "(_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
-                + "let _let3__tag = Maybe::Just(tagOf "
+                + "let _let3__tag = Maybe::Present(tagOf "
                 + "(_match2__1___lawspecSelection0x0) "
                 + "(0)) in let _let4__first = attempt "
                 + "(produceRequest (_let0__tp) "
@@ -30840,7 +30840,7 @@ def test_broker_an_idempotent_retry_is_written_once_2__property(_case):
                                                     ),
                                                 ],
                                             ),
-                                            "Maybe::Just",
+                                            "Maybe::Present",
                                             [
                                                 _definitions.evaluate_343(
                                                     symbols,
@@ -30962,7 +30962,7 @@ def test_broker_an_idempotent_retry_is_written_once_2__property(_case):
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -31155,13 +31155,13 @@ def test_broker_an_idempotent_retry_is_written_once_2__property(_case):
 # Broker: "|a gap in sequence numbers is refused| [native]
 # for all (t :: Text) (batch :: List
 # (lawtwin.kafka.model::type::Record)) => created (_input0) (1) implies
-# let _let0__it = attempt (initProducerIdRequest (Maybe::Nothing())) in
+# let _let0__it = attempt (initProducerIdRequest (Maybe::Absent())) in
 # match (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 ->
 # false; Either::Right _match1__1___lawspecSelection0x0 -> match
 # (attempt (produceRequest (let _let2___lawspecRecordField0 = _input0 in
 # let _let3___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___laws
-# pecRecordField0, _let3___lawspecRecordField1)) (Maybe::Just(tagOf
+# pecRecordField0, _let3___lawspecRecordField1)) (Maybe::Present(tagOf
 # (_match1__1___lawspecSelection0x0) (1))) (_input1))) { Either::Left
 # _match2__0__lawspecFailure -> let _let3__it =
 # _match2__0__lawspecFailure in match (_let3__it) {
@@ -31194,14 +31194,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -31217,14 +31217,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -31283,7 +31283,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary0():
                     + "sequence numbers is refused| [native] "
                     + "boundary 0 | expect let _let0__it = "
                     + "attempt (initProducerIdRequest "
-                    + "(Maybe::Nothing())) in match "
+                    + "(Maybe::Absent())) in match "
                     + "(_let0__it) { Either::Left "
                     + "_match1__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
@@ -31296,7 +31296,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary0():
                     + "ion::TopicPartition(_let2___lawspecRec"
                     + "ordField0, "
                     + "_let3___lawspecRecordField1)) "
-                    + "(Maybe::Just(tagOf "
+                    + "(Maybe::Present(tagOf "
                     + "(_match1__1___lawspecSelection0x0) "
                     + "(1))) (_input1))) { Either::Left "
                     + "_match2__0__lawspecFailure -> let "
@@ -31647,8 +31647,9 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary0():
                                                                                 ),
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 [
                                                                                     _definitions.evaluate_343(
@@ -32435,7 +32436,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary0():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -32620,14 +32621,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -32643,14 +32644,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -32709,7 +32710,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary1():
                     + "sequence numbers is refused| [native] "
                     + "boundary 1 | expect let _let0__it = "
                     + "attempt (initProducerIdRequest "
-                    + "(Maybe::Nothing())) in match "
+                    + "(Maybe::Absent())) in match "
                     + "(_let0__it) { Either::Left "
                     + "_match1__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
@@ -32722,7 +32723,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary1():
                     + "ion::TopicPartition(_let2___lawspecRec"
                     + "ordField0, "
                     + "_let3___lawspecRecordField1)) "
-                    + "(Maybe::Just(tagOf "
+                    + "(Maybe::Present(tagOf "
                     + "(_match1__1___lawspecSelection0x0) "
                     + "(1))) (_input1))) { Either::Left "
                     + "_match2__0__lawspecFailure -> let "
@@ -33073,8 +33074,9 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary1():
                                                                                 ),
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 [
                                                                                     _definitions.evaluate_343(
@@ -33861,7 +33863,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary1():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -34049,14 +34051,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -34115,7 +34117,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary2():
                     + "sequence numbers is refused| [native] "
                     + "boundary 2 | expect let _let0__it = "
                     + "attempt (initProducerIdRequest "
-                    + "(Maybe::Nothing())) in match "
+                    + "(Maybe::Absent())) in match "
                     + "(_let0__it) { Either::Left "
                     + "_match1__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
@@ -34128,7 +34130,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary2():
                     + "ion::TopicPartition(_let2___lawspecRec"
                     + "ordField0, "
                     + "_let3___lawspecRecordField1)) "
-                    + "(Maybe::Just(tagOf "
+                    + "(Maybe::Present(tagOf "
                     + "(_match1__1___lawspecSelection0x0) "
                     + "(1))) (_input1))) { Either::Left "
                     + "_match2__0__lawspecFailure -> let "
@@ -34479,8 +34481,9 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary2():
                                                                                 ),
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 [
                                                                                     _definitions.evaluate_343(
@@ -35267,7 +35270,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary2():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -35455,14 +35458,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -35478,14 +35481,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -35544,7 +35547,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary3():
                     + "sequence numbers is refused| [native] "
                     + "boundary 3 | expect let _let0__it = "
                     + "attempt (initProducerIdRequest "
-                    + "(Maybe::Nothing())) in match "
+                    + "(Maybe::Absent())) in match "
                     + "(_let0__it) { Either::Left "
                     + "_match1__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
@@ -35557,7 +35560,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary3():
                     + "ion::TopicPartition(_let2___lawspecRec"
                     + "ordField0, "
                     + "_let3___lawspecRecordField1)) "
-                    + "(Maybe::Just(tagOf "
+                    + "(Maybe::Present(tagOf "
                     + "(_match1__1___lawspecSelection0x0) "
                     + "(1))) (_input1))) { Either::Left "
                     + "_match2__0__lawspecFailure -> let "
@@ -35908,8 +35911,9 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary3():
                                                                                 ),
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 [
                                                                                     _definitions.evaluate_343(
@@ -36696,7 +36700,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__boundary3():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -37195,7 +37199,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__property(_case):
                     + "sequence numbers is refused| [native] "
                     + "property | expect let _let0__it = "
                     + "attempt (initProducerIdRequest "
-                    + "(Maybe::Nothing())) in match "
+                    + "(Maybe::Absent())) in match "
                     + "(_let0__it) { Either::Left "
                     + "_match1__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
@@ -37208,7 +37212,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__property(_case):
                     + "ion::TopicPartition(_let2___lawspecRec"
                     + "ordField0, "
                     + "_let3___lawspecRecordField1)) "
-                    + "(Maybe::Just(tagOf "
+                    + "(Maybe::Present(tagOf "
                     + "(_match1__1___lawspecSelection0x0) "
                     + "(1))) (_input1))) { Either::Left "
                     + "_match2__0__lawspecFailure -> let "
@@ -37559,8 +37563,9 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__property(_case):
                                                                                 ),
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 [
                                                                                     _definitions.evaluate_343(
@@ -38347,7 +38352,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__property(_case):
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         [],
                                                         64,
                                                         symbols,
@@ -38531,13 +38536,13 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__property(_case):
 # Broker: "|a gap in sequence numbers is refused| [cluster]
 # for all (t :: Text) (batch :: List
 # (lawtwin.kafka.model::type::Record)) => created (_input0) (1) implies
-# let _let0__it = attempt (initProducerIdRequest (Maybe::Nothing())) in
+# let _let0__it = attempt (initProducerIdRequest (Maybe::Absent())) in
 # match (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 ->
 # false; Either::Right _match1__1___lawspecSelection0x0 -> match
 # (attempt (produceRequest (let _let2___lawspecRecordField0 = _input0 in
 # let _let3___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___laws
-# pecRecordField0, _let3___lawspecRecordField1)) (Maybe::Just(tagOf
+# pecRecordField0, _let3___lawspecRecordField1)) (Maybe::Present(tagOf
 # (_match1__1___lawspecSelection0x0) (1))) (_input1))) { Either::Left
 # _match2__0__lawspecFailure -> let _let3__it =
 # _match2__0__lawspecFailure in match (_let3__it) {
@@ -38575,14 +38580,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -38598,14 +38603,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -38626,7 +38631,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary0():
                 + "[cluster] boundary 0 | expect let "
                 + "_let0__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Nothing())) in match "
+                + "(Maybe::Absent())) in match "
                 + "(_let0__it) { Either::Left "
                 + "_match1__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
@@ -38639,7 +38644,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary0():
                 + "ion::TopicPartition(_let2___lawspecRec"
                 + "ordField0, "
                 + "_let3___lawspecRecordField1)) "
-                + "(Maybe::Just(tagOf "
+                + "(Maybe::Present(tagOf "
                 + "(_match1__1___lawspecSelection0x0) "
                 + "(1))) (_input1))) { Either::Left "
                 + "_match2__0__lawspecFailure -> let "
@@ -38977,8 +38982,9 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary0():
                                                                             ),
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             [
                                                                                 _definitions.evaluate_343(
@@ -39759,7 +39765,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary0():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     [],
                                                     64,
                                                     symbols,
@@ -39929,14 +39935,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -39952,14 +39958,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -39980,7 +39986,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary1():
                 + "[cluster] boundary 1 | expect let "
                 + "_let0__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Nothing())) in match "
+                + "(Maybe::Absent())) in match "
                 + "(_let0__it) { Either::Left "
                 + "_match1__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
@@ -39993,7 +39999,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary1():
                 + "ion::TopicPartition(_let2___lawspecRec"
                 + "ordField0, "
                 + "_let3___lawspecRecordField1)) "
-                + "(Maybe::Just(tagOf "
+                + "(Maybe::Present(tagOf "
                 + "(_match1__1___lawspecSelection0x0) "
                 + "(1))) (_input1))) { Either::Left "
                 + "_match2__0__lawspecFailure -> let "
@@ -40331,8 +40337,9 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary1():
                                                                             ),
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             [
                                                                                 _definitions.evaluate_343(
@@ -41113,7 +41120,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary1():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     [],
                                                     64,
                                                     symbols,
@@ -41286,14 +41293,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -41314,7 +41321,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary2():
                 + "[cluster] boundary 2 | expect let "
                 + "_let0__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Nothing())) in match "
+                + "(Maybe::Absent())) in match "
                 + "(_let0__it) { Either::Left "
                 + "_match1__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
@@ -41327,7 +41334,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary2():
                 + "ion::TopicPartition(_let2___lawspecRec"
                 + "ordField0, "
                 + "_let3___lawspecRecordField1)) "
-                + "(Maybe::Just(tagOf "
+                + "(Maybe::Present(tagOf "
                 + "(_match1__1___lawspecSelection0x0) "
                 + "(1))) (_input1))) { Either::Left "
                 + "_match2__0__lawspecFailure -> let "
@@ -41665,8 +41672,9 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary2():
                                                                             ),
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             [
                                                                                 _definitions.evaluate_343(
@@ -42447,7 +42455,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary2():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     [],
                                                     64,
                                                     symbols,
@@ -42620,14 +42628,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -42643,14 +42651,14 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -42671,7 +42679,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary3():
                 + "[cluster] boundary 3 | expect let "
                 + "_let0__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Nothing())) in match "
+                + "(Maybe::Absent())) in match "
                 + "(_let0__it) { Either::Left "
                 + "_match1__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
@@ -42684,7 +42692,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary3():
                 + "ion::TopicPartition(_let2___lawspecRec"
                 + "ordField0, "
                 + "_let3___lawspecRecordField1)) "
-                + "(Maybe::Just(tagOf "
+                + "(Maybe::Present(tagOf "
                 + "(_match1__1___lawspecSelection0x0) "
                 + "(1))) (_input1))) { Either::Left "
                 + "_match2__0__lawspecFailure -> let "
@@ -43022,8 +43030,9 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary3():
                                                                             ),
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             [
                                                                                 _definitions.evaluate_343(
@@ -43804,7 +43813,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__boundary3():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     [],
                                                     64,
                                                     symbols,
@@ -44250,7 +44259,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__property(_case):
                 + "[cluster] property | expect let "
                 + "_let0__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Nothing())) in match "
+                + "(Maybe::Absent())) in match "
                 + "(_let0__it) { Either::Left "
                 + "_match1__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
@@ -44263,7 +44272,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__property(_case):
                 + "ion::TopicPartition(_let2___lawspecRec"
                 + "ordField0, "
                 + "_let3___lawspecRecordField1)) "
-                + "(Maybe::Just(tagOf "
+                + "(Maybe::Present(tagOf "
                 + "(_match1__1___lawspecSelection0x0) "
                 + "(1))) (_input1))) { Either::Left "
                 + "_match2__0__lawspecFailure -> let "
@@ -44601,8 +44610,9 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__property(_case):
                                                                             ),
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             [
                                                                                 _definitions.evaluate_343(
@@ -45383,7 +45393,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__property(_case):
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     [],
                                                     64,
                                                     symbols,
@@ -45554,10 +45564,10 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__property(_case):
 # _let1___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
 # pecRecordField0, _let1___lawspecRecordField1) in let _let1__it =
-# attempt (initProducerIdRequest (Maybe::Just(_input1))) in match
+# attempt (initProducerIdRequest (Maybe::Present(_input1))) in match
 # (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> false;
 # Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it =
-# attempt (initProducerIdRequest (Maybe::Just(_input1))) in match
+# attempt (initProducerIdRequest (Maybe::Present(_input1))) in match
 # (_let3__it) { Either::Left _match4__0___match__lawspecSelection0x0_0
 # -> false; Either::Right _match4__1___match__lawspecSelection0x0_0 ->
 # ((fencedBy (_match2__1___lawspecSelection0x0)
@@ -45590,7 +45600,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__property(_case):
 # lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
 # lawtwin.kafka.model::type::KafkaError::IllegalState -> false };
 # Either::Right _match5__1__lawspecResult -> false }) And match (attempt
-# (produceRequest (_let0__tp) (Maybe::Just(tagOf
+# (produceRequest (_let0__tp) (Maybe::Present(tagOf
 # (_match2__1___lawspecSelection0x0) (0))) (_input2))) { Either::Left
 # _match5__0__lawspecFailure -> let _let6__it =
 # _match5__0__lawspecFailure in match (_let6__it) {
@@ -45624,14 +45634,14 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -45647,14 +45657,14 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -45721,14 +45731,14 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary0():
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Just(_input1))) in match "
+                    + "(Maybe::Present(_input1))) in match "
                     + "(_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
                     + "let _let3__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Just(_input1))) in match "
+                    + "(Maybe::Present(_input1))) in match "
                     + "(_let3__it) { Either::Left "
                     + "_match4__0___match__lawspecSelection0x"
                     + "0_0 -> false; Either::Right "
@@ -45794,7 +45804,7 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary0():
                     + "Either::Right "
                     + "_match5__1__lawspecResult -> false }) "
                     + "And match (attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Just(tagOf "
+                    + "(_let0__tp) (Maybe::Present(tagOf "
                     + "(_match2__1___lawspecSelection0x0) "
                     + "(0))) (_input2))) { Either::Left "
                     + "_match5__0__lawspecFailure -> let "
@@ -47140,8 +47150,9 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary0():
                                                                                                             ),
                                                                                                             (
                                                                                                                 "Mayb"
-                                                                                                                "e::J"
-                                                                                                                "ust"
+                                                                                                                "e::P"
+                                                                                                                "rese"
+                                                                                                                "nt"
                                                                                                             ),
                                                                                                             [
                                                                                                                 _definitions.evaluate_343(
@@ -47997,8 +48008,9 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary0():
                                                                                 ),
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 [
                                                                                     _input1,
@@ -48273,7 +48285,7 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary0():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_input1],
                                                             64,
                                                             symbols,
@@ -48509,14 +48521,14 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -48532,14 +48544,14 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -48606,14 +48618,14 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary1():
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Just(_input1))) in match "
+                    + "(Maybe::Present(_input1))) in match "
                     + "(_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
                     + "let _let3__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Just(_input1))) in match "
+                    + "(Maybe::Present(_input1))) in match "
                     + "(_let3__it) { Either::Left "
                     + "_match4__0___match__lawspecSelection0x"
                     + "0_0 -> false; Either::Right "
@@ -48679,7 +48691,7 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary1():
                     + "Either::Right "
                     + "_match5__1__lawspecResult -> false }) "
                     + "And match (attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Just(tagOf "
+                    + "(_let0__tp) (Maybe::Present(tagOf "
                     + "(_match2__1___lawspecSelection0x0) "
                     + "(0))) (_input2))) { Either::Left "
                     + "_match5__0__lawspecFailure -> let "
@@ -50025,8 +50037,9 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary1():
                                                                                                             ),
                                                                                                             (
                                                                                                                 "Mayb"
-                                                                                                                "e::J"
-                                                                                                                "ust"
+                                                                                                                "e::P"
+                                                                                                                "rese"
+                                                                                                                "nt"
                                                                                                             ),
                                                                                                             [
                                                                                                                 _definitions.evaluate_343(
@@ -50882,8 +50895,9 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary1():
                                                                                 ),
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 [
                                                                                     _input1,
@@ -51158,7 +51172,7 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary1():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_input1],
                                                             64,
                                                             symbols,
@@ -51391,14 +51405,14 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -51465,14 +51479,14 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary2():
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Just(_input1))) in match "
+                    + "(Maybe::Present(_input1))) in match "
                     + "(_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
                     + "let _let3__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Just(_input1))) in match "
+                    + "(Maybe::Present(_input1))) in match "
                     + "(_let3__it) { Either::Left "
                     + "_match4__0___match__lawspecSelection0x"
                     + "0_0 -> false; Either::Right "
@@ -51538,7 +51552,7 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary2():
                     + "Either::Right "
                     + "_match5__1__lawspecResult -> false }) "
                     + "And match (attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Just(tagOf "
+                    + "(_let0__tp) (Maybe::Present(tagOf "
                     + "(_match2__1___lawspecSelection0x0) "
                     + "(0))) (_input2))) { Either::Left "
                     + "_match5__0__lawspecFailure -> let "
@@ -52884,8 +52898,9 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary2():
                                                                                                             ),
                                                                                                             (
                                                                                                                 "Mayb"
-                                                                                                                "e::J"
-                                                                                                                "ust"
+                                                                                                                "e::P"
+                                                                                                                "rese"
+                                                                                                                "nt"
                                                                                                             ),
                                                                                                             [
                                                                                                                 _definitions.evaluate_343(
@@ -53741,8 +53756,9 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary2():
                                                                                 ),
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 [
                                                                                     _input1,
@@ -54017,7 +54033,7 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary2():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_input1],
                                                             64,
                                                             symbols,
@@ -54250,14 +54266,14 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -54273,14 +54289,14 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -54347,14 +54363,14 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary3():
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Just(_input1))) in match "
+                    + "(Maybe::Present(_input1))) in match "
                     + "(_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
                     + "let _let3__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Just(_input1))) in match "
+                    + "(Maybe::Present(_input1))) in match "
                     + "(_let3__it) { Either::Left "
                     + "_match4__0___match__lawspecSelection0x"
                     + "0_0 -> false; Either::Right "
@@ -54420,7 +54436,7 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary3():
                     + "Either::Right "
                     + "_match5__1__lawspecResult -> false }) "
                     + "And match (attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Just(tagOf "
+                    + "(_let0__tp) (Maybe::Present(tagOf "
                     + "(_match2__1___lawspecSelection0x0) "
                     + "(0))) (_input2))) { Either::Left "
                     + "_match5__0__lawspecFailure -> let "
@@ -55766,8 +55782,9 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary3():
                                                                                                             ),
                                                                                                             (
                                                                                                                 "Mayb"
-                                                                                                                "e::J"
-                                                                                                                "ust"
+                                                                                                                "e::P"
+                                                                                                                "rese"
+                                                                                                                "nt"
                                                                                                             ),
                                                                                                             [
                                                                                                                 _definitions.evaluate_343(
@@ -56623,8 +56640,9 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary3():
                                                                                 ),
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 [
                                                                                     _input1,
@@ -56899,7 +56917,7 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary3():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_input1],
                                                             64,
                                                             symbols,
@@ -57484,14 +57502,14 @@ def test_broker_a_new_epoch_fences_the_older_producer__property(_case):
                     + "_let1___lawspecRecordField1) in let "
                     + "_let1__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Just(_input1))) in match "
+                    + "(Maybe::Present(_input1))) in match "
                     + "(_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "false; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
                     + "let _let3__it = attempt "
                     + "(initProducerIdRequest "
-                    + "(Maybe::Just(_input1))) in match "
+                    + "(Maybe::Present(_input1))) in match "
                     + "(_let3__it) { Either::Left "
                     + "_match4__0___match__lawspecSelection0x"
                     + "0_0 -> false; Either::Right "
@@ -57557,7 +57575,7 @@ def test_broker_a_new_epoch_fences_the_older_producer__property(_case):
                     + "Either::Right "
                     + "_match5__1__lawspecResult -> false }) "
                     + "And match (attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Just(tagOf "
+                    + "(_let0__tp) (Maybe::Present(tagOf "
                     + "(_match2__1___lawspecSelection0x0) "
                     + "(0))) (_input2))) { Either::Left "
                     + "_match5__0__lawspecFailure -> let "
@@ -58903,8 +58921,9 @@ def test_broker_a_new_epoch_fences_the_older_producer__property(_case):
                                                                                                             ),
                                                                                                             (
                                                                                                                 "Mayb"
-                                                                                                                "e::J"
-                                                                                                                "ust"
+                                                                                                                "e::P"
+                                                                                                                "rese"
+                                                                                                                "nt"
                                                                                                             ),
                                                                                                             [
                                                                                                                 _definitions.evaluate_343(
@@ -59760,8 +59779,9 @@ def test_broker_a_new_epoch_fences_the_older_producer__property(_case):
                                                                                 ),
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 [
                                                                                     _input1,
@@ -60036,7 +60056,7 @@ def test_broker_a_new_epoch_fences_the_older_producer__property(_case):
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_input1],
                                                             64,
                                                             symbols,
@@ -60268,10 +60288,10 @@ def test_broker_a_new_epoch_fences_the_older_producer__property(_case):
 # _let1___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
 # pecRecordField0, _let1___lawspecRecordField1) in let _let1__it =
-# attempt (initProducerIdRequest (Maybe::Just(_input1))) in match
+# attempt (initProducerIdRequest (Maybe::Present(_input1))) in match
 # (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> false;
 # Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it =
-# attempt (initProducerIdRequest (Maybe::Just(_input1))) in match
+# attempt (initProducerIdRequest (Maybe::Present(_input1))) in match
 # (_let3__it) { Either::Left _match4__0___match__lawspecSelection0x0_0
 # -> false; Either::Right _match4__1___match__lawspecSelection0x0_0 ->
 # ((fencedBy (_match2__1___lawspecSelection0x0)
@@ -60304,7 +60324,7 @@ def test_broker_a_new_epoch_fences_the_older_producer__property(_case):
 # lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
 # lawtwin.kafka.model::type::KafkaError::IllegalState -> false };
 # Either::Right _match5__1__lawspecResult -> false }) And match (attempt
-# (produceRequest (_let0__tp) (Maybe::Just(tagOf
+# (produceRequest (_let0__tp) (Maybe::Present(tagOf
 # (_match2__1___lawspecSelection0x0) (0))) (_input2))) { Either::Left
 # _match5__0__lawspecFailure -> let _let6__it =
 # _match5__0__lawspecFailure in match (_let6__it) {
@@ -60343,14 +60363,14 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -60366,14 +60386,14 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -60401,14 +60421,14 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary0():
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Just(_input1))) in match "
+                + "(Maybe::Present(_input1))) in match "
                 + "(_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
                 + "let _let3__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Just(_input1))) in match "
+                + "(Maybe::Present(_input1))) in match "
                 + "(_let3__it) { Either::Left "
                 + "_match4__0___match__lawspecSelection0x"
                 + "0_0 -> false; Either::Right "
@@ -60474,7 +60494,7 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary0():
                 + "Either::Right "
                 + "_match5__1__lawspecResult -> false }) "
                 + "And match (attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Just(tagOf "
+                + "(_let0__tp) (Maybe::Present(tagOf "
                 + "(_match2__1___lawspecSelection0x0) "
                 + "(0))) (_input2))) { Either::Left "
                 + "_match5__0__lawspecFailure -> let "
@@ -61820,8 +61840,9 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary0():
                                                                                                         ),
                                                                                                         (
                                                                                                             "Mayb"
-                                                                                                            "e::J"
-                                                                                                            "ust"
+                                                                                                            "e::P"
+                                                                                                            "rese"
+                                                                                                            "nt"
                                                                                                         ),
                                                                                                         [
                                                                                                             _definitions.evaluate_343(
@@ -62677,8 +62698,9 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary0():
                                                                             ),
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             [
                                                                                 _input1,
@@ -62940,7 +62962,7 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary0():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_input1],
                                                         64,
                                                         symbols,
@@ -63149,14 +63171,14 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -63172,14 +63194,14 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -63207,14 +63229,14 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary1():
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Just(_input1))) in match "
+                + "(Maybe::Present(_input1))) in match "
                 + "(_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
                 + "let _let3__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Just(_input1))) in match "
+                + "(Maybe::Present(_input1))) in match "
                 + "(_let3__it) { Either::Left "
                 + "_match4__0___match__lawspecSelection0x"
                 + "0_0 -> false; Either::Right "
@@ -63280,7 +63302,7 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary1():
                 + "Either::Right "
                 + "_match5__1__lawspecResult -> false }) "
                 + "And match (attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Just(tagOf "
+                + "(_let0__tp) (Maybe::Present(tagOf "
                 + "(_match2__1___lawspecSelection0x0) "
                 + "(0))) (_input2))) { Either::Left "
                 + "_match5__0__lawspecFailure -> let "
@@ -64626,8 +64648,9 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary1():
                                                                                                         ),
                                                                                                         (
                                                                                                             "Mayb"
-                                                                                                            "e::J"
-                                                                                                            "ust"
+                                                                                                            "e::P"
+                                                                                                            "rese"
+                                                                                                            "nt"
                                                                                                         ),
                                                                                                         [
                                                                                                             _definitions.evaluate_343(
@@ -65483,8 +65506,9 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary1():
                                                                             ),
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             [
                                                                                 _input1,
@@ -65746,7 +65770,7 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary1():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_input1],
                                                         64,
                                                         symbols,
@@ -65952,14 +65976,14 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -65987,14 +66011,14 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary2():
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Just(_input1))) in match "
+                + "(Maybe::Present(_input1))) in match "
                 + "(_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
                 + "let _let3__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Just(_input1))) in match "
+                + "(Maybe::Present(_input1))) in match "
                 + "(_let3__it) { Either::Left "
                 + "_match4__0___match__lawspecSelection0x"
                 + "0_0 -> false; Either::Right "
@@ -66060,7 +66084,7 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary2():
                 + "Either::Right "
                 + "_match5__1__lawspecResult -> false }) "
                 + "And match (attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Just(tagOf "
+                + "(_let0__tp) (Maybe::Present(tagOf "
                 + "(_match2__1___lawspecSelection0x0) "
                 + "(0))) (_input2))) { Either::Left "
                 + "_match5__0__lawspecFailure -> let "
@@ -67406,8 +67430,9 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary2():
                                                                                                         ),
                                                                                                         (
                                                                                                             "Mayb"
-                                                                                                            "e::J"
-                                                                                                            "ust"
+                                                                                                            "e::P"
+                                                                                                            "rese"
+                                                                                                            "nt"
                                                                                                         ),
                                                                                                         [
                                                                                                             _definitions.evaluate_343(
@@ -68263,8 +68288,9 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary2():
                                                                             ),
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             [
                                                                                 _input1,
@@ -68526,7 +68552,7 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary2():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_input1],
                                                         64,
                                                         symbols,
@@ -68732,14 +68758,14 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -68755,14 +68781,14 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -68790,14 +68816,14 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary3():
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Just(_input1))) in match "
+                + "(Maybe::Present(_input1))) in match "
                 + "(_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
                 + "let _let3__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Just(_input1))) in match "
+                + "(Maybe::Present(_input1))) in match "
                 + "(_let3__it) { Either::Left "
                 + "_match4__0___match__lawspecSelection0x"
                 + "0_0 -> false; Either::Right "
@@ -68863,7 +68889,7 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary3():
                 + "Either::Right "
                 + "_match5__1__lawspecResult -> false }) "
                 + "And match (attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Just(tagOf "
+                + "(_let0__tp) (Maybe::Present(tagOf "
                 + "(_match2__1___lawspecSelection0x0) "
                 + "(0))) (_input2))) { Either::Left "
                 + "_match5__0__lawspecFailure -> let "
@@ -70209,8 +70235,9 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary3():
                                                                                                         ),
                                                                                                         (
                                                                                                             "Mayb"
-                                                                                                            "e::J"
-                                                                                                            "ust"
+                                                                                                            "e::P"
+                                                                                                            "rese"
+                                                                                                            "nt"
                                                                                                         ),
                                                                                                         [
                                                                                                             _definitions.evaluate_343(
@@ -71066,8 +71093,9 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary3():
                                                                             ),
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             [
                                                                                 _input1,
@@ -71329,7 +71357,7 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary3():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_input1],
                                                         64,
                                                         symbols,
@@ -71848,14 +71876,14 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__property(_case):
                 + "_let1___lawspecRecordField1) in let "
                 + "_let1__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Just(_input1))) in match "
+                + "(Maybe::Present(_input1))) in match "
                 + "(_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "false; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
                 + "let _let3__it = attempt "
                 + "(initProducerIdRequest "
-                + "(Maybe::Just(_input1))) in match "
+                + "(Maybe::Present(_input1))) in match "
                 + "(_let3__it) { Either::Left "
                 + "_match4__0___match__lawspecSelection0x"
                 + "0_0 -> false; Either::Right "
@@ -71921,7 +71949,7 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__property(_case):
                 + "Either::Right "
                 + "_match5__1__lawspecResult -> false }) "
                 + "And match (attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Just(tagOf "
+                + "(_let0__tp) (Maybe::Present(tagOf "
                 + "(_match2__1___lawspecSelection0x0) "
                 + "(0))) (_input2))) { Either::Left "
                 + "_match5__0__lawspecFailure -> let "
@@ -73267,8 +73295,9 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__property(_case):
                                                                                                         ),
                                                                                                         (
                                                                                                             "Mayb"
-                                                                                                            "e::J"
-                                                                                                            "ust"
+                                                                                                            "e::P"
+                                                                                                            "rese"
+                                                                                                            "nt"
                                                                                                         ),
                                                                                                         [
                                                                                                             _definitions.evaluate_343(
@@ -74124,8 +74153,9 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__property(_case):
                                                                             ),
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             [
                                                                                 _input1,
@@ -74387,7 +74417,7 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__property(_case):
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_input1],
                                                         64,
                                                         symbols,
@@ -74598,14 +74628,14 @@ def test_broker_read_committed_fetches_never_see_open_or__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -74621,14 +74651,14 @@ def test_broker_read_committed_fetches_never_see_open_or__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -74746,14 +74776,14 @@ def test_broker_read_committed_fetches_never_see_open_or__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -74769,14 +74799,14 @@ def test_broker_read_committed_fetches_never_see_open_or__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -74891,14 +74921,14 @@ def test_broker_read_committed_fetches_never_see_open_or__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -75013,14 +75043,14 @@ def test_broker_read_committed_fetches_never_see_open_or__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -75036,14 +75066,14 @@ def test_broker_read_committed_fetches_never_see_open_or__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -75573,14 +75603,14 @@ def test_broker_read_committed_fetches_never_see_open_or_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -75596,14 +75626,14 @@ def test_broker_read_committed_fetches_never_see_open_or_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -75667,14 +75697,14 @@ def test_broker_read_committed_fetches_never_see_open_or_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -75690,14 +75720,14 @@ def test_broker_read_committed_fetches_never_see_open_or_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -75758,14 +75788,14 @@ def test_broker_read_committed_fetches_never_see_open_or_2__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -75826,14 +75856,14 @@ def test_broker_read_committed_fetches_never_see_open_or_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -75849,14 +75879,14 @@ def test_broker_read_committed_fetches_never_see_open_or_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -76263,14 +76293,14 @@ def test_broker_a_committed_transaction_is_read_whole_and__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -76286,14 +76316,14 @@ def test_broker_a_committed_transaction_is_read_whole_and__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -76410,14 +76440,14 @@ def test_broker_a_committed_transaction_is_read_whole_and__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -76433,14 +76463,14 @@ def test_broker_a_committed_transaction_is_read_whole_and__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -76554,14 +76584,14 @@ def test_broker_a_committed_transaction_is_read_whole_and__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -76675,14 +76705,14 @@ def test_broker_a_committed_transaction_is_read_whole_and__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -76698,14 +76728,14 @@ def test_broker_a_committed_transaction_is_read_whole_and__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -77229,14 +77259,14 @@ def test_broker_a_committed_transaction_is_read_whole_and_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -77252,14 +77282,14 @@ def test_broker_a_committed_transaction_is_read_whole_and_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -77322,14 +77352,14 @@ def test_broker_a_committed_transaction_is_read_whole_and_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -77345,14 +77375,14 @@ def test_broker_a_committed_transaction_is_read_whole_and_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -77412,14 +77442,14 @@ def test_broker_a_committed_transaction_is_read_whole_and_2__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -77479,14 +77509,14 @@ def test_broker_a_committed_transaction_is_read_whole_and_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -77502,14 +77532,14 @@ def test_broker_a_committed_transaction_is_read_whole_and_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -93459,14 +93489,14 @@ def test_broker_the_stable_offset_never_passes_the_high__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -93482,14 +93512,14 @@ def test_broker_the_stable_offset_never_passes_the_high__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -93605,14 +93635,14 @@ def test_broker_the_stable_offset_never_passes_the_high__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -93628,14 +93658,14 @@ def test_broker_the_stable_offset_never_passes_the_high__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -93748,14 +93778,14 @@ def test_broker_the_stable_offset_never_passes_the_high__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -93868,14 +93898,14 @@ def test_broker_the_stable_offset_never_passes_the_high__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -93891,14 +93921,14 @@ def test_broker_the_stable_offset_never_passes_the_high__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -94418,14 +94448,14 @@ def test_broker_the_stable_offset_never_passes_the_high_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -94441,14 +94471,14 @@ def test_broker_the_stable_offset_never_passes_the_high_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -94505,14 +94535,14 @@ def test_broker_the_stable_offset_never_passes_the_high_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -94528,14 +94558,14 @@ def test_broker_the_stable_offset_never_passes_the_high_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -94589,14 +94619,14 @@ def test_broker_the_stable_offset_never_passes_the_high_2__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -94650,14 +94680,14 @@ def test_broker_the_stable_offset_never_passes_the_high_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -94673,14 +94703,14 @@ def test_broker_the_stable_offset_never_passes_the_high_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -95061,7 +95091,7 @@ def test_broker_the_stable_offset_never_passes_the_high_2__property(_case):
 # for all (t :: Text) (n :: Int32) => match (attempt (createTopic
 # (_input0) (_input1))) { Either::Left _match0__0__railwayError0 ->
 # false; Either::Right _match0__1__railwayValue1 -> true } implies
-# partitionsFor (_input0) = Maybe::Just(_input1) end for all
+# partitionsFor (_input0) = Maybe::Present(_input1) end for all
 _lawspec_inputs_admin_a_new_topic_has_the_partitions_asked_for = [
     "(text)",
     "(int Int32 1 64)",
@@ -95313,7 +95343,7 @@ def _lawspec_case_admin_a_new_topic_has_the_partitions_asked_for(_values):
                     + "has the partitions asked for| "
                     + "[native] search | expect "
                     + "partitionsFor (_input0) = "
-                    + "Maybe::Just(_input1)"
+                    + "Maybe::Present(_input1)"
                 ),
                 lambda: (
                     ls.handler_schema(_lawspec_schema).from_native(
@@ -95329,7 +95359,7 @@ def _lawspec_case_admin_a_new_topic_has_the_partitions_asked_for(_values):
                 lambda: (
                     _lawspec_schema.construct(
                         _schema.Named("Maybe", [_schema.Named("Int32")]),
-                        "Maybe::Just",
+                        "Maybe::Present",
                         [_input1],
                         64,
                         symbols,
@@ -95625,7 +95655,7 @@ def test_admin_a_new_topic_has_the_partitions_asked_for__property(_seed):
                             + "has the partitions asked for| "
                             + "[native] property | expect "
                             + "partitionsFor (_input0) = "
-                            + "Maybe::Just(_input1)"
+                            + "Maybe::Present(_input1)"
                         ),
                         lambda: (
                             ls.handler_schema(_lawspec_schema).from_native(
@@ -95649,7 +95679,7 @@ def test_admin_a_new_topic_has_the_partitions_asked_for__property(_seed):
                                     "Maybe",
                                     [_schema.Named("Int32")],
                                 ),
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 [_input1],
                                 64,
                                 symbols,
@@ -96207,7 +96237,7 @@ def test_admin_a_new_topic_has_the_partitions_asked_for__property(_seed):
 # for all (t :: Text) (n :: Int32) => match (attempt (createTopic
 # (_input0) (_input1))) { Either::Left _match0__0__railwayError0 ->
 # false; Either::Right _match0__1__railwayValue1 -> true } implies
-# partitionsFor (_input0) = Maybe::Just(_input1) end for all
+# partitionsFor (_input0) = Maybe::Present(_input1) end for all
 _lawspec_inputs_admin_a_new_topic_has_the_partitions_asked_for_2 = [
     "(text)",
     "(int Int32 1 64)",
@@ -96379,7 +96409,7 @@ def _lawspec_case_admin_a_new_topic_has_the_partitions_asked_for_2(_values):
                 + "has the partitions asked for| "
                 + "[cluster] search | expect "
                 + "partitionsFor (_input0) = "
-                + "Maybe::Just(_input1)"
+                + "Maybe::Present(_input1)"
             ),
             lambda: (
                 ls.handler_schema(_lawspec_schema).from_native(
@@ -96395,7 +96425,7 @@ def _lawspec_case_admin_a_new_topic_has_the_partitions_asked_for_2(_values):
             lambda: (
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Int32")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -96637,7 +96667,7 @@ def test_admin_a_new_topic_has_the_partitions_asked_for_2__property(_seed):
                         + "has the partitions asked for| "
                         + "[cluster] property | expect "
                         + "partitionsFor (_input0) = "
-                        + "Maybe::Just(_input1)"
+                        + "Maybe::Present(_input1)"
                     ),
                     lambda: (
                         ls.handler_schema(_lawspec_schema).from_native(
@@ -96653,7 +96683,7 @@ def test_admin_a_new_topic_has_the_partitions_asked_for_2__property(_seed):
                     lambda: (
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Int32")]),
-                            "Maybe::Just",
+                            "Maybe::Present",
                             [_input1],
                             64,
                             symbols,
@@ -101997,8 +102027,8 @@ def test_admin_a_topic_is_created_once_cluster__property(_seed):
 # (createPartitions (_input0) (lawspecCollectionsSaturatingInt32
 # ((_input1 + 1))))) { Either::Left _match0__0__railwayError0 -> false;
 # Either::Right _match0__1__railwayValue1 -> true }) And (partitionsFor
-# (_input0) == Maybe::Just(lawspecCollectionsSaturatingInt32 ((_input1 +
-# 1))))) = true end for all
+# (_input0) == Maybe::Present(lawspecCollectionsSaturatingInt32
+# ((_input1 + 1))))) = true end for all
 _lawspec_inputs_admin_a_topic_s_partitions_only_grow_native = [
     "(text)",
     "(int Int32 1 64)",
@@ -102299,8 +102329,8 @@ def _lawspec_case_admin_a_topic_s_partitions_only_grow_native(_values):
                     + "Either::Right "
                     + "_match0__1__railwayValue1 -> true }) "
                     + "And (partitionsFor (_input0) == "
-                    + "Maybe::Just(lawspecCollectionsSaturati"
-                    + "ngInt32 ((_input1 + 1))))) = "
+                    + "Maybe::Present(lawspecCollectionsSatur"
+                    + "atingInt32 ((_input1 + 1))))) = "
                     + "true"
                 ),
                 lambda: (
@@ -103222,7 +103252,7 @@ def _lawspec_case_admin_a_topic_s_partitions_only_grow_native(_values):
                                     "Maybe",
                                     [_schema.Named("Int32")],
                                 ),
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 [
                                     _definitions.evaluate_127(
                                         symbols,
@@ -103583,8 +103613,8 @@ def test_admin_a_topic_s_partitions_only_grow_native__property(_seed):
                             + "Either::Right "
                             + "_match0__1__railwayValue1 -> true }) "
                             + "And (partitionsFor (_input0) == "
-                            + "Maybe::Just(lawspecCollectionsSaturati"
-                            + "ngInt32 ((_input1 + 1))))) = "
+                            + "Maybe::Present(lawspecCollectionsSatur"
+                            + "atingInt32 ((_input1 + 1))))) = "
                             + "true"
                         ),
                         lambda: (
@@ -104583,7 +104613,7 @@ def test_admin_a_topic_s_partitions_only_grow_native__property(_seed):
                                             "Maybe",
                                             [_schema.Named("Int32")],
                                         ),
-                                        "Maybe::Just",
+                                        "Maybe::Present",
                                         [
                                             _definitions.evaluate_127(
                                                 symbols,
@@ -105183,8 +105213,8 @@ def test_admin_a_topic_s_partitions_only_grow_native__property(_seed):
 # (createPartitions (_input0) (lawspecCollectionsSaturatingInt32
 # ((_input1 + 1))))) { Either::Left _match0__0__railwayError0 -> false;
 # Either::Right _match0__1__railwayValue1 -> true }) And (partitionsFor
-# (_input0) == Maybe::Just(lawspecCollectionsSaturatingInt32 ((_input1 +
-# 1))))) = true end for all
+# (_input0) == Maybe::Present(lawspecCollectionsSaturatingInt32
+# ((_input1 + 1))))) = true end for all
 _lawspec_inputs_admin_a_topic_s_partitions_only_grow_cluster = [
     "(text)",
     "(int Int32 1 64)",
@@ -105405,8 +105435,8 @@ def _lawspec_case_admin_a_topic_s_partitions_only_grow_cluster(_values):
                 + "Either::Right "
                 + "_match0__1__railwayValue1 -> true }) "
                 + "And (partitionsFor (_input0) == "
-                + "Maybe::Just(lawspecCollectionsSaturati"
-                + "ngInt32 ((_input1 + 1))))) = "
+                + "Maybe::Present(lawspecCollectionsSatur"
+                + "atingInt32 ((_input1 + 1))))) = "
                 + "true"
             ),
             lambda: (
@@ -106312,7 +106342,7 @@ def _lawspec_case_admin_a_topic_s_partitions_only_grow_cluster(_values):
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Int32")]),
-                            "Maybe::Just",
+                            "Maybe::Present",
                             [
                                 _definitions.evaluate_127(
                                     symbols,
@@ -106619,8 +106649,8 @@ def test_admin_a_topic_s_partitions_only_grow_cluster__property(_seed):
                         + "Either::Right "
                         + "_match0__1__railwayValue1 -> true }) "
                         + "And (partitionsFor (_input0) == "
-                        + "Maybe::Just(lawspecCollectionsSaturati"
-                        + "ngInt32 ((_input1 + 1))))) = "
+                        + "Maybe::Present(lawspecCollectionsSatur"
+                        + "atingInt32 ((_input1 + 1))))) = "
                         + "true"
                     ),
                     lambda: (
@@ -107559,7 +107589,7 @@ def test_admin_a_topic_s_partitions_only_grow_cluster__property(_seed):
                                         "Maybe",
                                         [_schema.Named("Int32")],
                                     ),
-                                    "Maybe::Just",
+                                    "Maybe::Present",
                                     [
                                         _definitions.evaluate_127(
                                             symbols,
@@ -291274,8 +291304,8 @@ def test_partitioner_a_chosen_partition_exists__property(_case):
 # Expansion:
 # Partitioner: "|a key always goes to the same partition| [native]
 # for all (key :: Bytes) (n :: Int32) => choosePartition
-# (Maybe::Just(_input0)) (_input1) = choosePartition
-# (Maybe::Just(_input0)) (_input1) end for all
+# (Maybe::Present(_input0)) (_input1) = choosePartition
+# (Maybe::Present(_input0)) (_input1) end for all
 @_lawspec_seeded
 @settings(max_examples=100, deadline=None)
 @given(st.integers(min_value=0, max_value=2147483647))
@@ -291331,9 +291361,9 @@ def test_partitioner_a_key_always_goes_to_the_same__property(_seed):
                     + "always goes to the same partition| "
                     + "[native] property | expect "
                     + "choosePartition "
-                    + "(Maybe::Just(_input0)) (_input1) = "
+                    + "(Maybe::Present(_input0)) (_input1) = "
                     + "choosePartition "
-                    + "(Maybe::Just(_input0)) "
+                    + "(Maybe::Present(_input0)) "
                     + "(_input1)"
                 ),
                 lambda: (
@@ -291357,7 +291387,7 @@ def test_partitioner_a_key_always_goes_to_the_same__property(_seed):
                                             "Maybe",
                                             [_schema.Named("Bytes")],
                                         ),
-                                        "Maybe::Just",
+                                        "Maybe::Present",
                                         [_input0],
                                         64,
                                         symbols,
@@ -291395,7 +291425,7 @@ def test_partitioner_a_key_always_goes_to_the_same__property(_seed):
                                             "Maybe",
                                             [_schema.Named("Bytes")],
                                         ),
-                                        "Maybe::Just",
+                                        "Maybe::Present",
                                         [_input0],
                                         64,
                                         symbols,
@@ -291531,8 +291561,8 @@ def test_partitioner_a_key_always_goes_to_the_same__property(_seed):
 # Partitioner: "|a key always goes to the same partition|
 # [murmurPartitioner]
 # for all (key :: Bytes) (n :: Int32) => choosePartition
-# (Maybe::Just(_input0)) (_input1) = choosePartition
-# (Maybe::Just(_input0)) (_input1) end for all
+# (Maybe::Present(_input0)) (_input1) = choosePartition
+# (Maybe::Present(_input0)) (_input1) end for all
 @_lawspec_seeded
 @settings(max_examples=100, deadline=None)
 @given(st.integers(min_value=0, max_value=2147483647))
@@ -291564,9 +291594,9 @@ def test_partitioner_a_key_always_goes_to_the_same_2__property(_seed):
                 + "always goes to the same partition| "
                 + "[murmurPartitioner] property | expect "
                 + "choosePartition "
-                + "(Maybe::Just(_input0)) (_input1) = "
+                + "(Maybe::Present(_input0)) (_input1) = "
                 + "choosePartition "
-                + "(Maybe::Just(_input0)) "
+                + "(Maybe::Present(_input0)) "
                 + "(_input1)"
             ),
             lambda: (
@@ -291587,7 +291617,7 @@ def test_partitioner_a_key_always_goes_to_the_same_2__property(_seed):
                                         "Maybe",
                                         [_schema.Named("Bytes")],
                                     ),
-                                    "Maybe::Just",
+                                    "Maybe::Present",
                                     [_input0],
                                     64,
                                     symbols,
@@ -291622,7 +291652,7 @@ def test_partitioner_a_key_always_goes_to_the_same_2__property(_seed):
                                         "Maybe",
                                         [_schema.Named("Bytes")],
                                     ),
-                                    "Maybe::Just",
+                                    "Maybe::Present",
                                     [_input0],
                                     64,
                                     symbols,
@@ -291765,14 +291795,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -291788,14 +291818,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -292189,14 +292219,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -292209,7 +292239,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -292225,7 +292255,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -292245,14 +292275,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -292265,7 +292295,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -292281,7 +292311,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -292679,14 +292709,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -292699,7 +292729,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary2():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -292715,7 +292745,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -292735,14 +292765,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -292755,7 +292785,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary2():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -292771,7 +292801,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -293172,14 +293202,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -293192,7 +293222,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -293212,14 +293242,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -293232,7 +293262,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -293633,14 +293663,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -293653,7 +293683,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -293669,7 +293699,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -293689,14 +293719,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -293709,7 +293739,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -293725,7 +293755,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -294123,14 +294153,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -294146,7 +294176,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary5():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -294166,14 +294196,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -294189,7 +294219,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary5():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -294587,14 +294617,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -294610,7 +294640,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -294629,7 +294659,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -294649,14 +294679,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -294672,7 +294702,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -294691,7 +294721,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -295089,14 +295119,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -295109,7 +295139,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary7():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -295129,14 +295159,14 @@ def test_producer_records_sent_to_one_partition_are_read__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -295149,7 +295179,7 @@ def test_producer_records_sent_to_one_partition_are_read__boundary7():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -296227,14 +296257,14 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -297049,14 +297079,14 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -297069,7 +297099,7 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -297085,7 +297115,7 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -297904,14 +297934,14 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -297924,7 +297954,7 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary2():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -297940,7 +297970,7 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -298762,14 +298792,14 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -298782,7 +298812,7 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -299604,14 +299634,14 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -299624,7 +299654,7 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -299640,7 +299670,7 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -300459,14 +300489,14 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -300482,7 +300512,7 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary5():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -301301,14 +301331,14 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -301324,7 +301354,7 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -301343,7 +301373,7 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -302162,14 +302192,14 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -302182,7 +302212,7 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary7():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -304084,9 +304114,9 @@ def test_producer_a_flushed_record_is_in_the_log_native__property(_case):
 # (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) And
 # (producerIdentity == let _let3__it = _let0__id in match (_let3__it) {
 # Either::Right _match4__0___lawspecSelection0x0 ->
-# Maybe::Just(_match4__0___lawspecSelection0x0); Either::Left
-# _match4__1___lawspecSelection0x0 -> Maybe::Nothing() })) = true end
-# for all
+# Maybe::Present(_match4__0___lawspecSelection0x0); Either::Left
+# _match4__1___lawspecSelection0x0 -> Maybe::Absent() })) = true end for
+# all
 def test_producer_an_idempotent_producer_s_retried_send__boundary0():
     symbols = {}
     _input0 = ls.literal({"type": "Text", "units": [45]}, symbols)
@@ -304096,14 +304126,14 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -304213,10 +304243,10 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary0():
                     + "_let0__id in match (_let3__it) { "
                     + "Either::Right "
                     + "_match4__0___lawspecSelection0x0 -> "
-                    + "Maybe::Just(_match4__0___lawspecSelect"
-                    + "ion0x0); Either::Left "
+                    + "Maybe::Present(_match4__0___lawspecSel"
+                    + "ection0x0); Either::Left "
                     + "_match4__1___lawspecSelection0x0 -> "
-                    + "Maybe::Nothing() })) = "
+                    + "Maybe::Absent() })) = "
                     + "true"
                 ),
                 lambda: (
@@ -304859,7 +304889,12 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary0():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_m11],
                                                                 64,
                                                                 symbols,
@@ -304893,9 +304928,9 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary0():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -305146,14 +305181,14 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -305166,7 +305201,7 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -305182,7 +305217,7 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -305296,10 +305331,10 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary1():
                     + "_let0__id in match (_let3__it) { "
                     + "Either::Right "
                     + "_match4__0___lawspecSelection0x0 -> "
-                    + "Maybe::Just(_match4__0___lawspecSelect"
-                    + "ion0x0); Either::Left "
+                    + "Maybe::Present(_match4__0___lawspecSel"
+                    + "ection0x0); Either::Left "
                     + "_match4__1___lawspecSelection0x0 -> "
-                    + "Maybe::Nothing() })) = "
+                    + "Maybe::Absent() })) = "
                     + "true"
                 ),
                 lambda: (
@@ -305942,7 +305977,12 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary1():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_m11],
                                                                 64,
                                                                 symbols,
@@ -305976,9 +306016,9 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary1():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -306229,14 +306269,14 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -306249,7 +306289,7 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary2():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -306265,7 +306305,7 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -306379,10 +306419,10 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary2():
                     + "_let0__id in match (_let3__it) { "
                     + "Either::Right "
                     + "_match4__0___lawspecSelection0x0 -> "
-                    + "Maybe::Just(_match4__0___lawspecSelect"
-                    + "ion0x0); Either::Left "
+                    + "Maybe::Present(_match4__0___lawspecSel"
+                    + "ection0x0); Either::Left "
                     + "_match4__1___lawspecSelection0x0 -> "
-                    + "Maybe::Nothing() })) = "
+                    + "Maybe::Absent() })) = "
                     + "true"
                 ),
                 lambda: (
@@ -307025,7 +307065,12 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary2():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_m11],
                                                                 64,
                                                                 symbols,
@@ -307059,9 +307104,9 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary2():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -307315,14 +307360,14 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -307335,7 +307380,7 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -307449,10 +307494,10 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary3():
                     + "_let0__id in match (_let3__it) { "
                     + "Either::Right "
                     + "_match4__0___lawspecSelection0x0 -> "
-                    + "Maybe::Just(_match4__0___lawspecSelect"
-                    + "ion0x0); Either::Left "
+                    + "Maybe::Present(_match4__0___lawspecSel"
+                    + "ection0x0); Either::Left "
                     + "_match4__1___lawspecSelection0x0 -> "
-                    + "Maybe::Nothing() })) = "
+                    + "Maybe::Absent() })) = "
                     + "true"
                 ),
                 lambda: (
@@ -308095,7 +308140,12 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary3():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_m11],
                                                                 64,
                                                                 symbols,
@@ -308129,9 +308179,9 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary3():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -308385,14 +308435,14 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -308405,7 +308455,7 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -308421,7 +308471,7 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -308535,10 +308585,10 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary4():
                     + "_let0__id in match (_let3__it) { "
                     + "Either::Right "
                     + "_match4__0___lawspecSelection0x0 -> "
-                    + "Maybe::Just(_match4__0___lawspecSelect"
-                    + "ion0x0); Either::Left "
+                    + "Maybe::Present(_match4__0___lawspecSel"
+                    + "ection0x0); Either::Left "
                     + "_match4__1___lawspecSelection0x0 -> "
-                    + "Maybe::Nothing() })) = "
+                    + "Maybe::Absent() })) = "
                     + "true"
                 ),
                 lambda: (
@@ -309181,7 +309231,12 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary4():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_m11],
                                                                 64,
                                                                 symbols,
@@ -309215,9 +309270,9 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary4():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -309468,14 +309523,14 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -309491,7 +309546,7 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary5():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -309605,10 +309660,10 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary5():
                     + "_let0__id in match (_let3__it) { "
                     + "Either::Right "
                     + "_match4__0___lawspecSelection0x0 -> "
-                    + "Maybe::Just(_match4__0___lawspecSelect"
-                    + "ion0x0); Either::Left "
+                    + "Maybe::Present(_match4__0___lawspecSel"
+                    + "ection0x0); Either::Left "
                     + "_match4__1___lawspecSelection0x0 -> "
-                    + "Maybe::Nothing() })) = "
+                    + "Maybe::Absent() })) = "
                     + "true"
                 ),
                 lambda: (
@@ -310251,7 +310306,12 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary5():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_m11],
                                                                 64,
                                                                 symbols,
@@ -310285,9 +310345,9 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary5():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -310538,14 +310598,14 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -310561,7 +310621,7 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -310580,7 +310640,7 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -310694,10 +310754,10 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary6():
                     + "_let0__id in match (_let3__it) { "
                     + "Either::Right "
                     + "_match4__0___lawspecSelection0x0 -> "
-                    + "Maybe::Just(_match4__0___lawspecSelect"
-                    + "ion0x0); Either::Left "
+                    + "Maybe::Present(_match4__0___lawspecSel"
+                    + "ection0x0); Either::Left "
                     + "_match4__1___lawspecSelection0x0 -> "
-                    + "Maybe::Nothing() })) = "
+                    + "Maybe::Absent() })) = "
                     + "true"
                 ),
                 lambda: (
@@ -311340,7 +311400,12 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary6():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_m11],
                                                                 64,
                                                                 symbols,
@@ -311374,9 +311439,9 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary6():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -311627,14 +311692,14 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -311647,7 +311712,7 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary7():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -311761,10 +311826,10 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary7():
                     + "_let0__id in match (_let3__it) { "
                     + "Either::Right "
                     + "_match4__0___lawspecSelection0x0 -> "
-                    + "Maybe::Just(_match4__0___lawspecSelect"
-                    + "ion0x0); Either::Left "
+                    + "Maybe::Present(_match4__0___lawspecSel"
+                    + "ection0x0); Either::Left "
                     + "_match4__1___lawspecSelection0x0 -> "
-                    + "Maybe::Nothing() })) = "
+                    + "Maybe::Absent() })) = "
                     + "true"
                 ),
                 lambda: (
@@ -312407,7 +312472,12 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary7():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_m11],
                                                                 64,
                                                                 symbols,
@@ -312441,9 +312511,9 @@ def test_producer_an_idempotent_producer_s_retried_send__boundary7():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -313053,10 +313123,10 @@ def test_producer_an_idempotent_producer_s_retried_send__property(_case):
                     + "_let0__id in match (_let3__it) { "
                     + "Either::Right "
                     + "_match4__0___lawspecSelection0x0 -> "
-                    + "Maybe::Just(_match4__0___lawspecSelect"
-                    + "ion0x0); Either::Left "
+                    + "Maybe::Present(_match4__0___lawspecSel"
+                    + "ection0x0); Either::Left "
                     + "_match4__1___lawspecSelection0x0 -> "
-                    + "Maybe::Nothing() })) = "
+                    + "Maybe::Absent() })) = "
                     + "true"
                 ),
                 lambda: (
@@ -313699,7 +313769,12 @@ def test_producer_an_idempotent_producer_s_retried_send__property(_case):
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_m11],
                                                                 64,
                                                                 symbols,
@@ -313733,9 +313808,9 @@ def test_producer_an_idempotent_producer_s_retried_send__property(_case):
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -313990,8 +314065,8 @@ def test_producer_an_idempotent_producer_s_retried_send__property(_case):
 # in let _let1___lawspecRecordField1 =
 # lawtwin.kafka::type::PartitionChoice::ByKey() in let
 # _let2___lawspecRecordField2 = let _let2___lawspecRecordField0 =
-# Maybe::Just(_input2) in let _let3___lawspecRecordField1 = _input3 in
-# let _let4___lawspecRecordField2 = List::Nil() in
+# Maybe::Present(_input2) in let _let3___lawspecRecordField1 = _input3
+# in let _let4___lawspecRecordField2 = List::Nil() in
 # lawtwin.kafka.model::type::Record::Record(_let2___lawspecRecordField0,
 # _let3___lawspecRecordField1, _let4___lawspecRecordField2) in
 # lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRec
@@ -314000,8 +314075,8 @@ def test_producer_an_idempotent_producer_s_retried_send__property(_case):
 # let _let2___lawspecRecordField1 =
 # lawtwin.kafka::type::PartitionChoice::ByKey() in let
 # _let3___lawspecRecordField2 = let _let3___lawspecRecordField0 =
-# Maybe::Just(_input2) in let _let4___lawspecRecordField1 = _input4 in
-# let _let5___lawspecRecordField2 = List::Nil() in
+# Maybe::Present(_input2) in let _let4___lawspecRecordField1 = _input4
+# in let _let5___lawspecRecordField2 = List::Nil() in
 # lawtwin.kafka.model::type::Record::Record(_let3___lawspecRecordField0,
 # _let4___lawspecRecordField1, _let5___lawspecRecordField2) in
 # lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRec
@@ -314373,7 +314448,7 @@ def test_producer_records_with_one_key_go_to_one__property(_case):
                     + "ByKey() in let "
                     + "_let2___lawspecRecordField2 = let "
                     + "_let2___lawspecRecordField0 = "
-                    + "Maybe::Just(_input2) in let "
+                    + "Maybe::Present(_input2) in let "
                     + "_let3___lawspecRecordField1 = _input3 "
                     + "in let _let4___lawspecRecordField2 = "
                     + "List::Nil() in "
@@ -314392,7 +314467,7 @@ def test_producer_records_with_one_key_go_to_one__property(_case):
                     + "ByKey() in let "
                     + "_let3___lawspecRecordField2 = let "
                     + "_let3___lawspecRecordField0 = "
-                    + "Maybe::Just(_input2) in let "
+                    + "Maybe::Present(_input2) in let "
                     + "_let4___lawspecRecordField1 = _input4 "
                     + "in let _let5___lawspecRecordField2 = "
                     + "List::Nil() in "
@@ -314564,7 +314639,7 @@ def test_producer_records_with_one_key_go_to_one__property(_case):
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_input2],
                                                     64,
                                                     symbols,
@@ -314735,7 +314810,7 @@ def test_producer_records_with_one_key_go_to_one__property(_case):
                                                     "Maybe",
                                                     [_schema.Named("Bytes")],
                                                 ),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 [_input2],
                                                 64,
                                                 symbols,
@@ -315394,7 +315469,7 @@ def test_producer_a_send_to_a_partition_the_topic_lacks__property(_case):
 # _let0___lawspecRecordField0 = _input0 in let
 # _let1___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
-# pecRecordField0, _let1___lawspecRecordField1)) (Maybe::Nothing())
+# pecRecordField0, _let1___lawspecRecordField1)) (Maybe::Absent())
 # (_input3))) { Either::Left _match0__0__railwayError0 -> false;
 # Either::Right _match0__1__railwayValue1 -> true } And
 # resumesAtCommitted (_input0) (_input1) (_input2) (_input4)) = true end
@@ -315843,7 +315918,7 @@ def test_consumer_a_restarted_consumer_resumes_at_its__property(_case):
                     + "ion::TopicPartition(_let0___lawspecRec"
                     + "ordField0, "
                     + "_let1___lawspecRecordField1)) "
-                    + "(Maybe::Nothing()) (_input3))) { "
+                    + "(Maybe::Absent()) (_input3))) { "
                     + "Either::Left "
                     + "_match0__0__railwayError0 -> false; "
                     + "Either::Right "
@@ -316098,9 +316173,9 @@ def test_consumer_a_restarted_consumer_resumes_at_its__property(_case):
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -316305,7 +316380,7 @@ def test_consumer_a_restarted_consumer_resumes_at_its__property(_case):
 # _let1___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
 # pecRecordField0, _let1___lawspecRecordField1) in (match (attempt
-# (produceRequest (_let0__tp) (Maybe::Nothing()) (_input1))) {
+# (produceRequest (_let0__tp) (Maybe::Absent()) (_input1))) {
 # Either::Left _match1__0__railwayError0 -> false; Either::Right
 # _match1__1__railwayValue1 -> true } And let _let1__lawspecIgnored =
 # assign (List::Cons(_let0__tp, List::Nil())) in let _let2__it = poll
@@ -316323,14 +316398,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -316346,14 +316421,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -316437,7 +316512,7 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary0():
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in "
                     + "(match (attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1))) { Either::Left "
                     + "_match1__0__railwayError0 -> false; "
                     + "Either::Right "
@@ -316658,9 +316733,9 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary0():
                                                                     ),
                                                                     (
                                                                         "Mayb"
-                                                                        "e::N"
-                                                                        "othi"
-                                                                        "ng"
+                                                                        "e::A"
+                                                                        "bsen"
+                                                                        "t"
                                                                     ),
                                                                     [],
                                                                     64,
@@ -317130,14 +317205,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -317153,14 +317228,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -317244,7 +317319,7 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary1():
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in "
                     + "(match (attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1))) { Either::Left "
                     + "_match1__0__railwayError0 -> false; "
                     + "Either::Right "
@@ -317465,9 +317540,9 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary1():
                                                                     ),
                                                                     (
                                                                         "Mayb"
-                                                                        "e::N"
-                                                                        "othi"
-                                                                        "ng"
+                                                                        "e::A"
+                                                                        "bsen"
+                                                                        "t"
                                                                     ),
                                                                     [],
                                                                     64,
@@ -317940,14 +318015,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -318031,7 +318106,7 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary2():
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in "
                     + "(match (attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1))) { Either::Left "
                     + "_match1__0__railwayError0 -> false; "
                     + "Either::Right "
@@ -318252,9 +318327,9 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary2():
                                                                     ),
                                                                     (
                                                                         "Mayb"
-                                                                        "e::N"
-                                                                        "othi"
-                                                                        "ng"
+                                                                        "e::A"
+                                                                        "bsen"
+                                                                        "t"
                                                                     ),
                                                                     [],
                                                                     64,
@@ -318727,14 +318802,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -318750,14 +318825,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -318841,7 +318916,7 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary3():
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in "
                     + "(match (attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1))) { Either::Left "
                     + "_match1__0__railwayError0 -> false; "
                     + "Either::Right "
@@ -319062,9 +319137,9 @@ def test_consumer_a_poll_reads_each_partition_in_offset__boundary3():
                                                                     ),
                                                                     (
                                                                         "Mayb"
-                                                                        "e::N"
-                                                                        "othi"
-                                                                        "ng"
+                                                                        "e::A"
+                                                                        "bsen"
+                                                                        "t"
                                                                     ),
                                                                     [],
                                                                     64,
@@ -319873,7 +319948,7 @@ def test_consumer_a_poll_reads_each_partition_in_offset__property(_case):
                     + "ordField0, "
                     + "_let1___lawspecRecordField1) in "
                     + "(match (attempt (produceRequest "
-                    + "(_let0__tp) (Maybe::Nothing()) "
+                    + "(_let0__tp) (Maybe::Absent()) "
                     + "(_input1))) { Either::Left "
                     + "_match1__0__railwayError0 -> false; "
                     + "Either::Right "
@@ -320094,9 +320169,9 @@ def test_consumer_a_poll_reads_each_partition_in_offset__property(_case):
                                                                     ),
                                                                     (
                                                                         "Mayb"
-                                                                        "e::N"
-                                                                        "othi"
-                                                                        "ng"
+                                                                        "e::A"
+                                                                        "bsen"
+                                                                        "t"
                                                                     ),
                                                                     [],
                                                                     64,
@@ -326275,18 +326350,18 @@ def test_consumer_only_an_assigned_partition_has_a__property(_seed):
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
 # pecRecordField0, _let1___lawspecRecordField1) in let _let1__a =
 # writeAborted (_let0__tp) (_input1) (_input2) in let _let2__p = attempt
-# (produceRequest (_let0__tp) (Maybe::Nothing()) (List::Cons(_input3,
+# (produceRequest (_let0__tp) (Maybe::Absent()) (List::Cons(_input3,
 # List::Nil()))) in let _let3__lawspecIgnored = setIsolationLevel
 # (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted()) in let
 # _let4__lawspecIgnored = assign (List::Cons(_let0__tp, List::Nil())) in
 # let _let5__it = poll (100) in match (_let5__it) { Either::Left
 # _match6__0___lawspecSelection0x0 -> false; Either::Right
 # _match6__1___lawspecSelection0x0 -> (let _let7__it = _let1__a in match
-# (_let7__it) { Maybe::Just _match8__0___match__lawspecSelection0x0_0 ->
-# Not(lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
+# (_let7__it) { Maybe::Present _match8__0___match__lawspecSelection0x0_0
+# -> Not(lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
 # (_match8__0___match__lawspecSelection0x0_0)
 # (lawspec_lawspecCollectionsSetOf_b2e15487e0114c0 (receivedOffsets
-# (_match6__1___lawspecSelection0x0)))); Maybe::Nothing -> false } And
+# (_match6__1___lawspecSelection0x0)))); Maybe::Absent -> false } And
 # let _let7__it = _let2__p in match (_let7__it) { Either::Right
 # _match8__0___match__lawspecSelection0x0_0 ->
 # lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
@@ -326305,14 +326380,14 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -326325,7 +326400,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary0():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -326341,7 +326416,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary0():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -326361,14 +326436,14 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -326381,7 +326456,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary0():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -326397,7 +326472,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary0():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -326486,7 +326561,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary0():
                     + "_let1__a = writeAborted (_let0__tp) "
                     + "(_input1) (_input2) in let _let2__p = "
                     + "attempt (produceRequest (_let0__tp) "
-                    + "(Maybe::Nothing()) "
+                    + "(Maybe::Absent()) "
                     + "(List::Cons(_input3, List::Nil()))) "
                     + "in let _let3__lawspecIgnored = "
                     + "setIsolationLevel "
@@ -326500,7 +326575,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary0():
                     + "false; Either::Right "
                     + "_match6__1___lawspecSelection0x0 -> "
                     + "(let _let7__it = _let1__a in match "
-                    + "(_let7__it) { Maybe::Just "
+                    + "(_let7__it) { Maybe::Present "
                     + "_match8__0___match__lawspecSelection0x"
                     + "0_0 -> "
                     + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -326510,7 +326585,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary0():
                     + "(lawspec_lawspecCollectionsSetOf_b2e15"
                     + "487e0114c0 (receivedOffsets "
                     + "(_match6__1___lawspecSelection0x0))));"
-                    + " Maybe::Nothing  -> false } And let "
+                    + " Maybe::Absent  -> false } And let "
                     + "_let7__it = _let2__p in match "
                     + "(_let7__it) { Either::Right "
                     + "_match8__0___match__lawspecSelection0x"
@@ -326609,8 +326684,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary0():
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 lambda _m11: (
                                                                                     (not _definitions.evaluate_238(
@@ -326629,9 +326705,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary0():
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::N"
-                                                                                    "othi"
-                                                                                    "ng"
+                                                                                    "e::A"
+                                                                                    "bsen"
+                                                                                    "t"
                                                                                 ),
                                                                                 lambda: (
                                                                                     ls.convert(
@@ -327180,9 +327256,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary0():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -327472,14 +327548,14 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -327492,7 +327568,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -327508,7 +327584,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -327528,14 +327604,14 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -327548,7 +327624,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -327564,7 +327640,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -327653,7 +327729,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary1():
                     + "_let1__a = writeAborted (_let0__tp) "
                     + "(_input1) (_input2) in let _let2__p = "
                     + "attempt (produceRequest (_let0__tp) "
-                    + "(Maybe::Nothing()) "
+                    + "(Maybe::Absent()) "
                     + "(List::Cons(_input3, List::Nil()))) "
                     + "in let _let3__lawspecIgnored = "
                     + "setIsolationLevel "
@@ -327667,7 +327743,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary1():
                     + "false; Either::Right "
                     + "_match6__1___lawspecSelection0x0 -> "
                     + "(let _let7__it = _let1__a in match "
-                    + "(_let7__it) { Maybe::Just "
+                    + "(_let7__it) { Maybe::Present "
                     + "_match8__0___match__lawspecSelection0x"
                     + "0_0 -> "
                     + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -327677,7 +327753,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary1():
                     + "(lawspec_lawspecCollectionsSetOf_b2e15"
                     + "487e0114c0 (receivedOffsets "
                     + "(_match6__1___lawspecSelection0x0))));"
-                    + " Maybe::Nothing  -> false } And let "
+                    + " Maybe::Absent  -> false } And let "
                     + "_let7__it = _let2__p in match "
                     + "(_let7__it) { Either::Right "
                     + "_match8__0___match__lawspecSelection0x"
@@ -327776,8 +327852,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary1():
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 lambda _m11: (
                                                                                     (not _definitions.evaluate_238(
@@ -327796,9 +327873,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary1():
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::N"
-                                                                                    "othi"
-                                                                                    "ng"
+                                                                                    "e::A"
+                                                                                    "bsen"
+                                                                                    "t"
                                                                                 ),
                                                                                 lambda: (
                                                                                     ls.convert(
@@ -328347,9 +328424,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary1():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -328636,14 +328713,14 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -328656,7 +328733,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -328676,14 +328753,14 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -328696,7 +328773,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -328785,7 +328862,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary2():
                     + "_let1__a = writeAborted (_let0__tp) "
                     + "(_input1) (_input2) in let _let2__p = "
                     + "attempt (produceRequest (_let0__tp) "
-                    + "(Maybe::Nothing()) "
+                    + "(Maybe::Absent()) "
                     + "(List::Cons(_input3, List::Nil()))) "
                     + "in let _let3__lawspecIgnored = "
                     + "setIsolationLevel "
@@ -328799,7 +328876,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary2():
                     + "false; Either::Right "
                     + "_match6__1___lawspecSelection0x0 -> "
                     + "(let _let7__it = _let1__a in match "
-                    + "(_let7__it) { Maybe::Just "
+                    + "(_let7__it) { Maybe::Present "
                     + "_match8__0___match__lawspecSelection0x"
                     + "0_0 -> "
                     + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -328809,7 +328886,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary2():
                     + "(lawspec_lawspecCollectionsSetOf_b2e15"
                     + "487e0114c0 (receivedOffsets "
                     + "(_match6__1___lawspecSelection0x0))));"
-                    + " Maybe::Nothing  -> false } And let "
+                    + " Maybe::Absent  -> false } And let "
                     + "_let7__it = _let2__p in match "
                     + "(_let7__it) { Either::Right "
                     + "_match8__0___match__lawspecSelection0x"
@@ -328908,8 +328985,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary2():
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 lambda _m11: (
                                                                                     (not _definitions.evaluate_238(
@@ -328928,9 +329006,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary2():
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::N"
-                                                                                    "othi"
-                                                                                    "ng"
+                                                                                    "e::A"
+                                                                                    "bsen"
+                                                                                    "t"
                                                                                 ),
                                                                                 lambda: (
                                                                                     ls.convert(
@@ -329479,9 +329557,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary2():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -329768,14 +329846,14 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -329788,7 +329866,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -329804,7 +329882,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -329824,14 +329902,14 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -329844,7 +329922,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -329860,7 +329938,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -329949,7 +330027,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary3():
                     + "_let1__a = writeAborted (_let0__tp) "
                     + "(_input1) (_input2) in let _let2__p = "
                     + "attempt (produceRequest (_let0__tp) "
-                    + "(Maybe::Nothing()) "
+                    + "(Maybe::Absent()) "
                     + "(List::Cons(_input3, List::Nil()))) "
                     + "in let _let3__lawspecIgnored = "
                     + "setIsolationLevel "
@@ -329963,7 +330041,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary3():
                     + "false; Either::Right "
                     + "_match6__1___lawspecSelection0x0 -> "
                     + "(let _let7__it = _let1__a in match "
-                    + "(_let7__it) { Maybe::Just "
+                    + "(_let7__it) { Maybe::Present "
                     + "_match8__0___match__lawspecSelection0x"
                     + "0_0 -> "
                     + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -329973,7 +330051,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary3():
                     + "(lawspec_lawspecCollectionsSetOf_b2e15"
                     + "487e0114c0 (receivedOffsets "
                     + "(_match6__1___lawspecSelection0x0))));"
-                    + " Maybe::Nothing  -> false } And let "
+                    + " Maybe::Absent  -> false } And let "
                     + "_let7__it = _let2__p in match "
                     + "(_let7__it) { Either::Right "
                     + "_match8__0___match__lawspecSelection0x"
@@ -330072,8 +330150,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary3():
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 lambda _m11: (
                                                                                     (not _definitions.evaluate_238(
@@ -330092,9 +330171,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary3():
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::N"
-                                                                                    "othi"
-                                                                                    "ng"
+                                                                                    "e::A"
+                                                                                    "bsen"
+                                                                                    "t"
                                                                                 ),
                                                                                 lambda: (
                                                                                     ls.convert(
@@ -330643,9 +330722,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary3():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -330926,14 +331005,14 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -330949,7 +331028,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary4():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -330969,14 +331048,14 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -330992,7 +331071,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary4():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -331081,7 +331160,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary4():
                     + "_let1__a = writeAborted (_let0__tp) "
                     + "(_input1) (_input2) in let _let2__p = "
                     + "attempt (produceRequest (_let0__tp) "
-                    + "(Maybe::Nothing()) "
+                    + "(Maybe::Absent()) "
                     + "(List::Cons(_input3, List::Nil()))) "
                     + "in let _let3__lawspecIgnored = "
                     + "setIsolationLevel "
@@ -331095,7 +331174,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary4():
                     + "false; Either::Right "
                     + "_match6__1___lawspecSelection0x0 -> "
                     + "(let _let7__it = _let1__a in match "
-                    + "(_let7__it) { Maybe::Just "
+                    + "(_let7__it) { Maybe::Present "
                     + "_match8__0___match__lawspecSelection0x"
                     + "0_0 -> "
                     + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -331105,7 +331184,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary4():
                     + "(lawspec_lawspecCollectionsSetOf_b2e15"
                     + "487e0114c0 (receivedOffsets "
                     + "(_match6__1___lawspecSelection0x0))));"
-                    + " Maybe::Nothing  -> false } And let "
+                    + " Maybe::Absent  -> false } And let "
                     + "_let7__it = _let2__p in match "
                     + "(_let7__it) { Either::Right "
                     + "_match8__0___match__lawspecSelection0x"
@@ -331204,8 +331283,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary4():
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 lambda _m11: (
                                                                                     (not _definitions.evaluate_238(
@@ -331224,9 +331304,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary4():
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::N"
-                                                                                    "othi"
-                                                                                    "ng"
+                                                                                    "e::A"
+                                                                                    "bsen"
+                                                                                    "t"
                                                                                 ),
                                                                                 lambda: (
                                                                                     ls.convert(
@@ -331775,9 +331855,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary4():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -332061,14 +332141,14 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -332081,7 +332161,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary5():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -332101,14 +332181,14 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -332121,7 +332201,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary5():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -332210,7 +332290,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary5():
                     + "_let1__a = writeAborted (_let0__tp) "
                     + "(_input1) (_input2) in let _let2__p = "
                     + "attempt (produceRequest (_let0__tp) "
-                    + "(Maybe::Nothing()) "
+                    + "(Maybe::Absent()) "
                     + "(List::Cons(_input3, List::Nil()))) "
                     + "in let _let3__lawspecIgnored = "
                     + "setIsolationLevel "
@@ -332224,7 +332304,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary5():
                     + "false; Either::Right "
                     + "_match6__1___lawspecSelection0x0 -> "
                     + "(let _let7__it = _let1__a in match "
-                    + "(_let7__it) { Maybe::Just "
+                    + "(_let7__it) { Maybe::Present "
                     + "_match8__0___match__lawspecSelection0x"
                     + "0_0 -> "
                     + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -332234,7 +332314,7 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary5():
                     + "(lawspec_lawspecCollectionsSetOf_b2e15"
                     + "487e0114c0 (receivedOffsets "
                     + "(_match6__1___lawspecSelection0x0))));"
-                    + " Maybe::Nothing  -> false } And let "
+                    + " Maybe::Absent  -> false } And let "
                     + "_let7__it = _let2__p in match "
                     + "(_let7__it) { Either::Right "
                     + "_match8__0___match__lawspecSelection0x"
@@ -332333,8 +332413,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary5():
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 lambda _m11: (
                                                                                     (not _definitions.evaluate_238(
@@ -332353,9 +332434,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary5():
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::N"
-                                                                                    "othi"
-                                                                                    "ng"
+                                                                                    "e::A"
+                                                                                    "bsen"
+                                                                                    "t"
                                                                                 ),
                                                                                 lambda: (
                                                                                     ls.convert(
@@ -332904,9 +332985,9 @@ def test_consumer_a_read_committed_consumer_never_sees__boundary5():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -333566,7 +333647,7 @@ def test_consumer_a_read_committed_consumer_never_sees__property(_case):
                     + "_let1__a = writeAborted (_let0__tp) "
                     + "(_input1) (_input2) in let _let2__p = "
                     + "attempt (produceRequest (_let0__tp) "
-                    + "(Maybe::Nothing()) "
+                    + "(Maybe::Absent()) "
                     + "(List::Cons(_input3, List::Nil()))) "
                     + "in let _let3__lawspecIgnored = "
                     + "setIsolationLevel "
@@ -333580,7 +333661,7 @@ def test_consumer_a_read_committed_consumer_never_sees__property(_case):
                     + "false; Either::Right "
                     + "_match6__1___lawspecSelection0x0 -> "
                     + "(let _let7__it = _let1__a in match "
-                    + "(_let7__it) { Maybe::Just "
+                    + "(_let7__it) { Maybe::Present "
                     + "_match8__0___match__lawspecSelection0x"
                     + "0_0 -> "
                     + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -333590,7 +333671,7 @@ def test_consumer_a_read_committed_consumer_never_sees__property(_case):
                     + "(lawspec_lawspecCollectionsSetOf_b2e15"
                     + "487e0114c0 (receivedOffsets "
                     + "(_match6__1___lawspecSelection0x0))));"
-                    + " Maybe::Nothing  -> false } And let "
+                    + " Maybe::Absent  -> false } And let "
                     + "_let7__it = _let2__p in match "
                     + "(_let7__it) { Either::Right "
                     + "_match8__0___match__lawspecSelection0x"
@@ -333689,8 +333770,9 @@ def test_consumer_a_read_committed_consumer_never_sees__property(_case):
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::J"
-                                                                                    "ust"
+                                                                                    "e::P"
+                                                                                    "rese"
+                                                                                    "nt"
                                                                                 ),
                                                                                 lambda _m11: (
                                                                                     (not _definitions.evaluate_238(
@@ -333709,9 +333791,9 @@ def test_consumer_a_read_committed_consumer_never_sees__property(_case):
                                                                             [
                                                                                 (
                                                                                     "Mayb"
-                                                                                    "e::N"
-                                                                                    "othi"
-                                                                                    "ng"
+                                                                                    "e::A"
+                                                                                    "bsen"
+                                                                                    "t"
                                                                                 ),
                                                                                 lambda: (
                                                                                     ls.convert(
@@ -334260,9 +334342,9 @@ def test_consumer_a_read_committed_consumer_never_sees__property(_case):
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -381232,7 +381314,7 @@ def test_groupcoordinator_leaving_starts_a_new_generation_2__property(_seed):
 # _let3___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___laws
 # pecRecordField0, _let3___lawspecRecordField1)) ==
-# Maybe::Just(_input3))) } = true end for all
+# Maybe::Present(_input3))) } = true end for all
 _lawspec_inputs_groupcoordinator_a_committed_offset_can_be = [
     "(text)",
     "(text)",
@@ -381388,7 +381470,7 @@ def _lawspec_case_groupcoordinator_a_committed_offset_can_be(_values):
                     + "ion::TopicPartition(_let2___lawspecRec"
                     + "ordField0, "
                     + "_let3___lawspecRecordField1)) == "
-                    + "Maybe::Just(_input3))) } = "
+                    + "Maybe::Present(_input3))) } = "
                     + "true"
                 ),
                 lambda: (
@@ -382008,7 +382090,7 @@ def _lawspec_case_groupcoordinator_a_committed_offset_can_be(_values):
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_input3],
                                                     64,
                                                     symbols,
@@ -382405,7 +382487,7 @@ def test_groupcoordinator_a_committed_offset_can_be__boundary0():
                     + "ion::TopicPartition(_let2___lawspecRec"
                     + "ordField0, "
                     + "_let3___lawspecRecordField1)) == "
-                    + "Maybe::Just(_input3))) } = "
+                    + "Maybe::Present(_input3))) } = "
                     + "true"
                 ),
                 lambda: (
@@ -383025,7 +383107,7 @@ def test_groupcoordinator_a_committed_offset_can_be__boundary0():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_input3],
                                                     64,
                                                     symbols,
@@ -383400,7 +383482,7 @@ def test_groupcoordinator_a_committed_offset_can_be__boundary1():
                     + "ion::TopicPartition(_let2___lawspecRec"
                     + "ordField0, "
                     + "_let3___lawspecRecordField1)) == "
-                    + "Maybe::Just(_input3))) } = "
+                    + "Maybe::Present(_input3))) } = "
                     + "true"
                 ),
                 lambda: (
@@ -384020,7 +384102,7 @@ def test_groupcoordinator_a_committed_offset_can_be__boundary1():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_input3],
                                                     64,
                                                     symbols,
@@ -384396,7 +384478,7 @@ def test_groupcoordinator_a_committed_offset_can_be__property(_seed):
                             + "ion::TopicPartition(_let2___lawspecRec"
                             + "ordField0, "
                             + "_let3___lawspecRecordField1)) == "
-                            + "Maybe::Just(_input3))) } = "
+                            + "Maybe::Present(_input3))) } = "
                             + "true"
                         ),
                         lambda: (
@@ -385056,7 +385138,7 @@ def test_groupcoordinator_a_committed_offset_can_be__property(_seed):
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_input3],
                                                             64,
                                                             symbols,
@@ -386126,7 +386208,7 @@ def test_groupcoordinator_a_committed_offset_can_be__property(_seed):
 # _let3___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___laws
 # pecRecordField0, _let3___lawspecRecordField1)) ==
-# Maybe::Just(_input3))) } = true end for all
+# Maybe::Present(_input3))) } = true end for all
 _lawspec_inputs_groupcoordinator_a_committed_offset_can_be_2 = [
     "(text)",
     "(text)",
@@ -386243,7 +386325,7 @@ def _lawspec_case_groupcoordinator_a_committed_offset_can_be_2(_values):
                 + "ion::TopicPartition(_let2___lawspecRec"
                 + "ordField0, "
                 + "_let3___lawspecRecordField1)) == "
-                + "Maybe::Just(_input3))) } = "
+                + "Maybe::Present(_input3))) } = "
                 + "true"
             ),
             lambda: (
@@ -386839,7 +386921,7 @@ def _lawspec_case_groupcoordinator_a_committed_offset_can_be_2(_values):
                                                     "Maybe",
                                                     [_schema.Named("Int64")],
                                                 ),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 [_input3],
                                                 64,
                                                 symbols,
@@ -387171,7 +387253,7 @@ def test_groupcoordinator_a_committed_offset_can_be_2__boundary0():
                 + "ion::TopicPartition(_let2___lawspecRec"
                 + "ordField0, "
                 + "_let3___lawspecRecordField1)) == "
-                + "Maybe::Just(_input3))) } = "
+                + "Maybe::Present(_input3))) } = "
                 + "true"
             ),
             lambda: (
@@ -387767,7 +387849,7 @@ def test_groupcoordinator_a_committed_offset_can_be_2__boundary0():
                                                     "Maybe",
                                                     [_schema.Named("Int64")],
                                                 ),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 [_input3],
                                                 64,
                                                 symbols,
@@ -388077,7 +388159,7 @@ def test_groupcoordinator_a_committed_offset_can_be_2__boundary1():
                 + "ion::TopicPartition(_let2___lawspecRec"
                 + "ordField0, "
                 + "_let3___lawspecRecordField1)) == "
-                + "Maybe::Just(_input3))) } = "
+                + "Maybe::Present(_input3))) } = "
                 + "true"
             ),
             lambda: (
@@ -388673,7 +388755,7 @@ def test_groupcoordinator_a_committed_offset_can_be_2__boundary1():
                                                     "Maybe",
                                                     [_schema.Named("Int64")],
                                                 ),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 [_input3],
                                                 64,
                                                 symbols,
@@ -388984,7 +389066,7 @@ def test_groupcoordinator_a_committed_offset_can_be_2__property(_seed):
                         + "ion::TopicPartition(_let2___lawspecRec"
                         + "ordField0, "
                         + "_let3___lawspecRecordField1)) == "
-                        + "Maybe::Just(_input3))) } = "
+                        + "Maybe::Present(_input3))) } = "
                         + "true"
                     ),
                     lambda: (
@@ -389619,7 +389701,7 @@ def test_groupcoordinator_a_committed_offset_can_be_2__property(_seed):
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_input3],
                                                         64,
                                                         symbols,
@@ -390651,8 +390733,8 @@ def test_groupcoordinator_a_committed_offset_can_be_2__property(_seed):
 # _match0__0__railwayError0 -> false; Either::Right
 # _match0__1__railwayValue1 -> true } And (beginTransaction ==
 # Either::Right(unitValue))) And match (attempt (initProducerIdRequest
-# (Maybe::Just(_input1)))) { Either::Left _match0__0__railwayError0 ->
-# false; Either::Right _match0__1__railwayValue1 -> true }) And
+# (Maybe::Present(_input1)))) { Either::Left _match0__0__railwayError0
+# -> false; Either::Right _match0__1__railwayValue1 -> true }) And
 # (sendInTransaction (let _let0___lawspecRecordField0 = _input0 in let
 # _let1___lawspecRecordField1 =
 # lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let
@@ -390672,14 +390754,14 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -390692,7 +390774,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary0():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -390708,7 +390790,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary0():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -390795,7 +390877,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary0():
                     + "And (beginTransaction == "
                     + "Either::Right(unitValue))) And match "
                     + "(attempt (initProducerIdRequest "
-                    + "(Maybe::Just(_input1)))) { "
+                    + "(Maybe::Present(_input1)))) { "
                     + "Either::Left "
                     + "_match0__0__railwayError0 -> false; "
                     + "Either::Right "
@@ -391188,8 +391270,9 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary0():
                                                                     ),
                                                                     (
                                                                         "Mayb"
-                                                                        "e::J"
-                                                                        "ust"
+                                                                        "e::P"
+                                                                        "rese"
+                                                                        "nt"
                                                                     ),
                                                                     [_input1],
                                                                     64,
@@ -391655,14 +391738,14 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -391675,7 +391758,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -391691,7 +391774,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -391778,7 +391861,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary1():
                     + "And (beginTransaction == "
                     + "Either::Right(unitValue))) And match "
                     + "(attempt (initProducerIdRequest "
-                    + "(Maybe::Just(_input1)))) { "
+                    + "(Maybe::Present(_input1)))) { "
                     + "Either::Left "
                     + "_match0__0__railwayError0 -> false; "
                     + "Either::Right "
@@ -392171,8 +392254,9 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary1():
                                                                     ),
                                                                     (
                                                                         "Mayb"
-                                                                        "e::J"
-                                                                        "ust"
+                                                                        "e::P"
+                                                                        "rese"
+                                                                        "nt"
                                                                     ),
                                                                     [_input1],
                                                                     64,
@@ -392635,14 +392719,14 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -392655,7 +392739,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -392742,7 +392826,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary2():
                     + "And (beginTransaction == "
                     + "Either::Right(unitValue))) And match "
                     + "(attempt (initProducerIdRequest "
-                    + "(Maybe::Just(_input1)))) { "
+                    + "(Maybe::Present(_input1)))) { "
                     + "Either::Left "
                     + "_match0__0__railwayError0 -> false; "
                     + "Either::Right "
@@ -393135,8 +393219,9 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary2():
                                                                     ),
                                                                     (
                                                                         "Mayb"
-                                                                        "e::J"
-                                                                        "ust"
+                                                                        "e::P"
+                                                                        "rese"
+                                                                        "nt"
                                                                     ),
                                                                     [_input1],
                                                                     64,
@@ -393599,14 +393684,14 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -393619,7 +393704,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -393635,7 +393720,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -393722,7 +393807,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary3():
                     + "And (beginTransaction == "
                     + "Either::Right(unitValue))) And match "
                     + "(attempt (initProducerIdRequest "
-                    + "(Maybe::Just(_input1)))) { "
+                    + "(Maybe::Present(_input1)))) { "
                     + "Either::Left "
                     + "_match0__0__railwayError0 -> false; "
                     + "Either::Right "
@@ -394115,8 +394200,9 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary3():
                                                                     ),
                                                                     (
                                                                         "Mayb"
-                                                                        "e::J"
-                                                                        "ust"
+                                                                        "e::P"
+                                                                        "rese"
+                                                                        "nt"
                                                                     ),
                                                                     [_input1],
                                                                     64,
@@ -394573,14 +394659,14 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -394596,7 +394682,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary4():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -394683,7 +394769,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary4():
                     + "And (beginTransaction == "
                     + "Either::Right(unitValue))) And match "
                     + "(attempt (initProducerIdRequest "
-                    + "(Maybe::Just(_input1)))) { "
+                    + "(Maybe::Present(_input1)))) { "
                     + "Either::Left "
                     + "_match0__0__railwayError0 -> false; "
                     + "Either::Right "
@@ -395076,8 +395162,9 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary4():
                                                                     ),
                                                                     (
                                                                         "Mayb"
-                                                                        "e::J"
-                                                                        "ust"
+                                                                        "e::P"
+                                                                        "rese"
+                                                                        "nt"
                                                                     ),
                                                                     [_input1],
                                                                     64,
@@ -395537,14 +395624,14 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -395557,7 +395644,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary5():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -395644,7 +395731,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary5():
                     + "And (beginTransaction == "
                     + "Either::Right(unitValue))) And match "
                     + "(attempt (initProducerIdRequest "
-                    + "(Maybe::Just(_input1)))) { "
+                    + "(Maybe::Present(_input1)))) { "
                     + "Either::Left "
                     + "_match0__0__railwayError0 -> false; "
                     + "Either::Right "
@@ -396037,8 +396124,9 @@ def test_transactions_a_newer_instance_fences_a_zombie__boundary5():
                                                                     ),
                                                                     (
                                                                         "Mayb"
-                                                                        "e::J"
-                                                                        "ust"
+                                                                        "e::P"
+                                                                        "rese"
+                                                                        "nt"
                                                                     ),
                                                                     [_input1],
                                                                     64,
@@ -396867,7 +396955,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__property(_case):
                     + "And (beginTransaction == "
                     + "Either::Right(unitValue))) And match "
                     + "(attempt (initProducerIdRequest "
-                    + "(Maybe::Just(_input1)))) { "
+                    + "(Maybe::Present(_input1)))) { "
                     + "Either::Left "
                     + "_match0__0__railwayError0 -> false; "
                     + "Either::Right "
@@ -397260,8 +397348,9 @@ def test_transactions_a_newer_instance_fences_a_zombie__property(_case):
                                                                     ),
                                                                     (
                                                                         "Mayb"
-                                                                        "e::J"
-                                                                        "ust"
+                                                                        "e::P"
+                                                                        "rese"
+                                                                        "nt"
                                                                     ),
                                                                     [_input1],
                                                                     64,
@@ -397747,14 +397836,14 @@ def test_transactions_aborted_records_are_never_read__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -397767,7 +397856,7 @@ def test_transactions_aborted_records_are_never_read__boundary0():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -397783,7 +397872,7 @@ def test_transactions_aborted_records_are_never_read__boundary0():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -398606,14 +398695,14 @@ def test_transactions_aborted_records_are_never_read__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -398626,7 +398715,7 @@ def test_transactions_aborted_records_are_never_read__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -398642,7 +398731,7 @@ def test_transactions_aborted_records_are_never_read__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -399462,14 +399551,14 @@ def test_transactions_aborted_records_are_never_read__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -399482,7 +399571,7 @@ def test_transactions_aborted_records_are_never_read__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -400302,14 +400391,14 @@ def test_transactions_aborted_records_are_never_read__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -400322,7 +400411,7 @@ def test_transactions_aborted_records_are_never_read__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -400338,7 +400427,7 @@ def test_transactions_aborted_records_are_never_read__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -401152,14 +401241,14 @@ def test_transactions_aborted_records_are_never_read__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -401175,7 +401264,7 @@ def test_transactions_aborted_records_are_never_read__boundary4():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -401992,14 +402081,14 @@ def test_transactions_aborted_records_are_never_read__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -402012,7 +402101,7 @@ def test_transactions_aborted_records_are_never_read__boundary5():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -403969,14 +404058,14 @@ def test_transactions_committed_records_are_read__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -403989,7 +404078,7 @@ def test_transactions_committed_records_are_read__boundary0():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -404005,7 +404094,7 @@ def test_transactions_committed_records_are_read__boundary0():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -404025,14 +404114,14 @@ def test_transactions_committed_records_are_read__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -404045,7 +404134,7 @@ def test_transactions_committed_records_are_read__boundary0():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -404061,7 +404150,7 @@ def test_transactions_committed_records_are_read__boundary0():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -405321,14 +405410,14 @@ def test_transactions_committed_records_are_read__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -405341,7 +405430,7 @@ def test_transactions_committed_records_are_read__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -405357,7 +405446,7 @@ def test_transactions_committed_records_are_read__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -405377,14 +405466,14 @@ def test_transactions_committed_records_are_read__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -405397,7 +405486,7 @@ def test_transactions_committed_records_are_read__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -405413,7 +405502,7 @@ def test_transactions_committed_records_are_read__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -406670,14 +406759,14 @@ def test_transactions_committed_records_are_read__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -406690,7 +406779,7 @@ def test_transactions_committed_records_are_read__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -406710,14 +406799,14 @@ def test_transactions_committed_records_are_read__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -406730,7 +406819,7 @@ def test_transactions_committed_records_are_read__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -407987,14 +408076,14 @@ def test_transactions_committed_records_are_read__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -408007,7 +408096,7 @@ def test_transactions_committed_records_are_read__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -408023,7 +408112,7 @@ def test_transactions_committed_records_are_read__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -408043,14 +408132,14 @@ def test_transactions_committed_records_are_read__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -408063,7 +408152,7 @@ def test_transactions_committed_records_are_read__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -408079,7 +408168,7 @@ def test_transactions_committed_records_are_read__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -409330,14 +409419,14 @@ def test_transactions_committed_records_are_read__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -409353,7 +409442,7 @@ def test_transactions_committed_records_are_read__boundary4():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -409373,14 +409462,14 @@ def test_transactions_committed_records_are_read__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -409396,7 +409485,7 @@ def test_transactions_committed_records_are_read__boundary4():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -410650,14 +410739,14 @@ def test_transactions_committed_records_are_read__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -410670,7 +410759,7 @@ def test_transactions_committed_records_are_read__boundary5():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -410690,14 +410779,14 @@ def test_transactions_committed_records_are_read__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -410710,7 +410799,7 @@ def test_transactions_committed_records_are_read__boundary5():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -419629,14 +419718,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -419652,14 +419741,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -419977,14 +420066,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -419997,7 +420086,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -420013,7 +420102,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -420033,14 +420122,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -420053,7 +420142,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -420069,7 +420158,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -420391,14 +420480,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -420411,7 +420500,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary2():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -420427,7 +420516,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -420447,14 +420536,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -420467,7 +420556,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary2():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -420483,7 +420572,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -420808,14 +420897,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -420828,7 +420917,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -420848,14 +420937,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -420868,7 +420957,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -421193,14 +421282,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -421213,7 +421302,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -421229,7 +421318,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -421249,14 +421338,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -421269,7 +421358,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -421285,7 +421374,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -421607,14 +421696,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -421630,7 +421719,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary5():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -421650,14 +421739,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -421673,7 +421762,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary5():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -421995,14 +422084,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -422018,7 +422107,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -422037,7 +422126,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -422057,14 +422146,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -422080,7 +422169,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -422099,7 +422188,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -422421,14 +422510,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -422441,7 +422530,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary7():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -422461,14 +422550,14 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -422481,7 +422570,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__boundary7():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -423397,14 +423486,14 @@ def test_producer_a_flushed_record_is_in_the_log__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -424156,14 +424245,14 @@ def test_producer_a_flushed_record_is_in_the_log__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -424176,7 +424265,7 @@ def test_producer_a_flushed_record_is_in_the_log__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -424192,7 +424281,7 @@ def test_producer_a_flushed_record_is_in_the_log__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -424948,14 +425037,14 @@ def test_producer_a_flushed_record_is_in_the_log__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -424968,7 +425057,7 @@ def test_producer_a_flushed_record_is_in_the_log__boundary2():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -424984,7 +425073,7 @@ def test_producer_a_flushed_record_is_in_the_log__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -425743,14 +425832,14 @@ def test_producer_a_flushed_record_is_in_the_log__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -425763,7 +425852,7 @@ def test_producer_a_flushed_record_is_in_the_log__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -426522,14 +426611,14 @@ def test_producer_a_flushed_record_is_in_the_log__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -426542,7 +426631,7 @@ def test_producer_a_flushed_record_is_in_the_log__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -426558,7 +426647,7 @@ def test_producer_a_flushed_record_is_in_the_log__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -427314,14 +427403,14 @@ def test_producer_a_flushed_record_is_in_the_log__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -427337,7 +427426,7 @@ def test_producer_a_flushed_record_is_in_the_log__boundary5():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -428093,14 +428182,14 @@ def test_producer_a_flushed_record_is_in_the_log__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -428116,7 +428205,7 @@ def test_producer_a_flushed_record_is_in_the_log__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -428135,7 +428224,7 @@ def test_producer_a_flushed_record_is_in_the_log__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -428891,14 +428980,14 @@ def test_producer_a_flushed_record_is_in_the_log__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -428911,7 +429000,7 @@ def test_producer_a_flushed_record_is_in_the_log__boundary7():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -430659,9 +430748,9 @@ def test_producer_a_flushed_record_is_in_the_log__property(_case):
 # (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) And
 # (producerIdentity == let _let3__it = _let0__id in match (_let3__it) {
 # Either::Right _match4__0___lawspecSelection0x0 ->
-# Maybe::Just(_match4__0___lawspecSelection0x0); Either::Left
-# _match4__1___lawspecSelection0x0 -> Maybe::Nothing() })) = true end
-# for all
+# Maybe::Present(_match4__0___lawspecSelection0x0); Either::Left
+# _match4__1___lawspecSelection0x0 -> Maybe::Absent() })) = true end for
+# all
 def test_producer_an_idempotent_producer_s_retried_send_2__boundary0():
     symbols = {}
     _lawspec_shared_cluster = _abilities.Cluster(symbols)
@@ -430699,14 +430788,14 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -430760,10 +430849,10 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary0():
                 + "_let0__id in match (_let3__it) { "
                 + "Either::Right "
                 + "_match4__0___lawspecSelection0x0 -> "
-                + "Maybe::Just(_match4__0___lawspecSelect"
-                + "ion0x0); Either::Left "
+                + "Maybe::Present(_match4__0___lawspecSel"
+                + "ection0x0); Either::Left "
                 + "_match4__1___lawspecSelection0x0 -> "
-                + "Maybe::Nothing() })) = "
+                + "Maybe::Absent() })) = "
                 + "true"
             ),
             lambda: (
@@ -431397,7 +431486,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary0():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_m11],
                                                             64,
                                                             symbols,
@@ -431429,7 +431518,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary0():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -431656,14 +431745,14 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -431676,7 +431765,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -431692,7 +431781,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -431750,10 +431839,10 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary1():
                 + "_let0__id in match (_let3__it) { "
                 + "Either::Right "
                 + "_match4__0___lawspecSelection0x0 -> "
-                + "Maybe::Just(_match4__0___lawspecSelect"
-                + "ion0x0); Either::Left "
+                + "Maybe::Present(_match4__0___lawspecSel"
+                + "ection0x0); Either::Left "
                 + "_match4__1___lawspecSelection0x0 -> "
-                + "Maybe::Nothing() })) = "
+                + "Maybe::Absent() })) = "
                 + "true"
             ),
             lambda: (
@@ -432387,7 +432476,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary1():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_m11],
                                                             64,
                                                             symbols,
@@ -432419,7 +432508,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary1():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -432646,14 +432735,14 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -432666,7 +432755,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary2():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -432682,7 +432771,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -432740,10 +432829,10 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary2():
                 + "_let0__id in match (_let3__it) { "
                 + "Either::Right "
                 + "_match4__0___lawspecSelection0x0 -> "
-                + "Maybe::Just(_match4__0___lawspecSelect"
-                + "ion0x0); Either::Left "
+                + "Maybe::Present(_match4__0___lawspecSel"
+                + "ection0x0); Either::Left "
                 + "_match4__1___lawspecSelection0x0 -> "
-                + "Maybe::Nothing() })) = "
+                + "Maybe::Absent() })) = "
                 + "true"
             ),
             lambda: (
@@ -433377,7 +433466,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary2():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_m11],
                                                             64,
                                                             symbols,
@@ -433409,7 +433498,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary2():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -433639,14 +433728,14 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -433659,7 +433748,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -433717,10 +433806,10 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary3():
                 + "_let0__id in match (_let3__it) { "
                 + "Either::Right "
                 + "_match4__0___lawspecSelection0x0 -> "
-                + "Maybe::Just(_match4__0___lawspecSelect"
-                + "ion0x0); Either::Left "
+                + "Maybe::Present(_match4__0___lawspecSel"
+                + "ection0x0); Either::Left "
                 + "_match4__1___lawspecSelection0x0 -> "
-                + "Maybe::Nothing() })) = "
+                + "Maybe::Absent() })) = "
                 + "true"
             ),
             lambda: (
@@ -434354,7 +434443,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary3():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_m11],
                                                             64,
                                                             symbols,
@@ -434386,7 +434475,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary3():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -434616,14 +434705,14 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -434636,7 +434725,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -434652,7 +434741,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary4():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -434710,10 +434799,10 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary4():
                 + "_let0__id in match (_let3__it) { "
                 + "Either::Right "
                 + "_match4__0___lawspecSelection0x0 -> "
-                + "Maybe::Just(_match4__0___lawspecSelect"
-                + "ion0x0); Either::Left "
+                + "Maybe::Present(_match4__0___lawspecSel"
+                + "ection0x0); Either::Left "
                 + "_match4__1___lawspecSelection0x0 -> "
-                + "Maybe::Nothing() })) = "
+                + "Maybe::Absent() })) = "
                 + "true"
             ),
             lambda: (
@@ -435347,7 +435436,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary4():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_m11],
                                                             64,
                                                             symbols,
@@ -435379,7 +435468,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary4():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -435606,14 +435695,14 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -435629,7 +435718,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary5():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -435687,10 +435776,10 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary5():
                 + "_let0__id in match (_let3__it) { "
                 + "Either::Right "
                 + "_match4__0___lawspecSelection0x0 -> "
-                + "Maybe::Just(_match4__0___lawspecSelect"
-                + "ion0x0); Either::Left "
+                + "Maybe::Present(_match4__0___lawspecSel"
+                + "ection0x0); Either::Left "
                 + "_match4__1___lawspecSelection0x0 -> "
-                + "Maybe::Nothing() })) = "
+                + "Maybe::Absent() })) = "
                 + "true"
             ),
             lambda: (
@@ -436324,7 +436413,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary5():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_m11],
                                                             64,
                                                             symbols,
@@ -436356,7 +436445,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary5():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -436583,14 +436672,14 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -436606,7 +436695,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -436625,7 +436714,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary6():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -436683,10 +436772,10 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary6():
                 + "_let0__id in match (_let3__it) { "
                 + "Either::Right "
                 + "_match4__0___lawspecSelection0x0 -> "
-                + "Maybe::Just(_match4__0___lawspecSelect"
-                + "ion0x0); Either::Left "
+                + "Maybe::Present(_match4__0___lawspecSel"
+                + "ection0x0); Either::Left "
                 + "_match4__1___lawspecSelection0x0 -> "
-                + "Maybe::Nothing() })) = "
+                + "Maybe::Absent() })) = "
                 + "true"
             ),
             lambda: (
@@ -437320,7 +437409,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary6():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_m11],
                                                             64,
                                                             symbols,
@@ -437352,7 +437441,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary6():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -437579,14 +437668,14 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -437599,7 +437688,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary7():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -437657,10 +437746,10 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary7():
                 + "_let0__id in match (_let3__it) { "
                 + "Either::Right "
                 + "_match4__0___lawspecSelection0x0 -> "
-                + "Maybe::Just(_match4__0___lawspecSelect"
-                + "ion0x0); Either::Left "
+                + "Maybe::Present(_match4__0___lawspecSel"
+                + "ection0x0); Either::Left "
                 + "_match4__1___lawspecSelection0x0 -> "
-                + "Maybe::Nothing() })) = "
+                + "Maybe::Absent() })) = "
                 + "true"
             ),
             lambda: (
@@ -438294,7 +438383,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary7():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_m11],
                                                             64,
                                                             symbols,
@@ -438326,7 +438415,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__boundary7():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -438856,10 +438945,10 @@ def test_producer_an_idempotent_producer_s_retried_send_2__property(_case):
                 + "_let0__id in match (_let3__it) { "
                 + "Either::Right "
                 + "_match4__0___lawspecSelection0x0 -> "
-                + "Maybe::Just(_match4__0___lawspecSelect"
-                + "ion0x0); Either::Left "
+                + "Maybe::Present(_match4__0___lawspecSel"
+                + "ection0x0); Either::Left "
                 + "_match4__1___lawspecSelection0x0 -> "
-                + "Maybe::Nothing() })) = "
+                + "Maybe::Absent() })) = "
                 + "true"
             ),
             lambda: (
@@ -439493,7 +439582,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__property(_case):
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_m11],
                                                             64,
                                                             symbols,
@@ -439525,7 +439614,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__property(_case):
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -439728,8 +439817,8 @@ def test_producer_an_idempotent_producer_s_retried_send_2__property(_case):
 # in let _let1___lawspecRecordField1 =
 # lawtwin.kafka::type::PartitionChoice::ByKey() in let
 # _let2___lawspecRecordField2 = let _let2___lawspecRecordField0 =
-# Maybe::Just(_input2) in let _let3___lawspecRecordField1 = _input3 in
-# let _let4___lawspecRecordField2 = List::Nil() in
+# Maybe::Present(_input2) in let _let3___lawspecRecordField1 = _input3
+# in let _let4___lawspecRecordField2 = List::Nil() in
 # lawtwin.kafka.model::type::Record::Record(_let2___lawspecRecordField0,
 # _let3___lawspecRecordField1, _let4___lawspecRecordField2) in
 # lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRec
@@ -439738,8 +439827,8 @@ def test_producer_an_idempotent_producer_s_retried_send_2__property(_case):
 # let _let2___lawspecRecordField1 =
 # lawtwin.kafka::type::PartitionChoice::ByKey() in let
 # _let3___lawspecRecordField2 = let _let3___lawspecRecordField0 =
-# Maybe::Just(_input2) in let _let4___lawspecRecordField1 = _input4 in
-# let _let5___lawspecRecordField2 = List::Nil() in
+# Maybe::Present(_input2) in let _let4___lawspecRecordField1 = _input4
+# in let _let5___lawspecRecordField2 = List::Nil() in
 # lawtwin.kafka.model::type::Record::Record(_let3___lawspecRecordField0,
 # _let4___lawspecRecordField1, _let5___lawspecRecordField2) in
 # lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRec
@@ -440087,7 +440176,7 @@ def test_producer_records_with_one_key_go_to_one_2__property(_case):
                 + "ByKey() in let "
                 + "_let2___lawspecRecordField2 = let "
                 + "_let2___lawspecRecordField0 = "
-                + "Maybe::Just(_input2) in let "
+                + "Maybe::Present(_input2) in let "
                 + "_let3___lawspecRecordField1 = _input3 "
                 + "in let _let4___lawspecRecordField2 = "
                 + "List::Nil() in "
@@ -440106,7 +440195,7 @@ def test_producer_records_with_one_key_go_to_one_2__property(_case):
                 + "ByKey() in let "
                 + "_let3___lawspecRecordField2 = let "
                 + "_let3___lawspecRecordField0 = "
-                + "Maybe::Just(_input2) in let "
+                + "Maybe::Present(_input2) in let "
                 + "_let4___lawspecRecordField1 = _input4 "
                 + "in let _let5___lawspecRecordField2 = "
                 + "List::Nil() in "
@@ -440249,7 +440338,7 @@ def test_producer_records_with_one_key_go_to_one_2__property(_case):
                                                     "Maybe",
                                                     [_schema.Named("Bytes")],
                                                 ),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 [_input2],
                                                 64,
                                                 symbols,
@@ -440420,7 +440509,7 @@ def test_producer_records_with_one_key_go_to_one_2__property(_case):
                                                 "Maybe",
                                                 [_schema.Named("Bytes")],
                                             ),
-                                            "Maybe::Just",
+                                            "Maybe::Present",
                                             [_input2],
                                             64,
                                             symbols,
@@ -441016,7 +441105,7 @@ def test_producer_a_send_to_a_partition_the_topic_lacks_2__property(_case):
 # _let0___lawspecRecordField0 = _input0 in let
 # _let1___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
-# pecRecordField0, _let1___lawspecRecordField1)) (Maybe::Nothing())
+# pecRecordField0, _let1___lawspecRecordField1)) (Maybe::Absent())
 # (_input3))) { Either::Left _match0__0__railwayError0 -> false;
 # Either::Right _match0__1__railwayValue1 -> true } And
 # resumesAtCommitted (_input0) (_input1) (_input2) (_input4)) = true end
@@ -441426,7 +441515,7 @@ def test_consumer_a_restarted_consumer_resumes_at_its_2__property(_case):
                 + "ion::TopicPartition(_let0___lawspecRec"
                 + "ordField0, "
                 + "_let1___lawspecRecordField1)) "
-                + "(Maybe::Nothing()) (_input3))) { "
+                + "(Maybe::Absent()) (_input3))) { "
                 + "Either::Left "
                 + "_match0__0__railwayError0 -> false; "
                 + "Either::Right "
@@ -441665,7 +441754,7 @@ def test_consumer_a_restarted_consumer_resumes_at_its_2__property(_case):
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -441847,7 +441936,7 @@ def test_consumer_a_restarted_consumer_resumes_at_its_2__property(_case):
 # _let1___lawspecRecordField1 = 0 in
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
 # pecRecordField0, _let1___lawspecRecordField1) in (match (attempt
-# (produceRequest (_let0__tp) (Maybe::Nothing()) (_input1))) {
+# (produceRequest (_let0__tp) (Maybe::Absent()) (_input1))) {
 # Either::Left _match1__0__railwayError0 -> false; Either::Right
 # _match1__1__railwayValue1 -> true } And let _let1__lawspecIgnored =
 # assign (List::Cons(_let0__tp, List::Nil())) in let _let2__it = poll
@@ -441882,14 +441971,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -441905,14 +441994,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary0():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -441940,7 +442029,7 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary0():
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in "
                 + "(match (attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1))) { Either::Left "
                 + "_match1__0__railwayError0 -> false; "
                 + "Either::Right "
@@ -442158,9 +442247,9 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary0():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -442609,14 +442698,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [ls.bytes_literal([])],
                     64,
                     symbols,
@@ -442632,14 +442721,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary1():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -442667,7 +442756,7 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary1():
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in "
                 + "(match (attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1))) { Either::Left "
                 + "_match1__0__railwayError0 -> false; "
                 + "Either::Right "
@@ -442885,9 +442974,9 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary1():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -443339,14 +443428,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary2():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -443374,7 +443463,7 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary2():
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in "
                 + "(match (attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1))) { Either::Left "
                 + "_match1__0__railwayError0 -> false; "
                 + "Either::Right "
@@ -443592,9 +443681,9 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary2():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -444046,14 +444135,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -444069,14 +444158,14 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary3():
             [
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
                 ),
                 _lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                    "Maybe::Nothing",
+                    "Maybe::Absent",
                     [],
                     64,
                     symbols,
@@ -444104,7 +444193,7 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary3():
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in "
                 + "(match (attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1))) { Either::Left "
                 + "_match1__0__railwayError0 -> false; "
                 + "Either::Right "
@@ -444322,9 +444411,9 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__boundary3():
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -445056,7 +445145,7 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__property(_case):
                 + "ordField0, "
                 + "_let1___lawspecRecordField1) in "
                 + "(match (attempt (produceRequest "
-                + "(_let0__tp) (Maybe::Nothing()) "
+                + "(_let0__tp) (Maybe::Absent()) "
                 + "(_input1))) { Either::Left "
                 + "_match1__0__railwayError0 -> false; "
                 + "Either::Right "
@@ -445274,9 +445363,9 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__property(_case):
                                                                 ),
                                                                 (
                                                                     "Mayb"
-                                                                    "e::N"
-                                                                    "othi"
-                                                                    "ng"
+                                                                    "e::A"
+                                                                    "bsen"
+                                                                    "t"
                                                                 ),
                                                                 [],
                                                                 64,
@@ -450658,18 +450747,18 @@ def test_consumer_only_an_assigned_partition_has_a_2__property(_seed):
 # lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___laws
 # pecRecordField0, _let1___lawspecRecordField1) in let _let1__a =
 # writeAborted (_let0__tp) (_input1) (_input2) in let _let2__p = attempt
-# (produceRequest (_let0__tp) (Maybe::Nothing()) (List::Cons(_input3,
+# (produceRequest (_let0__tp) (Maybe::Absent()) (List::Cons(_input3,
 # List::Nil()))) in let _let3__lawspecIgnored = setIsolationLevel
 # (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted()) in let
 # _let4__lawspecIgnored = assign (List::Cons(_let0__tp, List::Nil())) in
 # let _let5__it = poll (100) in match (_let5__it) { Either::Left
 # _match6__0___lawspecSelection0x0 -> false; Either::Right
 # _match6__1___lawspecSelection0x0 -> (let _let7__it = _let1__a in match
-# (_let7__it) { Maybe::Just _match8__0___match__lawspecSelection0x0_0 ->
-# Not(lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
+# (_let7__it) { Maybe::Present _match8__0___match__lawspecSelection0x0_0
+# -> Not(lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
 # (_match8__0___match__lawspecSelection0x0_0)
 # (lawspec_lawspecCollectionsSetOf_b2e15487e0114c0 (receivedOffsets
-# (_match6__1___lawspecSelection0x0)))); Maybe::Nothing -> false } And
+# (_match6__1___lawspecSelection0x0)))); Maybe::Absent -> false } And
 # let _let7__it = _let2__p in match (_let7__it) { Either::Right
 # _match8__0___match__lawspecSelection0x0_0 ->
 # lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
@@ -450705,14 +450794,14 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -450725,7 +450814,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary0():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -450741,7 +450830,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary0():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -450761,14 +450850,14 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -450781,7 +450870,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary0():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -450797,7 +450886,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary0():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -450830,7 +450919,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary0():
                 + "_let1__a = writeAborted (_let0__tp) "
                 + "(_input1) (_input2) in let _let2__p = "
                 + "attempt (produceRequest (_let0__tp) "
-                + "(Maybe::Nothing()) "
+                + "(Maybe::Absent()) "
                 + "(List::Cons(_input3, List::Nil()))) "
                 + "in let _let3__lawspecIgnored = "
                 + "setIsolationLevel "
@@ -450844,7 +450933,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary0():
                 + "false; Either::Right "
                 + "_match6__1___lawspecSelection0x0 -> "
                 + "(let _let7__it = _let1__a in match "
-                + "(_let7__it) { Maybe::Just "
+                + "(_let7__it) { Maybe::Present "
                 + "_match8__0___match__lawspecSelection0x"
                 + "0_0 -> "
                 + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -450854,7 +450943,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary0():
                 + "(lawspec_lawspecCollectionsSetOf_b2e15"
                 + "487e0114c0 (receivedOffsets "
                 + "(_match6__1___lawspecSelection0x0))));"
-                + " Maybe::Nothing  -> false } And let "
+                + " Maybe::Absent  -> false } And let "
                 + "_let7__it = _let2__p in match "
                 + "(_let7__it) { Either::Right "
                 + "_match8__0___match__lawspecSelection0x"
@@ -450953,8 +451042,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary0():
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             lambda _m11: (
                                                                                 (not _definitions.evaluate_238(
@@ -450973,9 +451063,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary0():
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::N"
-                                                                                "othi"
-                                                                                "ng"
+                                                                                "e::A"
+                                                                                "bsen"
+                                                                                "t"
                                                                             ),
                                                                             lambda: (
                                                                                 ls.convert(
@@ -451496,7 +451586,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary0():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -451768,14 +451858,14 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -451788,7 +451878,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -451804,7 +451894,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -451824,14 +451914,14 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -451844,7 +451934,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -451860,7 +451950,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -451893,7 +451983,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary1():
                 + "_let1__a = writeAborted (_let0__tp) "
                 + "(_input1) (_input2) in let _let2__p = "
                 + "attempt (produceRequest (_let0__tp) "
-                + "(Maybe::Nothing()) "
+                + "(Maybe::Absent()) "
                 + "(List::Cons(_input3, List::Nil()))) "
                 + "in let _let3__lawspecIgnored = "
                 + "setIsolationLevel "
@@ -451907,7 +451997,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary1():
                 + "false; Either::Right "
                 + "_match6__1___lawspecSelection0x0 -> "
                 + "(let _let7__it = _let1__a in match "
-                + "(_let7__it) { Maybe::Just "
+                + "(_let7__it) { Maybe::Present "
                 + "_match8__0___match__lawspecSelection0x"
                 + "0_0 -> "
                 + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -451917,7 +452007,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary1():
                 + "(lawspec_lawspecCollectionsSetOf_b2e15"
                 + "487e0114c0 (receivedOffsets "
                 + "(_match6__1___lawspecSelection0x0))));"
-                + " Maybe::Nothing  -> false } And let "
+                + " Maybe::Absent  -> false } And let "
                 + "_let7__it = _let2__p in match "
                 + "(_let7__it) { Either::Right "
                 + "_match8__0___match__lawspecSelection0x"
@@ -452016,8 +452106,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary1():
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             lambda _m11: (
                                                                                 (not _definitions.evaluate_238(
@@ -452036,9 +452127,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary1():
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::N"
-                                                                                "othi"
-                                                                                "ng"
+                                                                                "e::A"
+                                                                                "bsen"
+                                                                                "t"
                                                                             ),
                                                                             lambda: (
                                                                                 ls.convert(
@@ -452559,7 +452650,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary1():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -452828,14 +452919,14 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -452848,7 +452939,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -452868,14 +452959,14 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -452888,7 +452979,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -452921,7 +453012,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary2():
                 + "_let1__a = writeAborted (_let0__tp) "
                 + "(_input1) (_input2) in let _let2__p = "
                 + "attempt (produceRequest (_let0__tp) "
-                + "(Maybe::Nothing()) "
+                + "(Maybe::Absent()) "
                 + "(List::Cons(_input3, List::Nil()))) "
                 + "in let _let3__lawspecIgnored = "
                 + "setIsolationLevel "
@@ -452935,7 +453026,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary2():
                 + "false; Either::Right "
                 + "_match6__1___lawspecSelection0x0 -> "
                 + "(let _let7__it = _let1__a in match "
-                + "(_let7__it) { Maybe::Just "
+                + "(_let7__it) { Maybe::Present "
                 + "_match8__0___match__lawspecSelection0x"
                 + "0_0 -> "
                 + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -452945,7 +453036,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary2():
                 + "(lawspec_lawspecCollectionsSetOf_b2e15"
                 + "487e0114c0 (receivedOffsets "
                 + "(_match6__1___lawspecSelection0x0))));"
-                + " Maybe::Nothing  -> false } And let "
+                + " Maybe::Absent  -> false } And let "
                 + "_let7__it = _let2__p in match "
                 + "(_let7__it) { Either::Right "
                 + "_match8__0___match__lawspecSelection0x"
@@ -453044,8 +453135,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary2():
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             lambda _m11: (
                                                                                 (not _definitions.evaluate_238(
@@ -453064,9 +453156,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary2():
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::N"
-                                                                                "othi"
-                                                                                "ng"
+                                                                                "e::A"
+                                                                                "bsen"
+                                                                                "t"
                                                                             ),
                                                                             lambda: (
                                                                                 ls.convert(
@@ -453587,7 +453679,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary2():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -453856,14 +453948,14 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -453876,7 +453968,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -453892,7 +453984,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -453912,14 +454004,14 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -453932,7 +454024,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -453948,7 +454040,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -453981,7 +454073,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary3():
                 + "_let1__a = writeAborted (_let0__tp) "
                 + "(_input1) (_input2) in let _let2__p = "
                 + "attempt (produceRequest (_let0__tp) "
-                + "(Maybe::Nothing()) "
+                + "(Maybe::Absent()) "
                 + "(List::Cons(_input3, List::Nil()))) "
                 + "in let _let3__lawspecIgnored = "
                 + "setIsolationLevel "
@@ -453995,7 +454087,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary3():
                 + "false; Either::Right "
                 + "_match6__1___lawspecSelection0x0 -> "
                 + "(let _let7__it = _let1__a in match "
-                + "(_let7__it) { Maybe::Just "
+                + "(_let7__it) { Maybe::Present "
                 + "_match8__0___match__lawspecSelection0x"
                 + "0_0 -> "
                 + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -454005,7 +454097,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary3():
                 + "(lawspec_lawspecCollectionsSetOf_b2e15"
                 + "487e0114c0 (receivedOffsets "
                 + "(_match6__1___lawspecSelection0x0))));"
-                + " Maybe::Nothing  -> false } And let "
+                + " Maybe::Absent  -> false } And let "
                 + "_let7__it = _let2__p in match "
                 + "(_let7__it) { Either::Right "
                 + "_match8__0___match__lawspecSelection0x"
@@ -454104,8 +454196,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary3():
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             lambda _m11: (
                                                                                 (not _definitions.evaluate_238(
@@ -454124,9 +454217,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary3():
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::N"
-                                                                                "othi"
-                                                                                "ng"
+                                                                                "e::A"
+                                                                                "bsen"
+                                                                                "t"
                                                                             ),
                                                                             lambda: (
                                                                                 ls.convert(
@@ -454647,7 +454740,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary3():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -454910,14 +455003,14 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -454933,7 +455026,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary4():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -454953,14 +455046,14 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -454976,7 +455069,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary4():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -455009,7 +455102,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary4():
                 + "_let1__a = writeAborted (_let0__tp) "
                 + "(_input1) (_input2) in let _let2__p = "
                 + "attempt (produceRequest (_let0__tp) "
-                + "(Maybe::Nothing()) "
+                + "(Maybe::Absent()) "
                 + "(List::Cons(_input3, List::Nil()))) "
                 + "in let _let3__lawspecIgnored = "
                 + "setIsolationLevel "
@@ -455023,7 +455116,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary4():
                 + "false; Either::Right "
                 + "_match6__1___lawspecSelection0x0 -> "
                 + "(let _let7__it = _let1__a in match "
-                + "(_let7__it) { Maybe::Just "
+                + "(_let7__it) { Maybe::Present "
                 + "_match8__0___match__lawspecSelection0x"
                 + "0_0 -> "
                 + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -455033,7 +455126,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary4():
                 + "(lawspec_lawspecCollectionsSetOf_b2e15"
                 + "487e0114c0 (receivedOffsets "
                 + "(_match6__1___lawspecSelection0x0))));"
-                + " Maybe::Nothing  -> false } And let "
+                + " Maybe::Absent  -> false } And let "
                 + "_let7__it = _let2__p in match "
                 + "(_let7__it) { Either::Right "
                 + "_match8__0___match__lawspecSelection0x"
@@ -455132,8 +455225,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary4():
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             lambda _m11: (
                                                                                 (not _definitions.evaluate_238(
@@ -455152,9 +455246,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary4():
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::N"
-                                                                                "othi"
-                                                                                "ng"
+                                                                                "e::A"
+                                                                                "bsen"
+                                                                                "t"
                                                                             ),
                                                                             lambda: (
                                                                                 ls.convert(
@@ -455675,7 +455769,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary4():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -455941,14 +456035,14 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -455961,7 +456055,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary5():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -455981,14 +456075,14 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -456001,7 +456095,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary5():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -456034,7 +456128,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary5():
                 + "_let1__a = writeAborted (_let0__tp) "
                 + "(_input1) (_input2) in let _let2__p = "
                 + "attempt (produceRequest (_let0__tp) "
-                + "(Maybe::Nothing()) "
+                + "(Maybe::Absent()) "
                 + "(List::Cons(_input3, List::Nil()))) "
                 + "in let _let3__lawspecIgnored = "
                 + "setIsolationLevel "
@@ -456048,7 +456142,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary5():
                 + "false; Either::Right "
                 + "_match6__1___lawspecSelection0x0 -> "
                 + "(let _let7__it = _let1__a in match "
-                + "(_let7__it) { Maybe::Just "
+                + "(_let7__it) { Maybe::Present "
                 + "_match8__0___match__lawspecSelection0x"
                 + "0_0 -> "
                 + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -456058,7 +456152,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary5():
                 + "(lawspec_lawspecCollectionsSetOf_b2e15"
                 + "487e0114c0 (receivedOffsets "
                 + "(_match6__1___lawspecSelection0x0))));"
-                + " Maybe::Nothing  -> false } And let "
+                + " Maybe::Absent  -> false } And let "
                 + "_let7__it = _let2__p in match "
                 + "(_let7__it) { Either::Right "
                 + "_match8__0___match__lawspecSelection0x"
@@ -456157,8 +456251,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary5():
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             lambda _m11: (
                                                                                 (not _definitions.evaluate_238(
@@ -456177,9 +456272,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary5():
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::N"
-                                                                                "othi"
-                                                                                "ng"
+                                                                                "e::A"
+                                                                                "bsen"
+                                                                                "t"
                                                                             ),
                                                                             lambda: (
                                                                                 ls.convert(
@@ -456700,7 +456795,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__boundary5():
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -457286,7 +457381,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__property(_case):
                 + "_let1__a = writeAborted (_let0__tp) "
                 + "(_input1) (_input2) in let _let2__p = "
                 + "attempt (produceRequest (_let0__tp) "
-                + "(Maybe::Nothing()) "
+                + "(Maybe::Absent()) "
                 + "(List::Cons(_input3, List::Nil()))) "
                 + "in let _let3__lawspecIgnored = "
                 + "setIsolationLevel "
@@ -457300,7 +457395,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__property(_case):
                 + "false; Either::Right "
                 + "_match6__1___lawspecSelection0x0 -> "
                 + "(let _let7__it = _let1__a in match "
-                + "(_let7__it) { Maybe::Just "
+                + "(_let7__it) { Maybe::Present "
                 + "_match8__0___match__lawspecSelection0x"
                 + "0_0 -> "
                 + "Not(lawspec_lawspecCollectionsSetMembe"
@@ -457310,7 +457405,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__property(_case):
                 + "(lawspec_lawspecCollectionsSetOf_b2e15"
                 + "487e0114c0 (receivedOffsets "
                 + "(_match6__1___lawspecSelection0x0))));"
-                + " Maybe::Nothing  -> false } And let "
+                + " Maybe::Absent  -> false } And let "
                 + "_let7__it = _let2__p in match "
                 + "(_let7__it) { Either::Right "
                 + "_match8__0___match__lawspecSelection0x"
@@ -457409,8 +457504,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__property(_case):
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::J"
-                                                                                "ust"
+                                                                                "e::P"
+                                                                                "rese"
+                                                                                "nt"
                                                                             ),
                                                                             lambda _m11: (
                                                                                 (not _definitions.evaluate_238(
@@ -457429,9 +457525,9 @@ def test_consumer_a_read_committed_consumer_never_sees_2__property(_case):
                                                                         [
                                                                             (
                                                                                 "Mayb"
-                                                                                "e::N"
-                                                                                "othi"
-                                                                                "ng"
+                                                                                "e::A"
+                                                                                "bsen"
+                                                                                "t"
                                                                             ),
                                                                             lambda: (
                                                                                 ls.convert(
@@ -457952,7 +458048,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__property(_case):
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             [],
                                                             64,
                                                             symbols,
@@ -458203,8 +458299,8 @@ def test_consumer_a_read_committed_consumer_never_sees_2__property(_case):
 # _match0__0__railwayError0 -> false; Either::Right
 # _match0__1__railwayValue1 -> true } And (beginTransaction ==
 # Either::Right(unitValue))) And match (attempt (initProducerIdRequest
-# (Maybe::Just(_input1)))) { Either::Left _match0__0__railwayError0 ->
-# false; Either::Right _match0__1__railwayValue1 -> true }) And
+# (Maybe::Present(_input1)))) { Either::Left _match0__0__railwayError0
+# -> false; Either::Right _match0__1__railwayValue1 -> true }) And
 # (sendInTransaction (let _let0___lawspecRecordField0 = _input0 in let
 # _let1___lawspecRecordField1 =
 # lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let
@@ -458253,14 +458349,14 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -458273,7 +458369,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary0():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -458289,7 +458385,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary0():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -458319,7 +458415,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary0():
                 + "And (beginTransaction == "
                 + "Either::Right(unitValue))) And match "
                 + "(attempt (initProducerIdRequest "
-                + "(Maybe::Just(_input1)))) { "
+                + "(Maybe::Present(_input1)))) { "
                 + "Either::Left "
                 + "_match0__0__railwayError0 -> false; "
                 + "Either::Right "
@@ -458685,7 +458781,12 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary0():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_input1],
                                                                 64,
                                                                 symbols,
@@ -459110,14 +459211,14 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -459130,7 +459231,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -459146,7 +459247,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -459176,7 +459277,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary1():
                 + "And (beginTransaction == "
                 + "Either::Right(unitValue))) And match "
                 + "(attempt (initProducerIdRequest "
-                + "(Maybe::Just(_input1)))) { "
+                + "(Maybe::Present(_input1)))) { "
                 + "Either::Left "
                 + "_match0__0__railwayError0 -> false; "
                 + "Either::Right "
@@ -459542,7 +459643,12 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary1():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_input1],
                                                                 64,
                                                                 symbols,
@@ -459964,14 +460070,14 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -459984,7 +460090,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -460014,7 +460120,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary2():
                 + "And (beginTransaction == "
                 + "Either::Right(unitValue))) And match "
                 + "(attempt (initProducerIdRequest "
-                + "(Maybe::Just(_input1)))) { "
+                + "(Maybe::Present(_input1)))) { "
                 + "Either::Left "
                 + "_match0__0__railwayError0 -> false; "
                 + "Either::Right "
@@ -460380,7 +460486,12 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary2():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_input1],
                                                                 64,
                                                                 symbols,
@@ -460802,14 +460913,14 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -460822,7 +460933,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -460838,7 +460949,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -460868,7 +460979,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary3():
                 + "And (beginTransaction == "
                 + "Either::Right(unitValue))) And match "
                 + "(attempt (initProducerIdRequest "
-                + "(Maybe::Just(_input1)))) { "
+                + "(Maybe::Present(_input1)))) { "
                 + "Either::Left "
                 + "_match0__0__railwayError0 -> false; "
                 + "Either::Right "
@@ -461234,7 +461345,12 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary3():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_input1],
                                                                 64,
                                                                 symbols,
@@ -461650,14 +461766,14 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -461673,7 +461789,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary4():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -461703,7 +461819,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary4():
                 + "And (beginTransaction == "
                 + "Either::Right(unitValue))) And match "
                 + "(attempt (initProducerIdRequest "
-                + "(Maybe::Just(_input1)))) { "
+                + "(Maybe::Present(_input1)))) { "
                 + "Either::Left "
                 + "_match0__0__railwayError0 -> false; "
                 + "Either::Right "
@@ -462069,7 +462185,12 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary4():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_input1],
                                                                 64,
                                                                 symbols,
@@ -462488,14 +462609,14 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -462508,7 +462629,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary5():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -462538,7 +462659,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary5():
                 + "And (beginTransaction == "
                 + "Either::Right(unitValue))) And match "
                 + "(attempt (initProducerIdRequest "
-                + "(Maybe::Just(_input1)))) { "
+                + "(Maybe::Present(_input1)))) { "
                 + "Either::Left "
                 + "_match0__0__railwayError0 -> false; "
                 + "Either::Right "
@@ -462904,7 +463025,12 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__boundary5():
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_input1],
                                                                 64,
                                                                 symbols,
@@ -463635,7 +463761,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__property(_case):
                 + "And (beginTransaction == "
                 + "Either::Right(unitValue))) And match "
                 + "(attempt (initProducerIdRequest "
-                + "(Maybe::Just(_input1)))) { "
+                + "(Maybe::Present(_input1)))) { "
                 + "Either::Left "
                 + "_match0__0__railwayError0 -> false; "
                 + "Either::Right "
@@ -464001,7 +464127,12 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__property(_case):
                                                                         ),
                                                                     ],
                                                                 ),
-                                                                "Maybe::Just",
+                                                                (
+                                                                    "Mayb"
+                                                                    "e::P"
+                                                                    "rese"
+                                                                    "nt"
+                                                                ),
                                                                 [_input1],
                                                                 64,
                                                                 symbols,
@@ -464446,14 +464577,14 @@ def test_transactions_aborted_records_are_never_read_2__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -464466,7 +464597,7 @@ def test_transactions_aborted_records_are_never_read_2__boundary0():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -464482,7 +464613,7 @@ def test_transactions_aborted_records_are_never_read_2__boundary0():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -465199,14 +465330,14 @@ def test_transactions_aborted_records_are_never_read_2__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -465219,7 +465350,7 @@ def test_transactions_aborted_records_are_never_read_2__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -465235,7 +465366,7 @@ def test_transactions_aborted_records_are_never_read_2__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -465949,14 +466080,14 @@ def test_transactions_aborted_records_are_never_read_2__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -465969,7 +466100,7 @@ def test_transactions_aborted_records_are_never_read_2__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -466683,14 +466814,14 @@ def test_transactions_aborted_records_are_never_read_2__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -466703,7 +466834,7 @@ def test_transactions_aborted_records_are_never_read_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -466719,7 +466850,7 @@ def test_transactions_aborted_records_are_never_read_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -467427,14 +467558,14 @@ def test_transactions_aborted_records_are_never_read_2__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -467450,7 +467581,7 @@ def test_transactions_aborted_records_are_never_read_2__boundary4():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -468161,14 +468292,14 @@ def test_transactions_aborted_records_are_never_read_2__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -468181,7 +468312,7 @@ def test_transactions_aborted_records_are_never_read_2__boundary5():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -469926,14 +470057,14 @@ def test_transactions_committed_records_are_read_2__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -469946,7 +470077,7 @@ def test_transactions_committed_records_are_read_2__boundary0():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -469962,7 +470093,7 @@ def test_transactions_committed_records_are_read_2__boundary0():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -469982,14 +470113,14 @@ def test_transactions_committed_records_are_read_2__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -470002,7 +470133,7 @@ def test_transactions_committed_records_are_read_2__boundary0():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -470018,7 +470149,7 @@ def test_transactions_committed_records_are_read_2__boundary0():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -471152,14 +471283,14 @@ def test_transactions_committed_records_are_read_2__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -471172,7 +471303,7 @@ def test_transactions_committed_records_are_read_2__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -471188,7 +471319,7 @@ def test_transactions_committed_records_are_read_2__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -471208,14 +471339,14 @@ def test_transactions_committed_records_are_read_2__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([0, 127, 128, 255])],
                 64,
                 symbols,
@@ -471228,7 +471359,7 @@ def test_transactions_committed_records_are_read_2__boundary1():
                         ls.literal({"type": "Text", "units": [32]}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -471244,7 +471375,7 @@ def test_transactions_committed_records_are_read_2__boundary1():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -472375,14 +472506,14 @@ def test_transactions_committed_records_are_read_2__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -472395,7 +472526,7 @@ def test_transactions_committed_records_are_read_2__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -472415,14 +472546,14 @@ def test_transactions_committed_records_are_read_2__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -472435,7 +472566,7 @@ def test_transactions_committed_records_are_read_2__boundary2():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -473566,14 +473697,14 @@ def test_transactions_committed_records_are_read_2__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -473586,7 +473717,7 @@ def test_transactions_committed_records_are_read_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -473602,7 +473733,7 @@ def test_transactions_committed_records_are_read_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -473622,14 +473753,14 @@ def test_transactions_committed_records_are_read_2__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -473642,7 +473773,7 @@ def test_transactions_committed_records_are_read_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -473658,7 +473789,7 @@ def test_transactions_committed_records_are_read_2__boundary3():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -474783,14 +474914,14 @@ def test_transactions_committed_records_are_read_2__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -474806,7 +474937,7 @@ def test_transactions_committed_records_are_read_2__boundary4():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -474826,14 +474957,14 @@ def test_transactions_committed_records_are_read_2__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.bytes_literal([])],
                 64,
                 symbols,
@@ -474849,7 +474980,7 @@ def test_transactions_committed_records_are_read_2__boundary4():
                         ),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -475977,14 +476108,14 @@ def test_transactions_committed_records_are_read_2__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -475997,7 +476128,7 @@ def test_transactions_committed_records_are_read_2__boundary5():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,
@@ -476017,14 +476148,14 @@ def test_transactions_committed_records_are_read_2__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -476037,7 +476168,7 @@ def test_transactions_committed_records_are_read_2__boundary5():
                         ls.literal({"type": "Text", "units": []}, symbols),
                         _lawspec_schema.construct(
                             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                            "Maybe::Nothing",
+                            "Maybe::Absent",
                             [],
                             64,
                             symbols,

@@ -3,7 +3,7 @@
   "files": {
     "tests/lawspec_collections_lawspec.rs": "eef6028b561353ad7e9cac2bd8029828d931f6fc0763049057fda994d72e47fc",
     "tests/lawspec_matchers_lawspec.rs": "4edf7171c6c071ac848ba9134f2b6212dc572f57a879c9bcca6572e8846b0346",
-    "tests/lawtwin_github_lawspec.rs": "cfa3058b4e7377dea4eb2e926879999283beb966f6de7794cc9a07265f3a48b8",
+    "tests/lawtwin_github_lawspec.rs": "385a8c9cc685e6719fe8b25f51cf1662d47d862032d4e6c2ebf090890af00821",
     "tests/lawtwin_github_handwritten_lawspec.rs": "4c693021d1f41e659f815913b983b33502fb497af34c831284ba39d440d640d6",
     "tests/lawtwin_github_laws_lawspec.rs": "d48c8ef1941308c8a25d3730218916379b47f2382ed177fa40c9c77cb94d4f80",
     "tests/lawtwin_github_model_lawspec.rs": "299fec165f7ac1c0ef4becc99636205be34bad7a79ad9aeedcac05cd2c476152",
@@ -12,10 +12,10 @@
     "src/lawspec_schema.rs": "d42e5d77a29f8fd2d5a47f713469027b6e5ea8208539b54d743a6a4c6775739d",
     "src/lawspec_definitions.rs": "260507dc2e25d8f61a4a1b7e07361620c2cfa594532620a4f5c8d8df57db1c44",
     "src/lawspec_abilities.rs": "a7196c0ded190911bdd721f764cb099c8d7ad5149e63a616b748a890eb808a54",
-    "src/lawspec_runtime.rs": "688ba4ba40eda80207abc489b18461cdfbe0585a73befa284e4e45892b497e7d",
+    "src/lawspec_runtime.rs": "c88ea79ae0518c8111b228b4d34423364eaa7ff132cd26e7edb79f9efd380b75",
     "src/lawspec_modules.rs": "9678d4f33db9710a2ea8081e77cbf3e14abd2702a844c6e8fc2bfeffc624cf17",
     "tests/support/lawspec_strategies.rs": "b801c9ddc702588b6b30e6a14c1e7b200ae2e0229f4f3ca8f6fb5510e8238df6",
-    "src/lawspec_remote.rs": "763d0b01ed757b3e89ebb30d38a0e1c76b007c9d5db42ee1c2bce039bf78b592"
+    "src/lawspec_remote.rs": "18cf885aadd49fcab3738b108af0d6e630c267f9e27399f31872d477d2e91a1e"
   },
   "adapters": {
     "src/lawspec/collections.rs": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032",

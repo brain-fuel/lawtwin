@@ -54,7 +54,7 @@ def strategy(schema, reference, bits, budget, scalar, symbols=None,
             children = [(ty.arguments[0], child) for child in value]
         elif ty.name in ("Nullable", "Optional") and value.present:
             children = [(ty.arguments[0], value.value)]
-        elif ty.name == "Maybe" and value.tag == "Maybe::Just":
+        elif ty.name == "Maybe" and value.tag == "Maybe::Present":
             children = [(ty.arguments[0], value.fields[0])]
         elif ty.name == "Either":
             index = 0 if value.tag == "Either::Left" else 1
@@ -204,12 +204,12 @@ def strategy(schema, reference, bits, budget, scalar, symbols=None,
 
             return st.integers(0, maximum).flatmap(sized)
         if name in ("Nullable", "Optional", "Maybe"):
-            absent = (ls.DataValue("Maybe::Nothing", ()) if name == "Maybe"
+            absent = (ls.DataValue("Maybe::Absent", ()) if name == "Maybe"
                       else ls.Presence(name, False))
             if not inhabited(arguments[0], available - 1):
                 return st.just(absent)
             present = build(arguments[0], available - 1).map(
-                lambda value: ls.DataValue("Maybe::Just", (value,))
+                lambda value: ls.DataValue("Maybe::Present", (value,))
                 if name == "Maybe" else ls.Presence(name, True, value))
             return st.one_of(st.just(absent), present)
         if name == "Either":

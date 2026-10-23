@@ -135,7 +135,7 @@ let private instantiate (c: Constructor) (args: TypeRef list) =
 
 let private builtinConstructors name (args: TypeRef list) =
     match name, args with
-    | "Maybe", [ t ] -> Some [ constructor "Maybe::Nothing" []; constructor "Maybe::Just" [ "value", t ] ]
+    | "Maybe", [ t ] -> Some [ constructor "Maybe::Absent" []; constructor "Maybe::Present" [ "value", t ] ]
     | "Either", [ a; b ] -> Some [ constructor "Either::Left" [ "value", a ]; constructor "Either::Right" [ "value", b ] ]
     | _ -> None
 
@@ -379,8 +379,8 @@ let rec private payload (r: Recipe) (value: Value) (schema: Schema) =
     | Container("List", [ inner ]), List items -> items |> List.forall (fun v -> payload inner v schema)
     | Container(_, [ _ ]), Presence(_, None) -> true
     | Container(_, [ inner ]), Presence(_, Some v) -> payload inner v schema
-    | Container("Maybe", _), Data("Maybe::Nothing", []) -> true
-    | Container("Maybe", [ inner ]), Data("Maybe::Just", [ v ]) -> payload inner v schema
+    | Container("Maybe", _), Data("Maybe::Absent", []) -> true
+    | Container("Maybe", [ inner ]), Data("Maybe::Present", [ v ]) -> payload inner v schema
     | Container("Either", [ inner; _ ]), Data("Either::Left", [ v ]) -> payload inner v schema
     | Container("Either", [ _; inner ]), Data("Either::Right", [ v ]) -> payload inner v schema
     | Container(name, args), Data(tag, values) ->

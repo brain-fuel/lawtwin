@@ -301,8 +301,8 @@ fn run_0() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -320,8 +320,8 @@ fn run_0() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text(" ".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -339,8 +339,8 @@ fn run_0() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
         ];
@@ -359,11 +359,11 @@ fn run_0() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -384,11 +384,11 @@ fn run_0() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -409,11 +409,11 @@ fn run_0() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                 ],
@@ -433,8 +433,8 @@ fn run_0() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
                 ],
             ),
         ];
@@ -452,8 +452,8 @@ fn run_0() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -472,11 +472,11 @@ fn run_0() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                 ],
@@ -573,8 +573,8 @@ fn run_0() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -584,8 +584,8 @@ fn run_0() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text(" ".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -595,8 +595,8 @@ fn run_0() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -607,11 +607,11 @@ fn run_0() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -624,11 +624,11 @@ fn run_0() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -641,11 +641,11 @@ fn run_0() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -657,8 +657,14 @@ fn run_0() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -668,8 +674,8 @@ fn run_0() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -680,11 +686,11 @@ fn run_0() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -989,8 +995,8 @@ fn run_1() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -1008,8 +1014,8 @@ fn run_1() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text(" ".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -1027,8 +1033,8 @@ fn run_1() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
         ];
@@ -1047,11 +1053,11 @@ fn run_1() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -1072,11 +1078,11 @@ fn run_1() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -1097,11 +1103,11 @@ fn run_1() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                 ],
@@ -1121,8 +1127,8 @@ fn run_1() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
                 ],
             ),
         ];
@@ -1140,8 +1146,8 @@ fn run_1() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -1160,11 +1166,11 @@ fn run_1() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                 ],
@@ -1261,8 +1267,8 @@ fn run_1() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -1272,8 +1278,8 @@ fn run_1() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text(" ".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -1283,8 +1289,8 @@ fn run_1() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -1295,11 +1301,11 @@ fn run_1() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -1312,11 +1318,11 @@ fn run_1() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -1329,11 +1335,11 @@ fn run_1() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -1345,8 +1351,14 @@ fn run_1() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -1356,8 +1368,8 @@ fn run_1() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -1368,11 +1380,11 @@ fn run_1() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -1740,8 +1752,8 @@ fn run_2() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -1759,8 +1771,8 @@ fn run_2() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text(" ".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -1778,8 +1790,8 @@ fn run_2() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
         ];
@@ -1798,11 +1810,11 @@ fn run_2() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -1823,11 +1835,11 @@ fn run_2() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -1848,11 +1860,11 @@ fn run_2() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                 ],
@@ -1872,8 +1884,8 @@ fn run_2() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
                 ],
             ),
         ];
@@ -1891,8 +1903,8 @@ fn run_2() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -1911,11 +1923,11 @@ fn run_2() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                 ],
@@ -2012,8 +2024,8 @@ fn run_2() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -2023,8 +2035,8 @@ fn run_2() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text(" ".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -2034,8 +2046,8 @@ fn run_2() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -2046,11 +2058,11 @@ fn run_2() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -2063,11 +2075,11 @@ fn run_2() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -2080,11 +2092,11 @@ fn run_2() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -2096,8 +2108,14 @@ fn run_2() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -2107,8 +2125,8 @@ fn run_2() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -2119,11 +2137,11 @@ fn run_2() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -2465,8 +2483,8 @@ fn run_3() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -2484,8 +2502,8 @@ fn run_3() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text(" ".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -2503,8 +2521,8 @@ fn run_3() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
         ];
@@ -2523,11 +2541,11 @@ fn run_3() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -2548,11 +2566,11 @@ fn run_3() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -2573,11 +2591,11 @@ fn run_3() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                 ],
@@ -2597,8 +2615,8 @@ fn run_3() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
                 ],
             ),
         ];
@@ -2616,8 +2634,8 @@ fn run_3() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -2636,11 +2654,11 @@ fn run_3() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                 ],
@@ -2737,8 +2755,8 @@ fn run_3() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -2748,8 +2766,8 @@ fn run_3() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text(" ".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -2759,8 +2777,8 @@ fn run_3() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -2771,11 +2789,11 @@ fn run_3() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -2788,11 +2806,11 @@ fn run_3() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -2805,11 +2823,11 @@ fn run_3() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -2821,8 +2839,14 @@ fn run_3() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -2832,8 +2856,8 @@ fn run_3() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -2844,11 +2868,11 @@ fn run_3() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -2960,7 +2984,7 @@ fn search_case_3(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // = attempt (issuesCreateLabel (_input0) (_input1) (_let0__sent)) in match (_let1__it) {
 // Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
 // _match2__1___lawspecSelection0x0 -> let _let3__it = attempt (issuesListLabelsForRepo (_input0)
-// (_input1) (Maybe::Nothing()) (Maybe::Nothing())) in match (_let3__it) { Either::Left
+// (_input1) (Maybe::Absent()) (Maybe::Absent())) in match (_let3__it) { Either::Left
 // _match4__0___match__lawspecSelection0x0_0 -> false; Either::Right
 // _match4__1___match__lawspecSelection0x0_0 -> lawtwinGithubModelContainsLabel
 // (_match2__1___lawspecSelection0x0) (_match4__1___match__lawspecSelection0x0_0) } } = true end for
@@ -3049,9 +3073,9 @@ fn law_4(
                                             let perform_argument_0 = input_0.clone();
                                             let perform_argument_1 = input_1.clone();
                                             let perform_argument_2 =
-                                                ls::construct("Maybe::Nothing", vec![])?;
+                                                ls::construct("Maybe::Absent", vec![])?;
                                             let perform_argument_3 =
-                                                ls::construct("Maybe::Nothing", vec![])?;
+                                                ls::construct("Maybe::Absent", vec![])?;
                                             let arguments = vec![
                                                 perform_argument_0,
                                                 perform_argument_1,
@@ -3114,13 +3138,13 @@ fn law_4(
                         "ection0x0 -> true; Either::Right _match2__1___",
                         "lawspecSelection0x0 -> let _let3__it = attempt",
                         " (issuesListLabelsForRepo (_input0) (_input1) ",
-                        "(Maybe::Nothing()) (Maybe::Nothing())) in matc",
-                        "h (_let3__it) { Either::Left _match4__0___matc",
-                        "h__lawspecSelection0x0_0 -> false; Either::Rig",
-                        "ht _match4__1___match__lawspecSelection0x0_0 -",
-                        "> lawtwinGithubModelContainsLabel (_match2__1_",
-                        "__lawspecSelection0x0) (_match4__1___match__la",
-                        "wspecSelection0x0_0) } } = true",
+                        "(Maybe::Absent()) (Maybe::Absent())) in match ",
+                        "(_let3__it) { Either::Left _match4__0___match_",
+                        "_lawspecSelection0x0_0 -> false; Either::Right",
+                        " _match4__1___match__lawspecSelection0x0_0 -> ",
+                        "lawtwinGithubModelContainsLabel (_match2__1___",
+                        "lawspecSelection0x0) (_match4__1___match__laws",
+                        "pecSelection0x0_0) } } = true",
                     ),
                     left,
                     right,
@@ -3182,8 +3206,8 @@ fn run_4() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -3201,8 +3225,8 @@ fn run_4() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text(" ".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -3220,8 +3244,8 @@ fn run_4() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
         ];
@@ -3240,11 +3264,11 @@ fn run_4() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -3265,11 +3289,11 @@ fn run_4() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -3290,11 +3314,11 @@ fn run_4() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                 ],
@@ -3314,8 +3338,8 @@ fn run_4() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
                 ],
             ),
         ];
@@ -3333,8 +3357,8 @@ fn run_4() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -3353,11 +3377,11 @@ fn run_4() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                 ],
@@ -3454,8 +3478,8 @@ fn run_4() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -3465,8 +3489,8 @@ fn run_4() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text(" ".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -3476,8 +3500,8 @@ fn run_4() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -3488,11 +3512,11 @@ fn run_4() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -3505,11 +3529,11 @@ fn run_4() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -3522,11 +3546,11 @@ fn run_4() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -3538,8 +3562,14 @@ fn run_4() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -3549,8 +3579,8 @@ fn run_4() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -3561,11 +3591,11 @@ fn run_4() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -3677,7 +3707,7 @@ fn search_case_4(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // = attempt (issuesCreateLabel (_input0) (_input1) (_let0__sent)) in match (_let1__it) {
 // Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
 // _match2__1___lawspecSelection0x0 -> let _let3__it = attempt (issuesListLabelsForRepo (_input0)
-// (_input1) (Maybe::Nothing()) (Maybe::Nothing())) in match (_let3__it) { Either::Left
+// (_input1) (Maybe::Absent()) (Maybe::Absent())) in match (_let3__it) { Either::Left
 // _match4__0___match__lawspecSelection0x0_0 -> false; Either::Right
 // _match4__1___match__lawspecSelection0x0_0 -> lawtwinGithubModelContainsLabel
 // (_match2__1___lawspecSelection0x0) (_match4__1___match__lawspecSelection0x0_0) } } = true end for
@@ -3758,9 +3788,9 @@ fn law_5(
                                         let perform_argument_0 = input_0.clone();
                                         let perform_argument_1 = input_1.clone();
                                         let perform_argument_2 =
-                                            ls::construct("Maybe::Nothing", vec![])?;
+                                            ls::construct("Maybe::Absent", vec![])?;
                                         let perform_argument_3 =
-                                            ls::construct("Maybe::Nothing", vec![])?;
+                                            ls::construct("Maybe::Absent", vec![])?;
                                         let arguments = vec![
                                             perform_argument_0,
                                             perform_argument_1,
@@ -3823,13 +3853,13 @@ fn law_5(
                     "Selection0x0 -> true; Either::Right _match2__1",
                     "___lawspecSelection0x0 -> let _let3__it = atte",
                     "mpt (issuesListLabelsForRepo (_input0) (_input",
-                    "1) (Maybe::Nothing()) (Maybe::Nothing())) in m",
-                    "atch (_let3__it) { Either::Left _match4__0___m",
-                    "atch__lawspecSelection0x0_0 -> false; Either::",
-                    "Right _match4__1___match__lawspecSelection0x0_",
-                    "0 -> lawtwinGithubModelContainsLabel (_match2_",
-                    "_1___lawspecSelection0x0) (_match4__1___match_",
-                    "_lawspecSelection0x0_0) } } = true",
+                    "1) (Maybe::Absent()) (Maybe::Absent())) in mat",
+                    "ch (_let3__it) { Either::Left _match4__0___mat",
+                    "ch__lawspecSelection0x0_0 -> false; Either::Ri",
+                    "ght _match4__1___match__lawspecSelection0x0_0 ",
+                    "-> lawtwinGithubModelContainsLabel (_match2__1",
+                    "___lawspecSelection0x0) (_match4__1___match__l",
+                    "awspecSelection0x0_0) } } = true",
                 ),
                 left,
                 right,
@@ -3876,8 +3906,8 @@ fn run_5() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -3895,8 +3925,8 @@ fn run_5() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text(" ".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -3914,8 +3944,8 @@ fn run_5() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
         ];
@@ -3934,11 +3964,11 @@ fn run_5() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -3959,11 +3989,11 @@ fn run_5() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -3984,11 +4014,11 @@ fn run_5() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                 ],
@@ -4008,8 +4038,8 @@ fn run_5() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
                 ],
             ),
         ];
@@ -4027,8 +4057,8 @@ fn run_5() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -4047,11 +4077,11 @@ fn run_5() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                 ],
@@ -4148,8 +4178,8 @@ fn run_5() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -4159,8 +4189,8 @@ fn run_5() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text(" ".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -4170,8 +4200,8 @@ fn run_5() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -4182,11 +4212,11 @@ fn run_5() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -4199,11 +4229,11 @@ fn run_5() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -4216,11 +4246,11 @@ fn run_5() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -4232,8 +4262,14 @@ fn run_5() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -4243,8 +4279,8 @@ fn run_5() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -4255,11 +4291,11 @@ fn run_5() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -4377,7 +4413,7 @@ fn search_case_5(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // (issuesGetLabel (_input0) (_input1) (_let3__key)) in match (_let4__it) { Either::Left
 // _match5__0___match__lawspecSelection0x0_0 -> false; Either::Right
 // _match5__1___match__lawspecSelection0x0_0 -> let _let6__it = attempt (issuesUpdateLabel (_input0)
-// (_input1) (_let3__key) (Maybe::Just(_input3))) in match (_let6__it) { Either::Left
+// (_input1) (_let3__key) (Maybe::Present(_input3))) in match (_let6__it) { Either::Left
 // _match7__0___match__match__lawspecSelection0x0_0_0 -> true; Either::Right
 // _match7__1___match__match__lawspecSelection0x0_0_0 -> let _let8__it = attempt (issuesGetLabel
 // (_input0) (_input1) (_let3__key)) in match (_let8__it) { Either::Left
@@ -4415,25 +4451,25 @@ fn search_case_5(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // _matchfield61__description_ } == let _let10__it = match (_input3) {
 // lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody _matchfield66__newName
 // _matchfield67__color _matchfield68__description_ _matchfield69__archived ->
-// _matchfield68__description_ } in match (_let10__it) { Maybe::Nothing -> match
+// _matchfield68__description_ } in match (_let10__it) { Maybe::Absent -> match
 // (_match5__1___match__lawspecSelection0x0_0) { lawtwin.github.model::type::Label::Label
 // _matchfield70__id _matchfield71__nodeId _matchfield72__url _matchfield73__name
 // _matchfield74__description_ _matchfield75__color _matchfield76__default_
-// _matchfield77__archivedAt _matchfield78__archivedBy -> _matchfield74__description_ }; Maybe::Just
-// _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
-// Maybe::Just(_match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0) })) And (match
-// (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
+// _matchfield77__archivedAt _matchfield78__archivedBy -> _matchfield74__description_ };
+// Maybe::Present _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
+// Maybe::Present(_match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0) })) And
+// (match (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
 // lawtwin.github.model::type::Label::Label _matchfield79__id _matchfield80__nodeId
 // _matchfield81__url _matchfield82__name _matchfield83__description_ _matchfield84__color
 // _matchfield85__default_ _matchfield86__archivedAt _matchfield87__archivedBy ->
 // _matchfield84__color } == let _let10__it = match (_input3) {
 // lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody _matchfield88__newName
 // _matchfield89__color _matchfield90__description_ _matchfield91__archived -> _matchfield89__color
-// } in match (_let10__it) { Maybe::Nothing -> match (_match5__1___match__lawspecSelection0x0_0) {
+// } in match (_let10__it) { Maybe::Absent -> match (_match5__1___match__lawspecSelection0x0_0) {
 // lawtwin.github.model::type::Label::Label _matchfield92__id _matchfield93__nodeId
 // _matchfield94__url _matchfield95__name _matchfield96__description_ _matchfield97__color
 // _matchfield98__default_ _matchfield99__archivedAt _matchfield100__archivedBy ->
-// _matchfield97__color }; Maybe::Just
+// _matchfield97__color }; Maybe::Present
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 })) And (match
 // (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
@@ -4608,7 +4644,7 @@ fn law_6(
                                                                 input_1.clone();
                                                             let perform_argument_2 = let_8.clone();
                                                             let perform_argument_3 = ls::construct(
-                                                                "Maybe::Just",
+                                                                "Maybe::Present",
                                                                 vec![input_3.clone()],
                                                             )?;
                                                             let arguments = vec![
@@ -4904,7 +4940,7 @@ fn law_6(
                                                                                                         ls::Value::Maybe(Some(payload)) => {
                                                                                                             let match_local_16_0 = *payload;
                                                                                                             let result = ls::construct(
-                                                                                                                "Maybe::Just",
+                                                                                                                "Maybe::Present",
                                                                                                                 vec![match_local_16_0.clone()],
                                                                                                             )?;
                                                                                                             result
@@ -5209,155 +5245,155 @@ fn law_6(
                         "ither::Right _match5__1___match__lawspecSelect",
                         "ion0x0_0 -> let _let6__it = attempt (issuesUpd",
                         "ateLabel (_input0) (_input1) (_let3__key) (May",
-                        "be::Just(_input3))) in match (_let6__it) { Eit",
-                        "her::Left _match7__0___match__match__lawspecSe",
-                        "lection0x0_0_0 -> true; Either::Right _match7_",
-                        "_1___match__match__lawspecSelection0x0_0_0 -> ",
-                        "let _let8__it = attempt (issuesGetLabel (_inpu",
-                        "t0) (_input1) (_let3__key)) in match (_let8__i",
-                        "t) { Either::Left _match9__0___match__match__m",
-                        "atch__lawspecSelection0x0_0_0_0 -> false; Eith",
-                        "er::Right _match9__1___match__match__match__la",
-                        "wspecSelection0x0_0_0_0 -> ((((((((match (_mat",
-                        "ch9__1___match__match__match__lawspecSelection",
-                        "0x0_0_0_0) { lawtwin.github.model::type::Label",
-                        "::Label _matchfield3__id _matchfield4__nodeId ",
-                        "_matchfield5__url _matchfield6__name _matchfie",
-                        "ld7__description_ _matchfield8__color _matchfi",
-                        "eld9__default_ _matchfield10__archivedAt _matc",
-                        "hfield11__archivedBy -> _matchfield3__id } == ",
-                        "match (_match5__1___match__lawspecSelection0x0",
-                        "_0) { lawtwin.github.model::type::Label::Label",
-                        " _matchfield12__id _matchfield13__nodeId _matc",
-                        "hfield14__url _matchfield15__name _matchfield1",
-                        "6__description_ _matchfield17__color _matchfie",
-                        "ld18__default_ _matchfield19__archivedAt _matc",
-                        "hfield20__archivedBy -> _matchfield12__id }) A",
-                        "nd (match (_match9__1___match__match__match__l",
-                        "awspecSelection0x0_0_0_0) { lawtwin.github.mod",
-                        "el::type::Label::Label _matchfield21__id _matc",
-                        "hfield22__nodeId _matchfield23__url _matchfiel",
-                        "d24__name _matchfield25__description_ _matchfi",
-                        "eld26__color _matchfield27__default_ _matchfie",
-                        "ld28__archivedAt _matchfield29__archivedBy -> ",
-                        "_matchfield22__nodeId } == match (_match5__1__",
-                        "_match__lawspecSelection0x0_0) { lawtwin.githu",
-                        "b.model::type::Label::Label _matchfield30__id ",
-                        "_matchfield31__nodeId _matchfield32__url _matc",
-                        "hfield33__name _matchfield34__description_ _ma",
-                        "tchfield35__color _matchfield36__default_ _mat",
-                        "chfield37__archivedAt _matchfield38__archivedB",
-                        "y -> _matchfield31__nodeId })) And (match (_ma",
-                        "tch9__1___match__match__match__lawspecSelectio",
-                        "n0x0_0_0_0) { lawtwin.github.model::type::Labe",
-                        "l::Label _matchfield39__id _matchfield40__node",
-                        "Id _matchfield41__url _matchfield42__name _mat",
-                        "chfield43__description_ _matchfield44__color _",
-                        "matchfield45__default_ _matchfield46__archived",
-                        "At _matchfield47__archivedBy -> _matchfield41_",
-                        "_url } == match (_match5__1___match__lawspecSe",
-                        "lection0x0_0) { lawtwin.github.model::type::La",
-                        "bel::Label _matchfield48__id _matchfield49__no",
-                        "deId _matchfield50__url _matchfield51__name _m",
-                        "atchfield52__description_ _matchfield53__color",
-                        " _matchfield54__default_ _matchfield55__archiv",
-                        "edAt _matchfield56__archivedBy -> _matchfield5",
-                        "0__url })) And (match (_match9__1___match__mat",
-                        "ch__match__lawspecSelection0x0_0_0_0) { lawtwi",
-                        "n.github.model::type::Label::Label _matchfield",
-                        "57__id _matchfield58__nodeId _matchfield59__ur",
-                        "l _matchfield60__name _matchfield61__descripti",
-                        "on_ _matchfield62__color _matchfield63__defaul",
-                        "t_ _matchfield64__archivedAt _matchfield65__ar",
-                        "chivedBy -> _matchfield61__description_ } == l",
-                        "et _let10__it = match (_input3) { lawtwin.gith",
-                        "ub.model::type::IssuesUpdateLabelBody::IssuesU",
-                        "pdateLabelBody _matchfield66__newName _matchfi",
-                        "eld67__color _matchfield68__description_ _matc",
-                        "hfield69__archived -> _matchfield68__descripti",
-                        "on_ } in match (_let10__it) { Maybe::Nothing  ",
-                        "-> match (_match5__1___match__lawspecSelection",
+                        "be::Present(_input3))) in match (_let6__it) { ",
+                        "Either::Left _match7__0___match__match__lawspe",
+                        "cSelection0x0_0_0 -> true; Either::Right _matc",
+                        "h7__1___match__match__lawspecSelection0x0_0_0 ",
+                        "-> let _let8__it = attempt (issuesGetLabel (_i",
+                        "nput0) (_input1) (_let3__key)) in match (_let8",
+                        "__it) { Either::Left _match9__0___match__match",
+                        "__match__lawspecSelection0x0_0_0_0 -> false; E",
+                        "ither::Right _match9__1___match__match__match_",
+                        "_lawspecSelection0x0_0_0_0 -> ((((((((match (_",
+                        "match9__1___match__match__match__lawspecSelect",
+                        "ion0x0_0_0_0) { lawtwin.github.model::type::La",
+                        "bel::Label _matchfield3__id _matchfield4__node",
+                        "Id _matchfield5__url _matchfield6__name _match",
+                        "field7__description_ _matchfield8__color _matc",
+                        "hfield9__default_ _matchfield10__archivedAt _m",
+                        "atchfield11__archivedBy -> _matchfield3__id } ",
+                        "== match (_match5__1___match__lawspecSelection",
                         "0x0_0) { lawtwin.github.model::type::Label::La",
-                        "bel _matchfield70__id _matchfield71__nodeId _m",
-                        "atchfield72__url _matchfield73__name _matchfie",
-                        "ld74__description_ _matchfield75__color _match",
-                        "field76__default_ _matchfield77__archivedAt _m",
-                        "atchfield78__archivedBy -> _matchfield74__desc",
-                        "ription_ }; Maybe::Just _match11__1___match__m",
-                        "atch__match__match__lawspecSelection0x0_0_0_0_",
-                        "0 -> Maybe::Just(_match11__1___match__match__m",
-                        "atch__match__lawspecSelection0x0_0_0_0_0) })) ",
-                        "And (match (_match9__1___match__match__match__",
-                        "lawspecSelection0x0_0_0_0) { lawtwin.github.mo",
-                        "del::type::Label::Label _matchfield79__id _mat",
-                        "chfield80__nodeId _matchfield81__url _matchfie",
-                        "ld82__name _matchfield83__description_ _matchf",
-                        "ield84__color _matchfield85__default_ _matchfi",
-                        "eld86__archivedAt _matchfield87__archivedBy ->",
-                        " _matchfield84__color } == let _let10__it = ma",
-                        "tch (_input3) { lawtwin.github.model::type::Is",
-                        "suesUpdateLabelBody::IssuesUpdateLabelBody _ma",
-                        "tchfield88__newName _matchfield89__color _matc",
-                        "hfield90__description_ _matchfield91__archived",
-                        " -> _matchfield89__color } in match (_let10__i",
-                        "t) { Maybe::Nothing  -> match (_match5__1___ma",
-                        "tch__lawspecSelection0x0_0) { lawtwin.github.m",
-                        "odel::type::Label::Label _matchfield92__id _ma",
-                        "tchfield93__nodeId _matchfield94__url _matchfi",
-                        "eld95__name _matchfield96__description_ _match",
-                        "field97__color _matchfield98__default_ _matchf",
-                        "ield99__archivedAt _matchfield100__archivedBy ",
-                        "-> _matchfield97__color }; Maybe::Just _match1",
-                        "1__1___match__match__match__match__lawspecSele",
-                        "ction0x0_0_0_0_0 -> _match11__1___match__match",
-                        "__match__match__lawspecSelection0x0_0_0_0_0 })",
+                        "bel _matchfield12__id _matchfield13__nodeId _m",
+                        "atchfield14__url _matchfield15__name _matchfie",
+                        "ld16__description_ _matchfield17__color _match",
+                        "field18__default_ _matchfield19__archivedAt _m",
+                        "atchfield20__archivedBy -> _matchfield12__id }",
                         ") And (match (_match9__1___match__match__match",
                         "__lawspecSelection0x0_0_0_0) { lawtwin.github.",
-                        "model::type::Label::Label _matchfield101__id _",
-                        "matchfield102__nodeId _matchfield103__url _mat",
-                        "chfield104__name _matchfield105__description_ ",
-                        "_matchfield106__color _matchfield107__default_",
-                        " _matchfield108__archivedAt _matchfield109__ar",
-                        "chivedBy -> _matchfield107__default_ } == matc",
-                        "h (_match5__1___match__lawspecSelection0x0_0) ",
-                        "{ lawtwin.github.model::type::Label::Label _ma",
-                        "tchfield110__id _matchfield111__nodeId _matchf",
-                        "ield112__url _matchfield113__name _matchfield1",
-                        "14__description_ _matchfield115__color _matchf",
-                        "ield116__default_ _matchfield117__archivedAt _",
-                        "matchfield118__archivedBy -> _matchfield116__d",
-                        "efault_ })) And (match (_match9__1___match__ma",
+                        "model::type::Label::Label _matchfield21__id _m",
+                        "atchfield22__nodeId _matchfield23__url _matchf",
+                        "ield24__name _matchfield25__description_ _matc",
+                        "hfield26__color _matchfield27__default_ _match",
+                        "field28__archivedAt _matchfield29__archivedBy ",
+                        "-> _matchfield22__nodeId } == match (_match5__",
+                        "1___match__lawspecSelection0x0_0) { lawtwin.gi",
+                        "thub.model::type::Label::Label _matchfield30__",
+                        "id _matchfield31__nodeId _matchfield32__url _m",
+                        "atchfield33__name _matchfield34__description_ ",
+                        "_matchfield35__color _matchfield36__default_ _",
+                        "matchfield37__archivedAt _matchfield38__archiv",
+                        "edBy -> _matchfield31__nodeId })) And (match (",
+                        "_match9__1___match__match__match__lawspecSelec",
+                        "tion0x0_0_0_0) { lawtwin.github.model::type::L",
+                        "abel::Label _matchfield39__id _matchfield40__n",
+                        "odeId _matchfield41__url _matchfield42__name _",
+                        "matchfield43__description_ _matchfield44__colo",
+                        "r _matchfield45__default_ _matchfield46__archi",
+                        "vedAt _matchfield47__archivedBy -> _matchfield",
+                        "41__url } == match (_match5__1___match__lawspe",
+                        "cSelection0x0_0) { lawtwin.github.model::type:",
+                        ":Label::Label _matchfield48__id _matchfield49_",
+                        "_nodeId _matchfield50__url _matchfield51__name",
+                        " _matchfield52__description_ _matchfield53__co",
+                        "lor _matchfield54__default_ _matchfield55__arc",
+                        "hivedAt _matchfield56__archivedBy -> _matchfie",
+                        "ld50__url })) And (match (_match9__1___match__",
+                        "match__match__lawspecSelection0x0_0_0_0) { law",
+                        "twin.github.model::type::Label::Label _matchfi",
+                        "eld57__id _matchfield58__nodeId _matchfield59_",
+                        "_url _matchfield60__name _matchfield61__descri",
+                        "ption_ _matchfield62__color _matchfield63__def",
+                        "ault_ _matchfield64__archivedAt _matchfield65_",
+                        "_archivedBy -> _matchfield61__description_ } =",
+                        "= let _let10__it = match (_input3) { lawtwin.g",
+                        "ithub.model::type::IssuesUpdateLabelBody::Issu",
+                        "esUpdateLabelBody _matchfield66__newName _matc",
+                        "hfield67__color _matchfield68__description_ _m",
+                        "atchfield69__archived -> _matchfield68__descri",
+                        "ption_ } in match (_let10__it) { Maybe::Absent",
+                        "  -> match (_match5__1___match__lawspecSelecti",
+                        "on0x0_0) { lawtwin.github.model::type::Label::",
+                        "Label _matchfield70__id _matchfield71__nodeId ",
+                        "_matchfield72__url _matchfield73__name _matchf",
+                        "ield74__description_ _matchfield75__color _mat",
+                        "chfield76__default_ _matchfield77__archivedAt ",
+                        "_matchfield78__archivedBy -> _matchfield74__de",
+                        "scription_ }; Maybe::Present _match11__1___mat",
+                        "ch__match__match__match__lawspecSelection0x0_0",
+                        "_0_0_0 -> Maybe::Present(_match11__1___match__",
+                        "match__match__match__lawspecSelection0x0_0_0_0",
+                        "_0) })) And (match (_match9__1___match__match_",
+                        "_match__lawspecSelection0x0_0_0_0) { lawtwin.g",
+                        "ithub.model::type::Label::Label _matchfield79_",
+                        "_id _matchfield80__nodeId _matchfield81__url _",
+                        "matchfield82__name _matchfield83__description_",
+                        " _matchfield84__color _matchfield85__default_ ",
+                        "_matchfield86__archivedAt _matchfield87__archi",
+                        "vedBy -> _matchfield84__color } == let _let10_",
+                        "_it = match (_input3) { lawtwin.github.model::",
+                        "type::IssuesUpdateLabelBody::IssuesUpdateLabel",
+                        "Body _matchfield88__newName _matchfield89__col",
+                        "or _matchfield90__description_ _matchfield91__",
+                        "archived -> _matchfield89__color } in match (_",
+                        "let10__it) { Maybe::Absent  -> match (_match5_",
+                        "_1___match__lawspecSelection0x0_0) { lawtwin.g",
+                        "ithub.model::type::Label::Label _matchfield92_",
+                        "_id _matchfield93__nodeId _matchfield94__url _",
+                        "matchfield95__name _matchfield96__description_",
+                        " _matchfield97__color _matchfield98__default_ ",
+                        "_matchfield99__archivedAt _matchfield100__arch",
+                        "ivedBy -> _matchfield97__color }; Maybe::Prese",
+                        "nt _match11__1___match__match__match__match__l",
+                        "awspecSelection0x0_0_0_0_0 -> _match11__1___ma",
+                        "tch__match__match__match__lawspecSelection0x0_",
+                        "0_0_0_0 })) And (match (_match9__1___match__ma",
                         "tch__match__lawspecSelection0x0_0_0_0) { lawtw",
                         "in.github.model::type::Label::Label _matchfiel",
-                        "d119__id _matchfield120__nodeId _matchfield121",
-                        "__url _matchfield122__name _matchfield123__des",
-                        "cription_ _matchfield124__color _matchfield125",
-                        "__default_ _matchfield126__archivedAt _matchfi",
-                        "eld127__archivedBy -> _matchfield126__archived",
-                        "At } == match (_match5__1___match__lawspecSele",
-                        "ction0x0_0) { lawtwin.github.model::type::Labe",
-                        "l::Label _matchfield128__id _matchfield129__no",
-                        "deId _matchfield130__url _matchfield131__name ",
-                        "_matchfield132__description_ _matchfield133__c",
-                        "olor _matchfield134__default_ _matchfield135__",
-                        "archivedAt _matchfield136__archivedBy -> _matc",
-                        "hfield135__archivedAt })) And (match (_match9_",
-                        "_1___match__match__match__lawspecSelection0x0_",
-                        "0_0_0) { lawtwin.github.model::type::Label::La",
-                        "bel _matchfield137__id _matchfield138__nodeId ",
-                        "_matchfield139__url _matchfield140__name _matc",
-                        "hfield141__description_ _matchfield142__color ",
-                        "_matchfield143__default_ _matchfield144__archi",
-                        "vedAt _matchfield145__archivedBy -> _matchfiel",
-                        "d145__archivedBy } == match (_match5__1___matc",
-                        "h__lawspecSelection0x0_0) { lawtwin.github.mod",
-                        "el::type::Label::Label _matchfield146__id _mat",
-                        "chfield147__nodeId _matchfield148__url _matchf",
-                        "ield149__name _matchfield150__description_ _ma",
-                        "tchfield151__color _matchfield152__default_ _m",
-                        "atchfield153__archivedAt _matchfield154__archi",
-                        "vedBy -> _matchfield154__archivedBy })) } } } ",
-                        "} = true",
+                        "d101__id _matchfield102__nodeId _matchfield103",
+                        "__url _matchfield104__name _matchfield105__des",
+                        "cription_ _matchfield106__color _matchfield107",
+                        "__default_ _matchfield108__archivedAt _matchfi",
+                        "eld109__archivedBy -> _matchfield107__default_",
+                        " } == match (_match5__1___match__lawspecSelect",
+                        "ion0x0_0) { lawtwin.github.model::type::Label:",
+                        ":Label _matchfield110__id _matchfield111__node",
+                        "Id _matchfield112__url _matchfield113__name _m",
+                        "atchfield114__description_ _matchfield115__col",
+                        "or _matchfield116__default_ _matchfield117__ar",
+                        "chivedAt _matchfield118__archivedBy -> _matchf",
+                        "ield116__default_ })) And (match (_match9__1__",
+                        "_match__match__match__lawspecSelection0x0_0_0_",
+                        "0) { lawtwin.github.model::type::Label::Label ",
+                        "_matchfield119__id _matchfield120__nodeId _mat",
+                        "chfield121__url _matchfield122__name _matchfie",
+                        "ld123__description_ _matchfield124__color _mat",
+                        "chfield125__default_ _matchfield126__archivedA",
+                        "t _matchfield127__archivedBy -> _matchfield126",
+                        "__archivedAt } == match (_match5__1___match__l",
+                        "awspecSelection0x0_0) { lawtwin.github.model::",
+                        "type::Label::Label _matchfield128__id _matchfi",
+                        "eld129__nodeId _matchfield130__url _matchfield",
+                        "131__name _matchfield132__description_ _matchf",
+                        "ield133__color _matchfield134__default_ _match",
+                        "field135__archivedAt _matchfield136__archivedB",
+                        "y -> _matchfield135__archivedAt })) And (match",
+                        " (_match9__1___match__match__match__lawspecSel",
+                        "ection0x0_0_0_0) { lawtwin.github.model::type:",
+                        ":Label::Label _matchfield137__id _matchfield13",
+                        "8__nodeId _matchfield139__url _matchfield140__",
+                        "name _matchfield141__description_ _matchfield1",
+                        "42__color _matchfield143__default_ _matchfield",
+                        "144__archivedAt _matchfield145__archivedBy -> ",
+                        "_matchfield145__archivedBy } == match (_match5",
+                        "__1___match__lawspecSelection0x0_0) { lawtwin.",
+                        "github.model::type::Label::Label _matchfield14",
+                        "6__id _matchfield147__nodeId _matchfield148__u",
+                        "rl _matchfield149__name _matchfield150__descri",
+                        "ption_ _matchfield151__color _matchfield152__d",
+                        "efault_ _matchfield153__archivedAt _matchfield",
+                        "154__archivedBy -> _matchfield154__archivedBy ",
+                        "})) } } } } = true",
                     ),
                     left,
                     right,
@@ -5421,8 +5457,8 @@ fn run_6() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::construct_data(
@@ -5431,10 +5467,10 @@ fn run_6() -> ls::Result<()> {
                     "ody::IssuesUpdateLabelBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -5458,8 +5494,8 @@ fn run_6() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text(" ".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
             ls::construct_data(
@@ -5468,10 +5504,10 @@ fn run_6() -> ls::Result<()> {
                     "ody::IssuesUpdateLabelBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
         ];
@@ -5495,8 +5531,8 @@ fn run_6() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
             ls::construct_data(
@@ -5505,10 +5541,10 @@ fn run_6() -> ls::Result<()> {
                     "ody::IssuesUpdateLabelBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                 ],
             ),
         ];
@@ -5533,11 +5569,11 @@ fn run_6() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -5549,18 +5585,18 @@ fn run_6() -> ls::Result<()> {
                 ),
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -5585,11 +5621,11 @@ fn run_6() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -5601,18 +5637,18 @@ fn run_6() -> ls::Result<()> {
                 ),
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
         ];
@@ -5637,11 +5673,11 @@ fn run_6() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                 ],
@@ -5653,18 +5689,18 @@ fn run_6() -> ls::Result<()> {
                 ),
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                 ],
             ),
         ];
@@ -5688,8 +5724,8 @@ fn run_6() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
                 ],
             ),
             ls::construct_data(
@@ -5698,10 +5734,10 @@ fn run_6() -> ls::Result<()> {
                     "ody::IssuesUpdateLabelBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -5725,8 +5761,8 @@ fn run_6() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
             ls::construct_data(
@@ -5735,10 +5771,10 @@ fn run_6() -> ls::Result<()> {
                     "ody::IssuesUpdateLabelBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
         ];
@@ -5763,11 +5799,11 @@ fn run_6() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                 ],
@@ -5779,18 +5815,18 @@ fn run_6() -> ls::Result<()> {
                 ),
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                 ],
             ),
         ];
@@ -5891,8 +5927,8 @@ fn run_6() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -5902,8 +5938,8 @@ fn run_6() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text(" ".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -5913,8 +5949,8 @@ fn run_6() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -5925,11 +5961,11 @@ fn run_6() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -5942,11 +5978,11 @@ fn run_6() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -5959,11 +5995,11 @@ fn run_6() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -5975,8 +6011,14 @@ fn run_6() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -5986,8 +6028,8 @@ fn run_6() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -5998,11 +6040,11 @@ fn run_6() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -6051,10 +6093,10 @@ fn run_6() -> ls::Result<()> {
                             "ody::IssuesUpdateLabelBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -6063,10 +6105,10 @@ fn run_6() -> ls::Result<()> {
                             "ody::IssuesUpdateLabelBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
@@ -6075,10 +6117,10 @@ fn run_6() -> ls::Result<()> {
                             "ody::IssuesUpdateLabelBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                     ls::construct_data(
@@ -6088,18 +6130,18 @@ fn run_6() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -6109,18 +6151,18 @@ fn run_6() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
@@ -6130,42 +6172,18 @@ fn run_6() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
-                        ],
-                    ),
-                    ls::construct_data(
-                        concat!(
-                            "lawtwin.github.model::type::IssuesUpdateLabelB",
-                            "ody::IssuesUpdateLabelBody",
-                        ),
-                        vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                        ],
-                    ),
-                    ls::construct_data(
-                        concat!(
-                            "lawtwin.github.model::type::IssuesUpdateLabelB",
-                            "ody::IssuesUpdateLabelBody",
-                        ),
-                        vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                     ls::construct_data(
@@ -6175,18 +6193,51 @@ fn run_6() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                        ],
+                    ),
+                    ls::construct_data(
+                        concat!(
+                            "lawtwin.github.model::type::IssuesUpdateLabelB",
+                            "ody::IssuesUpdateLabelBody",
+                        ),
+                        vec![
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
+                        ],
+                    ),
+                    ls::construct_data(
+                        concat!(
+                            "lawtwin.github.model::type::IssuesUpdateLabelB",
+                            "ody::IssuesUpdateLabelBody",
+                        ),
+                        vec![
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                 ];
@@ -6325,7 +6376,7 @@ fn search_case_6(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // (issuesGetLabel (_input0) (_input1) (_let3__key)) in match (_let4__it) { Either::Left
 // _match5__0___match__lawspecSelection0x0_0 -> false; Either::Right
 // _match5__1___match__lawspecSelection0x0_0 -> let _let6__it = attempt (issuesUpdateLabel (_input0)
-// (_input1) (_let3__key) (Maybe::Just(_input3))) in match (_let6__it) { Either::Left
+// (_input1) (_let3__key) (Maybe::Present(_input3))) in match (_let6__it) { Either::Left
 // _match7__0___match__match__lawspecSelection0x0_0_0 -> true; Either::Right
 // _match7__1___match__match__lawspecSelection0x0_0_0 -> let _let8__it = attempt (issuesGetLabel
 // (_input0) (_input1) (_let3__key)) in match (_let8__it) { Either::Left
@@ -6363,25 +6414,25 @@ fn search_case_6(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // _matchfield61__description_ } == let _let10__it = match (_input3) {
 // lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody _matchfield66__newName
 // _matchfield67__color _matchfield68__description_ _matchfield69__archived ->
-// _matchfield68__description_ } in match (_let10__it) { Maybe::Nothing -> match
+// _matchfield68__description_ } in match (_let10__it) { Maybe::Absent -> match
 // (_match5__1___match__lawspecSelection0x0_0) { lawtwin.github.model::type::Label::Label
 // _matchfield70__id _matchfield71__nodeId _matchfield72__url _matchfield73__name
 // _matchfield74__description_ _matchfield75__color _matchfield76__default_
-// _matchfield77__archivedAt _matchfield78__archivedBy -> _matchfield74__description_ }; Maybe::Just
-// _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
-// Maybe::Just(_match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0) })) And (match
-// (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
+// _matchfield77__archivedAt _matchfield78__archivedBy -> _matchfield74__description_ };
+// Maybe::Present _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
+// Maybe::Present(_match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0) })) And
+// (match (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
 // lawtwin.github.model::type::Label::Label _matchfield79__id _matchfield80__nodeId
 // _matchfield81__url _matchfield82__name _matchfield83__description_ _matchfield84__color
 // _matchfield85__default_ _matchfield86__archivedAt _matchfield87__archivedBy ->
 // _matchfield84__color } == let _let10__it = match (_input3) {
 // lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody _matchfield88__newName
 // _matchfield89__color _matchfield90__description_ _matchfield91__archived -> _matchfield89__color
-// } in match (_let10__it) { Maybe::Nothing -> match (_match5__1___match__lawspecSelection0x0_0) {
+// } in match (_let10__it) { Maybe::Absent -> match (_match5__1___match__lawspecSelection0x0_0) {
 // lawtwin.github.model::type::Label::Label _matchfield92__id _matchfield93__nodeId
 // _matchfield94__url _matchfield95__name _matchfield96__description_ _matchfield97__color
 // _matchfield98__default_ _matchfield99__archivedAt _matchfield100__archivedBy ->
-// _matchfield97__color }; Maybe::Just
+// _matchfield97__color }; Maybe::Present
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 })) And (match
 // (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
@@ -6546,7 +6597,7 @@ fn law_7(
                                                         let perform_argument_1 = input_1.clone();
                                                         let perform_argument_2 = let_7.clone();
                                                         let perform_argument_3 = ls::construct(
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             vec![input_3.clone()],
                                                         )?;
                                                         let arguments = vec![
@@ -6841,7 +6892,7 @@ fn law_7(
                                                                                                     ls::Value::Maybe(Some(payload)) => {
                                                                                                         let match_local_15_0 = *payload;
                                                                                                         let result = ls::construct(
-                                                                                                            "Maybe::Just",
+                                                                                                            "Maybe::Present",
                                                                                                             vec![match_local_15_0.clone()],
                                                                                                         )?;
                                                                                                         result
@@ -7146,155 +7197,155 @@ fn law_7(
                     "; Either::Right _match5__1___match__lawspecSel",
                     "ection0x0_0 -> let _let6__it = attempt (issues",
                     "UpdateLabel (_input0) (_input1) (_let3__key) (",
-                    "Maybe::Just(_input3))) in match (_let6__it) { ",
-                    "Either::Left _match7__0___match__match__lawspe",
-                    "cSelection0x0_0_0 -> true; Either::Right _matc",
-                    "h7__1___match__match__lawspecSelection0x0_0_0 ",
-                    "-> let _let8__it = attempt (issuesGetLabel (_i",
-                    "nput0) (_input1) (_let3__key)) in match (_let8",
-                    "__it) { Either::Left _match9__0___match__match",
-                    "__match__lawspecSelection0x0_0_0_0 -> false; E",
-                    "ither::Right _match9__1___match__match__match_",
-                    "_lawspecSelection0x0_0_0_0 -> ((((((((match (_",
-                    "match9__1___match__match__match__lawspecSelect",
-                    "ion0x0_0_0_0) { lawtwin.github.model::type::La",
-                    "bel::Label _matchfield3__id _matchfield4__node",
-                    "Id _matchfield5__url _matchfield6__name _match",
-                    "field7__description_ _matchfield8__color _matc",
-                    "hfield9__default_ _matchfield10__archivedAt _m",
-                    "atchfield11__archivedBy -> _matchfield3__id } ",
-                    "== match (_match5__1___match__lawspecSelection",
-                    "0x0_0) { lawtwin.github.model::type::Label::La",
-                    "bel _matchfield12__id _matchfield13__nodeId _m",
-                    "atchfield14__url _matchfield15__name _matchfie",
-                    "ld16__description_ _matchfield17__color _match",
-                    "field18__default_ _matchfield19__archivedAt _m",
-                    "atchfield20__archivedBy -> _matchfield12__id }",
-                    ") And (match (_match9__1___match__match__match",
-                    "__lawspecSelection0x0_0_0_0) { lawtwin.github.",
-                    "model::type::Label::Label _matchfield21__id _m",
-                    "atchfield22__nodeId _matchfield23__url _matchf",
-                    "ield24__name _matchfield25__description_ _matc",
-                    "hfield26__color _matchfield27__default_ _match",
-                    "field28__archivedAt _matchfield29__archivedBy ",
-                    "-> _matchfield22__nodeId } == match (_match5__",
-                    "1___match__lawspecSelection0x0_0) { lawtwin.gi",
-                    "thub.model::type::Label::Label _matchfield30__",
-                    "id _matchfield31__nodeId _matchfield32__url _m",
-                    "atchfield33__name _matchfield34__description_ ",
-                    "_matchfield35__color _matchfield36__default_ _",
-                    "matchfield37__archivedAt _matchfield38__archiv",
-                    "edBy -> _matchfield31__nodeId })) And (match (",
-                    "_match9__1___match__match__match__lawspecSelec",
-                    "tion0x0_0_0_0) { lawtwin.github.model::type::L",
-                    "abel::Label _matchfield39__id _matchfield40__n",
-                    "odeId _matchfield41__url _matchfield42__name _",
-                    "matchfield43__description_ _matchfield44__colo",
-                    "r _matchfield45__default_ _matchfield46__archi",
-                    "vedAt _matchfield47__archivedBy -> _matchfield",
-                    "41__url } == match (_match5__1___match__lawspe",
-                    "cSelection0x0_0) { lawtwin.github.model::type:",
-                    ":Label::Label _matchfield48__id _matchfield49_",
-                    "_nodeId _matchfield50__url _matchfield51__name",
-                    " _matchfield52__description_ _matchfield53__co",
-                    "lor _matchfield54__default_ _matchfield55__arc",
-                    "hivedAt _matchfield56__archivedBy -> _matchfie",
-                    "ld50__url })) And (match (_match9__1___match__",
-                    "match__match__lawspecSelection0x0_0_0_0) { law",
-                    "twin.github.model::type::Label::Label _matchfi",
-                    "eld57__id _matchfield58__nodeId _matchfield59_",
-                    "_url _matchfield60__name _matchfield61__descri",
-                    "ption_ _matchfield62__color _matchfield63__def",
-                    "ault_ _matchfield64__archivedAt _matchfield65_",
-                    "_archivedBy -> _matchfield61__description_ } =",
-                    "= let _let10__it = match (_input3) { lawtwin.g",
-                    "ithub.model::type::IssuesUpdateLabelBody::Issu",
-                    "esUpdateLabelBody _matchfield66__newName _matc",
-                    "hfield67__color _matchfield68__description_ _m",
-                    "atchfield69__archived -> _matchfield68__descri",
-                    "ption_ } in match (_let10__it) { Maybe::Nothin",
-                    "g  -> match (_match5__1___match__lawspecSelect",
+                    "Maybe::Present(_input3))) in match (_let6__it)",
+                    " { Either::Left _match7__0___match__match__law",
+                    "specSelection0x0_0_0 -> true; Either::Right _m",
+                    "atch7__1___match__match__lawspecSelection0x0_0",
+                    "_0 -> let _let8__it = attempt (issuesGetLabel ",
+                    "(_input0) (_input1) (_let3__key)) in match (_l",
+                    "et8__it) { Either::Left _match9__0___match__ma",
+                    "tch__match__lawspecSelection0x0_0_0_0 -> false",
+                    "; Either::Right _match9__1___match__match__mat",
+                    "ch__lawspecSelection0x0_0_0_0 -> ((((((((match",
+                    " (_match9__1___match__match__match__lawspecSel",
+                    "ection0x0_0_0_0) { lawtwin.github.model::type:",
+                    ":Label::Label _matchfield3__id _matchfield4__n",
+                    "odeId _matchfield5__url _matchfield6__name _ma",
+                    "tchfield7__description_ _matchfield8__color _m",
+                    "atchfield9__default_ _matchfield10__archivedAt",
+                    " _matchfield11__archivedBy -> _matchfield3__id",
+                    " } == match (_match5__1___match__lawspecSelect",
                     "ion0x0_0) { lawtwin.github.model::type::Label:",
-                    ":Label _matchfield70__id _matchfield71__nodeId",
-                    " _matchfield72__url _matchfield73__name _match",
-                    "field74__description_ _matchfield75__color _ma",
-                    "tchfield76__default_ _matchfield77__archivedAt",
-                    " _matchfield78__archivedBy -> _matchfield74__d",
-                    "escription_ }; Maybe::Just _match11__1___match",
-                    "__match__match__match__lawspecSelection0x0_0_0",
-                    "_0_0 -> Maybe::Just(_match11__1___match__match",
-                    "__match__match__lawspecSelection0x0_0_0_0_0) }",
-                    ")) And (match (_match9__1___match__match__matc",
-                    "h__lawspecSelection0x0_0_0_0) { lawtwin.github",
-                    ".model::type::Label::Label _matchfield79__id _",
-                    "matchfield80__nodeId _matchfield81__url _match",
-                    "field82__name _matchfield83__description_ _mat",
-                    "chfield84__color _matchfield85__default_ _matc",
-                    "hfield86__archivedAt _matchfield87__archivedBy",
-                    " -> _matchfield84__color } == let _let10__it =",
-                    " match (_input3) { lawtwin.github.model::type:",
-                    ":IssuesUpdateLabelBody::IssuesUpdateLabelBody ",
-                    "_matchfield88__newName _matchfield89__color _m",
-                    "atchfield90__description_ _matchfield91__archi",
-                    "ved -> _matchfield89__color } in match (_let10",
-                    "__it) { Maybe::Nothing  -> match (_match5__1__",
-                    "_match__lawspecSelection0x0_0) { lawtwin.githu",
-                    "b.model::type::Label::Label _matchfield92__id ",
-                    "_matchfield93__nodeId _matchfield94__url _matc",
-                    "hfield95__name _matchfield96__description_ _ma",
-                    "tchfield97__color _matchfield98__default_ _mat",
-                    "chfield99__archivedAt _matchfield100__archived",
-                    "By -> _matchfield97__color }; Maybe::Just _mat",
-                    "ch11__1___match__match__match__match__lawspecS",
-                    "election0x0_0_0_0_0 -> _match11__1___match__ma",
-                    "tch__match__match__lawspecSelection0x0_0_0_0_0",
-                    " })) And (match (_match9__1___match__match__ma",
+                    ":Label _matchfield12__id _matchfield13__nodeId",
+                    " _matchfield14__url _matchfield15__name _match",
+                    "field16__description_ _matchfield17__color _ma",
+                    "tchfield18__default_ _matchfield19__archivedAt",
+                    " _matchfield20__archivedBy -> _matchfield12__i",
+                    "d }) And (match (_match9__1___match__match__ma",
                     "tch__lawspecSelection0x0_0_0_0) { lawtwin.gith",
-                    "ub.model::type::Label::Label _matchfield101__i",
-                    "d _matchfield102__nodeId _matchfield103__url _",
-                    "matchfield104__name _matchfield105__descriptio",
-                    "n_ _matchfield106__color _matchfield107__defau",
-                    "lt_ _matchfield108__archivedAt _matchfield109_",
-                    "_archivedBy -> _matchfield107__default_ } == m",
-                    "atch (_match5__1___match__lawspecSelection0x0_",
-                    "0) { lawtwin.github.model::type::Label::Label ",
-                    "_matchfield110__id _matchfield111__nodeId _mat",
-                    "chfield112__url _matchfield113__name _matchfie",
-                    "ld114__description_ _matchfield115__color _mat",
-                    "chfield116__default_ _matchfield117__archivedA",
-                    "t _matchfield118__archivedBy -> _matchfield116",
-                    "__default_ })) And (match (_match9__1___match_",
+                    "ub.model::type::Label::Label _matchfield21__id",
+                    " _matchfield22__nodeId _matchfield23__url _mat",
+                    "chfield24__name _matchfield25__description_ _m",
+                    "atchfield26__color _matchfield27__default_ _ma",
+                    "tchfield28__archivedAt _matchfield29__archived",
+                    "By -> _matchfield22__nodeId } == match (_match",
+                    "5__1___match__lawspecSelection0x0_0) { lawtwin",
+                    ".github.model::type::Label::Label _matchfield3",
+                    "0__id _matchfield31__nodeId _matchfield32__url",
+                    " _matchfield33__name _matchfield34__descriptio",
+                    "n_ _matchfield35__color _matchfield36__default",
+                    "_ _matchfield37__archivedAt _matchfield38__arc",
+                    "hivedBy -> _matchfield31__nodeId })) And (matc",
+                    "h (_match9__1___match__match__match__lawspecSe",
+                    "lection0x0_0_0_0) { lawtwin.github.model::type",
+                    "::Label::Label _matchfield39__id _matchfield40",
+                    "__nodeId _matchfield41__url _matchfield42__nam",
+                    "e _matchfield43__description_ _matchfield44__c",
+                    "olor _matchfield45__default_ _matchfield46__ar",
+                    "chivedAt _matchfield47__archivedBy -> _matchfi",
+                    "eld41__url } == match (_match5__1___match__law",
+                    "specSelection0x0_0) { lawtwin.github.model::ty",
+                    "pe::Label::Label _matchfield48__id _matchfield",
+                    "49__nodeId _matchfield50__url _matchfield51__n",
+                    "ame _matchfield52__description_ _matchfield53_",
+                    "_color _matchfield54__default_ _matchfield55__",
+                    "archivedAt _matchfield56__archivedBy -> _match",
+                    "field50__url })) And (match (_match9__1___matc",
+                    "h__match__match__lawspecSelection0x0_0_0_0) { ",
+                    "lawtwin.github.model::type::Label::Label _matc",
+                    "hfield57__id _matchfield58__nodeId _matchfield",
+                    "59__url _matchfield60__name _matchfield61__des",
+                    "cription_ _matchfield62__color _matchfield63__",
+                    "default_ _matchfield64__archivedAt _matchfield",
+                    "65__archivedBy -> _matchfield61__description_ ",
+                    "} == let _let10__it = match (_input3) { lawtwi",
+                    "n.github.model::type::IssuesUpdateLabelBody::I",
+                    "ssuesUpdateLabelBody _matchfield66__newName _m",
+                    "atchfield67__color _matchfield68__description_",
+                    " _matchfield69__archived -> _matchfield68__des",
+                    "cription_ } in match (_let10__it) { Maybe::Abs",
+                    "ent  -> match (_match5__1___match__lawspecSele",
+                    "ction0x0_0) { lawtwin.github.model::type::Labe",
+                    "l::Label _matchfield70__id _matchfield71__node",
+                    "Id _matchfield72__url _matchfield73__name _mat",
+                    "chfield74__description_ _matchfield75__color _",
+                    "matchfield76__default_ _matchfield77__archived",
+                    "At _matchfield78__archivedBy -> _matchfield74_",
+                    "_description_ }; Maybe::Present _match11__1___",
+                    "match__match__match__match__lawspecSelection0x",
+                    "0_0_0_0_0 -> Maybe::Present(_match11__1___matc",
+                    "h__match__match__match__lawspecSelection0x0_0_",
+                    "0_0_0) })) And (match (_match9__1___match__mat",
+                    "ch__match__lawspecSelection0x0_0_0_0) { lawtwi",
+                    "n.github.model::type::Label::Label _matchfield",
+                    "79__id _matchfield80__nodeId _matchfield81__ur",
+                    "l _matchfield82__name _matchfield83__descripti",
+                    "on_ _matchfield84__color _matchfield85__defaul",
+                    "t_ _matchfield86__archivedAt _matchfield87__ar",
+                    "chivedBy -> _matchfield84__color } == let _let",
+                    "10__it = match (_input3) { lawtwin.github.mode",
+                    "l::type::IssuesUpdateLabelBody::IssuesUpdateLa",
+                    "belBody _matchfield88__newName _matchfield89__",
+                    "color _matchfield90__description_ _matchfield9",
+                    "1__archived -> _matchfield89__color } in match",
+                    " (_let10__it) { Maybe::Absent  -> match (_matc",
+                    "h5__1___match__lawspecSelection0x0_0) { lawtwi",
+                    "n.github.model::type::Label::Label _matchfield",
+                    "92__id _matchfield93__nodeId _matchfield94__ur",
+                    "l _matchfield95__name _matchfield96__descripti",
+                    "on_ _matchfield97__color _matchfield98__defaul",
+                    "t_ _matchfield99__archivedAt _matchfield100__a",
+                    "rchivedBy -> _matchfield97__color }; Maybe::Pr",
+                    "esent _match11__1___match__match__match__match",
+                    "__lawspecSelection0x0_0_0_0_0 -> _match11__1__",
+                    "_match__match__match__match__lawspecSelection0",
+                    "x0_0_0_0_0 })) And (match (_match9__1___match_",
                     "_match__match__lawspecSelection0x0_0_0_0) { la",
                     "wtwin.github.model::type::Label::Label _matchf",
-                    "ield119__id _matchfield120__nodeId _matchfield",
-                    "121__url _matchfield122__name _matchfield123__",
-                    "description_ _matchfield124__color _matchfield",
-                    "125__default_ _matchfield126__archivedAt _matc",
-                    "hfield127__archivedBy -> _matchfield126__archi",
-                    "vedAt } == match (_match5__1___match__lawspecS",
-                    "election0x0_0) { lawtwin.github.model::type::L",
-                    "abel::Label _matchfield128__id _matchfield129_",
-                    "_nodeId _matchfield130__url _matchfield131__na",
-                    "me _matchfield132__description_ _matchfield133",
-                    "__color _matchfield134__default_ _matchfield13",
-                    "5__archivedAt _matchfield136__archivedBy -> _m",
-                    "atchfield135__archivedAt })) And (match (_matc",
-                    "h9__1___match__match__match__lawspecSelection0",
-                    "x0_0_0_0) { lawtwin.github.model::type::Label:",
-                    ":Label _matchfield137__id _matchfield138__node",
-                    "Id _matchfield139__url _matchfield140__name _m",
-                    "atchfield141__description_ _matchfield142__col",
-                    "or _matchfield143__default_ _matchfield144__ar",
-                    "chivedAt _matchfield145__archivedBy -> _matchf",
-                    "ield145__archivedBy } == match (_match5__1___m",
-                    "atch__lawspecSelection0x0_0) { lawtwin.github.",
-                    "model::type::Label::Label _matchfield146__id _",
-                    "matchfield147__nodeId _matchfield148__url _mat",
-                    "chfield149__name _matchfield150__description_ ",
-                    "_matchfield151__color _matchfield152__default_",
-                    " _matchfield153__archivedAt _matchfield154__ar",
-                    "chivedBy -> _matchfield154__archivedBy })) } }",
-                    " } } = true",
+                    "ield101__id _matchfield102__nodeId _matchfield",
+                    "103__url _matchfield104__name _matchfield105__",
+                    "description_ _matchfield106__color _matchfield",
+                    "107__default_ _matchfield108__archivedAt _matc",
+                    "hfield109__archivedBy -> _matchfield107__defau",
+                    "lt_ } == match (_match5__1___match__lawspecSel",
+                    "ection0x0_0) { lawtwin.github.model::type::Lab",
+                    "el::Label _matchfield110__id _matchfield111__n",
+                    "odeId _matchfield112__url _matchfield113__name",
+                    " _matchfield114__description_ _matchfield115__",
+                    "color _matchfield116__default_ _matchfield117_",
+                    "_archivedAt _matchfield118__archivedBy -> _mat",
+                    "chfield116__default_ })) And (match (_match9__",
+                    "1___match__match__match__lawspecSelection0x0_0",
+                    "_0_0) { lawtwin.github.model::type::Label::Lab",
+                    "el _matchfield119__id _matchfield120__nodeId _",
+                    "matchfield121__url _matchfield122__name _match",
+                    "field123__description_ _matchfield124__color _",
+                    "matchfield125__default_ _matchfield126__archiv",
+                    "edAt _matchfield127__archivedBy -> _matchfield",
+                    "126__archivedAt } == match (_match5__1___match",
+                    "__lawspecSelection0x0_0) { lawtwin.github.mode",
+                    "l::type::Label::Label _matchfield128__id _matc",
+                    "hfield129__nodeId _matchfield130__url _matchfi",
+                    "eld131__name _matchfield132__description_ _mat",
+                    "chfield133__color _matchfield134__default_ _ma",
+                    "tchfield135__archivedAt _matchfield136__archiv",
+                    "edBy -> _matchfield135__archivedAt })) And (ma",
+                    "tch (_match9__1___match__match__match__lawspec",
+                    "Selection0x0_0_0_0) { lawtwin.github.model::ty",
+                    "pe::Label::Label _matchfield137__id _matchfiel",
+                    "d138__nodeId _matchfield139__url _matchfield14",
+                    "0__name _matchfield141__description_ _matchfie",
+                    "ld142__color _matchfield143__default_ _matchfi",
+                    "eld144__archivedAt _matchfield145__archivedBy ",
+                    "-> _matchfield145__archivedBy } == match (_mat",
+                    "ch5__1___match__lawspecSelection0x0_0) { lawtw",
+                    "in.github.model::type::Label::Label _matchfiel",
+                    "d146__id _matchfield147__nodeId _matchfield148",
+                    "__url _matchfield149__name _matchfield150__des",
+                    "cription_ _matchfield151__color _matchfield152",
+                    "__default_ _matchfield153__archivedAt _matchfi",
+                    "eld154__archivedBy -> _matchfield154__archived",
+                    "By })) } } } } = true",
                 ),
                 left,
                 right,
@@ -7343,8 +7394,8 @@ fn run_7() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::construct_data(
@@ -7353,10 +7404,10 @@ fn run_7() -> ls::Result<()> {
                     "ody::IssuesUpdateLabelBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -7380,8 +7431,8 @@ fn run_7() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text(" ".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
             ls::construct_data(
@@ -7390,10 +7441,10 @@ fn run_7() -> ls::Result<()> {
                     "ody::IssuesUpdateLabelBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
         ];
@@ -7417,8 +7468,8 @@ fn run_7() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
             ls::construct_data(
@@ -7427,10 +7478,10 @@ fn run_7() -> ls::Result<()> {
                     "ody::IssuesUpdateLabelBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                 ],
             ),
         ];
@@ -7455,11 +7506,11 @@ fn run_7() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -7471,18 +7522,18 @@ fn run_7() -> ls::Result<()> {
                 ),
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -7507,11 +7558,11 @@ fn run_7() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -7523,18 +7574,18 @@ fn run_7() -> ls::Result<()> {
                 ),
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
         ];
@@ -7559,11 +7610,11 @@ fn run_7() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                 ],
@@ -7575,18 +7626,18 @@ fn run_7() -> ls::Result<()> {
                 ),
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                 ],
             ),
         ];
@@ -7610,8 +7661,8 @@ fn run_7() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
                 ],
             ),
             ls::construct_data(
@@ -7620,10 +7671,10 @@ fn run_7() -> ls::Result<()> {
                     "ody::IssuesUpdateLabelBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -7647,8 +7698,8 @@ fn run_7() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
             ls::construct_data(
@@ -7657,10 +7708,10 @@ fn run_7() -> ls::Result<()> {
                     "ody::IssuesUpdateLabelBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
         ];
@@ -7685,11 +7736,11 @@ fn run_7() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                 ],
@@ -7701,18 +7752,18 @@ fn run_7() -> ls::Result<()> {
                 ),
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                 ],
             ),
         ];
@@ -7813,8 +7864,8 @@ fn run_7() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -7824,8 +7875,8 @@ fn run_7() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text(" ".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -7835,8 +7886,8 @@ fn run_7() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -7847,11 +7898,11 @@ fn run_7() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -7864,11 +7915,11 @@ fn run_7() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -7881,11 +7932,11 @@ fn run_7() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -7897,8 +7948,14 @@ fn run_7() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -7908,8 +7965,8 @@ fn run_7() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -7920,11 +7977,11 @@ fn run_7() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -7973,10 +8030,10 @@ fn run_7() -> ls::Result<()> {
                             "ody::IssuesUpdateLabelBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -7985,10 +8042,10 @@ fn run_7() -> ls::Result<()> {
                             "ody::IssuesUpdateLabelBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
@@ -7997,10 +8054,10 @@ fn run_7() -> ls::Result<()> {
                             "ody::IssuesUpdateLabelBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                     ls::construct_data(
@@ -8010,18 +8067,18 @@ fn run_7() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -8031,18 +8088,18 @@ fn run_7() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
@@ -8052,42 +8109,18 @@ fn run_7() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
-                        ],
-                    ),
-                    ls::construct_data(
-                        concat!(
-                            "lawtwin.github.model::type::IssuesUpdateLabelB",
-                            "ody::IssuesUpdateLabelBody",
-                        ),
-                        vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                        ],
-                    ),
-                    ls::construct_data(
-                        concat!(
-                            "lawtwin.github.model::type::IssuesUpdateLabelB",
-                            "ody::IssuesUpdateLabelBody",
-                        ),
-                        vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                     ls::construct_data(
@@ -8097,18 +8130,51 @@ fn run_7() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                        ],
+                    ),
+                    ls::construct_data(
+                        concat!(
+                            "lawtwin.github.model::type::IssuesUpdateLabelB",
+                            "ody::IssuesUpdateLabelBody",
+                        ),
+                        vec![
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
+                        ],
+                    ),
+                    ls::construct_data(
+                        concat!(
+                            "lawtwin.github.model::type::IssuesUpdateLabelB",
+                            "ody::IssuesUpdateLabelBody",
+                        ),
+                        vec![
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                 ];
@@ -8237,7 +8303,7 @@ fn search_case_7(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // IssuesApi: "|a created milestone reads back| [native]
 // for all (owner :: Text) (repo :: Text) (body ::
 // lawtwin.github.model::type::IssuesCreateMilestoneBody) (dueOnValue :: Text) => let _let0__sent =
-// let _letfield4__replacement = Maybe::Just(_input3) in match (_input2) {
+// let _letfield4__replacement = Maybe::Present(_input3) in match (_input2) {
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody
 // _matchfield0__title _matchfield1__state_ _matchfield2__description_ _matchfield3__dueOn ->
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody(_matchfield0__ti
@@ -8301,7 +8367,7 @@ fn law_8(
         {
             let left = {
                 let let_5 = {
-                    let let_5 = ls::construct("Maybe::Just", vec![input_3.clone()])?;
+                    let let_5 = ls::construct("Maybe::Present", vec![input_3.clone()])?;
                     let _ = &let_5;
                     match input_2.clone() {
                         ls::Value::Data(tag, fields)
@@ -8443,34 +8509,34 @@ fn law_8(
                     concat!(
                         "IssuesApi: \"|a created milestone reads back| ",
                         "[native] | expect let _let0__sent = let _letfi",
-                        "eld4__replacement = Maybe::Just(_input3) in ma",
-                        "tch (_input2) { lawtwin.github.model::type::Is",
-                        "suesCreateMilestoneBody::IssuesCreateMilestone",
-                        "Body _matchfield0__title _matchfield1__state_ ",
-                        "_matchfield2__description_ _matchfield3__dueOn",
-                        " -> lawtwin.github.model::type::IssuesCreateMi",
-                        "lestoneBody::IssuesCreateMilestoneBody(_matchf",
-                        "ield0__title, _matchfield1__state_, _matchfiel",
-                        "d2__description_, _letfield4__replacement) } i",
-                        "n let _let1__it = attempt (issuesCreateMilesto",
-                        "ne (_input0) (_input1) (_let0__sent)) in match",
-                        " (_let1__it) { Either::Left _match2__0___lawsp",
-                        "ecSelection0x0 -> true; Either::Right _match2_",
-                        "_1___lawspecSelection0x0 -> let _let3__key = m",
-                        "atch (_match2__1___lawspecSelection0x0) { lawt",
-                        "win.github.model::type::Milestone::Milestone _",
-                        "matchfield5__url _matchfield6__htmlUrl _matchf",
-                        "ield7__labelsUrl _matchfield8__id _matchfield9",
-                        "__nodeId _matchfield10__number _matchfield11__",
-                        "state_ _matchfield12__title _matchfield13__des",
-                        "cription_ _matchfield14__creator _matchfield15",
-                        "__openIssues _matchfield16__closedIssues _matc",
-                        "hfield17__createdAt _matchfield18__updatedAt _",
-                        "matchfield19__closedAt _matchfield20__dueOn ->",
-                        " _matchfield10__number } in (attempt (issuesGe",
-                        "tMilestone (_input0) (_input1) (_let3__key)) =",
-                        "= Either::Right(_match2__1___lawspecSelection0",
-                        "x0)) } = true",
+                        "eld4__replacement = Maybe::Present(_input3) in",
+                        " match (_input2) { lawtwin.github.model::type:",
+                        ":IssuesCreateMilestoneBody::IssuesCreateMilest",
+                        "oneBody _matchfield0__title _matchfield1__stat",
+                        "e_ _matchfield2__description_ _matchfield3__du",
+                        "eOn -> lawtwin.github.model::type::IssuesCreat",
+                        "eMilestoneBody::IssuesCreateMilestoneBody(_mat",
+                        "chfield0__title, _matchfield1__state_, _matchf",
+                        "ield2__description_, _letfield4__replacement) ",
+                        "} in let _let1__it = attempt (issuesCreateMile",
+                        "stone (_input0) (_input1) (_let0__sent)) in ma",
+                        "tch (_let1__it) { Either::Left _match2__0___la",
+                        "wspecSelection0x0 -> true; Either::Right _matc",
+                        "h2__1___lawspecSelection0x0 -> let _let3__key ",
+                        "= match (_match2__1___lawspecSelection0x0) { l",
+                        "awtwin.github.model::type::Milestone::Mileston",
+                        "e _matchfield5__url _matchfield6__htmlUrl _mat",
+                        "chfield7__labelsUrl _matchfield8__id _matchfie",
+                        "ld9__nodeId _matchfield10__number _matchfield1",
+                        "1__state_ _matchfield12__title _matchfield13__",
+                        "description_ _matchfield14__creator _matchfiel",
+                        "d15__openIssues _matchfield16__closedIssues _m",
+                        "atchfield17__createdAt _matchfield18__updatedA",
+                        "t _matchfield19__closedAt _matchfield20__dueOn",
+                        " -> _matchfield10__number } in (attempt (issue",
+                        "sGetMilestone (_input0) (_input1) (_let3__key)",
+                        ") == Either::Right(_match2__1___lawspecSelecti",
+                        "on0x0)) } = true",
                     ),
                     left,
                     right,
@@ -8550,9 +8616,9 @@ fn run_8() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("0000-00-00T00:00:00Z".to_owned()),
@@ -8578,14 +8644,14 @@ fn run_8() -> ls::Result<()> {
                 vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
             ls::Value::Text("8210-06-18T92:31:19.5396160Z".to_owned()),
@@ -8611,7 +8677,7 @@ fn run_8() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             concat!(
                                 "lawtwin.github.model::type::MilestoneState::Mi",
@@ -8620,8 +8686,8 @@ fn run_8() -> ls::Result<()> {
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
             ls::Value::Text("3643-92-40T78:65:71.6386626Z".to_owned()),
@@ -8646,13 +8712,13 @@ fn run_8() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -8680,18 +8746,18 @@ fn run_8() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -8795,9 +8861,9 @@ fn run_8() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -8808,14 +8874,14 @@ fn run_8() -> ls::Result<()> {
                         vec![
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -8826,7 +8892,7 @@ fn run_8() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -8835,8 +8901,8 @@ fn run_8() -> ls::Result<()> {
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -8846,13 +8912,13 @@ fn run_8() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -8865,18 +8931,18 @@ fn run_8() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -8889,7 +8955,7 @@ fn run_8() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -8899,11 +8965,11 @@ fn run_8() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -8915,9 +8981,15 @@ fn run_8() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -8928,14 +9000,14 @@ fn run_8() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -8946,7 +9018,7 @@ fn run_8() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -8956,11 +9028,11 @@ fn run_8() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -9157,7 +9229,7 @@ fn search_case_8(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // IssuesApi: "|a created milestone reads back| [reference]
 // for all (owner :: Text) (repo :: Text) (body ::
 // lawtwin.github.model::type::IssuesCreateMilestoneBody) (dueOnValue :: Text) => let _let0__sent =
-// let _letfield4__replacement = Maybe::Just(_input3) in match (_input2) {
+// let _letfield4__replacement = Maybe::Present(_input3) in match (_input2) {
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody
 // _matchfield0__title _matchfield1__state_ _matchfield2__description_ _matchfield3__dueOn ->
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody(_matchfield0__ti
@@ -9213,7 +9285,7 @@ fn law_9(
     {
         let left = {
             let let_4 = {
-                let let_4 = ls::construct("Maybe::Just", vec![input_3.clone()])?;
+                let let_4 = ls::construct("Maybe::Present", vec![input_3.clone()])?;
                 let _ = &let_4;
                 match input_2.clone() {
                     ls::Value::Data(tag, fields)
@@ -9355,34 +9427,34 @@ fn law_9(
                 concat!(
                     "IssuesApi: \"|a created milestone reads back| ",
                     "[reference] | expect let _let0__sent = let _le",
-                    "tfield4__replacement = Maybe::Just(_input3) in",
-                    " match (_input2) { lawtwin.github.model::type:",
-                    ":IssuesCreateMilestoneBody::IssuesCreateMilest",
-                    "oneBody _matchfield0__title _matchfield1__stat",
-                    "e_ _matchfield2__description_ _matchfield3__du",
-                    "eOn -> lawtwin.github.model::type::IssuesCreat",
-                    "eMilestoneBody::IssuesCreateMilestoneBody(_mat",
-                    "chfield0__title, _matchfield1__state_, _matchf",
-                    "ield2__description_, _letfield4__replacement) ",
-                    "} in let _let1__it = attempt (issuesCreateMile",
-                    "stone (_input0) (_input1) (_let0__sent)) in ma",
-                    "tch (_let1__it) { Either::Left _match2__0___la",
-                    "wspecSelection0x0 -> true; Either::Right _matc",
-                    "h2__1___lawspecSelection0x0 -> let _let3__key ",
-                    "= match (_match2__1___lawspecSelection0x0) { l",
-                    "awtwin.github.model::type::Milestone::Mileston",
-                    "e _matchfield5__url _matchfield6__htmlUrl _mat",
-                    "chfield7__labelsUrl _matchfield8__id _matchfie",
-                    "ld9__nodeId _matchfield10__number _matchfield1",
-                    "1__state_ _matchfield12__title _matchfield13__",
-                    "description_ _matchfield14__creator _matchfiel",
-                    "d15__openIssues _matchfield16__closedIssues _m",
-                    "atchfield17__createdAt _matchfield18__updatedA",
-                    "t _matchfield19__closedAt _matchfield20__dueOn",
-                    " -> _matchfield10__number } in (attempt (issue",
-                    "sGetMilestone (_input0) (_input1) (_let3__key)",
-                    ") == Either::Right(_match2__1___lawspecSelecti",
-                    "on0x0)) } = true",
+                    "tfield4__replacement = Maybe::Present(_input3)",
+                    " in match (_input2) { lawtwin.github.model::ty",
+                    "pe::IssuesCreateMilestoneBody::IssuesCreateMil",
+                    "estoneBody _matchfield0__title _matchfield1__s",
+                    "tate_ _matchfield2__description_ _matchfield3_",
+                    "_dueOn -> lawtwin.github.model::type::IssuesCr",
+                    "eateMilestoneBody::IssuesCreateMilestoneBody(_",
+                    "matchfield0__title, _matchfield1__state_, _mat",
+                    "chfield2__description_, _letfield4__replacemen",
+                    "t) } in let _let1__it = attempt (issuesCreateM",
+                    "ilestone (_input0) (_input1) (_let0__sent)) in",
+                    " match (_let1__it) { Either::Left _match2__0__",
+                    "_lawspecSelection0x0 -> true; Either::Right _m",
+                    "atch2__1___lawspecSelection0x0 -> let _let3__k",
+                    "ey = match (_match2__1___lawspecSelection0x0) ",
+                    "{ lawtwin.github.model::type::Milestone::Miles",
+                    "tone _matchfield5__url _matchfield6__htmlUrl _",
+                    "matchfield7__labelsUrl _matchfield8__id _match",
+                    "field9__nodeId _matchfield10__number _matchfie",
+                    "ld11__state_ _matchfield12__title _matchfield1",
+                    "3__description_ _matchfield14__creator _matchf",
+                    "ield15__openIssues _matchfield16__closedIssues",
+                    " _matchfield17__createdAt _matchfield18__updat",
+                    "edAt _matchfield19__closedAt _matchfield20__du",
+                    "eOn -> _matchfield10__number } in (attempt (is",
+                    "suesGetMilestone (_input0) (_input1) (_let3__k",
+                    "ey)) == Either::Right(_match2__1___lawspecSele",
+                    "ction0x0)) } = true",
                 ),
                 left,
                 right,
@@ -9447,9 +9519,9 @@ fn run_9() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("0000-00-00T00:00:00Z".to_owned()),
@@ -9475,14 +9547,14 @@ fn run_9() -> ls::Result<()> {
                 vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
             ls::Value::Text("8210-06-18T92:31:19.5396160Z".to_owned()),
@@ -9508,7 +9580,7 @@ fn run_9() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             concat!(
                                 "lawtwin.github.model::type::MilestoneState::Mi",
@@ -9517,8 +9589,8 @@ fn run_9() -> ls::Result<()> {
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
             ls::Value::Text("3643-92-40T78:65:71.6386626Z".to_owned()),
@@ -9543,13 +9615,13 @@ fn run_9() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -9577,18 +9649,18 @@ fn run_9() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -9692,9 +9764,9 @@ fn run_9() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -9705,14 +9777,14 @@ fn run_9() -> ls::Result<()> {
                         vec![
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -9723,7 +9795,7 @@ fn run_9() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -9732,8 +9804,8 @@ fn run_9() -> ls::Result<()> {
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -9743,13 +9815,13 @@ fn run_9() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -9762,18 +9834,18 @@ fn run_9() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -9786,7 +9858,7 @@ fn run_9() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -9796,11 +9868,11 @@ fn run_9() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -9812,9 +9884,15 @@ fn run_9() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -9825,14 +9903,14 @@ fn run_9() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -9843,7 +9921,7 @@ fn run_9() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -9853,11 +9931,11 @@ fn run_9() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -10054,7 +10132,7 @@ fn search_case_9(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // IssuesApi: "|a deleted milestone is not found| [native]
 // for all (owner :: Text) (repo :: Text) (body ::
 // lawtwin.github.model::type::IssuesCreateMilestoneBody) (dueOnValue :: Text) => let _let0__sent =
-// let _letfield4__replacement = Maybe::Just(_input3) in match (_input2) {
+// let _letfield4__replacement = Maybe::Present(_input3) in match (_input2) {
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody
 // _matchfield0__title _matchfield1__state_ _matchfield2__description_ _matchfield3__dueOn ->
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody(_matchfield0__ti
@@ -10119,7 +10197,7 @@ fn law_10(
         {
             let left = {
                 let let_5 = {
-                    let let_5 = ls::construct("Maybe::Just", vec![input_3.clone()])?;
+                    let let_5 = ls::construct("Maybe::Present", vec![input_3.clone()])?;
                     let _ = &let_5;
                     match input_2.clone() {
                         ls::Value::Data(tag, fields)
@@ -10295,36 +10373,36 @@ fn law_10(
                     concat!(
                         "IssuesApi: \"|a deleted milestone is not found",
                         "| [native] | expect let _let0__sent = let _let",
-                        "field4__replacement = Maybe::Just(_input3) in ",
-                        "match (_input2) { lawtwin.github.model::type::",
-                        "IssuesCreateMilestoneBody::IssuesCreateMilesto",
-                        "neBody _matchfield0__title _matchfield1__state",
-                        "_ _matchfield2__description_ _matchfield3__due",
-                        "On -> lawtwin.github.model::type::IssuesCreate",
-                        "MilestoneBody::IssuesCreateMilestoneBody(_matc",
-                        "hfield0__title, _matchfield1__state_, _matchfi",
-                        "eld2__description_, _letfield4__replacement) }",
-                        " in let _let1__it = attempt (issuesCreateMiles",
-                        "tone (_input0) (_input1) (_let0__sent)) in mat",
-                        "ch (_let1__it) { Either::Left _match2__0___law",
-                        "specSelection0x0 -> true; Either::Right _match",
-                        "2__1___lawspecSelection0x0 -> let _let3__key =",
-                        " match (_match2__1___lawspecSelection0x0) { la",
-                        "wtwin.github.model::type::Milestone::Milestone",
-                        " _matchfield5__url _matchfield6__htmlUrl _matc",
-                        "hfield7__labelsUrl _matchfield8__id _matchfiel",
-                        "d9__nodeId _matchfield10__number _matchfield11",
-                        "__state_ _matchfield12__title _matchfield13__d",
-                        "escription_ _matchfield14__creator _matchfield",
-                        "15__openIssues _matchfield16__closedIssues _ma",
-                        "tchfield17__createdAt _matchfield18__updatedAt",
-                        " _matchfield19__closedAt _matchfield20__dueOn ",
-                        "-> _matchfield10__number } in let _let4__gone ",
-                        "= attempt (issuesDeleteMilestone (_input0) (_i",
-                        "nput1) (_let3__key)) in (attempt (issuesGetMil",
-                        "estone (_input0) (_input1) (_let3__key)) == Ei",
-                        "ther::Left(lawtwin.github.model::type::ApiErro",
-                        "r::NotFound())) } = true",
+                        "field4__replacement = Maybe::Present(_input3) ",
+                        "in match (_input2) { lawtwin.github.model::typ",
+                        "e::IssuesCreateMilestoneBody::IssuesCreateMile",
+                        "stoneBody _matchfield0__title _matchfield1__st",
+                        "ate_ _matchfield2__description_ _matchfield3__",
+                        "dueOn -> lawtwin.github.model::type::IssuesCre",
+                        "ateMilestoneBody::IssuesCreateMilestoneBody(_m",
+                        "atchfield0__title, _matchfield1__state_, _matc",
+                        "hfield2__description_, _letfield4__replacement",
+                        ") } in let _let1__it = attempt (issuesCreateMi",
+                        "lestone (_input0) (_input1) (_let0__sent)) in ",
+                        "match (_let1__it) { Either::Left _match2__0___",
+                        "lawspecSelection0x0 -> true; Either::Right _ma",
+                        "tch2__1___lawspecSelection0x0 -> let _let3__ke",
+                        "y = match (_match2__1___lawspecSelection0x0) {",
+                        " lawtwin.github.model::type::Milestone::Milest",
+                        "one _matchfield5__url _matchfield6__htmlUrl _m",
+                        "atchfield7__labelsUrl _matchfield8__id _matchf",
+                        "ield9__nodeId _matchfield10__number _matchfiel",
+                        "d11__state_ _matchfield12__title _matchfield13",
+                        "__description_ _matchfield14__creator _matchfi",
+                        "eld15__openIssues _matchfield16__closedIssues ",
+                        "_matchfield17__createdAt _matchfield18__update",
+                        "dAt _matchfield19__closedAt _matchfield20__due",
+                        "On -> _matchfield10__number } in let _let4__go",
+                        "ne = attempt (issuesDeleteMilestone (_input0) ",
+                        "(_input1) (_let3__key)) in (attempt (issuesGet",
+                        "Milestone (_input0) (_input1) (_let3__key)) ==",
+                        " Either::Left(lawtwin.github.model::type::ApiE",
+                        "rror::NotFound())) } = true",
                     ),
                     left,
                     right,
@@ -10404,9 +10482,9 @@ fn run_10() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("0000-00-00T00:00:00Z".to_owned()),
@@ -10432,14 +10510,14 @@ fn run_10() -> ls::Result<()> {
                 vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
             ls::Value::Text("8210-06-18T92:31:19.5396160Z".to_owned()),
@@ -10465,7 +10543,7 @@ fn run_10() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             concat!(
                                 "lawtwin.github.model::type::MilestoneState::Mi",
@@ -10474,8 +10552,8 @@ fn run_10() -> ls::Result<()> {
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
             ls::Value::Text("3643-92-40T78:65:71.6386626Z".to_owned()),
@@ -10500,13 +10578,13 @@ fn run_10() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -10534,18 +10612,18 @@ fn run_10() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -10649,9 +10727,9 @@ fn run_10() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -10662,14 +10740,14 @@ fn run_10() -> ls::Result<()> {
                         vec![
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -10680,7 +10758,7 @@ fn run_10() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -10689,8 +10767,8 @@ fn run_10() -> ls::Result<()> {
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -10700,13 +10778,13 @@ fn run_10() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -10719,18 +10797,18 @@ fn run_10() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -10743,7 +10821,7 @@ fn run_10() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -10753,11 +10831,11 @@ fn run_10() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -10769,9 +10847,15 @@ fn run_10() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -10782,14 +10866,14 @@ fn run_10() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -10800,7 +10884,7 @@ fn run_10() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -10810,11 +10894,11 @@ fn run_10() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -11011,7 +11095,7 @@ fn search_case_10(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // IssuesApi: "|a deleted milestone is not found| [reference]
 // for all (owner :: Text) (repo :: Text) (body ::
 // lawtwin.github.model::type::IssuesCreateMilestoneBody) (dueOnValue :: Text) => let _let0__sent =
-// let _letfield4__replacement = Maybe::Just(_input3) in match (_input2) {
+// let _letfield4__replacement = Maybe::Present(_input3) in match (_input2) {
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody
 // _matchfield0__title _matchfield1__state_ _matchfield2__description_ _matchfield3__dueOn ->
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody(_matchfield0__ti
@@ -11068,7 +11152,7 @@ fn law_11(
     {
         let left = {
             let let_4 = {
-                let let_4 = ls::construct("Maybe::Just", vec![input_3.clone()])?;
+                let let_4 = ls::construct("Maybe::Present", vec![input_3.clone()])?;
                 let _ = &let_4;
                 match input_2.clone() {
                     ls::Value::Data(tag, fields)
@@ -11241,36 +11325,36 @@ fn law_11(
                 concat!(
                     "IssuesApi: \"|a deleted milestone is not found",
                     "| [reference] | expect let _let0__sent = let _",
-                    "letfield4__replacement = Maybe::Just(_input3) ",
-                    "in match (_input2) { lawtwin.github.model::typ",
-                    "e::IssuesCreateMilestoneBody::IssuesCreateMile",
-                    "stoneBody _matchfield0__title _matchfield1__st",
-                    "ate_ _matchfield2__description_ _matchfield3__",
-                    "dueOn -> lawtwin.github.model::type::IssuesCre",
-                    "ateMilestoneBody::IssuesCreateMilestoneBody(_m",
-                    "atchfield0__title, _matchfield1__state_, _matc",
-                    "hfield2__description_, _letfield4__replacement",
-                    ") } in let _let1__it = attempt (issuesCreateMi",
-                    "lestone (_input0) (_input1) (_let0__sent)) in ",
-                    "match (_let1__it) { Either::Left _match2__0___",
-                    "lawspecSelection0x0 -> true; Either::Right _ma",
-                    "tch2__1___lawspecSelection0x0 -> let _let3__ke",
-                    "y = match (_match2__1___lawspecSelection0x0) {",
-                    " lawtwin.github.model::type::Milestone::Milest",
-                    "one _matchfield5__url _matchfield6__htmlUrl _m",
-                    "atchfield7__labelsUrl _matchfield8__id _matchf",
-                    "ield9__nodeId _matchfield10__number _matchfiel",
-                    "d11__state_ _matchfield12__title _matchfield13",
-                    "__description_ _matchfield14__creator _matchfi",
-                    "eld15__openIssues _matchfield16__closedIssues ",
-                    "_matchfield17__createdAt _matchfield18__update",
-                    "dAt _matchfield19__closedAt _matchfield20__due",
-                    "On -> _matchfield10__number } in let _let4__go",
-                    "ne = attempt (issuesDeleteMilestone (_input0) ",
-                    "(_input1) (_let3__key)) in (attempt (issuesGet",
-                    "Milestone (_input0) (_input1) (_let3__key)) ==",
-                    " Either::Left(lawtwin.github.model::type::ApiE",
-                    "rror::NotFound())) } = true",
+                    "letfield4__replacement = Maybe::Present(_input",
+                    "3) in match (_input2) { lawtwin.github.model::",
+                    "type::IssuesCreateMilestoneBody::IssuesCreateM",
+                    "ilestoneBody _matchfield0__title _matchfield1_",
+                    "_state_ _matchfield2__description_ _matchfield",
+                    "3__dueOn -> lawtwin.github.model::type::Issues",
+                    "CreateMilestoneBody::IssuesCreateMilestoneBody",
+                    "(_matchfield0__title, _matchfield1__state_, _m",
+                    "atchfield2__description_, _letfield4__replacem",
+                    "ent) } in let _let1__it = attempt (issuesCreat",
+                    "eMilestone (_input0) (_input1) (_let0__sent)) ",
+                    "in match (_let1__it) { Either::Left _match2__0",
+                    "___lawspecSelection0x0 -> true; Either::Right ",
+                    "_match2__1___lawspecSelection0x0 -> let _let3_",
+                    "_key = match (_match2__1___lawspecSelection0x0",
+                    ") { lawtwin.github.model::type::Milestone::Mil",
+                    "estone _matchfield5__url _matchfield6__htmlUrl",
+                    " _matchfield7__labelsUrl _matchfield8__id _mat",
+                    "chfield9__nodeId _matchfield10__number _matchf",
+                    "ield11__state_ _matchfield12__title _matchfiel",
+                    "d13__description_ _matchfield14__creator _matc",
+                    "hfield15__openIssues _matchfield16__closedIssu",
+                    "es _matchfield17__createdAt _matchfield18__upd",
+                    "atedAt _matchfield19__closedAt _matchfield20__",
+                    "dueOn -> _matchfield10__number } in let _let4_",
+                    "_gone = attempt (issuesDeleteMilestone (_input",
+                    "0) (_input1) (_let3__key)) in (attempt (issues",
+                    "GetMilestone (_input0) (_input1) (_let3__key))",
+                    " == Either::Left(lawtwin.github.model::type::A",
+                    "piError::NotFound())) } = true",
                 ),
                 left,
                 right,
@@ -11335,9 +11419,9 @@ fn run_11() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("0000-00-00T00:00:00Z".to_owned()),
@@ -11363,14 +11447,14 @@ fn run_11() -> ls::Result<()> {
                 vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
             ls::Value::Text("8210-06-18T92:31:19.5396160Z".to_owned()),
@@ -11396,7 +11480,7 @@ fn run_11() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             concat!(
                                 "lawtwin.github.model::type::MilestoneState::Mi",
@@ -11405,8 +11489,8 @@ fn run_11() -> ls::Result<()> {
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
             ls::Value::Text("3643-92-40T78:65:71.6386626Z".to_owned()),
@@ -11431,13 +11515,13 @@ fn run_11() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -11465,18 +11549,18 @@ fn run_11() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -11580,9 +11664,9 @@ fn run_11() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -11593,14 +11677,14 @@ fn run_11() -> ls::Result<()> {
                         vec![
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -11611,7 +11695,7 @@ fn run_11() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -11620,8 +11704,8 @@ fn run_11() -> ls::Result<()> {
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -11631,13 +11715,13 @@ fn run_11() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -11650,18 +11734,18 @@ fn run_11() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -11674,7 +11758,7 @@ fn run_11() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -11684,11 +11768,11 @@ fn run_11() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -11700,9 +11784,15 @@ fn run_11() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -11713,14 +11803,14 @@ fn run_11() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -11731,7 +11821,7 @@ fn run_11() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -11741,11 +11831,11 @@ fn run_11() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -11942,7 +12032,7 @@ fn search_case_11(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // IssuesApi: "|the list holds a created milestone| [native]
 // for all (owner :: Text) (repo :: Text) (body ::
 // lawtwin.github.model::type::IssuesCreateMilestoneBody) (dueOnValue :: Text) => let _let0__sent =
-// let _letfield4__replacement = Maybe::Just(_input3) in match (_input2) {
+// let _letfield4__replacement = Maybe::Present(_input3) in match (_input2) {
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody
 // _matchfield0__title _matchfield1__state_ _matchfield2__description_ _matchfield3__dueOn ->
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody(_matchfield0__ti
@@ -11950,8 +12040,8 @@ fn search_case_11(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // _let1__it = attempt (issuesCreateMilestone (_input0) (_input1) (_let0__sent)) in match
 // (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
 // _match2__1___lawspecSelection0x0 -> let _let3__it = attempt (issuesListMilestones (_input0)
-// (_input1) (Maybe::Nothing()) (Maybe::Nothing()) (Maybe::Nothing()) (Maybe::Nothing())
-// (Maybe::Nothing())) in match (_let3__it) { Either::Left _match4__0___match__lawspecSelection0x0_0
+// (_input1) (Maybe::Absent()) (Maybe::Absent()) (Maybe::Absent()) (Maybe::Absent())
+// (Maybe::Absent())) in match (_let3__it) { Either::Left _match4__0___match__lawspecSelection0x0_0
 // -> false; Either::Right _match4__1___match__lawspecSelection0x0_0 ->
 // lawtwinGithubModelContainsMilestone (_match2__1___lawspecSelection0x0)
 // (_match4__1___match__lawspecSelection0x0_0) } } = true end for all
@@ -12004,7 +12094,7 @@ fn law_12(
         {
             let left = {
                 let let_5 = {
-                    let let_5 = ls::construct("Maybe::Just", vec![input_3.clone()])?;
+                    let let_5 = ls::construct("Maybe::Present", vec![input_3.clone()])?;
                     let _ = &let_5;
                     match input_2.clone() {
                         ls::Value::Data(tag, fields)
@@ -12075,15 +12165,15 @@ fn law_12(
                                             let perform_argument_0 = input_0.clone();
                                             let perform_argument_1 = input_1.clone();
                                             let perform_argument_2 =
-                                                ls::construct("Maybe::Nothing", vec![])?;
+                                                ls::construct("Maybe::Absent", vec![])?;
                                             let perform_argument_3 =
-                                                ls::construct("Maybe::Nothing", vec![])?;
+                                                ls::construct("Maybe::Absent", vec![])?;
                                             let perform_argument_4 =
-                                                ls::construct("Maybe::Nothing", vec![])?;
+                                                ls::construct("Maybe::Absent", vec![])?;
                                             let perform_argument_5 =
-                                                ls::construct("Maybe::Nothing", vec![])?;
+                                                ls::construct("Maybe::Absent", vec![])?;
                                             let perform_argument_6 =
-                                                ls::construct("Maybe::Nothing", vec![])?;
+                                                ls::construct("Maybe::Absent", vec![])?;
                                             let arguments = vec![
                                                 perform_argument_0,
                                                 perform_argument_1,
@@ -12143,30 +12233,30 @@ fn law_12(
                     concat!(
                         "IssuesApi: \"|the list holds a created milesto",
                         "ne| [native] | expect let _let0__sent = let _l",
-                        "etfield4__replacement = Maybe::Just(_input3) i",
-                        "n match (_input2) { lawtwin.github.model::type",
-                        "::IssuesCreateMilestoneBody::IssuesCreateMiles",
-                        "toneBody _matchfield0__title _matchfield1__sta",
-                        "te_ _matchfield2__description_ _matchfield3__d",
-                        "ueOn -> lawtwin.github.model::type::IssuesCrea",
-                        "teMilestoneBody::IssuesCreateMilestoneBody(_ma",
-                        "tchfield0__title, _matchfield1__state_, _match",
-                        "field2__description_, _letfield4__replacement)",
-                        " } in let _let1__it = attempt (issuesCreateMil",
-                        "estone (_input0) (_input1) (_let0__sent)) in m",
-                        "atch (_let1__it) { Either::Left _match2__0___l",
-                        "awspecSelection0x0 -> true; Either::Right _mat",
-                        "ch2__1___lawspecSelection0x0 -> let _let3__it ",
-                        "= attempt (issuesListMilestones (_input0) (_in",
-                        "put1) (Maybe::Nothing()) (Maybe::Nothing()) (M",
-                        "aybe::Nothing()) (Maybe::Nothing()) (Maybe::No",
-                        "thing())) in match (_let3__it) { Either::Left ",
-                        "_match4__0___match__lawspecSelection0x0_0 -> f",
-                        "alse; Either::Right _match4__1___match__lawspe",
-                        "cSelection0x0_0 -> lawtwinGithubModelContainsM",
-                        "ilestone (_match2__1___lawspecSelection0x0) (_",
-                        "match4__1___match__lawspecSelection0x0_0) } } ",
-                        "= true",
+                        "etfield4__replacement = Maybe::Present(_input3",
+                        ") in match (_input2) { lawtwin.github.model::t",
+                        "ype::IssuesCreateMilestoneBody::IssuesCreateMi",
+                        "lestoneBody _matchfield0__title _matchfield1__",
+                        "state_ _matchfield2__description_ _matchfield3",
+                        "__dueOn -> lawtwin.github.model::type::IssuesC",
+                        "reateMilestoneBody::IssuesCreateMilestoneBody(",
+                        "_matchfield0__title, _matchfield1__state_, _ma",
+                        "tchfield2__description_, _letfield4__replaceme",
+                        "nt) } in let _let1__it = attempt (issuesCreate",
+                        "Milestone (_input0) (_input1) (_let0__sent)) i",
+                        "n match (_let1__it) { Either::Left _match2__0_",
+                        "__lawspecSelection0x0 -> true; Either::Right _",
+                        "match2__1___lawspecSelection0x0 -> let _let3__",
+                        "it = attempt (issuesListMilestones (_input0) (",
+                        "_input1) (Maybe::Absent()) (Maybe::Absent()) (",
+                        "Maybe::Absent()) (Maybe::Absent()) (Maybe::Abs",
+                        "ent())) in match (_let3__it) { Either::Left _m",
+                        "atch4__0___match__lawspecSelection0x0_0 -> fal",
+                        "se; Either::Right _match4__1___match__lawspecS",
+                        "election0x0_0 -> lawtwinGithubModelContainsMil",
+                        "estone (_match2__1___lawspecSelection0x0) (_ma",
+                        "tch4__1___match__lawspecSelection0x0_0) } } = ",
+                        "true",
                     ),
                     left,
                     right,
@@ -12246,9 +12336,9 @@ fn run_12() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("0000-00-00T00:00:00Z".to_owned()),
@@ -12274,14 +12364,14 @@ fn run_12() -> ls::Result<()> {
                 vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
             ls::Value::Text("8210-06-18T92:31:19.5396160Z".to_owned()),
@@ -12307,7 +12397,7 @@ fn run_12() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             concat!(
                                 "lawtwin.github.model::type::MilestoneState::Mi",
@@ -12316,8 +12406,8 @@ fn run_12() -> ls::Result<()> {
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
             ls::Value::Text("3643-92-40T78:65:71.6386626Z".to_owned()),
@@ -12342,13 +12432,13 @@ fn run_12() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -12376,18 +12466,18 @@ fn run_12() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -12491,9 +12581,9 @@ fn run_12() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -12504,14 +12594,14 @@ fn run_12() -> ls::Result<()> {
                         vec![
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -12522,7 +12612,7 @@ fn run_12() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -12531,8 +12621,8 @@ fn run_12() -> ls::Result<()> {
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -12542,13 +12632,13 @@ fn run_12() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -12561,18 +12651,18 @@ fn run_12() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -12585,7 +12675,7 @@ fn run_12() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -12595,11 +12685,11 @@ fn run_12() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -12611,9 +12701,15 @@ fn run_12() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -12624,14 +12720,14 @@ fn run_12() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -12642,7 +12738,7 @@ fn run_12() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -12652,11 +12748,11 @@ fn run_12() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -12853,7 +12949,7 @@ fn search_case_12(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // IssuesApi: "|the list holds a created milestone| [reference]
 // for all (owner :: Text) (repo :: Text) (body ::
 // lawtwin.github.model::type::IssuesCreateMilestoneBody) (dueOnValue :: Text) => let _let0__sent =
-// let _letfield4__replacement = Maybe::Just(_input3) in match (_input2) {
+// let _letfield4__replacement = Maybe::Present(_input3) in match (_input2) {
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody
 // _matchfield0__title _matchfield1__state_ _matchfield2__description_ _matchfield3__dueOn ->
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody(_matchfield0__ti
@@ -12861,8 +12957,8 @@ fn search_case_12(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // _let1__it = attempt (issuesCreateMilestone (_input0) (_input1) (_let0__sent)) in match
 // (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
 // _match2__1___lawspecSelection0x0 -> let _let3__it = attempt (issuesListMilestones (_input0)
-// (_input1) (Maybe::Nothing()) (Maybe::Nothing()) (Maybe::Nothing()) (Maybe::Nothing())
-// (Maybe::Nothing())) in match (_let3__it) { Either::Left _match4__0___match__lawspecSelection0x0_0
+// (_input1) (Maybe::Absent()) (Maybe::Absent()) (Maybe::Absent()) (Maybe::Absent())
+// (Maybe::Absent())) in match (_let3__it) { Either::Left _match4__0___match__lawspecSelection0x0_0
 // -> false; Either::Right _match4__1___match__lawspecSelection0x0_0 ->
 // lawtwinGithubModelContainsMilestone (_match2__1___lawspecSelection0x0)
 // (_match4__1___match__lawspecSelection0x0_0) } } = true end for all
@@ -12907,7 +13003,7 @@ fn law_13(
     {
         let left = {
             let let_4 = {
-                let let_4 = ls::construct("Maybe::Just", vec![input_3.clone()])?;
+                let let_4 = ls::construct("Maybe::Present", vec![input_3.clone()])?;
                 let _ = &let_4;
                 match input_2.clone() {
                     ls::Value::Data(tag, fields)
@@ -12978,15 +13074,15 @@ fn law_13(
                                         let perform_argument_0 = input_0.clone();
                                         let perform_argument_1 = input_1.clone();
                                         let perform_argument_2 =
-                                            ls::construct("Maybe::Nothing", vec![])?;
+                                            ls::construct("Maybe::Absent", vec![])?;
                                         let perform_argument_3 =
-                                            ls::construct("Maybe::Nothing", vec![])?;
+                                            ls::construct("Maybe::Absent", vec![])?;
                                         let perform_argument_4 =
-                                            ls::construct("Maybe::Nothing", vec![])?;
+                                            ls::construct("Maybe::Absent", vec![])?;
                                         let perform_argument_5 =
-                                            ls::construct("Maybe::Nothing", vec![])?;
+                                            ls::construct("Maybe::Absent", vec![])?;
                                         let perform_argument_6 =
-                                            ls::construct("Maybe::Nothing", vec![])?;
+                                            ls::construct("Maybe::Absent", vec![])?;
                                         let arguments = vec![
                                             perform_argument_0,
                                             perform_argument_1,
@@ -13046,30 +13142,30 @@ fn law_13(
                 concat!(
                     "IssuesApi: \"|the list holds a created milesto",
                     "ne| [reference] | expect let _let0__sent = let",
-                    " _letfield4__replacement = Maybe::Just(_input3",
-                    ") in match (_input2) { lawtwin.github.model::t",
-                    "ype::IssuesCreateMilestoneBody::IssuesCreateMi",
-                    "lestoneBody _matchfield0__title _matchfield1__",
-                    "state_ _matchfield2__description_ _matchfield3",
-                    "__dueOn -> lawtwin.github.model::type::IssuesC",
-                    "reateMilestoneBody::IssuesCreateMilestoneBody(",
-                    "_matchfield0__title, _matchfield1__state_, _ma",
-                    "tchfield2__description_, _letfield4__replaceme",
-                    "nt) } in let _let1__it = attempt (issuesCreate",
-                    "Milestone (_input0) (_input1) (_let0__sent)) i",
-                    "n match (_let1__it) { Either::Left _match2__0_",
-                    "__lawspecSelection0x0 -> true; Either::Right _",
-                    "match2__1___lawspecSelection0x0 -> let _let3__",
-                    "it = attempt (issuesListMilestones (_input0) (",
-                    "_input1) (Maybe::Nothing()) (Maybe::Nothing())",
-                    " (Maybe::Nothing()) (Maybe::Nothing()) (Maybe:",
-                    ":Nothing())) in match (_let3__it) { Either::Le",
-                    "ft _match4__0___match__lawspecSelection0x0_0 -",
-                    "> false; Either::Right _match4__1___match__law",
-                    "specSelection0x0_0 -> lawtwinGithubModelContai",
-                    "nsMilestone (_match2__1___lawspecSelection0x0)",
-                    " (_match4__1___match__lawspecSelection0x0_0) }",
-                    " } = true",
+                    " _letfield4__replacement = Maybe::Present(_inp",
+                    "ut3) in match (_input2) { lawtwin.github.model",
+                    "::type::IssuesCreateMilestoneBody::IssuesCreat",
+                    "eMilestoneBody _matchfield0__title _matchfield",
+                    "1__state_ _matchfield2__description_ _matchfie",
+                    "ld3__dueOn -> lawtwin.github.model::type::Issu",
+                    "esCreateMilestoneBody::IssuesCreateMilestoneBo",
+                    "dy(_matchfield0__title, _matchfield1__state_, ",
+                    "_matchfield2__description_, _letfield4__replac",
+                    "ement) } in let _let1__it = attempt (issuesCre",
+                    "ateMilestone (_input0) (_input1) (_let0__sent)",
+                    ") in match (_let1__it) { Either::Left _match2_",
+                    "_0___lawspecSelection0x0 -> true; Either::Righ",
+                    "t _match2__1___lawspecSelection0x0 -> let _let",
+                    "3__it = attempt (issuesListMilestones (_input0",
+                    ") (_input1) (Maybe::Absent()) (Maybe::Absent()",
+                    ") (Maybe::Absent()) (Maybe::Absent()) (Maybe::",
+                    "Absent())) in match (_let3__it) { Either::Left",
+                    " _match4__0___match__lawspecSelection0x0_0 -> ",
+                    "false; Either::Right _match4__1___match__lawsp",
+                    "ecSelection0x0_0 -> lawtwinGithubModelContains",
+                    "Milestone (_match2__1___lawspecSelection0x0) (",
+                    "_match4__1___match__lawspecSelection0x0_0) } }",
+                    " = true",
                 ),
                 left,
                 right,
@@ -13134,9 +13230,9 @@ fn run_13() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("0000-00-00T00:00:00Z".to_owned()),
@@ -13162,14 +13258,14 @@ fn run_13() -> ls::Result<()> {
                 vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
             ls::Value::Text("8210-06-18T92:31:19.5396160Z".to_owned()),
@@ -13195,7 +13291,7 @@ fn run_13() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             concat!(
                                 "lawtwin.github.model::type::MilestoneState::Mi",
@@ -13204,8 +13300,8 @@ fn run_13() -> ls::Result<()> {
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
             ls::Value::Text("3643-92-40T78:65:71.6386626Z".to_owned()),
@@ -13230,13 +13326,13 @@ fn run_13() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -13264,18 +13360,18 @@ fn run_13() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -13379,9 +13475,9 @@ fn run_13() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -13392,14 +13488,14 @@ fn run_13() -> ls::Result<()> {
                         vec![
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -13410,7 +13506,7 @@ fn run_13() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -13419,8 +13515,8 @@ fn run_13() -> ls::Result<()> {
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -13430,13 +13526,13 @@ fn run_13() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -13449,18 +13545,18 @@ fn run_13() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -13473,7 +13569,7 @@ fn run_13() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -13483,11 +13579,11 @@ fn run_13() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -13499,9 +13595,15 @@ fn run_13() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -13512,14 +13614,14 @@ fn run_13() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -13530,7 +13632,7 @@ fn run_13() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -13540,11 +13642,11 @@ fn run_13() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -13743,7 +13845,7 @@ fn search_case_13(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // for all (owner :: Text) (repo :: Text) (body ::
 // lawtwin.github.model::type::IssuesCreateMilestoneBody) (dueOnValue :: Text) (change ::
 // lawtwin.github.model::type::IssuesUpdateMilestoneBody) => let _let0__sent = let
-// _letfield4__replacement = Maybe::Just(_input3) in match (_input2) {
+// _letfield4__replacement = Maybe::Present(_input3) in match (_input2) {
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody
 // _matchfield0__title _matchfield1__state_ _matchfield2__description_ _matchfield3__dueOn ->
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody(_matchfield0__ti
@@ -13759,7 +13861,7 @@ fn search_case_13(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // in let _let4__it = attempt (issuesGetMilestone (_input0) (_input1) (_let3__key)) in match
 // (_let4__it) { Either::Left _match5__0___match__lawspecSelection0x0_0 -> false; Either::Right
 // _match5__1___match__lawspecSelection0x0_0 -> let _let6__it = attempt (issuesUpdateMilestone
-// (_input0) (_input1) (_let3__key) (Maybe::Just(_input4))) in match (_let6__it) { Either::Left
+// (_input0) (_input1) (_let3__key) (Maybe::Present(_input4))) in match (_let6__it) { Either::Left
 // _match7__0___match__match__lawspecSelection0x0_0_0 -> true; Either::Right
 // _match7__1___match__match__lawspecSelection0x0_0_0 -> let _let8__it = attempt (issuesGetMilestone
 // (_input0) (_input1) (_let3__key)) in match (_let8__it) { Either::Left
@@ -13836,13 +13938,13 @@ fn search_case_13(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // _matchfield187__state_ } == let _let10__it = match (_input4) {
 // lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody
 // _matchfield197__title _matchfield198__state_ _matchfield199__description_ _matchfield200__dueOn
-// -> _matchfield198__state_ } in match (_let10__it) { Maybe::Nothing -> match
+// -> _matchfield198__state_ } in match (_let10__it) { Maybe::Absent -> match
 // (_match5__1___match__lawspecSelection0x0_0) { lawtwin.github.model::type::Milestone::Milestone
 // _matchfield201__url _matchfield202__htmlUrl _matchfield203__labelsUrl _matchfield204__id
 // _matchfield205__nodeId _matchfield206__number _matchfield207__state_ _matchfield208__title
 // _matchfield209__description_ _matchfield210__creator _matchfield211__openIssues
 // _matchfield212__closedIssues _matchfield213__createdAt _matchfield214__updatedAt
-// _matchfield215__closedAt _matchfield216__dueOn -> _matchfield207__state_ }; Maybe::Just
+// _matchfield215__closedAt _matchfield216__dueOn -> _matchfield207__state_ }; Maybe::Present
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 })) And (match
 // (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
@@ -13854,13 +13956,13 @@ fn search_case_13(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // } == let _let10__it = match (_input4) {
 // lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody
 // _matchfield233__title _matchfield234__state_ _matchfield235__description_ _matchfield236__dueOn
-// -> _matchfield233__title } in match (_let10__it) { Maybe::Nothing -> match
+// -> _matchfield233__title } in match (_let10__it) { Maybe::Absent -> match
 // (_match5__1___match__lawspecSelection0x0_0) { lawtwin.github.model::type::Milestone::Milestone
 // _matchfield237__url _matchfield238__htmlUrl _matchfield239__labelsUrl _matchfield240__id
 // _matchfield241__nodeId _matchfield242__number _matchfield243__state_ _matchfield244__title
 // _matchfield245__description_ _matchfield246__creator _matchfield247__openIssues
 // _matchfield248__closedIssues _matchfield249__createdAt _matchfield250__updatedAt
-// _matchfield251__closedAt _matchfield252__dueOn -> _matchfield244__title }; Maybe::Just
+// _matchfield251__closedAt _matchfield252__dueOn -> _matchfield244__title }; Maybe::Present
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 })) And (match
 // (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
@@ -13872,16 +13974,16 @@ fn search_case_13(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // _matchfield261__description_ } == let _let10__it = match (_input4) {
 // lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody
 // _matchfield269__title _matchfield270__state_ _matchfield271__description_ _matchfield272__dueOn
-// -> _matchfield271__description_ } in match (_let10__it) { Maybe::Nothing -> match
+// -> _matchfield271__description_ } in match (_let10__it) { Maybe::Absent -> match
 // (_match5__1___match__lawspecSelection0x0_0) { lawtwin.github.model::type::Milestone::Milestone
 // _matchfield273__url _matchfield274__htmlUrl _matchfield275__labelsUrl _matchfield276__id
 // _matchfield277__nodeId _matchfield278__number _matchfield279__state_ _matchfield280__title
 // _matchfield281__description_ _matchfield282__creator _matchfield283__openIssues
 // _matchfield284__closedIssues _matchfield285__createdAt _matchfield286__updatedAt
-// _matchfield287__closedAt _matchfield288__dueOn -> _matchfield281__description_ }; Maybe::Just
+// _matchfield287__closedAt _matchfield288__dueOn -> _matchfield281__description_ }; Maybe::Present
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
-// Maybe::Just(_match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0) })) And (match
-// (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
+// Maybe::Present(_match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0) })) And
+// (match (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
 // lawtwin.github.model::type::Milestone::Milestone _matchfield289__url _matchfield290__htmlUrl
 // _matchfield291__labelsUrl _matchfield292__id _matchfield293__nodeId _matchfield294__number
 // _matchfield295__state_ _matchfield296__title _matchfield297__description_ _matchfield298__creator
@@ -13968,16 +14070,16 @@ fn search_case_13(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // } == let _let10__it = match (_input4) {
 // lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody
 // _matchfield497__title _matchfield498__state_ _matchfield499__description_ _matchfield500__dueOn
-// -> _matchfield500__dueOn } in match (_let10__it) { Maybe::Nothing -> match
+// -> _matchfield500__dueOn } in match (_let10__it) { Maybe::Absent -> match
 // (_match5__1___match__lawspecSelection0x0_0) { lawtwin.github.model::type::Milestone::Milestone
 // _matchfield501__url _matchfield502__htmlUrl _matchfield503__labelsUrl _matchfield504__id
 // _matchfield505__nodeId _matchfield506__number _matchfield507__state_ _matchfield508__title
 // _matchfield509__description_ _matchfield510__creator _matchfield511__openIssues
 // _matchfield512__closedIssues _matchfield513__createdAt _matchfield514__updatedAt
-// _matchfield515__closedAt _matchfield516__dueOn -> _matchfield516__dueOn }; Maybe::Just
+// _matchfield515__closedAt _matchfield516__dueOn -> _matchfield516__dueOn }; Maybe::Present
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
-// Maybe::Just(_match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0) })) } } } } =
-// true end for all
+// Maybe::Present(_match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0) })) } } } }
+// = true end for all
 fn law_14(
     ctx: &mut ls::Context,
     input_0: ls::Value,
@@ -14037,7 +14139,7 @@ fn law_14(
         {
             let left = {
                 let let_6 = {
-                    let let_6 = ls::construct("Maybe::Just", vec![input_3.clone()])?;
+                    let let_6 = ls::construct("Maybe::Present", vec![input_3.clone()])?;
                     let _ = &let_6;
                     match input_2.clone() {
                         ls::Value::Data(tag, fields)
@@ -14175,7 +14277,7 @@ fn law_14(
                                                                 input_1.clone();
                                                             let perform_argument_2 = let_9.clone();
                                                             let perform_argument_3 = ls::construct(
-                                                                "Maybe::Just",
+                                                                "Maybe::Present",
                                                                 vec![input_4.clone()],
                                                             )?;
                                                             let arguments = vec![
@@ -14860,7 +14962,7 @@ fn law_14(
                                                                                                                     ls::Value::Maybe(Some(payload)) => {
                                                                                                                         let match_local_17_0 = *payload;
                                                                                                                         let result = ls::construct(
-                                                                                                                            "Maybe::Just",
+                                                                                                                            "Maybe::Present",
                                                                                                                             vec![match_local_17_0.clone()],
                                                                                                                         )?;
                                                                                                                         result
@@ -15361,7 +15463,7 @@ fn law_14(
                                                                                         ls::Value::Maybe(Some(payload)) => {
                                                                                             let match_local_17_0 = *payload;
                                                                                             let result = ls::construct(
-                                                                                                "Maybe::Just",
+                                                                                                "Maybe::Present",
                                                                                                 vec![match_local_17_0.clone()],
                                                                                             )?;
                                                                                             result
@@ -15410,432 +15512,432 @@ fn law_14(
                         "IssuesApi: \"|an update changes only the field",
                         "s it gives to a milestone| [native] | expect l",
                         "et _let0__sent = let _letfield4__replacement =",
-                        " Maybe::Just(_input3) in match (_input2) { law",
-                        "twin.github.model::type::IssuesCreateMilestone",
-                        "Body::IssuesCreateMilestoneBody _matchfield0__",
-                        "title _matchfield1__state_ _matchfield2__descr",
-                        "iption_ _matchfield3__dueOn -> lawtwin.github.",
-                        "model::type::IssuesCreateMilestoneBody::Issues",
-                        "CreateMilestoneBody(_matchfield0__title, _matc",
-                        "hfield1__state_, _matchfield2__description_, _",
-                        "letfield4__replacement) } in let _let1__it = a",
-                        "ttempt (issuesCreateMilestone (_input0) (_inpu",
-                        "t1) (_let0__sent)) in match (_let1__it) { Eith",
-                        "er::Left _match2__0___lawspecSelection0x0 -> t",
-                        "rue; Either::Right _match2__1___lawspecSelecti",
-                        "on0x0 -> let _let3__key = match (_match2__1___",
-                        "lawspecSelection0x0) { lawtwin.github.model::t",
-                        "ype::Milestone::Milestone _matchfield5__url _m",
-                        "atchfield6__htmlUrl _matchfield7__labelsUrl _m",
-                        "atchfield8__id _matchfield9__nodeId _matchfiel",
-                        "d10__number _matchfield11__state_ _matchfield1",
-                        "2__title _matchfield13__description_ _matchfie",
-                        "ld14__creator _matchfield15__openIssues _match",
-                        "field16__closedIssues _matchfield17__createdAt",
-                        " _matchfield18__updatedAt _matchfield19__close",
-                        "dAt _matchfield20__dueOn -> _matchfield10__num",
-                        "ber } in let _let4__it = attempt (issuesGetMil",
-                        "estone (_input0) (_input1) (_let3__key)) in ma",
-                        "tch (_let4__it) { Either::Left _match5__0___ma",
-                        "tch__lawspecSelection0x0_0 -> false; Either::R",
-                        "ight _match5__1___match__lawspecSelection0x0_0",
-                        " -> let _let6__it = attempt (issuesUpdateMiles",
-                        "tone (_input0) (_input1) (_let3__key) (Maybe::",
-                        "Just(_input4))) in match (_let6__it) { Either:",
-                        ":Left _match7__0___match__match__lawspecSelect",
-                        "ion0x0_0_0 -> true; Either::Right _match7__1__",
-                        "_match__match__lawspecSelection0x0_0_0 -> let ",
-                        "_let8__it = attempt (issuesGetMilestone (_inpu",
-                        "t0) (_input1) (_let3__key)) in match (_let8__i",
-                        "t) { Either::Left _match9__0___match__match__m",
-                        "atch__lawspecSelection0x0_0_0_0 -> false; Eith",
-                        "er::Right _match9__1___match__match__match__la",
-                        "wspecSelection0x0_0_0_0 -> (((((((((((((((matc",
-                        "h (_match9__1___match__match__match__lawspecSe",
-                        "lection0x0_0_0_0) { lawtwin.github.model::type",
-                        "::Milestone::Milestone _matchfield21__url _mat",
-                        "chfield22__htmlUrl _matchfield23__labelsUrl _m",
-                        "atchfield24__id _matchfield25__nodeId _matchfi",
-                        "eld26__number _matchfield27__state_ _matchfiel",
-                        "d28__title _matchfield29__description_ _matchf",
-                        "ield30__creator _matchfield31__openIssues _mat",
-                        "chfield32__closedIssues _matchfield33__created",
-                        "At _matchfield34__updatedAt _matchfield35__clo",
-                        "sedAt _matchfield36__dueOn -> _matchfield21__u",
-                        "rl } == match (_match5__1___match__lawspecSele",
-                        "ction0x0_0) { lawtwin.github.model::type::Mile",
-                        "stone::Milestone _matchfield37__url _matchfiel",
-                        "d38__htmlUrl _matchfield39__labelsUrl _matchfi",
-                        "eld40__id _matchfield41__nodeId _matchfield42_",
-                        "_number _matchfield43__state_ _matchfield44__t",
-                        "itle _matchfield45__description_ _matchfield46",
-                        "__creator _matchfield47__openIssues _matchfiel",
-                        "d48__closedIssues _matchfield49__createdAt _ma",
-                        "tchfield50__updatedAt _matchfield51__closedAt ",
-                        "_matchfield52__dueOn -> _matchfield37__url }) ",
-                        "And (match (_match9__1___match__match__match__",
-                        "lawspecSelection0x0_0_0_0) { lawtwin.github.mo",
-                        "del::type::Milestone::Milestone _matchfield53_",
-                        "_url _matchfield54__htmlUrl _matchfield55__lab",
-                        "elsUrl _matchfield56__id _matchfield57__nodeId",
-                        " _matchfield58__number _matchfield59__state_ _",
-                        "matchfield60__title _matchfield61__description",
-                        "_ _matchfield62__creator _matchfield63__openIs",
-                        "sues _matchfield64__closedIssues _matchfield65",
-                        "__createdAt _matchfield66__updatedAt _matchfie",
-                        "ld67__closedAt _matchfield68__dueOn -> _matchf",
-                        "ield54__htmlUrl } == match (_match5__1___match",
-                        "__lawspecSelection0x0_0) { lawtwin.github.mode",
-                        "l::type::Milestone::Milestone _matchfield69__u",
-                        "rl _matchfield70__htmlUrl _matchfield71__label",
-                        "sUrl _matchfield72__id _matchfield73__nodeId _",
-                        "matchfield74__number _matchfield75__state_ _ma",
-                        "tchfield76__title _matchfield77__description_ ",
-                        "_matchfield78__creator _matchfield79__openIssu",
-                        "es _matchfield80__closedIssues _matchfield81__",
-                        "createdAt _matchfield82__updatedAt _matchfield",
-                        "83__closedAt _matchfield84__dueOn -> _matchfie",
-                        "ld70__htmlUrl })) And (match (_match9__1___mat",
+                        " Maybe::Present(_input3) in match (_input2) { ",
+                        "lawtwin.github.model::type::IssuesCreateMilest",
+                        "oneBody::IssuesCreateMilestoneBody _matchfield",
+                        "0__title _matchfield1__state_ _matchfield2__de",
+                        "scription_ _matchfield3__dueOn -> lawtwin.gith",
+                        "ub.model::type::IssuesCreateMilestoneBody::Iss",
+                        "uesCreateMilestoneBody(_matchfield0__title, _m",
+                        "atchfield1__state_, _matchfield2__description_",
+                        ", _letfield4__replacement) } in let _let1__it ",
+                        "= attempt (issuesCreateMilestone (_input0) (_i",
+                        "nput1) (_let0__sent)) in match (_let1__it) { E",
+                        "ither::Left _match2__0___lawspecSelection0x0 -",
+                        "> true; Either::Right _match2__1___lawspecSele",
+                        "ction0x0 -> let _let3__key = match (_match2__1",
+                        "___lawspecSelection0x0) { lawtwin.github.model",
+                        "::type::Milestone::Milestone _matchfield5__url",
+                        " _matchfield6__htmlUrl _matchfield7__labelsUrl",
+                        " _matchfield8__id _matchfield9__nodeId _matchf",
+                        "ield10__number _matchfield11__state_ _matchfie",
+                        "ld12__title _matchfield13__description_ _match",
+                        "field14__creator _matchfield15__openIssues _ma",
+                        "tchfield16__closedIssues _matchfield17__create",
+                        "dAt _matchfield18__updatedAt _matchfield19__cl",
+                        "osedAt _matchfield20__dueOn -> _matchfield10__",
+                        "number } in let _let4__it = attempt (issuesGet",
+                        "Milestone (_input0) (_input1) (_let3__key)) in",
+                        " match (_let4__it) { Either::Left _match5__0__",
+                        "_match__lawspecSelection0x0_0 -> false; Either",
+                        "::Right _match5__1___match__lawspecSelection0x",
+                        "0_0 -> let _let6__it = attempt (issuesUpdateMi",
+                        "lestone (_input0) (_input1) (_let3__key) (Mayb",
+                        "e::Present(_input4))) in match (_let6__it) { E",
+                        "ither::Left _match7__0___match__match__lawspec",
+                        "Selection0x0_0_0 -> true; Either::Right _match",
+                        "7__1___match__match__lawspecSelection0x0_0_0 -",
+                        "> let _let8__it = attempt (issuesGetMilestone ",
+                        "(_input0) (_input1) (_let3__key)) in match (_l",
+                        "et8__it) { Either::Left _match9__0___match__ma",
+                        "tch__match__lawspecSelection0x0_0_0_0 -> false",
+                        "; Either::Right _match9__1___match__match__mat",
+                        "ch__lawspecSelection0x0_0_0_0 -> (((((((((((((",
+                        "((match (_match9__1___match__match__match__law",
+                        "specSelection0x0_0_0_0) { lawtwin.github.model",
+                        "::type::Milestone::Milestone _matchfield21__ur",
+                        "l _matchfield22__htmlUrl _matchfield23__labels",
+                        "Url _matchfield24__id _matchfield25__nodeId _m",
+                        "atchfield26__number _matchfield27__state_ _mat",
+                        "chfield28__title _matchfield29__description_ _",
+                        "matchfield30__creator _matchfield31__openIssue",
+                        "s _matchfield32__closedIssues _matchfield33__c",
+                        "reatedAt _matchfield34__updatedAt _matchfield3",
+                        "5__closedAt _matchfield36__dueOn -> _matchfiel",
+                        "d21__url } == match (_match5__1___match__lawsp",
+                        "ecSelection0x0_0) { lawtwin.github.model::type",
+                        "::Milestone::Milestone _matchfield37__url _mat",
+                        "chfield38__htmlUrl _matchfield39__labelsUrl _m",
+                        "atchfield40__id _matchfield41__nodeId _matchfi",
+                        "eld42__number _matchfield43__state_ _matchfiel",
+                        "d44__title _matchfield45__description_ _matchf",
+                        "ield46__creator _matchfield47__openIssues _mat",
+                        "chfield48__closedIssues _matchfield49__created",
+                        "At _matchfield50__updatedAt _matchfield51__clo",
+                        "sedAt _matchfield52__dueOn -> _matchfield37__u",
+                        "rl }) And (match (_match9__1___match__match__m",
+                        "atch__lawspecSelection0x0_0_0_0) { lawtwin.git",
+                        "hub.model::type::Milestone::Milestone _matchfi",
+                        "eld53__url _matchfield54__htmlUrl _matchfield5",
+                        "5__labelsUrl _matchfield56__id _matchfield57__",
+                        "nodeId _matchfield58__number _matchfield59__st",
+                        "ate_ _matchfield60__title _matchfield61__descr",
+                        "iption_ _matchfield62__creator _matchfield63__",
+                        "openIssues _matchfield64__closedIssues _matchf",
+                        "ield65__createdAt _matchfield66__updatedAt _ma",
+                        "tchfield67__closedAt _matchfield68__dueOn -> _",
+                        "matchfield54__htmlUrl } == match (_match5__1__",
+                        "_match__lawspecSelection0x0_0) { lawtwin.githu",
+                        "b.model::type::Milestone::Milestone _matchfiel",
+                        "d69__url _matchfield70__htmlUrl _matchfield71_",
+                        "_labelsUrl _matchfield72__id _matchfield73__no",
+                        "deId _matchfield74__number _matchfield75__stat",
+                        "e_ _matchfield76__title _matchfield77__descrip",
+                        "tion_ _matchfield78__creator _matchfield79__op",
+                        "enIssues _matchfield80__closedIssues _matchfie",
+                        "ld81__createdAt _matchfield82__updatedAt _matc",
+                        "hfield83__closedAt _matchfield84__dueOn -> _ma",
+                        "tchfield70__htmlUrl })) And (match (_match9__1",
+                        "___match__match__match__lawspecSelection0x0_0_",
+                        "0_0) { lawtwin.github.model::type::Milestone::",
+                        "Milestone _matchfield85__url _matchfield86__ht",
+                        "mlUrl _matchfield87__labelsUrl _matchfield88__",
+                        "id _matchfield89__nodeId _matchfield90__number",
+                        " _matchfield91__state_ _matchfield92__title _m",
+                        "atchfield93__description_ _matchfield94__creat",
+                        "or _matchfield95__openIssues _matchfield96__cl",
+                        "osedIssues _matchfield97__createdAt _matchfiel",
+                        "d98__updatedAt _matchfield99__closedAt _matchf",
+                        "ield100__dueOn -> _matchfield87__labelsUrl } =",
+                        "= match (_match5__1___match__lawspecSelection0",
+                        "x0_0) { lawtwin.github.model::type::Milestone:",
+                        ":Milestone _matchfield101__url _matchfield102_",
+                        "_htmlUrl _matchfield103__labelsUrl _matchfield",
+                        "104__id _matchfield105__nodeId _matchfield106_",
+                        "_number _matchfield107__state_ _matchfield108_",
+                        "_title _matchfield109__description_ _matchfiel",
+                        "d110__creator _matchfield111__openIssues _matc",
+                        "hfield112__closedIssues _matchfield113__create",
+                        "dAt _matchfield114__updatedAt _matchfield115__",
+                        "closedAt _matchfield116__dueOn -> _matchfield1",
+                        "03__labelsUrl })) And (match (_match9__1___mat",
                         "ch__match__match__lawspecSelection0x0_0_0_0) {",
                         " lawtwin.github.model::type::Milestone::Milest",
-                        "one _matchfield85__url _matchfield86__htmlUrl ",
-                        "_matchfield87__labelsUrl _matchfield88__id _ma",
-                        "tchfield89__nodeId _matchfield90__number _matc",
-                        "hfield91__state_ _matchfield92__title _matchfi",
-                        "eld93__description_ _matchfield94__creator _ma",
-                        "tchfield95__openIssues _matchfield96__closedIs",
-                        "sues _matchfield97__createdAt _matchfield98__u",
-                        "pdatedAt _matchfield99__closedAt _matchfield10",
-                        "0__dueOn -> _matchfield87__labelsUrl } == matc",
-                        "h (_match5__1___match__lawspecSelection0x0_0) ",
-                        "{ lawtwin.github.model::type::Milestone::Miles",
-                        "tone _matchfield101__url _matchfield102__htmlU",
-                        "rl _matchfield103__labelsUrl _matchfield104__i",
-                        "d _matchfield105__nodeId _matchfield106__numbe",
-                        "r _matchfield107__state_ _matchfield108__title",
-                        " _matchfield109__description_ _matchfield110__",
-                        "creator _matchfield111__openIssues _matchfield",
-                        "112__closedIssues _matchfield113__createdAt _m",
-                        "atchfield114__updatedAt _matchfield115__closed",
-                        "At _matchfield116__dueOn -> _matchfield103__la",
-                        "belsUrl })) And (match (_match9__1___match__ma",
-                        "tch__match__lawspecSelection0x0_0_0_0) { lawtw",
-                        "in.github.model::type::Milestone::Milestone _m",
-                        "atchfield117__url _matchfield118__htmlUrl _mat",
-                        "chfield119__labelsUrl _matchfield120__id _matc",
-                        "hfield121__nodeId _matchfield122__number _matc",
-                        "hfield123__state_ _matchfield124__title _match",
-                        "field125__description_ _matchfield126__creator",
-                        " _matchfield127__openIssues _matchfield128__cl",
-                        "osedIssues _matchfield129__createdAt _matchfie",
-                        "ld130__updatedAt _matchfield131__closedAt _mat",
-                        "chfield132__dueOn -> _matchfield120__id } == m",
-                        "atch (_match5__1___match__lawspecSelection0x0_",
-                        "0) { lawtwin.github.model::type::Milestone::Mi",
-                        "lestone _matchfield133__url _matchfield134__ht",
-                        "mlUrl _matchfield135__labelsUrl _matchfield136",
-                        "__id _matchfield137__nodeId _matchfield138__nu",
-                        "mber _matchfield139__state_ _matchfield140__ti",
-                        "tle _matchfield141__description_ _matchfield14",
-                        "2__creator _matchfield143__openIssues _matchfi",
-                        "eld144__closedIssues _matchfield145__createdAt",
-                        " _matchfield146__updatedAt _matchfield147__clo",
-                        "sedAt _matchfield148__dueOn -> _matchfield136_",
-                        "_id })) And (match (_match9__1___match__match_",
+                        "one _matchfield117__url _matchfield118__htmlUr",
+                        "l _matchfield119__labelsUrl _matchfield120__id",
+                        " _matchfield121__nodeId _matchfield122__number",
+                        " _matchfield123__state_ _matchfield124__title ",
+                        "_matchfield125__description_ _matchfield126__c",
+                        "reator _matchfield127__openIssues _matchfield1",
+                        "28__closedIssues _matchfield129__createdAt _ma",
+                        "tchfield130__updatedAt _matchfield131__closedA",
+                        "t _matchfield132__dueOn -> _matchfield120__id ",
+                        "} == match (_match5__1___match__lawspecSelecti",
+                        "on0x0_0) { lawtwin.github.model::type::Milesto",
+                        "ne::Milestone _matchfield133__url _matchfield1",
+                        "34__htmlUrl _matchfield135__labelsUrl _matchfi",
+                        "eld136__id _matchfield137__nodeId _matchfield1",
+                        "38__number _matchfield139__state_ _matchfield1",
+                        "40__title _matchfield141__description_ _matchf",
+                        "ield142__creator _matchfield143__openIssues _m",
+                        "atchfield144__closedIssues _matchfield145__cre",
+                        "atedAt _matchfield146__updatedAt _matchfield14",
+                        "7__closedAt _matchfield148__dueOn -> _matchfie",
+                        "ld136__id })) And (match (_match9__1___match__",
+                        "match__match__lawspecSelection0x0_0_0_0) { law",
+                        "twin.github.model::type::Milestone::Milestone ",
+                        "_matchfield149__url _matchfield150__htmlUrl _m",
+                        "atchfield151__labelsUrl _matchfield152__id _ma",
+                        "tchfield153__nodeId _matchfield154__number _ma",
+                        "tchfield155__state_ _matchfield156__title _mat",
+                        "chfield157__description_ _matchfield158__creat",
+                        "or _matchfield159__openIssues _matchfield160__",
+                        "closedIssues _matchfield161__createdAt _matchf",
+                        "ield162__updatedAt _matchfield163__closedAt _m",
+                        "atchfield164__dueOn -> _matchfield153__nodeId ",
+                        "} == match (_match5__1___match__lawspecSelecti",
+                        "on0x0_0) { lawtwin.github.model::type::Milesto",
+                        "ne::Milestone _matchfield165__url _matchfield1",
+                        "66__htmlUrl _matchfield167__labelsUrl _matchfi",
+                        "eld168__id _matchfield169__nodeId _matchfield1",
+                        "70__number _matchfield171__state_ _matchfield1",
+                        "72__title _matchfield173__description_ _matchf",
+                        "ield174__creator _matchfield175__openIssues _m",
+                        "atchfield176__closedIssues _matchfield177__cre",
+                        "atedAt _matchfield178__updatedAt _matchfield17",
+                        "9__closedAt _matchfield180__dueOn -> _matchfie",
+                        "ld169__nodeId })) And (match (_match9__1___mat",
+                        "ch__match__match__lawspecSelection0x0_0_0_0) {",
+                        " lawtwin.github.model::type::Milestone::Milest",
+                        "one _matchfield181__url _matchfield182__htmlUr",
+                        "l _matchfield183__labelsUrl _matchfield184__id",
+                        " _matchfield185__nodeId _matchfield186__number",
+                        " _matchfield187__state_ _matchfield188__title ",
+                        "_matchfield189__description_ _matchfield190__c",
+                        "reator _matchfield191__openIssues _matchfield1",
+                        "92__closedIssues _matchfield193__createdAt _ma",
+                        "tchfield194__updatedAt _matchfield195__closedA",
+                        "t _matchfield196__dueOn -> _matchfield187__sta",
+                        "te_ } == let _let10__it = match (_input4) { la",
+                        "wtwin.github.model::type::IssuesUpdateMileston",
+                        "eBody::IssuesUpdateMilestoneBody _matchfield19",
+                        "7__title _matchfield198__state_ _matchfield199",
+                        "__description_ _matchfield200__dueOn -> _match",
+                        "field198__state_ } in match (_let10__it) { May",
+                        "be::Absent  -> match (_match5__1___match__laws",
+                        "pecSelection0x0_0) { lawtwin.github.model::typ",
+                        "e::Milestone::Milestone _matchfield201__url _m",
+                        "atchfield202__htmlUrl _matchfield203__labelsUr",
+                        "l _matchfield204__id _matchfield205__nodeId _m",
+                        "atchfield206__number _matchfield207__state_ _m",
+                        "atchfield208__title _matchfield209__descriptio",
+                        "n_ _matchfield210__creator _matchfield211__ope",
+                        "nIssues _matchfield212__closedIssues _matchfie",
+                        "ld213__createdAt _matchfield214__updatedAt _ma",
+                        "tchfield215__closedAt _matchfield216__dueOn ->",
+                        " _matchfield207__state_ }; Maybe::Present _mat",
+                        "ch11__1___match__match__match__match__lawspecS",
+                        "election0x0_0_0_0_0 -> _match11__1___match__ma",
+                        "tch__match__match__lawspecSelection0x0_0_0_0_0",
+                        " })) And (match (_match9__1___match__match__ma",
+                        "tch__lawspecSelection0x0_0_0_0) { lawtwin.gith",
+                        "ub.model::type::Milestone::Milestone _matchfie",
+                        "ld217__url _matchfield218__htmlUrl _matchfield",
+                        "219__labelsUrl _matchfield220__id _matchfield2",
+                        "21__nodeId _matchfield222__number _matchfield2",
+                        "23__state_ _matchfield224__title _matchfield22",
+                        "5__description_ _matchfield226__creator _match",
+                        "field227__openIssues _matchfield228__closedIss",
+                        "ues _matchfield229__createdAt _matchfield230__",
+                        "updatedAt _matchfield231__closedAt _matchfield",
+                        "232__dueOn -> _matchfield224__title } == let _",
+                        "let10__it = match (_input4) { lawtwin.github.m",
+                        "odel::type::IssuesUpdateMilestoneBody::IssuesU",
+                        "pdateMilestoneBody _matchfield233__title _matc",
+                        "hfield234__state_ _matchfield235__description_",
+                        " _matchfield236__dueOn -> _matchfield233__titl",
+                        "e } in match (_let10__it) { Maybe::Absent  -> ",
+                        "match (_match5__1___match__lawspecSelection0x0",
+                        "_0) { lawtwin.github.model::type::Milestone::M",
+                        "ilestone _matchfield237__url _matchfield238__h",
+                        "tmlUrl _matchfield239__labelsUrl _matchfield24",
+                        "0__id _matchfield241__nodeId _matchfield242__n",
+                        "umber _matchfield243__state_ _matchfield244__t",
+                        "itle _matchfield245__description_ _matchfield2",
+                        "46__creator _matchfield247__openIssues _matchf",
+                        "ield248__closedIssues _matchfield249__createdA",
+                        "t _matchfield250__updatedAt _matchfield251__cl",
+                        "osedAt _matchfield252__dueOn -> _matchfield244",
+                        "__title }; Maybe::Present _match11__1___match_",
+                        "_match__match__match__lawspecSelection0x0_0_0_",
+                        "0_0 -> _match11__1___match__match__match__matc",
+                        "h__lawspecSelection0x0_0_0_0_0 })) And (match ",
+                        "(_match9__1___match__match__match__lawspecSele",
+                        "ction0x0_0_0_0) { lawtwin.github.model::type::",
+                        "Milestone::Milestone _matchfield253__url _matc",
+                        "hfield254__htmlUrl _matchfield255__labelsUrl _",
+                        "matchfield256__id _matchfield257__nodeId _matc",
+                        "hfield258__number _matchfield259__state_ _matc",
+                        "hfield260__title _matchfield261__description_ ",
+                        "_matchfield262__creator _matchfield263__openIs",
+                        "sues _matchfield264__closedIssues _matchfield2",
+                        "65__createdAt _matchfield266__updatedAt _match",
+                        "field267__closedAt _matchfield268__dueOn -> _m",
+                        "atchfield261__description_ } == let _let10__it",
+                        " = match (_input4) { lawtwin.github.model::typ",
+                        "e::IssuesUpdateMilestoneBody::IssuesUpdateMile",
+                        "stoneBody _matchfield269__title _matchfield270",
+                        "__state_ _matchfield271__description_ _matchfi",
+                        "eld272__dueOn -> _matchfield271__description_ ",
+                        "} in match (_let10__it) { Maybe::Absent  -> ma",
+                        "tch (_match5__1___match__lawspecSelection0x0_0",
+                        ") { lawtwin.github.model::type::Milestone::Mil",
+                        "estone _matchfield273__url _matchfield274__htm",
+                        "lUrl _matchfield275__labelsUrl _matchfield276_",
+                        "_id _matchfield277__nodeId _matchfield278__num",
+                        "ber _matchfield279__state_ _matchfield280__tit",
+                        "le _matchfield281__description_ _matchfield282",
+                        "__creator _matchfield283__openIssues _matchfie",
+                        "ld284__closedIssues _matchfield285__createdAt ",
+                        "_matchfield286__updatedAt _matchfield287__clos",
+                        "edAt _matchfield288__dueOn -> _matchfield281__",
+                        "description_ }; Maybe::Present _match11__1___m",
+                        "atch__match__match__match__lawspecSelection0x0",
+                        "_0_0_0_0 -> Maybe::Present(_match11__1___match",
+                        "__match__match__match__lawspecSelection0x0_0_0",
+                        "_0_0) })) And (match (_match9__1___match__matc",
+                        "h__match__lawspecSelection0x0_0_0_0) { lawtwin",
+                        ".github.model::type::Milestone::Milestone _mat",
+                        "chfield289__url _matchfield290__htmlUrl _match",
+                        "field291__labelsUrl _matchfield292__id _matchf",
+                        "ield293__nodeId _matchfield294__number _matchf",
+                        "ield295__state_ _matchfield296__title _matchfi",
+                        "eld297__description_ _matchfield298__creator _",
+                        "matchfield299__openIssues _matchfield300__clos",
+                        "edIssues _matchfield301__createdAt _matchfield",
+                        "302__updatedAt _matchfield303__closedAt _match",
+                        "field304__dueOn -> _matchfield298__creator } =",
+                        "= match (_match5__1___match__lawspecSelection0",
+                        "x0_0) { lawtwin.github.model::type::Milestone:",
+                        ":Milestone _matchfield305__url _matchfield306_",
+                        "_htmlUrl _matchfield307__labelsUrl _matchfield",
+                        "308__id _matchfield309__nodeId _matchfield310_",
+                        "_number _matchfield311__state_ _matchfield312_",
+                        "_title _matchfield313__description_ _matchfiel",
+                        "d314__creator _matchfield315__openIssues _matc",
+                        "hfield316__closedIssues _matchfield317__create",
+                        "dAt _matchfield318__updatedAt _matchfield319__",
+                        "closedAt _matchfield320__dueOn -> _matchfield3",
+                        "14__creator })) And (match (_match9__1___match",
+                        "__match__match__lawspecSelection0x0_0_0_0) { l",
+                        "awtwin.github.model::type::Milestone::Mileston",
+                        "e _matchfield321__url _matchfield322__htmlUrl ",
+                        "_matchfield323__labelsUrl _matchfield324__id _",
+                        "matchfield325__nodeId _matchfield326__number _",
+                        "matchfield327__state_ _matchfield328__title _m",
+                        "atchfield329__description_ _matchfield330__cre",
+                        "ator _matchfield331__openIssues _matchfield332",
+                        "__closedIssues _matchfield333__createdAt _matc",
+                        "hfield334__updatedAt _matchfield335__closedAt ",
+                        "_matchfield336__dueOn -> _matchfield331__openI",
+                        "ssues } == match (_match5__1___match__lawspecS",
+                        "election0x0_0) { lawtwin.github.model::type::M",
+                        "ilestone::Milestone _matchfield337__url _match",
+                        "field338__htmlUrl _matchfield339__labelsUrl _m",
+                        "atchfield340__id _matchfield341__nodeId _match",
+                        "field342__number _matchfield343__state_ _match",
+                        "field344__title _matchfield345__description_ _",
+                        "matchfield346__creator _matchfield347__openIss",
+                        "ues _matchfield348__closedIssues _matchfield34",
+                        "9__createdAt _matchfield350__updatedAt _matchf",
+                        "ield351__closedAt _matchfield352__dueOn -> _ma",
+                        "tchfield347__openIssues })) And (match (_match",
+                        "9__1___match__match__match__lawspecSelection0x",
+                        "0_0_0_0) { lawtwin.github.model::type::Milesto",
+                        "ne::Milestone _matchfield353__url _matchfield3",
+                        "54__htmlUrl _matchfield355__labelsUrl _matchfi",
+                        "eld356__id _matchfield357__nodeId _matchfield3",
+                        "58__number _matchfield359__state_ _matchfield3",
+                        "60__title _matchfield361__description_ _matchf",
+                        "ield362__creator _matchfield363__openIssues _m",
+                        "atchfield364__closedIssues _matchfield365__cre",
+                        "atedAt _matchfield366__updatedAt _matchfield36",
+                        "7__closedAt _matchfield368__dueOn -> _matchfie",
+                        "ld364__closedIssues } == match (_match5__1___m",
+                        "atch__lawspecSelection0x0_0) { lawtwin.github.",
+                        "model::type::Milestone::Milestone _matchfield3",
+                        "69__url _matchfield370__htmlUrl _matchfield371",
+                        "__labelsUrl _matchfield372__id _matchfield373_",
+                        "_nodeId _matchfield374__number _matchfield375_",
+                        "_state_ _matchfield376__title _matchfield377__",
+                        "description_ _matchfield378__creator _matchfie",
+                        "ld379__openIssues _matchfield380__closedIssues",
+                        " _matchfield381__createdAt _matchfield382__upd",
+                        "atedAt _matchfield383__closedAt _matchfield384",
+                        "__dueOn -> _matchfield380__closedIssues })) An",
+                        "d (match (_match9__1___match__match__match__la",
+                        "wspecSelection0x0_0_0_0) { lawtwin.github.mode",
+                        "l::type::Milestone::Milestone _matchfield385__",
+                        "url _matchfield386__htmlUrl _matchfield387__la",
+                        "belsUrl _matchfield388__id _matchfield389__nod",
+                        "eId _matchfield390__number _matchfield391__sta",
+                        "te_ _matchfield392__title _matchfield393__desc",
+                        "ription_ _matchfield394__creator _matchfield39",
+                        "5__openIssues _matchfield396__closedIssues _ma",
+                        "tchfield397__createdAt _matchfield398__updated",
+                        "At _matchfield399__closedAt _matchfield400__du",
+                        "eOn -> _matchfield397__createdAt } == match (_",
+                        "match5__1___match__lawspecSelection0x0_0) { la",
+                        "wtwin.github.model::type::Milestone::Milestone",
+                        " _matchfield401__url _matchfield402__htmlUrl _",
+                        "matchfield403__labelsUrl _matchfield404__id _m",
+                        "atchfield405__nodeId _matchfield406__number _m",
+                        "atchfield407__state_ _matchfield408__title _ma",
+                        "tchfield409__description_ _matchfield410__crea",
+                        "tor _matchfield411__openIssues _matchfield412_",
+                        "_closedIssues _matchfield413__createdAt _match",
+                        "field414__updatedAt _matchfield415__closedAt _",
+                        "matchfield416__dueOn -> _matchfield413__create",
+                        "dAt })) And (match (_match9__1___match__match_",
                         "_match__lawspecSelection0x0_0_0_0) { lawtwin.g",
                         "ithub.model::type::Milestone::Milestone _match",
-                        "field149__url _matchfield150__htmlUrl _matchfi",
-                        "eld151__labelsUrl _matchfield152__id _matchfie",
-                        "ld153__nodeId _matchfield154__number _matchfie",
-                        "ld155__state_ _matchfield156__title _matchfiel",
-                        "d157__description_ _matchfield158__creator _ma",
-                        "tchfield159__openIssues _matchfield160__closed",
-                        "Issues _matchfield161__createdAt _matchfield16",
-                        "2__updatedAt _matchfield163__closedAt _matchfi",
-                        "eld164__dueOn -> _matchfield153__nodeId } == m",
-                        "atch (_match5__1___match__lawspecSelection0x0_",
-                        "0) { lawtwin.github.model::type::Milestone::Mi",
-                        "lestone _matchfield165__url _matchfield166__ht",
-                        "mlUrl _matchfield167__labelsUrl _matchfield168",
-                        "__id _matchfield169__nodeId _matchfield170__nu",
-                        "mber _matchfield171__state_ _matchfield172__ti",
-                        "tle _matchfield173__description_ _matchfield17",
-                        "4__creator _matchfield175__openIssues _matchfi",
-                        "eld176__closedIssues _matchfield177__createdAt",
-                        " _matchfield178__updatedAt _matchfield179__clo",
-                        "sedAt _matchfield180__dueOn -> _matchfield169_",
-                        "_nodeId })) And (match (_match9__1___match__ma",
-                        "tch__match__lawspecSelection0x0_0_0_0) { lawtw",
-                        "in.github.model::type::Milestone::Milestone _m",
-                        "atchfield181__url _matchfield182__htmlUrl _mat",
-                        "chfield183__labelsUrl _matchfield184__id _matc",
-                        "hfield185__nodeId _matchfield186__number _matc",
-                        "hfield187__state_ _matchfield188__title _match",
-                        "field189__description_ _matchfield190__creator",
-                        " _matchfield191__openIssues _matchfield192__cl",
-                        "osedIssues _matchfield193__createdAt _matchfie",
-                        "ld194__updatedAt _matchfield195__closedAt _mat",
-                        "chfield196__dueOn -> _matchfield187__state_ } ",
-                        "== let _let10__it = match (_input4) { lawtwin.",
-                        "github.model::type::IssuesUpdateMilestoneBody:",
-                        ":IssuesUpdateMilestoneBody _matchfield197__tit",
-                        "le _matchfield198__state_ _matchfield199__desc",
-                        "ription_ _matchfield200__dueOn -> _matchfield1",
-                        "98__state_ } in match (_let10__it) { Maybe::No",
-                        "thing  -> match (_match5__1___match__lawspecSe",
-                        "lection0x0_0) { lawtwin.github.model::type::Mi",
-                        "lestone::Milestone _matchfield201__url _matchf",
-                        "ield202__htmlUrl _matchfield203__labelsUrl _ma",
-                        "tchfield204__id _matchfield205__nodeId _matchf",
-                        "ield206__number _matchfield207__state_ _matchf",
-                        "ield208__title _matchfield209__description_ _m",
-                        "atchfield210__creator _matchfield211__openIssu",
-                        "es _matchfield212__closedIssues _matchfield213",
-                        "__createdAt _matchfield214__updatedAt _matchfi",
-                        "eld215__closedAt _matchfield216__dueOn -> _mat",
-                        "chfield207__state_ }; Maybe::Just _match11__1_",
-                        "__match__match__match__match__lawspecSelection",
-                        "0x0_0_0_0_0 -> _match11__1___match__match__mat",
-                        "ch__match__lawspecSelection0x0_0_0_0_0 })) And",
-                        " (match (_match9__1___match__match__match__law",
-                        "specSelection0x0_0_0_0) { lawtwin.github.model",
-                        "::type::Milestone::Milestone _matchfield217__u",
-                        "rl _matchfield218__htmlUrl _matchfield219__lab",
-                        "elsUrl _matchfield220__id _matchfield221__node",
-                        "Id _matchfield222__number _matchfield223__stat",
-                        "e_ _matchfield224__title _matchfield225__descr",
-                        "iption_ _matchfield226__creator _matchfield227",
-                        "__openIssues _matchfield228__closedIssues _mat",
-                        "chfield229__createdAt _matchfield230__updatedA",
-                        "t _matchfield231__closedAt _matchfield232__due",
-                        "On -> _matchfield224__title } == let _let10__i",
-                        "t = match (_input4) { lawtwin.github.model::ty",
-                        "pe::IssuesUpdateMilestoneBody::IssuesUpdateMil",
-                        "estoneBody _matchfield233__title _matchfield23",
-                        "4__state_ _matchfield235__description_ _matchf",
-                        "ield236__dueOn -> _matchfield233__title } in m",
-                        "atch (_let10__it) { Maybe::Nothing  -> match (",
-                        "_match5__1___match__lawspecSelection0x0_0) { l",
-                        "awtwin.github.model::type::Milestone::Mileston",
-                        "e _matchfield237__url _matchfield238__htmlUrl ",
-                        "_matchfield239__labelsUrl _matchfield240__id _",
-                        "matchfield241__nodeId _matchfield242__number _",
-                        "matchfield243__state_ _matchfield244__title _m",
-                        "atchfield245__description_ _matchfield246__cre",
-                        "ator _matchfield247__openIssues _matchfield248",
-                        "__closedIssues _matchfield249__createdAt _matc",
-                        "hfield250__updatedAt _matchfield251__closedAt ",
-                        "_matchfield252__dueOn -> _matchfield244__title",
-                        " }; Maybe::Just _match11__1___match__match__ma",
-                        "tch__match__lawspecSelection0x0_0_0_0_0 -> _ma",
+                        "field417__url _matchfield418__htmlUrl _matchfi",
+                        "eld419__labelsUrl _matchfield420__id _matchfie",
+                        "ld421__nodeId _matchfield422__number _matchfie",
+                        "ld423__state_ _matchfield424__title _matchfiel",
+                        "d425__description_ _matchfield426__creator _ma",
+                        "tchfield427__openIssues _matchfield428__closed",
+                        "Issues _matchfield429__createdAt _matchfield43",
+                        "0__updatedAt _matchfield431__closedAt _matchfi",
+                        "eld432__dueOn -> _matchfield430__updatedAt } =",
+                        "= match (_match5__1___match__lawspecSelection0",
+                        "x0_0) { lawtwin.github.model::type::Milestone:",
+                        ":Milestone _matchfield433__url _matchfield434_",
+                        "_htmlUrl _matchfield435__labelsUrl _matchfield",
+                        "436__id _matchfield437__nodeId _matchfield438_",
+                        "_number _matchfield439__state_ _matchfield440_",
+                        "_title _matchfield441__description_ _matchfiel",
+                        "d442__creator _matchfield443__openIssues _matc",
+                        "hfield444__closedIssues _matchfield445__create",
+                        "dAt _matchfield446__updatedAt _matchfield447__",
+                        "closedAt _matchfield448__dueOn -> _matchfield4",
+                        "46__updatedAt })) And (match (_match9__1___mat",
+                        "ch__match__match__lawspecSelection0x0_0_0_0) {",
+                        " lawtwin.github.model::type::Milestone::Milest",
+                        "one _matchfield449__url _matchfield450__htmlUr",
+                        "l _matchfield451__labelsUrl _matchfield452__id",
+                        " _matchfield453__nodeId _matchfield454__number",
+                        " _matchfield455__state_ _matchfield456__title ",
+                        "_matchfield457__description_ _matchfield458__c",
+                        "reator _matchfield459__openIssues _matchfield4",
+                        "60__closedIssues _matchfield461__createdAt _ma",
+                        "tchfield462__updatedAt _matchfield463__closedA",
+                        "t _matchfield464__dueOn -> _matchfield463__clo",
+                        "sedAt } == match (_match5__1___match__lawspecS",
+                        "election0x0_0) { lawtwin.github.model::type::M",
+                        "ilestone::Milestone _matchfield465__url _match",
+                        "field466__htmlUrl _matchfield467__labelsUrl _m",
+                        "atchfield468__id _matchfield469__nodeId _match",
+                        "field470__number _matchfield471__state_ _match",
+                        "field472__title _matchfield473__description_ _",
+                        "matchfield474__creator _matchfield475__openIss",
+                        "ues _matchfield476__closedIssues _matchfield47",
+                        "7__createdAt _matchfield478__updatedAt _matchf",
+                        "ield479__closedAt _matchfield480__dueOn -> _ma",
+                        "tchfield479__closedAt })) And (match (_match9_",
+                        "_1___match__match__match__lawspecSelection0x0_",
+                        "0_0_0) { lawtwin.github.model::type::Milestone",
+                        "::Milestone _matchfield481__url _matchfield482",
+                        "__htmlUrl _matchfield483__labelsUrl _matchfiel",
+                        "d484__id _matchfield485__nodeId _matchfield486",
+                        "__number _matchfield487__state_ _matchfield488",
+                        "__title _matchfield489__description_ _matchfie",
+                        "ld490__creator _matchfield491__openIssues _mat",
+                        "chfield492__closedIssues _matchfield493__creat",
+                        "edAt _matchfield494__updatedAt _matchfield495_",
+                        "_closedAt _matchfield496__dueOn -> _matchfield",
+                        "496__dueOn } == let _let10__it = match (_input",
+                        "4) { lawtwin.github.model::type::IssuesUpdateM",
+                        "ilestoneBody::IssuesUpdateMilestoneBody _match",
+                        "field497__title _matchfield498__state_ _matchf",
+                        "ield499__description_ _matchfield500__dueOn ->",
+                        " _matchfield500__dueOn } in match (_let10__it)",
+                        " { Maybe::Absent  -> match (_match5__1___match",
+                        "__lawspecSelection0x0_0) { lawtwin.github.mode",
+                        "l::type::Milestone::Milestone _matchfield501__",
+                        "url _matchfield502__htmlUrl _matchfield503__la",
+                        "belsUrl _matchfield504__id _matchfield505__nod",
+                        "eId _matchfield506__number _matchfield507__sta",
+                        "te_ _matchfield508__title _matchfield509__desc",
+                        "ription_ _matchfield510__creator _matchfield51",
+                        "1__openIssues _matchfield512__closedIssues _ma",
+                        "tchfield513__createdAt _matchfield514__updated",
+                        "At _matchfield515__closedAt _matchfield516__du",
+                        "eOn -> _matchfield516__dueOn }; Maybe::Present",
+                        " _match11__1___match__match__match__match__law",
+                        "specSelection0x0_0_0_0_0 -> Maybe::Present(_ma",
                         "tch11__1___match__match__match__match__lawspec",
-                        "Selection0x0_0_0_0_0 })) And (match (_match9__",
-                        "1___match__match__match__lawspecSelection0x0_0",
-                        "_0_0) { lawtwin.github.model::type::Milestone:",
-                        ":Milestone _matchfield253__url _matchfield254_",
-                        "_htmlUrl _matchfield255__labelsUrl _matchfield",
-                        "256__id _matchfield257__nodeId _matchfield258_",
-                        "_number _matchfield259__state_ _matchfield260_",
-                        "_title _matchfield261__description_ _matchfiel",
-                        "d262__creator _matchfield263__openIssues _matc",
-                        "hfield264__closedIssues _matchfield265__create",
-                        "dAt _matchfield266__updatedAt _matchfield267__",
-                        "closedAt _matchfield268__dueOn -> _matchfield2",
-                        "61__description_ } == let _let10__it = match (",
-                        "_input4) { lawtwin.github.model::type::IssuesU",
-                        "pdateMilestoneBody::IssuesUpdateMilestoneBody ",
-                        "_matchfield269__title _matchfield270__state_ _",
-                        "matchfield271__description_ _matchfield272__du",
-                        "eOn -> _matchfield271__description_ } in match",
-                        " (_let10__it) { Maybe::Nothing  -> match (_mat",
-                        "ch5__1___match__lawspecSelection0x0_0) { lawtw",
-                        "in.github.model::type::Milestone::Milestone _m",
-                        "atchfield273__url _matchfield274__htmlUrl _mat",
-                        "chfield275__labelsUrl _matchfield276__id _matc",
-                        "hfield277__nodeId _matchfield278__number _matc",
-                        "hfield279__state_ _matchfield280__title _match",
-                        "field281__description_ _matchfield282__creator",
-                        " _matchfield283__openIssues _matchfield284__cl",
-                        "osedIssues _matchfield285__createdAt _matchfie",
-                        "ld286__updatedAt _matchfield287__closedAt _mat",
-                        "chfield288__dueOn -> _matchfield281__descripti",
-                        "on_ }; Maybe::Just _match11__1___match__match_",
-                        "_match__match__lawspecSelection0x0_0_0_0_0 -> ",
-                        "Maybe::Just(_match11__1___match__match__match_",
-                        "_match__lawspecSelection0x0_0_0_0_0) })) And (",
-                        "match (_match9__1___match__match__match__lawsp",
-                        "ecSelection0x0_0_0_0) { lawtwin.github.model::",
-                        "type::Milestone::Milestone _matchfield289__url",
-                        " _matchfield290__htmlUrl _matchfield291__label",
-                        "sUrl _matchfield292__id _matchfield293__nodeId",
-                        " _matchfield294__number _matchfield295__state_",
-                        " _matchfield296__title _matchfield297__descrip",
-                        "tion_ _matchfield298__creator _matchfield299__",
-                        "openIssues _matchfield300__closedIssues _match",
-                        "field301__createdAt _matchfield302__updatedAt ",
-                        "_matchfield303__closedAt _matchfield304__dueOn",
-                        " -> _matchfield298__creator } == match (_match",
-                        "5__1___match__lawspecSelection0x0_0) { lawtwin",
-                        ".github.model::type::Milestone::Milestone _mat",
-                        "chfield305__url _matchfield306__htmlUrl _match",
-                        "field307__labelsUrl _matchfield308__id _matchf",
-                        "ield309__nodeId _matchfield310__number _matchf",
-                        "ield311__state_ _matchfield312__title _matchfi",
-                        "eld313__description_ _matchfield314__creator _",
-                        "matchfield315__openIssues _matchfield316__clos",
-                        "edIssues _matchfield317__createdAt _matchfield",
-                        "318__updatedAt _matchfield319__closedAt _match",
-                        "field320__dueOn -> _matchfield314__creator }))",
-                        " And (match (_match9__1___match__match__match_",
-                        "_lawspecSelection0x0_0_0_0) { lawtwin.github.m",
-                        "odel::type::Milestone::Milestone _matchfield32",
-                        "1__url _matchfield322__htmlUrl _matchfield323_",
-                        "_labelsUrl _matchfield324__id _matchfield325__",
-                        "nodeId _matchfield326__number _matchfield327__",
-                        "state_ _matchfield328__title _matchfield329__d",
-                        "escription_ _matchfield330__creator _matchfiel",
-                        "d331__openIssues _matchfield332__closedIssues ",
-                        "_matchfield333__createdAt _matchfield334__upda",
-                        "tedAt _matchfield335__closedAt _matchfield336_",
-                        "_dueOn -> _matchfield331__openIssues } == matc",
-                        "h (_match5__1___match__lawspecSelection0x0_0) ",
-                        "{ lawtwin.github.model::type::Milestone::Miles",
-                        "tone _matchfield337__url _matchfield338__htmlU",
-                        "rl _matchfield339__labelsUrl _matchfield340__i",
-                        "d _matchfield341__nodeId _matchfield342__numbe",
-                        "r _matchfield343__state_ _matchfield344__title",
-                        " _matchfield345__description_ _matchfield346__",
-                        "creator _matchfield347__openIssues _matchfield",
-                        "348__closedIssues _matchfield349__createdAt _m",
-                        "atchfield350__updatedAt _matchfield351__closed",
-                        "At _matchfield352__dueOn -> _matchfield347__op",
-                        "enIssues })) And (match (_match9__1___match__m",
-                        "atch__match__lawspecSelection0x0_0_0_0) { lawt",
-                        "win.github.model::type::Milestone::Milestone _",
-                        "matchfield353__url _matchfield354__htmlUrl _ma",
-                        "tchfield355__labelsUrl _matchfield356__id _mat",
-                        "chfield357__nodeId _matchfield358__number _mat",
-                        "chfield359__state_ _matchfield360__title _matc",
-                        "hfield361__description_ _matchfield362__creato",
-                        "r _matchfield363__openIssues _matchfield364__c",
-                        "losedIssues _matchfield365__createdAt _matchfi",
-                        "eld366__updatedAt _matchfield367__closedAt _ma",
-                        "tchfield368__dueOn -> _matchfield364__closedIs",
-                        "sues } == match (_match5__1___match__lawspecSe",
-                        "lection0x0_0) { lawtwin.github.model::type::Mi",
-                        "lestone::Milestone _matchfield369__url _matchf",
-                        "ield370__htmlUrl _matchfield371__labelsUrl _ma",
-                        "tchfield372__id _matchfield373__nodeId _matchf",
-                        "ield374__number _matchfield375__state_ _matchf",
-                        "ield376__title _matchfield377__description_ _m",
-                        "atchfield378__creator _matchfield379__openIssu",
-                        "es _matchfield380__closedIssues _matchfield381",
-                        "__createdAt _matchfield382__updatedAt _matchfi",
-                        "eld383__closedAt _matchfield384__dueOn -> _mat",
-                        "chfield380__closedIssues })) And (match (_matc",
-                        "h9__1___match__match__match__lawspecSelection0",
-                        "x0_0_0_0) { lawtwin.github.model::type::Milest",
-                        "one::Milestone _matchfield385__url _matchfield",
-                        "386__htmlUrl _matchfield387__labelsUrl _matchf",
-                        "ield388__id _matchfield389__nodeId _matchfield",
-                        "390__number _matchfield391__state_ _matchfield",
-                        "392__title _matchfield393__description_ _match",
-                        "field394__creator _matchfield395__openIssues _",
-                        "matchfield396__closedIssues _matchfield397__cr",
-                        "eatedAt _matchfield398__updatedAt _matchfield3",
-                        "99__closedAt _matchfield400__dueOn -> _matchfi",
-                        "eld397__createdAt } == match (_match5__1___mat",
-                        "ch__lawspecSelection0x0_0) { lawtwin.github.mo",
-                        "del::type::Milestone::Milestone _matchfield401",
-                        "__url _matchfield402__htmlUrl _matchfield403__",
-                        "labelsUrl _matchfield404__id _matchfield405__n",
-                        "odeId _matchfield406__number _matchfield407__s",
-                        "tate_ _matchfield408__title _matchfield409__de",
-                        "scription_ _matchfield410__creator _matchfield",
-                        "411__openIssues _matchfield412__closedIssues _",
-                        "matchfield413__createdAt _matchfield414__updat",
-                        "edAt _matchfield415__closedAt _matchfield416__",
-                        "dueOn -> _matchfield413__createdAt })) And (ma",
-                        "tch (_match9__1___match__match__match__lawspec",
-                        "Selection0x0_0_0_0) { lawtwin.github.model::ty",
-                        "pe::Milestone::Milestone _matchfield417__url _",
-                        "matchfield418__htmlUrl _matchfield419__labelsU",
-                        "rl _matchfield420__id _matchfield421__nodeId _",
-                        "matchfield422__number _matchfield423__state_ _",
-                        "matchfield424__title _matchfield425__descripti",
-                        "on_ _matchfield426__creator _matchfield427__op",
-                        "enIssues _matchfield428__closedIssues _matchfi",
-                        "eld429__createdAt _matchfield430__updatedAt _m",
-                        "atchfield431__closedAt _matchfield432__dueOn -",
-                        "> _matchfield430__updatedAt } == match (_match",
-                        "5__1___match__lawspecSelection0x0_0) { lawtwin",
-                        ".github.model::type::Milestone::Milestone _mat",
-                        "chfield433__url _matchfield434__htmlUrl _match",
-                        "field435__labelsUrl _matchfield436__id _matchf",
-                        "ield437__nodeId _matchfield438__number _matchf",
-                        "ield439__state_ _matchfield440__title _matchfi",
-                        "eld441__description_ _matchfield442__creator _",
-                        "matchfield443__openIssues _matchfield444__clos",
-                        "edIssues _matchfield445__createdAt _matchfield",
-                        "446__updatedAt _matchfield447__closedAt _match",
-                        "field448__dueOn -> _matchfield446__updatedAt }",
-                        ")) And (match (_match9__1___match__match__matc",
-                        "h__lawspecSelection0x0_0_0_0) { lawtwin.github",
-                        ".model::type::Milestone::Milestone _matchfield",
-                        "449__url _matchfield450__htmlUrl _matchfield45",
-                        "1__labelsUrl _matchfield452__id _matchfield453",
-                        "__nodeId _matchfield454__number _matchfield455",
-                        "__state_ _matchfield456__title _matchfield457_",
-                        "_description_ _matchfield458__creator _matchfi",
-                        "eld459__openIssues _matchfield460__closedIssue",
-                        "s _matchfield461__createdAt _matchfield462__up",
-                        "datedAt _matchfield463__closedAt _matchfield46",
-                        "4__dueOn -> _matchfield463__closedAt } == matc",
-                        "h (_match5__1___match__lawspecSelection0x0_0) ",
-                        "{ lawtwin.github.model::type::Milestone::Miles",
-                        "tone _matchfield465__url _matchfield466__htmlU",
-                        "rl _matchfield467__labelsUrl _matchfield468__i",
-                        "d _matchfield469__nodeId _matchfield470__numbe",
-                        "r _matchfield471__state_ _matchfield472__title",
-                        " _matchfield473__description_ _matchfield474__",
-                        "creator _matchfield475__openIssues _matchfield",
-                        "476__closedIssues _matchfield477__createdAt _m",
-                        "atchfield478__updatedAt _matchfield479__closed",
-                        "At _matchfield480__dueOn -> _matchfield479__cl",
-                        "osedAt })) And (match (_match9__1___match__mat",
-                        "ch__match__lawspecSelection0x0_0_0_0) { lawtwi",
-                        "n.github.model::type::Milestone::Milestone _ma",
-                        "tchfield481__url _matchfield482__htmlUrl _matc",
-                        "hfield483__labelsUrl _matchfield484__id _match",
-                        "field485__nodeId _matchfield486__number _match",
-                        "field487__state_ _matchfield488__title _matchf",
-                        "ield489__description_ _matchfield490__creator ",
-                        "_matchfield491__openIssues _matchfield492__clo",
-                        "sedIssues _matchfield493__createdAt _matchfiel",
-                        "d494__updatedAt _matchfield495__closedAt _matc",
-                        "hfield496__dueOn -> _matchfield496__dueOn } ==",
-                        " let _let10__it = match (_input4) { lawtwin.gi",
-                        "thub.model::type::IssuesUpdateMilestoneBody::I",
-                        "ssuesUpdateMilestoneBody _matchfield497__title",
-                        " _matchfield498__state_ _matchfield499__descri",
-                        "ption_ _matchfield500__dueOn -> _matchfield500",
-                        "__dueOn } in match (_let10__it) { Maybe::Nothi",
-                        "ng  -> match (_match5__1___match__lawspecSelec",
-                        "tion0x0_0) { lawtwin.github.model::type::Miles",
-                        "tone::Milestone _matchfield501__url _matchfiel",
-                        "d502__htmlUrl _matchfield503__labelsUrl _match",
-                        "field504__id _matchfield505__nodeId _matchfiel",
-                        "d506__number _matchfield507__state_ _matchfiel",
-                        "d508__title _matchfield509__description_ _matc",
-                        "hfield510__creator _matchfield511__openIssues ",
-                        "_matchfield512__closedIssues _matchfield513__c",
-                        "reatedAt _matchfield514__updatedAt _matchfield",
-                        "515__closedAt _matchfield516__dueOn -> _matchf",
-                        "ield516__dueOn }; Maybe::Just _match11__1___ma",
-                        "tch__match__match__match__lawspecSelection0x0_",
-                        "0_0_0_0 -> Maybe::Just(_match11__1___match__ma",
-                        "tch__match__match__lawspecSelection0x0_0_0_0_0",
-                        ") })) } } } } = true",
+                        "Selection0x0_0_0_0_0) })) } } } } = true",
                     ),
                     left,
                     right,
@@ -15917,9 +16019,9 @@ fn run_14() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("0000-00-00T00:00:00Z".to_owned()),
@@ -15929,10 +16031,10 @@ fn run_14() -> ls::Result<()> {
                     "oneBody::IssuesUpdateMilestoneBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -15958,14 +16060,14 @@ fn run_14() -> ls::Result<()> {
                 vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
             ls::Value::Text("8210-06-18T92:31:19.5396160Z".to_owned()),
@@ -15975,16 +16077,16 @@ fn run_14() -> ls::Result<()> {
                     "oneBody::IssuesUpdateMilestoneBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -16010,7 +16112,7 @@ fn run_14() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             concat!(
                                 "lawtwin.github.model::type::MilestoneState::Mi",
@@ -16019,8 +16121,8 @@ fn run_14() -> ls::Result<()> {
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
             ls::Value::Text("3643-92-40T78:65:71.6386626Z".to_owned()),
@@ -16030,9 +16132,9 @@ fn run_14() -> ls::Result<()> {
                     "oneBody::IssuesUpdateMilestoneBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             concat!(
                                 "lawtwin.github.model::type::MilestoneState::Mi",
@@ -16041,8 +16143,8 @@ fn run_14() -> ls::Result<()> {
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
         ];
@@ -16067,13 +16169,13 @@ fn run_14() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -16086,16 +16188,16 @@ fn run_14() -> ls::Result<()> {
                 ),
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -16123,18 +16225,18 @@ fn run_14() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -16147,22 +16249,22 @@ fn run_14() -> ls::Result<()> {
                 ),
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -16266,9 +16368,9 @@ fn run_14() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -16279,14 +16381,14 @@ fn run_14() -> ls::Result<()> {
                         vec![
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -16297,7 +16399,7 @@ fn run_14() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -16306,8 +16408,8 @@ fn run_14() -> ls::Result<()> {
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -16317,13 +16419,13 @@ fn run_14() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -16336,18 +16438,18 @@ fn run_14() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -16360,7 +16462,7 @@ fn run_14() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -16370,11 +16472,11 @@ fn run_14() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -16386,9 +16488,15 @@ fn run_14() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -16399,14 +16507,14 @@ fn run_14() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -16417,7 +16525,7 @@ fn run_14() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -16427,11 +16535,11 @@ fn run_14() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -16549,10 +16657,10 @@ fn run_14() -> ls::Result<()> {
                             "oneBody::IssuesUpdateMilestoneBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -16561,16 +16669,16 @@ fn run_14() -> ls::Result<()> {
                             "oneBody::IssuesUpdateMilestoneBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -16579,9 +16687,9 @@ fn run_14() -> ls::Result<()> {
                             "oneBody::IssuesUpdateMilestoneBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -16590,8 +16698,8 @@ fn run_14() -> ls::Result<()> {
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -16601,16 +16709,16 @@ fn run_14() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -16622,22 +16730,22 @@ fn run_14() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -16649,11 +16757,11 @@ fn run_14() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -16663,11 +16771,11 @@ fn run_14() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -16678,10 +16786,19 @@ fn run_14() -> ls::Result<()> {
                             "oneBody::IssuesUpdateMilestoneBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -16690,16 +16807,16 @@ fn run_14() -> ls::Result<()> {
                             "oneBody::IssuesUpdateMilestoneBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -16709,11 +16826,11 @@ fn run_14() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -16723,11 +16840,11 @@ fn run_14() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -16875,7 +16992,7 @@ fn search_case_14(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // for all (owner :: Text) (repo :: Text) (body ::
 // lawtwin.github.model::type::IssuesCreateMilestoneBody) (dueOnValue :: Text) (change ::
 // lawtwin.github.model::type::IssuesUpdateMilestoneBody) => let _let0__sent = let
-// _letfield4__replacement = Maybe::Just(_input3) in match (_input2) {
+// _letfield4__replacement = Maybe::Present(_input3) in match (_input2) {
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody
 // _matchfield0__title _matchfield1__state_ _matchfield2__description_ _matchfield3__dueOn ->
 // lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody(_matchfield0__ti
@@ -16891,7 +17008,7 @@ fn search_case_14(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // in let _let4__it = attempt (issuesGetMilestone (_input0) (_input1) (_let3__key)) in match
 // (_let4__it) { Either::Left _match5__0___match__lawspecSelection0x0_0 -> false; Either::Right
 // _match5__1___match__lawspecSelection0x0_0 -> let _let6__it = attempt (issuesUpdateMilestone
-// (_input0) (_input1) (_let3__key) (Maybe::Just(_input4))) in match (_let6__it) { Either::Left
+// (_input0) (_input1) (_let3__key) (Maybe::Present(_input4))) in match (_let6__it) { Either::Left
 // _match7__0___match__match__lawspecSelection0x0_0_0 -> true; Either::Right
 // _match7__1___match__match__lawspecSelection0x0_0_0 -> let _let8__it = attempt (issuesGetMilestone
 // (_input0) (_input1) (_let3__key)) in match (_let8__it) { Either::Left
@@ -16968,13 +17085,13 @@ fn search_case_14(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // _matchfield187__state_ } == let _let10__it = match (_input4) {
 // lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody
 // _matchfield197__title _matchfield198__state_ _matchfield199__description_ _matchfield200__dueOn
-// -> _matchfield198__state_ } in match (_let10__it) { Maybe::Nothing -> match
+// -> _matchfield198__state_ } in match (_let10__it) { Maybe::Absent -> match
 // (_match5__1___match__lawspecSelection0x0_0) { lawtwin.github.model::type::Milestone::Milestone
 // _matchfield201__url _matchfield202__htmlUrl _matchfield203__labelsUrl _matchfield204__id
 // _matchfield205__nodeId _matchfield206__number _matchfield207__state_ _matchfield208__title
 // _matchfield209__description_ _matchfield210__creator _matchfield211__openIssues
 // _matchfield212__closedIssues _matchfield213__createdAt _matchfield214__updatedAt
-// _matchfield215__closedAt _matchfield216__dueOn -> _matchfield207__state_ }; Maybe::Just
+// _matchfield215__closedAt _matchfield216__dueOn -> _matchfield207__state_ }; Maybe::Present
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 })) And (match
 // (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
@@ -16986,13 +17103,13 @@ fn search_case_14(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // } == let _let10__it = match (_input4) {
 // lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody
 // _matchfield233__title _matchfield234__state_ _matchfield235__description_ _matchfield236__dueOn
-// -> _matchfield233__title } in match (_let10__it) { Maybe::Nothing -> match
+// -> _matchfield233__title } in match (_let10__it) { Maybe::Absent -> match
 // (_match5__1___match__lawspecSelection0x0_0) { lawtwin.github.model::type::Milestone::Milestone
 // _matchfield237__url _matchfield238__htmlUrl _matchfield239__labelsUrl _matchfield240__id
 // _matchfield241__nodeId _matchfield242__number _matchfield243__state_ _matchfield244__title
 // _matchfield245__description_ _matchfield246__creator _matchfield247__openIssues
 // _matchfield248__closedIssues _matchfield249__createdAt _matchfield250__updatedAt
-// _matchfield251__closedAt _matchfield252__dueOn -> _matchfield244__title }; Maybe::Just
+// _matchfield251__closedAt _matchfield252__dueOn -> _matchfield244__title }; Maybe::Present
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 })) And (match
 // (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
@@ -17004,16 +17121,16 @@ fn search_case_14(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // _matchfield261__description_ } == let _let10__it = match (_input4) {
 // lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody
 // _matchfield269__title _matchfield270__state_ _matchfield271__description_ _matchfield272__dueOn
-// -> _matchfield271__description_ } in match (_let10__it) { Maybe::Nothing -> match
+// -> _matchfield271__description_ } in match (_let10__it) { Maybe::Absent -> match
 // (_match5__1___match__lawspecSelection0x0_0) { lawtwin.github.model::type::Milestone::Milestone
 // _matchfield273__url _matchfield274__htmlUrl _matchfield275__labelsUrl _matchfield276__id
 // _matchfield277__nodeId _matchfield278__number _matchfield279__state_ _matchfield280__title
 // _matchfield281__description_ _matchfield282__creator _matchfield283__openIssues
 // _matchfield284__closedIssues _matchfield285__createdAt _matchfield286__updatedAt
-// _matchfield287__closedAt _matchfield288__dueOn -> _matchfield281__description_ }; Maybe::Just
+// _matchfield287__closedAt _matchfield288__dueOn -> _matchfield281__description_ }; Maybe::Present
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
-// Maybe::Just(_match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0) })) And (match
-// (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
+// Maybe::Present(_match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0) })) And
+// (match (_match9__1___match__match__match__lawspecSelection0x0_0_0_0) {
 // lawtwin.github.model::type::Milestone::Milestone _matchfield289__url _matchfield290__htmlUrl
 // _matchfield291__labelsUrl _matchfield292__id _matchfield293__nodeId _matchfield294__number
 // _matchfield295__state_ _matchfield296__title _matchfield297__description_ _matchfield298__creator
@@ -17100,16 +17217,16 @@ fn search_case_14(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // } == let _let10__it = match (_input4) {
 // lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody
 // _matchfield497__title _matchfield498__state_ _matchfield499__description_ _matchfield500__dueOn
-// -> _matchfield500__dueOn } in match (_let10__it) { Maybe::Nothing -> match
+// -> _matchfield500__dueOn } in match (_let10__it) { Maybe::Absent -> match
 // (_match5__1___match__lawspecSelection0x0_0) { lawtwin.github.model::type::Milestone::Milestone
 // _matchfield501__url _matchfield502__htmlUrl _matchfield503__labelsUrl _matchfield504__id
 // _matchfield505__nodeId _matchfield506__number _matchfield507__state_ _matchfield508__title
 // _matchfield509__description_ _matchfield510__creator _matchfield511__openIssues
 // _matchfield512__closedIssues _matchfield513__createdAt _matchfield514__updatedAt
-// _matchfield515__closedAt _matchfield516__dueOn -> _matchfield516__dueOn }; Maybe::Just
+// _matchfield515__closedAt _matchfield516__dueOn -> _matchfield516__dueOn }; Maybe::Present
 // _match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
-// Maybe::Just(_match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0) })) } } } } =
-// true end for all
+// Maybe::Present(_match11__1___match__match__match__match__lawspecSelection0x0_0_0_0_0) })) } } } }
+// = true end for all
 fn law_15(
     ctx: &mut ls::Context,
     input_0: ls::Value,
@@ -17161,7 +17278,7 @@ fn law_15(
     {
         let left = {
             let let_5 = {
-                let let_5 = ls::construct("Maybe::Just", vec![input_3.clone()])?;
+                let let_5 = ls::construct("Maybe::Present", vec![input_3.clone()])?;
                 let _ = &let_5;
                 match input_2.clone() {
                     ls::Value::Data(tag, fields)
@@ -17297,7 +17414,7 @@ fn law_15(
                                                         let perform_argument_1 = input_1.clone();
                                                         let perform_argument_2 = let_8.clone();
                                                         let perform_argument_3 = ls::construct(
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             vec![input_4.clone()],
                                                         )?;
                                                         let arguments = vec![
@@ -17981,7 +18098,7 @@ fn law_15(
                                                                                                                 ls::Value::Maybe(Some(payload)) => {
                                                                                                                     let match_local_16_0 = *payload;
                                                                                                                     let result = ls::construct(
-                                                                                                                        "Maybe::Just",
+                                                                                                                        "Maybe::Present",
                                                                                                                         vec![match_local_16_0.clone()],
                                                                                                                     )?;
                                                                                                                     result
@@ -18482,7 +18599,7 @@ fn law_15(
                                                                                     ls::Value::Maybe(Some(payload)) => {
                                                                                         let match_local_16_0 = *payload;
                                                                                         let result = ls::construct(
-                                                                                            "Maybe::Just",
+                                                                                            "Maybe::Present",
                                                                                             vec![match_local_16_0.clone()],
                                                                                         )?;
                                                                                         result
@@ -18531,432 +18648,432 @@ fn law_15(
                     "IssuesApi: \"|an update changes only the field",
                     "s it gives to a milestone| [reference] | expec",
                     "t let _let0__sent = let _letfield4__replacemen",
-                    "t = Maybe::Just(_input3) in match (_input2) { ",
-                    "lawtwin.github.model::type::IssuesCreateMilest",
-                    "oneBody::IssuesCreateMilestoneBody _matchfield",
-                    "0__title _matchfield1__state_ _matchfield2__de",
-                    "scription_ _matchfield3__dueOn -> lawtwin.gith",
-                    "ub.model::type::IssuesCreateMilestoneBody::Iss",
-                    "uesCreateMilestoneBody(_matchfield0__title, _m",
-                    "atchfield1__state_, _matchfield2__description_",
-                    ", _letfield4__replacement) } in let _let1__it ",
-                    "= attempt (issuesCreateMilestone (_input0) (_i",
-                    "nput1) (_let0__sent)) in match (_let1__it) { E",
-                    "ither::Left _match2__0___lawspecSelection0x0 -",
-                    "> true; Either::Right _match2__1___lawspecSele",
-                    "ction0x0 -> let _let3__key = match (_match2__1",
-                    "___lawspecSelection0x0) { lawtwin.github.model",
-                    "::type::Milestone::Milestone _matchfield5__url",
-                    " _matchfield6__htmlUrl _matchfield7__labelsUrl",
-                    " _matchfield8__id _matchfield9__nodeId _matchf",
-                    "ield10__number _matchfield11__state_ _matchfie",
-                    "ld12__title _matchfield13__description_ _match",
-                    "field14__creator _matchfield15__openIssues _ma",
-                    "tchfield16__closedIssues _matchfield17__create",
-                    "dAt _matchfield18__updatedAt _matchfield19__cl",
-                    "osedAt _matchfield20__dueOn -> _matchfield10__",
-                    "number } in let _let4__it = attempt (issuesGet",
-                    "Milestone (_input0) (_input1) (_let3__key)) in",
-                    " match (_let4__it) { Either::Left _match5__0__",
-                    "_match__lawspecSelection0x0_0 -> false; Either",
-                    "::Right _match5__1___match__lawspecSelection0x",
-                    "0_0 -> let _let6__it = attempt (issuesUpdateMi",
-                    "lestone (_input0) (_input1) (_let3__key) (Mayb",
-                    "e::Just(_input4))) in match (_let6__it) { Eith",
-                    "er::Left _match7__0___match__match__lawspecSel",
-                    "ection0x0_0_0 -> true; Either::Right _match7__",
-                    "1___match__match__lawspecSelection0x0_0_0 -> l",
-                    "et _let8__it = attempt (issuesGetMilestone (_i",
-                    "nput0) (_input1) (_let3__key)) in match (_let8",
-                    "__it) { Either::Left _match9__0___match__match",
-                    "__match__lawspecSelection0x0_0_0_0 -> false; E",
-                    "ither::Right _match9__1___match__match__match_",
-                    "_lawspecSelection0x0_0_0_0 -> (((((((((((((((m",
-                    "atch (_match9__1___match__match__match__lawspe",
-                    "cSelection0x0_0_0_0) { lawtwin.github.model::t",
-                    "ype::Milestone::Milestone _matchfield21__url _",
-                    "matchfield22__htmlUrl _matchfield23__labelsUrl",
-                    " _matchfield24__id _matchfield25__nodeId _matc",
-                    "hfield26__number _matchfield27__state_ _matchf",
-                    "ield28__title _matchfield29__description_ _mat",
-                    "chfield30__creator _matchfield31__openIssues _",
-                    "matchfield32__closedIssues _matchfield33__crea",
-                    "tedAt _matchfield34__updatedAt _matchfield35__",
-                    "closedAt _matchfield36__dueOn -> _matchfield21",
-                    "__url } == match (_match5__1___match__lawspecS",
-                    "election0x0_0) { lawtwin.github.model::type::M",
-                    "ilestone::Milestone _matchfield37__url _matchf",
-                    "ield38__htmlUrl _matchfield39__labelsUrl _matc",
-                    "hfield40__id _matchfield41__nodeId _matchfield",
-                    "42__number _matchfield43__state_ _matchfield44",
-                    "__title _matchfield45__description_ _matchfiel",
-                    "d46__creator _matchfield47__openIssues _matchf",
-                    "ield48__closedIssues _matchfield49__createdAt ",
-                    "_matchfield50__updatedAt _matchfield51__closed",
-                    "At _matchfield52__dueOn -> _matchfield37__url ",
-                    "}) And (match (_match9__1___match__match__matc",
-                    "h__lawspecSelection0x0_0_0_0) { lawtwin.github",
-                    ".model::type::Milestone::Milestone _matchfield",
-                    "53__url _matchfield54__htmlUrl _matchfield55__",
-                    "labelsUrl _matchfield56__id _matchfield57__nod",
-                    "eId _matchfield58__number _matchfield59__state",
-                    "_ _matchfield60__title _matchfield61__descript",
-                    "ion_ _matchfield62__creator _matchfield63__ope",
-                    "nIssues _matchfield64__closedIssues _matchfiel",
-                    "d65__createdAt _matchfield66__updatedAt _match",
-                    "field67__closedAt _matchfield68__dueOn -> _mat",
-                    "chfield54__htmlUrl } == match (_match5__1___ma",
-                    "tch__lawspecSelection0x0_0) { lawtwin.github.m",
-                    "odel::type::Milestone::Milestone _matchfield69",
-                    "__url _matchfield70__htmlUrl _matchfield71__la",
-                    "belsUrl _matchfield72__id _matchfield73__nodeI",
-                    "d _matchfield74__number _matchfield75__state_ ",
-                    "_matchfield76__title _matchfield77__descriptio",
-                    "n_ _matchfield78__creator _matchfield79__openI",
-                    "ssues _matchfield80__closedIssues _matchfield8",
-                    "1__createdAt _matchfield82__updatedAt _matchfi",
-                    "eld83__closedAt _matchfield84__dueOn -> _match",
-                    "field70__htmlUrl })) And (match (_match9__1___",
+                    "t = Maybe::Present(_input3) in match (_input2)",
+                    " { lawtwin.github.model::type::IssuesCreateMil",
+                    "estoneBody::IssuesCreateMilestoneBody _matchfi",
+                    "eld0__title _matchfield1__state_ _matchfield2_",
+                    "_description_ _matchfield3__dueOn -> lawtwin.g",
+                    "ithub.model::type::IssuesCreateMilestoneBody::",
+                    "IssuesCreateMilestoneBody(_matchfield0__title,",
+                    " _matchfield1__state_, _matchfield2__descripti",
+                    "on_, _letfield4__replacement) } in let _let1__",
+                    "it = attempt (issuesCreateMilestone (_input0) ",
+                    "(_input1) (_let0__sent)) in match (_let1__it) ",
+                    "{ Either::Left _match2__0___lawspecSelection0x",
+                    "0 -> true; Either::Right _match2__1___lawspecS",
+                    "election0x0 -> let _let3__key = match (_match2",
+                    "__1___lawspecSelection0x0) { lawtwin.github.mo",
+                    "del::type::Milestone::Milestone _matchfield5__",
+                    "url _matchfield6__htmlUrl _matchfield7__labels",
+                    "Url _matchfield8__id _matchfield9__nodeId _mat",
+                    "chfield10__number _matchfield11__state_ _match",
+                    "field12__title _matchfield13__description_ _ma",
+                    "tchfield14__creator _matchfield15__openIssues ",
+                    "_matchfield16__closedIssues _matchfield17__cre",
+                    "atedAt _matchfield18__updatedAt _matchfield19_",
+                    "_closedAt _matchfield20__dueOn -> _matchfield1",
+                    "0__number } in let _let4__it = attempt (issues",
+                    "GetMilestone (_input0) (_input1) (_let3__key))",
+                    " in match (_let4__it) { Either::Left _match5__",
+                    "0___match__lawspecSelection0x0_0 -> false; Eit",
+                    "her::Right _match5__1___match__lawspecSelectio",
+                    "n0x0_0 -> let _let6__it = attempt (issuesUpdat",
+                    "eMilestone (_input0) (_input1) (_let3__key) (M",
+                    "aybe::Present(_input4))) in match (_let6__it) ",
+                    "{ Either::Left _match7__0___match__match__laws",
+                    "pecSelection0x0_0_0 -> true; Either::Right _ma",
+                    "tch7__1___match__match__lawspecSelection0x0_0_",
+                    "0 -> let _let8__it = attempt (issuesGetMilesto",
+                    "ne (_input0) (_input1) (_let3__key)) in match ",
+                    "(_let8__it) { Either::Left _match9__0___match_",
+                    "_match__match__lawspecSelection0x0_0_0_0 -> fa",
+                    "lse; Either::Right _match9__1___match__match__",
+                    "match__lawspecSelection0x0_0_0_0 -> ((((((((((",
+                    "(((((match (_match9__1___match__match__match__",
+                    "lawspecSelection0x0_0_0_0) { lawtwin.github.mo",
+                    "del::type::Milestone::Milestone _matchfield21_",
+                    "_url _matchfield22__htmlUrl _matchfield23__lab",
+                    "elsUrl _matchfield24__id _matchfield25__nodeId",
+                    " _matchfield26__number _matchfield27__state_ _",
+                    "matchfield28__title _matchfield29__description",
+                    "_ _matchfield30__creator _matchfield31__openIs",
+                    "sues _matchfield32__closedIssues _matchfield33",
+                    "__createdAt _matchfield34__updatedAt _matchfie",
+                    "ld35__closedAt _matchfield36__dueOn -> _matchf",
+                    "ield21__url } == match (_match5__1___match__la",
+                    "wspecSelection0x0_0) { lawtwin.github.model::t",
+                    "ype::Milestone::Milestone _matchfield37__url _",
+                    "matchfield38__htmlUrl _matchfield39__labelsUrl",
+                    " _matchfield40__id _matchfield41__nodeId _matc",
+                    "hfield42__number _matchfield43__state_ _matchf",
+                    "ield44__title _matchfield45__description_ _mat",
+                    "chfield46__creator _matchfield47__openIssues _",
+                    "matchfield48__closedIssues _matchfield49__crea",
+                    "tedAt _matchfield50__updatedAt _matchfield51__",
+                    "closedAt _matchfield52__dueOn -> _matchfield37",
+                    "__url }) And (match (_match9__1___match__match",
+                    "__match__lawspecSelection0x0_0_0_0) { lawtwin.",
+                    "github.model::type::Milestone::Milestone _matc",
+                    "hfield53__url _matchfield54__htmlUrl _matchfie",
+                    "ld55__labelsUrl _matchfield56__id _matchfield5",
+                    "7__nodeId _matchfield58__number _matchfield59_",
+                    "_state_ _matchfield60__title _matchfield61__de",
+                    "scription_ _matchfield62__creator _matchfield6",
+                    "3__openIssues _matchfield64__closedIssues _mat",
+                    "chfield65__createdAt _matchfield66__updatedAt ",
+                    "_matchfield67__closedAt _matchfield68__dueOn -",
+                    "> _matchfield54__htmlUrl } == match (_match5__",
+                    "1___match__lawspecSelection0x0_0) { lawtwin.gi",
+                    "thub.model::type::Milestone::Milestone _matchf",
+                    "ield69__url _matchfield70__htmlUrl _matchfield",
+                    "71__labelsUrl _matchfield72__id _matchfield73_",
+                    "_nodeId _matchfield74__number _matchfield75__s",
+                    "tate_ _matchfield76__title _matchfield77__desc",
+                    "ription_ _matchfield78__creator _matchfield79_",
+                    "_openIssues _matchfield80__closedIssues _match",
+                    "field81__createdAt _matchfield82__updatedAt _m",
+                    "atchfield83__closedAt _matchfield84__dueOn -> ",
+                    "_matchfield70__htmlUrl })) And (match (_match9",
+                    "__1___match__match__match__lawspecSelection0x0",
+                    "_0_0_0) { lawtwin.github.model::type::Mileston",
+                    "e::Milestone _matchfield85__url _matchfield86_",
+                    "_htmlUrl _matchfield87__labelsUrl _matchfield8",
+                    "8__id _matchfield89__nodeId _matchfield90__num",
+                    "ber _matchfield91__state_ _matchfield92__title",
+                    " _matchfield93__description_ _matchfield94__cr",
+                    "eator _matchfield95__openIssues _matchfield96_",
+                    "_closedIssues _matchfield97__createdAt _matchf",
+                    "ield98__updatedAt _matchfield99__closedAt _mat",
+                    "chfield100__dueOn -> _matchfield87__labelsUrl ",
+                    "} == match (_match5__1___match__lawspecSelecti",
+                    "on0x0_0) { lawtwin.github.model::type::Milesto",
+                    "ne::Milestone _matchfield101__url _matchfield1",
+                    "02__htmlUrl _matchfield103__labelsUrl _matchfi",
+                    "eld104__id _matchfield105__nodeId _matchfield1",
+                    "06__number _matchfield107__state_ _matchfield1",
+                    "08__title _matchfield109__description_ _matchf",
+                    "ield110__creator _matchfield111__openIssues _m",
+                    "atchfield112__closedIssues _matchfield113__cre",
+                    "atedAt _matchfield114__updatedAt _matchfield11",
+                    "5__closedAt _matchfield116__dueOn -> _matchfie",
+                    "ld103__labelsUrl })) And (match (_match9__1___",
                     "match__match__match__lawspecSelection0x0_0_0_0",
                     ") { lawtwin.github.model::type::Milestone::Mil",
-                    "estone _matchfield85__url _matchfield86__htmlU",
-                    "rl _matchfield87__labelsUrl _matchfield88__id ",
-                    "_matchfield89__nodeId _matchfield90__number _m",
-                    "atchfield91__state_ _matchfield92__title _matc",
-                    "hfield93__description_ _matchfield94__creator ",
-                    "_matchfield95__openIssues _matchfield96__close",
-                    "dIssues _matchfield97__createdAt _matchfield98",
-                    "__updatedAt _matchfield99__closedAt _matchfiel",
-                    "d100__dueOn -> _matchfield87__labelsUrl } == m",
-                    "atch (_match5__1___match__lawspecSelection0x0_",
-                    "0) { lawtwin.github.model::type::Milestone::Mi",
-                    "lestone _matchfield101__url _matchfield102__ht",
-                    "mlUrl _matchfield103__labelsUrl _matchfield104",
-                    "__id _matchfield105__nodeId _matchfield106__nu",
-                    "mber _matchfield107__state_ _matchfield108__ti",
-                    "tle _matchfield109__description_ _matchfield11",
-                    "0__creator _matchfield111__openIssues _matchfi",
-                    "eld112__closedIssues _matchfield113__createdAt",
-                    " _matchfield114__updatedAt _matchfield115__clo",
-                    "sedAt _matchfield116__dueOn -> _matchfield103_",
-                    "_labelsUrl })) And (match (_match9__1___match_",
-                    "_match__match__lawspecSelection0x0_0_0_0) { la",
-                    "wtwin.github.model::type::Milestone::Milestone",
-                    " _matchfield117__url _matchfield118__htmlUrl _",
-                    "matchfield119__labelsUrl _matchfield120__id _m",
-                    "atchfield121__nodeId _matchfield122__number _m",
-                    "atchfield123__state_ _matchfield124__title _ma",
-                    "tchfield125__description_ _matchfield126__crea",
-                    "tor _matchfield127__openIssues _matchfield128_",
-                    "_closedIssues _matchfield129__createdAt _match",
-                    "field130__updatedAt _matchfield131__closedAt _",
-                    "matchfield132__dueOn -> _matchfield120__id } =",
-                    "= match (_match5__1___match__lawspecSelection0",
-                    "x0_0) { lawtwin.github.model::type::Milestone:",
-                    ":Milestone _matchfield133__url _matchfield134_",
-                    "_htmlUrl _matchfield135__labelsUrl _matchfield",
-                    "136__id _matchfield137__nodeId _matchfield138_",
-                    "_number _matchfield139__state_ _matchfield140_",
-                    "_title _matchfield141__description_ _matchfiel",
-                    "d142__creator _matchfield143__openIssues _matc",
-                    "hfield144__closedIssues _matchfield145__create",
-                    "dAt _matchfield146__updatedAt _matchfield147__",
-                    "closedAt _matchfield148__dueOn -> _matchfield1",
-                    "36__id })) And (match (_match9__1___match__mat",
+                    "estone _matchfield117__url _matchfield118__htm",
+                    "lUrl _matchfield119__labelsUrl _matchfield120_",
+                    "_id _matchfield121__nodeId _matchfield122__num",
+                    "ber _matchfield123__state_ _matchfield124__tit",
+                    "le _matchfield125__description_ _matchfield126",
+                    "__creator _matchfield127__openIssues _matchfie",
+                    "ld128__closedIssues _matchfield129__createdAt ",
+                    "_matchfield130__updatedAt _matchfield131__clos",
+                    "edAt _matchfield132__dueOn -> _matchfield120__",
+                    "id } == match (_match5__1___match__lawspecSele",
+                    "ction0x0_0) { lawtwin.github.model::type::Mile",
+                    "stone::Milestone _matchfield133__url _matchfie",
+                    "ld134__htmlUrl _matchfield135__labelsUrl _matc",
+                    "hfield136__id _matchfield137__nodeId _matchfie",
+                    "ld138__number _matchfield139__state_ _matchfie",
+                    "ld140__title _matchfield141__description_ _mat",
+                    "chfield142__creator _matchfield143__openIssues",
+                    " _matchfield144__closedIssues _matchfield145__",
+                    "createdAt _matchfield146__updatedAt _matchfiel",
+                    "d147__closedAt _matchfield148__dueOn -> _match",
+                    "field136__id })) And (match (_match9__1___matc",
+                    "h__match__match__lawspecSelection0x0_0_0_0) { ",
+                    "lawtwin.github.model::type::Milestone::Milesto",
+                    "ne _matchfield149__url _matchfield150__htmlUrl",
+                    " _matchfield151__labelsUrl _matchfield152__id ",
+                    "_matchfield153__nodeId _matchfield154__number ",
+                    "_matchfield155__state_ _matchfield156__title _",
+                    "matchfield157__description_ _matchfield158__cr",
+                    "eator _matchfield159__openIssues _matchfield16",
+                    "0__closedIssues _matchfield161__createdAt _mat",
+                    "chfield162__updatedAt _matchfield163__closedAt",
+                    " _matchfield164__dueOn -> _matchfield153__node",
+                    "Id } == match (_match5__1___match__lawspecSele",
+                    "ction0x0_0) { lawtwin.github.model::type::Mile",
+                    "stone::Milestone _matchfield165__url _matchfie",
+                    "ld166__htmlUrl _matchfield167__labelsUrl _matc",
+                    "hfield168__id _matchfield169__nodeId _matchfie",
+                    "ld170__number _matchfield171__state_ _matchfie",
+                    "ld172__title _matchfield173__description_ _mat",
+                    "chfield174__creator _matchfield175__openIssues",
+                    " _matchfield176__closedIssues _matchfield177__",
+                    "createdAt _matchfield178__updatedAt _matchfiel",
+                    "d179__closedAt _matchfield180__dueOn -> _match",
+                    "field169__nodeId })) And (match (_match9__1___",
+                    "match__match__match__lawspecSelection0x0_0_0_0",
+                    ") { lawtwin.github.model::type::Milestone::Mil",
+                    "estone _matchfield181__url _matchfield182__htm",
+                    "lUrl _matchfield183__labelsUrl _matchfield184_",
+                    "_id _matchfield185__nodeId _matchfield186__num",
+                    "ber _matchfield187__state_ _matchfield188__tit",
+                    "le _matchfield189__description_ _matchfield190",
+                    "__creator _matchfield191__openIssues _matchfie",
+                    "ld192__closedIssues _matchfield193__createdAt ",
+                    "_matchfield194__updatedAt _matchfield195__clos",
+                    "edAt _matchfield196__dueOn -> _matchfield187__",
+                    "state_ } == let _let10__it = match (_input4) {",
+                    " lawtwin.github.model::type::IssuesUpdateMiles",
+                    "toneBody::IssuesUpdateMilestoneBody _matchfiel",
+                    "d197__title _matchfield198__state_ _matchfield",
+                    "199__description_ _matchfield200__dueOn -> _ma",
+                    "tchfield198__state_ } in match (_let10__it) { ",
+                    "Maybe::Absent  -> match (_match5__1___match__l",
+                    "awspecSelection0x0_0) { lawtwin.github.model::",
+                    "type::Milestone::Milestone _matchfield201__url",
+                    " _matchfield202__htmlUrl _matchfield203__label",
+                    "sUrl _matchfield204__id _matchfield205__nodeId",
+                    " _matchfield206__number _matchfield207__state_",
+                    " _matchfield208__title _matchfield209__descrip",
+                    "tion_ _matchfield210__creator _matchfield211__",
+                    "openIssues _matchfield212__closedIssues _match",
+                    "field213__createdAt _matchfield214__updatedAt ",
+                    "_matchfield215__closedAt _matchfield216__dueOn",
+                    " -> _matchfield207__state_ }; Maybe::Present _",
+                    "match11__1___match__match__match__match__lawsp",
+                    "ecSelection0x0_0_0_0_0 -> _match11__1___match_",
+                    "_match__match__match__lawspecSelection0x0_0_0_",
+                    "0_0 })) And (match (_match9__1___match__match_",
+                    "_match__lawspecSelection0x0_0_0_0) { lawtwin.g",
+                    "ithub.model::type::Milestone::Milestone _match",
+                    "field217__url _matchfield218__htmlUrl _matchfi",
+                    "eld219__labelsUrl _matchfield220__id _matchfie",
+                    "ld221__nodeId _matchfield222__number _matchfie",
+                    "ld223__state_ _matchfield224__title _matchfiel",
+                    "d225__description_ _matchfield226__creator _ma",
+                    "tchfield227__openIssues _matchfield228__closed",
+                    "Issues _matchfield229__createdAt _matchfield23",
+                    "0__updatedAt _matchfield231__closedAt _matchfi",
+                    "eld232__dueOn -> _matchfield224__title } == le",
+                    "t _let10__it = match (_input4) { lawtwin.githu",
+                    "b.model::type::IssuesUpdateMilestoneBody::Issu",
+                    "esUpdateMilestoneBody _matchfield233__title _m",
+                    "atchfield234__state_ _matchfield235__descripti",
+                    "on_ _matchfield236__dueOn -> _matchfield233__t",
+                    "itle } in match (_let10__it) { Maybe::Absent  ",
+                    "-> match (_match5__1___match__lawspecSelection",
+                    "0x0_0) { lawtwin.github.model::type::Milestone",
+                    "::Milestone _matchfield237__url _matchfield238",
+                    "__htmlUrl _matchfield239__labelsUrl _matchfiel",
+                    "d240__id _matchfield241__nodeId _matchfield242",
+                    "__number _matchfield243__state_ _matchfield244",
+                    "__title _matchfield245__description_ _matchfie",
+                    "ld246__creator _matchfield247__openIssues _mat",
+                    "chfield248__closedIssues _matchfield249__creat",
+                    "edAt _matchfield250__updatedAt _matchfield251_",
+                    "_closedAt _matchfield252__dueOn -> _matchfield",
+                    "244__title }; Maybe::Present _match11__1___mat",
+                    "ch__match__match__match__lawspecSelection0x0_0",
+                    "_0_0_0 -> _match11__1___match__match__match__m",
+                    "atch__lawspecSelection0x0_0_0_0_0 })) And (mat",
+                    "ch (_match9__1___match__match__match__lawspecS",
+                    "election0x0_0_0_0) { lawtwin.github.model::typ",
+                    "e::Milestone::Milestone _matchfield253__url _m",
+                    "atchfield254__htmlUrl _matchfield255__labelsUr",
+                    "l _matchfield256__id _matchfield257__nodeId _m",
+                    "atchfield258__number _matchfield259__state_ _m",
+                    "atchfield260__title _matchfield261__descriptio",
+                    "n_ _matchfield262__creator _matchfield263__ope",
+                    "nIssues _matchfield264__closedIssues _matchfie",
+                    "ld265__createdAt _matchfield266__updatedAt _ma",
+                    "tchfield267__closedAt _matchfield268__dueOn ->",
+                    " _matchfield261__description_ } == let _let10_",
+                    "_it = match (_input4) { lawtwin.github.model::",
+                    "type::IssuesUpdateMilestoneBody::IssuesUpdateM",
+                    "ilestoneBody _matchfield269__title _matchfield",
+                    "270__state_ _matchfield271__description_ _matc",
+                    "hfield272__dueOn -> _matchfield271__descriptio",
+                    "n_ } in match (_let10__it) { Maybe::Absent  ->",
+                    " match (_match5__1___match__lawspecSelection0x",
+                    "0_0) { lawtwin.github.model::type::Milestone::",
+                    "Milestone _matchfield273__url _matchfield274__",
+                    "htmlUrl _matchfield275__labelsUrl _matchfield2",
+                    "76__id _matchfield277__nodeId _matchfield278__",
+                    "number _matchfield279__state_ _matchfield280__",
+                    "title _matchfield281__description_ _matchfield",
+                    "282__creator _matchfield283__openIssues _match",
+                    "field284__closedIssues _matchfield285__created",
+                    "At _matchfield286__updatedAt _matchfield287__c",
+                    "losedAt _matchfield288__dueOn -> _matchfield28",
+                    "1__description_ }; Maybe::Present _match11__1_",
+                    "__match__match__match__match__lawspecSelection",
+                    "0x0_0_0_0_0 -> Maybe::Present(_match11__1___ma",
+                    "tch__match__match__match__lawspecSelection0x0_",
+                    "0_0_0_0) })) And (match (_match9__1___match__m",
+                    "atch__match__lawspecSelection0x0_0_0_0) { lawt",
+                    "win.github.model::type::Milestone::Milestone _",
+                    "matchfield289__url _matchfield290__htmlUrl _ma",
+                    "tchfield291__labelsUrl _matchfield292__id _mat",
+                    "chfield293__nodeId _matchfield294__number _mat",
+                    "chfield295__state_ _matchfield296__title _matc",
+                    "hfield297__description_ _matchfield298__creato",
+                    "r _matchfield299__openIssues _matchfield300__c",
+                    "losedIssues _matchfield301__createdAt _matchfi",
+                    "eld302__updatedAt _matchfield303__closedAt _ma",
+                    "tchfield304__dueOn -> _matchfield298__creator ",
+                    "} == match (_match5__1___match__lawspecSelecti",
+                    "on0x0_0) { lawtwin.github.model::type::Milesto",
+                    "ne::Milestone _matchfield305__url _matchfield3",
+                    "06__htmlUrl _matchfield307__labelsUrl _matchfi",
+                    "eld308__id _matchfield309__nodeId _matchfield3",
+                    "10__number _matchfield311__state_ _matchfield3",
+                    "12__title _matchfield313__description_ _matchf",
+                    "ield314__creator _matchfield315__openIssues _m",
+                    "atchfield316__closedIssues _matchfield317__cre",
+                    "atedAt _matchfield318__updatedAt _matchfield31",
+                    "9__closedAt _matchfield320__dueOn -> _matchfie",
+                    "ld314__creator })) And (match (_match9__1___ma",
+                    "tch__match__match__lawspecSelection0x0_0_0_0) ",
+                    "{ lawtwin.github.model::type::Milestone::Miles",
+                    "tone _matchfield321__url _matchfield322__htmlU",
+                    "rl _matchfield323__labelsUrl _matchfield324__i",
+                    "d _matchfield325__nodeId _matchfield326__numbe",
+                    "r _matchfield327__state_ _matchfield328__title",
+                    " _matchfield329__description_ _matchfield330__",
+                    "creator _matchfield331__openIssues _matchfield",
+                    "332__closedIssues _matchfield333__createdAt _m",
+                    "atchfield334__updatedAt _matchfield335__closed",
+                    "At _matchfield336__dueOn -> _matchfield331__op",
+                    "enIssues } == match (_match5__1___match__lawsp",
+                    "ecSelection0x0_0) { lawtwin.github.model::type",
+                    "::Milestone::Milestone _matchfield337__url _ma",
+                    "tchfield338__htmlUrl _matchfield339__labelsUrl",
+                    " _matchfield340__id _matchfield341__nodeId _ma",
+                    "tchfield342__number _matchfield343__state_ _ma",
+                    "tchfield344__title _matchfield345__description",
+                    "_ _matchfield346__creator _matchfield347__open",
+                    "Issues _matchfield348__closedIssues _matchfiel",
+                    "d349__createdAt _matchfield350__updatedAt _mat",
+                    "chfield351__closedAt _matchfield352__dueOn -> ",
+                    "_matchfield347__openIssues })) And (match (_ma",
+                    "tch9__1___match__match__match__lawspecSelectio",
+                    "n0x0_0_0_0) { lawtwin.github.model::type::Mile",
+                    "stone::Milestone _matchfield353__url _matchfie",
+                    "ld354__htmlUrl _matchfield355__labelsUrl _matc",
+                    "hfield356__id _matchfield357__nodeId _matchfie",
+                    "ld358__number _matchfield359__state_ _matchfie",
+                    "ld360__title _matchfield361__description_ _mat",
+                    "chfield362__creator _matchfield363__openIssues",
+                    " _matchfield364__closedIssues _matchfield365__",
+                    "createdAt _matchfield366__updatedAt _matchfiel",
+                    "d367__closedAt _matchfield368__dueOn -> _match",
+                    "field364__closedIssues } == match (_match5__1_",
+                    "__match__lawspecSelection0x0_0) { lawtwin.gith",
+                    "ub.model::type::Milestone::Milestone _matchfie",
+                    "ld369__url _matchfield370__htmlUrl _matchfield",
+                    "371__labelsUrl _matchfield372__id _matchfield3",
+                    "73__nodeId _matchfield374__number _matchfield3",
+                    "75__state_ _matchfield376__title _matchfield37",
+                    "7__description_ _matchfield378__creator _match",
+                    "field379__openIssues _matchfield380__closedIss",
+                    "ues _matchfield381__createdAt _matchfield382__",
+                    "updatedAt _matchfield383__closedAt _matchfield",
+                    "384__dueOn -> _matchfield380__closedIssues }))",
+                    " And (match (_match9__1___match__match__match_",
+                    "_lawspecSelection0x0_0_0_0) { lawtwin.github.m",
+                    "odel::type::Milestone::Milestone _matchfield38",
+                    "5__url _matchfield386__htmlUrl _matchfield387_",
+                    "_labelsUrl _matchfield388__id _matchfield389__",
+                    "nodeId _matchfield390__number _matchfield391__",
+                    "state_ _matchfield392__title _matchfield393__d",
+                    "escription_ _matchfield394__creator _matchfiel",
+                    "d395__openIssues _matchfield396__closedIssues ",
+                    "_matchfield397__createdAt _matchfield398__upda",
+                    "tedAt _matchfield399__closedAt _matchfield400_",
+                    "_dueOn -> _matchfield397__createdAt } == match",
+                    " (_match5__1___match__lawspecSelection0x0_0) {",
+                    " lawtwin.github.model::type::Milestone::Milest",
+                    "one _matchfield401__url _matchfield402__htmlUr",
+                    "l _matchfield403__labelsUrl _matchfield404__id",
+                    " _matchfield405__nodeId _matchfield406__number",
+                    " _matchfield407__state_ _matchfield408__title ",
+                    "_matchfield409__description_ _matchfield410__c",
+                    "reator _matchfield411__openIssues _matchfield4",
+                    "12__closedIssues _matchfield413__createdAt _ma",
+                    "tchfield414__updatedAt _matchfield415__closedA",
+                    "t _matchfield416__dueOn -> _matchfield413__cre",
+                    "atedAt })) And (match (_match9__1___match__mat",
                     "ch__match__lawspecSelection0x0_0_0_0) { lawtwi",
                     "n.github.model::type::Milestone::Milestone _ma",
-                    "tchfield149__url _matchfield150__htmlUrl _matc",
-                    "hfield151__labelsUrl _matchfield152__id _match",
-                    "field153__nodeId _matchfield154__number _match",
-                    "field155__state_ _matchfield156__title _matchf",
-                    "ield157__description_ _matchfield158__creator ",
-                    "_matchfield159__openIssues _matchfield160__clo",
-                    "sedIssues _matchfield161__createdAt _matchfiel",
-                    "d162__updatedAt _matchfield163__closedAt _matc",
-                    "hfield164__dueOn -> _matchfield153__nodeId } =",
-                    "= match (_match5__1___match__lawspecSelection0",
-                    "x0_0) { lawtwin.github.model::type::Milestone:",
-                    ":Milestone _matchfield165__url _matchfield166_",
-                    "_htmlUrl _matchfield167__labelsUrl _matchfield",
-                    "168__id _matchfield169__nodeId _matchfield170_",
-                    "_number _matchfield171__state_ _matchfield172_",
-                    "_title _matchfield173__description_ _matchfiel",
-                    "d174__creator _matchfield175__openIssues _matc",
-                    "hfield176__closedIssues _matchfield177__create",
-                    "dAt _matchfield178__updatedAt _matchfield179__",
-                    "closedAt _matchfield180__dueOn -> _matchfield1",
-                    "69__nodeId })) And (match (_match9__1___match_",
-                    "_match__match__lawspecSelection0x0_0_0_0) { la",
-                    "wtwin.github.model::type::Milestone::Milestone",
-                    " _matchfield181__url _matchfield182__htmlUrl _",
-                    "matchfield183__labelsUrl _matchfield184__id _m",
-                    "atchfield185__nodeId _matchfield186__number _m",
-                    "atchfield187__state_ _matchfield188__title _ma",
-                    "tchfield189__description_ _matchfield190__crea",
-                    "tor _matchfield191__openIssues _matchfield192_",
-                    "_closedIssues _matchfield193__createdAt _match",
-                    "field194__updatedAt _matchfield195__closedAt _",
-                    "matchfield196__dueOn -> _matchfield187__state_",
-                    " } == let _let10__it = match (_input4) { lawtw",
-                    "in.github.model::type::IssuesUpdateMilestoneBo",
-                    "dy::IssuesUpdateMilestoneBody _matchfield197__",
-                    "title _matchfield198__state_ _matchfield199__d",
-                    "escription_ _matchfield200__dueOn -> _matchfie",
-                    "ld198__state_ } in match (_let10__it) { Maybe:",
-                    ":Nothing  -> match (_match5__1___match__lawspe",
-                    "cSelection0x0_0) { lawtwin.github.model::type:",
-                    ":Milestone::Milestone _matchfield201__url _mat",
-                    "chfield202__htmlUrl _matchfield203__labelsUrl ",
-                    "_matchfield204__id _matchfield205__nodeId _mat",
-                    "chfield206__number _matchfield207__state_ _mat",
-                    "chfield208__title _matchfield209__description_",
-                    " _matchfield210__creator _matchfield211__openI",
-                    "ssues _matchfield212__closedIssues _matchfield",
-                    "213__createdAt _matchfield214__updatedAt _matc",
-                    "hfield215__closedAt _matchfield216__dueOn -> _",
-                    "matchfield207__state_ }; Maybe::Just _match11_",
-                    "_1___match__match__match__match__lawspecSelect",
-                    "ion0x0_0_0_0_0 -> _match11__1___match__match__",
-                    "match__match__lawspecSelection0x0_0_0_0_0 })) ",
-                    "And (match (_match9__1___match__match__match__",
-                    "lawspecSelection0x0_0_0_0) { lawtwin.github.mo",
-                    "del::type::Milestone::Milestone _matchfield217",
-                    "__url _matchfield218__htmlUrl _matchfield219__",
-                    "labelsUrl _matchfield220__id _matchfield221__n",
-                    "odeId _matchfield222__number _matchfield223__s",
-                    "tate_ _matchfield224__title _matchfield225__de",
-                    "scription_ _matchfield226__creator _matchfield",
-                    "227__openIssues _matchfield228__closedIssues _",
-                    "matchfield229__createdAt _matchfield230__updat",
-                    "edAt _matchfield231__closedAt _matchfield232__",
-                    "dueOn -> _matchfield224__title } == let _let10",
-                    "__it = match (_input4) { lawtwin.github.model:",
-                    ":type::IssuesUpdateMilestoneBody::IssuesUpdate",
-                    "MilestoneBody _matchfield233__title _matchfiel",
-                    "d234__state_ _matchfield235__description_ _mat",
-                    "chfield236__dueOn -> _matchfield233__title } i",
-                    "n match (_let10__it) { Maybe::Nothing  -> matc",
-                    "h (_match5__1___match__lawspecSelection0x0_0) ",
-                    "{ lawtwin.github.model::type::Milestone::Miles",
-                    "tone _matchfield237__url _matchfield238__htmlU",
-                    "rl _matchfield239__labelsUrl _matchfield240__i",
-                    "d _matchfield241__nodeId _matchfield242__numbe",
-                    "r _matchfield243__state_ _matchfield244__title",
-                    " _matchfield245__description_ _matchfield246__",
-                    "creator _matchfield247__openIssues _matchfield",
-                    "248__closedIssues _matchfield249__createdAt _m",
-                    "atchfield250__updatedAt _matchfield251__closed",
-                    "At _matchfield252__dueOn -> _matchfield244__ti",
-                    "tle }; Maybe::Just _match11__1___match__match_",
-                    "_match__match__lawspecSelection0x0_0_0_0_0 -> ",
+                    "tchfield417__url _matchfield418__htmlUrl _matc",
+                    "hfield419__labelsUrl _matchfield420__id _match",
+                    "field421__nodeId _matchfield422__number _match",
+                    "field423__state_ _matchfield424__title _matchf",
+                    "ield425__description_ _matchfield426__creator ",
+                    "_matchfield427__openIssues _matchfield428__clo",
+                    "sedIssues _matchfield429__createdAt _matchfiel",
+                    "d430__updatedAt _matchfield431__closedAt _matc",
+                    "hfield432__dueOn -> _matchfield430__updatedAt ",
+                    "} == match (_match5__1___match__lawspecSelecti",
+                    "on0x0_0) { lawtwin.github.model::type::Milesto",
+                    "ne::Milestone _matchfield433__url _matchfield4",
+                    "34__htmlUrl _matchfield435__labelsUrl _matchfi",
+                    "eld436__id _matchfield437__nodeId _matchfield4",
+                    "38__number _matchfield439__state_ _matchfield4",
+                    "40__title _matchfield441__description_ _matchf",
+                    "ield442__creator _matchfield443__openIssues _m",
+                    "atchfield444__closedIssues _matchfield445__cre",
+                    "atedAt _matchfield446__updatedAt _matchfield44",
+                    "7__closedAt _matchfield448__dueOn -> _matchfie",
+                    "ld446__updatedAt })) And (match (_match9__1___",
+                    "match__match__match__lawspecSelection0x0_0_0_0",
+                    ") { lawtwin.github.model::type::Milestone::Mil",
+                    "estone _matchfield449__url _matchfield450__htm",
+                    "lUrl _matchfield451__labelsUrl _matchfield452_",
+                    "_id _matchfield453__nodeId _matchfield454__num",
+                    "ber _matchfield455__state_ _matchfield456__tit",
+                    "le _matchfield457__description_ _matchfield458",
+                    "__creator _matchfield459__openIssues _matchfie",
+                    "ld460__closedIssues _matchfield461__createdAt ",
+                    "_matchfield462__updatedAt _matchfield463__clos",
+                    "edAt _matchfield464__dueOn -> _matchfield463__",
+                    "closedAt } == match (_match5__1___match__lawsp",
+                    "ecSelection0x0_0) { lawtwin.github.model::type",
+                    "::Milestone::Milestone _matchfield465__url _ma",
+                    "tchfield466__htmlUrl _matchfield467__labelsUrl",
+                    " _matchfield468__id _matchfield469__nodeId _ma",
+                    "tchfield470__number _matchfield471__state_ _ma",
+                    "tchfield472__title _matchfield473__description",
+                    "_ _matchfield474__creator _matchfield475__open",
+                    "Issues _matchfield476__closedIssues _matchfiel",
+                    "d477__createdAt _matchfield478__updatedAt _mat",
+                    "chfield479__closedAt _matchfield480__dueOn -> ",
+                    "_matchfield479__closedAt })) And (match (_matc",
+                    "h9__1___match__match__match__lawspecSelection0",
+                    "x0_0_0_0) { lawtwin.github.model::type::Milest",
+                    "one::Milestone _matchfield481__url _matchfield",
+                    "482__htmlUrl _matchfield483__labelsUrl _matchf",
+                    "ield484__id _matchfield485__nodeId _matchfield",
+                    "486__number _matchfield487__state_ _matchfield",
+                    "488__title _matchfield489__description_ _match",
+                    "field490__creator _matchfield491__openIssues _",
+                    "matchfield492__closedIssues _matchfield493__cr",
+                    "eatedAt _matchfield494__updatedAt _matchfield4",
+                    "95__closedAt _matchfield496__dueOn -> _matchfi",
+                    "eld496__dueOn } == let _let10__it = match (_in",
+                    "put4) { lawtwin.github.model::type::IssuesUpda",
+                    "teMilestoneBody::IssuesUpdateMilestoneBody _ma",
+                    "tchfield497__title _matchfield498__state_ _mat",
+                    "chfield499__description_ _matchfield500__dueOn",
+                    " -> _matchfield500__dueOn } in match (_let10__",
+                    "it) { Maybe::Absent  -> match (_match5__1___ma",
+                    "tch__lawspecSelection0x0_0) { lawtwin.github.m",
+                    "odel::type::Milestone::Milestone _matchfield50",
+                    "1__url _matchfield502__htmlUrl _matchfield503_",
+                    "_labelsUrl _matchfield504__id _matchfield505__",
+                    "nodeId _matchfield506__number _matchfield507__",
+                    "state_ _matchfield508__title _matchfield509__d",
+                    "escription_ _matchfield510__creator _matchfiel",
+                    "d511__openIssues _matchfield512__closedIssues ",
+                    "_matchfield513__createdAt _matchfield514__upda",
+                    "tedAt _matchfield515__closedAt _matchfield516_",
+                    "_dueOn -> _matchfield516__dueOn }; Maybe::Pres",
+                    "ent _match11__1___match__match__match__match__",
+                    "lawspecSelection0x0_0_0_0_0 -> Maybe::Present(",
                     "_match11__1___match__match__match__match__laws",
-                    "pecSelection0x0_0_0_0_0 })) And (match (_match",
-                    "9__1___match__match__match__lawspecSelection0x",
-                    "0_0_0_0) { lawtwin.github.model::type::Milesto",
-                    "ne::Milestone _matchfield253__url _matchfield2",
-                    "54__htmlUrl _matchfield255__labelsUrl _matchfi",
-                    "eld256__id _matchfield257__nodeId _matchfield2",
-                    "58__number _matchfield259__state_ _matchfield2",
-                    "60__title _matchfield261__description_ _matchf",
-                    "ield262__creator _matchfield263__openIssues _m",
-                    "atchfield264__closedIssues _matchfield265__cre",
-                    "atedAt _matchfield266__updatedAt _matchfield26",
-                    "7__closedAt _matchfield268__dueOn -> _matchfie",
-                    "ld261__description_ } == let _let10__it = matc",
-                    "h (_input4) { lawtwin.github.model::type::Issu",
-                    "esUpdateMilestoneBody::IssuesUpdateMilestoneBo",
-                    "dy _matchfield269__title _matchfield270__state",
-                    "_ _matchfield271__description_ _matchfield272_",
-                    "_dueOn -> _matchfield271__description_ } in ma",
-                    "tch (_let10__it) { Maybe::Nothing  -> match (_",
-                    "match5__1___match__lawspecSelection0x0_0) { la",
-                    "wtwin.github.model::type::Milestone::Milestone",
-                    " _matchfield273__url _matchfield274__htmlUrl _",
-                    "matchfield275__labelsUrl _matchfield276__id _m",
-                    "atchfield277__nodeId _matchfield278__number _m",
-                    "atchfield279__state_ _matchfield280__title _ma",
-                    "tchfield281__description_ _matchfield282__crea",
-                    "tor _matchfield283__openIssues _matchfield284_",
-                    "_closedIssues _matchfield285__createdAt _match",
-                    "field286__updatedAt _matchfield287__closedAt _",
-                    "matchfield288__dueOn -> _matchfield281__descri",
-                    "ption_ }; Maybe::Just _match11__1___match__mat",
-                    "ch__match__match__lawspecSelection0x0_0_0_0_0 ",
-                    "-> Maybe::Just(_match11__1___match__match__mat",
-                    "ch__match__lawspecSelection0x0_0_0_0_0) })) An",
-                    "d (match (_match9__1___match__match__match__la",
-                    "wspecSelection0x0_0_0_0) { lawtwin.github.mode",
-                    "l::type::Milestone::Milestone _matchfield289__",
-                    "url _matchfield290__htmlUrl _matchfield291__la",
-                    "belsUrl _matchfield292__id _matchfield293__nod",
-                    "eId _matchfield294__number _matchfield295__sta",
-                    "te_ _matchfield296__title _matchfield297__desc",
-                    "ription_ _matchfield298__creator _matchfield29",
-                    "9__openIssues _matchfield300__closedIssues _ma",
-                    "tchfield301__createdAt _matchfield302__updated",
-                    "At _matchfield303__closedAt _matchfield304__du",
-                    "eOn -> _matchfield298__creator } == match (_ma",
-                    "tch5__1___match__lawspecSelection0x0_0) { lawt",
-                    "win.github.model::type::Milestone::Milestone _",
-                    "matchfield305__url _matchfield306__htmlUrl _ma",
-                    "tchfield307__labelsUrl _matchfield308__id _mat",
-                    "chfield309__nodeId _matchfield310__number _mat",
-                    "chfield311__state_ _matchfield312__title _matc",
-                    "hfield313__description_ _matchfield314__creato",
-                    "r _matchfield315__openIssues _matchfield316__c",
-                    "losedIssues _matchfield317__createdAt _matchfi",
-                    "eld318__updatedAt _matchfield319__closedAt _ma",
-                    "tchfield320__dueOn -> _matchfield314__creator ",
-                    "})) And (match (_match9__1___match__match__mat",
-                    "ch__lawspecSelection0x0_0_0_0) { lawtwin.githu",
-                    "b.model::type::Milestone::Milestone _matchfiel",
-                    "d321__url _matchfield322__htmlUrl _matchfield3",
-                    "23__labelsUrl _matchfield324__id _matchfield32",
-                    "5__nodeId _matchfield326__number _matchfield32",
-                    "7__state_ _matchfield328__title _matchfield329",
-                    "__description_ _matchfield330__creator _matchf",
-                    "ield331__openIssues _matchfield332__closedIssu",
-                    "es _matchfield333__createdAt _matchfield334__u",
-                    "pdatedAt _matchfield335__closedAt _matchfield3",
-                    "36__dueOn -> _matchfield331__openIssues } == m",
-                    "atch (_match5__1___match__lawspecSelection0x0_",
-                    "0) { lawtwin.github.model::type::Milestone::Mi",
-                    "lestone _matchfield337__url _matchfield338__ht",
-                    "mlUrl _matchfield339__labelsUrl _matchfield340",
-                    "__id _matchfield341__nodeId _matchfield342__nu",
-                    "mber _matchfield343__state_ _matchfield344__ti",
-                    "tle _matchfield345__description_ _matchfield34",
-                    "6__creator _matchfield347__openIssues _matchfi",
-                    "eld348__closedIssues _matchfield349__createdAt",
-                    " _matchfield350__updatedAt _matchfield351__clo",
-                    "sedAt _matchfield352__dueOn -> _matchfield347_",
-                    "_openIssues })) And (match (_match9__1___match",
-                    "__match__match__lawspecSelection0x0_0_0_0) { l",
-                    "awtwin.github.model::type::Milestone::Mileston",
-                    "e _matchfield353__url _matchfield354__htmlUrl ",
-                    "_matchfield355__labelsUrl _matchfield356__id _",
-                    "matchfield357__nodeId _matchfield358__number _",
-                    "matchfield359__state_ _matchfield360__title _m",
-                    "atchfield361__description_ _matchfield362__cre",
-                    "ator _matchfield363__openIssues _matchfield364",
-                    "__closedIssues _matchfield365__createdAt _matc",
-                    "hfield366__updatedAt _matchfield367__closedAt ",
-                    "_matchfield368__dueOn -> _matchfield364__close",
-                    "dIssues } == match (_match5__1___match__lawspe",
-                    "cSelection0x0_0) { lawtwin.github.model::type:",
-                    ":Milestone::Milestone _matchfield369__url _mat",
-                    "chfield370__htmlUrl _matchfield371__labelsUrl ",
-                    "_matchfield372__id _matchfield373__nodeId _mat",
-                    "chfield374__number _matchfield375__state_ _mat",
-                    "chfield376__title _matchfield377__description_",
-                    " _matchfield378__creator _matchfield379__openI",
-                    "ssues _matchfield380__closedIssues _matchfield",
-                    "381__createdAt _matchfield382__updatedAt _matc",
-                    "hfield383__closedAt _matchfield384__dueOn -> _",
-                    "matchfield380__closedIssues })) And (match (_m",
-                    "atch9__1___match__match__match__lawspecSelecti",
-                    "on0x0_0_0_0) { lawtwin.github.model::type::Mil",
-                    "estone::Milestone _matchfield385__url _matchfi",
-                    "eld386__htmlUrl _matchfield387__labelsUrl _mat",
-                    "chfield388__id _matchfield389__nodeId _matchfi",
-                    "eld390__number _matchfield391__state_ _matchfi",
-                    "eld392__title _matchfield393__description_ _ma",
-                    "tchfield394__creator _matchfield395__openIssue",
-                    "s _matchfield396__closedIssues _matchfield397_",
-                    "_createdAt _matchfield398__updatedAt _matchfie",
-                    "ld399__closedAt _matchfield400__dueOn -> _matc",
-                    "hfield397__createdAt } == match (_match5__1___",
-                    "match__lawspecSelection0x0_0) { lawtwin.github",
-                    ".model::type::Milestone::Milestone _matchfield",
-                    "401__url _matchfield402__htmlUrl _matchfield40",
-                    "3__labelsUrl _matchfield404__id _matchfield405",
-                    "__nodeId _matchfield406__number _matchfield407",
-                    "__state_ _matchfield408__title _matchfield409_",
-                    "_description_ _matchfield410__creator _matchfi",
-                    "eld411__openIssues _matchfield412__closedIssue",
-                    "s _matchfield413__createdAt _matchfield414__up",
-                    "datedAt _matchfield415__closedAt _matchfield41",
-                    "6__dueOn -> _matchfield413__createdAt })) And ",
-                    "(match (_match9__1___match__match__match__laws",
-                    "pecSelection0x0_0_0_0) { lawtwin.github.model:",
-                    ":type::Milestone::Milestone _matchfield417__ur",
-                    "l _matchfield418__htmlUrl _matchfield419__labe",
-                    "lsUrl _matchfield420__id _matchfield421__nodeI",
-                    "d _matchfield422__number _matchfield423__state",
-                    "_ _matchfield424__title _matchfield425__descri",
-                    "ption_ _matchfield426__creator _matchfield427_",
-                    "_openIssues _matchfield428__closedIssues _matc",
-                    "hfield429__createdAt _matchfield430__updatedAt",
-                    " _matchfield431__closedAt _matchfield432__dueO",
-                    "n -> _matchfield430__updatedAt } == match (_ma",
-                    "tch5__1___match__lawspecSelection0x0_0) { lawt",
-                    "win.github.model::type::Milestone::Milestone _",
-                    "matchfield433__url _matchfield434__htmlUrl _ma",
-                    "tchfield435__labelsUrl _matchfield436__id _mat",
-                    "chfield437__nodeId _matchfield438__number _mat",
-                    "chfield439__state_ _matchfield440__title _matc",
-                    "hfield441__description_ _matchfield442__creato",
-                    "r _matchfield443__openIssues _matchfield444__c",
-                    "losedIssues _matchfield445__createdAt _matchfi",
-                    "eld446__updatedAt _matchfield447__closedAt _ma",
-                    "tchfield448__dueOn -> _matchfield446__updatedA",
-                    "t })) And (match (_match9__1___match__match__m",
-                    "atch__lawspecSelection0x0_0_0_0) { lawtwin.git",
-                    "hub.model::type::Milestone::Milestone _matchfi",
-                    "eld449__url _matchfield450__htmlUrl _matchfiel",
-                    "d451__labelsUrl _matchfield452__id _matchfield",
-                    "453__nodeId _matchfield454__number _matchfield",
-                    "455__state_ _matchfield456__title _matchfield4",
-                    "57__description_ _matchfield458__creator _matc",
-                    "hfield459__openIssues _matchfield460__closedIs",
-                    "sues _matchfield461__createdAt _matchfield462_",
-                    "_updatedAt _matchfield463__closedAt _matchfiel",
-                    "d464__dueOn -> _matchfield463__closedAt } == m",
-                    "atch (_match5__1___match__lawspecSelection0x0_",
-                    "0) { lawtwin.github.model::type::Milestone::Mi",
-                    "lestone _matchfield465__url _matchfield466__ht",
-                    "mlUrl _matchfield467__labelsUrl _matchfield468",
-                    "__id _matchfield469__nodeId _matchfield470__nu",
-                    "mber _matchfield471__state_ _matchfield472__ti",
-                    "tle _matchfield473__description_ _matchfield47",
-                    "4__creator _matchfield475__openIssues _matchfi",
-                    "eld476__closedIssues _matchfield477__createdAt",
-                    " _matchfield478__updatedAt _matchfield479__clo",
-                    "sedAt _matchfield480__dueOn -> _matchfield479_",
-                    "_closedAt })) And (match (_match9__1___match__",
-                    "match__match__lawspecSelection0x0_0_0_0) { law",
-                    "twin.github.model::type::Milestone::Milestone ",
-                    "_matchfield481__url _matchfield482__htmlUrl _m",
-                    "atchfield483__labelsUrl _matchfield484__id _ma",
-                    "tchfield485__nodeId _matchfield486__number _ma",
-                    "tchfield487__state_ _matchfield488__title _mat",
-                    "chfield489__description_ _matchfield490__creat",
-                    "or _matchfield491__openIssues _matchfield492__",
-                    "closedIssues _matchfield493__createdAt _matchf",
-                    "ield494__updatedAt _matchfield495__closedAt _m",
-                    "atchfield496__dueOn -> _matchfield496__dueOn }",
-                    " == let _let10__it = match (_input4) { lawtwin",
-                    ".github.model::type::IssuesUpdateMilestoneBody",
-                    "::IssuesUpdateMilestoneBody _matchfield497__ti",
-                    "tle _matchfield498__state_ _matchfield499__des",
-                    "cription_ _matchfield500__dueOn -> _matchfield",
-                    "500__dueOn } in match (_let10__it) { Maybe::No",
-                    "thing  -> match (_match5__1___match__lawspecSe",
-                    "lection0x0_0) { lawtwin.github.model::type::Mi",
-                    "lestone::Milestone _matchfield501__url _matchf",
-                    "ield502__htmlUrl _matchfield503__labelsUrl _ma",
-                    "tchfield504__id _matchfield505__nodeId _matchf",
-                    "ield506__number _matchfield507__state_ _matchf",
-                    "ield508__title _matchfield509__description_ _m",
-                    "atchfield510__creator _matchfield511__openIssu",
-                    "es _matchfield512__closedIssues _matchfield513",
-                    "__createdAt _matchfield514__updatedAt _matchfi",
-                    "eld515__closedAt _matchfield516__dueOn -> _mat",
-                    "chfield516__dueOn }; Maybe::Just _match11__1__",
-                    "_match__match__match__match__lawspecSelection0",
-                    "x0_0_0_0_0 -> Maybe::Just(_match11__1___match_",
-                    "_match__match__match__lawspecSelection0x0_0_0_",
-                    "0_0) })) } } } } = true",
+                    "pecSelection0x0_0_0_0_0) })) } } } } = true",
                 ),
                 left,
                 right,
@@ -19023,9 +19140,9 @@ fn run_15() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("0000-00-00T00:00:00Z".to_owned()),
@@ -19035,10 +19152,10 @@ fn run_15() -> ls::Result<()> {
                     "oneBody::IssuesUpdateMilestoneBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -19064,14 +19181,14 @@ fn run_15() -> ls::Result<()> {
                 vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
             ls::Value::Text("8210-06-18T92:31:19.5396160Z".to_owned()),
@@ -19081,16 +19198,16 @@ fn run_15() -> ls::Result<()> {
                     "oneBody::IssuesUpdateMilestoneBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                 ],
             ),
         ];
@@ -19116,7 +19233,7 @@ fn run_15() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("Hello, World!".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             concat!(
                                 "lawtwin.github.model::type::MilestoneState::Mi",
@@ -19125,8 +19242,8 @@ fn run_15() -> ls::Result<()> {
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
             ls::Value::Text("3643-92-40T78:65:71.6386626Z".to_owned()),
@@ -19136,9 +19253,9 @@ fn run_15() -> ls::Result<()> {
                     "oneBody::IssuesUpdateMilestoneBody",
                 ),
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             concat!(
                                 "lawtwin.github.model::type::MilestoneState::Mi",
@@ -19147,8 +19264,8 @@ fn run_15() -> ls::Result<()> {
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                 ],
             ),
         ];
@@ -19173,13 +19290,13 @@ fn run_15() -> ls::Result<()> {
                 ),
                 vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -19192,16 +19309,16 @@ fn run_15() -> ls::Result<()> {
                 ),
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                 ],
@@ -19229,18 +19346,18 @@ fn run_15() -> ls::Result<()> {
                 vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -19253,22 +19370,22 @@ fn run_15() -> ls::Result<()> {
                 ),
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                             vec![],
                         )],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                 ],
@@ -19372,9 +19489,9 @@ fn run_15() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -19385,14 +19502,14 @@ fn run_15() -> ls::Result<()> {
                         vec![
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -19403,7 +19520,7 @@ fn run_15() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("Hello, World!".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -19412,8 +19529,8 @@ fn run_15() -> ls::Result<()> {
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -19423,13 +19540,13 @@ fn run_15() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("λ日本語😀".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -19442,18 +19559,18 @@ fn run_15() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -19466,7 +19583,7 @@ fn run_15() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -19476,11 +19593,11 @@ fn run_15() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -19492,9 +19609,15 @@ fn run_15() -> ls::Result<()> {
                         ),
                         vec![
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -19505,14 +19628,14 @@ fn run_15() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -19523,7 +19646,7 @@ fn run_15() -> ls::Result<()> {
                         vec![
                             ls::Value::Text("".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -19533,11 +19656,11 @@ fn run_15() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],
@@ -19655,10 +19778,10 @@ fn run_15() -> ls::Result<()> {
                             "oneBody::IssuesUpdateMilestoneBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
@@ -19667,16 +19790,16 @@ fn run_15() -> ls::Result<()> {
                             "oneBody::IssuesUpdateMilestoneBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -19685,9 +19808,9 @@ fn run_15() -> ls::Result<()> {
                             "oneBody::IssuesUpdateMilestoneBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -19696,8 +19819,8 @@ fn run_15() -> ls::Result<()> {
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -19707,16 +19830,16 @@ fn run_15() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                         ],
@@ -19728,22 +19851,22 @@ fn run_15() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                         ],
@@ -19755,11 +19878,11 @@ fn run_15() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -19769,11 +19892,11 @@ fn run_15() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                         ],
@@ -19784,10 +19907,19 @@ fn run_15() -> ls::Result<()> {
                             "oneBody::IssuesUpdateMilestoneBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
@@ -19796,16 +19928,16 @@ fn run_15() -> ls::Result<()> {
                             "oneBody::IssuesUpdateMilestoneBody",
                         ),
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                         ],
                     ),
                     ls::construct_data(
@@ -19815,11 +19947,11 @@ fn run_15() -> ls::Result<()> {
                         ),
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     concat!(
                                         "lawtwin.github.model::type::MilestoneState::Mi",
@@ -19829,11 +19961,11 @@ fn run_15() -> ls::Result<()> {
                                 )],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                         ],

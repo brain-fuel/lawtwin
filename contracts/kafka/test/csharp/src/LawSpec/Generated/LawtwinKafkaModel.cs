@@ -440,11 +440,11 @@ public static class LawtwinKafkaModel
             }
             if (Runtime.Truth(ls1))
             {
-                result = Schema.Construct("Maybe::Just", Fn.List<Value>(Scalar.Convert(argument0, Scalar.TypeOf("IntSize"), 64)), Scalar.TypeOf("Maybe (IntSize)"), schema);
+                result = Schema.Construct("Maybe::Present", Fn.List<Value>(Scalar.Convert(argument0, Scalar.TypeOf("IntSize"), 64)), Scalar.TypeOf("Maybe (IntSize)"), schema);
             }
             else
             {
-                result = Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (IntSize)"), schema);
+                result = Schema.Construct("Maybe::Absent", Fn.List<Value>(), Scalar.TypeOf("Maybe (IntSize)"), schema);
             }
             return result;
         });
@@ -512,11 +512,11 @@ public static class LawtwinKafkaModel
             }
             if (Runtime.Truth(ls1))
             {
-                result = Schema.Construct("Maybe::Just", Fn.List<Value>(Scalar.Convert(argument0, Scalar.TypeOf("UIntPtr"), 64)), Scalar.TypeOf("Maybe (UIntPtr)"), schema);
+                result = Schema.Construct("Maybe::Present", Fn.List<Value>(Scalar.Convert(argument0, Scalar.TypeOf("UIntPtr"), 64)), Scalar.TypeOf("Maybe (UIntPtr)"), schema);
             }
             else
             {
-                result = Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (UIntPtr)"), schema);
+                result = Schema.Construct("Maybe::Absent", Fn.List<Value>(), Scalar.TypeOf("Maybe (UIntPtr)"), schema);
             }
             return result;
         });
@@ -540,11 +540,11 @@ public static class LawtwinKafkaModel
             }
             if (Runtime.Truth(ls1))
             {
-                result = Schema.Construct("Maybe::Just", Fn.List<Value>(Scalar.Convert(argument0, Scalar.TypeOf("UIntSize"), 64)), Scalar.TypeOf("Maybe (UIntSize)"), schema);
+                result = Schema.Construct("Maybe::Present", Fn.List<Value>(Scalar.Convert(argument0, Scalar.TypeOf("UIntSize"), 64)), Scalar.TypeOf("Maybe (UIntSize)"), schema);
             }
             else
             {
-                result = Schema.Construct("Maybe::Nothing", Fn.List<Value>(), Scalar.TypeOf("Maybe (UIntSize)"), schema);
+                result = Schema.Construct("Maybe::Absent", Fn.List<Value>(), Scalar.TypeOf("Maybe (UIntSize)"), schema);
             }
             return result;
         });

@@ -175,7 +175,7 @@ ls.use_virtual_clock()
 # lawtwin.petstore.model::type::Pet::Pet _matchfield0__id
 # _matchfield1__name _matchfield2__category _matchfield3__photoUrls
 # _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match
-# (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+# (_let3__it) { Maybe::Absent -> false; Maybe::Present
 # _match4__1___match__lawspecSelection0x0_0 -> (attempt (getPetById
 # (_match4__1___match__lawspecSelection0x0_0)) ==
 # Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for
@@ -482,8 +482,8 @@ def _lawspec_case_petapi_a_created_pet_reads_back_native(_values):
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -536,7 +536,7 @@ def _lawspec_case_petapi_a_created_pet_reads_back_native(_values):
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -546,7 +546,7 @@ def _lawspec_case_petapi_a_created_pet_reads_back_native(_values):
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -1223,7 +1223,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -1234,7 +1234,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -1254,7 +1254,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary0():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -1264,7 +1264,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -1329,8 +1329,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary0():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -1383,7 +1383,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary0():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -1393,7 +1393,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary0():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -2057,7 +2057,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -2068,7 +2068,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -2081,7 +2081,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary1():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -2091,7 +2091,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary1():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -2122,7 +2122,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary1():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -2132,7 +2132,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -2207,8 +2207,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary1():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -2261,7 +2261,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary1():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -2271,7 +2271,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary1():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -2935,7 +2935,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -2969,7 +2969,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -2992,7 +2992,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary2():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -3002,7 +3002,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -3077,8 +3077,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary2():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -3131,7 +3131,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary2():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -3141,7 +3141,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary2():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -3805,7 +3805,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -3819,7 +3819,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -3832,7 +3832,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary3():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -3842,7 +3842,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary3():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -3870,7 +3870,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary3():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -3880,7 +3880,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -3955,8 +3955,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary3():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -4009,7 +4009,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary3():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -4019,7 +4019,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary3():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -4683,7 +4683,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -4697,7 +4697,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -4720,7 +4720,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary4():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -4730,7 +4730,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -4795,8 +4795,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary4():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -4849,7 +4849,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary4():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -4859,7 +4859,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary4():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -5523,7 +5523,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -5534,7 +5534,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -5547,7 +5547,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary5():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -5557,7 +5557,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary5():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -5585,7 +5585,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary5():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -5595,7 +5595,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -5670,8 +5670,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary5():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -5724,7 +5724,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary5():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -5734,7 +5734,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary5():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -6398,7 +6398,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -6409,7 +6409,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -6432,7 +6432,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary6():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -6442,7 +6442,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -6517,8 +6517,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary6():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -6571,7 +6571,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary6():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -6581,7 +6581,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary6():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -7245,7 +7245,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -7259,7 +7259,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -7272,7 +7272,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary7():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -7282,7 +7282,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary7():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -7335,7 +7335,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary7():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -7345,7 +7345,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -7420,8 +7420,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary7():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -7474,7 +7474,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary7():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -7484,7 +7484,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary7():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -8148,7 +8148,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary8():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -8159,7 +8159,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -8228,7 +8228,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary8():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -8238,7 +8238,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -8303,8 +8303,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary8():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -8357,7 +8357,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary8():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -8367,7 +8367,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary8():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -9031,7 +9031,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary9():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -9042,7 +9042,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -9055,7 +9055,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary9():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -9065,7 +9065,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary9():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -9101,7 +9101,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary9():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -9111,7 +9111,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -9186,8 +9186,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary9():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -9240,7 +9240,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary9():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -9250,7 +9250,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary9():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -9914,7 +9914,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary10():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -9948,7 +9948,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -9983,7 +9983,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary10():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -9993,7 +9993,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -10068,8 +10068,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary10():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -10122,7 +10122,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary10():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -10132,7 +10132,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary10():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -10796,7 +10796,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary11():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -10810,7 +10810,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -10823,7 +10823,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary11():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -10833,7 +10833,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary11():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -10866,7 +10866,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary11():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -10876,7 +10876,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -10951,8 +10951,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary11():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -11005,7 +11005,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary11():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -11015,7 +11015,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary11():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -11679,7 +11679,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary12():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -11693,7 +11693,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -11722,7 +11722,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary12():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -11732,7 +11732,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -11797,8 +11797,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary12():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -11851,7 +11851,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary12():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -11861,7 +11861,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary12():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -12525,7 +12525,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary13():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -12536,7 +12536,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -12549,7 +12549,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary13():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -12559,7 +12559,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary13():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -12587,7 +12587,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary13():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -12597,7 +12597,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -12672,8 +12672,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary13():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -12726,7 +12726,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary13():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -12736,7 +12736,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary13():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -13400,7 +13400,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary14():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -13411,7 +13411,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -13434,7 +13434,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary14():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -13444,7 +13444,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -13519,8 +13519,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary14():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -13573,7 +13573,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary14():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -13583,7 +13583,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary14():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -14247,7 +14247,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary15():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -14261,7 +14261,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -14274,7 +14274,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary15():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -14284,7 +14284,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary15():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -14312,7 +14312,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary15():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -14322,7 +14322,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -14397,8 +14397,8 @@ def test_petapi_a_created_pet_reads_back_native__boundary15():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -14451,7 +14451,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary15():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -14461,7 +14461,7 @@ def test_petapi_a_created_pet_reads_back_native__boundary15():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -15186,8 +15186,8 @@ def test_petapi_a_created_pet_reads_back_native__property(_input0):
                     + "_matchfield4__tags "
                     + "_matchfield5__status -> "
                     + "_matchfield0__id } in match "
-                    + "(_let3__it) { Maybe::Nothing  -> "
-                    + "false; Maybe::Just "
+                    + "(_let3__it) { Maybe::Absent  -> "
+                    + "false; Maybe::Present "
                     + "_match4__1___match__lawspecSelection0x"
                     + "0_0 -> (attempt (getPetById "
                     + "(_match4__1___match__lawspecSelection0"
@@ -15256,7 +15256,7 @@ def test_petapi_a_created_pet_reads_back_native__property(_input0):
                                                     _m4,
                                                     [
                                                         [
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             lambda: (
                                                                 ls.convert(
                                                                     False,
@@ -15266,7 +15266,7 @@ def test_petapi_a_created_pet_reads_back_native__property(_input0):
                                                             ),
                                                         ],
                                                         [
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             lambda _m11: (
                                                                 _lawspec_schema.equal(
                                                                     _schema.Named(
@@ -15952,7 +15952,7 @@ def test_petapi_a_created_pet_reads_back_native__property(_input0):
 # lawtwin.petstore.model::type::Pet::Pet _matchfield0__id
 # _matchfield1__name _matchfield2__category _matchfield3__photoUrls
 # _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match
-# (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+# (_let3__it) { Maybe::Absent -> false; Maybe::Present
 # _match4__1___match__lawspecSelection0x0_0 -> (attempt (getPetById
 # (_match4__1___match__lawspecSelection0x0_0)) ==
 # Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for
@@ -16228,8 +16228,8 @@ def _lawspec_case_petapi_a_created_pet_reads_back_reference(_values):
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -16271,7 +16271,7 @@ def _lawspec_case_petapi_a_created_pet_reads_back_reference(_values):
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -16281,7 +16281,7 @@ def _lawspec_case_petapi_a_created_pet_reads_back_reference(_values):
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -16890,7 +16890,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -16901,7 +16901,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -16921,7 +16921,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary0():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -16931,7 +16931,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -16960,8 +16960,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary0():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -17003,7 +17003,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary0():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -17013,7 +17013,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary0():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -17609,7 +17609,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -17620,7 +17620,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -17633,7 +17633,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary1():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -17643,7 +17643,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary1():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -17674,7 +17674,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary1():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -17684,7 +17684,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -17723,8 +17723,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary1():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -17766,7 +17766,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary1():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -17776,7 +17776,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary1():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -18372,7 +18372,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -18406,7 +18406,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -18429,7 +18429,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary2():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -18439,7 +18439,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -18478,8 +18478,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary2():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -18521,7 +18521,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary2():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -18531,7 +18531,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary2():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -19127,7 +19127,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -19141,7 +19141,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -19154,7 +19154,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary3():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -19164,7 +19164,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary3():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -19192,7 +19192,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary3():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -19202,7 +19202,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -19241,8 +19241,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary3():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -19284,7 +19284,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary3():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -19294,7 +19294,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary3():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -19890,7 +19890,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -19904,7 +19904,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -19927,7 +19927,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary4():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -19937,7 +19937,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -19966,8 +19966,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary4():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -20009,7 +20009,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary4():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -20019,7 +20019,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary4():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -20615,7 +20615,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -20626,7 +20626,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -20639,7 +20639,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary5():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -20649,7 +20649,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary5():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -20677,7 +20677,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary5():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -20687,7 +20687,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -20726,8 +20726,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary5():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -20769,7 +20769,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary5():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -20779,7 +20779,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary5():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -21375,7 +21375,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -21386,7 +21386,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -21409,7 +21409,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary6():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -21419,7 +21419,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -21458,8 +21458,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary6():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -21501,7 +21501,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary6():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -21511,7 +21511,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary6():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -22107,7 +22107,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -22121,7 +22121,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -22134,7 +22134,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary7():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -22144,7 +22144,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary7():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -22197,7 +22197,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary7():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -22207,7 +22207,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -22246,8 +22246,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary7():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -22289,7 +22289,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary7():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -22299,7 +22299,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary7():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -22895,7 +22895,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary8():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -22906,7 +22906,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -22975,7 +22975,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary8():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -22985,7 +22985,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -23014,8 +23014,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary8():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -23057,7 +23057,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary8():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -23067,7 +23067,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary8():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -23663,7 +23663,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary9():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -23674,7 +23674,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -23687,7 +23687,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary9():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -23697,7 +23697,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary9():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -23733,7 +23733,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary9():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -23743,7 +23743,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -23782,8 +23782,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary9():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -23825,7 +23825,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary9():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -23835,7 +23835,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary9():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -24431,7 +24431,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary10():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -24465,7 +24465,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -24500,7 +24500,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary10():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -24510,7 +24510,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -24549,8 +24549,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary10():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -24592,7 +24592,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary10():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -24602,7 +24602,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary10():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -25198,7 +25198,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary11():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -25212,7 +25212,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -25225,7 +25225,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary11():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -25235,7 +25235,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary11():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -25268,7 +25268,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary11():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -25278,7 +25278,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -25317,8 +25317,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary11():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -25360,7 +25360,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary11():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -25370,7 +25370,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary11():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -25966,7 +25966,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary12():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -25980,7 +25980,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -26009,7 +26009,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary12():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -26019,7 +26019,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -26048,8 +26048,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary12():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -26091,7 +26091,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary12():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -26101,7 +26101,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary12():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -26697,7 +26697,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary13():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -26708,7 +26708,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -26721,7 +26721,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary13():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -26731,7 +26731,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary13():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -26759,7 +26759,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary13():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -26769,7 +26769,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -26808,8 +26808,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary13():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -26851,7 +26851,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary13():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -26861,7 +26861,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary13():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -27457,7 +27457,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary14():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -27468,7 +27468,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -27491,7 +27491,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary14():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -27501,7 +27501,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -27540,8 +27540,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary14():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -27583,7 +27583,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary14():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -27593,7 +27593,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary14():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -28189,7 +28189,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary15():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -28203,7 +28203,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -28216,7 +28216,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary15():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -28226,7 +28226,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary15():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -28254,7 +28254,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary15():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -28264,7 +28264,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -28303,8 +28303,8 @@ def test_petapi_a_created_pet_reads_back_reference__boundary15():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getPetById "
             + "(_match4__1___match__lawspecSelection0"
@@ -28346,7 +28346,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary15():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -28356,7 +28356,7 @@ def test_petapi_a_created_pet_reads_back_reference__boundary15():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -28973,8 +28973,8 @@ def test_petapi_a_created_pet_reads_back_reference__property(_input0):
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getPetById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -29027,7 +29027,7 @@ def test_petapi_a_created_pet_reads_back_reference__property(_input0):
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -29037,7 +29037,7 @@ def test_petapi_a_created_pet_reads_back_reference__property(_input0):
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -29698,10 +29698,10 @@ def test_petapi_a_created_pet_reads_back_reference__property(_input0):
 # lawtwin.petstore.model::type::Pet::Pet _matchfield0__id
 # _matchfield1__name _matchfield2__category _matchfield3__photoUrls
 # _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match
-# (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+# (_let3__it) { Maybe::Absent -> false; Maybe::Present
 # _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone = attempt
 # (deletePet (_match4__1___match__lawspecSelection0x0_0)
-# (Maybe::Nothing())) in (attempt (getPetById
+# (Maybe::Absent())) in (attempt (getPetById
 # (_match4__1___match__lawspecSelection0x0_0)) ==
 # Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } }
 # = true end for all
@@ -30007,13 +30007,13 @@ def _lawspec_case_petapi_a_deleted_pet_is_not_found_native(_values):
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -30065,7 +30065,7 @@ def _lawspec_case_petapi_a_deleted_pet_is_not_found_native(_values):
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -30075,7 +30075,7 @@ def _lawspec_case_petapi_a_deleted_pet_is_not_found_native(_values):
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -30565,9 +30565,9 @@ def _lawspec_case_petapi_a_deleted_pet_is_not_found_native(_values):
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -31051,7 +31051,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -31062,7 +31062,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -31082,7 +31082,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary0():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -31092,7 +31092,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -31157,13 +31157,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary0():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -31215,7 +31215,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary0():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -31225,7 +31225,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary0():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -31715,9 +31715,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary0():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -32188,7 +32188,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -32199,7 +32199,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -32212,7 +32212,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary1():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -32222,7 +32222,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary1():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -32253,7 +32253,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary1():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -32263,7 +32263,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -32338,13 +32338,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary1():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -32396,7 +32396,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary1():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -32406,7 +32406,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary1():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -32896,9 +32896,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary1():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -33369,7 +33369,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -33403,7 +33403,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -33426,7 +33426,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary2():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -33436,7 +33436,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -33511,13 +33511,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary2():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -33569,7 +33569,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary2():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -33579,7 +33579,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary2():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -34069,9 +34069,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary2():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -34542,7 +34542,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -34556,7 +34556,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -34569,7 +34569,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary3():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -34579,7 +34579,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary3():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -34607,7 +34607,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary3():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -34617,7 +34617,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -34692,13 +34692,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary3():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -34750,7 +34750,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary3():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -34760,7 +34760,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary3():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -35250,9 +35250,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary3():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -35723,7 +35723,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -35737,7 +35737,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -35760,7 +35760,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary4():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -35770,7 +35770,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -35835,13 +35835,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary4():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -35893,7 +35893,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary4():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -35903,7 +35903,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary4():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -36393,9 +36393,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary4():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -36866,7 +36866,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -36877,7 +36877,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -36890,7 +36890,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary5():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -36900,7 +36900,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary5():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -36928,7 +36928,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary5():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -36938,7 +36938,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -37013,13 +37013,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary5():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -37071,7 +37071,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary5():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -37081,7 +37081,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary5():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -37571,9 +37571,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary5():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -38044,7 +38044,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -38055,7 +38055,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -38078,7 +38078,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary6():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -38088,7 +38088,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -38163,13 +38163,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary6():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -38221,7 +38221,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary6():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -38231,7 +38231,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary6():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -38721,9 +38721,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary6():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -39194,7 +39194,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -39208,7 +39208,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -39221,7 +39221,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary7():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -39231,7 +39231,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary7():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -39284,7 +39284,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary7():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -39294,7 +39294,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -39369,13 +39369,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary7():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -39427,7 +39427,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary7():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -39437,7 +39437,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary7():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -39927,9 +39927,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary7():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -40400,7 +40400,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary8():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -40411,7 +40411,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -40480,7 +40480,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary8():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -40490,7 +40490,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -40555,13 +40555,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary8():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -40613,7 +40613,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary8():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -40623,7 +40623,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary8():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -41113,9 +41113,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary8():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -41586,7 +41586,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary9():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -41597,7 +41597,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -41610,7 +41610,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary9():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -41620,7 +41620,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary9():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -41656,7 +41656,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary9():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -41666,7 +41666,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -41741,13 +41741,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary9():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -41799,7 +41799,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary9():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -41809,7 +41809,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary9():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -42299,9 +42299,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary9():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -42772,7 +42772,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary10():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -42806,7 +42806,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -42841,7 +42841,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary10():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -42851,7 +42851,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -42926,13 +42926,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary10():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -42984,7 +42984,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary10():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -42994,7 +42994,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary10():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -43484,9 +43484,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary10():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -43957,7 +43957,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary11():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -43971,7 +43971,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -43984,7 +43984,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary11():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -43994,7 +43994,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary11():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -44027,7 +44027,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary11():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -44037,7 +44037,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -44112,13 +44112,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary11():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -44170,7 +44170,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary11():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -44180,7 +44180,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary11():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -44670,9 +44670,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary11():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -45143,7 +45143,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary12():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -45157,7 +45157,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -45186,7 +45186,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary12():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -45196,7 +45196,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -45261,13 +45261,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary12():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -45319,7 +45319,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary12():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -45329,7 +45329,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary12():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -45819,9 +45819,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary12():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -46292,7 +46292,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary13():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -46303,7 +46303,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -46316,7 +46316,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary13():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -46326,7 +46326,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary13():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -46354,7 +46354,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary13():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -46364,7 +46364,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -46439,13 +46439,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary13():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -46497,7 +46497,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary13():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -46507,7 +46507,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary13():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -46997,9 +46997,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary13():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -47470,7 +47470,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary14():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -47481,7 +47481,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -47504,7 +47504,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary14():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -47514,7 +47514,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -47589,13 +47589,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary14():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -47647,7 +47647,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary14():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -47657,7 +47657,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary14():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -48147,9 +48147,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary14():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -48620,7 +48620,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary15():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -48634,7 +48634,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -48647,7 +48647,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary15():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -48657,7 +48657,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary15():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -48685,7 +48685,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary15():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -48695,7 +48695,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -48770,13 +48770,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary15():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -48828,7 +48828,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary15():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -48838,7 +48838,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary15():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -49328,9 +49328,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__boundary15():
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -49862,13 +49862,13 @@ def test_petapi_a_deleted_pet_is_not_found_native__property(_input0):
                     + "_matchfield4__tags "
                     + "_matchfield5__status -> "
                     + "_matchfield0__id } in match "
-                    + "(_let3__it) { Maybe::Nothing  -> "
-                    + "false; Maybe::Just "
+                    + "(_let3__it) { Maybe::Absent  -> "
+                    + "false; Maybe::Present "
                     + "_match4__1___match__lawspecSelection0x"
                     + "0_0 -> let _let5__gone = attempt "
                     + "(deletePet "
                     + "(_match4__1___match__lawspecSelection0"
-                    + "x0_0) (Maybe::Nothing())) in (attempt "
+                    + "x0_0) (Maybe::Absent())) in (attempt "
                     + "(getPetById "
                     + "(_match4__1___match__lawspecSelection0"
                     + "x0_0)) == "
@@ -49936,7 +49936,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__property(_input0):
                                                     _m4,
                                                     [
                                                         [
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             lambda: (
                                                                 ls.convert(
                                                                     False,
@@ -49946,7 +49946,7 @@ def test_petapi_a_deleted_pet_is_not_found_native__property(_input0):
                                                             ),
                                                         ],
                                                         [
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             lambda _m11: (
                                                                 (lambda _m12: (
                                                                     _lawspec_schema.equal(
@@ -50436,9 +50436,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__property(_input0):
                                                                                                         ),
                                                                                                         (
                                                                                                             "Mayb"
-                                                                                                            "e::N"
-                                                                                                            "othi"
-                                                                                                            "ng"
+                                                                                                            "e::A"
+                                                                                                            "bsen"
+                                                                                                            "t"
                                                                                                         ),
                                                                                                         [],
                                                                                                         64,
@@ -50929,10 +50929,10 @@ def test_petapi_a_deleted_pet_is_not_found_native__property(_input0):
 # lawtwin.petstore.model::type::Pet::Pet _matchfield0__id
 # _matchfield1__name _matchfield2__category _matchfield3__photoUrls
 # _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match
-# (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+# (_let3__it) { Maybe::Absent -> false; Maybe::Present
 # _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone = attempt
 # (deletePet (_match4__1___match__lawspecSelection0x0_0)
-# (Maybe::Nothing())) in (attempt (getPetById
+# (Maybe::Absent())) in (attempt (getPetById
 # (_match4__1___match__lawspecSelection0x0_0)) ==
 # Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } }
 # = true end for all
@@ -51207,13 +51207,13 @@ def _lawspec_case_petapi_a_deleted_pet_is_not_found_reference(_values):
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -51254,7 +51254,7 @@ def _lawspec_case_petapi_a_deleted_pet_is_not_found_reference(_values):
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -51264,7 +51264,7 @@ def _lawspec_case_petapi_a_deleted_pet_is_not_found_reference(_values):
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -51751,9 +51751,9 @@ def _lawspec_case_petapi_a_deleted_pet_is_not_found_reference(_values):
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -52172,7 +52172,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -52183,7 +52183,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -52203,7 +52203,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary0():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -52213,7 +52213,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -52242,13 +52242,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary0():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -52289,7 +52289,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary0():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -52299,7 +52299,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary0():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -52786,9 +52786,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary0():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -53194,7 +53194,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -53205,7 +53205,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -53218,7 +53218,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary1():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -53228,7 +53228,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary1():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -53259,7 +53259,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary1():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -53269,7 +53269,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -53308,13 +53308,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary1():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -53355,7 +53355,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary1():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -53365,7 +53365,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary1():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -53852,9 +53852,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary1():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -54260,7 +54260,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -54294,7 +54294,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -54317,7 +54317,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary2():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -54327,7 +54327,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -54366,13 +54366,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary2():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -54413,7 +54413,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary2():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -54423,7 +54423,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary2():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -54910,9 +54910,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary2():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -55318,7 +55318,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -55332,7 +55332,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -55345,7 +55345,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary3():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -55355,7 +55355,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary3():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -55383,7 +55383,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary3():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -55393,7 +55393,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -55432,13 +55432,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary3():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -55479,7 +55479,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary3():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -55489,7 +55489,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary3():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -55976,9 +55976,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary3():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -56384,7 +56384,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -56398,7 +56398,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -56421,7 +56421,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary4():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -56431,7 +56431,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -56460,13 +56460,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary4():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -56507,7 +56507,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary4():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -56517,7 +56517,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary4():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -57004,9 +57004,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary4():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -57412,7 +57412,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -57423,7 +57423,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -57436,7 +57436,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary5():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -57446,7 +57446,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary5():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -57474,7 +57474,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary5():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -57484,7 +57484,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -57523,13 +57523,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary5():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -57570,7 +57570,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary5():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -57580,7 +57580,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary5():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -58067,9 +58067,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary5():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -58475,7 +58475,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -58486,7 +58486,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -58509,7 +58509,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary6():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -58519,7 +58519,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -58558,13 +58558,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary6():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -58605,7 +58605,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary6():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -58615,7 +58615,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary6():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -59102,9 +59102,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary6():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -59510,7 +59510,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -59524,7 +59524,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -59537,7 +59537,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary7():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -59547,7 +59547,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary7():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -59600,7 +59600,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary7():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -59610,7 +59610,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -59649,13 +59649,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary7():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -59696,7 +59696,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary7():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -59706,7 +59706,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary7():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -60193,9 +60193,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary7():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -60601,7 +60601,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary8():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -60612,7 +60612,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -60681,7 +60681,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary8():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -60691,7 +60691,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -60720,13 +60720,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary8():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -60767,7 +60767,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary8():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -60777,7 +60777,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary8():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -61264,9 +61264,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary8():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -61672,7 +61672,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary9():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -61683,7 +61683,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -61696,7 +61696,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary9():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -61706,7 +61706,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary9():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -61742,7 +61742,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary9():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -61752,7 +61752,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -61791,13 +61791,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary9():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -61838,7 +61838,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary9():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -61848,7 +61848,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary9():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -62335,9 +62335,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary9():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -62743,7 +62743,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary10():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -62777,7 +62777,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -62812,7 +62812,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary10():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -62822,7 +62822,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -62861,13 +62861,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary10():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -62908,7 +62908,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary10():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -62918,7 +62918,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary10():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -63405,9 +63405,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary10():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -63813,7 +63813,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary11():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -63827,7 +63827,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -63840,7 +63840,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary11():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -63850,7 +63850,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary11():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -63883,7 +63883,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary11():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -63893,7 +63893,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -63932,13 +63932,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary11():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -63979,7 +63979,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary11():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -63989,7 +63989,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary11():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -64476,9 +64476,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary11():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -64884,7 +64884,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary12():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -64898,7 +64898,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -64927,7 +64927,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary12():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -64937,7 +64937,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -64966,13 +64966,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary12():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -65013,7 +65013,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary12():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -65023,7 +65023,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary12():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -65510,9 +65510,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary12():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -65918,7 +65918,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary13():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -65929,7 +65929,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -65942,7 +65942,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary13():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -65952,7 +65952,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary13():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -65980,7 +65980,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary13():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -65990,7 +65990,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -66029,13 +66029,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary13():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -66076,7 +66076,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary13():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -66086,7 +66086,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary13():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -66573,9 +66573,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary13():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -66981,7 +66981,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary14():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -66992,7 +66992,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -67015,7 +67015,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary14():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -67025,7 +67025,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -67064,13 +67064,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary14():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -67111,7 +67111,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary14():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -67121,7 +67121,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary14():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -67608,9 +67608,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary14():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -68016,7 +68016,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary15():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -68030,7 +68030,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -68043,7 +68043,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary15():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -68053,7 +68053,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary15():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -68081,7 +68081,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary15():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -68091,7 +68091,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -68130,13 +68130,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary15():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deletePet "
             + "(_match4__1___match__lawspecSelection0"
-            + "x0_0) (Maybe::Nothing())) in (attempt "
+            + "x0_0) (Maybe::Absent())) in (attempt "
             + "(getPetById "
             + "(_match4__1___match__lawspecSelection0"
             + "x0_0)) == "
@@ -68177,7 +68177,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary15():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -68187,7 +68187,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary15():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.equal(
@@ -68674,9 +68674,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__boundary15():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::N"
-                                                                                                    "othi"
-                                                                                                    "ng"
+                                                                                                    "e::A"
+                                                                                                    "bsen"
+                                                                                                    "t"
                                                                                                 ),
                                                                                                 [],
                                                                                                 64,
@@ -69103,13 +69103,13 @@ def test_petapi_a_deleted_pet_is_not_found_reference__property(_input0):
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deletePet "
                 + "(_match4__1___match__lawspecSelection0"
-                + "x0_0) (Maybe::Nothing())) in (attempt "
+                + "x0_0) (Maybe::Absent())) in (attempt "
                 + "(getPetById "
                 + "(_match4__1___match__lawspecSelection0"
                 + "x0_0)) == "
@@ -69161,7 +69161,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__property(_input0):
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -69171,7 +69171,7 @@ def test_petapi_a_deleted_pet_is_not_found_reference__property(_input0):
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.equal(
@@ -69661,9 +69661,9 @@ def test_petapi_a_deleted_pet_is_not_found_reference__property(_input0):
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::N"
-                                                                                                        "othi"
-                                                                                                        "ng"
+                                                                                                        "e::A"
+                                                                                                        "bsen"
+                                                                                                        "t"
                                                                                                     ),
                                                                                                     [],
                                                                                                     64,
@@ -70133,10 +70133,10 @@ def test_petapi_a_deleted_pet_is_not_found_reference__property(_input0):
 # lawtwin.petstore.model::type::Pet::Pet _matchfield0__id
 # _matchfield1__name _matchfield2__category _matchfield3__photoUrls
 # _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match
-# (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+# (_let3__it) { Maybe::Absent -> false; Maybe::Present
 # _match4__1___match__lawspecSelection0x0_0 -> let _let5__it = attempt
 # (updatePet (let _letfield12__replacement =
-# Maybe::Just(_match4__1___match__lawspecSelection0x0_0) in match
+# Maybe::Present(_match4__1___match__lawspecSelection0x0_0) in match
 # (_input1) { lawtwin.petstore.model::type::Pet::Pet _matchfield6__id
 # _matchfield7__name _matchfield8__category _matchfield9__photoUrls
 # _matchfield10__tags _matchfield11__status ->
@@ -70691,14 +70691,15 @@ def _lawspec_case_petapi_a_replaced_pet_reads_back_as_replaced(_values):
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -70767,7 +70768,7 @@ def _lawspec_case_petapi_a_replaced_pet_reads_back_as_replaced(_values):
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -70777,7 +70778,7 @@ def _lawspec_case_petapi_a_replaced_pet_reads_back_as_replaced(_values):
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -71388,8 +71389,9 @@ def _lawspec_case_petapi_a_replaced_pet_reads_back_as_replaced(_values):
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -71899,7 +71901,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -71910,7 +71912,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -71930,7 +71932,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary0():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -71940,7 +71942,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -71955,7 +71957,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -71966,7 +71968,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -71986,7 +71988,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary0():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -71996,7 +71998,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -72062,14 +72064,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary0():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -72138,7 +72141,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary0():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -72148,7 +72151,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary0():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -72759,8 +72762,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary0():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -73257,7 +73261,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -73268,7 +73272,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -73281,7 +73285,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -73291,7 +73295,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -73322,7 +73326,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -73332,7 +73336,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -73357,7 +73361,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -73368,7 +73372,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -73381,7 +73385,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -73391,7 +73395,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -73422,7 +73426,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -73432,7 +73436,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -73508,14 +73512,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -73584,7 +73589,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -73594,7 +73599,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -74205,8 +74210,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary1():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -74703,7 +74709,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -74737,7 +74743,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -74760,7 +74766,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary2():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -74770,7 +74776,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -74795,7 +74801,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -74829,7 +74835,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -74852,7 +74858,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary2():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -74862,7 +74868,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -74938,14 +74944,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary2():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -75014,7 +75021,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary2():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -75024,7 +75031,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary2():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -75635,8 +75642,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary2():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -76133,7 +76141,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -76147,7 +76155,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -76160,7 +76168,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -76170,7 +76178,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -76198,7 +76206,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -76208,7 +76216,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -76233,7 +76241,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -76247,7 +76255,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -76260,7 +76268,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -76270,7 +76278,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -76298,7 +76306,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -76308,7 +76316,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -76384,14 +76392,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -76460,7 +76469,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -76470,7 +76479,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -77081,8 +77090,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary3():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -77579,7 +77589,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -77593,7 +77603,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -77616,7 +77626,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary4():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -77626,7 +77636,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -77641,7 +77651,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -77655,7 +77665,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -77678,7 +77688,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary4():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -77688,7 +77698,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -77754,14 +77764,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary4():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -77830,7 +77841,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary4():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -77840,7 +77851,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary4():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -78451,8 +78462,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary4():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -78949,7 +78961,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -78960,7 +78972,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -78973,7 +78985,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -78983,7 +78995,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -79011,7 +79023,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -79021,7 +79033,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -79046,7 +79058,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -79057,7 +79069,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -79070,7 +79082,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -79080,7 +79092,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -79108,7 +79120,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -79118,7 +79130,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -79194,14 +79206,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -79270,7 +79283,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -79280,7 +79293,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -79891,8 +79904,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary5():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -80389,7 +80403,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -80400,7 +80414,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -80423,7 +80437,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary6():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -80433,7 +80447,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -80458,7 +80472,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -80469,7 +80483,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -80492,7 +80506,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary6():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -80502,7 +80516,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -80578,14 +80592,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary6():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -80654,7 +80669,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary6():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -80664,7 +80679,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary6():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -81275,8 +81290,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary6():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -81773,7 +81789,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -81787,7 +81803,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -81800,7 +81816,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -81810,7 +81826,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -81863,7 +81879,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -81873,7 +81889,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -81898,7 +81914,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -81912,7 +81928,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -81925,7 +81941,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -81935,7 +81951,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -81988,7 +82004,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -81998,7 +82014,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -82074,14 +82090,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -82150,7 +82167,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -82160,7 +82177,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -82771,8 +82788,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary7():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -83269,7 +83287,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary8():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -83280,7 +83298,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -83349,7 +83367,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary8():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -83359,7 +83377,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -83374,7 +83392,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary8():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -83385,7 +83403,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -83454,7 +83472,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary8():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -83464,7 +83482,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -83530,14 +83548,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary8():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -83606,7 +83625,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary8():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -83616,7 +83635,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary8():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -84227,8 +84246,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary8():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -84725,7 +84745,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -84736,7 +84756,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -84749,7 +84769,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -84759,7 +84779,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -84795,7 +84815,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -84805,7 +84825,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -84830,7 +84850,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -84841,7 +84861,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -84854,7 +84874,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -84864,7 +84884,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -84900,7 +84920,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -84910,7 +84930,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -84986,14 +85006,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -85062,7 +85083,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -85072,7 +85093,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -85683,8 +85704,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary9():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -86181,7 +86203,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary10():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -86215,7 +86237,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -86250,7 +86272,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary10():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -86260,7 +86282,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -86285,7 +86307,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary10():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -86319,7 +86341,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -86354,7 +86376,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary10():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -86364,7 +86386,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -86440,14 +86462,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary10():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -86516,7 +86539,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary10():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -86526,7 +86549,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary10():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -87137,8 +87160,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary10():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -87635,7 +87659,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -87649,7 +87673,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -87662,7 +87686,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -87672,7 +87696,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -87705,7 +87729,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -87715,7 +87739,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -87740,7 +87764,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -87754,7 +87778,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -87767,7 +87791,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -87777,7 +87801,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -87810,7 +87834,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -87820,7 +87844,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -87896,14 +87920,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -87972,7 +87997,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -87982,7 +88007,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -88593,8 +88618,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary11():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -89091,7 +89117,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary12():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -89105,7 +89131,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -89134,7 +89160,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary12():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -89144,7 +89170,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -89159,7 +89185,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary12():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -89173,7 +89199,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -89202,7 +89228,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary12():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -89212,7 +89238,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -89278,14 +89304,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary12():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -89354,7 +89381,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary12():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -89364,7 +89391,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary12():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -89975,8 +90002,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary12():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -90473,7 +90501,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -90484,7 +90512,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -90497,7 +90525,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -90507,7 +90535,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -90535,7 +90563,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -90545,7 +90573,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -90570,7 +90598,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -90581,7 +90609,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -90594,7 +90622,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -90604,7 +90632,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -90632,7 +90660,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -90642,7 +90670,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -90718,14 +90746,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -90794,7 +90823,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -90804,7 +90833,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -91415,8 +91444,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary13():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -91913,7 +91943,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary14():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -91924,7 +91954,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -91947,7 +91977,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary14():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -91957,7 +91987,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -91982,7 +92012,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary14():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -91993,7 +92023,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -92016,7 +92046,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary14():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -92026,7 +92056,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -92102,14 +92132,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary14():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -92178,7 +92209,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary14():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -92188,7 +92219,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary14():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -92799,8 +92830,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary14():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -93297,7 +93329,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -93311,7 +93343,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -93324,7 +93356,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -93334,7 +93366,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -93362,7 +93394,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -93372,7 +93404,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -93397,7 +93429,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -93411,7 +93443,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -93424,7 +93456,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -93434,7 +93466,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -93462,7 +93494,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -93472,7 +93504,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -93548,14 +93580,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -93624,7 +93657,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -93634,7 +93667,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -94245,8 +94278,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__boundary15():
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -94811,14 +94845,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__property(
                     + "_matchfield4__tags "
                     + "_matchfield5__status -> "
                     + "_matchfield0__id } in match "
-                    + "(_let3__it) { Maybe::Nothing  -> "
-                    + "false; Maybe::Just "
+                    + "(_let3__it) { Maybe::Absent  -> "
+                    + "false; Maybe::Present "
                     + "_match4__1___match__lawspecSelection0x"
                     + "0_0 -> let _let5__it = attempt "
                     + "(updatePet (let "
                     + "_letfield12__replacement = "
-                    + "Maybe::Just(_match4__1___match__lawspe"
-                    + "cSelection0x0_0) in match (_input1) { "
+                    + "Maybe::Present(_match4__1___match__law"
+                    + "specSelection0x0_0) in match "
+                    + "(_input1) { "
                     + "lawtwin.petstore.model::type::Pet::Pet"
                     + " _matchfield6__id _matchfield7__name "
                     + "_matchfield8__category "
@@ -94903,7 +94938,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__property(
                                                     _m4,
                                                     [
                                                         [
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             lambda: (
                                                                 ls.convert(
                                                                     False,
@@ -94913,7 +94948,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__property(
                                                             ),
                                                         ],
                                                         [
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             lambda _m11: (
                                                                 (lambda _m12: (
                                                                     _lawspec_schema.match(
@@ -95524,8 +95559,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__property(
                                                                                                     ),
                                                                                                     (
                                                                                                         "Mayb"
-                                                                                                        "e::J"
-                                                                                                        "ust"
+                                                                                                        "e::P"
+                                                                                                        "rese"
+                                                                                                        "nt"
                                                                                                     ),
                                                                                                     [
                                                                                                         _m11,
@@ -96043,10 +96079,10 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__property(
 # lawtwin.petstore.model::type::Pet::Pet _matchfield0__id
 # _matchfield1__name _matchfield2__category _matchfield3__photoUrls
 # _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match
-# (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+# (_let3__it) { Maybe::Absent -> false; Maybe::Present
 # _match4__1___match__lawspecSelection0x0_0 -> let _let5__it = attempt
 # (updatePet (let _letfield12__replacement =
-# Maybe::Just(_match4__1___match__lawspecSelection0x0_0) in match
+# Maybe::Present(_match4__1___match__lawspecSelection0x0_0) in match
 # (_input1) { lawtwin.petstore.model::type::Pet::Pet _matchfield6__id
 # _matchfield7__name _matchfield8__category _matchfield9__photoUrls
 # _matchfield10__tags _matchfield11__status ->
@@ -96570,14 +96606,15 @@ def _lawspec_case_petapi_a_replaced_pet_reads_back_as_replaced_2(_values):
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -96635,7 +96672,7 @@ def _lawspec_case_petapi_a_replaced_pet_reads_back_as_replaced_2(_values):
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -96645,7 +96682,7 @@ def _lawspec_case_petapi_a_replaced_pet_reads_back_as_replaced_2(_values):
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -97253,8 +97290,9 @@ def _lawspec_case_petapi_a_replaced_pet_reads_back_as_replaced_2(_values):
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -97699,7 +97737,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -97710,7 +97748,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -97730,7 +97768,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary0():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -97740,7 +97778,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -97755,7 +97793,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -97766,7 +97804,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -97786,7 +97824,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary0():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -97796,7 +97834,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary0():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -97826,14 +97864,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary0():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -97891,7 +97930,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary0():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -97901,7 +97940,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary0():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -98509,8 +98548,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary0():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -98942,7 +98982,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -98953,7 +98993,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -98966,7 +99006,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -98976,7 +99016,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -99007,7 +99047,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -99017,7 +99057,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -99042,7 +99082,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -99053,7 +99093,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -99066,7 +99106,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -99076,7 +99116,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -99107,7 +99147,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -99117,7 +99157,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -99157,14 +99197,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -99222,7 +99263,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -99232,7 +99273,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -99840,8 +99881,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary1():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -100273,7 +100315,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -100307,7 +100349,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -100330,7 +100372,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary2():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -100340,7 +100382,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -100365,7 +100407,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -100399,7 +100441,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -100422,7 +100464,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary2():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -100432,7 +100474,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary2():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -100472,14 +100514,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary2():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -100537,7 +100580,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary2():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -100547,7 +100590,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary2():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -101155,8 +101198,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary2():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -101588,7 +101632,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -101602,7 +101646,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -101615,7 +101659,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -101625,7 +101669,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -101653,7 +101697,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -101663,7 +101707,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -101688,7 +101732,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -101702,7 +101746,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -101715,7 +101759,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -101725,7 +101769,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -101753,7 +101797,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -101763,7 +101807,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -101803,14 +101847,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -101868,7 +101913,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -101878,7 +101923,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -102486,8 +102531,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary3():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -102919,7 +102965,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -102933,7 +102979,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -102956,7 +103002,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary4():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -102966,7 +103012,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -102981,7 +103027,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -102995,7 +103041,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -103018,7 +103064,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary4():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -103028,7 +103074,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary4():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -103058,14 +103104,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary4():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -103123,7 +103170,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary4():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -103133,7 +103180,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary4():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -103741,8 +103788,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary4():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -104174,7 +104222,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -104185,7 +104233,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -104198,7 +104246,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -104208,7 +104256,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -104236,7 +104284,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -104246,7 +104294,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -104271,7 +104319,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -104282,7 +104330,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -104295,7 +104343,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -104305,7 +104353,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -104333,7 +104381,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -104343,7 +104391,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -104383,14 +104431,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -104448,7 +104497,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -104458,7 +104507,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -105066,8 +105115,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary5():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -105499,7 +105549,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -105510,7 +105560,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -105533,7 +105583,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary6():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -105543,7 +105593,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -105568,7 +105618,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -105579,7 +105629,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -105602,7 +105652,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary6():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -105612,7 +105662,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary6():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -105652,14 +105702,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary6():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -105717,7 +105768,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary6():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -105727,7 +105778,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary6():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -106335,8 +106386,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary6():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -106768,7 +106820,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -106782,7 +106834,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -106795,7 +106847,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -106805,7 +106857,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -106858,7 +106910,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -106868,7 +106920,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -106893,7 +106945,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -106907,7 +106959,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -106920,7 +106972,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -106930,7 +106982,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -106983,7 +107035,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -106993,7 +107045,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -107033,14 +107085,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -107098,7 +107151,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -107108,7 +107161,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -107716,8 +107769,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary7():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -108149,7 +108203,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary8():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -108160,7 +108214,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -108229,7 +108283,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary8():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -108239,7 +108293,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -108254,7 +108308,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary8():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -108265,7 +108319,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -108334,7 +108388,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary8():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -108344,7 +108398,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary8():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -108374,14 +108428,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary8():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -108439,7 +108494,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary8():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -108449,7 +108504,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary8():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -109057,8 +109112,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary8():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -109490,7 +109546,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -109501,7 +109557,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -109514,7 +109570,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -109524,7 +109580,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -109560,7 +109616,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -109570,7 +109626,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -109595,7 +109651,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -109606,7 +109662,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -109619,7 +109675,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -109629,7 +109685,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -109665,7 +109721,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -109675,7 +109731,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -109715,14 +109771,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -109780,7 +109837,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -109790,7 +109847,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -110398,8 +110455,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary9():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -110831,7 +110889,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary10():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -110865,7 +110923,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -110900,7 +110958,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary10():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -110910,7 +110968,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -110935,7 +110993,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary10():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -110969,7 +111027,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -111004,7 +111062,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary10():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -111014,7 +111072,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary10():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -111054,14 +111112,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary10():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -111119,7 +111178,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary10():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -111129,7 +111188,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary10():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -111737,8 +111796,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary10():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -112170,7 +112230,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -112184,7 +112244,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -112197,7 +112257,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -112207,7 +112267,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -112240,7 +112300,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -112250,7 +112310,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -112275,7 +112335,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
@@ -112289,7 +112349,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -112302,7 +112362,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -112312,7 +112372,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -112345,7 +112405,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -112355,7 +112415,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -112395,14 +112455,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -112460,7 +112521,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -112470,7 +112531,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -113078,8 +113139,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary11():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -113511,7 +113573,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary12():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -113525,7 +113587,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -113554,7 +113616,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary12():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -113564,7 +113626,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -113579,7 +113641,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary12():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -113593,7 +113655,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -113622,7 +113684,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary12():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -113632,7 +113694,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary12():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -113662,14 +113724,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary12():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -113727,7 +113790,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary12():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -113737,7 +113800,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary12():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -114345,8 +114408,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary12():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -114778,7 +114842,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -114789,7 +114853,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -114802,7 +114866,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -114812,7 +114876,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -114840,7 +114904,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -114850,7 +114914,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -114875,7 +114939,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -114886,7 +114950,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -114899,7 +114963,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -114909,7 +114973,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -114937,7 +115001,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -114947,7 +115011,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -114987,14 +115051,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -115052,7 +115117,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -115062,7 +115127,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -115670,8 +115735,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary13():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -116103,7 +116169,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary14():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -116114,7 +116180,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -116137,7 +116203,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary14():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -116147,7 +116213,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -116172,7 +116238,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary14():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
@@ -116183,7 +116249,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -116206,7 +116272,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary14():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -116216,7 +116282,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary14():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -116256,14 +116322,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary14():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -116321,7 +116388,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary14():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -116331,7 +116398,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary14():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -116939,8 +117006,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary14():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -117372,7 +117440,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -117386,7 +117454,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -117399,7 +117467,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -117409,7 +117477,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -117437,7 +117505,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -117447,7 +117515,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -117472,7 +117540,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -117486,7 +117554,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::Category")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -117499,7 +117567,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
                                     "Maybe",
                                     [_schema.Named("Int64")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -117509,7 +117577,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
                                     "Maybe",
                                     [_schema.Named("Text")],
                                 ),
-                                "Maybe::Nothing",
+                                "Maybe::Absent",
                                 [],
                                 64,
                                 symbols,
@@ -117537,7 +117605,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [[]],
                 64,
                 symbols,
@@ -117547,7 +117615,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
                     "Maybe",
                     [_schema.Named("lawtwin.petstore.model::type::PetStatus")],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -117587,14 +117655,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
             + "_matchfield4__tags "
             + "_matchfield5__status -> "
             + "_matchfield0__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__it = attempt "
             + "(updatePet (let "
             + "_letfield12__replacement = "
-            + "Maybe::Just(_match4__1___match__lawspe"
-            + "cSelection0x0_0) in match (_input1) { "
+            + "Maybe::Present(_match4__1___match__law"
+            + "specSelection0x0_0) in match "
+            + "(_input1) { "
             + "lawtwin.petstore.model::type::Pet::Pet"
             + " _matchfield6__id _matchfield7__name "
             + "_matchfield8__category "
@@ -117652,7 +117721,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
                                             _m4,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -117662,7 +117731,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m11: (
                                                         (lambda _m12: (
                                                             _lawspec_schema.match(
@@ -118270,8 +118339,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__boundary15():
                                                                                             ),
                                                                                             (
                                                                                                 "Mayb"
-                                                                                                "e::J"
-                                                                                                "ust"
+                                                                                                "e::P"
+                                                                                                "rese"
+                                                                                                "nt"
                                                                                             ),
                                                                                             [
                                                                                                 _m11,
@@ -118731,14 +118801,15 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__property(
                 + "_matchfield4__tags "
                 + "_matchfield5__status -> "
                 + "_matchfield0__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__it = attempt "
                 + "(updatePet (let "
                 + "_letfield12__replacement = "
-                + "Maybe::Just(_match4__1___match__lawspe"
-                + "cSelection0x0_0) in match (_input1) { "
+                + "Maybe::Present(_match4__1___match__law"
+                + "specSelection0x0_0) in match "
+                + "(_input1) { "
                 + "lawtwin.petstore.model::type::Pet::Pet"
                 + " _matchfield6__id _matchfield7__name "
                 + "_matchfield8__category "
@@ -118807,7 +118878,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__property(
                                                 _m4,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -118817,7 +118888,7 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__property(
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m11: (
                                                             (lambda _m12: (
                                                                 _lawspec_schema.match(
@@ -119428,8 +119499,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__property(
                                                                                                 ),
                                                                                                 (
                                                                                                     "Mayb"
-                                                                                                    "e::J"
-                                                                                                    "ust"
+                                                                                                    "e::P"
+                                                                                                    "rese"
+                                                                                                    "nt"
                                                                                                 ),
                                                                                                 [
                                                                                                     _m11,
@@ -119918,21 +119990,21 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__property(
 # StoreApi: "|a created order reads back| [native]
 # for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue
 # :: Text) => let _let0__sent = let _letfield6__replacement =
-# Maybe::Just(_input1) in match (_input0) {
+# Maybe::Present(_input1) in match (_input0) {
 # lawtwin.petstore.model::type::Order::Order _matchfield0__id
 # _matchfield1__petId _matchfield2__quantity _matchfield3__shipDate
 # _matchfield4__status _matchfield5__complete ->
 # lawtwin.petstore.model::type::Order::Order(_matchfield0__id,
 # _matchfield1__petId, _matchfield2__quantity, _letfield6__replacement,
 # _matchfield4__status, _matchfield5__complete) } in let _let1__it =
-# attempt (placeOrder (Maybe::Just(_let0__sent))) in match (_let1__it) {
-# Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
-# _match2__1___lawspecSelection0x0 -> let _let3__it = match
-# (_match2__1___lawspecSelection0x0) {
+# attempt (placeOrder (Maybe::Present(_let0__sent))) in match
+# (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> true;
+# Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it =
+# match (_match2__1___lawspecSelection0x0) {
 # lawtwin.petstore.model::type::Order::Order _matchfield7__id
 # _matchfield8__petId _matchfield9__quantity _matchfield10__shipDate
 # _matchfield11__status _matchfield12__complete -> _matchfield7__id } in
-# match (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+# match (_let3__it) { Maybe::Absent -> false; Maybe::Present
 # _match4__1___match__lawspecSelection0x0_0 -> (attempt (getOrderById
 # (_match4__1___match__lawspecSelection0x0_0)) ==
 # Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for
@@ -120243,7 +120315,7 @@ def _lawspec_case_storeapi_a_created_order_reads_back_native(_values):
                 + "created order reads back| [native] "
                 + "search | expect let _let0__sent = let "
                 + "_letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -120260,8 +120332,8 @@ def _lawspec_case_storeapi_a_created_order_reads_back_native(_values):
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -120275,8 +120347,8 @@ def _lawspec_case_storeapi_a_created_order_reads_back_native(_values):
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getOrderById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -120329,7 +120401,7 @@ def _lawspec_case_storeapi_a_created_order_reads_back_native(_values):
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -120339,7 +120411,7 @@ def _lawspec_case_storeapi_a_created_order_reads_back_native(_values):
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -120862,7 +120934,7 @@ def _lawspec_case_storeapi_a_created_order_reads_back_native(_values):
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -121053,7 +121125,7 @@ def _lawspec_case_storeapi_a_created_order_reads_back_native(_values):
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -121106,28 +121178,28 @@ def test_storeapi_a_created_order_reads_back_native__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -121141,14 +121213,14 @@ def test_storeapi_a_created_order_reads_back_native__boundary0():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -121230,7 +121302,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary0():
                 + "created order reads back| [native] "
                 + "boundary 0 | expect let _let0__sent = "
                 + "let _letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -121247,8 +121319,8 @@ def test_storeapi_a_created_order_reads_back_native__boundary0():
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -121262,8 +121334,8 @@ def test_storeapi_a_created_order_reads_back_native__boundary0():
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getOrderById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -121316,7 +121388,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary0():
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -121326,7 +121398,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary0():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -121849,7 +121921,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary0():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -122040,7 +122112,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary0():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -122080,28 +122152,28 @@ def test_storeapi_a_created_order_reads_back_native__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-2147483648],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
@@ -122115,7 +122187,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary1():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -122132,7 +122204,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary1():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [False],
                 64,
                 symbols,
@@ -122222,7 +122294,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary1():
                 + "created order reads back| [native] "
                 + "boundary 1 | expect let _let0__sent = "
                 + "let _letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -122239,8 +122311,8 @@ def test_storeapi_a_created_order_reads_back_native__boundary1():
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -122254,8 +122326,8 @@ def test_storeapi_a_created_order_reads_back_native__boundary1():
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getOrderById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -122308,7 +122380,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary1():
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -122318,7 +122390,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary1():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -122841,7 +122913,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary1():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -123032,7 +123104,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary1():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -123072,28 +123144,28 @@ def test_storeapi_a_created_order_reads_back_native__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
@@ -123107,7 +123179,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary2():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -123124,7 +123196,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary2():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [True],
                 64,
                 symbols,
@@ -123214,7 +123286,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary2():
                 + "created order reads back| [native] "
                 + "boundary 2 | expect let _let0__sent = "
                 + "let _letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -123231,8 +123303,8 @@ def test_storeapi_a_created_order_reads_back_native__boundary2():
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -123246,8 +123318,8 @@ def test_storeapi_a_created_order_reads_back_native__boundary2():
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getOrderById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -123300,7 +123372,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary2():
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -123310,7 +123382,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary2():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -123833,7 +123905,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary2():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -124024,7 +124096,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary2():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -124064,28 +124136,28 @@ def test_storeapi_a_created_order_reads_back_native__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -124124,7 +124196,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary3():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -124141,7 +124213,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -124232,7 +124304,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary3():
                 + "created order reads back| [native] "
                 + "boundary 3 | expect let _let0__sent = "
                 + "let _letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -124249,8 +124321,8 @@ def test_storeapi_a_created_order_reads_back_native__boundary3():
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -124264,8 +124336,8 @@ def test_storeapi_a_created_order_reads_back_native__boundary3():
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getOrderById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -124318,7 +124390,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary3():
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -124328,7 +124400,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary3():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -124851,7 +124923,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary3():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -125042,7 +125114,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary3():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -125082,28 +125154,28 @@ def test_storeapi_a_created_order_reads_back_native__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [2147483647],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -125125,14 +125197,14 @@ def test_storeapi_a_created_order_reads_back_native__boundary4():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [False],
                 64,
                 symbols,
@@ -125219,7 +125291,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary4():
                 + "created order reads back| [native] "
                 + "boundary 4 | expect let _let0__sent = "
                 + "let _letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -125236,8 +125308,8 @@ def test_storeapi_a_created_order_reads_back_native__boundary4():
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -125251,8 +125323,8 @@ def test_storeapi_a_created_order_reads_back_native__boundary4():
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getOrderById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -125305,7 +125377,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary4():
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -125315,7 +125387,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary4():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -125838,7 +125910,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary4():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -126029,7 +126101,7 @@ def test_storeapi_a_created_order_reads_back_native__boundary4():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -127263,7 +127335,7 @@ def test_storeapi_a_created_order_reads_back_native__property(_case):
                     + "created order reads back| [native] "
                     + "property | expect let _let0__sent = "
                     + "let _letfield6__replacement = "
-                    + "Maybe::Just(_input1) in match "
+                    + "Maybe::Present(_input1) in match "
                     + "(_input0) { "
                     + "lawtwin.petstore.model::type::Order::O"
                     + "rder _matchfield0__id "
@@ -127280,8 +127352,8 @@ def test_storeapi_a_created_order_reads_back_native__property(_case):
                     + "_matchfield4__status, "
                     + "_matchfield5__complete) } in let "
                     + "_let1__it = attempt (placeOrder "
-                    + "(Maybe::Just(_let0__sent))) in match "
-                    + "(_let1__it) { Either::Left "
+                    + "(Maybe::Present(_let0__sent))) in "
+                    + "match (_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "true; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
@@ -127295,8 +127367,8 @@ def test_storeapi_a_created_order_reads_back_native__property(_case):
                     + "_matchfield11__status "
                     + "_matchfield12__complete -> "
                     + "_matchfield7__id } in match "
-                    + "(_let3__it) { Maybe::Nothing  -> "
-                    + "false; Maybe::Just "
+                    + "(_let3__it) { Maybe::Absent  -> "
+                    + "false; Maybe::Present "
                     + "_match4__1___match__lawspecSelection0x"
                     + "0_0 -> (attempt (getOrderById "
                     + "(_match4__1___match__lawspecSelection0"
@@ -127365,7 +127437,7 @@ def test_storeapi_a_created_order_reads_back_native__property(_case):
                                                     _m11,
                                                     [
                                                         [
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             lambda: (
                                                                 ls.convert(
                                                                     False,
@@ -127375,7 +127447,7 @@ def test_storeapi_a_created_order_reads_back_native__property(_case):
                                                             ),
                                                         ],
                                                         [
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             lambda _m18: (
                                                                 _lawspec_schema.equal(
                                                                     _schema.Named(
@@ -127901,7 +127973,7 @@ def test_storeapi_a_created_order_reads_back_native__property(_case):
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_m0],
                                                             64,
                                                             symbols,
@@ -128106,7 +128178,7 @@ def test_storeapi_a_created_order_reads_back_native__property(_case):
                         )
                     ))(_lawspec_schema.construct(
                         _schema.Named("Maybe", [_schema.Named("Text")]),
-                        "Maybe::Just",
+                        "Maybe::Present",
                         [_input1],
                         64,
                         symbols,
@@ -128160,21 +128232,21 @@ def test_storeapi_a_created_order_reads_back_native__property(_case):
 # StoreApi: "|a created order reads back| [reference]
 # for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue
 # :: Text) => let _let0__sent = let _letfield6__replacement =
-# Maybe::Just(_input1) in match (_input0) {
+# Maybe::Present(_input1) in match (_input0) {
 # lawtwin.petstore.model::type::Order::Order _matchfield0__id
 # _matchfield1__petId _matchfield2__quantity _matchfield3__shipDate
 # _matchfield4__status _matchfield5__complete ->
 # lawtwin.petstore.model::type::Order::Order(_matchfield0__id,
 # _matchfield1__petId, _matchfield2__quantity, _letfield6__replacement,
 # _matchfield4__status, _matchfield5__complete) } in let _let1__it =
-# attempt (placeOrder (Maybe::Just(_let0__sent))) in match (_let1__it) {
-# Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
-# _match2__1___lawspecSelection0x0 -> let _let3__it = match
-# (_match2__1___lawspecSelection0x0) {
+# attempt (placeOrder (Maybe::Present(_let0__sent))) in match
+# (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> true;
+# Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it =
+# match (_match2__1___lawspecSelection0x0) {
 # lawtwin.petstore.model::type::Order::Order _matchfield7__id
 # _matchfield8__petId _matchfield9__quantity _matchfield10__shipDate
 # _matchfield11__status _matchfield12__complete -> _matchfield7__id } in
-# match (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+# match (_let3__it) { Maybe::Absent -> false; Maybe::Present
 # _match4__1___match__lawspecSelection0x0_0 -> (attempt (getOrderById
 # (_match4__1___match__lawspecSelection0x0_0)) ==
 # Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for
@@ -128454,7 +128526,7 @@ def _lawspec_case_storeapi_a_created_order_reads_back_reference(_values):
             + "created order reads back| [reference] "
             + "search | expect let _let0__sent = let "
             + "_letfield6__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::Order::O"
             + "rder _matchfield0__id "
@@ -128471,8 +128543,8 @@ def _lawspec_case_storeapi_a_created_order_reads_back_reference(_values):
             + "_matchfield4__status, "
             + "_matchfield5__complete) } in let "
             + "_let1__it = attempt (placeOrder "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -128486,8 +128558,8 @@ def _lawspec_case_storeapi_a_created_order_reads_back_reference(_values):
             + "_matchfield11__status "
             + "_matchfield12__complete -> "
             + "_matchfield7__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getOrderById "
             + "(_match4__1___match__lawspecSelection0"
@@ -128529,7 +128601,7 @@ def _lawspec_case_storeapi_a_created_order_reads_back_reference(_values):
                                             _m11,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -128539,7 +128611,7 @@ def _lawspec_case_storeapi_a_created_order_reads_back_reference(_values):
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m18: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -129039,7 +129111,7 @@ def _lawspec_case_storeapi_a_created_order_reads_back_reference(_values):
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -129190,7 +129262,7 @@ def _lawspec_case_storeapi_a_created_order_reads_back_reference(_values):
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -129228,28 +129300,28 @@ def test_storeapi_a_created_order_reads_back_reference__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -129263,14 +129335,14 @@ def test_storeapi_a_created_order_reads_back_reference__boundary0():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -129316,7 +129388,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary0():
             + "created order reads back| [reference] "
             + "boundary 0 | expect let _let0__sent = "
             + "let _letfield6__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::Order::O"
             + "rder _matchfield0__id "
@@ -129333,8 +129405,8 @@ def test_storeapi_a_created_order_reads_back_reference__boundary0():
             + "_matchfield4__status, "
             + "_matchfield5__complete) } in let "
             + "_let1__it = attempt (placeOrder "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -129348,8 +129420,8 @@ def test_storeapi_a_created_order_reads_back_reference__boundary0():
             + "_matchfield11__status "
             + "_matchfield12__complete -> "
             + "_matchfield7__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getOrderById "
             + "(_match4__1___match__lawspecSelection0"
@@ -129391,7 +129463,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary0():
                                             _m11,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -129401,7 +129473,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary0():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m18: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -129901,7 +129973,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary0():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -130052,7 +130124,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary0():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -130077,28 +130149,28 @@ def test_storeapi_a_created_order_reads_back_reference__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-2147483648],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
@@ -130112,7 +130184,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary1():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -130129,7 +130201,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary1():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [False],
                 64,
                 symbols,
@@ -130183,7 +130255,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary1():
             + "created order reads back| [reference] "
             + "boundary 1 | expect let _let0__sent = "
             + "let _letfield6__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::Order::O"
             + "rder _matchfield0__id "
@@ -130200,8 +130272,8 @@ def test_storeapi_a_created_order_reads_back_reference__boundary1():
             + "_matchfield4__status, "
             + "_matchfield5__complete) } in let "
             + "_let1__it = attempt (placeOrder "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -130215,8 +130287,8 @@ def test_storeapi_a_created_order_reads_back_reference__boundary1():
             + "_matchfield11__status "
             + "_matchfield12__complete -> "
             + "_matchfield7__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getOrderById "
             + "(_match4__1___match__lawspecSelection0"
@@ -130258,7 +130330,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary1():
                                             _m11,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -130268,7 +130340,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary1():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m18: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -130768,7 +130840,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary1():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -130919,7 +130991,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary1():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -130944,28 +131016,28 @@ def test_storeapi_a_created_order_reads_back_reference__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
@@ -130979,7 +131051,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary2():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -130996,7 +131068,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary2():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [True],
                 64,
                 symbols,
@@ -131050,7 +131122,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary2():
             + "created order reads back| [reference] "
             + "boundary 2 | expect let _let0__sent = "
             + "let _letfield6__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::Order::O"
             + "rder _matchfield0__id "
@@ -131067,8 +131139,8 @@ def test_storeapi_a_created_order_reads_back_reference__boundary2():
             + "_matchfield4__status, "
             + "_matchfield5__complete) } in let "
             + "_let1__it = attempt (placeOrder "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -131082,8 +131154,8 @@ def test_storeapi_a_created_order_reads_back_reference__boundary2():
             + "_matchfield11__status "
             + "_matchfield12__complete -> "
             + "_matchfield7__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getOrderById "
             + "(_match4__1___match__lawspecSelection0"
@@ -131125,7 +131197,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary2():
                                             _m11,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -131135,7 +131207,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary2():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m18: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -131635,7 +131707,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary2():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -131786,7 +131858,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary2():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -131811,28 +131883,28 @@ def test_storeapi_a_created_order_reads_back_reference__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -131871,7 +131943,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary3():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -131888,7 +131960,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -131943,7 +132015,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary3():
             + "created order reads back| [reference] "
             + "boundary 3 | expect let _let0__sent = "
             + "let _letfield6__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::Order::O"
             + "rder _matchfield0__id "
@@ -131960,8 +132032,8 @@ def test_storeapi_a_created_order_reads_back_reference__boundary3():
             + "_matchfield4__status, "
             + "_matchfield5__complete) } in let "
             + "_let1__it = attempt (placeOrder "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -131975,8 +132047,8 @@ def test_storeapi_a_created_order_reads_back_reference__boundary3():
             + "_matchfield11__status "
             + "_matchfield12__complete -> "
             + "_matchfield7__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getOrderById "
             + "(_match4__1___match__lawspecSelection0"
@@ -132018,7 +132090,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary3():
                                             _m11,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -132028,7 +132100,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary3():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m18: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -132528,7 +132600,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary3():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -132679,7 +132751,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary3():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -132704,28 +132776,28 @@ def test_storeapi_a_created_order_reads_back_reference__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [2147483647],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -132747,14 +132819,14 @@ def test_storeapi_a_created_order_reads_back_reference__boundary4():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [False],
                 64,
                 symbols,
@@ -132805,7 +132877,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary4():
             + "created order reads back| [reference] "
             + "boundary 4 | expect let _let0__sent = "
             + "let _letfield6__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::Order::O"
             + "rder _matchfield0__id "
@@ -132822,8 +132894,8 @@ def test_storeapi_a_created_order_reads_back_reference__boundary4():
             + "_matchfield4__status, "
             + "_matchfield5__complete) } in let "
             + "_let1__it = attempt (placeOrder "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -132837,8 +132909,8 @@ def test_storeapi_a_created_order_reads_back_reference__boundary4():
             + "_matchfield11__status "
             + "_matchfield12__complete -> "
             + "_matchfield7__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getOrderById "
             + "(_match4__1___match__lawspecSelection0"
@@ -132880,7 +132952,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary4():
                                             _m11,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -132890,7 +132962,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary4():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m18: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -133390,7 +133462,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary4():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -133541,7 +133613,7 @@ def test_storeapi_a_created_order_reads_back_reference__boundary4():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -134720,7 +134792,7 @@ def test_storeapi_a_created_order_reads_back_reference__property(_case):
                 + "created order reads back| [reference] "
                 + "property | expect let _let0__sent = "
                 + "let _letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -134737,8 +134809,8 @@ def test_storeapi_a_created_order_reads_back_reference__property(_case):
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -134752,8 +134824,8 @@ def test_storeapi_a_created_order_reads_back_reference__property(_case):
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getOrderById "
                 + "(_match4__1___match__lawspecSelection0"
@@ -134806,7 +134878,7 @@ def test_storeapi_a_created_order_reads_back_reference__property(_case):
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -134816,7 +134888,7 @@ def test_storeapi_a_created_order_reads_back_reference__property(_case):
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -135339,7 +135411,7 @@ def test_storeapi_a_created_order_reads_back_reference__property(_case):
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -135530,7 +135602,7 @@ def test_storeapi_a_created_order_reads_back_reference__property(_case):
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -135562,21 +135634,21 @@ def test_storeapi_a_created_order_reads_back_reference__property(_case):
 # StoreApi: "|a deleted order is not found| [native]
 # for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue
 # :: Text) => let _let0__sent = let _letfield6__replacement =
-# Maybe::Just(_input1) in match (_input0) {
+# Maybe::Present(_input1) in match (_input0) {
 # lawtwin.petstore.model::type::Order::Order _matchfield0__id
 # _matchfield1__petId _matchfield2__quantity _matchfield3__shipDate
 # _matchfield4__status _matchfield5__complete ->
 # lawtwin.petstore.model::type::Order::Order(_matchfield0__id,
 # _matchfield1__petId, _matchfield2__quantity, _letfield6__replacement,
 # _matchfield4__status, _matchfield5__complete) } in let _let1__it =
-# attempt (placeOrder (Maybe::Just(_let0__sent))) in match (_let1__it) {
-# Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
-# _match2__1___lawspecSelection0x0 -> let _let3__it = match
-# (_match2__1___lawspecSelection0x0) {
+# attempt (placeOrder (Maybe::Present(_let0__sent))) in match
+# (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> true;
+# Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it =
+# match (_match2__1___lawspecSelection0x0) {
 # lawtwin.petstore.model::type::Order::Order _matchfield7__id
 # _matchfield8__petId _matchfield9__quantity _matchfield10__shipDate
 # _matchfield11__status _matchfield12__complete -> _matchfield7__id } in
-# match (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+# match (_let3__it) { Maybe::Absent -> false; Maybe::Present
 # _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone = attempt
 # (deleteOrder (_match4__1___match__lawspecSelection0x0_0)) in (attempt
 # (getOrderById (_match4__1___match__lawspecSelection0x0_0)) ==
@@ -135888,7 +135960,7 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_native(_values):
                 + "deleted order is not found| [native] "
                 + "search | expect let _let0__sent = let "
                 + "_letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -135905,8 +135977,8 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_native(_values):
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -135920,8 +135992,8 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_native(_values):
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteOrder "
@@ -135977,7 +136049,7 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_native(_values):
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -135987,7 +136059,7 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_native(_values):
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             (lambda _m19: (
                                                                 _lawspec_schema.equal(
@@ -136751,7 +136823,7 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_native(_values):
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -136942,7 +137014,7 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_native(_values):
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -136995,28 +137067,28 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -137030,14 +137102,14 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary0():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -137119,7 +137191,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary0():
                 + "deleted order is not found| [native] "
                 + "boundary 0 | expect let _let0__sent = "
                 + "let _letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -137136,8 +137208,8 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary0():
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -137151,8 +137223,8 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary0():
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteOrder "
@@ -137208,7 +137280,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary0():
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -137218,7 +137290,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary0():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             (lambda _m19: (
                                                                 _lawspec_schema.equal(
@@ -137982,7 +138054,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary0():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -138173,7 +138245,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary0():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -138213,28 +138285,28 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-2147483648],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
@@ -138248,7 +138320,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary1():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -138265,7 +138337,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary1():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [False],
                 64,
                 symbols,
@@ -138355,7 +138427,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary1():
                 + "deleted order is not found| [native] "
                 + "boundary 1 | expect let _let0__sent = "
                 + "let _letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -138372,8 +138444,8 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary1():
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -138387,8 +138459,8 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary1():
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteOrder "
@@ -138444,7 +138516,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary1():
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -138454,7 +138526,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary1():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             (lambda _m19: (
                                                                 _lawspec_schema.equal(
@@ -139218,7 +139290,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary1():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -139409,7 +139481,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary1():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -139449,28 +139521,28 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
@@ -139484,7 +139556,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary2():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -139501,7 +139573,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary2():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [True],
                 64,
                 symbols,
@@ -139591,7 +139663,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary2():
                 + "deleted order is not found| [native] "
                 + "boundary 2 | expect let _let0__sent = "
                 + "let _letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -139608,8 +139680,8 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary2():
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -139623,8 +139695,8 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary2():
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteOrder "
@@ -139680,7 +139752,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary2():
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -139690,7 +139762,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary2():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             (lambda _m19: (
                                                                 _lawspec_schema.equal(
@@ -140454,7 +140526,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary2():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -140645,7 +140717,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary2():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -140685,28 +140757,28 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -140745,7 +140817,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary3():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -140762,7 +140834,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -140853,7 +140925,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary3():
                 + "deleted order is not found| [native] "
                 + "boundary 3 | expect let _let0__sent = "
                 + "let _letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -140870,8 +140942,8 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary3():
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -140885,8 +140957,8 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary3():
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteOrder "
@@ -140942,7 +141014,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary3():
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -140952,7 +141024,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary3():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             (lambda _m19: (
                                                                 _lawspec_schema.equal(
@@ -141716,7 +141788,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary3():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -141907,7 +141979,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary3():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -141947,28 +142019,28 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [2147483647],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -141990,14 +142062,14 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary4():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [False],
                 64,
                 symbols,
@@ -142084,7 +142156,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary4():
                 + "deleted order is not found| [native] "
                 + "boundary 4 | expect let _let0__sent = "
                 + "let _letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -142101,8 +142173,8 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary4():
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -142116,8 +142188,8 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary4():
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteOrder "
@@ -142173,7 +142245,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary4():
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -142183,7 +142255,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary4():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             (lambda _m19: (
                                                                 _lawspec_schema.equal(
@@ -142947,7 +143019,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary4():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -143138,7 +143210,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__boundary4():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -144372,7 +144444,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__property(_case):
                     + "deleted order is not found| [native] "
                     + "property | expect let _let0__sent = "
                     + "let _letfield6__replacement = "
-                    + "Maybe::Just(_input1) in match "
+                    + "Maybe::Present(_input1) in match "
                     + "(_input0) { "
                     + "lawtwin.petstore.model::type::Order::O"
                     + "rder _matchfield0__id "
@@ -144389,8 +144461,8 @@ def test_storeapi_a_deleted_order_is_not_found_native__property(_case):
                     + "_matchfield4__status, "
                     + "_matchfield5__complete) } in let "
                     + "_let1__it = attempt (placeOrder "
-                    + "(Maybe::Just(_let0__sent))) in match "
-                    + "(_let1__it) { Either::Left "
+                    + "(Maybe::Present(_let0__sent))) in "
+                    + "match (_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "true; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
@@ -144404,8 +144476,8 @@ def test_storeapi_a_deleted_order_is_not_found_native__property(_case):
                     + "_matchfield11__status "
                     + "_matchfield12__complete -> "
                     + "_matchfield7__id } in match "
-                    + "(_let3__it) { Maybe::Nothing  -> "
-                    + "false; Maybe::Just "
+                    + "(_let3__it) { Maybe::Absent  -> "
+                    + "false; Maybe::Present "
                     + "_match4__1___match__lawspecSelection0x"
                     + "0_0 -> let _let5__gone = attempt "
                     + "(deleteOrder "
@@ -144477,7 +144549,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__property(_case):
                                                     _m11,
                                                     [
                                                         [
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             lambda: (
                                                                 ls.convert(
                                                                     False,
@@ -144487,7 +144559,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__property(_case):
                                                             ),
                                                         ],
                                                         [
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             lambda _m18: (
                                                                 (lambda _m19: (
                                                                     _lawspec_schema.equal(
@@ -145251,7 +145323,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__property(_case):
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_m0],
                                                             64,
                                                             symbols,
@@ -145456,7 +145528,7 @@ def test_storeapi_a_deleted_order_is_not_found_native__property(_case):
                         )
                     ))(_lawspec_schema.construct(
                         _schema.Named("Maybe", [_schema.Named("Text")]),
-                        "Maybe::Just",
+                        "Maybe::Present",
                         [_input1],
                         64,
                         symbols,
@@ -145510,21 +145582,21 @@ def test_storeapi_a_deleted_order_is_not_found_native__property(_case):
 # StoreApi: "|a deleted order is not found| [reference]
 # for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue
 # :: Text) => let _let0__sent = let _letfield6__replacement =
-# Maybe::Just(_input1) in match (_input0) {
+# Maybe::Present(_input1) in match (_input0) {
 # lawtwin.petstore.model::type::Order::Order _matchfield0__id
 # _matchfield1__petId _matchfield2__quantity _matchfield3__shipDate
 # _matchfield4__status _matchfield5__complete ->
 # lawtwin.petstore.model::type::Order::Order(_matchfield0__id,
 # _matchfield1__petId, _matchfield2__quantity, _letfield6__replacement,
 # _matchfield4__status, _matchfield5__complete) } in let _let1__it =
-# attempt (placeOrder (Maybe::Just(_let0__sent))) in match (_let1__it) {
-# Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
-# _match2__1___lawspecSelection0x0 -> let _let3__it = match
-# (_match2__1___lawspecSelection0x0) {
+# attempt (placeOrder (Maybe::Present(_let0__sent))) in match
+# (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> true;
+# Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it =
+# match (_match2__1___lawspecSelection0x0) {
 # lawtwin.petstore.model::type::Order::Order _matchfield7__id
 # _matchfield8__petId _matchfield9__quantity _matchfield10__shipDate
 # _matchfield11__status _matchfield12__complete -> _matchfield7__id } in
-# match (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+# match (_let3__it) { Maybe::Absent -> false; Maybe::Present
 # _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone = attempt
 # (deleteOrder (_match4__1___match__lawspecSelection0x0_0)) in (attempt
 # (getOrderById (_match4__1___match__lawspecSelection0x0_0)) ==
@@ -145806,7 +145878,7 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_reference(_values):
             + "[reference] search | expect let "
             + "_let0__sent = let "
             + "_letfield6__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::Order::O"
             + "rder _matchfield0__id "
@@ -145823,8 +145895,8 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_reference(_values):
             + "_matchfield4__status, "
             + "_matchfield5__complete) } in let "
             + "_let1__it = attempt (placeOrder "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -145838,8 +145910,8 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_reference(_values):
             + "_matchfield11__status "
             + "_matchfield12__complete -> "
             + "_matchfield7__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteOrder "
@@ -145884,7 +145956,7 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_reference(_values):
                                             _m11,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -145894,7 +145966,7 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_reference(_values):
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m18: (
                                                         (lambda _m19: (
                                                             _lawspec_schema.equal(
@@ -146635,7 +146707,7 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_reference(_values):
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -146786,7 +146858,7 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_reference(_values):
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -146824,28 +146896,28 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -146859,14 +146931,14 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary0():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -146913,7 +146985,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary0():
             + "[reference] boundary 0 | expect let "
             + "_let0__sent = let "
             + "_letfield6__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::Order::O"
             + "rder _matchfield0__id "
@@ -146930,8 +147002,8 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary0():
             + "_matchfield4__status, "
             + "_matchfield5__complete) } in let "
             + "_let1__it = attempt (placeOrder "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -146945,8 +147017,8 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary0():
             + "_matchfield11__status "
             + "_matchfield12__complete -> "
             + "_matchfield7__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteOrder "
@@ -146991,7 +147063,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary0():
                                             _m11,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -147001,7 +147073,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary0():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m18: (
                                                         (lambda _m19: (
                                                             _lawspec_schema.equal(
@@ -147742,7 +147814,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary0():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -147893,7 +147965,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary0():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -147918,28 +147990,28 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-2147483648],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
@@ -147953,7 +148025,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary1():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -147970,7 +148042,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary1():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [False],
                 64,
                 symbols,
@@ -148025,7 +148097,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary1():
             + "[reference] boundary 1 | expect let "
             + "_let0__sent = let "
             + "_letfield6__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::Order::O"
             + "rder _matchfield0__id "
@@ -148042,8 +148114,8 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary1():
             + "_matchfield4__status, "
             + "_matchfield5__complete) } in let "
             + "_let1__it = attempt (placeOrder "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -148057,8 +148129,8 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary1():
             + "_matchfield11__status "
             + "_matchfield12__complete -> "
             + "_matchfield7__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteOrder "
@@ -148103,7 +148175,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary1():
                                             _m11,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -148113,7 +148185,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary1():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m18: (
                                                         (lambda _m19: (
                                                             _lawspec_schema.equal(
@@ -148854,7 +148926,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary1():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -149005,7 +149077,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary1():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -149030,28 +149102,28 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
@@ -149065,7 +149137,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary2():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -149082,7 +149154,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary2():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [True],
                 64,
                 symbols,
@@ -149137,7 +149209,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary2():
             + "[reference] boundary 2 | expect let "
             + "_let0__sent = let "
             + "_letfield6__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::Order::O"
             + "rder _matchfield0__id "
@@ -149154,8 +149226,8 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary2():
             + "_matchfield4__status, "
             + "_matchfield5__complete) } in let "
             + "_let1__it = attempt (placeOrder "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -149169,8 +149241,8 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary2():
             + "_matchfield11__status "
             + "_matchfield12__complete -> "
             + "_matchfield7__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteOrder "
@@ -149215,7 +149287,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary2():
                                             _m11,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -149225,7 +149297,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary2():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m18: (
                                                         (lambda _m19: (
                                                             _lawspec_schema.equal(
@@ -149966,7 +150038,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary2():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -150117,7 +150189,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary2():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -150142,28 +150214,28 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -150202,7 +150274,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary3():
                         ),
                     ],
                 ),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     _lawspec_schema.construct(
                         _schema.Named(
@@ -150219,7 +150291,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -150275,7 +150347,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary3():
             + "[reference] boundary 3 | expect let "
             + "_let0__sent = let "
             + "_letfield6__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::Order::O"
             + "rder _matchfield0__id "
@@ -150292,8 +150364,8 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary3():
             + "_matchfield4__status, "
             + "_matchfield5__complete) } in let "
             + "_let1__it = attempt (placeOrder "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -150307,8 +150379,8 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary3():
             + "_matchfield11__status "
             + "_matchfield12__complete -> "
             + "_matchfield7__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteOrder "
@@ -150353,7 +150425,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary3():
                                             _m11,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -150363,7 +150435,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary3():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m18: (
                                                         (lambda _m19: (
                                                             _lawspec_schema.equal(
@@ -151104,7 +151176,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary3():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -151255,7 +151327,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary3():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -151280,28 +151352,28 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [2147483647],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -151323,14 +151395,14 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary4():
                         ),
                     ],
                 ),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Bool")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [False],
                 64,
                 symbols,
@@ -151382,7 +151454,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary4():
             + "[reference] boundary 4 | expect let "
             + "_let0__sent = let "
             + "_letfield6__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::Order::O"
             + "rder _matchfield0__id "
@@ -151399,8 +151471,8 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary4():
             + "_matchfield4__status, "
             + "_matchfield5__complete) } in let "
             + "_let1__it = attempt (placeOrder "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -151414,8 +151486,8 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary4():
             + "_matchfield11__status "
             + "_matchfield12__complete -> "
             + "_matchfield7__id } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteOrder "
@@ -151460,7 +151532,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary4():
                                             _m11,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -151470,7 +151542,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary4():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m18: (
                                                         (lambda _m19: (
                                                             _lawspec_schema.equal(
@@ -152211,7 +152283,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary4():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -152362,7 +152434,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__boundary4():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -153542,7 +153614,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__property(_case):
                 + "[reference] property | expect let "
                 + "_let0__sent = let "
                 + "_letfield6__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::Order::O"
                 + "rder _matchfield0__id "
@@ -153559,8 +153631,8 @@ def test_storeapi_a_deleted_order_is_not_found_reference__property(_case):
                 + "_matchfield4__status, "
                 + "_matchfield5__complete) } in let "
                 + "_let1__it = attempt (placeOrder "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -153574,8 +153646,8 @@ def test_storeapi_a_deleted_order_is_not_found_reference__property(_case):
                 + "_matchfield11__status "
                 + "_matchfield12__complete -> "
                 + "_matchfield7__id } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteOrder "
@@ -153631,7 +153703,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__property(_case):
                                                 _m11,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -153641,7 +153713,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__property(_case):
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m18: (
                                                             (lambda _m19: (
                                                                 _lawspec_schema.equal(
@@ -154405,7 +154477,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__property(_case):
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -154596,7 +154668,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__property(_case):
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -154627,7 +154699,7 @@ def test_storeapi_a_deleted_order_is_not_found_reference__property(_case):
 # UserApi: "|a created user reads back| [native]
 # for all (body :: lawtwin.petstore.model::type::User) (keyGiven ::
 # Text) => let _let0__sent = let _letfield8__replacement =
-# Maybe::Just(_input1) in match (_input0) {
+# Maybe::Present(_input1) in match (_input0) {
 # lawtwin.petstore.model::type::User::User _matchfield0__id
 # _matchfield1__username _matchfield2__firstName _matchfield3__lastName
 # _matchfield4__email _matchfield5__password _matchfield6__phone
@@ -154636,15 +154708,15 @@ def test_storeapi_a_deleted_order_is_not_found_reference__property(_case):
 # _letfield8__replacement, _matchfield2__firstName,
 # _matchfield3__lastName, _matchfield4__email, _matchfield5__password,
 # _matchfield6__phone, _matchfield7__userStatus) } in let _let1__it =
-# attempt (createUser (Maybe::Just(_let0__sent))) in match (_let1__it) {
-# Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
-# _match2__1___lawspecSelection0x0 -> let _let3__it = match
-# (_let0__sent) { lawtwin.petstore.model::type::User::User
+# attempt (createUser (Maybe::Present(_let0__sent))) in match
+# (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> true;
+# Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it =
+# match (_let0__sent) { lawtwin.petstore.model::type::User::User
 # _matchfield9__id _matchfield10__username _matchfield11__firstName
 # _matchfield12__lastName _matchfield13__email _matchfield14__password
 # _matchfield15__phone _matchfield16__userStatus ->
-# _matchfield10__username } in match (_let3__it) { Maybe::Nothing ->
-# false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 ->
+# _matchfield10__username } in match (_let3__it) { Maybe::Absent ->
+# false; Maybe::Present _match4__1___match__lawspecSelection0x0_0 ->
 # (attempt (getUserByName (_match4__1___match__lawspecSelection0x0_0))
 # == Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for
 # all
@@ -154787,7 +154859,7 @@ def _lawspec_case_userapi_a_created_user_reads_back_native(_values):
                 + "created user reads back| [native] "
                 + "search | expect let _let0__sent = let "
                 + "_letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -154808,8 +154880,8 @@ def _lawspec_case_userapi_a_created_user_reads_back_native(_values):
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -154824,8 +154896,8 @@ def _lawspec_case_userapi_a_created_user_reads_back_native(_values):
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getUserByName "
                 + "(_match4__1___match__lawspecSelection0"
@@ -154880,7 +154952,7 @@ def _lawspec_case_userapi_a_created_user_reads_back_native(_values):
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -154890,7 +154962,7 @@ def _lawspec_case_userapi_a_created_user_reads_back_native(_values):
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -155413,7 +155485,7 @@ def _lawspec_case_userapi_a_created_user_reads_back_native(_values):
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -155614,7 +155686,7 @@ def _lawspec_case_userapi_a_created_user_reads_back_native(_values):
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -155667,56 +155739,56 @@ def test_userapi_a_created_user_reads_back_native__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -155768,7 +155840,7 @@ def test_userapi_a_created_user_reads_back_native__boundary0():
                 + "created user reads back| [native] "
                 + "boundary 0 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -155789,8 +155861,8 @@ def test_userapi_a_created_user_reads_back_native__boundary0():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -155805,8 +155877,8 @@ def test_userapi_a_created_user_reads_back_native__boundary0():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getUserByName "
                 + "(_match4__1___match__lawspecSelection0"
@@ -155861,7 +155933,7 @@ def test_userapi_a_created_user_reads_back_native__boundary0():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -155871,7 +155943,7 @@ def test_userapi_a_created_user_reads_back_native__boundary0():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -156394,7 +156466,7 @@ def test_userapi_a_created_user_reads_back_native__boundary0():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -156595,7 +156667,7 @@ def test_userapi_a_created_user_reads_back_native__boundary0():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -156635,56 +156707,56 @@ def test_userapi_a_created_user_reads_back_native__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-2147483648],
                 64,
                 symbols,
@@ -156736,7 +156808,7 @@ def test_userapi_a_created_user_reads_back_native__boundary1():
                 + "created user reads back| [native] "
                 + "boundary 1 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -156757,8 +156829,8 @@ def test_userapi_a_created_user_reads_back_native__boundary1():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -156773,8 +156845,8 @@ def test_userapi_a_created_user_reads_back_native__boundary1():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getUserByName "
                 + "(_match4__1___match__lawspecSelection0"
@@ -156829,7 +156901,7 @@ def test_userapi_a_created_user_reads_back_native__boundary1():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -156839,7 +156911,7 @@ def test_userapi_a_created_user_reads_back_native__boundary1():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -157362,7 +157434,7 @@ def test_userapi_a_created_user_reads_back_native__boundary1():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -157563,7 +157635,7 @@ def test_userapi_a_created_user_reads_back_native__boundary1():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -157603,56 +157675,56 @@ def test_userapi_a_created_user_reads_back_native__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -157713,7 +157785,7 @@ def test_userapi_a_created_user_reads_back_native__boundary2():
                 + "created user reads back| [native] "
                 + "boundary 2 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -157734,8 +157806,8 @@ def test_userapi_a_created_user_reads_back_native__boundary2():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -157750,8 +157822,8 @@ def test_userapi_a_created_user_reads_back_native__boundary2():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getUserByName "
                 + "(_match4__1___match__lawspecSelection0"
@@ -157806,7 +157878,7 @@ def test_userapi_a_created_user_reads_back_native__boundary2():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -157816,7 +157888,7 @@ def test_userapi_a_created_user_reads_back_native__boundary2():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -158339,7 +158411,7 @@ def test_userapi_a_created_user_reads_back_native__boundary2():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -158540,7 +158612,7 @@ def test_userapi_a_created_user_reads_back_native__boundary2():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -158580,14 +158652,14 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -158619,7 +158691,7 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -158651,7 +158723,7 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -158683,7 +158755,7 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -158715,7 +158787,7 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -158747,7 +158819,7 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -158779,7 +158851,7 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -158834,7 +158906,7 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
                 + "created user reads back| [native] "
                 + "boundary 3 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -158855,8 +158927,8 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -158871,8 +158943,8 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getUserByName "
                 + "(_match4__1___match__lawspecSelection0"
@@ -158927,7 +158999,7 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -158937,7 +159009,7 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -159460,7 +159532,7 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -159661,7 +159733,7 @@ def test_userapi_a_created_user_reads_back_native__boundary3():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -159701,14 +159773,14 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -159723,7 +159795,7 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -159738,7 +159810,7 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -159753,7 +159825,7 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -159768,7 +159840,7 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -159783,7 +159855,7 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -159798,7 +159870,7 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [2147483647],
                 64,
                 symbols,
@@ -159853,7 +159925,7 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
                 + "created user reads back| [native] "
                 + "boundary 4 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -159874,8 +159946,8 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -159890,8 +159962,8 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getUserByName "
                 + "(_match4__1___match__lawspecSelection0"
@@ -159946,7 +160018,7 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -159956,7 +160028,7 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -160479,7 +160551,7 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -160680,7 +160752,7 @@ def test_userapi_a_created_user_reads_back_native__boundary4():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -160720,14 +160792,14 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -160742,7 +160814,7 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -160757,7 +160829,7 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -160772,7 +160844,7 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -160787,7 +160859,7 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -160802,7 +160874,7 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -160817,7 +160889,7 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -160869,7 +160941,7 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
                 + "created user reads back| [native] "
                 + "boundary 5 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -160890,8 +160962,8 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -160906,8 +160978,8 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getUserByName "
                 + "(_match4__1___match__lawspecSelection0"
@@ -160962,7 +161034,7 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -160972,7 +161044,7 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -161495,7 +161567,7 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -161696,7 +161768,7 @@ def test_userapi_a_created_user_reads_back_native__boundary5():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -161736,56 +161808,56 @@ def test_userapi_a_created_user_reads_back_native__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-2147483648],
                 64,
                 symbols,
@@ -161837,7 +161909,7 @@ def test_userapi_a_created_user_reads_back_native__boundary6():
                 + "created user reads back| [native] "
                 + "boundary 6 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -161858,8 +161930,8 @@ def test_userapi_a_created_user_reads_back_native__boundary6():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -161874,8 +161946,8 @@ def test_userapi_a_created_user_reads_back_native__boundary6():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getUserByName "
                 + "(_match4__1___match__lawspecSelection0"
@@ -161930,7 +162002,7 @@ def test_userapi_a_created_user_reads_back_native__boundary6():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -161940,7 +162012,7 @@ def test_userapi_a_created_user_reads_back_native__boundary6():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -162463,7 +162535,7 @@ def test_userapi_a_created_user_reads_back_native__boundary6():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -162664,7 +162736,7 @@ def test_userapi_a_created_user_reads_back_native__boundary6():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -162704,56 +162776,56 @@ def test_userapi_a_created_user_reads_back_native__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -162808,7 +162880,7 @@ def test_userapi_a_created_user_reads_back_native__boundary7():
                 + "created user reads back| [native] "
                 + "boundary 7 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -162829,8 +162901,8 @@ def test_userapi_a_created_user_reads_back_native__boundary7():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -162845,8 +162917,8 @@ def test_userapi_a_created_user_reads_back_native__boundary7():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getUserByName "
                 + "(_match4__1___match__lawspecSelection0"
@@ -162901,7 +162973,7 @@ def test_userapi_a_created_user_reads_back_native__boundary7():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -162911,7 +162983,7 @@ def test_userapi_a_created_user_reads_back_native__boundary7():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -163434,7 +163506,7 @@ def test_userapi_a_created_user_reads_back_native__boundary7():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -163635,7 +163707,7 @@ def test_userapi_a_created_user_reads_back_native__boundary7():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -163675,14 +163747,14 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -163697,7 +163769,7 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -163712,7 +163784,7 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -163727,7 +163799,7 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -163742,7 +163814,7 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -163757,7 +163829,7 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -163772,7 +163844,7 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -163824,7 +163896,7 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
                 + "created user reads back| [native] "
                 + "boundary 8 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -163845,8 +163917,8 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -163861,8 +163933,8 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getUserByName "
                 + "(_match4__1___match__lawspecSelection0"
@@ -163917,7 +163989,7 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -163927,7 +163999,7 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -164450,7 +164522,7 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -164651,7 +164723,7 @@ def test_userapi_a_created_user_reads_back_native__boundary8():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -164739,7 +164811,7 @@ def test_userapi_a_created_user_reads_back_native__property(_input0, _input1):
                     + "created user reads back| [native] "
                     + "property | expect let _let0__sent = "
                     + "let _letfield8__replacement = "
-                    + "Maybe::Just(_input1) in match "
+                    + "Maybe::Present(_input1) in match "
                     + "(_input0) { "
                     + "lawtwin.petstore.model::type::User::Us"
                     + "er _matchfield0__id "
@@ -164760,8 +164832,8 @@ def test_userapi_a_created_user_reads_back_native__property(_input0, _input1):
                     + "_matchfield6__phone, "
                     + "_matchfield7__userStatus) } in let "
                     + "_let1__it = attempt (createUser "
-                    + "(Maybe::Just(_let0__sent))) in match "
-                    + "(_let1__it) { Either::Left "
+                    + "(Maybe::Present(_let0__sent))) in "
+                    + "match (_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "true; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
@@ -164776,8 +164848,8 @@ def test_userapi_a_created_user_reads_back_native__property(_input0, _input1):
                     + "_matchfield15__phone "
                     + "_matchfield16__userStatus -> "
                     + "_matchfield10__username } in match "
-                    + "(_let3__it) { Maybe::Nothing  -> "
-                    + "false; Maybe::Just "
+                    + "(_let3__it) { Maybe::Absent  -> "
+                    + "false; Maybe::Present "
                     + "_match4__1___match__lawspecSelection0x"
                     + "0_0 -> (attempt (getUserByName "
                     + "(_match4__1___match__lawspecSelection0"
@@ -164846,7 +164918,7 @@ def test_userapi_a_created_user_reads_back_native__property(_input0, _input1):
                                                     _m13,
                                                     [
                                                         [
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             lambda: (
                                                                 ls.convert(
                                                                     False,
@@ -164856,7 +164928,7 @@ def test_userapi_a_created_user_reads_back_native__property(_input0, _input1):
                                                             ),
                                                         ],
                                                         [
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             lambda _m22: (
                                                                 _lawspec_schema.equal(
                                                                     _schema.Named(
@@ -165382,7 +165454,7 @@ def test_userapi_a_created_user_reads_back_native__property(_input0, _input1):
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_m0],
                                                             64,
                                                             symbols,
@@ -165585,7 +165657,7 @@ def test_userapi_a_created_user_reads_back_native__property(_input0, _input1):
                         )
                     ))(_lawspec_schema.construct(
                         _schema.Named("Maybe", [_schema.Named("Text")]),
-                        "Maybe::Just",
+                        "Maybe::Present",
                         [_input1],
                         64,
                         symbols,
@@ -165639,7 +165711,7 @@ def test_userapi_a_created_user_reads_back_native__property(_input0, _input1):
 # UserApi: "|a created user reads back| [reference]
 # for all (body :: lawtwin.petstore.model::type::User) (keyGiven ::
 # Text) => let _let0__sent = let _letfield8__replacement =
-# Maybe::Just(_input1) in match (_input0) {
+# Maybe::Present(_input1) in match (_input0) {
 # lawtwin.petstore.model::type::User::User _matchfield0__id
 # _matchfield1__username _matchfield2__firstName _matchfield3__lastName
 # _matchfield4__email _matchfield5__password _matchfield6__phone
@@ -165648,15 +165720,15 @@ def test_userapi_a_created_user_reads_back_native__property(_input0, _input1):
 # _letfield8__replacement, _matchfield2__firstName,
 # _matchfield3__lastName, _matchfield4__email, _matchfield5__password,
 # _matchfield6__phone, _matchfield7__userStatus) } in let _let1__it =
-# attempt (createUser (Maybe::Just(_let0__sent))) in match (_let1__it) {
-# Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
-# _match2__1___lawspecSelection0x0 -> let _let3__it = match
-# (_let0__sent) { lawtwin.petstore.model::type::User::User
+# attempt (createUser (Maybe::Present(_let0__sent))) in match
+# (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> true;
+# Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it =
+# match (_let0__sent) { lawtwin.petstore.model::type::User::User
 # _matchfield9__id _matchfield10__username _matchfield11__firstName
 # _matchfield12__lastName _matchfield13__email _matchfield14__password
 # _matchfield15__phone _matchfield16__userStatus ->
-# _matchfield10__username } in match (_let3__it) { Maybe::Nothing ->
-# false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 ->
+# _matchfield10__username } in match (_let3__it) { Maybe::Absent ->
+# false; Maybe::Present _match4__1___match__lawspecSelection0x0_0 ->
 # (attempt (getUserByName (_match4__1___match__lawspecSelection0x0_0))
 # == Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for
 # all
@@ -165768,7 +165840,7 @@ def _lawspec_case_userapi_a_created_user_reads_back_reference(_values):
             + "created user reads back| [reference] "
             + "search | expect let _let0__sent = let "
             + "_letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -165789,8 +165861,8 @@ def _lawspec_case_userapi_a_created_user_reads_back_reference(_values):
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -165805,8 +165877,8 @@ def _lawspec_case_userapi_a_created_user_reads_back_reference(_values):
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getUserByName "
             + "(_match4__1___match__lawspecSelection0"
@@ -165848,7 +165920,7 @@ def _lawspec_case_userapi_a_created_user_reads_back_reference(_values):
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -165858,7 +165930,7 @@ def _lawspec_case_userapi_a_created_user_reads_back_reference(_values):
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -166358,7 +166430,7 @@ def _lawspec_case_userapi_a_created_user_reads_back_reference(_values):
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -166499,7 +166571,7 @@ def _lawspec_case_userapi_a_created_user_reads_back_reference(_values):
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -166537,56 +166609,56 @@ def test_userapi_a_created_user_reads_back_reference__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -166602,7 +166674,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary0():
             + "created user reads back| [reference] "
             + "boundary 0 | expect let _let0__sent = "
             + "let _letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -166623,8 +166695,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary0():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -166639,8 +166711,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary0():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getUserByName "
             + "(_match4__1___match__lawspecSelection0"
@@ -166682,7 +166754,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary0():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -166692,7 +166764,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary0():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -167192,7 +167264,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary0():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -167333,7 +167405,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary0():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -167358,56 +167430,56 @@ def test_userapi_a_created_user_reads_back_reference__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-2147483648],
                 64,
                 symbols,
@@ -167423,7 +167495,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary1():
             + "created user reads back| [reference] "
             + "boundary 1 | expect let _let0__sent = "
             + "let _letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -167444,8 +167516,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary1():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -167460,8 +167532,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary1():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getUserByName "
             + "(_match4__1___match__lawspecSelection0"
@@ -167503,7 +167575,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary1():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -167513,7 +167585,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary1():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -168013,7 +168085,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary1():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -168154,7 +168226,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary1():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -168179,56 +168251,56 @@ def test_userapi_a_created_user_reads_back_reference__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -168253,7 +168325,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary2():
             + "created user reads back| [reference] "
             + "boundary 2 | expect let _let0__sent = "
             + "let _letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -168274,8 +168346,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary2():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -168290,8 +168362,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary2():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getUserByName "
             + "(_match4__1___match__lawspecSelection0"
@@ -168333,7 +168405,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary2():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -168343,7 +168415,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary2():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -168843,7 +168915,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary2():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -168984,7 +169056,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary2():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -169009,14 +169081,14 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -169048,7 +169120,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -169080,7 +169152,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -169112,7 +169184,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -169144,7 +169216,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -169176,7 +169248,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -169208,7 +169280,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -169227,7 +169299,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
             + "created user reads back| [reference] "
             + "boundary 3 | expect let _let0__sent = "
             + "let _letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -169248,8 +169320,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -169264,8 +169336,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getUserByName "
             + "(_match4__1___match__lawspecSelection0"
@@ -169307,7 +169379,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -169317,7 +169389,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -169817,7 +169889,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -169958,7 +170030,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary3():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -169983,14 +170055,14 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -170005,7 +170077,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -170020,7 +170092,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -170035,7 +170107,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -170050,7 +170122,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -170065,7 +170137,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -170080,7 +170152,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [2147483647],
                 64,
                 symbols,
@@ -170099,7 +170171,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
             + "created user reads back| [reference] "
             + "boundary 4 | expect let _let0__sent = "
             + "let _letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -170120,8 +170192,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -170136,8 +170208,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getUserByName "
             + "(_match4__1___match__lawspecSelection0"
@@ -170179,7 +170251,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -170189,7 +170261,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -170689,7 +170761,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -170830,7 +170902,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary4():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -170855,14 +170927,14 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -170877,7 +170949,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -170892,7 +170964,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -170907,7 +170979,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -170922,7 +170994,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -170937,7 +171009,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -170952,7 +171024,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -170968,7 +171040,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
             + "created user reads back| [reference] "
             + "boundary 5 | expect let _let0__sent = "
             + "let _letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -170989,8 +171061,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -171005,8 +171077,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getUserByName "
             + "(_match4__1___match__lawspecSelection0"
@@ -171048,7 +171120,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -171058,7 +171130,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -171558,7 +171630,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -171699,7 +171771,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary5():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -171724,56 +171796,56 @@ def test_userapi_a_created_user_reads_back_reference__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-2147483648],
                 64,
                 symbols,
@@ -171789,7 +171861,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary6():
             + "created user reads back| [reference] "
             + "boundary 6 | expect let _let0__sent = "
             + "let _letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -171810,8 +171882,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary6():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -171826,8 +171898,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary6():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getUserByName "
             + "(_match4__1___match__lawspecSelection0"
@@ -171869,7 +171941,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary6():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -171879,7 +171951,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary6():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -172379,7 +172451,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary6():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -172520,7 +172592,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary6():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -172545,56 +172617,56 @@ def test_userapi_a_created_user_reads_back_reference__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -172613,7 +172685,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary7():
             + "created user reads back| [reference] "
             + "boundary 7 | expect let _let0__sent = "
             + "let _letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -172634,8 +172706,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary7():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -172650,8 +172722,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary7():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getUserByName "
             + "(_match4__1___match__lawspecSelection0"
@@ -172693,7 +172765,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary7():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -172703,7 +172775,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary7():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -173203,7 +173275,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary7():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -173344,7 +173416,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary7():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -173369,14 +173441,14 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -173391,7 +173463,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -173406,7 +173478,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -173421,7 +173493,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -173436,7 +173508,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -173451,7 +173523,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -173466,7 +173538,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -173482,7 +173554,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
             + "created user reads back| [reference] "
             + "boundary 8 | expect let _let0__sent = "
             + "let _letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -173503,8 +173575,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -173519,8 +173591,8 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> (attempt (getUserByName "
             + "(_match4__1___match__lawspecSelection0"
@@ -173562,7 +173634,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -173572,7 +173644,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         _lawspec_schema.equal(
                                                             _schema.Named(
@@ -174072,7 +174144,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -174213,7 +174285,7 @@ def test_userapi_a_created_user_reads_back_reference__boundary8():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -174249,7 +174321,7 @@ def test_userapi_a_created_user_reads_back_reference__property(
                 + "created user reads back| [reference] "
                 + "property | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -174270,8 +174342,8 @@ def test_userapi_a_created_user_reads_back_reference__property(
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -174286,8 +174358,8 @@ def test_userapi_a_created_user_reads_back_reference__property(
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> (attempt (getUserByName "
                 + "(_match4__1___match__lawspecSelection0"
@@ -174342,7 +174414,7 @@ def test_userapi_a_created_user_reads_back_reference__property(
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -174352,7 +174424,7 @@ def test_userapi_a_created_user_reads_back_reference__property(
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             _lawspec_schema.equal(
                                                                 _schema.Named(
@@ -174875,7 +174947,7 @@ def test_userapi_a_created_user_reads_back_reference__property(
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -175076,7 +175148,7 @@ def test_userapi_a_created_user_reads_back_reference__property(
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -175108,7 +175180,7 @@ def test_userapi_a_created_user_reads_back_reference__property(
 # UserApi: "|a deleted user is not found| [native]
 # for all (body :: lawtwin.petstore.model::type::User) (keyGiven ::
 # Text) => let _let0__sent = let _letfield8__replacement =
-# Maybe::Just(_input1) in match (_input0) {
+# Maybe::Present(_input1) in match (_input0) {
 # lawtwin.petstore.model::type::User::User _matchfield0__id
 # _matchfield1__username _matchfield2__firstName _matchfield3__lastName
 # _matchfield4__email _matchfield5__password _matchfield6__phone
@@ -175117,15 +175189,15 @@ def test_userapi_a_created_user_reads_back_reference__property(
 # _letfield8__replacement, _matchfield2__firstName,
 # _matchfield3__lastName, _matchfield4__email, _matchfield5__password,
 # _matchfield6__phone, _matchfield7__userStatus) } in let _let1__it =
-# attempt (createUser (Maybe::Just(_let0__sent))) in match (_let1__it) {
-# Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
-# _match2__1___lawspecSelection0x0 -> let _let3__it = match
-# (_let0__sent) { lawtwin.petstore.model::type::User::User
+# attempt (createUser (Maybe::Present(_let0__sent))) in match
+# (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> true;
+# Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it =
+# match (_let0__sent) { lawtwin.petstore.model::type::User::User
 # _matchfield9__id _matchfield10__username _matchfield11__firstName
 # _matchfield12__lastName _matchfield13__email _matchfield14__password
 # _matchfield15__phone _matchfield16__userStatus ->
-# _matchfield10__username } in match (_let3__it) { Maybe::Nothing ->
-# false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let
+# _matchfield10__username } in match (_let3__it) { Maybe::Absent ->
+# false; Maybe::Present _match4__1___match__lawspecSelection0x0_0 -> let
 # _let5__gone = attempt (deleteUser
 # (_match4__1___match__lawspecSelection0x0_0)) in (attempt
 # (getUserByName (_match4__1___match__lawspecSelection0x0_0)) ==
@@ -175270,7 +175342,7 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_native(_values):
                 + "deleted user is not found| [native] "
                 + "search | expect let _let0__sent = let "
                 + "_letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -175291,8 +175363,8 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_native(_values):
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -175307,8 +175379,8 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_native(_values):
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteUser "
@@ -175366,7 +175438,7 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_native(_values):
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -175376,7 +175448,7 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_native(_values):
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             (lambda _m23: (
                                                                 _lawspec_schema.equal(
@@ -176139,7 +176211,7 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_native(_values):
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -176340,7 +176412,7 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_native(_values):
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -176393,56 +176465,56 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -176494,7 +176566,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary0():
                 + "deleted user is not found| [native] "
                 + "boundary 0 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -176515,8 +176587,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary0():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -176531,8 +176603,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary0():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteUser "
@@ -176590,7 +176662,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary0():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -176600,7 +176672,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary0():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             (lambda _m23: (
                                                                 _lawspec_schema.equal(
@@ -177363,7 +177435,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary0():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -177564,7 +177636,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary0():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -177604,56 +177676,56 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-2147483648],
                 64,
                 symbols,
@@ -177705,7 +177777,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary1():
                 + "deleted user is not found| [native] "
                 + "boundary 1 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -177726,8 +177798,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary1():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -177742,8 +177814,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary1():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteUser "
@@ -177801,7 +177873,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary1():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -177811,7 +177883,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary1():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             (lambda _m23: (
                                                                 _lawspec_schema.equal(
@@ -178574,7 +178646,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary1():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -178775,7 +178847,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary1():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -178815,56 +178887,56 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -178925,7 +178997,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary2():
                 + "deleted user is not found| [native] "
                 + "boundary 2 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -178946,8 +179018,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary2():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -178962,8 +179034,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary2():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteUser "
@@ -179021,7 +179093,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary2():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -179031,7 +179103,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary2():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             (lambda _m23: (
                                                                 _lawspec_schema.equal(
@@ -179794,7 +179866,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary2():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -179995,7 +180067,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary2():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -180035,14 +180107,14 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -180074,7 +180146,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -180106,7 +180178,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -180138,7 +180210,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -180170,7 +180242,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -180202,7 +180274,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -180234,7 +180306,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -180289,7 +180361,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
                 + "deleted user is not found| [native] "
                 + "boundary 3 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -180310,8 +180382,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -180326,8 +180398,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteUser "
@@ -180385,7 +180457,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -180395,7 +180467,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             (lambda _m23: (
                                                                 _lawspec_schema.equal(
@@ -181158,7 +181230,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -181359,7 +181431,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary3():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -181399,14 +181471,14 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -181421,7 +181493,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -181436,7 +181508,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -181451,7 +181523,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -181466,7 +181538,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -181481,7 +181553,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -181496,7 +181568,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [2147483647],
                 64,
                 symbols,
@@ -181551,7 +181623,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
                 + "deleted user is not found| [native] "
                 + "boundary 4 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -181572,8 +181644,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -181588,8 +181660,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteUser "
@@ -181647,7 +181719,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -181657,7 +181729,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             (lambda _m23: (
                                                                 _lawspec_schema.equal(
@@ -182420,7 +182492,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -182621,7 +182693,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary4():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -182661,14 +182733,14 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -182683,7 +182755,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -182698,7 +182770,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -182713,7 +182785,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -182728,7 +182800,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -182743,7 +182815,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -182758,7 +182830,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -182810,7 +182882,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
                 + "deleted user is not found| [native] "
                 + "boundary 5 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -182831,8 +182903,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -182847,8 +182919,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteUser "
@@ -182906,7 +182978,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -182916,7 +182988,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             (lambda _m23: (
                                                                 _lawspec_schema.equal(
@@ -183679,7 +183751,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -183880,7 +183952,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary5():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -183920,56 +183992,56 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-2147483648],
                 64,
                 symbols,
@@ -184021,7 +184093,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary6():
                 + "deleted user is not found| [native] "
                 + "boundary 6 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -184042,8 +184114,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary6():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -184058,8 +184130,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary6():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteUser "
@@ -184117,7 +184189,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary6():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -184127,7 +184199,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary6():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             (lambda _m23: (
                                                                 _lawspec_schema.equal(
@@ -184890,7 +184962,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary6():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -185091,7 +185163,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary6():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -185131,56 +185203,56 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -185235,7 +185307,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary7():
                 + "deleted user is not found| [native] "
                 + "boundary 7 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -185256,8 +185328,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary7():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -185272,8 +185344,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary7():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteUser "
@@ -185331,7 +185403,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary7():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -185341,7 +185413,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary7():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             (lambda _m23: (
                                                                 _lawspec_schema.equal(
@@ -186104,7 +186176,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary7():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -186305,7 +186377,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary7():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -186345,14 +186417,14 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -186367,7 +186439,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -186382,7 +186454,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -186397,7 +186469,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -186412,7 +186484,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -186427,7 +186499,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -186442,7 +186514,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -186494,7 +186566,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
                 + "deleted user is not found| [native] "
                 + "boundary 8 | expect let _let0__sent = "
                 + "let _letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -186515,8 +186587,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -186531,8 +186603,8 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteUser "
@@ -186590,7 +186662,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -186600,7 +186672,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             (lambda _m23: (
                                                                 _lawspec_schema.equal(
@@ -187363,7 +187435,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -187564,7 +187636,7 @@ def test_userapi_a_deleted_user_is_not_found_native__boundary8():
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,
@@ -187655,7 +187727,7 @@ def test_userapi_a_deleted_user_is_not_found_native__property(
                     + "deleted user is not found| [native] "
                     + "property | expect let _let0__sent = "
                     + "let _letfield8__replacement = "
-                    + "Maybe::Just(_input1) in match "
+                    + "Maybe::Present(_input1) in match "
                     + "(_input0) { "
                     + "lawtwin.petstore.model::type::User::Us"
                     + "er _matchfield0__id "
@@ -187676,8 +187748,8 @@ def test_userapi_a_deleted_user_is_not_found_native__property(
                     + "_matchfield6__phone, "
                     + "_matchfield7__userStatus) } in let "
                     + "_let1__it = attempt (createUser "
-                    + "(Maybe::Just(_let0__sent))) in match "
-                    + "(_let1__it) { Either::Left "
+                    + "(Maybe::Present(_let0__sent))) in "
+                    + "match (_let1__it) { Either::Left "
                     + "_match2__0___lawspecSelection0x0 -> "
                     + "true; Either::Right "
                     + "_match2__1___lawspecSelection0x0 -> "
@@ -187692,8 +187764,8 @@ def test_userapi_a_deleted_user_is_not_found_native__property(
                     + "_matchfield15__phone "
                     + "_matchfield16__userStatus -> "
                     + "_matchfield10__username } in match "
-                    + "(_let3__it) { Maybe::Nothing  -> "
-                    + "false; Maybe::Just "
+                    + "(_let3__it) { Maybe::Absent  -> "
+                    + "false; Maybe::Present "
                     + "_match4__1___match__lawspecSelection0x"
                     + "0_0 -> let _let5__gone = attempt "
                     + "(deleteUser "
@@ -187765,7 +187837,7 @@ def test_userapi_a_deleted_user_is_not_found_native__property(
                                                     _m13,
                                                     [
                                                         [
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             lambda: (
                                                                 ls.convert(
                                                                     False,
@@ -187775,7 +187847,7 @@ def test_userapi_a_deleted_user_is_not_found_native__property(
                                                             ),
                                                         ],
                                                         [
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             lambda _m22: (
                                                                 (lambda _m23: (
                                                                     _lawspec_schema.equal(
@@ -188538,7 +188610,7 @@ def test_userapi_a_deleted_user_is_not_found_native__property(
                                                                     ),
                                                                 ],
                                                             ),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             [_m0],
                                                             64,
                                                             symbols,
@@ -188741,7 +188813,7 @@ def test_userapi_a_deleted_user_is_not_found_native__property(
                         )
                     ))(_lawspec_schema.construct(
                         _schema.Named("Maybe", [_schema.Named("Text")]),
-                        "Maybe::Just",
+                        "Maybe::Present",
                         [_input1],
                         64,
                         symbols,
@@ -188795,7 +188867,7 @@ def test_userapi_a_deleted_user_is_not_found_native__property(
 # UserApi: "|a deleted user is not found| [reference]
 # for all (body :: lawtwin.petstore.model::type::User) (keyGiven ::
 # Text) => let _let0__sent = let _letfield8__replacement =
-# Maybe::Just(_input1) in match (_input0) {
+# Maybe::Present(_input1) in match (_input0) {
 # lawtwin.petstore.model::type::User::User _matchfield0__id
 # _matchfield1__username _matchfield2__firstName _matchfield3__lastName
 # _matchfield4__email _matchfield5__password _matchfield6__phone
@@ -188804,15 +188876,15 @@ def test_userapi_a_deleted_user_is_not_found_native__property(
 # _letfield8__replacement, _matchfield2__firstName,
 # _matchfield3__lastName, _matchfield4__email, _matchfield5__password,
 # _matchfield6__phone, _matchfield7__userStatus) } in let _let1__it =
-# attempt (createUser (Maybe::Just(_let0__sent))) in match (_let1__it) {
-# Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
-# _match2__1___lawspecSelection0x0 -> let _let3__it = match
-# (_let0__sent) { lawtwin.petstore.model::type::User::User
+# attempt (createUser (Maybe::Present(_let0__sent))) in match
+# (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 -> true;
+# Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it =
+# match (_let0__sent) { lawtwin.petstore.model::type::User::User
 # _matchfield9__id _matchfield10__username _matchfield11__firstName
 # _matchfield12__lastName _matchfield13__email _matchfield14__password
 # _matchfield15__phone _matchfield16__userStatus ->
-# _matchfield10__username } in match (_let3__it) { Maybe::Nothing ->
-# false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let
+# _matchfield10__username } in match (_let3__it) { Maybe::Absent ->
+# false; Maybe::Present _match4__1___match__lawspecSelection0x0_0 -> let
 # _let5__gone = attempt (deleteUser
 # (_match4__1___match__lawspecSelection0x0_0)) in (attempt
 # (getUserByName (_match4__1___match__lawspecSelection0x0_0)) ==
@@ -188927,7 +188999,7 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_reference(_values):
             + "[reference] search | expect let "
             + "_let0__sent = let "
             + "_letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -188948,8 +189020,8 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_reference(_values):
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -188964,8 +189036,8 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_reference(_values):
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteUser "
@@ -189010,7 +189082,7 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_reference(_values):
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -189020,7 +189092,7 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_reference(_values):
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         (lambda _m23: (
                                                             _lawspec_schema.equal(
@@ -189760,7 +189832,7 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_reference(_values):
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -189901,7 +189973,7 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_reference(_values):
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -189939,56 +190011,56 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary0():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -190005,7 +190077,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary0():
             + "[reference] boundary 0 | expect let "
             + "_let0__sent = let "
             + "_letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -190026,8 +190098,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary0():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -190042,8 +190114,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary0():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteUser "
@@ -190088,7 +190160,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary0():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -190098,7 +190170,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary0():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         (lambda _m23: (
                                                             _lawspec_schema.equal(
@@ -190838,7 +190910,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary0():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -190979,7 +191051,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary0():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -191004,56 +191076,56 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary1():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-2147483648],
                 64,
                 symbols,
@@ -191070,7 +191142,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary1():
             + "[reference] boundary 1 | expect let "
             + "_let0__sent = let "
             + "_letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -191091,8 +191163,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary1():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -191107,8 +191179,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary1():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteUser "
@@ -191153,7 +191225,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary1():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -191163,7 +191235,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary1():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         (lambda _m23: (
                                                             _lawspec_schema.equal(
@@ -191903,7 +191975,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary1():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -192044,7 +192116,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary1():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -192069,56 +192141,56 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary2():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [32]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -192144,7 +192216,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary2():
             + "[reference] boundary 2 | expect let "
             + "_let0__sent = let "
             + "_letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -192165,8 +192237,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary2():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -192181,8 +192253,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary2():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteUser "
@@ -192227,7 +192299,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary2():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -192237,7 +192309,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary2():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         (lambda _m23: (
                                                             _lawspec_schema.equal(
@@ -192977,7 +193049,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary2():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -193118,7 +193190,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary2():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -193143,14 +193215,14 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -193182,7 +193254,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -193214,7 +193286,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -193246,7 +193318,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -193278,7 +193350,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -193310,7 +193382,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -193342,7 +193414,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -193362,7 +193434,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
             + "[reference] boundary 3 | expect let "
             + "_let0__sent = let "
             + "_letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -193383,8 +193455,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -193399,8 +193471,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteUser "
@@ -193445,7 +193517,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -193455,7 +193527,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         (lambda _m23: (
                                                             _lawspec_schema.equal(
@@ -194195,7 +194267,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -194336,7 +194408,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary3():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -194361,14 +194433,14 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("9223372036854775807")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -194383,7 +194455,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -194398,7 +194470,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -194413,7 +194485,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -194428,7 +194500,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -194443,7 +194515,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -194458,7 +194530,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [2147483647],
                 64,
                 symbols,
@@ -194478,7 +194550,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
             + "[reference] boundary 4 | expect let "
             + "_let0__sent = let "
             + "_letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -194499,8 +194571,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -194515,8 +194587,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteUser "
@@ -194561,7 +194633,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -194571,7 +194643,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         (lambda _m23: (
                                                             _lawspec_schema.equal(
@@ -195311,7 +195383,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -195452,7 +195524,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary4():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -195477,14 +195549,14 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -195499,7 +195571,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -195514,7 +195586,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -195529,7 +195601,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -195544,7 +195616,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -195559,7 +195631,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -195574,7 +195646,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -195591,7 +195663,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
             + "[reference] boundary 5 | expect let "
             + "_let0__sent = let "
             + "_letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -195612,8 +195684,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -195628,8 +195700,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteUser "
@@ -195674,7 +195746,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -195684,7 +195756,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         (lambda _m23: (
                                                             _lawspec_schema.equal(
@@ -196424,7 +196496,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -196565,7 +196637,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary5():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -196590,56 +196662,56 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary6():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.integer_literal("-9223372036854775808")],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": [101, 769]}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-2147483648],
                 64,
                 symbols,
@@ -196656,7 +196728,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary6():
             + "[reference] boundary 6 | expect let "
             + "_let0__sent = let "
             + "_letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -196677,8 +196749,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary6():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -196693,8 +196765,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary6():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteUser "
@@ -196739,7 +196811,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary6():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -196749,7 +196821,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary6():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         (lambda _m23: (
                                                             _lawspec_schema.equal(
@@ -197489,7 +197561,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary6():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -197630,7 +197702,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary6():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -197655,56 +197727,56 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary7():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.literal({"type": "Text", "units": []}, symbols)],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [-1],
                 64,
                 symbols,
@@ -197724,7 +197796,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary7():
             + "[reference] boundary 7 | expect let "
             + "_let0__sent = let "
             + "_letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -197745,8 +197817,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary7():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -197761,8 +197833,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary7():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteUser "
@@ -197807,7 +197879,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary7():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -197817,7 +197889,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary7():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         (lambda _m23: (
                                                             _lawspec_schema.equal(
@@ -198557,7 +198629,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary7():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -198698,7 +198770,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary7():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -198723,14 +198795,14 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
         [
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int64")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -198745,7 +198817,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -198760,7 +198832,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -198775,7 +198847,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -198790,7 +198862,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -198805,7 +198877,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [
                     ls.literal(
                         {
@@ -198820,7 +198892,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
             ),
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Int32")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [0],
                 64,
                 symbols,
@@ -198837,7 +198909,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
             + "[reference] boundary 8 | expect let "
             + "_let0__sent = let "
             + "_letfield8__replacement = "
-            + "Maybe::Just(_input1) in match "
+            + "Maybe::Present(_input1) in match "
             + "(_input0) { "
             + "lawtwin.petstore.model::type::User::Us"
             + "er _matchfield0__id "
@@ -198858,8 +198930,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
             + "_matchfield6__phone, "
             + "_matchfield7__userStatus) } in let "
             + "_let1__it = attempt (createUser "
-            + "(Maybe::Just(_let0__sent))) in match "
-            + "(_let1__it) { Either::Left "
+            + "(Maybe::Present(_let0__sent))) in "
+            + "match (_let1__it) { Either::Left "
             + "_match2__0___lawspecSelection0x0 -> "
             + "true; Either::Right "
             + "_match2__1___lawspecSelection0x0 -> "
@@ -198874,8 +198946,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
             + "_matchfield15__phone "
             + "_matchfield16__userStatus -> "
             + "_matchfield10__username } in match "
-            + "(_let3__it) { Maybe::Nothing  -> "
-            + "false; Maybe::Just "
+            + "(_let3__it) { Maybe::Absent  -> "
+            + "false; Maybe::Present "
             + "_match4__1___match__lawspecSelection0x"
             + "0_0 -> let _let5__gone = attempt "
             + "(deleteUser "
@@ -198920,7 +198992,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
                                             _m13,
                                             [
                                                 [
-                                                    "Maybe::Nothing",
+                                                    "Maybe::Absent",
                                                     lambda: (
                                                         ls.convert(
                                                             False,
@@ -198930,7 +199002,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
                                                     ),
                                                 ],
                                                 [
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     lambda _m22: (
                                                         (lambda _m23: (
                                                             _lawspec_schema.equal(
@@ -199670,7 +199742,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
                                                             ),
                                                         ],
                                                     ),
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     [_m0],
                                                     64,
                                                     symbols,
@@ -199811,7 +199883,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__boundary8():
                 )
             ))(_lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("Text")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [_input1],
                 64,
                 symbols,
@@ -199848,7 +199920,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__property(
                 + "[reference] property | expect let "
                 + "_let0__sent = let "
                 + "_letfield8__replacement = "
-                + "Maybe::Just(_input1) in match "
+                + "Maybe::Present(_input1) in match "
                 + "(_input0) { "
                 + "lawtwin.petstore.model::type::User::Us"
                 + "er _matchfield0__id "
@@ -199869,8 +199941,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__property(
                 + "_matchfield6__phone, "
                 + "_matchfield7__userStatus) } in let "
                 + "_let1__it = attempt (createUser "
-                + "(Maybe::Just(_let0__sent))) in match "
-                + "(_let1__it) { Either::Left "
+                + "(Maybe::Present(_let0__sent))) in "
+                + "match (_let1__it) { Either::Left "
                 + "_match2__0___lawspecSelection0x0 -> "
                 + "true; Either::Right "
                 + "_match2__1___lawspecSelection0x0 -> "
@@ -199885,8 +199957,8 @@ def test_userapi_a_deleted_user_is_not_found_reference__property(
                 + "_matchfield15__phone "
                 + "_matchfield16__userStatus -> "
                 + "_matchfield10__username } in match "
-                + "(_let3__it) { Maybe::Nothing  -> "
-                + "false; Maybe::Just "
+                + "(_let3__it) { Maybe::Absent  -> "
+                + "false; Maybe::Present "
                 + "_match4__1___match__lawspecSelection0x"
                 + "0_0 -> let _let5__gone = attempt "
                 + "(deleteUser "
@@ -199944,7 +200016,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__property(
                                                 _m13,
                                                 [
                                                     [
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         lambda: (
                                                             ls.convert(
                                                                 False,
@@ -199954,7 +200026,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__property(
                                                         ),
                                                     ],
                                                     [
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         lambda _m22: (
                                                             (lambda _m23: (
                                                                 _lawspec_schema.equal(
@@ -200717,7 +200789,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__property(
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         [_m0],
                                                         64,
                                                         symbols,
@@ -200918,7 +200990,7 @@ def test_userapi_a_deleted_user_is_not_found_reference__property(
                     )
                 ))(_lawspec_schema.construct(
                     _schema.Named("Maybe", [_schema.Named("Text")]),
-                    "Maybe::Just",
+                    "Maybe::Present",
                     [_input1],
                     64,
                     symbols,

@@ -471,9 +471,9 @@ let lawspecCollectionsBoundedIntSize (schema: Schema.Schema) (symbols: Scalar.Sy
                     else
                         Value.Bool(false)
                 if Runtime.truth ls1 then
-                    Schema.construct "Maybe::Just" [ Scalar.convert argument0 (Scalar.typeOf "IntSize") 64 ] (Scalar.typeOf "Maybe (IntSize)") schema
+                    Schema.construct "Maybe::Present" [ Scalar.convert argument0 (Scalar.typeOf "IntSize") 64 ] (Scalar.typeOf "Maybe (IntSize)") schema
                 else
-                    Schema.construct "Maybe::Nothing" [] (Scalar.typeOf "Maybe (IntSize)") schema
+                    Schema.construct "Maybe::Absent" [] (Scalar.typeOf "Maybe (IntSize)") schema
             result
     Runtime.contextual "contracttest.kafka::lawspecCollectionsBoundedIntSize" ls0
 
@@ -520,9 +520,9 @@ let lawspecCollectionsBoundedUIntPtr (schema: Schema.Schema) (symbols: Scalar.Sy
                     else
                         Value.Bool(false)
                 if Runtime.truth ls1 then
-                    Schema.construct "Maybe::Just" [ Scalar.convert argument0 (Scalar.typeOf "UIntPtr") 64 ] (Scalar.typeOf "Maybe (UIntPtr)") schema
+                    Schema.construct "Maybe::Present" [ Scalar.convert argument0 (Scalar.typeOf "UIntPtr") 64 ] (Scalar.typeOf "Maybe (UIntPtr)") schema
                 else
-                    Schema.construct "Maybe::Nothing" [] (Scalar.typeOf "Maybe (UIntPtr)") schema
+                    Schema.construct "Maybe::Absent" [] (Scalar.typeOf "Maybe (UIntPtr)") schema
             result
     Runtime.contextual "contracttest.kafka::lawspecCollectionsBoundedUIntPtr" ls0
 
@@ -537,9 +537,9 @@ let lawspecCollectionsBoundedUIntSize (schema: Schema.Schema) (symbols: Scalar.S
                     else
                         Value.Bool(false)
                 if Runtime.truth ls1 then
-                    Schema.construct "Maybe::Just" [ Scalar.convert argument0 (Scalar.typeOf "UIntSize") 64 ] (Scalar.typeOf "Maybe (UIntSize)") schema
+                    Schema.construct "Maybe::Present" [ Scalar.convert argument0 (Scalar.typeOf "UIntSize") 64 ] (Scalar.typeOf "Maybe (UIntSize)") schema
                 else
-                    Schema.construct "Maybe::Nothing" [] (Scalar.typeOf "Maybe (UIntSize)") schema
+                    Schema.construct "Maybe::Absent" [] (Scalar.typeOf "Maybe (UIntSize)") schema
             result
     Runtime.contextual "contracttest.kafka::lawspecCollectionsBoundedUIntSize" ls0
 

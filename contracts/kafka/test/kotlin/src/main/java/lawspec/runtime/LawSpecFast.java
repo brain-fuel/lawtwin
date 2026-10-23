@@ -174,7 +174,7 @@ public final class LawSpecFast {
   }
 
   // Sequences: Text (by code point), Bytes and List. A slice is clamped to
-  // the sequence; an index outside it is Nothing.
+  // the sequence; an index outside it is Absent.
 
   /** An Integer index, clamped to a long. */
   public static long index(BigInteger value) {
@@ -229,15 +229,15 @@ public final class LawSpecFast {
   }
 
   public static <T> Maybe<T> at(List<T> xs, long index) {
-    if (index < 0 || index >= xs.size()) return Maybe.nothing();
+    if (index < 0 || index >= xs.size()) return Maybe.absent();
     List<T> c = xs;
     for (long k = 0; k < index; k++) c = c.tail();
-    return Maybe.just(c.head());
+    return Maybe.present(c.head());
   }
 
   public static Maybe<Long> atBytes(Bytes b, long index) {
-    if (index < 0 || index >= b.octets.length) return Maybe.nothing();
-    return Maybe.just((long) (b.octets[(int) index] & 0xff));
+    if (index < 0 || index >= b.octets.length) return Maybe.absent();
+    return Maybe.present((long) (b.octets[(int) index] & 0xff));
   }
 
   public static List<Long> range(long lo, long hi) {
@@ -320,9 +320,9 @@ public final class LawSpecFast {
 
   // Maybe and Either.
 
-  /** Maybe: Nothing before Just. */
+  /** Maybe: Absent before Present. */
   public static final class Maybe<T> implements Ordered {
-    private static final Maybe<?> NOTHING = new Maybe<>(null, false);
+    private static final Maybe<?> ABSENT = new Maybe<>(null, false);
     private final T value;
     private final boolean present;
 
@@ -332,15 +332,15 @@ public final class LawSpecFast {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> Maybe<T> nothing() {
-      return (Maybe<T>) NOTHING;
+    public static <T> Maybe<T> absent() {
+      return (Maybe<T>) ABSENT;
     }
 
-    public static <T> Maybe<T> just(T value) {
+    public static <T> Maybe<T> present(T value) {
       return new Maybe<>(value, true);
     }
 
-    public boolean isJust() {
+    public boolean isPresent() {
       return present;
     }
 
@@ -367,7 +367,7 @@ public final class LawSpecFast {
 
     @Override
     public String toString() {
-      return present ? "Just(" + value + ")" : "Nothing";
+      return present ? "Present(" + value + ")" : "Absent";
     }
   }
 
@@ -598,10 +598,10 @@ public final class LawSpecFast {
       Map<K, V> current = this;
       while (current.size > 0) {
         int c = compare(k, current.key);
-        if (c == 0) return Maybe.just(current.value);
+        if (c == 0) return Maybe.present(current.value);
         current = c < 0 ? current.left : current.right;
       }
-      return Maybe.nothing();
+      return Maybe.absent();
     }
 
     public boolean containsKey(K k) {
@@ -979,14 +979,14 @@ public final class LawSpecFast {
       }
 
       public Value encode(Maybe<T> value) {
-        return new Value(key, value.isJust()
-            ? new Data("Maybe::Just", java.util.List.of(item.encode(value.get())))
-            : new Data("Maybe::Nothing", java.util.List.of()));
+        return new Value(key, value.isPresent()
+            ? new Data("Maybe::Present", java.util.List.of(item.encode(value.get())))
+            : new Data("Maybe::Absent", java.util.List.of()));
       }
 
       public Maybe<T> decode(Value value) {
         Data d = data(value);
-        return d.tag().equals("Maybe::Just") ? Maybe.just(item.decode(d.fields().get(0))) : Maybe.nothing();
+        return d.tag().equals("Maybe::Present") ? Maybe.present(item.decode(d.fields().get(0))) : Maybe.absent();
       }
     };
   }

@@ -647,9 +647,8 @@ public final class KafkaLawSpecTest {
   // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
   // _let1___lawspecRecordField1) in let _let1__a = attempt (produceRequest (_let0__tp)
-  // (Maybe::Nothing()) (_input1)) in let _let2__b = attempt (produceRequest (_let0__tp)
-  // (Maybe::Nothing()) (_input2)) in followsBatch (_let1__a) (_input1) (_let2__b) = true end for
-  // all
+  // (Maybe::Absent()) (_input1)) in let _let2__b = attempt (produceRequest (_let0__tp)
+  // (Maybe::Absent()) (_input2)) in followsBatch (_let1__a) (_input1) (_let2__b) = true end for all
   @Test
   void lawBrokerOffsetsInAPartitionAreDenseAnd_boundary0() {
     var symbols = new HashMap<String, Object>();
@@ -669,9 +668,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -683,11 +682,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -709,9 +708,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -723,11 +722,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -763,9 +762,9 @@ public final class KafkaLawSpecTest {
                 + "ordField0, _let1___lawspecRecordField1)"
                 + " in let _let1__a = attempt"
                 + " (produceRequest (_let0__tp)"
-                + " (Maybe::Nothing()) (_input1)) in let"
+                + " (Maybe::Absent()) (_input1)) in let"
                 + " _let2__b = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (_input2)) in followsBatch (_let1__a)"
                 + " (_input1) (_let2__b) = true",
             () ->
@@ -815,7 +814,7 @@ public final class KafkaLawSpecTest {
                                                             "Maybe",
                                                             new lawspec.runtime.LawSpecSchema.Named(
                                                                 "lawtwin.kafka.model::type::ProducerTag")),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         java.util.List.of(),
                                                         64,
                                                         symbols)),
@@ -880,7 +879,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Nothing",
+                                                                "Maybe::Absent",
                                                                 java.util.List.of(),
                                                                 64,
                                                                 symbols)),
@@ -952,11 +951,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -968,9 +967,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -992,11 +991,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -1008,9 +1007,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -1045,9 +1044,9 @@ public final class KafkaLawSpecTest {
                 + "ordField0, _let1___lawspecRecordField1)"
                 + " in let _let1__a = attempt"
                 + " (produceRequest (_let0__tp)"
-                + " (Maybe::Nothing()) (_input1)) in let"
+                + " (Maybe::Absent()) (_input1)) in let"
                 + " _let2__b = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (_input2)) in followsBatch (_let1__a)"
                 + " (_input1) (_let2__b) = true",
             () ->
@@ -1097,7 +1096,7 @@ public final class KafkaLawSpecTest {
                                                             "Maybe",
                                                             new lawspec.runtime.LawSpecSchema.Named(
                                                                 "lawtwin.kafka.model::type::ProducerTag")),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         java.util.List.of(),
                                                         64,
                                                         symbols)),
@@ -1162,7 +1161,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Nothing",
+                                                                "Maybe::Absent",
                                                                 java.util.List.of(),
                                                                 64,
                                                                 symbols)),
@@ -1234,9 +1233,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -1257,9 +1256,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -1294,9 +1293,9 @@ public final class KafkaLawSpecTest {
                 + "ordField0, _let1___lawspecRecordField1)"
                 + " in let _let1__a = attempt"
                 + " (produceRequest (_let0__tp)"
-                + " (Maybe::Nothing()) (_input1)) in let"
+                + " (Maybe::Absent()) (_input1)) in let"
                 + " _let2__b = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (_input2)) in followsBatch (_let1__a)"
                 + " (_input1) (_let2__b) = true",
             () ->
@@ -1346,7 +1345,7 @@ public final class KafkaLawSpecTest {
                                                             "Maybe",
                                                             new lawspec.runtime.LawSpecSchema.Named(
                                                                 "lawtwin.kafka.model::type::ProducerTag")),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         java.util.List.of(),
                                                         64,
                                                         symbols)),
@@ -1411,7 +1410,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Nothing",
+                                                                "Maybe::Absent",
                                                                 java.util.List.of(),
                                                                 64,
                                                                 symbols)),
@@ -1483,9 +1482,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -1496,9 +1495,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -1519,9 +1518,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -1532,9 +1531,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -1569,9 +1568,9 @@ public final class KafkaLawSpecTest {
                 + "ordField0, _let1___lawspecRecordField1)"
                 + " in let _let1__a = attempt"
                 + " (produceRequest (_let0__tp)"
-                + " (Maybe::Nothing()) (_input1)) in let"
+                + " (Maybe::Absent()) (_input1)) in let"
                 + " _let2__b = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (_input2)) in followsBatch (_let1__a)"
                 + " (_input1) (_let2__b) = true",
             () ->
@@ -1621,7 +1620,7 @@ public final class KafkaLawSpecTest {
                                                             "Maybe",
                                                             new lawspec.runtime.LawSpecSchema.Named(
                                                                 "lawtwin.kafka.model::type::ProducerTag")),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         java.util.List.of(),
                                                         64,
                                                         symbols)),
@@ -1686,7 +1685,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Nothing",
+                                                                "Maybe::Absent",
                                                                 java.util.List.of(),
                                                                 64,
                                                                 symbols)),
@@ -1963,9 +1962,9 @@ public final class KafkaLawSpecTest {
                             + "ordField0, _let1___lawspecRecordField1)"
                             + " in let _let1__a = attempt"
                             + " (produceRequest (_let0__tp)"
-                            + " (Maybe::Nothing()) (_input1)) in let"
+                            + " (Maybe::Absent()) (_input1)) in let"
                             + " _let2__b = attempt (produceRequest"
-                            + " (_let0__tp) (Maybe::Nothing())"
+                            + " (_let0__tp) (Maybe::Absent())"
                             + " (_input2)) in followsBatch (_let1__a)"
                             + " (_input1) (_let2__b) = true",
                         () ->
@@ -2015,7 +2014,7 @@ public final class KafkaLawSpecTest {
                                                                         "Maybe",
                                                                         new lawspec.runtime.LawSpecSchema.Named(
                                                                             "lawtwin.kafka.model::type::ProducerTag")),
-                                                                    "Maybe::Nothing",
+                                                                    "Maybe::Absent",
                                                                     java.util.List.of(),
                                                                     64,
                                                                     symbols)),
@@ -2084,7 +2083,7 @@ public final class KafkaLawSpecTest {
                                                                                 "Maybe",
                                                                                 new lawspec.runtime.LawSpecSchema.Named(
                                                                                     "lawtwin.kafka.model::type::ProducerTag")),
-                                                                            "Maybe::Nothing",
+                                                                            "Maybe::Absent",
                                                                             java.util.List.of(),
                                                                             64,
                                                                             symbols)),
@@ -2154,9 +2153,8 @@ public final class KafkaLawSpecTest {
   // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
   // _let1___lawspecRecordField1) in let _let1__a = attempt (produceRequest (_let0__tp)
-  // (Maybe::Nothing()) (_input1)) in let _let2__b = attempt (produceRequest (_let0__tp)
-  // (Maybe::Nothing()) (_input2)) in followsBatch (_let1__a) (_input1) (_let2__b) = true end for
-  // all
+  // (Maybe::Absent()) (_input1)) in let _let2__b = attempt (produceRequest (_let0__tp)
+  // (Maybe::Absent()) (_input2)) in followsBatch (_let1__a) (_input1) (_let2__b) = true end for all
   @Test
   void lawBrokerOffsetsInAPartitionAreDenseAnd2_boundary0() {
     var symbols = new HashMap<String, Object>();
@@ -2180,9 +2178,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -2194,11 +2192,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -2220,9 +2218,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -2234,11 +2232,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -2263,9 +2261,9 @@ public final class KafkaLawSpecTest {
               + "ordField0, _let1___lawspecRecordField1)"
               + " in let _let1__a = attempt"
               + " (produceRequest (_let0__tp)"
-              + " (Maybe::Nothing()) (_input1)) in let"
+              + " (Maybe::Absent()) (_input1)) in let"
               + " _let2__b = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (_input2)) in followsBatch (_let1__a)"
               + " (_input1) (_let2__b) = true",
           () ->
@@ -2313,7 +2311,7 @@ public final class KafkaLawSpecTest {
                                                           "Maybe",
                                                           new lawspec.runtime.LawSpecSchema.Named(
                                                               "lawtwin.kafka.model::type::ProducerTag")),
-                                                      "Maybe::Nothing",
+                                                      "Maybe::Absent",
                                                       java.util.List.of(),
                                                       64,
                                                       symbols)),
@@ -2378,7 +2376,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Nothing",
+                                                              "Maybe::Absent",
                                                               java.util.List.of(),
                                                               64,
                                                               symbols)),
@@ -2447,11 +2445,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -2463,9 +2461,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -2487,11 +2485,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -2503,9 +2501,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -2529,9 +2527,9 @@ public final class KafkaLawSpecTest {
               + "ordField0, _let1___lawspecRecordField1)"
               + " in let _let1__a = attempt"
               + " (produceRequest (_let0__tp)"
-              + " (Maybe::Nothing()) (_input1)) in let"
+              + " (Maybe::Absent()) (_input1)) in let"
               + " _let2__b = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (_input2)) in followsBatch (_let1__a)"
               + " (_input1) (_let2__b) = true",
           () ->
@@ -2579,7 +2577,7 @@ public final class KafkaLawSpecTest {
                                                           "Maybe",
                                                           new lawspec.runtime.LawSpecSchema.Named(
                                                               "lawtwin.kafka.model::type::ProducerTag")),
-                                                      "Maybe::Nothing",
+                                                      "Maybe::Absent",
                                                       java.util.List.of(),
                                                       64,
                                                       symbols)),
@@ -2644,7 +2642,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Nothing",
+                                                              "Maybe::Absent",
                                                               java.util.List.of(),
                                                               64,
                                                               symbols)),
@@ -2713,9 +2711,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -2736,9 +2734,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -2762,9 +2760,9 @@ public final class KafkaLawSpecTest {
               + "ordField0, _let1___lawspecRecordField1)"
               + " in let _let1__a = attempt"
               + " (produceRequest (_let0__tp)"
-              + " (Maybe::Nothing()) (_input1)) in let"
+              + " (Maybe::Absent()) (_input1)) in let"
               + " _let2__b = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (_input2)) in followsBatch (_let1__a)"
               + " (_input1) (_let2__b) = true",
           () ->
@@ -2812,7 +2810,7 @@ public final class KafkaLawSpecTest {
                                                           "Maybe",
                                                           new lawspec.runtime.LawSpecSchema.Named(
                                                               "lawtwin.kafka.model::type::ProducerTag")),
-                                                      "Maybe::Nothing",
+                                                      "Maybe::Absent",
                                                       java.util.List.of(),
                                                       64,
                                                       symbols)),
@@ -2877,7 +2875,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Nothing",
+                                                              "Maybe::Absent",
                                                               java.util.List.of(),
                                                               64,
                                                               symbols)),
@@ -2946,9 +2944,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -2959,9 +2957,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -2982,9 +2980,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -2995,9 +2993,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -3021,9 +3019,9 @@ public final class KafkaLawSpecTest {
               + "ordField0, _let1___lawspecRecordField1)"
               + " in let _let1__a = attempt"
               + " (produceRequest (_let0__tp)"
-              + " (Maybe::Nothing()) (_input1)) in let"
+              + " (Maybe::Absent()) (_input1)) in let"
               + " _let2__b = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (_input2)) in followsBatch (_let1__a)"
               + " (_input1) (_let2__b) = true",
           () ->
@@ -3071,7 +3069,7 @@ public final class KafkaLawSpecTest {
                                                           "Maybe",
                                                           new lawspec.runtime.LawSpecSchema.Named(
                                                               "lawtwin.kafka.model::type::ProducerTag")),
-                                                      "Maybe::Nothing",
+                                                      "Maybe::Absent",
                                                       java.util.List.of(),
                                                       64,
                                                       symbols)),
@@ -3136,7 +3134,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Nothing",
+                                                              "Maybe::Absent",
                                                               java.util.List.of(),
                                                               64,
                                                               symbols)),
@@ -3400,9 +3398,9 @@ public final class KafkaLawSpecTest {
                           + "ordField0, _let1___lawspecRecordField1)"
                           + " in let _let1__a = attempt"
                           + " (produceRequest (_let0__tp)"
-                          + " (Maybe::Nothing()) (_input1)) in let"
+                          + " (Maybe::Absent()) (_input1)) in let"
                           + " _let2__b = attempt (produceRequest"
-                          + " (_let0__tp) (Maybe::Nothing())"
+                          + " (_let0__tp) (Maybe::Absent())"
                           + " (_input2)) in followsBatch (_let1__a)"
                           + " (_input1) (_let2__b) = true",
                       () ->
@@ -3452,7 +3450,7 @@ public final class KafkaLawSpecTest {
                                                                       "Maybe",
                                                                       new lawspec.runtime.LawSpecSchema.Named(
                                                                           "lawtwin.kafka.model::type::ProducerTag")),
-                                                                  "Maybe::Nothing",
+                                                                  "Maybe::Absent",
                                                                   java.util.List.of(),
                                                                   64,
                                                                   symbols)),
@@ -3519,7 +3517,7 @@ public final class KafkaLawSpecTest {
                                                                               "Maybe",
                                                                               new lawspec.runtime.LawSpecSchema.Named(
                                                                                   "lawtwin.kafka.model::type::ProducerTag")),
-                                                                          "Maybe::Nothing",
+                                                                          "Maybe::Absent",
                                                                           java.util.List.of(),
                                                                           64,
                                                                           symbols)),
@@ -3581,7 +3579,7 @@ public final class KafkaLawSpecTest {
   // _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
   // _let1___lawspecRecordField1) in let _let1__it = attempt (produceRequest (_let0__tp)
-  // (Maybe::Nothing()) (_input1)) in match (_let1__it) { Either::Left
+  // (Maybe::Absent()) (_input1)) in match (_let1__it) { Either::Left
   // _match2__0___lawspecSelection0x0 -> false; Either::Right _match2__1___lawspecSelection0x0 ->
   // (uncommittedFrom (_let0__tp) (_match2__1___lawspecSelection0x0) == _input1) } = true end for
   // all
@@ -3604,9 +3602,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -3618,11 +3616,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -3657,7 +3655,7 @@ public final class KafkaLawSpecTest {
                 + "specRecordField0,"
                 + " _let1___lawspecRecordField1) in let"
                 + " _let1__it = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (_input1)) in match (_let1__it) {"
                 + " Either::Left _match2__0___lawspecSelect"
                 + "ion0x0 -> false; Either::Right"
@@ -3712,7 +3710,7 @@ public final class KafkaLawSpecTest {
                                                             "Maybe",
                                                             new lawspec.runtime.LawSpecSchema.Named(
                                                                 "lawtwin.kafka.model::type::ProducerTag")),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         java.util.List.of(),
                                                         64,
                                                         symbols)),
@@ -3800,11 +3798,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -3816,9 +3814,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -3852,7 +3850,7 @@ public final class KafkaLawSpecTest {
                 + "specRecordField0,"
                 + " _let1___lawspecRecordField1) in let"
                 + " _let1__it = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (_input1)) in match (_let1__it) {"
                 + " Either::Left _match2__0___lawspecSelect"
                 + "ion0x0 -> false; Either::Right"
@@ -3907,7 +3905,7 @@ public final class KafkaLawSpecTest {
                                                             "Maybe",
                                                             new lawspec.runtime.LawSpecSchema.Named(
                                                                 "lawtwin.kafka.model::type::ProducerTag")),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         java.util.List.of(),
                                                         64,
                                                         symbols)),
@@ -3995,9 +3993,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -4031,7 +4029,7 @@ public final class KafkaLawSpecTest {
                 + "specRecordField0,"
                 + " _let1___lawspecRecordField1) in let"
                 + " _let1__it = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (_input1)) in match (_let1__it) {"
                 + " Either::Left _match2__0___lawspecSelect"
                 + "ion0x0 -> false; Either::Right"
@@ -4086,7 +4084,7 @@ public final class KafkaLawSpecTest {
                                                             "Maybe",
                                                             new lawspec.runtime.LawSpecSchema.Named(
                                                                 "lawtwin.kafka.model::type::ProducerTag")),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         java.util.List.of(),
                                                         64,
                                                         symbols)),
@@ -4174,9 +4172,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -4187,9 +4185,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -4223,7 +4221,7 @@ public final class KafkaLawSpecTest {
                 + "specRecordField0,"
                 + " _let1___lawspecRecordField1) in let"
                 + " _let1__it = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (_input1)) in match (_let1__it) {"
                 + " Either::Left _match2__0___lawspecSelect"
                 + "ion0x0 -> false; Either::Right"
@@ -4278,7 +4276,7 @@ public final class KafkaLawSpecTest {
                                                             "Maybe",
                                                             new lawspec.runtime.LawSpecSchema.Named(
                                                                 "lawtwin.kafka.model::type::ProducerTag")),
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         java.util.List.of(),
                                                         64,
                                                         symbols)),
@@ -4553,7 +4551,7 @@ public final class KafkaLawSpecTest {
                             + "ordField0, _let1___lawspecRecordField1)"
                             + " in let _let1__it = attempt"
                             + " (produceRequest (_let0__tp)"
-                            + " (Maybe::Nothing()) (_input1)) in match"
+                            + " (Maybe::Absent()) (_input1)) in match"
                             + " (_let1__it) { Either::Left"
                             + " _match2__0___lawspecSelection0x0 ->"
                             + " false; Either::Right"
@@ -4608,7 +4606,7 @@ public final class KafkaLawSpecTest {
                                                                         "Maybe",
                                                                         new lawspec.runtime.LawSpecSchema.Named(
                                                                             "lawtwin.kafka.model::type::ProducerTag")),
-                                                                    "Maybe::Nothing",
+                                                                    "Maybe::Absent",
                                                                     java.util.List.of(),
                                                                     64,
                                                                     symbols)),
@@ -4693,7 +4691,7 @@ public final class KafkaLawSpecTest {
   // _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
   // _let1___lawspecRecordField1) in let _let1__it = attempt (produceRequest (_let0__tp)
-  // (Maybe::Nothing()) (_input1)) in match (_let1__it) { Either::Left
+  // (Maybe::Absent()) (_input1)) in match (_let1__it) { Either::Left
   // _match2__0___lawspecSelection0x0 -> false; Either::Right _match2__1___lawspecSelection0x0 ->
   // (uncommittedFrom (_let0__tp) (_match2__1___lawspecSelection0x0) == _input1) } = true end for
   // all
@@ -4720,9 +4718,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -4734,11 +4732,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -4762,7 +4760,7 @@ public final class KafkaLawSpecTest {
               + "specRecordField0,"
               + " _let1___lawspecRecordField1) in let"
               + " _let1__it = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (_input1)) in match (_let1__it) {"
               + " Either::Left _match2__0___lawspecSelect"
               + "ion0x0 -> false; Either::Right"
@@ -4815,7 +4813,7 @@ public final class KafkaLawSpecTest {
                                                           "Maybe",
                                                           new lawspec.runtime.LawSpecSchema.Named(
                                                               "lawtwin.kafka.model::type::ProducerTag")),
-                                                      "Maybe::Nothing",
+                                                      "Maybe::Absent",
                                                       java.util.List.of(),
                                                       64,
                                                       symbols)),
@@ -4900,11 +4898,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -4916,9 +4914,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -4941,7 +4939,7 @@ public final class KafkaLawSpecTest {
               + "specRecordField0,"
               + " _let1___lawspecRecordField1) in let"
               + " _let1__it = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (_input1)) in match (_let1__it) {"
               + " Either::Left _match2__0___lawspecSelect"
               + "ion0x0 -> false; Either::Right"
@@ -4994,7 +4992,7 @@ public final class KafkaLawSpecTest {
                                                           "Maybe",
                                                           new lawspec.runtime.LawSpecSchema.Named(
                                                               "lawtwin.kafka.model::type::ProducerTag")),
-                                                      "Maybe::Nothing",
+                                                      "Maybe::Absent",
                                                       java.util.List.of(),
                                                       64,
                                                       symbols)),
@@ -5079,9 +5077,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -5104,7 +5102,7 @@ public final class KafkaLawSpecTest {
               + "specRecordField0,"
               + " _let1___lawspecRecordField1) in let"
               + " _let1__it = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (_input1)) in match (_let1__it) {"
               + " Either::Left _match2__0___lawspecSelect"
               + "ion0x0 -> false; Either::Right"
@@ -5157,7 +5155,7 @@ public final class KafkaLawSpecTest {
                                                           "Maybe",
                                                           new lawspec.runtime.LawSpecSchema.Named(
                                                               "lawtwin.kafka.model::type::ProducerTag")),
-                                                      "Maybe::Nothing",
+                                                      "Maybe::Absent",
                                                       java.util.List.of(),
                                                       64,
                                                       symbols)),
@@ -5242,9 +5240,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -5255,9 +5253,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -5280,7 +5278,7 @@ public final class KafkaLawSpecTest {
               + "specRecordField0,"
               + " _let1___lawspecRecordField1) in let"
               + " _let1__it = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (_input1)) in match (_let1__it) {"
               + " Either::Left _match2__0___lawspecSelect"
               + "ion0x0 -> false; Either::Right"
@@ -5333,7 +5331,7 @@ public final class KafkaLawSpecTest {
                                                           "Maybe",
                                                           new lawspec.runtime.LawSpecSchema.Named(
                                                               "lawtwin.kafka.model::type::ProducerTag")),
-                                                      "Maybe::Nothing",
+                                                      "Maybe::Absent",
                                                       java.util.List.of(),
                                                       64,
                                                       symbols)),
@@ -5595,7 +5593,7 @@ public final class KafkaLawSpecTest {
                           + "ordField0, _let1___lawspecRecordField1)"
                           + " in let _let1__it = attempt"
                           + " (produceRequest (_let0__tp)"
-                          + " (Maybe::Nothing()) (_input1)) in match"
+                          + " (Maybe::Absent()) (_input1)) in match"
                           + " (_let1__it) { Either::Left"
                           + " _match2__0___lawspecSelection0x0 ->"
                           + " false; Either::Right"
@@ -5650,7 +5648,7 @@ public final class KafkaLawSpecTest {
                                                                       "Maybe",
                                                                       new lawspec.runtime.LawSpecSchema.Named(
                                                                           "lawtwin.kafka.model::type::ProducerTag")),
-                                                                  "Maybe::Nothing",
+                                                                  "Maybe::Absent",
                                                                   java.util.List.of(),
                                                                   64,
                                                                   symbols)),
@@ -5728,8 +5726,8 @@ public final class KafkaLawSpecTest {
   // _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
   // _let1___lawspecRecordField1) in let _let1__it = attempt (initProducerIdRequest
-  // (Maybe::Nothing())) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
-  // false; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__tag = Maybe::Just(tagOf
+  // (Maybe::Absent())) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
+  // false; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__tag = Maybe::Present(tagOf
   // (_match2__1___lawspecSelection0x0) (0)) in let _let4__first = attempt (produceRequest
   // (_let0__tp) (_let3__tag) (_input1)) in let _let5__retry = attempt (produceRequest (_let0__tp)
   // (_let3__tag) (_input1)) in ((_let4__first == _let5__retry) And followsBatch (_let4__first)
@@ -5755,9 +5753,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -5769,11 +5767,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -5809,12 +5807,12 @@ public final class KafkaLawSpecTest {
                 + " _let1___lawspecRecordField1) in let"
                 + " _let1__it = attempt"
                 + " (initProducerIdRequest"
-                + " (Maybe::Nothing())) in match"
+                + " (Maybe::Absent())) in match"
                 + " (_let1__it) { Either::Left"
                 + " _match2__0___lawspecSelection0x0 ->"
                 + " false; Either::Right"
                 + " _match2__1___lawspecSelection0x0 ->"
-                + " let _let3__tag = Maybe::Just(tagOf"
+                + " let _let3__tag = Maybe::Present(tagOf"
                 + " (_match2__1___lawspecSelection0x0)"
                 + " (0)) in let _let4__first = attempt"
                 + " (produceRequest (_let0__tp)"
@@ -5866,7 +5864,7 @@ public final class KafkaLawSpecTest {
                                                     "Maybe Text",
                                                     LawSpecRuntime.construct(
                                                         "Maybe Text",
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         new Value[] {}),
                                                     64,
                                                     _element10 ->
@@ -5920,7 +5918,7 @@ public final class KafkaLawSpecTest {
                                                     "Maybe",
                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 java.util.List.of(
                                                     lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                         symbols,
@@ -6195,11 +6193,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -6211,9 +6209,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -6248,12 +6246,12 @@ public final class KafkaLawSpecTest {
                 + " _let1___lawspecRecordField1) in let"
                 + " _let1__it = attempt"
                 + " (initProducerIdRequest"
-                + " (Maybe::Nothing())) in match"
+                + " (Maybe::Absent())) in match"
                 + " (_let1__it) { Either::Left"
                 + " _match2__0___lawspecSelection0x0 ->"
                 + " false; Either::Right"
                 + " _match2__1___lawspecSelection0x0 ->"
-                + " let _let3__tag = Maybe::Just(tagOf"
+                + " let _let3__tag = Maybe::Present(tagOf"
                 + " (_match2__1___lawspecSelection0x0)"
                 + " (0)) in let _let4__first = attempt"
                 + " (produceRequest (_let0__tp)"
@@ -6305,7 +6303,7 @@ public final class KafkaLawSpecTest {
                                                     "Maybe Text",
                                                     LawSpecRuntime.construct(
                                                         "Maybe Text",
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         new Value[] {}),
                                                     64,
                                                     _element10 ->
@@ -6359,7 +6357,7 @@ public final class KafkaLawSpecTest {
                                                     "Maybe",
                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 java.util.List.of(
                                                     lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                         symbols,
@@ -6634,9 +6632,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -6671,12 +6669,12 @@ public final class KafkaLawSpecTest {
                 + " _let1___lawspecRecordField1) in let"
                 + " _let1__it = attempt"
                 + " (initProducerIdRequest"
-                + " (Maybe::Nothing())) in match"
+                + " (Maybe::Absent())) in match"
                 + " (_let1__it) { Either::Left"
                 + " _match2__0___lawspecSelection0x0 ->"
                 + " false; Either::Right"
                 + " _match2__1___lawspecSelection0x0 ->"
-                + " let _let3__tag = Maybe::Just(tagOf"
+                + " let _let3__tag = Maybe::Present(tagOf"
                 + " (_match2__1___lawspecSelection0x0)"
                 + " (0)) in let _let4__first = attempt"
                 + " (produceRequest (_let0__tp)"
@@ -6728,7 +6726,7 @@ public final class KafkaLawSpecTest {
                                                     "Maybe Text",
                                                     LawSpecRuntime.construct(
                                                         "Maybe Text",
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         new Value[] {}),
                                                     64,
                                                     _element10 ->
@@ -6782,7 +6780,7 @@ public final class KafkaLawSpecTest {
                                                     "Maybe",
                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 java.util.List.of(
                                                     lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                         symbols,
@@ -7057,9 +7055,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -7070,9 +7068,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -7107,12 +7105,12 @@ public final class KafkaLawSpecTest {
                 + " _let1___lawspecRecordField1) in let"
                 + " _let1__it = attempt"
                 + " (initProducerIdRequest"
-                + " (Maybe::Nothing())) in match"
+                + " (Maybe::Absent())) in match"
                 + " (_let1__it) { Either::Left"
                 + " _match2__0___lawspecSelection0x0 ->"
                 + " false; Either::Right"
                 + " _match2__1___lawspecSelection0x0 ->"
-                + " let _let3__tag = Maybe::Just(tagOf"
+                + " let _let3__tag = Maybe::Present(tagOf"
                 + " (_match2__1___lawspecSelection0x0)"
                 + " (0)) in let _let4__first = attempt"
                 + " (produceRequest (_let0__tp)"
@@ -7164,7 +7162,7 @@ public final class KafkaLawSpecTest {
                                                     "Maybe Text",
                                                     LawSpecRuntime.construct(
                                                         "Maybe Text",
-                                                        "Maybe::Nothing",
+                                                        "Maybe::Absent",
                                                         new Value[] {}),
                                                     64,
                                                     _element10 ->
@@ -7218,7 +7216,7 @@ public final class KafkaLawSpecTest {
                                                     "Maybe",
                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                "Maybe::Just",
+                                                "Maybe::Present",
                                                 java.util.List.of(
                                                     lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                         symbols,
@@ -7680,12 +7678,12 @@ public final class KafkaLawSpecTest {
                             + "ordField0, _let1___lawspecRecordField1)"
                             + " in let _let1__it = attempt"
                             + " (initProducerIdRequest"
-                            + " (Maybe::Nothing())) in match"
+                            + " (Maybe::Absent())) in match"
                             + " (_let1__it) { Either::Left"
                             + " _match2__0___lawspecSelection0x0 ->"
                             + " false; Either::Right"
                             + " _match2__1___lawspecSelection0x0 ->"
-                            + " let _let3__tag = Maybe::Just(tagOf"
+                            + " let _let3__tag = Maybe::Present(tagOf"
                             + " (_match2__1___lawspecSelection0x0)"
                             + " (0)) in let _let4__first = attempt"
                             + " (produceRequest (_let0__tp)"
@@ -7737,7 +7735,7 @@ public final class KafkaLawSpecTest {
                                                                 "Maybe Text",
                                                                 LawSpecRuntime.construct(
                                                                     "Maybe Text",
-                                                                    "Maybe::Nothing",
+                                                                    "Maybe::Absent",
                                                                     new Value[] {}),
                                                                 64,
                                                                 _element10 ->
@@ -7793,7 +7791,7 @@ public final class KafkaLawSpecTest {
                                                                 "Maybe",
                                                                 new lawspec.runtime.LawSpecSchema.Named(
                                                                     "lawtwin.kafka.model::type::ProducerTag")),
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             java.util.List.of(
                                                                 lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                     symbols,
@@ -8081,8 +8079,8 @@ public final class KafkaLawSpecTest {
   // _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
   // _let1___lawspecRecordField1) in let _let1__it = attempt (initProducerIdRequest
-  // (Maybe::Nothing())) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
-  // false; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__tag = Maybe::Just(tagOf
+  // (Maybe::Absent())) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
+  // false; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__tag = Maybe::Present(tagOf
   // (_match2__1___lawspecSelection0x0) (0)) in let _let4__first = attempt (produceRequest
   // (_let0__tp) (_let3__tag) (_input1)) in let _let5__retry = attempt (produceRequest (_let0__tp)
   // (_let3__tag) (_input1)) in ((_let4__first == _let5__retry) And followsBatch (_let4__first)
@@ -8112,9 +8110,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -8126,11 +8124,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -8155,12 +8153,12 @@ public final class KafkaLawSpecTest {
               + " _let1___lawspecRecordField1) in let"
               + " _let1__it = attempt"
               + " (initProducerIdRequest"
-              + " (Maybe::Nothing())) in match"
+              + " (Maybe::Absent())) in match"
               + " (_let1__it) { Either::Left"
               + " _match2__0___lawspecSelection0x0 ->"
               + " false; Either::Right"
               + " _match2__1___lawspecSelection0x0 ->"
-              + " let _let3__tag = Maybe::Just(tagOf"
+              + " let _let3__tag = Maybe::Present(tagOf"
               + " (_match2__1___lawspecSelection0x0)"
               + " (0)) in let _let4__first = attempt"
               + " (produceRequest (_let0__tp)"
@@ -8210,7 +8208,7 @@ public final class KafkaLawSpecTest {
                                                   "Maybe Text",
                                                   LawSpecRuntime.construct(
                                                       "Maybe Text",
-                                                      "Maybe::Nothing",
+                                                      "Maybe::Absent",
                                                       new Value[] {}),
                                                   64,
                                                   _element10 ->
@@ -8264,7 +8262,7 @@ public final class KafkaLawSpecTest {
                                                   "Maybe",
                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                              "Maybe::Just",
+                                              "Maybe::Present",
                                               java.util.List.of(
                                                   lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                       symbols,
@@ -8532,11 +8530,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -8548,9 +8546,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -8574,12 +8572,12 @@ public final class KafkaLawSpecTest {
               + " _let1___lawspecRecordField1) in let"
               + " _let1__it = attempt"
               + " (initProducerIdRequest"
-              + " (Maybe::Nothing())) in match"
+              + " (Maybe::Absent())) in match"
               + " (_let1__it) { Either::Left"
               + " _match2__0___lawspecSelection0x0 ->"
               + " false; Either::Right"
               + " _match2__1___lawspecSelection0x0 ->"
-              + " let _let3__tag = Maybe::Just(tagOf"
+              + " let _let3__tag = Maybe::Present(tagOf"
               + " (_match2__1___lawspecSelection0x0)"
               + " (0)) in let _let4__first = attempt"
               + " (produceRequest (_let0__tp)"
@@ -8629,7 +8627,7 @@ public final class KafkaLawSpecTest {
                                                   "Maybe Text",
                                                   LawSpecRuntime.construct(
                                                       "Maybe Text",
-                                                      "Maybe::Nothing",
+                                                      "Maybe::Absent",
                                                       new Value[] {}),
                                                   64,
                                                   _element10 ->
@@ -8683,7 +8681,7 @@ public final class KafkaLawSpecTest {
                                                   "Maybe",
                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                              "Maybe::Just",
+                                              "Maybe::Present",
                                               java.util.List.of(
                                                   lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                       symbols,
@@ -8951,9 +8949,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -8977,12 +8975,12 @@ public final class KafkaLawSpecTest {
               + " _let1___lawspecRecordField1) in let"
               + " _let1__it = attempt"
               + " (initProducerIdRequest"
-              + " (Maybe::Nothing())) in match"
+              + " (Maybe::Absent())) in match"
               + " (_let1__it) { Either::Left"
               + " _match2__0___lawspecSelection0x0 ->"
               + " false; Either::Right"
               + " _match2__1___lawspecSelection0x0 ->"
-              + " let _let3__tag = Maybe::Just(tagOf"
+              + " let _let3__tag = Maybe::Present(tagOf"
               + " (_match2__1___lawspecSelection0x0)"
               + " (0)) in let _let4__first = attempt"
               + " (produceRequest (_let0__tp)"
@@ -9032,7 +9030,7 @@ public final class KafkaLawSpecTest {
                                                   "Maybe Text",
                                                   LawSpecRuntime.construct(
                                                       "Maybe Text",
-                                                      "Maybe::Nothing",
+                                                      "Maybe::Absent",
                                                       new Value[] {}),
                                                   64,
                                                   _element10 ->
@@ -9086,7 +9084,7 @@ public final class KafkaLawSpecTest {
                                                   "Maybe",
                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                              "Maybe::Just",
+                                              "Maybe::Present",
                                               java.util.List.of(
                                                   lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                       symbols,
@@ -9354,9 +9352,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -9367,9 +9365,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -9393,12 +9391,12 @@ public final class KafkaLawSpecTest {
               + " _let1___lawspecRecordField1) in let"
               + " _let1__it = attempt"
               + " (initProducerIdRequest"
-              + " (Maybe::Nothing())) in match"
+              + " (Maybe::Absent())) in match"
               + " (_let1__it) { Either::Left"
               + " _match2__0___lawspecSelection0x0 ->"
               + " false; Either::Right"
               + " _match2__1___lawspecSelection0x0 ->"
-              + " let _let3__tag = Maybe::Just(tagOf"
+              + " let _let3__tag = Maybe::Present(tagOf"
               + " (_match2__1___lawspecSelection0x0)"
               + " (0)) in let _let4__first = attempt"
               + " (produceRequest (_let0__tp)"
@@ -9448,7 +9446,7 @@ public final class KafkaLawSpecTest {
                                                   "Maybe Text",
                                                   LawSpecRuntime.construct(
                                                       "Maybe Text",
-                                                      "Maybe::Nothing",
+                                                      "Maybe::Absent",
                                                       new Value[] {}),
                                                   64,
                                                   _element10 ->
@@ -9502,7 +9500,7 @@ public final class KafkaLawSpecTest {
                                                   "Maybe",
                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                              "Maybe::Just",
+                                              "Maybe::Present",
                                               java.util.List.of(
                                                   lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                       symbols,
@@ -9947,12 +9945,12 @@ public final class KafkaLawSpecTest {
                           + "ordField0, _let1___lawspecRecordField1)"
                           + " in let _let1__it = attempt"
                           + " (initProducerIdRequest"
-                          + " (Maybe::Nothing())) in match"
+                          + " (Maybe::Absent())) in match"
                           + " (_let1__it) { Either::Left"
                           + " _match2__0___lawspecSelection0x0 ->"
                           + " false; Either::Right"
                           + " _match2__1___lawspecSelection0x0 ->"
-                          + " let _let3__tag = Maybe::Just(tagOf"
+                          + " let _let3__tag = Maybe::Present(tagOf"
                           + " (_match2__1___lawspecSelection0x0)"
                           + " (0)) in let _let4__first = attempt"
                           + " (produceRequest (_let0__tp)"
@@ -10004,7 +10002,7 @@ public final class KafkaLawSpecTest {
                                                               "Maybe Text",
                                                               LawSpecRuntime.construct(
                                                                   "Maybe Text",
-                                                                  "Maybe::Nothing",
+                                                                  "Maybe::Absent",
                                                                   new Value[] {}),
                                                               64,
                                                               _element10 ->
@@ -10060,7 +10058,7 @@ public final class KafkaLawSpecTest {
                                                               "Maybe",
                                                               new lawspec.runtime.LawSpecSchema.Named(
                                                                   "lawtwin.kafka.model::type::ProducerTag")),
-                                                          "Maybe::Just",
+                                                          "Maybe::Present",
                                                           java.util.List.of(
                                                               lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                   symbols,
@@ -10330,12 +10328,12 @@ public final class KafkaLawSpecTest {
   // Expansion:
   // Broker: "|a gap in sequence numbers is refused| [native]
   // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created (_input0)
-  // (1) implies let _let0__it = attempt (initProducerIdRequest (Maybe::Nothing())) in match
+  // (1) implies let _let0__it = attempt (initProducerIdRequest (Maybe::Absent())) in match
   // (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
   // _match1__1___lawspecSelection0x0 -> match (attempt (produceRequest (let
   // _let2___lawspecRecordField0 = _input0 in let _let3___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___lawspecRecordField0,
-  // _let3___lawspecRecordField1)) (Maybe::Just(tagOf (_match1__1___lawspecSelection0x0) (1)))
+  // _let3___lawspecRecordField1)) (Maybe::Present(tagOf (_match1__1___lawspecSelection0x0) (1)))
   // (_input1))) { Either::Left _match2__0__lawspecFailure -> let _let3__it =
   // _match2__0__lawspecFailure in match (_let3__it) {
   // lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber -> true;
@@ -10375,9 +10373,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -10389,11 +10387,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -10422,7 +10420,7 @@ public final class KafkaLawSpecTest {
                 + " sequence numbers is refused| [native]"
                 + " boundary 0 | expect let _let0__it ="
                 + " attempt (initProducerIdRequest"
-                + " (Maybe::Nothing())) in match"
+                + " (Maybe::Absent())) in match"
                 + " (_let0__it) { Either::Left"
                 + " _match1__0___lawspecSelection0x0 ->"
                 + " false; Either::Right"
@@ -10433,7 +10431,7 @@ public final class KafkaLawSpecTest {
                 + " in lawtwin.kafka.model::type::TopicPart"
                 + "ition::TopicPartition(_let2___lawspecRec"
                 + "ordField0, _let3___lawspecRecordField1))"
-                + " (Maybe::Just(tagOf"
+                + " (Maybe::Present(tagOf"
                 + " (_match1__1___lawspecSelection0x0)"
                 + " (1))) (_input1))) { Either::Left"
                 + " _match2__0__lawspecFailure -> let"
@@ -10490,7 +10488,7 @@ public final class KafkaLawSpecTest {
                                         LawSpecRuntime.maybeToNative(
                                             "Maybe Text",
                                             LawSpecRuntime.construct(
-                                                "Maybe Text", "Maybe::Nothing", new Value[] {}),
+                                                "Maybe Text", "Maybe::Absent", new Value[] {}),
                                             64,
                                             _element10 ->
                                                 ((String)
@@ -10583,7 +10581,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Just",
+                                                                "Maybe::Present",
                                                                 java.util.List.of(
                                                                     lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                         symbols,
@@ -10797,11 +10795,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -10813,9 +10811,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -10843,7 +10841,7 @@ public final class KafkaLawSpecTest {
                 + " sequence numbers is refused| [native]"
                 + " boundary 1 | expect let _let0__it ="
                 + " attempt (initProducerIdRequest"
-                + " (Maybe::Nothing())) in match"
+                + " (Maybe::Absent())) in match"
                 + " (_let0__it) { Either::Left"
                 + " _match1__0___lawspecSelection0x0 ->"
                 + " false; Either::Right"
@@ -10854,7 +10852,7 @@ public final class KafkaLawSpecTest {
                 + " in lawtwin.kafka.model::type::TopicPart"
                 + "ition::TopicPartition(_let2___lawspecRec"
                 + "ordField0, _let3___lawspecRecordField1))"
-                + " (Maybe::Just(tagOf"
+                + " (Maybe::Present(tagOf"
                 + " (_match1__1___lawspecSelection0x0)"
                 + " (1))) (_input1))) { Either::Left"
                 + " _match2__0__lawspecFailure -> let"
@@ -10911,7 +10909,7 @@ public final class KafkaLawSpecTest {
                                         LawSpecRuntime.maybeToNative(
                                             "Maybe Text",
                                             LawSpecRuntime.construct(
-                                                "Maybe Text", "Maybe::Nothing", new Value[] {}),
+                                                "Maybe Text", "Maybe::Absent", new Value[] {}),
                                             64,
                                             _element10 ->
                                                 ((String)
@@ -11004,7 +11002,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Just",
+                                                                "Maybe::Present",
                                                                 java.util.List.of(
                                                                     lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                         symbols,
@@ -11218,9 +11216,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -11248,7 +11246,7 @@ public final class KafkaLawSpecTest {
                 + " sequence numbers is refused| [native]"
                 + " boundary 2 | expect let _let0__it ="
                 + " attempt (initProducerIdRequest"
-                + " (Maybe::Nothing())) in match"
+                + " (Maybe::Absent())) in match"
                 + " (_let0__it) { Either::Left"
                 + " _match1__0___lawspecSelection0x0 ->"
                 + " false; Either::Right"
@@ -11259,7 +11257,7 @@ public final class KafkaLawSpecTest {
                 + " in lawtwin.kafka.model::type::TopicPart"
                 + "ition::TopicPartition(_let2___lawspecRec"
                 + "ordField0, _let3___lawspecRecordField1))"
-                + " (Maybe::Just(tagOf"
+                + " (Maybe::Present(tagOf"
                 + " (_match1__1___lawspecSelection0x0)"
                 + " (1))) (_input1))) { Either::Left"
                 + " _match2__0__lawspecFailure -> let"
@@ -11316,7 +11314,7 @@ public final class KafkaLawSpecTest {
                                         LawSpecRuntime.maybeToNative(
                                             "Maybe Text",
                                             LawSpecRuntime.construct(
-                                                "Maybe Text", "Maybe::Nothing", new Value[] {}),
+                                                "Maybe Text", "Maybe::Absent", new Value[] {}),
                                             64,
                                             _element10 ->
                                                 ((String)
@@ -11409,7 +11407,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Just",
+                                                                "Maybe::Present",
                                                                 java.util.List.of(
                                                                     lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                         symbols,
@@ -11623,9 +11621,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -11636,9 +11634,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -11666,7 +11664,7 @@ public final class KafkaLawSpecTest {
                 + " sequence numbers is refused| [native]"
                 + " boundary 3 | expect let _let0__it ="
                 + " attempt (initProducerIdRequest"
-                + " (Maybe::Nothing())) in match"
+                + " (Maybe::Absent())) in match"
                 + " (_let0__it) { Either::Left"
                 + " _match1__0___lawspecSelection0x0 ->"
                 + " false; Either::Right"
@@ -11677,7 +11675,7 @@ public final class KafkaLawSpecTest {
                 + " in lawtwin.kafka.model::type::TopicPart"
                 + "ition::TopicPartition(_let2___lawspecRec"
                 + "ordField0, _let3___lawspecRecordField1))"
-                + " (Maybe::Just(tagOf"
+                + " (Maybe::Present(tagOf"
                 + " (_match1__1___lawspecSelection0x0)"
                 + " (1))) (_input1))) { Either::Left"
                 + " _match2__0__lawspecFailure -> let"
@@ -11734,7 +11732,7 @@ public final class KafkaLawSpecTest {
                                         LawSpecRuntime.maybeToNative(
                                             "Maybe Text",
                                             LawSpecRuntime.construct(
-                                                "Maybe Text", "Maybe::Nothing", new Value[] {}),
+                                                "Maybe Text", "Maybe::Absent", new Value[] {}),
                                             64,
                                             _element10 ->
                                                 ((String)
@@ -11827,7 +11825,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Just",
+                                                                "Maybe::Present",
                                                                 java.util.List.of(
                                                                     lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                         symbols,
@@ -12222,7 +12220,7 @@ public final class KafkaLawSpecTest {
                             + " sequence numbers is refused| [native]"
                             + " property | expect let _let0__it ="
                             + " attempt (initProducerIdRequest"
-                            + " (Maybe::Nothing())) in match"
+                            + " (Maybe::Absent())) in match"
                             + " (_let0__it) { Either::Left"
                             + " _match1__0___lawspecSelection0x0 ->"
                             + " false; Either::Right"
@@ -12233,7 +12231,7 @@ public final class KafkaLawSpecTest {
                             + " in lawtwin.kafka.model::type::TopicPart"
                             + "ition::TopicPartition(_let2___lawspecRec"
                             + "ordField0, _let3___lawspecRecordField1))"
-                            + " (Maybe::Just(tagOf"
+                            + " (Maybe::Present(tagOf"
                             + " (_match1__1___lawspecSelection0x0)"
                             + " (1))) (_input1))) { Either::Left"
                             + " _match2__0__lawspecFailure -> let"
@@ -12293,7 +12291,7 @@ public final class KafkaLawSpecTest {
                                                         "Maybe Text",
                                                         LawSpecRuntime.construct(
                                                             "Maybe Text",
-                                                            "Maybe::Nothing",
+                                                            "Maybe::Absent",
                                                             new Value[] {}),
                                                         64,
                                                         _element10 ->
@@ -12390,7 +12388,7 @@ public final class KafkaLawSpecTest {
                                                                                 "Maybe",
                                                                                 new lawspec.runtime.LawSpecSchema.Named(
                                                                                     "lawtwin.kafka.model::type::ProducerTag")),
-                                                                            "Maybe::Just",
+                                                                            "Maybe::Present",
                                                                             java.util.List.of(
                                                                                 lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                                     symbols,
@@ -12615,12 +12613,12 @@ public final class KafkaLawSpecTest {
   // Expansion:
   // Broker: "|a gap in sequence numbers is refused| [cluster]
   // for all (t :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created (_input0)
-  // (1) implies let _let0__it = attempt (initProducerIdRequest (Maybe::Nothing())) in match
+  // (1) implies let _let0__it = attempt (initProducerIdRequest (Maybe::Absent())) in match
   // (_let0__it) { Either::Left _match1__0___lawspecSelection0x0 -> false; Either::Right
   // _match1__1___lawspecSelection0x0 -> match (attempt (produceRequest (let
   // _let2___lawspecRecordField0 = _input0 in let _let3___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___lawspecRecordField0,
-  // _let3___lawspecRecordField1)) (Maybe::Just(tagOf (_match1__1___lawspecSelection0x0) (1)))
+  // _let3___lawspecRecordField1)) (Maybe::Present(tagOf (_match1__1___lawspecSelection0x0) (1)))
   // (_input1))) { Either::Left _match2__0__lawspecFailure -> let _let3__it =
   // _match2__0__lawspecFailure in match (_let3__it) {
   // lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber -> true;
@@ -12664,9 +12662,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -12678,11 +12676,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -12700,7 +12698,7 @@ public final class KafkaLawSpecTest {
               + " sequence numbers is refused| [cluster]"
               + " boundary 0 | expect let _let0__it ="
               + " attempt (initProducerIdRequest"
-              + " (Maybe::Nothing())) in match"
+              + " (Maybe::Absent())) in match"
               + " (_let0__it) { Either::Left"
               + " _match1__0___lawspecSelection0x0 ->"
               + " false; Either::Right"
@@ -12711,7 +12709,7 @@ public final class KafkaLawSpecTest {
               + " in lawtwin.kafka.model::type::TopicPart"
               + "ition::TopicPartition(_let2___lawspecRec"
               + "ordField0, _let3___lawspecRecordField1))"
-              + " (Maybe::Just(tagOf"
+              + " (Maybe::Present(tagOf"
               + " (_match1__1___lawspecSelection0x0)"
               + " (1))) (_input1))) { Either::Left"
               + " _match2__0__lawspecFailure -> let"
@@ -12768,7 +12766,7 @@ public final class KafkaLawSpecTest {
                                       LawSpecRuntime.maybeToNative(
                                           "Maybe Text",
                                           LawSpecRuntime.construct(
-                                              "Maybe Text", "Maybe::Nothing", new Value[] {}),
+                                              "Maybe Text", "Maybe::Absent", new Value[] {}),
                                           64,
                                           _element10 ->
                                               ((String)
@@ -12861,7 +12859,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Just",
+                                                              "Maybe::Present",
                                                               java.util.List.of(
                                                                   lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                       symbols,
@@ -13072,11 +13070,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -13088,9 +13086,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -13107,7 +13105,7 @@ public final class KafkaLawSpecTest {
               + " sequence numbers is refused| [cluster]"
               + " boundary 1 | expect let _let0__it ="
               + " attempt (initProducerIdRequest"
-              + " (Maybe::Nothing())) in match"
+              + " (Maybe::Absent())) in match"
               + " (_let0__it) { Either::Left"
               + " _match1__0___lawspecSelection0x0 ->"
               + " false; Either::Right"
@@ -13118,7 +13116,7 @@ public final class KafkaLawSpecTest {
               + " in lawtwin.kafka.model::type::TopicPart"
               + "ition::TopicPartition(_let2___lawspecRec"
               + "ordField0, _let3___lawspecRecordField1))"
-              + " (Maybe::Just(tagOf"
+              + " (Maybe::Present(tagOf"
               + " (_match1__1___lawspecSelection0x0)"
               + " (1))) (_input1))) { Either::Left"
               + " _match2__0__lawspecFailure -> let"
@@ -13175,7 +13173,7 @@ public final class KafkaLawSpecTest {
                                       LawSpecRuntime.maybeToNative(
                                           "Maybe Text",
                                           LawSpecRuntime.construct(
-                                              "Maybe Text", "Maybe::Nothing", new Value[] {}),
+                                              "Maybe Text", "Maybe::Absent", new Value[] {}),
                                           64,
                                           _element10 ->
                                               ((String)
@@ -13268,7 +13266,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Just",
+                                                              "Maybe::Present",
                                                               java.util.List.of(
                                                                   lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                       symbols,
@@ -13479,9 +13477,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -13498,7 +13496,7 @@ public final class KafkaLawSpecTest {
               + " sequence numbers is refused| [cluster]"
               + " boundary 2 | expect let _let0__it ="
               + " attempt (initProducerIdRequest"
-              + " (Maybe::Nothing())) in match"
+              + " (Maybe::Absent())) in match"
               + " (_let0__it) { Either::Left"
               + " _match1__0___lawspecSelection0x0 ->"
               + " false; Either::Right"
@@ -13509,7 +13507,7 @@ public final class KafkaLawSpecTest {
               + " in lawtwin.kafka.model::type::TopicPart"
               + "ition::TopicPartition(_let2___lawspecRec"
               + "ordField0, _let3___lawspecRecordField1))"
-              + " (Maybe::Just(tagOf"
+              + " (Maybe::Present(tagOf"
               + " (_match1__1___lawspecSelection0x0)"
               + " (1))) (_input1))) { Either::Left"
               + " _match2__0__lawspecFailure -> let"
@@ -13566,7 +13564,7 @@ public final class KafkaLawSpecTest {
                                       LawSpecRuntime.maybeToNative(
                                           "Maybe Text",
                                           LawSpecRuntime.construct(
-                                              "Maybe Text", "Maybe::Nothing", new Value[] {}),
+                                              "Maybe Text", "Maybe::Absent", new Value[] {}),
                                           64,
                                           _element10 ->
                                               ((String)
@@ -13659,7 +13657,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Just",
+                                                              "Maybe::Present",
                                                               java.util.List.of(
                                                                   lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                       symbols,
@@ -13870,9 +13868,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -13883,9 +13881,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -13902,7 +13900,7 @@ public final class KafkaLawSpecTest {
               + " sequence numbers is refused| [cluster]"
               + " boundary 3 | expect let _let0__it ="
               + " attempt (initProducerIdRequest"
-              + " (Maybe::Nothing())) in match"
+              + " (Maybe::Absent())) in match"
               + " (_let0__it) { Either::Left"
               + " _match1__0___lawspecSelection0x0 ->"
               + " false; Either::Right"
@@ -13913,7 +13911,7 @@ public final class KafkaLawSpecTest {
               + " in lawtwin.kafka.model::type::TopicPart"
               + "ition::TopicPartition(_let2___lawspecRec"
               + "ordField0, _let3___lawspecRecordField1))"
-              + " (Maybe::Just(tagOf"
+              + " (Maybe::Present(tagOf"
               + " (_match1__1___lawspecSelection0x0)"
               + " (1))) (_input1))) { Either::Left"
               + " _match2__0__lawspecFailure -> let"
@@ -13970,7 +13968,7 @@ public final class KafkaLawSpecTest {
                                       LawSpecRuntime.maybeToNative(
                                           "Maybe Text",
                                           LawSpecRuntime.construct(
-                                              "Maybe Text", "Maybe::Nothing", new Value[] {}),
+                                              "Maybe Text", "Maybe::Absent", new Value[] {}),
                                           64,
                                           _element10 ->
                                               ((String)
@@ -14063,7 +14061,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Just",
+                                                              "Maybe::Present",
                                                               java.util.List.of(
                                                                   lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                       symbols,
@@ -14445,7 +14443,7 @@ public final class KafkaLawSpecTest {
                           + " sequence numbers is refused| [cluster]"
                           + " property | expect let _let0__it ="
                           + " attempt (initProducerIdRequest"
-                          + " (Maybe::Nothing())) in match"
+                          + " (Maybe::Absent())) in match"
                           + " (_let0__it) { Either::Left"
                           + " _match1__0___lawspecSelection0x0 ->"
                           + " false; Either::Right"
@@ -14456,7 +14454,7 @@ public final class KafkaLawSpecTest {
                           + " in lawtwin.kafka.model::type::TopicPart"
                           + "ition::TopicPartition(_let2___lawspecRec"
                           + "ordField0, _let3___lawspecRecordField1))"
-                          + " (Maybe::Just(tagOf"
+                          + " (Maybe::Present(tagOf"
                           + " (_match1__1___lawspecSelection0x0)"
                           + " (1))) (_input1))) { Either::Left"
                           + " _match2__0__lawspecFailure -> let"
@@ -14516,7 +14514,7 @@ public final class KafkaLawSpecTest {
                                                       "Maybe Text",
                                                       LawSpecRuntime.construct(
                                                           "Maybe Text",
-                                                          "Maybe::Nothing",
+                                                          "Maybe::Absent",
                                                           new Value[] {}),
                                                       64,
                                                       _element10 ->
@@ -14613,7 +14611,7 @@ public final class KafkaLawSpecTest {
                                                                               "Maybe",
                                                                               new lawspec.runtime.LawSpecSchema.Named(
                                                                                   "lawtwin.kafka.model::type::ProducerTag")),
-                                                                          "Maybe::Just",
+                                                                          "Maybe::Present",
                                                                           java.util.List.of(
                                                                               lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                                   symbols,
@@ -14836,9 +14834,9 @@ public final class KafkaLawSpecTest {
   // _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
   // _let1___lawspecRecordField1) in let _let1__it = attempt (initProducerIdRequest
-  // (Maybe::Just(_input1))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
-  // false; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = attempt
-  // (initProducerIdRequest (Maybe::Just(_input1))) in match (_let3__it) { Either::Left
+  // (Maybe::Present(_input1))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0
+  // -> false; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = attempt
+  // (initProducerIdRequest (Maybe::Present(_input1))) in match (_let3__it) { Either::Left
   // _match4__0___match__lawspecSelection0x0_0 -> false; Either::Right
   // _match4__1___match__lawspecSelection0x0_0 -> ((fencedBy (_match2__1___lawspecSelection0x0)
   // (_match4__1___match__lawspecSelection0x0_0) And match (attempt (addPartitionsToTxnRequest
@@ -14868,7 +14866,7 @@ public final class KafkaLawSpecTest {
   // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
   // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
   // _match5__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp)
-  // (Maybe::Just(tagOf (_match2__1___lawspecSelection0x0) (0))) (_input2))) { Either::Left
+  // (Maybe::Present(tagOf (_match2__1___lawspecSelection0x0) (0))) (_input2))) { Either::Left
   // _match5__0__lawspecFailure -> let _let6__it = _match5__0__lawspecFailure in match (_let6__it) {
   // lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch -> true;
   // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
@@ -14909,9 +14907,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -14923,11 +14921,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -14963,14 +14961,14 @@ public final class KafkaLawSpecTest {
                 + " _let1___lawspecRecordField1) in let"
                 + " _let1__it = attempt"
                 + " (initProducerIdRequest"
-                + " (Maybe::Just(_input1))) in match"
+                + " (Maybe::Present(_input1))) in match"
                 + " (_let1__it) { Either::Left"
                 + " _match2__0___lawspecSelection0x0 ->"
                 + " false; Either::Right"
                 + " _match2__1___lawspecSelection0x0 ->"
                 + " let _let3__it = attempt"
                 + " (initProducerIdRequest"
-                + " (Maybe::Just(_input1))) in match"
+                + " (Maybe::Present(_input1))) in match"
                 + " (_let3__it) { Either::Left"
                 + " _match4__0___match__lawspecSelection0x0"
                 + "_0 -> false; Either::Right"
@@ -15032,7 +15030,7 @@ public final class KafkaLawSpecTest {
                 + "IllegalState  -> false }; Either::Right"
                 + " _match5__1__lawspecResult -> false })"
                 + " And match (attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Just(tagOf"
+                + " (_let0__tp) (Maybe::Present(tagOf"
                 + " (_match2__1___lawspecSelection0x0)"
                 + " (0))) (_input2))) { Either::Left"
                 + " _match5__0__lawspecFailure -> let"
@@ -15112,7 +15110,7 @@ public final class KafkaLawSpecTest {
                                                     "Maybe Text",
                                                     LawSpecRuntime.construct(
                                                         "Maybe Text",
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         new Value[] {_input1}),
                                                     64,
                                                     _element10 ->
@@ -15178,7 +15176,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe Text",
                                                                     LawSpecRuntime.construct(
                                                                         "Maybe Text",
-                                                                        "Maybe::Just",
+                                                                        "Maybe::Present",
                                                                         new Value[] {_input1}),
                                                                     64,
                                                                     _element10 ->
@@ -15544,7 +15542,7 @@ public final class KafkaLawSpecTest {
                                                                                                         "Maybe",
                                                                                                         new lawspec.runtime.LawSpecSchema.Named(
                                                                                                             "lawtwin.kafka.model::type::ProducerTag")),
-                                                                                                    "Maybe::Just",
+                                                                                                    "Maybe::Present",
                                                                                                     java.util.List.of(
                                                                                                         lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                                                             symbols,
@@ -15793,11 +15791,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -15809,9 +15807,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -15846,14 +15844,14 @@ public final class KafkaLawSpecTest {
                 + " _let1___lawspecRecordField1) in let"
                 + " _let1__it = attempt"
                 + " (initProducerIdRequest"
-                + " (Maybe::Just(_input1))) in match"
+                + " (Maybe::Present(_input1))) in match"
                 + " (_let1__it) { Either::Left"
                 + " _match2__0___lawspecSelection0x0 ->"
                 + " false; Either::Right"
                 + " _match2__1___lawspecSelection0x0 ->"
                 + " let _let3__it = attempt"
                 + " (initProducerIdRequest"
-                + " (Maybe::Just(_input1))) in match"
+                + " (Maybe::Present(_input1))) in match"
                 + " (_let3__it) { Either::Left"
                 + " _match4__0___match__lawspecSelection0x0"
                 + "_0 -> false; Either::Right"
@@ -15915,7 +15913,7 @@ public final class KafkaLawSpecTest {
                 + "IllegalState  -> false }; Either::Right"
                 + " _match5__1__lawspecResult -> false })"
                 + " And match (attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Just(tagOf"
+                + " (_let0__tp) (Maybe::Present(tagOf"
                 + " (_match2__1___lawspecSelection0x0)"
                 + " (0))) (_input2))) { Either::Left"
                 + " _match5__0__lawspecFailure -> let"
@@ -15995,7 +15993,7 @@ public final class KafkaLawSpecTest {
                                                     "Maybe Text",
                                                     LawSpecRuntime.construct(
                                                         "Maybe Text",
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         new Value[] {_input1}),
                                                     64,
                                                     _element10 ->
@@ -16061,7 +16059,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe Text",
                                                                     LawSpecRuntime.construct(
                                                                         "Maybe Text",
-                                                                        "Maybe::Just",
+                                                                        "Maybe::Present",
                                                                         new Value[] {_input1}),
                                                                     64,
                                                                     _element10 ->
@@ -16427,7 +16425,7 @@ public final class KafkaLawSpecTest {
                                                                                                         "Maybe",
                                                                                                         new lawspec.runtime.LawSpecSchema.Named(
                                                                                                             "lawtwin.kafka.model::type::ProducerTag")),
-                                                                                                    "Maybe::Just",
+                                                                                                    "Maybe::Present",
                                                                                                     java.util.List.of(
                                                                                                         lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                                                             symbols,
@@ -16675,9 +16673,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -16712,14 +16710,14 @@ public final class KafkaLawSpecTest {
                 + " _let1___lawspecRecordField1) in let"
                 + " _let1__it = attempt"
                 + " (initProducerIdRequest"
-                + " (Maybe::Just(_input1))) in match"
+                + " (Maybe::Present(_input1))) in match"
                 + " (_let1__it) { Either::Left"
                 + " _match2__0___lawspecSelection0x0 ->"
                 + " false; Either::Right"
                 + " _match2__1___lawspecSelection0x0 ->"
                 + " let _let3__it = attempt"
                 + " (initProducerIdRequest"
-                + " (Maybe::Just(_input1))) in match"
+                + " (Maybe::Present(_input1))) in match"
                 + " (_let3__it) { Either::Left"
                 + " _match4__0___match__lawspecSelection0x0"
                 + "_0 -> false; Either::Right"
@@ -16781,7 +16779,7 @@ public final class KafkaLawSpecTest {
                 + "IllegalState  -> false }; Either::Right"
                 + " _match5__1__lawspecResult -> false })"
                 + " And match (attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Just(tagOf"
+                + " (_let0__tp) (Maybe::Present(tagOf"
                 + " (_match2__1___lawspecSelection0x0)"
                 + " (0))) (_input2))) { Either::Left"
                 + " _match5__0__lawspecFailure -> let"
@@ -16861,7 +16859,7 @@ public final class KafkaLawSpecTest {
                                                     "Maybe Text",
                                                     LawSpecRuntime.construct(
                                                         "Maybe Text",
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         new Value[] {_input1}),
                                                     64,
                                                     _element10 ->
@@ -16927,7 +16925,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe Text",
                                                                     LawSpecRuntime.construct(
                                                                         "Maybe Text",
-                                                                        "Maybe::Just",
+                                                                        "Maybe::Present",
                                                                         new Value[] {_input1}),
                                                                     64,
                                                                     _element10 ->
@@ -17293,7 +17291,7 @@ public final class KafkaLawSpecTest {
                                                                                                         "Maybe",
                                                                                                         new lawspec.runtime.LawSpecSchema.Named(
                                                                                                             "lawtwin.kafka.model::type::ProducerTag")),
-                                                                                                    "Maybe::Just",
+                                                                                                    "Maybe::Present",
                                                                                                     java.util.List.of(
                                                                                                         lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                                                             symbols,
@@ -17539,9 +17537,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -17552,9 +17550,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -17589,14 +17587,14 @@ public final class KafkaLawSpecTest {
                 + " _let1___lawspecRecordField1) in let"
                 + " _let1__it = attempt"
                 + " (initProducerIdRequest"
-                + " (Maybe::Just(_input1))) in match"
+                + " (Maybe::Present(_input1))) in match"
                 + " (_let1__it) { Either::Left"
                 + " _match2__0___lawspecSelection0x0 ->"
                 + " false; Either::Right"
                 + " _match2__1___lawspecSelection0x0 ->"
                 + " let _let3__it = attempt"
                 + " (initProducerIdRequest"
-                + " (Maybe::Just(_input1))) in match"
+                + " (Maybe::Present(_input1))) in match"
                 + " (_let3__it) { Either::Left"
                 + " _match4__0___match__lawspecSelection0x0"
                 + "_0 -> false; Either::Right"
@@ -17658,7 +17656,7 @@ public final class KafkaLawSpecTest {
                 + "IllegalState  -> false }; Either::Right"
                 + " _match5__1__lawspecResult -> false })"
                 + " And match (attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Just(tagOf"
+                + " (_let0__tp) (Maybe::Present(tagOf"
                 + " (_match2__1___lawspecSelection0x0)"
                 + " (0))) (_input2))) { Either::Left"
                 + " _match5__0__lawspecFailure -> let"
@@ -17738,7 +17736,7 @@ public final class KafkaLawSpecTest {
                                                     "Maybe Text",
                                                     LawSpecRuntime.construct(
                                                         "Maybe Text",
-                                                        "Maybe::Just",
+                                                        "Maybe::Present",
                                                         new Value[] {_input1}),
                                                     64,
                                                     _element10 ->
@@ -17804,7 +17802,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe Text",
                                                                     LawSpecRuntime.construct(
                                                                         "Maybe Text",
-                                                                        "Maybe::Just",
+                                                                        "Maybe::Present",
                                                                         new Value[] {_input1}),
                                                                     64,
                                                                     _element10 ->
@@ -18170,7 +18168,7 @@ public final class KafkaLawSpecTest {
                                                                                                         "Maybe",
                                                                                                         new lawspec.runtime.LawSpecSchema.Named(
                                                                                                             "lawtwin.kafka.model::type::ProducerTag")),
-                                                                                                    "Maybe::Just",
+                                                                                                    "Maybe::Present",
                                                                                                     java.util.List.of(
                                                                                                         lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                                                             symbols,
@@ -18630,14 +18628,14 @@ public final class KafkaLawSpecTest {
                             + "ordField0, _let1___lawspecRecordField1)"
                             + " in let _let1__it = attempt"
                             + " (initProducerIdRequest"
-                            + " (Maybe::Just(_input1))) in match"
+                            + " (Maybe::Present(_input1))) in match"
                             + " (_let1__it) { Either::Left"
                             + " _match2__0___lawspecSelection0x0 ->"
                             + " false; Either::Right"
                             + " _match2__1___lawspecSelection0x0 ->"
                             + " let _let3__it = attempt"
                             + " (initProducerIdRequest"
-                            + " (Maybe::Just(_input1))) in match"
+                            + " (Maybe::Present(_input1))) in match"
                             + " (_let3__it) { Either::Left"
                             + " _match4__0___match__lawspecSelection0x0"
                             + "_0 -> false; Either::Right"
@@ -18699,7 +18697,7 @@ public final class KafkaLawSpecTest {
                             + "IllegalState  -> false }; Either::Right"
                             + " _match5__1__lawspecResult -> false })"
                             + " And match (attempt (produceRequest"
-                            + " (_let0__tp) (Maybe::Just(tagOf"
+                            + " (_let0__tp) (Maybe::Present(tagOf"
                             + " (_match2__1___lawspecSelection0x0)"
                             + " (0))) (_input2))) { Either::Left"
                             + " _match5__0__lawspecFailure -> let"
@@ -18779,7 +18777,7 @@ public final class KafkaLawSpecTest {
                                                                 "Maybe Text",
                                                                 LawSpecRuntime.construct(
                                                                     "Maybe Text",
-                                                                    "Maybe::Just",
+                                                                    "Maybe::Present",
                                                                     new Value[] {_input1}),
                                                                 64,
                                                                 _element10 ->
@@ -18848,7 +18846,7 @@ public final class KafkaLawSpecTest {
                                                                                 "Maybe Text",
                                                                                 LawSpecRuntime.construct(
                                                                                     "Maybe Text",
-                                                                                    "Maybe::Just",
+                                                                                    "Maybe::Present",
                                                                                     new Value[] {
                                                                                       _input1
                                                                                     }),
@@ -19218,7 +19216,7 @@ public final class KafkaLawSpecTest {
                                                                                                                     "Maybe",
                                                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                                                                "Maybe::Just",
+                                                                                                                "Maybe::Present",
                                                                                                                 java.util.List.of(
                                                                                                                     lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                                                                         symbols,
@@ -19457,9 +19455,9 @@ public final class KafkaLawSpecTest {
   // _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
   // _let1___lawspecRecordField1) in let _let1__it = attempt (initProducerIdRequest
-  // (Maybe::Just(_input1))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0 ->
-  // false; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = attempt
-  // (initProducerIdRequest (Maybe::Just(_input1))) in match (_let3__it) { Either::Left
+  // (Maybe::Present(_input1))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0
+  // -> false; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = attempt
+  // (initProducerIdRequest (Maybe::Present(_input1))) in match (_let3__it) { Either::Left
   // _match4__0___match__lawspecSelection0x0_0 -> false; Either::Right
   // _match4__1___match__lawspecSelection0x0_0 -> ((fencedBy (_match2__1___lawspecSelection0x0)
   // (_match4__1___match__lawspecSelection0x0_0) And match (attempt (addPartitionsToTxnRequest
@@ -19489,7 +19487,7 @@ public final class KafkaLawSpecTest {
   // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
   // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right
   // _match5__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp)
-  // (Maybe::Just(tagOf (_match2__1___lawspecSelection0x0) (0))) (_input2))) { Either::Left
+  // (Maybe::Present(tagOf (_match2__1___lawspecSelection0x0) (0))) (_input2))) { Either::Left
   // _match5__0__lawspecFailure -> let _let6__it = _match5__0__lawspecFailure in match (_let6__it) {
   // lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch -> true;
   // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
@@ -19534,9 +19532,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -19548,11 +19546,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -19577,14 +19575,14 @@ public final class KafkaLawSpecTest {
               + " _let1___lawspecRecordField1) in let"
               + " _let1__it = attempt"
               + " (initProducerIdRequest"
-              + " (Maybe::Just(_input1))) in match"
+              + " (Maybe::Present(_input1))) in match"
               + " (_let1__it) { Either::Left"
               + " _match2__0___lawspecSelection0x0 ->"
               + " false; Either::Right"
               + " _match2__1___lawspecSelection0x0 ->"
               + " let _let3__it = attempt"
               + " (initProducerIdRequest"
-              + " (Maybe::Just(_input1))) in match"
+              + " (Maybe::Present(_input1))) in match"
               + " (_let3__it) { Either::Left"
               + " _match4__0___match__lawspecSelection0x0"
               + "_0 -> false; Either::Right"
@@ -19646,7 +19644,7 @@ public final class KafkaLawSpecTest {
               + "IllegalState  -> false }; Either::Right"
               + " _match5__1__lawspecResult -> false })"
               + " And match (attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Just(tagOf"
+              + " (_let0__tp) (Maybe::Present(tagOf"
               + " (_match2__1___lawspecSelection0x0)"
               + " (0))) (_input2))) { Either::Left"
               + " _match5__0__lawspecFailure -> let"
@@ -19724,7 +19722,7 @@ public final class KafkaLawSpecTest {
                                                   "Maybe Text",
                                                   LawSpecRuntime.construct(
                                                       "Maybe Text",
-                                                      "Maybe::Just",
+                                                      "Maybe::Present",
                                                       new Value[] {_input1}),
                                                   64,
                                                   _element10 ->
@@ -19790,7 +19788,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe Text",
                                                                   LawSpecRuntime.construct(
                                                                       "Maybe Text",
-                                                                      "Maybe::Just",
+                                                                      "Maybe::Present",
                                                                       new Value[] {_input1}),
                                                                   64,
                                                                   _element10 ->
@@ -20156,7 +20154,7 @@ public final class KafkaLawSpecTest {
                                                                                                       "Maybe",
                                                                                                       new lawspec.runtime.LawSpecSchema.Named(
                                                                                                           "lawtwin.kafka.model::type::ProducerTag")),
-                                                                                                  "Maybe::Just",
+                                                                                                  "Maybe::Present",
                                                                                                   java.util.List.of(
                                                                                                       lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                                                           symbols,
@@ -20402,11 +20400,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -20418,9 +20416,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -20444,14 +20442,14 @@ public final class KafkaLawSpecTest {
               + " _let1___lawspecRecordField1) in let"
               + " _let1__it = attempt"
               + " (initProducerIdRequest"
-              + " (Maybe::Just(_input1))) in match"
+              + " (Maybe::Present(_input1))) in match"
               + " (_let1__it) { Either::Left"
               + " _match2__0___lawspecSelection0x0 ->"
               + " false; Either::Right"
               + " _match2__1___lawspecSelection0x0 ->"
               + " let _let3__it = attempt"
               + " (initProducerIdRequest"
-              + " (Maybe::Just(_input1))) in match"
+              + " (Maybe::Present(_input1))) in match"
               + " (_let3__it) { Either::Left"
               + " _match4__0___match__lawspecSelection0x0"
               + "_0 -> false; Either::Right"
@@ -20513,7 +20511,7 @@ public final class KafkaLawSpecTest {
               + "IllegalState  -> false }; Either::Right"
               + " _match5__1__lawspecResult -> false })"
               + " And match (attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Just(tagOf"
+              + " (_let0__tp) (Maybe::Present(tagOf"
               + " (_match2__1___lawspecSelection0x0)"
               + " (0))) (_input2))) { Either::Left"
               + " _match5__0__lawspecFailure -> let"
@@ -20591,7 +20589,7 @@ public final class KafkaLawSpecTest {
                                                   "Maybe Text",
                                                   LawSpecRuntime.construct(
                                                       "Maybe Text",
-                                                      "Maybe::Just",
+                                                      "Maybe::Present",
                                                       new Value[] {_input1}),
                                                   64,
                                                   _element10 ->
@@ -20657,7 +20655,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe Text",
                                                                   LawSpecRuntime.construct(
                                                                       "Maybe Text",
-                                                                      "Maybe::Just",
+                                                                      "Maybe::Present",
                                                                       new Value[] {_input1}),
                                                                   64,
                                                                   _element10 ->
@@ -21023,7 +21021,7 @@ public final class KafkaLawSpecTest {
                                                                                                       "Maybe",
                                                                                                       new lawspec.runtime.LawSpecSchema.Named(
                                                                                                           "lawtwin.kafka.model::type::ProducerTag")),
-                                                                                                  "Maybe::Just",
+                                                                                                  "Maybe::Present",
                                                                                                   java.util.List.of(
                                                                                                       lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                                                           symbols,
@@ -21268,9 +21266,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -21294,14 +21292,14 @@ public final class KafkaLawSpecTest {
               + " _let1___lawspecRecordField1) in let"
               + " _let1__it = attempt"
               + " (initProducerIdRequest"
-              + " (Maybe::Just(_input1))) in match"
+              + " (Maybe::Present(_input1))) in match"
               + " (_let1__it) { Either::Left"
               + " _match2__0___lawspecSelection0x0 ->"
               + " false; Either::Right"
               + " _match2__1___lawspecSelection0x0 ->"
               + " let _let3__it = attempt"
               + " (initProducerIdRequest"
-              + " (Maybe::Just(_input1))) in match"
+              + " (Maybe::Present(_input1))) in match"
               + " (_let3__it) { Either::Left"
               + " _match4__0___match__lawspecSelection0x0"
               + "_0 -> false; Either::Right"
@@ -21363,7 +21361,7 @@ public final class KafkaLawSpecTest {
               + "IllegalState  -> false }; Either::Right"
               + " _match5__1__lawspecResult -> false })"
               + " And match (attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Just(tagOf"
+              + " (_let0__tp) (Maybe::Present(tagOf"
               + " (_match2__1___lawspecSelection0x0)"
               + " (0))) (_input2))) { Either::Left"
               + " _match5__0__lawspecFailure -> let"
@@ -21441,7 +21439,7 @@ public final class KafkaLawSpecTest {
                                                   "Maybe Text",
                                                   LawSpecRuntime.construct(
                                                       "Maybe Text",
-                                                      "Maybe::Just",
+                                                      "Maybe::Present",
                                                       new Value[] {_input1}),
                                                   64,
                                                   _element10 ->
@@ -21507,7 +21505,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe Text",
                                                                   LawSpecRuntime.construct(
                                                                       "Maybe Text",
-                                                                      "Maybe::Just",
+                                                                      "Maybe::Present",
                                                                       new Value[] {_input1}),
                                                                   64,
                                                                   _element10 ->
@@ -21873,7 +21871,7 @@ public final class KafkaLawSpecTest {
                                                                                                       "Maybe",
                                                                                                       new lawspec.runtime.LawSpecSchema.Named(
                                                                                                           "lawtwin.kafka.model::type::ProducerTag")),
-                                                                                                  "Maybe::Just",
+                                                                                                  "Maybe::Present",
                                                                                                   java.util.List.of(
                                                                                                       lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                                                           symbols,
@@ -22116,9 +22114,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -22129,9 +22127,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -22155,14 +22153,14 @@ public final class KafkaLawSpecTest {
               + " _let1___lawspecRecordField1) in let"
               + " _let1__it = attempt"
               + " (initProducerIdRequest"
-              + " (Maybe::Just(_input1))) in match"
+              + " (Maybe::Present(_input1))) in match"
               + " (_let1__it) { Either::Left"
               + " _match2__0___lawspecSelection0x0 ->"
               + " false; Either::Right"
               + " _match2__1___lawspecSelection0x0 ->"
               + " let _let3__it = attempt"
               + " (initProducerIdRequest"
-              + " (Maybe::Just(_input1))) in match"
+              + " (Maybe::Present(_input1))) in match"
               + " (_let3__it) { Either::Left"
               + " _match4__0___match__lawspecSelection0x0"
               + "_0 -> false; Either::Right"
@@ -22224,7 +22222,7 @@ public final class KafkaLawSpecTest {
               + "IllegalState  -> false }; Either::Right"
               + " _match5__1__lawspecResult -> false })"
               + " And match (attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Just(tagOf"
+              + " (_let0__tp) (Maybe::Present(tagOf"
               + " (_match2__1___lawspecSelection0x0)"
               + " (0))) (_input2))) { Either::Left"
               + " _match5__0__lawspecFailure -> let"
@@ -22302,7 +22300,7 @@ public final class KafkaLawSpecTest {
                                                   "Maybe Text",
                                                   LawSpecRuntime.construct(
                                                       "Maybe Text",
-                                                      "Maybe::Just",
+                                                      "Maybe::Present",
                                                       new Value[] {_input1}),
                                                   64,
                                                   _element10 ->
@@ -22368,7 +22366,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe Text",
                                                                   LawSpecRuntime.construct(
                                                                       "Maybe Text",
-                                                                      "Maybe::Just",
+                                                                      "Maybe::Present",
                                                                       new Value[] {_input1}),
                                                                   64,
                                                                   _element10 ->
@@ -22734,7 +22732,7 @@ public final class KafkaLawSpecTest {
                                                                                                       "Maybe",
                                                                                                       new lawspec.runtime.LawSpecSchema.Named(
                                                                                                           "lawtwin.kafka.model::type::ProducerTag")),
-                                                                                                  "Maybe::Just",
+                                                                                                  "Maybe::Present",
                                                                                                   java.util.List.of(
                                                                                                       lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                                                           symbols,
@@ -23181,14 +23179,14 @@ public final class KafkaLawSpecTest {
                           + "ordField0, _let1___lawspecRecordField1)"
                           + " in let _let1__it = attempt"
                           + " (initProducerIdRequest"
-                          + " (Maybe::Just(_input1))) in match"
+                          + " (Maybe::Present(_input1))) in match"
                           + " (_let1__it) { Either::Left"
                           + " _match2__0___lawspecSelection0x0 ->"
                           + " false; Either::Right"
                           + " _match2__1___lawspecSelection0x0 ->"
                           + " let _let3__it = attempt"
                           + " (initProducerIdRequest"
-                          + " (Maybe::Just(_input1))) in match"
+                          + " (Maybe::Present(_input1))) in match"
                           + " (_let3__it) { Either::Left"
                           + " _match4__0___match__lawspecSelection0x0"
                           + "_0 -> false; Either::Right"
@@ -23250,7 +23248,7 @@ public final class KafkaLawSpecTest {
                           + "IllegalState  -> false }; Either::Right"
                           + " _match5__1__lawspecResult -> false })"
                           + " And match (attempt (produceRequest"
-                          + " (_let0__tp) (Maybe::Just(tagOf"
+                          + " (_let0__tp) (Maybe::Present(tagOf"
                           + " (_match2__1___lawspecSelection0x0)"
                           + " (0))) (_input2))) { Either::Left"
                           + " _match5__0__lawspecFailure -> let"
@@ -23330,7 +23328,7 @@ public final class KafkaLawSpecTest {
                                                               "Maybe Text",
                                                               LawSpecRuntime.construct(
                                                                   "Maybe Text",
-                                                                  "Maybe::Just",
+                                                                  "Maybe::Present",
                                                                   new Value[] {_input1}),
                                                               64,
                                                               _element10 ->
@@ -23399,7 +23397,7 @@ public final class KafkaLawSpecTest {
                                                                               "Maybe Text",
                                                                               LawSpecRuntime.construct(
                                                                                   "Maybe Text",
-                                                                                  "Maybe::Just",
+                                                                                  "Maybe::Present",
                                                                                   new Value[] {
                                                                                     _input1
                                                                                   }),
@@ -23769,7 +23767,7 @@ public final class KafkaLawSpecTest {
                                                                                                                   "Maybe",
                                                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                                                                              "Maybe::Just",
+                                                                                                              "Maybe::Present",
                                                                                                               java.util.List.of(
                                                                                                                   lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
                                                                                                                       symbols,
@@ -24022,9 +24020,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -24036,11 +24034,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -24115,11 +24113,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -24131,9 +24129,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -24206,9 +24204,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -24279,9 +24277,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -24292,9 +24290,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -24633,9 +24631,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -24647,11 +24645,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -24712,11 +24710,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -24728,9 +24726,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -24789,9 +24787,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -24848,9 +24846,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -24861,9 +24859,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -25164,9 +25162,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -25178,11 +25176,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -25256,11 +25254,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -25272,9 +25270,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -25346,9 +25344,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -25418,9 +25416,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -25431,9 +25429,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -25767,9 +25765,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -25781,11 +25779,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -25845,11 +25843,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -25861,9 +25859,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -25921,9 +25919,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -25979,9 +25977,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -25992,9 +25990,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -32036,9 +32034,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -32050,11 +32048,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -32124,11 +32122,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -32140,9 +32138,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -32210,9 +32208,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -32278,9 +32276,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -32291,9 +32289,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -32618,9 +32616,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -32632,11 +32630,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -32692,11 +32690,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -32708,9 +32706,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -32764,9 +32762,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -32818,9 +32816,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -32831,9 +32829,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -33102,7 +33100,7 @@ public final class KafkaLawSpecTest {
   // Admin: "|a new topic has the partitions asked for| [native]
   // for all (t :: Text) (n :: Int32) => match (attempt (createTopic (_input0) (_input1))) {
   // Either::Left _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 ->
-  // true } implies partitionsFor (_input0) = Maybe::Just(_input1) end for all
+  // true } implies partitionsFor (_input0) = Maybe::Present(_input1) end for all
   private static final java.util.List<String> _lawspecInputs23 = java.util.List.of("(text)",
   "(int Int32 1 64)");
 
@@ -33186,14 +33184,14 @@ public final class KafkaLawSpecTest {
             "lawtwin.kafka::Admin: \"|a new topic"
                 + " has the partitions asked for| [native]"
                 + " search | expect partitionsFor"
-                + " (_input0) = Maybe::Just(_input1)",
+                + " (_input0) = Maybe::Present(_input1)",
             () ->
                 LawSpecRuntime.fromNative(
                     "Maybe Int32",
                     ((lawspec.abilities.lawtwin.Kafka.Admin) LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Admin")).partitionsFor(
                         ((String) LawSpecRuntime.toNative("Text", _input0, 64))),
                     64),
-            () -> LawSpecRuntime.construct("Maybe Int32", "Maybe::Just", new Value[] {_input1}));
+            () -> LawSpecRuntime.construct("Maybe Int32", "Maybe::Present", new Value[] {_input1}));
       }
     } finally {
       var _resource0Released =
@@ -33467,7 +33465,7 @@ public final class KafkaLawSpecTest {
                               "lawtwin.kafka::Admin: \"|a new topic"
                                   + " has the partitions asked for| [native]"
                                   + " property | expect partitionsFor"
-                                  + " (_input0) = Maybe::Just(_input1)",
+                                  + " (_input0) = Maybe::Present(_input1)",
                               () ->
                                   LawSpecRuntime.fromNative(
                                       "Maybe Int32",
@@ -33476,7 +33474,7 @@ public final class KafkaLawSpecTest {
                                       64),
                               () ->
                                   LawSpecRuntime.construct(
-                                      "Maybe Int32", "Maybe::Just", new Value[] {_input1}));
+                                      "Maybe Int32", "Maybe::Present", new Value[] {_input1}));
                         }
                       } catch (RuntimeException | Error _lawspecError) {
                         LawSpecRuntime.searchRemember(
@@ -33512,7 +33510,7 @@ public final class KafkaLawSpecTest {
   // Admin: "|a new topic has the partitions asked for| [cluster]
   // for all (t :: Text) (n :: Int32) => match (attempt (createTopic (_input0) (_input1))) {
   // Either::Left _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 ->
-  // true } implies partitionsFor (_input0) = Maybe::Just(_input1) end for all
+  // true } implies partitionsFor (_input0) = Maybe::Present(_input1) end for all
   private static final java.util.List<String> _lawspecInputs24 = java.util.List.of("(text)",
   "(int Int32 1 64)");
 
@@ -33590,14 +33588,14 @@ public final class KafkaLawSpecTest {
               + " has the partitions asked for|"
               + " [cluster] search | expect"
               + " partitionsFor (_input0) ="
-              + " Maybe::Just(_input1)",
+              + " Maybe::Present(_input1)",
           () ->
               LawSpecRuntime.fromNative(
                   "Maybe Int32",
                   ((lawspec.abilities.lawtwin.Kafka.Admin) LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Admin")).partitionsFor(
                       ((String) LawSpecRuntime.toNative("Text", _input0, 64))),
                   64),
-          () -> LawSpecRuntime.construct("Maybe Int32", "Maybe::Just", new Value[] {_input1}));
+          () -> LawSpecRuntime.construct("Maybe Int32", "Maybe::Present", new Value[] {_input1}));
     }
     return 0.0;
   }
@@ -33855,7 +33853,7 @@ public final class KafkaLawSpecTest {
                                 + " has the partitions asked for|"
                                 + " [cluster] property | expect"
                                 + " partitionsFor (_input0) ="
-                                + " Maybe::Just(_input1)",
+                                + " Maybe::Present(_input1)",
                             () ->
                                 LawSpecRuntime.fromNative(
                                     "Maybe Int32",
@@ -33864,7 +33862,7 @@ public final class KafkaLawSpecTest {
                                     64),
                             () ->
                                 LawSpecRuntime.construct(
-                                    "Maybe Int32", "Maybe::Just", new Value[] {_input1}));
+                                    "Maybe Int32", "Maybe::Present", new Value[] {_input1}));
                       }
                     } catch (RuntimeException | Error _lawspecError) {
                       LawSpecRuntime.searchRemember(
@@ -35507,7 +35505,7 @@ public final class KafkaLawSpecTest {
   // _match0__1__lawspecResult -> false } And match (attempt (createPartitions (_input0)
   // (lawspecCollectionsSaturatingInt32 ((_input1 + 1))))) { Either::Left _match0__0__railwayError0
   // -> false; Either::Right _match0__1__railwayValue1 -> true }) And (partitionsFor (_input0) ==
-  // Maybe::Just(lawspecCollectionsSaturatingInt32 ((_input1 + 1))))) = true end for all
+  // Maybe::Present(lawspecCollectionsSaturatingInt32 ((_input1 + 1))))) = true end for all
   private static final java.util.List<String> _lawspecInputs27 = java.util.List.of("(text)",
   "(int Int32 1 64)");
 
@@ -35637,8 +35635,9 @@ public final class KafkaLawSpecTest {
                 + " _match0__0__railwayError0 -> false;"
                 + " Either::Right _match0__1__railwayValue1"
                 + " -> true }) And (partitionsFor"
-                + " (_input0) == Maybe::Just(lawspecCollect"
-                + "ionsSaturatingInt32 ((_input1 + 1))))) = true",
+                + " (_input0) == Maybe::Present(lawspecColl"
+                + "ectionsSaturatingInt32 ((_input1 +"
+                + " 1))))) = true",
             () ->
                 LawSpecRuntime.bool(
                     LawSpecRuntime.truth(
@@ -35903,7 +35902,7 @@ public final class KafkaLawSpecTest {
                                     64),
                                 LawSpecRuntime.construct(
                                     "Maybe Int32",
-                                    "Maybe::Just",
+                                    "Maybe::Present",
                                     new Value[] {
                                       lawspec.runtime.LawSpecDefinitionBodies.evaluate127(
                                           symbols,
@@ -36235,8 +36234,9 @@ public final class KafkaLawSpecTest {
                                   + " _match0__0__railwayError0 -> false;"
                                   + " Either::Right _match0__1__railwayValue1"
                                   + " -> true }) And (partitionsFor"
-                                  + " (_input0) == Maybe::Just(lawspecCollect"
-                                  + "ionsSaturatingInt32 ((_input1 + 1))))) = true",
+                                  + " (_input0) == Maybe::Present(lawspecColl"
+                                  + "ectionsSaturatingInt32 ((_input1 +"
+                                  + " 1))))) = true",
                               () ->
                                   LawSpecRuntime.bool(
                                       LawSpecRuntime.truth(
@@ -36537,7 +36537,7 @@ public final class KafkaLawSpecTest {
                                                       64),
                                                   LawSpecRuntime.construct(
                                                       "Maybe Int32",
-                                                      "Maybe::Just",
+                                                      "Maybe::Present",
                                                       new Value[] {
                                                         lawspec.runtime.LawSpecDefinitionBodies.evaluate127(
                                                             symbols,
@@ -36608,7 +36608,7 @@ public final class KafkaLawSpecTest {
   // _match0__1__lawspecResult -> false } And match (attempt (createPartitions (_input0)
   // (lawspecCollectionsSaturatingInt32 ((_input1 + 1))))) { Either::Left _match0__0__railwayError0
   // -> false; Either::Right _match0__1__railwayValue1 -> true }) And (partitionsFor (_input0) ==
-  // Maybe::Just(lawspecCollectionsSaturatingInt32 ((_input1 + 1))))) = true end for all
+  // Maybe::Present(lawspecCollectionsSaturatingInt32 ((_input1 + 1))))) = true end for all
   private static final java.util.List<String> _lawspecInputs28 = java.util.List.of("(text)",
   "(int Int32 1 64)");
 
@@ -36731,8 +36731,9 @@ public final class KafkaLawSpecTest {
               + " _match0__0__railwayError0 -> false;"
               + " Either::Right _match0__1__railwayValue1"
               + " -> true }) And (partitionsFor"
-              + " (_input0) == Maybe::Just(lawspecCollect"
-              + "ionsSaturatingInt32 ((_input1 + 1))))) = true",
+              + " (_input0) == Maybe::Present(lawspecColl"
+              + "ectionsSaturatingInt32 ((_input1 +"
+              + " 1))))) = true",
           () ->
               LawSpecRuntime.bool(
                   LawSpecRuntime.truth(
@@ -36997,7 +36998,7 @@ public final class KafkaLawSpecTest {
                                   64),
                               LawSpecRuntime.construct(
                                   "Maybe Int32",
-                                  "Maybe::Just",
+                                  "Maybe::Present",
                                   new Value[] {
                                     lawspec.runtime.LawSpecDefinitionBodies.evaluate127(
                                         symbols,
@@ -37312,8 +37313,9 @@ public final class KafkaLawSpecTest {
                                 + " _match0__0__railwayError0 -> false;"
                                 + " Either::Right _match0__1__railwayValue1"
                                 + " -> true }) And (partitionsFor"
-                                + " (_input0) == Maybe::Just(lawspecCollect"
-                                + "ionsSaturatingInt32 ((_input1 + 1))))) = true",
+                                + " (_input0) == Maybe::Present(lawspecColl"
+                                + "ectionsSaturatingInt32 ((_input1 +"
+                                + " 1))))) = true",
                             () ->
                                 LawSpecRuntime.bool(
                                     LawSpecRuntime.truth(
@@ -37614,7 +37616,7 @@ public final class KafkaLawSpecTest {
                                                     64),
                                                 LawSpecRuntime.construct(
                                                     "Maybe Int32",
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     new Value[] {
                                                       lawspec.runtime.LawSpecDefinitionBodies.evaluate127(
                                                           symbols,
@@ -43043,7 +43045,7 @@ public final class KafkaLawSpecTest {
                                 Generator.anyOf(
                                     Generator.constant(
                                         LawSpecRuntime.construct(
-                                            "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                            "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                     Generator.listsOf(
                                             org.jetbrains.jetCheck.IntDistribution.uniform(0, 100),
                                             Generator.integers(0, 255))
@@ -43058,7 +43060,7 @@ public final class KafkaLawSpecTest {
                                             _sumValue ->
                                                 LawSpecRuntime.construct(
                                                     "Maybe Bytes",
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     new Value[] {_sumValue}))));
                         var _input1 =
                             _environment.<Value>generate(
@@ -43182,7 +43184,7 @@ public final class KafkaLawSpecTest {
                                 Generator.anyOf(
                                     Generator.constant(
                                         LawSpecRuntime.construct(
-                                            "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                            "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                     Generator.listsOf(
                                             org.jetbrains.jetCheck.IntDistribution.uniform(0, 100),
                                             Generator.integers(0, 255))
@@ -43197,7 +43199,7 @@ public final class KafkaLawSpecTest {
                                             _sumValue ->
                                                 LawSpecRuntime.construct(
                                                     "Maybe Bytes",
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     new Value[] {_sumValue}))));
                         var _input1 =
                             _environment.<Value>generate(
@@ -43287,8 +43289,8 @@ public final class KafkaLawSpecTest {
   // References:
   // Expansion:
   // Partitioner: "|a key always goes to the same partition| [native]
-  // for all (key :: Bytes) (n :: Int32) => choosePartition (Maybe::Just(_input0)) (_input1) =
-  // choosePartition (Maybe::Just(_input0)) (_input1) end for all
+  // for all (key :: Bytes) (n :: Int32) => choosePartition (Maybe::Present(_input0)) (_input1) =
+  // choosePartition (Maybe::Present(_input0)) (_input1) end for all
   @Test
   void lawPartitionerAKeyAlwaysGoesToTheSame_property() {
     _lawspecChecker()
@@ -43379,9 +43381,10 @@ public final class KafkaLawSpecTest {
                           "lawtwin.kafka::Partitioner: \"|a key"
                               + " always goes to the same partition|"
                               + " [native] property | expect"
-                              + " choosePartition (Maybe::Just(_input0))"
-                              + " (_input1) = choosePartition"
-                              + " (Maybe::Just(_input0)) (_input1)",
+                              + " choosePartition"
+                              + " (Maybe::Present(_input0)) (_input1) ="
+                              + " choosePartition"
+                              + " (Maybe::Present(_input0)) (_input1)",
                           () ->
                               LawSpecRuntime.fromNative(
                                   "Int32",
@@ -43389,7 +43392,9 @@ public final class KafkaLawSpecTest {
                                       LawSpecRuntime.maybeToNative(
                                           "Maybe Bytes",
                                           LawSpecRuntime.construct(
-                                              "Maybe Bytes", "Maybe::Just", new Value[] {_input0}),
+                                              "Maybe Bytes",
+                                              "Maybe::Present",
+                                              new Value[] {_input0}),
                                           64,
                                           _element11 ->
                                               ((byte[])
@@ -43404,7 +43409,9 @@ public final class KafkaLawSpecTest {
                                       LawSpecRuntime.maybeToNative(
                                           "Maybe Bytes",
                                           LawSpecRuntime.construct(
-                                              "Maybe Bytes", "Maybe::Just", new Value[] {_input0}),
+                                              "Maybe Bytes",
+                                              "Maybe::Present",
+                                              new Value[] {_input0}),
                                           64,
                                           _element11 ->
                                               ((byte[])
@@ -43435,8 +43442,8 @@ public final class KafkaLawSpecTest {
   // References:
   // Expansion:
   // Partitioner: "|a key always goes to the same partition| [murmurPartitioner]
-  // for all (key :: Bytes) (n :: Int32) => choosePartition (Maybe::Just(_input0)) (_input1) =
-  // choosePartition (Maybe::Just(_input0)) (_input1) end for all
+  // for all (key :: Bytes) (n :: Int32) => choosePartition (Maybe::Present(_input0)) (_input1) =
+  // choosePartition (Maybe::Present(_input0)) (_input1) end for all
   @Test
   void lawPartitionerAKeyAlwaysGoesToTheSame2_property() {
     _lawspecChecker()
@@ -43520,9 +43527,10 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka::Partitioner: \"|a key"
                             + " always goes to the same partition|"
                             + " [murmurPartitioner] property | expect"
-                            + " choosePartition (Maybe::Just(_input0))"
-                            + " (_input1) = choosePartition"
-                            + " (Maybe::Just(_input0)) (_input1)",
+                            + " choosePartition"
+                            + " (Maybe::Present(_input0)) (_input1) ="
+                            + " choosePartition"
+                            + " (Maybe::Present(_input0)) (_input1)",
                         () ->
                             LawSpecRuntime.fromNative(
                                 "Int32",
@@ -43530,7 +43538,7 @@ public final class KafkaLawSpecTest {
                                     LawSpecRuntime.maybeToNative(
                                         "Maybe Bytes",
                                         LawSpecRuntime.construct(
-                                            "Maybe Bytes", "Maybe::Just", new Value[] {_input0}),
+                                            "Maybe Bytes", "Maybe::Present", new Value[] {_input0}),
                                         64,
                                         _element11 ->
                                             ((byte[])
@@ -43544,7 +43552,7 @@ public final class KafkaLawSpecTest {
                                     LawSpecRuntime.maybeToNative(
                                         "Maybe Bytes",
                                         LawSpecRuntime.construct(
-                                            "Maybe Bytes", "Maybe::Just", new Value[] {_input0}),
+                                            "Maybe Bytes", "Maybe::Present", new Value[] {_input0}),
                                         64,
                                         _element11 ->
                                             ((byte[])
@@ -43592,8 +43600,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                 64,
@@ -43607,8 +43615,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                 64,
@@ -43780,11 +43788,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -43796,7 +43804,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -43806,7 +43814,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -43822,11 +43830,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -43838,7 +43846,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -43848,7 +43856,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -44020,13 +44028,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -44040,7 +44048,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -44050,7 +44058,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -44066,13 +44074,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -44086,7 +44094,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -44096,7 +44104,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -44267,8 +44275,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -44279,7 +44287,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -44293,8 +44301,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -44305,7 +44313,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -44478,11 +44486,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -44494,7 +44502,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -44504,7 +44512,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -44520,11 +44528,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -44536,7 +44544,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -44546,7 +44554,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -44718,11 +44726,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -44734,7 +44742,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -44750,11 +44758,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -44766,7 +44774,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -44938,13 +44946,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -44958,7 +44966,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -44968,7 +44976,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -44984,13 +44992,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -45004,7 +45012,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -45014,7 +45022,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -45184,8 +45192,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -45196,7 +45204,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -45210,8 +45218,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -45222,7 +45230,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -45756,8 +45764,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                 64,
@@ -46019,11 +46027,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -46035,7 +46043,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -46045,7 +46053,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -46307,13 +46315,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -46327,7 +46335,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -46337,7 +46345,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -46598,8 +46606,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -46610,7 +46618,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -46873,11 +46881,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -46889,7 +46897,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -46899,7 +46907,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -47161,11 +47169,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -47177,7 +47185,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -47439,13 +47447,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -47459,7 +47467,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -47469,7 +47477,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -47729,8 +47737,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -47741,7 +47749,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -48439,8 +48447,8 @@ public final class KafkaLawSpecTest {
   // _let4___lawspecRecordField1)) (lawtwin.kafka.model::type::OffsetSpec::Latest())
   // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) And (producerIdentity == let
   // _let3__it = _let0__id in match (_let3__it) { Either::Right _match4__0___lawspecSelection0x0 ->
-  // Maybe::Just(_match4__0___lawspecSelection0x0); Either::Left _match4__1___lawspecSelection0x0 ->
-  // Maybe::Nothing() })) = true end for all
+  // Maybe::Present(_match4__0___lawspecSelection0x0); Either::Left _match4__1___lawspecSelection0x0
+  // -> Maybe::Absent() })) = true end for all
   @Test
   void lawProducerAnIdempotentProducerSRetriedSend_boundary0() {
     var symbols = new HashMap<String, Object>();
@@ -48453,8 +48461,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                 64,
@@ -48514,10 +48522,10 @@ public final class KafkaLawSpecTest {
                 + " And (producerIdentity == let _let3__it"
                 + " = _let0__id in match (_let3__it) {"
                 + " Either::Right _match4__0___lawspecSelec"
-                + "tion0x0 -> Maybe::Just(_match4__0___laws"
-                + "pecSelection0x0); Either::Left"
+                + "tion0x0 -> Maybe::Present(_match4__0___l"
+                + "awspecSelection0x0); Either::Left"
                 + " _match4__1___lawspecSelection0x0 ->"
-                + " Maybe::Nothing() })) = true",
+                + " Maybe::Absent() })) = true",
             () ->
                 LawSpecRuntime.let(
                     _schema.either(
@@ -48752,7 +48760,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Nothing",
+                                                                                "Maybe::Absent",
                                                                                 java.util.List.of(),
                                                                                 64,
                                                                                 symbols),
@@ -48762,7 +48770,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Just",
+                                                                                "Maybe::Present",
                                                                                 java.util.List.of(
                                                                                     _match4__0___lawspecSelection0x0),
                                                                                 64,
@@ -48794,11 +48802,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -48810,7 +48818,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -48820,7 +48828,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -48880,10 +48888,10 @@ public final class KafkaLawSpecTest {
                 + " And (producerIdentity == let _let3__it"
                 + " = _let0__id in match (_let3__it) {"
                 + " Either::Right _match4__0___lawspecSelec"
-                + "tion0x0 -> Maybe::Just(_match4__0___laws"
-                + "pecSelection0x0); Either::Left"
+                + "tion0x0 -> Maybe::Present(_match4__0___l"
+                + "awspecSelection0x0); Either::Left"
                 + " _match4__1___lawspecSelection0x0 ->"
-                + " Maybe::Nothing() })) = true",
+                + " Maybe::Absent() })) = true",
             () ->
                 LawSpecRuntime.let(
                     _schema.either(
@@ -49118,7 +49126,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Nothing",
+                                                                                "Maybe::Absent",
                                                                                 java.util.List.of(),
                                                                                 64,
                                                                                 symbols),
@@ -49128,7 +49136,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Just",
+                                                                                "Maybe::Present",
                                                                                 java.util.List.of(
                                                                                     _match4__0___lawspecSelection0x0),
                                                                                 64,
@@ -49160,13 +49168,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -49180,7 +49188,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -49190,7 +49198,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -49250,10 +49258,10 @@ public final class KafkaLawSpecTest {
                 + " And (producerIdentity == let _let3__it"
                 + " = _let0__id in match (_let3__it) {"
                 + " Either::Right _match4__0___lawspecSelec"
-                + "tion0x0 -> Maybe::Just(_match4__0___laws"
-                + "pecSelection0x0); Either::Left"
+                + "tion0x0 -> Maybe::Present(_match4__0___l"
+                + "awspecSelection0x0); Either::Left"
                 + " _match4__1___lawspecSelection0x0 ->"
-                + " Maybe::Nothing() })) = true",
+                + " Maybe::Absent() })) = true",
             () ->
                 LawSpecRuntime.let(
                     _schema.either(
@@ -49488,7 +49496,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Nothing",
+                                                                                "Maybe::Absent",
                                                                                 java.util.List.of(),
                                                                                 64,
                                                                                 symbols),
@@ -49498,7 +49506,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Just",
+                                                                                "Maybe::Present",
                                                                                 java.util.List.of(
                                                                                     _match4__0___lawspecSelection0x0),
                                                                                 64,
@@ -49529,8 +49537,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -49541,7 +49549,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -49601,10 +49609,10 @@ public final class KafkaLawSpecTest {
                 + " And (producerIdentity == let _let3__it"
                 + " = _let0__id in match (_let3__it) {"
                 + " Either::Right _match4__0___lawspecSelec"
-                + "tion0x0 -> Maybe::Just(_match4__0___laws"
-                + "pecSelection0x0); Either::Left"
+                + "tion0x0 -> Maybe::Present(_match4__0___l"
+                + "awspecSelection0x0); Either::Left"
                 + " _match4__1___lawspecSelection0x0 ->"
-                + " Maybe::Nothing() })) = true",
+                + " Maybe::Absent() })) = true",
             () ->
                 LawSpecRuntime.let(
                     _schema.either(
@@ -49839,7 +49847,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Nothing",
+                                                                                "Maybe::Absent",
                                                                                 java.util.List.of(),
                                                                                 64,
                                                                                 symbols),
@@ -49849,7 +49857,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Just",
+                                                                                "Maybe::Present",
                                                                                 java.util.List.of(
                                                                                     _match4__0___lawspecSelection0x0),
                                                                                 64,
@@ -49882,11 +49890,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -49898,7 +49906,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -49908,7 +49916,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -49968,10 +49976,10 @@ public final class KafkaLawSpecTest {
                 + " And (producerIdentity == let _let3__it"
                 + " = _let0__id in match (_let3__it) {"
                 + " Either::Right _match4__0___lawspecSelec"
-                + "tion0x0 -> Maybe::Just(_match4__0___laws"
-                + "pecSelection0x0); Either::Left"
+                + "tion0x0 -> Maybe::Present(_match4__0___l"
+                + "awspecSelection0x0); Either::Left"
                 + " _match4__1___lawspecSelection0x0 ->"
-                + " Maybe::Nothing() })) = true",
+                + " Maybe::Absent() })) = true",
             () ->
                 LawSpecRuntime.let(
                     _schema.either(
@@ -50206,7 +50214,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Nothing",
+                                                                                "Maybe::Absent",
                                                                                 java.util.List.of(),
                                                                                 64,
                                                                                 symbols),
@@ -50216,7 +50224,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Just",
+                                                                                "Maybe::Present",
                                                                                 java.util.List.of(
                                                                                     _match4__0___lawspecSelection0x0),
                                                                                 64,
@@ -50248,11 +50256,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -50264,7 +50272,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -50324,10 +50332,10 @@ public final class KafkaLawSpecTest {
                 + " And (producerIdentity == let _let3__it"
                 + " = _let0__id in match (_let3__it) {"
                 + " Either::Right _match4__0___lawspecSelec"
-                + "tion0x0 -> Maybe::Just(_match4__0___laws"
-                + "pecSelection0x0); Either::Left"
+                + "tion0x0 -> Maybe::Present(_match4__0___l"
+                + "awspecSelection0x0); Either::Left"
                 + " _match4__1___lawspecSelection0x0 ->"
-                + " Maybe::Nothing() })) = true",
+                + " Maybe::Absent() })) = true",
             () ->
                 LawSpecRuntime.let(
                     _schema.either(
@@ -50562,7 +50570,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Nothing",
+                                                                                "Maybe::Absent",
                                                                                 java.util.List.of(),
                                                                                 64,
                                                                                 symbols),
@@ -50572,7 +50580,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Just",
+                                                                                "Maybe::Present",
                                                                                 java.util.List.of(
                                                                                     _match4__0___lawspecSelection0x0),
                                                                                 64,
@@ -50604,13 +50612,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -50624,7 +50632,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -50634,7 +50642,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -50694,10 +50702,10 @@ public final class KafkaLawSpecTest {
                 + " And (producerIdentity == let _let3__it"
                 + " = _let0__id in match (_let3__it) {"
                 + " Either::Right _match4__0___lawspecSelec"
-                + "tion0x0 -> Maybe::Just(_match4__0___laws"
-                + "pecSelection0x0); Either::Left"
+                + "tion0x0 -> Maybe::Present(_match4__0___l"
+                + "awspecSelection0x0); Either::Left"
                 + " _match4__1___lawspecSelection0x0 ->"
-                + " Maybe::Nothing() })) = true",
+                + " Maybe::Absent() })) = true",
             () ->
                 LawSpecRuntime.let(
                     _schema.either(
@@ -50932,7 +50940,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Nothing",
+                                                                                "Maybe::Absent",
                                                                                 java.util.List.of(),
                                                                                 64,
                                                                                 symbols),
@@ -50942,7 +50950,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Just",
+                                                                                "Maybe::Present",
                                                                                 java.util.List.of(
                                                                                     _match4__0___lawspecSelection0x0),
                                                                                 64,
@@ -50972,8 +50980,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -50984,7 +50992,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -51044,10 +51052,10 @@ public final class KafkaLawSpecTest {
                 + " And (producerIdentity == let _let3__it"
                 + " = _let0__id in match (_let3__it) {"
                 + " Either::Right _match4__0___lawspecSelec"
-                + "tion0x0 -> Maybe::Just(_match4__0___laws"
-                + "pecSelection0x0); Either::Left"
+                + "tion0x0 -> Maybe::Present(_match4__0___l"
+                + "awspecSelection0x0); Either::Left"
                 + " _match4__1___lawspecSelection0x0 ->"
-                + " Maybe::Nothing() })) = true",
+                + " Maybe::Absent() })) = true",
             () ->
                 LawSpecRuntime.let(
                     _schema.either(
@@ -51282,7 +51290,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Nothing",
+                                                                                "Maybe::Absent",
                                                                                 java.util.List.of(),
                                                                                 64,
                                                                                 symbols),
@@ -51292,7 +51300,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                "Maybe::Just",
+                                                                                "Maybe::Present",
                                                                                 java.util.List.of(
                                                                                     _match4__0___lawspecSelection0x0),
                                                                                 64,
@@ -51537,10 +51545,10 @@ public final class KafkaLawSpecTest {
                             + " And (producerIdentity == let _let3__it"
                             + " = _let0__id in match (_let3__it) {"
                             + " Either::Right _match4__0___lawspecSelec"
-                            + "tion0x0 -> Maybe::Just(_match4__0___laws"
-                            + "pecSelection0x0); Either::Left"
+                            + "tion0x0 -> Maybe::Present(_match4__0___l"
+                            + "awspecSelection0x0); Either::Left"
                             + " _match4__1___lawspecSelection0x0 ->"
-                            + " Maybe::Nothing() })) = true",
+                            + " Maybe::Absent() })) = true",
                         () ->
                             LawSpecRuntime.let(
                                 _schema.either(
@@ -51779,7 +51787,7 @@ public final class KafkaLawSpecTest {
                                                                                                 "Maybe",
                                                                                                 new lawspec.runtime.LawSpecSchema.Named(
                                                                                                     "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                            "Maybe::Nothing",
+                                                                                            "Maybe::Absent",
                                                                                             java.util.List.of(
                                                                                                 ),
                                                                                             64,
@@ -51790,7 +51798,7 @@ public final class KafkaLawSpecTest {
                                                                                                 "Maybe",
                                                                                                 new lawspec.runtime.LawSpecSchema.Named(
                                                                                                     "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                            "Maybe::Just",
+                                                                                            "Maybe::Present",
                                                                                             java.util.List.of(
                                                                                                 _match4__0___lawspecSelection0x0),
                                                                                             64,
@@ -51821,16 +51829,16 @@ public final class KafkaLawSpecTest {
   // (Bytes)) => created (_input0) (_input1) implies let _let0__a = send (let
   // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 =
   // lawtwin.kafka::type::PartitionChoice::ByKey() in let _let2___lawspecRecordField2 = let
-  // _let2___lawspecRecordField0 = Maybe::Just(_input2) in let _let3___lawspecRecordField1 = _input3
-  // in let _let4___lawspecRecordField2 = List::Nil() in
+  // _let2___lawspecRecordField0 = Maybe::Present(_input2) in let _let3___lawspecRecordField1 =
+  // _input3 in let _let4___lawspecRecordField2 = List::Nil() in
   // lawtwin.kafka.model::type::Record::Record(_let2___lawspecRecordField0,
   // _let3___lawspecRecordField1, _let4___lawspecRecordField2) in
   // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRecordField0,
   // _let1___lawspecRecordField1, _let2___lawspecRecordField2)) in let _let1__b = send (let
   // _let1___lawspecRecordField0 = _input0 in let _let2___lawspecRecordField1 =
   // lawtwin.kafka::type::PartitionChoice::ByKey() in let _let3___lawspecRecordField2 = let
-  // _let3___lawspecRecordField0 = Maybe::Just(_input2) in let _let4___lawspecRecordField1 = _input4
-  // in let _let5___lawspecRecordField2 = List::Nil() in
+  // _let3___lawspecRecordField0 = Maybe::Present(_input2) in let _let4___lawspecRecordField1 =
+  // _input4 in let _let5___lawspecRecordField2 = List::Nil() in
   // lawtwin.kafka.model::type::Record::Record(_let3___lawspecRecordField0,
   // _let4___lawspecRecordField1, _let5___lawspecRecordField2) in
   // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRecordField0,
@@ -52007,7 +52015,7 @@ public final class KafkaLawSpecTest {
                                 Generator.anyOf(
                                     Generator.constant(
                                         LawSpecRuntime.construct(
-                                            "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                            "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                     Generator.listsOf(
                                             org.jetbrains.jetCheck.IntDistribution.uniform(0, 100),
                                             Generator.integers(0, 255))
@@ -52022,14 +52030,14 @@ public final class KafkaLawSpecTest {
                                             _sumValue ->
                                                 LawSpecRuntime.construct(
                                                     "Maybe Bytes",
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     new Value[] {_sumValue}))));
                         var _input4 =
                             _environment.<Value>generate(
                                 Generator.anyOf(
                                     Generator.constant(
                                         LawSpecRuntime.construct(
-                                            "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                            "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                     Generator.listsOf(
                                             org.jetbrains.jetCheck.IntDistribution.uniform(0, 100),
                                             Generator.integers(0, 255))
@@ -52044,7 +52052,7 @@ public final class KafkaLawSpecTest {
                                             _sumValue ->
                                                 LawSpecRuntime.construct(
                                                     "Maybe Bytes",
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     new Value[] {_sumValue}))));
                         return new _LawSpecInputs(
                             java.util.List.of(_input0, _input1, _input2, _input3, _input4),
@@ -52115,7 +52123,7 @@ public final class KafkaLawSpecTest {
                             + " lawtwin.kafka::type::PartitionChoice::B"
                             + "yKey() in let _let2___lawspecRecordField"
                             + "2 = let _let2___lawspecRecordField0 ="
-                            + " Maybe::Just(_input2) in let"
+                            + " Maybe::Present(_input2) in let"
                             + " _let3___lawspecRecordField1 = _input3"
                             + " in let _let4___lawspecRecordField2 ="
                             + " List::Nil() in lawtwin.kafka.model::typ"
@@ -52132,7 +52140,7 @@ public final class KafkaLawSpecTest {
                             + " lawtwin.kafka::type::PartitionChoice::B"
                             + "yKey() in let _let3___lawspecRecordField"
                             + "2 = let _let3___lawspecRecordField0 ="
-                            + " Maybe::Just(_input2) in let"
+                            + " Maybe::Present(_input2) in let"
                             + " _let4___lawspecRecordField1 = _input4"
                             + " in let _let5___lawspecRecordField2 ="
                             + " List::Nil() in lawtwin.kafka.model::typ"
@@ -52174,7 +52182,7 @@ public final class KafkaLawSpecTest {
                                                                         LawSpecRuntime.let(
                                                                             LawSpecRuntime.construct(
                                                                                 "Maybe Bytes",
-                                                                                "Maybe::Just",
+                                                                                "Maybe::Present",
                                                                                 new Value[] {
                                                                                   _input2
                                                                                 }),
@@ -52242,7 +52250,7 @@ public final class KafkaLawSpecTest {
                                                                                 LawSpecRuntime.let(
                                                                                     LawSpecRuntime.construct(
                                                                                         "Maybe Bytes",
-                                                                                        "Maybe::Just",
+                                                                                        "Maybe::Present",
                                                                                         new Value[] {
                                                                                           _input2
                                                                                         }),
@@ -52634,7 +52642,7 @@ public final class KafkaLawSpecTest {
   // (n :: Int32) => created (_input0) (1) implies (match (attempt (produceRequest (let
   // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
-  // _let1___lawspecRecordField1)) (Maybe::Nothing()) (_input3))) { Either::Left
+  // _let1___lawspecRecordField1)) (Maybe::Absent()) (_input3))) { Either::Left
   // _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true } And
   // resumesAtCommitted (_input0) (_input1) (_input2) (_input4)) = true end for all
   @Test
@@ -52931,7 +52939,7 @@ public final class KafkaLawSpecTest {
                             + " in lawtwin.kafka.model::type::TopicPart"
                             + "ition::TopicPartition(_let0___lawspecRec"
                             + "ordField0, _let1___lawspecRecordField1))"
-                            + " (Maybe::Nothing()) (_input3))) {"
+                            + " (Maybe::Absent()) (_input3))) {"
                             + " Either::Left _match0__0__railwayError0"
                             + " -> false; Either::Right"
                             + " _match0__1__railwayValue1 -> true }"
@@ -52988,7 +52996,7 @@ public final class KafkaLawSpecTest {
                                                                             "Maybe",
                                                                             new lawspec.runtime.LawSpecSchema.Named(
                                                                                 "lawtwin.kafka.model::type::ProducerTag")),
-                                                                        "Maybe::Nothing",
+                                                                        "Maybe::Absent",
                                                                         java.util.List.of(),
                                                                         64,
                                                                         symbols)),
@@ -53062,7 +53070,7 @@ public final class KafkaLawSpecTest {
   // (1) implies let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let
   // _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
-  // _let1___lawspecRecordField1) in (match (attempt (produceRequest (_let0__tp) (Maybe::Nothing())
+  // _let1___lawspecRecordField1) in (match (attempt (produceRequest (_let0__tp) (Maybe::Absent())
   // (_input1))) { Either::Left _match1__0__railwayError0 -> false; Either::Right
   // _match1__1__railwayValue1 -> true } And let _let1__lawspecIgnored = assign
   // (List::Cons(_let0__tp, List::Nil())) in let _let2__it = poll (10) in match (_let2__it) {
@@ -53088,9 +53096,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -53102,11 +53110,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -53143,7 +53151,7 @@ public final class KafkaLawSpecTest {
                 + "ition::TopicPartition(_let0___lawspecRec"
                 + "ordField0, _let1___lawspecRecordField1)"
                 + " in (match (attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (_input1))) { Either::Left"
                 + " _match1__0__railwayError0 -> false;"
                 + " Either::Right _match1__1__railwayValue1"
@@ -53206,7 +53214,7 @@ public final class KafkaLawSpecTest {
                                                                         "Maybe",
                                                                         new lawspec.runtime.LawSpecSchema.Named(
                                                                             "lawtwin.kafka.model::type::ProducerTag")),
-                                                                    "Maybe::Nothing",
+                                                                    "Maybe::Absent",
                                                                     java.util.List.of(),
                                                                     64,
                                                                     symbols)),
@@ -53340,11 +53348,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -53356,9 +53364,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -53394,7 +53402,7 @@ public final class KafkaLawSpecTest {
                 + "ition::TopicPartition(_let0___lawspecRec"
                 + "ordField0, _let1___lawspecRecordField1)"
                 + " in (match (attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (_input1))) { Either::Left"
                 + " _match1__0__railwayError0 -> false;"
                 + " Either::Right _match1__1__railwayValue1"
@@ -53457,7 +53465,7 @@ public final class KafkaLawSpecTest {
                                                                         "Maybe",
                                                                         new lawspec.runtime.LawSpecSchema.Named(
                                                                             "lawtwin.kafka.model::type::ProducerTag")),
-                                                                    "Maybe::Nothing",
+                                                                    "Maybe::Absent",
                                                                     java.util.List.of(),
                                                                     64,
                                                                     symbols)),
@@ -53591,9 +53599,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -53629,7 +53637,7 @@ public final class KafkaLawSpecTest {
                 + "ition::TopicPartition(_let0___lawspecRec"
                 + "ordField0, _let1___lawspecRecordField1)"
                 + " in (match (attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (_input1))) { Either::Left"
                 + " _match1__0__railwayError0 -> false;"
                 + " Either::Right _match1__1__railwayValue1"
@@ -53692,7 +53700,7 @@ public final class KafkaLawSpecTest {
                                                                         "Maybe",
                                                                         new lawspec.runtime.LawSpecSchema.Named(
                                                                             "lawtwin.kafka.model::type::ProducerTag")),
-                                                                    "Maybe::Nothing",
+                                                                    "Maybe::Absent",
                                                                     java.util.List.of(),
                                                                     64,
                                                                     symbols)),
@@ -53826,9 +53834,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -53839,9 +53847,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -53877,7 +53885,7 @@ public final class KafkaLawSpecTest {
                 + "ition::TopicPartition(_let0___lawspecRec"
                 + "ordField0, _let1___lawspecRecordField1)"
                 + " in (match (attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (_input1))) { Either::Left"
                 + " _match1__0__railwayError0 -> false;"
                 + " Either::Right _match1__1__railwayValue1"
@@ -53940,7 +53948,7 @@ public final class KafkaLawSpecTest {
                                                                         "Maybe",
                                                                         new lawspec.runtime.LawSpecSchema.Named(
                                                                             "lawtwin.kafka.model::type::ProducerTag")),
-                                                                    "Maybe::Nothing",
+                                                                    "Maybe::Absent",
                                                                     java.util.List.of(),
                                                                     64,
                                                                     symbols)),
@@ -54263,7 +54271,7 @@ public final class KafkaLawSpecTest {
                             + "ition::TopicPartition(_let0___lawspecRec"
                             + "ordField0, _let1___lawspecRecordField1)"
                             + " in (match (attempt (produceRequest"
-                            + " (_let0__tp) (Maybe::Nothing())"
+                            + " (_let0__tp) (Maybe::Absent())"
                             + " (_input1))) { Either::Left"
                             + " _match1__0__railwayError0 -> false;"
                             + " Either::Right _match1__1__railwayValue1"
@@ -54329,7 +54337,7 @@ public final class KafkaLawSpecTest {
                                                                                     "Maybe",
                                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                                "Maybe::Nothing",
+                                                                                "Maybe::Absent",
                                                                                 java.util.List.of(),
                                                                                 64,
                                                                                 symbols)),
@@ -56417,16 +56425,16 @@ public final class KafkaLawSpecTest {
   // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
   // _let1___lawspecRecordField1) in let _let1__a = writeAborted (_let0__tp) (_input1) (_input2) in
-  // let _let2__p = attempt (produceRequest (_let0__tp) (Maybe::Nothing()) (List::Cons(_input3,
+  // let _let2__p = attempt (produceRequest (_let0__tp) (Maybe::Absent()) (List::Cons(_input3,
   // List::Nil()))) in let _let3__lawspecIgnored = setIsolationLevel
   // (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted()) in let _let4__lawspecIgnored =
   // assign (List::Cons(_let0__tp, List::Nil())) in let _let5__it = poll (100) in match (_let5__it)
   // { Either::Left _match6__0___lawspecSelection0x0 -> false; Either::Right
   // _match6__1___lawspecSelection0x0 -> (let _let7__it = _let1__a in match (_let7__it) {
-  // Maybe::Just _match8__0___match__lawspecSelection0x0_0 ->
+  // Maybe::Present _match8__0___match__lawspecSelection0x0_0 ->
   // Not(lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
   // (_match8__0___match__lawspecSelection0x0_0) (lawspec_lawspecCollectionsSetOf_b2e15487e0114c0
-  // (receivedOffsets (_match6__1___lawspecSelection0x0)))); Maybe::Nothing -> false } And let
+  // (receivedOffsets (_match6__1___lawspecSelection0x0)))); Maybe::Absent -> false } And let
   // _let7__it = _let2__p in match (_let7__it) { Either::Right
   // _match8__0___match__lawspecSelection0x0_0 ->
   // lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
@@ -56449,11 +56457,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -56465,7 +56473,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -56475,7 +56483,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -56491,11 +56499,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -56507,7 +56515,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -56517,7 +56525,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -56555,7 +56563,7 @@ public final class KafkaLawSpecTest {
                 + " in let _let1__a = writeAborted"
                 + " (_let0__tp) (_input1) (_input2) in let"
                 + " _let2__p = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (List::Cons(_input3, List::Nil()))) in"
                 + " let _let3__lawspecIgnored ="
                 + " setIsolationLevel"
@@ -56569,7 +56577,7 @@ public final class KafkaLawSpecTest {
                 + " false; Either::Right"
                 + " _match6__1___lawspecSelection0x0 ->"
                 + " (let _let7__it = _let1__a in match"
-                + " (_let7__it) { Maybe::Just"
+                + " (_let7__it) { Maybe::Present"
                 + " _match8__0___match__lawspecSelection0x0"
                 + "_0 -> Not(lawspec_lawspecCollectionsSetM"
                 + "ember_ad24e518e9752b84"
@@ -56577,7 +56585,7 @@ public final class KafkaLawSpecTest {
                 + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
                 + "e15487e0114c0 (receivedOffsets"
                 + " (_match6__1___lawspecSelection0x0))));"
-                + " Maybe::Nothing  -> false } And let"
+                + " Maybe::Absent  -> false } And let"
                 + " _let7__it = _let2__p in match"
                 + " (_let7__it) { Either::Right"
                 + " _match8__0___match__lawspecSelection0x0"
@@ -56640,7 +56648,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Nothing",
+                                                                "Maybe::Absent",
                                                                 java.util.List.of(),
                                                                 64,
                                                                 symbols)),
@@ -56833,13 +56841,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -56853,7 +56861,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -56863,7 +56871,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -56879,13 +56887,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -56899,7 +56907,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -56909,7 +56917,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -56947,7 +56955,7 @@ public final class KafkaLawSpecTest {
                 + " in let _let1__a = writeAborted"
                 + " (_let0__tp) (_input1) (_input2) in let"
                 + " _let2__p = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (List::Cons(_input3, List::Nil()))) in"
                 + " let _let3__lawspecIgnored ="
                 + " setIsolationLevel"
@@ -56961,7 +56969,7 @@ public final class KafkaLawSpecTest {
                 + " false; Either::Right"
                 + " _match6__1___lawspecSelection0x0 ->"
                 + " (let _let7__it = _let1__a in match"
-                + " (_let7__it) { Maybe::Just"
+                + " (_let7__it) { Maybe::Present"
                 + " _match8__0___match__lawspecSelection0x0"
                 + "_0 -> Not(lawspec_lawspecCollectionsSetM"
                 + "ember_ad24e518e9752b84"
@@ -56969,7 +56977,7 @@ public final class KafkaLawSpecTest {
                 + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
                 + "e15487e0114c0 (receivedOffsets"
                 + " (_match6__1___lawspecSelection0x0))));"
-                + " Maybe::Nothing  -> false } And let"
+                + " Maybe::Absent  -> false } And let"
                 + " _let7__it = _let2__p in match"
                 + " (_let7__it) { Either::Right"
                 + " _match8__0___match__lawspecSelection0x0"
@@ -57032,7 +57040,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Nothing",
+                                                                "Maybe::Absent",
                                                                 java.util.List.of(),
                                                                 64,
                                                                 symbols)),
@@ -57223,8 +57231,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -57235,7 +57243,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -57249,8 +57257,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -57261,7 +57269,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -57299,7 +57307,7 @@ public final class KafkaLawSpecTest {
                 + " in let _let1__a = writeAborted"
                 + " (_let0__tp) (_input1) (_input2) in let"
                 + " _let2__p = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (List::Cons(_input3, List::Nil()))) in"
                 + " let _let3__lawspecIgnored ="
                 + " setIsolationLevel"
@@ -57313,7 +57321,7 @@ public final class KafkaLawSpecTest {
                 + " false; Either::Right"
                 + " _match6__1___lawspecSelection0x0 ->"
                 + " (let _let7__it = _let1__a in match"
-                + " (_let7__it) { Maybe::Just"
+                + " (_let7__it) { Maybe::Present"
                 + " _match8__0___match__lawspecSelection0x0"
                 + "_0 -> Not(lawspec_lawspecCollectionsSetM"
                 + "ember_ad24e518e9752b84"
@@ -57321,7 +57329,7 @@ public final class KafkaLawSpecTest {
                 + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
                 + "e15487e0114c0 (receivedOffsets"
                 + " (_match6__1___lawspecSelection0x0))));"
-                + " Maybe::Nothing  -> false } And let"
+                + " Maybe::Absent  -> false } And let"
                 + " _let7__it = _let2__p in match"
                 + " (_let7__it) { Either::Right"
                 + " _match8__0___match__lawspecSelection0x0"
@@ -57384,7 +57392,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Nothing",
+                                                                "Maybe::Absent",
                                                                 java.util.List.of(),
                                                                 64,
                                                                 symbols)),
@@ -57575,11 +57583,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -57591,7 +57599,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -57601,7 +57609,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -57617,11 +57625,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -57633,7 +57641,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -57643,7 +57651,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -57681,7 +57689,7 @@ public final class KafkaLawSpecTest {
                 + " in let _let1__a = writeAborted"
                 + " (_let0__tp) (_input1) (_input2) in let"
                 + " _let2__p = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (List::Cons(_input3, List::Nil()))) in"
                 + " let _let3__lawspecIgnored ="
                 + " setIsolationLevel"
@@ -57695,7 +57703,7 @@ public final class KafkaLawSpecTest {
                 + " false; Either::Right"
                 + " _match6__1___lawspecSelection0x0 ->"
                 + " (let _let7__it = _let1__a in match"
-                + " (_let7__it) { Maybe::Just"
+                + " (_let7__it) { Maybe::Present"
                 + " _match8__0___match__lawspecSelection0x0"
                 + "_0 -> Not(lawspec_lawspecCollectionsSetM"
                 + "ember_ad24e518e9752b84"
@@ -57703,7 +57711,7 @@ public final class KafkaLawSpecTest {
                 + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
                 + "e15487e0114c0 (receivedOffsets"
                 + " (_match6__1___lawspecSelection0x0))));"
-                + " Maybe::Nothing  -> false } And let"
+                + " Maybe::Absent  -> false } And let"
                 + " _let7__it = _let2__p in match"
                 + " (_let7__it) { Either::Right"
                 + " _match8__0___match__lawspecSelection0x0"
@@ -57766,7 +57774,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Nothing",
+                                                                "Maybe::Absent",
                                                                 java.util.List.of(),
                                                                 64,
                                                                 symbols)),
@@ -57955,11 +57963,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -57971,7 +57979,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -57987,11 +57995,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -58003,7 +58011,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -58041,7 +58049,7 @@ public final class KafkaLawSpecTest {
                 + " in let _let1__a = writeAborted"
                 + " (_let0__tp) (_input1) (_input2) in let"
                 + " _let2__p = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (List::Cons(_input3, List::Nil()))) in"
                 + " let _let3__lawspecIgnored ="
                 + " setIsolationLevel"
@@ -58055,7 +58063,7 @@ public final class KafkaLawSpecTest {
                 + " false; Either::Right"
                 + " _match6__1___lawspecSelection0x0 ->"
                 + " (let _let7__it = _let1__a in match"
-                + " (_let7__it) { Maybe::Just"
+                + " (_let7__it) { Maybe::Present"
                 + " _match8__0___match__lawspecSelection0x0"
                 + "_0 -> Not(lawspec_lawspecCollectionsSetM"
                 + "ember_ad24e518e9752b84"
@@ -58063,7 +58071,7 @@ public final class KafkaLawSpecTest {
                 + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
                 + "e15487e0114c0 (receivedOffsets"
                 + " (_match6__1___lawspecSelection0x0))));"
-                + " Maybe::Nothing  -> false } And let"
+                + " Maybe::Absent  -> false } And let"
                 + " _let7__it = _let2__p in match"
                 + " (_let7__it) { Either::Right"
                 + " _match8__0___match__lawspecSelection0x0"
@@ -58126,7 +58134,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Nothing",
+                                                                "Maybe::Absent",
                                                                 java.util.List.of(),
                                                                 64,
                                                                 symbols)),
@@ -58314,8 +58322,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -58326,7 +58334,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -58340,8 +58348,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -58352,7 +58360,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -58390,7 +58398,7 @@ public final class KafkaLawSpecTest {
                 + " in let _let1__a = writeAborted"
                 + " (_let0__tp) (_input1) (_input2) in let"
                 + " _let2__p = attempt (produceRequest"
-                + " (_let0__tp) (Maybe::Nothing())"
+                + " (_let0__tp) (Maybe::Absent())"
                 + " (List::Cons(_input3, List::Nil()))) in"
                 + " let _let3__lawspecIgnored ="
                 + " setIsolationLevel"
@@ -58404,7 +58412,7 @@ public final class KafkaLawSpecTest {
                 + " false; Either::Right"
                 + " _match6__1___lawspecSelection0x0 ->"
                 + " (let _let7__it = _let1__a in match"
-                + " (_let7__it) { Maybe::Just"
+                + " (_let7__it) { Maybe::Present"
                 + " _match8__0___match__lawspecSelection0x0"
                 + "_0 -> Not(lawspec_lawspecCollectionsSetM"
                 + "ember_ad24e518e9752b84"
@@ -58412,7 +58420,7 @@ public final class KafkaLawSpecTest {
                 + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
                 + "e15487e0114c0 (receivedOffsets"
                 + " (_match6__1___lawspecSelection0x0))));"
-                + " Maybe::Nothing  -> false } And let"
+                + " Maybe::Absent  -> false } And let"
                 + " _let7__it = _let2__p in match"
                 + " (_let7__it) { Either::Right"
                 + " _match8__0___match__lawspecSelection0x0"
@@ -58475,7 +58483,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe",
                                                                     new lawspec.runtime.LawSpecSchema.Named(
                                                                         "lawtwin.kafka.model::type::ProducerTag")),
-                                                                "Maybe::Nothing",
+                                                                "Maybe::Absent",
                                                                 java.util.List.of(),
                                                                 64,
                                                                 symbols)),
@@ -58897,7 +58905,7 @@ public final class KafkaLawSpecTest {
                             + " in let _let1__a = writeAborted"
                             + " (_let0__tp) (_input1) (_input2) in let"
                             + " _let2__p = attempt (produceRequest"
-                            + " (_let0__tp) (Maybe::Nothing())"
+                            + " (_let0__tp) (Maybe::Absent())"
                             + " (List::Cons(_input3, List::Nil()))) in"
                             + " let _let3__lawspecIgnored ="
                             + " setIsolationLevel"
@@ -58911,7 +58919,7 @@ public final class KafkaLawSpecTest {
                             + " false; Either::Right"
                             + " _match6__1___lawspecSelection0x0 ->"
                             + " (let _let7__it = _let1__a in match"
-                            + " (_let7__it) { Maybe::Just"
+                            + " (_let7__it) { Maybe::Present"
                             + " _match8__0___match__lawspecSelection0x0"
                             + "_0 -> Not(lawspec_lawspecCollectionsSetM"
                             + "ember_ad24e518e9752b84"
@@ -58919,7 +58927,7 @@ public final class KafkaLawSpecTest {
                             + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
                             + "e15487e0114c0 (receivedOffsets"
                             + " (_match6__1___lawspecSelection0x0))));"
-                            + " Maybe::Nothing  -> false } And let"
+                            + " Maybe::Absent  -> false } And let"
                             + " _let7__it = _let2__p in match"
                             + " (_let7__it) { Either::Right"
                             + " _match8__0___match__lawspecSelection0x0"
@@ -58983,7 +58991,7 @@ public final class KafkaLawSpecTest {
                                                                                 "Maybe",
                                                                                 new lawspec.runtime.LawSpecSchema.Named(
                                                                                     "lawtwin.kafka.model::type::ProducerTag")),
-                                                                            "Maybe::Nothing",
+                                                                            "Maybe::Absent",
                                                                             java.util.List.of(),
                                                                             64,
                                                                             symbols)),
@@ -74736,7 +74744,7 @@ public final class KafkaLawSpecTest {
   // false; Either::Right _match2__1__railwayValue1 -> true } And (fetchOffset (_input1) (let
   // _let2___lawspecRecordField0 = _input0 in let _let3___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___lawspecRecordField0,
-  // _let3___lawspecRecordField1)) == Maybe::Just(_input3))) } = true end for all
+  // _let3___lawspecRecordField1)) == Maybe::Present(_input3))) } = true end for all
   private static final java.util.List<String> _lawspecInputs57 = java.util.List.of("(text)",
   "(text)",
   "(text)",
@@ -74818,7 +74826,7 @@ public final class KafkaLawSpecTest {
                 + "picPartition::TopicPartition(_let2___law"
                 + "specRecordField0,"
                 + " _let3___lawspecRecordField1)) =="
-                + " Maybe::Just(_input3))) } = true",
+                + " Maybe::Present(_input3))) } = true",
             () ->
                 LawSpecRuntime.let(
                     LawSpecRuntime.attempt(
@@ -75028,7 +75036,7 @@ public final class KafkaLawSpecTest {
                                                     64),
                                                 LawSpecRuntime.construct(
                                                     "Maybe Int64",
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     new Value[] {_input3})))))),
             () -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(true), 64));
       }
@@ -75113,7 +75121,7 @@ public final class KafkaLawSpecTest {
                 + "picPartition::TopicPartition(_let2___law"
                 + "specRecordField0,"
                 + " _let3___lawspecRecordField1)) =="
-                + " Maybe::Just(_input3))) } = true",
+                + " Maybe::Present(_input3))) } = true",
             () ->
                 LawSpecRuntime.let(
                     LawSpecRuntime.attempt(
@@ -75323,7 +75331,7 @@ public final class KafkaLawSpecTest {
                                                     64),
                                                 LawSpecRuntime.construct(
                                                     "Maybe Int64",
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     new Value[] {_input3})))))),
             () -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(true), 64));
       }
@@ -75407,7 +75415,7 @@ public final class KafkaLawSpecTest {
                 + "picPartition::TopicPartition(_let2___law"
                 + "specRecordField0,"
                 + " _let3___lawspecRecordField1)) =="
-                + " Maybe::Just(_input3))) } = true",
+                + " Maybe::Present(_input3))) } = true",
             () ->
                 LawSpecRuntime.let(
                     LawSpecRuntime.attempt(
@@ -75617,7 +75625,7 @@ public final class KafkaLawSpecTest {
                                                     64),
                                                 LawSpecRuntime.construct(
                                                     "Maybe Int64",
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     new Value[] {_input3})))))),
             () -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(true), 64));
       }
@@ -75951,7 +75959,7 @@ public final class KafkaLawSpecTest {
                                   + "picPartition::TopicPartition(_let2___law"
                                   + "specRecordField0,"
                                   + " _let3___lawspecRecordField1)) =="
-                                  + " Maybe::Just(_input3))) } = true",
+                                  + " Maybe::Present(_input3))) } = true",
                               () ->
                                   LawSpecRuntime.let(
                                       LawSpecRuntime.attempt(
@@ -76194,7 +76202,7 @@ public final class KafkaLawSpecTest {
                                                                       64),
                                                                   LawSpecRuntime.construct(
                                                                       "Maybe Int64",
-                                                                      "Maybe::Just",
+                                                                      "Maybe::Present",
                                                                       new Value[] {_input3})))))),
                               () -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(true), 64));
                         }
@@ -76243,7 +76251,7 @@ public final class KafkaLawSpecTest {
   // false; Either::Right _match2__1__railwayValue1 -> true } And (fetchOffset (_input1) (let
   // _let2___lawspecRecordField0 = _input0 in let _let3___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let2___lawspecRecordField0,
-  // _let3___lawspecRecordField1)) == Maybe::Just(_input3))) } = true end for all
+  // _let3___lawspecRecordField1)) == Maybe::Present(_input3))) } = true end for all
   private static final java.util.List<String> _lawspecInputs58 = java.util.List.of("(text)",
   "(text)",
   "(text)",
@@ -76321,7 +76329,7 @@ public final class KafkaLawSpecTest {
               + "picPartition::TopicPartition(_let2___law"
               + "specRecordField0,"
               + " _let3___lawspecRecordField1)) =="
-              + " Maybe::Just(_input3))) } = true",
+              + " Maybe::Present(_input3))) } = true",
           () ->
               LawSpecRuntime.let(
                   LawSpecRuntime.attempt(
@@ -76531,7 +76539,7 @@ public final class KafkaLawSpecTest {
                                                   64),
                                               LawSpecRuntime.construct(
                                                   "Maybe Int64",
-                                                  "Maybe::Just",
+                                                  "Maybe::Present",
                                                   new Value[] {_input3})))))),
           () -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(true), 64));
     }
@@ -76604,7 +76612,7 @@ public final class KafkaLawSpecTest {
               + "picPartition::TopicPartition(_let2___law"
               + "specRecordField0,"
               + " _let3___lawspecRecordField1)) =="
-              + " Maybe::Just(_input3))) } = true",
+              + " Maybe::Present(_input3))) } = true",
           () ->
               LawSpecRuntime.let(
                   LawSpecRuntime.attempt(
@@ -76814,7 +76822,7 @@ public final class KafkaLawSpecTest {
                                                   64),
                                               LawSpecRuntime.construct(
                                                   "Maybe Int64",
-                                                  "Maybe::Just",
+                                                  "Maybe::Present",
                                                   new Value[] {_input3})))))),
           () -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(true), 64));
     }
@@ -76886,7 +76894,7 @@ public final class KafkaLawSpecTest {
               + "picPartition::TopicPartition(_let2___law"
               + "specRecordField0,"
               + " _let3___lawspecRecordField1)) =="
-              + " Maybe::Just(_input3))) } = true",
+              + " Maybe::Present(_input3))) } = true",
           () ->
               LawSpecRuntime.let(
                   LawSpecRuntime.attempt(
@@ -77096,7 +77104,7 @@ public final class KafkaLawSpecTest {
                                                   64),
                                               LawSpecRuntime.construct(
                                                   "Maybe Int64",
-                                                  "Maybe::Just",
+                                                  "Maybe::Present",
                                                   new Value[] {_input3})))))),
           () -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(true), 64));
     }
@@ -77417,7 +77425,7 @@ public final class KafkaLawSpecTest {
                                 + "picPartition::TopicPartition(_let2___law"
                                 + "specRecordField0,"
                                 + " _let3___lawspecRecordField1)) =="
-                                + " Maybe::Just(_input3))) } = true",
+                                + " Maybe::Present(_input3))) } = true",
                             () ->
                                 LawSpecRuntime.let(
                                     LawSpecRuntime.attempt(
@@ -77659,7 +77667,7 @@ public final class KafkaLawSpecTest {
                                                                     64),
                                                                 LawSpecRuntime.construct(
                                                                     "Maybe Int64",
-                                                                    "Maybe::Just",
+                                                                    "Maybe::Present",
                                                                     new Value[] {_input3})))))),
                             () -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(true), 64));
                       }
@@ -77692,7 +77700,7 @@ public final class KafkaLawSpecTest {
   // (_input0) (1) implies (((match (initTransactions (_input1)) { Either::Left
   // _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true } And
   // (beginTransaction == Either::Right(unitValue))) And match (attempt (initProducerIdRequest
-  // (Maybe::Just(_input1)))) { Either::Left _match0__0__railwayError0 -> false; Either::Right
+  // (Maybe::Present(_input1)))) { Either::Left _match0__0__railwayError0 -> false; Either::Right
   // _match0__1__railwayValue1 -> true }) And (sendInTransaction (let _let0___lawspecRecordField0 =
   // _input0 in let _let1___lawspecRecordField1 =
   // lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _let2___lawspecRecordField2 =
@@ -77715,11 +77723,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -77731,7 +77739,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -77741,7 +77749,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -77777,7 +77785,7 @@ public final class KafkaLawSpecTest {
                 + " And (beginTransaction =="
                 + " Either::Right(unitValue))) And match"
                 + " (attempt (initProducerIdRequest"
-                + " (Maybe::Just(_input1)))) {"
+                + " (Maybe::Present(_input1)))) {"
                 + " Either::Left _match0__0__railwayError0"
                 + " -> false; Either::Right"
                 + " _match0__1__railwayValue1 -> true })"
@@ -77882,7 +77890,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe Text",
                                                                     LawSpecRuntime.construct(
                                                                         "Maybe Text",
-                                                                        "Maybe::Just",
+                                                                        "Maybe::Present",
                                                                         new Value[] {_input1}),
                                                                     64,
                                                                     _element10 ->
@@ -78036,13 +78044,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -78056,7 +78064,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -78066,7 +78074,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -78102,7 +78110,7 @@ public final class KafkaLawSpecTest {
                 + " And (beginTransaction =="
                 + " Either::Right(unitValue))) And match"
                 + " (attempt (initProducerIdRequest"
-                + " (Maybe::Just(_input1)))) {"
+                + " (Maybe::Present(_input1)))) {"
                 + " Either::Left _match0__0__railwayError0"
                 + " -> false; Either::Right"
                 + " _match0__1__railwayValue1 -> true })"
@@ -78207,7 +78215,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe Text",
                                                                     LawSpecRuntime.construct(
                                                                         "Maybe Text",
-                                                                        "Maybe::Just",
+                                                                        "Maybe::Present",
                                                                         new Value[] {_input1}),
                                                                     64,
                                                                     _element10 ->
@@ -78359,8 +78367,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -78371,7 +78379,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -78407,7 +78415,7 @@ public final class KafkaLawSpecTest {
                 + " And (beginTransaction =="
                 + " Either::Right(unitValue))) And match"
                 + " (attempt (initProducerIdRequest"
-                + " (Maybe::Just(_input1)))) {"
+                + " (Maybe::Present(_input1)))) {"
                 + " Either::Left _match0__0__railwayError0"
                 + " -> false; Either::Right"
                 + " _match0__1__railwayValue1 -> true })"
@@ -78512,7 +78520,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe Text",
                                                                     LawSpecRuntime.construct(
                                                                         "Maybe Text",
-                                                                        "Maybe::Just",
+                                                                        "Maybe::Present",
                                                                         new Value[] {_input1}),
                                                                     64,
                                                                     _element10 ->
@@ -78664,11 +78672,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -78680,7 +78688,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -78690,7 +78698,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -78726,7 +78734,7 @@ public final class KafkaLawSpecTest {
                 + " And (beginTransaction =="
                 + " Either::Right(unitValue))) And match"
                 + " (attempt (initProducerIdRequest"
-                + " (Maybe::Just(_input1)))) {"
+                + " (Maybe::Present(_input1)))) {"
                 + " Either::Left _match0__0__railwayError0"
                 + " -> false; Either::Right"
                 + " _match0__1__railwayValue1 -> true })"
@@ -78831,7 +78839,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe Text",
                                                                     LawSpecRuntime.construct(
                                                                         "Maybe Text",
-                                                                        "Maybe::Just",
+                                                                        "Maybe::Present",
                                                                         new Value[] {_input1}),
                                                                     64,
                                                                     _element10 ->
@@ -78981,11 +78989,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -78997,7 +79005,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -79033,7 +79041,7 @@ public final class KafkaLawSpecTest {
                 + " And (beginTransaction =="
                 + " Either::Right(unitValue))) And match"
                 + " (attempt (initProducerIdRequest"
-                + " (Maybe::Just(_input1)))) {"
+                + " (Maybe::Present(_input1)))) {"
                 + " Either::Left _match0__0__railwayError0"
                 + " -> false; Either::Right"
                 + " _match0__1__railwayValue1 -> true })"
@@ -79138,7 +79146,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe Text",
                                                                     LawSpecRuntime.construct(
                                                                         "Maybe Text",
-                                                                        "Maybe::Just",
+                                                                        "Maybe::Present",
                                                                         new Value[] {_input1}),
                                                                     64,
                                                                     _element10 ->
@@ -79287,8 +79295,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -79299,7 +79307,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -79335,7 +79343,7 @@ public final class KafkaLawSpecTest {
                 + " And (beginTransaction =="
                 + " Either::Right(unitValue))) And match"
                 + " (attempt (initProducerIdRequest"
-                + " (Maybe::Just(_input1)))) {"
+                + " (Maybe::Present(_input1)))) {"
                 + " Either::Left _match0__0__railwayError0"
                 + " -> false; Either::Right"
                 + " _match0__1__railwayValue1 -> true })"
@@ -79440,7 +79448,7 @@ public final class KafkaLawSpecTest {
                                                                     "Maybe Text",
                                                                     LawSpecRuntime.construct(
                                                                         "Maybe Text",
-                                                                        "Maybe::Just",
+                                                                        "Maybe::Present",
                                                                         new Value[] {_input1}),
                                                                     64,
                                                                     _element10 ->
@@ -79810,7 +79818,7 @@ public final class KafkaLawSpecTest {
                             + " And (beginTransaction =="
                             + " Either::Right(unitValue))) And match"
                             + " (attempt (initProducerIdRequest"
-                            + " (Maybe::Just(_input1)))) {"
+                            + " (Maybe::Present(_input1)))) {"
                             + " Either::Left _match0__0__railwayError0"
                             + " -> false; Either::Right"
                             + " _match0__1__railwayValue1 -> true })"
@@ -79926,7 +79934,7 @@ public final class KafkaLawSpecTest {
                                                                                 "Maybe Text",
                                                                                 LawSpecRuntime.construct(
                                                                                     "Maybe Text",
-                                                                                    "Maybe::Just",
+                                                                                    "Maybe::Present",
                                                                                     new Value[] {
                                                                                       _input1
                                                                                     }),
@@ -80108,11 +80116,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -80124,7 +80132,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -80134,7 +80142,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -80441,13 +80449,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -80461,7 +80469,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -80471,7 +80479,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -80776,8 +80784,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -80788,7 +80796,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -81093,11 +81101,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -81109,7 +81117,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -81119,7 +81127,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -81422,11 +81430,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -81438,7 +81446,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -81740,8 +81748,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -81752,7 +81760,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -82590,11 +82598,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -82606,7 +82614,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -82616,7 +82624,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -82632,11 +82640,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -82648,7 +82656,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -82658,7 +82666,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -83104,13 +83112,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -83124,7 +83132,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -83134,7 +83142,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -83150,13 +83158,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -83170,7 +83178,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -83180,7 +83188,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -83624,8 +83632,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -83636,7 +83644,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -83650,8 +83658,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -83662,7 +83670,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -84106,11 +84114,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -84122,7 +84130,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -84132,7 +84140,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -84148,11 +84156,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -84164,7 +84172,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -84174,7 +84182,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -84616,11 +84624,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -84632,7 +84640,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -84648,11 +84656,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -84664,7 +84672,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -85105,8 +85113,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -85117,7 +85125,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -85131,8 +85139,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -85143,7 +85151,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -88606,8 +88614,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                 64,
@@ -88621,8 +88629,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                 64,
@@ -88783,11 +88791,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -88799,7 +88807,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -88809,7 +88817,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -88825,11 +88833,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -88841,7 +88849,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -88851,7 +88859,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -89012,13 +89020,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -89032,7 +89040,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -89042,7 +89050,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -89058,13 +89066,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -89078,7 +89086,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -89088,7 +89096,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -89248,8 +89256,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -89260,7 +89268,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -89274,8 +89282,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -89286,7 +89294,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -89448,11 +89456,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -89464,7 +89472,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -89474,7 +89482,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -89490,11 +89498,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -89506,7 +89514,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -89516,7 +89524,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -89677,11 +89685,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -89693,7 +89701,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -89709,11 +89717,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -89725,7 +89733,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -89886,13 +89894,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -89906,7 +89914,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -89916,7 +89924,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -89932,13 +89940,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -89952,7 +89960,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -89962,7 +89970,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -90121,8 +90129,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -90133,7 +90141,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -90147,8 +90155,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -90159,7 +90167,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -90669,8 +90677,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                 64,
@@ -90919,11 +90927,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -90935,7 +90943,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -90945,7 +90953,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -91194,13 +91202,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -91214,7 +91222,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -91224,7 +91232,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -91472,8 +91480,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -91484,7 +91492,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -91734,11 +91742,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -91750,7 +91758,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -91760,7 +91768,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -92009,11 +92017,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -92025,7 +92033,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -92274,13 +92282,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -92294,7 +92302,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -92304,7 +92312,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -92551,8 +92559,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -92563,7 +92571,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -93223,8 +93231,8 @@ public final class KafkaLawSpecTest {
   // _let4___lawspecRecordField1)) (lawtwin.kafka.model::type::OffsetSpec::Latest())
   // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) And (producerIdentity == let
   // _let3__it = _let0__id in match (_let3__it) { Either::Right _match4__0___lawspecSelection0x0 ->
-  // Maybe::Just(_match4__0___lawspecSelection0x0); Either::Left _match4__1___lawspecSelection0x0 ->
-  // Maybe::Nothing() })) = true end for all
+  // Maybe::Present(_match4__0___lawspecSelection0x0); Either::Left _match4__1___lawspecSelection0x0
+  // -> Maybe::Absent() })) = true end for all
   @Test
   void lawProducerAnIdempotentProducerSRetriedSend2_boundary0() {
     var symbols = new HashMap<String, Object>();
@@ -93247,8 +93255,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                 64,
@@ -93295,10 +93303,10 @@ public final class KafkaLawSpecTest {
               + " And (producerIdentity == let _let3__it"
               + " = _let0__id in match (_let3__it) {"
               + " Either::Right _match4__0___lawspecSelec"
-              + "tion0x0 -> Maybe::Just(_match4__0___laws"
-              + "pecSelection0x0); Either::Left"
+              + "tion0x0 -> Maybe::Present(_match4__0___l"
+              + "awspecSelection0x0); Either::Left"
               + " _match4__1___lawspecSelection0x0 ->"
-              + " Maybe::Nothing() })) = true",
+              + " Maybe::Absent() })) = true",
           () ->
               LawSpecRuntime.let(
                   _schema.either(
@@ -93533,7 +93541,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Nothing",
+                                                                              "Maybe::Absent",
                                                                               java.util.List.of(),
                                                                               64,
                                                                               symbols),
@@ -93543,7 +93551,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Just",
+                                                                              "Maybe::Present",
                                                                               java.util.List.of(
                                                                                   _match4__0___lawspecSelection0x0),
                                                                               64,
@@ -93578,11 +93586,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -93594,7 +93602,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -93604,7 +93612,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -93651,10 +93659,10 @@ public final class KafkaLawSpecTest {
               + " And (producerIdentity == let _let3__it"
               + " = _let0__id in match (_let3__it) {"
               + " Either::Right _match4__0___lawspecSelec"
-              + "tion0x0 -> Maybe::Just(_match4__0___laws"
-              + "pecSelection0x0); Either::Left"
+              + "tion0x0 -> Maybe::Present(_match4__0___l"
+              + "awspecSelection0x0); Either::Left"
               + " _match4__1___lawspecSelection0x0 ->"
-              + " Maybe::Nothing() })) = true",
+              + " Maybe::Absent() })) = true",
           () ->
               LawSpecRuntime.let(
                   _schema.either(
@@ -93889,7 +93897,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Nothing",
+                                                                              "Maybe::Absent",
                                                                               java.util.List.of(),
                                                                               64,
                                                                               symbols),
@@ -93899,7 +93907,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Just",
+                                                                              "Maybe::Present",
                                                                               java.util.List.of(
                                                                                   _match4__0___lawspecSelection0x0),
                                                                               64,
@@ -93934,13 +93942,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -93954,7 +93962,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -93964,7 +93972,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -94011,10 +94019,10 @@ public final class KafkaLawSpecTest {
               + " And (producerIdentity == let _let3__it"
               + " = _let0__id in match (_let3__it) {"
               + " Either::Right _match4__0___lawspecSelec"
-              + "tion0x0 -> Maybe::Just(_match4__0___laws"
-              + "pecSelection0x0); Either::Left"
+              + "tion0x0 -> Maybe::Present(_match4__0___l"
+              + "awspecSelection0x0); Either::Left"
               + " _match4__1___lawspecSelection0x0 ->"
-              + " Maybe::Nothing() })) = true",
+              + " Maybe::Absent() })) = true",
           () ->
               LawSpecRuntime.let(
                   _schema.either(
@@ -94249,7 +94257,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Nothing",
+                                                                              "Maybe::Absent",
                                                                               java.util.List.of(),
                                                                               64,
                                                                               symbols),
@@ -94259,7 +94267,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Just",
+                                                                              "Maybe::Present",
                                                                               java.util.List.of(
                                                                                   _match4__0___lawspecSelection0x0),
                                                                               64,
@@ -94293,8 +94301,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -94305,7 +94313,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -94352,10 +94360,10 @@ public final class KafkaLawSpecTest {
               + " And (producerIdentity == let _let3__it"
               + " = _let0__id in match (_let3__it) {"
               + " Either::Right _match4__0___lawspecSelec"
-              + "tion0x0 -> Maybe::Just(_match4__0___laws"
-              + "pecSelection0x0); Either::Left"
+              + "tion0x0 -> Maybe::Present(_match4__0___l"
+              + "awspecSelection0x0); Either::Left"
               + " _match4__1___lawspecSelection0x0 ->"
-              + " Maybe::Nothing() })) = true",
+              + " Maybe::Absent() })) = true",
           () ->
               LawSpecRuntime.let(
                   _schema.either(
@@ -94590,7 +94598,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Nothing",
+                                                                              "Maybe::Absent",
                                                                               java.util.List.of(),
                                                                               64,
                                                                               symbols),
@@ -94600,7 +94608,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Just",
+                                                                              "Maybe::Present",
                                                                               java.util.List.of(
                                                                                   _match4__0___lawspecSelection0x0),
                                                                               64,
@@ -94636,11 +94644,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -94652,7 +94660,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -94662,7 +94670,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -94709,10 +94717,10 @@ public final class KafkaLawSpecTest {
               + " And (producerIdentity == let _let3__it"
               + " = _let0__id in match (_let3__it) {"
               + " Either::Right _match4__0___lawspecSelec"
-              + "tion0x0 -> Maybe::Just(_match4__0___laws"
-              + "pecSelection0x0); Either::Left"
+              + "tion0x0 -> Maybe::Present(_match4__0___l"
+              + "awspecSelection0x0); Either::Left"
               + " _match4__1___lawspecSelection0x0 ->"
-              + " Maybe::Nothing() })) = true",
+              + " Maybe::Absent() })) = true",
           () ->
               LawSpecRuntime.let(
                   _schema.either(
@@ -94947,7 +94955,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Nothing",
+                                                                              "Maybe::Absent",
                                                                               java.util.List.of(),
                                                                               64,
                                                                               symbols),
@@ -94957,7 +94965,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Just",
+                                                                              "Maybe::Present",
                                                                               java.util.List.of(
                                                                                   _match4__0___lawspecSelection0x0),
                                                                               64,
@@ -94992,11 +95000,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -95008,7 +95016,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -95055,10 +95063,10 @@ public final class KafkaLawSpecTest {
               + " And (producerIdentity == let _let3__it"
               + " = _let0__id in match (_let3__it) {"
               + " Either::Right _match4__0___lawspecSelec"
-              + "tion0x0 -> Maybe::Just(_match4__0___laws"
-              + "pecSelection0x0); Either::Left"
+              + "tion0x0 -> Maybe::Present(_match4__0___l"
+              + "awspecSelection0x0); Either::Left"
               + " _match4__1___lawspecSelection0x0 ->"
-              + " Maybe::Nothing() })) = true",
+              + " Maybe::Absent() })) = true",
           () ->
               LawSpecRuntime.let(
                   _schema.either(
@@ -95293,7 +95301,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Nothing",
+                                                                              "Maybe::Absent",
                                                                               java.util.List.of(),
                                                                               64,
                                                                               symbols),
@@ -95303,7 +95311,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Just",
+                                                                              "Maybe::Present",
                                                                               java.util.List.of(
                                                                                   _match4__0___lawspecSelection0x0),
                                                                               64,
@@ -95338,13 +95346,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -95358,7 +95366,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -95368,7 +95376,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -95415,10 +95423,10 @@ public final class KafkaLawSpecTest {
               + " And (producerIdentity == let _let3__it"
               + " = _let0__id in match (_let3__it) {"
               + " Either::Right _match4__0___lawspecSelec"
-              + "tion0x0 -> Maybe::Just(_match4__0___laws"
-              + "pecSelection0x0); Either::Left"
+              + "tion0x0 -> Maybe::Present(_match4__0___l"
+              + "awspecSelection0x0); Either::Left"
               + " _match4__1___lawspecSelection0x0 ->"
-              + " Maybe::Nothing() })) = true",
+              + " Maybe::Absent() })) = true",
           () ->
               LawSpecRuntime.let(
                   _schema.either(
@@ -95653,7 +95661,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Nothing",
+                                                                              "Maybe::Absent",
                                                                               java.util.List.of(),
                                                                               64,
                                                                               symbols),
@@ -95663,7 +95671,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Just",
+                                                                              "Maybe::Present",
                                                                               java.util.List.of(
                                                                                   _match4__0___lawspecSelection0x0),
                                                                               64,
@@ -95696,8 +95704,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -95708,7 +95716,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -95755,10 +95763,10 @@ public final class KafkaLawSpecTest {
               + " And (producerIdentity == let _let3__it"
               + " = _let0__id in match (_let3__it) {"
               + " Either::Right _match4__0___lawspecSelec"
-              + "tion0x0 -> Maybe::Just(_match4__0___laws"
-              + "pecSelection0x0); Either::Left"
+              + "tion0x0 -> Maybe::Present(_match4__0___l"
+              + "awspecSelection0x0); Either::Left"
               + " _match4__1___lawspecSelection0x0 ->"
-              + " Maybe::Nothing() })) = true",
+              + " Maybe::Absent() })) = true",
           () ->
               LawSpecRuntime.let(
                   _schema.either(
@@ -95993,7 +96001,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Nothing",
+                                                                              "Maybe::Absent",
                                                                               java.util.List.of(),
                                                                               64,
                                                                               symbols),
@@ -96003,7 +96011,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                              "Maybe::Just",
+                                                                              "Maybe::Present",
                                                                               java.util.List.of(
                                                                                   _match4__0___lawspecSelection0x0),
                                                                               64,
@@ -96238,10 +96246,10 @@ public final class KafkaLawSpecTest {
                           + " And (producerIdentity == let _let3__it"
                           + " = _let0__id in match (_let3__it) {"
                           + " Either::Right _match4__0___lawspecSelec"
-                          + "tion0x0 -> Maybe::Just(_match4__0___laws"
-                          + "pecSelection0x0); Either::Left"
+                          + "tion0x0 -> Maybe::Present(_match4__0___l"
+                          + "awspecSelection0x0); Either::Left"
                           + " _match4__1___lawspecSelection0x0 ->"
-                          + " Maybe::Nothing() })) = true",
+                          + " Maybe::Absent() })) = true",
                       () ->
                           LawSpecRuntime.let(
                               _schema.either(
@@ -96479,7 +96487,7 @@ public final class KafkaLawSpecTest {
                                                                                               "Maybe",
                                                                                               new lawspec.runtime.LawSpecSchema.Named(
                                                                                                   "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                          "Maybe::Nothing",
+                                                                                          "Maybe::Absent",
                                                                                           java.util.List.of(
                                                                                               ),
                                                                                           64,
@@ -96490,7 +96498,7 @@ public final class KafkaLawSpecTest {
                                                                                               "Maybe",
                                                                                               new lawspec.runtime.LawSpecSchema.Named(
                                                                                                   "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                                                                          "Maybe::Just",
+                                                                                          "Maybe::Present",
                                                                                           java.util.List.of(
                                                                                               _match4__0___lawspecSelection0x0),
                                                                                           64,
@@ -96514,16 +96522,16 @@ public final class KafkaLawSpecTest {
   // (Bytes)) => created (_input0) (_input1) implies let _let0__a = send (let
   // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 =
   // lawtwin.kafka::type::PartitionChoice::ByKey() in let _let2___lawspecRecordField2 = let
-  // _let2___lawspecRecordField0 = Maybe::Just(_input2) in let _let3___lawspecRecordField1 = _input3
-  // in let _let4___lawspecRecordField2 = List::Nil() in
+  // _let2___lawspecRecordField0 = Maybe::Present(_input2) in let _let3___lawspecRecordField1 =
+  // _input3 in let _let4___lawspecRecordField2 = List::Nil() in
   // lawtwin.kafka.model::type::Record::Record(_let2___lawspecRecordField0,
   // _let3___lawspecRecordField1, _let4___lawspecRecordField2) in
   // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let0___lawspecRecordField0,
   // _let1___lawspecRecordField1, _let2___lawspecRecordField2)) in let _let1__b = send (let
   // _let1___lawspecRecordField0 = _input0 in let _let2___lawspecRecordField1 =
   // lawtwin.kafka::type::PartitionChoice::ByKey() in let _let3___lawspecRecordField2 = let
-  // _let3___lawspecRecordField0 = Maybe::Just(_input2) in let _let4___lawspecRecordField1 = _input4
-  // in let _let5___lawspecRecordField2 = List::Nil() in
+  // _let3___lawspecRecordField0 = Maybe::Present(_input2) in let _let4___lawspecRecordField1 =
+  // _input4 in let _let5___lawspecRecordField2 = List::Nil() in
   // lawtwin.kafka.model::type::Record::Record(_let3___lawspecRecordField0,
   // _let4___lawspecRecordField1, _let5___lawspecRecordField2) in
   // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_let1___lawspecRecordField0,
@@ -96700,7 +96708,7 @@ public final class KafkaLawSpecTest {
                                 Generator.anyOf(
                                     Generator.constant(
                                         LawSpecRuntime.construct(
-                                            "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                            "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                     Generator.listsOf(
                                             org.jetbrains.jetCheck.IntDistribution.uniform(0, 100),
                                             Generator.integers(0, 255))
@@ -96715,14 +96723,14 @@ public final class KafkaLawSpecTest {
                                             _sumValue ->
                                                 LawSpecRuntime.construct(
                                                     "Maybe Bytes",
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     new Value[] {_sumValue}))));
                         var _input4 =
                             _environment.<Value>generate(
                                 Generator.anyOf(
                                     Generator.constant(
                                         LawSpecRuntime.construct(
-                                            "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                            "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                     Generator.listsOf(
                                             org.jetbrains.jetCheck.IntDistribution.uniform(0, 100),
                                             Generator.integers(0, 255))
@@ -96737,7 +96745,7 @@ public final class KafkaLawSpecTest {
                                             _sumValue ->
                                                 LawSpecRuntime.construct(
                                                     "Maybe Bytes",
-                                                    "Maybe::Just",
+                                                    "Maybe::Present",
                                                     new Value[] {_sumValue}))));
                         return new _LawSpecInputs(
                             java.util.List.of(_input0, _input1, _input2, _input3, _input4),
@@ -96805,7 +96813,7 @@ public final class KafkaLawSpecTest {
                           + " lawtwin.kafka::type::PartitionChoice::B"
                           + "yKey() in let _let2___lawspecRecordField"
                           + "2 = let _let2___lawspecRecordField0 ="
-                          + " Maybe::Just(_input2) in let"
+                          + " Maybe::Present(_input2) in let"
                           + " _let3___lawspecRecordField1 = _input3"
                           + " in let _let4___lawspecRecordField2 ="
                           + " List::Nil() in lawtwin.kafka.model::typ"
@@ -96822,7 +96830,7 @@ public final class KafkaLawSpecTest {
                           + " lawtwin.kafka::type::PartitionChoice::B"
                           + "yKey() in let _let3___lawspecRecordField"
                           + "2 = let _let3___lawspecRecordField0 ="
-                          + " Maybe::Just(_input2) in let"
+                          + " Maybe::Present(_input2) in let"
                           + " _let4___lawspecRecordField1 = _input4"
                           + " in let _let5___lawspecRecordField2 ="
                           + " List::Nil() in lawtwin.kafka.model::typ"
@@ -96864,7 +96872,7 @@ public final class KafkaLawSpecTest {
                                                                       LawSpecRuntime.let(
                                                                           LawSpecRuntime.construct(
                                                                               "Maybe Bytes",
-                                                                              "Maybe::Just",
+                                                                              "Maybe::Present",
                                                                               new Value[] {
                                                                                 _input2
                                                                               }),
@@ -96932,7 +96940,7 @@ public final class KafkaLawSpecTest {
                                                                               LawSpecRuntime.let(
                                                                                   LawSpecRuntime.construct(
                                                                                       "Maybe Bytes",
-                                                                                      "Maybe::Just",
+                                                                                      "Maybe::Present",
                                                                                       new Value[] {
                                                                                         _input2
                                                                                       }),
@@ -97308,7 +97316,7 @@ public final class KafkaLawSpecTest {
   // (n :: Int32) => created (_input0) (1) implies (match (attempt (produceRequest (let
   // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
-  // _let1___lawspecRecordField1)) (Maybe::Nothing()) (_input3))) { Either::Left
+  // _let1___lawspecRecordField1)) (Maybe::Absent()) (_input3))) { Either::Left
   // _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true } And
   // resumesAtCommitted (_input0) (_input1) (_input2) (_input4)) = true end for all
   @Test
@@ -97600,7 +97608,7 @@ public final class KafkaLawSpecTest {
                           + " in lawtwin.kafka.model::type::TopicPart"
                           + "ition::TopicPartition(_let0___lawspecRec"
                           + "ordField0, _let1___lawspecRecordField1))"
-                          + " (Maybe::Nothing()) (_input3))) {"
+                          + " (Maybe::Absent()) (_input3))) {"
                           + " Either::Left _match0__0__railwayError0"
                           + " -> false; Either::Right"
                           + " _match0__1__railwayValue1 -> true }"
@@ -97656,7 +97664,7 @@ public final class KafkaLawSpecTest {
                                                                           "Maybe",
                                                                           new lawspec.runtime.LawSpecSchema.Named(
                                                                               "lawtwin.kafka.model::type::ProducerTag")),
-                                                                      "Maybe::Nothing",
+                                                                      "Maybe::Absent",
                                                                       java.util.List.of(),
                                                                       64,
                                                                       symbols)),
@@ -97722,7 +97730,7 @@ public final class KafkaLawSpecTest {
   // (1) implies let _let0__tp = let _let0___lawspecRecordField0 = _input0 in let
   // _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
-  // _let1___lawspecRecordField1) in (match (attempt (produceRequest (_let0__tp) (Maybe::Nothing())
+  // _let1___lawspecRecordField1) in (match (attempt (produceRequest (_let0__tp) (Maybe::Absent())
   // (_input1))) { Either::Left _match1__0__railwayError0 -> false; Either::Right
   // _match1__1__railwayValue1 -> true } And let _let1__lawspecIgnored = assign
   // (List::Cons(_let0__tp, List::Nil())) in let _let2__it = poll (10) in match (_let2__it) {
@@ -97756,9 +97764,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -97770,11 +97778,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -97798,7 +97806,7 @@ public final class KafkaLawSpecTest {
               + "ition::TopicPartition(_let0___lawspecRec"
               + "ordField0, _let1___lawspecRecordField1)"
               + " in (match (attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (_input1))) { Either::Left"
               + " _match1__0__railwayError0 -> false;"
               + " Either::Right _match1__1__railwayValue1"
@@ -97860,7 +97868,7 @@ public final class KafkaLawSpecTest {
                                                                       "Maybe",
                                                                       new lawspec.runtime.LawSpecSchema.Named(
                                                                           "lawtwin.kafka.model::type::ProducerTag")),
-                                                                  "Maybe::Nothing",
+                                                                  "Maybe::Absent",
                                                                   java.util.List.of(),
                                                                   64,
                                                                   symbols)),
@@ -97993,11 +98001,11 @@ public final class KafkaLawSpecTest {
                         java.util.List.of(
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.construct(
                                 "Maybe Bytes",
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
@@ -98009,9 +98017,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -98034,7 +98042,7 @@ public final class KafkaLawSpecTest {
               + "ition::TopicPartition(_let0___lawspecRec"
               + "ordField0, _let1___lawspecRecordField1)"
               + " in (match (attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (_input1))) { Either::Left"
               + " _match1__0__railwayError0 -> false;"
               + " Either::Right _match1__1__railwayValue1"
@@ -98096,7 +98104,7 @@ public final class KafkaLawSpecTest {
                                                                       "Maybe",
                                                                       new lawspec.runtime.LawSpecSchema.Named(
                                                                           "lawtwin.kafka.model::type::ProducerTag")),
-                                                                  "Maybe::Nothing",
+                                                                  "Maybe::Absent",
                                                                   java.util.List.of(),
                                                                   64,
                                                                   symbols)),
@@ -98229,9 +98237,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -98254,7 +98262,7 @@ public final class KafkaLawSpecTest {
               + "ition::TopicPartition(_let0___lawspecRec"
               + "ordField0, _let1___lawspecRecordField1)"
               + " in (match (attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (_input1))) { Either::Left"
               + " _match1__0__railwayError0 -> false;"
               + " Either::Right _match1__1__railwayValue1"
@@ -98316,7 +98324,7 @@ public final class KafkaLawSpecTest {
                                                                       "Maybe",
                                                                       new lawspec.runtime.LawSpecSchema.Named(
                                                                           "lawtwin.kafka.model::type::ProducerTag")),
-                                                                  "Maybe::Nothing",
+                                                                  "Maybe::Absent",
                                                                   java.util.List.of(),
                                                                   64,
                                                                   symbols)),
@@ -98449,9 +98457,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -98462,9 +98470,9 @@ public final class KafkaLawSpecTest {
                         "lawtwin.kafka.model::type::Record::Record",
                         java.util.List.of(
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.construct(
-                                "Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                                "Maybe Bytes", "Maybe::Absent", new Value[] {}),
                             LawSpecRuntime.list(
                                 "List lawtwin.kafka.model::type::Header", java.util.List.of())),
                         64,
@@ -98487,7 +98495,7 @@ public final class KafkaLawSpecTest {
               + "ition::TopicPartition(_let0___lawspecRec"
               + "ordField0, _let1___lawspecRecordField1)"
               + " in (match (attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (_input1))) { Either::Left"
               + " _match1__0__railwayError0 -> false;"
               + " Either::Right _match1__1__railwayValue1"
@@ -98549,7 +98557,7 @@ public final class KafkaLawSpecTest {
                                                                       "Maybe",
                                                                       new lawspec.runtime.LawSpecSchema.Named(
                                                                           "lawtwin.kafka.model::type::ProducerTag")),
-                                                                  "Maybe::Nothing",
+                                                                  "Maybe::Absent",
                                                                   java.util.List.of(),
                                                                   64,
                                                                   symbols)),
@@ -98858,7 +98866,7 @@ public final class KafkaLawSpecTest {
                           + "ition::TopicPartition(_let0___lawspecRec"
                           + "ordField0, _let1___lawspecRecordField1)"
                           + " in (match (attempt (produceRequest"
-                          + " (_let0__tp) (Maybe::Nothing())"
+                          + " (_let0__tp) (Maybe::Absent())"
                           + " (_input1))) { Either::Left"
                           + " _match1__0__railwayError0 -> false;"
                           + " Either::Right _match1__1__railwayValue1"
@@ -98922,7 +98930,7 @@ public final class KafkaLawSpecTest {
                                                                                   "Maybe",
                                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                                              "Maybe::Nothing",
+                                                                              "Maybe::Absent",
                                                                               java.util.List.of(),
                                                                               64,
                                                                               symbols)),
@@ -100871,16 +100879,16 @@ public final class KafkaLawSpecTest {
   // _let0___lawspecRecordField0 = _input0 in let _let1___lawspecRecordField1 = 0 in
   // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_let0___lawspecRecordField0,
   // _let1___lawspecRecordField1) in let _let1__a = writeAborted (_let0__tp) (_input1) (_input2) in
-  // let _let2__p = attempt (produceRequest (_let0__tp) (Maybe::Nothing()) (List::Cons(_input3,
+  // let _let2__p = attempt (produceRequest (_let0__tp) (Maybe::Absent()) (List::Cons(_input3,
   // List::Nil()))) in let _let3__lawspecIgnored = setIsolationLevel
   // (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted()) in let _let4__lawspecIgnored =
   // assign (List::Cons(_let0__tp, List::Nil())) in let _let5__it = poll (100) in match (_let5__it)
   // { Either::Left _match6__0___lawspecSelection0x0 -> false; Either::Right
   // _match6__1___lawspecSelection0x0 -> (let _let7__it = _let1__a in match (_let7__it) {
-  // Maybe::Just _match8__0___match__lawspecSelection0x0_0 ->
+  // Maybe::Present _match8__0___match__lawspecSelection0x0_0 ->
   // Not(lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
   // (_match8__0___match__lawspecSelection0x0_0) (lawspec_lawspecCollectionsSetOf_b2e15487e0114c0
-  // (receivedOffsets (_match6__1___lawspecSelection0x0)))); Maybe::Nothing -> false } And let
+  // (receivedOffsets (_match6__1___lawspecSelection0x0)))); Maybe::Absent -> false } And let
   // _let7__it = _let2__p in match (_let7__it) { Either::Right
   // _match8__0___match__lawspecSelection0x0_0 ->
   // lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
@@ -100911,11 +100919,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -100927,7 +100935,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -100937,7 +100945,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -100953,11 +100961,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -100969,7 +100977,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -100979,7 +100987,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -101004,7 +101012,7 @@ public final class KafkaLawSpecTest {
               + " in let _let1__a = writeAborted"
               + " (_let0__tp) (_input1) (_input2) in let"
               + " _let2__p = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (List::Cons(_input3, List::Nil()))) in"
               + " let _let3__lawspecIgnored ="
               + " setIsolationLevel"
@@ -101018,7 +101026,7 @@ public final class KafkaLawSpecTest {
               + " false; Either::Right"
               + " _match6__1___lawspecSelection0x0 ->"
               + " (let _let7__it = _let1__a in match"
-              + " (_let7__it) { Maybe::Just"
+              + " (_let7__it) { Maybe::Present"
               + " _match8__0___match__lawspecSelection0x0"
               + "_0 -> Not(lawspec_lawspecCollectionsSetM"
               + "ember_ad24e518e9752b84"
@@ -101026,7 +101034,7 @@ public final class KafkaLawSpecTest {
               + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
               + "e15487e0114c0 (receivedOffsets"
               + " (_match6__1___lawspecSelection0x0))));"
-              + " Maybe::Nothing  -> false } And let"
+              + " Maybe::Absent  -> false } And let"
               + " _let7__it = _let2__p in match"
               + " (_let7__it) { Either::Right"
               + " _match8__0___match__lawspecSelection0x0"
@@ -101088,7 +101096,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Nothing",
+                                                              "Maybe::Absent",
                                                               java.util.List.of(),
                                                               64,
                                                               symbols)),
@@ -101282,13 +101290,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -101302,7 +101310,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -101312,7 +101320,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -101328,13 +101336,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -101348,7 +101356,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -101358,7 +101366,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -101383,7 +101391,7 @@ public final class KafkaLawSpecTest {
               + " in let _let1__a = writeAborted"
               + " (_let0__tp) (_input1) (_input2) in let"
               + " _let2__p = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (List::Cons(_input3, List::Nil()))) in"
               + " let _let3__lawspecIgnored ="
               + " setIsolationLevel"
@@ -101397,7 +101405,7 @@ public final class KafkaLawSpecTest {
               + " false; Either::Right"
               + " _match6__1___lawspecSelection0x0 ->"
               + " (let _let7__it = _let1__a in match"
-              + " (_let7__it) { Maybe::Just"
+              + " (_let7__it) { Maybe::Present"
               + " _match8__0___match__lawspecSelection0x0"
               + "_0 -> Not(lawspec_lawspecCollectionsSetM"
               + "ember_ad24e518e9752b84"
@@ -101405,7 +101413,7 @@ public final class KafkaLawSpecTest {
               + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
               + "e15487e0114c0 (receivedOffsets"
               + " (_match6__1___lawspecSelection0x0))));"
-              + " Maybe::Nothing  -> false } And let"
+              + " Maybe::Absent  -> false } And let"
               + " _let7__it = _let2__p in match"
               + " (_let7__it) { Either::Right"
               + " _match8__0___match__lawspecSelection0x0"
@@ -101467,7 +101475,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Nothing",
+                                                              "Maybe::Absent",
                                                               java.util.List.of(),
                                                               64,
                                                               symbols)),
@@ -101659,8 +101667,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -101671,7 +101679,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -101685,8 +101693,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -101697,7 +101705,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -101722,7 +101730,7 @@ public final class KafkaLawSpecTest {
               + " in let _let1__a = writeAborted"
               + " (_let0__tp) (_input1) (_input2) in let"
               + " _let2__p = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (List::Cons(_input3, List::Nil()))) in"
               + " let _let3__lawspecIgnored ="
               + " setIsolationLevel"
@@ -101736,7 +101744,7 @@ public final class KafkaLawSpecTest {
               + " false; Either::Right"
               + " _match6__1___lawspecSelection0x0 ->"
               + " (let _let7__it = _let1__a in match"
-              + " (_let7__it) { Maybe::Just"
+              + " (_let7__it) { Maybe::Present"
               + " _match8__0___match__lawspecSelection0x0"
               + "_0 -> Not(lawspec_lawspecCollectionsSetM"
               + "ember_ad24e518e9752b84"
@@ -101744,7 +101752,7 @@ public final class KafkaLawSpecTest {
               + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
               + "e15487e0114c0 (receivedOffsets"
               + " (_match6__1___lawspecSelection0x0))));"
-              + " Maybe::Nothing  -> false } And let"
+              + " Maybe::Absent  -> false } And let"
               + " _let7__it = _let2__p in match"
               + " (_let7__it) { Either::Right"
               + " _match8__0___match__lawspecSelection0x0"
@@ -101806,7 +101814,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Nothing",
+                                                              "Maybe::Absent",
                                                               java.util.List.of(),
                                                               64,
                                                               symbols)),
@@ -101998,11 +102006,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -102014,7 +102022,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -102024,7 +102032,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -102040,11 +102048,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -102056,7 +102064,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -102066,7 +102074,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -102091,7 +102099,7 @@ public final class KafkaLawSpecTest {
               + " in let _let1__a = writeAborted"
               + " (_let0__tp) (_input1) (_input2) in let"
               + " _let2__p = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (List::Cons(_input3, List::Nil()))) in"
               + " let _let3__lawspecIgnored ="
               + " setIsolationLevel"
@@ -102105,7 +102113,7 @@ public final class KafkaLawSpecTest {
               + " false; Either::Right"
               + " _match6__1___lawspecSelection0x0 ->"
               + " (let _let7__it = _let1__a in match"
-              + " (_let7__it) { Maybe::Just"
+              + " (_let7__it) { Maybe::Present"
               + " _match8__0___match__lawspecSelection0x0"
               + "_0 -> Not(lawspec_lawspecCollectionsSetM"
               + "ember_ad24e518e9752b84"
@@ -102113,7 +102121,7 @@ public final class KafkaLawSpecTest {
               + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
               + "e15487e0114c0 (receivedOffsets"
               + " (_match6__1___lawspecSelection0x0))));"
-              + " Maybe::Nothing  -> false } And let"
+              + " Maybe::Absent  -> false } And let"
               + " _let7__it = _let2__p in match"
               + " (_let7__it) { Either::Right"
               + " _match8__0___match__lawspecSelection0x0"
@@ -102175,7 +102183,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Nothing",
+                                                              "Maybe::Absent",
                                                               java.util.List.of(),
                                                               64,
                                                               symbols)),
@@ -102365,11 +102373,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -102381,7 +102389,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -102397,11 +102405,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -102413,7 +102421,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -102438,7 +102446,7 @@ public final class KafkaLawSpecTest {
               + " in let _let1__a = writeAborted"
               + " (_let0__tp) (_input1) (_input2) in let"
               + " _let2__p = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (List::Cons(_input3, List::Nil()))) in"
               + " let _let3__lawspecIgnored ="
               + " setIsolationLevel"
@@ -102452,7 +102460,7 @@ public final class KafkaLawSpecTest {
               + " false; Either::Right"
               + " _match6__1___lawspecSelection0x0 ->"
               + " (let _let7__it = _let1__a in match"
-              + " (_let7__it) { Maybe::Just"
+              + " (_let7__it) { Maybe::Present"
               + " _match8__0___match__lawspecSelection0x0"
               + "_0 -> Not(lawspec_lawspecCollectionsSetM"
               + "ember_ad24e518e9752b84"
@@ -102460,7 +102468,7 @@ public final class KafkaLawSpecTest {
               + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
               + "e15487e0114c0 (receivedOffsets"
               + " (_match6__1___lawspecSelection0x0))));"
-              + " Maybe::Nothing  -> false } And let"
+              + " Maybe::Absent  -> false } And let"
               + " _let7__it = _let2__p in match"
               + " (_let7__it) { Either::Right"
               + " _match8__0___match__lawspecSelection0x0"
@@ -102522,7 +102530,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Nothing",
+                                                              "Maybe::Absent",
                                                               java.util.List.of(),
                                                               64,
                                                               symbols)),
@@ -102711,8 +102719,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -102723,7 +102731,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -102737,8 +102745,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -102749,7 +102757,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -102774,7 +102782,7 @@ public final class KafkaLawSpecTest {
               + " in let _let1__a = writeAborted"
               + " (_let0__tp) (_input1) (_input2) in let"
               + " _let2__p = attempt (produceRequest"
-              + " (_let0__tp) (Maybe::Nothing())"
+              + " (_let0__tp) (Maybe::Absent())"
               + " (List::Cons(_input3, List::Nil()))) in"
               + " let _let3__lawspecIgnored ="
               + " setIsolationLevel"
@@ -102788,7 +102796,7 @@ public final class KafkaLawSpecTest {
               + " false; Either::Right"
               + " _match6__1___lawspecSelection0x0 ->"
               + " (let _let7__it = _let1__a in match"
-              + " (_let7__it) { Maybe::Just"
+              + " (_let7__it) { Maybe::Present"
               + " _match8__0___match__lawspecSelection0x0"
               + "_0 -> Not(lawspec_lawspecCollectionsSetM"
               + "ember_ad24e518e9752b84"
@@ -102796,7 +102804,7 @@ public final class KafkaLawSpecTest {
               + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
               + "e15487e0114c0 (receivedOffsets"
               + " (_match6__1___lawspecSelection0x0))));"
-              + " Maybe::Nothing  -> false } And let"
+              + " Maybe::Absent  -> false } And let"
               + " _let7__it = _let2__p in match"
               + " (_let7__it) { Either::Right"
               + " _match8__0___match__lawspecSelection0x0"
@@ -102858,7 +102866,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe",
                                                                   new lawspec.runtime.LawSpecSchema.Named(
                                                                       "lawtwin.kafka.model::type::ProducerTag")),
-                                                              "Maybe::Nothing",
+                                                              "Maybe::Absent",
                                                               java.util.List.of(),
                                                               64,
                                                               symbols)),
@@ -103268,7 +103276,7 @@ public final class KafkaLawSpecTest {
                           + " in let _let1__a = writeAborted"
                           + " (_let0__tp) (_input1) (_input2) in let"
                           + " _let2__p = attempt (produceRequest"
-                          + " (_let0__tp) (Maybe::Nothing())"
+                          + " (_let0__tp) (Maybe::Absent())"
                           + " (List::Cons(_input3, List::Nil()))) in"
                           + " let _let3__lawspecIgnored ="
                           + " setIsolationLevel"
@@ -103282,7 +103290,7 @@ public final class KafkaLawSpecTest {
                           + " false; Either::Right"
                           + " _match6__1___lawspecSelection0x0 ->"
                           + " (let _let7__it = _let1__a in match"
-                          + " (_let7__it) { Maybe::Just"
+                          + " (_let7__it) { Maybe::Present"
                           + " _match8__0___match__lawspecSelection0x0"
                           + "_0 -> Not(lawspec_lawspecCollectionsSetM"
                           + "ember_ad24e518e9752b84"
@@ -103290,7 +103298,7 @@ public final class KafkaLawSpecTest {
                           + "0_0) (lawspec_lawspecCollectionsSetOf_b2"
                           + "e15487e0114c0 (receivedOffsets"
                           + " (_match6__1___lawspecSelection0x0))));"
-                          + " Maybe::Nothing  -> false } And let"
+                          + " Maybe::Absent  -> false } And let"
                           + " _let7__it = _let2__p in match"
                           + " (_let7__it) { Either::Right"
                           + " _match8__0___match__lawspecSelection0x0"
@@ -103354,7 +103362,7 @@ public final class KafkaLawSpecTest {
                                                                               "Maybe",
                                                                               new lawspec.runtime.LawSpecSchema.Named(
                                                                                   "lawtwin.kafka.model::type::ProducerTag")),
-                                                                          "Maybe::Nothing",
+                                                                          "Maybe::Absent",
                                                                           java.util.List.of(),
                                                                           64,
                                                                           symbols)),
@@ -103545,7 +103553,7 @@ public final class KafkaLawSpecTest {
   // (_input0) (1) implies (((match (initTransactions (_input1)) { Either::Left
   // _match0__0__railwayError0 -> false; Either::Right _match0__1__railwayValue1 -> true } And
   // (beginTransaction == Either::Right(unitValue))) And match (attempt (initProducerIdRequest
-  // (Maybe::Just(_input1)))) { Either::Left _match0__0__railwayError0 -> false; Either::Right
+  // (Maybe::Present(_input1)))) { Either::Left _match0__0__railwayError0 -> false; Either::Right
   // _match0__1__railwayValue1 -> true }) And (sendInTransaction (let _let0___lawspecRecordField0 =
   // _input0 in let _let1___lawspecRecordField1 =
   // lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _let2___lawspecRecordField2 =
@@ -103578,11 +103586,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -103594,7 +103602,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -103604,7 +103612,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -103627,7 +103635,7 @@ public final class KafkaLawSpecTest {
               + " And (beginTransaction =="
               + " Either::Right(unitValue))) And match"
               + " (attempt (initProducerIdRequest"
-              + " (Maybe::Just(_input1)))) {"
+              + " (Maybe::Present(_input1)))) {"
               + " Either::Left _match0__0__railwayError0"
               + " -> false; Either::Right"
               + " _match0__1__railwayValue1 -> true })"
@@ -103731,7 +103739,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe Text",
                                                                   LawSpecRuntime.construct(
                                                                       "Maybe Text",
-                                                                      "Maybe::Just",
+                                                                      "Maybe::Present",
                                                                       new Value[] {_input1}),
                                                                   64,
                                                                   _element10 ->
@@ -103888,13 +103896,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -103908,7 +103916,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -103918,7 +103926,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -103941,7 +103949,7 @@ public final class KafkaLawSpecTest {
               + " And (beginTransaction =="
               + " Either::Right(unitValue))) And match"
               + " (attempt (initProducerIdRequest"
-              + " (Maybe::Just(_input1)))) {"
+              + " (Maybe::Present(_input1)))) {"
               + " Either::Left _match0__0__railwayError0"
               + " -> false; Either::Right"
               + " _match0__1__railwayValue1 -> true })"
@@ -104045,7 +104053,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe Text",
                                                                   LawSpecRuntime.construct(
                                                                       "Maybe Text",
-                                                                      "Maybe::Just",
+                                                                      "Maybe::Present",
                                                                       new Value[] {_input1}),
                                                                   64,
                                                                   _element10 ->
@@ -104200,8 +104208,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -104212,7 +104220,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -104235,7 +104243,7 @@ public final class KafkaLawSpecTest {
               + " And (beginTransaction =="
               + " Either::Right(unitValue))) And match"
               + " (attempt (initProducerIdRequest"
-              + " (Maybe::Just(_input1)))) {"
+              + " (Maybe::Present(_input1)))) {"
               + " Either::Left _match0__0__railwayError0"
               + " -> false; Either::Right"
               + " _match0__1__railwayValue1 -> true })"
@@ -104339,7 +104347,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe Text",
                                                                   LawSpecRuntime.construct(
                                                                       "Maybe Text",
-                                                                      "Maybe::Just",
+                                                                      "Maybe::Present",
                                                                       new Value[] {_input1}),
                                                                   64,
                                                                   _element10 ->
@@ -104494,11 +104502,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -104510,7 +104518,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -104520,7 +104528,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -104543,7 +104551,7 @@ public final class KafkaLawSpecTest {
               + " And (beginTransaction =="
               + " Either::Right(unitValue))) And match"
               + " (attempt (initProducerIdRequest"
-              + " (Maybe::Just(_input1)))) {"
+              + " (Maybe::Present(_input1)))) {"
               + " Either::Left _match0__0__railwayError0"
               + " -> false; Either::Right"
               + " _match0__1__railwayValue1 -> true })"
@@ -104647,7 +104655,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe Text",
                                                                   LawSpecRuntime.construct(
                                                                       "Maybe Text",
-                                                                      "Maybe::Just",
+                                                                      "Maybe::Present",
                                                                       new Value[] {_input1}),
                                                                   64,
                                                                   _element10 ->
@@ -104800,11 +104808,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -104816,7 +104824,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -104839,7 +104847,7 @@ public final class KafkaLawSpecTest {
               + " And (beginTransaction =="
               + " Either::Right(unitValue))) And match"
               + " (attempt (initProducerIdRequest"
-              + " (Maybe::Just(_input1)))) {"
+              + " (Maybe::Present(_input1)))) {"
               + " Either::Left _match0__0__railwayError0"
               + " -> false; Either::Right"
               + " _match0__1__railwayValue1 -> true })"
@@ -104943,7 +104951,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe Text",
                                                                   LawSpecRuntime.construct(
                                                                       "Maybe Text",
-                                                                      "Maybe::Just",
+                                                                      "Maybe::Present",
                                                                       new Value[] {_input1}),
                                                                   64,
                                                                   _element10 ->
@@ -105095,8 +105103,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -105107,7 +105115,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -105130,7 +105138,7 @@ public final class KafkaLawSpecTest {
               + " And (beginTransaction =="
               + " Either::Right(unitValue))) And match"
               + " (attempt (initProducerIdRequest"
-              + " (Maybe::Just(_input1)))) {"
+              + " (Maybe::Present(_input1)))) {"
               + " Either::Left _match0__0__railwayError0"
               + " -> false; Either::Right"
               + " _match0__1__railwayValue1 -> true })"
@@ -105234,7 +105242,7 @@ public final class KafkaLawSpecTest {
                                                                   "Maybe Text",
                                                                   LawSpecRuntime.construct(
                                                                       "Maybe Text",
-                                                                      "Maybe::Just",
+                                                                      "Maybe::Present",
                                                                       new Value[] {_input1}),
                                                                   64,
                                                                   _element10 ->
@@ -105594,7 +105602,7 @@ public final class KafkaLawSpecTest {
                           + " And (beginTransaction =="
                           + " Either::Right(unitValue))) And match"
                           + " (attempt (initProducerIdRequest"
-                          + " (Maybe::Just(_input1)))) {"
+                          + " (Maybe::Present(_input1)))) {"
                           + " Either::Left _match0__0__railwayError0"
                           + " -> false; Either::Right"
                           + " _match0__1__railwayValue1 -> true })"
@@ -105705,7 +105713,7 @@ public final class KafkaLawSpecTest {
                                                                               "Maybe Text",
                                                                               LawSpecRuntime.construct(
                                                                                   "Maybe Text",
-                                                                                  "Maybe::Just",
+                                                                                  "Maybe::Present",
                                                                                   new Value[] {
                                                                                     _input1
                                                                                   }),
@@ -105890,11 +105898,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -105906,7 +105914,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -105916,7 +105924,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -106211,13 +106219,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -106231,7 +106239,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -106241,7 +106249,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -106534,8 +106542,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -106546,7 +106554,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -106839,11 +106847,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -106855,7 +106863,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -106865,7 +106873,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -107156,11 +107164,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -107172,7 +107180,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -107462,8 +107470,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -107474,7 +107482,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -108288,11 +108296,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -108304,7 +108312,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -108314,7 +108322,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -108330,11 +108338,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -108346,7 +108354,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -108356,7 +108364,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -108790,13 +108798,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -108810,7 +108818,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -108820,7 +108828,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -108836,13 +108844,13 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {
                           LawSpecRuntime.sequence("Bytes", new int[] {0, 127, 128, 255})
                         }),
@@ -108856,7 +108864,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {32}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -108866,7 +108874,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -109298,8 +109306,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -109310,7 +109318,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -109324,8 +109332,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -109336,7 +109344,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -109768,11 +109776,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -109784,7 +109792,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -109794,7 +109802,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -109810,11 +109818,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -109826,7 +109834,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols),
                             _schema.construct(
@@ -109836,7 +109844,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -110266,11 +110274,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -110282,7 +110290,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -110298,11 +110306,11 @@ public final class KafkaLawSpecTest {
                 java.util.List.of(
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.construct(
                         "Maybe Bytes",
-                        "Maybe::Just",
+                        "Maybe::Present",
                         new Value[] {LawSpecRuntime.sequence("Bytes", new int[] {})}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
@@ -110314,7 +110322,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {101, 769}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -110743,8 +110751,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -110755,7 +110763,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,
@@ -110769,8 +110777,8 @@ public final class KafkaLawSpecTest {
                 new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka.model::type::Record"),
                 "lawtwin.kafka.model::type::Record::Record",
                 java.util.List.of(
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
-                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Nothing", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
+                    LawSpecRuntime.construct("Maybe Bytes", "Maybe::Absent", new Value[] {}),
                     LawSpecRuntime.list(
                         "List lawtwin.kafka.model::type::Header",
                         java.util.List.of(
@@ -110781,7 +110789,7 @@ public final class KafkaLawSpecTest {
                                 java.util.List.of(
                                     LawSpecRuntime.sequence("Text", new int[] {}),
                                     LawSpecRuntime.construct(
-                                        "Maybe Bytes", "Maybe::Nothing", new Value[] {})),
+                                        "Maybe Bytes", "Maybe::Absent", new Value[] {})),
                                 64,
                                 symbols)))),
                 64,

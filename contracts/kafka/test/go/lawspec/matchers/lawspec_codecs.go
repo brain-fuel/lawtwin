@@ -109,25 +109,25 @@ func lsHandleCodec[T any](schema *lawSpecSchema, bits int, name string, contexts
 }
 
 // lsNativeMaybe is a native result as a Maybe: nil (a nil pointer or
-// interface) is Nothing, anything else Just, through a pointer when the
+// interface) is Absent, anything else Present, through a pointer when the
 // native returns one.
 func lsNativeMaybe[T any](value any) LawSpecMaybe[T] {
 	if value == nil {
-		return LawSpecNothing[T]()
+		return LawSpecAbsent[T]()
 	}
 	reflected := reflect.ValueOf(value)
 	switch reflected.Kind() {
 	case reflect.Pointer, reflect.Interface, reflect.Map, reflect.Slice, reflect.Func, reflect.Chan:
 		if reflected.IsNil() {
-			return LawSpecNothing[T]()
+			return LawSpecAbsent[T]()
 		}
 	}
 	if native, ok := value.(T); ok {
-		return LawSpecJust(native)
+		return LawSpecPresent(native)
 	}
 	if reflected.Kind() == reflect.Pointer {
 		if native, ok := reflected.Elem().Interface().(T); ok {
-			return LawSpecJust(native)
+			return LawSpecPresent(native)
 		}
 	}
 	panic(fmt.Sprintf("native result %T is not a Maybe value", value))
@@ -256,16 +256,16 @@ func lsMaybeCodec[T any](schema *lawSpecSchema, bits int, element lawSpecCodec[T
 	return lsCodec(schema, bits, typeRef,
 		func(value LawSpecValue) LawSpecMaybe[T] {
 			data := value.Data.(lawSpecData)
-			if data.tag == "Maybe::Nothing" {
-				return LawSpecNothing[T]()
+			if data.tag == "Maybe::Absent" {
+				return LawSpecAbsent[T]()
 			}
-			return LawSpecJust(element.toNative(data.fields[0]))
+			return LawSpecPresent(element.toNative(data.fields[0]))
 		},
 		func(value LawSpecMaybe[T], path lawSpecPath) LawSpecValue {
 			if !value.present {
-				return schema.construct(typeRef, "Maybe::Nothing", nil, bits, symbols)
+				return schema.construct(typeRef, "Maybe::Absent", nil, bits, symbols)
 			}
-			return schema.construct(typeRef, "Maybe::Just",
+			return schema.construct(typeRef, "Maybe::Present",
 				[]LawSpecValue{element.encode(value.value, path)}, bits, symbols)
 		}, symbols)
 }

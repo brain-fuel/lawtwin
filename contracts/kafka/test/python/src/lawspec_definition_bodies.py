@@ -73,7 +73,7 @@ def evaluate_4(symbols, value_0):
         result = (
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("IntSize")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.helper("IntSize", [value_0], ["Integer"], 64)],
                 64,
                 symbols,
@@ -104,7 +104,7 @@ def evaluate_4(symbols, value_0):
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("IntSize")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -178,7 +178,7 @@ def evaluate_9(symbols, value_0):
         result = (
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.helper("UIntPtr", [value_0], ["Integer"], 64)],
                 64,
                 symbols,
@@ -205,7 +205,7 @@ def evaluate_9(symbols, value_0):
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -227,7 +227,7 @@ def evaluate_10(symbols, value_0):
         result = (
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntSize")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.helper("UIntSize", [value_0], ["Integer"], 64)],
                 64,
                 symbols,
@@ -254,7 +254,7 @@ def evaluate_10(symbols, value_0):
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntSize")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -2111,7 +2111,7 @@ def evaluate_119(symbols, value_0):
         result = (
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("IntSize")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.helper("IntSize", [value_0], ["Integer"], 64)],
                 64,
                 symbols,
@@ -2142,7 +2142,7 @@ def evaluate_119(symbols, value_0):
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("IntSize")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -2221,7 +2221,7 @@ def evaluate_124(symbols, value_0):
         result = (
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.helper("UIntPtr", [value_0], ["Integer"], 64)],
                 64,
                 symbols,
@@ -2248,7 +2248,7 @@ def evaluate_124(symbols, value_0):
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -2271,7 +2271,7 @@ def evaluate_125(symbols, value_0):
         result = (
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntSize")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.helper("UIntSize", [value_0], ["Integer"], 64)],
                 64,
                 symbols,
@@ -2298,7 +2298,7 @@ def evaluate_125(symbols, value_0):
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntSize")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -8319,7 +8319,7 @@ def evaluate_399(symbols, value_0):
         result = (
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("IntSize")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.helper("IntSize", [value_0], ["Integer"], 64)],
                 64,
                 symbols,
@@ -8350,7 +8350,7 @@ def evaluate_399(symbols, value_0):
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("IntSize")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -8429,7 +8429,7 @@ def evaluate_404(symbols, value_0):
         result = (
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.helper("UIntPtr", [value_0], ["Integer"], 64)],
                 64,
                 symbols,
@@ -8456,7 +8456,7 @@ def evaluate_404(symbols, value_0):
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -8479,7 +8479,7 @@ def evaluate_405(symbols, value_0):
         result = (
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntSize")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.helper("UIntSize", [value_0], ["Integer"], 64)],
                 64,
                 symbols,
@@ -8506,7 +8506,7 @@ def evaluate_405(symbols, value_0):
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntSize")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -13180,7 +13180,7 @@ def evaluate_599(symbols, value_0):
         result = (
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("IntSize")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.helper("IntSize", [value_0], ["Integer"], 64)],
                 64,
                 symbols,
@@ -13211,7 +13211,7 @@ def evaluate_599(symbols, value_0):
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("IntSize")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -13290,7 +13290,7 @@ def evaluate_604(symbols, value_0):
         result = (
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.helper("UIntPtr", [value_0], ["Integer"], 64)],
                 64,
                 symbols,
@@ -13317,7 +13317,7 @@ def evaluate_604(symbols, value_0):
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,
@@ -13340,7 +13340,7 @@ def evaluate_605(symbols, value_0):
         result = (
             _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntSize")]),
-                "Maybe::Just",
+                "Maybe::Present",
                 [ls.helper("UIntSize", [value_0], ["Integer"], 64)],
                 64,
                 symbols,
@@ -13367,7 +13367,7 @@ def evaluate_605(symbols, value_0):
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntSize")]),
-                "Maybe::Nothing",
+                "Maybe::Absent",
                 [],
                 64,
                 symbols,

@@ -541,7 +541,7 @@ public final class LawSpecSchema {
           .map(Constructor::tag)
           .toList();
     return switch (type.name()) {
-      case "Maybe" -> List.of("Maybe::Nothing", "Maybe::Just");
+      case "Maybe" -> List.of("Maybe::Absent", "Maybe::Present");
       case "Either" -> List.of("Either::Left", "Either::Right");
       default -> throw new IllegalArgumentException("algebraic type required");
     };
@@ -564,8 +564,8 @@ public final class LawSpecSchema {
         }
       }
     } else if (type.name().equals("Maybe")) {
-      if (tag.equals("Maybe::Nothing")) return List.of();
-      if (tag.equals("Maybe::Just")) return List.of(new Field("value", type.arguments().get(0)));
+      if (tag.equals("Maybe::Absent")) return List.of();
+      if (tag.equals("Maybe::Present")) return List.of(new Field("value", type.arguments().get(0)));
     } else if (type.name().equals("Either")) {
       if (tag.equals("Either::Left")) return List.of(new Field("value", type.arguments().get(0)));
       if (tag.equals("Either::Right")) return List.of(new Field("value", type.arguments().get(1)));
@@ -658,9 +658,9 @@ public final class LawSpecSchema {
     }
     var data = (Data) value.data();
     if (name.equals("Maybe"))
-      return data.tag().equals("Maybe::Nothing")
+      return data.tag().equals("Maybe::Absent")
           || contextualPayload(
-              arguments.get(0), data.fields().get(0), predicates, "Maybe::Just.value");
+              arguments.get(0), data.fields().get(0), predicates, "Maybe::Present.value");
     if (name.equals("Either")) {
       int index = data.tag().equals("Either::Left") ? 0 : 1;
       return contextualPayload(
@@ -1069,17 +1069,17 @@ public final class LawSpecSchema {
         symbols,
         value ->
             switch (value) {
-              case LawSpecRuntime.Nothing<T> ignored ->
-                  construct(type, "Maybe::Nothing", List.of(), bits, symbols);
-              case LawSpecRuntime.Just<T> just ->
+              case LawSpecRuntime.Absent<T> ignored ->
+                  construct(type, "Maybe::Absent", List.of(), bits, symbols);
+              case LawSpecRuntime.Present<T> just ->
                   construct(
-                      type, "Maybe::Just", List.of(element.encode(just.value())), bits, symbols);
+                      type, "Maybe::Present", List.of(element.encode(just.value())), bits, symbols);
             },
         value -> {
           var data = (Data) value.data();
-          return data.tag().equals("Maybe::Nothing")
-              ? new LawSpecRuntime.Nothing<>()
-              : new LawSpecRuntime.Just<>(element.decode(data.fields().get(0)));
+          return data.tag().equals("Maybe::Absent")
+              ? new LawSpecRuntime.Absent<>()
+              : new LawSpecRuntime.Present<>(element.decode(data.fields().get(0)));
         });
   }
 

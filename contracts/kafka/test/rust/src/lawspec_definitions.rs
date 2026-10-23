@@ -6028,10 +6028,10 @@ pub(crate) fn evaluate_4(
                     let value = argument_0.clone();
                     value.convert("IntSize", 64)?
                 };
-                ls::construct("Maybe::Just", vec![constructor_field_0])?
+                ls::construct("Maybe::Present", vec![constructor_field_0])?
             }
         } else {
-            ls::construct("Maybe::Nothing", vec![])?
+            ls::construct("Maybe::Absent", vec![])?
         }
     };
     Ok::<ls::Value, String>(result)
@@ -6088,10 +6088,10 @@ pub(crate) fn evaluate_9(
                     let value = argument_0.clone();
                     value.convert("UIntPtr", 64)?
                 };
-                ls::construct("Maybe::Just", vec![constructor_field_0])?
+                ls::construct("Maybe::Present", vec![constructor_field_0])?
             }
         } else {
-            ls::construct("Maybe::Nothing", vec![])?
+            ls::construct("Maybe::Absent", vec![])?
         }
     };
     Ok::<ls::Value, String>(result)
@@ -6132,10 +6132,10 @@ pub(crate) fn evaluate_10(
                     let value = argument_0.clone();
                     value.convert("UIntSize", 64)?
                 };
-                ls::construct("Maybe::Just", vec![constructor_field_0])?
+                ls::construct("Maybe::Present", vec![constructor_field_0])?
             }
         } else {
-            ls::construct("Maybe::Nothing", vec![])?
+            ls::construct("Maybe::Absent", vec![])?
         }
     };
     Ok::<ls::Value, String>(result)

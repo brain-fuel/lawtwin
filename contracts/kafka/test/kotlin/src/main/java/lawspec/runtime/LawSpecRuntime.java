@@ -106,11 +106,11 @@ public final class LawSpecRuntime {
 
   public record Presence(boolean present, Value value) {}
 
-  public sealed interface Maybe<T> permits Nothing, Just {}
+  public sealed interface Maybe<T> permits Absent, Present {}
 
-  public record Nothing<T>() implements Maybe<T> {}
+  public record Absent<T>() implements Maybe<T> {}
 
-  public record Just<T>(T value) implements Maybe<T> {}
+  public record Present<T>(T value) implements Maybe<T> {}
 
   public sealed interface Either<L, R> permits Left, Right {}
 
@@ -276,8 +276,8 @@ public final class LawSpecRuntime {
 
   private static List<String> sumFields(String type, String tag) {
     if (type.startsWith("Maybe ")) {
-      if (tag.equals("Maybe::Nothing")) return List.of();
-      if (tag.equals("Maybe::Just")) return List.of(type.substring(6));
+      if (tag.equals("Maybe::Absent")) return List.of();
+      if (tag.equals("Maybe::Present")) return List.of(type.substring(6));
     } else if (type.startsWith("Either ")) {
       var arguments = eitherArguments(type);
       if (tag.equals("Either::Left")) return List.of(arguments.get(0));
@@ -299,9 +299,9 @@ public final class LawSpecRuntime {
       String type, Value value, int bits, Function<Value, T> element) {
     if (!type.startsWith("Maybe ")) throw new IllegalArgumentException("Maybe type required");
     var data = dataValue(convert(type, value, bits));
-    return data.tag.equals("Maybe::Nothing")
-        ? new Nothing<>()
-        : new Just<>(element.apply(data.fields.getFirst()));
+    return data.tag.equals("Maybe::Absent")
+        ? new Absent<>()
+        : new Present<>(element.apply(data.fields.getFirst()));
   }
 
   public static <L, R> Either<L, R> eitherToNative(
@@ -317,8 +317,8 @@ public final class LawSpecRuntime {
       Value value, Supplier<Value> nothing, Function<Value, Value> just) {
     var data = dataValue(value);
     return switch (data.tag) {
-      case "Maybe::Nothing" -> nothing.get();
-      case "Maybe::Just" -> just.apply(data.fields.getFirst());
+      case "Maybe::Absent" -> nothing.get();
+      case "Maybe::Present" -> just.apply(data.fields.getFirst());
       default -> throw new IllegalArgumentException("Maybe value required");
     };
   }
@@ -742,7 +742,7 @@ public final class LawSpecRuntime {
 
   /**
    * The portable total order: -1, 0 or 1. Exact numbers by value, sequences by unit, false before
-   * true, absence before presence, lists element by element, Nothing before Just, and other data
+   * true, absence before presence, lists element by element, Absent before Present, and other data
    * by constructor identity, then fields left to right.
    */
   public static int compareValues(Value a, Value b) {
@@ -764,8 +764,8 @@ public final class LawSpecRuntime {
     if (a.data instanceof List<?> x && b.data instanceof List<?> y) return compareItems(x, y);
     if (a.data instanceof Data x && b.data instanceof Data y) {
       if (!x.tag().equals(y.tag())) {
-        if (x.tag().equals("Maybe::Nothing") && y.tag().equals("Maybe::Just")) return -1;
-        if (x.tag().equals("Maybe::Just") && y.tag().equals("Maybe::Nothing")) return 1;
+        if (x.tag().equals("Maybe::Absent") && y.tag().equals("Maybe::Present")) return -1;
+        if (x.tag().equals("Maybe::Present") && y.tag().equals("Maybe::Absent")) return 1;
         return Integer.signum(x.tag().compareTo(y.tag()));
       }
       return compareItems(x.fields(), y.fields());
@@ -868,10 +868,10 @@ public final class LawSpecRuntime {
         String maybe = "Maybe " + element;
         BigInteger index = (BigInteger) args[1].data;
         if (index.signum() < 0 || index.compareTo(BigInteger.valueOf(items.size())) >= 0)
-          return new Value(maybe, new Data("Maybe::Nothing", List.of()));
+          return new Value(maybe, new Data("Maybe::Absent", List.of()));
         Object item = items.get(index.intValueExact());
         Value value = bytes ? integer("UInt8", item.toString()) : (Value) item;
-        return new Value(maybe, new Data("Maybe::Just", List.of(value)));
+        return new Value(maybe, new Data("Maybe::Present", List.of(value)));
       }
       case "range": {
         var values = new ArrayList<Value>();
@@ -1028,10 +1028,10 @@ public final class LawSpecRuntime {
       throw new IllegalArgumentException("invalid " + t + " representation");
     if (value instanceof Value scalar) v = scalar;
     else if (t.startsWith("Maybe ")) {
-      if (value instanceof Nothing<?>) v = construct(t, "Maybe::Nothing", new Value[] {});
-      else if (value instanceof Just<?> just) {
-        v = construct(t, "Maybe::Just", new Value[] {fromNative(t.substring(6), just.value, bits)});
-      } else throw new IllegalArgumentException("native Maybe requires Nothing or Just");
+      if (value instanceof Absent<?>) v = construct(t, "Maybe::Absent", new Value[] {});
+      else if (value instanceof Present<?> just) {
+        v = construct(t, "Maybe::Present", new Value[] {fromNative(t.substring(6), just.value, bits)});
+      } else throw new IllegalArgumentException("native Maybe requires Absent or Present");
     } else if (t.startsWith("Either ")) {
       var arguments = eitherArguments(t);
       if (value instanceof Left<?, ?> left) {
@@ -2221,8 +2221,8 @@ public final class LawSpecRuntime {
           return new Value(type, List.copyOf(items));
         }
         case "maybe" -> {
-          if (random.below(4) == 0) return data(type, "Maybe::Nothing", List.of());
-          return data(type, "Maybe::Just", List.of(generate(d.get(1), random, size)));
+          if (random.below(4) == 0) return data(type, "Maybe::Absent", List.of());
+          return data(type, "Maybe::Present", List.of(generate(d.get(1), random, size)));
         }
         case "either" -> {
           if (random.below(2) == 0)
@@ -2262,7 +2262,7 @@ public final class LawSpecRuntime {
           return new Value(type, List.of());
         }
         case "maybe" -> {
-          return data(type, "Maybe::Nothing", List.of());
+          return data(type, "Maybe::Absent", List.of());
         }
         case "either" -> {
           return data(type, "Either::Left", List.of(minimal(d.get(1))));
@@ -2329,10 +2329,10 @@ public final class LawSpecRuntime {
         }
         case "maybe" -> {
           var value = (Data) v.data();
-          if (value.tag().equals("Maybe::Just")) {
-            out.add(data(type, "Maybe::Nothing", List.of()));
+          if (value.tag().equals("Maybe::Present")) {
+            out.add(data(type, "Maybe::Absent", List.of()));
             for (var c : shrink(d.get(1), value.fields().get(0)))
-              out.add(data(type, "Maybe::Just", List.of(c)));
+              out.add(data(type, "Maybe::Present", List.of(c)));
           }
         }
         case "either" -> {
@@ -5991,7 +5991,7 @@ public final class LawSpecRuntime {
       }
       case "maybe" -> {
         var data = (Data) v.data();
-        if (data.tag().endsWith("Nothing")) out.write(0);
+        if (data.tag().endsWith("Absent")) out.write(0);
         else {
           out.write(1);
           wirePut(values, d.get(1), data.fields().get(0), out);
@@ -6058,8 +6058,8 @@ public final class LawSpecRuntime {
       case "maybe" -> {
         int which = in.next();
         if (which > 1) throw new WireError("not a Maybe");
-        if (which == 0) return new Value(type, new Data("Maybe::Nothing", List.of()));
-        return new Value(type, new Data("Maybe::Just", List.of(wireGet(values, d.get(1), in))));
+        if (which == 0) return new Value(type, new Data("Maybe::Absent", List.of()));
+        return new Value(type, new Data("Maybe::Present", List.of(wireGet(values, d.get(1), in))));
       }
       case "either" -> {
         int which = in.next();

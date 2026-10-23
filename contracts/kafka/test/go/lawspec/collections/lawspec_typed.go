@@ -355,72 +355,72 @@ func lsfOrderingOf(c int) lsfOrdering {
 // lsfBoundedInt16_cdb4a79e is lawspec.collections::boundedInt16.
 func lsfBoundedInt16_cdb4a79e(lValue0 lsfInt) lsfMaybe[int16] {
 	if ((lsfCmpInt(lValue0, lsfSmall(int64(-32768))) >= 0) && (lsfCmpInt(lValue0, lsfSmall(int64(32767))) <= 0)) {
-		return lsfJust[int16](int16(lsfNarrowInt(lValue0, -32768, 32767, "Int16")))
+		return lsfPresent[int16](int16(lsfNarrowInt(lValue0, -32768, 32767, "Int16")))
 	} else {
-		return lsfNothing[int16]()
+		return lsfAbsent[int16]()
 	}
 }
 
 // lsfBoundedInt32_b3381d93 is lawspec.collections::boundedInt32.
 func lsfBoundedInt32_b3381d93(lValue1 lsfInt) lsfMaybe[int32] {
 	if ((lsfCmpInt(lValue1, lsfSmall(int64(-2147483648))) >= 0) && (lsfCmpInt(lValue1, lsfSmall(int64(2147483647))) <= 0)) {
-		return lsfJust[int32](int32(lsfNarrowInt(lValue1, -2147483648, 2147483647, "Int32")))
+		return lsfPresent[int32](int32(lsfNarrowInt(lValue1, -2147483648, 2147483647, "Int32")))
 	} else {
-		return lsfNothing[int32]()
+		return lsfAbsent[int32]()
 	}
 }
 
 // lsfBoundedInt64_13153a18 is lawspec.collections::boundedInt64.
 func lsfBoundedInt64_13153a18(lValue2 lsfInt) lsfMaybe[int64] {
 	if ((lsfCmpInt(lValue2, lsfSmall(-9223372036854775808)) >= 0) && (lsfCmpInt(lValue2, lsfSmall(9223372036854775807)) <= 0)) {
-		return lsfJust[int64](int64(lsfNarrowInt(lValue2, -1 << 63, 9223372036854775807, "Int64")))
+		return lsfPresent[int64](int64(lsfNarrowInt(lValue2, -1 << 63, 9223372036854775807, "Int64")))
 	} else {
-		return lsfNothing[int64]()
+		return lsfAbsent[int64]()
 	}
 }
 
 // lsfBoundedInt8_9822648b is lawspec.collections::boundedInt8.
 func lsfBoundedInt8_9822648b(lValue3 lsfInt) lsfMaybe[int8] {
 	if ((lsfCmpInt(lValue3, lsfSmall(int64(-128))) >= 0) && (lsfCmpInt(lValue3, lsfSmall(int64(127))) <= 0)) {
-		return lsfJust[int8](int8(lsfNarrowInt(lValue3, -128, 127, "Int8")))
+		return lsfPresent[int8](int8(lsfNarrowInt(lValue3, -128, 127, "Int8")))
 	} else {
-		return lsfNothing[int8]()
+		return lsfAbsent[int8]()
 	}
 }
 
 // lsfBoundedUInt16_fab24aa3 is lawspec.collections::boundedUInt16.
 func lsfBoundedUInt16_fab24aa3(lValue4 lsfInt) lsfMaybe[uint16] {
 	if ((lsfCmpInt(lValue4, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue4, lsfSmall(int64(65535))) <= 0)) {
-		return lsfJust[uint16](uint16(lsfNarrowInt(lValue4, 0, 65535, "UInt16")))
+		return lsfPresent[uint16](uint16(lsfNarrowInt(lValue4, 0, 65535, "UInt16")))
 	} else {
-		return lsfNothing[uint16]()
+		return lsfAbsent[uint16]()
 	}
 }
 
 // lsfBoundedUInt32_f7521c17 is lawspec.collections::boundedUInt32.
 func lsfBoundedUInt32_f7521c17(lValue5 lsfInt) lsfMaybe[uint32] {
 	if ((lsfCmpInt(lValue5, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue5, lsfSmall(int64(4294967295))) <= 0)) {
-		return lsfJust[uint32](uint32(lsfNarrowInt(lValue5, 0, 4294967295, "UInt32")))
+		return lsfPresent[uint32](uint32(lsfNarrowInt(lValue5, 0, 4294967295, "UInt32")))
 	} else {
-		return lsfNothing[uint32]()
+		return lsfAbsent[uint32]()
 	}
 }
 
 // lsfBoundedUInt64_ca410424 is lawspec.collections::boundedUInt64.
 func lsfBoundedUInt64_ca410424(lValue6 lsfInt) lsfMaybe[uint64] {
 	if ((lsfCmpInt(lValue6, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue6, lsfFromBig(lsInt("18446744073709551615"))) <= 0)) {
-		return lsfJust[uint64](lsfNarrowUint64(lValue6))
+		return lsfPresent[uint64](lsfNarrowUint64(lValue6))
 	} else {
-		return lsfNothing[uint64]()
+		return lsfAbsent[uint64]()
 	}
 }
 
 // lsfBoundedUInt8_8ce0c76e is lawspec.collections::boundedUInt8.
 func lsfBoundedUInt8_8ce0c76e(lValue7 lsfInt) lsfMaybe[uint8] {
 	if ((lsfCmpInt(lValue7, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue7, lsfSmall(int64(255))) <= 0)) {
-		return lsfJust[uint8](uint8(lsfNarrowInt(lValue7, 0, 255, "UInt8")))
+		return lsfPresent[uint8](uint8(lsfNarrowInt(lValue7, 0, 255, "UInt8")))
 	} else {
-		return lsfNothing[uint8]()
+		return lsfAbsent[uint8]()
 	}
 }
 
@@ -630,50 +630,50 @@ func lsfFrom_7b619c124b0c(v LawSpecValue) lsfInt {
 
 func lsfFrom_8458421ef461(v LawSpecValue) lsfMaybe[int16] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[int16](lsfFrom_07dabd732290(fields[0])) }
-	return lsfNothing[int16]()
+	if tag == "Maybe::Present" { return lsfPresent[int16](lsfFrom_07dabd732290(fields[0])) }
+	return lsfAbsent[int16]()
 }
 
 func lsfFrom_e0f8ce0ed062(v LawSpecValue) lsfMaybe[int32] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[int32](lsfFrom_b862204e9be7(fields[0])) }
-	return lsfNothing[int32]()
+	if tag == "Maybe::Present" { return lsfPresent[int32](lsfFrom_b862204e9be7(fields[0])) }
+	return lsfAbsent[int32]()
 }
 
 func lsfFrom_c09136e29464(v LawSpecValue) lsfMaybe[int64] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[int64](lsfFrom_44a08172da10(fields[0])) }
-	return lsfNothing[int64]()
+	if tag == "Maybe::Present" { return lsfPresent[int64](lsfFrom_44a08172da10(fields[0])) }
+	return lsfAbsent[int64]()
 }
 
 func lsfFrom_322842b70901(v LawSpecValue) lsfMaybe[int8] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[int8](lsfFrom_9d2bd68f647a(fields[0])) }
-	return lsfNothing[int8]()
+	if tag == "Maybe::Present" { return lsfPresent[int8](lsfFrom_9d2bd68f647a(fields[0])) }
+	return lsfAbsent[int8]()
 }
 
 func lsfFrom_a765ca1ff0da(v LawSpecValue) lsfMaybe[uint16] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[uint16](lsfFrom_7c7a5790413b(fields[0])) }
-	return lsfNothing[uint16]()
+	if tag == "Maybe::Present" { return lsfPresent[uint16](lsfFrom_7c7a5790413b(fields[0])) }
+	return lsfAbsent[uint16]()
 }
 
 func lsfFrom_770fd683e40e(v LawSpecValue) lsfMaybe[uint32] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[uint32](lsfFrom_bd9653153f3b(fields[0])) }
-	return lsfNothing[uint32]()
+	if tag == "Maybe::Present" { return lsfPresent[uint32](lsfFrom_bd9653153f3b(fields[0])) }
+	return lsfAbsent[uint32]()
 }
 
 func lsfFrom_a2258feb4d57(v LawSpecValue) lsfMaybe[uint64] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[uint64](lsfFrom_65439cc7c2ff(fields[0])) }
-	return lsfNothing[uint64]()
+	if tag == "Maybe::Present" { return lsfPresent[uint64](lsfFrom_65439cc7c2ff(fields[0])) }
+	return lsfAbsent[uint64]()
 }
 
 func lsfFrom_2a3b378408f8(v LawSpecValue) lsfMaybe[uint8] {
 	tag, fields := lsfData(v)
-	if tag == "Maybe::Just" { return lsfJust[uint8](lsfFrom_d048b68cd5b1(fields[0])) }
-	return lsfNothing[uint8]()
+	if tag == "Maybe::Present" { return lsfPresent[uint8](lsfFrom_d048b68cd5b1(fields[0])) }
+	return lsfAbsent[uint8]()
 }
 
 func lsfFrom_7c7a5790413b(v LawSpecValue) uint16 {
@@ -713,43 +713,43 @@ func lsfFromnative_7b619c124b0c(n *LawSpecBigInt) lsfInt {
 }
 
 func lsfFromnative_8458421ef461(n LawSpecMaybe[int16]) lsfMaybe[int16] {
-	if v, ok := n.Value(); ok { return lsfJust[int16](lsfFromnative_07dabd732290(v)) }
-	return lsfNothing[int16]()
+	if v, ok := n.Value(); ok { return lsfPresent[int16](lsfFromnative_07dabd732290(v)) }
+	return lsfAbsent[int16]()
 }
 
 func lsfFromnative_e0f8ce0ed062(n LawSpecMaybe[int32]) lsfMaybe[int32] {
-	if v, ok := n.Value(); ok { return lsfJust[int32](lsfFromnative_b862204e9be7(v)) }
-	return lsfNothing[int32]()
+	if v, ok := n.Value(); ok { return lsfPresent[int32](lsfFromnative_b862204e9be7(v)) }
+	return lsfAbsent[int32]()
 }
 
 func lsfFromnative_c09136e29464(n LawSpecMaybe[int64]) lsfMaybe[int64] {
-	if v, ok := n.Value(); ok { return lsfJust[int64](lsfFromnative_44a08172da10(v)) }
-	return lsfNothing[int64]()
+	if v, ok := n.Value(); ok { return lsfPresent[int64](lsfFromnative_44a08172da10(v)) }
+	return lsfAbsent[int64]()
 }
 
 func lsfFromnative_322842b70901(n LawSpecMaybe[int8]) lsfMaybe[int8] {
-	if v, ok := n.Value(); ok { return lsfJust[int8](lsfFromnative_9d2bd68f647a(v)) }
-	return lsfNothing[int8]()
+	if v, ok := n.Value(); ok { return lsfPresent[int8](lsfFromnative_9d2bd68f647a(v)) }
+	return lsfAbsent[int8]()
 }
 
 func lsfFromnative_a765ca1ff0da(n LawSpecMaybe[uint16]) lsfMaybe[uint16] {
-	if v, ok := n.Value(); ok { return lsfJust[uint16](lsfFromnative_7c7a5790413b(v)) }
-	return lsfNothing[uint16]()
+	if v, ok := n.Value(); ok { return lsfPresent[uint16](lsfFromnative_7c7a5790413b(v)) }
+	return lsfAbsent[uint16]()
 }
 
 func lsfFromnative_770fd683e40e(n LawSpecMaybe[uint32]) lsfMaybe[uint32] {
-	if v, ok := n.Value(); ok { return lsfJust[uint32](lsfFromnative_bd9653153f3b(v)) }
-	return lsfNothing[uint32]()
+	if v, ok := n.Value(); ok { return lsfPresent[uint32](lsfFromnative_bd9653153f3b(v)) }
+	return lsfAbsent[uint32]()
 }
 
 func lsfFromnative_a2258feb4d57(n LawSpecMaybe[uint64]) lsfMaybe[uint64] {
-	if v, ok := n.Value(); ok { return lsfJust[uint64](lsfFromnative_65439cc7c2ff(v)) }
-	return lsfNothing[uint64]()
+	if v, ok := n.Value(); ok { return lsfPresent[uint64](lsfFromnative_65439cc7c2ff(v)) }
+	return lsfAbsent[uint64]()
 }
 
 func lsfFromnative_2a3b378408f8(n LawSpecMaybe[uint8]) lsfMaybe[uint8] {
-	if v, ok := n.Value(); ok { return lsfJust[uint8](lsfFromnative_d048b68cd5b1(v)) }
-	return lsfNothing[uint8]()
+	if v, ok := n.Value(); ok { return lsfPresent[uint8](lsfFromnative_d048b68cd5b1(v)) }
+	return lsfAbsent[uint8]()
 }
 
 func lsfFromnative_7c7a5790413b(n uint16) uint16 {
@@ -789,43 +789,43 @@ func lsfTo_7b619c124b0c(x lsfInt) LawSpecValue {
 }
 
 func lsfTo_8458421ef461(x lsfMaybe[int16]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe Int16", "Maybe::Just", lsfTo_07dabd732290(x.v)) }
-	return lsfDataValue("Maybe Int16", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe Int16", "Maybe::Present", lsfTo_07dabd732290(x.v)) }
+	return lsfDataValue("Maybe Int16", "Maybe::Absent")
 }
 
 func lsfTo_e0f8ce0ed062(x lsfMaybe[int32]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe Int32", "Maybe::Just", lsfTo_b862204e9be7(x.v)) }
-	return lsfDataValue("Maybe Int32", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe Int32", "Maybe::Present", lsfTo_b862204e9be7(x.v)) }
+	return lsfDataValue("Maybe Int32", "Maybe::Absent")
 }
 
 func lsfTo_c09136e29464(x lsfMaybe[int64]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe Int64", "Maybe::Just", lsfTo_44a08172da10(x.v)) }
-	return lsfDataValue("Maybe Int64", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe Int64", "Maybe::Present", lsfTo_44a08172da10(x.v)) }
+	return lsfDataValue("Maybe Int64", "Maybe::Absent")
 }
 
 func lsfTo_322842b70901(x lsfMaybe[int8]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe Int8", "Maybe::Just", lsfTo_9d2bd68f647a(x.v)) }
-	return lsfDataValue("Maybe Int8", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe Int8", "Maybe::Present", lsfTo_9d2bd68f647a(x.v)) }
+	return lsfDataValue("Maybe Int8", "Maybe::Absent")
 }
 
 func lsfTo_a765ca1ff0da(x lsfMaybe[uint16]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe UInt16", "Maybe::Just", lsfTo_7c7a5790413b(x.v)) }
-	return lsfDataValue("Maybe UInt16", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe UInt16", "Maybe::Present", lsfTo_7c7a5790413b(x.v)) }
+	return lsfDataValue("Maybe UInt16", "Maybe::Absent")
 }
 
 func lsfTo_770fd683e40e(x lsfMaybe[uint32]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe UInt32", "Maybe::Just", lsfTo_bd9653153f3b(x.v)) }
-	return lsfDataValue("Maybe UInt32", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe UInt32", "Maybe::Present", lsfTo_bd9653153f3b(x.v)) }
+	return lsfDataValue("Maybe UInt32", "Maybe::Absent")
 }
 
 func lsfTo_a2258feb4d57(x lsfMaybe[uint64]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe UInt64", "Maybe::Just", lsfTo_65439cc7c2ff(x.v)) }
-	return lsfDataValue("Maybe UInt64", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe UInt64", "Maybe::Present", lsfTo_65439cc7c2ff(x.v)) }
+	return lsfDataValue("Maybe UInt64", "Maybe::Absent")
 }
 
 func lsfTo_2a3b378408f8(x lsfMaybe[uint8]) LawSpecValue {
-	if x.ok { return lsfDataValue("Maybe UInt8", "Maybe::Just", lsfTo_d048b68cd5b1(x.v)) }
-	return lsfDataValue("Maybe UInt8", "Maybe::Nothing")
+	if x.ok { return lsfDataValue("Maybe UInt8", "Maybe::Present", lsfTo_d048b68cd5b1(x.v)) }
+	return lsfDataValue("Maybe UInt8", "Maybe::Absent")
 }
 
 func lsfTo_7c7a5790413b(x uint16) LawSpecValue {
@@ -865,43 +865,43 @@ func lsfTonative_7b619c124b0c(x lsfInt) *LawSpecBigInt {
 }
 
 func lsfTonative_8458421ef461(x lsfMaybe[int16]) LawSpecMaybe[int16] {
-	if x.ok { return LawSpecJust[int16](lsfTonative_07dabd732290(x.v)) }
-	return LawSpecNothing[int16]()
+	if x.ok { return LawSpecPresent[int16](lsfTonative_07dabd732290(x.v)) }
+	return LawSpecAbsent[int16]()
 }
 
 func lsfTonative_e0f8ce0ed062(x lsfMaybe[int32]) LawSpecMaybe[int32] {
-	if x.ok { return LawSpecJust[int32](lsfTonative_b862204e9be7(x.v)) }
-	return LawSpecNothing[int32]()
+	if x.ok { return LawSpecPresent[int32](lsfTonative_b862204e9be7(x.v)) }
+	return LawSpecAbsent[int32]()
 }
 
 func lsfTonative_c09136e29464(x lsfMaybe[int64]) LawSpecMaybe[int64] {
-	if x.ok { return LawSpecJust[int64](lsfTonative_44a08172da10(x.v)) }
-	return LawSpecNothing[int64]()
+	if x.ok { return LawSpecPresent[int64](lsfTonative_44a08172da10(x.v)) }
+	return LawSpecAbsent[int64]()
 }
 
 func lsfTonative_322842b70901(x lsfMaybe[int8]) LawSpecMaybe[int8] {
-	if x.ok { return LawSpecJust[int8](lsfTonative_9d2bd68f647a(x.v)) }
-	return LawSpecNothing[int8]()
+	if x.ok { return LawSpecPresent[int8](lsfTonative_9d2bd68f647a(x.v)) }
+	return LawSpecAbsent[int8]()
 }
 
 func lsfTonative_a765ca1ff0da(x lsfMaybe[uint16]) LawSpecMaybe[uint16] {
-	if x.ok { return LawSpecJust[uint16](lsfTonative_7c7a5790413b(x.v)) }
-	return LawSpecNothing[uint16]()
+	if x.ok { return LawSpecPresent[uint16](lsfTonative_7c7a5790413b(x.v)) }
+	return LawSpecAbsent[uint16]()
 }
 
 func lsfTonative_770fd683e40e(x lsfMaybe[uint32]) LawSpecMaybe[uint32] {
-	if x.ok { return LawSpecJust[uint32](lsfTonative_bd9653153f3b(x.v)) }
-	return LawSpecNothing[uint32]()
+	if x.ok { return LawSpecPresent[uint32](lsfTonative_bd9653153f3b(x.v)) }
+	return LawSpecAbsent[uint32]()
 }
 
 func lsfTonative_a2258feb4d57(x lsfMaybe[uint64]) LawSpecMaybe[uint64] {
-	if x.ok { return LawSpecJust[uint64](lsfTonative_65439cc7c2ff(x.v)) }
-	return LawSpecNothing[uint64]()
+	if x.ok { return LawSpecPresent[uint64](lsfTonative_65439cc7c2ff(x.v)) }
+	return LawSpecAbsent[uint64]()
 }
 
 func lsfTonative_2a3b378408f8(x lsfMaybe[uint8]) LawSpecMaybe[uint8] {
-	if x.ok { return LawSpecJust[uint8](lsfTonative_d048b68cd5b1(x.v)) }
-	return LawSpecNothing[uint8]()
+	if x.ok { return LawSpecPresent[uint8](lsfTonative_d048b68cd5b1(x.v)) }
+	return LawSpecAbsent[uint8]()
 }
 
 func lsfTonative_7c7a5790413b(x uint16) uint16 {

@@ -125,26 +125,26 @@ class Definition:
 
 
 class Maybe[T]:
-    """Distinct Nothing and Just states, including nested absence.
+    """Distinct Absent and Present states, including nested absence.
 
-    Python's None cannot tell Nothing from Just(None), so Maybe is its own
+    Python's None cannot tell Absent from Present(None), so Maybe is its own
     type with nested absence kept distinct. ref:DEC-algebraic-maybe-either"""
 
     __slots__ = ()
 
     def __new__(cls, *args, **kwargs):
         if cls is Maybe:
-            raise TypeError("construct Nothing or Just")
+            raise TypeError("construct Absent or Present")
         return object.__new__(cls)
 
 
 @dataclass(frozen=True, slots=True, eq=False)
-class Nothing[T](Maybe[T]):
+class Absent[T](Maybe[T]):
     pass
 
 
 @dataclass(frozen=True, slots=True, eq=False)
-class Just[T](Maybe[T]):
+class Present[T](Maybe[T]):
     value: T
 
 
@@ -692,8 +692,8 @@ class Schema:
                 return (not child.present or contextual(
                     arguments[0], child.value, name + ".value"))
             if name == "Maybe":
-                return (child.tag == "Maybe::Nothing" or contextual(
-                    arguments[0], child.fields[0], "Maybe::Just.value"))
+                return (child.tag == "Maybe::Absent" or contextual(
+                    arguments[0], child.fields[0], "Maybe::Present.value"))
             if name == "Either":
                 index = 0 if child.tag == "Either::Left" else 1
                 return contextual(arguments[index], child.fields[0],
@@ -912,8 +912,8 @@ class Schema:
                     arguments[0], value.value, bits, mode, symbols)
             return ls.Presence(name, value.present, payload)
         if name in ("Maybe", "Either"):
-            classes = ((Nothing, Just) if name == "Maybe" else (Left, Right))
-            tags = (("Maybe::Nothing", "Maybe::Just") if name == "Maybe"
+            classes = ((Absent, Present) if name == "Maybe" else (Left, Right))
+            tags = (("Maybe::Absent", "Maybe::Present") if name == "Maybe"
                     else ("Either::Left", "Either::Right"))
             if mode == "logical":
                 if type(value) not in classes:

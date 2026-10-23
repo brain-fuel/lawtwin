@@ -883,32 +883,32 @@ def from_8ca8e420d6d2(v):
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Bytes" [])]
 def from_b276e66efd09(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "lawtwin.petstore.model::type::User" [])])]
 def from_e6c8b33c1e73(v):
-    return (from_20d29d91c280(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_20d29d91c280(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Text" [])]
 def from_01d86fc44f8c(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::Order" [])]
 def from_ba2e3c57646d(v):
-    return (from_0205b8dc6a6f(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_0205b8dc6a6f(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::Pet" [])]
 def from_2a509216bf80(v):
-    return (from_82d465b8f3fe(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_82d465b8f3fe(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::User" [])]
 def from_e7cb8bef1b25(v):
-    return (from_4e0c2eb86b38(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_4e0c2eb86b38(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Text" []
@@ -1411,32 +1411,32 @@ def to_8ca8e420d6d2(x):
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Bytes" [])]
 def to_b276e66efd09(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "lawtwin.petstore.model::type::User" [])])]
 def to_e6c8b33c1e73(x):
-    return ls.DataValue('Maybe::Just', (to_20d29d91c280(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_20d29d91c280(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Text" [])]
 def to_01d86fc44f8c(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::Order" [])]
 def to_ba2e3c57646d(x):
-    return ls.DataValue('Maybe::Just', (to_0205b8dc6a6f(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_0205b8dc6a6f(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::Pet" [])]
 def to_2a509216bf80(x):
-    return ls.DataValue('Maybe::Just', (to_82d465b8f3fe(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_82d465b8f3fe(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::User" [])]
 def to_e7cb8bef1b25(x):
-    return ls.DataValue('Maybe::Just', (to_4e0c2eb86b38(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_4e0c2eb86b38(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Text" []
@@ -1551,37 +1551,37 @@ def from_20d29d91c280(v):
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Bool" [])]
 def from_90e6932e30f0(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Int32" [])]
 def from_e0f8ce0ed062(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "Int64" [])]
 def from_c09136e29464(v):
-    return (v.fields[0],) if v.tag == 'Maybe::Just' else ()
+    return (v.fields[0],) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "lawtwin.petstore.model::type::Tag" [])])]
 def from_7ebfd034755d(v):
-    return (from_dfd757f25880(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_dfd757f25880(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::Category" [])]
 def from_ed2b79ac14b6(v):
-    return (from_a360b1eddd33(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_a360b1eddd33(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::OrderStatus" [])]
 def from_374b41463b05(v):
-    return (from_0bfe20e129e6(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_0bfe20e129e6(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::PetStatus" [])]
 def from_804dbe22ca06(v):
-    return (from_1ac848e17d05(v.fields[0]),) if v.tag == 'Maybe::Just' else ()
+    return (from_1ac848e17d05(v.fields[0]),) if v.tag == 'Maybe::Present' else ()
 
 
 # from Constructor "lawspec.collections::type::Entry" [TypeArgument (Constructor "Int64" []),TypeArgument (Constructor "lawtwin.petstore.model::type::Order" [])]
@@ -1650,27 +1650,27 @@ def fromnative_62faef33a7c0(n):
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "Bytes" [])]
 def fromnative_b276e66efd09(n):
-    return (n.value,) if isinstance(n, _schema.Just) else ()
+    return (n.value,) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "lawtwin.petstore.model::type::User" [])])]
 def fromnative_e6c8b33c1e73(n):
-    return (fromnative_20d29d91c280(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_20d29d91c280(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "Text" [])]
 def fromnative_01d86fc44f8c(n):
-    return (n.value,) if isinstance(n, _schema.Just) else ()
+    return (n.value,) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::Order" [])]
 def fromnative_ba2e3c57646d(n):
-    return (fromnative_0205b8dc6a6f(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_0205b8dc6a6f(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::User" [])]
 def fromnative_e7cb8bef1b25(n):
-    return (fromnative_4e0c2eb86b38(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_4e0c2eb86b38(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Text" []
@@ -1749,37 +1749,37 @@ def to_20d29d91c280(x):
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Bool" [])]
 def to_90e6932e30f0(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Int32" [])]
 def to_e0f8ce0ed062(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "Int64" [])]
 def to_c09136e29464(x):
-    return ls.DataValue('Maybe::Just', (x[0],)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (x[0],)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "lawtwin.petstore.model::type::Tag" [])])]
 def to_7ebfd034755d(x):
-    return ls.DataValue('Maybe::Just', (to_dfd757f25880(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_dfd757f25880(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::Category" [])]
 def to_ed2b79ac14b6(x):
-    return ls.DataValue('Maybe::Just', (to_a360b1eddd33(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_a360b1eddd33(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::OrderStatus" [])]
 def to_374b41463b05(x):
-    return ls.DataValue('Maybe::Just', (to_0bfe20e129e6(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_0bfe20e129e6(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::PetStatus" [])]
 def to_804dbe22ca06(x):
-    return ls.DataValue('Maybe::Just', (to_1ac848e17d05(x[0]),)) if x else ls.DataValue('Maybe::Nothing', ())
+    return ls.DataValue('Maybe::Present', (to_1ac848e17d05(x[0]),)) if x else ls.DataValue('Maybe::Absent', ())
 
 
 # to Constructor "lawspec.collections::type::Entry" [TypeArgument (Constructor "Int64" []),TypeArgument (Constructor "lawtwin.petstore.model::type::Order" [])]
@@ -1824,27 +1824,27 @@ def tonative_62faef33a7c0(x):
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "Bytes" [])]
 def tonative_b276e66efd09(x):
-    return _schema.Just(x[0]) if x else _schema.Nothing()
+    return _schema.Present(x[0]) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "lawtwin.petstore.model::type::User" [])])]
 def tonative_e6c8b33c1e73(x):
-    return _schema.Just(tonative_20d29d91c280(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_20d29d91c280(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "Text" [])]
 def tonative_01d86fc44f8c(x):
-    return _schema.Just(x[0]) if x else _schema.Nothing()
+    return _schema.Present(x[0]) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::Order" [])]
 def tonative_ba2e3c57646d(x):
-    return _schema.Just(tonative_0205b8dc6a6f(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_0205b8dc6a6f(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::User" [])]
 def tonative_e7cb8bef1b25(x):
-    return _schema.Just(tonative_4e0c2eb86b38(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_4e0c2eb86b38(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Text" []
@@ -1922,37 +1922,37 @@ def fromnative_20d29d91c280(n):
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "Bool" [])]
 def fromnative_90e6932e30f0(n):
-    return (n.value,) if isinstance(n, _schema.Just) else ()
+    return (n.value,) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "Int32" [])]
 def fromnative_e0f8ce0ed062(n):
-    return (n.value,) if isinstance(n, _schema.Just) else ()
+    return (n.value,) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "Int64" [])]
 def fromnative_c09136e29464(n):
-    return (n.value,) if isinstance(n, _schema.Just) else ()
+    return (n.value,) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "lawtwin.petstore.model::type::Tag" [])])]
 def fromnative_7ebfd034755d(n):
-    return (fromnative_dfd757f25880(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_dfd757f25880(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::Category" [])]
 def fromnative_ed2b79ac14b6(n):
-    return (fromnative_a360b1eddd33(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_a360b1eddd33(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::OrderStatus" [])]
 def fromnative_374b41463b05(n):
-    return (fromnative_0bfe20e129e6(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_0bfe20e129e6(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::PetStatus" [])]
 def fromnative_804dbe22ca06(n):
-    return (fromnative_1ac848e17d05(n.value),) if isinstance(n, _schema.Just) else ()
+    return (fromnative_1ac848e17d05(n.value),) if isinstance(n, _schema.Present) else ()
 
 
 # fromnative Constructor "lawspec.collections::type::KeyVal" [TypeArgument (Constructor "Int64" []),TypeArgument (Constructor "lawtwin.petstore.model::type::Order" [])]
@@ -2001,37 +2001,37 @@ def tonative_20d29d91c280(x):
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "Bool" [])]
 def tonative_90e6932e30f0(x):
-    return _schema.Just(x[0]) if x else _schema.Nothing()
+    return _schema.Present(x[0]) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "Int32" [])]
 def tonative_e0f8ce0ed062(x):
-    return _schema.Just(x[0]) if x else _schema.Nothing()
+    return _schema.Present(x[0]) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "Int64" [])]
 def tonative_c09136e29464(x):
-    return _schema.Just(x[0]) if x else _schema.Nothing()
+    return _schema.Present(x[0]) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "List" [TypeArgument (Constructor "lawtwin.petstore.model::type::Tag" [])])]
 def tonative_7ebfd034755d(x):
-    return _schema.Just(tonative_dfd757f25880(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_dfd757f25880(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::Category" [])]
 def tonative_ed2b79ac14b6(x):
-    return _schema.Just(tonative_a360b1eddd33(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_a360b1eddd33(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::OrderStatus" [])]
 def tonative_374b41463b05(x):
-    return _schema.Just(tonative_0bfe20e129e6(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_0bfe20e129e6(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "Maybe" [TypeArgument (Constructor "lawtwin.petstore.model::type::PetStatus" [])]
 def tonative_804dbe22ca06(x):
-    return _schema.Just(tonative_1ac848e17d05(x[0])) if x else _schema.Nothing()
+    return _schema.Present(tonative_1ac848e17d05(x[0])) if x else _schema.Absent()
 
 
 # tonative Constructor "lawspec.collections::type::KeyVal" [TypeArgument (Constructor "Int64" []),TypeArgument (Constructor "lawtwin.petstore.model::type::Order" [])]

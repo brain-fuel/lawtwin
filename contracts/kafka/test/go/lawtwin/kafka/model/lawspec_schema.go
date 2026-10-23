@@ -634,7 +634,7 @@ func (s *lawSpecSchema) walkPayload(plan *lawSpecPayloadPlan, value LawSpecValue
 	data := value.Data.(lawSpecData)
 	switch plan.name {
 	case "Maybe":
-		return data.tag == "Maybe::Nothing" || s.contextualPayload(arguments[0], data.fields[0], predicates, "Maybe::Just.value")
+		return data.tag == "Maybe::Absent" || s.contextualPayload(arguments[0], data.fields[0], predicates, "Maybe::Present.value")
 	case "Either":
 		index := 0
 		if data.tag == "Either::Right" {
@@ -709,8 +709,8 @@ func (s *lawSpecSchema) validateValue(t lawSpecTypeRef, value LawSpecValue, bits
 			return lsPresent(t.key(), &child)
 		case "Maybe":
 			constructors = []lawSpecConstructorSchema{
-				{"Maybe::Nothing", nil, nil, nil, 0, nil},
-				{"Maybe::Just", []lawSpecFieldSchema{{"value", t.arguments[0]}}, nil, nil, 0, nil},
+				{"Maybe::Absent", nil, nil, nil, 0, nil},
+				{"Maybe::Present", []lawSpecFieldSchema{{"value", t.arguments[0]}}, nil, nil, 0, nil},
 			}
 		case "Either":
 			constructors = []lawSpecConstructorSchema{

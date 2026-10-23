@@ -453,8 +453,8 @@ let rec validate (value: Value) (t: TypeRef) (bits: int) : Value =
     | Named("Undefined", []), Undefined -> value
     | Named(name, []), Int n when isIntegerType name -> checkBounds n name bits
     | Named("List", [ element ]), List items -> List(items |> List.map (fun v -> validate v element bits))
-    | Named("Maybe", [ _ ]), Data("Maybe::Nothing", []) -> value
-    | Named("Maybe", [ inner ]), Data("Maybe::Just", [ v ]) -> Data("Maybe::Just", [ validate v inner bits ])
+    | Named("Maybe", [ _ ]), Data("Maybe::Absent", []) -> value
+    | Named("Maybe", [ inner ]), Data("Maybe::Present", [ v ]) -> Data("Maybe::Present", [ validate v inner bits ])
     | Named("Either", [ l; _ ]), Data("Either::Left", [ v ]) -> Data("Either::Left", [ validate v l bits ])
     | Named("Either", [ _; r ]), Data("Either::Right", [ v ]) -> Data("Either::Right", [ validate v r bits ])
     | Named(("Nullable" | "Optional") as kind, [ inner ]), Presence(k, present) when k = kind ->
@@ -539,8 +539,8 @@ let rec compareValues (a: Value) (b: Value) : int =
     | Presence(k1, None), Presence(k2, Some _) when k1 = k2 -> -1
     | Presence(k1, Some _), Presence(k2, None) when k1 = k2 -> 1
     | Presence(k1, Some x), Presence(k2, Some y) when k1 = k2 -> compareValues x y
-    | Data("Maybe::Nothing", []), Data("Maybe::Just", _) -> -1
-    | Data("Maybe::Just", _), Data("Maybe::Nothing", []) -> 1
+    | Data("Maybe::Absent", []), Data("Maybe::Present", _) -> -1
+    | Data("Maybe::Present", _), Data("Maybe::Absent", []) -> 1
     | Data(t1, f1), Data(t2, f2) when t1 = t2 -> compareLists f1 f2
     | Data(t1, _), Data(t2, _) -> compareText t1 t2
     | List x, List y -> compareLists x y
@@ -732,8 +732,8 @@ let helper (name: string) (values: Value list) (types: string list) (bits: int) 
         sequenceLike x kind (items |> List.skip (int i) |> List.take (int (j - i)))
     | "at", [ x; Int i ] ->
         let items = sequenceItems x (List.head types)
-        if i.Sign >= 0 && i < BigInteger(List.length items) then Data("Maybe::Just", [ List.item (int i) items ])
-        else Data("Maybe::Nothing", [])
+        if i.Sign >= 0 && i < BigInteger(List.length items) then Data("Maybe::Present", [ List.item (int i) items ])
+        else Data("Maybe::Absent", [])
     | "range", [ Int lo; Int hi ] ->
         List [ let mutable n = lo
                while n < hi do

@@ -1859,8 +1859,8 @@ pub fn construct(tag: &str, mut fields: Vec<Value>) -> Result<Value> {
             tail.insert(0, fields.pop().unwrap());
             Value::List(tail)
         }
-        ("Maybe::Nothing", 0) => Value::Maybe(None),
-        ("Maybe::Just", 1) => Value::Maybe(Some(Box::new(fields.pop().unwrap()))),
+        ("Maybe::Absent", 0) => Value::Maybe(None),
+        ("Maybe::Present", 1) => Value::Maybe(Some(Box::new(fields.pop().unwrap()))),
         ("Either::Left", 1) => Value::Left(Box::new(fields.pop().unwrap())),
         ("Either::Right", 1) => Value::Right(Box::new(fields.pop().unwrap())),
         _ => return Err(format!("invalid constructor or arity: {tag}")),
@@ -1926,7 +1926,7 @@ pub fn block_on<F: std::future::Future>(future: F) -> F::Output {
 
 /// The portable total order. Exact numbers by value, text by code point,
 /// sequences by unit, false before true, absence before presence, lists
-/// element by element, Nothing before Just, Left before Right, and other data
+/// element by element, Absent before Present, Left before Right, and other data
 /// by constructor identity, then fields left to right.
 pub fn compare_values(a: &Value, b: &Value) -> Result<std::cmp::Ordering> {
     use std::cmp::Ordering::*;
@@ -2929,7 +2929,7 @@ pub fn difference(actual: &Value, expected: &Value) -> String {
         match v {
             Value::List(xs) => Some((None, xs.iter().collect())),
             Value::Data(tag, fields) => Some((Some(tag.clone()), fields.iter().collect())),
-            Value::Maybe(Some(x)) => Some((Some("Just".into()), vec![x.as_ref()])),
+            Value::Maybe(Some(x)) => Some((Some("Present".into()), vec![x.as_ref()])),
             Value::Left(x) => Some((Some("Left".into()), vec![x.as_ref()])),
             Value::Right(x) => Some((Some("Right".into()), vec![x.as_ref()])),
             _ => None,
@@ -3965,8 +3965,8 @@ pub fn render(v: &Value) -> String {
         Value::Text(s) => format!("\"{}\"", s.replace('\\', "\\\\").replace('"', "\\\"")),
         Value::Unit => "()".into(),
         Value::List(xs) => format!("[{}]", all(xs)),
-        Value::Maybe(None) => "Nothing".into(),
-        Value::Maybe(Some(x)) => format!("Just({})", render(x)),
+        Value::Maybe(None) => "Absent".into(),
+        Value::Maybe(Some(x)) => format!("Present({})", render(x)),
         Value::Left(x) => format!("Left({})", render(x)),
         Value::Right(x) => format!("Right({})", render(x)),
         Value::Data(tag, fields) => {
@@ -4039,8 +4039,8 @@ pub fn recorded_text(value: &Value) -> String {
                 Value::Nullable(Some(v)) => format!("nullable({})", self.render(v)),
                 Value::Optional(Some(v)) => format!("optional({})", self.render(v)),
                 Value::List(vs) => format!("[{}]", self.values(vs)),
-                Value::Maybe(None) => "Nothing".into(),
-                Value::Maybe(Some(v)) => format!("Just({})", self.render(v)),
+                Value::Maybe(None) => "Absent".into(),
+                Value::Maybe(Some(v)) => format!("Present({})", self.render(v)),
                 Value::Left(v) => format!("Left({})", self.render(v)),
                 Value::Right(v) => format!("Right({})", self.render(v)),
                 Value::Data(tag, vs) => {
@@ -10947,7 +10947,7 @@ pub mod fast {
     }
 
     /// The portable total order (see compare_values): numbers by value, text
-    /// by code point, false before true, Nothing before Just, Left before
+    /// by code point, false before true, Absent before Present, Left before
     /// Right, lists item by item, data by constructor identity then fields.
     pub trait POrd {
         fn pcmp(&self, other: &Self) -> Ordering;
@@ -11754,7 +11754,7 @@ pub mod fast {
     }
 
     // Sequences: Text (by code point), Bytes and List. A slice is clamped
-    // to the sequence; an index outside it is Nothing.
+    // to the sequence; an index outside it is Absent.
 
     /// An index into a sequence of count items, clamped to it.
     pub fn clamp_index(index: &Int, count: usize) -> usize {

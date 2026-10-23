@@ -14,8 +14,8 @@ open System.Text.Json
 
 let private fail code detail : 'a = Fail.raiseWith code detail
 
-let private just v = Data("Maybe::Just", [ v ])
-let private nothing = Data("Maybe::Nothing", [])
+let private just v = Data("Maybe::Present", [ v ])
+let private nothing = Data("Maybe::Absent", [])
 
 // The wall clock at start, then the monotonic clock: a later clock
 // correction never moves time backwards.

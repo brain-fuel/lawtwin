@@ -116,7 +116,7 @@ let rec private moves (d: Descriptors.Descriptor) (value: Value) table : Value l
         |> List.map Int
     | Descriptors.Forms [ Descriptors.Atom "list"; item ], List items ->
         fieldMoves (items |> List.map (fun _ -> item)) items table |> List.map List
-    | Descriptors.Forms [ Descriptors.Atom "maybe"; item ], Data("Maybe::Just" as tag, [ v ]) ->
+    | Descriptors.Forms [ Descriptors.Atom "maybe"; item ], Data("Maybe::Present" as tag, [ v ]) ->
         moves item v table |> List.map (fun c -> Data(tag, [ c ]))
     | Descriptors.Forms [ Descriptors.Atom "either"; left; right ], Data(tag, [ v ]) ->
         moves (if tag = "Either::Left" then left else right) v table |> List.map (fun c -> Data(tag, [ c ]))

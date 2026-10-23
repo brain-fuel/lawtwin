@@ -83,7 +83,7 @@ fn call_1(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value> 
 // _let3__it = match (_match2__1___lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet
 // _matchfield0__id _matchfield1__name _matchfield2__category _matchfield3__photoUrls
 // _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match (_let3__it) {
-// Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> (attempt
+// Maybe::Absent -> false; Maybe::Present _match4__1___match__lawspecSelection0x0_0 -> (attempt
 // (getPetById (_match4__1___match__lawspecSelection0x0_0)) ==
 // Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for all
 fn law_0(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
@@ -223,11 +223,12 @@ fn law_0(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
                         "0__id _matchfield1__name _matchfield2__categor",
                         "y _matchfield3__photoUrls _matchfield4__tags _",
                         "matchfield5__status -> _matchfield0__id } in m",
-                        "atch (_let3__it) { Maybe::Nothing  -> false; M",
-                        "aybe::Just _match4__1___match__lawspecSelectio",
-                        "n0x0_0 -> (attempt (getPetById (_match4__1___m",
-                        "atch__lawspecSelection0x0_0)) == Either::Right",
-                        "(_match2__1___lawspecSelection0x0)) } } = true",
+                        "atch (_let3__it) { Maybe::Absent  -> false; Ma",
+                        "ybe::Present _match4__1___match__lawspecSelect",
+                        "ion0x0_0 -> (attempt (getPetById (_match4__1__",
+                        "_match__lawspecSelection0x0_0)) == Either::Rig",
+                        "ht(_match2__1___lawspecSelection0x0)) } } = tr",
+                        "ue",
                     ),
                     left,
                     right,
@@ -277,12 +278,12 @@ fn run_0() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_0(ctx, values[0].clone())?;
@@ -293,17 +294,17 @@ fn run_0() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer((-9223372036854775808i128).into())],
                 )?,
                 ls::Value::Text(" ".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
@@ -311,9 +312,9 @@ fn run_0() -> ls::Result<()> {
                     ls::Value::Text("".to_owned()),
                     ls::Value::Text(" ".to_owned()),
                 ]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -328,16 +329,16 @@ fn run_0() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ls::Value::Text("Hello, World!".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::Value::Text("".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -352,22 +353,22 @@ fn run_0() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ls::Value::Text("λ日本語😀".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -383,17 +384,17 @@ fn run_0() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer(9223372036854775807i128.into())],
                 )?,
                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("".to_owned()),
                     ls::Value::Text("".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_0(ctx, values[0].clone())?;
@@ -403,22 +404,22 @@ fn run_0() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("é".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -434,18 +435,18 @@ fn run_0() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer((-9223372036854775808i128).into())],
                 )?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::Value::Text(" ".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -460,22 +461,22 @@ fn run_0() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -490,15 +491,15 @@ fn run_0() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("Hello, World!".to_owned()),
                     ls::Value::Text("Hello, World!".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_0(ctx, values[0].clone())?;
@@ -509,24 +510,24 @@ fn run_0() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer(9223372036854775807i128.into())],
                 )?,
                 ls::Value::Text(" ".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -541,16 +542,16 @@ fn run_0() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("Hello, World!".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::Value::Text("λ日本語😀".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -566,24 +567,24 @@ fn run_0() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer((-9223372036854775808i128).into())],
                 )?,
                 ls::Value::Text("λ日本語😀".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -598,15 +599,15 @@ fn run_0() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_0(ctx, values[0].clone())?;
@@ -616,22 +617,22 @@ fn run_0() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ls::Value::Text("é".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -647,18 +648,18 @@ fn run_0() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer(9223372036854775807i128.into())],
                 )?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("é".to_owned()),
                     ls::Value::Text("é".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -673,22 +674,22 @@ fn run_0() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -710,29 +711,29 @@ fn run_0() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
@@ -740,9 +741,9 @@ fn run_0() -> ls::Result<()> {
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -754,18 +755,18 @@ fn run_0() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -776,22 +777,25 @@ fn run_0() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -803,38 +807,38 @@ fn run_0() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -846,18 +850,18 @@ fn run_0() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -869,24 +873,24 @@ fn run_0() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -897,39 +901,42 @@ fn run_0() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("Hello, World!".to_owned()),
                                 ls::Value::Text("Hello, World!".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -940,16 +947,16 @@ fn run_0() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("λ日本語😀".to_owned()),
                                 ls::Value::Text("λ日本語😀".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -961,26 +968,26 @@ fn run_0() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(
                                 "a\u{a}\u{9}\"\\$\u{0}z".to_owned(),
                             )]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -992,38 +999,41 @@ fn run_0() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -1035,18 +1045,18 @@ fn run_0() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("é".to_owned()),
                                 ls::Value::Text("é".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -1057,22 +1067,22 @@ fn run_0() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -1188,7 +1198,7 @@ fn search_case_0(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // _let3__it = match (_match2__1___lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet
 // _matchfield0__id _matchfield1__name _matchfield2__category _matchfield3__photoUrls
 // _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match (_let3__it) {
-// Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> (attempt
+// Maybe::Absent -> false; Maybe::Present _match4__1___match__lawspecSelection0x0_0 -> (attempt
 // (getPetById (_match4__1___match__lawspecSelection0x0_0)) ==
 // Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for all
 fn law_1(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
@@ -1321,12 +1331,12 @@ fn law_1(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
                     "eld0__id _matchfield1__name _matchfield2__cate",
                     "gory _matchfield3__photoUrls _matchfield4__tag",
                     "s _matchfield5__status -> _matchfield0__id } i",
-                    "n match (_let3__it) { Maybe::Nothing  -> false",
-                    "; Maybe::Just _match4__1___match__lawspecSelec",
-                    "tion0x0_0 -> (attempt (getPetById (_match4__1_",
-                    "__match__lawspecSelection0x0_0)) == Either::Ri",
-                    "ght(_match2__1___lawspecSelection0x0)) } } = t",
-                    "rue",
+                    "n match (_let3__it) { Maybe::Absent  -> false;",
+                    " Maybe::Present _match4__1___match__lawspecSel",
+                    "ection0x0_0 -> (attempt (getPetById (_match4__",
+                    "1___match__lawspecSelection0x0_0)) == Either::",
+                    "Right(_match2__1___lawspecSelection0x0)) } } =",
+                    " true",
                 ),
                 left,
                 right,
@@ -1361,12 +1371,12 @@ fn run_1() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_1(ctx, values[0].clone())?;
@@ -1377,17 +1387,17 @@ fn run_1() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer((-9223372036854775808i128).into())],
                 )?,
                 ls::Value::Text(" ".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
@@ -1395,9 +1405,9 @@ fn run_1() -> ls::Result<()> {
                     ls::Value::Text("".to_owned()),
                     ls::Value::Text(" ".to_owned()),
                 ]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -1412,16 +1422,16 @@ fn run_1() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ls::Value::Text("Hello, World!".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::Value::Text("".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -1436,22 +1446,22 @@ fn run_1() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ls::Value::Text("λ日本語😀".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -1467,17 +1477,17 @@ fn run_1() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer(9223372036854775807i128.into())],
                 )?,
                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("".to_owned()),
                     ls::Value::Text("".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_1(ctx, values[0].clone())?;
@@ -1487,22 +1497,22 @@ fn run_1() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("é".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -1518,18 +1528,18 @@ fn run_1() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer((-9223372036854775808i128).into())],
                 )?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::Value::Text(" ".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -1544,22 +1554,22 @@ fn run_1() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -1574,15 +1584,15 @@ fn run_1() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("Hello, World!".to_owned()),
                     ls::Value::Text("Hello, World!".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_1(ctx, values[0].clone())?;
@@ -1593,24 +1603,24 @@ fn run_1() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer(9223372036854775807i128.into())],
                 )?,
                 ls::Value::Text(" ".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -1625,16 +1635,16 @@ fn run_1() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("Hello, World!".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::Value::Text("λ日本語😀".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -1650,24 +1660,24 @@ fn run_1() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer((-9223372036854775808i128).into())],
                 )?,
                 ls::Value::Text("λ日本語😀".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -1682,15 +1692,15 @@ fn run_1() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_1(ctx, values[0].clone())?;
@@ -1700,22 +1710,22 @@ fn run_1() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ls::Value::Text("é".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -1731,18 +1741,18 @@ fn run_1() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer(9223372036854775807i128.into())],
                 )?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("é".to_owned()),
                     ls::Value::Text("é".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -1757,22 +1767,22 @@ fn run_1() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -1794,29 +1804,29 @@ fn run_1() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
@@ -1824,9 +1834,9 @@ fn run_1() -> ls::Result<()> {
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -1838,18 +1848,18 @@ fn run_1() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -1860,22 +1870,25 @@ fn run_1() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -1887,38 +1900,38 @@ fn run_1() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -1930,18 +1943,18 @@ fn run_1() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -1953,24 +1966,24 @@ fn run_1() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -1981,39 +1994,42 @@ fn run_1() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("Hello, World!".to_owned()),
                                 ls::Value::Text("Hello, World!".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -2024,16 +2040,16 @@ fn run_1() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("λ日本語😀".to_owned()),
                                 ls::Value::Text("λ日本語😀".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -2045,26 +2061,26 @@ fn run_1() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(
                                 "a\u{a}\u{9}\"\\$\u{0}z".to_owned(),
                             )]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -2076,38 +2092,41 @@ fn run_1() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -2119,18 +2138,18 @@ fn run_1() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("é".to_owned()),
                                 ls::Value::Text("é".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -2141,22 +2160,22 @@ fn run_1() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -2272,9 +2291,9 @@ fn search_case_1(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // _let3__it = match (_match2__1___lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet
 // _matchfield0__id _matchfield1__name _matchfield2__category _matchfield3__photoUrls
 // _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match (_let3__it) {
-// Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone
-// = attempt (deletePet (_match4__1___match__lawspecSelection0x0_0) (Maybe::Nothing())) in (attempt
-// (getPetById (_match4__1___match__lawspecSelection0x0_0)) ==
+// Maybe::Absent -> false; Maybe::Present _match4__1___match__lawspecSelection0x0_0 -> let
+// _let5__gone = attempt (deletePet (_match4__1___match__lawspecSelection0x0_0) (Maybe::Absent()))
+// in (attempt (getPetById (_match4__1___match__lawspecSelection0x0_0)) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
 fn law_2(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
     let input_0 = lawspec_schema::schema()?.validate_with_context(
@@ -2362,10 +2381,8 @@ fn law_2(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
                                                     let value = {
                                                         let perform_argument_0 =
                                                             match_local_6_0.clone();
-                                                        let perform_argument_1 = ls::construct(
-                                                            "Maybe::Nothing",
-                                                            vec![],
-                                                        )?;
+                                                        let perform_argument_1 =
+                                                            ls::construct("Maybe::Absent", vec![])?;
                                                         let arguments = vec![
                                                             perform_argument_0,
                                                             perform_argument_1,
@@ -2449,14 +2466,14 @@ fn law_2(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
                         "ld0__id _matchfield1__name _matchfield2__categ",
                         "ory _matchfield3__photoUrls _matchfield4__tags",
                         " _matchfield5__status -> _matchfield0__id } in",
-                        " match (_let3__it) { Maybe::Nothing  -> false;",
-                        " Maybe::Just _match4__1___match__lawspecSelect",
-                        "ion0x0_0 -> let _let5__gone = attempt (deleteP",
-                        "et (_match4__1___match__lawspecSelection0x0_0)",
-                        " (Maybe::Nothing())) in (attempt (getPetById (",
-                        "_match4__1___match__lawspecSelection0x0_0)) ==",
-                        " Either::Left(lawtwin.petstore.model::type::Ap",
-                        "iError::NotFound())) } } = true",
+                        " match (_let3__it) { Maybe::Absent  -> false; ",
+                        "Maybe::Present _match4__1___match__lawspecSele",
+                        "ction0x0_0 -> let _let5__gone = attempt (delet",
+                        "ePet (_match4__1___match__lawspecSelection0x0_",
+                        "0) (Maybe::Absent())) in (attempt (getPetById ",
+                        "(_match4__1___match__lawspecSelection0x0_0)) =",
+                        "= Either::Left(lawtwin.petstore.model::type::A",
+                        "piError::NotFound())) } } = true",
                     ),
                     left,
                     right,
@@ -2506,12 +2523,12 @@ fn run_2() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_2(ctx, values[0].clone())?;
@@ -2522,17 +2539,17 @@ fn run_2() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer((-9223372036854775808i128).into())],
                 )?,
                 ls::Value::Text(" ".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
@@ -2540,9 +2557,9 @@ fn run_2() -> ls::Result<()> {
                     ls::Value::Text("".to_owned()),
                     ls::Value::Text(" ".to_owned()),
                 ]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -2557,16 +2574,16 @@ fn run_2() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ls::Value::Text("Hello, World!".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::Value::Text("".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -2581,22 +2598,22 @@ fn run_2() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ls::Value::Text("λ日本語😀".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -2612,17 +2629,17 @@ fn run_2() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer(9223372036854775807i128.into())],
                 )?,
                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("".to_owned()),
                     ls::Value::Text("".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_2(ctx, values[0].clone())?;
@@ -2632,22 +2649,22 @@ fn run_2() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("é".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -2663,18 +2680,18 @@ fn run_2() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer((-9223372036854775808i128).into())],
                 )?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::Value::Text(" ".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -2689,22 +2706,22 @@ fn run_2() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -2719,15 +2736,15 @@ fn run_2() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("Hello, World!".to_owned()),
                     ls::Value::Text("Hello, World!".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_2(ctx, values[0].clone())?;
@@ -2738,24 +2755,24 @@ fn run_2() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer(9223372036854775807i128.into())],
                 )?,
                 ls::Value::Text(" ".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -2770,16 +2787,16 @@ fn run_2() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("Hello, World!".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::Value::Text("λ日本語😀".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -2795,24 +2812,24 @@ fn run_2() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer((-9223372036854775808i128).into())],
                 )?,
                 ls::Value::Text("λ日本語😀".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -2827,15 +2844,15 @@ fn run_2() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_2(ctx, values[0].clone())?;
@@ -2845,22 +2862,22 @@ fn run_2() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ls::Value::Text("é".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -2876,18 +2893,18 @@ fn run_2() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer(9223372036854775807i128.into())],
                 )?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("é".to_owned()),
                     ls::Value::Text("é".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -2902,22 +2919,22 @@ fn run_2() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -2939,29 +2956,29 @@ fn run_2() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
@@ -2969,9 +2986,9 @@ fn run_2() -> ls::Result<()> {
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -2983,18 +3000,18 @@ fn run_2() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -3005,22 +3022,25 @@ fn run_2() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -3032,38 +3052,38 @@ fn run_2() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -3075,18 +3095,18 @@ fn run_2() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -3098,24 +3118,24 @@ fn run_2() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -3126,39 +3146,42 @@ fn run_2() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("Hello, World!".to_owned()),
                                 ls::Value::Text("Hello, World!".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -3169,16 +3192,16 @@ fn run_2() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("λ日本語😀".to_owned()),
                                 ls::Value::Text("λ日本語😀".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -3190,26 +3213,26 @@ fn run_2() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(
                                 "a\u{a}\u{9}\"\\$\u{0}z".to_owned(),
                             )]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -3221,38 +3244,41 @@ fn run_2() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -3264,18 +3290,18 @@ fn run_2() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("é".to_owned()),
                                 ls::Value::Text("é".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -3286,22 +3312,22 @@ fn run_2() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -3417,9 +3443,9 @@ fn search_case_2(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // _let3__it = match (_match2__1___lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet
 // _matchfield0__id _matchfield1__name _matchfield2__category _matchfield3__photoUrls
 // _matchfield4__tags _matchfield5__status -> _matchfield0__id } in match (_let3__it) {
-// Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone
-// = attempt (deletePet (_match4__1___match__lawspecSelection0x0_0) (Maybe::Nothing())) in (attempt
-// (getPetById (_match4__1___match__lawspecSelection0x0_0)) ==
+// Maybe::Absent -> false; Maybe::Present _match4__1___match__lawspecSelection0x0_0 -> let
+// _let5__gone = attempt (deletePet (_match4__1___match__lawspecSelection0x0_0) (Maybe::Absent()))
+// in (attempt (getPetById (_match4__1___match__lawspecSelection0x0_0)) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
 fn law_3(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
     let shared_reference = std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
@@ -3501,7 +3527,7 @@ fn law_3(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
                                                     let perform_argument_0 =
                                                         match_local_5_0.clone();
                                                     let perform_argument_1 =
-                                                        ls::construct("Maybe::Nothing", vec![])?;
+                                                        ls::construct("Maybe::Absent", vec![])?;
                                                     let arguments = vec![
                                                         perform_argument_0,
                                                         perform_argument_1,
@@ -3585,14 +3611,14 @@ fn law_3(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
                     "field0__id _matchfield1__name _matchfield2__ca",
                     "tegory _matchfield3__photoUrls _matchfield4__t",
                     "ags _matchfield5__status -> _matchfield0__id }",
-                    " in match (_let3__it) { Maybe::Nothing  -> fal",
-                    "se; Maybe::Just _match4__1___match__lawspecSel",
-                    "ection0x0_0 -> let _let5__gone = attempt (dele",
-                    "tePet (_match4__1___match__lawspecSelection0x0",
-                    "_0) (Maybe::Nothing())) in (attempt (getPetByI",
-                    "d (_match4__1___match__lawspecSelection0x0_0))",
-                    " == Either::Left(lawtwin.petstore.model::type:",
-                    ":ApiError::NotFound())) } } = true",
+                    " in match (_let3__it) { Maybe::Absent  -> fals",
+                    "e; Maybe::Present _match4__1___match__lawspecS",
+                    "election0x0_0 -> let _let5__gone = attempt (de",
+                    "letePet (_match4__1___match__lawspecSelection0",
+                    "x0_0) (Maybe::Absent())) in (attempt (getPetBy",
+                    "Id (_match4__1___match__lawspecSelection0x0_0)",
+                    ") == Either::Left(lawtwin.petstore.model::type",
+                    "::ApiError::NotFound())) } } = true",
                 ),
                 left,
                 right,
@@ -3627,12 +3653,12 @@ fn run_3() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_3(ctx, values[0].clone())?;
@@ -3643,17 +3669,17 @@ fn run_3() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer((-9223372036854775808i128).into())],
                 )?,
                 ls::Value::Text(" ".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
@@ -3661,9 +3687,9 @@ fn run_3() -> ls::Result<()> {
                     ls::Value::Text("".to_owned()),
                     ls::Value::Text(" ".to_owned()),
                 ]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -3678,16 +3704,16 @@ fn run_3() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ls::Value::Text("Hello, World!".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::Value::Text("".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -3702,22 +3728,22 @@ fn run_3() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ls::Value::Text("λ日本語😀".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -3733,17 +3759,17 @@ fn run_3() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer(9223372036854775807i128.into())],
                 )?,
                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("".to_owned()),
                     ls::Value::Text("".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_3(ctx, values[0].clone())?;
@@ -3753,22 +3779,22 @@ fn run_3() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("é".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -3784,18 +3810,18 @@ fn run_3() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer((-9223372036854775808i128).into())],
                 )?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text(" ".to_owned()),
                     ls::Value::Text(" ".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -3810,22 +3836,22 @@ fn run_3() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -3840,15 +3866,15 @@ fn run_3() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("Hello, World!".to_owned()),
                     ls::Value::Text("Hello, World!".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_3(ctx, values[0].clone())?;
@@ -3859,24 +3885,24 @@ fn run_3() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer(9223372036854775807i128.into())],
                 )?,
                 ls::Value::Text(" ".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -3891,16 +3917,16 @@ fn run_3() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("Hello, World!".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::Value::Text("λ日本語😀".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -3916,24 +3942,24 @@ fn run_3() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer((-9223372036854775808i128).into())],
                 )?,
                 ls::Value::Text("λ日本語😀".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -3948,15 +3974,15 @@ fn run_3() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
             ],
         )];
         law_3(ctx, values[0].clone())?;
@@ -3966,22 +3992,22 @@ fn run_3() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ls::Value::Text("é".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Available",
                         vec![],
@@ -3997,18 +4023,18 @@ fn run_3() -> ls::Result<()> {
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::Value::Integer(9223372036854775807i128.into())],
                 )?,
                 ls::Value::Text("".to_owned()),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::List(vec![
                     ls::Value::Text("é".to_owned()),
                     ls::Value::Text("é".to_owned()),
                 ]),
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Pending",
                         vec![],
@@ -4023,22 +4049,22 @@ fn run_3() -> ls::Result<()> {
         let values = vec![ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             vec![
-                ls::construct("Maybe::Nothing", vec![])?,
+                ls::construct("Maybe::Absent", vec![])?,
                 ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::Category::Category",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     )],
                 )?,
                 ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                 ls::construct(
-                    "Maybe::Just",
+                    "Maybe::Present",
                     vec![ls::construct_data(
                         "lawtwin.petstore.model::type::PetStatus::Sold",
                         vec![],
@@ -4060,29 +4086,29 @@ fn run_3() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
@@ -4090,9 +4116,9 @@ fn run_3() -> ls::Result<()> {
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -4104,18 +4130,18 @@ fn run_3() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -4126,22 +4152,25 @@ fn run_3() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -4153,38 +4182,38 @@ fn run_3() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -4196,18 +4225,18 @@ fn run_3() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -4219,24 +4248,24 @@ fn run_3() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -4247,39 +4276,42 @@ fn run_3() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("Hello, World!".to_owned()),
                                 ls::Value::Text("Hello, World!".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -4290,16 +4322,16 @@ fn run_3() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("λ日本語😀".to_owned()),
                                 ls::Value::Text("λ日本語😀".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -4311,26 +4343,26 @@ fn run_3() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(
                                 "a\u{a}\u{9}\"\\$\u{0}z".to_owned(),
                             )]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -4342,38 +4374,41 @@ fn run_3() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -4385,18 +4420,18 @@ fn run_3() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("é".to_owned()),
                                 ls::Value::Text("é".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -4407,22 +4442,22 @@ fn run_3() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -4538,10 +4573,10 @@ fn search_case_3(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // true; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = match
 // (_match2__1___lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet _matchfield0__id
 // _matchfield1__name _matchfield2__category _matchfield3__photoUrls _matchfield4__tags
-// _matchfield5__status -> _matchfield0__id } in match (_let3__it) { Maybe::Nothing -> false;
-// Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let _let5__it = attempt (updatePet (let
-// _letfield12__replacement = Maybe::Just(_match4__1___match__lawspecSelection0x0_0) in match
-// (_input1) { lawtwin.petstore.model::type::Pet::Pet _matchfield6__id _matchfield7__name
+// _matchfield5__status -> _matchfield0__id } in match (_let3__it) { Maybe::Absent -> false;
+// Maybe::Present _match4__1___match__lawspecSelection0x0_0 -> let _let5__it = attempt (updatePet
+// (let _letfield12__replacement = Maybe::Present(_match4__1___match__lawspecSelection0x0_0) in
+// match (_input1) { lawtwin.petstore.model::type::Pet::Pet _matchfield6__id _matchfield7__name
 // _matchfield8__category _matchfield9__photoUrls _matchfield10__tags _matchfield11__status ->
 // lawtwin.petstore.model::type::Pet::Pet(_letfield12__replacement, _matchfield7__name,
 // _matchfield8__category, _matchfield9__photoUrls, _matchfield10__tags, _matchfield11__status) }))
@@ -4641,7 +4676,7 @@ fn law_4(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                                                     let value = {
                                                         let perform_argument_0 = {
                                                             let let_8 = ls::construct(
-                                                                "Maybe::Just",
+                                                                "Maybe::Present",
                                                                 vec![match_local_7_0.clone()],
                                                             )?;
                                                             let _ = &let_8;
@@ -4759,26 +4794,27 @@ fn law_4(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                         "t _matchfield0__id _matchfield1__name _matchfi",
                         "eld2__category _matchfield3__photoUrls _matchf",
                         "ield4__tags _matchfield5__status -> _matchfiel",
-                        "d0__id } in match (_let3__it) { Maybe::Nothing",
-                        "  -> false; Maybe::Just _match4__1___match__la",
-                        "wspecSelection0x0_0 -> let _let5__it = attempt",
-                        " (updatePet (let _letfield12__replacement = Ma",
-                        "ybe::Just(_match4__1___match__lawspecSelection",
-                        "0x0_0) in match (_input1) { lawtwin.petstore.m",
-                        "odel::type::Pet::Pet _matchfield6__id _matchfi",
-                        "eld7__name _matchfield8__category _matchfield9",
-                        "__photoUrls _matchfield10__tags _matchfield11_",
-                        "_status -> lawtwin.petstore.model::type::Pet::",
-                        "Pet(_letfield12__replacement, _matchfield7__na",
-                        "me, _matchfield8__category, _matchfield9__phot",
-                        "oUrls, _matchfield10__tags, _matchfield11__sta",
-                        "tus) })) in match (_let5__it) { Either::Left _",
-                        "match6__0___match__match__lawspecSelection0x0_",
-                        "0_0 -> true; Either::Right _match6__1___match_",
-                        "_match__lawspecSelection0x0_0_0 -> (attempt (g",
-                        "etPetById (_match4__1___match__lawspecSelectio",
-                        "n0x0_0)) == Either::Right(_match6__1___match__",
-                        "match__lawspecSelection0x0_0_0)) } } } = true",
+                        "d0__id } in match (_let3__it) { Maybe::Absent ",
+                        " -> false; Maybe::Present _match4__1___match__",
+                        "lawspecSelection0x0_0 -> let _let5__it = attem",
+                        "pt (updatePet (let _letfield12__replacement = ",
+                        "Maybe::Present(_match4__1___match__lawspecSele",
+                        "ction0x0_0) in match (_input1) { lawtwin.petst",
+                        "ore.model::type::Pet::Pet _matchfield6__id _ma",
+                        "tchfield7__name _matchfield8__category _matchf",
+                        "ield9__photoUrls _matchfield10__tags _matchfie",
+                        "ld11__status -> lawtwin.petstore.model::type::",
+                        "Pet::Pet(_letfield12__replacement, _matchfield",
+                        "7__name, _matchfield8__category, _matchfield9_",
+                        "_photoUrls, _matchfield10__tags, _matchfield11",
+                        "__status) })) in match (_let5__it) { Either::L",
+                        "eft _match6__0___match__match__lawspecSelectio",
+                        "n0x0_0_0 -> true; Either::Right _match6__1___m",
+                        "atch__match__lawspecSelection0x0_0_0 -> (attem",
+                        "pt (getPetById (_match4__1___match__lawspecSel",
+                        "ection0x0_0)) == Either::Right(_match6__1___ma",
+                        "tch__match__lawspecSelection0x0_0_0)) } } } = ",
+                        "true",
                     ),
                     left,
                     right,
@@ -4829,23 +4865,23 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -4858,17 +4894,17 @@ fn run_4() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
@@ -4876,9 +4912,9 @@ fn run_4() -> ls::Result<()> {
                         ls::Value::Text("".to_owned()),
                         ls::Value::Text(" ".to_owned()),
                     ]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -4890,17 +4926,17 @@ fn run_4() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
@@ -4908,9 +4944,9 @@ fn run_4() -> ls::Result<()> {
                         ls::Value::Text("".to_owned()),
                         ls::Value::Text(" ".to_owned()),
                     ]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -4927,16 +4963,16 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text(" ".to_owned()),
                         ls::Value::Text("".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -4947,16 +4983,16 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text(" ".to_owned()),
                         ls::Value::Text("".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -4973,22 +5009,22 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -4999,22 +5035,22 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -5032,34 +5068,34 @@ fn run_4() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("".to_owned()),
                         ls::Value::Text("".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("".to_owned()),
                         ls::Value::Text("".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -5071,22 +5107,22 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -5097,22 +5133,22 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -5130,18 +5166,18 @@ fn run_4() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text(" ".to_owned()),
                         ls::Value::Text(" ".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -5153,18 +5189,18 @@ fn run_4() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text(" ".to_owned()),
                         ls::Value::Text(" ".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -5181,22 +5217,22 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -5207,22 +5243,22 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -5239,29 +5275,29 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("Hello, World!".to_owned()),
                         ls::Value::Text("Hello, World!".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("Hello, World!".to_owned()),
                         ls::Value::Text("Hello, World!".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -5274,24 +5310,24 @@ fn run_4() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -5303,24 +5339,24 @@ fn run_4() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -5337,16 +5373,16 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("λ日本語😀".to_owned()),
                         ls::Value::Text("λ日本語😀".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -5357,16 +5393,16 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("λ日本語😀".to_owned()),
                         ls::Value::Text("λ日本語😀".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -5384,24 +5420,24 @@ fn run_4() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -5413,24 +5449,24 @@ fn run_4() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -5447,29 +5483,29 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                         ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                         ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -5481,22 +5517,22 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -5507,22 +5543,22 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -5540,18 +5576,18 @@ fn run_4() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("é".to_owned()),
                         ls::Value::Text("é".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -5563,18 +5599,18 @@ fn run_4() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("é".to_owned()),
                         ls::Value::Text("é".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -5591,22 +5627,22 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -5617,22 +5653,22 @@ fn run_4() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -5655,29 +5691,29 @@ fn run_4() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
@@ -5685,9 +5721,9 @@ fn run_4() -> ls::Result<()> {
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -5699,18 +5735,18 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -5721,22 +5757,25 @@ fn run_4() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -5748,38 +5787,38 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -5791,18 +5830,18 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -5814,24 +5853,24 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -5842,39 +5881,42 @@ fn run_4() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("Hello, World!".to_owned()),
                                 ls::Value::Text("Hello, World!".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -5885,16 +5927,16 @@ fn run_4() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("λ日本語😀".to_owned()),
                                 ls::Value::Text("λ日本語😀".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -5906,26 +5948,26 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(
                                 "a\u{a}\u{9}\"\\$\u{0}z".to_owned(),
                             )]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -5937,38 +5979,41 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -5980,18 +6025,18 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("é".to_owned()),
                                 ls::Value::Text("é".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -6002,22 +6047,22 @@ fn run_4() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -6061,29 +6106,29 @@ fn run_4() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
@@ -6091,9 +6136,9 @@ fn run_4() -> ls::Result<()> {
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -6105,18 +6150,18 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -6127,22 +6172,25 @@ fn run_4() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -6154,38 +6202,38 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -6197,18 +6245,18 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -6220,24 +6268,24 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -6248,39 +6296,42 @@ fn run_4() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("Hello, World!".to_owned()),
                                 ls::Value::Text("Hello, World!".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -6291,16 +6342,16 @@ fn run_4() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("λ日本語😀".to_owned()),
                                 ls::Value::Text("λ日本語😀".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -6312,26 +6363,26 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(
                                 "a\u{a}\u{9}\"\\$\u{0}z".to_owned(),
                             )]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -6343,38 +6394,41 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -6386,18 +6440,18 @@ fn run_4() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("é".to_owned()),
                                 ls::Value::Text("é".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -6408,22 +6462,22 @@ fn run_4() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -6572,10 +6626,10 @@ fn search_case_4(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // true; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = match
 // (_match2__1___lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet _matchfield0__id
 // _matchfield1__name _matchfield2__category _matchfield3__photoUrls _matchfield4__tags
-// _matchfield5__status -> _matchfield0__id } in match (_let3__it) { Maybe::Nothing -> false;
-// Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let _let5__it = attempt (updatePet (let
-// _letfield12__replacement = Maybe::Just(_match4__1___match__lawspecSelection0x0_0) in match
-// (_input1) { lawtwin.petstore.model::type::Pet::Pet _matchfield6__id _matchfield7__name
+// _matchfield5__status -> _matchfield0__id } in match (_let3__it) { Maybe::Absent -> false;
+// Maybe::Present _match4__1___match__lawspecSelection0x0_0 -> let _let5__it = attempt (updatePet
+// (let _letfield12__replacement = Maybe::Present(_match4__1___match__lawspecSelection0x0_0) in
+// match (_input1) { lawtwin.petstore.model::type::Pet::Pet _matchfield6__id _matchfield7__name
 // _matchfield8__category _matchfield9__photoUrls _matchfield10__tags _matchfield11__status ->
 // lawtwin.petstore.model::type::Pet::Pet(_letfield12__replacement, _matchfield7__name,
 // _matchfield8__category, _matchfield9__photoUrls, _matchfield10__tags, _matchfield11__status) }))
@@ -6668,7 +6722,7 @@ fn law_5(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                                                 let value = {
                                                     let perform_argument_0 = {
                                                         let let_7 = ls::construct(
-                                                            "Maybe::Just",
+                                                            "Maybe::Present",
                                                             vec![match_local_6_0.clone()],
                                                         )?;
                                                         let _ = &let_7;
@@ -6786,27 +6840,27 @@ fn law_5(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                     ":Pet _matchfield0__id _matchfield1__name _matc",
                     "hfield2__category _matchfield3__photoUrls _mat",
                     "chfield4__tags _matchfield5__status -> _matchf",
-                    "ield0__id } in match (_let3__it) { Maybe::Noth",
-                    "ing  -> false; Maybe::Just _match4__1___match_",
-                    "_lawspecSelection0x0_0 -> let _let5__it = atte",
-                    "mpt (updatePet (let _letfield12__replacement =",
-                    " Maybe::Just(_match4__1___match__lawspecSelect",
-                    "ion0x0_0) in match (_input1) { lawtwin.petstor",
-                    "e.model::type::Pet::Pet _matchfield6__id _matc",
-                    "hfield7__name _matchfield8__category _matchfie",
-                    "ld9__photoUrls _matchfield10__tags _matchfield",
-                    "11__status -> lawtwin.petstore.model::type::Pe",
-                    "t::Pet(_letfield12__replacement, _matchfield7_",
-                    "_name, _matchfield8__category, _matchfield9__p",
-                    "hotoUrls, _matchfield10__tags, _matchfield11__",
-                    "status) })) in match (_let5__it) { Either::Lef",
-                    "t _match6__0___match__match__lawspecSelection0",
-                    "x0_0_0 -> true; Either::Right _match6__1___mat",
-                    "ch__match__lawspecSelection0x0_0_0 -> (attempt",
-                    " (getPetById (_match4__1___match__lawspecSelec",
-                    "tion0x0_0)) == Either::Right(_match6__1___matc",
-                    "h__match__lawspecSelection0x0_0_0)) } } } = tr",
-                    "ue",
+                    "ield0__id } in match (_let3__it) { Maybe::Abse",
+                    "nt  -> false; Maybe::Present _match4__1___matc",
+                    "h__lawspecSelection0x0_0 -> let _let5__it = at",
+                    "tempt (updatePet (let _letfield12__replacement",
+                    " = Maybe::Present(_match4__1___match__lawspecS",
+                    "election0x0_0) in match (_input1) { lawtwin.pe",
+                    "tstore.model::type::Pet::Pet _matchfield6__id ",
+                    "_matchfield7__name _matchfield8__category _mat",
+                    "chfield9__photoUrls _matchfield10__tags _match",
+                    "field11__status -> lawtwin.petstore.model::typ",
+                    "e::Pet::Pet(_letfield12__replacement, _matchfi",
+                    "eld7__name, _matchfield8__category, _matchfiel",
+                    "d9__photoUrls, _matchfield10__tags, _matchfiel",
+                    "d11__status) })) in match (_let5__it) { Either",
+                    "::Left _match6__0___match__match__lawspecSelec",
+                    "tion0x0_0_0 -> true; Either::Right _match6__1_",
+                    "__match__match__lawspecSelection0x0_0_0 -> (at",
+                    "tempt (getPetById (_match4__1___match__lawspec",
+                    "Selection0x0_0)) == Either::Right(_match6__1__",
+                    "_match__match__lawspecSelection0x0_0_0)) } } }",
+                    " = true",
                 ),
                 left,
                 right,
@@ -6842,23 +6896,23 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -6871,17 +6925,17 @@ fn run_5() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
@@ -6889,9 +6943,9 @@ fn run_5() -> ls::Result<()> {
                         ls::Value::Text("".to_owned()),
                         ls::Value::Text(" ".to_owned()),
                     ]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -6903,17 +6957,17 @@ fn run_5() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
@@ -6921,9 +6975,9 @@ fn run_5() -> ls::Result<()> {
                         ls::Value::Text("".to_owned()),
                         ls::Value::Text(" ".to_owned()),
                     ]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -6940,16 +6994,16 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text(" ".to_owned()),
                         ls::Value::Text("".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -6960,16 +7014,16 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text(" ".to_owned()),
                         ls::Value::Text("".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -6986,22 +7040,22 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -7012,22 +7066,22 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -7045,34 +7099,34 @@ fn run_5() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("".to_owned()),
                         ls::Value::Text("".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("".to_owned()),
                         ls::Value::Text("".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -7084,22 +7138,22 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -7110,22 +7164,22 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -7143,18 +7197,18 @@ fn run_5() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text(" ".to_owned()),
                         ls::Value::Text(" ".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -7166,18 +7220,18 @@ fn run_5() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text(" ".to_owned()),
                         ls::Value::Text(" ".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -7194,22 +7248,22 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -7220,22 +7274,22 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -7252,29 +7306,29 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("Hello, World!".to_owned()),
                         ls::Value::Text("Hello, World!".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("Hello, World!".to_owned()),
                         ls::Value::Text("Hello, World!".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -7287,24 +7341,24 @@ fn run_5() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -7316,24 +7370,24 @@ fn run_5() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::Value::Text(" ".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -7350,16 +7404,16 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("λ日本語😀".to_owned()),
                         ls::Value::Text("λ日本語😀".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -7370,16 +7424,16 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("Hello, World!".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("λ日本語😀".to_owned()),
                         ls::Value::Text("λ日本語😀".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -7397,24 +7451,24 @@ fn run_5() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -7426,24 +7480,24 @@ fn run_5() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::Value::Text("λ日本語😀".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -7460,29 +7514,29 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                         ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                     ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                         ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
         ];
@@ -7494,22 +7548,22 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -7520,22 +7574,22 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::Value::Text("é".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Available",
                             vec![],
@@ -7553,18 +7607,18 @@ fn run_5() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("é".to_owned()),
                         ls::Value::Text("é".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -7576,18 +7630,18 @@ fn run_5() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::Value::Text("".to_owned()),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::List(vec![
                         ls::Value::Text("é".to_owned()),
                         ls::Value::Text("é".to_owned()),
                     ]),
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Pending",
                             vec![],
@@ -7604,22 +7658,22 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -7630,22 +7684,22 @@ fn run_5() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Pet::Pet",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::Category::Category",
                             vec![
-                                ls::construct("Maybe::Nothing", vec![])?,
-                                ls::construct("Maybe::Nothing", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
+                                ls::construct("Maybe::Absent", vec![])?,
                             ],
                         )],
                     )?,
                     ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                    ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::PetStatus::Sold",
                             vec![],
@@ -7668,29 +7722,29 @@ fn run_5() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
@@ -7698,9 +7752,9 @@ fn run_5() -> ls::Result<()> {
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -7712,18 +7766,18 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -7734,22 +7788,25 @@ fn run_5() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -7761,38 +7818,38 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -7804,18 +7861,18 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -7827,24 +7884,24 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -7855,39 +7912,42 @@ fn run_5() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("Hello, World!".to_owned()),
                                 ls::Value::Text("Hello, World!".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -7898,16 +7958,16 @@ fn run_5() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("λ日本語😀".to_owned()),
                                 ls::Value::Text("λ日本語😀".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -7919,26 +7979,26 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(
                                 "a\u{a}\u{9}\"\\$\u{0}z".to_owned(),
                             )]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -7950,38 +8010,41 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -7993,18 +8056,18 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("é".to_owned()),
                                 ls::Value::Text("é".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -8015,22 +8078,22 @@ fn run_5() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -8074,29 +8137,29 @@ fn run_5() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
@@ -8104,9 +8167,9 @@ fn run_5() -> ls::Result<()> {
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -8118,18 +8181,18 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -8140,22 +8203,25 @@ fn run_5() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -8167,38 +8233,38 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("".to_owned()),
                                 ls::Value::Text("".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(" ".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -8210,18 +8276,18 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text(" ".to_owned()),
                                 ls::Value::Text(" ".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -8233,24 +8299,24 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("Hello, World!".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -8261,39 +8327,42 @@ fn run_5() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("Hello, World!".to_owned()),
                                 ls::Value::Text("Hello, World!".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text(" ".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("λ日本語😀".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -8304,16 +8373,16 @@ fn run_5() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("Hello, World!".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("λ日本語😀".to_owned()),
                                 ls::Value::Text("λ日本語😀".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -8325,26 +8394,26 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::Value::Text("λ日本語😀".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text(
                                 "a\u{a}\u{9}\"\\$\u{0}z".to_owned(),
                             )]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -8356,38 +8425,41 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                                 ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                             ls::Value::Text("é".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("é".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Available",
                                     vec![],
@@ -8399,18 +8471,18 @@ fn run_5() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::Value::Text("".to_owned()),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::List(vec![
                                 ls::Value::Text("é".to_owned()),
                                 ls::Value::Text("é".to_owned()),
                             ]),
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Pending",
                                     vec![],
@@ -8421,22 +8493,22 @@ fn run_5() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Pet::Pet",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::Category::Category",
                                     vec![
-                                        ls::construct("Maybe::Nothing", vec![])?,
-                                        ls::construct("Maybe::Nothing", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
+                                        ls::construct("Maybe::Absent", vec![])?,
                                     ],
                                 )],
                             )?,
                             ls::Value::List(vec![ls::Value::Text("".to_owned())]),
-                            ls::construct("Maybe::Just", vec![ls::Value::List(vec![])])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::List(vec![])])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::PetStatus::Sold",
                                     vec![],
@@ -8580,17 +8652,17 @@ fn search_case_5(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // StoreApi: "|a created order reads back| [native]
 // for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) => let _let0__sent
-// = let _letfield6__replacement = Maybe::Just(_input1) in match (_input0) {
+// = let _letfield6__replacement = Maybe::Present(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield0__id _matchfield1__petId
 // _matchfield2__quantity _matchfield3__shipDate _matchfield4__status _matchfield5__complete ->
 // lawtwin.petstore.model::type::Order::Order(_matchfield0__id, _matchfield1__petId,
 // _matchfield2__quantity, _letfield6__replacement, _matchfield4__status, _matchfield5__complete) }
-// in let _let1__it = attempt (placeOrder (Maybe::Just(_let0__sent))) in match (_let1__it) {
+// in let _let1__it = attempt (placeOrder (Maybe::Present(_let0__sent))) in match (_let1__it) {
 // Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
 // _match2__1___lawspecSelection0x0 -> let _let3__it = match (_match2__1___lawspecSelection0x0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield7__id _matchfield8__petId
 // _matchfield9__quantity _matchfield10__shipDate _matchfield11__status _matchfield12__complete ->
-// _matchfield7__id } in match (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+// _matchfield7__id } in match (_let3__it) { Maybe::Absent -> false; Maybe::Present
 // _match4__1___match__lawspecSelection0x0_0 -> (attempt (getOrderById
 // (_match4__1___match__lawspecSelection0x0_0)) == Either::Right(_match2__1___lawspecSelection0x0))
 // } } = true end for all
@@ -8622,7 +8694,7 @@ fn law_6(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
         {
             let left = {
                 let let_3 = {
-                    let let_3 = ls::construct("Maybe::Just", vec![input_1.clone()])?;
+                    let let_3 = ls::construct("Maybe::Present", vec![input_1.clone()])?;
                     let _ = &let_3;
                     match input_0.clone() {
                         ls::Value::Data(tag, fields)
@@ -8660,7 +8732,7 @@ fn law_6(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                         |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
                             let value = {
                                 let perform_argument_0 =
-                                    ls::construct("Maybe::Just", vec![let_3.clone()])?;
+                                    ls::construct("Maybe::Present", vec![let_3.clone()])?;
                                 let arguments = vec![perform_argument_0];
                                 let result = lawspec_abilities::lawtwin_petstore::perform_placeOrder(
                                     ctx,
@@ -8759,30 +8831,30 @@ fn law_6(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                     concat!(
                         "StoreApi: \"|a created order reads back| [nati",
                         "ve] | expect let _let0__sent = let _letfield6_",
-                        "_replacement = Maybe::Just(_input1) in match (",
-                        "_input0) { lawtwin.petstore.model::type::Order",
-                        "::Order _matchfield0__id _matchfield1__petId _",
-                        "matchfield2__quantity _matchfield3__shipDate _",
-                        "matchfield4__status _matchfield5__complete -> ",
-                        "lawtwin.petstore.model::type::Order::Order(_ma",
-                        "tchfield0__id, _matchfield1__petId, _matchfiel",
-                        "d2__quantity, _letfield6__replacement, _matchf",
-                        "ield4__status, _matchfield5__complete) } in le",
-                        "t _let1__it = attempt (placeOrder (Maybe::Just",
-                        "(_let0__sent))) in match (_let1__it) { Either:",
-                        ":Left _match2__0___lawspecSelection0x0 -> true",
-                        "; Either::Right _match2__1___lawspecSelection0",
-                        "x0 -> let _let3__it = match (_match2__1___laws",
-                        "pecSelection0x0) { lawtwin.petstore.model::typ",
-                        "e::Order::Order _matchfield7__id _matchfield8_",
-                        "_petId _matchfield9__quantity _matchfield10__s",
-                        "hipDate _matchfield11__status _matchfield12__c",
-                        "omplete -> _matchfield7__id } in match (_let3_",
-                        "_it) { Maybe::Nothing  -> false; Maybe::Just _",
-                        "match4__1___match__lawspecSelection0x0_0 -> (a",
-                        "ttempt (getOrderById (_match4__1___match__laws",
-                        "pecSelection0x0_0)) == Either::Right(_match2__",
-                        "1___lawspecSelection0x0)) } } = true",
+                        "_replacement = Maybe::Present(_input1) in matc",
+                        "h (_input0) { lawtwin.petstore.model::type::Or",
+                        "der::Order _matchfield0__id _matchfield1__petI",
+                        "d _matchfield2__quantity _matchfield3__shipDat",
+                        "e _matchfield4__status _matchfield5__complete ",
+                        "-> lawtwin.petstore.model::type::Order::Order(",
+                        "_matchfield0__id, _matchfield1__petId, _matchf",
+                        "ield2__quantity, _letfield6__replacement, _mat",
+                        "chfield4__status, _matchfield5__complete) } in",
+                        " let _let1__it = attempt (placeOrder (Maybe::P",
+                        "resent(_let0__sent))) in match (_let1__it) { E",
+                        "ither::Left _match2__0___lawspecSelection0x0 -",
+                        "> true; Either::Right _match2__1___lawspecSele",
+                        "ction0x0 -> let _let3__it = match (_match2__1_",
+                        "__lawspecSelection0x0) { lawtwin.petstore.mode",
+                        "l::type::Order::Order _matchfield7__id _matchf",
+                        "ield8__petId _matchfield9__quantity _matchfiel",
+                        "d10__shipDate _matchfield11__status _matchfiel",
+                        "d12__complete -> _matchfield7__id } in match (",
+                        "_let3__it) { Maybe::Absent  -> false; Maybe::P",
+                        "resent _match4__1___match__lawspecSelection0x0",
+                        "_0 -> (attempt (getOrderById (_match4__1___mat",
+                        "ch__lawspecSelection0x0_0)) == Either::Right(_",
+                        "match2__1___lawspecSelection0x0)) } } = true",
                     ),
                     left,
                     right,
@@ -8850,12 +8922,12 @@ fn run_6() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("0000-00-00T00:00:00Z".to_owned()),
@@ -8869,26 +8941,26 @@ fn run_6() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-2147483648i128).into())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::OrderStatus::Placed",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
             ls::Value::Text("8210-06-18T92:31:19.5396160Z".to_owned()),
@@ -8901,18 +8973,18 @@ fn run_6() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::OrderStatus::Approved",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                 ],
             ),
             ls::Value::Text("3643-92-40T78:65:71.6386626Z".to_owned()),
@@ -8925,21 +8997,21 @@ fn run_6() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::OrderStatus::Delivered",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("9851-48-74T73:99:70.275+96:97".to_owned()),
@@ -8953,23 +9025,23 @@ fn run_6() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(2147483647i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
             ls::Value::Text("4629-79-33T24:65:74-86:62".to_owned()),
@@ -8988,193 +9060,214 @@ fn run_6() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Placed",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Approved",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Delivered",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(2147483647i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Placed",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Approved",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Delivered",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                 ];
@@ -9347,17 +9440,17 @@ fn search_case_6(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // StoreApi: "|a created order reads back| [reference]
 // for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) => let _let0__sent
-// = let _letfield6__replacement = Maybe::Just(_input1) in match (_input0) {
+// = let _letfield6__replacement = Maybe::Present(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield0__id _matchfield1__petId
 // _matchfield2__quantity _matchfield3__shipDate _matchfield4__status _matchfield5__complete ->
 // lawtwin.petstore.model::type::Order::Order(_matchfield0__id, _matchfield1__petId,
 // _matchfield2__quantity, _letfield6__replacement, _matchfield4__status, _matchfield5__complete) }
-// in let _let1__it = attempt (placeOrder (Maybe::Just(_let0__sent))) in match (_let1__it) {
+// in let _let1__it = attempt (placeOrder (Maybe::Present(_let0__sent))) in match (_let1__it) {
 // Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
 // _match2__1___lawspecSelection0x0 -> let _let3__it = match (_match2__1___lawspecSelection0x0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield7__id _matchfield8__petId
 // _matchfield9__quantity _matchfield10__shipDate _matchfield11__status _matchfield12__complete ->
-// _matchfield7__id } in match (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+// _matchfield7__id } in match (_let3__it) { Maybe::Absent -> false; Maybe::Present
 // _match4__1___match__lawspecSelection0x0_0 -> (attempt (getOrderById
 // (_match4__1___match__lawspecSelection0x0_0)) == Either::Right(_match2__1___lawspecSelection0x0))
 // } } = true end for all
@@ -9382,7 +9475,7 @@ fn law_7(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
     {
         let left = {
             let let_2 = {
-                let let_2 = ls::construct("Maybe::Just", vec![input_1.clone()])?;
+                let let_2 = ls::construct("Maybe::Present", vec![input_1.clone()])?;
                 let _ = &let_2;
                 match input_0.clone() {
                     ls::Value::Data(tag, fields)
@@ -9420,7 +9513,7 @@ fn law_7(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                     |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
                         let value = {
                             let perform_argument_0 =
-                                ls::construct("Maybe::Just", vec![let_2.clone()])?;
+                                ls::construct("Maybe::Present", vec![let_2.clone()])?;
                             let arguments = vec![perform_argument_0];
                             let result = lawspec_abilities::lawtwin_petstore::perform_placeOrder(
                                 ctx,
@@ -9519,30 +9612,31 @@ fn law_7(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                 concat!(
                     "StoreApi: \"|a created order reads back| [refe",
                     "rence] | expect let _let0__sent = let _letfiel",
-                    "d6__replacement = Maybe::Just(_input1) in matc",
-                    "h (_input0) { lawtwin.petstore.model::type::Or",
-                    "der::Order _matchfield0__id _matchfield1__petI",
-                    "d _matchfield2__quantity _matchfield3__shipDat",
-                    "e _matchfield4__status _matchfield5__complete ",
-                    "-> lawtwin.petstore.model::type::Order::Order(",
-                    "_matchfield0__id, _matchfield1__petId, _matchf",
-                    "ield2__quantity, _letfield6__replacement, _mat",
-                    "chfield4__status, _matchfield5__complete) } in",
-                    " let _let1__it = attempt (placeOrder (Maybe::J",
-                    "ust(_let0__sent))) in match (_let1__it) { Eith",
-                    "er::Left _match2__0___lawspecSelection0x0 -> t",
-                    "rue; Either::Right _match2__1___lawspecSelecti",
-                    "on0x0 -> let _let3__it = match (_match2__1___l",
-                    "awspecSelection0x0) { lawtwin.petstore.model::",
-                    "type::Order::Order _matchfield7__id _matchfiel",
-                    "d8__petId _matchfield9__quantity _matchfield10",
-                    "__shipDate _matchfield11__status _matchfield12",
-                    "__complete -> _matchfield7__id } in match (_le",
-                    "t3__it) { Maybe::Nothing  -> false; Maybe::Jus",
-                    "t _match4__1___match__lawspecSelection0x0_0 ->",
-                    " (attempt (getOrderById (_match4__1___match__l",
-                    "awspecSelection0x0_0)) == Either::Right(_match",
-                    "2__1___lawspecSelection0x0)) } } = true",
+                    "d6__replacement = Maybe::Present(_input1) in m",
+                    "atch (_input0) { lawtwin.petstore.model::type:",
+                    ":Order::Order _matchfield0__id _matchfield1__p",
+                    "etId _matchfield2__quantity _matchfield3__ship",
+                    "Date _matchfield4__status _matchfield5__comple",
+                    "te -> lawtwin.petstore.model::type::Order::Ord",
+                    "er(_matchfield0__id, _matchfield1__petId, _mat",
+                    "chfield2__quantity, _letfield6__replacement, _",
+                    "matchfield4__status, _matchfield5__complete) }",
+                    " in let _let1__it = attempt (placeOrder (Maybe",
+                    "::Present(_let0__sent))) in match (_let1__it) ",
+                    "{ Either::Left _match2__0___lawspecSelection0x",
+                    "0 -> true; Either::Right _match2__1___lawspecS",
+                    "election0x0 -> let _let3__it = match (_match2_",
+                    "_1___lawspecSelection0x0) { lawtwin.petstore.m",
+                    "odel::type::Order::Order _matchfield7__id _mat",
+                    "chfield8__petId _matchfield9__quantity _matchf",
+                    "ield10__shipDate _matchfield11__status _matchf",
+                    "ield12__complete -> _matchfield7__id } in matc",
+                    "h (_let3__it) { Maybe::Absent  -> false; Maybe",
+                    "::Present _match4__1___match__lawspecSelection",
+                    "0x0_0 -> (attempt (getOrderById (_match4__1___",
+                    "match__lawspecSelection0x0_0)) == Either::Righ",
+                    "t(_match2__1___lawspecSelection0x0)) } } = tru",
+                    "e",
                 ),
                 left,
                 right,
@@ -9595,12 +9689,12 @@ fn run_7() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("0000-00-00T00:00:00Z".to_owned()),
@@ -9614,26 +9708,26 @@ fn run_7() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-2147483648i128).into())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::OrderStatus::Placed",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
             ls::Value::Text("8210-06-18T92:31:19.5396160Z".to_owned()),
@@ -9646,18 +9740,18 @@ fn run_7() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::OrderStatus::Approved",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                 ],
             ),
             ls::Value::Text("3643-92-40T78:65:71.6386626Z".to_owned()),
@@ -9670,21 +9764,21 @@ fn run_7() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::OrderStatus::Delivered",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("9851-48-74T73:99:70.275+96:97".to_owned()),
@@ -9698,23 +9792,23 @@ fn run_7() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(2147483647i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
             ls::Value::Text("4629-79-33T24:65:74-86:62".to_owned()),
@@ -9733,193 +9827,214 @@ fn run_7() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Placed",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Approved",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Delivered",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(2147483647i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Placed",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Approved",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Delivered",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                 ];
@@ -10095,17 +10210,17 @@ fn search_case_7(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // StoreApi: "|a deleted order is not found| [native]
 // for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) => let _let0__sent
-// = let _letfield6__replacement = Maybe::Just(_input1) in match (_input0) {
+// = let _letfield6__replacement = Maybe::Present(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield0__id _matchfield1__petId
 // _matchfield2__quantity _matchfield3__shipDate _matchfield4__status _matchfield5__complete ->
 // lawtwin.petstore.model::type::Order::Order(_matchfield0__id, _matchfield1__petId,
 // _matchfield2__quantity, _letfield6__replacement, _matchfield4__status, _matchfield5__complete) }
-// in let _let1__it = attempt (placeOrder (Maybe::Just(_let0__sent))) in match (_let1__it) {
+// in let _let1__it = attempt (placeOrder (Maybe::Present(_let0__sent))) in match (_let1__it) {
 // Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
 // _match2__1___lawspecSelection0x0 -> let _let3__it = match (_match2__1___lawspecSelection0x0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield7__id _matchfield8__petId
 // _matchfield9__quantity _matchfield10__shipDate _matchfield11__status _matchfield12__complete ->
-// _matchfield7__id } in match (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+// _matchfield7__id } in match (_let3__it) { Maybe::Absent -> false; Maybe::Present
 // _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone = attempt (deleteOrder
 // (_match4__1___match__lawspecSelection0x0_0)) in (attempt (getOrderById
 // (_match4__1___match__lawspecSelection0x0_0)) ==
@@ -10138,7 +10253,7 @@ fn law_8(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
         {
             let left = {
                 let let_3 = {
-                    let let_3 = ls::construct("Maybe::Just", vec![input_1.clone()])?;
+                    let let_3 = ls::construct("Maybe::Present", vec![input_1.clone()])?;
                     let _ = &let_3;
                     match input_0.clone() {
                         ls::Value::Data(tag, fields)
@@ -10176,7 +10291,7 @@ fn law_8(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                         |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
                             let value = {
                                 let perform_argument_0 =
-                                    ls::construct("Maybe::Just", vec![let_3.clone()])?;
+                                    ls::construct("Maybe::Present", vec![let_3.clone()])?;
                                 let arguments = vec![perform_argument_0];
                                 let result = lawspec_abilities::lawtwin_petstore::perform_placeOrder(
                                     ctx,
@@ -10304,33 +10419,33 @@ fn law_8(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                     concat!(
                         "StoreApi: \"|a deleted order is not found| [na",
                         "tive] | expect let _let0__sent = let _letfield",
-                        "6__replacement = Maybe::Just(_input1) in match",
-                        " (_input0) { lawtwin.petstore.model::type::Ord",
-                        "er::Order _matchfield0__id _matchfield1__petId",
-                        " _matchfield2__quantity _matchfield3__shipDate",
-                        " _matchfield4__status _matchfield5__complete -",
-                        "> lawtwin.petstore.model::type::Order::Order(_",
-                        "matchfield0__id, _matchfield1__petId, _matchfi",
-                        "eld2__quantity, _letfield6__replacement, _matc",
-                        "hfield4__status, _matchfield5__complete) } in ",
-                        "let _let1__it = attempt (placeOrder (Maybe::Ju",
-                        "st(_let0__sent))) in match (_let1__it) { Eithe",
-                        "r::Left _match2__0___lawspecSelection0x0 -> tr",
-                        "ue; Either::Right _match2__1___lawspecSelectio",
-                        "n0x0 -> let _let3__it = match (_match2__1___la",
-                        "wspecSelection0x0) { lawtwin.petstore.model::t",
-                        "ype::Order::Order _matchfield7__id _matchfield",
-                        "8__petId _matchfield9__quantity _matchfield10_",
-                        "_shipDate _matchfield11__status _matchfield12_",
-                        "_complete -> _matchfield7__id } in match (_let",
-                        "3__it) { Maybe::Nothing  -> false; Maybe::Just",
-                        " _match4__1___match__lawspecSelection0x0_0 -> ",
-                        "let _let5__gone = attempt (deleteOrder (_match",
-                        "4__1___match__lawspecSelection0x0_0)) in (atte",
-                        "mpt (getOrderById (_match4__1___match__lawspec",
-                        "Selection0x0_0)) == Either::Left(lawtwin.petst",
-                        "ore.model::type::ApiError::NotFound())) } } = ",
-                        "true",
+                        "6__replacement = Maybe::Present(_input1) in ma",
+                        "tch (_input0) { lawtwin.petstore.model::type::",
+                        "Order::Order _matchfield0__id _matchfield1__pe",
+                        "tId _matchfield2__quantity _matchfield3__shipD",
+                        "ate _matchfield4__status _matchfield5__complet",
+                        "e -> lawtwin.petstore.model::type::Order::Orde",
+                        "r(_matchfield0__id, _matchfield1__petId, _matc",
+                        "hfield2__quantity, _letfield6__replacement, _m",
+                        "atchfield4__status, _matchfield5__complete) } ",
+                        "in let _let1__it = attempt (placeOrder (Maybe:",
+                        ":Present(_let0__sent))) in match (_let1__it) {",
+                        " Either::Left _match2__0___lawspecSelection0x0",
+                        " -> true; Either::Right _match2__1___lawspecSe",
+                        "lection0x0 -> let _let3__it = match (_match2__",
+                        "1___lawspecSelection0x0) { lawtwin.petstore.mo",
+                        "del::type::Order::Order _matchfield7__id _matc",
+                        "hfield8__petId _matchfield9__quantity _matchfi",
+                        "eld10__shipDate _matchfield11__status _matchfi",
+                        "eld12__complete -> _matchfield7__id } in match",
+                        " (_let3__it) { Maybe::Absent  -> false; Maybe:",
+                        ":Present _match4__1___match__lawspecSelection0",
+                        "x0_0 -> let _let5__gone = attempt (deleteOrder",
+                        " (_match4__1___match__lawspecSelection0x0_0)) ",
+                        "in (attempt (getOrderById (_match4__1___match_",
+                        "_lawspecSelection0x0_0)) == Either::Left(lawtw",
+                        "in.petstore.model::type::ApiError::NotFound())",
+                        ") } } = true",
                     ),
                     left,
                     right,
@@ -10398,12 +10513,12 @@ fn run_8() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("0000-00-00T00:00:00Z".to_owned()),
@@ -10417,26 +10532,26 @@ fn run_8() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-2147483648i128).into())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::OrderStatus::Placed",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
             ls::Value::Text("8210-06-18T92:31:19.5396160Z".to_owned()),
@@ -10449,18 +10564,18 @@ fn run_8() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::OrderStatus::Approved",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                 ],
             ),
             ls::Value::Text("3643-92-40T78:65:71.6386626Z".to_owned()),
@@ -10473,21 +10588,21 @@ fn run_8() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::OrderStatus::Delivered",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("9851-48-74T73:99:70.275+96:97".to_owned()),
@@ -10501,23 +10616,23 @@ fn run_8() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(2147483647i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
             ls::Value::Text("4629-79-33T24:65:74-86:62".to_owned()),
@@ -10536,193 +10651,214 @@ fn run_8() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Placed",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Approved",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Delivered",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(2147483647i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Placed",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Approved",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Delivered",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                 ];
@@ -10895,17 +11031,17 @@ fn search_case_8(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // StoreApi: "|a deleted order is not found| [reference]
 // for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) => let _let0__sent
-// = let _letfield6__replacement = Maybe::Just(_input1) in match (_input0) {
+// = let _letfield6__replacement = Maybe::Present(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield0__id _matchfield1__petId
 // _matchfield2__quantity _matchfield3__shipDate _matchfield4__status _matchfield5__complete ->
 // lawtwin.petstore.model::type::Order::Order(_matchfield0__id, _matchfield1__petId,
 // _matchfield2__quantity, _letfield6__replacement, _matchfield4__status, _matchfield5__complete) }
-// in let _let1__it = attempt (placeOrder (Maybe::Just(_let0__sent))) in match (_let1__it) {
+// in let _let1__it = attempt (placeOrder (Maybe::Present(_let0__sent))) in match (_let1__it) {
 // Either::Left _match2__0___lawspecSelection0x0 -> true; Either::Right
 // _match2__1___lawspecSelection0x0 -> let _let3__it = match (_match2__1___lawspecSelection0x0) {
 // lawtwin.petstore.model::type::Order::Order _matchfield7__id _matchfield8__petId
 // _matchfield9__quantity _matchfield10__shipDate _matchfield11__status _matchfield12__complete ->
-// _matchfield7__id } in match (_let3__it) { Maybe::Nothing -> false; Maybe::Just
+// _matchfield7__id } in match (_let3__it) { Maybe::Absent -> false; Maybe::Present
 // _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone = attempt (deleteOrder
 // (_match4__1___match__lawspecSelection0x0_0)) in (attempt (getOrderById
 // (_match4__1___match__lawspecSelection0x0_0)) ==
@@ -10931,7 +11067,7 @@ fn law_9(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
     {
         let left = {
             let let_2 = {
-                let let_2 = ls::construct("Maybe::Just", vec![input_1.clone()])?;
+                let let_2 = ls::construct("Maybe::Present", vec![input_1.clone()])?;
                 let _ = &let_2;
                 match input_0.clone() {
                     ls::Value::Data(tag, fields)
@@ -10969,7 +11105,7 @@ fn law_9(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                     |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
                         let value = {
                             let perform_argument_0 =
-                                ls::construct("Maybe::Just", vec![let_2.clone()])?;
+                                ls::construct("Maybe::Present", vec![let_2.clone()])?;
                             let arguments = vec![perform_argument_0];
                             let result = lawspec_abilities::lawtwin_petstore::perform_placeOrder(
                                 ctx,
@@ -11097,33 +11233,33 @@ fn law_9(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                 concat!(
                     "StoreApi: \"|a deleted order is not found| [re",
                     "ference] | expect let _let0__sent = let _letfi",
-                    "eld6__replacement = Maybe::Just(_input1) in ma",
-                    "tch (_input0) { lawtwin.petstore.model::type::",
-                    "Order::Order _matchfield0__id _matchfield1__pe",
-                    "tId _matchfield2__quantity _matchfield3__shipD",
-                    "ate _matchfield4__status _matchfield5__complet",
-                    "e -> lawtwin.petstore.model::type::Order::Orde",
-                    "r(_matchfield0__id, _matchfield1__petId, _matc",
-                    "hfield2__quantity, _letfield6__replacement, _m",
-                    "atchfield4__status, _matchfield5__complete) } ",
-                    "in let _let1__it = attempt (placeOrder (Maybe:",
-                    ":Just(_let0__sent))) in match (_let1__it) { Ei",
-                    "ther::Left _match2__0___lawspecSelection0x0 ->",
-                    " true; Either::Right _match2__1___lawspecSelec",
-                    "tion0x0 -> let _let3__it = match (_match2__1__",
-                    "_lawspecSelection0x0) { lawtwin.petstore.model",
-                    "::type::Order::Order _matchfield7__id _matchfi",
-                    "eld8__petId _matchfield9__quantity _matchfield",
-                    "10__shipDate _matchfield11__status _matchfield",
-                    "12__complete -> _matchfield7__id } in match (_",
-                    "let3__it) { Maybe::Nothing  -> false; Maybe::J",
-                    "ust _match4__1___match__lawspecSelection0x0_0 ",
-                    "-> let _let5__gone = attempt (deleteOrder (_ma",
-                    "tch4__1___match__lawspecSelection0x0_0)) in (a",
-                    "ttempt (getOrderById (_match4__1___match__laws",
-                    "pecSelection0x0_0)) == Either::Left(lawtwin.pe",
-                    "tstore.model::type::ApiError::NotFound())) } }",
-                    " = true",
+                    "eld6__replacement = Maybe::Present(_input1) in",
+                    " match (_input0) { lawtwin.petstore.model::typ",
+                    "e::Order::Order _matchfield0__id _matchfield1_",
+                    "_petId _matchfield2__quantity _matchfield3__sh",
+                    "ipDate _matchfield4__status _matchfield5__comp",
+                    "lete -> lawtwin.petstore.model::type::Order::O",
+                    "rder(_matchfield0__id, _matchfield1__petId, _m",
+                    "atchfield2__quantity, _letfield6__replacement,",
+                    " _matchfield4__status, _matchfield5__complete)",
+                    " } in let _let1__it = attempt (placeOrder (May",
+                    "be::Present(_let0__sent))) in match (_let1__it",
+                    ") { Either::Left _match2__0___lawspecSelection",
+                    "0x0 -> true; Either::Right _match2__1___lawspe",
+                    "cSelection0x0 -> let _let3__it = match (_match",
+                    "2__1___lawspecSelection0x0) { lawtwin.petstore",
+                    ".model::type::Order::Order _matchfield7__id _m",
+                    "atchfield8__petId _matchfield9__quantity _matc",
+                    "hfield10__shipDate _matchfield11__status _matc",
+                    "hfield12__complete -> _matchfield7__id } in ma",
+                    "tch (_let3__it) { Maybe::Absent  -> false; May",
+                    "be::Present _match4__1___match__lawspecSelecti",
+                    "on0x0_0 -> let _let5__gone = attempt (deleteOr",
+                    "der (_match4__1___match__lawspecSelection0x0_0",
+                    ")) in (attempt (getOrderById (_match4__1___mat",
+                    "ch__lawspecSelection0x0_0)) == Either::Left(la",
+                    "wtwin.petstore.model::type::ApiError::NotFound",
+                    "())) } } = true",
                 ),
                 left,
                 right,
@@ -11176,12 +11312,12 @@ fn run_9() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("0000-00-00T00:00:00Z".to_owned()),
@@ -11195,26 +11331,26 @@ fn run_9() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-2147483648i128).into())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::OrderStatus::Placed",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
             ls::Value::Text("8210-06-18T92:31:19.5396160Z".to_owned()),
@@ -11227,18 +11363,18 @@ fn run_9() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::OrderStatus::Approved",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                 ],
             ),
             ls::Value::Text("3643-92-40T78:65:71.6386626Z".to_owned()),
@@ -11251,21 +11387,21 @@ fn run_9() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::construct_data(
                             "lawtwin.petstore.model::type::OrderStatus::Delivered",
                             vec![],
                         )],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("9851-48-74T73:99:70.275+96:97".to_owned()),
@@ -11279,23 +11415,23 @@ fn run_9() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::Order::Order",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(2147483647i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                 ],
             ),
             ls::Value::Text("4629-79-33T24:65:74-86:62".to_owned()),
@@ -11314,193 +11450,214 @@ fn run_9() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Placed",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Approved",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Delivered",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(2147483647i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Placed",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Approved",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::construct_data(
                                     "lawtwin.petstore.model::type::OrderStatus::Delivered",
                                     vec![],
                                 )],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(false)])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(false)])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::Order::Order",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Bool(true)])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Bool(true)])?,
                         ],
                     ),
                 ];
@@ -11676,21 +11833,22 @@ fn search_case_9(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // UserApi: "|a created user reads back| [native]
 // for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let _let0__sent = let
-// _letfield8__replacement = Maybe::Just(_input1) in match (_input0) {
+// _letfield8__replacement = Maybe::Present(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::User::User _matchfield0__id _matchfield1__username
 // _matchfield2__firstName _matchfield3__lastName _matchfield4__email _matchfield5__password
 // _matchfield6__phone _matchfield7__userStatus ->
 // lawtwin.petstore.model::type::User::User(_matchfield0__id, _letfield8__replacement,
 // _matchfield2__firstName, _matchfield3__lastName, _matchfield4__email, _matchfield5__password,
 // _matchfield6__phone, _matchfield7__userStatus) } in let _let1__it = attempt (createUser
-// (Maybe::Just(_let0__sent))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0
-// -> true; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = match (_let0__sent) {
-// lawtwin.petstore.model::type::User::User _matchfield9__id _matchfield10__username
-// _matchfield11__firstName _matchfield12__lastName _matchfield13__email _matchfield14__password
-// _matchfield15__phone _matchfield16__userStatus -> _matchfield10__username } in match (_let3__it)
-// { Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> (attempt
-// (getUserByName (_match4__1___match__lawspecSelection0x0_0)) ==
-// Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for all
+// (Maybe::Present(_let0__sent))) in match (_let1__it) { Either::Left
+// _match2__0___lawspecSelection0x0 -> true; Either::Right _match2__1___lawspecSelection0x0 -> let
+// _let3__it = match (_let0__sent) { lawtwin.petstore.model::type::User::User _matchfield9__id
+// _matchfield10__username _matchfield11__firstName _matchfield12__lastName _matchfield13__email
+// _matchfield14__password _matchfield15__phone _matchfield16__userStatus -> _matchfield10__username
+// } in match (_let3__it) { Maybe::Absent -> false; Maybe::Present
+// _match4__1___match__lawspecSelection0x0_0 -> (attempt (getUserByName
+// (_match4__1___match__lawspecSelection0x0_0)) == Either::Right(_match2__1___lawspecSelection0x0))
+// } } = true end for all
 fn law_10(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let input_0 = lawspec_schema::schema()?.validate_with_context(
         input_0,
@@ -11719,7 +11877,7 @@ fn law_10(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
         {
             let left = {
                 let let_3 = {
-                    let let_3 = ls::construct("Maybe::Just", vec![input_1.clone()])?;
+                    let let_3 = ls::construct("Maybe::Present", vec![input_1.clone()])?;
                     let _ = &let_3;
                     match input_0.clone() {
                         ls::Value::Data(tag, fields)
@@ -11761,7 +11919,7 @@ fn law_10(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                         |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
                             let value = {
                                 let perform_argument_0 =
-                                    ls::construct("Maybe::Just", vec![let_3.clone()])?;
+                                    ls::construct("Maybe::Present", vec![let_3.clone()])?;
                                 let arguments = vec![perform_argument_0];
                                 let result = lawspec_abilities::lawtwin_petstore::perform_createUser(
                                     ctx,
@@ -11862,33 +12020,33 @@ fn law_10(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                     concat!(
                         "UserApi: \"|a created user reads back| [native",
                         "] | expect let _let0__sent = let _letfield8__r",
-                        "eplacement = Maybe::Just(_input1) in match (_i",
-                        "nput0) { lawtwin.petstore.model::type::User::U",
-                        "ser _matchfield0__id _matchfield1__username _m",
-                        "atchfield2__firstName _matchfield3__lastName _",
-                        "matchfield4__email _matchfield5__password _mat",
-                        "chfield6__phone _matchfield7__userStatus -> la",
-                        "wtwin.petstore.model::type::User::User(_matchf",
-                        "ield0__id, _letfield8__replacement, _matchfiel",
-                        "d2__firstName, _matchfield3__lastName, _matchf",
-                        "ield4__email, _matchfield5__password, _matchfi",
-                        "eld6__phone, _matchfield7__userStatus) } in le",
-                        "t _let1__it = attempt (createUser (Maybe::Just",
-                        "(_let0__sent))) in match (_let1__it) { Either:",
-                        ":Left _match2__0___lawspecSelection0x0 -> true",
-                        "; Either::Right _match2__1___lawspecSelection0",
-                        "x0 -> let _let3__it = match (_let0__sent) { la",
-                        "wtwin.petstore.model::type::User::User _matchf",
-                        "ield9__id _matchfield10__username _matchfield1",
-                        "1__firstName _matchfield12__lastName _matchfie",
-                        "ld13__email _matchfield14__password _matchfiel",
-                        "d15__phone _matchfield16__userStatus -> _match",
-                        "field10__username } in match (_let3__it) { May",
-                        "be::Nothing  -> false; Maybe::Just _match4__1_",
-                        "__match__lawspecSelection0x0_0 -> (attempt (ge",
-                        "tUserByName (_match4__1___match__lawspecSelect",
-                        "ion0x0_0)) == Either::Right(_match2__1___lawsp",
-                        "ecSelection0x0)) } } = true",
+                        "eplacement = Maybe::Present(_input1) in match ",
+                        "(_input0) { lawtwin.petstore.model::type::User",
+                        "::User _matchfield0__id _matchfield1__username",
+                        " _matchfield2__firstName _matchfield3__lastNam",
+                        "e _matchfield4__email _matchfield5__password _",
+                        "matchfield6__phone _matchfield7__userStatus ->",
+                        " lawtwin.petstore.model::type::User::User(_mat",
+                        "chfield0__id, _letfield8__replacement, _matchf",
+                        "ield2__firstName, _matchfield3__lastName, _mat",
+                        "chfield4__email, _matchfield5__password, _matc",
+                        "hfield6__phone, _matchfield7__userStatus) } in",
+                        " let _let1__it = attempt (createUser (Maybe::P",
+                        "resent(_let0__sent))) in match (_let1__it) { E",
+                        "ither::Left _match2__0___lawspecSelection0x0 -",
+                        "> true; Either::Right _match2__1___lawspecSele",
+                        "ction0x0 -> let _let3__it = match (_let0__sent",
+                        ") { lawtwin.petstore.model::type::User::User _",
+                        "matchfield9__id _matchfield10__username _match",
+                        "field11__firstName _matchfield12__lastName _ma",
+                        "tchfield13__email _matchfield14__password _mat",
+                        "chfield15__phone _matchfield16__userStatus -> ",
+                        "_matchfield10__username } in match (_let3__it)",
+                        " { Maybe::Absent  -> false; Maybe::Present _ma",
+                        "tch4__1___match__lawspecSelection0x0_0 -> (att",
+                        "empt (getUserByName (_match4__1___match__lawsp",
+                        "ecSelection0x0_0)) == Either::Right(_match2__1",
+                        "___lawspecSelection0x0)) } } = true",
                     ),
                     left,
                     right,
@@ -11939,14 +12097,14 @@ fn run_10() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("".to_owned()),
@@ -11960,17 +12118,17 @@ fn run_10() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::User::User",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-2147483648i128).into())],
                     )?,
                 ],
@@ -11985,14 +12143,14 @@ fn run_10() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ],
             ),
             ls::Value::Text("Hello, World!".to_owned()),
@@ -12005,32 +12163,32 @@ fn run_10() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ],
             ),
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -12044,35 +12202,35 @@ fn run_10() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::User::User",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(2147483647i128.into())],
                     )?,
                 ],
@@ -12087,32 +12245,32 @@ fn run_10() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("é".to_owned()),
@@ -12126,17 +12284,17 @@ fn run_10() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::User::User",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-2147483648i128).into())],
                     )?,
                 ],
@@ -12151,14 +12309,14 @@ fn run_10() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ],
             ),
             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
@@ -12171,32 +12329,32 @@ fn run_10() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ],
             ),
             ls::Value::Text("".to_owned()),
@@ -12215,31 +12373,31 @@ fn run_10() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
                         ],
@@ -12248,17 +12406,17 @@ fn run_10() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                         ],
@@ -12266,67 +12424,73 @@ fn run_10() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(2147483647i128.into())],
                             )?,
                         ],
@@ -12334,49 +12498,67 @@ fn run_10() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
                         ],
@@ -12385,17 +12567,17 @@ fn run_10() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                         ],
@@ -12403,32 +12585,38 @@ fn run_10() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                         ],
                     ),
                 ];
@@ -12565,21 +12753,22 @@ fn search_case_10(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // UserApi: "|a created user reads back| [reference]
 // for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let _let0__sent = let
-// _letfield8__replacement = Maybe::Just(_input1) in match (_input0) {
+// _letfield8__replacement = Maybe::Present(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::User::User _matchfield0__id _matchfield1__username
 // _matchfield2__firstName _matchfield3__lastName _matchfield4__email _matchfield5__password
 // _matchfield6__phone _matchfield7__userStatus ->
 // lawtwin.petstore.model::type::User::User(_matchfield0__id, _letfield8__replacement,
 // _matchfield2__firstName, _matchfield3__lastName, _matchfield4__email, _matchfield5__password,
 // _matchfield6__phone, _matchfield7__userStatus) } in let _let1__it = attempt (createUser
-// (Maybe::Just(_let0__sent))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0
-// -> true; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = match (_let0__sent) {
-// lawtwin.petstore.model::type::User::User _matchfield9__id _matchfield10__username
-// _matchfield11__firstName _matchfield12__lastName _matchfield13__email _matchfield14__password
-// _matchfield15__phone _matchfield16__userStatus -> _matchfield10__username } in match (_let3__it)
-// { Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> (attempt
-// (getUserByName (_match4__1___match__lawspecSelection0x0_0)) ==
-// Either::Right(_match2__1___lawspecSelection0x0)) } } = true end for all
+// (Maybe::Present(_let0__sent))) in match (_let1__it) { Either::Left
+// _match2__0___lawspecSelection0x0 -> true; Either::Right _match2__1___lawspecSelection0x0 -> let
+// _let3__it = match (_let0__sent) { lawtwin.petstore.model::type::User::User _matchfield9__id
+// _matchfield10__username _matchfield11__firstName _matchfield12__lastName _matchfield13__email
+// _matchfield14__password _matchfield15__phone _matchfield16__userStatus -> _matchfield10__username
+// } in match (_let3__it) { Maybe::Absent -> false; Maybe::Present
+// _match4__1___match__lawspecSelection0x0_0 -> (attempt (getUserByName
+// (_match4__1___match__lawspecSelection0x0_0)) == Either::Right(_match2__1___lawspecSelection0x0))
+// } } = true end for all
 fn law_11(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let shared_reference = std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
     let installing = vec![
@@ -12601,7 +12790,7 @@ fn law_11(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
     {
         let left = {
             let let_2 = {
-                let let_2 = ls::construct("Maybe::Just", vec![input_1.clone()])?;
+                let let_2 = ls::construct("Maybe::Present", vec![input_1.clone()])?;
                 let _ = &let_2;
                 match input_0.clone() {
                     ls::Value::Data(tag, fields)
@@ -12643,7 +12832,7 @@ fn law_11(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                     |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
                         let value = {
                             let perform_argument_0 =
-                                ls::construct("Maybe::Just", vec![let_2.clone()])?;
+                                ls::construct("Maybe::Present", vec![let_2.clone()])?;
                             let arguments = vec![perform_argument_0];
                             let result = lawspec_abilities::lawtwin_petstore::perform_createUser(
                                 ctx,
@@ -12744,33 +12933,33 @@ fn law_11(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                 concat!(
                     "UserApi: \"|a created user reads back| [refere",
                     "nce] | expect let _let0__sent = let _letfield8",
-                    "__replacement = Maybe::Just(_input1) in match ",
-                    "(_input0) { lawtwin.petstore.model::type::User",
-                    "::User _matchfield0__id _matchfield1__username",
-                    " _matchfield2__firstName _matchfield3__lastNam",
-                    "e _matchfield4__email _matchfield5__password _",
-                    "matchfield6__phone _matchfield7__userStatus ->",
-                    " lawtwin.petstore.model::type::User::User(_mat",
-                    "chfield0__id, _letfield8__replacement, _matchf",
-                    "ield2__firstName, _matchfield3__lastName, _mat",
-                    "chfield4__email, _matchfield5__password, _matc",
-                    "hfield6__phone, _matchfield7__userStatus) } in",
-                    " let _let1__it = attempt (createUser (Maybe::J",
-                    "ust(_let0__sent))) in match (_let1__it) { Eith",
-                    "er::Left _match2__0___lawspecSelection0x0 -> t",
-                    "rue; Either::Right _match2__1___lawspecSelecti",
-                    "on0x0 -> let _let3__it = match (_let0__sent) {",
-                    " lawtwin.petstore.model::type::User::User _mat",
-                    "chfield9__id _matchfield10__username _matchfie",
-                    "ld11__firstName _matchfield12__lastName _match",
-                    "field13__email _matchfield14__password _matchf",
-                    "ield15__phone _matchfield16__userStatus -> _ma",
-                    "tchfield10__username } in match (_let3__it) { ",
-                    "Maybe::Nothing  -> false; Maybe::Just _match4_",
-                    "_1___match__lawspecSelection0x0_0 -> (attempt ",
-                    "(getUserByName (_match4__1___match__lawspecSel",
-                    "ection0x0_0)) == Either::Right(_match2__1___la",
-                    "wspecSelection0x0)) } } = true",
+                    "__replacement = Maybe::Present(_input1) in mat",
+                    "ch (_input0) { lawtwin.petstore.model::type::U",
+                    "ser::User _matchfield0__id _matchfield1__usern",
+                    "ame _matchfield2__firstName _matchfield3__last",
+                    "Name _matchfield4__email _matchfield5__passwor",
+                    "d _matchfield6__phone _matchfield7__userStatus",
+                    " -> lawtwin.petstore.model::type::User::User(_",
+                    "matchfield0__id, _letfield8__replacement, _mat",
+                    "chfield2__firstName, _matchfield3__lastName, _",
+                    "matchfield4__email, _matchfield5__password, _m",
+                    "atchfield6__phone, _matchfield7__userStatus) }",
+                    " in let _let1__it = attempt (createUser (Maybe",
+                    "::Present(_let0__sent))) in match (_let1__it) ",
+                    "{ Either::Left _match2__0___lawspecSelection0x",
+                    "0 -> true; Either::Right _match2__1___lawspecS",
+                    "election0x0 -> let _let3__it = match (_let0__s",
+                    "ent) { lawtwin.petstore.model::type::User::Use",
+                    "r _matchfield9__id _matchfield10__username _ma",
+                    "tchfield11__firstName _matchfield12__lastName ",
+                    "_matchfield13__email _matchfield14__password _",
+                    "matchfield15__phone _matchfield16__userStatus ",
+                    "-> _matchfield10__username } in match (_let3__",
+                    "it) { Maybe::Absent  -> false; Maybe::Present ",
+                    "_match4__1___match__lawspecSelection0x0_0 -> (",
+                    "attempt (getUserByName (_match4__1___match__la",
+                    "wspecSelection0x0_0)) == Either::Right(_match2",
+                    "__1___lawspecSelection0x0)) } } = true",
                 ),
                 left,
                 right,
@@ -12806,14 +12995,14 @@ fn run_11() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("".to_owned()),
@@ -12827,17 +13016,17 @@ fn run_11() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::User::User",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-2147483648i128).into())],
                     )?,
                 ],
@@ -12852,14 +13041,14 @@ fn run_11() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ],
             ),
             ls::Value::Text("Hello, World!".to_owned()),
@@ -12872,32 +13061,32 @@ fn run_11() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ],
             ),
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -12911,35 +13100,35 @@ fn run_11() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::User::User",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(2147483647i128.into())],
                     )?,
                 ],
@@ -12954,32 +13143,32 @@ fn run_11() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("é".to_owned()),
@@ -12993,17 +13182,17 @@ fn run_11() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::User::User",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-2147483648i128).into())],
                     )?,
                 ],
@@ -13018,14 +13207,14 @@ fn run_11() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ],
             ),
             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
@@ -13038,32 +13227,32 @@ fn run_11() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ],
             ),
             ls::Value::Text("".to_owned()),
@@ -13082,31 +13271,31 @@ fn run_11() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
                         ],
@@ -13115,17 +13304,17 @@ fn run_11() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                         ],
@@ -13133,67 +13322,73 @@ fn run_11() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(2147483647i128.into())],
                             )?,
                         ],
@@ -13201,49 +13396,67 @@ fn run_11() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
                         ],
@@ -13252,17 +13465,17 @@ fn run_11() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                         ],
@@ -13270,32 +13483,38 @@ fn run_11() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                         ],
                     ),
                 ];
@@ -13432,21 +13651,22 @@ fn search_case_11(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // UserApi: "|a deleted user is not found| [native]
 // for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let _let0__sent = let
-// _letfield8__replacement = Maybe::Just(_input1) in match (_input0) {
+// _letfield8__replacement = Maybe::Present(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::User::User _matchfield0__id _matchfield1__username
 // _matchfield2__firstName _matchfield3__lastName _matchfield4__email _matchfield5__password
 // _matchfield6__phone _matchfield7__userStatus ->
 // lawtwin.petstore.model::type::User::User(_matchfield0__id, _letfield8__replacement,
 // _matchfield2__firstName, _matchfield3__lastName, _matchfield4__email, _matchfield5__password,
 // _matchfield6__phone, _matchfield7__userStatus) } in let _let1__it = attempt (createUser
-// (Maybe::Just(_let0__sent))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0
-// -> true; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = match (_let0__sent) {
-// lawtwin.petstore.model::type::User::User _matchfield9__id _matchfield10__username
-// _matchfield11__firstName _matchfield12__lastName _matchfield13__email _matchfield14__password
-// _matchfield15__phone _matchfield16__userStatus -> _matchfield10__username } in match (_let3__it)
-// { Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let
-// _let5__gone = attempt (deleteUser (_match4__1___match__lawspecSelection0x0_0)) in (attempt
-// (getUserByName (_match4__1___match__lawspecSelection0x0_0)) ==
+// (Maybe::Present(_let0__sent))) in match (_let1__it) { Either::Left
+// _match2__0___lawspecSelection0x0 -> true; Either::Right _match2__1___lawspecSelection0x0 -> let
+// _let3__it = match (_let0__sent) { lawtwin.petstore.model::type::User::User _matchfield9__id
+// _matchfield10__username _matchfield11__firstName _matchfield12__lastName _matchfield13__email
+// _matchfield14__password _matchfield15__phone _matchfield16__userStatus -> _matchfield10__username
+// } in match (_let3__it) { Maybe::Absent -> false; Maybe::Present
+// _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone = attempt (deleteUser
+// (_match4__1___match__lawspecSelection0x0_0)) in (attempt (getUserByName
+// (_match4__1___match__lawspecSelection0x0_0)) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
 fn law_12(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let input_0 = lawspec_schema::schema()?.validate_with_context(
@@ -13476,7 +13696,7 @@ fn law_12(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
         {
             let left = {
                 let let_3 = {
-                    let let_3 = ls::construct("Maybe::Just", vec![input_1.clone()])?;
+                    let let_3 = ls::construct("Maybe::Present", vec![input_1.clone()])?;
                     let _ = &let_3;
                     match input_0.clone() {
                         ls::Value::Data(tag, fields)
@@ -13518,7 +13738,7 @@ fn law_12(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                         |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
                             let value = {
                                 let perform_argument_0 =
-                                    ls::construct("Maybe::Just", vec![let_3.clone()])?;
+                                    ls::construct("Maybe::Present", vec![let_3.clone()])?;
                                 let arguments = vec![perform_argument_0];
                                 let result = lawspec_abilities::lawtwin_petstore::perform_createUser(
                                     ctx,
@@ -13648,35 +13868,36 @@ fn law_12(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                     concat!(
                         "UserApi: \"|a deleted user is not found| [nati",
                         "ve] | expect let _let0__sent = let _letfield8_",
-                        "_replacement = Maybe::Just(_input1) in match (",
-                        "_input0) { lawtwin.petstore.model::type::User:",
-                        ":User _matchfield0__id _matchfield1__username ",
-                        "_matchfield2__firstName _matchfield3__lastName",
-                        " _matchfield4__email _matchfield5__password _m",
-                        "atchfield6__phone _matchfield7__userStatus -> ",
-                        "lawtwin.petstore.model::type::User::User(_matc",
-                        "hfield0__id, _letfield8__replacement, _matchfi",
-                        "eld2__firstName, _matchfield3__lastName, _matc",
-                        "hfield4__email, _matchfield5__password, _match",
-                        "field6__phone, _matchfield7__userStatus) } in ",
-                        "let _let1__it = attempt (createUser (Maybe::Ju",
-                        "st(_let0__sent))) in match (_let1__it) { Eithe",
-                        "r::Left _match2__0___lawspecSelection0x0 -> tr",
-                        "ue; Either::Right _match2__1___lawspecSelectio",
-                        "n0x0 -> let _let3__it = match (_let0__sent) { ",
-                        "lawtwin.petstore.model::type::User::User _matc",
-                        "hfield9__id _matchfield10__username _matchfiel",
-                        "d11__firstName _matchfield12__lastName _matchf",
-                        "ield13__email _matchfield14__password _matchfi",
-                        "eld15__phone _matchfield16__userStatus -> _mat",
-                        "chfield10__username } in match (_let3__it) { M",
-                        "aybe::Nothing  -> false; Maybe::Just _match4__",
-                        "1___match__lawspecSelection0x0_0 -> let _let5_",
-                        "_gone = attempt (deleteUser (_match4__1___matc",
-                        "h__lawspecSelection0x0_0)) in (attempt (getUse",
-                        "rByName (_match4__1___match__lawspecSelection0",
-                        "x0_0)) == Either::Left(lawtwin.petstore.model:",
-                        ":type::ApiError::NotFound())) } } = true",
+                        "_replacement = Maybe::Present(_input1) in matc",
+                        "h (_input0) { lawtwin.petstore.model::type::Us",
+                        "er::User _matchfield0__id _matchfield1__userna",
+                        "me _matchfield2__firstName _matchfield3__lastN",
+                        "ame _matchfield4__email _matchfield5__password",
+                        " _matchfield6__phone _matchfield7__userStatus ",
+                        "-> lawtwin.petstore.model::type::User::User(_m",
+                        "atchfield0__id, _letfield8__replacement, _matc",
+                        "hfield2__firstName, _matchfield3__lastName, _m",
+                        "atchfield4__email, _matchfield5__password, _ma",
+                        "tchfield6__phone, _matchfield7__userStatus) } ",
+                        "in let _let1__it = attempt (createUser (Maybe:",
+                        ":Present(_let0__sent))) in match (_let1__it) {",
+                        " Either::Left _match2__0___lawspecSelection0x0",
+                        " -> true; Either::Right _match2__1___lawspecSe",
+                        "lection0x0 -> let _let3__it = match (_let0__se",
+                        "nt) { lawtwin.petstore.model::type::User::User",
+                        " _matchfield9__id _matchfield10__username _mat",
+                        "chfield11__firstName _matchfield12__lastName _",
+                        "matchfield13__email _matchfield14__password _m",
+                        "atchfield15__phone _matchfield16__userStatus -",
+                        "> _matchfield10__username } in match (_let3__i",
+                        "t) { Maybe::Absent  -> false; Maybe::Present _",
+                        "match4__1___match__lawspecSelection0x0_0 -> le",
+                        "t _let5__gone = attempt (deleteUser (_match4__",
+                        "1___match__lawspecSelection0x0_0)) in (attempt",
+                        " (getUserByName (_match4__1___match__lawspecSe",
+                        "lection0x0_0)) == Either::Left(lawtwin.petstor",
+                        "e.model::type::ApiError::NotFound())) } } = tr",
+                        "ue",
                     ),
                     left,
                     right,
@@ -13727,14 +13948,14 @@ fn run_12() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("".to_owned()),
@@ -13748,17 +13969,17 @@ fn run_12() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::User::User",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-2147483648i128).into())],
                     )?,
                 ],
@@ -13773,14 +13994,14 @@ fn run_12() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ],
             ),
             ls::Value::Text("Hello, World!".to_owned()),
@@ -13793,32 +14014,32 @@ fn run_12() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ],
             ),
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -13832,35 +14053,35 @@ fn run_12() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::User::User",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(2147483647i128.into())],
                     )?,
                 ],
@@ -13875,32 +14096,32 @@ fn run_12() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("é".to_owned()),
@@ -13914,17 +14135,17 @@ fn run_12() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::User::User",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-2147483648i128).into())],
                     )?,
                 ],
@@ -13939,14 +14160,14 @@ fn run_12() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ],
             ),
             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
@@ -13959,32 +14180,32 @@ fn run_12() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ],
             ),
             ls::Value::Text("".to_owned()),
@@ -14003,31 +14224,31 @@ fn run_12() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
                         ],
@@ -14036,17 +14257,17 @@ fn run_12() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                         ],
@@ -14054,67 +14275,73 @@ fn run_12() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(2147483647i128.into())],
                             )?,
                         ],
@@ -14122,49 +14349,67 @@ fn run_12() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
                         ],
@@ -14173,17 +14418,17 @@ fn run_12() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                         ],
@@ -14191,32 +14436,38 @@ fn run_12() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                         ],
                     ),
                 ];
@@ -14353,21 +14604,22 @@ fn search_case_12(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // UserApi: "|a deleted user is not found| [reference]
 // for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let _let0__sent = let
-// _letfield8__replacement = Maybe::Just(_input1) in match (_input0) {
+// _letfield8__replacement = Maybe::Present(_input1) in match (_input0) {
 // lawtwin.petstore.model::type::User::User _matchfield0__id _matchfield1__username
 // _matchfield2__firstName _matchfield3__lastName _matchfield4__email _matchfield5__password
 // _matchfield6__phone _matchfield7__userStatus ->
 // lawtwin.petstore.model::type::User::User(_matchfield0__id, _letfield8__replacement,
 // _matchfield2__firstName, _matchfield3__lastName, _matchfield4__email, _matchfield5__password,
 // _matchfield6__phone, _matchfield7__userStatus) } in let _let1__it = attempt (createUser
-// (Maybe::Just(_let0__sent))) in match (_let1__it) { Either::Left _match2__0___lawspecSelection0x0
-// -> true; Either::Right _match2__1___lawspecSelection0x0 -> let _let3__it = match (_let0__sent) {
-// lawtwin.petstore.model::type::User::User _matchfield9__id _matchfield10__username
-// _matchfield11__firstName _matchfield12__lastName _matchfield13__email _matchfield14__password
-// _matchfield15__phone _matchfield16__userStatus -> _matchfield10__username } in match (_let3__it)
-// { Maybe::Nothing -> false; Maybe::Just _match4__1___match__lawspecSelection0x0_0 -> let
-// _let5__gone = attempt (deleteUser (_match4__1___match__lawspecSelection0x0_0)) in (attempt
-// (getUserByName (_match4__1___match__lawspecSelection0x0_0)) ==
+// (Maybe::Present(_let0__sent))) in match (_let1__it) { Either::Left
+// _match2__0___lawspecSelection0x0 -> true; Either::Right _match2__1___lawspecSelection0x0 -> let
+// _let3__it = match (_let0__sent) { lawtwin.petstore.model::type::User::User _matchfield9__id
+// _matchfield10__username _matchfield11__firstName _matchfield12__lastName _matchfield13__email
+// _matchfield14__password _matchfield15__phone _matchfield16__userStatus -> _matchfield10__username
+// } in match (_let3__it) { Maybe::Absent -> false; Maybe::Present
+// _match4__1___match__lawspecSelection0x0_0 -> let _let5__gone = attempt (deleteUser
+// (_match4__1___match__lawspecSelection0x0_0)) in (attempt (getUserByName
+// (_match4__1___match__lawspecSelection0x0_0)) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
 fn law_13(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let shared_reference = std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
@@ -14390,7 +14642,7 @@ fn law_13(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
     {
         let left = {
             let let_2 = {
-                let let_2 = ls::construct("Maybe::Just", vec![input_1.clone()])?;
+                let let_2 = ls::construct("Maybe::Present", vec![input_1.clone()])?;
                 let _ = &let_2;
                 match input_0.clone() {
                     ls::Value::Data(tag, fields)
@@ -14432,7 +14684,7 @@ fn law_13(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                     |ctx: &mut ls::Context| -> ls::Result<ls::Value> {
                         let value = {
                             let perform_argument_0 =
-                                ls::construct("Maybe::Just", vec![let_2.clone()])?;
+                                ls::construct("Maybe::Present", vec![let_2.clone()])?;
                             let arguments = vec![perform_argument_0];
                             let result = lawspec_abilities::lawtwin_petstore::perform_createUser(
                                 ctx,
@@ -14562,35 +14814,36 @@ fn law_13(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                 concat!(
                     "UserApi: \"|a deleted user is not found| [refe",
                     "rence] | expect let _let0__sent = let _letfiel",
-                    "d8__replacement = Maybe::Just(_input1) in matc",
-                    "h (_input0) { lawtwin.petstore.model::type::Us",
-                    "er::User _matchfield0__id _matchfield1__userna",
-                    "me _matchfield2__firstName _matchfield3__lastN",
-                    "ame _matchfield4__email _matchfield5__password",
-                    " _matchfield6__phone _matchfield7__userStatus ",
-                    "-> lawtwin.petstore.model::type::User::User(_m",
-                    "atchfield0__id, _letfield8__replacement, _matc",
-                    "hfield2__firstName, _matchfield3__lastName, _m",
-                    "atchfield4__email, _matchfield5__password, _ma",
-                    "tchfield6__phone, _matchfield7__userStatus) } ",
-                    "in let _let1__it = attempt (createUser (Maybe:",
-                    ":Just(_let0__sent))) in match (_let1__it) { Ei",
-                    "ther::Left _match2__0___lawspecSelection0x0 ->",
-                    " true; Either::Right _match2__1___lawspecSelec",
-                    "tion0x0 -> let _let3__it = match (_let0__sent)",
-                    " { lawtwin.petstore.model::type::User::User _m",
-                    "atchfield9__id _matchfield10__username _matchf",
-                    "ield11__firstName _matchfield12__lastName _mat",
-                    "chfield13__email _matchfield14__password _matc",
-                    "hfield15__phone _matchfield16__userStatus -> _",
-                    "matchfield10__username } in match (_let3__it) ",
-                    "{ Maybe::Nothing  -> false; Maybe::Just _match",
-                    "4__1___match__lawspecSelection0x0_0 -> let _le",
-                    "t5__gone = attempt (deleteUser (_match4__1___m",
-                    "atch__lawspecSelection0x0_0)) in (attempt (get",
-                    "UserByName (_match4__1___match__lawspecSelecti",
-                    "on0x0_0)) == Either::Left(lawtwin.petstore.mod",
-                    "el::type::ApiError::NotFound())) } } = true",
+                    "d8__replacement = Maybe::Present(_input1) in m",
+                    "atch (_input0) { lawtwin.petstore.model::type:",
+                    ":User::User _matchfield0__id _matchfield1__use",
+                    "rname _matchfield2__firstName _matchfield3__la",
+                    "stName _matchfield4__email _matchfield5__passw",
+                    "ord _matchfield6__phone _matchfield7__userStat",
+                    "us -> lawtwin.petstore.model::type::User::User",
+                    "(_matchfield0__id, _letfield8__replacement, _m",
+                    "atchfield2__firstName, _matchfield3__lastName,",
+                    " _matchfield4__email, _matchfield5__password, ",
+                    "_matchfield6__phone, _matchfield7__userStatus)",
+                    " } in let _let1__it = attempt (createUser (May",
+                    "be::Present(_let0__sent))) in match (_let1__it",
+                    ") { Either::Left _match2__0___lawspecSelection",
+                    "0x0 -> true; Either::Right _match2__1___lawspe",
+                    "cSelection0x0 -> let _let3__it = match (_let0_",
+                    "_sent) { lawtwin.petstore.model::type::User::U",
+                    "ser _matchfield9__id _matchfield10__username _",
+                    "matchfield11__firstName _matchfield12__lastNam",
+                    "e _matchfield13__email _matchfield14__password",
+                    " _matchfield15__phone _matchfield16__userStatu",
+                    "s -> _matchfield10__username } in match (_let3",
+                    "__it) { Maybe::Absent  -> false; Maybe::Presen",
+                    "t _match4__1___match__lawspecSelection0x0_0 ->",
+                    " let _let5__gone = attempt (deleteUser (_match",
+                    "4__1___match__lawspecSelection0x0_0)) in (atte",
+                    "mpt (getUserByName (_match4__1___match__lawspe",
+                    "cSelection0x0_0)) == Either::Left(lawtwin.pets",
+                    "tore.model::type::ApiError::NotFound())) } } =",
+                    " true",
                 ),
                 left,
                 right,
@@ -14626,14 +14879,14 @@ fn run_13() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("".to_owned()),
@@ -14647,17 +14900,17 @@ fn run_13() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::User::User",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-2147483648i128).into())],
                     )?,
                 ],
@@ -14672,14 +14925,14 @@ fn run_13() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ],
             ),
             ls::Value::Text("Hello, World!".to_owned()),
@@ -14692,32 +14945,32 @@ fn run_13() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("Hello, World!".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ],
             ),
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -14731,35 +14984,35 @@ fn run_13() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::User::User",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(9223372036854775807i128.into())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("λ日本語😀".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer(2147483647i128.into())],
                     )?,
                 ],
@@ -14774,32 +15027,32 @@ fn run_13() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                     )?,
-                    ls::construct("Maybe::Nothing", vec![])?,
+                    ls::construct("Maybe::Absent", vec![])?,
                 ],
             ),
             ls::Value::Text("é".to_owned()),
@@ -14813,17 +15066,17 @@ fn run_13() -> ls::Result<()> {
                 "lawtwin.petstore.model::type::User::User",
                 vec![
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-9223372036854775808i128).into())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("é".to_owned())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Integer((-2147483648i128).into())],
                     )?,
                 ],
@@ -14838,14 +15091,14 @@ fn run_13() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer((-1i128).into())])?,
                 ],
             ),
             ls::Value::Text("\u{0}aλ😀􏿿".to_owned()),
@@ -14858,32 +15111,32 @@ fn run_13() -> ls::Result<()> {
             ls::construct_data(
                 "lawtwin.petstore.model::type::User::User",
                 vec![
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
                     ls::construct(
-                        "Maybe::Just",
+                        "Maybe::Present",
                         vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                     )?,
-                    ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                    ls::construct("Maybe::Present", vec![ls::Value::Integer(0i128.into())])?,
                 ],
             ),
             ls::Value::Text("".to_owned()),
@@ -14902,31 +15155,31 @@ fn run_13() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
                         ],
@@ -14935,17 +15188,17 @@ fn run_13() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text(" ".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                         ],
@@ -14953,67 +15206,73 @@ fn run_13() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("Hello, World!".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(9223372036854775807i128.into())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("λ日本語😀".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer(2147483647i128.into())],
                             )?,
                         ],
@@ -15021,49 +15280,67 @@ fn run_13() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("a\u{a}\u{9}\"\\$\u{0}z".to_owned())],
                             )?,
-                            ls::construct("Maybe::Nothing", vec![])?,
+                            ls::construct("Maybe::Absent", vec![])?,
                         ],
                     ),
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-9223372036854775808i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("é".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Text("é".to_owned())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-2147483648i128).into())],
                             )?,
                         ],
@@ -15072,17 +15349,17 @@ fn run_13() -> ls::Result<()> {
                         "lawtwin.petstore.model::type::User::User",
                         vec![
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
+                            ls::construct("Maybe::Present", vec![ls::Value::Text("".to_owned())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Integer((-1i128).into())],
                             )?,
                         ],
@@ -15090,32 +15367,38 @@ fn run_13() -> ls::Result<()> {
                     ls::construct_data(
                         "lawtwin.petstore.model::type::User::User",
                         vec![
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
+                            ls::construct(
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
                             ls::construct(
-                                "Maybe::Just",
+                                "Maybe::Present",
                                 vec![ls::Value::Text("\u{0}aλ😀􏿿".to_owned())],
                             )?,
-                            ls::construct("Maybe::Just", vec![ls::Value::Integer(0i128.into())])?,
+                            ls::construct(
+                                "Maybe::Present",
+                                vec![ls::Value::Integer(0i128.into())],
+                            )?,
                         ],
                     ),
                 ];

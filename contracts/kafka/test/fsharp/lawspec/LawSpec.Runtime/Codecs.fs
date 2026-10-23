@@ -148,13 +148,13 @@ module Codec =
     let option (item: Codec<'T>) : Codec<'T option> =
         { ToNative =
             (function
-            | Data("Maybe::Nothing", []) -> None
-            | Data("Maybe::Just", [ v ]) -> Some(item.ToNative v)
+            | Data("Maybe::Absent", []) -> None
+            | Data("Maybe::Present", [ v ]) -> Some(item.ToNative v)
             | v -> wrong "Maybe" v)
           FromNative =
             (function
-            | None -> Data("Maybe::Nothing", [])
-            | Some v -> Data("Maybe::Just", [ item.FromNative v ])) }
+            | None -> Data("Maybe::Absent", [])
+            | Some v -> Data("Maybe::Present", [ item.FromNative v ])) }
 
     [<CompiledName("Either")>]
     let either (left: Codec<'L>) (right: Codec<'R>) : Codec<Either<'L, 'R>> =
