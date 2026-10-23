@@ -1,5 +1,5 @@
 version: 0.1.0
-canon: 0.2.2
+canon: 0.2.3
 registry: canonical_refs.yaml
 decisions: canonical_decisions.yaml
 exemptions: canonical_exemptions.yaml

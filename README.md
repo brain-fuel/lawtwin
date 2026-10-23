@@ -158,7 +158,7 @@ LawTwin is checked by [canon](https://github.com/brain-fuel/canon) from its
 first commit: `canon.yaml`, the reference registry `canonical_refs.yaml`, the
 decision ledger `canonical_decisions.yaml`, and `canonical_vetting/`. Vetting
 is deferred to 1.0 (`DEC-vetting-deferred-to-1.0`). Run `make canon` with
-`CANON_HOME` naming a canon 0.2.2 checkout built with `stack build`.
+`CANON_HOME` naming a canon 0.2.3 checkout built with `stack build`.
 
 Every check runs locally; there is no hosted CI. `make ci` runs them all.
 

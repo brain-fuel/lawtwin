@@ -152,8 +152,8 @@ compose-up-http: ## Run the HTTP twin with podman compose (examples/http/compose
 compose-down-http: ## Stop the HTTP compose example
 	$(PODMAN) compose -f examples/http/compose.yaml down
 
-canon: ## Check the canonical format with canon 0.2.2 (needs CANON_HOME)
-	@test -n "$(CANON_HOME)" || { echo "set CANON_HOME to a canon 0.2.2 checkout built with stack build"; exit 1; }
+canon: ## Check the canonical format with canon 0.2.3 (needs CANON_HOME)
+	@test -n "$(CANON_HOME)" || { echo "set CANON_HOME to a canon 0.2.3 checkout built with stack build"; exit 1; }
 	@ln -sfn "$(CANON_HOME)" .canon
 	$(CANON) check
 
