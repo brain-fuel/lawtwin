@@ -161,7 +161,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 let v = format!("present{depth}");
                 let inner = self.validator(t, &v, depth + 1)?;
                 Some(format!(
-                    "(first matching case of {expr} : when Nothing then true when Just {v} then {inner} end case)"
+                    "(first matching case of {expr} : when Absent then true when Present {v} then {inner} end case)"
                 ))
             }
             Ty::List(t, checks) => {
@@ -280,7 +280,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 Scalar::Bytes => "(prelude.utf8 \"\")".into(),
                 Scalar::Unit => "unitValue".into(),
             },
-            Ty::Maybe(_) => "Nothing".into(),
+            Ty::Maybe(_) => "Absent".into(),
             Ty::List(..) => "[]".into(),
             Ty::Map(_) => "(prelude.keyValOf [])".into(),
             Ty::Named(n) => {
@@ -344,7 +344,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
             Some((field, maybe, k)) => format!(
                 "{base} with {field} = {}",
                 if maybe {
-                    format!("Just {k}")
+                    format!("Present {k}")
                 } else {
                     k.to_string()
                 }
@@ -365,7 +365,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
             if let Some((kf, maybe, k)) = key {
                 if kf == f.name {
                     args.push(if maybe {
-                        format!("(Just {k})")
+                        format!("(Present {k})")
                     } else {
                         k.to_string()
                     });
@@ -380,12 +380,12 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 {
                     let d = self.default_of(&f.ty, &mut vec![])?;
                     format!(
-                        "(first matching case of {body}.{} : when Nothing then {d} when Just given then given end case)",
+                        "(first matching case of {body}.{} : when Absent then {d} when Present given then given end case)",
                         b.name
                     )
                 }
                 Some(b) if f.ty.same_shape(&b.ty.clone().maybe()) => {
-                    format!("(Just {body}.{})", b.name)
+                    format!("(Present {body}.{})", b.name)
                 }
                 _ => self.default_of(&f.ty, &mut vec![])?,
             };
@@ -494,14 +494,14 @@ impl<'a, 'd> Emitter<'a, 'd> {
             Role::Read => {
                 let k = self.key_expr(&r, &parents, key_param.as_deref()?);
                 format!(
-                    "first matching case of prelude.lookup {k} {map} :\n  when Nothing then raise NotFound\n  when Just found then Pair {} {STATE}\n  end case",
+                    "first matching case of prelude.lookup {k} {map} :\n  when Absent then raise NotFound\n  when Present found then Pair {} {STATE}\n  end case",
                     respond("found")?
                 )
             }
             Role::Delete => {
                 let k = self.key_expr(&r, &parents, key_param.as_deref()?);
                 format!(
-                    "first matching case of prelude.lookup {k} {map} :\n  when Nothing then raise NotFound\n  when Just found then Pair {} ({STATE} with {} = prelude.delete {k} {map})\n  end case",
+                    "first matching case of prelude.lookup {k} {map} :\n  when Absent then raise NotFound\n  when Present found then Pair {} ({STATE} with {} = prelude.delete {k} {map})\n  end case",
                     respond("found")?,
                     r.map_field
                 )
@@ -540,7 +540,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                     KeySource::Body { field } => format!("{sent}.{field}"),
                     KeySource::BodyOrAssigned { field } => {
                         format!(
-                            "(first matching case of {sent}.{field} : when Just given then given when Nothing then {STATE}.{} end case)",
+                            "(first matching case of {sent}.{field} : when Present given then given when Absent then {STATE}.{} end case)",
                             counter.clone()?
                         )
                     }
@@ -572,7 +572,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                     Some(err) => {
                         let _ = write!(
                             inner,
-                            "first matching case of prelude.lookup {k} {map} :\n  when Just existing then raise {err}\n  when Nothing then {answer}\n  end case"
+                            "first matching case of prelude.lookup {k} {map} :\n  when Present existing then raise {err}\n  when Absent then {answer}\n  end case"
                         );
                     }
                     None => inner.push_str(&answer),
@@ -580,12 +580,12 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 inner.push_str("\n  end let\n  end let");
                 if let KeySource::BodyIfGiven { field } = &key {
                     inner = format!(
-                        "first matching case of {sent}.{field} :\n  when Nothing then raise {invalid}\n  when Just given then\n  {inner}\n  end case"
+                        "first matching case of {sent}.{field} :\n  when Absent then raise {invalid}\n  when Present given then\n  {inner}\n  end case"
                     );
                 }
                 match unwrap {
                     Some((_, name)) => format!(
-                        "first matching case of {name} :\n  when Nothing then raise {invalid}\n  when Just sent then\n  {inner}\n  end case"
+                        "first matching case of {name} :\n  when Absent then raise {invalid}\n  when Present sent then\n  {inner}\n  end case"
                     ),
                     None => inner,
                 }
@@ -605,7 +605,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 )?;
                 let k = self.key_expr(&r, &parents, "key");
                 let update = format!(
-                    "first matching case of prelude.lookup {k} {map} :\n  when Nothing then raise NotFound\n  when Just old then\n      let stored = {stored} in\n      Pair {} ({STATE} with {} = prelude.put {k} stored {map})\n      end let\n  end case",
+                    "first matching case of prelude.lookup {k} {map} :\n  when Absent then raise NotFound\n  when Present old then\n      let stored = {stored} in\n      Pair {} ({STATE} with {} = prelude.put {k} stored {map})\n      end let\n  end case",
                     respond("stored")?,
                     r.map_field
                 );
@@ -613,7 +613,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                     let (kf, maybe) = key_field?;
                     if maybe {
                         format!(
-                            "first matching case of {sent}.{kf} :\n  when Nothing then raise {invalid}\n  when Just key then\n  {update}\n  end case"
+                            "first matching case of {sent}.{kf} :\n  when Absent then raise {invalid}\n  when Present key then\n  {update}\n  end case"
                         )
                     } else {
                         format!("let key = {sent}.{kf} in\n  {update}\nend let")
@@ -623,7 +623,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 };
                 if wrap {
                     format!(
-                        "first matching case of {} :\n  when Nothing then raise {invalid}\n  when Just sent then\n  {keyed}\n  end case",
+                        "first matching case of {} :\n  when Absent then raise {invalid}\n  when Present sent then\n  {keyed}\n  end case",
                         body_param.name
                     )
                 } else {
@@ -645,14 +645,14 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 };
                 let patched = if maybe_body {
                     format!(
-                        "(first matching case of {} : when Nothing then old when Just change then {patched} end case)",
+                        "(first matching case of {} : when Absent then old when Present change then {patched} end case)",
                         body_param.name
                     )
                 } else {
                     format!("(let change = {} in {patched} end let)", body_param.name)
                 };
                 format!(
-                    "first matching case of prelude.lookup {k} {map} :\n  when Nothing then raise NotFound\n  when Just old then\n      let stored = {patched} in\n      Pair {} ({STATE} with {} = prelude.put {k} stored {map})\n      end let\n  end case",
+                    "first matching case of prelude.lookup {k} {map} :\n  when Absent then raise NotFound\n  when Present old then\n      let stored = {patched} in\n      Pair {} ({STATE} with {} = prelude.put {k} stored {map})\n      end let\n  end case",
                     respond("stored")?,
                     r.map_field
                 )
@@ -684,18 +684,18 @@ impl<'a, 'd> Emitter<'a, 'd> {
             let value = if p.ty.same_shape(&f.ty) && matches!(p.ty, Ty::Maybe(_)) {
                 // An absent field and a null one read the same: both leave it.
                 format!(
-                    "(first matching case of {change}.{} : when Nothing then {old}.{} when Just given then Just given end case)",
+                    "(first matching case of {change}.{} : when Absent then {old}.{} when Present given then Present given end case)",
                     p.name, f.name
                 )
             } else if p.ty.same_shape(&f.ty) {
                 format!("{change}.{}", p.name)
             } else if p.ty.same_shape(&f.ty.clone().maybe()) && !matches!(f.ty, Ty::Maybe(_)) {
                 format!(
-                    "(first matching case of {change}.{} : when Nothing then {old}.{} when Just given then given end case)",
+                    "(first matching case of {change}.{} : when Absent then {old}.{} when Present given then given end case)",
                     p.name, f.name
                 )
             } else if f.ty.same_shape(&p.ty.clone().maybe()) {
-                format!("(Just {change}.{})", p.name)
+                format!("(Present {change}.{})", p.name)
             } else {
                 continue;
             };
@@ -1115,7 +1115,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
         (by_ability, top, count, titled)
     }
 
-    /// Call arguments of an operation: the values given by name, `Nothing`
+    /// Call arguments of an operation: the values given by name, `Absent`
     /// for optional ones, and a quantified input for each other required one.
     fn call(
         &self,
@@ -1129,7 +1129,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
             if let Some(v) = given.get(&p.name) {
                 args.push(paren(v));
             } else if matches!(p.ty, Ty::Maybe(_)) {
-                args.push("Nothing".into());
+                args.push("Absent".into());
             } else {
                 let v = scope.claim(&p.name, "Input");
                 extra.push((v.clone(), p.ty.lawspec()));
@@ -1166,7 +1166,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 sets.push(format!(
                     "{} = {}",
                     f.name,
-                    if maybe { format!("Just {v}") } else { v }
+                    if maybe { format!("Present {v}") } else { v }
                 ));
             }
         }
@@ -1223,14 +1223,14 @@ impl<'a, 'd> Emitter<'a, 'd> {
             if let KeySource::BodyIfGiven { field } = &create.key {
                 let v = scope.claim("keyGiven", "_");
                 inputs.push((v.clone(), r.key_ty.lawspec()));
-                sent_expr = format!("({sent_expr} with {field} = Just {v})");
+                sent_expr = format!("({sent_expr} with {field} = Present {v})");
             }
             let sent = "sent".to_string();
             let mut g = given.clone();
             g.insert(
                 body_param.name.clone(),
                 if matches!(body_param.ty, Ty::Maybe(_)) {
-                    format!("Just {sent}")
+                    format!("Present {sent}")
                 } else {
                     sent.clone()
                 },
@@ -1247,12 +1247,12 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 }
                 (KeySource::BodyIfGiven { field }, _) => {
                     format!(
-                        "first matching case of sent.{field} : when Nothing then false when Just key then {inner} end case"
+                        "first matching case of sent.{field} : when Absent then false when Present key then {inner} end case"
                     )
                 }
                 (_, Some((kf, true))) => {
                     format!(
-                        "first matching case of created.{kf} : when Nothing then false when Just key then {inner} end case"
+                        "first matching case of created.{kf} : when Absent then false when Present key then {inner} end case"
                     )
                 }
                 (_, Some((kf, false))) => format!("let key = created.{kf} in {inner} end let"),
@@ -1388,7 +1388,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 g.insert(
                     patch_param.name.clone(),
                     if matches!(patch_param.ty, Ty::Maybe(_)) {
-                        format!("Just {change}")
+                        format!("Present {change}")
                     } else {
                         change.clone()
                     },
@@ -1432,7 +1432,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                     if let Some((kf, maybe)) = &r.key_field {
                         sent2 = format!(
                             "({sent2} with {kf} = {})",
-                            if *maybe { "Just key" } else { "key" }
+                            if *maybe { "Present key" } else { "key" }
                         );
                     }
                 }
@@ -1441,7 +1441,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 g.insert(
                     body_param2.name.clone(),
                     if matches!(body_param2.ty, Ty::Maybe(_)) {
-                        format!("Just {sent2}")
+                        format!("Present {sent2}")
                     } else {
                         sent2
                     },

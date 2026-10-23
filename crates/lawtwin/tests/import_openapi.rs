@@ -62,12 +62,12 @@ fn petstore_3_0_json() {
     assert!(api.contains("ability StoreApi with Service is"));
     assert!(model.contains("  | UnprocessableEntity -- HTTP 422"));
     // A pet's key comes from the body, or the service assigns it.
-    assert!(model.contains("let key = (first matching case of body.id : when Just given then given when Nothing then current_.nextPetKey end case) in"));
+    assert!(model.contains("let key = (first matching case of body.id : when Present given then given when Absent then current_.nextPetKey end case) in"));
     assert!(api.contains("law \"|a created pet reads back| is"));
     assert!(api.contains("law \"|a deleted pet is not found| is"));
     assert!(api.contains("law \"|a replaced pet reads back as replaced| is"));
     // A user's key must be given.
-    assert!(api.contains("(body with username = Just keyGiven)"));
+    assert!(api.contains("(body with username = Present keyGiven)"));
     // What the importer cannot model is left to the author.
     assert!(
         api.contains("operation findPetsByStatus by handwritten.findPetsByStatus end operation")
@@ -160,7 +160,7 @@ fn features_of_3_1() {
     // A patch changes only the fields it gives.
     assert!(api.contains("law \"|an update changes only the fields it gives to a note| is"));
     assert!(model.contains(
-        "title = (first matching case of change.title : when Nothing then old.title when Just given then given end case)"
+        "title = (first matching case of change.title : when Absent then old.title when Present given then given end case)"
     ));
     assert!(api.contains("law \"|the list holds a created note| is"));
 }

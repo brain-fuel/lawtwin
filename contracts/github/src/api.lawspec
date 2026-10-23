@@ -78,7 +78,7 @@ laws
          first matching case of prelude.attempt (issuesCreateLabel owner repo sent) :
          when Left failure then true
          when Right created then
-             first matching case of prelude.attempt (issuesListLabelsForRepo owner repo Nothing Nothing) :
+             first matching case of prelude.attempt (issuesListLabelsForRepo owner repo Absent Absent) :
              when Left failure then false
              when Right listed then model.containsLabel created listed
              end case
@@ -96,7 +96,7 @@ laws
              let key = sent.name in first matching case of prelude.attempt (issuesGetLabel owner repo key) :
              when Left failure then false
              when Right before then
-                 first matching case of prelude.attempt (issuesUpdateLabel owner repo key (Just change)) :
+                 first matching case of prelude.attempt (issuesUpdateLabel owner repo key (Present change)) :
                  when Left failure then true
                  when Right changed then
                      first matching case of prelude.attempt (issuesGetLabel owner repo key) :
@@ -104,8 +104,8 @@ laws
                      when Right after then after.id = before.id
                      && after.nodeId = before.nodeId
                      && after.url = before.url
-                     && after.description_ = (first matching case of change.description_ : when Nothing then before.description_ when Just given then Just given end case)
-                     && after.color = (first matching case of change.color : when Nothing then before.color when Just given then given end case)
+                     && after.description_ = (first matching case of change.description_ : when Absent then before.description_ when Present given then Present given end case)
+                     && after.color = (first matching case of change.color : when Absent then before.color when Present given then given end case)
                      && after.default_ = before.default_
                      && after.archivedAt = before.archivedAt
                      && after.archivedBy = before.archivedBy
@@ -119,7 +119,7 @@ laws
   law "|a created milestone reads back| is
     definition :
       for all (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (dueOnValue :: IssuesCreateMilestoneBodyDueOn) =>
-        (let sent = (body with dueOn = Just dueOnValue) in
+        (let sent = (body with dueOn = Present dueOnValue) in
          first matching case of prelude.attempt (issuesCreateMilestone owner repo sent) :
          when Left failure then true
          when Right created then
@@ -131,7 +131,7 @@ laws
   law "|a deleted milestone is not found| is
     definition :
       for all (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (dueOnValue :: IssuesCreateMilestoneBodyDueOn) =>
-        (let sent = (body with dueOn = Just dueOnValue) in
+        (let sent = (body with dueOn = Present dueOnValue) in
          first matching case of prelude.attempt (issuesCreateMilestone owner repo sent) :
          when Left failure then true
          when Right created then
@@ -143,11 +143,11 @@ laws
   law "|the list holds a created milestone| is
     definition :
       for all (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (dueOnValue :: IssuesCreateMilestoneBodyDueOn) =>
-        (let sent = (body with dueOn = Just dueOnValue) in
+        (let sent = (body with dueOn = Present dueOnValue) in
          first matching case of prelude.attempt (issuesCreateMilestone owner repo sent) :
          when Left failure then true
          when Right created then
-             first matching case of prelude.attempt (issuesListMilestones owner repo Nothing Nothing Nothing Nothing Nothing) :
+             first matching case of prelude.attempt (issuesListMilestones owner repo Absent Absent Absent Absent Absent) :
              when Left failure then false
              when Right listed then model.containsMilestone created listed
              end case
@@ -158,14 +158,14 @@ laws
   law "|an update changes only the fields it gives to a milestone| is
     definition :
       for all (owner :: Text) (repo :: Text) (body :: IssuesCreateMilestoneBody) (dueOnValue :: IssuesCreateMilestoneBodyDueOn) (change :: IssuesUpdateMilestoneBody) =>
-        (let sent = (body with dueOn = Just dueOnValue) in
+        (let sent = (body with dueOn = Present dueOnValue) in
          first matching case of prelude.attempt (issuesCreateMilestone owner repo sent) :
          when Left failure then true
          when Right created then
              let key = created.number in first matching case of prelude.attempt (issuesGetMilestone owner repo key) :
              when Left failure then false
              when Right before then
-                 first matching case of prelude.attempt (issuesUpdateMilestone owner repo key (Just change)) :
+                 first matching case of prelude.attempt (issuesUpdateMilestone owner repo key (Present change)) :
                  when Left failure then true
                  when Right changed then
                      first matching case of prelude.attempt (issuesGetMilestone owner repo key) :
@@ -175,16 +175,16 @@ laws
                      && after.labelsUrl = before.labelsUrl
                      && after.id = before.id
                      && after.nodeId = before.nodeId
-                     && after.state_ = (first matching case of change.state_ : when Nothing then before.state_ when Just given then given end case)
-                     && after.title = (first matching case of change.title : when Nothing then before.title when Just given then given end case)
-                     && after.description_ = (first matching case of change.description_ : when Nothing then before.description_ when Just given then Just given end case)
+                     && after.state_ = (first matching case of change.state_ : when Absent then before.state_ when Present given then given end case)
+                     && after.title = (first matching case of change.title : when Absent then before.title when Present given then given end case)
+                     && after.description_ = (first matching case of change.description_ : when Absent then before.description_ when Present given then Present given end case)
                      && after.creator = before.creator
                      && after.openIssues = before.openIssues
                      && after.closedIssues = before.closedIssues
                      && after.createdAt = before.createdAt
                      && after.updatedAt = before.updatedAt
                      && after.closedAt = before.closedAt
-                     && after.dueOn = (first matching case of change.dueOn : when Nothing then before.dueOn when Just given then Just given end case)
+                     && after.dueOn = (first matching case of change.dueOn : when Absent then before.dueOn when Present given then Present given end case)
                      end case
                  end case
              end case end let

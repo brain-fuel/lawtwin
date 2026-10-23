@@ -205,7 +205,7 @@ list gives the records under one parent.
 the body, with the key in its field. A body of another type is copied field
 by field: a field of the same name and type is copied, an optional one is
 unwrapped or wrapped, and every other field is empty (`""`, `0`, `false`,
-`Nothing`, `[]`, or an enum's first value).
+`Absent`, `[]`, or an enum's first value).
 
 **An update** changes each field of the record that the body names. An
 absent field leaves it, and so does a `null` one, as the two read the same.

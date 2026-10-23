@@ -50,7 +50,7 @@ laws
          first matching case of prelude.attempt (addPet sent) :
          when Left failure then true
          when Right created then
-             first matching case of created.id : when Nothing then false when Just key then prelude.attempt (getPetById key) = Right created end case
+             first matching case of created.id : when Absent then false when Present key then prelude.attempt (getPetById key) = Right created end case
          end case
          end let) = true end for all
     end definition
@@ -62,7 +62,7 @@ laws
          first matching case of prelude.attempt (addPet sent) :
          when Left failure then true
          when Right created then
-             first matching case of created.id : when Nothing then false when Just key then (let gone = prelude.attempt (deletePet key Nothing) in prelude.attempt (getPetById key) = Left NotFound end let) end case
+             first matching case of created.id : when Absent then false when Present key then (let gone = prelude.attempt (deletePet key Absent) in prelude.attempt (getPetById key) = Left NotFound end let) end case
          end case
          end let) = true end for all
     end definition
@@ -74,7 +74,7 @@ laws
          first matching case of prelude.attempt (addPet sent) :
          when Left failure then true
          when Right created then
-             first matching case of created.id : when Nothing then false when Just key then first matching case of prelude.attempt (updatePet (replacement with id = Just key)) :
+             first matching case of created.id : when Absent then false when Present key then first matching case of prelude.attempt (updatePet (replacement with id = Present key)) :
              when Left failure then true
              when Right replaced then prelude.attempt (getPetById key) = Right replaced
              end case end case
@@ -102,11 +102,11 @@ laws
   law "|a created order reads back| is
     definition :
       for all (body :: Order) (shipDateValue :: OrderShipDate) =>
-        (let sent = (body with shipDate = Just shipDateValue) in
-         first matching case of prelude.attempt (placeOrder (Just sent)) :
+        (let sent = (body with shipDate = Present shipDateValue) in
+         first matching case of prelude.attempt (placeOrder (Present sent)) :
          when Left failure then true
          when Right created then
-             first matching case of created.id : when Nothing then false when Just key then prelude.attempt (getOrderById key) = Right created end case
+             first matching case of created.id : when Absent then false when Present key then prelude.attempt (getOrderById key) = Right created end case
          end case
          end let) = true end for all
     end definition
@@ -114,11 +114,11 @@ laws
   law "|a deleted order is not found| is
     definition :
       for all (body :: Order) (shipDateValue :: OrderShipDate) =>
-        (let sent = (body with shipDate = Just shipDateValue) in
-         first matching case of prelude.attempt (placeOrder (Just sent)) :
+        (let sent = (body with shipDate = Present shipDateValue) in
+         first matching case of prelude.attempt (placeOrder (Present sent)) :
          when Left failure then true
          when Right created then
-             first matching case of created.id : when Nothing then false when Just key then (let gone = prelude.attempt (deleteOrder key) in prelude.attempt (getOrderById key) = Left NotFound end let) end case
+             first matching case of created.id : when Absent then false when Present key then (let gone = prelude.attempt (deleteOrder key) in prelude.attempt (getOrderById key) = Left NotFound end let) end case
          end case
          end let) = true end for all
     end definition
@@ -149,11 +149,11 @@ laws
   law "|a created user reads back| is
     definition :
       for all (body :: User) (keyGiven :: Text) =>
-        (let sent = (body with username = Just keyGiven) in
-         first matching case of prelude.attempt (createUser (Just sent)) :
+        (let sent = (body with username = Present keyGiven) in
+         first matching case of prelude.attempt (createUser (Present sent)) :
          when Left failure then true
          when Right created then
-             first matching case of sent.username : when Nothing then false when Just key then prelude.attempt (getUserByName key) = Right created end case
+             first matching case of sent.username : when Absent then false when Present key then prelude.attempt (getUserByName key) = Right created end case
          end case
          end let) = true end for all
     end definition
@@ -161,11 +161,11 @@ laws
   law "|a deleted user is not found| is
     definition :
       for all (body :: User) (keyGiven :: Text) =>
-        (let sent = (body with username = Just keyGiven) in
-         first matching case of prelude.attempt (createUser (Just sent)) :
+        (let sent = (body with username = Present keyGiven) in
+         first matching case of prelude.attempt (createUser (Present sent)) :
          when Left failure then true
          when Right created then
-             first matching case of sent.username : when Nothing then false when Just key then (let gone = prelude.attempt (deleteUser key) in prelude.attempt (getUserByName key) = Left NotFound end let) end case
+             first matching case of sent.username : when Absent then false when Present key then (let gone = prelude.attempt (deleteUser key) in prelude.attempt (getUserByName key) = Left NotFound end let) end case
          end case
          end let) = true end for all
     end definition

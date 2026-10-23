@@ -118,7 +118,7 @@ pub enum V {
     Unit,
     /// A list.
     List(Vec<V>),
-    /// `Nothing` or `Just v`.
+    /// `Absent` or `Present v`.
     Maybe(Option<Box<V>>),
     /// `Left v` (false) or `Right v` (true).
     Either(bool, Box<V>),
@@ -712,7 +712,7 @@ impl Types {
                         Some(d) if d.params.is_empty() => self.eval(&vec![], &d.body)?,
                         _ => match short {
                             "unitValue" => V::Unit,
-                            "Nothing" => V::Maybe(None),
+                            "Absent" => V::Maybe(None),
                             _ => return Err(err),
                         },
                     }
@@ -730,7 +730,7 @@ impl Types {
                     ("isEmpty", [V::List(l)]) => V::Bool(l.is_empty()),
                     ("isPresent", [V::Maybe(m)]) => V::Bool(m.is_some()),
                     ("presentValue", [V::Maybe(Some(v))]) => (**v).clone(),
-                    ("Just", [v]) => V::Maybe(Some(Box::new(v.clone()))),
+                    ("Present", [v]) => V::Maybe(Some(Box::new(v.clone()))),
                     _ => match self.defs.get(short) {
                         Some(d) if d.params.len() == vals.len() => {
                             let env: Env = d.params.iter().cloned().zip(vals).collect();

@@ -10,7 +10,7 @@
 # compiler is the one `stack build` made from that checkout's sources. The
 # checkout itself is not changed.
 #
-#   LAWSPEC_VERSION=0.26.0 tools/stage-lawspec.sh
+#   LAWSPEC_VERSION=0.29.2 tools/stage-lawspec.sh
 #   LAWSPEC_HOME=/path/to/lawspec tools/stage-lawspec.sh
 #   node .lawspec-cli/bin/lawspec.mjs check --config ...
 set -euo pipefail

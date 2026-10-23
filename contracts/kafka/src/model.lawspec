@@ -260,15 +260,15 @@ end function
 
 function knownPartition (tp :: TopicPartition) (b :: BrokerState) -> Bool is
   first matching case of partitionCountOf tp.topic b :
-    when Nothing then false
-    when Just n then tp.partition >= 0 && tp.partition < n
+    when Absent then false
+    when Present n then tp.partition >= 0 && tp.partition < n
   end case
 end function
 
 function logOf (tp :: TopicPartition) (b :: BrokerState) -> PartitionLog is
   first matching case of prelude.lookup tp b.logs :
-    when Nothing then emptyLog unitValue
-    when Just l then l
+    when Absent then emptyLog unitValue
+    when Present l then l
   end case
 end function
 
@@ -282,8 +282,8 @@ procedure createTopic (name :: Text) (n :: Int32) (b :: BrokerState) -> Pair
   if !(validTopicName name) then raise InvalidTopic else
     if n < 1 || n > maxPartitions unitValue then raise InvalidPartitions else
       first matching case of partitionCountOf name b :
-        when Just existing then raise TopicAlreadyExists
-        when Nothing then Pair unitValue (rebalanceTopic name (b with topics =
+        when Present existing then raise TopicAlreadyExists
+        when Absent then Pair unitValue (rebalanceTopic name (b with topics =
             prelude.put name n b.topics))
       end case end if end if
 end procedure
@@ -291,8 +291,8 @@ end procedure
 procedure createPartitions (name :: Text) (total :: Int32) (b :: BrokerState) ->
   Pair Unit BrokerState fails with KafkaError is
   first matching case of partitionCountOf name b :
-    when Nothing then raise UnknownTopicOrPartition
-    when Just n then
+    when Absent then raise UnknownTopicOrPartition
+    when Present n then
       if total <= n || total > maxPartitions unitValue then raise
         InvalidPartitions else
         Pair unitValue (rebalanceTopic name (b with topics = prelude.put name
@@ -340,8 +340,8 @@ function appendBatch (rs :: List Record) (writer :: Int64) (transactional ::
     in
     let open = (if transactional then
         (first matching case of prelude.lookup writer l.openTxns :
-          when Nothing then prelude.put writer l.logEndOffset l.openTxns
-          when Just first then l.openTxns
+          when Absent then prelude.put writer l.logEndOffset l.openTxns
+          when Present first then l.openTxns
         end case)
       else l.openTxns end if) in
       l with entries = appended.second, logEndOffset = appended.first, openTxns
@@ -351,7 +351,7 @@ end function
 function rememberBatch (writer :: Int64) (meta :: BatchMeta) (l :: PartitionLog)
   -> PartitionLog is
   let previous = (first matching case of prelude.lookup writer l.batches : when
-      Nothing then [] when Just ms then ms end case) in
+      Absent then [] when Present ms then ms end case) in
     l with batches = prelude.put writer (prelude.take 5 (Cons meta previous))
       l.batches end let
 end function
@@ -360,10 +360,10 @@ end function
 function findDuplicate (epoch :: Int16) (first :: Int32) (last :: Int32) (ms ::
   List BatchMeta) -> Maybe Int64 is
   first matching case of ms :
-    when Nil then Nothing
+    when Nil then Absent
     when Cons m rest then
       if m.batchEpoch = epoch && m.firstSequence = first && m.lastSequence =
-          last then Just m.batchOffset
+          last then Present m.batchOffset
       else findDuplicate epoch first last rest end if
   end case
 end function
@@ -385,9 +385,9 @@ procedure produce (tp :: TopicPartition) (tag :: Maybe ProducerTag) (rs :: List
     else
       let l = logOf tp b in
         first matching case of tag :
-          when Nothing then Pair (highWatermark l) (putLog tp (appendBatch rs -1
+          when Absent then Pair (highWatermark l) (putLog tp (appendBatch rs -1
               false l) b)
-          when Just t then produceTagged tp t rs l b
+          when Present t then produceTagged tp t rs l b
         end case end let end if end if
 end procedure
 
@@ -395,23 +395,23 @@ procedure produceTagged (tp :: TopicPartition) (t :: ProducerTag) (rs :: List
   Record) (l :: PartitionLog) (b :: BrokerState) -> Pair Int64 BrokerState fails
   with KafkaError is
   first matching case of prelude.lookup t.producerId b.producers :
-    when Nothing then raise UnknownProducerId
-    when Just entry then
+    when Absent then raise UnknownProducerId
+    when Present entry then
       if t.producerEpoch != entry.epoch then raise InvalidProducerEpoch else
         let transactional = (first matching case of entry.transactionalId : when
-            Nothing then false when Just id then true end case) in
+            Absent then false when Present id then true end case) in
           if transactional && !(txnHasPartition tp entry.txn) then raise
             InvalidTxnState else
             let last = prelude.saturating (t.baseSequence + prelude.length rs -
                 1) in
               let recent = (first matching case of prelude.lookup t.producerId
-                  l.batches : when Nothing then [] when Just ms then ms
+                  l.batches : when Absent then [] when Present ms then ms
                 end case)
                 in
                 first matching case of findDuplicate t.producerEpoch
                   t.baseSequence last recent :
-                  when Just offset then Pair offset b
-                  when Nothing then
+                  when Present offset then Pair offset b
+                  when Absent then
                     if t.baseSequence != expectedSequence t.producerEpoch recent
                       then raise OutOfOrderSequenceNumber else
                       let base = highWatermark l in
@@ -540,8 +540,8 @@ function newProducer (txid :: Maybe Text) (b :: BrokerState) -> Pair
         epoch = 0 , transactionalId = txid , txn = NoTxn}) b.producers,
         nextProducerId = prelude.saturating (pid + 1) in
       let mapped = (first matching case of txid :
-          when Nothing then withEntry
-          when Just id then withEntry with transactionalIds = prelude.put id pid
+          when Absent then withEntry
+          when Present id then withEntry with transactionalIds = prelude.put id pid
               withEntry.transactionalIds
         end case) in
         Pair (ProducerIdAndEpoch record{ producerId = pid , producerEpoch = 0})
@@ -554,15 +554,15 @@ end function
 procedure initProducerId (txid :: Maybe Text) (b :: BrokerState) -> Pair
   ProducerIdAndEpoch BrokerState fails with KafkaError is
   first matching case of txid :
-    when Nothing then newProducer Nothing b
-    when Just id then
+    when Absent then newProducer Absent b
+    when Present id then
       if id = "" then raise InvalidRequest else
         first matching case of prelude.lookup id b.transactionalIds :
-          when Nothing then newProducer txid b
-          when Just pid then
+          when Absent then newProducer txid b
+          when Present pid then
             first matching case of prelude.lookup pid b.producers :
-              when Nothing then newProducer txid b
-              when Just entry then
+              when Absent then newProducer txid b
+              when Present entry then
                 let cleared = finishTxn pid false entry.txn b in
                   if entry.epoch < Int16.max then
                     let bumped = prelude.saturating (entry.epoch + 1) in
@@ -581,12 +581,12 @@ end procedure
 procedure checkTxnProducer (txid :: Text) (pid :: Int64) (epoch :: Int16) (b ::
   BrokerState) -> ProducerEntry fails with KafkaError is
   first matching case of prelude.lookup txid b.transactionalIds :
-    when Nothing then raise InvalidProducerIdMapping
-    when Just mapped then
+    when Absent then raise InvalidProducerIdMapping
+    when Present mapped then
       if mapped != pid then raise InvalidProducerIdMapping else
         first matching case of prelude.lookup pid b.producers :
-          when Nothing then raise InvalidProducerIdMapping
-          when Just entry then
+          when Absent then raise InvalidProducerIdMapping
+          when Present entry then
             if epoch < entry.epoch then raise ProducerFenced else
               if epoch > entry.epoch then raise InvalidProducerEpoch else entry
               end if end if
@@ -663,8 +663,8 @@ function writeMarker (pid :: Int64) (commit :: Bool) (l :: PartitionLog) ->
   PartitionLog is
   let aborted = (if commit then l.abortedTxns else
       (first matching case of prelude.lookup pid l.openTxns :
-        when Nothing then l.abortedTxns
-        when Just first then Cons (AbortedTxn record{ abortedWriter = pid ,
+        when Absent then l.abortedTxns
+        when Present first then Cons (AbortedTxn record{ abortedWriter = pid ,
             firstOffset = first , lastOffset = l.logEndOffset}) l.abortedTxns
       end case) end if) in
     l with entries = Cons (ControlEntry record{ markerOffset = l.logEndOffset ,
@@ -732,8 +732,8 @@ end procedure
 
 function groupOf (g :: Text) (b :: BrokerState) -> Group is
   first matching case of prelude.lookup g b.groups :
-    when Nothing then emptyGroup unitValue
-    when Just group then group
+    when Absent then emptyGroup unitValue
+    when Present group then group
   end case
 end function
 
@@ -756,8 +756,8 @@ end function
 function assignTo (member :: Text) (tp :: TopicPartition) (a :: KeyVal Text
   (List TopicPartition)) -> KeyVal Text (List TopicPartition) is
   first matching case of prelude.lookup member a :
-    when Nothing then prelude.put member [tp] a
-    when Just tps then prelude.put member (tps ++ [tp]) a
+    when Absent then prelude.put member [tp] a
+    when Present tps then prelude.put member (tps ++ [tp]) a
   end case
 end function
 
@@ -803,8 +803,8 @@ function assignTopics (topics :: List Text) (subs :: List (Entry Text (List
     when Nil then a
     when Cons topic rest then
       first matching case of partitionCountOf topic b :
-        when Nothing then assignTopics rest subs b a
-        when Just n then assignTopics rest subs b (let owners = subscribersOf
+        when Absent then assignTopics rest subs b a
+        when Present n then assignTopics rest subs b (let owners = subscribersOf
             topic subs in assignPartitions topic (partitionsBelow n) owners
               owners
               a end let)
@@ -865,12 +865,12 @@ procedure joinGroup (g :: Text) (member :: Text) (topics :: List Text) (b ::
       let group = groupOf g b in
         let wanted = prelude.toList (prelude.sortedSetOf topics) in
           first matching case of prelude.lookup member group.subscriptions :
-            when Just existing then
+            when Present existing then
               if existing = wanted then Pair group.groupGeneration b else
                 let next = rebalance (group with subscriptions = prelude.put
                     member wanted group.subscriptions) b in
                   Pair next.groupGeneration (putGroup g next b) end let end if
-            when Nothing then
+            when Absent then
               let next = rebalance (group with subscriptions = prelude.put
                   member wanted group.subscriptions) b in
                 Pair next.groupGeneration (putGroup g next b) end let
@@ -884,8 +884,8 @@ procedure checkMember (g :: Text) (member :: Text) (generation :: Int32) (b ::
   if g = "" then raise InvalidGroupId else
     let group = groupOf g b in
       first matching case of prelude.lookup member group.subscriptions :
-        when Nothing then raise UnknownMemberId
-        when Just topics then if generation != group.groupGeneration then raise
+        when Absent then raise UnknownMemberId
+        when Present topics then if generation != group.groupGeneration then raise
             IllegalGeneration else group end if
       end case end let end if
 end procedure
@@ -895,8 +895,8 @@ procedure syncGroup (g :: Text) (member :: Text) (generation :: Int32) (b ::
   is
   let group = checkMember g member generation b in
     first matching case of prelude.lookup member group.assignment :
-      when Nothing then Pair [] b
-      when Just tps then Pair tps b
+      when Absent then Pair [] b
+      when Present tps then Pair tps b
     end case end let
 end procedure
 
@@ -909,8 +909,8 @@ procedure leaveGroup (g :: Text) (member :: Text) (b :: BrokerState) -> Pair
   Unit BrokerState fails with KafkaError is
   let group = groupOf g b in
     first matching case of prelude.lookup member group.subscriptions :
-      when Nothing then raise UnknownMemberId
-      when Just topics then
+      when Absent then raise UnknownMemberId
+      when Present topics then
         Pair unitValue (putGroup g (rebalance (group with subscriptions =
           prelude.delete member group.subscriptions) b) b)
     end case end let

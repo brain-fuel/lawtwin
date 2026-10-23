@@ -1,12 +1,12 @@
 # LawTwin development tasks. `make` lists them. Every check runs locally;
 # there is no hosted CI.
 
-# The contracts and twin model consumers use LawSpec 0.26.0, configuration
+# The contracts and twin model consumers use LawSpec 0.29.2, configuration
 # version 2 and profile 1.0-rc.2, with explicit verification layers.
 # `make lawspec-stage` stages the CLI from npm; set LAWSPEC_HOME to
 # stage it from a LawSpec checkout instead (for builds not yet on npm), or set
 # LAWSPEC to another way of running it.
-LAWSPEC_VERSION  := 0.26.0
+LAWSPEC_VERSION  := 0.29.2
 LAWSPEC_REQUIRED := LawSpec $(LAWSPEC_VERSION)
 LAWSPEC_HOME ?=
 LAWSPEC   ?= node .lawspec-cli/bin/lawspec.mjs

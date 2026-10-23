@@ -125,7 +125,7 @@ end function
 
 -- Whether a Order keeps its schema's constraints.
 function validOrder (value :: Order) -> Bool is
-  (first matching case of value.shipDate : when Nothing then true when Just present0 then present0 matches regex "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})" end case)
+  (first matching case of value.shipDate : when Absent then true when Present present0 then present0 matches regex "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})" end case)
 end function
 
 -- ---------------------------------------------------------------------------
@@ -135,12 +135,12 @@ end function
 -- PUT /pet: replace
 procedure modelUpdatePet (body :: Pet) (current_ :: State) -> Pair Pet State fails with ApiError is
   first matching case of body.id :
-  when Nothing then raise UnprocessableEntity
-  when Just key then
+  when Absent then raise UnprocessableEntity
+  when Present key then
   first matching case of prelude.lookup key current_.pets :
-  when Nothing then raise NotFound
-  when Just old then
-      let stored = (body with id = Just key) in
+  when Absent then raise NotFound
+  when Present old then
+      let stored = (body with id = Present key) in
       Pair stored (current_ with pets = prelude.put key stored current_.pets)
       end let
   end case
@@ -149,11 +149,11 @@ end procedure
 
 -- POST /pet: create
 procedure modelAddPet (body :: Pet) (current_ :: State) -> Pair Pet State fails with ApiError is
-  let key = (first matching case of body.id : when Just given then given when Nothing then current_.nextPetKey end case) in
-  let stored = (body with id = Just key) in
+  let key = (first matching case of body.id : when Present given then given when Absent then current_.nextPetKey end case) in
+  let stored = (body with id = Present key) in
   first matching case of prelude.lookup key current_.pets :
-  when Just existing then raise UnprocessableEntity
-  when Nothing then Pair stored (current_ with pets = prelude.put key stored current_.pets, nextPetKey = (if key >= current_.nextPetKey then after64 key else current_.nextPetKey end if))
+  when Present existing then raise UnprocessableEntity
+  when Absent then Pair stored (current_ with pets = prelude.put key stored current_.pets, nextPetKey = (if key >= current_.nextPetKey then after64 key else current_.nextPetKey end if))
   end case
   end let
   end let
@@ -162,30 +162,30 @@ end procedure
 -- GET /pet/{petId}: read
 procedure modelGetPetById (petId :: Int64) (current_ :: State) -> Pair Pet State fails with ApiError is
   first matching case of prelude.lookup petId current_.pets :
-  when Nothing then raise NotFound
-  when Just found then Pair found current_
+  when Absent then raise NotFound
+  when Present found then Pair found current_
   end case
 end procedure
 
 -- DELETE /pet/{petId}: delete
 procedure modelDeletePet (petId :: Int64) (apiKey :: Maybe Text) (current_ :: State) -> Pair Unit State fails with ApiError is
   first matching case of prelude.lookup petId current_.pets :
-  when Nothing then raise NotFound
-  when Just found then Pair unitValue (current_ with pets = prelude.delete petId current_.pets)
+  when Absent then raise NotFound
+  when Present found then Pair unitValue (current_ with pets = prelude.delete petId current_.pets)
   end case
 end procedure
 
 -- POST /store/order: create
 procedure modelPlaceOrder (body :: Maybe Order) (current_ :: State) -> Pair Order State fails with ApiError is
-  if !((first matching case of body : when Nothing then true when Just present0 then validOrder present0 end case)) then raise UnprocessableEntity else
+  if !((first matching case of body : when Absent then true when Present present0 then validOrder present0 end case)) then raise UnprocessableEntity else
   first matching case of body :
-  when Nothing then raise UnprocessableEntity
-  when Just sent then
-  let key = (first matching case of sent.id : when Just given then given when Nothing then current_.nextOrderKey end case) in
-  let stored = (sent with id = Just key) in
+  when Absent then raise UnprocessableEntity
+  when Present sent then
+  let key = (first matching case of sent.id : when Present given then given when Absent then current_.nextOrderKey end case) in
+  let stored = (sent with id = Present key) in
   first matching case of prelude.lookup key current_.orders :
-  when Just existing then raise UnprocessableEntity
-  when Nothing then Pair stored (current_ with orders = prelude.put key stored current_.orders, nextOrderKey = (if key >= current_.nextOrderKey then after64 key else current_.nextOrderKey end if))
+  when Present existing then raise UnprocessableEntity
+  when Absent then Pair stored (current_ with orders = prelude.put key stored current_.orders, nextOrderKey = (if key >= current_.nextOrderKey then after64 key else current_.nextOrderKey end if))
   end case
   end let
   end let
@@ -196,29 +196,29 @@ end procedure
 -- GET /store/order/{orderId}: read
 procedure modelGetOrderById (orderId :: Int64) (current_ :: State) -> Pair Order State fails with ApiError is
   first matching case of prelude.lookup orderId current_.orders :
-  when Nothing then raise NotFound
-  when Just found then Pair found current_
+  when Absent then raise NotFound
+  when Present found then Pair found current_
   end case
 end procedure
 
 -- DELETE /store/order/{orderId}: delete
 procedure modelDeleteOrder (orderId :: Int64) (current_ :: State) -> Pair Unit State fails with ApiError is
   first matching case of prelude.lookup orderId current_.orders :
-  when Nothing then raise NotFound
-  when Just found then Pair unitValue (current_ with orders = prelude.delete orderId current_.orders)
+  when Absent then raise NotFound
+  when Present found then Pair unitValue (current_ with orders = prelude.delete orderId current_.orders)
   end case
 end procedure
 
 -- POST /user: create
 procedure modelCreateUser (body :: Maybe User) (current_ :: State) -> Pair User State fails with ApiError is
   first matching case of body :
-  when Nothing then raise BadRequest
-  when Just sent then
+  when Absent then raise BadRequest
+  when Present sent then
   first matching case of sent.username :
-  when Nothing then raise BadRequest
-  when Just given then
+  when Absent then raise BadRequest
+  when Present given then
   let key = given in
-  let stored = (sent with username = Just key) in
+  let stored = (sent with username = Present key) in
   Pair stored (current_ with users = prelude.put key stored current_.users)
   end let
   end let
@@ -229,21 +229,21 @@ end procedure
 -- GET /user/{username}: read
 procedure modelGetUserByName (username :: Text) (current_ :: State) -> Pair User State fails with ApiError is
   first matching case of prelude.lookup username current_.users :
-  when Nothing then raise NotFound
-  when Just found then Pair found current_
+  when Absent then raise NotFound
+  when Present found then Pair found current_
   end case
 end procedure
 
 -- PUT /user/{username}: replace
 procedure modelUpdateUser (username :: Text) (body :: Maybe User) (current_ :: State) -> Pair Unit State fails with ApiError is
   first matching case of body :
-  when Nothing then raise BadRequest
-  when Just sent then
+  when Absent then raise BadRequest
+  when Present sent then
   let key = username in
   first matching case of prelude.lookup key current_.users :
-  when Nothing then raise NotFound
-  when Just old then
-      let stored = (sent with username = Just key) in
+  when Absent then raise NotFound
+  when Present old then
+      let stored = (sent with username = Present key) in
       Pair unitValue (current_ with users = prelude.put key stored current_.users)
       end let
   end case
@@ -254,8 +254,8 @@ end procedure
 -- DELETE /user/{username}: delete
 procedure modelDeleteUser (username :: Text) (current_ :: State) -> Pair Unit State fails with ApiError is
   first matching case of prelude.lookup username current_.users :
-  when Nothing then raise NotFound
-  when Just found then Pair unitValue (current_ with users = prelude.delete username current_.users)
+  when Absent then raise NotFound
+  when Present found then Pair unitValue (current_ with users = prelude.delete username current_.users)
   end case
 end procedure
 
