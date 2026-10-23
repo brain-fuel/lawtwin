@@ -8,6 +8,11 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+- The contracts and the twins need LawSpec 0.29.2, staged from npm with `make lawspec-stage`; every contract's test project is regenerated with it
+- `Maybe`'s values are written `Present x` and `Absent`, as LawSpec 0.28 requires: in the Kafka contract, in the units `lawtwin import openapi` writes (the Petstore and GitHub contracts are imported again), among the names the importer keeps for LawSpec, and in the values `lawtwin peer kafka` reads from a value type
+- LawSpec's law-set checks (completeness, overlap, conflict and vacuity) are on by default; no law of the three contracts is in a law set, as each is about an ability's operations rather than a function's result, so no law set is claimed or excused
+
 ## [0.1.0] - 2026-10-21
 
 ### Added

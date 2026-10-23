@@ -5,6 +5,9 @@ title: LawSpec 0.26 alignment
 ---
 # LawSpec 0.26 alignment
 
+This page records the 0.26 alignment as it landed. The contracts have since
+moved to LawSpec 0.29.2, published on npm; the changelog lists that upgrade.
+
 This increment implements the first cross-project milestone using the merged
 LawSpec compiler. The maintained upgrade acceptance matrix passes. The final
 landing results and original scoped evidence are recorded separately below;

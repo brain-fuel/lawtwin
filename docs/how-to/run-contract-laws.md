@@ -13,10 +13,7 @@ contract on Rust and Python.
 
 You need:
 
-- LawSpec 0.26.0 (ref:lawspec), staged from a built checkout containing
-  `24e8706c` with `make lawspec-stage LAWSPEC_HOME=<checkout>`; a published
-  package containing the same public embedding additions can instead use
-  `make lawspec-stage`;
+- LawSpec 0.29.2 (ref:lawspec), staged from npm with `make lawspec-stage`;
   `make lawspec-version` prints what the contracts need;
 - Node 22 or later;
 - Rust 1.85 or later;
@@ -27,9 +24,14 @@ You need:
 
 ## Stage LawSpec
 
-The upgrade requires the public embedding additions merged in `24e8706c`.
-Until a package containing them is available on npm, stage its CLI from that
-LawSpec checkout built with `stack build`:
+Stage the published CLI from npm into `.lawspec-cli/`:
+
+```sh
+make lawspec-stage
+```
+
+For a LawSpec build not yet on npm, stage it from a checkout built with
+`stack build` instead:
 
 ```sh
 make lawspec-stage LAWSPEC_HOME=~/src/lawspec
