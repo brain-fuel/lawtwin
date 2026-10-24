@@ -3535,7 +3535,7 @@ func LsRegexMatches(pattern string, text []int) bool {
 // Recorded values: a law compares a value's portable rendering with the
 // text stored under recorded/<unit>/<name> in the project. LAWSPEC_RECORDED
 // names the folder; otherwise it is recorded/ in the nearest folder, from
-// the working one up, that holds lawspec.json or recorded/. With
+// the working one up, that holds lawspec.edn or recorded/. With
 // LAWSPEC_UPDATE_RECORDED=1 (lawspec test --update-recorded) a law records
 // the value instead.
 func lsRecordedRoot() string {
@@ -3545,7 +3545,7 @@ func lsRecordedRoot() string {
 	start, _ := os.Getwd()
 	folder := start
 	for {
-		if _, err := os.Stat(filepath.Join(folder, "lawspec.json")); err == nil {
+		if _, err := os.Stat(filepath.Join(folder, "lawspec.edn")); err == nil {
 			return filepath.Join(folder, "recorded")
 		}
 		if info, err := os.Stat(filepath.Join(folder, "recorded")); err == nil && info.IsDir() {
@@ -7843,7 +7843,7 @@ type lawSpecNodeOptions struct {
 
 // LawSpecNodeWithIdentity gives the node this identity, a
 // *LawSpecNodeIdentity of lawspec_network.go (by default the one
-// lawspec.json binds, or a fresh one).
+// lawspec.edn binds, or a fresh one).
 func LawSpecNodeWithIdentity(identity any) LawSpecNodeOption {
 	return func(options *lawSpecNodeOptions) { options.identity = identity }
 }
@@ -9173,7 +9173,7 @@ func lsErrorAs[T error](err error) bool {
 }
 
 // lsNativeFailures calls native code that may fail: a LawSpecFail it panics
-// with, or an error lawspec.json maps to a failure (mapped tries each), becomes
+// with, or an error lawspec.edn maps to a failure (mapped tries each), becomes
 // a failure of the ability.
 func lsNativeFailures(ability string, convert func(any) LawSpecValue, body func() LawSpecValue, mapped ...func(error) (LawSpecValue, bool)) (result LawSpecValue) {
 	defer func() {

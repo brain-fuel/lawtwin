@@ -140,11 +140,14 @@ fn import_openapi(o: &Options) -> Result<(), String> {
     let package = emit::Emitter::new(&o.package, &types, &api, &described).package();
     let src = o.out.join("src");
     write(
-        &o.out.join("lawspec-package.json"),
-        &format!(
-            "{{\n  \"name\": \"{}\",\n  \"version\": \"{}\",\n  \"sources\": [\"src\"],\n  \"dependencies\": {{}}\n}}\n",
-            o.package, o.version
-        ),
+        &o.out.join("lawspec.edn"),
+        &natives::manifest_edn(&serde_json::json!({
+            "manifestVersion": 1,
+            "package": {"name": o.package, "version": o.version},
+            "languageProfile": "1.0-rc.2",
+            "sources": ["src"],
+            "dependencies": {}
+        })),
     )?;
     write(&src.join("model.lawspec"), &package.model)?;
     write(&src.join("api.lawspec"), &package.facade)?;
@@ -199,8 +202,8 @@ fn import_openapi(o: &Options) -> Result<(), String> {
     // The test project.
     let test = o.out.join("test");
     write_once(
-        &test.join("lawspec.json"),
-        &natives::lawspec_json(&o.package, &o.version),
+        &test.join("lawspec.edn"),
+        &natives::lawspec_edn(&o.package, &o.version),
     )?;
     write_once(
         &test.join("laws/suite.lawspec"),

@@ -17,7 +17,7 @@
     "src/lawspec_typed.py": "cc4774b6dd32a141440771cd53dfadd4b96dce7d3449aa6bae19c88ddd461bd7",
     "src/lawspec_fast.py": "cc3384ca2ab955c7f259bb52cec944ef50a0b73ace947396333b01a2f16d4528",
     "tests/lawspec_data_strategies.py": "34e06527eea876fcefc7f2d0be5b194b5b7f7d0d30759a44b645bb1beee5b552",
-    "src/lawspec_runtime.py": "63c88306b0d32030fb60d2a332a2aab26d544fbffbd0a46de6d4c3f026e0c86e",
+    "src/lawspec_runtime.py": "7147552c9a78f715eafacefddfe0cd3d6d8e200047f7f8cfc51781db1330ffb0",
     "src/lawspec_abilities/lawtwin/kafka/__init__.py": "72ec39a3c339d63de997849fe6a58ae89645eff26dc16aba42311030017fa140",
     "src/lawspec_abilities/contracttest/kafka.py": "84ba89b517e23d57aa3e53b78ea906dac47b0caed8ea20033e38239dfa6e87c4",
     "src/lawspec_remote.py": "f2c1fd8846b5bac1d5c616ca7024b9ee6b36b00bff6e885492522a05144921c4"

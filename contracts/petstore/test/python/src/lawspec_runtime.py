@@ -795,7 +795,7 @@ def regex_matches(pattern, text):
 # Recorded values: a law compares a value's portable rendering with the
 # text stored under recorded/<unit>/<name> in the project. LAWSPEC_RECORDED
 # names the folder; otherwise it is recorded/ in the nearest folder, from
-# the working one up, that holds lawspec.json or recorded/. With
+# the working one up, that holds lawspec.edn or recorded/. With
 # LAWSPEC_UPDATE_RECORDED=1 (lawspec test --update-recorded) a law records
 # the value instead.
 def recorded_root():
@@ -805,7 +805,7 @@ def recorded_root():
         return given
     folder = os.path.abspath(os.getcwd())
     while True:
-        if (os.path.isfile(os.path.join(folder, 'lawspec.json'))
+        if (os.path.isfile(os.path.join(folder, 'lawspec.edn'))
                 or os.path.isdir(os.path.join(folder, 'recorded'))):
             return os.path.join(folder, 'recorded')
         parent = os.path.dirname(folder)
@@ -1143,7 +1143,7 @@ def attempt(ability, body, right, left):
 
 
 def native_handler(module, name, *made_with):
-    """A production handler bound in lawspec.json: its class (or function of
+    """A production handler bound in lawspec.edn: its class (or function of
     no arguments), called; with the case's resource, for an ability made
     with one."""
     import importlib
@@ -1155,7 +1155,7 @@ _HANDLER_SCHEMA = None
 
 def set_handler_schema(schema):
     """The schema a handler's values cross with: lawspec_native sets it to
-    the bound native types when lawspec.json binds them."""
+    the bound native types when lawspec.edn binds them."""
     global _HANDLER_SCHEMA
     _HANDLER_SCHEMA = schema
 
@@ -1202,7 +1202,7 @@ class Fail(Exception):
 
 def native_failures(ability, convert, body, mapped=()):
     """Calls native code that may fail: ls.Fail(value), or an exception
-    lawspec.json maps to a failure (mapped holds (class, make) pairs),
+    lawspec.edn maps to a failure (mapped holds (class, make) pairs),
     becomes a failure of the ability."""
     try:
         return body()
@@ -4673,7 +4673,7 @@ class Node:
     ref:DEC-distribution-canonical-wire"""
 
     def __init__(self, transport, identity=None, trusted=None):
-        """identity: a NodeIdentity (by default the one lawspec.json binds,
+        """identity: a NodeIdentity (by default the one lawspec.edn binds,
         or a fresh one); trusted: the fingerprints of the only peers to talk
         to (by default any peer, each address keeping the first identity it
         shows). A transport made for tests only (insecure_for_tests) skips

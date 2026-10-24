@@ -2723,7 +2723,7 @@ public final class LawSpecRuntime {
   // Recorded values: a law compares a value's portable rendering with the
   // text stored under recorded/<unit>/<name> in the project. LAWSPEC_RECORDED
   // names the folder; otherwise it is recorded/ in the nearest folder, from
-  // the working one up, that holds lawspec.json or recorded/. With
+  // the working one up, that holds lawspec.edn or recorded/. With
   // LAWSPEC_UPDATE_RECORDED=1 (lawspec test --update-recorded) a law records
   // the value instead.
   static java.nio.file.Path recordedRoot() {
@@ -2731,7 +2731,7 @@ public final class LawSpecRuntime {
     if (given != null && !given.isEmpty()) return java.nio.file.Path.of(given);
     java.nio.file.Path start = java.nio.file.Path.of("").toAbsolutePath();
     for (java.nio.file.Path folder = start; folder != null; folder = folder.getParent()) {
-      if (java.nio.file.Files.exists(folder.resolve("lawspec.json"))
+      if (java.nio.file.Files.exists(folder.resolve("lawspec.edn"))
           || java.nio.file.Files.isDirectory(folder.resolve("recorded")))
         return folder.resolve("recorded");
     }
@@ -6758,7 +6758,7 @@ public final class LawSpecRuntime {
     }
 
     /**
-     * identity: a LawSpecNetwork.NodeIdentity, by default the one lawspec.json binds
+     * identity: a LawSpecNetwork.NodeIdentity, by default the one lawspec.edn binds
      * (lawspec-network.conf) or a fresh one; trusted: the fingerprints of the only peers to talk
      * to (by default any peer, each address keeping the first identity it shows). A node needs the
      * secure network handler (`import lawspec.network`), except on a transport made for tests only
@@ -7853,11 +7853,11 @@ public final class LawSpecRuntime {
     }
   }
 
-  /** A native exception lawspec.json maps to a failure: its class, and the failure it becomes. */
+  /** A native exception lawspec.edn maps to a failure: its class, and the failure it becomes. */
   public record MappedFailure(Class<? extends Throwable> kind, java.util.function.Function<Throwable, Value> make) {}
 
   /**
-   * Calls native code that may fail: a Fail it throws, or an exception lawspec.json maps to a
+   * Calls native code that may fail: a Fail it throws, or an exception lawspec.edn maps to a
    * failure, becomes a failure of the ability.
    */
   public static Value nativeFailures(String ability, java.util.function.Function<Object, Value> convert,

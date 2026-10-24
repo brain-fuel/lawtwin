@@ -187,6 +187,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "edn-rs"
+version = "0.17.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8bc72f43397116f57ab2bf8218d51ff7e432c390cf9d7f1f525f9eb977860dbd"
+dependencies = [
+ "ordered-float",
+]
+
+[[package]]
 name = "equivalent"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -558,8 +567,9 @@ dependencies = [
 
 [[package]]
 name = "lawtwin"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
+ "edn-rs",
  "lawtwin-http",
  "lawtwin-wire",
  "serde_json",
@@ -578,7 +588,7 @@ dependencies = [
 
 [[package]]
 name = "lawtwin-http"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "axum",
@@ -593,7 +603,7 @@ dependencies = [
 
 [[package]]
 name = "lawtwin-http-conformance"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "lawtwin-http",
  "lawtwin-wire",
@@ -604,7 +614,7 @@ dependencies = [
 
 [[package]]
 name = "lawtwin-kafka"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "axum",
@@ -622,7 +632,7 @@ dependencies = [
 
 [[package]]
 name = "lawtwin-kafka-conformance"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "bytes",
  "kafka-protocol",
@@ -634,7 +644,7 @@ dependencies = [
 
 [[package]]
 name = "lawtwin-kafka-fidelity"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "axum",
@@ -666,7 +676,7 @@ dependencies = [
 
 [[package]]
 name = "lawtwin-wire"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "base64 0.22.1",
  "regex",
@@ -837,6 +847,15 @@ name = "once_cell"
 version = "1.21.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
+
+[[package]]
+name = "ordered-float"
+version = "4.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7bb71e1b3fa6ca1c61f383464aaf2bb0e2f8e772a1f01d486832464de363b951"
+dependencies = [
+ "num-traits",
+]
 
 [[package]]
 name = "percent-encoding"

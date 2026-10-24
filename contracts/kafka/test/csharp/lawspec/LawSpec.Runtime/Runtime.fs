@@ -121,7 +121,7 @@ let private recordedRoot () =
     | null | "" ->
         let start = Directory.GetCurrentDirectory()
         let rec find (folder: string) =
-            if File.Exists(Path.Combine(folder, "lawspec.json")) || Directory.Exists(Path.Combine(folder, "recorded")) then
+            if File.Exists(Path.Combine(folder, "lawspec.edn")) || Directory.Exists(Path.Combine(folder, "recorded")) then
                 Path.Combine(folder, "recorded")
             else
                 match Directory.GetParent folder with

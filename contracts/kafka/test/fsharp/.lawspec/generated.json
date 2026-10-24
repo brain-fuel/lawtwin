@@ -14,7 +14,7 @@
     "lawspec/LawSpec.Runtime/Random.fs": "b843d3d06376f9ecc24c8321928f5a4e87fbdc69e57dadba85c95f5ca85612ca",
     "lawspec/LawSpec.Runtime/Recorded.fs": "ce62a4b89a5723d9de2468fb735f638360b1d18c023e5d27dcce6cea587f497a",
     "lawspec/LawSpec.Runtime/Regex.fs": "1b3784855aaa6b8c308152f7b761c20d0c6d957a526b827d86d379fbc41e8ee5",
-    "lawspec/LawSpec.Runtime/Runtime.fs": "785da1b81836d79b771140006a8d80de90f5e23599a9c1adcb219854d636ca5d",
+    "lawspec/LawSpec.Runtime/Runtime.fs": "9e80c1187f499d4275f6e8e9a17015d6b2ef85781293e4615e3e6e195e26611a",
     "lawspec/LawSpec.Runtime/Scalar.fs": "40148fd2ae9f432d1fc474664f046b33f2ac4a53294fb4c5056209fe3b788021",
     "lawspec/LawSpec.Runtime/Schema.fs": "fda06b3819e79c212639125a2b163eb691b414188f0d472ee9649b67c2793caf",
     "lawspec/LawSpec.Runtime/Tasks.fs": "13d476244cf6f0879931930b4c9cbc49b8c7868e96cfff6c3b68fa6c215e6ca0",
@@ -23,13 +23,13 @@
     "lawspec/LawSpec.Runtime/Workflow.fs": "dfea8619b28848e3b3bbc3074a18c8817860e4f42e8c0c05f98c6d7219c78d60",
     "lawspec/LawSpec.Testing/ActorHost.fs": "cc7ffd59677a6309554aeee8c562c1055c4670fff486fa40c037cf6db96b1524",
     "lawspec/LawSpec.Testing/Gen.fs": "c27efc511c521ffaed3f7cccb8c11d818eb024d94f8c0ce6f615b77a72073db6",
-    "lawspec/LawSpec.Testing/Generators.fs": "b805e797f8793269d255183e48e99f10ce1ec29250e974ff981e69255950d0d6",
-    "lawspec/LawSpec.Testing/Harness.fs": "321f1d896d0c61c3c1a08b4f93593b27857b7373554c6eecb617795837e49992",
+    "lawspec/LawSpec.Testing/Generators.fs": "84db80a6a67af2ab4b11406a7b17b0ba8252feb18b01eba9c130fc4b70a92e59",
+    "lawspec/LawSpec.Testing/Harness.fs": "3adc644ff24dd033e1651002768376ed44471dbf581b8a7ab6a27505c8afed9c",
     "lawspec/LawSpec.Testing/History.fs": "ae2bedf845c81d3db87e7220d6c91791b5e528db662cbbe25ed8c0bdbd2bb8d2",
     "lawspec/LawSpec.Testing/LawSpec.Testing.fsproj": "2a463c80f5857f3932ab700a9ca4d36b929a6029ae067f634fe89fc0a602a866",
     "lawspec/LawSpec.Testing/Model.fs": "a23e09e4c5ac961503038043eab50971f4aff61d4c6060206f1fed432e3832ec",
     "lawspec/LawSpec.Testing/ModelParallel.fs": "c2c021dfe8521def93cf28595aadddc12a648d09d81d48f4f3996e8b5b636218",
-    "lawspec/LawSpec.Testing/Property.fs": "4966dea3631327959d1969748e3dfd1cb2939f6bceb833141188c198126fda0e",
+    "lawspec/LawSpec.Testing/Property.fs": "aac540e2ce8bc4d7e936a2a8be2281a96feebc66abea1a36bef51fe5e671fc0f",
     "lawspec/LawSpec.Testing/Resources.fs": "0ddc6431ec1d88498fb81954c5950b6a1972979eebd8b082b24c05085dfdefed",
     "lawspec/LawSpec.Testing/Schedule.fs": "09228fc442407a2ba9a19dedd1d4ba106f1d573d4a9dd3b5e90e0a561cb33a2e",
     "lawspec/LawSpec.Testing/Search.fs": "6d83b776f8aedf169f5f5b4368ac6e0439650b70f3ad167c8d894756f3c9cf98",
@@ -53,8 +53,8 @@
     "src/LawSpec/Handlers/LawtwinKafka.fs": "ba97eaf6608bb35111c35c4b1f5bb5ca25cfc0a9ecd93b2233c8642a2628d6b5",
     "src/LawSpec/Handlers/ContracttestKafka.fs": "0672a0babc28c0ef26c541f5a3f22b6dcbec15fa42fb39e85f3cf5bac0a624f2",
     "tests/LawSpec/LawtwinKafka.fs": "b6986703f20ab5bb3ec05d7b81e36dd4c28bb57aa0b4c429b8ed1f77a9fb094c",
-    "src/LawSpec.Sources.props": "7438b6428bf9af1a77f7406d90a928045b32b5a2fc348b79b25c0611ee891e5c",
-    "tests/LawSpec.Tests.props": "185957bae845c7d0db39a24ce0157fae104cc44855ccdfc7af5c2f1ee9facd14"
+    "src/LawSpec.Sources.props": "77f0f9898e42efcf7cbaa971843db4b839e8d0d1113b163f57c4c8c3e4fe82e0",
+    "tests/LawSpec.Tests.props": "325a0940cee3a097f51c80d56d131ff605b435c04d15c45f95b4c16029bb966d"
   },
   "adapters": {
     "src/Lawtwin/Kafka.fs": "d210e9784aebd9f78e9f237b506749aa9da59479f60950e0d07ad42f8f01a26b"

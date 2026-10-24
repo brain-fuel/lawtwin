@@ -3362,7 +3362,7 @@ pub fn regex_matches(pattern: &str, text: &str) -> Result<bool> {
 // Recorded values: a law compares a value's portable rendering with the
 // text stored under recorded/<unit>/<name> in the project. LAWSPEC_RECORDED
 // names the folder; otherwise it is recorded/ in the nearest folder, from
-// the working one up, that holds lawspec.json or recorded/. With
+// the working one up, that holds lawspec.edn or recorded/. With
 // LAWSPEC_UPDATE_RECORDED=1 (lawspec test --update-recorded) a law records
 // the value instead.
 pub fn recorded_root() -> std::path::PathBuf {
@@ -3374,7 +3374,7 @@ pub fn recorded_root() -> std::path::PathBuf {
     let start = std::env::current_dir().unwrap_or_default();
     let mut folder = start.as_path();
     loop {
-        if folder.join("lawspec.json").exists() || folder.join("recorded").is_dir() {
+        if folder.join("lawspec.edn").exists() || folder.join("recorded").is_dir() {
             return folder.join("recorded");
         }
         match folder.parent() {
@@ -9436,7 +9436,7 @@ pub mod net {
         /// A node on transport. Unless it is the transport made for tests
         /// only (MemoryNetwork::insecure_transport_for_tests), the node is
         /// secure: the secure network handler (lawspec_network, installed)
-        /// gives it the identity lawspec.json binds, or a fresh one. Panics
+        /// gives it the identity lawspec.edn binds, or a fresh one. Panics
         /// without that handler, or when lawspec-network.conf is unreadable;
         /// lawspec_network::node takes an identity and trusted peers.
         pub fn new(transport: Arc<dyn Transport>) -> Node {
@@ -10814,11 +10814,11 @@ pub fn fail<E: Send + 'static>(value: E) -> ! {
     std::panic::panic_any(Fail(Box::new(value)))
 }
 
-/// A native panic payload lawspec.json maps to a failure.
+/// A native panic payload lawspec.edn maps to a failure.
 pub type MappedFailure = Box<dyn Fn(&(dyn std::any::Any + Send)) -> Option<Value>>;
 
 /// Native code that may fail: a Fail it panics with (holding a native E), or
-/// a panic payload lawspec.json maps, becomes a failure of the ability.
+/// a panic payload lawspec.edn maps, becomes a failure of the ability.
 pub fn native_failures<E: 'static, T>(
     ability: &str,
     convert: impl FnOnce(E) -> Value,

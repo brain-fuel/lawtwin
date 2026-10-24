@@ -88,11 +88,51 @@ pub fn python(unit: &str, api: &Api) -> String {
     out
 }
 
-/// The test project's lawspec.json: the package, on Rust and Python.
-pub fn lawspec_json(package: &str, version: &str) -> String {
-    format!(
-        "{{\n  \"version\": 2,\n  \"languageProfile\": \"1.0-rc.2\",\n  \"verification\": {{\"layers\": [\"proof\", \"exhaustive\", \"property\", \"examples\", \"runtime\", \"model\"]}},\n  \"sources\": [\n    \"laws\"\n  ],\n  \"dependencies\": {{\n    \"{package}\": \"{version}\"\n  }},\n  \"packages\": [\n    \"..\"\n  ],\n  \"targets\": [\n    {{\n      \"language\": \"rust\",\n      \"root\": \"rust\"\n    }},\n    {{\n      \"language\": \"python\",\n      \"root\": \"python\",\n      \"python\": \".venv/bin/python\"\n    }}\n  ]\n}}\n"
-    )
+pub fn manifest_edn(value: &serde_json::Value) -> String {
+    use edn_rs::{Edn, Map, Vector};
+    use serde_json::Value;
+    fn encode(value: &Value) -> Edn {
+        match value {
+            Value::Null => Edn::Nil,
+            Value::Bool(value) => Edn::Bool(*value),
+            Value::Number(value) => Edn::Symbol(value.to_string()),
+            Value::String(value) => Edn::Symbol(serde_json::to_string(value).unwrap()),
+            Value::Array(values) => Edn::Vector(Vector::new(values.iter().map(encode).collect())),
+            Value::Object(fields) => Edn::Map(Map::new(fields.iter().map(|(key, value)| {
+                let encoded = if key.chars().all(|character| character.is_ascii_alphanumeric()) {
+                    let mut keyword = String::from(":");
+                    for character in key.chars() {
+                        if character.is_ascii_uppercase() {
+                            keyword.push('-');
+                            keyword.push(character.to_ascii_lowercase());
+                        } else {
+                            keyword.push(character);
+                        }
+                    }
+                    keyword
+                } else {
+                    serde_json::to_string(key).unwrap()
+                };
+                (encoded, encode(value))
+            }).collect())),
+        }
+    }
+    encode(value).to_string() + "\n"
+}
+
+pub fn lawspec_edn(package: &str, version: &str) -> String {
+    manifest_edn(&serde_json::json!({
+        "manifestVersion": 1,
+        "component": {"name": format!("{package}.conformance"), "version": version},
+        "languageProfile": "1.0-rc.2",
+        "verification": {"layers": ["proof", "exhaustive", "property", "examples", "runtime", "model"]},
+        "sources": ["laws"],
+        "dependencies": {package: {"version": version, "path": ".."}},
+        "targets": [
+            {"language": "rust", "root": "rust"},
+            {"language": "python", "root": "python", "python": ".venv/bin/python"}
+        ]
+    }))
 }
 
 /// The test project's own unit, which imports the package.

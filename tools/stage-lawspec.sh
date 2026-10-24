@@ -10,7 +10,7 @@
 # compiler is the one `stack build` made from that checkout's sources. The
 # checkout itself is not changed.
 #
-#   LAWSPEC_VERSION=0.29.2 tools/stage-lawspec.sh
+#   LAWSPEC_VERSION=0.31.0 tools/stage-lawspec.sh
 #   LAWSPEC_HOME=/path/to/lawspec tools/stage-lawspec.sh
 #   node .lawspec-cli/bin/lawspec.mjs check --config ...
 set -euo pipefail
@@ -23,6 +23,7 @@ if [ -z "${LAWSPEC_HOME:-}" ]; then
   tar -xzf "$tmp/$tgz" -C "$tmp"
   rm -rf .lawspec-cli
   mv "$tmp/package" .lawspec-cli
+  npm install --prefix .lawspec-cli --omit=dev --ignore-scripts --no-audit --no-fund
   echo "staged LawSpec $(node .lawspec-cli/bin/lawspec.mjs --version 2>/dev/null || echo "$LAWSPEC_VERSION") from npm in .lawspec-cli"
   exit 0
 fi

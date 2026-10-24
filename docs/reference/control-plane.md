@@ -21,7 +21,7 @@ to do is declared beside the package, in its twin file.
 ## The twin file
 
 Each contract that has a twin has a twin file, `lawtwin.json`, next to its
-`lawspec-package.json` (ref:DEC-twin-file). It names the contract, the
+`lawspec.edn` (ref:DEC-twin-file). It names the contract, the
 ability and the spec handler the twin runs, declares the faults the twin can
 show, and says what forcing a state refuses. For each fault it gives:
 

@@ -39,14 +39,14 @@ def main():
             dest = scratch / name
             run([args.lawtwin, "import", "openapi", document, "--package", package, "--out", dest])
             if args.mode == "reproducible":
-                paths = ["lawspec-package.json", "src/api.lawspec", "src/model.lawspec", "lawtwin-openapi.json", "lawtwin-embed.rs",
+                paths = ["lawspec.edn", "src/api.lawspec", "src/model.lawspec", "lawtwin-openapi.json", "lawtwin-embed.rs",
                          f"test/rust/src/{package.replace('.', '/')}.rs", f"test/python/src/{package.replace('.', '/')}/__init__.py"]
                 stale = [p for p in paths if not (ROOT / "contracts" / name / p).is_file()
                          or (dest / p).read_bytes() != (ROOT / "contracts" / name / p).read_bytes()]
                 if stale:
                     raise SystemExit(f"{name}: stale importer outputs: {', '.join(stale)}; run make openapi-import")
                 continue
-            config = dest / "test/lawspec.json"
+            config = dest / "test/lawspec.edn"
             run(["node", args.lawspec, "check", "--config", config])
             run(["node", args.lawspec, "generate", "--target", "rust", "--config", config])
             # Compile the emitted adapter as part of a tiny HTTP-core harness,

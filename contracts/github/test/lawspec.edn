@@ -1,0 +1,34 @@
+{
+  :manifest-version 1
+  :component {
+    :name "test"
+    :version "0.1.0"
+  }
+  :sources ["laws"]
+  :dependencies {
+    "lawtwin.github" "0.1.0"
+  }
+  :packages [".."]
+  :targets [
+    {
+      :language :rust
+      :root "rust"
+    }
+    {
+      :language :python
+      :root "python"
+      :python ".venv/bin/python"
+    }
+  ]
+  :language-profile "1.0-rc.2"
+  :verification {
+    :layers [
+      :proof
+      :exhaustive
+      :property
+      :examples
+      :runtime
+      :model
+    ]
+  }
+}

@@ -85,16 +85,15 @@ fn petstore_3_0_json() {
         read(out.join("test/python/src/lawtwin/petstore/__init__.py"))
             .contains("class PetApiHandler(_Reference)")
     );
-    let configuration: serde_json::Value =
-        serde_json::from_str(&read(out.join("test/lawspec.json"))).unwrap();
-    assert_eq!(configuration["version"], 2);
-    assert_eq!(configuration["languageProfile"], "1.0-rc.2");
+    let configuration: edn_rs::Edn = read(out.join("test/lawspec.edn")).parse().unwrap();
+    assert_eq!(configuration[":manifest-version"].to_int(), Some(1));
+    assert_eq!(configuration[":language-profile"], edn_rs::Edn::Str("1.0-rc.2".into()));
     assert!(
-        configuration["verification"]["layers"]
-            .as_array()
+        configuration[":verification"][":layers"]
+            .to_vec()
             .unwrap()
             .iter()
-            .any(|layer| layer == "property")
+            .any(|layer| layer.trim_start_matches(':') == "property")
     );
     let adapter = read(out.join("lawtwin-embed.rs"));
     assert!(adapter.contains("self.handler.try_addPet("));
@@ -217,17 +216,14 @@ fn paths_select_operations() {
 #[test]
 fn maintained_contract_projects_select_law_execution() {
     for contract in ["kafka", "petstore", "github"] {
-        let config: serde_json::Value = serde_json::from_str(&read(
-            repo().join(format!("contracts/{contract}/test/lawspec.json")),
-        ))
-        .unwrap();
-        assert_eq!(config["version"], 2, "{contract}");
-        assert_eq!(config["languageProfile"], "1.0-rc.2", "{contract}");
-        let layers = config["verification"]["layers"]
-            .as_array()
+        let config: edn_rs::Edn = read(repo().join(format!("contracts/{contract}/test/lawspec.edn"))).parse().unwrap();
+        assert_eq!(config[":manifest-version"].to_int(), Some(1), "{contract}");
+        assert_eq!(config[":language-profile"], edn_rs::Edn::Str("1.0-rc.2".into()), "{contract}");
+        let layers = config[":verification"][":layers"]
+            .to_vec()
             .expect("explicit verification layers");
         assert!(
-            layers.iter().any(|value| value == "property"),
+            layers.iter().any(|value| value.trim_start_matches(':') == "property"),
             "{contract}: unbounded laws need native observations"
         );
     }

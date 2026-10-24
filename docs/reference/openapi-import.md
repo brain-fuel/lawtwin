@@ -35,7 +35,7 @@ Only local references (`#/...`) are followed. Swagger 2.0 is refused.
 
 | File | Written | Holds |
 | --- | --- | --- |
-| `lawspec-package.json` | every import | the package's name, version and sources |
+| `lawspec.edn` | every import | the package's name, version and sources |
 | `src/model.lawspec` | every import | unit `<name>.model`: the types, the failures, the constraints, the state, and a definition for each operation the importer models |
 | `src/api.lawspec` | every import | unit `<name>`: the `Service` resource, one ability per tag with its laws, and the handler `reference` |
 | `src/handwritten.lawspec` | once | unit `<name>.handwritten`: a definition for each operation the importer cannot model, failing with `Unmodelled` until you write it |

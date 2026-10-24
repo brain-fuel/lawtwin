@@ -1,0 +1,12 @@
+{
+  :manifest-version 1
+  :package {
+    :name "lawtwin.kafka"
+    :version "0.1.0"
+  }
+  :language-profile "1.0-rc.2"
+  :sources ["src"]
+  :dependencies {
+
+  }
+}

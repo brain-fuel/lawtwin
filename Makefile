@@ -1,12 +1,12 @@
 # LawTwin development tasks. `make` lists them. Every check runs locally;
 # there is no hosted CI.
 
-# The contracts and twin model consumers use LawSpec 0.29.2, configuration
-# version 2 and profile 1.0-rc.2, with explicit verification layers.
+# The contracts and twin model consumers use LawSpec 0.31.0, manifest
+# version 1 and profile 1.0-rc.2, with explicit verification layers.
 # `make lawspec-stage` stages the CLI from npm; set LAWSPEC_HOME to
 # stage it from a LawSpec checkout instead (for builds not yet on npm), or set
 # LAWSPEC to another way of running it.
-LAWSPEC_VERSION  := 0.29.2
+LAWSPEC_VERSION  := 0.31.0
 LAWSPEC_REQUIRED := LawSpec $(LAWSPEC_VERSION)
 LAWSPEC_HOME ?=
 LAWSPEC   ?= node .lawspec-cli/bin/lawspec.mjs
@@ -18,10 +18,10 @@ PYTHON313 ?= python3.13
 GRADLE_HOME ?=
 CANON     ?= stack --no-terminal --stack-yaml $(CANON_HOME)/stack.yaml exec canon --
 PODMAN    ?= podman
-IMAGE     ?= lawtwin/kafka:0.1.0
+IMAGE     ?= lawtwin/kafka:0.2.0
 # The Kafka core the conformance kit checks: a command, or image:<image>.
 CORE      ?= target/release/lawtwin-kafka
-HTTP_IMAGE ?= lawtwin/http:0.1.0
+HTTP_IMAGE ?= lawtwin/http:0.2.0
 OPENAPI_GENERATOR ?= docker.io/openapitools/openapi-generator-cli:v7.9.0
 # The HTTP core core-conformance-http checks: CORE when it names one,
 # otherwise the Rust core.
@@ -30,7 +30,7 @@ HTTP_CORE := $(if $(filter target/release/lawtwin-kafka,$(CORE)),target/release/
 # and the twin release a conformance report is for.
 KAFKA_IMAGE ?= docker.io/apache/kafka:4.3.1
 KAFKA_PORT  ?= 39092
-RELEASE     ?= 0.1.0
+RELEASE     ?= 0.2.0
 
 comma := ,
 
@@ -76,14 +76,14 @@ openapi-compile-check: build ## Compile fresh OpenAPI 3.0/3.1 imports and their 
 contract-check: ## Compile each contract package and its laws
 	@for c in $(CONTRACTS); do \
 	  $(LAWSPEC) package --project $$c && \
-	  $(LAWSPEC) check --config $$c/test/lawspec.json || exit 1; \
+	  $(LAWSPEC) check --config $$c/test/lawspec.edn || exit 1; \
 	done
 
 contract-generate: ## Regenerate each contract's test project (TARGET=... for one target)
-	@for c in $(CONTRACTS); do $(LAWSPEC) generate $(TARGETARG) --config $$c/test/lawspec.json || exit 1; done
+	@for c in $(CONTRACTS); do $(LAWSPEC) generate $(TARGETARG) --config $$c/test/lawspec.edn || exit 1; done
 
 contract-generate-check: ## Fail if a generated file of a contract's test project is stale
-	@for c in $(CONTRACTS); do $(LAWSPEC) generate --check $(TARGETARG) --config $$c/test/lawspec.json || exit 1; done
+	@for c in $(CONTRACTS); do $(LAWSPEC) generate --check $(TARGETARG) --config $$c/test/lawspec.edn || exit 1; done
 
 python-env: ## Make each contract test project's Python environment
 	@for c in $(CONTRACTS); do \
@@ -93,7 +93,7 @@ python-env: ## Make each contract test project's Python environment
 	done
 
 contract-test: python-env ## Run each contract's laws on every target (TARGET=rust, python, go, java, kotlin, fsharp or csharp for one)
-	@for c in $(CONTRACTS); do $(LAWSPEC) test $(TARGETARG) --config $$c/test/lawspec.json || exit 1; done
+	@for c in $(CONTRACTS); do $(LAWSPEC) test $(TARGETARG) --config $$c/test/lawspec.edn || exit 1; done
 
 core-conformance: ## Check a Kafka core with the conformance kit (CORE=<command> or CORE=image:<image>)
 	@if [ "$(CORE)" = "target/release/lawtwin-kafka" ]; then cargo build --release -p lawtwin-kafka; fi

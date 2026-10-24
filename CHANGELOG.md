@@ -8,8 +8,15 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-24
+
 ### Changed
-- The contracts and the twins need LawSpec 0.29.2, staged from npm with `make lawspec-stage`; every contract's test project is regenerated with it
+
+- Contract packages, maintained native consumers and the OpenAPI importer emit
+  unified `lawspec.edn` manifests and require LawSpec 0.31.0.
+- OpenAPI fixture configuration uses the maintained `edn-rs` writer, retaining
+  the declared Rust 1.85 minimum. The CLI staging tool installs npm dependencies.
+
 - `Maybe`'s values are written `Present x` and `Absent`, as LawSpec 0.28 requires: in the Kafka contract, in the units `lawtwin import openapi` writes (the Petstore and GitHub contracts are imported again), among the names the importer keeps for LawSpec, and in the values `lawtwin peer kafka` reads from a value type
 - LawSpec's law-set checks (completeness, overlap, conflict and vacuity) are on by default; no law of the three contracts is in a law set, as each is about an ability's operations rather than a function's result, so no law set is claimed or excused
 

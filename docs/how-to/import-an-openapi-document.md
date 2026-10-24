@@ -55,9 +55,9 @@ c=contracts/petstore
 python3.13 -m venv $c/test/python/.venv
 $c/test/python/.venv/bin/pip install -q -e "$c/test/python[test]"
 node .lawspec-cli/bin/lawspec.mjs package --project $c
-node .lawspec-cli/bin/lawspec.mjs check --config $c/test/lawspec.json
-node .lawspec-cli/bin/lawspec.mjs generate --config $c/test/lawspec.json
-node .lawspec-cli/bin/lawspec.mjs test --config $c/test/lawspec.json
+node .lawspec-cli/bin/lawspec.mjs check --config $c/test/lawspec.edn
+node .lawspec-cli/bin/lawspec.mjs generate --config $c/test/lawspec.edn
+node .lawspec-cli/bin/lawspec.mjs test --config $c/test/lawspec.edn
 ```
 
 To check it with the other contracts in `make ci`, add the directory to

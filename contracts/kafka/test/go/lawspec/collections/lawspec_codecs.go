@@ -32,7 +32,7 @@ func lsNativeContext[T any](context string, operation func() T) (result T) {
 				panic(failure)
 			}
 			// So do native failures, and the application's own errors, which
-			// lawspec.json may map to failures.
+			// lawspec.edn may map to failures.
 			switch problem.(type) {
 			case LawSpecFail, *LawSpecFail:
 				panic(problem)

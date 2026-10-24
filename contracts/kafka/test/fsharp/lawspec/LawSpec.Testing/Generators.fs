@@ -22,7 +22,7 @@ type Bound =
 type Factory = Gen<Value> list -> Gen<Value>
 
 /// What generation reads beyond the schema: native generator factories by
-/// type name (from lawspec.json) and the attempts budget.
+/// type name (from lawspec.edn) and the attempts budget.
 type Context =
     { Schema: Schema
       Symbols: Scalar.SymbolContext

@@ -57,7 +57,7 @@
     "src/main/java/lawspec/definitions/lawtwin/kafka/Model.java": "fef0810cd2f1d9ae65c0aa970d49e583d10f6c48487d3f4d86bb2d8f4fa89a1c",
     "src/main/java/lawspec/definitions/contracttest/Kafka.java": "011d4b88eba41c05fb3855f1f0ead474e6697829c9f48699aa03b11fcb9f1887",
     "src/test/java/lawspec/testing/LawSpecDataStrategies.java": "f3bf7e2db35c9c1a9f7caa6029fd78ae63416f91daf8e4960aba63d15cbf15ac",
-    "src/main/java/lawspec/runtime/LawSpecRuntime.java": "c78b9716cf7b2f7bead592d50e00d18e56458de3f6901e907e8caf4c40caa52a",
+    "src/main/java/lawspec/runtime/LawSpecRuntime.java": "d53eac2aa48711083eeb5473be31dd0440de37cb361670dad8860ab3a1a8fa25",
     "src/main/java/lawspec/abilities/lawtwin/Kafka.java": "be1e8bc4eb8d38c9da9890ed1f9086e0716d132197cae3f9de1fb34a89f498c1",
     "src/main/java/lawspec/abilities/contracttest/Kafka.java": "ee8369f2484bb7ff35612bf85ab40e91431d7e87a24cf28d64ca03244bc3f9ce",
     "src/main/java/lawspec/remote/LawSpecRemote.java": "970b3988fe1a908397c87c2fc2418ebddaeb3be84098a2525f8f7b9aef7ebc54"

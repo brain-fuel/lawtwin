@@ -1,0 +1,27 @@
+{
+  :format "lawspec-lock"
+  :version 1
+  :roots {
+    "lawtwin.github" "1b88e2bedd38a846107054716d069bea00fd0851aa86c284490e97673b9c6332"
+  }
+  :selections {
+    "$::lawtwin.github" {
+      :request "0.1.0"
+      :package "1b88e2bedd38a846107054716d069bea00fd0851aa86c284490e97673b9c6332"
+    }
+  }
+  :packages [
+    {
+      :id "1b88e2bedd38a846107054716d069bea00fd0851aa86c284490e97673b9c6332"
+      :name "lawtwin.github"
+      :version "0.1.0"
+      :source {
+        :kind "path"
+        :path ".."
+      }
+      :dependencies {
+
+      }
+    }
+  ]
+}

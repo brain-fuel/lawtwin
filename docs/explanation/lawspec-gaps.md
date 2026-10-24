@@ -315,7 +315,7 @@ was more patient.
 
 The contract widens batches to 1 to 100 records and derives member ids
 from any list of texts. The test project binds generators for `Text` and
-`Int32` in `lawspec.json`: three draws in four are a name or a count from
+`Int32` in `lawspec.edn`: three draws in four are a name or a count from
 1 to 16, and the fourth is any non-empty text or any integer. A binding is
 per type, so every `Text` and every `Int32` the laws draw comes from it; a
 consumer of the contract has to bind the same generators to run its laws.

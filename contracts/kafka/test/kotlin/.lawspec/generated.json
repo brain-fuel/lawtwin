@@ -59,7 +59,7 @@
     "src/main/kotlin/lawspec/definitions/lawtwin/kafka/Model.kt": "94c93985c0e53b1300b244380047f5528f03aa36b91b54670a580692ba03176b",
     "src/main/kotlin/lawspec/definitions/contracttest/Kafka.kt": "8389939ae4eb0d93dc82a797d208664098ff3c659c6f25fce2fe55af5793b53c",
     "src/main/kotlin/lawspec/runtime/LawSpecKotlinAdapters.kt": "633667ccc801bf31071f7f1471455bc7739a2162f991af40a7c46580e3ddc66c",
-    "src/main/java/lawspec/runtime/LawSpecRuntime.java": "c78b9716cf7b2f7bead592d50e00d18e56458de3f6901e907e8caf4c40caa52a",
+    "src/main/java/lawspec/runtime/LawSpecRuntime.java": "d53eac2aa48711083eeb5473be31dd0440de37cb361670dad8860ab3a1a8fa25",
     "src/test/kotlin/lawspec/testing/LawSpecKotlinStrategies.kt": "8d98f4a6849aad7769f700b32b3e9f2122390ace46cc26a3c8d4044a59b2ec61",
     "src/test/kotlin/lawspec/testing/LawSpecStrategies.kt": "fb147ec8e42a43f640cfd153a815de9e5606f2ae4fd07278a676c18fdd9b2817",
     "src/main/kotlin/lawspec/abilities/lawtwin/Kafka.kt": "077781050a923c76468f3af298dcb2a5ebef9f5aa96da816f2987336e6ed7855",

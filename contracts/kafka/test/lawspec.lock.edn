@@ -1,0 +1,27 @@
+{
+  :format "lawspec-lock"
+  :version 1
+  :roots {
+    "lawtwin.kafka" "93d9f66b7281e5ba27d43a6dfbf6a3d5e774a2602a6ac2a32d3674d8d740e8e7"
+  }
+  :selections {
+    "$::lawtwin.kafka" {
+      :request "0.1.0"
+      :package "93d9f66b7281e5ba27d43a6dfbf6a3d5e774a2602a6ac2a32d3674d8d740e8e7"
+    }
+  }
+  :packages [
+    {
+      :id "93d9f66b7281e5ba27d43a6dfbf6a3d5e774a2602a6ac2a32d3674d8d740e8e7"
+      :name "lawtwin.kafka"
+      :version "0.1.0"
+      :source {
+        :kind "path"
+        :path ".."
+      }
+      :dependencies {
+
+      }
+    }
+  ]
+}

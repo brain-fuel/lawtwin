@@ -1,6 +1,6 @@
 /// The harness plane on .NET: how often a law runs, how long it may take,
 /// whether its cases were adequate (cover, classify, labels), targeted
-/// search scores, known failures, skips and benchmarks. Statistics go to
+/// search scores, known discrepancies, skips and benchmarks. Statistics go to
 /// LAWSPEC_STATS as the same JSON records every target writes.
 /// ref:REQ-harness-units ref:DEC-never-pass-vacuously
 module LawSpec.Testing.Harness
@@ -153,7 +153,7 @@ let private writeRecord (identity: string) (record: JsonObject) =
         finally
             if File.Exists temporary then File.Delete temporary
 
-/// The expected-failure context of a `known failing` law.
+/// The expected-failure context of a `known discrepancy` law.
 type private Expected =
     { ExpectedLaw: string
       Checks: ResizeArray<JsonObject>
@@ -361,10 +361,10 @@ let skip (law: string) (reason: string) =
     eprintfn "SKIPPED %s: %s" law reason
     commit (objectOf [ "law", box law; "test", box (law + " skipped"); "outcome", box "skipped"; "reason", box reason ])
 
-/// A law known to fail: its checks must fail, and a law that passes fails
-/// the run so the mark is removed.
-[<CompiledName("KnownFailing")>]
-let knownFailing (law: string) (name: string) (reason: string) (checks: (unit -> unit) list) =
+/// An acknowledged discrepancy must reproduce. An unexpected pass requires
+/// human review of the specification and implementation.
+[<CompiledName("KnownDiscrepancy")>]
+let knownDiscrepancy (law: string) (name: string) (reason: string) (checks: (unit -> unit) list) =
     let previous = expected.Value
     let context = { ExpectedLaw = law; Checks = ResizeArray(); ExpectedAborted = None }
     expected.Value <- Some context
@@ -384,12 +384,12 @@ let knownFailing (law: string) (name: string) (reason: string) (checks: (unit ->
         commit o
     match failure, context.ExpectedAborted with
     | None, None ->
-        record "known-failing-passed" []
-        eprintfn "%s is marked known failing (%s), but it passes; remove `known failing` from its harness" law reason
-        Fail.raiseWith "KnownFailingPassed" (law + " is marked known failing (" + reason + "), but it passes; remove `known failing` from its harness")
+        record "known-discrepancy-passed" []
+        eprintfn "%s is marked known discrepancy (%s), but it passes; review the specification and implementation before removing `known discrepancy` from its harness" law reason
+        Fail.raiseWith "KnownDiscrepancyPassed" (law + " is marked known discrepancy (" + reason + "), but it passes; review the specification and implementation before removing `known discrepancy` from its harness")
     | Some e, None ->
-        record "known-failing" [ "failure", box e.Message ]
-        printfn "%s is known to fail (%s): %s" law reason e.Message
+        record "known-discrepancy" [ "failure", box e.Message ]
+        printfn "%s has a known discrepancy (%s): %s" law reason e.Message
     | Some e, Some _ ->
         record "failed" [ "failureKind", box "harness"; "failure", box e.Message ]
         raise e

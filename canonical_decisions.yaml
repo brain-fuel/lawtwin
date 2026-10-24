@@ -394,3 +394,11 @@ DEC-peer-value-types:
   opened: 0.1.0
   decided: 0.1.0
   refs: [lawspec]
+
+DEC-component-edn:
+  status: decided
+  question: How do independently built native components share published contracts and describe their integration?
+  answer: |
+    The owner chose lawspec.edn as the immediate replacement for lawspec.json and lawspec-package.json, without a migration layer. LawSpec checks one component or contract package and resolves local paths, immutable Git revisions selected by tags or revision, and integrity-checked HTTPS archives with lawspec.lock.edn. Ironframe consumes the checked public descriptor, owns CALM topology, bindings, optional deployment and fresh integration execution, and never parses EDN or scrapes generated source. A CALM node may provide and consume contracts. Atlas keeps distinct Rust and F# components and tests the production HTTP boundary. LawTwin emits EDN manifests and remains the fixture owner. This adds execution and package infrastructure, not a proof backend; existing mandatory definition validation and explicit unsupported or incomplete results remain in force.
+  opened: 0.2.0
+  decided: 0.2.0

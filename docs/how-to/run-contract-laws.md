@@ -13,7 +13,7 @@ contract on Rust and Python.
 
 You need:
 
-- LawSpec 0.29.2 (ref:lawspec), staged from npm with `make lawspec-stage`;
+- LawSpec 0.31.0 (ref:lawspec), staged from npm with `make lawspec-stage`;
   `make lawspec-version` prints what the contracts need;
 - Node 22 or later;
 - Rust 1.85 or later;
