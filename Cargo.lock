@@ -567,7 +567,7 @@ dependencies = [
 
 [[package]]
 name = "lawtwin"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "edn-rs",
  "lawtwin-http",
@@ -588,7 +588,7 @@ dependencies = [
 
 [[package]]
 name = "lawtwin-http"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "anyhow",
  "axum",
@@ -603,7 +603,7 @@ dependencies = [
 
 [[package]]
 name = "lawtwin-http-conformance"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "lawtwin-http",
  "lawtwin-wire",
@@ -614,7 +614,7 @@ dependencies = [
 
 [[package]]
 name = "lawtwin-kafka"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "anyhow",
  "axum",
@@ -632,7 +632,7 @@ dependencies = [
 
 [[package]]
 name = "lawtwin-kafka-conformance"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "bytes",
  "kafka-protocol",
@@ -644,7 +644,7 @@ dependencies = [
 
 [[package]]
 name = "lawtwin-kafka-fidelity"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "anyhow",
  "axum",
@@ -676,7 +676,7 @@ dependencies = [
 
 [[package]]
 name = "lawtwin-wire"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "base64 0.22.1",
  "regex",

@@ -18,10 +18,10 @@ PYTHON313 ?= python3.13
 GRADLE_HOME ?=
 CANON     ?= stack --no-terminal --stack-yaml $(CANON_HOME)/stack.yaml exec canon --
 PODMAN    ?= podman
-IMAGE     ?= lawtwin/kafka:0.2.0
+IMAGE     ?= lawtwin/kafka:0.2.1
 # The Kafka core the conformance kit checks: a command, or image:<image>.
 CORE      ?= target/release/lawtwin-kafka
-HTTP_IMAGE ?= lawtwin/http:0.2.0
+HTTP_IMAGE ?= lawtwin/http:0.2.1
 OPENAPI_GENERATOR ?= docker.io/openapitools/openapi-generator-cli:v7.9.0
 # The HTTP core core-conformance-http checks: CORE when it names one,
 # otherwise the Rust core.
@@ -30,7 +30,7 @@ HTTP_CORE := $(if $(filter target/release/lawtwin-kafka,$(CORE)),target/release/
 # and the twin release a conformance report is for.
 KAFKA_IMAGE ?= docker.io/apache/kafka:4.3.1
 KAFKA_PORT  ?= 39092
-RELEASE     ?= 0.2.0
+RELEASE     ?= 0.2.1
 
 comma := ,
 

@@ -8,6 +8,19 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-10-25
+
+Release preparation: consumer regeneration and fresh Kafka/HTTP conformance are
+pending the final verified LawSpec 0.31.0 archive. Existing evidence retains its
+original release and run identities.
+
+### Changed
+
+- Prepare the maintained contract consumers for the final LawSpec 0.31.0
+  compiler, retaining contract package versions at 0.1.0.
+- Align the documented compiler pin and the workspace, image and conformance
+  report version defaults with this patch release.
+
 ## [0.2.0] - 2026-10-24
 
 ### Changed
