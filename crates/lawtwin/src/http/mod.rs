@@ -264,7 +264,7 @@ fn up(args: &[String]) -> Result<(), String> {
     let core = a.value("--core")?;
     let image = a.value("--image")?;
     let container = a.flag("--container") || image.is_some();
-    let image = image.unwrap_or_else(|| "lawtwin/http:0.1.0".into());
+    let image = image.unwrap_or_else(|| format!("lawtwin/http:{}", env!("CARGO_PKG_VERSION")));
     let port = a.value("--port")?.unwrap_or_else(|| "8080".into());
     let admin_port = a.value("--admin-port")?.unwrap_or_else(|| "9644".into());
     let mut pass = vec![];

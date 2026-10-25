@@ -13,7 +13,7 @@ layer as well as its model.
 
 ```sh
 lawtwin replay kafka session --core rust
-lawtwin replay kafka session.frames.jsonl --core image:lawtwin/kafka:0.1.0 --report replay.json
+lawtwin replay kafka session.frames.jsonl --core image:lawtwin/kafka:0.2.1 --report replay.json
 ```
 
 | Option | Says |

@@ -2,7 +2,7 @@
 //!
 //! `LAWTWIN_CORE` names the core: a command (`target/release/lawtwin-kafka`,
 //! or any other core's program, given the core options), or an image
-//! (`image:lawtwin/kafka:0.1.0`, run with podman, or `PODMAN`). Unset, the
+//! (`image:lawtwin/kafka:0.2.1`, run with podman, or `PODMAN`). Unset, the
 //! Rust core runs in this process. Nothing else about the core is assumed:
 //! the kit reaches it only over the Kafka protocol and the admin API.
 

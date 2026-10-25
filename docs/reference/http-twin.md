@@ -160,7 +160,8 @@ and checks the laws ([HTTP twin cores](http-core.md)).
 
 ## The image
 
-`lawtwin/http:0.1.0` (also tagged `docker.io/lawtwin/http:0.1.0`) is 4.7 MB:
+`make image-http` builds `lawtwin/http:0.2.1` (also tagged
+`docker.io/lawtwin/http:0.2.1`):
 the static core and the `lawtwin` command on `scratch`, from
 `twins/http/rust/Containerfile` (`make image-http`). The API listens on
 8080 and the admin API on 9644. It is configured by `TWIN_CONFIG`, a JSON

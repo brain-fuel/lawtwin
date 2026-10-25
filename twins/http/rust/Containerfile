@@ -1,6 +1,6 @@
 # The HTTP twin's Rust core as a small static image, with the lawtwin
 # command beside it. Build from the repository root:
-#   podman build -f twins/http/rust/Containerfile -t lawtwin/http:0.1.0 .
+#   podman build -f twins/http/rust/Containerfile -t lawtwin/http:0.2.1 .
 # or `make image-http`. One image serves every imported contract compiled
 # into the core; choose one with TWIN_CONFIG ({"contract": "petstore"}),
 # LAWTWIN_CONTRACT or --contract. The API listens on 8080, the admin API on

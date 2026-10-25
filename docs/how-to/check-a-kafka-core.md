@@ -27,7 +27,7 @@ instead with:
 
 ```sh
 make image
-make core-conformance CORE=image:lawtwin/kafka:0.1.0
+make core-conformance CORE=image:lawtwin/kafka:0.2.1
 ```
 
 ## Check another core

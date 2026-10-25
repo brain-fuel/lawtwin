@@ -269,7 +269,7 @@ fn up(args: &[String]) -> Result<(), String> {
     if twin != "kafka" {
         return Err(format!("{twin} is not a twin; this release has kafka"));
     }
-    let (mut core, mut image, mut container) = (None, "lawtwin/kafka:0.1.0".to_string(), false);
+    let (mut core, mut image, mut container) = (None, format!("lawtwin/kafka:{}", env!("CARGO_PKG_VERSION")), false);
     let (mut port, mut admin_port, mut advertise) = ("9092".to_string(), "9644".to_string(), None);
     let mut pass: Vec<String> = vec![];
     let mut i = 1;
