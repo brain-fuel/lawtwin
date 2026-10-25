@@ -107,6 +107,9 @@ make contract-test       # run them on every target (TARGET=rust, for example, f
 
 The contracts use LawSpec 0.31.0, staged from npm with `make lawspec-stage`
 (or from a built checkout with `make lawspec-stage LAWSPEC_HOME=<checkout>`).
+Before publication, `make lawspec-stage LAWSPEC_ARCHIVE=/path/to/lawspec-0.31.0.tgz`
+tests the packed release's actual WASM compiler. Staging checks the package
+version and installs dependencies before replacing the existing CLI.
 You also need Node 22 or
 later, Rust 1.85 or later with CMake, and Python 3.13 or later; Go, a JDK
 with Maven, Gradle, and the .NET 10 SDK run the Kafka contract's other targets and the

@@ -20,6 +20,9 @@ original release and run identities.
   compiler, retaining contract package versions at 0.1.0.
 - Align the documented compiler pin and the workspace, image and conformance
   report version defaults with this patch release.
+- Stage a local npm archive with `LAWSPEC_ARCHIVE` to verify an unpublished
+  release's actual WASM compiler; reject mismatched package versions before
+  replacing the existing staged CLI.
 
 ## [0.2.0] - 2026-10-24
 

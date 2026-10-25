@@ -3,12 +3,14 @@
 
 # The contracts and twin model consumers use LawSpec 0.31.0, manifest
 # version 1 and profile 1.0-rc.2, with explicit verification layers.
-# `make lawspec-stage` stages the CLI from npm; set LAWSPEC_HOME to
+# `make lawspec-stage` stages the CLI from npm; set LAWSPEC_ARCHIVE to a packed
+# release to exercise its WASM compiler before publication, or LAWSPEC_HOME to
 # stage it from a LawSpec checkout instead (for builds not yet on npm), or set
 # LAWSPEC to another way of running it.
 LAWSPEC_VERSION  := 0.31.0
 LAWSPEC_REQUIRED := LawSpec $(LAWSPEC_VERSION)
 LAWSPEC_HOME ?=
+LAWSPEC_ARCHIVE ?=
 LAWSPEC   ?= node .lawspec-cli/bin/lawspec.mjs
 CONTRACTS := contracts/kafka contracts/petstore contracts/github
 LAWTWIN   := target/release/lawtwin
@@ -52,8 +54,8 @@ help: ## List the tasks
 lawspec-version: ## Say which LawSpec the contracts need
 	@echo "$(LAWSPEC_REQUIRED)"
 
-lawspec-stage: ## Stage the LawSpec CLI into .lawspec-cli, from npm or from LAWSPEC_HOME
-	LAWSPEC_VERSION="$(LAWSPEC_VERSION)" LAWSPEC_HOME="$(LAWSPEC_HOME)" tools/stage-lawspec.sh
+lawspec-stage: ## Stage the CLI from npm, LAWSPEC_ARCHIVE or LAWSPEC_HOME
+	LAWSPEC_VERSION="$(LAWSPEC_VERSION)" LAWSPEC_ARCHIVE="$(LAWSPEC_ARCHIVE)" LAWSPEC_HOME="$(LAWSPEC_HOME)" tools/stage-lawspec.sh
 
 build: ## Build the lawtwin command and the twins' Rust cores
 	cargo build --release -p lawtwin -p lawtwin-kafka -p lawtwin-http -p lawtwin-kafka-fidelity

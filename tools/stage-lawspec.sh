@@ -3,6 +3,7 @@
 #
 # By default it unpacks LAWSPEC_VERSION's npm package (npm pack lawspec@<v>),
 # which runs as is: node .lawspec-cli/bin/lawspec.mjs.
+# LAWSPEC_ARCHIVE stages a locally packed release through the same WASM path.
 #
 # With LAWSPEC_HOME set, it stages from a source checkout instead, for LawSpec
 # builds not yet on npm: it copies the checkout's npm/ folder and swaps the
@@ -11,20 +12,37 @@
 # checkout itself is not changed.
 #
 #   LAWSPEC_VERSION=0.31.0 tools/stage-lawspec.sh
+#   LAWSPEC_ARCHIVE=/path/to/lawspec-0.31.0.tgz tools/stage-lawspec.sh
 #   LAWSPEC_HOME=/path/to/lawspec tools/stage-lawspec.sh
 #   node .lawspec-cli/bin/lawspec.mjs check --config ...
 set -euo pipefail
 cd "$(dirname "$0")/.."
+if [ -n "${LAWSPEC_ARCHIVE:-}" ] && [ -n "${LAWSPEC_HOME:-}" ]; then
+  echo "choose LAWSPEC_ARCHIVE or LAWSPEC_HOME, not both" >&2
+  exit 1
+fi
 if [ -z "${LAWSPEC_HOME:-}" ]; then
-  : "${LAWSPEC_VERSION:?set LAWSPEC_VERSION to a LawSpec release on npm, or LAWSPEC_HOME to a checkout}"
   tmp="$(mktemp -d)"
   trap 'rm -rf "$tmp"' EXIT
-  tgz="$(cd "$tmp" && npm pack --silent "lawspec@$LAWSPEC_VERSION")"
+  if [ -n "${LAWSPEC_ARCHIVE:-}" ]; then
+    cp "$LAWSPEC_ARCHIVE" "$tmp/lawspec.tgz"
+    tgz="lawspec.tgz"
+    source_description="local npm archive"
+  else
+    : "${LAWSPEC_VERSION:?set LAWSPEC_VERSION, LAWSPEC_ARCHIVE or LAWSPEC_HOME}"
+    tgz="$(cd "$tmp" && npm pack --silent "lawspec@$LAWSPEC_VERSION")"
+    source_description="npm"
+  fi
   tar -xzf "$tmp/$tgz" -C "$tmp"
+  actual_version="$(node -p 'require(process.argv[1]).version' "$tmp/package/package.json")"
+  if [ -n "${LAWSPEC_VERSION:-}" ] && [ "$actual_version" != "$LAWSPEC_VERSION" ]; then
+    echo "LawSpec package is $actual_version; contracts require $LAWSPEC_VERSION" >&2
+    exit 1
+  fi
+  npm install --prefix "$tmp/package" --omit=dev --ignore-scripts --no-audit --no-fund
   rm -rf .lawspec-cli
   mv "$tmp/package" .lawspec-cli
-  npm install --prefix .lawspec-cli --omit=dev --ignore-scripts --no-audit --no-fund
-  echo "staged LawSpec $(node .lawspec-cli/bin/lawspec.mjs --version 2>/dev/null || echo "$LAWSPEC_VERSION") from npm in .lawspec-cli"
+  echo "staged LawSpec $actual_version from $source_description in .lawspec-cli"
   exit 0
 fi
 actual_version="$(node -p 'require(process.argv[1]).version' "$(cd "$LAWSPEC_HOME" && pwd)/npm/package.json")"
