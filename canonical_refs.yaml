@@ -158,3 +158,12 @@ kafka-fetch-leader-endpoints:
   kind: article
   title: Apache Kafka FetchResponse schema, KIP-951 NodeEndpoints in version 16 and later
   locator: https://github.com/apache/kafka/blob/trunk/clients/src/main/resources/common/message/FetchResponse.json
+
+otlp:
+  kind: article
+  title: OpenTelemetry Protocol specification
+  locator: https://opentelemetry.io/docs/specs/otlp/
+otel-logs-sdk:
+  kind: article
+  title: OpenTelemetry Logs SDK, ForceFlush and shutdown
+  locator: https://opentelemetry.io/docs/specs/otel/logs/sdk/

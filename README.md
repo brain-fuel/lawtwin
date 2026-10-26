@@ -15,6 +15,11 @@ LawTwin is part of **Ironframe** by GoForge, *making codebases safe for
 autonomous change*. The family is LawSpec and LawTwin; canon and Rice's Tax;
 with Rune and Wavelet on the roadmap.
 
+The [disposable observation receiver](docs/reference/observation-receiver.md)
+collects run-scoped OTLP JSON logs and traces with durable accounting, declared
+receiver faults and explicit incomplete outcomes. It is supporting test
+infrastructure, not a cloud logging provider conformance claim.
+
 ## The three planes
 
 | Plane | Owns | Never contains |

@@ -8,6 +8,15 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- A disposable OTLP/HTTP JSON observation receiver with separate private
+  administration, exact run/node/revision identities, journal persistence,
+  producer flush checkpoints, declared receiver faults and sealed exports.
+- Explicit incomplete collection outcomes for loss, failed or missing flushes,
+  count mismatches and persistence failures. Existing provider fidelity receipts
+  and the Cassandra roadmap are unchanged.
+
 ## [0.2.1] - 2026-10-26
 
 All eleven maintained consumers are regenerated through the verified LawSpec

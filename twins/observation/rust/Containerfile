@@ -1,0 +1,12 @@
+# Build from the workspace root. Run with --config /run/receiver.json and a
+# fresh journal volume. Administration stays within the runner's network.
+FROM docker.io/library/rust:1-alpine AS build
+RUN apk add --no-cache musl-dev
+WORKDIR /src
+COPY . .
+RUN cargo build --release --locked -p lawtwin-observation
+
+FROM scratch
+COPY --from=build /src/target/release/lawtwin-observation /lawtwin-observation
+EXPOSE 4318
+ENTRYPOINT ["/lawtwin-observation", "--listen", "0.0.0.0:4318"]

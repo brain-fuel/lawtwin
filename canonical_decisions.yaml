@@ -402,3 +402,12 @@ DEC-component-edn:
     The owner chose lawspec.edn as the immediate replacement for lawspec.json and lawspec-package.json, without a migration layer. LawSpec checks one component or contract package and resolves local paths, immutable Git revisions selected by tags or revision, and integrity-checked HTTPS archives with lawspec.lock.edn. Ironframe consumes the checked public descriptor, owns CALM topology, bindings, optional deployment and fresh integration execution, and never parses EDN or scrapes generated source. A CALM node may provide and consume contracts. Atlas keeps distinct Rust and F# components and tests the production HTTP boundary. LawTwin emits EDN manifests and remains the fixture owner. This adds execution and package infrastructure, not a proof backend; existing mandatory definition validation and explicit unsupported or incomplete results remain in force.
   opened: 0.2.0
   decided: 0.2.0
+
+DEC-observation-receiver:
+  status: decided
+  question: What does the disposable logging fixture establish?
+  answer: |
+    Authorized by the owner on 26 October 2026. A run-scoped receiver accepts the selected OTLP/HTTP JSON logs/traces fragment with exact resource identities, a bounded durable journal, declared receiver faults, independent producer flush/count checkpoints and an irreversible seal. Failed/missing flushes, loss, mismatched accounting and persistence errors yield incomplete evidence. SDK ForceFlush and HTTP acknowledgement are distinct. Raw journals survive receiver termination, and runner diagnostics are independent. This is supporting observation infrastructure, not a generated business model, solver backend or cloud logging provider conformance claim; existing deterministic protocol models and their fidelity receipts are unchanged.
+  opened: 0.2.1
+  decided: 0.2.1
+  refs: [otlp, otel-logs-sdk, lawspec]

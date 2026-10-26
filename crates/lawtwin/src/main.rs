@@ -15,6 +15,7 @@ mod kafka;
 mod names;
 mod natives;
 mod openapi;
+mod observation;
 mod regex;
 mod twinfile;
 mod wiremap;
@@ -247,7 +248,7 @@ fn import_openapi(o: &Options) -> Result<(), String> {
 fn usage() -> String {
     USAGE.replace(
         "{CONTROL}",
-        &format!("{}\n{}\n{}", control::USAGE, http::USAGE, kafka::USAGE),
+        &format!("{}\n{}\n{}\n{}", control::USAGE, http::USAGE, kafka::USAGE, observation::USAGE),
     )
 }
 
@@ -271,6 +272,7 @@ fn main() -> ExitCode {
             Ok(())
         }
         Some(command) => match kafka::run(command, &args[1..])
+            .or_else(|| observation::run(command, &args[1..]))
             .or_else(|| http::run(command, &args[1..]))
             .or_else(|| control::run(command, &args[1..]))
         {

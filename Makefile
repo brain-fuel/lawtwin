@@ -24,6 +24,7 @@ IMAGE     ?= lawtwin/kafka:0.2.1
 # The Kafka core the conformance kit checks: a command, or image:<image>.
 CORE      ?= target/release/lawtwin-kafka
 HTTP_IMAGE ?= lawtwin/http:0.2.1
+OBSERVATION_IMAGE ?= lawtwin/observation:development
 OPENAPI_GENERATOR ?= docker.io/openapitools/openapi-generator-cli:v7.9.0
 # The HTTP core core-conformance-http checks: CORE when it names one,
 # otherwise the Rust core.
@@ -58,10 +59,10 @@ lawspec-stage: ## Stage the CLI from npm, LAWSPEC_ARCHIVE or LAWSPEC_HOME
 	LAWSPEC_VERSION="$(LAWSPEC_VERSION)" LAWSPEC_ARCHIVE="$(LAWSPEC_ARCHIVE)" LAWSPEC_HOME="$(LAWSPEC_HOME)" tools/stage-lawspec.sh
 
 build: ## Build the lawtwin command and the twins' Rust cores
-	cargo build --release -p lawtwin -p lawtwin-kafka -p lawtwin-http -p lawtwin-kafka-fidelity
+	cargo build --release -p lawtwin -p lawtwin-kafka -p lawtwin-http -p lawtwin-kafka-fidelity -p lawtwin-observation
 
 test: ## Run the lawtwin command's and the Rust cores' own tests
-	cargo test -p lawtwin -p lawtwin-wire -p lawtwin-kafka -p lawtwin-http -p lawtwin-kafka-fidelity
+	cargo test -p lawtwin -p lawtwin-wire -p lawtwin-kafka -p lawtwin-http -p lawtwin-kafka-fidelity -p lawtwin-observation
 
 openapi-import: build ## Import each vendored OpenAPI document into its contract
 	@for i in $(OPENAPI_IMPORTS); do \
@@ -160,3 +161,13 @@ canon: ## Check the canonical format with canon 0.2.3 (needs CANON_HOME)
 	$(CANON) check
 
 ci: test openapi-import-check openapi-compile-check contract-check contract-generate-check contract-test core-conformance core-conformance-http fidelity-test canon ## Every check
+
+.PHONY: build-observation test-observation image-observation
+build-observation: ## Build only the disposable observation receiver
+	cargo build --release --locked -p lawtwin-observation
+
+test-observation: ## Check collection accounting, isolation and receiver faults
+	cargo test --locked -p lawtwin-observation
+
+image-observation: ## Build the receiver image without registry publication
+	$(PODMAN) build -f twins/observation/rust/Containerfile -t $(OBSERVATION_IMAGE) .
